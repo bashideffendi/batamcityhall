@@ -1,0 +1,65 @@
+/* Berita Batam: widget beranda dan halaman /info/berita. Warna hanya dari token. */
+.bch-berita-widget {
+  margin-block: var(--bch-space-6);
+  padding: var(--bch-space-4);
+  background: var(--bch-paper-2);
+  border: var(--bch-stroke-base) solid var(--bch-rule);
+  border-radius: var(--bch-radius-1);
+  max-width: var(--bch-measure);
+}
+.bch-berita-widget h2 {
+  margin: 0;
+  font-size: var(--bch-text-h3);
+}
+/* Menahan tempat selagi judul dimuat, supaya daftar loket di bawahnya tidak melompat. */
+.bch-berita-widget[data-fase="memuat"] {
+  min-height: 20rem;
+}
+.bch-berita-pesan {
+  margin: var(--bch-space-3) 0;
+  color: var(--bch-ink-muted);
+}
+.bch-berita-daftar {
+  list-style: none;
+  margin: var(--bch-space-3) 0;
+  padding: 0;
+  max-width: var(--bch-measure);
+}
+.bch-berita-daftar li {
+  padding-bottom: var(--bch-space-2);
+  border-bottom: var(--bch-stroke-fine) solid var(--bch-rule);
+}
+.bch-berita-daftar li:last-child {
+  border-bottom: 0;
+}
+/* Padding, bukan min-height saja: judul satu baris dan dua baris tetap berjarak sama ke barisan meta. */
+.bch-berita-daftar a {
+  display: block;
+  min-height: 44px;
+  padding-block: var(--bch-space-2);
+  overflow-wrap: anywhere;
+}
+.bch-berita-meta {
+  display: block;
+  margin: 0;
+  font-size: var(--bch-text-small);
+  color: var(--bch-ink-muted);
+}
+.bch-berita-semua {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.bch-berita-saring {
+  display: grid;
+  gap: var(--bch-space-2);
+  margin-top: var(--bch-space-5);
+  max-width: 24rem;
+}
+.bch-berita-hari {
+  margin-top: var(--bch-space-6);
+}
+.bch-berita-hari h2 {
+  margin: 0;
+  font-size: var(--bch-text-h3);
+}
