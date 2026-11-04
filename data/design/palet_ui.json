@@ -1,0 +1,161 @@
+{
+  "siang": {
+    "kontras_di_atas": "#F4EFE4",
+    "token": [
+      {
+        "token": "paper",
+        "keterangan": null,
+        "hex": "#F4EFE4",
+        "pakai": "latar & darat",
+        "kontras": "—"
+      },
+      {
+        "token": "paper-2",
+        "keterangan": null,
+        "hex": "#EBE4D5",
+        "pakai": "kartu, panel",
+        "kontras": "—"
+      },
+      {
+        "token": "ink",
+        "keterangan": null,
+        "hex": "#1C1B19",
+        "pakai": "teks utama",
+        "kontras": "15,0 : 1 ✓ AAA"
+      },
+      {
+        "token": "ink-muted",
+        "keterangan": null,
+        "hex": "#5A564E",
+        "pakai": "teks sekunder",
+        "kontras": "5,9 : 1 ✓ AA"
+      },
+      {
+        "token": "sea-ink",
+        "keterangan": null,
+        "hex": "#4E6A7A",
+        "pakai": "link, label air",
+        "kontras": "5,0 : 1 ✓ AA"
+      },
+      {
+        "token": "accent",
+        "keterangan": null,
+        "hex": "#A2482A",
+        "pakai": "teks aksen, link aktif",
+        "kontras": "5,2 : 1 ✓ AA"
+      },
+      {
+        "token": "accent-riso",
+        "keterangan": null,
+        "hex": "#BD6439",
+        "pakai": "dekor, angka besar ≥24 px",
+        "kontras": "3,6 : 1 (khusus teks besar)"
+      },
+      {
+        "token": "rule",
+        "keterangan": null,
+        "hex": "#CFC6B4",
+        "pakai": "garis pemisah",
+        "kontras": "non-teks"
+      },
+      {
+        "token": "status-ok",
+        "keterangan": null,
+        "hex": "#407060",
+        "pakai": "aman/buka",
+        "kontras": "4,9 : 1 ✓ AA"
+      },
+      {
+        "token": "status-caution",
+        "keterangan": null,
+        "hex": "#7A5C0E",
+        "pakai": "waspada (ombak sedang)",
+        "kontras": "5,4 : 1 ✓ AA"
+      },
+      {
+        "token": "status-danger",
+        "keterangan": null,
+        "hex": "#9E2B25",
+        "pakai": "bahaya (feri batal)",
+        "kontras": "6,5 : 1 ✓ AA"
+      },
+      {
+        "token": "status-info",
+        "keterangan": null,
+        "hex": "#4E6A7A",
+        "pakai": "info",
+        "kontras": "5,0 : 1 ✓"
+      }
+    ]
+  },
+  "malam": {
+    "kontras_di_atas": "#0F1B2A",
+    "token": [
+      {
+        "token": "paper",
+        "keterangan": "latar/laut",
+        "hex": "#0F1B2A",
+        "pakai": null,
+        "kontras": "—"
+      },
+      {
+        "token": "paper-2",
+        "keterangan": "darat/kartu",
+        "hex": "#16263A",
+        "pakai": null,
+        "kontras": "—"
+      },
+      {
+        "token": "ink",
+        "keterangan": "krem",
+        "hex": "#EDE4CF",
+        "pakai": null,
+        "kontras": "13,7 : 1 ✓"
+      },
+      {
+        "token": "ink-muted",
+        "keterangan": null,
+        "hex": "#A9A493",
+        "pakai": null,
+        "kontras": "7,0 : 1 ✓"
+      },
+      {
+        "token": "sea-ink",
+        "keterangan": null,
+        "hex": "#7FA3B5",
+        "pakai": null,
+        "kontras": "6,5 : 1 ✓"
+      },
+      {
+        "token": "accent",
+        "keterangan": null,
+        "hex": "#E08A63",
+        "pakai": null,
+        "kontras": "6,6 : 1 ✓"
+      },
+      {
+        "token": "status-ok",
+        "keterangan": null,
+        "hex": "#8FC1A0",
+        "pakai": null,
+        "kontras": "8,5 : 1 ✓"
+      },
+      {
+        "token": "status-caution",
+        "keterangan": null,
+        "hex": "#E3C26B",
+        "pakai": null,
+        "kontras": "10,1 : 1 ✓"
+      },
+      {
+        "token": "status-danger",
+        "keterangan": null,
+        "hex": "#F08C80",
+        "pakai": null,
+        "kontras": "7,2 : 1 ✓"
+      }
+    ]
+  },
+  "catatan": "Rasio dihitung manual oleh peneliti dengan rumus relative luminance WCAG 2.x [V untuk metode, hitungan manual]; cek ulang di WebAIM Contrast Checker sebelum rilis. Status peringatan selalu disertai ikon + kata (\"WASPADA\", \"BATAL\"), jangan pernah hanya warna. [A]",
+  "sumber_riset": "05-panduan-gaya"
+}

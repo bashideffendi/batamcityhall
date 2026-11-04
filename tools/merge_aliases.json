@@ -1,0 +1,273 @@
+{
+ "_keterangan": "Grup entri yang mewakili tempat yang SAMA tetapi tidak tertangkap otomatis oleh merge_places.py (nama/kategori/subkategori berbeda antarlaporan). Setiap grup digabung menjadi satu entri dengan id = 'id' dan nama = 'nama'. 'anggota' = id asli di data/places/*.json. Id anggota tetap bisa dicari lewat field id_alias dan data/places_id_index.json. Tambahkan grup baru di sini kalau menemukan duplikat lain, lalu jalankan ulang tools/merge_places.py.",
+ "grup": [
+  {
+   "id": "jembatan-barelang-1",
+   "nama": "Jembatan Tengku Fisabilillah (Barelang I)",
+   "anggota": [
+    "jembatan-barelang-1",
+    "wisata-barelang1"
+   ],
+   "catatan": "Jembatan pertama dan paling ikonik. Entri 'jembatan-barelang' sengaja dipisah: itu rangkaian 6 jembatan."
+  },
+  {
+   "id": "rs-elisabeth-batam-kota",
+   "nama": "RS Santa Elisabeth Batam Kota",
+   "anggota": [
+    "rs-elisabeth-bk",
+    "kes-rs-elisabeth-batam-kota"
+   ]
+  },
+  {
+   "id": "rs-elisabeth-lubuk-baja",
+   "nama": "RS Santa Elisabeth Lubuk Baja",
+   "anggota": [
+    "rs-elisabeth-lb",
+    "kes-rs-santa-elisabeth"
+   ]
+  },
+  {
+   "id": "dataran-engku-putri",
+   "nama": "Dataran Engku Putri",
+   "anggota": [
+    "dataran-engku-putri",
+    "publik-engkuputri",
+    "pub-dataran-engku-putri",
+    "rp-001"
+   ]
+  },
+  {
+   "id": "terminal-feri-batam-centre",
+   "nama": "Pelabuhan Feri Internasional Batam Centre",
+   "anggota": [
+    "terminal-feri-batam-centre",
+    "pelabuhan-batam-centre",
+    "trans-pelabuhan-batam-centre",
+    "feri-batamcentre",
+    "btc"
+   ]
+  },
+  {
+   "id": "terminal-feri-harbour-bay",
+   "nama": "Pelabuhan Feri Internasional Harbour Bay",
+   "anggota": [
+    "terminal-feri-harbour-bay",
+    "harbour-bay",
+    "trans-pelabuhan-harbour-bay",
+    "feri-harbourbay",
+    "hb"
+   ]
+  },
+  {
+   "id": "terminal-feri-sekupang",
+   "nama": "Pelabuhan Feri Internasional & Domestik Sekupang",
+   "anggota": [
+    "terminal-feri-sekupang",
+    "pelabuhan-sekupang",
+    "trans-pelabuhan-sekupang",
+    "feri-sekupang",
+    "skp"
+   ]
+  },
+  {
+   "id": "terminal-feri-nongsapura",
+   "nama": "Pelabuhan Feri Internasional Nongsapura",
+   "anggota": [
+    "terminal-feri-nongsapura",
+    "pelabuhan-nongsapura",
+    "trans-pelabuhan-nongsapura",
+    "feri-nongsapura",
+    "nsp"
+   ]
+  },
+  {
+   "id": "terminal-feri-gold-coast",
+   "nama": "Pelabuhan Feri Internasional Gold Coast Bengkong",
+   "anggota": [
+    "trans-pelabuhan-gold-coast",
+    "feri-goldcoast",
+    "trp-goldcoast",
+    "gcb"
+   ]
+  },
+  {
+   "id": "terminal-feri-waterfront-city",
+   "nama": "Pelabuhan Feri Internasional Waterfront City (Teluk Senimba)",
+   "anggota": [
+    "trans-pelabuhan-waterfront-city",
+    "feri-waterfront",
+    "trp-telukssenimba",
+    "wfc"
+   ]
+  },
+  {
+   "id": "terminal-feri-telaga-punggur",
+   "nama": "Pelabuhan Domestik Telaga Punggur",
+   "anggota": [
+    "trans-pelabuhan-telaga-punggur",
+    "feri-telagapunggur",
+    "tpg"
+   ],
+   "catatan": "Koordinat antarsumber beda jauh (BP Batam vs Wikidata); lihat places_konflik.json. Transferpoint bus 'tp-punggur' sengaja dipisah."
+  },
+  {
+   "id": "pelabuhan-rakyat-sekupang",
+   "nama": "Pelabuhan Rakyat (Pancung) Sekupang",
+   "anggota": [
+    "pompong-sekupang",
+    "trp-pancungsekupang",
+    "pr-skp"
+   ],
+   "catatan": "Pompong ke Belakang Padang. Beda dengan terminal feri internasional Sekupang."
+  },
+  {
+   "id": "pantai-nongsa",
+   "nama": "Pantai Nongsa",
+   "anggota": [
+    "pub-pantai-nongsa",
+    "rp-015"
+   ]
+  },
+  {
+   "id": "hotel-montigo-hotel-resort",
+   "nama": "Montigo Resorts Batam",
+   "anggota": [
+    "hotel-montigo-hotel-resort",
+    "akm-montigo-resorts"
+   ]
+  },
+  {
+   "id": "masjid-agung-raja-hamidah",
+   "nama": "Masjid Agung Raja Hamidah",
+   "anggota": [
+    "masjid-agung-raja-hamidah",
+    "masjid-dataran-engku-putri"
+   ],
+   "catatan": "Masjid di Dataran Engku Putri (dulu Masjid Agung Batam berbentuk piramida). Entri 'masjid-piramida-hilang' sengaja dipisah untuk lapisan Batam Dulu."
+  },
+  {
+   "id": "kantor-pos-batam-kcu",
+   "nama": "Kantor Pos Batam (KCU / KPRK 29400)",
+   "anggota": [
+    "pos-kcu",
+    "js-013"
+   ]
+  },
+  {
+   "id": "kantor-pos-jodoh",
+   "nama": "Kantor Pos Jodoh",
+   "anggota": [
+    "pos-jodoh",
+    "js-014"
+   ]
+  },
+  {
+   "id": "kantor-imigrasi-batam",
+   "nama": "Kantor Imigrasi Kelas I Khusus TPI Batam",
+   "anggota": [
+    "imigrasi-batam",
+    "pem-imigrasi-batam"
+   ]
+  },
+  {
+   "id": "kantor-pertanahan-batam",
+   "nama": "Kantor Pertanahan (BPN) Kota Batam",
+   "anggota": [
+    "bpn-batam",
+    "pertanahan-kantah-bpn-batam"
+   ]
+  },
+  {
+   "id": "kantor-bp-batam",
+   "nama": "BP Batam – Kantor Pusat",
+   "anggota": [
+    "pem-bp-batam",
+    "pertanahan-bp-batam-pusat"
+   ],
+   "catatan": "Layanan lahan online (LMS) dan loket PTSP di MPP dicatat sebagai entri terpisah."
+  },
+  {
+   "id": "pulau-belakang-padang",
+   "nama": "Pulau Belakang Padang",
+   "anggota": [
+    "pulau-belakang-padang",
+    "wisata-belakangpadang"
+   ],
+   "catatan": "Entri kampung tua 'hl-belakang-padang' sengaja dipisah untuk lapisan Kampung Tua."
+  },
+  {
+   "id": "pasar-aviari",
+   "nama": "Pasar Aviari Batu Aji",
+   "anggota": [
+    "pasar-aviari",
+    "blj-pasar-aviari"
+   ]
+  },
+  {
+   "id": "kt-tiban",
+   "nama": "Kampung Tua Tiban",
+   "anggota": [
+    "kt-tiban",
+    "kampung-tua-tiban"
+   ]
+  },
+  {
+   "id": "gereja-kerahiman-ilahi-tiban",
+   "nama": "Paroki Kerahiman Ilahi Tiban",
+   "anggota": [
+    "ibd-gereja-kerahiman-ilahi",
+    "ibd-kerahimanilahi"
+   ]
+  },
+  {
+   "id": "gereja-santo-petrus-lubuk-baja",
+   "nama": "Paroki Santo Petrus Lubuk Baja",
+   "anggota": [
+    "ibd-gereja-santo-petrus",
+    "ibd-stpetrus"
+   ]
+  },
+  {
+   "id": "padel-dragon-89",
+   "nama": "Dragon 89 Padel",
+   "anggota": [
+    "padel-dragon89",
+    "or-005"
+   ]
+  },
+  {
+   "id": "taman-kolam-sekupang",
+   "nama": "Taman Kolam Sekupang",
+   "anggota": [
+    "taman-kolam",
+    "rp-005"
+   ]
+  },
+  {
+   "id": "taman-rusa-sekupang",
+   "nama": "Taman Rusa Sekupang",
+   "anggota": [
+    "taman-rusa",
+    "rp-004"
+   ]
+  },
+  {
+   "id": "pantai-melur",
+   "nama": "Pantai Melur",
+   "anggota": [
+    "pantai-melur",
+    "pub-pantai-melur"
+   ],
+   "catatan": "Pantai Glory Melur (rp-014) sengaja dipisah."
+  },
+  {
+   "id": "hotel-wyndham-panbil-batam-hotel",
+   "nama": "WYNDHAM PANBIL BATAM HOTEL",
+   "anggota": [
+    "hotel-wyndham-panbil-batam-hotel",
+    "hotel-wyndham-panbil-batam-hotel-2"
+   ],
+   "catatan": "Muncul dua kali di daftar hotel pemilik proyek (alamat sama, kel/kec tertukar)."
+  }
+ ]
+}

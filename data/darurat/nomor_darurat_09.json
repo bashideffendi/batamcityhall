@@ -1,0 +1,56 @@
+[
+ {
+  "nama": "Panggilan darurat 112",
+  "kontak": "112",
+  "catatan": "Nomor darurat nasional. Pengelola lokal di Batam belum diverifikasi",
+  "jenis": "telepon",
+  "tempat_terkait": [],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "nama": "Polisi",
+  "kontak": "110",
+  "catatan": "nasional",
+  "jenis": "telepon",
+  "tempat_terkait": [],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "nama": "Pemadam kebakaran",
+  "kontak": "113",
+  "catatan": "nasional",
+  "jenis": "telepon",
+  "tempat_terkait": [],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "nama": "SAR/Basarnas",
+  "kontak": "115",
+  "catatan": "Diarahkan ke kantor SAR terdekat (Pos SAR Batam / KPP Tanjungpinang)",
+  "jenis": "telepon",
+  "tempat_terkait": [
+   "pub-possar"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "nama": "Ambulans",
+  "kontak": "119",
+  "catatan": "nasional",
+  "jenis": "telepon",
+  "tempat_terkait": [],
+  "sumber_riset": "09-direktori-celah",
+  "nama_lain": [
+   "Ambulans/gawat darurat 119"
+  ],
+  "catatan_tambahan": "(nomor nasional; belum diverifikasi pengelolanya di Batam)"
+ },
+ {
+  "nama": "LAPOR! (SP4N)",
+  "kontak": "lapor.go.id",
+  "catatan": "Kanal pengaduan nasional. BP Batam juga punya ditpam.laporsp4n@bpbatam.go.id",
+  "jenis": "kanal_online",
+  "tempat_terkait": [],
+  "sumber_riset": "09-direktori-celah"
+ }
+]

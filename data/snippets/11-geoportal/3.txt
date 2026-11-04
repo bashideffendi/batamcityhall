@@ -1,0 +1,3 @@
+https://geoportal.bps.go.id/server/rest/services/wilkerstat/desa/MapServer/0
+https://geoportal.bps.go.id/server/rest/services/wilkerstat/kecamatan/MapServer
+https://geoportal.bps.go.id/server/rest/services/Hosted/Wilkerstat_Publish_Tile_Full/MapServer/4                      (SLS)

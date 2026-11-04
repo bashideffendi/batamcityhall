@@ -1,0 +1,2 @@
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// reduce → hujan jadi arsiran statis, ombak berhenti, kapal "melompat" tiap 1 menit, tanpa transisi zoom animasi

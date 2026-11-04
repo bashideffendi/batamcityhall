@@ -1,0 +1,80 @@
+[
+  {
+    "id": "museum-batam-raja-ali-haji",
+    "nama": "Museum Batam Raja Ali Haji",
+    "nama_alternatif": [],
+    "kategori": "budaya",
+    "subkategori": "museum",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "kategori_asli": "Ruang budaya",
+      "fasilitas": [
+        "mini teater"
+      ],
+      "kanal_publik": "Kanal Disbudpar",
+      "acara_terkait": [
+        "HUT Museum Batam Raja Ali Haji: Oktober (HUT ke-5 pada 2025), digelar di Alun-alun Engku Putri",
+        "Premiere film PIN karya Yanis Alfata, 16 Jul 2026 (di mini teater museum)"
+      ],
+      "asal_nama": "Nama Raja Ali Haji (pengarang Gurindam Dua Belas) dipakai untuk museum ini"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Laporan tidak menyebut alamat, kelurahan, atau kecamatan museum; kecamatan dibiarkan null. Alun-alun Engku Putri adalah lokasi acara HUT museum, bukan alamat museum yang dinyatakan laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://disbudpar.batam.go.id/2026/07/23/",
+      "https://disbudpar.batam.go.id/2025/10/23/"
+    ],
+    "sumber_riset": "13-budaya-kalender-kamus"
+  },
+  {
+    "id": "gedung-lam-kota-batam",
+    "nama": "Gedung LAM Kota Batam",
+    "nama_alternatif": [
+      "Gedung LAM"
+    ],
+    "kategori": "budaya",
+    "subkategori": "gedung_lembaga_adat",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "kategori_asli": "Adat Melayu",
+      "lembaga": "LAM Kota Batam",
+      "acara_terkait": [
+        "Makan Berhidang, 21 Okt 2025 (rangkaian Kenduri WBTb Kota Batam)"
+      ]
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Laporan tidak menyebut alamat, kelurahan, atau kecamatan gedung; kecamatan dibiarkan null.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://disbudpar.batam.go.id/2025/10/23/"
+    ],
+    "sumber_riset": "13-budaya-kalender-kamus"
+  }
+]

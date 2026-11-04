@@ -1,0 +1,274 @@
+[
+  {
+    "urutan": 1,
+    "nama": "Jembatan Tengku Fisabilillah (Barelang I)",
+    "status": "✅",
+    "status_arti": "Terverifikasi",
+    "id_landmark": [
+      "jembatan-barelang-1"
+    ]
+  },
+  {
+    "urutan": 2,
+    "nama": "Welcome to Batam",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "welcome-to-batam"
+    ]
+  },
+  {
+    "urutan": 3,
+    "nama": "Masjid Agung Raja Hamidah",
+    "status": "✅",
+    "status_arti": "Terverifikasi",
+    "id_landmark": [
+      "masjid-agung-raja-hamidah"
+    ]
+  },
+  {
+    "urutan": 4,
+    "nama": "Masjid Sultan Mahmud Riayat Syah",
+    "status": "⚠️",
+    "status_arti": "Perlu cek ulang",
+    "id_landmark": [
+      "masjid-sultan-mahmud-riayat-syah"
+    ]
+  },
+  {
+    "urutan": 5,
+    "nama": "Pelabuhan Feri Batam Centre",
+    "status": "✅",
+    "status_arti": "Terverifikasi",
+    "id_landmark": [
+      "pelabuhan-batam-centre"
+    ]
+  },
+  {
+    "urutan": 6,
+    "nama": "Bandara Hang Nadim",
+    "status": "✅",
+    "status_arti": "Terverifikasi",
+    "id_landmark": [
+      "bandara-hang-nadim"
+    ]
+  },
+  {
+    "urutan": 7,
+    "nama": "Bekas Kamp Pengungsi Galang",
+    "status": "✅",
+    "status_arti": "Terverifikasi",
+    "id_landmark": [
+      "kamp-pengungsi-galang"
+    ]
+  },
+  {
+    "urutan": 8,
+    "nama": "Maha Vihara Duta Maitreya",
+    "status": "⚠️",
+    "status_arti": "Perlu cek ulang",
+    "id_landmark": [
+      "maha-vihara-duta-maitreya"
+    ]
+  },
+  {
+    "urutan": 9,
+    "nama": "Dataran Engku Putri",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "dataran-engku-putri"
+    ]
+  },
+  {
+    "urutan": 10,
+    "nama": "Harbour Bay",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "harbour-bay"
+    ]
+  },
+  {
+    "urutan": 11,
+    "nama": "Kawasan Nagoya (ruko)",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "kawasan-nagoya"
+    ]
+  },
+  {
+    "urutan": 12,
+    "nama": "Jembatan Tuanku Tambusai (Barelang V, busur)",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "jembatan-barelang-5"
+    ]
+  },
+  {
+    "urutan": 13,
+    "nama": "Pantai Melur",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "pantai-melur"
+    ]
+  },
+  {
+    "urutan": 14,
+    "nama": "Batamindo Industrial Park",
+    "status": "⚠️",
+    "status_arti": "Perlu cek ulang",
+    "id_landmark": [
+      "batamindo"
+    ]
+  },
+  {
+    "urutan": 15,
+    "nama": "Pelabuhan Sekupang",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "pelabuhan-sekupang"
+    ]
+  },
+  {
+    "urutan": 16,
+    "nama": "Pulau Belakang Padang",
+    "status": "✅",
+    "status_arti": "Terverifikasi",
+    "id_landmark": [
+      "pulau-belakang-padang"
+    ]
+  },
+  {
+    "urutan": 17,
+    "nama": "Pasar Jodoh",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "pasar-jodoh"
+    ]
+  },
+  {
+    "urutan": 18,
+    "nama": "Galangan kapal Tanjung Uncang",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "galangan-tanjung-uncang"
+    ]
+  },
+  {
+    "urutan": 19,
+    "nama": "Pelabuhan Nongsapura",
+    "status": "✅",
+    "status_arti": "Terverifikasi",
+    "id_landmark": [
+      "pelabuhan-nongsapura"
+    ]
+  },
+  {
+    "urutan": 20,
+    "nama": "Jembatan Nara Singa (II)",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "jembatan-barelang-2"
+    ]
+  },
+  {
+    "urutan": 21,
+    "nama": "Jembatan Sultan Zainal Abidin (IV)",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "jembatan-barelang-4"
+    ]
+  },
+  {
+    "urutan": 22,
+    "nama": "Jembatan Raja Ali Haji (III)",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "jembatan-barelang-3"
+    ]
+  },
+  {
+    "urutan": 23,
+    "nama": "Jembatan Raja Kecik (VI)",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "jembatan-barelang-6"
+    ]
+  },
+  {
+    "urutan": 24,
+    "nama": "Pelabuhan Batu Ampar (crane)",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "pelabuhan-batu-ampar"
+    ]
+  },
+  {
+    "urutan": 25,
+    "nama": "Kampung pelantar Tanjung Uma",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "tanjung-uma"
+    ]
+  },
+  {
+    "urutan": 26,
+    "nama": "Monumen perahu pengungsi",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "monumen-perahu-pengungsi"
+    ]
+  },
+  {
+    "urutan": 27,
+    "nama": "Kedai kopi legendaris (ikon generik \"kopitiam\")",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "kopi-ameng",
+      "kopi-harum-manis"
+    ]
+  },
+  {
+    "urutan": 28,
+    "nama": "Halte/bus Trans Batam (ikon generik)",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "trans-batam",
+      "trans-batam-koridor-7"
+    ]
+  },
+  {
+    "urutan": 29,
+    "nama": "Bus karyawan (ikon generik)",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "bus-karyawan"
+    ]
+  },
+  {
+    "urutan": 30,
+    "nama": "Hunian Tanjung Banon (penanda netral, bukan ikon dekoratif)",
+    "status": "🧭",
+    "status_arti": "ESTIMASI-KASAR",
+    "id_landmark": [
+      "tanjung-banon"
+    ]
+  }
+]

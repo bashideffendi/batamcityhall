@@ -1,0 +1,126 @@
+[
+  {
+    "urutan": 1,
+    "id": "sekupang-belakang-padang",
+    "label": "Sekupang & Belakang Padang",
+    "batas": "Pesisir barat laut, dari Tiban sampai Pelabuhan Sekupang, plus Pulau Belakang Padang di seberang",
+    "kecamatan_utama": "Sekupang, Belakang Padang",
+    "alasan": "Titik nol pembangunan Batam: kantor Otorita Batam awalnya di Sekupang, dan pelabuhan feri internasional tertua juga di sini. Belakang Padang adalah \"Batam sebelum Batam\".",
+    "landmark_ids": [
+      "pelabuhan-sekupang",
+      "pulau-belakang-padang",
+      "kopi-ameng",
+      "kampung-tua-tiban"
+    ]
+  },
+  {
+    "urutan": 2,
+    "id": "harbourbay-nagoya-jodoh",
+    "label": "Harbour Bay–Nagoya–Jodoh",
+    "batas": "Batu Ampar–Lubuk Baja, dari Harbour Bay sampai Tanjung Uma",
+    "kecamatan_utama": "Batu Ampar, Lubuk Baja",
+    "alasan": "Pusat niaga lama: ruko, pasar, kopitiam, dan asal-usul nama \"Nagoya\".",
+    "landmark_ids": [
+      "harbour-bay",
+      "kawasan-nagoya",
+      "nagoya-hill-mall",
+      "pasar-jodoh",
+      "pelantar-sungai-jodoh-hilang",
+      "kopi-harum-manis",
+      "tanjung-uma",
+      "pelabuhan-batu-ampar",
+      "trans-batam"
+    ]
+  },
+  {
+    "urutan": 3,
+    "id": "batam-centre",
+    "label": "Batam Centre",
+    "batas": "Teluk Tering sampai Sungai Panas",
+    "kecamatan_utama": "Batam Kota",
+    "alasan": "Pusat pemerintahan dan gerbang feri tersibuk. Ada masjid, alun-alun, WTB, dan vihara.",
+    "landmark_ids": [
+      "masjid-agung-raja-hamidah",
+      "masjid-piramida-hilang",
+      "welcome-to-batam",
+      "dataran-engku-putri",
+      "pelabuhan-batam-centre",
+      "maha-vihara-duta-maitreya"
+    ]
+  },
+  {
+    "urutan": 4,
+    "id": "nongsa-hang-nadim",
+    "label": "Nongsa & Hang Nadim",
+    "batas": "Batu Besar sampai Nongsapura",
+    "kecamatan_utama": "Nongsa",
+    "alasan": "Gerbang udara, ujung timur laut, dan kampung tua Nongsa.",
+    "landmark_ids": [
+      "bandara-hang-nadim",
+      "trans-batam-koridor-7",
+      "pelabuhan-nongsapura",
+      "kampung-tua-nongsa"
+    ]
+  },
+  {
+    "urutan": 5,
+    "id": "koridor-industri",
+    "label": "Koridor Industri",
+    "batas": "Mukakuning (Sei Beduk) sampai Batu Aji, Sagulung, dan Tanjung Uncang",
+    "kecamatan_utama": "Sei Beduk, Batu Aji, Sagulung",
+    "alasan": "Wajah \"kota pabrik\": Batamindo, galangan kapal, bus karyawan, dan masjid terbesar di Sumatra.",
+    "landmark_ids": [
+      "batamindo",
+      "bus-karyawan",
+      "masjid-sultan-mahmud-riayat-syah",
+      "galangan-tanjung-uncang",
+      "pasar-aviari"
+    ]
+  },
+  {
+    "urutan": 6,
+    "id": "barelang-1-4",
+    "label": "Barelang 1–4",
+    "batas": "Dari ujung selatan Pulau Batam melewati Tonton, Nipah, dan Setokok",
+    "kecamatan_utama": "⚠️ Bulang/Galang (perlu cek per pulau)",
+    "alasan": "Ikon Batam nomor satu. Quest \"6 jembatan\" dimulai di sini.",
+    "landmark_ids": [
+      "jembatan-barelang-1",
+      "jembatan-barelang-2",
+      "jembatan-barelang-3",
+      "jembatan-barelang-4",
+      "seafood-bawah-jembatan-1"
+    ]
+  },
+  {
+    "urutan": 7,
+    "id": "rempang",
+    "label": "Rempang",
+    "batas": "Dari Jembatan IV sampai Jembatan V",
+    "kecamatan_utama": "Galang",
+    "alasan": "Pulau terbesar di jalur. Kampung Melayu tua, proyek Rempang Eco-City, dan hunian relokasi Tanjung Banon ada di sini. **Segmen sensitif.**",
+    "landmark_ids": [
+      "jembatan-barelang-5",
+      "pulau-rempang",
+      "tanjung-banon",
+      "kampung-tua-rempang"
+    ]
+  },
+  {
+    "urutan": 8,
+    "id": "galang",
+    "label": "Galang & Galang Baru",
+    "batas": "Dari Jembatan V sampai Jembatan VI dan pantai ujung",
+    "kecamatan_utama": "Galang (Kel. Sijantung)",
+    "alasan": "Bekas kamp pengungsi Indochina 1979–1996 dan pantai berpasir putih (Melur). Akhir cerita.",
+    "landmark_ids": [
+      "jembatan-barelang-6",
+      "kamp-pengungsi-galang",
+      "museum-camp-vietnam",
+      "monumen-perahu-pengungsi",
+      "makam-nghia-trang",
+      "vihara-quan-am-tu",
+      "pantai-melur"
+    ]
+  }
+]

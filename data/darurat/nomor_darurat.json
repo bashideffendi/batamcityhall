@@ -1,0 +1,345 @@
+{
+  "sumber_riset": "07-direktori-layanan-publik",
+  "keterangan": "Nomor darurat dan call center yang disebut di laporan 07 (plus satu call center dari laporan 06, ditandai sumber_riset). Polsek dan pos damkar muncul di tabel 1d/1e dan di blok JSON laporan; di sini disatukan satu entri per kantor, merujuk tempat_id di data/places/07-direktori-layanan-publik.json. Nilai nomor disalin persis.",
+  "darurat_umum": [
+    {
+      "nomor": "113",
+      "layanan": "Pemadam kebakaran / darurat",
+      "keterangan": "Laporan bagian 1e: 'Darurat: 113 atau 112'. JSON damkar-dinas: 'Darurat 24 jam (113)'.",
+      "sumber_riset": "07-direktori-layanan-publik"
+    },
+    {
+      "nomor": "112",
+      "layanan": "Darurat",
+      "keterangan": "Laporan bagian 1e: 'Darurat: 113 atau 112'.",
+      "sumber_riset": "07-direktori-layanan-publik"
+    }
+  ],
+  "call_center": [
+    {
+      "nama": "Call center Damkar BP Batam (Pos Duriangkang)",
+      "nomor": "0811-6060-113",
+      "tempat_id": "damkar-bp-duriangkang",
+      "sumber_url": [
+        "https://kepri.co.id/14/05/2023/kalau-ada-kebakaran-atau-keadaan-darurat-hubungi-08116060113-damkar-bp-batam-siap-meluncur/"
+      ],
+      "sumber_riset": "07-direktori-layanan-publik"
+    },
+    {
+      "nama": "Call center PLN Batam",
+      "nomor": "123",
+      "tempat_id": "pln-pusat",
+      "keterangan": "Tertulis 'CC 123' di kontak PT PLN Batam Kantor Pusat.",
+      "sumber_url": [
+        "https://www.plnbatam.com/hubungi-kami/"
+      ],
+      "sumber_riset": "07-direktori-layanan-publik"
+    },
+    {
+      "nama": "Call center Mal Pelayanan Publik (MPP) Batam",
+      "nomor": "(0778) 468278",
+      "tempat_id": "mpp-batam",
+      "sumber_url": [
+        "https://mpp.batam.go.id/"
+      ],
+      "sumber_riset": "07-direktori-layanan-publik"
+    },
+    {
+      "nama": "Call center Air Batam Hilir",
+      "nomor": "(0778) 5700 000",
+      "tempat_id": "pem-abh-pusat",
+      "keterangan": "Dari laporan 06 (bagian Pemerintahan dan Layanan Publik); tempat_id merujuk data/places/06-direktori-taksonomi.json.",
+      "sumber_url": [],
+      "sumber_riset": "06-direktori-taksonomi"
+    }
+  ],
+  "pemadam_kebakaran": [
+    {
+      "tempat_id": "damkar-dinas",
+      "nama": "Dinas Pemadam Kebakaran & Penyelamatan Kota Batam",
+      "kecamatan": "Sekupang",
+      "alamat": "Jl. Pramuka No. 2, Sekupang",
+      "telepon": "(0778) 325622",
+      "jam_layanan": "Darurat 24 jam (113)",
+      "pengelola": "Pemko",
+      "sumber_url": [
+        "https://damkar.batam.go.id/kontak/"
+      ]
+    },
+    {
+      "tempat_id": "damkar-seipanas",
+      "nama": "Pos Damkar Sei Panas",
+      "kecamatan": "Batam Kota",
+      "alamat": "Jl. Laksamana Bintan",
+      "telepon": "(0778) 427366",
+      "jam_layanan": "24 jam",
+      "pengelola": "Pemko",
+      "sumber_url": [
+        "https://damkar.batam.go.id/kontak/",
+        "https://kepri.co.id/14/05/2023/kalau-ada-kebakaran-atau-keadaan-darurat-hubungi-08116060113-damkar-bp-batam-siap-meluncur/"
+      ]
+    },
+    {
+      "tempat_id": "damkar-kabil",
+      "nama": "Pos Damkar Kabil",
+      "kecamatan": "Nongsa",
+      "alamat": null,
+      "telepon": "(0778) 7100011",
+      "jam_layanan": "24 jam",
+      "pengelola": "Pemko",
+      "sumber_url": [
+        "https://damkar.batam.go.id/kontak/"
+      ]
+    },
+    {
+      "tempat_id": "damkar-tembesi",
+      "nama": "Pos Damkar Tembesi",
+      "kecamatan": "Sagulung",
+      "alamat": null,
+      "telepon": "0811-7747-000",
+      "jam_layanan": "24 jam",
+      "pengelola": "Pemko",
+      "sumber_url": [
+        "https://damkar.batam.go.id/kontak/"
+      ]
+    },
+    {
+      "tempat_id": "damkar-bp-sekupang",
+      "nama": "Pos Damkar BP Batam Sekupang",
+      "kecamatan": "Sekupang",
+      "alamat": null,
+      "telepon": "(0778) 322233",
+      "jam_layanan": "24 jam",
+      "pengelola": "BP Batam",
+      "sumber_url": [
+        "https://kepri.co.id/14/05/2023/kalau-ada-kebakaran-atau-keadaan-darurat-hubungi-08116060113-damkar-bp-batam-siap-meluncur/"
+      ]
+    },
+    {
+      "tempat_id": "damkar-bp-sagulung",
+      "nama": "Pos Damkar BP Batam Sagulung",
+      "kecamatan": "Sagulung",
+      "alamat": null,
+      "telepon": "(0778) 392317",
+      "jam_layanan": "24 jam",
+      "pengelola": "BP Batam",
+      "sumber_url": [
+        "https://kepri.co.id/14/05/2023/kalau-ada-kebakaran-atau-keadaan-darurat-hubungi-08116060113-damkar-bp-batam-siap-meluncur/"
+      ]
+    },
+    {
+      "tempat_id": "damkar-bp-batuampar",
+      "nama": "Pos Damkar BP Batam Batu Ampar",
+      "kecamatan": "Batu Ampar",
+      "alamat": null,
+      "telepon": "(0778) 412324",
+      "jam_layanan": "24 jam",
+      "pengelola": "BP Batam",
+      "sumber_url": [
+        "https://kepri.co.id/14/05/2023/kalau-ada-kebakaran-atau-keadaan-darurat-hubungi-08116060113-damkar-bp-batam-siap-meluncur/"
+      ]
+    },
+    {
+      "tempat_id": "damkar-bp-punggur",
+      "nama": "Pos Damkar BP Batam Punggur",
+      "kecamatan": "Nongsa",
+      "alamat": null,
+      "telepon": "0811-7760-602",
+      "jam_layanan": "24 jam",
+      "pengelola": "BP Batam",
+      "sumber_url": [
+        "https://kepri.co.id/14/05/2023/kalau-ada-kebakaran-atau-keadaan-darurat-hubungi-08116060113-damkar-bp-batam-siap-meluncur/"
+      ]
+    },
+    {
+      "tempat_id": "damkar-bp-nongsa",
+      "nama": "Pos Damkar BP Batam Nongsa",
+      "kecamatan": "Nongsa",
+      "alamat": null,
+      "telepon": "0812-7552-5937",
+      "jam_layanan": "24 jam",
+      "pengelola": "BP Batam",
+      "sumber_url": [
+        "https://kepri.co.id/14/05/2023/kalau-ada-kebakaran-atau-keadaan-darurat-hubungi-08116060113-damkar-bp-batam-siap-meluncur/"
+      ]
+    },
+    {
+      "tempat_id": "damkar-bp-duriangkang",
+      "nama": "Pos Damkar BP Batam Duriangkang (call center)",
+      "kecamatan": "Sei Beduk",
+      "alamat": null,
+      "telepon": "0811-6060-113",
+      "jam_layanan": "24 jam",
+      "pengelola": "BP Batam",
+      "sumber_url": [
+        "https://kepri.co.id/14/05/2023/kalau-ada-kebakaran-atau-keadaan-darurat-hubungi-08116060113-damkar-bp-batam-siap-meluncur/"
+      ]
+    }
+  ],
+  "pemadam_kebakaran_info": {
+    "kutipan_rilis_bp_batam": "110 personel serta lebih dari 10 unit mobil pemadam yang tersebar di 6 pos aktif dan 2 pos pasif (pos tanpa armada yang berlokasi di Kantor BP Batam) dengan response time maksimal 15 menit",
+    "sumber_url": [
+      "https://kepri.co.id/14/05/2023/kalau-ada-kebakaran-atau-keadaan-darurat-hubungi-08116060113-damkar-bp-batam-siap-meluncur/"
+    ]
+  },
+  "polisi": [
+    {
+      "tempat_id": "polresta-barelang",
+      "nama": "Polresta Barelang",
+      "kecamatan": "Batam Kota",
+      "alamat": "Jl. Sudirman No. 4",
+      "telepon": "(0778) 457691",
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://restabarelang.kepri.polri.go.id/profil/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-lubukbaja",
+      "nama": "Polsek Lubuk Baja",
+      "kecamatan": "Lubuk Baja",
+      "alamat": "Jl. Bunga Raya",
+      "telepon": "(0778) 457212",
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-batamkota",
+      "nama": "Polsek Batam Kota",
+      "kecamatan": "Batam Kota",
+      "alamat": "Jl. Engku Putri",
+      "telepon": "(0778) 463380",
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-sekupang",
+      "nama": "Polsek Sekupang",
+      "kecamatan": "Sekupang",
+      "alamat": "Jl. Ir. Sutami",
+      "telepon": "(0778) 321744",
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-nongsa",
+      "nama": "Polsek Nongsa",
+      "kecamatan": "Nongsa",
+      "alamat": "Jl. Hasanuddin",
+      "telepon": "(0778) 311110",
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-batuaji",
+      "nama": "Polsek Batu Aji",
+      "kecamatan": "Batu Aji",
+      "alamat": "Jl. Brigjen Katamso",
+      "telepon": "(0778) 393162",
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-batuampar",
+      "nama": "Polsek Batu Ampar",
+      "kecamatan": "Batu Ampar",
+      "alamat": "Jl. Yos Sudarso",
+      "telepon": "(0778) 432573",
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-bengkong",
+      "nama": "Polsek Bengkong",
+      "kecamatan": "Bengkong",
+      "alamat": "Bengkong Laut",
+      "telepon": "(0778) 413110",
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-seibeduk",
+      "nama": "Polsek Sei Beduk",
+      "kecamatan": "Sei Beduk",
+      "alamat": "Jl. Kapling Sei Pancur",
+      "telepon": "(0778) 736234",
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-sagulung",
+      "nama": "Polsek Sagulung",
+      "kecamatan": "Sagulung",
+      "alamat": "Jl. R. Suprapto (perlu cek)",
+      "telepon": null,
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-belakangpadang",
+      "nama": "Polsek Belakang Padang",
+      "kecamatan": "Belakang Padang",
+      "alamat": null,
+      "telepon": null,
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-galang",
+      "nama": "Polsek Galang",
+      "kecamatan": "Galang",
+      "alamat": "Kecamatan Galang",
+      "telepon": null,
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-kkp",
+      "nama": "Polsek Kawasan Pelabuhan",
+      "kecamatan": null,
+      "alamat": null,
+      "telepon": null,
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    },
+    {
+      "tempat_id": "polsek-kkb",
+      "nama": "Polsek Kawasan Bandara Hang Nadim",
+      "kecamatan": "Nongsa",
+      "alamat": "Bandara Hang Nadim",
+      "telepon": "(0778) 479276",
+      "jam_layanan": "24 jam",
+      "sumber_url": [
+        "https://indiespot.id/2020/07/09/daftar-no-telepon-dan-alamat-kantor-polisi-polsek-di-wilayah-hukum-polresta-barelang-batam-kepulauan-riau/"
+      ]
+    }
+  ],
+  "polisi_info": "Data polsek berasal dari kompilasi tahun 2020 (S14). Nama kapolsek tidak dicantumkan karena cepat berganti. Polsek Sagulung, Belakang Padang, Galang, dan Kawasan Pelabuhan tidak punya nomor di laporan (telepon null).",
+  "peringatan": [
+    "Situs \"damkarbatam.com\" dan \"bpbd.damkarbatam.com\" bukan situs resmi. Isinya janggal, misalnya alamat Prabumulih dan koordinat Jakarta. Jangan dipakai."
+  ]
+}

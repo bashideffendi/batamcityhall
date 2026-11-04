@@ -1,0 +1,158 @@
+{
+  "sumber_riset": "01-inspirasi-konsep",
+  "task_id": "wf-2c6ba93f-8eb5-55a3-8f98-dea793d8ad5d",
+  "bagian_laporan": "### 2. Contoh direktori rekomendasi layanan hyperlocal",
+  "kolom_asli": [
+    "Nama & URL",
+    "Lokasi",
+    "Cara kumpulkan data",
+    "Jaga kualitas",
+    "Keberlanjutan"
+  ],
+  "catatan": "Konversi 1:1 dari tabel laporan. Nilai teks persis seperti di tabel (termasuk penekanan markdown). 'nama', 'keterangan_nama', dan 'url' diurai dari kolom 'Nama & URL'; sel aslinya disimpan di 'sel_asli_nama_url'. URL tambahan di dalam sel lain (mis. Repair Café API) tetap berada di teks sel tersebut.",
+  "items": [
+    {
+      "no": 1,
+      "nama": "Front Porch Forum",
+      "keterangan_nama": null,
+      "url": [
+        "https://frontporchforum.com/"
+      ],
+      "lokasi": "Vermont, AS",
+      "cara_kumpulkan_data": "Forum harian per lingkungan, business directory, dan kalender komunitas. Bisnis bikin listing gratis.",
+      "jaga_kualitas": "Hanya tetangga terverifikasi alamatnya yang bisa ikut. Tidak anonim. Dimoderasi profesional. Ada relawan lingkungan.",
+      "keberlanjutan": "Public Benefit Corporation. Pendapatan utama dari iklan bisnis lokal, nonprofit, pemerintah, dan kandidat politik. Lebih dari 16.000 bisnis dan nonprofit punya listing, dan survei independen menyebut 48% anggota membeli dari bisnis lokal karena FPF.",
+      "sel_asli_nama_url": "**Front Porch Forum**, https://frontporchforum.com/"
+    },
+    {
+      "no": 2,
+      "nama": "COMMUNIT-E \"Service Providers: Your Neighbors' Recommendations\"",
+      "keterangan_nama": null,
+      "url": [
+        "https://robertmaudlin.com/Tradesmen%20Recommendations%20Feb.%202013.pdf"
+      ],
+      "lokasi": "Friendship Heights/Tenleytown, Washington DC",
+      "cara_kumpulkan_data": "Kompilasi komentar warga di milis soal tukang yang pernah mereka pakai selama 4 tahun, disusun per kategori (termasuk \"Tailors & Seamstresses\").",
+      "jaga_kualitas": "**Kontak pemberi rekomendasi dicantumkan** di setiap rekomendasi. Ini sinyal kepercayaan yang sangat kuat.",
+      "keberlanjutan": "Sukarela (milis komunitas).",
+      "sel_asli_nama_url": "**COMMUNIT-E \"Service Providers: Your Neighbors' Recommendations\"**, https://robertmaudlin.com/Tradesmen%20Recommendations%20Feb.%202013.pdf"
+    },
+    {
+      "no": 3,
+      "nama": "\"Repair Month Google Doc\"",
+      "keterangan_nama": "(Emilia Petrarca)",
+      "url": [
+        "https://emiliapetrarca.substack.com/p/the-repair-month-google-doc-is-here"
+      ],
+      "lokasi": "NYC/LA dkk.",
+      "cara_kumpulkan_data": "Pembaca newsletter mengirim tukang jahit dan sol sepatu favorit mereka, lengkap dengan cerita singkat (\"the grandma at Griffith Park Cleaners\").",
+      "jaga_kualitas": "Setiap entri punya cerita personal dan lokasi spesifik.",
+      "keberlanjutan": "Bagian dari newsletter berbayar/Substack.",
+      "sel_asli_nama_url": "**\"Repair Month Google Doc\"** (Emilia Petrarca), https://emiliapetrarca.substack.com/p/the-repair-month-google-doc-is-here"
+    },
+    {
+      "no": 4,
+      "nama": "Put This On – A Tailoring Directory",
+      "keterangan_nama": null,
+      "url": [
+        "https://putthison.com/a-tailoring-directory/"
+      ],
+      "lokasi": "Kota-kota AS",
+      "cara_kumpulkan_data": "Rekomendasi pembaca per kota, dengan catatan spesialisasi (\"recommended for complicated work\", \"for denim repair\").",
+      "jaga_kualitas": "Menandai yang paling sering direkomendasikan.",
+      "keberlanjutan": "Blog/media fashion.",
+      "sel_asli_nama_url": "**Put This On – A Tailoring Directory**, https://putthison.com/a-tailoring-directory/"
+    },
+    {
+      "no": 5,
+      "nama": "Highland Repair Directory",
+      "keterangan_nama": "(laporan Keep Scotland Beautiful)",
+      "url": [
+        "https://www.keepscotlandbeautiful.org/media/ojzhw0yr/luct-hrd.pdf"
+      ],
+      "lokasi": "Highlands, Skotlandia",
+      "cara_kumpulkan_data": "Mitra komunitas mengumpulkan data repairer ke spreadsheet bersama, lalu dipetakan dalam **9 kategori** (sepeda, pakaian/sepatu, komputer, repair café, alat dan mesin, dll.).",
+      "jaga_kualitas": "Lahir dari pertanyaan nyata di toko barang bekas.",
+      "keberlanjutan": "Program kemitraan pengelolaan sampah. Setelah programnya selesai, dialihkan ke Highlands & Islands Climate Hub.",
+      "sel_asli_nama_url": "**Highland Repair Directory** (laporan Keep Scotland Beautiful), https://www.keepscotlandbeautiful.org/media/ojzhw0yr/luct-hrd.pdf"
+    },
+    {
+      "no": 6,
+      "nama": "Repair Café (peta global)",
+      "keterangan_nama": null,
+      "url": [
+        "https://www.repaircafe.org/en/visit/"
+      ],
+      "lokasi": "Global",
+      "cara_kumpulkan_data": "Peta **4.045** Repair Café. Ada **API lokasi** untuk ditampilkan di peta pihak lain (https://www.repaircafe.org/en/api/).",
+      "jaga_kualitas": "Jaringan relawan dan yayasan.",
+      "keberlanjutan": "Yayasan dan donasi.",
+      "sel_asli_nama_url": "**Repair Café (peta global)**, https://www.repaircafe.org/en/visit/"
+    },
+    {
+      "no": 7,
+      "nama": "Repair Kopitiam",
+      "keterangan_nama": null,
+      "url": [
+        "https://repairkopitiam.sg/about"
+      ],
+      "lokasi": "Singapura",
+      "cara_kumpulkan_data": "Meetup reparasi bulanan di lingkungan (elektronik, baju sobek, mebel rusak) bersama relawan \"Repair Coach\".",
+      "jaga_kualitas": "Relawan dilatih dulu. Situs SL2 Impact menyebut mereka telah melatih \"more than 2000 volunteer repair coaches\" dengan \"repair success rate of ~55%\". Data 2025 dari Red Hot Singapore: lebih dari 2.300 barang dibawa ke sesi Repair Kopitiam, 69% (berdasarkan berat) berhasil diperbaiki, di 10 lokasi dengan sekitar 300 coach reguler.",
+      "keberlanjutan": "Dijalankan SL2 Impact (nonprofit) dengan dukungan NEA, Geneco, CDC, dan People's Association.",
+      "sel_asli_nama_url": "**Repair Kopitiam**, https://repairkopitiam.sg/about"
+    },
+    {
+      "no": 8,
+      "nama": "NEA – Donation, Resale and Repair Channels",
+      "keterangan_nama": null,
+      "url": [
+        "https://www.nea.gov.sg/our-services/waste-management/donation-resale-and-repair-channels"
+      ],
+      "lokasi": "Singapura",
+      "cara_kumpulkan_data": "Daftar resmi termasuk PDF \"List of Stalls Offering Repair Services at Hawker Centres\".",
+      "jaga_kualitas": "Daftar bertanggal (\"as at 15 May 2025\").",
+      "keberlanjutan": "Pemerintah.",
+      "sel_asli_nama_url": "**NEA – Donation, Resale and Repair Channels**, https://www.nea.gov.sg/our-services/waste-management/donation-resale-and-repair-channels"
+    },
+    {
+      "no": 9,
+      "nama": "Recyclopedia.sg",
+      "keterangan_nama": null,
+      "url": [
+        "https://recyclopedia.sg/resources?section=Repair"
+      ],
+      "lokasi": "Singapura",
+      "cara_kumpulkan_data": "Bagian \"Repair\" berisi jasa kecil seperti reparasi payung dan kios reparasi di hawker center.",
+      "jaga_kualitas": "Ada halaman tim dan feedback publik (detail metodologinya belum terverifikasi).",
+      "keberlanjutan": "Belum terverifikasi.",
+      "sel_asli_nama_url": "**Recyclopedia.sg**, https://recyclopedia.sg/resources?section=Repair"
+    },
+    {
+      "no": 10,
+      "nama": "Bangsar Baru Community Portal",
+      "keterangan_nama": null,
+      "url": [
+        "https://www.bangsar.net.my/directory-listings/"
+      ],
+      "lokasi": "Kuala Lumpur",
+      "cara_kumpulkan_data": "Direktori bisnis (termasuk \"Car Repair\"), classifieds, event, dan forum. Pengguna mendaftar untuk menambah konten.",
+      "jaga_kualitas": "Wajib login (tingkat moderasinya belum terverifikasi).",
+      "keberlanjutan": "Tampaknya iklan (AdSense). Ini inferensi.",
+      "sel_asli_nama_url": "**Bangsar Baru Community Portal**, https://www.bangsar.net.my/directory-listings/"
+    },
+    {
+      "no": 11,
+      "nama": "Sejasa",
+      "keterangan_nama": "(pembanding komersial)",
+      "url": [
+        "https://www.sejasa.com/"
+      ],
+      "lokasi": "Indonesia",
+      "cara_kumpulkan_data": "Marketplace jasa rumah: lebih dari 750.000 pelanggan, lebih dari 300 kategori.",
+      "jaga_kualitas": "Verifikasi dokumen dan background check mitra.",
+      "keberlanjutan": "Komisi/transaksi.",
+      "sel_asli_nama_url": "**Sejasa** (pembanding komersial), https://www.sejasa.com/"
+    }
+  ]
+}

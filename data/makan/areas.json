@@ -1,0 +1,17 @@
+[
+  { "id": "nagoya-lubuk-baja", "name": "Nagoya / Lubuk Baja" },
+  { "id": "batam-centre", "name": "Batam Centre" },
+  { "id": "harbour-bay-batu-ampar", "name": "Harbour Bay / Batu Ampar" },
+  { "id": "bengkong", "name": "Bengkong" },
+  { "id": "nongsa", "name": "Nongsa" },
+  { "id": "sagulung", "name": "Sagulung" },
+  { "id": "sekupang", "name": "Sekupang" },
+  { "id": "sungai-panas", "name": "Sungai Panas" },
+  { "id": "penuin", "name": "Penuin" },
+  { "id": "tiban", "name": "Tiban" },
+  { "id": "barelang-tembesi", "name": "Barelang / Tembesi" },
+  { "id": "baloi", "name": "Baloi" },
+  { "id": "belian", "name": "Belian" },
+  { "id": "kabil", "name": "Kabil" },
+  { "id": "mega-legenda", "name": "Mega Legenda" }
+]

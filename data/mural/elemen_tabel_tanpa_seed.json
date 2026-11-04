@@ -1,0 +1,35 @@
+[
+  {
+    "segmen": "sekupang-belakang-padang",
+    "nama": "Selat Singapura (elemen laut)",
+    "nama_populer": "\"Laut depan\"",
+    "lat": "1.2000 🧭",
+    "lng": "103.9000 🧭",
+    "kecamatan": "—",
+    "fakta": "Elemen dekoratif, bukan landmark. Jalur kapal internasional di utara Batam",
+    "deskripsi_visual": "Kapal kontainer, tanker, dan siluet gedung Singapura di cakrawala",
+    "ide_hotspot": "Quest: \"Temukan 3 kapal kontainer\" (bergaya nautical chart)"
+  },
+  {
+    "segmen": "koridor-industri",
+    "nama": "Kampung Tua Batu Aji & Mukakuning (rujukan)",
+    "nama_populer": "—",
+    "lat": "—",
+    "lng": "—",
+    "kecamatan": "Batu Aji/Sei Beduk",
+    "fakta": "Masuk daftar 10 kampung tua (Kepri Post)",
+    "deskripsi_visual": "—",
+    "ide_hotspot": "Rujukan ke modul Kampung Tua"
+  },
+  {
+    "segmen": "rempang",
+    "nama": "Kawasan Rempang Eco-City",
+    "nama_populer": "\"Eco-City\"",
+    "lat": "—",
+    "lng": "—",
+    "kecamatan": "Galang",
+    "fakta": "Ditetapkan sebagai PSN lewat Permenko Perekonomian No. 7/2023 (28 Agustus 2023). BP Batam menyebut lahan pengembangan 7.572 ha, sementara hak pengelolaan PT MEG sekitar 17.000 ha (Tirto; Harian Haluan; Walhi)",
+    "deskripsi_visual": "**Jangan diilustrasikan sebagai bangunan jadi.** Cukup penanda area/plang",
+    "ide_hotspot": "Kartu kronologi bertanggal"
+  }
+]

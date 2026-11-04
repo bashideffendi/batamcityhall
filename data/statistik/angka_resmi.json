@@ -1,0 +1,685 @@
+{
+  "keterangan": "Angka resmi/statistik yang disebut di laporan riset, satu baris per indikator, beserta sumber dan tahunnya seperti tertulis di laporan. 'sumber_url_terkait' dicocokkan dari daftar sumber laporan berdasarkan topik (laporan tidak menautkan URL langsung ke tiap angka). Nilai bentuk teks ('sekitar 23.000', '~1.500') disalin apa adanya.",
+  "data": [
+    {
+      "topik": "wilayah",
+      "indikator": "jumlah_kecamatan",
+      "nilai": 12,
+      "satuan": "kecamatan",
+      "rincian": null,
+      "sumber": "Kemendagri (kode 21.71.01–21.71.12)",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://id.wikipedia.org/wiki/Daftar_kecamatan_dan_kelurahan_di_Kota_Batam"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "wilayah",
+      "indikator": "jumlah_kelurahan",
+      "nilai": 64,
+      "satuan": "kelurahan",
+      "rincian": null,
+      "sumber": "Kemendagri",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://id.wikipedia.org/wiki/Daftar_kecamatan_dan_kelurahan_di_Kota_Batam"
+      ],
+      "catatan": "Daftar lengkap di data/wilayah/kelurahan.json (dari laporan 07). Laporan 07: kelurahan lama sebelum Perda 2/2005 (mis. 'Baloi', 'Nongsa', 'Bengkong Harapan', 'Bukit Senyum') jangan dipakai.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "pendidikan",
+      "indikator": "sd_sederajat",
+      "nilai": 437,
+      "satuan": "satuan pendidikan",
+      "rincian": null,
+      "sumber": "Kemendikdasmen (dengan NPSN)",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://referensi.data.kemendikdasmen.go.id/pendidikan/dikdas/310000/1"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "pendidikan",
+      "indikator": "smp_sederajat",
+      "nilai": 240,
+      "satuan": "satuan pendidikan",
+      "rincian": null,
+      "sumber": "Kemendikdasmen (dengan NPSN)",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://referensi.data.kemendikdasmen.go.id/pendidikan/dikdas/310000/1"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "pendidikan",
+      "indikator": "pendidikan_menengah_total",
+      "nilai": 195,
+      "satuan": "satuan pendidikan",
+      "rincian": {
+        "SMA": 115,
+        "SMK": 70,
+        "SLB": 10,
+        "terbanyak_per_kecamatan": {
+          "Batam Kota": 46,
+          "Sagulung": 27,
+          "Sekupang": 24
+        }
+      },
+      "sumber": "Kemendikdasmen",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://referensi.data.kemendikdasmen.go.id/pendidikan/dikmen/316000/2"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "pendidikan",
+      "indikator": "sd_negeri",
+      "nilai": 145,
+      "satuan": "sekolah",
+      "rincian": {
+        "kursi_disiapkan": 16044
+      },
+      "sumber": "Disdik Batam",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://spmb-batam.id/home"
+      ],
+      "catatan": "Teks: 'Disdik Batam menyiapkan 16.044 kursi di 145 SD negeri'.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "pendidikan",
+      "indikator": "smp_negeri",
+      "nilai": 66,
+      "satuan": "sekolah",
+      "rincian": {
+        "kursi_disiapkan": 16803
+      },
+      "sumber": "Disdik Batam",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://spmb-batam.id/home"
+      ],
+      "catatan": "Teks: '16.803 kursi di 66 SMP negeri'.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "pendidikan",
+      "indikator": "sma_negeri_ikut_spmb",
+      "nilai": 29,
+      "satuan": "sekolah",
+      "rincian": null,
+      "sumber": "Tribun Batam",
+      "tahun": "SPMB 2025/2026",
+      "sumber_url_terkait": [
+        "https://batam.tribunnews.com/2025/06/11/daftar-lengkap-kuota-spmb-sman-20252026-kota-batam-kepri-total-ada-29-sman"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "pendidikan",
+      "indikator": "lulusan_sd",
+      "nilai": "sekitar 23.000",
+      "satuan": "siswa",
+      "rincian": {
+        "tidak_tertampung_di_smp_negeri": "sekitar 6.000–7.000 siswa"
+      },
+      "sumber": "Yusal, Kabid Pembinaan SD Disdik Batam (GoKepri, Juni 2026)",
+      "tahun": "2026",
+      "sumber_url_terkait": [],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "pendidikan",
+      "indikator": "kode_wilayah_kemendikdasmen_kota_batam",
+      "nilai": "316000",
+      "satuan": null,
+      "rincian": null,
+      "sumber": "Referensi Kemendikdasmen",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://referensi.data.kemendikdasmen.go.id/pendidikan/dikmen/316000/2"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "kesehatan",
+      "indikator": "faskes_total",
+      "nilai": 831,
+      "satuan": "fasilitas",
+      "rincian": {
+        "rs_pemerintah": 3,
+        "rs_swasta": 18,
+        "puskesmas": 21,
+        "pustu": 63,
+        "klinik_polindes": 156,
+        "posyandu": 570
+      },
+      "sumber": "Dinkes via Satu Data Batam (rilis 14 Agustus 2024)",
+      "tahun": "semester 1 2024",
+      "sumber_url_terkait": [
+        "https://satudata.batam.go.id/satu/detail/statistik-jumlah-tenaga-kesehatan-di-kota-batam-tahun-2023-dan-2024-semester-1-ozovbr"
+      ],
+      "catatan": "URL terkait diambil dari daftar sumber laporan; judul dataset menyebut tenaga kesehatan, cocokkan ulang. Laporan 07 juga menyebut 21 puskesmas dan 21 RS.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "kesehatan",
+      "indikator": "klinik_polindes",
+      "nilai": 183,
+      "satuan": "fasilitas",
+      "rincian": null,
+      "sumber": "Dinkes via Satu Data Batam",
+      "tahun": "semester 1 2023",
+      "sumber_url_terkait": [
+        "https://satudata.batam.go.id/satu/detail/statistik-jumlah-tenaga-kesehatan-di-kota-batam-tahun-2023-dan-2024-semester-1-ozovbr"
+      ],
+      "catatan": "Klinik turun dari 183 (semester 1 2023) ke 156 (semester 1 2024), entah karena tutup atau cara pendataan berubah; angka klinik hanya indikatif.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "ibadah",
+      "indikator": "masjid",
+      "nilai": 972,
+      "satuan": "masjid",
+      "rincian": {
+        "agung": 1,
+        "besar": 12,
+        "jami": 849,
+        "di_tempat_publik": 110
+      },
+      "sumber": "Kemenag Batam (Satu Jari)",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://batam.kemenag.go.id/satudata/view-data/view.php?id_data=223"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "ibadah",
+      "indikator": "tempat_ibadah_bps",
+      "nilai": null,
+      "satuan": null,
+      "rincian": {
+        "masjid": 912,
+        "musala": 616,
+        "pura": 3,
+        "vihara": 38
+      },
+      "sumber": "BPS",
+      "tahun": "2022",
+      "sumber_url_terkait": [
+        "https://batamkota.bps.go.id/en/statistics-table/2/MjE4IzI=/02-jumlah-tempat-peribadatan-menurut-kecamatan.html"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "ibadah",
+      "indikator": "vihara",
+      "nilai": 75,
+      "satuan": "vihara",
+      "rincian": {
+        "Lubuk Baja": 35
+      },
+      "sumber": "Satu Data Batam (produsen Kemenag)",
+      "tahun": "2023",
+      "sumber_url_terkait": [
+        "https://satudata.batam.go.id/data/detail/statistik-jumlah-rumah-ibadah-vihara-menurut-kecamatan-hvgkxu"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "ibadah",
+      "indikator": "gereja",
+      "nilai": 52,
+      "satuan": "gereja",
+      "rincian": null,
+      "sumber": "Satu Data Batam (produsen Kemenag)",
+      "tahun": "2023",
+      "sumber_url_terkait": [
+        "https://satudata.batam.go.id/data/detail/statistik-jumlah-rumah-ibadah-gereja-menurut-kecamatan-mxn5k6"
+      ],
+      "catatan": "Anggap angka 52 gereja baru sebagian yang terdata (FKUB 2019 mencatat 82 gereja Kristen di Kecamatan Batam Kota saja).",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "ibadah",
+      "indikator": "gereja_kristen_kecamatan_batam_kota",
+      "nilai": 82,
+      "satuan": "gereja",
+      "rincian": null,
+      "sumber": "FKUB Batam",
+      "tahun": "2019",
+      "sumber_url_terkait": [
+        "https://www.fkubbatam.or.id/index.php?p=daftar-rumah-ibadah"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "ibadah",
+      "indikator": "dataset_satu_jari_kemenag",
+      "nilai": 266,
+      "satuan": "dataset",
+      "rincian": null,
+      "sumber": "Portal Satu Jari Kemenag Batam",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://batam.kemenag.go.id/satudata/"
+      ],
+      "catatan": "266 dataset dari 9 unit, termasuk Bimas Kristen, Katolik, Hindu, Buddha.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "ibadah",
+      "indikator": "ambang_kelengkapan_osm_place_of_worship",
+      "nilai": "~1.500",
+      "satuan": "objek",
+      "rincian": null,
+      "sumber": "Turunan laporan",
+      "tahun": null,
+      "sumber_url_terkait": [],
+      "catatan": "Untuk membaca query Overpass (e): 972 masjid + 616 musala + gereja/vihara. Kalau hasil OSM jauh di bawahnya, pakai OSM hanya untuk koordinat.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "pendidikan",
+      "indikator": "ambang_kelengkapan_osm_school",
+      "nilai": "~870",
+      "satuan": "objek",
+      "rincian": null,
+      "sumber": "Turunan laporan",
+      "tahun": null,
+      "sumber_url_terkait": [],
+      "catatan": "437 + 240 + 195, belum termasuk PAUD. Kalau hasil OSM jauh di bawahnya, pakai OSM hanya untuk koordinat.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "akomodasi",
+      "indikator": "hotel_gokepri_bps",
+      "nilai": null,
+      "satuan": null,
+      "rincian": {
+        "berbintang": 75,
+        "kamar_berbintang": 9004,
+        "nonbintang": 160,
+        "kamar_nonbintang": 5065
+      },
+      "sumber": "GoKepri mengutip data BPS Kota Batam",
+      "tahun": null,
+      "sumber_url_terkait": [],
+      "catatan": "Laporan: tampilkan jumlah hotel sebagai rentang karena angka antarsumber berbeda.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "akomodasi",
+      "indikator": "hotel_gowest_bps",
+      "nilai": null,
+      "satuan": null,
+      "rincian": {
+        "berbintang": 69,
+        "nonbintang": 108
+      },
+      "sumber": "GoWest.id mengutip BPS",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://gowest.id/data-akomodasi-batam-hub-utama-pariwisata-penggerak-okupansi-di-kepri/"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "akomodasi",
+      "indikator": "hotel_disbudpar",
+      "nilai": 275,
+      "satuan": "hotel",
+      "rincian": null,
+      "sumber": "Disbudpar",
+      "tahun": null,
+      "sumber_url_terkait": [],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "akomodasi",
+      "indikator": "hotel_kompilasi_lain",
+      "nilai": null,
+      "satuan": null,
+      "rincian": {
+        "berbintang": 69,
+        "total_properti": 282,
+        "di_lubuk_baja": 142
+      },
+      "sumber": "Kompilasi lain",
+      "tahun": null,
+      "sumber_url_terkait": [],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "akomodasi",
+      "indikator": "hotel_rujukan_primer",
+      "nilai": null,
+      "satuan": null,
+      "rincian": null,
+      "sumber": "Tabel 24.1 'Jumlah Hotel Menurut Kecamatan', Kompilasi Statistik Sektoral 2025 (Satu Data Batam), plus SISPEK Disbudpar untuk kelas bintang",
+      "tahun": "2025",
+      "sumber_url_terkait": [
+        "https://satudata.batam.go.id/web/wp-content/uploads/2025/07/Kompilasi-Statistik-Sektoral-Tahun-2025.pdf",
+        "https://sispek.batam.go.id/?or_id=gacor456"
+      ],
+      "catatan": "Laporan tidak mengutip angkanya; ini rujukan primer terbaik menurut laporan.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "transportasi",
+      "indikator": "trans_batam_koridor_aktif",
+      "nilai": 9,
+      "satuan": "koridor",
+      "rincian": null,
+      "sumber": null,
+      "tahun": null,
+      "sumber_url_terkait": [],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "transportasi",
+      "indikator": "trans_batam_jumlah_bus",
+      "nilai": null,
+      "satuan": "bus",
+      "rincian": {
+        "wikipedia_traveloka": 65,
+        "kepala_upt_trans_batam_bambang_cipto_kompas_id_13_september_2024": 45
+      },
+      "sumber": null,
+      "tahun": null,
+      "sumber_url_terkait": [],
+      "catatan": "Kutipan Kompas.id: \"ada 45 bus yang melayani sembilan koridor\".",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "transportasi",
+      "indikator": "trans_batam_tarif",
+      "nilai": null,
+      "satuan": "rupiah",
+      "rincian": {
+        "umum": 5000,
+        "pelajar": 2500,
+        "wajib_nontunai_sejak": "1 Januari 2023"
+      },
+      "sumber": null,
+      "tahun": null,
+      "sumber_url_terkait": [],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "transportasi",
+      "indikator": "trans_batam_bandara",
+      "nilai": 19,
+      "satuan": "bus BTS baru",
+      "rincian": null,
+      "sumber": "Terasbatam",
+      "tahun": "2026",
+      "sumber_url_terkait": [],
+      "catatan": "Trans Batam masuk Bandara Hang Nadim mulai 1 Juni 2026 dengan 19 bus BTS baru.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "transportasi",
+      "indikator": "trans_batam_halte_per_koridor",
+      "nilai": null,
+      "satuan": "halte",
+      "rincian": [
+        {
+          "koridor": "1",
+          "rute": "Sekupang–Batam Centre",
+          "halte": 56
+        },
+        {
+          "koridor": "2",
+          "rute": "Tanjung Uncang–Batam Centre",
+          "halte": 78
+        },
+        {
+          "koridor": "5",
+          "rute": "Jodoh–Batam Centre",
+          "halte": 41
+        },
+        {
+          "koridor": "6",
+          "rute": "Tanjung Piayu–Batam Centre",
+          "halte": 58
+        },
+        {
+          "koridor": "7",
+          "rute": "Nongsa–Batam Centre–Bandara Hang Nadim",
+          "halte": 76
+        },
+        {
+          "koridor": null,
+          "rute": "Punggur–Nongsa",
+          "halte": null,
+          "keterangan": "mulai Juli 2024"
+        },
+        {
+          "koridor": "8",
+          "rute": "Punggur–Jodoh",
+          "halte": null,
+          "keterangan": "disebut dalam usulan halte baru"
+        }
+      ],
+      "sumber": null,
+      "tahun": null,
+      "sumber_url_terkait": [],
+      "catatan": "Data halte OSM kemungkinan tertinggal.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "transportasi",
+      "indikator": "usulan_halte_baru",
+      "nilai": 27,
+      "satuan": "halte",
+      "rincian": null,
+      "sumber": "Kadishub Salim (Batam Pos, November 2024)",
+      "tahun": "2024",
+      "sumber_url_terkait": [],
+      "catatan": "Difokuskan di Koridor 2 (Tanjunguncang–Batam Center) dan Koridor 8 (Punggur–Jodoh).",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "transportasi",
+      "indikator": "halte_baru_dibangun",
+      "nilai": 10,
+      "satuan": "halte",
+      "rincian": {
+        "tambahan_program_csr": 4
+      },
+      "sumber": "Kadishub Leo Putra (Batam Pos)",
+      "tahun": "2025",
+      "sumber_url_terkait": [],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "transportasi",
+      "indikator": "pelabuhan_feri_ke_singapura",
+      "nilai": 5,
+      "satuan": "pelabuhan",
+      "rincian": {
+        "pelabuhan": [
+          "Batam Centre",
+          "Sekupang",
+          "Nongsapura",
+          "Harbour Bay",
+          "Gold Coast Bengkong"
+        ],
+        "tambahan_jadwal_terbatas": "Waterfront City/Marina Teluk Senimba"
+      },
+      "sumber": null,
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://batam.co.id/transportasi/panduan-feri-batam-singapura-lima-pelabuhan/"
+      ],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "air_bersih",
+      "indikator": "pengelola_spam",
+      "nilai": null,
+      "satuan": null,
+      "rincian": null,
+      "sumber": "BP Batam",
+      "tahun": "2020",
+      "sumber_url_terkait": [
+        "https://bpbatam.go.id/pelayanan-publik-2/spam-sistem-penyediaan-air-minum/"
+      ],
+      "catatan": "Air bersih bukan PDAM. Sejak 15 November 2020 SPAM Batam di bawah BP Batam, dioperasikan PT Moya Indonesia lewat PT Air Batam Hilir. KPP Bengkong pindah ke Baraka Business Center mulai 8 Desember 2025.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "lainnya",
+      "indikator": "dataset_geospasial_geoportal_bp_batam",
+      "nilai": 13594,
+      "satuan": "dataset",
+      "rincian": null,
+      "sumber": "Geoportal BP Batam",
+      "tahun": null,
+      "sumber_url_terkait": [],
+      "catatan": null,
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "lainnya",
+      "indikator": "pasar_induk_jodoh",
+      "nilai": null,
+      "satuan": null,
+      "rincian": {
+        "lantai": 5,
+        "luas_lahan": "2,1 hektare",
+        "pedagang": "lebih dari 1.800"
+      },
+      "sumber": "ANTARA Kepri, GoKepri, Infosatelitnews",
+      "tahun": "2026",
+      "sumber_url_terkait": [],
+      "catatan": "Rencana; entri blj-pasar-induk-jodoh di data/places/06-direktori-taksonomi.json.",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "osm_referensi",
+      "indikator": "relasi_kota_batam",
+      "nilai": 10660353,
+      "satuan": "OSM relation id",
+      "rincian": {
+        "admin_level": 5,
+        "wikidata": "Q10103",
+        "area_overpass": 3610660353
+      },
+      "sumber": "OpenStreetMap",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://www.openstreetmap.org/relation/10660353"
+      ],
+      "catatan": "Area Overpass = 3600000000 + ID. Cadangan kalau area id gagal: area[\"boundary\"=\"administrative\"][\"admin_level\"=\"5\"][\"name\"=\"Kota Batam\"]->.batam; Hindari bbox kasar (mudah menjaring wilayah Singapura).",
+      "sumber_riset": "06-direktori-taksonomi"
+    },
+    {
+      "topik": "keamanan_darurat",
+      "indikator": "armada_damkar_bp_batam",
+      "nilai": null,
+      "satuan": null,
+      "rincian": {
+        "personel": 110,
+        "unit_mobil_pemadam": "lebih dari 10",
+        "pos_aktif": 6,
+        "pos_pasif": 2,
+        "response_time_maks": "15 menit"
+      },
+      "sumber": "Rilis BP Batam",
+      "tahun": null,
+      "sumber_url_terkait": [
+        "https://kepri.co.id/14/05/2023/kalau-ada-kebakaran-atau-keadaan-darurat-hubungi-08116060113-damkar-bp-batam-siap-meluncur/"
+      ],
+      "catatan": "Pos pasif = pos tanpa armada yang berlokasi di Kantor BP Batam.",
+      "sumber_riset": "07-direktori-layanan-publik"
+    },
+    {
+      "topik": "pemakaman",
+      "indikator": "usulan_tpu_baru_2023",
+      "nilai": 148,
+      "satuan": "hektare",
+      "rincian": {
+        "Sei Temiang": 55,
+        "Tiban Lama": 20,
+        "Tanjungpiayu": 23,
+        "Tembesi": 10,
+        "Sambau": 33,
+        "Sekanak": 7
+      },
+      "sumber": "Sekretaris Dinas Perkimtan Agung Fitrianto, dikutip Batam Pos (30 Agustus 2023)",
+      "tahun": "2023",
+      "sumber_url_terkait": [
+        "https://batampos.jawapos.com/berita/2424064338/pemko-batam-usulkan-enam-tempat-pemakaman-baru-ini-lokasinya"
+      ],
+      "catatan": "Usulan, bukan TPU yang sudah beroperasi.",
+      "sumber_riset": "07-direktori-layanan-publik"
+    },
+    {
+      "topik": "pemakaman",
+      "indikator": "usulan_tpu_baru_2025",
+      "nilai": "sekitar 122,31",
+      "satuan": "hektare",
+      "rincian": {
+        "jumlah_lokasi": 5
+      },
+      "sumber": "Batamtimes (26/5/2025)",
+      "tahun": "2025",
+      "sumber_url_terkait": [],
+      "catatan": "Usulan diperkecil menjadi 5 lokasi dan masih menunggu dokumen Amdal; belum boleh ditampilkan sebagai TPU yang sudah beroperasi.",
+      "sumber_riset": "07-direktori-layanan-publik"
+    },
+    {
+      "topik": "olahraga",
+      "indikator": "lapangan_padel_aktif",
+      "nilai": 3,
+      "satuan": "lapangan",
+      "rincian": null,
+      "sumber": "Batam Pos (4 Desember 2025)",
+      "tahun": "2025",
+      "sumber_url_terkait": [],
+      "catatan": "Kutipan: \"Saat ini Batam memiliki tiga lapangan padel yang aktif beroperasi.\"",
+      "sumber_riset": "07-direktori-layanan-publik"
+    },
+    {
+      "topik": "olahraga",
+      "indikator": "venue_padel_di_ayo",
+      "nilai": "setidaknya 15",
+      "satuan": "venue",
+      "rincian": null,
+      "sumber": "AYO 'Venue Olahraga Kota Batam'",
+      "tahun": "November 2026",
+      "sumber_url_terkait": [
+        "https://ayo.co.id/venues/city/kota-batam"
+      ],
+      "catatan": "Daftar cepat usang; ambil berkala dari AYO.",
+      "sumber_riset": "07-direktori-layanan-publik"
+    }
+  ]
+}

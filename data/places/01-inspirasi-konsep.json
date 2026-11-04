@@ -1,0 +1,266 @@
+[
+ {
+  "id": "jembatan-barelang",
+  "nama": "Jembatan Barelang",
+  "nama_alternatif": [
+   "Barelang"
+  ],
+  "kategori": "landmark",
+  "subkategori": "jembatan",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "jumlah_jembatan": 6,
+   "tahun_pembangunan": "1992–1998",
+   "total_bentang": "sekitar 2 km (jumlah per jembatan versi Wikipedia sekitar 2,26 km; angkanya beda tipis antarsumber)"
+  },
+  "status_data": null,
+  "catatan": "Rangkaian 6 jembatan, bukan satu titik. Laporan tidak menyebut kecamatan (rangkaian melintasi beberapa pulau). Total bentang beda tipis antarsumber (sekitar 2 km vs sekitar 2,26 km versi Wikipedia).",
+  "tag_osm": "man_made=bridge",
+  "sumber_url": [
+   "https://batam-island-info.com/barelang-islands.html",
+   "https://www.ragamtour.com/6-six-barelang-bridge/",
+   "https://steemit.com/history/@aaupvote/history-of-barelang-bridge-batam-a457ce832e46"
+  ],
+  "sumber_riset": "01-inspirasi-konsep"
+ },
+ {
+  "id": "singapore-cruise-centre",
+  "nama": "Singapore Cruise Centre",
+  "nama_alternatif": [
+   "HarbourFront"
+  ],
+  "kategori": "transportasi",
+  "subkategori": "terminal_feri",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": "5 HarbourFront Avenue",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "dipakai_feri_batam_sejak": "Juli 2026",
+   "rute_ke_batam": [
+    "HarbourFront–Batam Centre (BatamFast, Sindo, Majestic)",
+    "HarbourFront–Sekupang",
+    "HarbourFront–Harbour Bay (Horizon)"
+   ],
+   "jadwal_live_url": "https://singaporecruise.com.sg/schedule/ferries/",
+   "lokasi_luar_batam": true
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Terminal di sisi Singapura, bukan di Batam (kecamatan null). Menurut laporan, sejak Juli 2026 semua feri Batam dari HarbourFront berangkat dari Singapore Cruise Centre baru; karena itu 'HarbourFront' di nama rute dipetakan ke entri ini. Info perpindahan terminal bersumber dari batam.com (situs panduan, bukan operator resmi); laporan meminta verifikasi ke operator sebelum ditampilkan. Terminal di Singapura (tujuan feri), bukan tempat di Batam.",
+  "tag_osm": "amenity=ferry_terminal",
+  "sumber_url": [
+   "https://singaporecruise.com.sg/schedule/ferries/",
+   "https://batam.com/blog/how-to-get-from-singapore-to-batam-the-complete-guide"
+  ],
+  "sumber_riset": "01-inspirasi-konsep"
+ },
+ {
+  "id": "terminal-feri-batam-centre",
+  "nama": "Pelabuhan Feri Internasional Batam Centre",
+  "nama_alternatif": [
+   "Batam Centre"
+  ],
+  "kategori": "transportasi",
+  "subkategori": "terminal_feri",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "rute": [
+    "HarbourFront–Batam Centre (BatamFast, Sindo, Majestic)",
+    "Tanah Merah–Batam Centre/Nongsapura"
+   ],
+   "feri_terakhir_ke_harbourfront": "sekitar pukul 20:30 WIB (batam.com)"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Laporan menyebut 'Batam Centre' hanya sebagai ujung rute feri internasional; nama resmi terminal, alamat, dan kecamatan tidak disebut. Jadwal feri antarsumber (Tempo, redBus, batam.com) sering berbeda; laporan meminta selalu tampilkan 'cek ke operator'.",
+  "tag_osm": "amenity=ferry_terminal",
+  "sumber_url": [
+   "https://batam.com/blog/how-to-get-from-singapore-to-batam-the-complete-guide",
+   "https://en.tempo.co/read/2081085/batam-singapore-ferry-guide-2026-schedule-and-ticket-prices",
+   "https://www.redbus.sg/ferry-tickets/singapore-to-batam-centre",
+   "https://www.redbus.sg/ferry-tickets-online/majestic-fast-ferry-schedule",
+   "https://singaporecruise.com.sg/schedule/ferries/"
+  ],
+  "sumber_riset": "01-inspirasi-konsep"
+ },
+ {
+  "id": "terminal-feri-sekupang",
+  "nama": "Pelabuhan Feri Internasional Sekupang",
+  "nama_alternatif": [
+   "Sekupang"
+  ],
+  "kategori": "transportasi",
+  "subkategori": "terminal_feri",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "rute": [
+    "HarbourFront–Sekupang"
+   ]
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Laporan menyebut 'Sekupang' hanya sebagai ujung rute feri internasional; nama resmi terminal, alamat, dan kecamatan tidak disebut (kecamatan sengaja null walau namanya sama dengan Kecamatan Sekupang). Jadwal feri antarsumber sering berbeda; cek ke operator.",
+  "tag_osm": "amenity=ferry_terminal",
+  "sumber_url": [
+   "https://batam.com/blog/how-to-get-from-singapore-to-batam-the-complete-guide",
+   "https://en.tempo.co/read/2081085/batam-singapore-ferry-guide-2026-schedule-and-ticket-prices",
+   "https://singaporecruise.com.sg/schedule/ferries/"
+  ],
+  "sumber_riset": "01-inspirasi-konsep"
+ },
+ {
+  "id": "terminal-feri-harbour-bay",
+  "nama": "Pelabuhan Feri Internasional Harbour Bay",
+  "nama_alternatif": [
+   "Harbour Bay"
+  ],
+  "kategori": "transportasi",
+  "subkategori": "terminal_feri",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "rute": [
+    "HarbourFront–Harbour Bay (Horizon)"
+   ]
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Laporan menyebut 'Harbour Bay' hanya sebagai ujung rute feri internasional; nama resmi terminal, alamat, dan kecamatan tidak disebut. Jadwal feri antarsumber sering berbeda; cek ke operator.",
+  "tag_osm": "amenity=ferry_terminal",
+  "sumber_url": [
+   "https://batam.com/blog/how-to-get-from-singapore-to-batam-the-complete-guide",
+   "https://en.tempo.co/read/2081085/batam-singapore-ferry-guide-2026-schedule-and-ticket-prices",
+   "https://singaporecruise.com.sg/schedule/ferries/"
+  ],
+  "sumber_riset": "01-inspirasi-konsep"
+ },
+ {
+  "id": "terminal-feri-nongsapura",
+  "nama": "Pelabuhan Feri Internasional Nongsapura",
+  "nama_alternatif": [
+   "Nongsapura"
+  ],
+  "kategori": "transportasi",
+  "subkategori": "terminal_feri",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "rute": [
+    "Tanah Merah–Batam Centre/Nongsapura"
+   ]
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Laporan menyebut 'Nongsapura' hanya sebagai ujung rute feri internasional; nama resmi terminal, alamat, dan kecamatan tidak disebut. Jadwal feri antarsumber sering berbeda; cek ke operator.",
+  "tag_osm": "amenity=ferry_terminal",
+  "sumber_url": [
+   "https://batam.com/blog/how-to-get-from-singapore-to-batam-the-complete-guide",
+   "https://en.tempo.co/read/2081085/batam-singapore-ferry-guide-2026-schedule-and-ticket-prices"
+  ],
+  "sumber_riset": "01-inspirasi-konsep"
+ },
+ {
+  "id": "terminal-feri-tanah-merah",
+  "nama": "Tanah Merah",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "terminal_feri",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "rute_ke_batam": [
+    "Tanah Merah–Batam Centre/Nongsapura"
+   ],
+   "lokasi_luar_batam": true
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Ujung rute di luar Batam (sisi Singapura dari rute feri internasional; laporan tidak menyebut negaranya secara eksplisit), jadi kecamatan null. Nama resmi terminal dan alamat tidak disebut. Jadwal feri antarsumber sering berbeda; cek ke operator. Terminal di Singapura (tujuan feri), bukan tempat di Batam.",
+  "tag_osm": "amenity=ferry_terminal",
+  "sumber_url": [
+   "https://batam.com/blog/how-to-get-from-singapore-to-batam-the-complete-guide",
+   "https://en.tempo.co/read/2081085/batam-singapore-ferry-guide-2026-schedule-and-ticket-prices"
+  ],
+  "sumber_riset": "01-inspirasi-konsep"
+ }
+]

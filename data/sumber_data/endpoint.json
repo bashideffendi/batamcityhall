@@ -1,0 +1,688 @@
+[
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": "https://www.hangjebat-geoportal.com/index.php?page=data-peta",
+    "jenis": "halaman_web",
+    "catatan": "Pemetaan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": "https://www.hangjebat-geoportal.com/peta-interaktif/",
+    "jenis": "halaman_web",
+    "catatan": "peta interaktif satu halaman; endpoint data XHR internal ❓ belum diketahui (cek DevTools → Network); anggap bukan API publik, jangan di-scrape massal tanpa izin",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": "https://www.hangjebat-geoportal.com/index.php?page=data-statistik",
+    "jenis": "halaman_web",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": "https://www.hangjebat-geoportal.com/index.php?page=data-statistik-perumahan-permukiman",
+    "jenis": "halaman_web",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": "https://www.hangjebat-geoportal.com/index.php?page=data-statistik-perumahan-sekota-batam",
+    "jenis": "halaman_web",
+    "catatan": "tabel HTML: nama perumahan, kecamatan, kelurahan, developer, tahun",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": "https://www.hangjebat-geoportal.com/index.php?page=data-statistik-aset-disperkimtan",
+    "jenis": "halaman_web",
+    "catatan": "Pekerjaan Fisik",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": "index.php?page=laporan-masyarakat",
+    "jenis": "halaman_web",
+    "catatan": "pelaporan warga; path relatif di laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": "index.php?page=bantuan-psu",
+    "jenis": "halaman_web",
+    "catatan": "pelaporan warga; path relatif di laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": "/admin/index.php?page=login",
+    "jenis": "login_admin",
+    "catatan": "login hanya untuk Admin/Operator; path relatif di laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": "https://if.polibatam.ac.id/perkimtan/",
+    "jenis": "mirror",
+    "catatan": "mirror atau versi pengembangan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": "http://survey.hangjebat-geoportal.com/",
+    "jenis": "aplikasi_survei",
+    "catatan": "aplikasi survei BNBA (By Name By Address) untuk petugas lapangan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "url": null,
+    "jenis": "xhr_internal",
+    "catatan": "❓ tidak ada endpoint data yang terdokumentasi; tidak ada API atau WMS/WFS terdokumentasi",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://geoportal.bpbatam.go.id/",
+    "jenis": "halaman_web",
+    "catatan": "front-end diluncurkan BP Batam bersama BIG pada 24 Juli 2023; beranda mengklaim 13.594 dataset geospasial, 31 basis data, 33 metadata (ISO 19115) — klaim beranda, bukan jumlah layer publik",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services",
+    "jenis": "arcgis_rest_root",
+    "catatan": "ArcGIS Server/Enterprise 10.51; >30 folder; robots.txt menolak crawler otomatis (rate limit rendah, sekali tarik lalu simpan)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services?f=pjson",
+    "jenis": "arcgis_rest_root",
+    "catatan": "metadata JSON",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/sharing/rest/generateToken",
+    "jenis": "arcgis_token",
+    "catatan": "token, bukan untuk kita",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/sharing/rest/portals/info",
+    "jenis": "arcgis_portal_info",
+    "catatan": "dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/PROYGISPUSREN21_EKSTERNAL/PETA_ADMINISTRASI_BATAM/MapServer",
+    "jenis": "arcgis_mapserver",
+    "catatan": "layer 0–3: 0 Toponim Ibukota, 1 Administrasi Kota Batam, 2 Administrasi Kecamatan, 3 Administrasi Kab/Kota",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/PROYGISPUSREN21_EKSTERNAL/PETA_ADMINISTRASI_BATAM/MapServer/2/query",
+    "jenis": "arcgis_query",
+    "catatan": "contoh query #2 (kecamatan), ❓ belum dieksekusi; lihat data/snippets/11-geoportal/4.txt",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/27",
+    "jenis": "arcgis_layer",
+    "catatan": "kelurahan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/27/query",
+    "jenis": "arcgis_query",
+    "catatan": "contoh query #1 (kelurahan), ❓ belum dieksekusi; lihat data/snippets/11-geoportal/4.txt",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/26",
+    "jenis": "arcgis_layer",
+    "catatan": "garis batas",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/9",
+    "jenis": "arcgis_layer",
+    "catatan": "Batas Vegetasi",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/16",
+    "jenis": "arcgis_layer",
+    "catatan": "Bidang Tanah Fisik (jangan dipakai)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/3",
+    "jenis": "arcgis_layer",
+    "catatan": "Tiang Listrik",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_POI_/MapServer",
+    "jenis": "arcgis_mapserver",
+    "catatan": "POI",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_POI_/MapServer/2",
+    "jenis": "arcgis_layer",
+    "catatan": "Bank",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/Direktorat_Infrastruktur_Kawasan/Utilitas/MapServer",
+    "jenis": "arcgis_mapserver",
+    "catatan": "0 JALAN_LN_50K, 1 KABELLISTRIK_LN_50K",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/PROYGISPUSREN21_INTERNAL/PETA_INFRASTRUKTUR/MapServer/1",
+    "jenis": "arcgis_layer",
+    "catatan": "folder INTERNAL, jangan dipublikasikan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/Fasilitas/WADUK_AR_50K/MapServer/0",
+    "jenis": "arcgis_layer",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/Fasilitas/PEMANFAATAN_AR_50K/MapServer/0/generateRenderer",
+    "jenis": "arcgis_layer_operation",
+    "catatan": "dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/Fasilitas/MENARATELEPON_PT_50K/MapServer/0",
+    "jenis": "arcgis_layer",
+    "catatan": "dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/Fasilitas/KELOLALIMBAH_PT_50K/MapServer/0",
+    "jenis": "arcgis_layer",
+    "catatan": "dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/Hosted/Basemap/MapServer",
+    "jenis": "arcgis_mapserver",
+    "catatan": "tile, layer \"Wilayah Kerja\"",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://web-gis.bpbatam.go.id/arcgis/rest/services/DATACAKRA",
+    "jenis": "arcgis_folder",
+    "catatan": "berisi Data_Tertutup; jangan disentuh",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "PETA_POLA_RUANG_PERPRES_87_TAHUN_2011",
+    "jenis": "arcgis_service_root_nama",
+    "catatan": "nama layanan root; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "PETA_TUTUPAN_LAHAN",
+    "jenis": "arcgis_service_root_nama",
+    "catatan": "nama layanan root; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "PETA_WILAYAH_KERJA_BP_BATAM",
+    "jenis": "arcgis_service_root_nama",
+    "catatan": "nama layanan root; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "PROYGISPUSREN21_EKSTERNAL",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "WEBGIS_TEMATIK",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "Fasilitas",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "POI",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "Penduduk_Perkelurahan",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "Perindustrian",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "KEK",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "Kawasan_Ekonomi_Khusus",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "BIFZA",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "SPAM",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "Perencanaan",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "perencanaan2024",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "Pertanahan",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "Direktorat_Pengelolaan_Pertanahan",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "nama folder; URL lengkap tidak ditulis di laporan (relatif terhadap https://web-gis.bpbatam.go.id/arcgis/rest/services)",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "data_terbatas",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "folder tertutup: perlu izin / jangan disentuh",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "data_tertutup",
+    "jenis": "arcgis_folder_nama",
+    "catatan": "folder tertutup: perlu izin / jangan disentuh",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://geoportal.bpbatam.go.id/publication/basis-data/sub-wilayah-pengembangan-batam/?id=23",
+    "jenis": "halaman_basis_data",
+    "catatan": "Sub-Wilayah Pengembangan Batam",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "url": "https://geoportal.bpbatam.go.id/publication/basis-data/kontur-kota-batam/?id=31",
+    "jenis": "halaman_basis_data",
+    "catatan": "Kontur Kota Batam",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Portal open data BP Batam",
+    "url": "https://data.bpbatam.go.id/",
+    "jenis": "portal_open_data",
+    "catatan": "isinya ❓ perlu dicek",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://tanahair.indonesia.go.id/sdi/dataset/",
+    "jenis": "ckan",
+    "catatan": "katalog CKAN; cari pakai ?q= atau tag",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://tanahair.indonesia.go.id/sdi/dataset/administrasi_ar_desakel",
+    "jenis": "ckan_dataset",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://tanahair.indonesia.go.id/sdi/dataset/kelurahan",
+    "jenis": "ckan_dataset",
+    "catatan": "\"No License Provided\"; dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://tanahair.indonesia.go.id/sdi/en/dataset/?tags=Geodatabase+batas+wilayah+administrasi+desa/kelurahan&organization=badan-informasi-geospasial",
+    "jenis": "ckan_pencarian",
+    "catatan": "dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "/portal-web/termcondition",
+    "jenis": "halaman_syarat",
+    "catatan": "terms of use Ina-Geoportal ❓ belum terbaca; path relatif di laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://tanahair.indonesia.go.id/portal-web/static/Panduan%20Unduh%20Data%20Demnas.pdf",
+    "jenis": "pdf_panduan",
+    "catatan": "unduh RBI/DEMNAS wajib login atau daftar akun",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services",
+    "jenis": "arcgis_rest_root",
+    "catatan": "query REST anonim",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/gis/rest/services",
+    "jenis": "arcgis_rest_root",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH?f=pjson",
+    "jenis": "arcgis_folder",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_KelDesa_10K/MapServer?f=pjson",
+    "jenis": "arcgis_mapserver",
+    "catatan": "metadata layanan; dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_KelDesa_10K/MapServer/0",
+    "jenis": "arcgis_layer",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_KelDesa_10K/MapServer/layers",
+    "jenis": "arcgis_layers",
+    "catatan": "dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_KelDesa_10K/MapServer/0/query",
+    "jenis": "arcgis_query",
+    "catatan": "contoh query #3 (bbox Batam, paging), ❓ belum dieksekusi; lihat data/snippets/11-geoportal/4.txt",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_DESAKEL_AR/MapServer/0",
+    "jenis": "arcgis_layer",
+    "catatan": "edisi ❓, cek /info/iteminfo",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_DESAKEL_AR/MapServer/layers",
+    "jenis": "arcgis_layers",
+    "catatan": "dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_Kecamatan_10K/MapServer",
+    "jenis": "arcgis_mapserver",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_KECAMATAN_AR/MapServer",
+    "jenis": "arcgis_mapserver",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_KabKota_50K/MapServer",
+    "jenis": "arcgis_mapserver",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_LN_KabKota_50K/MapServer/info/iteminfo",
+    "jenis": "arcgis_iteminfo",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_WILAYAH/MapServer/10",
+    "jenis": "arcgis_layer",
+    "catatan": "garis kecamatan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_WILAYAH/MapServer/13",
+    "jenis": "arcgis_layer",
+    "catatan": "area kab/kota",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal Kebijakan Satu Peta (BIG)",
+    "url": "https://onemap.big.go.id/",
+    "jenis": "portal",
+    "catatan": "Geoportal KSP",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal Kebijakan Satu Peta (BIG)",
+    "url": "https://onemap.big.go.id/Buku_Pedoman_Geoportal%20KSP_v2.pdf",
+    "jenis": "pdf_panduan",
+    "catatan": "dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "SRGI (BIG)",
+    "url": "https://srgi.big.go.id/register2/step_1",
+    "jenis": "halaman_syarat",
+    "catatan": "syarat produk SRGI (produk lain, bukan RBI); dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BPS (Wilkerstat)",
+    "url": "https://geoportal.bps.go.id/server/rest/services/wilkerstat",
+    "jenis": "arcgis_folder",
+    "catatan": "{provinsi,kabupaten,kecamatan,desa}",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BPS (Wilkerstat)",
+    "url": "https://geoportal.bps.go.id/server/rest/services/wilkerstat/desa/MapServer",
+    "jenis": "arcgis_mapserver",
+    "catatan": "dari daftar sumber laporan",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BPS (Wilkerstat)",
+    "url": "https://geoportal.bps.go.id/server/rest/services/wilkerstat/desa/MapServer/0",
+    "jenis": "arcgis_layer",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BPS (Wilkerstat)",
+    "url": "https://geoportal.bps.go.id/server/rest/services/wilkerstat/desa/MapServer/0/query",
+    "jenis": "arcgis_query",
+    "catatan": "contoh query #4 (pembanding), ❓ belum dieksekusi; lihat data/snippets/11-geoportal/4.txt",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BPS (Wilkerstat)",
+    "url": "https://geoportal.bps.go.id/server/rest/services/wilkerstat/kecamatan/MapServer",
+    "jenis": "arcgis_mapserver",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BPS (Wilkerstat)",
+    "url": "/kabupaten",
+    "jenis": "arcgis_mapserver_nama",
+    "catatan": "disebut sebagai `/kabupaten` di bawah wilkerstat; URL lengkap tidak ditulis",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BPS (Wilkerstat)",
+    "url": "/provinsi",
+    "jenis": "arcgis_mapserver_nama",
+    "catatan": "disebut sebagai `/provinsi` di bawah wilkerstat; URL lengkap tidak ditulis",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BPS (Wilkerstat)",
+    "url": "https://geoportal.bps.go.id/server/rest/services/Hosted/Wilkerstat_Publish_Tile_Full/MapServer",
+    "jenis": "arcgis_mapserver",
+    "catatan": "termasuk layer sls",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BPS (Wilkerstat)",
+    "url": "https://geoportal.bps.go.id/server/rest/services/Hosted/Wilkerstat_Publish_Tile_Full/MapServer/4",
+    "jenis": "arcgis_layer",
+    "catatan": "SLS",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HDX (OCHA)",
+    "url": "https://data.humdata.org/dataset/cod-ab-idn",
+    "jenis": "unduhan_dataset",
+    "catatan": "COD-AB Indonesia; unduh langsung tanpa login",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "GitHub (mirror COD-AB)",
+    "url": "https://github.com/klikpeta-tech/id-kecamatan-geo",
+    "jenis": "repo_mirror",
+    "catatan": "mengutip lisensi file HDX idn_admin_boundaries.geojson.zip",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HDX (geoBoundaries)",
+    "url": "https://data.humdata.org/dataset/geoboundaries-admin-boundaries-for-indonesia",
+    "jenis": "unduhan_dataset",
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "GADM",
+    "url": "https://gadm.org/license.html",
+    "jenis": "halaman_lisensi",
+    "catatan": "jangan dipakai di website publik",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Satu Data Batam (Pemko)",
+    "url": "https://satudata.batam.go.id/satu/detail/statistik-jumlah-kampung-tua-4axedn",
+    "jenis": "unduhan_dataset",
+    "catatan": "Kampung Tua, unduh JSON/Excel",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Satu Data Batam (Pemko)",
+    "url": "https://satudata.batam.go.id/data/detail/jumlahkampungtuadikotabatam20250kotabatamrafjte",
+    "jenis": "unduhan_dataset",
+    "catatan": "Kampung Tua, unduh JSON/Excel",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Dishub Batam",
+    "url": "https://dishub.batam.go.id/wp-content/uploads/sites/3/2024/07/DISHUB_LAKIP_2021_compressed-1.pdf",
+    "jenis": "pdf_dokumen",
+    "catatan": "LAKIP 2021",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "BNPB / InaRISK",
+    "url": "inarisk1.bnpb.go.id:6443/arcgis/rest/services",
+    "jenis": "arcgis_rest_root",
+    "catatan": "ditulis tanpa skema di laporan; lisensi ❓",
+    "sumber_riset": "11-geoportal"
+  }
+]

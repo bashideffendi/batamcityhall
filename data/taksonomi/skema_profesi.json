@@ -1,0 +1,164 @@
+{
+ "judul": "Skema data per kategori (usulan) — profesi & jasa administrasi",
+ "sumber_riset": "08-ppat-notaris-hukum",
+ "task_id": "wf-306cd9c5-0488-8f2f-89b3-675ce767e1e0",
+ "catatan": "kategori/atribut_khusus/tag_osm/sumber_terbaik disalin persis dari tabel laporan (markdown inline). atribut_kunci = nama di dalam backtick pada atribut_khusus (diekstrak otomatis). kategori_situs = enum kategori situs yang dipakai di data/places (pemetaan dari tugas, bukan dari laporan).",
+ "kategori": [
+  {
+   "kategori": "PPAT",
+   "atribut_khusus": "`ppat`, `notaris`, `wilayah_kerja`, `nomor_sk_ppat` (hanya jika dari sumber resmi), `ppat_sementara` (bool, untuk camat), `pejabat_lelang_kelas_ii`",
+   "tag_osm": "`office=notary` (lazim di OSM untuk notaris/PPAT); opsional `notary:type=ppat` sebagai tag kustom (usulan, bukan standar)",
+   "sumber_terbaik": "Kantah Kota Batam / aplikasi resmi ATR/BPN; Pengda IPPAT Batam",
+   "atribut_kunci": [
+    "ppat",
+    "notaris",
+    "wilayah_kerja",
+    "nomor_sk_ppat",
+    "ppat_sementara",
+    "pejabat_lelang_kelas_ii"
+   ],
+   "kategori_situs": [
+    "pertanahan_hukum"
+   ]
+  },
+  {
+   "kategori": "Notaris",
+   "atribut_khusus": "`notaris`, `ppat`, `npak` (bool), `wilayah_jabatan`",
+   "tag_osm": "`office=notary`",
+   "sumber_terbaik": "Ditjen AHU; MPD Notaris Kota Batam; Pengda INI Batam",
+   "atribut_kunci": [
+    "notaris",
+    "ppat",
+    "npak",
+    "wilayah_jabatan"
+   ],
+   "kategori_situs": [
+    "pertanahan_hukum"
+   ]
+  },
+  {
+   "kategori": "Pertanahan/lahan",
+   "atribut_khusus": "`jenis_layanan` (array), `loket_mpp` (bool), `kanal_online`",
+   "tag_osm": "`office=government` + `government=cadaster` (BPN) / `government=administrative` (BP Batam)",
+   "sumber_terbaik": "kot-batam.atrbpn.go.id; lms.bpbatam.go.id; ptsp.bpbatam.go.id",
+   "atribut_kunci": [
+    "jenis_layanan",
+    "loket_mpp",
+    "kanal_online"
+   ],
+   "kategori_situs": [
+    "pemerintahan"
+   ]
+  },
+  {
+   "kategori": "Posbakum",
+   "atribut_khusus": "`instansi_induk`, `layanan_gratis` (array), `pendampingan_sidang` (bool), `syarat`",
+   "tag_osm": "tetap di node `amenity=courthouse`; Posbakum cukup jadi atribut, bukan node terpisah",
+   "sumber_terbaik": "situs PN/PA Batam",
+   "atribut_kunci": [
+    "instansi_induk",
+    "layanan_gratis",
+    "pendampingan_sidang",
+    "syarat"
+   ],
+   "kategori_situs": [
+    "pertanahan_hukum"
+   ]
+  },
+  {
+   "kategori": "OBH/LBH",
+   "atribut_khusus": "`akreditasi_bphn` (A/B/C/tidak), `periode_akreditasi`, `layanan_gratis` (litigasi/non-litigasi), `mitra_kanwil_tahun`",
+   "tag_osm": "`office=lawyer` + `lawyer=legal_aid` (usulan) atau `office=ngo`",
+   "sumber_terbaik": "bphn.go.id/layanan/bantuan-hukum/obh; sidbankum.bphn.go.id; kepri.kemenkum.go.id",
+   "atribut_kunci": [
+    "akreditasi_bphn",
+    "periode_akreditasi",
+    "layanan_gratis",
+    "mitra_kanwil_tahun"
+   ],
+   "kategori_situs": [
+    "pertanahan_hukum"
+   ]
+  },
+  {
+   "kategori": "Organisasi advokat",
+   "atribut_khusus": "`afiliasi_dpn`, `layanan_pbh` (bool)",
+   "tag_osm": "`office=association`",
+   "sumber_terbaik": "peradi.or.id; peradi.id",
+   "atribut_kunci": [
+    "afiliasi_dpn",
+    "layanan_pbh"
+   ],
+   "kategori_situs": [
+    "pertanahan_hukum"
+   ]
+  },
+  {
+   "kategori": "Konsultan pajak",
+   "atribut_khusus": "`asosiasi` (IKPI/AKP2I), `izin_praktik_djp`",
+   "tag_osm": "`office=tax_advisor`",
+   "sumber_terbaik": "ikpi.or.id",
+   "atribut_kunci": [
+    "asosiasi",
+    "izin_praktik_djp"
+   ],
+   "kategori_situs": [
+    "pertanahan_hukum"
+   ]
+  },
+  {
+   "kategori": "KJPP",
+   "atribut_khusus": "`nomor_izin_kjpp`, `kantor_pusat`, `bidang` (properti/bisnis)",
+   "tag_osm": "`office=consulting` + `consulting=valuation` (usulan)",
+   "sumber_terbaik": "e-directory.mappi.or.id",
+   "atribut_kunci": [
+    "nomor_izin_kjpp",
+    "kantor_pusat",
+    "bidang"
+   ],
+   "kategori_situs": [
+    "pertanahan_hukum"
+   ]
+  },
+  {
+   "kategori": "Penerjemah tersumpah",
+   "atribut_khusus": "`nomor_sk`, `pasangan_bahasa`",
+   "tag_osm": "`office=translator`",
+   "sumber_terbaik": "Ditjen AHU (database penerjemah tersumpah)",
+   "atribut_kunci": [
+    "nomor_sk",
+    "pasangan_bahasa"
+   ],
+   "kategori_situs": [
+    "pertanahan_hukum"
+   ]
+  },
+  {
+   "kategori": "Pejabat lelang / KPKNL",
+   "atribut_khusus": "`wilayah_jabatan`, `kelas`",
+   "tag_osm": "`office=government` (KPKNL) / `office=notary` (jika notaris)",
+   "sumber_terbaik": "DJKN Kemenkeu",
+   "atribut_kunci": [
+    "wilayah_jabatan",
+    "kelas"
+   ],
+   "kategori_situs": [
+    "pertanahan_hukum",
+    "pemerintahan"
+   ]
+  },
+  {
+   "kategori": "Izin usaha/UMKM",
+   "atribut_khusus": "`layanan` (NIB, OSS, konsultasi), `jam_layanan`",
+   "tag_osm": "`office=government`",
+   "sumber_terbaik": "ptsp.bpbatam.go.id; easy.batam.go.id; diskum.batam.go.id",
+   "atribut_kunci": [
+    "layanan",
+    "jam_layanan"
+   ],
+   "kategori_situs": [
+    "pemerintahan"
+   ]
+  }
+ ]
+}

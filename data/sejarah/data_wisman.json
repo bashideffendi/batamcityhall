@@ -1,0 +1,38 @@
+[
+  {
+    "tahun": 2021,
+    "jumlah": 2651,
+    "kunjungan_tabel": "2.651",
+    "sumber_url": [
+      "https://sumatra.bisnis.com/read/20260206/533/1950709/batam-catat-rekor-kunjungan-wisman-2025-tembus-16-juta-orang"
+    ],
+    "sumber_entri": "tabel"
+  },
+  {
+    "tahun": 2023,
+    "jumlah": null,
+    "kunjungan_tabel": "sekitar 1,1–1,19 juta (beda sumber)",
+    "sumber_url": [
+      "https://sumatra.bisnis.com/read/20250210/534/1838085/sebanyak-13-juta-wisman-kunjungi-batam-pada-2024"
+    ],
+    "sumber_entri": "tabel"
+  },
+  {
+    "tahun": 2024,
+    "jumlah": 1326831,
+    "kunjungan_tabel": "1.326.831 (plus 3,2 juta wisatawan domestik)",
+    "sumber_url": [
+      "https://sumatra.bisnis.com/read/20250210/534/1838085/sebanyak-13-juta-wisman-kunjungi-batam-pada-2024"
+    ],
+    "sumber_entri": "tabel"
+  },
+  {
+    "tahun": 2025,
+    "jumlah": 1613202,
+    "kunjungan_tabel": "1.613.202 (Singapura 789.674; Malaysia 418.330; puncak Desember 195.525)",
+    "sumber_url": [
+      "https://metropolis.batampos.co.id/kunjungan-wisman-ke-batam-tembus-16-juta-sumbang-79-wisman-kepri/"
+    ],
+    "sumber_entri": "tabel"
+  }
+]

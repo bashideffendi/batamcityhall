@@ -1,0 +1,13 @@
+# DZI (OpenSeadragon), WebP kualitas 82, tile 512
+vips dzsave batam_mural_seg01.tif public/tiles/seg01 \
+  --tile-size 512 --overlap 1 --suffix .webp[Q=82]
+# hasil: seg01.dzi + seg01_files/{level}/{col}_{row}.webp
+
+# Layout Google/XYZ (Leaflet/MapLibre), lewati tile kosong
+vips dzsave seg01.tif out_xyz --layout google --suffix .webp[Q=82] --background 244,239,228
+
+# Satu ZIP (praktis untuk upload)
+vips dzsave seg01.tif seg01.zip
+
+# Alternatif GDAL (non-geografis)
+gdal2tiles.py --xyz -p raster -z 0-6 -w none seg01.png tiles/

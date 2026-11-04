@@ -1,0 +1,71 @@
+{
+  "color": {
+    "day": {
+      "paper": "#F4EFE4", "paper-2": "#EBE4D5", "paper-3": "#E2D9C6",
+      "ink": "#1C1B19", "ink-muted": "#5A564E", "sea-ink": "#4E6A7A",
+      "accent": "#A2482A", "accent-riso": "#BD6439",
+      "rule": "#CFC6B4", "rule-strong": "#8B8579", "focus": "#A2482A",
+      "status": { "ok": "#407060", "caution": "#7A5C0E", "danger": "#9E2B25", "info": "#4E6A7A",
+                  "ok-bg": "#E3EAE2", "caution-bg": "#F1E7CC", "danger-bg": "#F3DCD6" },
+      "map": { "land": "#F4EFE4", "water": "#DCE3E1", "shallow": "#E6EBE7", "depth-line": "#8FA5B0",
+               "waterline": "#4E6A7A", "mangrove": "#7C8C6E", "forest": "#9AA38A",
+               "road-major": "#B9AE98", "road-minor": "#D8CFBD", "building": "#E7DFCF",
+               "building-line": "#BFB4A0", "ferry": "#A2482A", "graticule": "#8B8579", "1n": "#A2482A" },
+      "contrastOnPaper": { "ink": 15.0, "ink-muted": 5.9, "sea-ink": 5.0, "accent": 5.2,
+                           "accent-riso": 3.6, "ok": 4.9, "caution": 5.4, "danger": 6.5 }
+    },
+    "night": {
+      "paper": "#0F1B2A", "paper-2": "#16263A", "paper-3": "#1D3048",
+      "ink": "#EDE4CF", "ink-muted": "#A9A493", "sea-ink": "#7FA3B5",
+      "accent": "#E08A63", "accent-riso": "#E08A63",
+      "rule": "#2C3E54", "rule-strong": "#A5AAA8", "focus": "#E08A63",
+      "status": { "ok": "#8FC1A0", "caution": "#E3C26B", "danger": "#F08C80", "info": "#7FA3B5",
+                  "ok-bg": "#18332C", "caution-bg": "#3A3220", "danger-bg": "#3E2226" },
+      "map": { "land": "#16263A", "water": "#0F1B2A", "shallow": "#132235",
+               "depth-line": "rgba(237,228,207,0.25)", "waterline": "rgba(237,228,207,0.3)",
+               "mangrove": "#8FA597", "forest": "#6F8577", "road-major": "#3A4A5C", "road-minor": "#26364A",
+               "building": "#1B2C41", "building-line": "#33465C", "ferry": "#E08A63",
+               "graticule": "#A5AAA8", "1n": "#E08A63" },
+      "contrastOnPaper": { "ink": 13.7, "ink-muted": 7.0, "sea-ink": 6.5, "accent": 6.6,
+                           "ok": 8.5, "caution": 10.1, "danger": 7.2 }
+    },
+    "riso": { "federal-blue": "#3D5588", "copper": "#BD6439", "brick": "#A75154", "lagoon": "#2F6F65",
+              "hunter-green": "#407060", "flat-gold": "#BB8B41", "charcoal": "#70747C",
+              "granite": "#A5AAA8", "indigo": "#484D7A", "bisque": "#F2CDCF" }
+  },
+  "font": {
+    "family": {
+      "serif": "'Source Serif 4', 'Source Serif Pro', Georgia, serif",
+      "display": "'Source Serif 4', Georgia, serif",
+      "display-alt": "Fraunces",
+      "sans": "'Plus Jakarta Sans', system-ui, sans-serif",
+      "mono": "'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace",
+      "map": { "island": ["Source Serif 4 Semibold"], "water": ["Source Serif 4 Italic"], "poi": ["Plus Jakarta Sans Medium"] }
+    },
+    "size": {
+      "display": ["72px", "40px"], "h1": ["52px", "32px"], "h2": ["36px", "26px"], "h3": ["26px", "21px"],
+      "kicker": ["13px", "12px"], "lede": ["21px", "18px"], "body": ["18px", "16px"], "small": ["15px", "14px"],
+      "caption": ["13px", "12.5px"], "data": ["15px", "14px"], "data-lg": ["40px", "30px"],
+      "_format": "[desktop, mobile]"
+    },
+    "lineHeight": { "tight": 1.05, "heading": 1.15, "body": 1.6, "data": 1.4 },
+    "letterSpacing": { "display": "-0.02em", "heading": "-0.01em", "kicker": "0.14em", "caption": "0.02em", "mapIsland": 0.15, "mapWater": 0.2 },
+    "measure": "38rem"
+  },
+  "space": { "1": "4px", "2": "8px", "3": "12px", "4": "16px", "5": "24px", "6": "32px", "7": "48px", "8": "64px", "9": "96px", "10": "128px" },
+  "stroke": { "hair": "0.5px", "fine": "0.75px", "base": "1px", "icon": "1.25px" },
+  "radius": { "0": "0", "1": "2px", "2": "4px", "pill": "999px" },
+  "shadow": {
+    "day": { "paper": "0 1px 0 rgba(28,27,25,0.06), 0 2px 6px -2px rgba(28,27,25,0.08)", "lift": "0 8px 24px -12px rgba(28,27,25,0.18)" },
+    "night": { "paper": "0 1px 0 rgba(0,0,0,0.3)", "lift": "0 8px 24px -12px rgba(0,0,0,0.5)" }
+  },
+  "motion": {
+    "ease": "cubic-bezier(0.2, 0, 0, 1)", "easeInOut": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "duration": { "instant": "120ms", "fast": "240ms", "base": "420ms", "slow": "700ms", "map": "1600ms" },
+    "shift": "8px", "mapFlyTo": { "speed": 0.6, "curve": 1.2 }
+  },
+  "texture": {
+    "grain": { "day": ["/tex/grain-256.webp", 0.06, "multiply"], "night": ["/tex/grain-256-light.webp", 0.05, "screen"] },
+    "risoOffset": { "x": "0.6px", "y": "-0.4px" }
+  }
+}

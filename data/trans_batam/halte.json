@@ -1,0 +1,7624 @@
+{
+  "meta": {
+    "sumber_riset": "10-trans-batam",
+    "task_id": "wf-36063ca2-a5e1-819c-a7c8-6e6e789889d3",
+    "versi": "2026-11-04",
+    "catatan_seed": "Koordinat adalah titik landmark (pelabuhan/mal/kampus), BUKAN posisi halte. Belum ada koordinat halte terverifikasi. Halte dalam 'urutan' yang tidak ada di 'halte' harus dibuat otomatis dengan lat/lng null dan status_koordinat 'perlu_diisi_user'.",
+    "legenda_laporan": "Legenda status: **T** = nama dan urutan dari sumber, tapi koordinat belum ada · **…** = ada halte yang tidak tercantum di sumber (gap) · semua koordinat halte = `perlu_diisi_user` kecuali disebut lain.",
+    "keterangan_struktur": {
+      "halte": "Satu entri per nama halte seperti ditulis sumber (sisi A dan B dipisah, mengikuti id di urutan_ringkas seed JSON). 19 entri pertama = verbatim dari seed JSON (\"halte\"); sisanya dibuat dari daftar berurutan dengan lat/lng null dan status_koordinat perlu_diisi_user, sesuai catatan meta seed.",
+      "nama_di_sumber": "Semua ejaan/varian nama yang muncul di daftar laporan dan dipetakan ke id ini.",
+      "kelompok": "Id grup halte (gabungan sisi A/B dan varian ejaan yang laporan sendiri pasangkan, mis. \"Bengkong Garama / Garama 2\", \"Monte Siena (A/2)\"). Untuk stop_groups/diagram. Turunan nama, bukan data lapangan.",
+      "urutan_seed": "Objek \"urutan\" verbatim dari seed JSON (hanya untuk 19 halte seed).",
+      "urutan_pola": "Posisi halte di tiap daftar berurutan (lihat \"pola\"); dihitung hanya dari halte yang tercantum. Karena daftar sumber punya gap (\"…\"), angka setelah gap BUKAN nomor urut sebenarnya di rute lengkap.",
+      "koridor_tambahan_tabel_transit": "Koridor yang hanya disebut tabel \"Halte transit/persinggungan utama\", tidak ada di daftar berurutan.",
+      "kecamatan_sumber": "seed_json, atau tabel K1/K6 (kolom \"Kecamatan (perkiraan)\"). Laporan hanya memberi kecamatan per halte untuk K1 dan K6; selain itu null.",
+      "status_koordinat": "Aturan skema tempat: lat/lng null -> perlu_diisi_user; angka dari landmark -> perlu_cek_ulang. Belum ada satu pun koordinat halte terverifikasi."
+    },
+    "status_enum": [
+      "terverifikasi",
+      "perlu_cek_ulang",
+      "perlu_diisi_user"
+    ]
+  },
+  "halte": [
+    {
+      "id": "tp-batam-center",
+      "nama": "Transferpoint Batam Center",
+      "nama_di_sumber": [
+        "Transferpoint Batam Center",
+        "Transfer Point Batam Center"
+      ],
+      "kelompok": "tp-batam-center",
+      "koridor": [
+        "K1",
+        "K2",
+        "K5",
+        "K6",
+        "K7"
+      ],
+      "urutan_seed": {
+        "K1": 31,
+        "K2": 1,
+        "K5": "akhir",
+        "K6": 27,
+        "K7": "akhir"
+      },
+      "urutan_pola": {
+        "K1_pergi": 31,
+        "K1_balik": 1,
+        "K2_ke_tanjung_uncang": 1,
+        "K5_ke_batam_center": 17,
+        "K5_ke_jodoh_moovit": 1,
+        "K5_ke_batam_center_moovit_ujung": 13,
+        "K6_pergi": 27,
+        "K7_pergi": 28
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Jl. Duyung / kawasan Mega Mall–Pelabuhan Batam Centre (perlu_cek_ulang)",
+      "lat": 1.130856,
+      "lng": 104.055225,
+      "status_koordinat": "perlu_cek_ulang",
+      "catatan_koordinat": "titik terminal feri, halte ±240 m",
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Hub K1/K2/K5/K6/K7",
+        "K6": "Hub"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://en.wikipedia.org/wiki/Batam_Center_Ferry_Terminal"
+      ]
+    },
+    {
+      "id": "tp-sekupang",
+      "nama": "Transferpoint Sekupang",
+      "nama_di_sumber": [
+        "Transferpoint Sekupang"
+      ],
+      "kelompok": "tp-sekupang",
+      "koridor": [
+        "K1",
+        "K3",
+        "K4"
+      ],
+      "urutan_seed": {
+        "K1": 1,
+        "K3": 1,
+        "K4": "akhir"
+      },
+      "urutan_pola": {
+        "K1_pergi": 1,
+        "K1_balik": 15,
+        "K3_pergi": 1,
+        "K3_balik": 20,
+        "K4_ke_sekupang": 14
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Pelabuhan Domestik Sekupang",
+      "lat": 1.13139,
+      "lng": 103.92528,
+      "status_koordinat": "perlu_cek_ulang",
+      "catatan_koordinat": "titik pelabuhan (BP Batam)",
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Transfer K1/K3/K4; dekat Pelabuhan Domestik Sekupang"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://batamport.bpbatam.go.id/sekupang-domestik/"
+      ]
+    },
+    {
+      "id": "tp-jodoh",
+      "nama": "Transferpoint Terminal Jodoh",
+      "nama_di_sumber": [
+        "Transferpoint Terminal Jodoh",
+        "Terminal Jodoh"
+      ],
+      "kelompok": "tp-jodoh",
+      "koridor": [
+        "K3",
+        "K5",
+        "K8"
+      ],
+      "urutan_seed": {
+        "K3": "akhir",
+        "K5": 1,
+        "K8": "akhir"
+      },
+      "urutan_pola": {
+        "K3_pergi": 25,
+        "K3_balik": 1,
+        "K5_ke_batam_center": 1,
+        "K5_ke_jodoh_moovit": 20,
+        "K8_ke_jodoh": 8
+      },
+      "kecamatan": "Batu Ampar",
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Sungai Jodoh (Waze plus code 42X3+XR8)",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": "landmark dekat: Jodoh Square II 1.1525,104.0036",
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.waze.com/live-map/directions/id/riau-islands/trans-batam-jodoh-bus-terminal?to=place.ChIJ-fM5rCeK2TERgyGcNjnZ8NQ"
+      ]
+    },
+    {
+      "id": "tp-punggur",
+      "nama": "Transferpoint Punggur",
+      "nama_di_sumber": [
+        "Transferpoint Punggur"
+      ],
+      "kelompok": "tp-punggur",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": {
+        "K8": 1,
+        "K9": 1
+      },
+      "urutan_pola": {
+        "K8_ke_jodoh": 1,
+        "K9_pergi": 1
+      },
+      "kecamatan": "Nongsa",
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Pelabuhan Telaga Punggur",
+      "lat": 1.03523,
+      "lng": 104.133397,
+      "status_koordinat": "perlu_cek_ulang",
+      "catatan_koordinat": "Wikidata; BP Batam memberi 1.1175,104.1683 (konflik ±9 km)",
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Koordinat sumber konflik: Wikidata vs BP Batam berbeda ±9 km.",
+      "sumber_url": [
+        "https://www.wikidata.org/wiki/Q14236384"
+      ]
+    },
+    {
+      "id": "bandara-hang-nadim",
+      "nama": "Bandara Hang Nadim (pintu kedatangan)",
+      "nama_di_sumber": [
+        "Bandara Hang Nadim, halte pintu kedatangan"
+      ],
+      "kelompok": "bandara-hang-nadim",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": {
+        "K7": "setelah Simpang Bandara (perlu_cek_ulang)"
+      },
+      "urutan_pola": {
+        "K7_pergi": 15
+      },
+      "kecamatan": "Nongsa",
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Area kedatangan Bandara Internasional Hang Nadim",
+      "lat": 1.12083,
+      "lng": 104.11861,
+      "status_koordinat": "perlu_cek_ulang",
+      "catatan_koordinat": "titik referensi bandara",
+      "status_data": "perlu_cek_ulang",
+      "catatan_tabel": null,
+      "catatan_urutan": {
+        "K7_pergi": "posisi urutan perlu_cek_ulang"
+      },
+      "catatan": "Halte bandara ada di area pintu kedatangan (mulai 2 Juli 2026). Daftar halte K7 sebelum Juli 2026 belum memuat halte bandara; posisi urutan perlu_cek_ulang.",
+      "sumber_url": [
+        "https://en.wikipedia.org/wiki/Hang_Nadim_International_Airport"
+      ]
+    },
+    {
+      "id": "pelabuhan-nongsa",
+      "nama": "Pelabuhan Nongsa",
+      "nama_di_sumber": [
+        "Pelabuhan Nongsa"
+      ],
+      "kelompok": "pelabuhan-nongsa",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": {
+        "K7": 2
+      },
+      "urutan_pola": {
+        "K7_pergi": 2
+      },
+      "kecamatan": "Nongsa",
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Nongsa Pura Ferry Terminal",
+      "lat": 1.188382,
+      "lng": 104.094902,
+      "status_koordinat": "perlu_cek_ulang",
+      "catatan_koordinat": "titik terminal feri (Wikidata)",
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.wikidata.org/wiki/Q12504175"
+      ]
+    },
+    {
+      "id": "teluk-mata-ikan",
+      "nama": "Teluk Mata Ikan",
+      "nama_di_sumber": [
+        "Teluk Mata Ikan"
+      ],
+      "kelompok": "teluk-mata-ikan",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": {
+        "K7": 1
+      },
+      "urutan_pola": {
+        "K7_pergi": 1
+      },
+      "kecamatan": "Nongsa",
+      "kecamatan_sumber": "seed_json",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://inspirasitoday.com/jadwal-trans-batam-rute-nongsa-batam-center-mei-2026/"
+      ]
+    },
+    {
+      "id": "pelabuhan-sagulung",
+      "nama": "Pelabuhan Sagulung",
+      "nama_di_sumber": [
+        "Pelabuhan Sagulung"
+      ],
+      "kelompok": "pelabuhan-sagulung",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": {
+        "K4": 1
+      },
+      "urutan_pola": {
+        "K4_ke_sekupang": 1
+      },
+      "kecamatan": "Sagulung",
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Pelabuhan Rakyat Sagulung",
+      "lat": 1.026217,
+      "lng": 103.9255162,
+      "status_koordinat": "perlu_cek_ulang",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.waze.com/id/live-map/directions/id/kepulauan-riau/pelabuhan-rakyat-sagulung-batam?to=place.ChIJScMGBvaT2TERTuNEtDjrbXo"
+      ]
+    },
+    {
+      "id": "hidayatullah",
+      "nama": "Hidayatullah (A/B)",
+      "nama_di_sumber": [
+        "Hidayatullah B",
+        "Hidayatullah"
+      ],
+      "kelompok": "hidayatullah",
+      "koridor": [
+        "K2",
+        "K4"
+      ],
+      "urutan_seed": {
+        "K2": "akhir",
+        "K4": 3
+      },
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 37,
+        "K4_ke_sekupang": 3
+      },
+      "kecamatan": "Sagulung",
+      "kecamatan_sumber": "seed_json",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://kepri.pikiran-rakyat.com/kepri/pr-2689482853/jadwal-dan-tarif-trans-batam-rute-batam-center-ke-tanjung-uncang-juli-2025"
+      ]
+    },
+    {
+      "id": "tanjung-piayu-laut",
+      "nama": "Tanjung Piayu Laut",
+      "nama_di_sumber": [
+        "Tanjung Piayu Laut"
+      ],
+      "kelompok": "tanjung-piayu-laut",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": {
+        "K6": 1
+      },
+      "urutan_pola": {
+        "K6_pergi": 1
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "seed_json",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K6": "Terminus"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://inspirasitoday.com/ini-jadwal-trans-batam-rute-tanjung-piayu-batam-center-mei-2026/"
+      ]
+    },
+    {
+      "id": "harbourbay",
+      "nama": "Harbourbay",
+      "nama_di_sumber": [
+        "Harbourbay"
+      ],
+      "kelompok": "harbourbay",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": {
+        "K5": "perlu_cek_ulang"
+      },
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 19
+      },
+      "kecamatan": "Batu Ampar",
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Jl. Duyung, Sungai Jodoh",
+      "lat": 1.15389,
+      "lng": 103.99711,
+      "status_koordinat": "perlu_cek_ulang",
+      "catatan_koordinat": "titik terminal feri (Wikidata)",
+      "status_data": "perlu_cek_ulang",
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Hanya muncul di daftar Moovit K5 (BC → Jodoh); konektivitas: \"perlu_cek_ulang (urutan K5 2026 tidak menyebutnya)\".",
+      "sumber_url": [
+        "https://www.wikidata.org/wiki/Q65091241"
+      ]
+    },
+    {
+      "id": "kepri-mall",
+      "nama": "Kepri Mall (A/B)",
+      "nama_di_sumber": [
+        "Kepri Mall B",
+        "Kepri Mall"
+      ],
+      "kelompok": "kepri-mall",
+      "koridor": [
+        "K2",
+        "K6"
+      ],
+      "urutan_seed": {
+        "K2": 13,
+        "K6": 24
+      },
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 13,
+        "K6_pergi": 24
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Jl. Jend. Sudirman",
+      "lat": 1.10111,
+      "lng": 104.03639,
+      "status_koordinat": "perlu_cek_ulang",
+      "catatan_koordinat": "titik mal",
+      "status_data": null,
+      "catatan_tabel": {
+        "K6": "Juga K2"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://wikimapia.org/14749451/Kepri-Mall"
+      ]
+    },
+    {
+      "id": "panbil",
+      "nama": "Panbil Mukakuning / Kawasan Industri Panbil",
+      "nama_di_sumber": [
+        "Panbil Mukakuning",
+        "Kawasan Industri Panbil"
+      ],
+      "kelompok": "panbil",
+      "koridor": [
+        "K2",
+        "K6"
+      ],
+      "urutan_seed": {
+        "K2": 16,
+        "K6": 21
+      },
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 16,
+        "K6_pergi": 21
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Jl. Ahmad Yani, Muka Kuning",
+      "lat": 1.072,
+      "lng": 104.024,
+      "status_koordinat": "perlu_cek_ulang",
+      "catatan_koordinat": "titik Panbil Mall",
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://id.wikipedia.org/wiki/Panbil_Mall"
+      ]
+    },
+    {
+      "id": "politeknik",
+      "nama": "Politeknik (A/B)",
+      "nama_di_sumber": [
+        "Politeknik B",
+        "Politeknik"
+      ],
+      "kelompok": "politeknik",
+      "koridor": [
+        "K2",
+        "K6"
+      ],
+      "urutan_seed": {
+        "K2": 8,
+        "K6": 25
+      },
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 8,
+        "K6_pergi": 25
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Jl. Ahmad Yani, Batam Centre",
+      "lat": 1.11869,
+      "lng": 104.048442,
+      "status_koordinat": "perlu_cek_ulang",
+      "catatan_koordinat": "titik kampus Polibatam",
+      "status_data": null,
+      "catatan_tabel": {
+        "K6": "Juga K2"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.wikidata.org/wiki/Q12506025"
+      ]
+    },
+    {
+      "id": "mega-mall",
+      "nama": "Mega Mall",
+      "nama_di_sumber": [
+        "Mega Mall",
+        "Mega Mall Batam Center"
+      ],
+      "kelompok": "mega-mall",
+      "koridor": [
+        "K1",
+        "K5"
+      ],
+      "urutan_seed": {
+        "K1": 30
+      },
+      "urutan_pola": {
+        "K1_pergi": 30,
+        "K5_ke_batam_center": 16,
+        "K5_ke_batam_center_moovit_ujung": 12
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "seed_json",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K5"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://kepri.pikiran-rakyat.com/kepri/pr-2689482812/jadwal-dan-tarif-trans-batam-rute-sekupang-ke-batam-center-juli-2025"
+      ]
+    },
+    {
+      "id": "bundaran-madani",
+      "nama": "Bundaran Madani",
+      "nama_di_sumber": [
+        "Bundaran Madani"
+      ],
+      "kelompok": "bundaran-madani",
+      "koridor": [
+        "K1",
+        "K5"
+      ],
+      "urutan_seed": {
+        "K1": 24
+      },
+      "urutan_pola": {
+        "K1_pergi": 24,
+        "K5_ke_batam_center": 14,
+        "K5_ke_jodoh_moovit": 5,
+        "K5_ke_batam_center_moovit_ujung": 6
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "seed_json",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K5"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://kepri.pikiran-rakyat.com/kepri/pr-2689482812/jadwal-dan-tarif-trans-batam-rute-sekupang-ke-batam-center-juli-2025"
+      ]
+    },
+    {
+      "id": "uib",
+      "nama": "UIB (A/B)",
+      "nama_di_sumber": [
+        "UIB A",
+        "UIB B"
+      ],
+      "kelompok": "uib",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": {
+        "K1": 16,
+        "K3": 16
+      },
+      "urutan_pola": {
+        "K1_pergi": 16,
+        "K3_pergi": 16,
+        "K3_balik": 18
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": "seed_json",
+      "alamat": "Jl. Gajah Mada (perlu_cek_ulang)",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Kampus UIB; titik pisah K1/K3"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://wartajayavision.com/jadwal-trans-batam-rute-sekupang-jodoh-2025-pembayaran-dana/"
+      ]
+    },
+    {
+      "id": "kabil-raya",
+      "nama": "Kabil Raya",
+      "nama_di_sumber": [
+        "Kabil Raya"
+      ],
+      "kelompok": "kabil-raya",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": {
+        "K8": 6,
+        "K9": 6
+      },
+      "urutan_pola": {
+        "K8_ke_jodoh": 6,
+        "K9_pergi": 6
+      },
+      "kecamatan": "Nongsa",
+      "kecamatan_sumber": "seed_json",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://1news.id/54-titik-pemberhentian-rute-trans-batam-punggur-ke-nongsa-oktober-2025/"
+      ]
+    },
+    {
+      "id": "kampung-mangga",
+      "nama": "Kampung Mangga",
+      "nama_di_sumber": [
+        "Kampung Mangga"
+      ],
+      "kelompok": "kampung-mangga",
+      "koridor": [
+        "K7",
+        "K9"
+      ],
+      "urutan_seed": {
+        "K7": 7,
+        "K9": 9
+      },
+      "urutan_pola": {
+        "K7_pergi": 7,
+        "K9_pergi": 9
+      },
+      "kecamatan": "Nongsa",
+      "kecamatan_sumber": "seed_json",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://inspirasitoday.com/jadwal-trans-batam-rute-nongsa-batam-center-mei-2026/"
+      ]
+    },
+    {
+      "id": "taman-palapa",
+      "nama": "Taman Palapa",
+      "nama_di_sumber": [
+        "Taman Palapa"
+      ],
+      "kelompok": "taman-palapa",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 2,
+        "K3_pergi": 2
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "telkom-sekupang",
+      "nama": "Telkom Sekupang",
+      "nama_di_sumber": [
+        "Telkom Sekupang"
+      ],
+      "kelompok": "telkom-sekupang",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 3,
+        "K3_pergi": 3
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "shangrila-a",
+      "nama": "Shangrila A",
+      "nama_di_sumber": [
+        "Shangrila A"
+      ],
+      "kelompok": "shangrila",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 4,
+        "K3_pergi": 4
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "lampu-merah-patam-lestari",
+      "nama": "Lampu Merah Patam Lestari",
+      "nama_di_sumber": [
+        "Lampu Merah Patam Lestari"
+      ],
+      "kelompok": "lampu-merah-patam-lestari",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 5,
+        "K3_pergi": 5
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kartini",
+      "nama": "Kartini",
+      "nama_di_sumber": [
+        "Kartini"
+      ],
+      "kelompok": "kartini",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 6,
+        "K1_balik": 13,
+        "K3_pergi": 6
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K3"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "stc",
+      "nama": "STC",
+      "nama_di_sumber": [
+        "STC"
+      ],
+      "kelompok": "stc",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 7,
+        "K3_pergi": 7
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K3"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "gor-sekupang-a",
+      "nama": "GOR Sekupang A",
+      "nama_di_sumber": [
+        "GOR Sekupang A"
+      ],
+      "kelompok": "gor-sekupang",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 8,
+        "K3_pergi": 8
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K3"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "mutiara-view",
+      "nama": "Mutiara View",
+      "nama_di_sumber": [
+        "Mutiara View"
+      ],
+      "kelompok": "mutiara-view",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 9,
+        "K1_balik": 10,
+        "K3_pergi": 9
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K3"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tiban-iii",
+      "nama": "Tiban III",
+      "nama_di_sumber": [
+        "Tiban III"
+      ],
+      "kelompok": "tiban-iii",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 10,
+        "K3_pergi": 10
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K3"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tiban-raya",
+      "nama": "Tiban Raya",
+      "nama_di_sumber": [
+        "Tiban Raya"
+      ],
+      "kelompok": "tiban-raya",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 11,
+        "K1_balik": 8,
+        "K3_pergi": 11
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K3"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "taman-sari-a",
+      "nama": "Taman Sari A",
+      "nama_di_sumber": [
+        "Taman Sari A"
+      ],
+      "kelompok": "taman-sari",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 12,
+        "K3_pergi": 12
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K3"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tiban-center",
+      "nama": "Tiban Center",
+      "nama_di_sumber": [
+        "Tiban Center"
+      ],
+      "kelompok": "tiban-center",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 13,
+        "K3_pergi": 13
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K3"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tiban-ayu-a",
+      "nama": "Tiban Ayu A",
+      "nama_di_sumber": [
+        "Tiban Ayu A"
+      ],
+      "kelompok": "tiban-ayu",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 14,
+        "K3_pergi": 14
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K3"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tiban-kampung-a",
+      "nama": "Tiban Kampung A",
+      "nama_di_sumber": [
+        "Tiban Kampung A"
+      ],
+      "kelompok": "tiban-kampung",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 15,
+        "K3_pergi": 15
+      },
+      "kecamatan": "Sekupang",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K3"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "baloi-view",
+      "nama": "Baloi View",
+      "nama_di_sumber": [
+        "Baloi View"
+      ],
+      "kelompok": "baloi-view",
+      "koridor": [
+        "K1"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 17
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "rs-awal-bros",
+      "nama": "RS Awal Bros",
+      "nama_di_sumber": [
+        "RS Awal Bros"
+      ],
+      "kelompok": "rs-awal-bros",
+      "koridor": [
+        "K1"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 18
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Rumah sakit"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "orchid-a",
+      "nama": "Orchid A",
+      "nama_di_sumber": [
+        "Orchid A"
+      ],
+      "kelompok": "orchid",
+      "koridor": [
+        "K1"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 19
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "gelael-a",
+      "nama": "Gelael A",
+      "nama_di_sumber": [
+        "Gelael A"
+      ],
+      "kelompok": "gelael",
+      "koridor": [
+        "K1"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 20
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "raflesia-a",
+      "nama": "Raflesia A",
+      "nama_di_sumber": [
+        "Raflesia A"
+      ],
+      "kelompok": "raflesia",
+      "koridor": [
+        "K1",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 21,
+        "K5_ke_batam_center_moovit_ujung": 3
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K5"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kawasaki-a",
+      "nama": "Kawasaki A",
+      "nama_di_sumber": [
+        "Kawasaki A"
+      ],
+      "kelompok": "kawasaki",
+      "koridor": [
+        "K1",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 22,
+        "K5_ke_batam_center_moovit_ujung": 4
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K5"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "royal-grande",
+      "nama": "Royal Grande",
+      "nama_di_sumber": [
+        "Royal Grande"
+      ],
+      "kelompok": "royal-grande",
+      "koridor": [
+        "K1",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 23,
+        "K5_ke_batam_center": 13,
+        "K5_ke_jodoh_moovit": 6,
+        "K5_ke_batam_center_moovit_ujung": 5
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K5"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kadin",
+      "nama": "Kadin",
+      "nama_di_sumber": [
+        "Kadin"
+      ],
+      "kelompok": "kadin",
+      "koridor": [
+        "K1",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 25,
+        "K5_ke_batam_center": 15,
+        "K5_ke_jodoh_moovit": 4,
+        "K5_ke_batam_center_moovit_ujung": 7
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K5"
+      },
+      "catatan_urutan": {
+        "K5_ke_batam_center": "ditulis dalam kurung di sumber"
+      },
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "ikan-daun",
+      "nama": "Ikan Daun",
+      "nama_di_sumber": [
+        "Ikan Daun"
+      ],
+      "kelompok": "ikan-daun",
+      "koridor": [
+        "K1",
+        "K2",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 26,
+        "K2_ke_tanjung_uncang": 4,
+        "K5_ke_batam_center_moovit_ujung": 8
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K2/K5"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "inko",
+      "nama": "INKO",
+      "nama_di_sumber": [
+        "INKO",
+        "Inko"
+      ],
+      "kelompok": "inko",
+      "koridor": [
+        "K1",
+        "K2",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 27,
+        "K2_ke_tanjung_uncang": 5,
+        "K5_ke_batam_center_moovit_ujung": 9
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K2/K5"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "engku-putri",
+      "nama": "Engku Putri",
+      "nama_di_sumber": [
+        "Engku Putri"
+      ],
+      "kelompok": "engku-putri",
+      "koridor": [
+        "K1",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 28,
+        "K5_ke_batam_center_moovit_ujung": 10
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K5"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "imigrasi",
+      "nama": "Imigrasi",
+      "nama_di_sumber": [
+        "Imigrasi"
+      ],
+      "kelompok": "imigrasi",
+      "koridor": [
+        "K1",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 29,
+        "K5_ke_batam_center_moovit_ujung": 11
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "tabel_K1 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K1": "Juga K5"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kantor-pos",
+      "nama": "Kantor Pos",
+      "nama_di_sumber": [
+        "Kantor Pos"
+      ],
+      "kelompok": "kantor-pos",
+      "koridor": [
+        "K1",
+        "K2",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_balik": 2,
+        "K2_ke_tanjung_uncang": 2,
+        "K5_ke_jodoh_moovit": 2
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "harmoni-one",
+      "nama": "Harmoni One",
+      "nama_di_sumber": [
+        "Harmoni One"
+      ],
+      "kelompok": "harmoni-one",
+      "koridor": [
+        "K1",
+        "K2",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_balik": 3,
+        "K2_ke_tanjung_uncang": 3,
+        "K5_ke_jodoh_moovit": 3
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "green-land",
+      "nama": "Green Land",
+      "nama_di_sumber": [
+        "Green Land"
+      ],
+      "kelompok": "green-land",
+      "koridor": [
+        "K1"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_balik": 4
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "yos-sudarso",
+      "nama": "Yos Sudarso",
+      "nama_di_sumber": [
+        "Yos Sudarso"
+      ],
+      "kelompok": "yos-sudarso",
+      "koridor": [
+        "K1"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_balik": 5
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kawasaki-b",
+      "nama": "Kawasaki B",
+      "nama_di_sumber": [
+        "Kawasaki B"
+      ],
+      "kelompok": "kawasaki",
+      "koridor": [
+        "K1",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_balik": 6,
+        "K5_ke_jodoh_moovit": 7
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "taman-sari-b",
+      "nama": "Taman Sari B",
+      "nama_di_sumber": [
+        "Taman Sari B"
+      ],
+      "kelompok": "taman-sari",
+      "koridor": [
+        "K1"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_balik": 7
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "cipta-puri",
+      "nama": "Cipta Puri",
+      "nama_di_sumber": [
+        "Cipta Puri"
+      ],
+      "kelompok": "cipta-puri",
+      "koridor": [
+        "K1"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_balik": 9
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "gor-sekupang-b",
+      "nama": "GOR Sekupang B",
+      "nama_di_sumber": [
+        "GOR Sekupang B"
+      ],
+      "kelompok": "gor-sekupang",
+      "koridor": [
+        "K1"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_balik": 11
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "sei-harapan",
+      "nama": "Sei Harapan",
+      "nama_di_sumber": [
+        "Sei Harapan"
+      ],
+      "kelompok": "sei-harapan",
+      "koridor": [
+        "K1",
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_balik": 12,
+        "K4_ke_sekupang": 13
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pci",
+      "nama": "PCI",
+      "nama_di_sumber": [
+        "PCI"
+      ],
+      "kelompok": "pci",
+      "koridor": [
+        "K1"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_balik": 14
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "masjid-agung",
+      "nama": "Masjid Agung",
+      "nama_di_sumber": [
+        "Masjid Agung"
+      ],
+      "kelompok": "masjid-agung",
+      "koridor": [
+        "K2",
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 6,
+        "K6_pergi": 26
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K6": "Juga K2"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "centro-coffee",
+      "nama": "Centro Coffee",
+      "nama_di_sumber": [
+        "Centro Coffee"
+      ],
+      "kelompok": "centro-coffee",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 7
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "simpang-frangky-b",
+      "nama": "Simpang Frangky B",
+      "nama_di_sumber": [
+        "Simpang Frangky B"
+      ],
+      "kelompok": "simpang-frangky",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 9
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "anggrek-sari",
+      "nama": "Anggrek Sari",
+      "nama_di_sumber": [
+        "Anggrek Sari"
+      ],
+      "kelompok": "anggrek-sari",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 10
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "simpang-kara-b",
+      "nama": "Simpang Kara B",
+      "nama_di_sumber": [
+        "Simpang Kara B"
+      ],
+      "kelompok": "simpang-kara",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 11
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "plamo",
+      "nama": "Plamo",
+      "nama_di_sumber": [
+        "Plamo"
+      ],
+      "kelompok": "plamo",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 12
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "taman-niaga-b",
+      "nama": "Taman Niaga B",
+      "nama_di_sumber": [
+        "Taman Niaga B"
+      ],
+      "kelompok": "taman-niaga",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 14
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "stadion-temenggung-b",
+      "nama": "Stadion Temenggung B",
+      "nama_di_sumber": [
+        "Stadion Temenggung B"
+      ],
+      "kelompok": "stadion-temenggung",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 15
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "top-100-batuaji-b",
+      "nama": "Top 100 Batuaji B",
+      "nama_di_sumber": [
+        "Top 100 Batuaji B"
+      ],
+      "kelompok": "top-100-batuaji",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 17
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "simpang-tembesi-b",
+      "nama": "Simpang Tembesi B",
+      "nama_di_sumber": [
+        "Simpang Tembesi B"
+      ],
+      "kelompok": "simpang-tembesi",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 18
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "villa-mukakuning-b",
+      "nama": "Villa Mukakuning B",
+      "nama_di_sumber": [
+        "Villa Mukakuning B"
+      ],
+      "kelompok": "villa-mukakuning",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 19
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "putri-tujuh-b",
+      "nama": "Putri Tujuh B",
+      "nama_di_sumber": [
+        "Putri Tujuh B"
+      ],
+      "kelompok": "putri-tujuh",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 20
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "jpo-plaza-sp-b",
+      "nama": "JPO Plaza SP B",
+      "nama_di_sumber": [
+        "JPO Plaza SP B"
+      ],
+      "kelompok": "jpo-plaza-sp",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 21
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "putri-hijau-b",
+      "nama": "Putri Hijau B",
+      "nama_di_sumber": [
+        "Putri Hijau B"
+      ],
+      "kelompok": "putri-hijau",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 22
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pandawa",
+      "nama": "Pandawa",
+      "nama_di_sumber": [
+        "Pandawa"
+      ],
+      "kelompok": "pandawa",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 23
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kavling-baru-b",
+      "nama": "Kavling Baru B",
+      "nama_di_sumber": [
+        "Kavling Baru B"
+      ],
+      "kelompok": "kavling-baru",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 24
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "buana-raya",
+      "nama": "Buana Raya",
+      "nama_di_sumber": [
+        "Buana Raya"
+      ],
+      "kelompok": "buana-raya",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 25
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "puskopkar-b",
+      "nama": "Puskopkar B",
+      "nama_di_sumber": [
+        "Puskopkar B"
+      ],
+      "kelompok": "puskopkar",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 26
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "classic-b",
+      "nama": "Classic B",
+      "nama_di_sumber": [
+        "Classic B"
+      ],
+      "kelompok": "classic",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 27
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kavling-lama-b",
+      "nama": "Kavling Lama B",
+      "nama_di_sumber": [
+        "Kavling Lama B"
+      ],
+      "kelompok": "kavling-lama",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 28
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "gor-batuaji-b",
+      "nama": "GOR Batuaji B",
+      "nama_di_sumber": [
+        "GOR Batuaji B"
+      ],
+      "kelompok": "gor-batuaji",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 29
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "base-camp-b",
+      "nama": "Base Camp B",
+      "nama_di_sumber": [
+        "Base Camp B"
+      ],
+      "kelompok": "basecamp",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 30
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "smpn-9-batam-b",
+      "nama": "SMPN 9 Batam B",
+      "nama_di_sumber": [
+        "SMPN 9 Batam B"
+      ],
+      "kelompok": "smpn-9-batam",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 31
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "taman-carina-b",
+      "nama": "Taman Carina B",
+      "nama_di_sumber": [
+        "Taman Carina B"
+      ],
+      "kelompok": "taman-carina",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 32
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "jpo-pjb-b",
+      "nama": "JPO PJB B",
+      "nama_di_sumber": [
+        "JPO PJB B"
+      ],
+      "kelompok": "jpo-pjb",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 33
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "mts",
+      "nama": "MTs",
+      "nama_di_sumber": [
+        "MTs"
+      ],
+      "kelompok": "mts",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 34
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "top-100-regency-b",
+      "nama": "Top 100 Regency B",
+      "nama_di_sumber": [
+        "Top 100 Regency B"
+      ],
+      "kelompok": "top-100-regency",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 35
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tunas",
+      "nama": "Tunas",
+      "nama_di_sumber": [
+        "Tunas"
+      ],
+      "kelompok": "tunas",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 36
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "taman-kota",
+      "nama": "Taman Kota",
+      "nama_di_sumber": [
+        "Taman Kota"
+      ],
+      "kelompok": "taman-kota",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_pergi": 17
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pantai-permata",
+      "nama": "Pantai Permata",
+      "nama_di_sumber": [
+        "Pantai Permata"
+      ],
+      "kelompok": "pantai-permata",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_pergi": 18
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "baloi-mas",
+      "nama": "Baloi Mas",
+      "nama_di_sumber": [
+        "Baloi Mas"
+      ],
+      "kelompok": "baloi-mas",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_pergi": 19
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "grand-mall",
+      "nama": "Grand Mall",
+      "nama_di_sumber": [
+        "Grand Mall"
+      ],
+      "kelompok": "grand-mall",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_pergi": 20
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pantai-harapan",
+      "nama": "Pantai Harapan",
+      "nama_di_sumber": [
+        "Pantai Harapan"
+      ],
+      "kelompok": "pantai-harapan",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_pergi": 21
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "harmoni-suites",
+      "nama": "Harmoni Suites",
+      "nama_di_sumber": [
+        "Harmoni Suites"
+      ],
+      "kelompok": "harmoni-suites",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_pergi": 22
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "nagoya-hill",
+      "nama": "Nagoya Hill",
+      "nama_di_sumber": [
+        "Nagoya Hill"
+      ],
+      "kelompok": "nagoya-hill",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_pergi": 23,
+        "K3_balik": 14
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bri-nagoya",
+      "nama": "BRI Nagoya",
+      "nama_di_sumber": [
+        "BRI Nagoya"
+      ],
+      "kelompok": "bri-nagoya",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_pergi": 24
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "top-100-jodoh",
+      "nama": "Top 100 Jodoh",
+      "nama_di_sumber": [
+        "Top 100 Jodoh"
+      ],
+      "kelompok": "top-100-jodoh",
+      "koridor": [
+        "K3",
+        "K5"
+      ],
+      "koridor_tambahan_tabel_transit": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 2,
+        "K5_ke_batam_center": 2
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "dc-mall-sw",
+      "nama": "DC Mall SW",
+      "nama_di_sumber": [
+        "DC Mall SW"
+      ],
+      "kelompok": "dc-mall-sw",
+      "koridor": [
+        "K3",
+        "K5"
+      ],
+      "koridor_tambahan_tabel_transit": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 3,
+        "K5_ke_batam_center": 4
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tanjunguma",
+      "nama": "Tanjunguma",
+      "nama_di_sumber": [
+        "Tanjunguma"
+      ],
+      "kelompok": "tanjunguma",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 4
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "dc-mall",
+      "nama": "DC Mall",
+      "nama_di_sumber": [
+        "DC Mall"
+      ],
+      "kelompok": "dc-mall",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 5
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pasar-angkasa-b",
+      "nama": "Pasar Angkasa B",
+      "nama_di_sumber": [
+        "Pasar Angkasa B"
+      ],
+      "kelompok": "pasar-angkasa",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 6
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pasar-induk",
+      "nama": "Pasar Induk",
+      "nama_di_sumber": [
+        "Pasar Induk"
+      ],
+      "kelompok": "pasar-induk",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 7
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pacific-hotel",
+      "nama": "Pacific Hotel",
+      "nama_di_sumber": [
+        "Pacific Hotel"
+      ],
+      "kelompok": "pacific-hotel",
+      "koridor": [
+        "K3",
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 8,
+        "K5_ke_batam_center": 5
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bri-jodoh-b",
+      "nama": "BRI Jodoh B",
+      "nama_di_sumber": [
+        "BRI Jodoh B"
+      ],
+      "kelompok": "bri-jodoh",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 9
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bca-jodoh-b",
+      "nama": "BCA Jodoh B",
+      "nama_di_sumber": [
+        "BCA Jodoh B"
+      ],
+      "kelompok": "bca-jodoh",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 10
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bpjs-ketenagakerjaan",
+      "nama": "BPJS Ketenagakerjaan",
+      "nama_di_sumber": [
+        "BPJS Ketenagakerjaan"
+      ],
+      "kelompok": "bpjs-ketenagakerjaan",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 11
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "dana-graha",
+      "nama": "Dana Graha",
+      "nama_di_sumber": [
+        "Dana Graha"
+      ],
+      "kelompok": "dana-graha",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 12
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bank-mandiri",
+      "nama": "Bank Mandiri",
+      "nama_di_sumber": [
+        "Bank Mandiri"
+      ],
+      "kelompok": "bank-mandiri",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 13
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "windsor",
+      "nama": "Windsor",
+      "nama_di_sumber": [
+        "Windsor"
+      ],
+      "kelompok": "windsor",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 15
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "vihara",
+      "nama": "Vihara",
+      "nama_di_sumber": [
+        "Vihara"
+      ],
+      "kelompok": "vihara",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 16
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "penuin",
+      "nama": "Penuin",
+      "nama_di_sumber": [
+        "Penuin"
+      ],
+      "kelompok": "penuin",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 17
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tiban-kampung",
+      "nama": "Tiban Kampung",
+      "nama_di_sumber": [
+        "Tiban Kampung"
+      ],
+      "kelompok": "tiban-kampung",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 19
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "latrade",
+      "nama": "Latrade",
+      "nama_di_sumber": [
+        "Latrade"
+      ],
+      "kelompok": "latrade",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 2
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "masjid-agung-sultan-riayat-syah",
+      "nama": "Masjid Agung Sultan Riayat Syah",
+      "nama_di_sumber": [
+        "Masjid Agung Sultan Riayat Syah"
+      ],
+      "kelompok": "masjid-agung-sultan-riayat-syah",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 4
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "fanindo",
+      "nama": "Fanindo",
+      "nama_di_sumber": [
+        "Fanindo"
+      ],
+      "kelompok": "fanindo",
+      "koridor": [
+        "K4"
+      ],
+      "koridor_tambahan_tabel_transit": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 5
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "basecamp",
+      "nama": "Basecamp",
+      "nama_di_sumber": [
+        "Basecamp"
+      ],
+      "kelompok": "basecamp",
+      "koridor": [
+        "K4"
+      ],
+      "koridor_tambahan_tabel_transit": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 6
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "jupiter",
+      "nama": "Jupiter",
+      "nama_di_sumber": [
+        "Jupiter"
+      ],
+      "kelompok": "jupiter",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 7
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "balai-pelatihan-kesehatan",
+      "nama": "Balai Pelatihan Kesehatan",
+      "nama_di_sumber": [
+        "Balai Pelatihan Kesehatan"
+      ],
+      "kelompok": "balai-pelatihan-kesehatan",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 8
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "marina-waterfront",
+      "nama": "Marina Waterfront",
+      "nama_di_sumber": [
+        "Marina Waterfront"
+      ],
+      "kelompok": "marina-waterfront",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 9
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "harris-resort",
+      "nama": "Harris Resort",
+      "nama_di_sumber": [
+        "Harris Resort"
+      ],
+      "kelompok": "harris-resort",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 10
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tanjung-riau",
+      "nama": "Tanjung Riau",
+      "nama_di_sumber": [
+        "Tanjung Riau"
+      ],
+      "kelompok": "tanjung-riau",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 11
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "sunbread",
+      "nama": "Sunbread",
+      "nama_di_sumber": [
+        "Sunbread"
+      ],
+      "kelompok": "sunbread",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 12
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pasar-angkasa",
+      "nama": "Pasar Angkasa",
+      "nama_di_sumber": [
+        "Pasar Angkasa"
+      ],
+      "kelompok": "pasar-angkasa",
+      "koridor": [
+        "K5",
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_batam_center": 3,
+        "K8_ke_jodoh": 7
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": {
+        "K5_ke_batam_center": "muncul di versi Agustus 2026"
+      },
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "polsek-batu-ampar",
+      "nama": "Polsek Batu Ampar",
+      "nama_di_sumber": [
+        "Polsek Batu Ampar"
+      ],
+      "kelompok": "polsek-batu-ampar",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_batam_center": 6
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "monte-siena",
+      "nama": "Monte Siena",
+      "nama_di_sumber": [
+        "Monte Siena"
+      ],
+      "kelompok": "monte-siena",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_batam_center": 7
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": {
+        "K5_ke_batam_center": "ditulis dalam kurung di sumber"
+      },
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bengkong-garama",
+      "nama": "Bengkong Garama",
+      "nama_di_sumber": [
+        "Bengkong Garama"
+      ],
+      "kelompok": "bengkong-garama",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_batam_center": 8
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "damkar-sei-panas",
+      "nama": "Damkar Sei Panas",
+      "nama_di_sumber": [
+        "Damkar Sei Panas"
+      ],
+      "kelompok": "damkar-sei-panas",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_batam_center": 9
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bank-riau-kepri",
+      "nama": "Bank Riau Kepri",
+      "nama_di_sumber": [
+        "Bank Riau Kepri"
+      ],
+      "kelompok": "bank-riau",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_batam_center": 10
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "rafflesia",
+      "nama": "Rafflesia",
+      "nama_di_sumber": [
+        "Rafflesia"
+      ],
+      "kelompok": "raflesia",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_batam_center": 11
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kawasaki",
+      "nama": "Kawasaki",
+      "nama_di_sumber": [
+        "Kawasaki"
+      ],
+      "kelompok": "kawasaki",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_batam_center": 12
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "raflesia-b",
+      "nama": "Raflesia B",
+      "nama_di_sumber": [
+        "Raflesia B"
+      ],
+      "kelompok": "raflesia",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 8
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bank-riau-b",
+      "nama": "Bank Riau B",
+      "nama_di_sumber": [
+        "Bank Riau B"
+      ],
+      "kelompok": "bank-riau",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 9
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "damkar-sei-panas-b",
+      "nama": "Damkar Sei Panas B",
+      "nama_di_sumber": [
+        "Damkar Sei Panas B"
+      ],
+      "kelompok": "damkar-sei-panas",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 10
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "garama-2",
+      "nama": "Garama 2",
+      "nama_di_sumber": [
+        "Garama 2"
+      ],
+      "kelompok": "bengkong-garama",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 11
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "melchem-2",
+      "nama": "Melchem 2",
+      "nama_di_sumber": [
+        "Melchem 2"
+      ],
+      "kelompok": "melchem-2",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 12
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tg-sengkuang",
+      "nama": "Tg Sengkuang",
+      "nama_di_sumber": [
+        "Tg Sengkuang"
+      ],
+      "kelompok": "tg-sengkuang",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 13
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "lurah-sengkuang",
+      "nama": "Lurah Sengkuang",
+      "nama_di_sumber": [
+        "Lurah Sengkuang"
+      ],
+      "kelompok": "lurah-sengkuang",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 14
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tvs-2",
+      "nama": "TVS 2",
+      "nama_di_sumber": [
+        "TVS 2"
+      ],
+      "kelompok": "tvs-2",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 15
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "sindo-2",
+      "nama": "Sindo 2",
+      "nama_di_sumber": [
+        "Sindo 2"
+      ],
+      "kelompok": "sindo-2",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 16
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "monte-siena-2",
+      "nama": "Monte Siena 2",
+      "nama_di_sumber": [
+        "Monte Siena 2"
+      ],
+      "kelompok": "monte-siena",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 17
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "batu-ampar",
+      "nama": "Batu Ampar",
+      "nama_di_sumber": [
+        "Batu Ampar"
+      ],
+      "kelompok": "batu-ampar",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_jodoh_moovit": 18
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "damkar-sei-panas-a",
+      "nama": "Damkar Sei Panas A",
+      "nama_di_sumber": [
+        "Damkar Sei Panas A"
+      ],
+      "kelompok": "damkar-sei-panas",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_batam_center_moovit_ujung": 1
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bank-riau-a",
+      "nama": "Bank Riau A",
+      "nama_di_sumber": [
+        "Bank Riau A"
+      ],
+      "kelompok": "bank-riau",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_batam_center_moovit_ujung": 2
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kampung-jawa",
+      "nama": "Kampung Jawa",
+      "nama_di_sumber": [
+        "Kampung Jawa"
+      ],
+      "kelompok": "kampung-jawa",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 2
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "laguna",
+      "nama": "Laguna",
+      "nama_di_sumber": [
+        "Laguna"
+      ],
+      "kelompok": "laguna",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 3
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "oleana",
+      "nama": "Oleana",
+      "nama_di_sumber": [
+        "Oleana"
+      ],
+      "kelompok": "oleana",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 4
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bukit-barelang",
+      "nama": "Bukit Barelang",
+      "nama_di_sumber": [
+        "Bukit Barelang"
+      ],
+      "kelompok": "bukit-barelang",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 5
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "rhabayu-asri-a",
+      "nama": "Rhabayu Asri A",
+      "nama_di_sumber": [
+        "Rhabayu Asri A"
+      ],
+      "kelompok": "rhabayu-asri",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 6
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "smpn-40",
+      "nama": "SMPN 40",
+      "nama_di_sumber": [
+        "SMPN 40"
+      ],
+      "kelompok": "smpn-40",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 7
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "simpang-pancur",
+      "nama": "Simpang Pancur",
+      "nama_di_sumber": [
+        "Simpang Pancur"
+      ],
+      "kelompok": "simpang-pancur",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 8
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pasar-pancur",
+      "nama": "Pasar Pancur",
+      "nama_di_sumber": [
+        "Pasar Pancur"
+      ],
+      "kelompok": "pasar-pancur",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 9
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "simpang-bagan",
+      "nama": "Simpang Bagan",
+      "nama_di_sumber": [
+        "Simpang Bagan"
+      ],
+      "kelompok": "simpang-bagan",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 10
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "simpang-atb",
+      "nama": "Simpang ATB",
+      "nama_di_sumber": [
+        "Simpang ATB"
+      ],
+      "kelompok": "simpang-atb",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 11
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bidaayu-pintu-3",
+      "nama": "Bidaayu Pintu 3",
+      "nama_di_sumber": [
+        "Bidaayu Pintu 3"
+      ],
+      "kelompok": "bidaayu-pintu-3",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 12
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bidaayu-pintu",
+      "nama": "Bidaayu Pintu",
+      "nama_di_sumber": [
+        "Bidaayu Pintu"
+      ],
+      "kelompok": "bidaayu-pintu",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 13
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "smpn-16",
+      "nama": "SMPN 16",
+      "nama_di_sumber": [
+        "SMPN 16"
+      ],
+      "kelompok": "smpn-16",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 14
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bidadari",
+      "nama": "Bidadari",
+      "nama_di_sumber": [
+        "Bidadari"
+      ],
+      "kelompok": "bidadari",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 15
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "nusa-indah",
+      "nama": "Nusa Indah",
+      "nama_di_sumber": [
+        "Nusa Indah"
+      ],
+      "kelompok": "nusa-indah",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 16
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bukit-sentosa",
+      "nama": "Bukit Sentosa",
+      "nama_di_sumber": [
+        "Bukit Sentosa"
+      ],
+      "kelompok": "bukit-sentosa",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 17
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pintu-4-mukakuning",
+      "nama": "Pintu 4 Mukakuning",
+      "nama_di_sumber": [
+        "Pintu 4 Mukakuning"
+      ],
+      "kelompok": "pintu-4-mukakuning",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 18
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K6": "Kawasan industri Mukakuning"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pintu-3-mukakuning",
+      "nama": "Pintu 3 Mukakuning",
+      "nama_di_sumber": [
+        "Pintu 3 Mukakuning"
+      ],
+      "kelompok": "pintu-3-mukakuning",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 19
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pintu-2-mukakuning",
+      "nama": "Pintu 2 Mukakuning",
+      "nama_di_sumber": [
+        "Pintu 2 Mukakuning"
+      ],
+      "kelompok": "pintu-2-mukakuning",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 20
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "best-western-panbil",
+      "nama": "Best Western Panbil",
+      "nama_di_sumber": [
+        "Best Western Panbil"
+      ],
+      "kelompok": "best-western-panbil",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 22
+      },
+      "kecamatan": "Sei Beduk",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "stadion-temenggung",
+      "nama": "Stadion Temenggung",
+      "nama_di_sumber": [
+        "Stadion Temenggung"
+      ],
+      "kelompok": "stadion-temenggung",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 23
+      },
+      "kecamatan": "Batam Kota",
+      "kecamatan_sumber": "tabel_K6 (perkiraan)",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": {
+        "K6": "Juga K2 (sisi B)"
+      },
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "turi-beach",
+      "nama": "Turi Beach",
+      "nama_di_sumber": [
+        "Turi Beach"
+      ],
+      "kelompok": "turi-beach",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 3
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "polda-kepri",
+      "nama": "Polda Kepri",
+      "nama_di_sumber": [
+        "Polda Kepri"
+      ],
+      "kelompok": "polda-kepri",
+      "koridor": [
+        "K7",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 4,
+        "K9_pergi": 12
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bandoeng-resto",
+      "nama": "Bandoeng Resto",
+      "nama_di_sumber": [
+        "Bandoeng Resto"
+      ],
+      "kelompok": "bandoeng-resto",
+      "koridor": [
+        "K7",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 5,
+        "K9_pergi": 11
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "citra-mas",
+      "nama": "Citra Mas",
+      "nama_di_sumber": [
+        "Citra Mas"
+      ],
+      "kelompok": "citra-mas",
+      "koridor": [
+        "K7",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 6,
+        "K9_pergi": 10
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kampung-tengah",
+      "nama": "Kampung Tengah",
+      "nama_di_sumber": [
+        "Kampung Tengah"
+      ],
+      "kelompok": "kampung-tengah",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 8
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "simpang-ojek",
+      "nama": "Simpang Ojek",
+      "nama_di_sumber": [
+        "Simpang Ojek"
+      ],
+      "kelompok": "simpang-ojek",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 9
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "darul-falah",
+      "nama": "Darul Falah",
+      "nama_di_sumber": [
+        "Darul Falah"
+      ],
+      "kelompok": "darul-falah",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 10
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pura-asri",
+      "nama": "Pura Asri",
+      "nama_di_sumber": [
+        "Pura Asri"
+      ],
+      "kelompok": "pura-asri",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 11
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "family-garden",
+      "nama": "Family Garden",
+      "nama_di_sumber": [
+        "Family Garden"
+      ],
+      "kelompok": "family-garden",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 12
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pasar-mtc",
+      "nama": "Pasar MTC",
+      "nama_di_sumber": [
+        "Pasar MTC"
+      ],
+      "kelompok": "pasar-mtc",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 13
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "simpang-bandara",
+      "nama": "Simpang Bandara",
+      "nama_di_sumber": [
+        "Simpang Bandara"
+      ],
+      "kelompok": "simpang-bandara",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 14
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "dotamana",
+      "nama": "Dotamana",
+      "nama_di_sumber": [
+        "Dotamana"
+      ],
+      "kelompok": "dotamana",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 16
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bida-asri-2",
+      "nama": "Bida Asri 2",
+      "nama_di_sumber": [
+        "Bida Asri 2"
+      ],
+      "kelompok": "bida-asri-2",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 17
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kapita-plaza",
+      "nama": "Kapita Plaza",
+      "nama_di_sumber": [
+        "Kapita Plaza"
+      ],
+      "kelompok": "kapita-plaza",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 18
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "botania-2",
+      "nama": "Botania 2",
+      "nama_di_sumber": [
+        "Botania 2"
+      ],
+      "kelompok": "botania-2",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 19
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "uniba",
+      "nama": "Uniba",
+      "nama_di_sumber": [
+        "Uniba"
+      ],
+      "kelompok": "uniba",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 20
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "mustafa-plaza",
+      "nama": "Mustafa Plaza",
+      "nama_di_sumber": [
+        "Mustafa Plaza"
+      ],
+      "kelompok": "mustafa-plaza",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 21
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kantor-camat-batam-kota",
+      "nama": "Kantor Camat Batam Kota",
+      "nama_di_sumber": [
+        "Kantor Camat Batam Kota"
+      ],
+      "kelompok": "kantor-camat-batam-kota",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 22
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kda",
+      "nama": "KDA",
+      "nama_di_sumber": [
+        "KDA"
+      ],
+      "kelompok": "kda",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 23
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "puri-legenda",
+      "nama": "Puri Legenda",
+      "nama_di_sumber": [
+        "Puri Legenda"
+      ],
+      "kelompok": "puri-legenda",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 24
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "grand-mas",
+      "nama": "Grand Mas",
+      "nama_di_sumber": [
+        "Grand Mas"
+      ],
+      "kelompok": "grand-mas",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 25
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "purimas",
+      "nama": "Purimas",
+      "nama_di_sumber": [
+        "Purimas"
+      ],
+      "kelompok": "purimas",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 26
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "gedung-lam",
+      "nama": "Gedung LAM",
+      "nama_di_sumber": [
+        "Gedung LAM"
+      ],
+      "kelompok": "gedung-lam",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 27
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pltu-tanjung-kasam",
+      "nama": "PLTU Tanjung Kasam",
+      "nama_di_sumber": [
+        "PLTU Tanjung Kasam"
+      ],
+      "kelompok": "pltu-tanjung-kasam",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 2,
+        "K9_pergi": 2
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "tpa",
+      "nama": "TPA",
+      "nama_di_sumber": [
+        "TPA"
+      ],
+      "kelompok": "tpa",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 3,
+        "K9_pergi": 3
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "polsek-nongsa",
+      "nama": "Polsek Nongsa",
+      "nama_di_sumber": [
+        "Polsek Nongsa"
+      ],
+      "kelompok": "polsek-nongsa",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 4,
+        "K9_pergi": 4
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "pasar-top-one",
+      "nama": "Pasar Top One",
+      "nama_di_sumber": [
+        "Pasar Top One"
+      ],
+      "kelompok": "pasar-top-one",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 5,
+        "K9_pergi": 5
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "al-munawaroh",
+      "nama": "Al Munawaroh",
+      "nama_di_sumber": [
+        "Al Munawaroh"
+      ],
+      "kelompok": "al-munawaroh",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 7
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "bri-batu-besar",
+      "nama": "BRI Batu Besar",
+      "nama_di_sumber": [
+        "BRI Batu Besar"
+      ],
+      "kelompok": "bri-batu-besar",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 8
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "kampung-sambau",
+      "nama": "Kampung Sambau",
+      "nama_di_sumber": [
+        "Kampung Sambau"
+      ],
+      "kelompok": "kampung-sambau",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 13
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": null,
+      "sumber_url": []
+    },
+    {
+      "id": "rsbp",
+      "nama": "RSBP",
+      "nama_di_sumber": [
+        "RSBP"
+      ],
+      "kelompok": "rsbp",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {},
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": "perlu_cek_ulang",
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Versi 2022 (Batamnews) menyebut juga RSBP sebelum Sekupang (rute K4); konektivitas: \"RS BP Batam (Sekupang) | RSBP (rute K4 versi 2022) | K4 | perlu_cek_ulang\". Di daftar koordinat ditandai \"RSBP (perlu_cek_ulang)\" tetapi laporan tidak memberi angka koordinat.",
+      "sumber_url": []
+    },
+    {
+      "id": "masjid-raya-a",
+      "nama": "Masjid Raya A",
+      "nama_di_sumber": [
+        "Masjid Raya A"
+      ],
+      "kelompok": "masjid-raya",
+      "koridor": [],
+      "urutan_seed": null,
+      "urutan_pola": {},
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": "perlu_cek_ulang",
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Hanya disebut di tabel konektivitas: \"Mega Mall; Masjid Raya A (±108 m dari One Batam Mall menurut Moovit)\". Koridor untuk halte ini tidak dirinci laporan.",
+      "sumber_url": []
+    }
+  ],
+  "pola": [
+    {
+      "id": "K1_pergi",
+      "koridor": "K1",
+      "arah": "Sekupang → Batam Centre",
+      "sumber": "Kepri Post Mei/Juli 2025; 31 dari 56 halte",
+      "jumlah_halte_sumber": 56,
+      "lengkap": false,
+      "sumber_url": [
+        "https://kepri.pikiran-rakyat.com/kepri/pr-2689304264/trans-batam-rute-sekupang-batam-center-jadwal-dan-info-terbaru-mei-2025?page=all",
+        "https://kepri.pikiran-rakyat.com/kepri/pr-2689482812/jadwal-dan-tarif-trans-batam-rute-sekupang-ke-batam-center-juli-2025"
+      ],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Sekupang",
+          "kecamatan_perkiraan": "Sekupang",
+          "catatan_tabel": "Transfer K1/K3/K4; dekat Pelabuhan Domestik Sekupang",
+          "urut_di_daftar": 1,
+          "halte_id": "tp-sekupang"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Taman Palapa",
+          "kecamatan_perkiraan": "Sekupang",
+          "urut_di_daftar": 2,
+          "halte_id": "taman-palapa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Telkom Sekupang",
+          "kecamatan_perkiraan": "Sekupang",
+          "urut_di_daftar": 3,
+          "halte_id": "telkom-sekupang"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Shangrila A",
+          "kecamatan_perkiraan": "Sekupang",
+          "urut_di_daftar": 4,
+          "halte_id": "shangrila-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Lampu Merah Patam Lestari",
+          "kecamatan_perkiraan": "Sekupang",
+          "urut_di_daftar": 5,
+          "halte_id": "lampu-merah-patam-lestari"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kartini",
+          "kecamatan_perkiraan": "Sekupang",
+          "catatan_tabel": "Juga K3",
+          "urut_di_daftar": 6,
+          "halte_id": "kartini"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "STC",
+          "kecamatan_perkiraan": "Sekupang",
+          "catatan_tabel": "Juga K3",
+          "urut_di_daftar": 7,
+          "halte_id": "stc"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "GOR Sekupang A",
+          "kecamatan_perkiraan": "Sekupang",
+          "catatan_tabel": "Juga K3",
+          "urut_di_daftar": 8,
+          "halte_id": "gor-sekupang-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Mutiara View",
+          "kecamatan_perkiraan": "Sekupang",
+          "catatan_tabel": "Juga K3",
+          "urut_di_daftar": 9,
+          "halte_id": "mutiara-view"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban III",
+          "kecamatan_perkiraan": "Sekupang",
+          "catatan_tabel": "Juga K3",
+          "urut_di_daftar": 10,
+          "halte_id": "tiban-iii"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban Raya",
+          "kecamatan_perkiraan": "Sekupang",
+          "catatan_tabel": "Juga K3",
+          "urut_di_daftar": 11,
+          "halte_id": "tiban-raya"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Taman Sari A",
+          "kecamatan_perkiraan": "Sekupang",
+          "catatan_tabel": "Juga K3",
+          "urut_di_daftar": 12,
+          "halte_id": "taman-sari-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban Center",
+          "kecamatan_perkiraan": "Sekupang",
+          "catatan_tabel": "Juga K3",
+          "urut_di_daftar": 13,
+          "halte_id": "tiban-center"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban Ayu A",
+          "kecamatan_perkiraan": "Sekupang",
+          "catatan_tabel": "Juga K3",
+          "urut_di_daftar": 14,
+          "halte_id": "tiban-ayu-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban Kampung A",
+          "kecamatan_perkiraan": "Sekupang",
+          "catatan_tabel": "Juga K3",
+          "urut_di_daftar": 15,
+          "halte_id": "tiban-kampung-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "UIB A",
+          "kecamatan_perkiraan": null,
+          "catatan_tabel": "Kampus UIB; titik pisah K1/K3",
+          "urut_di_daftar": 16,
+          "halte_id": "uib"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Baloi View",
+          "kecamatan_perkiraan": null,
+          "urut_di_daftar": 17,
+          "halte_id": "baloi-view"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "RS Awal Bros",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Rumah sakit",
+          "urut_di_daftar": 18,
+          "halte_id": "rs-awal-bros"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Orchid A",
+          "kecamatan_perkiraan": null,
+          "urut_di_daftar": 19,
+          "halte_id": "orchid-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Gelael A",
+          "kecamatan_perkiraan": null,
+          "urut_di_daftar": 20,
+          "halte_id": "gelael-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Raflesia A",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K5",
+          "urut_di_daftar": 21,
+          "halte_id": "raflesia-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kawasaki A",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K5",
+          "urut_di_daftar": 22,
+          "halte_id": "kawasaki-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Royal Grande",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K5",
+          "urut_di_daftar": 23,
+          "halte_id": "royal-grande"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bundaran Madani",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K5",
+          "urut_di_daftar": 24,
+          "halte_id": "bundaran-madani"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kadin",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K5",
+          "urut_di_daftar": 25,
+          "halte_id": "kadin"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Ikan Daun",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K2/K5",
+          "urut_di_daftar": 26,
+          "halte_id": "ikan-daun"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "INKO",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K2/K5",
+          "urut_di_daftar": 27,
+          "halte_id": "inko"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Engku Putri",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K5",
+          "urut_di_daftar": 28,
+          "halte_id": "engku-putri"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Imigrasi",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K5",
+          "urut_di_daftar": 29,
+          "halte_id": "imigrasi"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Mega Mall",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K5",
+          "urut_di_daftar": 30,
+          "halte_id": "mega-mall"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Batam Center",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Hub K1/K2/K5/K6/K7",
+          "urut_di_daftar": 31,
+          "halte_id": "tp-batam-center"
+        }
+      ],
+      "catatan": null,
+      "status_data": null
+    },
+    {
+      "id": "K1_balik",
+      "koridor": "K1",
+      "arah": "Batam Center → Sekupang (sebagian)",
+      "sumber": "Kepri Post Mei/Juli 2025 (arah balik, sebagian)",
+      "jumlah_halte_sumber": null,
+      "lengkap": false,
+      "sumber_url": [],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Batam Center",
+          "urut_di_daftar": 1,
+          "halte_id": "tp-batam-center"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kantor Pos",
+          "urut_di_daftar": 2,
+          "halte_id": "kantor-pos"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Harmoni One",
+          "urut_di_daftar": 3,
+          "halte_id": "harmoni-one"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Green Land",
+          "urut_di_daftar": 4,
+          "halte_id": "green-land"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Yos Sudarso",
+          "urut_di_daftar": 5,
+          "halte_id": "yos-sudarso"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kawasaki B",
+          "urut_di_daftar": 6,
+          "halte_id": "kawasaki-b"
+        },
+        {
+          "jenis": "gap",
+          "catatan": "halte tidak tercantum di sumber"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Taman Sari B",
+          "urut_di_daftar": 7,
+          "halte_id": "taman-sari-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban Raya",
+          "urut_di_daftar": 8,
+          "halte_id": "tiban-raya"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Cipta Puri",
+          "urut_di_daftar": 9,
+          "halte_id": "cipta-puri"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Mutiara View",
+          "urut_di_daftar": 10,
+          "halte_id": "mutiara-view"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "GOR Sekupang B",
+          "urut_di_daftar": 11,
+          "halte_id": "gor-sekupang-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Sei Harapan",
+          "urut_di_daftar": 12,
+          "halte_id": "sei-harapan"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kartini",
+          "urut_di_daftar": 13,
+          "halte_id": "kartini"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "PCI",
+          "urut_di_daftar": 14,
+          "halte_id": "pci"
+        },
+        {
+          "jenis": "gap",
+          "catatan": "halte tidak tercantum di sumber"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Sekupang",
+          "urut_di_daftar": 15,
+          "halte_id": "tp-sekupang"
+        }
+      ],
+      "catatan": "Arah balik **berbeda** dari arah pergi (lewat Green Land/Yos Sudarso, Cipta Puri, Sei Harapan), jadi patterns per arah wajib dipisah.",
+      "status_data": null
+    },
+    {
+      "id": "K2_ke_tanjung_uncang",
+      "koridor": "K2",
+      "arah": "Batam Centre → Tanjung Uncang",
+      "sumber": "Kepri Post Juli 2025; daftar ada gap; total 78",
+      "jumlah_halte_sumber": 78,
+      "lengkap": false,
+      "sumber_url": [
+        "https://kepri.pikiran-rakyat.com/kepri/pr-2689482853/jadwal-dan-tarif-trans-batam-rute-batam-center-ke-tanjung-uncang-juli-2025"
+      ],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Batam Center",
+          "urut_di_daftar": 1,
+          "halte_id": "tp-batam-center"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kantor Pos",
+          "urut_di_daftar": 2,
+          "halte_id": "kantor-pos"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Harmoni One",
+          "urut_di_daftar": 3,
+          "halte_id": "harmoni-one"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Ikan Daun",
+          "urut_di_daftar": 4,
+          "halte_id": "ikan-daun"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "INKO",
+          "urut_di_daftar": 5,
+          "halte_id": "inko"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Masjid Agung",
+          "urut_di_daftar": 6,
+          "halte_id": "masjid-agung"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Centro Coffee",
+          "urut_di_daftar": 7,
+          "halte_id": "centro-coffee"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Politeknik B",
+          "urut_di_daftar": 8,
+          "halte_id": "politeknik"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Simpang Frangky B",
+          "urut_di_daftar": 9,
+          "halte_id": "simpang-frangky-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Anggrek Sari",
+          "urut_di_daftar": 10,
+          "halte_id": "anggrek-sari"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Simpang Kara B",
+          "urut_di_daftar": 11,
+          "halte_id": "simpang-kara-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Plamo",
+          "urut_di_daftar": 12,
+          "halte_id": "plamo"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kepri Mall B",
+          "urut_di_daftar": 13,
+          "halte_id": "kepri-mall"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Taman Niaga B",
+          "urut_di_daftar": 14,
+          "halte_id": "taman-niaga-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Stadion Temenggung B",
+          "urut_di_daftar": 15,
+          "halte_id": "stadion-temenggung-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Panbil Mukakuning",
+          "urut_di_daftar": 16,
+          "halte_id": "panbil"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Top 100 Batuaji B",
+          "urut_di_daftar": 17,
+          "halte_id": "top-100-batuaji-b"
+        },
+        {
+          "jenis": "gap",
+          "catatan": "halte tidak tercantum di sumber"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Simpang Tembesi B",
+          "urut_di_daftar": 18,
+          "halte_id": "simpang-tembesi-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Villa Mukakuning B",
+          "urut_di_daftar": 19,
+          "halte_id": "villa-mukakuning-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Putri Tujuh B",
+          "urut_di_daftar": 20,
+          "halte_id": "putri-tujuh-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "JPO Plaza SP B",
+          "urut_di_daftar": 21,
+          "halte_id": "jpo-plaza-sp-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Putri Hijau B",
+          "urut_di_daftar": 22,
+          "halte_id": "putri-hijau-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pandawa",
+          "urut_di_daftar": 23,
+          "halte_id": "pandawa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kavling Baru B",
+          "urut_di_daftar": 24,
+          "halte_id": "kavling-baru-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Buana Raya",
+          "urut_di_daftar": 25,
+          "halte_id": "buana-raya"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Puskopkar B",
+          "urut_di_daftar": 26,
+          "halte_id": "puskopkar-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Classic B",
+          "urut_di_daftar": 27,
+          "halte_id": "classic-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kavling Lama B",
+          "urut_di_daftar": 28,
+          "halte_id": "kavling-lama-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "GOR Batuaji B",
+          "urut_di_daftar": 29,
+          "halte_id": "gor-batuaji-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Base Camp B",
+          "urut_di_daftar": 30,
+          "halte_id": "base-camp-b"
+        },
+        {
+          "jenis": "gap",
+          "catatan": "halte tidak tercantum di sumber"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "SMPN 9 Batam B",
+          "urut_di_daftar": 31,
+          "halte_id": "smpn-9-batam-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Taman Carina B",
+          "urut_di_daftar": 32,
+          "halte_id": "taman-carina-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "JPO PJB B",
+          "urut_di_daftar": 33,
+          "halte_id": "jpo-pjb-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "MTs",
+          "urut_di_daftar": 34,
+          "halte_id": "mts"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Top 100 Regency B",
+          "urut_di_daftar": 35,
+          "halte_id": "top-100-regency-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tunas",
+          "urut_di_daftar": 36,
+          "halte_id": "tunas"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Hidayatullah B",
+          "urut_di_daftar": 37,
+          "halte_id": "hidayatullah"
+        }
+      ],
+      "catatan": "Arah sebaliknya diawali \"Hidayatullah A\" (menurut Moovit). Kecamatan: Batam Kota → Sei Beduk (Mukakuning/Panbil) → Batu Aji → Sagulung (perkiraan, perlu cek).",
+      "status_data": null
+    },
+    {
+      "id": "K3_pergi",
+      "koridor": "K3",
+      "arah": "Sekupang → Jodoh",
+      "sumber": "Warta Jaya Vision, Desember 2025; total 65",
+      "jumlah_halte_sumber": 65,
+      "lengkap": false,
+      "sumber_url": [
+        "https://wartajayavision.com/jadwal-trans-batam-rute-sekupang-jodoh-2025-pembayaran-dana/"
+      ],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Sekupang",
+          "urut_di_daftar": 1,
+          "halte_id": "tp-sekupang"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Taman Palapa",
+          "urut_di_daftar": 2,
+          "halte_id": "taman-palapa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Telkom Sekupang",
+          "urut_di_daftar": 3,
+          "halte_id": "telkom-sekupang"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Shangrila A",
+          "urut_di_daftar": 4,
+          "halte_id": "shangrila-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Lampu Merah Patam Lestari",
+          "urut_di_daftar": 5,
+          "halte_id": "lampu-merah-patam-lestari"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kartini",
+          "urut_di_daftar": 6,
+          "halte_id": "kartini"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "STC",
+          "urut_di_daftar": 7,
+          "halte_id": "stc"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "GOR Sekupang A",
+          "urut_di_daftar": 8,
+          "halte_id": "gor-sekupang-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Mutiara View",
+          "urut_di_daftar": 9,
+          "halte_id": "mutiara-view"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban III",
+          "urut_di_daftar": 10,
+          "halte_id": "tiban-iii"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban Raya",
+          "urut_di_daftar": 11,
+          "halte_id": "tiban-raya"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Taman Sari A",
+          "urut_di_daftar": 12,
+          "halte_id": "taman-sari-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban Center",
+          "urut_di_daftar": 13,
+          "halte_id": "tiban-center"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban Ayu A",
+          "urut_di_daftar": 14,
+          "halte_id": "tiban-ayu-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban Kampung A",
+          "urut_di_daftar": 15,
+          "halte_id": "tiban-kampung-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "UIB A",
+          "urut_di_daftar": 16,
+          "halte_id": "uib"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Taman Kota",
+          "urut_di_daftar": 17,
+          "halte_id": "taman-kota"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pantai Permata",
+          "urut_di_daftar": 18,
+          "halte_id": "pantai-permata"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Baloi Mas",
+          "urut_di_daftar": 19,
+          "halte_id": "baloi-mas"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Grand Mall",
+          "urut_di_daftar": 20,
+          "halte_id": "grand-mall"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pantai Harapan",
+          "urut_di_daftar": 21,
+          "halte_id": "pantai-harapan"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Harmoni Suites",
+          "urut_di_daftar": 22,
+          "halte_id": "harmoni-suites"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Nagoya Hill",
+          "urut_di_daftar": 23,
+          "halte_id": "nagoya-hill"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "BRI Nagoya",
+          "urut_di_daftar": 24,
+          "halte_id": "bri-nagoya"
+        },
+        {
+          "jenis": "gap",
+          "catatan": "halte tidak tercantum di sumber"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Terminal Jodoh",
+          "urut_di_daftar": 25,
+          "halte_id": "tp-jodoh"
+        }
+      ],
+      "catatan": "Kecamatan: Sekupang → Lubuk Baja (Nagoya) → Batu Ampar (Jodoh).",
+      "status_data": null
+    },
+    {
+      "id": "K3_balik",
+      "koridor": "K3",
+      "arah": "Jodoh → Sekupang",
+      "sumber": "Warta Jaya Vision, Desember 2025; total 65",
+      "jumlah_halte_sumber": 65,
+      "lengkap": false,
+      "sumber_url": [
+        "https://wartajayavision.com/jadwal-trans-batam-rute-sekupang-jodoh-2025-pembayaran-dana/"
+      ],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Terminal Jodoh",
+          "urut_di_daftar": 1,
+          "halte_id": "tp-jodoh"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Top 100 Jodoh",
+          "urut_di_daftar": 2,
+          "halte_id": "top-100-jodoh"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "DC Mall SW",
+          "urut_di_daftar": 3,
+          "halte_id": "dc-mall-sw"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tanjunguma",
+          "urut_di_daftar": 4,
+          "halte_id": "tanjunguma"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "DC Mall",
+          "urut_di_daftar": 5,
+          "halte_id": "dc-mall"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pasar Angkasa B",
+          "urut_di_daftar": 6,
+          "halte_id": "pasar-angkasa-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pasar Induk",
+          "urut_di_daftar": 7,
+          "halte_id": "pasar-induk"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pacific Hotel",
+          "urut_di_daftar": 8,
+          "halte_id": "pacific-hotel"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "BRI Jodoh B",
+          "urut_di_daftar": 9,
+          "halte_id": "bri-jodoh-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "BCA Jodoh B",
+          "urut_di_daftar": 10,
+          "halte_id": "bca-jodoh-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "BPJS Ketenagakerjaan",
+          "urut_di_daftar": 11,
+          "halte_id": "bpjs-ketenagakerjaan"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Dana Graha",
+          "urut_di_daftar": 12,
+          "halte_id": "dana-graha"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bank Mandiri",
+          "urut_di_daftar": 13,
+          "halte_id": "bank-mandiri"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Nagoya Hill",
+          "urut_di_daftar": 14,
+          "halte_id": "nagoya-hill"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Windsor",
+          "urut_di_daftar": 15,
+          "halte_id": "windsor"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Vihara",
+          "urut_di_daftar": 16,
+          "halte_id": "vihara"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Penuin",
+          "urut_di_daftar": 17,
+          "halte_id": "penuin"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "UIB B",
+          "urut_di_daftar": 18,
+          "halte_id": "uib"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tiban Kampung",
+          "urut_di_daftar": 19,
+          "halte_id": "tiban-kampung"
+        },
+        {
+          "jenis": "gap",
+          "catatan": "halte tidak tercantum di sumber"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Sekupang",
+          "urut_di_daftar": 20,
+          "halte_id": "tp-sekupang"
+        }
+      ],
+      "catatan": null,
+      "status_data": null
+    },
+    {
+      "id": "K4_ke_sekupang",
+      "koridor": "K4",
+      "arah": "Sagulung → Sekupang",
+      "sumber": "Kepri Post Februari 2026; daftar ringkas, total 69",
+      "jumlah_halte_sumber": 69,
+      "lengkap": false,
+      "sumber_url": [
+        "https://kepri.pikiran-rakyat.com/kepri/pr-2689989631/jadwal-dan-tarif-tiket-trans-batam-rute-sagulung-sekupang-februari-2026?page=all"
+      ],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pelabuhan Sagulung",
+          "urut_di_daftar": 1,
+          "halte_id": "pelabuhan-sagulung"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Latrade",
+          "urut_di_daftar": 2,
+          "halte_id": "latrade"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Hidayatullah",
+          "urut_di_daftar": 3,
+          "halte_id": "hidayatullah"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Masjid Agung Sultan Riayat Syah",
+          "urut_di_daftar": 4,
+          "halte_id": "masjid-agung-sultan-riayat-syah"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Fanindo",
+          "urut_di_daftar": 5,
+          "halte_id": "fanindo"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Basecamp",
+          "urut_di_daftar": 6,
+          "halte_id": "basecamp"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Jupiter",
+          "urut_di_daftar": 7,
+          "halte_id": "jupiter"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Balai Pelatihan Kesehatan",
+          "urut_di_daftar": 8,
+          "halte_id": "balai-pelatihan-kesehatan"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Marina Waterfront",
+          "urut_di_daftar": 9,
+          "halte_id": "marina-waterfront"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Harris Resort",
+          "urut_di_daftar": 10,
+          "halte_id": "harris-resort"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tanjung Riau",
+          "urut_di_daftar": 11,
+          "halte_id": "tanjung-riau"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Sunbread",
+          "urut_di_daftar": 12,
+          "halte_id": "sunbread"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Sei Harapan",
+          "urut_di_daftar": 13,
+          "halte_id": "sei-harapan"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Sekupang",
+          "urut_di_daftar": 14,
+          "halte_id": "tp-sekupang"
+        }
+      ],
+      "catatan": "Versi 2022 (Batamnews) menyebut juga RSBP sebelum Sekupang. Kecamatan: Sagulung → Batu Aji → Sekupang.",
+      "status_data": null
+    },
+    {
+      "id": "K5_ke_batam_center",
+      "koridor": "K5",
+      "arah": "Jodoh → BC (Kepri Post)",
+      "sumber": "Kepri Post Agustus 2025/2026",
+      "jumlah_halte_sumber": {
+        "nilai": [
+          41,
+          65
+        ],
+        "status": "perlu_cek_ulang"
+      },
+      "lengkap": false,
+      "sumber_url": [
+        "https://kepri.pikiran-rakyat.com/kepri/pr-2689553172/jadwal-trans-batam-rute-jodoh-ke-batam-center-agustus-2025-lengkap-tarif-umum-dan-pelajar",
+        "https://kepri.pikiran-rakyat.com/kepri/pr-26810369499/bisa-bayar-pakai-brizzi-bri-catat-jadwal-trans-batam-jodoh-batam-center-agustus-2026?page=all"
+      ],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Terminal Jodoh",
+          "urut_di_daftar": 1,
+          "halte_id": "tp-jodoh"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Top 100 Jodoh",
+          "urut_di_daftar": 2,
+          "halte_id": "top-100-jodoh"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pasar Angkasa",
+          "catatan": "muncul di versi Agustus 2026",
+          "urut_di_daftar": 3,
+          "halte_id": "pasar-angkasa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "DC Mall SW",
+          "urut_di_daftar": 4,
+          "halte_id": "dc-mall-sw"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pacific Hotel",
+          "urut_di_daftar": 5,
+          "halte_id": "pacific-hotel"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Polsek Batu Ampar",
+          "urut_di_daftar": 6,
+          "halte_id": "polsek-batu-ampar"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Monte Siena",
+          "catatan": "ditulis dalam kurung di sumber",
+          "urut_di_daftar": 7,
+          "halte_id": "monte-siena"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bengkong Garama",
+          "urut_di_daftar": 8,
+          "halte_id": "bengkong-garama"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Damkar Sei Panas",
+          "urut_di_daftar": 9,
+          "halte_id": "damkar-sei-panas"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bank Riau Kepri",
+          "urut_di_daftar": 10,
+          "halte_id": "bank-riau-kepri"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Rafflesia",
+          "urut_di_daftar": 11,
+          "halte_id": "rafflesia"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kawasaki",
+          "urut_di_daftar": 12,
+          "halte_id": "kawasaki"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Royal Grande",
+          "urut_di_daftar": 13,
+          "halte_id": "royal-grande"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bundaran Madani",
+          "urut_di_daftar": 14,
+          "halte_id": "bundaran-madani"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kadin",
+          "catatan": "ditulis dalam kurung di sumber",
+          "urut_di_daftar": 15,
+          "halte_id": "kadin"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Mega Mall",
+          "urut_di_daftar": 16,
+          "halte_id": "mega-mall"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Batam Center",
+          "urut_di_daftar": 17,
+          "halte_id": "tp-batam-center"
+        }
+      ],
+      "catatan": "Kecamatan: Batu Ampar → Bengkong → Batam Kota.",
+      "status_data": null
+    },
+    {
+      "id": "K5_ke_jodoh_moovit",
+      "koridor": "K5",
+      "arah": "BC → Jodoh (Moovit, 22 stop, kemungkinan usang)",
+      "sumber": "Moovit",
+      "jumlah_halte_sumber": 22,
+      "lengkap": false,
+      "status_data": "perlu_cek_ulang",
+      "sumber_url": [
+        "https://moovitapp.com/index/en/public_transit-line-kor_5-Batam-5423-1141210-136320273-0",
+        "https://moovitapp.com/index/en/public_transit-line-kor_5-Batam-5423-1141210-136320273-1"
+      ],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transfer Point Batam Center",
+          "urut_di_daftar": 1,
+          "halte_id": "tp-batam-center"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kantor Pos",
+          "urut_di_daftar": 2,
+          "halte_id": "kantor-pos"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Harmoni One",
+          "urut_di_daftar": 3,
+          "halte_id": "harmoni-one"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kadin",
+          "urut_di_daftar": 4,
+          "halte_id": "kadin"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bundaran Madani",
+          "urut_di_daftar": 5,
+          "halte_id": "bundaran-madani"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Royal Grande",
+          "urut_di_daftar": 6,
+          "halte_id": "royal-grande"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kawasaki B",
+          "urut_di_daftar": 7,
+          "halte_id": "kawasaki-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Raflesia B",
+          "urut_di_daftar": 8,
+          "halte_id": "raflesia-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bank Riau B",
+          "urut_di_daftar": 9,
+          "halte_id": "bank-riau-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Damkar Sei Panas B",
+          "urut_di_daftar": 10,
+          "halte_id": "damkar-sei-panas-b"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Garama 2",
+          "urut_di_daftar": 11,
+          "halte_id": "garama-2"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Melchem 2",
+          "urut_di_daftar": 12,
+          "halte_id": "melchem-2"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tg Sengkuang",
+          "urut_di_daftar": 13,
+          "halte_id": "tg-sengkuang"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Lurah Sengkuang",
+          "urut_di_daftar": 14,
+          "halte_id": "lurah-sengkuang"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "TVS 2",
+          "urut_di_daftar": 15,
+          "halte_id": "tvs-2"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Sindo 2",
+          "urut_di_daftar": 16,
+          "halte_id": "sindo-2"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Monte Siena 2",
+          "urut_di_daftar": 17,
+          "halte_id": "monte-siena-2"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Batu Ampar",
+          "urut_di_daftar": 18,
+          "halte_id": "batu-ampar"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Harbourbay",
+          "urut_di_daftar": 19,
+          "halte_id": "harbourbay"
+        },
+        {
+          "jenis": "gap",
+          "catatan": "halte tidak tercantum di sumber"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Terminal Jodoh",
+          "urut_di_daftar": 20,
+          "halte_id": "tp-jodoh"
+        }
+      ],
+      "catatan": "Moovit kemungkinan usang; pakai hanya untuk cek silang."
+    },
+    {
+      "id": "K5_ke_batam_center_moovit_ujung",
+      "koridor": "K5",
+      "arah": "Ujung arah Jodoh → BC versi Moovit",
+      "sumber": "Moovit",
+      "jumlah_halte_sumber": null,
+      "lengkap": false,
+      "status_data": "perlu_cek_ulang",
+      "sumber_url": [
+        "https://moovitapp.com/index/en/public_transit-line-kor_5-Batam-5423-1141210-136320273-0",
+        "https://moovitapp.com/index/en/public_transit-line-kor_5-Batam-5423-1141210-136320273-1"
+      ],
+      "halte": [
+        {
+          "jenis": "gap",
+          "catatan": "halte sebelumnya tidak tercantum di sumber"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Damkar Sei Panas A",
+          "urut_di_daftar": 1,
+          "halte_id": "damkar-sei-panas-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bank Riau A",
+          "urut_di_daftar": 2,
+          "halte_id": "bank-riau-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Raflesia A",
+          "urut_di_daftar": 3,
+          "halte_id": "raflesia-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kawasaki A",
+          "urut_di_daftar": 4,
+          "halte_id": "kawasaki-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Royal Grande",
+          "urut_di_daftar": 5,
+          "halte_id": "royal-grande"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bundaran Madani",
+          "urut_di_daftar": 6,
+          "halte_id": "bundaran-madani"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kadin",
+          "urut_di_daftar": 7,
+          "halte_id": "kadin"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Ikan Daun",
+          "urut_di_daftar": 8,
+          "halte_id": "ikan-daun"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Inko",
+          "urut_di_daftar": 9,
+          "halte_id": "inko"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Engku Putri",
+          "urut_di_daftar": 10,
+          "halte_id": "engku-putri"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Imigrasi",
+          "urut_di_daftar": 11,
+          "halte_id": "imigrasi"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Mega Mall Batam Center",
+          "urut_di_daftar": 12,
+          "halte_id": "mega-mall"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transfer Point Batam Center",
+          "urut_di_daftar": 13,
+          "halte_id": "tp-batam-center"
+        }
+      ],
+      "catatan": "Hanya ujung rute; urut dihitung dari halte pertama yang tercantum, bukan dari awal koridor."
+    },
+    {
+      "id": "K6_pergi",
+      "koridor": "K6",
+      "arah": "Tanjung Piayu → Batam Centre",
+      "sumber": "InspirasiToday Mei 2026; 27 nama",
+      "jumlah_halte_sumber": {
+        "nilai": [
+          41,
+          58
+        ],
+        "status": "perlu_cek_ulang"
+      },
+      "lengkap": false,
+      "sumber_url": [
+        "https://inspirasitoday.com/ini-jadwal-trans-batam-rute-tanjung-piayu-batam-center-mei-2026/"
+      ],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Tanjung Piayu Laut",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "catatan_tabel": "Terminus",
+          "urut_di_daftar": 1,
+          "halte_id": "tanjung-piayu-laut"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kampung Jawa",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 2,
+          "halte_id": "kampung-jawa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Laguna",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 3,
+          "halte_id": "laguna"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Oleana",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 4,
+          "halte_id": "oleana"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bukit Barelang",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 5,
+          "halte_id": "bukit-barelang"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Rhabayu Asri A",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 6,
+          "halte_id": "rhabayu-asri-a"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "SMPN 40",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 7,
+          "halte_id": "smpn-40"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Simpang Pancur",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 8,
+          "halte_id": "simpang-pancur"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pasar Pancur",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 9,
+          "halte_id": "pasar-pancur"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Simpang Bagan",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 10,
+          "halte_id": "simpang-bagan"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Simpang ATB",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 11,
+          "halte_id": "simpang-atb"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bidaayu Pintu 3",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 12,
+          "halte_id": "bidaayu-pintu-3"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bidaayu Pintu",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 13,
+          "halte_id": "bidaayu-pintu"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "SMPN 16",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 14,
+          "halte_id": "smpn-16"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bidadari",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 15,
+          "halte_id": "bidadari"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Nusa Indah",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 16,
+          "halte_id": "nusa-indah"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bukit Sentosa",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 17,
+          "halte_id": "bukit-sentosa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pintu 4 Mukakuning",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "catatan_tabel": "Kawasan industri Mukakuning",
+          "urut_di_daftar": 18,
+          "halte_id": "pintu-4-mukakuning"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pintu 3 Mukakuning",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 19,
+          "halte_id": "pintu-3-mukakuning"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pintu 2 Mukakuning",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 20,
+          "halte_id": "pintu-2-mukakuning"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kawasan Industri Panbil",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 21,
+          "halte_id": "panbil"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Best Western Panbil",
+          "kecamatan_perkiraan": "Sei Beduk",
+          "urut_di_daftar": 22,
+          "halte_id": "best-western-panbil"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Stadion Temenggung",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K2 (sisi B)",
+          "urut_di_daftar": 23,
+          "halte_id": "stadion-temenggung"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kepri Mall",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K2",
+          "urut_di_daftar": 24,
+          "halte_id": "kepri-mall"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Politeknik",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K2",
+          "urut_di_daftar": 25,
+          "halte_id": "politeknik"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Masjid Agung",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Juga K2",
+          "urut_di_daftar": 26,
+          "halte_id": "masjid-agung"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transfer Point Batam Center",
+          "kecamatan_perkiraan": "Batam Kota",
+          "catatan_tabel": "Hub",
+          "urut_di_daftar": 27,
+          "halte_id": "tp-batam-center"
+        }
+      ],
+      "catatan": null,
+      "status_data": null
+    },
+    {
+      "id": "K7_pergi",
+      "koridor": "K7",
+      "arah": "Nongsa → Bandara Hang Nadim → Batam Centre",
+      "sumber": "InspirasiToday Mei 2026 + berita Juli 2026",
+      "jumlah_halte_sumber": {
+        "nilai": 76,
+        "catatan": "sebelum rute bandara"
+      },
+      "lengkap": false,
+      "sumber_url": [
+        "https://inspirasitoday.com/jadwal-trans-batam-rute-nongsa-batam-center-mei-2026/",
+        "https://batamtoday.com/news/trans-batam-koridor-7-resmi-layani-bandara-hang-nadim-tarif-mulai-rp-2500",
+        "https://www.terasbatam.id/mulai-2-juli-trans-batam-resmi-layani-rute-bandara-hang-nadim/"
+      ],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Teluk Mata Ikan",
+          "urut_di_daftar": 1,
+          "halte_id": "teluk-mata-ikan"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pelabuhan Nongsa",
+          "urut_di_daftar": 2,
+          "halte_id": "pelabuhan-nongsa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Turi Beach",
+          "urut_di_daftar": 3,
+          "halte_id": "turi-beach"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Polda Kepri",
+          "urut_di_daftar": 4,
+          "halte_id": "polda-kepri"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bandoeng Resto",
+          "urut_di_daftar": 5,
+          "halte_id": "bandoeng-resto"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Citra Mas",
+          "urut_di_daftar": 6,
+          "halte_id": "citra-mas"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kampung Mangga",
+          "urut_di_daftar": 7,
+          "halte_id": "kampung-mangga"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kampung Tengah",
+          "urut_di_daftar": 8,
+          "halte_id": "kampung-tengah"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Simpang Ojek",
+          "urut_di_daftar": 9,
+          "halte_id": "simpang-ojek"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Darul Falah",
+          "urut_di_daftar": 10,
+          "halte_id": "darul-falah"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pura Asri",
+          "urut_di_daftar": 11,
+          "halte_id": "pura-asri"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Family Garden",
+          "urut_di_daftar": 12,
+          "halte_id": "family-garden"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pasar MTC",
+          "urut_di_daftar": 13,
+          "halte_id": "pasar-mtc"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Simpang Bandara",
+          "urut_di_daftar": 14,
+          "halte_id": "simpang-bandara"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bandara Hang Nadim, halte pintu kedatangan",
+          "catatan": "posisi urutan perlu_cek_ulang",
+          "urut_di_daftar": 15,
+          "halte_id": "bandara-hang-nadim"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Dotamana",
+          "urut_di_daftar": 16,
+          "halte_id": "dotamana"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bida Asri 2",
+          "urut_di_daftar": 17,
+          "halte_id": "bida-asri-2"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kapita Plaza",
+          "urut_di_daftar": 18,
+          "halte_id": "kapita-plaza"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Botania 2",
+          "urut_di_daftar": 19,
+          "halte_id": "botania-2"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Uniba",
+          "urut_di_daftar": 20,
+          "halte_id": "uniba"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Mustafa Plaza",
+          "urut_di_daftar": 21,
+          "halte_id": "mustafa-plaza"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kantor Camat Batam Kota",
+          "urut_di_daftar": 22,
+          "halte_id": "kantor-camat-batam-kota"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "KDA",
+          "urut_di_daftar": 23,
+          "halte_id": "kda"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Puri Legenda",
+          "urut_di_daftar": 24,
+          "halte_id": "puri-legenda"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Grand Mas",
+          "urut_di_daftar": 25,
+          "halte_id": "grand-mas"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Purimas",
+          "urut_di_daftar": 26,
+          "halte_id": "purimas"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Gedung LAM",
+          "urut_di_daftar": 27,
+          "halte_id": "gedung-lam"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Batam Center",
+          "urut_di_daftar": 28,
+          "halte_id": "tp-batam-center"
+        }
+      ],
+      "catatan": "Halte Polda Kepri, Bandoeng Resto, Citra Mas, dan Kampung Mangga juga dilayani K9 (titik transfer K7↔K9). Kecamatan: Nongsa → Batam Kota.",
+      "status_data": null
+    },
+    {
+      "id": "K8_ke_jodoh",
+      "koridor": "K8",
+      "arah": "Punggur → Jodoh",
+      "sumber": "Kepri Post Maret–April 2026; daftar sangat ringkas, total 78",
+      "jumlah_halte_sumber": 78,
+      "lengkap": false,
+      "sumber_url": [
+        "https://kepri.pikiran-rakyat.com/kepri/pr-26810054749/koridor-8-trans-batam-rute-punggur-jodoh-catat-jadwal-maret-2026?page=all",
+        "https://kepri.pikiran-rakyat.com/kepri/pr-26810114754/jadwal-trans-batam-rute-punggur-jodoh-april-2026-bisa-bayar-pakai-dana"
+      ],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Punggur",
+          "urut_di_daftar": 1,
+          "halte_id": "tp-punggur"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "PLTU Tanjung Kasam",
+          "urut_di_daftar": 2,
+          "halte_id": "pltu-tanjung-kasam"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "TPA",
+          "urut_di_daftar": 3,
+          "halte_id": "tpa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Polsek Nongsa",
+          "urut_di_daftar": 4,
+          "halte_id": "polsek-nongsa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pasar Top One",
+          "urut_di_daftar": 5,
+          "halte_id": "pasar-top-one"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kabil Raya",
+          "urut_di_daftar": 6,
+          "halte_id": "kabil-raya"
+        },
+        {
+          "jenis": "gap",
+          "catatan": "via Simpang Kepri Mall, Simpang Jam, Baloi/BCS Mall, DC Mall, Pasar Induk menurut Batamnews 2022"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pasar Angkasa",
+          "urut_di_daftar": 7,
+          "halte_id": "pasar-angkasa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Terminal Jodoh",
+          "urut_di_daftar": 8,
+          "halte_id": "tp-jodoh"
+        }
+      ],
+      "catatan": null,
+      "status_data": null
+    },
+    {
+      "id": "K9_pergi",
+      "koridor": "K9",
+      "arah": "Punggur → Nongsa",
+      "sumber": "1news.id Oktober 2025, Kepri Post Maret 2026; total 54",
+      "jumlah_halte_sumber": 54,
+      "lengkap": false,
+      "sumber_url": [
+        "https://1news.id/54-titik-pemberhentian-rute-trans-batam-punggur-ke-nongsa-oktober-2025/",
+        "https://kepri.pikiran-rakyat.com/kepri/pr-26810054765/koridor-9-trans-batam-rute-punggur-nongsa-catat-jadwal-maret-2026?page=all"
+      ],
+      "halte": [
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Transferpoint Punggur",
+          "urut_di_daftar": 1,
+          "halte_id": "tp-punggur"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "PLTU Tanjung Kasam",
+          "urut_di_daftar": 2,
+          "halte_id": "pltu-tanjung-kasam"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "TPA",
+          "urut_di_daftar": 3,
+          "halte_id": "tpa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Polsek Nongsa",
+          "urut_di_daftar": 4,
+          "halte_id": "polsek-nongsa"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Pasar Top One",
+          "urut_di_daftar": 5,
+          "halte_id": "pasar-top-one"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kabil Raya",
+          "urut_di_daftar": 6,
+          "halte_id": "kabil-raya"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Al Munawaroh",
+          "urut_di_daftar": 7,
+          "halte_id": "al-munawaroh"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "BRI Batu Besar",
+          "urut_di_daftar": 8,
+          "halte_id": "bri-batu-besar"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kampung Mangga",
+          "urut_di_daftar": 9,
+          "halte_id": "kampung-mangga"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Citra Mas",
+          "urut_di_daftar": 10,
+          "halte_id": "citra-mas"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Bandoeng Resto",
+          "urut_di_daftar": 11,
+          "halte_id": "bandoeng-resto"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Polda Kepri",
+          "urut_di_daftar": 12,
+          "halte_id": "polda-kepri"
+        },
+        {
+          "jenis": "halte",
+          "nama_di_sumber": "Kampung Sambau",
+          "urut_di_daftar": 13,
+          "halte_id": "kampung-sambau"
+        },
+        {
+          "jenis": "gap",
+          "catatan": "ujung Nongsa"
+        }
+      ],
+      "catatan": "Enam halte pertama sama dengan K8 (koridor berimpit Punggur–Kabil).",
+      "status_data": null
+    }
+  ],
+  "halte_transit": [
+    {
+      "halte": "Transferpoint Batam Center",
+      "koridor": "K1, K2, K5, K6, K7",
+      "fungsi": "Hub utama, dekat Pelabuhan Batam Centre dan Mega Mall"
+    },
+    {
+      "halte": "Mega Mall / Imigrasi / Engku Putri",
+      "koridor": "K1, K5 (+K2/K6 di sekitar)",
+      "fungsi": "Koridor pusat"
+    },
+    {
+      "halte": "Bundaran Madani, Royal Grande, Kawasaki, Raflesia",
+      "koridor": "K1, K5",
+      "fungsi": "Ruas berimpit, butuh line-offset"
+    },
+    {
+      "halte": "Ikan Daun, INKO, Kantor Pos, Harmoni One",
+      "koridor": "K1, K2, K5",
+      "fungsi": "Ruas berimpit"
+    },
+    {
+      "halte": "Kepri Mall, Politeknik, Masjid Agung, Stadion Temenggung",
+      "koridor": "K2, K6",
+      "fungsi": "Ruas berimpit selatan"
+    },
+    {
+      "halte": "Transferpoint Sekupang",
+      "koridor": "K1, K3, K4",
+      "fungsi": "Hub barat"
+    },
+    {
+      "halte": "Kartini → UIB (± 11 halte)",
+      "koridor": "K1, K3",
+      "fungsi": "Ruas berimpit panjang"
+    },
+    {
+      "halte": "Transferpoint Terminal Jodoh, Top 100 Jodoh, DC Mall SW",
+      "koridor": "K3, K5, K8",
+      "fungsi": "Hub utara"
+    },
+    {
+      "halte": "Transferpoint Punggur → Kabil Raya",
+      "koridor": "K8, K9",
+      "fungsi": "Hub timur"
+    },
+    {
+      "halte": "Kampung Mangga, Citra Mas, Bandoeng Resto, Polda Kepri",
+      "koridor": "K7, K9",
+      "fungsi": "Transfer Nongsa"
+    },
+    {
+      "halte": "Fanindo, Basecamp, Hidayatullah",
+      "koridor": "K2, K4",
+      "fungsi": "Transfer Sagulung/Batu Aji"
+    }
+  ],
+  "urutan_ringkas_seed": {
+    "K1_pergi": [
+      "tp-sekupang",
+      "taman-palapa",
+      "telkom-sekupang",
+      "shangrila-a",
+      "lampu-merah-patam-lestari",
+      "kartini",
+      "stc",
+      "gor-sekupang-a",
+      "mutiara-view",
+      "tiban-iii",
+      "tiban-raya",
+      "taman-sari-a",
+      "tiban-center",
+      "tiban-ayu-a",
+      "tiban-kampung-a",
+      "uib",
+      "baloi-view",
+      "rs-awal-bros",
+      "orchid-a",
+      "gelael-a",
+      "raflesia-a",
+      "kawasaki-a",
+      "royal-grande",
+      "bundaran-madani",
+      "kadin",
+      "ikan-daun",
+      "inko",
+      "engku-putri",
+      "imigrasi",
+      "mega-mall",
+      "tp-batam-center"
+    ],
+    "K6_pergi": [
+      "tanjung-piayu-laut",
+      "kampung-jawa",
+      "laguna",
+      "oleana",
+      "bukit-barelang",
+      "rhabayu-asri-a",
+      "smpn-40",
+      "simpang-pancur",
+      "pasar-pancur",
+      "simpang-bagan",
+      "simpang-atb",
+      "bidaayu-pintu-3",
+      "bidaayu-pintu",
+      "smpn-16",
+      "bidadari",
+      "nusa-indah",
+      "bukit-sentosa",
+      "pintu-4-mukakuning",
+      "pintu-3-mukakuning",
+      "pintu-2-mukakuning",
+      "panbil",
+      "best-western-panbil",
+      "stadion-temenggung",
+      "kepri-mall",
+      "politeknik",
+      "masjid-agung",
+      "tp-batam-center"
+    ],
+    "K7_pergi": [
+      "teluk-mata-ikan",
+      "pelabuhan-nongsa",
+      "turi-beach",
+      "polda-kepri",
+      "bandoeng-resto",
+      "citra-mas",
+      "kampung-mangga",
+      "kampung-tengah",
+      "simpang-ojek",
+      "darul-falah",
+      "pura-asri",
+      "family-garden",
+      "pasar-mtc",
+      "simpang-bandara",
+      "bandara-hang-nadim",
+      "dotamana",
+      "bida-asri-2",
+      "kapita-plaza",
+      "botania-2",
+      "uniba",
+      "mustafa-plaza",
+      "kantor-camat-batam-kota",
+      "kda",
+      "puri-legenda",
+      "grand-mas",
+      "purimas",
+      "gedung-lam",
+      "tp-batam-center"
+    ],
+    "K9_pergi": [
+      "tp-punggur",
+      "pltu-tanjung-kasam",
+      "tpa",
+      "polsek-nongsa",
+      "pasar-top-one",
+      "kabil-raya",
+      "al-munawaroh",
+      "bri-batu-besar",
+      "kampung-mangga",
+      "citra-mas",
+      "bandoeng-resto",
+      "polda-kepri",
+      "kampung-sambau"
+    ],
+    "catatan": "Urutan K2, K3, K4, K5, K8 ada di tabel laporan; daftar sumber tidak lengkap (ada gap '…'), tandai pola sebagai lengkap=false."
+  }
+}

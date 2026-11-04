@@ -1,0 +1,1729 @@
+# COVERAGE
+
+Aturan:
+- Setiap baris adalah satu bagian laporan riset (judul bagian asli). Di bawah tiap bagian, **pecah menjadi sub-butir untuk setiap temuan, rekomendasi, tabel, atau daftar** yang ada di bagian itu. Judul saja tidak cukup.
+- Tandai `[x] <route/komponen/file>` kalau diterapkan, `[-] <alasan>` kalau sengaja tidak/ditunda (alasan harus spesifik, misalnya "butuh ilustrasi dari pemilik proyek"), atau biarkan `[ ]` kalau belum.
+- Bagian yang murni konteks (misalnya metodologi atau daftar sumber) tetap ditandai `[-] konteks, tidak perlu fitur`.
+- Selesai = tidak ada `[ ]` tersisa, termasuk di bagian "File data" di bawah.
+
+## Peleburan situs lama (CLAUDE_CODE_PROMPT bagian 4.0; rinci di docs/PARITAS.md)
+
+- [ ] hujandibatam: semua fitur di daftar paritas berjalan di /langit-laut
+- [ ] hujandibatam: semua aturan kejujuran (proksi MSS, Langsung/Tertunda/Terputus, frame 404, OFS basi, cek playlist CCTV, tanpa autoplay massal) dipertahankan
+- [ ] hujandibatam: uji paritas visual radar & ombak (situs lama vs baru) lulus
+- [ ] batam-bites: semua fitur di daftar paritas berjalan di /makan
+- [ ] batam-bites: data dipindah ke data/makan/, konversi ke data/places/17-batam-bites.json, kategori `kuliner` ditambahkan
+- [ ] batam-bites: 117 koordinat perkiraan ditandai perlu_cek_ulang dan masuk CSV koordinat
+- [ ] Widget silang (hujan per kecamatan di kartu, berteduh terdekat, feri terakhir di detail makan, Hari Ini, mural)
+- [ ] Batas kecamatan BIG dari hujandibatam dipakai ulang (lisensi dicatat)
+- [ ] Atribusi gabungan di footer/kolofon
+- [ ] Peta redirect 301 + sw.js pengganti siap (eksekusi hanya setelah izin pemilik proyek)
+
+## 00-keputusan-percakapan.md
+
+- [ ] 00 › 1. Identitas proyek
+- [ ] 00 › 2. Nada & estetika (keputusan user, tegas)
+- [ ] 00 › 3. Struktur menu "Loket"
+- [ ] 00 › 4. Tukang Langganan (keputusan user)
+- [ ] 00 › 5. Direktori: kategori yang diminta user (semua wajib ada)
+- [ ] 00 › 6. Data hotel dari user
+- [ ] 00 › 7. Koordinat
+- [ ] 00 › 8. Hal yang ditunda / belum diriset
+- [ ] 00 › 9. Hasil riset kecil di chat (tidak ada di laporan lain)
+  - [ ] 00 › 9.1 Situs indie kota lain yang disebut (inspirasi, selain laporan 01)
+  - [ ] 00 › 9.2 Konsep peta (disepakati sebelum riset gaya)
+  - [ ] 00 › 9.3 Konsep mural (disepakati)
+  - [ ] 00 › 9.4 Catatan riset sumber data yang dilakukan di chat (pelengkap; jangan bangun ulang fitur cuaca)
+  - [ ] 00 › 9.5 Sumber geoportal yang diberikan user
+
+## 01-inspirasi-konsep.md
+
+
+- [-] 01 › Batam City Hall: Riset Contoh Website Kota, Direktori Hyperlocal & Konsep Lengkap — konteks, tidak perlu fitur (kesimpulan pembuka "almanak kota yang hidup" dicatat di TL;DR)
+- [ ] 01 › TL;DR
+  - [ ] Konsep inti: satu peta ilustrasi Batam sebagai pintu masuk; hujan, ombak, CCTV, makan, Tukang Langganan jadi layer di atas peta {F1}
+  - [ ] Pola ditiru: peta crowdsourced bernuansa lucu (Hoodmaps, NEONSIGNS.HK), arsip nostalgia (OldNYC), direktori tetangga (Front Porch Forum); kunci = satu peta cantik + data dikurasi manusia {F3}
+  - [ ] Tukang Langganan = pembeda terkuat: rekomendasi antarwarga, min. 2 rekomendasi independen, tampilkan terakhir dicek {F6}
+  - [ ] Stack realistis: Next.js/Astro di Vercel, MapLibre + Protomaps/PMTiles, Scrollama, D3/Rough.js, Supabase/Sheets, API BMKG {F1}
+  - [ ] Roadmap MVP 6-8 minggu: peta + hujan + makan + 3 kategori tukang, baru budaya/feri/fitur lucu {F10}
+- [ ] 01 › Key Findings
+  - [ ] Objek sentral yang dicintai warga: untuk Batam = peta ilustrasi pulau + Barelang + kampung tua; bukan portal serba ada {F1}
+  - [ ] Crowdsourcing berhasil bila ada kurasi (NEONSIGNS.HK >4.000 foto/3 bulan dengan esai kuratorial; OldNYC koreksi warga atas data arsip) {F5}
+  - [ ] Direktori paling dipercaya = paling manusiawi: nama pemberi rekomendasi, cerita personal, kontak perekomendasi (pola COMMUNIT-E) {F6}
+  - [ ] Model keberlanjutan hyperlocal (iklan/sponsor lokal tanpa pelacak) -- BERTENTANGAN dengan keputusan 00/prompt: tanpa iklan/sponsor/listing berbayar; hanya donasi {F9}
+  - [ ] Data terbuka Indonesia kaya: BMKG (cuaca kelurahan, CAP, maritim, gempa), Panel Harga Pangan Bapanas 514 kab/kota, jadwal feri SCC {F2}
+- [ ] 01 › Details
+  - [ ] 01 › 1. Contoh website kota/area yang bagus
+    - [ ] NEONSIGNS.HK: peta crowdsourced + kategori "Sudah Hilang"/Lost; terapan Batam: ikon khas/hilang (papan ruko Nagoya, gapura kampung tua, pelantar kayu) {F5}
+    - [ ] OldNYC (~50.000 foto, koreksi typo warga, kode open source): fitur "Batam Dulu vs Sekarang" + kolom "saya ingat ini" {F5}
+    - [ ] Fortepan (slider tahun, tag, unduh): "Geser tahun, lihat Batam berubah" {F5}
+    - [ ] Hoodmaps: peta vibe; kategori harus aman (ngopi, macet jam pulang pabrik, angin kencang); tanpa etnis/kelas; moderasi stereotip {F9}
+    - [ ] The Pudding (Tale of Two Cities, Population Mountains): format esai visual ("Kenapa Batam penuh ruko?", asal daerah warga, kecamatan paling banyak tukang jahit) {F5}
+    - [ ] Kontinentalist (Malay Lauk-Pauk): referensi visual/budaya untuk infografis Lauk Melayu Kepri & Peta Kampung Tua {F5}
+    - [ ] Manual Jakarta: editorial + direktori di satu tempat; kolom editorial untuk Makan {F2}
+    - [ ] Steady Hand Maps: peta tangan "terbaik dan teraneh"; inspirasi gaya hand-drawn {F1}
+    - [ ] Russell Shaw: garis pena + satu spot color per kota/section (oranye senja Barelang) {F1}
+    - [ ] Awwwards maps: interaksi animasi hujan pada peta ilustrasi terhubung data hujan asli {F8}
+  - [ ] 01 › 2. Contoh direktori rekomendasi layanan hyperlocal
+    - [ ] Front Porch Forum: terverifikasi alamat, tidak anonim, moderasi, relawan lingkungan -> "Duta Kecamatan" {F6}
+    - [ ] COMMUNIT-E: kontak perekomendasi dicantumkan = sinyal kepercayaan (di Batam: hanya dengan izin; nomor perekomendasi tidak pernah tampil, keputusan 00) {F6}
+    - [ ] Repair Month Google Doc & Put This On: cerita personal + catatan spesialisasi per entri; tandai yang paling sering direkomendasikan {F6}
+    - [ ] Highland Repair Directory: 9 kategori repairer via spreadsheet bersama {F6}
+    - [ ] Repair Café peta global + API lokasi (relevan bila ada Repair Café di Batam) {F6}
+    - [ ] Repair Kopitiam (SG): relawan "Repair Coach" dilatih; ide kampanye/event reparasi {F6}
+    - [ ] NEA daftar repair bertanggal ("as at 15 May 2025"): pola daftar selalu bertanggal -> "terakhir dicek" {F6}
+    - [ ] Recyclopedia.sg & Bangsar portal: metodologi belum terverifikasi; hanya referensi {F6}
+    - [ ] Sejasa (pembanding komersial: 750.000 pelanggan, 300+ kategori, verifikasi dokumen): jangan bersaing, posisi "mulut ke mulut yang dibukukan" {F6}
+    - [ ] Celah pasar: tidak ada direktori tukang komunitas terdokumentasi di Indonesia/Batam (inferensi, bukan survei) {F6}
+  - [ ] 01 › 3. Fitur umum dan unik di website kota (selain cuaca, ombak, CCTV, kuliner)
+    - [ ] Peta crowdsourced bertema (neon, foto lama, vibe) {F5}
+    - [ ] Timeline/slider tahun (Fortepan, Neon Timeline) {F5}
+    - [ ] Esai visual/scrollytelling {F5}
+    - [ ] Audio walk/tur jalan kaki (NEONSIGNS.HK) {F5}
+    - [ ] Kalender komunitas + direktori bisnis + forum (FPF): kalender acara {F5}
+    - [ ] Peta layanan reparasi via API pihak ketiga {F6}
+    - [ ] Halaman "Yang sudah hilang" (Lost Neon) -> "Batam yang hilang" {F5}
+    - [ ] Fitur relevan Batam lain: jadwal feri, info harga pangan, kamus dialek, layanan publik, event, cerita warga {F3}
+  - [ ] 01 › 4. Konteks Batam yang bisa jadi bahan fitur
+    - [ ] Kampung Tua: permukiman pra-1970, cagar budaya Perda RTRW; jumlah beda sumber (37 titik 2019 Antara; 37 titik ~1.600 ha RKWB 2019; 134 STPN dgn 33 mainland; 33/36 sumber lain); tulis sumber+tahun; nada netral {F5}
+    - [ ] Barelang: 6 jembatan, 1992-1998, total bentang ~2 km (Wikipedia ~2,26 km) {F5}
+    - [ ] Feri: sejak Juli 2026 semua feri HarbourFront berangkat dari Singapore Cruise Centre baru (5 HarbourFront Avenue); rute utama BatamFast/Sindo/Majestic ke Batam Centre, ke Sekupang, Harbour Bay (Horizon), Tanah Merah-Batam Centre/Nongsapura; feri terakhir Batam Centre-HarbourFront ~20:30 WIB; selalu "cek ke operator" {F4}
+    - [ ] Ide khas Batam: melting pot, pekerja kawasan industri (shift, bus karyawan), angin/ombak penentu feri pulau, ruko, budaya Melayu pesisir {F5}
+- [ ] 01 › Konsep Lengkap "Batam City Hall"
+  - [ ] 01 › Visi & tone
+    - [x] lib/site.ts, app/tentang · Visi "balai warga online" -- nada awal (santai, selipan Melayu, "Ape kabar, Batam?", maskot lucu) DIKOREKSI keputusan 00: premium/artsy/kalem, informasi dulu {F1}
+  - [ ] 01 › Struktur menu ("Loket")
+    - [x] lib/site.ts LOKET · 8 loket versi 01 (Beranda, Langit & Laut, Perut, Tukang Langganan, Jalan-jalan, Cerita & Budaya, Info Warga, Main-main) diganti struktur 00 bagian 3 (Loket 01-07) {F1}
+    - [ ] Beranda: peta + widget hari ini (hujan, ombak, feri terakhir, gempa terakhir) {F2}
+    - [ ] Langit & Laut: radar, prakiraan BMKG, peringatan dini, "Bisa nyebrang ke pulau hari ini?" (+ pengingat bukan pengganti syahbandar), gempa {F2}
+    - [ ] Loket Info Warga: harga pangan Batam, layanan publik (Samsat, Disdukcapil, PLN, air), nomor darurat, kalender event {F3}
+  - [ ] 01 › Daftar fitur per kelompok
+    - [ ] A. Cuaca & Laut: radar di atas peta ilustrasi; animasi tetes hujan doodle (DITOLAK gaya doodle oleh 00; ganti gaya chart/riso) {F2}
+    - [ ] A. Prakiraan BMKG per kelurahan: 3 hari, per 3 jam, update 2x sehari, kode adm4 {F2}
+    - [ ] A. Peringatan dini nowcast BMKG (CAP/XML sampai kecamatan) {F2}
+    - [ ] A. Cuaca perairan BMKG + indikator "Aman nyebrang ke Pulau Abang/Galang?" dengan penafian syahbandar {F2}
+    - [ ] A. Gempa terkini autogempa.json (kotak Hari Ini "bila relevan") {F2}
+    - [ ] B. Peta makan dengan filter (buka subuh, dekat pelabuhan, halal, kopi+roti, seafood Barelang) {F2}
+    - [ ] B. Editorial pendek gaya Manual Jakarta ("5 Mi Lendir yang Diperdebatkan Warga") {F9}
+    - [ ] B. Infografis "Lauk-Pauk Melayu Kepri" {F5}
+    - [ ] C. Kartu tukang "kartu nama": nama, keahlian, area, perkiraan harga, jam buka, cara kontak, siapa merekomendasi + kapan {F6}
+    - [ ] C. Badge: "Direkomendasikan 3 warga", "Langganan sejak 2010", "Dicek Mei 2027", "Bisa dipanggil ke rumah" {F6}
+    - [ ] C. Filter per kecamatan dan per kebutuhan (seragam sekolah, jahit baju raya, mebel jati bekas) {F6}
+    - [ ] C. Halaman "Tukang Legendaris" (profil cerita, foto, wawancara) {F6}
+    - [ ] D. Peta Kampung Tua dengan gapura per titik, asal-usul, sumber, netral soal sengketa {F5}
+    - [ ] D. Barelang scrollytelling Jembatan 1 ke 6 {F5}
+    - [ ] D. Batam Dulu vs Sekarang (foto lama warga + slider tahun) {F5}
+    - [ ] D. Kamus Melayu Kepri & bahasa gado-gado Batam (contoh kalimat, rekaman suara) {F5}
+    - [ ] D. "Dari Mana Kau?" peta asal daerah warga (survei sukarela) {F9}
+    - [ ] E. Harga pangan harian Bapanas (cek dulu filter Kota Batam; belum ada API resmi; cek ketentuan sebelum scrape) {F3}
+    - [ ] E. Panduan layanan publik "KTP pindahan di Batam" (tulis sendiri, tautkan sumber resmi) {F3}
+    - [ ] E. Widget "Feri Terakhir Hari Ini" besar {F4}
+    - [ ] E. Kalender event via form (pasar malam, festival, Imlek, Pacu Jalur) {F5}
+    - [ ] F. Batam Vibe Map aman (ngopi sampai subuh, macet jam pulang pabrik, angin kencang, sinyal Singapura nyasar); tanpa etnis/kelas {F9}
+    - [ ] F. Kalkulator "Ke Singapura atau Ke Nagoya?" {F9}
+    - [ ] F. "Hujan Bingo" notifikasi hujan Batam Centre vs Sekupang kering {F9}
+    - [ ] F. Kartu Pos Batam generator {F9}
+    - [ ] F. Maskot "Ong si Gonggong" -- DITOLAK keputusan 00 (nama Gonggong dan maskot kartun) {F9}
+  - [ ] 01 › Cara menggabungkan hujandibatam & batam-bites
+    - [ ] Domain payung + satu peta dasar bersama (MapLibre + style ilustrasi); semua jadi layer {F1}
+    - [ ] Fase transisi: kedua situs lama tetap hidup, header bersama, redirect pelan-pelan {F9}
+    - [ ] Data bersama: satu skema "tempat" untuk resto dan tukang (id, nama, koordinat, kategori, kecamatan, sumber, terakhir dicek) {F3}
+    - [ ] Widget silang: resto "lagi hujan di sini"; peta hujan "warung kopi terdekat buat berteduh" {F3}
+  - [ ] 01 › Konsep visual
+    - [-] diganti palet chart 05/00 · Gaya line art goyah + palet terbatas (oranye senja, biru Selat, hijau bakau, kuning ruko), satu spot color per section -- DIGANTI palet chart 05/00 {F1}
+    - [ ] Peta hibrida: vektor OSM di-style "kertas" + ikon landmark garis (bukan menggambar seluruh peta) {F1}
+    - [-] bertentangan dengan keputusan 00/05 · Tipografi: judul tulisan tangan/rounded playful -- BERTENTANGAN dengan 05/00 (serif berkarakter + sans + mono) {F1}
+    - [ ] Infografis sketsa Rough.js/roughViz (harga cabai, curah hujan, feri per hari) {F5}
+    - [ ] Mikro-interaksi: hujan di peta saat hujan terdeteksi; kapal feri bergerak di Selat saat jam berangkat {F8}
+  - [ ] 01 › Crowdsourcing Tukang Langganan & cara menjaga kualitas
+    - [ ] Seed manual 50-100 tukang pertama (pemilik + 10-20 kenalan); jangan launching kosong {F6}
+    - [ ] Form publik wajib: nama tukang, keahlian, kecamatan, cara menghubungi, pernah pakai kapan, kenapa (1-3 kalimat), kontak perekomendasi (tidak tampil) {F6}
+    - [ ] Kampanye bulanan ala Repair Month (Bulan Tukang Jahit jelang Lebaran, Bulan Servis AC) {F6}
+    - [ ] Duta Kecamatan relawan {F6}
+    - [ ] Aturan min. 2 rekomendasi independen; 1 rekomendasi = "Baru direkomendasikan 1 orang" (00: default sembunyikan sampai 2) {F6}
+    - [ ] Tanggal "terakhir dicek" + tombol "Masih buka?"/"Sudah pindah/tutup" {F6}
+    - [ ] Persetujuan tukang via WA singkat; UU PDP (nomor HP = data pribadi) {F6}
+    - [ ] Tanpa rating bintang; cerita + tag ("rapi", "on time", "harga jujur") {F6}
+    - [ ] Moderasi manual awal + label "Rekomendasi warga, bukan endorsement. Selalu sepakati harga di awal." {F6}
+    - [ ] Jalur keluhan "laporkan masalah" menyembunyikan listing sementara {F6}
+    - [ ] Model keberlanjutan: donasi (Saweria/Trakteer/KaryaKarsa) -- ADA; sponsor lokal, listing "Unggulan" makan, merch, hibah: sponsor/listing DITOLAK 00; merch/hibah opsional {F9}
+  - [ ] 01 › Tech stack & sumber data
+    - [x] package.json · Frontend Next.js/Astro di Vercel (prompt: Next.js 16) {F1}
+    - [x] features/peta/PetaLaut.tsx (R2 menunggu PLAN butir 5) · Peta MapLibre GL JS + Protomaps/PMTiles di R2/Vercel, style via Maputnik {F1}
+    - [ ] Scrollytelling Scrollama + MapLibre (templat digidem/maplibre-storymap, OroraTech/scrolly-maplibre) {F5}
+    - [ ] Infografis D3 / Rough.js / Observable Plot {F5}
+    - [ ] Data & form: Sheets+Tally lalu Supabase (prompt: Supabase untuk kiriman warga; JSON statis untuk direktori) {F6}
+    - [ ] Cron/ingest Vercel Cron atau GitHub Actions untuk tarik/cache BMKG (contoh QuakeLog 15 menit) {F2}
+    - [ ] Sumber BMKG prakiraan: api.bmkg.go.id/publik/prakiraan-cuaca?adm4={kode}; wajib atribusi {F2}
+    - [ ] Sumber BMKG peringatan dini CAP: data.bmkg.go.id/peringatan-dini-cuaca/ {F2}
+    - [ ] Sumber BMKG maritim: peta-maritim.bmkg.go.id/public_api/perairan {F2}
+    - [ ] Sumber BMKG gempa: autogempa.json, gempaterkini.json, gempadirasakan.json; ~60 req/menit/IP -> wajib cache {F2}
+    - [x] scripts/extract-basemap.mjs, features/peta/style.ts · OSM/Protomaps peta dasar {F1}
+    - [ ] Panel Harga Pangan Bapanas panelharga.badanpangan.go.id (cutoff 13.00 WIB; belum ada API resmi) {F3}
+    - [ ] Jadwal feri: papan SCC singaporecruise.com.sg/schedule/ferries/ + operator; mulai jadwal statis kurasi + penafian {F4}
+    - [ ] Repair Café API (bila ada Repair Café di Batam) {F6}
+  - [ ] 01 › Roadmap realistis untuk developer solo
+    - [-] digantikan fase 1 di docs/PLAN.md; maskot ditolak research/00 · Fase 0 Fondasi (2 minggu): nama, domain, palet, 15-20 ikon doodle + maskot, peta dasar MapLibre+PMTiles {F1}
+    - [ ] Fase 1 MVP (6-8 minggu): beranda peta + Hari Ini, integrasi dua situs lama, Tukang Langganan v1 (3 kategori, 50+ seed, form), Tentang + donasi; target 100 rekomendasi, 1.000 pengunjung/bulan {F10}
+    - [ ] Fase 2 Komunitas (bulan 3-5): kategori tambahan, badge, "masih buka?", Duta Kecamatan, jadwal feri statis, kalender, sponsor pertama (DITOLAK), kartu pos/stiker {F6}
+    - [ ] Fase 3 Budaya & Cerita (bulan 6-9): Barelang scrolly, Kampung Tua, kamus crowdsourced, kampanye foto lama {F5}
+    - [ ] Fase 4 Main-main & Skala (bulan 10+): Vibe Map, Hujan Bingo, kartu pos, harga pangan, panduan layanan, Supabase penuh, PWA/notifikasi hujan {F9}
+- [ ] 01 › Recommendations
+  - [ ] Mulai dari Tukang Langganan + peta; utilitas (hujan, feri, tukang) membuat orang balik, budaya = alasan betah {F6}
+  - [ ] Jangan bersaing dengan Sejasa/Google Maps; posisi "mulut ke mulut yang dibukukan" (cerita, nama pemberi, tanggal cek) {F6}
+  - [ ] Kurasi > volume: 100 tukang bagus > 2.000 hasil scrape {F6}
+  - [ ] Peta hibrida OSM + overlay ilustrasi, jangan gambar seluruh peta {F1}
+  - [ ] Humor hanya soal cuaca/macet/makanan, bukan kelompok orang; moderasi label (pelajaran Hoodmaps) {F9}
+  - [ ] Cantumkan atribusi BMKG dan OSM di setiap layer (wajib ketentuan BMKG) {F1}
+- [ ] 01 › Caveats
+  - [ ] "Celah pasar" = inferensi dari ketiadaan bukti, bukan survei {F6}
+  - [ ] Jumlah Kampung Tua beda antarsumber (33/36/37/134): sebut sumber+tahun {F5}
+  - [ ] Jadwal feri berubah; pindah ke SCC Juli 2026 hanya dari batam.com (bukan operator) -> verifikasi operator {F4}
+  - [ ] Belum terkonfirmasi Kota Batam ada di filter Panel Harga Pangan {F3}
+  - [ ] Metodologi Recyclopedia.sg dan Bangsar belum terverifikasi {F6}
+  - [ ] Angka FPF (235.000 rumah tangga, 16.000 bisnis, 48%) dari FPF sendiri, bukan audit independen {F6}
+
+## 02-teknik-mural-peta.md
+
+
+- [-] 02 › Batam City Hall: Riset Teknik Mural Interaktif & Peta Artsy (bahan prompt Claude Code) — konteks, tidak perlu fitur (kesimpulan pembuka diulang di TL;DR)
+- [ ] 02 › TL;DR
+  - [ ] Urutan: Mode Peta dulu (MapLibre+PMTiles+style nautical chart+kontur GEBCO+sketsa landmark SVG), lalu Mode Mural per segmen (OpenSeadragon + DZI `vips dzsave` + satu canvas overlay) {F1}
+  - [ ] Georeferensi pakai TPS (`@allmaps/transform`), 30-80 GCP/segmen, hasil di JSON, dua arah (lat/lng->piksel untuk data hidup; piksel->lat/lng untuk "buka di Mode Peta") {F8}
+  - [ ] Produksi ilustrasi hibrida: ilustrator lokal memegang landmark+kunci gaya; AI hanya isian latar dan diumumkan terbuka; laut dirender prosedural, bukan digenerate {F8}
+- [ ] 02 › Key Findings
+  - [ ] Tabel 9 temuan + status (Isometric NYC, Skytree, Mural Jakarta belum terverifikasi, vips dzsave, PMTiles raster, R2, ukuran bundle, hak cipta AI) -> data/referensi/temuan_kunci_mural.json {F8}
+  - [ ] Isometric NYC: tile 512x512, Qwen/Image-Edit fine-tune (~40 pasangan, ~4 jam, ~$12), OpenSeadragon {F8}
+  - [ ] Kantor Hak Cipta AS (Jan 2025): output murni AI tak dilindungi; seleksi/susunan/modifikasi manusia bisa -> halaman keterbukaan AI {F8}
+- [ ] 02 › 1. Bagaimana proyek sejenis dibuat
+  - [ ] 02 › Isometric NYC: contoh terbaik yang terdokumentasi
+    - [ ] Alur: render dasar (3D Tiles ortografik) -> model gaya fine-tune -> infill kuadran 512x512 (2x2/panggilan, metadata SQLite) -> GPU H100 sewaan (<$3/jam, >200 generasi/jam) {F8}
+    - [ ] Masalah: air dan pohon gagal, QA otomatis tak andal -> banyak perbaikan manual; viewer OpenSeadragon rumit (zoom, koordinat, caching) {F8}
+    - [ ] Pelajaran Batam: banyak laut/mangrove/hutan = titik lemah AI; laut jangan digenerate, render prosedural (shader ombak) di atas mask air {F8}
+    - [ ] Katalog Isometric Map Finder (10015.io) hanya agregator; detail tiap proyek dicek sendiri {F8}
+  - [ ] 02 › Mural Tokyo Skytree (teamLab): inspirasi Mural Jakarta
+    - [ ] Mural 40 m x 3 m, monitor tertanam animasi (10 menurut teamLab, 13 menurut VICE); tanpa titik hilang, kedalaman dari tumpukan figur {F8}
+    - [ ] Implikasi: panorama tanpa perspektif tunggal cocok jalur Batam; konsekuensinya georeferensi wajib TPS {F8}
+  - [ ] 02 › Mural Jakarta (jakarta.oyenza.com)
+    - [ ] Belum terverifikasi: library viewer, format tile, produksi, penyimpanan game "Cari! 1/8" {F8}
+    - [ ] Terverifikasi hanya repo lucacadalora/isometric-jakarta (fork IsoCity MIT, bukan mural) {F8}
+    - [ ] Cara cek 5 menit: DevTools Network (`*.dzi`, `_files/{level}/{x}_{y}.jpg` = DZI/OSD; `/{z}/{x}/{y}.png` + leaflet.js = Leaflet) {F8}
+    - [ ] Pembeda Batam: data hidup, kartu museum informatif, gaya riso terkendali (bukan kepadatan ala Where's Waldo) {F8}
+- [ ] 02 › 2. Perbandingan library gambar raksasa
+  - [ ] Tabel 5 library x 8 kriteria (OpenSeadragon, Leaflet CRS.Simple, MapLibre raster, deck.gl, PixiJS v8) -> data/referensi/perbandingan_library_mural.json {F8}
+  - [ ] Rekomendasi: OpenSeadragon + satu `<canvas>` overlay (Canvas2D atau PixiJS minimal); alternatif MapLibre untuk keduanya (koordinat palsu dekat lat 0, asumsi perlu prototipe) {F8}
+  - [ ] Leaflet CRS.Simple: satuan arbitrer, plugin leaflet-rastercoords (opsi cadangan) {F8}
+  - [ ] 02 › Membuat tile
+    - [ ] `vips dzsave` DZI WebP Q=82 tile 512 overlap 1 -> seg01.dzi + seg01_files/{level}/{col}_{row}.webp {F8}
+    - [ ] Layout google/XYZ dengan `--background 244,239,228`; `skip_blanks` default 5 melewati tile polos {F8}
+    - [ ] Output ZIP; alternatif `gdal2tiles.py --xyz -p raster -z 0-6 -w none` {F8}
+    - [ ] PMTiles raster satu file (folder XYZ -> MBTiles via mb-util -> `pmtiles convert`); OSD butuh custom tileSource range-request (asumsi, belum ada library terverifikasi) {F8}
+  - [ ] 02 › Hosting
+    - [ ] Cloudflare R2: $0,015/GB-bulan, Class A $4,50/juta, Class B $0,36/juta; free tier 10 GB, 1 juta A, 10 juta B/bulan; egress gratis; 6 segmen x ~100 MB < 10 GB; domain kustom + cache CDN; CORS {F8}
+    - [ ] Vercel hanya app Next.js; jangan puluhan ribu tile di `public/` {F8}
+    - [ ] Upload `rclone copy public/tiles r2:batam-mural/tiles --transfers 32`; PMTiles `rclone copyto` {F8}
+- [ ] 02 › 3. Georeferensi ilustrasi non-ortografis
+  - [ ] Masalah: skala/arah berubah sepanjang panorama; affine hanya untuk isometrik ketat {F8}
+  - [ ] Pilihan 1 affine (>=3 GCP), 2 TPS (`@allmaps/transform`, alternatif ThinPlateSplineJS MIT), 3 triangulasi piecewise-affine (`d3-delaunay`), 4 parameter jalur untuk feri/jalan {F8}
+  - [ ] Jalur feri = polyline di ruang piksel mural, kapal dipos berdasarkan fraksi waktu 0..1 {F8}
+  - [ ] Alur kode: `data/mural/seg01.gcps.json` type GCP {resource, geo, label}; `GcpTransformer(gcps,'thinPlateSpline')`; transformBackward lng,lat->piksel; transformForward piksel->lng,lat {F8}
+  - [ ] Tool GCP internal: MapLibre kiri + OpenSeadragon kanan, klik pasangan titik, simpan JSON; pilih titik jelas (ujung jembatan, pelabuhan, simpang, masjid) {F8}
+  - [ ] 30-80 GCP/segmen, rapat di area bengkok; validasi leave-one-out; target error <40 px zoom penuh (asumsi) {F8}
+  - [ ] Poligon hujan: densify tepi tiap ~200 m sebelum transformasi, hitung di build/server (Route Handler, cache), kirim koordinat piksel {F8}
+- [ ] 02 › 4. Overlay hidup
+  - [ ] Arsitektur: OSD -> satu canvas overlay seukuran viewport, redraw di event animation/update-viewport via `imageToViewerElementCoordinates()`, satu loop rAF, jangan canvas per efek {F8}
+  - [ ] 02 › Hujan yang dibatasi poligon
+    - [ ] Canvas2D: path poligon + `clip()`, garis hujan pendek, partikel skala luas poligon x mm/jam, batas keras ~600 di HP {F8}
+    - [ ] WebGL/PixiJS: poligon sebagai mask, ParticleContainer; hujan 1 px tinta biru riso, `globalCompositeOperation='multiply'` {F8}
+    - [ ] Kabut hujan: isi poligon tekstur halftone/grain semi-transparan {F8}
+  - [ ] 02 › Ombak dengan intensitas variabel
+    - [ ] Masker air PNG 1-bit per segmen (dari layer air ilustrator atau OSM water polygon via TPS) {F8}
+    - [ ] Garis ombak ala chart digeser sin(t), amplitudo/kecepatan = f(tinggi gelombang); Hs<0,5 m tenang (gerak 1 px, lambat); >1,5 m ada busa putih {F8}
+    - [ ] Versi WebGL: fragment shader noise+displacement di mask, resolusi 0,5x DPR di HP {F8}
+  - [ ] 02 › Kapal feri sesuai jadwal
+    - [ ] Data: `data/ferry/routes.json` (polyline piksel + durasi), `data/ferry/schedule.json` {route, depart, durationMin} -> di repo ini sumbernya data/feri/ (laporan 14) {F8}
+    - [ ] f = clamp((now-depart)/duration,0,1); pointAlongPolyline(routePx,f) -> [x,y,angle]; zona Asia/Jakarta (WIB UTC+7) {F8}
+    - [ ] Label jujur wajib: "posisi perkiraan berdasar jadwal", bukan AIS {F8}
+    - [ ] Jadwal Google Sheets via Route Handler `revalidate: 3600` -> di repo diganti data/feri/ statis {F8}
+  - [ ] 02 › Siang–senja–malam
+    - [ ] Fase dari posisi matahari (`suncalc`, lat 1,1 lng 104,0), bukan jam tetap {F8}
+    - [ ] Teknik 1: CSS overlay `mix-blend-mode: multiply` + gradien (senja oranye-merah muda, malam biru tua 60%) {F8}
+    - [ ] Teknik 2: layer lampu terpisah (PNG transparan -> DZI kedua) via `viewer.addTiledImage`, fade opacity, blend screen/lighter {F8}
+    - [ ] Teknik 3: LUT 3D WebGL per fase (ditunda) {F8}
+    - [ ] Malam riso = tinta biru gelap + kuning fluoro untuk lampu {F8}
+  - [ ] 02 › prefers-reduced-motion & anggaran performa
+    - [ ] `matchMedia('(prefers-reduced-motion: reduce)')` -> hujan arsiran statis, ombak berhenti, kapal melompat tiap 1 menit, tanpa zoom animasi {F8}
+    - [ ] Tombol UI "Gerak: hidup / tenang" selain setting OS {F8}
+    - [ ] Anggaran HP Android menengah: 30 fps efek, 15-20 fps idle, DPR canvas maks 1,5, stop loop saat tab hidden (visibilityState) dan viewer tak terlihat (IntersectionObserver), tile WebP 512 Q75-82, muatan awal <1,5 MB, JS mural lazy {F8}
+- [ ] 02 › 5. Hotspot & permainan mencari
+  - [ ] 02 › Penyimpanan anotasi
+    - [ ] Format W3C Web Annotation (Annotorious, BSD-3) atau JSON sendiri: id, segment, shape polygon points (piksel), geo [lng,lat], kind[], title{id,en}, museumLabel{year,material,body}, quests[], source (wajib) {F8}
+    - [ ] Posisi piksel tempat data (makan, tukang) dihitung via TPS; hanya landmark yang digambar butuh poligon manual {F8}
+    - [ ] Annotorious hanya editor internal; produksi render hotspot sendiri {F8}
+  - [ ] 02 › Area klik presisi
+    - [ ] Hit-test: `viewerElementToImageCoordinates` + point-in-polygon, toleransi min. 44x44 CSS px, poligon terkecil didahulukan {F8}
+  - [ ] 02 › Aksesibilitas
+    - [ ] Daftar hotspot `<button>` di DOM (panel "Daftar tempat di bagian ini"), Enter membuka kartu + `panTo` {F8}
+    - [ ] Kartu museum `<dialog>` aria-labelledby, fokus terkunci, Esc menutup {F8}
+    - [ ] Keyboard OSD bawaan (+/-, panah) dicek di versi dipakai {F8}
+    - [ ] Strip navigasi = `<nav>` tombol perhentian {F8}
+    - [ ] Game: `aria-live="polite"` progres ("Kampung tua ditemukan: 3 dari 8") + mode petunjuk (hint berdenyut) {F8}
+  - [ ] 02 › Link per titik yang bisa dibagikan
+    - [ ] Rute `/mural/[segment]?spot=<id>` atau `/mural#seg02/zoom=3/x=0.42/y=0.37`, `history.replaceState` debounce {F8}
+    - [ ] OG image per spot via `next/og` (crop ilustrasi + judul serif) untuk WhatsApp {F8}
+  - [ ] 02 › Hidden-object game
+    - [ ] `quests.json` daftar id target, progres `localStorage`, badge "Cari! 3/8", tiap temuan membuka kartu edukasi {F8}
+    - [ ] Ide quest: 6 jembatan Barelang, 8 kampung tua, pelabuhan feri, kucing oren di ruko Nagoya (kampung tua/memorial dikecualikan di titik sensitif oleh 00) {F8}
+- [ ] 02 › 6. Alur produksi ilustrasi untuk dev solo
+  - [ ] 02 › Opsi A: Ilustrator lokal (direkomendasikan untuk landmark + kunci gaya)
+    - [ ] Kontrak: lisensi eksklusif web + merch, file berlapis (garis, warna, lampu malam, mask air), kanvas per segmen overlap 10% {F8}
+    - [ ] Estimasi biaya (ASUMSI): landmark Rp150-500 rb/item; segmen panorama Rp3-15 jt, 2-6 minggu; minta 2-3 penawaran {F8}
+  - [ ] 02 › Opsi B: AI per tile dari render peta (gaya Isometric NYC)
+    - [ ] Pipeline render OSM -> model image-edit fine-tune (~40 pasangan karya ilustrator) -> infill kuadran -> QA manual; QA mahal; OSM bangunan Batam jarang; lisensi Google 3D Tiles belum diriset {F8}
+  - [ ] 02 › Opsi C: Hibrida (rekomendasi)
+    - [ ] Style sheet ilustrator: palet 4-5 tinta riso (Fluorescent Pink, Blue, Yellow, Teal, Black di kertas krem), ketebalan garis, pohon, air, atap ruko, 20-40 landmark {F8}
+    - [ ] Komposisi panorama (blocking) dari render peta + sketsa; isian latar boleh dibantu AI berreferensi landmark ilustrator + pass akhir ilustrator {F8}
+    - [ ] Posterize ke palet tetap + grain + misregistration 1-2 px per kanal untuk menyatukan sumber {F8}
+    - [ ] Halaman "Cara mural ini dibuat" (bagian tangan vs AI); hukum Indonesia belum diriset {F8}
+  - [ ] 02 › Pendekatan hibrida paling murah: peta chart + sketsa landmark
+    - [ ] 20-40 sketsa landmark SVG garis halus sebagai `symbol` layer MapLibre (~70% rasa artsy, ~10% biaya); dipakai ulang di mural {F1}
+- [ ] 02 › 7. Styling MapLibre bergaya nautical chart
+  - [ ] 02 › Contoh style yang ada
+    - [ ] Referensi: mapbox-gl-vintage-style (+remix), Pencil style MapLibre (Positron OpenFreeMap, Maputnik, `pencil-wave`/`pencil-hatch` via fill-pattern), vintage kertas viking2917, teknik QGIS Andy Woodruff {F1}
+  - [ ] 02 › Resep "Chart Batam"
+    - [x] scripts/extract-basemap.mjs, features/peta/style.ts · Basis `@protomaps/basemaps` + protokol `pmtiles`; `pmtiles extract https://build.protomaps.com/YYYYMMDD.pmtiles batam.pmtiles --bbox=103.6,0.6,104.3,1.35 --maxzoom=15` (bbox 00 menang) {F1}
+    - [-] token data/design menang (DATA_DECISIONS) · Warna laporan: darat `#F3EBDD`, laut siang `#DCE6E4`, chart malam `#0E1A24` (tokens 05 menang) {F1}
+    - [-] 05 melarang tekstur di atas kanvas peta · Tekstur kertas: opsi fill-pattern grain 256 px seamless ATAU overlay CSS `paper.webp` + `mix-blend-mode: multiply` + `pointer-events:none` (lebih disukai) {F1}
+    - [x] features/peta/style.ts waterlining (-2, -5, -8 px) · Arsiran pantai: beberapa `line` layer `line-offset` -2, -5, -9 px opacity menurun {F1}
+    - [x] features/peta/style.ts, public/glyphs (font final 05) · Label serif kapital kecil: glyph PBF dari TTF (Cormorant SC, EB Garamond SC, Libre Caslon) lewat font-maker/build_pbf_glyphs, self-host; `text-transform: uppercase`, `text-letter-spacing: 0.15`; laut italic `symbol-placement: line` (font final: 05) {F1}
+    - [x] features/peta/graticule.ts, features/peta/TepiChart.tsx · Graticule GeoJSON tiap 1' atau 5' + komponen React label derajat-menit dari `map.getBounds()` (contoh 1°08′N, 104°00′E) {F1}
+    - [ ] Landmark sketsa: SVG garis -> raster sprite atau `map.addImage` SDF (recolor siang/malam) {F1}
+    - [ ] Chart malam: dua style JSON atau `setPaintProperty`; lampu pelabuhan/mercusuar `circle-blur` kuning {F1}
+  - [ ] 02 › Kontur kedalaman dari GEBCO
+    - [-] ditunda: butuh unduhan GEBCO manual dan GDAL/tippecanoe; garap sebelum rilis peta · GEBCO_2025 (15 arc-second, ~450 m, SRTM15+ v2.7); situs juga GEBCO_2026: pakai rilis terbaru, sebut versi {F1}
+    - [-] ditunda: butuh unduhan GEBCO manual dan GDAL/tippecanoe; garap sebelum rilis peta · Label wajib "kedalaman indikatif, bukan untuk navigasi"; kasar untuk perairan dangkal antar pulau Barelang {F1}
+    - [-] ditunda: butuh unduhan GEBCO manual dan GDAL/tippecanoe; garap sebelum rilis peta · Pipeline: gdalwarp -te 103.5 0.5 104.5 1.5 -r cubic -tr 0.001 0.001; gdal_contour -fl -2 -5 -10 -20 -30 -50 -100 (garis) / -p -amin dmin -amax dmax (poligon pita); ogr2ogr -clipsrc poligon air OSM; tippecanoe -Z6 -z14 --simplification=4 -> bathy.pmtiles {F1}
+    - [-] ditunda: butuh unduhan GEBCO manual dan GDAL/tippecanoe; garap sebelum rilis peta · Smoothing ala NOAA NCEI: `gdalwarp -r cubic` + `ogr2ogr -simplify 0.0005` (toleransi 0,005° NOAA); data kecil boleh GeoJSON langsung {F1}
+    - [-] ditunda: butuh unduhan GEBCO manual dan GDAL/tippecanoe; garap sebelum rilis peta · Referensi pipeline: opendem.info (gdal_translate Int16, ogr2ogr -clipdst), openwatersio/crowd-depth PR 150 {F1}
+- [ ] 02 › 8. Rekomendasi akhir: arsitektur & MVP bertahap
+  - [ ] 02 › Stack
+    - [ ] Next.js App Router di Vercel (halaman, OG, Route Handler proxy+cache); Mode Peta maplibre-gl+pmtiles+@protomaps/basemaps; Mode Mural openseadragon+canvas+@allmaps/transform+suncalc {F1}
+    - [-] menunggu bucket dari pemilik (PLAN butir 5) · Aset besar di R2 (DZI, PMTiles basemap, bathy.pmtiles, glyph) di domain kustom `tiles.batamcityhall.id` (contoh) {F1}
+    - [ ] Data: Sheets untuk konten non-dev, Supabase untuk data warga (prompt: JSON statis + Supabase) {F1}
+  - [ ] 02 › Struktur folder
+    - [ ] Pohon app/components/lib/data/scripts (peta, mural, api rain/ferry/og, tps.ts, densify.ts, batam.ts, tile-segment.sh, bathy.sh, gcp-tool micro-app Vite) -> data/snippets/02-teknik-mural-peta/6-struktur-folder.txt {F1}
+  - [ ] 02 › Jalur MVP bertahap (dev solo, perkiraan kasar, ASUMSI)
+    - [x] features/peta/ (R2 menunggu PLAN butir 5) · Fase 0 (1 minggu): Next.js + MapLibre + PMTiles di R2, style chart siang/malam, glyph serif, graticule {F1}
+    - [ ] Fase 1 (2-3 minggu): Mode Peta berguna, layer toggle, kontur GEBCO, kartu museum, URL per tempat + OG; rilis publik di sini {F1}
+    - [ ] Fase 2 paralel (3-6 minggu): 20-40 sketsa landmark ke ilustrator, kunci palet riso {F8}
+    - [ ] Fase 3 (3-4 minggu): segmen pertama Barelang 1-6 atau Harbour Bay-Nagoya; OSD+tile R2+GCP tool+TPS+hotspot+quest+strip {F8}
+    - [ ] Fase 4: overlay hidup (siang/senja/malam dulu, lalu lampu, hujan poligon, ombak, feri), reduced-motion, uji HP Android menengah (Redmi/Samsung A) {F8}
+    - [ ] Fase 5+: segmen berikut (Sekupang -> Batam Centre -> Nongsa -> Mukakuning/Batu Aji -> Rempang/Galang), tiap segmen = momen rilis {F8}
+    - [ ] Prompt pembuka usulan Claude Code (MapView client-only, jangan sentuh fitur cuaca) {F1}
+- [ ] 02 › Caveats
+  - [ ] Mural Jakarta belum terverifikasi teknisnya {F8}
+  - [ ] Angka bundle campuran; MapLibre tak terkonfirmasi (README pihak ketiga 379 kB gzip termasuk font; issue #7255) {F8}
+  - [ ] Jumlah monitor Skytree beda (10 vs 13) {F8}
+  - [ ] Biaya ilustrator, durasi fase, anggaran partikel, target error GCP = asumsi kerja {F8}
+  - [x] features/peta/OrnamenChart.tsx "Bukan untuk navigasi" · GEBCO terlalu kasar untuk perairan dangkal; jangan terkesan peta navigasi {F1}
+  - [ ] Posisi feri dari jadwal = simulasi, tandai jelas {F8}
+  - [ ] Hukum AI Indonesia dan lisensi Google 3D Tiles belum diriset {F8}
+
+## 03-landmark-jalur-mural.md
+
+
+- [-] 03 › Batam City Hall — Seed Data & Brief Ilustrator: Jalur Cerita Mural "Utara ke Selatan" — konteks, tidak perlu fitur (kesimpulan: 8 perhentian, ikon utama Jembatan Tengku Fisabilillah)
+- [ ] 03 › TL;DR
+  - [ ] 8 segmen satu alur: pesisir utara -> sabuk industri -> 6 jembatan Barelang (Juli 1992-Januari 1998) -> Galang; nama segmen ikuti sebutan warga {F8}
+  - [ ] Hanya ~1/3 dari ~40 titik berkoordinat terverifikasi; sisanya estimasi, wajib dicocokkan OSM sebelum rilis {F1}
+  - [ ] Tiga topik sensitif butuh kartu khusus netral: Rempang Eco-City (bentrok 7 Sep 2023 di Jembatan IV, relokasi Tanjung Banon), kamp Galang (~250.000 orang estimasi), status kampung tua; tanpa ilustrasi jenaka {F8}
+  - [ ] Fakta inti terkonfirmasi: nama resmi 6 jembatan, Masjid Sultan Mahmud Riayat Syah (batu pertama 30 Apr 2017, diresmikan 20 Sep 2019), Welcome to Batam (2010), kamp Galang (1979-1996) {F8}
+- [ ] 03 › Legenda status
+  - [ ] Tiga status: ✅ Terverifikasi, ⚠️ Perlu cek ulang, 🧭 ESTIMASI-KASAR (meleset +-1-3 km) -> badge ketidakpastian di kartu/pin; 🧭 tampil sebagai pin perkiraan {F1}
+- [ ] 03 › Key Findings
+  - [ ] Nama resmi 6 jembatan (I Tengku Fisabilillah cable-stayed 642 m; II Nara Singa kantilever 420 m; III Raja Ali Haji gelagar 270 m; IV Sultan Zainal Abidin kantilever 365 m; V Tuanku Tambusai busur 385 m; VI Raja Kecik 180 m) {F8}
+  - [ ] Konflik data: pilon Jembatan I 118 m (Wikipedia) vs 199 m (Indonesia.travel) -> pakai 118; abaikan "rampung 1988" dan "dimulai Oktober 1993" {F8}
+  - [ ] Hang Nadim: landasan 4.025 m terpanjang di Indonesia; 700 m (70-an) -> 3.600 m (1988) -> 4.025 m (1995); detail tanggal/panjang awal beda antarsumber (Wikipedia EN 1978/850 m, Intracs 11 Des 1995) -> tandai perlu cek {F8}
+  - [ ] Masjid Agung Batam berubah wujud: piramida (Achmad Noe'man 1999-2001) -> revitalisasi 2022 -> dibuka 15 Sep 2024 sebagai Masjid Agung Raja Hamidah; bentuk lama = "Batam yang hilang" {F5}
+  - [ ] "Batam yang hilang" lain: pelantar Sungai Jodoh (terbakar 1980, 1987), pandangan bebas ke WTB (tertutup ruko sejak 2024), feri internasional Sekupang berhenti 14 Apr 2021 (status 2026 cek) {F5}
+- [ ] 03 › Tabel Segmen Jalur Cerita
+  - [ ] 8 baris segmen (urutan, label strip, batas, kecamatan utama, alasan) -> strip navigasi mural -> data/mural/segmen.json {F8}
+  - [ ] Alasan 8 bukan 6: Rempang (konflik masa kini) dan Galang (memori 1979-1996) dipisah agar nada tak bercampur; Barelang 1-4 dipisah sebagai zona foto {F8}
+  - [ ] Kecamatan Barelang 1-4 ditandai perlu cek (Bulang/Galang) {F1}
+- [ ] 03 › Segmen 1 — Sekupang & Belakang Padang
+  - [ ] Pelabuhan Ferry Internasional Sekupang (1.1220,103.9390 🧭): pelabuhan tertua, kantor Otorita Batam pertama; internasional berhenti 14 Apr 2021 ⚠️; kartu "Pintu pertama Batam"; quest feri ke Belakang Padang {F8}
+  - [ ] Pulau Belakang Padang (1.15213,103.89251 ✅ Wikidata Q25005677): "Batam sebelum Batam"; Easter egg "Kopi pertama Ameng"; quest hitung pancung {F8}
+  - [ ] Kedai Kopi Ameng (1.1520,103.8925 🧭): sejak 1980, kini bercabang; ikon keseharian; IG @kopiameng_batam {F8}
+  - [ ] Kampung Tua Tiban (1.1100,103.9600 🧭): cagar budaya Perda RTRW 2/2014, dulu orang Ladi; rujukan ke modul Kampung Tua {F5}
+  - [ ] Selat Singapura (1.2000,103.9000 🧭): elemen laut dekoratif (kapal kontainer, tanker, siluet Singapura); quest "Temukan 3 kapal kontainer"; bukan places -> elemen_tabel_tanpa_seed.json {F8}
+  - [ ] Catatan warga: Sekupang tetap simpul feri domestik (Karimun, Dumai, pulau sekitar); cek jadwal operator {F4}
+- [ ] 03 › Segmen 2 — Harbour Bay–Nagoya–Jodoh
+  - [ ] Harbour Bay (1.1560,103.9955 🧭): terminal feri ke Singapura + seafood/hotel/kafe; kartu "Gerbang kuliner laut"; quest cari kepiting {F8}
+  - [ ] Kawasan Nagoya (1.1440,104.0090 🧭): nama ~1978 dari pekerja Jepang (Terasbatam, kesaksian Machmur Ismail); nama resmi Sungai Jodoh/Lubuk Baja; quest tulisan huruf Jepang {F8}
+  - [ ] Nagoya Hill Mall (1.1435,104.0085 🧭): tahun buka perlu cek; hotspot info belanja {F8}
+  - [ ] Pasar Jodoh (1.1480,104.0130 🧭): sejak 1970-an, pasar seken/thrift; kecamatan Batu Ampar/Lubuk Baja ⚠️ {F8}
+  - [ ] Pelantar Sungai Jodoh (Batam yang hilang): pra-1980 perkampungan pelantar, terbakar 1980 dan 1987; layer dulu vs kini (slider); tampil gaya sepia {F5}
+  - [ ] Kopi Harum Manis (1.1450,104.0100 🧭): sejak 1985; quest 3 kopitiam (Ameng 1980, Harum Manis 1985, Morning Bakery 1987) {F8}
+  - [ ] Kampung Tua Tanjung Uma (1.1520,104.0020 🧭): rujukan; hotspot pelantar {F5}
+  - [ ] Pelabuhan Batu Ampar (1.1630,104.0000 🧭): pelabuhan kargo utama; quest hitung crane; sumber primer perlu ditambah {F8}
+  - [ ] Halte Trans Batam (1.1460,104.0120 🧭): beroperasi 18 Jul 2005, koridor pertama Sekupang-Batam Centre; ikon generik berulang {F4}
+- [ ] 03 › Segmen 3 — Batam Centre
+  - [ ] Masjid Agung Raja Hamidah (1.12624,104.05340 ✅): 1999-2001 Achmad Noe'man, menara 66 m; revitalisasi PT Adhi Karya sejak 2022 (Rp167 miliar dari pagu Rp209 miliar; total ~Rp184 miliar + Rp14 miliar 2025); dibuka 15 Sep 2024; slider dulu-kini {F8}
+  - [ ] Masjid piramida (Batam yang hilang): atap limas teriris tiga = alam rahim/dunia/akhirat; kolam wudhu; layer arsip {F5}
+  - [ ] Welcome to Batam (1.1285,104.0560 🧭): 2010, APBD Rp472,4 juta PT Hadi Lestari, huruf putih Bukit Clara 52 m, W = 4,5 ton; tertutup ruko sejak 2024; quest "Eja W-E-L-C-O-M-E" {F8}
+  - [ ] Dataran Engku Putri (1.1275,104.0525 🧭): dipugar 2009; nama dari Engku Putri Raja Hamidah (Penyengat mas kawin ~1801-1802); kuis "Siapa Engku Putri?" {F5}
+  - [ ] Pelabuhan Batam Centre (1.13086,104.05523 ✅): KSO BP Batam-PT Synergy Tharada sejak 2002; terminal tersibuk; quest temukan WTB dari feri {F8}
+  - [ ] Maha Vihara Duta Maitreya (1.1292,104.0338 ⚠️ dari Plus Code 42HM+MG9): 1991, ~4 ha, diresmikan Menag Malik Fadjar 1999; klaim "terbesar se-Asia Tenggara" = "disebut-sebut"; jam 2018 (05.30-23.30; wisatawan s.d. 15.00) beri tanggal {F8}
+- [ ] 03 › Segmen 4 — Nongsa & Hang Nadim
+  - [ ] Bandara Hang Nadim (1.12083,104.11861 ✅ titik kompleks): landasan 4.025 m (Wikipedia EN 4.028 m); 4.173.425 penumpang 2024 (DGCA); dinamai Laksamana Hang Nadim; kartu "700 m -> 4.025 m"; quest ukur 4 km {F8}
+  - [ ] Halte Koridor 7 Bandara (titik bandara): Nongsa-Bandara-Batam Centre sejak 2 Jul 2026, interval 20-30 menit; kartu rute/jadwal ber-tanggal {F4}
+  - [ ] Pelabuhan Nongsapura (1.18838,104.09490 ✅ Wikidata Q12504175): terminal internasional Jl. Hang Lekiu, Sambau; kartu "Gerbang resor" {F8}
+  - [ ] Kampung Tua Nongsa (1.1950,104.1000 🧭): dibuka Raja Isa, pusat pemerintahan pertama ⚠️; kartu "Asal mula Batam" {F5}
+- [ ] 03 › Segmen 5 — Koridor Industri (Mukakuning–Batu Aji–Sagulung–Tanjung Uncang)
+  - [ ] Batamindo Industrial Park (1.06222,104.02917 ⚠️ Wikimapia): 1990, 320 ha, kesepakatan Indonesia-Singapura 1989; dulu Sungai Mekah Kuning; quest bus karyawan {F8}
+  - [ ] Bus karyawan & shift (1.0622,104.0292 🧭): tiga shift 24 jam ⚠️; animasi kecil "jam pulang shift" saat zoom {F8}
+  - [ ] Masjid Sultan Mahmud Riayat Syah (1.04957,103.93390 ⚠️ posisi kamera Commons): 25.000 jemaah, menara 99 m, kubah bentang 63 m, 8 payung membran; quest hitung 9 kubah (1 utama + 4 gendong + 4 kecil); klaim "terbesar di Sumatra" = disebut-sebut {F8}
+  - [ ] Galangan kapal Tanjung Uncang (1.0700,103.9150 🧭): quest kapal belum selesai; perlu sumber primer per galangan {F8}
+  - [ ] Pasar Aviari Batu Aji (1.0450,103.9650 🧭): alternatif pasar seken ⚠️ {F8}
+  - [ ] Kampung Tua Batu Aji & Mukakuning (tanpa koordinat): masuk 10 kampung tua (Kepri Post); rujukan; tanpa koordinat -> hanya daftar {F5}
+- [ ] 03 › Segmen 6 — Barelang 1–4
+  - [ ] Jembatan I Tengku Fisabilillah (0.98200,104.04126 ✅ Wikidata Q11014933): cable-stayed 642 m, pilon 118 m H merah-oranye, bentang utama 350 m, Batam-Tonton, prakarsa B.J. Habibie, biaya rangkaian Rp400 miliar, desain Bruce Ramsay (VSL); quest utama #1; ikon prioritas 1 {F8}
+  - [ ] Kuliner seafood bawah Jembatan 1 (0.9800,104.0420 🧭): restoran sebagian di rakit; info warga {F3}
+  - [ ] Jembatan II Nara Singa (0.9650,104.0350 🧭): kantilever 420 m, bentang utama 160 m, Tonton-Nipah; quest #2; spot lihat J1 dari samping {F8}
+  - [ ] Jembatan III Raja Ali Haji (0.9530,104.0320 🧭): gelagar 270 m, Nipah-Setokok (seed: bentang utama 45 m); tempat memancing; kartu "Gurindam Dua Belas"; quest #3 {F8}
+  - [ ] Jembatan IV Sultan Zainal Abidin (0.9290,104.0450 🧭): kantilever 365 m, bentang utama 145 m, Setokok-Rempang; lokasi bentrok 7 Sep 2023; quest #4; WAJIB kartu netral bertanggal {F8}
+  - [ ] Saran gaya: enam jembatan siluet berbeda (kabel, kantilever, gelagar, busur) karena itu inti edukasi quest {F8}
+- [ ] 03 › Segmen 7 — Rempang
+  - [ ] Pulau Rempang (0.8500,104.1000 🧭): penduduk ~5.000 Melayu (Wikipedia EN: Melayu Galang, Orang Darat, Orang Laut) vs 7.500-10.000 jiwa di 16 kampung tua (Tempo); Walhi Riau: bermukim sejak 1834 ⚠️; kartu pengantar netral {F8}
+  - [ ] Kawasan Rempang Eco-City (tanpa koordinat): PSN lewat Permenko No. 7/2023 (28 Agu 2023); lahan 7.572 ha (BP Batam) vs ~17.000 ha (hak pengelolaan PT MEG); jangan diilustrasikan bangunan jadi; kartu kronologi bertanggal {F8}
+  - [ ] Hunian relokasi Tanjung Banon (0.8900,104.0900 🧭): 20 Jul 2025 125 KK/436 jiwa dari 304 unit; Sep 2025 Menteri Transmigrasi: 432 KK siap pindah, minta maaf, serahkan 45 SHM; kartu data bertanggal wajib diperbarui; penanda netral {F8}
+  - [ ] Kampung tua Rempang (Sembulang, Pasir Merah; 0.8050,104.1400 🧭): Sembulang tahap pertama diminta kosong 2023; rujukan Kampung Tua {F5}
+  - [ ] Jembatan V Tuanku Tambusai (0.8080,104.1600 🧭): busur 385 m, bentang utama 245 m; "busur beton pertama di Indonesia" (IIBN) ⚠️; quest #5 {F8}
+- [ ] 03 › Segmen 8 — Galang & Galang Baru
+  - [ ] Bekas Kamp Pengungsi Galang (0.76938,104.19126 ✅ Wikidata Q4258770): 1979-1996, ~250.000 (Fitzpatrick, The Australian 5 Nov 2009), Camp One/Two, diserahkan Otorita Batam 1997, penutupan 8 Sep 1996 (Kompas.id); kartu museum utama TANPA quest jenaka {F8}
+  - [ ] Museum Camp Vietnam: bekas kantor P3V; foto, alat makan, kendaraan UNHCR; quest edukatif "Temukan mobil UNHCR" {F8}
+  - [ ] Monumen perahu pengungsi: kartu "Manusia perahu" {F8}
+  - [ ] Makam Nghia Trang: >=503 pengungsi (Kompas TV); kartu hening tanpa interaksi game {F8}
+  - [ ] Vihara Quan Am Tu: pagoda & Dewi Kwan Im; hotspot budaya {F8}
+  - [ ] Pantai Melur (0.7680,104.1750 🧭): pasir putih ~1 km dari kamp, ~1,5 jam dari Batam Centre, gazebo dipesan dulu; "Sunset di ujung jalur"; koordinat Wisatago 1.0708,104.1442 SALAH (jatuh di Pulau Batam) {F8}
+  - [ ] Jembatan VI Raja Kecik (0.7330,104.2150 🧭): terpendek 180 m, Galang-Galang Baru; quest #6; badge "Barelang Lengkap" {F8}
+  - [ ] Lima entri kompleks kamp berbagi koordinat 0.7694,104.1913 (satu titik kompleks) -> jangan digambar sebagai 5 pin terpisah di peta {F1}
+- [ ] 03 › Daftar Prioritas Ikon Mode Peta (urut dari paling ikonik)
+  - [ ] 30 ikon prioritas dengan status (1 J1 ✅ ... 30 hunian Tanjung Banon) -> data/mural/ikon_prioritas.json; pesanan sketsa ilustrator 20-40 mengikuti urutan ini {F1}
+  - [ ] Ikon generik (27 kopitiam, 28 halte/bus Trans Batam, 29 bus karyawan) dipakai berulang; nomor 30 = penanda netral bukan ikon dekoratif {F1}
+  - [ ] Saran gaya: enam jembatan berbeda siluet per tipe {F1}
+- [ ] 03 › Catatan Topik Sensitif
+  - [ ] Rempang: fakta bertanggal (Permenko 7/2023; bentrok 7 Sep 2023 di Jembatan IV termasuk gas air mata kena murid sekolah; 43 warga tersangka terkait 7 dan 11 Sep 2023; relokasi 125 KK/436 jiwa Juli 2025; permintaan maaf Menteri Sep 2025 + tidak ada penggusuran paksa) {F8}
+  - [ ] Klaim diperdebatkan: investasi Rp174 triliun hingga Rp381 triliun; keterlibatan Xinyi (bantahan hanya dari BatamNow via BHRRC ⚠️, butuh sumber kedua); luas 7.572 vs 17.000 ha {F8}
+  - [ ] Penyajian Rempang: kartu "Kronologi" berdasarkan tanggal dan atribusi ("menurut BP Batam...", "menurut warga/Walhi..."), tanpa ilustrasi pabrik jadi/karikatur/game, cantumkan "Terakhir diperbarui" {F8}
+  - [ ] Galang: pengungsi 122.000-250.000 (Kompas) vs ~250.000 (Wikipedia EN); 140.738 diproses 1979-1990; penutupan 2/3/8 Sep 1996 -> tulis "September 1996" + upacara 8 Sep {F8}
+  - [ ] Galang: sisi kelam disebut singkat dan faktual (perlakuan buruk perempuan muda, kerusuhan 1994, bakar diri saat repatriasi; SCMP 6 Jun 1993, UNHCR Refugees Magazine No. 204) {F8}
+  - [ ] Galang masa kini: RS infeksi Covid-19; 2025 usulan merawat warga Gaza = "rencana/usulan" kecuali ada konfirmasi {F8}
+  - [ ] Galang penyajian: nada memorial; Nghia Trang kartu hening tanpa poin quest {F8}
+  - [ ] Kampung tua: pra-1970, cagar budaya Perda RTRW 2/2014, 37 titik diukur 2019; legalitas lahan masih isu; di mural cukup penanda yang mengarah ke modul riset; tanpa batas/status hukum; legenda (asal nama Jodoh dari Putri Mayang) = cerita rakyat {F5}
+  - [ ] Prinsip umum: (a) angka bertanggal+bersumber, (b) pemerintah dan warga sama-sama diberi atribusi, (c) humor hanya di segmen kuliner/keseharian, tidak di konflik/memorial {F8}
+- [ ] 03 › Caveats
+  - [ ] Semua titik 🧭 wajib dicek OSM (Overpass `bridge=yes` + `name~"Nara Singa"` dst.) sebelum rilis; koordinat jembatan 2-6, Harbour Bay, Sekupang, WTB, Melur, Nagoya Hill belum diverifikasi {F1}
+  - [ ] Kecamatan Tonton/Nipah/Setokok ⚠️ (kemungkinan Bulang; cek BPS) {F1}
+  - [ ] Superlatif ("vihara terbesar se-Asia Tenggara", "masjid terbesar di Sumatra") dari media -> "disebut-sebut" {F8}
+  - [ ] Data layanan cepat basi (jam vihara, rute Trans Batam, status feri Sekupang): beri tanggal di UI {F4}
+- [ ] 03 › Seed Data (JSON)
+  - [ ] Blok JSON 44 objek (id, nama, nama_populer, segmen, lat, lng, kecamatan, kategori, ringkasan, sumber_url, akurasi_koordinat) -> data/mural/landmarks.json + data/raw/03-landmark-jalur-mural__1.json + data/places/03-landmark-jalur-mural.json {F1}
+  - [ ] `akurasi_koordinat` ke status_koordinat: hanya 5 terverifikasi (jembatan-barelang-1, masjid-agung-raja-hamidah, masjid-piramida-hilang, pelabuhan-batam-centre, pelabuhan-nongsapura); "ESTIMASI-KASAR" = perlu_cek_ulang {F1}
+  - [ ] Id segmen di seed (barelang-1-4, rempang, galang, sekupang-belakang-padang, harbourbay-nagoya-jodoh, batam-centre, nongsa-hang-nadim, koridor-industri) = kunci join ke segmen.json {F8}
+  - [ ] Saran Overpass untuk cek jembatan: `bridge=yes` + `name~"..."` {F1}
+
+## 04-kampung-tua.md
+
+
+- [ ] 04 › Peta Kampung Tua Batam: Riset Konten & Seed Data untuk "Batam City Hall"
+  - [ ] Judul/pengantar: lapisan utama peta = 37 titik mainland; Rempang–Galang (16) lapisan kedua berlabel khusus; hinterland lapisan "situs & kampung lama" {F5}
+  - [ ] Perda No. 2/2004 (bukan "2/2014" seperti salah ketik di opini Antara) adalah payung tata ruang; jangan tulis 2/2014 {F5}
+- [ ] 04 › TL;DR
+  - [ ] Pakai 37 titik mainland sebagai lapisan utama; semua koordinat estimasi kasar wajib di-geocode ulang sebelum tayang {F5}
+  - [ ] Kampung paling terdokumentasi: Nongsa Pantai, Batu Besar/Kampung Melayu, Tanjung Bemban, Tanjung Uma, Tanjung Riau, Bagan, Tanjung Piayu Laut, Pulau Bulang Lintang; sisanya cerita asal-usul = label "cerita rakyat" {F5}
+  - [ ] Status legalitas berjalan: 1.450 sertifikat (Wali Kota Amsakar, 16 Okt 2026), Ranperda masuk DPRD 15 Agu 2026, Pansus 16 & 22 Sep 2026; tampilkan bertanggal dan beratribusi {F5}
+  - [ ] Rempang: proyek tidak lagi di daftar PSN Perpres 12/2025 tapi BP Batam melanjutkan pergeseran warga; fitur tidak menampilkan batas, luas, atau status lahan sama sekali {F5}
+- [ ] 04 › 1. Kenapa jumlahnya beda-beda? (dan mana yang dipegang)
+  - [ ] Tabel 9 baris "jumlah per sumber" (33 / 39→37 / 37 / 37 versi Batam Pos / 134 / 39+98 / 16 / 45 / 3 di Galang) jadi panel "Kenapa angkanya beda?" {F5}
+  - [ ] Sumber yang dipegang: daftar 37 Ranperda DPRD 2019/RKWB 2016 (mainland); 16 nama Ombudsman RI (Rempang); hinterland hanya situs dengan dasar jelas (SK Wali Kota 483/2022) {F5}
+  - [ ] Lampiran SK 105/2004 dan SK 89/2006 tidak ditemukan daring: catat TODO pemilik (minta ke Dinas Pertanahan/Bagian Hukum Pemko atau LAM) sebelum menyebut fitur "lengkap" {F5}
+  - [ ] Definisi kampung tua Perda 2/2004 ("sebelum tahun 1970 ...") dikutip sebagai teks definisi; Perda 3/2021 RTRW tidak punya ketentuan spesifik {F5}
+  - [ ] Tiga kriteria kampung tua (sebelum Otorita, belum diganti rugi, punya bukti) menurut surat Dinas Pertanahan 25 Apr 2005 {F5}
+  - [ ] Beda klaim: STPN (SK 105/2004 = 33 titik) vs Batam Pos ("37 berdasarkan SK 105/2004") ditandai konflik sumber {F5}
+- [ ] 04 › 2. Tabel kampung tua per kecamatan
+  - [ ] Catatan akurasi: semua lat/lng estimasi kasar ±1–3 km, belum dicek OSM/Wikidata; tampil sebagai pin "melayang" (lingkaran samar) {F5}
+  - [ ] Sumber daftar S1 (TribunBatam 6 Mei 2019) sebagian direkonstruksi; ejaan perlu dicek ulang {F5}
+  - [ ] Entri ke-37 "Seranggong/Seranggon" tanpa kelurahan/kecamatan: tidak dipetakan, tampil di daftar saja {F5}
+  - [ ] Kolom tabel yang harus ada di kartu: nama, nama populer, kelurahan, asal-usul nama, suku awal, masa berdiri, yang bisa dilihat, sumber {F5}
+  - [ ] Kecamatan Nongsa (14 titik)
+    - [ ] 14 kampung: Nongsa Pantai, Tereh, Bakau Serip, Teluk Mata Ikan, Kampung Melayu, Jabi, Tanjung Bemban, Batu Besar, Panglong, Kampung Tengah, Teluk Nipah, Telaga Punggur, Teluk Lengung, Panau {F5}
+    - [ ] Nongsa Pantai: Kompleks Makam Zuriat Raja Isa (cagar budaya), pantai, perahu ke Pulau Putri; asal nama dari "Nong Isa" (terverifikasi arsip) {F5}
+    - [ ] Kampung Melayu: Rumah Limas Potong (cagar budaya, 1959); Batu Besar: jejak kebun kelapa/kopra, SD tua (SR 1957, perlu dicek) {F5}
+    - [ ] Teluk Mata Ikan: gapura kuning Melayu, pantai pasir putih, kelapa; Tanjung Bemban: Gapura Adat, pantai {F5}
+    - [ ] Panau: asal nama = cerita rakyat (penyakit kulit panau), sumber opini Antara; 1949–1953 pendatang Bugis, Buton, Flores {F5}
+    - [ ] Kampung dengan "Belum ditemukan/Perlu dicek" (Tereh, Bakau Serip, Jabi, Panglong, Kampung Tengah, Teluk Lengung, dll.) tampil minimal, tanpa mengisi placeholder {F5}
+  - [ ] Kecamatan Bengkong (2)
+    - [ ] Bengkong Laut dan Bengkong Sadai (Sadai): hanya nama, kelurahan, lokasi estimasi; sisanya perlu cek lapangan {F5}
+  - [ ] Kecamatan Batu Ampar (4)
+    - [ ] Batu Merah (Melcem; Daeng Tambak, Pak Merah pengumpul batu, ramai 1976) dan Sei Tering (muara Tionghoa, hulu Jawa; 1960-an) = tutur lokal artikel opini Antara, label cerita rakyat/sumber tunggal {F5}
+    - [ ] Tanjung Sengkuang: nama saja; Air Raja: janggal (Air Raja juga kelurahan di Galang), tidak dipetakan {F5}
+  - [ ] Kecamatan Batam Kota (1) dan Lubuk Baja (1)
+    - [ ] Belian (makam tua "±200 tahun, 3 m" dari blog, perlu dicek) dan Tanjung Uma (Bukit Kubur, makam dekat Masjid Baitussyakur, rumah pelantar) {F5}
+    - [ ] Tanjung Uma: tiga versi asal nama (rumah panggung di antara Tanjung Pangkal Lepu & Tanjung Kubur; kata Inggris "home"; kerang "tuma") ditampilkan sebagai beda versi {F5}
+  - [ ] Kecamatan Sekupang (3–4)
+    - [ ] Tanjung Riau, Patam Lestari (Patam), Mentarau, dan Tiban (belum terkonfirmasi di daftar 37, kelurahan "Tiban Lama?") {F5}
+    - [ ] Tiban: suku awal Orang Ladi, Bugis ("Semani"), Minang, Selayar (Antara) = tampil dengan badge perlu_cek_ulang {F5}
+  - [ ] Kecamatan Sagulung (6) dan Batu Aji (1)
+    - [ ] Tembesi, Tiawangkang, Tanjung Gundap, Dapur 12, Sei Lekop, Sei Binti (Sagulung) dan Cunting (Tanjung Uncang, Batu Aji) {F5}
+    - [ ] Dugaan asal nama (tembesi, dapur arang, nipah, panglong) hanya sebagai "dugaan" berlabel {F5}
+  - [ ] Kecamatan Sei Beduk (3)
+    - [ ] Tanjung Piayu Laut, Bagan, Setengar (Tanjung Piayu); Bagan: asal nama "bebagan", masjid At Taubah, konflik tahun 1879 {F5}
+    - [ ] Setengar: catatan relokasi era Otorita adalah topik lahan, tidak masuk kartu {F5}
+  - [ ] Kecamatan Galang: Pulau Rempang–Galang (16 kampung versi Ombudsman RI)
+    - [ ] 16 nama: Tanjung Kertang, Rempang Cate, Tebing Tinggi, Blongkeng, Monggak, Pasir Panjang, Pantai Melayu, Tanjung Kelingking, Sembulang, Dapur Enam, Tanjung Banun/Banon, Sungai Raya, Sijantung, Air Lingka, Kampung Baru, Tanjung Pengapit {F5}
+    - [ ] Rempang = dua kelurahan Rempang Cate dan Sembulang; pembagian kelurahan per kampung dan pulau (Sijantung, Air Lingka, Kampung Baru, Tanjung Pengapit) perlu dicek {F5}
+    - [ ] Suku awal (Melayu, Orang Laut, Orang Darat, sejak 1834) = klaim tokoh warga Gerisman Ahmad, bukan arsip; wajib diatribusikan {F5}
+    - [ ] Monumen eks tentara Jepang di Sembulang (GNFI) disebut; bekas kamp pengungsi Vietnam Galang BUKAN kampung tua {F5}
+  - [ ] Hinterland (Belakang Padang, Bulang): belum ada daftar terbuka
+    - [ ] Tiga situs: Makam Temenggung Abdul Jamal (Bulang Lintang), Perigi Batu (Pulau Buluh), Belakang Padang (ibu kota Kecamatan Batam 1959–1983) {F5}
+    - [ ] Hinterland tidak diklaim sebagai kampung tua resmi (status perlu_cek_ulang) {F5}
+- [ ] 04 › 3. Profil kampung tua yang paling terdokumentasi
+  - [ ] 12 profil + 1 blok toponim jadi halaman/kartu panjang; tiap klaim diberi badge ketidakpastian {F5}
+  - [ ] 1) Nongsa Pantai: "kampung asal" Hari Jadi Batam
+    - [ ] Mandat Raja Isa bin Raja Ali (Nong Isa) 22 Jumadil Akhir 1245 H / 18 Des 1829 dari Sultan Abdulrahman Syah dan YDM Riau VI Raja Jakfar = Hari Jadi Kota Batam via Perda 4/2009 {F5}
+    - [ ] "Kampong Nongsa" di peta Belanda 1847 (KITLV) menurut jurnal Kronologi UNP 2025 {F5}
+    - [ ] Konflik data: wafat 1831 (media) vs "sekitar 50 tahun" pada 1833 (Aswandi Syahri); makam Nong Isa belum diketahui, yang ada makam zuriat; kartu tulis "tahun wafat masih diperdebatkan" {F5}
+    - [ ] Makam Zuriat di bukit (59 anak tangga satu laporan), SK Wali Kota 483/2022; tradisi tepuk tepung tawar, kenduri arwah/haul jama', mandi Safar, bubur Asyura, khatam Al-Qur'an (wawancara Ibu Hasnida) {F5}
+  - [ ] 2) Batu Besar & Kampung Melayu: dari "Lagorap" ke kopra
+    - [ ] Asal nama (batu besar; nama lama Labong Gorap dari kerang gorap); penghuni awal M. Akib dari Malaka, Tionghoa ±1870 (Theng Huang generasi ketiga), Melayu, Bugis; kopra dijual ke Singapura (BPNB Kepri, sebagian tutur lisan) {F5}
+    - [ ] Sekolah Rakyat 1957 (blog/GoWest) dan klaim SD 001 Nongsa tertua: perlu cek Disdik {F5}
+    - [ ] Rumah Limas Potong: keluarga Haji Muhammad Sain, 1959, RT 01/RW 13, SK 483/2022, kondisi memprihatinkan (Kadisbudpar Ardiwinata, Agu 2025); sumber beda soal bentuk (panggung vs bukan) {F5}
+    - [ ] Etika: rumah pribadi, jangan masuk tanpa izin keluarga {F5}
+  - [ ] 3) Tanjung Bemban: kampung legenda
+    - [ ] Cerita rakyat (a) Sang Nila Utama berburu pelanduk menurut Sejarah Melayu (teks hikayat, bukan bukti arkeologis); (b) anak durhaka jadi batu "Malang Orang" {F5}
+    - [ ] Warga pindah ke Batu Besar pascakemerdekaan; Gapura Adat dan pantai tenang {F5}
+  - [ ] 4) Tanjung Uma: "tanah bertuah" di depan Jodoh
+    - [ ] Penghuni awal Melayu & Bugis keluarga diraja Riau-Lingga (nelayan, pekebun kelapa); Bukit Kubur dengan tradisi "jejak tanah" bagi bayi {F5}
+    - [ ] Makam dekat Masjid Baitussyakur = cerita rakyat (saudara Habib Nuh, Singapura) dengan ikon cerita rakyat {F5}
+    - [ ] Pantun lokal "Pokok kurma di bawah lembah ..." (4 baris) bisa dikutip dengan atribusi {F5}
+    - [ ] SENSITIF: legalitas paling alot (Menteri ATR 2019; Okt 2026 masih diupayakan); jangan sentuh topik lahan di kartu {F5}
+  - [ ] 5) Tanjung Riau: pelantar yang jadi ruang publik
+    - [ ] Cerita lisan persinggahan raja Johor–Riau–Lingga–Indragiri, "Perigi Raja" (Pak Saptono via KKN Undip) = cerita rakyat {F5}
+    - [ ] Pilot Kotaku PUPR: pelantar lingkar, plaza, taman atas laut, gapura; Rp15 miliar APBN + Rp1,562 miliar APBD, target Juni 2021; warga sudah SHM {F5}
+    - [ ] Arsitektur rumah panggung Melayu pesisir (jurnal UIB); petunjuk arah dari lampu merah Sekupang ke Sungai Harapan; spot sunset {F5}
+  - [ ] 6) Bagan: masjid tua dan makam tetua
+    - [ ] Satu dari 3 kampung tua Tanjung Piayu (Bagan, Piayu Laut, Setengar) menurut BKKBN; asal nama "bebagan" (blog) {F5}
+    - [ ] Konflik data: blog 1879 oleh Nong Isa mustahil; tandai "perlu dicek"; markas KKO 1965 (blog, perlu dicek) {F5}
+    - [ ] Masjid At Taubah, makam keluarga tetua adat Raja Mahmud/"Raja Muhammad" (nama perlu dicek), kelapa >80 tahun, tugu kampung tua {F5}
+  - [ ] 7) Tanjung Piayu Laut: ujung selatan, wisata kuliner laut
+    - [ ] Perubahan sosial-ekonomi akibat wisata kuliner 2010–2022 (Historia UNRIKA); cerita jalur penyamaran Sultan Sulaiman = sumber lemah; rencana pipa air BP Batam 2025 {F5}
+  - [ ] 8) Teluk Mata Ikan: pantai kelapa di Nongsa
+    - [ ] Gapura kuning, pantai, kelapa; 2025 tokoh warga menagih legalitas (Batam Pos) = topik lahan, tidak masuk kartu {F5}
+  - [ ] 9) Panau: nama dari panau
+    - [ ] Cerita rakyat penghuni pertama (istri berpanau, suami "Wak Keling"), sumber opini pejabat KPPN; kata "keling" diparafrasekan/diberi konteks {F5}
+  - [ ] 10) Batu Merah & Sei Tering: Melcem
+    - [ ] Cerita lokal (opini Antara): 1949 kampung nelayan dengan kelong Tionghoa; 1960-an Tionghoa di muara, Jawa di hulu; Daeng Tambak, Pak Merah, ramai 1976; label cerita lokal perlu cek tetua {F5}
+  - [ ] 11) Pulau Bulang Lintang (hinterland): pusat Temenggung
+    - [ ] Markas keluarga Temenggung Riau-Johor sejak 1722; Tun Abdul Jamal (lahir ~1720, Temenggung 1757, wafat ~1802); ayahnya Bendahara Tun Abbas dimakamkan di sini (Trocki via Disbud Kepri) {F5}
+    - [ ] Kompleks makam (SK 483/2022), makam Raja Maimunah, masjid, pusaka (tombak, tongkat, keris) di rumah ahli waris hanya atas izin {F5}
+    - [ ] Nama diabadikan sebagai Stadion Temenggung Abdul Jamal; Antara 2014: minim informasi tertulis di lokasi {F5}
+  - [ ] 12) Sembulang (Rempang): ringkas dan hati-hati
+    - [ ] Gabungan kampung kecil (Sembulang Hulu, Tanjung Gemuk, Air Lingseng, Sembulang Tanjung, Pasir Merah, Dapur Enam, Tanjung Banon); tokoh pembuka Muse dan Langking; Nipis wafat 1958 dimakamkan di pemakaman Al Fajri; sumber SwaraKepri tulisan warga {F5}
+    - [ ] Rekomendasi: tampilkan hanya sejarah dan budaya; konteks lain diarahkan ke catatan bertanggal §4 {F5}
+  - [ ] Toponim lama yang sering disebut "kampung tua" tapi tidak ada di daftar 37
+    - [ ] Fitur terpisah "Kisah Nama Tempat" (label cerita rakyat, bukan pin kampung tua): Jodoh (Putri Mayang & Pangeran Bugis), Kabil (ma'bul/Kabul, Cik Awang asal Siak 1909), Muka Kuning (ikan seriding kuning), Sekupang, Batu Aji {F5}
+- [ ] 04 › 4. Status legalitas: ringkasan netral & bertanggal
+  - [ ] Kerangka: Keppres 41/1973 (HPL Pulau Batam ke Otorita/BP Batam); PP 5/2011 memperluas HPL ke Rempang, Galang; SK 2004 "tidak merekomendasikan" kampung tua masuk HPL; STPN: "apabila dikaji bertentangan" dengan Keppres 41/1973 tapi juga "langkah penyelesaian sengketa yang bijak dan adil" {F5}
+  - [ ] Kronologi 20 baris (23 Mar 2004 sampai 16 Okt 2026) dengan kolom "siapa bilang", sebagai garis waktu terpisah dari sejarah umum {F5}
+  - [ ] "Hari Marwah Kampung Tua" = 23 Maret (peringatan SK 105/2004) {F5}
+  - [ ] Catatan: sejak 2025 Wali Kota Amsakar Achmad merangkap Kepala BP Batam {F5}
+  - [ ] Catatan khusus Rempang bertanggal: Agu–Sep 2023 pengumuman Eco-City (BP Batam & PT MEG, PSN) dan bentrokan Sep 2023 {F5}
+  - [ ] Klaim skala dampak beda-beda diberi atribusi: Walhi Riau (16 kampung), Muhammad Rudi/BP Batam (3 kampung: Sembulang Hulu, Sembulang Tanjung, Pasir Panjang; kali lain 4), Ombudsman Kepri (>70% warga di 5 kampung menolak relokasi) {F5}
+  - [ ] Jan 2024 Ombudsman RI: malaadministrasi, pemerintah "belum mengakui keberadaan kampung tua di Rempang"; warga 10 kampung mendukung investasi tapi menolak relokasi {F5}
+  - [ ] 10 Feb 2025 Perpres 12/2025 tidak mencantumkan Rempang Eco-City di 77 PSN; BP Batam (Ariastuty Sirait, Mar 2025) menyatakan masih di Lampiran IV {F5}
+  - [ ] Relokasi Tanjung Banon: ±60 KK (Tempo 27/2/2025); SHM 68 KK diserahkan 18/3/2025; 242 KK / 842 jiwa (Ketik.com 12/5/2026, BP Batam); Walhi: hanya 20% di lima kampung terima relokasi {F5}
+  - [ ] Sep 2025 konflik Taman Buru Sungai Raya; 15 Jun 2026 Walhi Riau & LBH Pekanbaru kecam pematokan Pantai Melayu untuk Sekolah Merah Putih (tanggapan BP Batam belum diperoleh) {F5}
+  - [ ] Kalimat tunggal kartu Rempang yang disarankan + tautan KE DUA pihak (Ombudsman dan BP Batam) {F5}
+  - [ ] Setiap pernyataan status diberi tanggal; tampilkan "terakhir diperbarui" di UI {F5}
+- [ ] 04 › 5. Arsip, foto lama, dan narasumber untuk diajak kolaborasi
+  - [ ] Daftar lembaga mitra (LAM Kota Batam, RKWB, Disbudpar Batam, TACB, BPK Wilayah IV, Disbud Kepri, Dinas Pertanahan, Museum Raja Ali Haji) jadi halaman "Mitra & sumber" / daftar TODO pemilik {F5}
+  - [ ] Arsip & foto lama (KITLV peta 1847 "Kaart van de Noordkust van het Eiland Bantang", ANRI, Perpusnas, Humas BP Batam, repository STPN) {F5}
+  - [ ] Daftar buku/jurnal sebagai bacaan lanjutan Kampung Tua (Nong Isa: Tonggak Awal Pemerintahan Batam; Kronologi UNP; Historia UNRIKA; UIB; Potensi UB; SARGA Untag) {F5}
+  - [ ] Narasumber bernama (Ibu Hasnida, Raja Erwan, keluarga H. Muhammad Sain, Pak Saptono, ahli waris Temenggung Abdul Jamal) dihubungi lewat LAM/RKWB, bukan kontak pribadi; tidak ditampilkan kontaknya {F5}
+  - [ ] Media sosial komunitas tidak diverifikasi: ambil handle dari situs lembaga, hindari akun anonim {F5}
+- [ ] 04 › 6. Panduan etika penyajian
+  - [ ] Izin & kredit: foto warga/rumah/makam/pusaka hanya dengan izin tertulis/rekaman lisan; foto lama catat pemilik, tahun, lisensi (KITLV punya ketentuan sendiri) {F5}
+  - [ ] Format kredit narasumber "Tutur: [Nama], tokoh Kampung Tua X, diwawancarai [tanggal]" dengan opsi anonim {F5}
+  - [ ] Hak koreksi warga: tombol "Ada yang keliru? Kabari kami" di tiap kartu {F5}
+  - [ ] Etika berkunjung 6 butir (busana sopan/salam; makam bukan latar konten; pelantar ruang privat; belanja warung & bawa pulang sampah; jangan basa-basi sengketa lahan; hormati Jumat siang & Ramadan) tampil di kartu {F5}
+  - [ ] Menulis topik sensitif: atribusi tiap klaim, tidak memakai "menggusur"/"merampas" sebagai narasi redaksi, tanpa luas/batas/poligon/sertifikat per kampung, beri tanggal, parafrase istilah etnis lama {F5}
+  - [ ] Badge ketidakpastian: terverifikasi, sumber_tunggal, cerita_rakyat (ikon ✦ berbeda), perlu_cek_ulang, koordinat estimasi_kasar = pin melayang {F1}
+- [ ] 04 › 7. Seed data JSON
+  - [ ] Blok seed 56 objek (37 kt-*, 16 rg-*, 3 hl-*) -> data/kampung_tua/kampung_tua.json; teks laporan salah hitung ("55 entri: 36 ...") {F5}
+  - [x] lib/data/schema.ts · Zod schema untuk seed (lat/lng null jika tidak dipetakan; akurasi_koordinat estimasi_kasar_belum_diverifikasi; status_verifikasi boleh campuran) {F1}
+  - [ ] Jalankan geocoding (Nominatim/OSM) + koreksi manual sebelum produksi; koordinat diisi pemilik lewat CSV {F5}
+  - [ ] Peta Kampung Tua: ikon gapura garis halus, kartu museum, cerita rakyat ikon berbeda; 6 entri tanpa koordinat hanya di daftar {F5}
+- [ ] 04 › Caveats
+  - [ ] Daftar 37 belum 100% pulih (Tereh/Terih, Tiawangkang/Tiangwangkang, Setengar/Setenga; Tiban? Air Raja? Seranggong) harus dicocokkan dengan lampiran SK resmi {F5}
+  - [ ] Banyak sejarah bersumber opini/blog/tutur lisan; sumber terkuat Disbud Kepri, BPNB/BPK Wilayah IV, STPN, jurnal {F5}
+  - [ ] Kuliner per kampung belum terdata (kecuali laut Nongsa, Piayu Laut, Belakang Padang): jangan mengarang {F5}
+  - [ ] Situasi Rempang dan legalitas terus bergerak; wajib "terakhir diperbarui" {F5}
+
+## 05-panduan-gaya.md
+
+
+- [-] 05 › Batam City Hall: Panduan Gaya & Design Tokens "Peta Laut" — konteks, tidak perlu fitur
+- [ ] 05 › TL;DR
+  - [x] app/kolofon · Visual: pinjam elemen chart Admiralty "Straits of Singapore, Durian and Rhio" (1840/1846, NLB, domain publik) dan "Kaart van de Noordkust van het Eiland Bantang" (1847, KITLV Leiden); hindari aset David Rumsey sebagai tekstur produksi (CC BY-NC-SA, menular) {F1}
+  - [x] app/layout.tsx, data/design/design_tokens.css, tes axe · Sistem: Source Serif 4 (judul, small caps, angka) + Plus Jakarta Sans (isi) + IBM Plex Mono (data); kertas #F4EFE4, tinta #1C1B19, laut #4E6A7A, terakota #A2482A (teks) / Riso Copper #BD6439 (dekor); semua pasangan teks lolos WCAG AA {F1}
+  - [x] scripts/build-aset.mjs, features/peta/style.ts · Eksekusi: grain = tile PNG/WebP kecil, bukan feTurbulence live; label MapLibre tanpa small caps OpenType (pakai kapital + letter-spacing); jauhi perisai, keris, Barelang, merah-kuning-hijau {F1}
+- [ ] 05 › Ringkasan arah visual
+  - [ ] Konsep: chart pelayaran 1846 dicetak studio risograph; darat kertas gading, laut biru-abu pudar, garis kedalaman tipis, bakau arsiran pendek, label serif kapital kecil spasi lega, koordinat di tepi, garis 1°N beraksen, satu warna panas terakota senja Barelang {F1}
+  - [x] features/peta/style.ts PALET.night · Mode malam: dibalik jadi garis krem di atas biru dongker ("chart dibaca dengan lampu kabin") {F1}
+  - [x] tests/unit/style.test.ts · Prinsip 1 "Satu keluarga tinta": warna web, layer peta, mural semua dari padanan tinta Riso, tidak ada warna digital nyasar {F1}
+  - [ ] Prinsip 2 "Data selalu mono": jam feri, tinggi ombak, "terakhir dicek" selalu monospace tabular {F1}
+  - [x] app/globals.css .bch-rebung, components/site/Emblem.tsx · Prinsip 3 "Ornamen = garis, bukan gambar": motif Melayu garis 0,75-1 px, pembatas atau sudut kartu; tanpa clip-art, tanpa gradasi emas {F1}
+  - [ ] Legenda status laporan [V] terverifikasi vs [A] asumsi/rekomendasi: perlakukan [A] sebagai usulan yang boleh disesuaikan, catat di PLAN.md {F1}
+- [ ] 05 › 1. Referensi peta laut & peta lama
+  - [ ] 05 › Sumber utama dan status lisensi
+    - [x] app/kolofon · NLB 1840 "Straits of Singapore, Durian and Rhio" (Hydrographic Office Admiralty, ukiran J & C Walker): Public domain [V] {F1}
+    - [-] gambar peta lama belum dipakai; cek saat dipakai (PLAN butir 19) · NLB edisi 1846 (Ross 1827, Dittl 1843, Thomson 1846; menyebut "Battam Island", Galang): cek halaman item untuk status hak cipta sebelum dipakai [A] {F1}
+    - [-] gambar peta lama belum dipakai; cek saat dipakai (PLAN butir 19) · KITLV/Leiden 1847 "Kaart van de Noordkust van het Eiland Bantang [i.e. Batam]" (E.H. Boom, survei 1846): bebas diunduh CC-BY bila tanpa hak cipta; cek label "use and reproduction" per item {F1}
+    - [-] gambar peta lama belum dipakai · KITLV Maps ±16.000 lembar/500 atlas (~8.000 daring): cek label lisensi per item {F1}
+    - [x] tidak dipakai · David Rumsey CC BY-NC-SA 3.0: hanya moodboard, bukan aset produksi; kredit "David Rumsey Map Collection, David Rumsey Map Center, Stanford University Libraries" bila disebut {F1}
+    - [-] tidak dipakai · Atlas of Mutual Heritage / Nationaal Archief (peta VOC): cek lisensi per file di Commons {F1}
+    - [x] app/kolofon: semua digambar ulang, belum ada tekstur peta lama · Rekomendasi lisensi: tekstur produksi (arsiran laut, mawar angin vektor ulang) hanya dari NLB Public domain atau Leiden PD/CC-BY, atribusi di halaman Kolofon {F1}
+    - [-] gambar peta lama belum dipakai · Ambil gambar peta 1847 langsung dari Leiden, jangan dari blog gowest.id/bintorosuryo.com {F1}
+  - [ ] 05 › Elemen yang bisa dipinjam (dan cara menerjemahkannya)
+    - [x] features/peta/OrnamenChart.tsx Kartusis · Kartusis: persegi panjang garis luar 1 px + garis dalam 0,5 px berjarak 3 px; judul serif kapital kecil, subjudul italic, "Skala 1 : 25.000" mono; tanpa ornamen keriting {F1}
+    - [x] features/peta/OrnamenChart.tsx Mawar · Mawar angin: panah utara 8 titik minimal, garis 0,75 px, ujung utara terakota terisi; di pojok peta, bukan di logo {F1}
+    - [x] features/peta/OrnamenChart.tsx SkalaBatang · Skala batang hitam-putih berselang (0-1-2 km dan nautical mile), angka mono {F1}
+    - [-] ditunda: butuh unduhan GEBCO manual dan GDAL/tippecanoe; garap sebelum rilis peta · Garis kedalaman: putus halus 0,5 px opacity 40-60%; angka sounding kecil sebagai easter egg di zoom tinggi {F1}
+    - [x] features/peta/style.ts waterlining · Arsiran waterlining: 2-3 garis offset dari pantai (`line-offset`) makin pudar ke laut {F1}
+    - [x] features/peta/style.ts · Hierarki label lama: laut/selat italic spasi lebar, pulau kapital, kampung roman kecil {F1}
+    - [-] konteks, tidak perlu fitur · Warna chart abad 19 monokrom (tinta hitam di kertas krem) membenarkan palet terbatas {F1}
+    - [x] features/peta/TepiChart.tsx, features/peta/style.ts garis-1n · Graticule/koordinat tepi: strip berselang tiap 1′ berlabel derajat; garis 1°N diberi label khusus "1°00′ U" beraksen (posisi harus dicek dengan data) {F1}
+- [ ] 05 › 2. Estetika Melayu & Kepri tanpa kitsch
+  - [ ] 05 › Motif
+    - [x] app/globals.css .bch-rebung, app/page.tsx · Pucuk rebung: deret segitiga runcing garis tunggal 0,75 px, tinggi 8-12 px, sebagai pembatas section {F1}
+    - [ ] Awan larat: satu sulur spiral di sudut kartu label museum (maks 24 px) atau garis ombak alternatif di mural {F1}
+    - [x] features/peta/ItikBerbaris.tsx (pembatas Loket 03 menyusul fase 6) · Itik pulang petang: ikon loading/antrean (3 itik garis berjalan pelan) dan pembatas Loket 03 {F1}
+    - [ ] Selembayung: siluet untuk ikon "rumah/tentang" atau puncak frame kartu {F1}
+    - [ ] Lebah bergayut, kaluk pakis, sayap layang-layang: cadangan pola footer/404 {F1}
+    - [ ] Makna motif hanya dari materi pelajar (SlideShare/blog): verifikasi ke LAM Kepri/Dinas Kebudayaan/Tenas Effendy sebelum teks publik {F5}
+  - [ ] 05 › Huruf Jawi Riau-Lingga
+    - [ ] Konteks EAP153 British Library (Penyengat, Raja Ali Haji 1809-1873; 13 koleksi, 4 pulau, ~8.000 foto/450 item) dan Mathba'ah al-Riauwiyah (1313 H/1895 M) {F5}
+    - [ ] Tahun Rusydiah Klub tidak konsisten (1880/1885/1892/1895): tulis "akhir abad ke-19" {F5}
+    - [ ] Jawi hanya aksen tipografis kecil (nama Loket di bawah judul Latin), setelah dicek penutur/ahli; bukan font "Arab-Melayu" dekoratif; uji Noto Naskh Arabic/Amiri untuk huruf ڠ ڤ ۏ ڽ ݢ {F9}
+  - [ ] 05 › Perahu & arsitektur
+    - [ ] Pompong, sampan, jong: profil samping tanpa bayangan untuk ikon rute feri/pompong dan pelabuhan rakyat; jong layar tanja sebagai ilustrasi pembuka mural {F4}
+    - [ ] Rumah panggung/limas: tiang vertikal ritmis sebagai pola pembatas "tiang pelantar" {F1}
+- [ ] 05 › 3. Tipografi
+  - [ ] 05 › Pasangan yang direkomendasikan
+    - [x] app/layout.tsx · Pasangan A "Arsip" (utama): Source Serif 4 (OFL-1.1, variable opsz 8-60, wght 200-900; smcp/c2sc/tnum/onum/frac/zero; TTF ~1.181 KB roman/835 KB italic wajib subset Latin + WOFF2) {F1}
+    - [x] app/layout.tsx · Plus Jakarta Sans (Tokotype, OFL, variable ExtraLight-ExtraBold + italic) untuk isi {F1}
+    - [x] app/kolofon (metadata npm @ibm/plex-mono: OFL-1.1) · IBM Plex Mono (OFL) untuk data; lisensi/fitur belum dicek laporan, cek dan catat di kolofon {F1}
+    - [-] alternatif, pasangan A yang dipilih · Pasangan B "Majalah" alternatif: Fraunces (SOFT 0, WONK 0, opsz maks, wght eksplisit, tanpa smcp/tnum) + JetBrains Mono {F1}
+    - [-] alternatif, pasangan A yang dipilih · Pasangan C "Museum" alternatif: EB Garamond + Cooper Hewitt (UI/label saja) + IBM Plex Mono {F1}
+    - [-] tidak dipakai · Fonetika/Frasa (Tokotype) retail/komersial: jangan dipakai tanpa lisensi {F1}
+  - [ ] 05 › Matriks pemeriksaan
+    - [ ] Matriks small caps/tabular/variable/HP/PBF per font (Source Serif 4, Fraunces, Plus Jakarta Sans, EB Garamond, Cooper Hewitt, Plex/JetBrains Mono); verifikasi angka tabular Plus Jakarta Sans {F1}
+  - [ ] 05 › Catatan MapLibre (penting untuk Claude Code)
+    - [x] scripts/build-glyphs.mjs (tiny-sdf, bukan font-maker) · Konversi TTF/OTF ke PBF dengan maplibre/font-maker atau GitHub Action linz/action-build-pbf-glyphs; host statis, `"glyphs": "/glyphs/{fontstack}/{range}.pbf"` {F1}
+    - [x] public/glyphs · Protomaps basemaps-assets hanya Noto Sans; repo font sendiri untuk font kustom {F1}
+    - [x] features/peta/style.ts · font-maker 1 codepoint = 1 glyph, jadi `smcp` tak jalan di label peta: pakai uppercase + letter-spacing 0.12-0.2 em, Source Serif 4 Semibold lebih kecil {F1}
+    - [x] scripts/build-glyphs.mjs (dari @fontsource, tanpa instancer) · Ekspor instance statis (SourceSerif4-Semibold, SourceSerif4-It, PlusJakartaSans-Medium) via fontTools varLib.instancer; range Latin 0-255, 256-511, 8192-8447 {F1}
+    - [ ] Hierarki label: laut/selat Source Serif 4 Italic warna laut tracking 0,2; pulau Semibold kapital tracking 0,15; kampung/kelurahan Regular 11-12 px; POI Plus Jakarta Sans Medium 11 px {F1}
+  - [ ] 05 › Skala tipografi
+    - [x] data/design/design_tokens.css, app/globals.css · 11 token (display, h1, h2, h3, kicker, body-lg, body, small, caption, data, data-lg) dengan ukuran desktop (≥1024)/HP (≤480), line-height, letter-spacing, font {F1}
+    - [x] app/globals.css .bch-prose · Panjang baris isi 60-72 karakter (`max-width: 38rem`) {F1}
+- [ ] 05 › 4. Warna
+  - [ ] 05 › Tinta Riso sebagai jangkar
+    - [x] data/design/design_tokens.css, app/kolofon · Tabel 13 tinta Riso dengan hex stencil.wiki (perkiraan) dan perannya; Black tidak dipakai murni; Teal tidak dipakai; Flat Gold jangan untuk UI {F1}
+    - [x] app/kolofon · Hex Riso berbeda antar lab (BYU Bright Red #CC231F vs stencil.wiki #F15060): tulis "perkiraan" di kolofon {F1}
+    - [ ] Aturan Mural: maks 3 tinta per panel (mis. Federal Blue + Copper + Charcoal di kertas #F4EFE4), overprint `mix-blend-mode: multiply`, tanpa warna di luar tabel {F8}
+  - [ ] 05 › Palet UI, mode siang
+    - [x] data/design/design_tokens.css, tes axe · 12 token siang (paper, paper-2, ink, ink-muted, sea-ink, accent, accent-riso, rule, status ok/caution/danger/info) dengan hex dan rasio kontras {F1}
+  - [ ] 05 › Palet UI, mode "chart malam"
+    - [x] data/design/design_tokens.css, tes axe · 9 token malam di atas #0F1B2A dengan rasio kontras {F1}
+    - [ ] Rasio dihitung manual; cek ulang WebAIM/axe sebelum rilis {F10}
+    - [ ] Status peringatan selalu ikon + kata ("WASPADA", "BATAL"), jangan hanya warna; terakota #A2482A vs bahaya #9E2B25 tidak cukup beda untuk buta warna {F1}
+  - [ ] 05 › Layer peta
+    - [ ] Tabel 14 layer peta siang/malam (darat, laut, laut dangkal, garis kedalaman, waterlining, bakau, hutan, jalan utama/minor, bangunan, rute feri, graticule & 1°N, label air, label darat) {F1}
+- [ ] 05 › 5. Tekstur & efek cetak
+  - [x] app/globals.css, public/tex · Temuan feTurbulence live memicu scroll jank (GitHub issue ngmanhtruong #6); pakai background-image WebP di-repeat {F1}
+  - [x] scripts/build-aset.mjs, public/tex · Grain kertas: tile WebP abu 256x256 (<15 KB), `body::before` fixed, opacity .06, multiply; malam opacity .05 screen tile terang {F1}
+  - [-] ditunda: butuh unduhan scan CC0 dan pengolahan; grain prosedural sudah memenuhi kebutuhan fase 1 · Serat kertas: tile 512 px dari scan CC0 (publicdomainpictures "Paper texture"/rawpixel), didesaturasi, high-pass, dikompres {F1}
+  - [ ] Halftone: tanam di aset ilustrasi mural, bukan filter CSS; aksen UI kecil `radial-gradient` background-size 4px 4px {F8}
+  - [ ] Misregistration Riso: translate(0.6px, -0.4px) statis pada layer warna kedua + multiply, tidak dianimasikan {F8}
+  - [x] features/peta/PetaLaut.tsx bch-no-grain · Jangan taruh grain di atas canvas MapLibre; kalau perlu "kertas" pakai `fill-pattern` sprite untuk darat {F1}
+  - [x] app/globals.css, data/design/design_tokens.css · `prefers-reduced-motion` mematikan transisi ilustrasi; `prefers-reduced-data`/saveData mematikan tekstur {F1}
+  - [ ] Uji HP kelas menengah: CPU throttling 4x, Paint flashing, satu HP asli (kelas Redmi Note); hindari filter SVG live, backdrop-filter, blend di atas WebGL {F10}
+- [ ] 05 › 6. Gaya ilustrasi & ikon
+  - [ ] 05 › Aturan garis [A]
+    - [x] components/site/SiteNav.tsx · Ikon UI: grid 24 px, stroke 1,25 px, ujung/sambungan round, tanpa isi kecuali titik aksen terakota {F1}
+    - [ ] Ilustrasi landmark: stroke 0,75 px detail, 1,25 px siluet, arsiran 45° jarak 2-3 px, tanpa gradasi {F5}
+    - [ ] Panorama mural: 3 bobot garis (0,5/1/1,75 px pada 1x), maks 3 tinta, bidang datar dengan halftone {F8}
+  - [ ] 05 › Cara menggambar
+    - [ ] Landmark gaya arsitek: perspektif 1-2 titik, garis konstruksi overshoot 2-4 px, orang siluet kecil {F8}
+    - [ ] Pohon: awan scallop putus-putus + batang dua garis; bakau: akar tunjang lengkung "ʌ" berulang di garis air {F8}
+    - [ ] Air: garis horizontal terputus, makin rapat ke cakrawala (selaras waterlining peta) {F8}
+    - [ ] Atap ruko (Nagoya, Jodoh, Tanjung Uma): atap datar dengan lis, kanopi, papan nama kosong (tanpa merek), AC outdoor kotak kecil {F8}
+  - [ ] 05 › Ilustrator yang bisa diajak bicara
+    - [ ] Tidak ada komunitas Urban Sketchers Batam terverifikasi; jangan cantumkan handle belum pasti; payung terdekat Indonesia's Sketchers (@indonesia_sketchers) {F9}
+    - [ ] Kandidat Singapura: Don Low, Tia Boon Sim, Shruti Balaji, Marvin Chew/Vu Hoa Giang/Pocholo Estremos/Lisa Huang/Chua Hee Lai/Tan Chit Seng, grup Flickr USk Singapore (daftar kontak untuk pemilik proyek, bukan fitur situs) {F9}
+    - [ ] Ekosistem lokal: Wave of Wall (April 2026, Nagoya Citywalk, art director Revino Arena) sebagai pintu jejaring seniman jalanan {F9}
+    - [ ] Kontinentalist (Griselda Gabriele; pedoman ilustrasi ketat) sebagai standar kerja ilustrator-data {F9}
+    - [ ] Saran: open call "Gambar Batam dalam 0,5 mm" via Instagram, brief 1 halaman, honor layak {F9}
+- [ ] 05 › 7. Referensi website premium & pola yang ditiru
+  - [ ] Tabel 6 situs (Kontinentalist, Cooper Hewitt, The Pudding, Zolima/Saigoneer, M+, Rijksmuseum) dan pola yang dipinjam; tiru blok kredit (Code/Data/Design/Illustration) di halaman Loket dan semangat open-source di Kolofon {F1}
+  - [ ] 05 › Pola konkret untuk komponen [A]
+    - [ ] Kartu label museum: kicker smcp + nomor mono, h3 serif, italic sea-ink, rule 0.5px + pucuk rebung mini, body sans, baris mono BUKA/DICEK/koordinat; tanpa bayangan, garis 1 px rule, radius 2 px, sulur awan larat pojok kanan atas saat hover {F3}
+    - [ ] Strip navigasi: tinggi 44 px, wordmark kiri, "Loket 01-07" smcp tengah (geser di HP), toggle siang/malam ikon bulan sabit garis kanan; menu HP = daftar isi majalah layar penuh (nomor besar mono, judul serif, satu baris deskripsi) {F1}
+    - [ ] Tombol layer peta: legenda chart (swatch pola 16 px + nama smcp + checkbox persegi 14 px), kiri bawah, berbingkai kartusis, bukan toggle iOS {F1}
+    - [ ] Halaman Loket: nomor raksasa serif 160 px `accent-riso` opacity 0,9, judul, lede 1 kalimat, grid 12 kolom desktop/4 kolom HP, "Kolofon Loket" di akhir (sumber, tanggal dicek, penyusun) {F1}
+    - [ ] Gerak: fade + translate 8 px, `cubic-bezier(0.2, 0, 0, 1)`, 240-420 ms; peta flyTo speed 0.6 curve 1.2; tanpa spring/bounce/parallax berlebihan {F1}
+- [ ] 05 › 8. Logo & wordmark "Batam City Hall"
+  - [x] components/site/Emblem.tsx, app/icon.svg · Hindari lambang resmi Perda 3/2001: perisai/tameng, bintang, keris, gelombang lima lapis, perahu dendang, Jembatan Barelang, pita merah, rantai 45 mata; warna merah-kuning-hijau; logo HJB ke-196 (biru tua, kuning emas, merah) {F1}
+  - [x] components/site/Emblem.tsx · Barelang boleh sebagai ilustrasi di Loket, bukan emblem; tanpa emas/kuning {F1}
+  - [x] components/site/SiteFooter.tsx, lib/site.ts · Disclaimer footer wajib + tagline penegas ("Balai warga, bukan balai kota" / "Loket informasi tidak resmi") {F1}
+  - [ ] Opsi 1 wordmark arsip: "BATAM CITY HALL" Source Serif 4 smcp tracking 0,12em + baris mono "1°08′ U · 104°03′ T · EST. 2026" (koordinat perlu dicek) {F1}
+  - [x] components/site/Emblem.tsx · Opsi 2 emblem stempel bulat: lingkaran garis ganda, mawar angin minimal, tulisan melingkar, satu warna {F1}
+  - [x] app/icon.svg · Opsi 3 monogram "BCH" dalam kartusis kecil untuk favicon, terbaca di 16 px {F1}
+  - [ ] Referensi semangat Cooper Hewitt; telusuri Fonts In Use/Brand New ("civic", "archive", "postal") {F1}
+- [ ] 05 › 9. Nada tulisan (microcopy)
+  - [ ] 05 › Prinsip [A]
+    - [ ] Fakta dulu, lelucon maks satu klausa dan bisa dihapus tanpa mengubah informasi; kalimat pendek, subjek konkret; humor dari pengamatan; jujur soal ketidakpastian {F1}
+  - [ ] 05 › Contoh pola
+    - [ ] 8 pasangan ID/EN: cuaca lokal, ombak, feri, data lama, kosong/404, memuat, tukang langganan, error (data/design/microcopy.json) {F1}
+    - [ ] Semua contoh adalah draf [A]; kalibrasi nada dengan kolom pendek Saigoneer/Zolima {F1}
+  - [ ] 05 › Daftar hindari
+    - [ ] Tanda seru berderet, kapital berteriak, emoji di judul {F1}
+    - [ ] Kata promosi wisata: "surga tersembunyi", "wajib dikunjungi", "hits", "instagramable", "kekinian", "healing" {F1}
+    - [ ] Bahasa birokrasi: "dalam rangka", "guna", "sehubungan dengan", "dihimbau" {F1}
+    - [ ] Lelucon merendahkan kelompok (pendatang, Orang Laut, buruh pabrik, Singapura "tetangga sombong") {F1}
+    - [ ] Tidak bercanda soal bencana/kecelakaan laut/banjir saat sedang terjadi; peringatan cuaca aktif ditulis lurus {F2}
+    - [ ] Bahasa campur dipaksakan ("so basically guys"); satu bahasa per kalimat {F1}
+- [ ] 05 › Moodboard (link referensi, dikelompokkan)
+  - [ ] Daftar link referensi (peta lama, Melayu/Jawi, tipografi, warna/cetak, tekstur, ilustrasi, editorial, larangan logo) disimpan di data/design/moodboard.md; tampilkan yang relevan sebagai atribusi di Kolofon {F1}
+  - [ ] Situs The Pudding, Zolima, Saigoneer, M+, Rijksmuseum belum dibuka langsung oleh riset [A]: jangan klaim analisis {F1}
+- [ ] 05 › Design tokens
+  - [ ] 05 › CSS custom properties
+    - [x] app/globals.css · Pakai data/design/design_tokens.css apa adanya (identik dengan laporan): warna siang, layer peta, tinta Riso, tipografi clamp(), spasi basis 4px, stroke/radius/shadow, gerak, tekstur {F1}
+    - [x] app/layout.tsx, data/design/design_tokens.css · Mode malam via `:root[data-theme="night"]`; `@media (prefers-color-scheme: dark)` pada `:root:not([data-theme="day"])`; reduced-motion nolkan durasi dan `--bch-shift` {F1}
+    - [x] data/design/design_tokens.css · Utilitas `.bch-kicker`, `.bch-data`, `.bch-display` (Fraunces default 900, selalu set weight eksplisit) {F1}
+    - [x] app/globals.css @theme · Tailwind 4: petakan ke token yang sama (prompt bagian 3) {F1}
+  - [ ] 05 › Versi JSON
+    - [ ] data/design/design_tokens.json identik byte-per-byte dengan blok JSON laporan; hasilkan modul bertipe dari JSON, jaga sinkron dengan CSS {F1}
+- [ ] 05 › Boleh & Jangan
+  - [ ] 05 › Desain
+    - [x] features/peta/ · Boleh: garis 0,5-1,25 px, arsiran, waterlining, skala batang, graticule dengan 1°N {F1}
+    - [ ] Boleh: maks 3 tinta Riso/ilustrasi, multiply, misregistration statis <1 px {F8}
+    - [x] data/design/design_tokens.css · Boleh: small caps asli Source Serif 4 untuk kicker, angka tabular untuk semua data {F1}
+    - [ ] Boleh: motif Melayu sebagai garis pembatas/sudut kartu ukuran kecil; ruang kosong berlimpah, satu ide per layar; atribusi peta lama di Kolofon {F1}
+    - [x] app/globals.css, public/tex · Jangan: feTurbulence live di area besar, grain beranimasi, backdrop-filter di atas peta {F1}
+    - [x] components/site/Emblem.tsx · Jangan: gradasi emas, kuning-merah-hijau, perisai, keris, siluet Barelang sebagai logo {F1}
+    - [ ] Jangan: ornamen Melayu penuh warna sebagai wallpaper, font "Arab-Melayu" dekoratif untuk UI, tekstur Rumsey/blog {F1}
+    - [ ] Jangan: animasi bounce/spring, parallax berat, kursor kustom, status hanya dibedakan warna, teks #BD6439 di bawah 24 px {F1}
+  - [ ] 05 › Tulisan
+    - [ ] Boleh: kalimat pendek, fakta dulu, satu lelucon kering; tanggal "terakhir dicek" di setiap data; jujur soal ketidakpastian; nama lokal spesifik (Tanjung Uma, Sekupang, Belakangpadang) {F1}
+    - [ ] Jangan: "surga tersembunyi/wajib dikunjungi/hits/instagramable/healing"; tanda seru berderet/emoji judul/kapital teriak; bercanda saat peringatan aktif; lelucon merendahkan kelompok; bahasa birokrasi {F1}
+- [ ] 05 › Caveats: terverifikasi vs asumsi
+  - [ ] Cek: lisensi/fitur IBM Plex Mono & JetBrains Mono, angka tabular Plus Jakarta Sans, status variable EB Garamond, lisensi Fonetika/Frasa {F1}
+  - [ ] Cek: hak cipta persis peta 1847 (Leiden) dan edisi NLB 1846 {F1}
+  - [ ] Cek: makna motif ke LAM Kepri/Tenas Effendy; dukungan huruf Jawi font Naskh OFL {F5}
+  - [ ] Cek: posisi persis garis 1°N terhadap Batam dan koordinat wordmark {F1}
+  - [ ] Semua skala, palet UI, layer peta, aturan garis, komponen, microcopy = usulan [A]; rasio kontras dihitung manual, ukur ulang otomatis; performa HP harus diukur {F10}
+
+## 06-direktori-taksonomi.md
+
+
+- [ ] 06 › Batam City Hall: Rancangan Direktori & Seed Data
+  - [ ] Strategi tiga lapis sumber: data resmi (sekolah, faskes, ibadah, kantor), OSM/Overpass (belanja, transportasi, olahraga, ruang publik), Tukang Langganan (jasa harian, dokter spesialis, kos) {F3}
+- [ ] 06 › TL;DR
+  - [ ] Data resmi jadi tulang punggung 4 kelompok: 437 SD, 240 SMP, 195 SMA/SMK/SLB (NPSN); Dinkes 21 puskesmas, 63 pustu, 21 RS, 156 klinik (smt 1 2024); Kemenag 972 masjid; Imigrasi/Samsat/Bea Cukai/KPP/Air Batam Hilir punya alamat dan jam resmi {F3}
+  - [ ] OSM untuk kategori bertitik (mal, minimarket, SPBU, halte, lapangan, gym, money changer) via area Overpass relasi 10660353 (area 3610660353), lalu kurasi; jalankan query hitung kelengkapan dulu {F3}
+  - [ ] Tukang Langganan wajib untuk jasa dan dokter per spesialis (jadwal dokter, status BPJS tidak ada di data resmi) {F6}
+  - [ ] Hanya sebagian kecil koordinat seed terverifikasi; sisanya perlu_diisi_user/perlu_cek_ulang -> badge di UI {F3}
+- [ ] 06 › Key Findings
+  - [ ] Enum kecamatan: 12 kecamatan, 64 kelurahan, kode 21.71.01-21.71.12 (12 nama persis ada di brief) {F1}
+  - [ ] Kesehatan smt 1 2024: 3 RS pemerintah, 18 swasta, 21 puskesmas, 63 pustu, 156 klinik/polindes, 570 posyandu, total 831 faskes; klinik turun dari 183 (smt 1 2023) -> angka klinik hanya indikatif {F3}
+  - [ ] Rumah ibadah: angka antarsumber berbeda (Kemenag 972 masjid = 1 Agung/12 Besar/849 Jami/110 tempat publik; BPS 2022 912 masjid/616 musala/3 pura/38 vihara; Satu Data 2023 75 vihara (35 di Lubuk Baja) dan 52 gereja; FKUB 2019 82 gereja Kristen di Batam Kota saja) -> tampilkan dengan sumber dan tahun, anggap 52 gereja baru sebagian {F3}
+  - [ ] Sekolah: Kemendikdasmen paling andal; menengah 195 = SMA 115 + SMK 70 + SLB 10; terbanyak Batam Kota 46, Sagulung 27, Sekupang 24; negeri 145 SD, 66 SMP, 29 SMA negeri ikut SPMB 2025/2026 {F3}
+  - [ ] Hotel ditampilkan sebagai rentang angka (BPS via GoKepri 75 bintang/160 nonbintang, 9.004/5.065 kamar; GoWest 69/108; Disbudpar 275; kompilasi lain 69 bintang dari 282 properti, 142 di Lubuk Baja); rujukan primer Tabel 24.1 Kompilasi Statistik Sektoral 2025 + SISPEK {F3}
+  - [ ] Transportasi: Trans Batam 9 koridor aktif; jumlah bus beda (65 unit vs 45 bus kata Kepala UPT, Kompas.id 13/9/2024); tarif Rp5.000 umum/Rp2.500 pelajar, nontunai sejak 1/1/2023; masuk Bandara Hang Nadim 1 Juni 2026 dengan 19 bus BTS (Terasbatam) {F4}
+  - [ ] Feri ke Singapura dari 5 pelabuhan (Batam Centre, Sekupang, Nongsapura, Harbour Bay, Gold Coast Bengkong) + Waterfront City/Marina Teluk Senimba jadwal terbatas {F4}
+  - [ ] Air bersih bukan PDAM: SPAM Batam di bawah BP Batam sejak 15 Nov 2020, operator PT Moya Indonesia lewat PT Air Batam Hilir; KPP Bengkong Air Batam Hilir pindah ke Baraka Business Center 8 Des 2025 (alamat berita 2020 basi) {F3}
+- [ ] 06 › Tabel Taksonomi Lengkap
+  - [ ] Tabel 59 baris (kategori, subkategori, tag OSM, sumber utama, cara isi) -> data/taksonomi/taksonomi.json; jadi menu kategori/subkategori direktori {F3}
+  - [ ] Legenda cara isi R/O/W/K (huruf pertama = sumber utama) tampil sebagai asal data per kartu {F3}
+  - [ ] Peta tag OSM per subkategori dipakai sebagai kolom tag_osm dan filter query Overpass {F3}
+- [ ] 06 › Detail per Kelompok Kategori
+  - [ ] Intro: bagian ini fokus sumber dan kolom; contoh tempat ada di seed {F3}
+  - [ ] 06 › 1. Belanja
+    - [ ] Sumber: mal/supermarket/minimarket dari OSM (brand); pasar tradisional dikurasi (berita lokal, Disperindag) {F3}
+    - [ ] Pasar Induk Jodoh: PKS Pemko + PT Usaha Jaya Karya Makmur Maret 2026, gedung 5 lantai, lahan 2,1 ha, >1.800 pedagang, kawasan Tos 3000, konstruksi berjalan (Infosatelitnews 21/8/2026) -> status rencana {F3}
+    - [ ] Kolom atribut: jenis_pasar (basah/kering/campuran), jam_ramai, metode_bayar, parkir, brand, kelengkapan[], harga_relatif 1-3 {F3}
+  - [ ] 06 › 2. Ruang Publik, Wisata, Pantai
+    - [ ] Sumber: SISPEK Disbudpar (wajib difilter, memuat diskotik dan salon), taman/pantai OSM poligon -> centroid, perpustakaan dari Satu Data {F3}
+    - [ ] Kolom: tiket_masuk, jam_buka, fasilitas, ramah_anak, aksesibel_kursi_roda, akses (darat/laut), waktu_terbaik {F3}
+  - [ ] 06 › 3. Ibadah dan Pemakaman
+    - [ ] Sumber: SIMAS Kemenag, Satu Jari Kemenag Batam (266 dataset dari 9 unit), FKUB 2019 per kecamatan, OSM koordinat; TPU belum punya dataset terbuka -> OSM landuse=cemetery lalu verifikasi warga {F3}
+    - [ ] Koreksi: Masjid Sultan Mahmud Riayat Syah di Jl. Brigjen Katamso, Tanjung Uncang, Batu Aji (bukan Tiban) {F3}
+    - [ ] Kolom ibadah: agama, denominasi, tipologi, jadwal_ibadah (jam, bahasa), kapasitas, fasilitas, id_simas; makam: agama_makam, pengelola, masih_menerima {F3}
+  - [ ] 06 › 4. Transportasi
+    - [ ] Pelabuhan/bandara dari BP Batam; koordinat Batam Centre di halaman BP Batam (lintang 01 derajat 17 menit 15 detik) salah ketik (seharusnya ~01 derajat 07 menit), jangan dipakai mentah {F4}
+    - [ ] Halte per koridor: K1 Sekupang-Batam Centre 56; K2 Tanjung Uncang-Batam Centre 78; K5 Jodoh-Batam Centre 41; K6 Tanjung Piayu-Batam Centre 58; K7 Nongsa-Batam Centre-Bandara 76; Punggur-Nongsa mulai Juli 2024 -> cocokkan dengan data/trans_batam {F4}
+    - [ ] Data halte OSM tertinggal; usulan 27 halte baru (Kadishub Salim, Batam Pos Nov 2024) di K2 dan K8 Punggur-Jodoh; 2025 Dishub bangun 10 halte + 4 dari CSR (Kadishub Leo Putra) {F4}
+    - [ ] Kolom pelabuhan: tujuan, operator (Batamfast, Majestic, Sindo, Horizon), internasional, ada_imigrasi, link_jadwal; halte: koridor, tipe_halte; SPBU: brand, 24_jam, bbm {F3}
+  - [ ] 06 › 5. Kesehatan
+    - [ ] Sumber RS: kode RS Kemenkes (Wikipedia merangkum, tetap cek ulang); tipe RS Awal Bros A vs B konflik {F3}
+    - [ ] Puskesmas dari Komdat Kemenkes (nama, kode, rawat inap/non, alamat); klinik mitra BPJS dari aplikasi BPJS {F3}
+    - [ ] Dokter per spesialis tidak ada data terbuka: kurasi jadwal dokter situs RS + Tukang Langganan; dokter entitas terpisah terhubung ke banyak tempat praktik {F6}
+    - [ ] Kolom RS: kode_rs, tipe, kepemilikan, igd_24jam, terima_bpjs; puskesmas: kode_puskesmas, rawat_inap, wilayah_kerja; dokter: spesialisasi, jadwal, terima_bpjs, perlu_janji, kanal_booking {F3}
+  - [ ] 06 › 6. Pendidikan
+    - [ ] Sumber: referensi Kemendikdasmen per kecamatan dengan NPSN (kode Kota Batam 316000) untuk PAUD/Dikdas/Dikmen/Dikmas; madrasah EMIS; kampus PDDikti; les OSM + warga {F3}
+    - [ ] Sekolah swasta tampil setara negeri; kursi Disdik 16.044 (145 SD negeri) dan 16.803 (66 SMP negeri); lulusan SD ~23.000 -> ~6.000-7.000 tak tertampung SMP negeri (GoKepri Juni 2026) {F3}
+    - [ ] Kolom: npsn, jenjang, status, akreditasi, kurikulum, agama_basis, biaya_relatif; les: mata_pelajaran, usia, mode {F3}
+  - [ ] 06 › 7. Pemerintahan dan Layanan Publik
+    - [ ] Kolom: instansi_induk, layanan, jam_layanan (JSON + istirahat), antrean_online, kontak_wa, wilayah_kerja, layanan_sabtu {F3}
+    - [ ] Imigrasi Kelas I Khusus TPI Batam: Jl. Engku Putri No.3, Sen-Kam 07.30-16.00 (istirahat 12.00-13.00), ULP Harbourbay, antrean M-Paspor, Paspor Simpatik Sabtu berkala, WA 0811-700-2019 {F3}
+    - [ ] Samsat Batam Centre: Graha Kepri Lt.3, Jl. Engku Putri/Raja Isa No.8, Sen-Jum 08.00-15.00, Sab 08.00-12.00; Samsat Corner di BCS Mall dan Kepri Mall {F3}
+    - [ ] Disdukcapil 08.00-15.00 (istirahat 12.00-13.00), alamat perlu dicek; KPU Bea Cukai Jl. Kuda Laut Batu Ampar (0778) 429446 {F3}
+    - [ ] KPP Pratama Batam Utara (Jl. Kuda Laut No.1; wilayah Belakang Padang, Batu Ampar, Sekupang, Nongsa, Galang, Lubuk Baja) dan Batam Selatan (Adhya Building Tower; wilayah Sei Beduk, Bulang, Bengkong, Batam Kota, Sagulung, Batu Aji) {F3}
+    - [ ] Air Batam Hilir call center (0778) 5700 000; KPP Pusat (Ruko Batam Centre Square D2, 08.30-16.30), KPP Bengkong (Baraka Business Center B9), KPP Batu Aji (Batu Permata, blok perlu cek) {F3}
+    - [ ] PLN Batam, BPJS, kantor pos, polisi, damkar: belum diverifikasi di laporan ini -> tarik OSM lalu cocokkan situs resmi (kemudian diisi laporan 07/09) {F3}
+  - [ ] 06 › 8. Akomodasi
+    - [ ] SISPEK: hotel dengan kecamatan dan bintang (Maxone Lubuk Baja bintang 3; Ibis Styles Bengkong bintang 4); kos hanya lewat warga dan ditampilkan per kelurahan (bukan titik) demi privasi pemilik {F6}
+    - [ ] Kolom hotel: bintang, jumlah_kamar, kisaran_harga, dekat_pelabuhan; kos: tipe, kamar_mandi_dalam, ac, harga_bulanan_kisaran, dekat_kawasan_industri {F3}
+  - [ ] 06 › 9. Olahraga
+    - [ ] Titik lapangan dari OSM; warga untuk booking, harga per jam, jam ramai; padel dan mini soccer cepat tumbuh (OSM tertinggal) {F3}
+    - [ ] Kolom: jenis_olahraga, jumlah_lapangan, indoor, permukaan, cara_booking, link_booking, harga_per_jam_kisaran, lampu_malam; kolam renang: akses, kolam_anak {F3}
+  - [ ] 06 › 10. Jasa dan Servis
+    - [ ] Kategori paling cocok untuk Tukang Langganan; OSM hanya bengkel/laundry/salon besar; money changer dari OSM lalu verifikasi warga {F6}
+    - [ ] Jasa panggilan tanpa titik tampil dengan area_layanan (array kecamatan) {F6}
+    - [ ] Kolom: layanan, panggilan, area_layanan, kisaran_harga, garansi, kontak_wa, merek_spesialis, rekomendasi_count {F6}
+  - [ ] 06 › 11. Khas Batam
+    - [ ] Tiket feri: tautkan jadwal operator, JANGAN simpan jadwal statis (berubah bulanan) {F4}
+    - [ ] Paspor: Kanim Batam, ULP Harbourbay, panduan M-Paspor; jastip Singapura murni rekomendasi warga {F6}
+    - [ ] Pekerja industri (dormitory, shuttle, klinik MCU, LPK): gabung geoportal BP Batam (13.594 dataset geospasial) + rekomendasi warga {F6}
+- [ ] 06 › Rekomendasi Cara Pengisian
+  - [ ] Tabel 9 baris kelompok -> paling cocok (sekolah/kampus resmi; RS/puskesmas/klinik resmi + OSM koordinat; ibadah resmi + OSM; kantor layanan publik resmi + kurasi dengan terakhir_diverifikasi; belanja/SPBU/bank/halte OSM; taman/pantai/olahraga OSM + warga; hotel resmi + OSM; dokter kurasi + warga; jasa/kos/pijat panggilan Tukang Langganan) -> data/taksonomi/taksonomi.json `rekomendasi_cara_pengisian` {F3}
+- [ ] 06 › Skema Database Terpadu
+  - [ ] DDL PostgreSQL+PostGIS: enum status_koordinat dan asal_data (resmi/osm/warga/kurasi/campuran); tabel tempat (geom generated, kode_resmi JSONB, atribut JSONB, label_museum JSONB, status_tempat aktif/tutup_sementara/tutup/pindah/rencana, terakhir_diverifikasi, osm_type/osm_id) -> data/schema/tempat.sql {F6}
+  - [ ] Tabel dokter (spesialisasi: umum, gigi, obgyn, anak, kulit, tht, mata, penyakit_dalam, saraf, jantung, ortopedi, psikiater, psikolog, fisioterapi, bidan, gizi, hewan) dan praktik (jadwal, terima_bpjs, perlu_janji, kanal_booking, terakhir_dicek) {F6}
+  - [ ] Tabel rekomendasi_warga (ada_hubungan_bisnis true = tidak ditampilkan; status_moderasi menunggu/tampil/ditolak) {F6}
+  - [ ] Indeks GIST geom, (kategori, subkategori), GIN atribut {F6}
+- [ ] 06 › Contoh Query Overpass API
+  - [ ] Relasi Kota Batam 10660353 (admin_level 5, wikidata Q10103), area 3610660353; cadangan area by name admin_level 5; hindari bbox kasar (menjaring Singapura) {F3}
+  - [ ] Query (a) kesehatan, (b) belanja, (c) transportasi, (d) olahraga+ibadah+makam, (e) hitung kelengkapan -> data/osm/overpass/06-a sampai 06-e {F3}
+  - [ ] Cara baca (e): place_of_worship jauh di bawah ~1.500 atau school di bawah ~870 -> OSM hanya untuk koordinat, daftar induk dari data resmi {F3}
+- [ ] 06 › Caveats
+  - [ ] Hanya Hang Nadim, Masjid Agung (infobox Wikipedia), Mega Mall (OSM) yang koordinatnya terverifikasi; Nongsapura beda ~2,5 km antara OSM dan TripAdvisor {F3}
+  - [ ] Angka resmi tidak seragam (gereja, hotel, tipe RS Awal Bros): simpan angka beserta sumber dan tahun {F3}
+  - [ ] Data menua: FKUB 2019, jadwal feri bulanan; Pasar Induk Jodoh relokasi pedagang 2027-2028 (GoKepri) -> status rencana sampai resmi buka {F3}
+  - [ ] Belum diriset di laporan ini: PLN Batam, BPJS, kantor pos, Polresta, Damkar, pura, TPU, lapangan olahraga, jasa (seed sengaja kosong) {F3}
+- [ ] 06 › Seed Data (JSON)
+  - [ ] 73 objek JSON (transportasi 7, RS 7, puskesmas 8, pemerintahan+air bersih 11, ibadah 10, belanja 11, ruang publik 4, pendidikan 12, akomodasi 3) -> data/raw/06-direktori-taksonomi__1.json -> data/places/06-direktori-taksonomi.json (75 tempat = 73 + Pasar Induk Jodoh + Waterfront City dari prosa) -> places.json {F3}
+- [ ] 06 › Daftar Tempat yang Koordinatnya Belum Pasti
+  - [ ] A. 8 tempat ber-koordinat perlu cek ulang (Harbour Bay, Nongsapura, Telaga Punggur, RSUD Embung Fatimah, Samsat Batam Centre, Masjid Sultan Mahmud Riayat Syah [titik foto], Nagoya Hill Mall, Pantai Melur) dengan catatan konflik tiap tempat -> pin gaya "perkiraan" {F3}
+  - [ ] B. Daftar koordinat kosong per kelompok (transportasi 3 + kandidat estimasi Batam Centre/Sekupang; kesehatan 14 [6 RS + 8 puskesmas]; pemerintahan ~13 termasuk kandidat estimasi Kantor Wali Kota; ibadah 8; belanja 9; ruang publik 3; pendidikan 12; akomodasi 3) -> data/koordinat_perlu_diisi.csv; kandidat estimasi TIDAK masuk lat/lng {F3}
+  - [-] Daftar sumber (33 item): konteks, tidak perlu fitur; masuk kolofon lewat sumber_url
+
+## 07-direktori-layanan-publik.md
+
+
+- [ ] 07 › Seed Data Tambahan "Batam City Hall": Layanan Publik, Kesehatan, Ibadah, Olahraga, Transportasi & Ruang Publik
+  - [ ] Yang paling bisa dipercaya: 12 kecamatan + 64 kelurahan, 21 puskesmas, 21 RS, kantor vertikal (PN, PA, Kejari, BPN, Polresta, Disdukcapil, MPP, PLN, BPJS), koordinat terminal feri Wikidata/OSM; koordinat kelurahan/polsek/KUA/jasa/pelantar pompong hampir semua null {F3}
+- [ ] 07 › TL;DR
+  - [ ] Siap pakai: nama+alamat resmi 21 puskesmas (Dinkes/Kemenkes), 21 RS (daftar Kemenkes via Wikipedia), MPP (Lt. Dasar Sumatera Convention Center), Disdukcapil (Jl. Ir. Sutami, Sekupang), PN, PA, BPN, Polresta Barelang, PLN Batam, BPJS; koordinat terverifikasi hanya 5 (Batam Centre, Harbour Bay, Telaga Punggur, Hang Nadim, Jembatan Barelang 1) {F3}
+  - [ ] Data usang/berubah: PLN UP3 Tiban pindah dari Jl. RE. Martadinata ke Ruko Golden Sand Blok A No.12B-15 Tiban sejak 4 Agustus 2025 (gokepri 8/8/2025); lahan makam Kristen TPU Sei Temiang pindah ke sebelah makam Tionghoa; PN Batam kini di Jl. Engku Haji Tua Batam Centre; alamat kecamatan sumber 2009 wajib dicek ulang -> kolom `catatan` {F3}
+  - [ ] Belum terisi: KUA, kantor pos, DPRD, money changer, ekspedisi, laundry, percetakan, servis resmi, SPBU, terminal bus -> ditandai perlu_diisi_user, tidak ada data karangan di peta {F3}
+- [ ] 07 › Ringkasan Singkat
+  - [ ] Prinsip: koordinat hanya jika ada sumber yang bisa dicek (Wikidata, OSM via Mapcarta, peta resmi); selain itu null {F3}
+  - [ ] Definisi status koordinat: terverifikasi (Wikidata/Wikipedia/OSM, dicocokkan >=1 sumber lain), perlu_cek_ulang (idalamat, batamgems, Waze, TripAdvisor, presisi rendah), perlu_diisi_user (null) {F3}
+  - [ ] Daftar Sumber kode S1-S54 (dipetakan ke `sumber_url` setiap entri) {F3}
+- [ ] 07 › 1. Pemerintahan & Layanan Publik
+  - [ ] 07 › 1a. 12 Kantor Kecamatan
+    - [ ] Tabel 12 kantor camat (nama, kelurahan, alamat, kontak); hanya Batam Kota ber-koordinat (1.1066722, 104.0803667, perlu_cek_ulang; telp (0778) 7485042); 10 alamat data 2009 (S3) -> semua perlu cek ulang; kelurahan Bulang/Sagulung/Sekupang "perlu cek" {F3}
+  - [ ] 07 › 1b. 64 Kelurahan (daftar resmi Kemendagri)
+    - [ ] Tabel 12 kecamatan (kode 21.71.xx, jumlah kelurahan 6/4/4/6/4/6/8/5/4/6/4/7 = 64) -> data/wilayah/kelurahan.json; buat 64 entri `kantor_kelurahan` (alamat null, lat/lng null, perlu_diisi_user, sumber S1) {F3}
+    - [ ] Jangan pakai kelurahan lama dari situs kode pos ("Baloi", "Nongsa", "Bengkong Harapan", "Bukit Senyum": sebelum Perda 2/2005) {F3}
+  - [ ] 07 › 1c. Kantor Layanan Publik Utama
+    - [ ] Tabel 23 baris: Wali Kota, Disdukcapil (0778) 322287, MPP (call center 0778 468278; tanggal operasi 7 Des 2017 vs 27 Nov 2017, diresmikan MenPAN-RB 20 Sep 2018), Gerai Disdukcapil di MPP (KK, KIA, pindah, akta lahir/kematian, IKD sejak 5 Mei 2023), DPMPTSP, 5 kantor PLN Batam, 2 BPJS TK, BPJS Kesehatan (data blog 2018), Polresta Barelang, PN, PA (WA 0812-6658-8031), Kejari, BPN (WA 0851-5000-0722), Disnaker, Kemenag, DPRD, Kantor Pos, KUA 12 {F3}
+    - [ ] MPP jadi hub: Gerai Disdukcapil, DPMPTSP, BP Batam PTSP, BPN, pajak di satu gedung {F3}
+  - [ ] 07 › 1d. Polsek (di bawah Polresta Barelang)
+    - [ ] Tabel 13 polsek (alamat, telepon; Sagulung/Belakang Padang/Galang/KKP tanpa telepon; KKB (0778) 479276); data kompilasi 2020; nama kapolsek TIDAK dicantumkan {F3}
+  - [ ] 07 › 1e. Pemadam Kebakaran
+    - [ ] Darurat 113/112; call center Damkar BP Batam (Pos Duriangkang) 0811-6060-113; armada BP Batam "110 personel serta lebih dari 10 unit mobil... 6 pos aktif dan 2 pos pasif... response time maksimal 15 menit" {F3}
+    - [ ] Tabel 10 unit damkar (kantor dinas Pemko Jl. Pramuka No.2 (0778) 325622; Pos Pemko Sei Panas, Kabil, Tembesi; Pos BP Batam Sekupang, Sagulung, Batu Ampar, Punggur, Nongsa, Duriangkang) -> data/darurat/nomor_darurat.json {F3}
+    - [ ] Peringatan: damkarbatam.com dan bpbd.damkarbatam.com BUKAN situs resmi (alamat Prabumulih, koordinat Jakarta) -> jangan dipakai/ditautkan {F3}
+- [ ] 07 › 2. Perpustakaan
+  - [ ] Tabel 4: Dispusip (Kantor Dinas Bersama Jl. Raja Isa No.17 Lt.4), Perpustakaan Keliling (baca di tempat, tidak bisa dipinjam, ajukan surat; tanpa titik), Perpustakaan Masjid Jabal Arafah (08.00-19.00, +62 811 7087 997), Pojok Perpustakaan MPP; alamat lama Dispusip "Jl. Engku Putri No.1 Lt.7" kemungkinan usang {F3}
+  - [ ] Perpustakaan provinsi, perpustakaan kampus terbuka, TBM: belum terverifikasi {F3}
+- [ ] 07 › 3. Kesehatan
+  - [ ] 07 › 3a. 21 Puskesmas
+    - [ ] Tabel 21 puskesmas dengan status rawat inap dari Komdat (rawat inap / non / perlu cek; Lubuk Baja "Non rawat inap (perlu cek)"; Sei Panas masuk Bengkong menurut Komdat) -> atribut.rawat_inap + rawat_inap_label {F3}
+    - [ ] Catatan: tautan menu Dinkes "Puskesmas Tanjung Uncang" ke subdomain Tanjung Sengkuang adalah salah tautan, bukan penggabungan {F3}
+  - [ ] 07 › 3b. 21 Rumah Sakit (kode Kemenkes, via S29)
+    - [ ] Tabel 21 RS dengan tipe (A/B/C/D/khusus; RS Awal Bros "A, beberapa sumber menyebut B"; RS Bhayangkara D; RS Charis Medika D; RSKI Pulau Galang khusus) -> atribut.tipe {F3}
+    - [ ] RS Awal Bros Batu Aji (tipe C, avitaliahealth) tidak ada di daftar Wikipedia: mungkin RS ke-22, perlu cek {F3}
+    - [ ] Seed lama RS mungkin sudah ber-koordinat: pakai yang lama bila ada; klinik 24 jam, lab, apotek 24 jam belum diriset {F3}
+- [ ] 07 › 4. Ibadah & Pemakaman
+  - [ ] Tabel 11 baris: Pura Agung Amerta Bhuana (terbesar di Batam, padmasana 13 m, diresmikan 16 Jun 2004, Jl. Gajah Mada No.3 Sei Ladi, 1.112828,104.002754 perlu cek), Pura Satya Dharma, Pura Sekupang, Masjid Jabal Arafah, TPU Sei Temiang (+ lahan Kristen baru mulai Maret 2024, akses terjal), TPU Taman Langgeng/Sei Panas, TPU Kavling Bagan, TPU Sambau, Pemakaman Tionghoa Sambau, Krematorium Yayasan Halim (+62 778 425205) {F3}
+  - [ ] Gereja per denominasi (Katolik, HKBP, GPdI, GBI), klenteng utama, TMP: belum terverifikasi (kemudian sebagian diisi laporan 09) {F3}
+  - [ ] Biaya makam media 2019 (~Rp1,35 juta dewasa Sei Temiang) USANG: Pemko ambil alih pengelolaan dan tanggung biaya gali tutup di Sei Temiang, Sei Panas, Kavling Bagan (S35) {F3}
+  - [ ] Usulan TPU baru: 6 lokasi 148 ha (30 Agt 2023: Sei Temiang 55, Tiban Lama 20, Tanjungpiayu 23, Tembesi 10, Sambau 33, Sekanak 7 ha) lalu 5 lokasi ~122,31 ha (Batamtimes 26/5/2025, menunggu Amdal) -> BELUM boleh ditampilkan sebagai TPU beroperasi; angka di angka_resmi.json {F3}
+- [ ] 07 › 5. Olahraga
+  - [ ] Tabel: Stadion Temenggung Abdul Jamal (kapasitas 10.000 menurut BP Batam vs 2.800 Wikipedia; reservasi via HGAT BP Batam), Sport Hall/GOR TAJ (badminton, voli, basket, atletik, panahan), The Padel House, Play Padel (2 lapangan, mulai Rp180.000/sesi), Padel Box Orchid (mulai Rp88.000), Tamora Padel Club (5 lapangan, mulai Rp350.000; plus code 43J7+4C), 10 padel lain di AYO (BC Padel Club, Dragon 89, TAO Padel Academy, Seaside Premium Padel, Zabbo, Padel Hill, Court One, Grand Padel Arena Nagoya, IPadel Club, Penguin Padel) + Rally Padel {F3}
+  - [ ] Padel cepat usang: 4 Des 2025 Batam Pos "tiga lapangan aktif"; Nov 2026 AYO >=15 venue -> ambil berkala dari AYO; futsal, mini soccer, tenis, kolam renang umum, gym, jogging track, skatepark belum terverifikasi {F3}
+- [ ] 07 › 6. Jasa & Servis
+  - [ ] Belum ada data terverifikasi (bengkel resmi, dealer, money changer Nagoya/Harbour Bay, ekspedisi JNE/J&T/SiCepat/Pos, laundry, percetakan, servis resmi): ambil dari locator resmi tiap merek {F3}
+  - [ ] Tukang Langganan: kategori contoh tukang jahit, servis AC, pijat panggilan, tukang listrik, sedot WC, servis mesin cuci; sumber komunitas grup Facebook warga per kawasan; jangan simpan data pribadi, warga mendaftar sendiri {F6}
+- [ ] 07 › 7. Transportasi
+  - [ ] Tabel 11 baris terminal/pelabuhan/pelantar/bandara (koordinat: Batam Centre 1.130861,104.055231 terverifikasi; Sekupang 1.125328,103.925633 cek ulang; Harbour Bay 1.153889,103.997111 terverifikasi; Nongsapura 1.17283,104.07809 cek ulang; Telaga Punggur 1.035230,104.133397 terverifikasi; Bandara 1.120833,104.118611 terverifikasi; Waterfront City, Gold Coast, pancung Sekupang, Belakang Padang, terminal bus = null) {F4}
+  - [ ] Koordinat BP Batam untuk Nongsapura dan Telaga Punggur JELAS SALAH (meleset hingga ~9 km) -> jangan dipakai {F4}
+  - [ ] Waterfront City: ShipNext hanya titik kasar (~1.083,103.933, presisi ~2 km) -> tidak dimasukkan {F4}
+  - [ ] Pelantar pancung Sekupang persis di sebelah terminal domestik Sekupang (~1.125-1.126, 103.925-103.927; titik pasti diisi pemilik) {F4}
+  - [ ] Pompong Sekupang-Belakang Padang: koperasi PPMS, ±25 menit, Rp20.000/penumpang (paper ResearchGate, diterima 22/11/2024); pembanding gokepri 21/1/2022 Rp16.000 -> Rp18.000 per 17/1/2022 {F4}
+  - [ ] Jumlah SPBU belum terverifikasi {F3}
+- [ ] 07 › 8. Ruang Publik
+  - [ ] Tabel: Dataran/Alun-alun Engku Putri (1.106639,104.052681 cek ulang), Jembatan Barelang 1 Tengku Fisabilillah (0.981694,104.041500 terverifikasi; Galang/Bulang perbatasan), Pulau Belakang Padang (wisata pulau), Taman Dang Anom/Taman Kolam/Taman Mini/Taman Rusa (null); taman kota, pantai, RTH lain belum terverifikasi {F3}
+- [ ] 07 › Rekomendasi untuk Claude Code
+  - [ ] Import JSON + generate 64 entri kelurahan dari tabel 1b {F3}
+  - [ ] Entri koordinat null jangan dirender di peta, tampil di daftar dengan badge "lokasi belum diisi" {F3}
+  - [ ] Tambah field `catatan` untuk data usang (PLN Tiban, TPU Kristen, alamat kecamatan 2009) {F3}
+  - [ ] Prioritas isi manual koordinat: kantor kecamatan -> puskesmas -> RS -> polsek -> pelantar pompong (urutan prioritas CSV) {F3}
+- [ ] 07 › Data JSON
+  - [ ] 127 objek JSON -> data/raw/07-...__1.json; places 212 = 127 + 64 kelurahan + 21 dari tabel/prosa (Pojok Perpustakaan MPP, Pura Satya Dharma, Pura Sekupang, DPRD, RS Awal Bros Batu Aji, 11 venue padel, Pulau Belakang Padang, 4 taman) -> data/places/07-direktori-layanan-publik.json {F3}
+- [ ] 07 › Daftar Tempat yang Koordinatnya Belum Pasti (untuk diisi user)
+  - [ ] Perlu cek ulang: Kantor Camat Batam Kota, Pura Agung Amerta Bhuana, Terminal Sekupang, Terminal Nongsapura, Alun-alun Engku Putri {F3}
+  - [ ] Perlu diisi user per kelompok: 11 camat + 64 kelurahan + kantor pemerintah, layanan publik (PLN/BPJS), keamanan (Polresta, 13 polsek, kantor Damkar + 9 pos), perpustakaan, 21 puskesmas, 21 RS, ibadah/pemakaman, olahraga, transportasi, ruang publik, seluruh jasa -> data/koordinat_perlu_diisi.csv {F3}
+  - [-] Daftar sumber (11 item di akhir): konteks, tidak perlu fitur; masuk kolofon
+
+## 08-ppat-notaris-hukum.md
+
+
+- [ ] 08 › Direktori Profesi & Jasa Administrasi Kota Batam: Seed Data PPAT, Notaris, Lahan, Bantuan Hukum, dan Jasa Dokumen
+  - [ ] Belum ada daftar PPAT/notaris Batam lengkap, resmi, dan terunduh; seed = (1) simpul layanan resmi + (2) sampel kantor PPAT/notaris berstatus perlu_cek_ulang + tombol "cara verifikasi" {F3}
+  - [ ] Angka profesi: 139 notaris di Batam (Kanwil Kemenkum Kepri, April 2025; 268 se-Kepri); 125 anggota PPAT Batam (BatamToday Sep 2022); IPPAT "sekitar 140" (BatamInfo Sep 2025, wilayah tak tegas) -> tampil dengan tahun, PPAT ditandai "mungkin usang" (tidak ada file data khusus) {F3}
+- [ ] 08 › TL;DR
+  - [ ] Urusan tanah terbagi tiga loket: BP Batam (HPL, alokasi lahan, UWT, izin peralihan hak, perpanjangan alokasi), BPN/Kantah (sertifikat, balik nama, hak tanggungan), PPAT (AJB, APHT) vs notaris (PPJB, perjanjian, akta usaha) {F3}
+  - [ ] Skala profesi besar tapi data tertutup: 139 notaris, 125 PPAT; formasi notaris Kota Batam 2025 = 0 kursi (AHU, "Penuh"); daftar per nama hanya di sistem internal ATR/BPN, AHU, MPD -> semua entri PPAT/notaris perlu_cek_ulang {F3}
+  - [ ] Posbakum PN Batam (Batam Centre) dan PA Batam (Sekupang) = bantuan hukum gratis paling pasti; LBH: Mawar Saron (Sukajadi), PBH Peradi Batam; daftar OBH akreditasi BPHN 2025-2027 untuk Batam belum terbaca (9 OBH se-Kepri dikontrak 14 April 2025) {F3}
+- [ ] 08 › Ringkasan praktis: urusan tanah/rumah di Batam, ke mana untuk apa?
+  - [ ] Penjelasan HPL BP Batam + UWT (Uang Wajib Tahunan, dulu UWTO) dibayar di muka seluruh masa alokasi: 30 tahun alokasi awal, 20 tahun perpanjangan, 30 tahun pembaruan; faktur tak dilunasi -> lahan kembali dikuasai BP Batam -> data/panduan/urusan_tanah.md/.json (`masa_uwt_tahun`) {F3}
+  - [ ] Tabel 8 baris "Kebutuhan warga -> Ke mana -> Catatan" (UWT/perpanjangan -> LMS Online + PTSP BP Batam MPP; IPH/alokasi/hak tanggungan/pecah PL/arsip -> BP Batam LMS/PTSP/B-CARE; sertifikat/balik nama/roya/PTSL -> Kantah BPN Sekupang + loket MPP, WA 0851 5000 0722; AJB/APHT/hibah -> PPAT; PPJB/sewa/kuasa/wasiat/PT/CV/yayasan/koperasi -> notaris (NPAK untuk koperasi); BPHTB/PBB -> Bapenda; PPh final/NPWP -> KPP Pratama atau loket pajak MPP (Batam Selatan bergiliran Senin-Selasa); rumah lelang -> KPKNL atau Pejabat Lelang Kelas II (4 nama per 26 Nov 2025)) -> `urusan_tanah.json` kebutuhan[8] {F3}
+  - [ ] Urutan umum jual-beli rumah di lahan HPL BP Batam (5 langkah: cek UWT/sisa alokasi -> Izin Peralihan Hak -> PPAT cek sertifikat di BPN + pajak BPHTB/PPh -> tanda tangan AJB -> PPAT daftar balik nama) dengan penafian "gambaran praktis, wajib cek PPAT/BP Batam" {F3}
+  - [ ] Persyaratan perpanjangan alokasi: identitas, PBB tahun terakhir, sertifikat/dokumen lahan (SKPL, SPPL, gambar lokasi, faktur UWT) lewat layanan "Perpanjangan Hak Atas Tanah" LMS {F3}
+- [ ] 08 › Key Findings
+  - [ ] Jumlah profesi (139 notaris/268 Kepri; PPAT 125 dari ~220 Kepri BatamToday 2022, 237 Kepri Pemprov rakor 13/9/2022; formasi AHU 0 kursi) {F3}
+  - [ ] Tidak ada daftar PPAT/notaris resmi terbuka; satu-satunya publik resmi = Daftar Pejabat Lelang Kelas II DJKN 26 Nov 2025; sisanya blog 2019 + agregator; nomor SK "9-XVII-PPAT-2008" di blog 2019 = kesalahan templat, JANGAN dipakai {F3}
+  - [ ] PPAT Sementara (camat; PP 37/1998) tidak ditemukan sumber -> kolom `ppat_sementara` "tidak diketahui", konfirmasi ke Kantah {F3}
+  - [ ] OBH terakreditasi BPHN 2025-2027: nasional 597 PBH diperpanjang (dari 619 aktif 2022-2024) + 190 baru; kontrak Kanwil Kepri 9 OBH (14 Apr 2025), TA 2026 ditandatangani 6 Mar 2026; mitra Batam periode 2023: LBH Mawar Saron, LBH Peduli dan Harapan Bangsa, LBH Yayasan Suara Keadilan {F3}
+  - [ ] MPP (Lt. Dasar Sumatera Convention Center, Jl. Engku Putri) satu gedung untuk Pemko, BP Batam PTSP, BPN, pajak, DPMPTSP (Lt.2) -> pin hub utama {F3}
+- [ ] 08 › Details per kategori
+  - [ ] Catatan umum: semua lat/lng null (perlu_diisi_user); cara isi cepat via openstreetmap.org "Show address" atau Nominatim; legenda status data centang = resmi, peringatan = sekunder/usang {F3}
+  - [ ] 08 › A. Pertanahan, lahan, dan perizinan (simpul resmi)
+    - [ ] Tabel 7 simpul: Kantah BPN, BP Batam Pusat (Jl. Ibnu Sutowo No.1, (0778) 462047/462048), BP Batam LMS Online (WA konsultasi +62 811-7048-000, penataan +62 811-7704-770, KSB +62 811-7704-771), PTSP BP Batam di MPP, MPP, DPMPTSP (Lt.2 MPP, (0778) 473228), KPKNL Batam ((0778) 469825) {F3}
+    - [ ] Konflik WA PTSP BP Batam: +62 811-7676-666 (halaman pengaduan lama) vs +62 855-6670-011 (beranda terbaru; pengaduan +62 855-6670-009) -> pakai yang terbaru + perlu_cek_ulang {F3}
+    - [ ] Jam PTSP BP Batam di MPP: 08.00-16.30 WIB, antrean tutup 15.00 {F3}
+  - [ ] 08 › B. PPAT dan Notaris (sampel, semua perlu cek ulang)
+    - [ ] Pola: satu entri per kantor dengan atribut ppat/notaris/pejabat_lelang_kelas_ii (boolean) {F3}
+    - [ ] Tabel 12 kantor sampel (Wirlisman, Wany Thamrin, Juli Cristie, Wida Delima Pandjaitan, Yondri Darto, Titik Sulistyowati, Najemah, Rian Sugito, Bambang Purwanto, Yulianti, Bambang Muchsinanto, Kiki); kontak resmi hanya Wirlisman, Wany Thamrin, Juli Cristie, Wida Delima (telepon kantor) {F3}
+    - [ ] Sebaran: menumpuk di Batam Kota, Lubuk Baja (Nagoya), Batu Ampar (Sei Jodoh); sebagian kecil Sekupang, Batu Aji, Bengkong, Sagulung; kecamatan pulau praktis tak ada -> kartu info "PPAT terdekat di Batam Kota/Lubuk Baja; tanyakan PPAT Sementara ke Kantah" {F3}
+    - [ ] Cara verifikasi (tombol "cek status"): PPAT -> Kantah Kota Batam (WA pengaduan) atau portal ATR/BPN, pastikan wilayah kerja Kota Batam; notaris -> ahu.go.id, MPD Notaris Kota Batam, Pengda INI; Pejabat Lelang Kelas II -> PDF DJKN 26 Nov 2025 -> data/panduan/cara_verifikasi_profesi.md {F3}
+  - [ ] 08 › C. Bantuan hukum dan profesi hukum
+    - [ ] Tabel 7: Posbakum PN, Posbakum PA, LBH Mawar Saron ((0778) 430990), LBH Peduli dan Harapan Bangsa (alamat belum ditemukan), LBH Yayasan Suara Keadilan (alamat belum ditemukan), DPC Peradi Batam & PBH (dua kandidat alamat: Batam Centre Square Blok C No.3 daftar DPN Maret 2025 vs Ruko KBC Blok A5 No.5), DPC Peradi Batam Raya (Nagoya Newton Blok A No.10; WA +62 812-7779-977) {F3}
+    - [ ] Posbakum PN/PA gratis: informasi hukum, konsultasi, advis, bantuan membuat dokumen (gugatan/permohonan), dasar PERMA 1/2014; PA: harta bersama, hadhanah, nafkah; umumnya TIDAK mendampingi di sidang -> rujuk ke OBH {F3}
+    - [ ] OBH terakreditasi BPHN: litigasi (pidana, perdata, TUN) + non-litigasi gratis bagi warga miskin (syarat SKTM + dokumen perkara); mitra dilarang meminta "uang rokok/uang makan" {F3}
+    - [ ] Peradi terpecah: DPC Peradi Batam (peradi.or.id) dan Batam Raya (peradi.id) = dua entri dengan atribut `afiliasi_dpn` {F3}
+    - [ ] Advokat perorangan: JANGAN dibuat daftar; arahkan minta rujukan DPC, cek KTA di situs organisasi, pastikan disumpah di Pengadilan Tinggi {F3}
+  - [ ] 08 › D. Jasa dokumen, pajak, penilai, dan usaha
+    - [ ] Tabel 7: IKPI Cabang Batam (Royal Sincom Blok C No.12, (0778) 461325, ketua Bunandi 2024-2029; situs ikpikepri.org kemungkinan pihak ketiga), AKP2I Pengda Kepri, KJPP MBPRU, KJPP Aksa Nelson & Rekan (telepon dua versi 0778-37220003 vs 0778-3720002), KJPP Damianus Ambur & Rekan, UPTD PLUT-KUMKM (Golden Prima/Golden City Tanjung Buntung Bengkong), Dinas Koperasi dan Usaha Mikro ((0778) 321670) {F3}
+    - [ ] Konsultan pajak perorangan: pakai direktori anggota IKPI + pastikan izin praktik DJP {F3}
+    - [ ] KJPP: sumber terbaik e-directory.mappi.or.id (cabang lain: KJPP Syarif Endang & Rekan, KJPP Toto Suharto & Rekan, alamat Orchid Park, Mega Legenda, Orchid Point belum dicocokkan) -> ambil langsung dari MAPPI; dibutuhkan untuk penilaian rumah (KPR, waris, lelang, sengketa) {F3}
+    - [ ] KJA/KAP belum diriset (TODO): sumber PPPK Kemenkeu dan IAPI {F3}
+    - [ ] Penerjemah tersumpah: TIDAK ada entri; kartu hanya panduan verifikasi (minta nomor SK format AHU-xx.AH.03.07.tahun, cocokkan pasangan bahasa, konfirmasi instansi penerima; dokumen SG/MY biasanya Inggris-Indonesia) {F3}
+    - [ ] Legalisasi dokumen: Apostille online via Ditjen AHU untuk negara anggota Konvensi; non-anggota: Kemenkum -> Kemenlu -> kedutaan; status Singapura/Malaysia dalam Konvensi harus dicek di AHU/HCCH sebelum ditampilkan {F3}
+    - [ ] Biro jasa STNK/paspor: JANGAN dibuat daftar; arahkan ke Samsat, Kantor Imigrasi Batam (Jl. Engku Putri No.3, (0778) 462069), MPP {F3}
+    - [ ] Izin usaha: NIB lewat OSS (oss.go.id); FTZ diurus PTSP BP Batam (OSS, IBOSS), izin daerah DPMPTSP (easy.batam.go.id); PLUT-KUMKM fasilitasi NIB {F3}
+- [ ] 08 › Skema data per kategori (usulan)
+  - [ ] Tabel 11 baris (PPAT, notaris, pertanahan/lahan, posbakum, OBH/LBH, organisasi advokat, konsultan pajak, KJPP, penerjemah tersumpah, pejabat lelang/KPKNL, izin usaha/UMKM) dengan atribut khusus + tag OSM usulan (office=notary, office=lawyer+lawyer=legal_aid [usulan], office=association, office=tax_advisor, office=consulting+consulting=valuation [usulan], office=translator) -> data/taksonomi/skema_profesi.json (11 baris) {F3}
+- [ ] 08 › Recommendations
+  - [ ] MPP sebagai pin "hub" dengan sub-daftar loket (BP Batam/PTSP, BPN, pajak, DPMPTSP) + kartu "Urusan tanah" menaut ke BP Batam, BPN, MPP {F3}
+  - [ ] Kategori PPAT/notaris berlabel "Beta - data komunitas, verifikasi sendiri" + formulir koreksi untuk pemilik kantor; jangan tampilkan nomor SK dari blog 2019 {F3}
+  - [ ] Posbakum PN dan PA sebagai entri bantuan hukum utama; LBH baru dapat badge "terakreditasi BPHN 2025-2027" setelah dicek di Sidbankum {F3}
+  - [ ] Kartu informasi (bukan pin kosong) untuk kecamatan pulau Belakang Padang, Bulang, Galang {F3}
+  - [ ] Validasi ulang tiap 6 bulan (WA BP Batam sering ganti, alamat DPC advokat berpindah) -> halaman admin "perlu dicek ulang" {F10}
+- [ ] 08 › Caveats
+  - [ ] Semua koordinat sengaja null; tidak ada yang terverifikasi {F3}
+  - [ ] Daftar PPAT dari blog 2019: kantor mungkin pindah, PPAT pensiun/meninggal, nomor SK tak bisa dipercaya {F3}
+  - [ ] PPAT 125 = data 2022; notaris 139 = April 2025; "sekitar 140" belum jelas wilayah {F3}
+  - [ ] Status LBH di tabel C merujuk kemitraan 2023, bukan akreditasi 2025-2027 {F3}
+  - [ ] Konflik data: WA PTSP BP Batam (dua versi), telepon KJPP ANR (dua versi), alamat DPC Peradi Batam (KBC vs Batam Centre Square); kelurahan Batam Centre (Teluk Tering/Belian/Baloi Permai) berdasar petunjuk sumber {F3}
+- [ ] 08 › Data JSON (seed)
+  - [ ] 33 objek (pertanahan_lahan 6, perizinan_usaha 3, ppat_notaris 12, bantuan_hukum 7, jasa_dokumen 5) -> data/raw/08-...__1.json -> data/places/08-ppat-notaris-hukum.json (34 tempat = 33 + Kantor Imigrasi dari prosa; 24 pertanahan_hukum + 10 pemerintahan) {F3}
+- [ ] 08 › Daftar entri yang koordinatnya belum pasti (semua perlu diisi user)
+  - [ ] 33 entri berurutan; catatan khusus: LMS bisa disamakan dengan BP Batam Pusat, PTSP BP Batam pin sama dengan MPP, DPMPTSP di Lt.2 MPP, Yulianti di Lt.3 MPP, Bambang Muchsinanto kecamatan belum diketahui, LBH Peduli/Suara Keadilan alamat belum ditemukan, DPC Peradi Batam dua kandidat alamat -> data/koordinat_perlu_diisi.csv {F3}
+  - [-] Daftar sumber (61 item): konteks, tidak perlu fitur; masuk kolofon
+
+## 09-direktori-celah.md
+
+
+- [ ] 09 › Seed Data Tambahan Batam City Hall: Layanan Publik, Kesehatan, Ibadah, dan Transportasi (Riset Celah, November 2026)
+  - [ ] Celah terbesar yang bisa diisi: kantor Pemko dan instansi vertikal, 12 KUA, 6 paroki Katolik, TMP, PMI, SPKLU PLN Batam, rute pompong utama; hampir semua koordinat belum pasti -> perlu_diisi_user {F3}
+- [ ] 09 › TL;DR
+  - [ ] 65 entri baru (alamat + kontak kantor resmi); sumber terkuat subdomain batam.go.id, kemenag.go.id, bpbatam.go.id, plnbatam.com, Basarnas; alamat lama Disdik, BPBD, Dinsos ternyata beda dengan situs resmi terbaru {F3}
+  - [ ] Koordinat terpakai hanya 3 paroki (Wikipedia), TMP Bulan Gebang (dari plus code), beberapa titik direktori non-resmi; semua perlu_cek_ulang; terminal Waterfront City dan Gold Coast = null {F3}
+  - [ ] Celah belum diriset (daftar kerja, bukan data): klinik 24 jam, lab klinik, apotek 24 jam, klinik hewan, psikolog RS, gereja Protestan, klenteng/vihara tambahan, masjid besar per kecamatan, terminal bus, pool travel, SPBU, UPT Trans Batam {F3}
+- [ ] 09 › Ringkasan singkat
+  - [ ] Lima kelompok data: layanan publik/pemerintahan, kesehatan pelengkap, ibadah+makam, transportasi, nomor darurat nasional tanpa titik peta {F3}
+  - [ ] Lanal Batam sudah tidak ada di Batam (pindah Tanjung Uban jadi Lanal Bintan); Lantamal IV berganti Kodaeral IV (11 Agustus 2025, Batam Pos) -> entri benar: Kodaeral IV (ex-Lantamal IV) di Tanjung Sengkuang, Batu Ampar {F3}
+  - [ ] Basarnas di Batam masih Pos SAR di bawah KPP Kelas A Tanjungpinang; usulan naik jadi Kantor SAR Kelas B (7 Agustus 2026, Kepala KPP Fazli, KoranBatam) BELUM terjadi {F3}
+  - [ ] Waspada situs tidak resmi: disdikkotabatam.org ("Jl. Trans Papua"), disdikbatampemkot.com (hotline 021), bpbd.damkarbatam.com ("Provinsi Batam", kode 021) -> hanya pakai `*.batam.go.id` {F3}
+  - [ ] Tarif pompong Sekupang-Belakang Padang naik Rp18.000 -> Rp20.000/orang (Razali PPMS, Tribun Batam 5/9/2022); carter Rp160.000 (1-4 orang) dan Rp200.000 (5-10 orang) (Kumparan/Kepripedia); tandai "mungkin usang" {F4}
+  - [ ] SPKLU PLN Batam 26 unit (siaran pers 13 Juni 2026; 21 titik + 3 unit ultra fast di Kantor Korporat) {F3}
+- [ ] 09 › Key Findings dan Tabel per Kategori
+  - [ ] Legenda koordinat: terverifikasi (resmi/OSM/Wikidata), perlu_cek_ulang (Wikipedia, direktori pihak ketiga, plus code), perlu_diisi_user; data sebelum 2023 ditandai usang {F3}
+  - [ ] 09 › A. Layanan Publik dan Pemerintahan
+    - [ ] Tabel 16 kantor: Wali Kota ((0778) 462164), DPRD (1.1265179,104.0552557; 50 anggota periode 2024-2029), Bapenda (Gedung Bersama Pemko Lt.2 Jl. Raja Isa; layanan PBB-P2, BPHTB; epbb.batam.go.id; SIBIJAK Ngemall Jum-Min 12.00-20.00 berkala), Dishub, Dinsos PM (mengelola TMP), Dinkes, Disdik (1.109933,103.953554), Disnaker (usang 2017), BPBD, Kemenag (WA 0822-8000-1114), KSOP Khusus Batam, Pos SAR (115; KPP Tanjungpinang (0771) 319300; KN Ganesha 105), Kodim 0316/Batam (koramil Lubuk Baja, Sekupang, Nongsa, Galang, Belakang Padang), Kodaeral IV, Lanud Hang Nadim, UPT Trans Batam (alamat belum ditemukan) {F3}
+    - [ ] Kantor Pos: KCU Jl. Jend. Sudirman ((0778) 462496/462033; nomor 463150 di idalamat milik PLN Batam, jangan dipakai) + 8 cabang (Nagoya, Jodoh, Muka Kuning [nomor tampak salah ketik], Batu Aji, Mega Legenda, Botania, Baloi, Tiban) sumber blog 2014/Foursquare = usang, perlu cek masih buka {F3}
+    - [ ] KUA 12 kecamatan: sumber Kanwil Kemenag Kepri "Alamat KUA se Prov Kepri" (~2017) -> mungkin usang; nomor HP di daftar Kanwil sengaja TIDAK dimasukkan, hanya nomor kantor (0778); KUA Batu Aji (1.0385515,103.9960996 cek ulang) dan KUA Sagulung sama-sama "Jl. R. Suprapto" (bisa tertukar; Sagulung rencana pindah ke Sei Pelunggut); KUA Batu Ampar alamat No.1 vs No.3; KUA Sekupang Jl. Pramuka No.1 vs Jl. Masjid Raya Baiturrahman, jam Sen-Kam 07.30-16.00, Jum 07.30-16.30; pendaftaran nikah lewat SIMKAH (simkah4.kemenag.go.id) {F3}
+  - [ ] 09 › B. Kesehatan Pelengkap
+    - [ ] UPD PMI Kota Batam (donor darah; Jl. Cempaka Batam Centre; layanan darah 24/7; (0778) 741368; WA admin donor +62 811-7001-9960; markas@pmibatam.or.id) {F3}
+    - [ ] Ambulans 119 sebagai nomor darurat nasional (non-lokasi; pengelola Batam belum diverifikasi) -> digabung ke nomor darurat {F3}
+    - [ ] Celah belum diriset: klinik 24 jam per kecamatan, Prodia/Kimia Farma/Pramita, apotek 24 jam, klinik/psikolog jiwa RS, klinik hewan; titik awal klinik jiwa = poli jiwa RSUD Embung Fatimah dan RS BP Batam (Jl. Cipto Mangunkusumo No.1, Tj. Pinggir, Sekupang, (0778) 322121) {F3}
+  - [ ] 09 › C. Ibadah dan Makam
+    - [ ] Tabel 6 paroki Katolik (Santo Petrus Lubuk Baja [tanpa alamat], Santo Damian Bengkong 1.1540247,104.0219444 didirikan 11/6/1995, Kerahiman Ilahi Tiban 1.1147716,103.9673676 (0778) 322886, Maria Bunda Pembantu Abadi Batu Aji 1.0398111,103.9676321 didirikan 1/11/2003 ~12.000 umat [paroki ketiga di Pulau Batam], Santo Hilarius Sei Beduk, Santo Fransiskus Asisi Kabil (0778) 7100 212; keuskupan Pangkalpinang) {F3}
+    - [ ] TMP Pusara Bhakti Bulan Gebang (Jl. Letjend Suprapto, Bukit Tempayan; 1.04686,103.96752 dihitung peneliti dari plus code 2XW9+P2R (6PH5), wajib dicek OSM; dikelola Dinsos PM (0778) 321370) {F3}
+    - [ ] Gereja Protestan (HKBP, GBI, GPdI, GKPS, GMIM, GKI, Bethel), klenteng/vihara tambahan, masjid besar per kecamatan belum diriset {F3}
+  - [ ] 09 › D. Transportasi
+    - [ ] Tabel 4 pelantar/pelabuhan rakyat: Pancung Sekupang (24 jam malam pesan dulu via PPMS; Rp20.000; ±10-25 menit; 12 penumpang per pompong), Belakang Padang (ke Sekupang Rp20.000; Pulau Geranting ±1 jam Rp140.000/orang), Sagulung (ke Pulau Buluh ±5-10 menit dan pulau Bulang Rp20.000-25.000, data 2022), rute Pemping/Terong/Pecung (non-lokasi, pompong reguler sekali sehari, carter mahal, data riset lama) -> data/panduan/09-rute_pompong.json (4 rute) {F4}
+    - [ ] Terminal Feri Waterfront City/Teluk Senimba (Marina City Tanjung Riau; operator PT Senimba Bay Resort) dan Gold Coast Bengkong (Kawasan Pantai Indah Mutiara Blok B No.36-37; PT Aneka Sarana Sentosa; diresmikan 14 April 2025 oleh Menko AHY + Kapolri; rute harian Batam-Stulang Laut Malaysia, Ferry Dolphin) {F4}
+    - [ ] SPKLU: 1 Kantor Korporat PLN Batam (3 unit ultra fast) + 13 titik lain (Grand Batam Mall, Nagoya Thamrin City, Harbour Bay, Mega Mall, Mall Botania 2, Aston Pelita, Panbil Mall, Polresta Barelang, Masjid Bintang Amin Angkasa, Kantor Pajak Sukajadi, Padang Golf Sukajadi, Harris Batam Centre, Petra Tiban) = 14 entri; total resmi 26 unit; ketersediaan via PLN Mobile {F3}
+    - [ ] SPKLU yang hanya disebut nama: Kantor Disyan 1 dan 2, Taman Golf Residence, showroom BYD, Kantor PP Polri, Metro Showroom, Kongkow Driving Range, Grand Mercure -> tambah lewat PLN Mobile; terminal bus, pool travel, SPBU belum diriset {F3}
+  - [ ] 09 › E. Nomor Darurat dan Pengaduan (non-lokasi, tanpa titik peta)
+    - [ ] Tabel 6: 112 (pengelola lokal belum diverifikasi), 110 polisi, 113 damkar, 115 SAR/Basarnas (ke Pos SAR Batam/KPP Tanjungpinang), 119 ambulans, LAPOR! (lapor.go.id; BP Batam ditpam.laporsp4n@bpbatam.go.id) -> data/panduan/09-nomor_darurat.json + data/darurat/nomor_darurat_09.json {F3}
+- [ ] 09 › Data JSON
+  - [ ] 65 objek (layanan_publik 16 kantor + 9 pos + 12 KUA; kesehatan 1; ibadah 7; transportasi 6 + 14 SPKLU) -> data/raw/09-...__1.json -> data/places/09-direktori-celah.json (65 = 64 JSON tanpa trp-rutepemping + RS BP Batam dari prosa) {F3}
+- [ ] 09 › Caveats
+  - [ ] Tak satu pun koordinat dicek langsung ke OSM/Wikidata; idalamat.com kasar dan kadang tertukar (nomor PLN Batam di entri Pos Indonesia) {F3}
+  - [ ] Terminal Batam Centre: lintang BP Batam 01°17'15" LU terlalu ke utara (seharusnya ~1,13°) -> cek OSM {F4}
+  - [ ] Data usang: daftar KUA Kanwil (~2017), kantor pos (blog 2014, Foursquare), Disnaker (blog 2017) {F3}
+  - [ ] Tarif pompong swadaya PPMS/tekong, bukan tarif resmi (Dishub hanya "mengetahui"); pulau lain dinegosiasikan dengan tekong {F4}
+  - [ ] Celah belum diriset sama sekali (daftar kerja): klinik 24 jam, lab klinik, apotek 24 jam, klinik hewan, psikolog RS, gereja Protestan, klenteng/vihara tambahan, masjid besar per kecamatan, terminal bus, pool travel, SPBU, UPT Trans Batam, Pulau Kasu, rute Pulau Terong {F3}
+- [ ] 09 › Daftar Entri dengan Koordinat Belum Pasti (per kategori)
+  - [ ] Layanan publik perlu_diisi_user: 14 kantor + 9 pos + 11 KUA; perlu_cek_ulang: DPRD, Disdik, KUA Batu Aji {F3}
+  - [ ] Kesehatan: UPD PMI; ibadah/makam: 3 paroki kosong, 4 cek ulang (Santo Damian, Kerahiman Ilahi, MBPA, TMP) {F3}
+  - [ ] Transportasi perlu_diisi_user: Pancung Sekupang, Belakang Padang, Rakyat Sagulung, rute Pemping/Terong/Pecung, Waterfront City, Gold Coast, 14 SPKLU -> data/koordinat_perlu_diisi.csv {F3}
+  - [-] Daftar sumber (71 item): konteks, tidak perlu fitur; masuk kolofon
+
+## 10-trans-batam.md
+
+
+- [ ] 10 › Peta Bus Trans Batam: Riset Data dan Desain untuk Batam City Hall (per 4 November 2026)
+  - [ ] Pembuka: 9 koridor aktif per Nov 2026; K7 lewat Bandara Hang Nadim sejak 2 Juli 2026; TIDAK ada koordinat halte terverifikasi, tidak ada relasi route=bus OSM, tidak ada GTFS; strategi: seed urutan halte + koordinat landmark `perlu_cek_ulang` + survei/OSM {F4}
+- [ ] 10 › TL;DR
+  - [ ] Tampilkan 9 koridor aktif K1-K9, jam umum 06.00-18.00/19.00 WIB; K1 dan K2 mulai 05.45; K7 06.00-19.00 interval 20-30 mnt {F4}
+  - [ ] K10 (Tembesi-Barelang/Galang) dan feeder = RENCANA, jangan digambar sebagai layanan aktif {F4}
+  - [ ] Jumlah halte bertentangan antarsumber (K5 41 vs 65; K6 41 vs 58) dan daftar sumber terpotong (K1 56 halte, ~31 nama): tampilkan sebagai "perlu cek ulang", pola `lengkap=false` {F4}
+  - [ ] Stack: MapLibre + GeoJSON sendiri (stops/patterns/routes), `line-offset` atau maplibre-gl-lanes untuk ruas berimpit, diagram oktilinier 0/45/90 (LOOM atau SVG manual) {F4}
+  - [ ] Hub: Transferpoint Batam Center (K1,K2,K5,K6,K7), Sekupang (K1,K3,K4), Terminal Jodoh (K3,K5,K8), Punggur (K8,K9) {F4}
+- [ ] 10 › Ringkasan singkat
+  - [ ] Topologi "bintang ganda": pusat TP Batam Center; simpul sekunder Sekupang, Jodoh, Punggur; cabang barat (Sekupang, T. Uncang, Sagulung), selatan (Piayu, Mukakuning), utara (Jodoh/Nagoya), timur (Nongsa, Bandara, Punggur) dipakai sebagai kerangka tata letak diagram {F4}
+- [ ] 10 › Key Findings
+  - [ ] KF1 jumlah koridor aktif = 9 (klaim "10 koridor" Kadishub Mei 2025 memasukkan Tembesi-Barelang yang masih disiapkan); rencana jangka panjang 10 koridor + feeder mulai pertengahan 2027, menunggu anggaran 2027 {F4}
+  - [ ] KF2 K7 berubah Juli 2026: peluncuran 29 Jun, operasional 2 Jul 2026, 06.00-19.00 WIB, headway ~20 mnt jam sibuk pagi / 30 mnt siang-sore, 5 armada + 1 cadangan, bandara-Batam Centre ~30 mnt, halte bandara di pintu kedatangan; daftar halte K7 lama (76) belum memuat halte bandara {F4}
+  - [ ] KF3 armada +19 bus 2026 (peresmian Kemenhub 26 Mei 2026); target headway <10 mnt adalah TARGET kebijakan, bukan kondisi terukur: jangan tampilkan sebagai fakta {F4}
+  - [ ] KF3 pembagian bus baru: 5 Jodoh-BC, 6 Piayu-BC, 6 Nongsa-BC, 1 K1, 1 K2; "pola BTS" untuk memperkuat koridor 5, 6, 7 (realisasi 1 Juni) {F4}
+  - [ ] KF4 jumlah armada simpang siur (65 / ~20 / 52 BTS) dan klaim "120 halte" tidak terverifikasi: JANGAN tampilkan angka armada total di UI, tampilkan headway per koridor saja {F4}
+  - [ ] KF5 tidak ada data geometri terbuka; Moovit (8 jalur/384 stop, usang, belum ada K9) tidak boleh di-scrape, hanya referensi visual manual {F4}
+  - [ ] KF6 aplikasi resmi SIP TB (`ngi.muchi.transbatam`, v2.0.1 Des 2025: posisi bus, rute, halte terdekat, tiket) dan aplikasi Mitra Darat untuk K7: tautkan, jangan bangun ulang pelacak bus {F4}
+- [ ] 10 › Tabel koridor (status per November 2026)
+  - [ ] Tabel 10 baris K1-K10: terminal A->B, jalan utama, jam, headway, hari, jumlah halte sumber, status data -> `data/trans_batam/koridor.json` + halaman per koridor {F4}
+  - [ ] Headway hanya K7 (20/30 mnt) yang terverifikasi; K1/K3 "±20-35 mnt" dan K5 "60 mnt" berasal dari Moovit lama = perlu_cek_ulang; K2,K4,K6,K8 perlu_diisi; K9 jarang (1-3 bus) {F4}
+  - [ ] K9 berangkat pertama: dari Nongsa 06.00, dari Punggur 06.40 {F4}
+  - [ ] K8 jumlah bus bertentangan (3 vs 8) {F4}
+  - [ ] Jeda Jumat siang (K1 dari BC 10.55->13.20; K3 dari Jodoh 11.10->13.15) dugaan jeda salat Jumat, dari Moovit: simpan `perlu_cek_ulang`, jangan tampil sebagai fakta {F4}
+  - [ ] Abaikan dua penomoran lama (RailTravel Station era 2017 tarif Rp4.000; Moovit ID: K5=Piayu-Jodoh, K6=Nongsa-BC, K7=Punggur-Jodoh); K9 = Punggur-Nongsa (bukan "Batam Centre-Nongsa" Kompas 2024) {F4}
+  - [ ] Sumber terbaik K7 = berita 29 Jun-3 Jul 2026 (BatamToday dkk.); InspirasiToday Mei 2026 (06-18, 3 bus) usang untuk K7; seri Kepri Post/InspirasiToday = sumber sekunder (template berulang, salah ketik) {F4}
+- [ ] 10 › Tabel halte per koridor (berurutan)
+  - [ ] Legenda T = nama+urutan dari sumber tanpa koordinat; "..." = gap halte tidak tercantum; semua koordinat `perlu_diisi_user` kecuali landmark `perlu_cek_ulang` {F4}
+  - [ ] 10 › K1 Sekupang → Batam Centre (sumber: Kepri Post Mei/Juli 2025; 31 dari 56 halte)
+    - [ ] 31 halte berurutan dengan kecamatan perkiraan (Sekupang 1-15, null 16-17,19-20, Batam Kota 18, 21-31); ruas Kartini->UIB (~11 halte) berimpit dengan K3 -> pola `K1_pergi` {F4}
+    - [ ] Arah balik K1 BERBEDA dari pergi (Kantor Pos, Harmoni One, Green Land, Yos Sudarso, Kawasaki B, ..., Taman Sari B, Tiban Raya, Cipta Puri, Mutiara View, GOR Sekupang B, Sei Harapan, Kartini, PCI, ..., TP Sekupang): pola terpisah per arah `K1_balik` dengan gap {F4}
+  - [ ] 10 › K2 Batam Centre → Tanjung Uncang (sumber: Kepri Post Juli 2025; daftar ada gap; total 78)
+    - [ ] Urutan 37 halte + 2 gap (sisi B); arah sebaliknya diawali "Hidayatullah A" (Moovit); kecamatan Batam Kota -> Sei Beduk -> Batu Aji -> Sagulung (perkiraan) -> `K2_ke_tanjung_uncang` {F4}
+  - [ ] 10 › K3 Sekupang → Jodoh (sumber: Warta Jaya Vision, Desember 2025; total 65)
+    - [ ] Pola pergi (25 halte + 1 gap) dan balik (20 halte + 1 gap) berbeda (balik via Top 100 Jodoh, DC Mall SW, Pasar Induk, Windsor, Vihara, Penuin, UIB B); kecamatan Sekupang -> Lubuk Baja -> Batu Ampar {F4}
+  - [ ] 10 › K4 Sagulung → Sekupang (sumber: Kepri Post Februari 2026; daftar ringkas, total 69)
+    - [ ] 14 halte tercantum dari 69; versi 2022 (Batamnews) menambah RSBP sebelum Sekupang (perlu_cek_ulang); kecamatan Sagulung -> Batu Aji -> Sekupang {F4}
+  - [ ] 10 › K5 Jodoh ↔ Batam Centre (sumber: Kepri Post Agustus 2025/2026 + Moovit)
+    - [ ] 3 pola: Jodoh->BC (Kepri Post, 17), BC->Jodoh (Moovit 22 stop, usang), ujung Jodoh->BC Moovit; Pasar Angkasa baru muncul di versi Agu 2026; Harbourbay hanya ada di Moovit; kecamatan Batu Ampar -> Bengkong -> Batam Kota {F4}
+  - [ ] 10 › K6 Tanjung Piayu → Batam Centre (sumber: InspirasiToday Mei 2026; 27 nama)
+    - [ ] 27 halte lengkap berkecamatan (Sei Beduk 1-22, Batam Kota 23-27); halte 23-26 juga dilayani K2 sisi B {F4}
+  - [ ] 10 › K7 Nongsa → Bandara Hang Nadim → Batam Centre (sumber: InspirasiToday Mei 2026 + berita Juli 2026)
+    - [ ] 28 nama; posisi halte Bandara (pintu kedatangan) setelah Simpang Bandara = perlu_cek_ulang; Polda Kepri, Bandoeng Resto, Citra Mas, Kampung Mangga = titik transfer K7<->K9 {F4}
+  - [ ] 10 › K8 Punggur → Jodoh (sumber: Kepri Post Maret–April 2026; daftar sangat ringkas, total 78)
+    - [ ] Hanya 8 halte tercantum + 1 gap (via Simpang Kepri Mall, Simpang Jam, Baloi/BCS Mall, DC Mall, Pasar Induk menurut Batamnews 2022); 6 halte pertama sama dengan K9 {F4}
+  - [ ] 10 › K9 Punggur → Nongsa (sumber: 1news.id Oktober 2025, Kepri Post Maret 2026; total 54)
+    - [ ] 13 halte + gap (~40 halte tak tercantum sampai ujung Nongsa) {F4}
+  - [ ] 10 › Halte transit/persinggungan utama
+    - [ ] Tabel 11 baris hub/ruas berimpit -> `halte.json.halte_transit`; dipakai menentukan simbol transfer dan ruas paralel (BC-Mega Mall K1/K5; Kepri Mall-Masjid Agung K2/K6; Kartini-UIB K1/K3) {F4}
+    - [ ] Tambahan transit hanya di tabel ini: K8 di Top 100 Jodoh & DC Mall SW; K2 di Fanindo & Basecamp (Fanindo, Basecamp, Hidayatullah = transfer K2/K4) {F4}
+- [ ] 10 › Data geometri rute
+  - [ ] Status sumber: OSM tidak punya route=bus/halte Trans Batam (relasi batas kota 10660353; relasi feri 15412932); Moovit hanya referensi visual; Google transit tanpa GTFS; WebGIS 19 halte Polibatam tanpa koordinat; MyMaps RailTravel hanya estimasi 2017 {F4}
+  - [ ] Cara menyusun GeoJSON: (1) halte dulu dengan sisi A/B, (2) jalur = map-matching urutan halte ke graf jalan OSM (OSRM/Valhalla/GraphHopper; pfaedle bila ada GTFS) satu LineString per arah per koridor, (3) opsional sumbang relasi PTv2 + route_master ke OSM (Relatify), (4) pisah geometri/urutan/jadwal {F4}
+  - [ ] Tahap 1 geografis hanya hub (tanpa jalur); jalur menunggu survei/map-matching {F4}
+- [ ] 10 › Contoh query Overpass (Kota Batam)
+  - [ ] 4 query (halte bus, relasi route=bus PTv2, jejak Trans Batam via nama/network/operator, kerangka jalan trunk-tertiary) -> `data/osm/overpass/10-*.overpassql`; jalankan, simpan hasil bertanggal di `data/osm/`, catat hasil {F1}
+  - [ ] Fallback bila `area(3610660353)` kosong: `area["name"="Batam"]["boundary"="administrative"]` atau bbox `(0.95,103.85,1.22,104.20)` (prosa, TIDAK ada di file .overpassql) {F1}
+- [ ] 10 › Info praktis untuk warga
+  - [ ] Tarif Rp5.000 umum, Rp2.500 pelajar/mahasiswa/anak <12 th; tidak ada tambahan ke bandara (BatamToday 3 Jul 2026) {F4}
+  - [ ] Pembayaran nontunai sejak 1 Jan 2023: JANGAN tampilkan opsi tunai; BRIZZI, QRIS (LinkAja, GoPay, DANA, OVO, ShopeePay, AstraPay), m-banking; Mandiri/TapCash BNI/Flazz BCA "seharusnya" diterima = perlu_cek_ulang {F4}
+  - [ ] Transit: tidak ada aturan transfer gratis; asumsi tiap naik = satu tarif sampai UPT konfirmasi (perlu_cek_ulang) {F4}
+  - [ ] Fasilitas halte dua tipe (halte bangunan beratap vs bus stop tiang): simbol peta berbeda; bus baru AC+CCTV+GPS; bus tak boleh mengetem (operator dibayar per km, skema BTS) {F4}
+  - [ ] Aksesibilitas: tulis jujur "Belum ada informasi aksesibilitas resmi" {F4}
+  - [ ] Kontak call center Dishub/Trans Batam 0822-8828-6064 (Media Center Pemkot Des 2022; perlu_cek_ulang) {F4}
+  - [ ] Pelacak: SIP TB (Google Play `ngi.muchi.transbatam`), Mitra Darat (K7), Moovit usang {F4}
+  - [ ] Rencana (bukan layanan aktif): lajur khusus BRT bercat merah, feeder pertama pertengahan 2027 (Dapur 12-Fanindo, Dapur 12-Pasar Melayu, kawasan Tiban), 8 halte baru 2026 lokasi belum ditentukan, K10 {F4}
+- [ ] 10 › Konektivitas: titik penting dan halte terdekat
+  - [ ] Tabel 20 baris titik penting (pelabuhan Batam Centre/Sekupang/Harbour Bay/Punggur/Nongsa/Sagulung, bandara, mal, RS Awal Bros, RSBP, UIB, Polibatam, Uniba, kawasan industri) -> halte terdekat + koridor + status -> `info_praktis.json.konektivitas`; ditampilkan di halaman koridor dan kartu pelabuhan/RS/kampus {F4}
+  - [ ] Semua status pelabuhan = perlu_cek_ulang; hanya bandara "terverifikasi (lokasi deskriptif, koordinat belum)"; widget silang "halte terdekat" di detail makan hanya bila koordinat halte terverifikasi {F2}
+- [ ] 10 › Referensi desain peta transit
+  - [ ] Pola Cameron Booth: diagram utama sederhana (hanya halte transfer + landmark) + inset strip map berisi semua halte per koridor; strip map ala Lisbon/Prague untuk HP; logika warna/kode ala TransJakarta {F4}
+  - [ ] Prinsip diagram: sudut 0/45/90, jarak halte seragam antar-transfer, satu warna/koridor, ruas berimpit = garis paralel, transfer = lingkaran/kapsul tebal, halte biasa = tick, terminal = kapsul tebal, label horizontal, A/B digabung di diagram {F4}
+  - [ ] Legenda: warna koridor, simbol transfer, pelabuhan (jangkar), bandara (pesawat), halte bangunan vs tiang, garis putus untuk koridor rencana; hierarki aktif tebal / rencana tipis putus / feri tipis biru-abu {F4}
+  - [ ] Tools: LOOM (GPL-3.0, hanya untuk draf layout; hati-hati lisensi bila kode dipakai), transit-map (Gurobi, tidak praktis), SVG manual + D3 (disarankan untuk 9 koridor), MapLibre `line-offset`, maplibre-gl-lanes v1.0.0 (rilis Sep 2026) {F4}
+  - [ ] Palet 13 baris (kertas, tinta, laut, K1-K9, rencana) + casing kertas 1-1,5 px + kontras grafis >=3:1; efek riso (noise, misregistration 0,5 px) HANYA di poster/diagram statis, bukan peta interaktif -> `desain_peta.md`, `koridor.json.warna_palet` {F4}
+- [ ] 10 › Struktur data yang disarankan untuk Claude Code
+  - [ ] 7 file target: corridors.json, stops.geojson (A/B dipisah), stop_groups.json, patterns.json (per arah), routes.geojson, service.json (jam, headway, jeda Jumat, hari), schematic.json (x,y grid terpisah dari lat/lng) -> padanan di data: koridor.json, halte.json (halte/kelompok/pola); CELAH: routes.geojson, schematic.json, service.json terpisah {F4}
+  - [ ] Aturan ketidakpastian: status_koordinat (terverifikasi <=15 m / perlu_cek_ulang / perlu_diisi_user), status_data (terverifikasi/perlu_cek_ulang/mungkin_usang) + diverifikasi_pada + sumber_url[]; di UI status selain terverifikasi = simbol berongga + tooltip "lokasi perkiraan" {F4}
+  - [ ] Seed JSON: meta.catatan (koordinat landmark BUKAN halte; halte di urutan tanpa entri dibuat otomatis lat/lng null), 10 koridor, 19 halte seed (10 berkoordinat landmark), urutan_ringkas K1/K6/K7/K9, catatan lengkap=false {F4}
+  - [x] lib/data/schema.ts, scripts/validate-data.ts · Validasi zod untuk koridor/halte/pola/halte_transit/info_praktis; id halte namespace sendiri (bukan places.json) {F1}
+- [ ] 10 › Rekomendasi
+  - [ ] R1 MVP dua tahap: tahap 1 diagram skematik (urutan + hub, tanpa koordinat halte) + layer geografis hub saja; tahap 2 halte lengkap + jalur map-matching setelah survei {F4}
+  - [ ] R2 TP Batam Center jadi pusat diagram; K1/K5 paralel Bundaran Madani-Mega Mall; K2/K6 paralel Kepri Mall-Masjid Agung {F4}
+  - [ ] R3 diagram + strip map ala Booth: klik koridor membuka strip map semua halte {F4}
+  - [ ] R4 tampilkan "data per Nov 2026" per koridor + tautan SIP TB; jangan janjikan jadwal tetap, tampilkan headway {F4}
+  - [ ] R5 K10/feeder = garis putus berlabel "rencana" {F4}
+  - [ ] R6 kontribusi halte hasil survei balik ke OSM (PTv2) {F10}
+- [ ] 10 › Caveats
+  - [ ] Daftar halte dari media sekunder (salin data SIP TB/Dishub, typo, pangkas); akses langsung Dishub/SIP TB tidak dilakukan -> tampilkan penafian sumber {F4}
+  - [ ] Semua koordinat seed = landmark; konflik sumber: Telaga Punggur Wikidata 1.03523,104.133397 vs BP Batam 1.1175,104.1683 (+-9 km), Harbour Bay Wikidata vs Tripadvisor +-1,5 km {F4}
+  - [ ] Angka penumpang tahunan 2.350.305 (Wikipedia, berlabel "2026") kemungkinan salah label: JANGAN dipakai {F4}
+  - [ ] Jadwal/frekuensi Moovit usang (K5 60 mnt): hanya untuk cek silang {F4}
+  - [ ] Target headway <10 mnt = target kebijakan, bukan terukur {F4}
+- [ ] 10 › Daftar halte yang koordinatnya belum pasti (isi sendiri)
+  - [ ] Daftar nama per koridor K1-K9 (semua perlu_diisi_user kecuali landmark perlu_cek_ulang) + "plus ~N halte belum tercantum" (K1 ~25, K4 ~55, K8 ~70, K9 ~40, K2 dan K3 gap + sisi A) -> `data/trans_batam/halte_koordinat_perlu_diisi.csv` (191 baris); halaman admin isi koordinat klik-peta + `tools/import_koordinat.py` {F3}
+  - [ ] Hitungan "±N halte belum tercantum" TIDAK jadi entri (hanya gap "..." di pola); jangan mengarang nama halte hilang {F4}
+
+## 11-geoportal.md
+
+
+- [ ] 11 › Batam City Hall: Audit Data Geoportal HANG JEBAT, BP Batam, dan Ina-Geoportal (BIG)
+  - [ ] Pembuka: nilai ada di server ArcGIS REST (BP Batam, BIG), bukan halaman geoportal; HANG JEBAT tanpa API publik; TIDAK ada lisensi terbuka eksplisit di ketiga portal -> sikap aman: layer terpisah + atribusi, jangan dicampur ke data OSM, jangan diimpor ke OSM {F1}
+- [ ] 11 › TL;DR
+  - [ ] Boleh dipakai (atribusi, layer terpisah): batas kelurahan/kecamatan BIG (`Administrasi_AR_KelDesa_10K`, `BATAS_DESAKEL_AR`) dan BP Batam (`WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/27`, `PETA_ADMINISTRASI_BATAM/MapServer/2`), semua `f=geojson`; pembanding berlisensi paling jelas = COD-AB Indonesia (BPS/OCHA, CC BY 3.0 IGO) {F1}
+  - [ ] Hanya referensi/cek koordinat (jangan disalin mentah): POI BP Batam, jalan 1:50K, 799 perumahan HANG JEBAT, layer rawan bencana/rusunawa/RTH HANG JEBAT, statistik Kampung Tua Satu Data Batam {F3}
+  - [ ] Jangan dipakai: data halte Trans Batam resmi (tidak ada, tak ada GTFS), folder `data_terbatas`/`data_tertutup` BP Batam, GADM (melarang redistribusi tanpa izin) {F1}
+- [ ] 11 › Key Findings
+  - [ ] KF1 BP Batam ArcGIS Server 10.51 `https://web-gis.bpbatam.go.id/arcgis/rest/services`, >30 folder (PROYGISPUSREN21_EKSTERNAL, WEBGIS_TEMATIK, Fasilitas, POI, Penduduk_Perkelurahan, data_terbatas, data_tertutup) {F1}
+  - [ ] KF2 layer kelurahan BP Batam `/MapServer/27` field `kdepum`,`namobj`,`kdebps`, geoJSON, MaxRecordCount 2000 {F1}
+  - [ ] KF3 BIG `Administrasi_AR_KelDesa_10K` (1:10.000, edisi Okt 2020, publikasi 23-10-2020), `Map,Query,Data`, maxRecordCount 4000, `exportTilesAllowed:false`, copyright "Badan Informasi Geospasial" {F1}
+  - [ ] KF4 CKAN Ina-Geoportal `ADMINISTRASI_AR_DESAKEL` edisi 2022 (rev. 27-12-2022) dan Sep 2023 ("Downloadable Data"), unduhan perlu login {F1}
+  - [ ] KF5 HANG JEBAT = PHP biasa (`index.php?page=`), dikembangkan Polibatam + Disperkimtan, tanpa API/WMS/WFS terdokumentasi; endpoint XHR peta interaktif belum diketahui {F3}
+  - [ ] KF6 statistik HANG JEBAT: 799 perumahan, 9 kecamatan, 39 kelurahan, 526 developer (Batam punya 12 kecamatan: cakupan terbatas) {F3}
+  - [ ] KF7 tidak ada lisensi terbuka: footer BP Batam "Copyright BP Batam 2023. All Right Reserved"; CKAN "No License Provided"; `termcondition` Ina-Geoportal belum terbaca {F1}
+  - [ ] KF8 BPS Wilkerstat `geoportal.bps.go.id/server/rest/services/wilkerstat/{provinsi,kabupaten,kecamatan,desa}` + `Hosted/Wilkerstat_Publish_Tile_Full` (layer `sls`); lisensi tidak dinyatakan {F1}
+  - [ ] KF9 data halte Trans Batam spasial resmi TIDAK ada; hanya jumlah halte per koridor (Wikipedia) dan laporan Dishub {F4}
+- [ ] 11 › Details
+  - [ ] 11 › 1. HANG JEBAT Geoportal (Disperkimtan Kota Batam)
+    - [ ] Platform PHP; mirror dev `https://if.polibatam.ac.id/perkimtan/`; publik tanpa login; admin `/admin/index.php?page=login`; aplikasi survei BNBA `http://survey.hangjebat-geoportal.com/` (petugas, jangan disentuh) {F3}
+    - [ ] 8 halaman terverifikasi (data-peta, peta-interaktif, data-statistik, statistik perumahan-permukiman, perumahan-sekota-batam, aset-disperkimtan, laporan-masyarakat, bantuan-psu) {F3}
+    - [ ] Endpoint data tak terdokumentasi: JANGAN scrape massal; cek DevTools hanya untuk pemahaman, anggap bukan API publik {F3}
+    - [ ] Tabel 8 layer (Perumahan Sekota Batam, Perumahan Subsidi, Serah Terima/PSU, Fasos Lapangan/RTH + Jalan Lingkungan [relevansi Tinggi], Permohonan PSU, Aset Disperkimtan, Rawan Bencana [Tinggi], Rusunawa): semua "Lihat saja", lisensi tidak dicantumkan -> `data/sumber_data/geoportal.json` {F3}
+    - [ ] Jalur data benar = minta resmi ke Disperkimtan (`info@hangjebat.go.id`, (0778) 8014473); "Syarat & Ketentuan" belum terbaca; Disperkimtan masuk places.json (`disperkimtan-kota-batam`, koordinat null) {F3}
+  - [ ] 11 › 2. Geoportal BP Batam ("Satu Peta Batam")
+    - [ ] Front-end `geoportal.bpbatam.go.id` (launching bersama BIG 24 Jul 2023; klaim 13.594 dataset/31 basis data/33 metadata ISO 19115 = klaim beranda, bukan jumlah layer publik); back-end ArcGIS 10.51; `robots.txt` menolak crawler: akses sopan, rate limit rendah, tarik sekali lalu simpan {F1}
+    - [ ] Halaman basis data: Sub-Wilayah Pengembangan Batam (`?id=23`, 2023, Direktorat Pengelolaan Pertanahan), Kontur Kota Batam (`?id=31`, 2023, Pusat Perencanaan Program Strategis); portal `https://data.bpbatam.go.id/` (isi belum dicek) {F1}
+    - [ ] Tabel 12 baris layer BP Batam: PETA_ADMINISTRASI_BATAM (0 Toponim Ibukota,1 Adm Kota Batam,2 Kecamatan,3 Kab/Kota; EPSG:4326, max 2000), MapServer/27 kelurahan (EPSG:3857, minScale 1:100.000), /26 garis batas (kab/kota,kecamatan,kelurahan,perairan desa,landas kontinen,perairan internasional), /9 vegetasi, /16 Bidang Tanah Fisik (JANGAN dipakai: kadaster), /3 tiang listrik, POI MOBILE_POI_ (/2 Bank; `klspoi`,`namobj`,`codepoi`), Utilitas (0 JALAN_LN_50K,1 KABELLISTRIK_LN_50K; EPSG:32648), PETA_INFRASTRUKTUR INTERNAL/1 (jangan dipublikasikan), Fasilitas (WADUK_AR_50K, PEMANFAATAN_AR_50K, MENARATELEPON_PT_50K, KELOLALIMBAH_PT_50K), Root (Pola Ruang Perpres 87/2011, Tutupan Lahan, Wilayah Kerja BP Batam, Hosted/Basemap), folder belum dicek (Perindustrian, KEK, Kawasan_Ekonomi_Khusus, BIFZA, Penduduk_Perkelurahan, POI, SPAM), tertutup (`data_terbatas`,`data_tertutup`,`DATACAKRA/Data_Tertutup`: JANGAN disentuh) {F1}
+    - [ ] Pelabuhan/kampung tua/batimetri tidak ada layer berlabel jelas; cek folder Perencanaan, perencanaan2024, Pertanahan, Direktorat_Pengelolaan_Pertanahan (asumsi untuk kampung tua) {F5}
+  - [ ] 11 › 3. Ina-Geoportal (BIG): `tanahair.indonesia.go.id`
+    - [ ] Front-end JS; katalog CKAN `https://tanahair.indonesia.go.id/sdi/dataset/`; ArcGIS `https://geoservices.big.go.id/rbi/rest/services` dan `/gis/rest/services`; unduh RBI/DEMNAS wajib login; query REST anonim; panduan DEMNAS PDF {F1}
+    - [ ] Tabel 9 baris BIG: KelDesa_10K/0 (WADMKC, WADMKD), BATAS_DESAKEL_AR/0 (edisi terbaru mungkin, cek `/info/iteminfo`), Kecamatan_10K & BATAS_KECAMATAN_AR, KabKota_50K (edisi Sep 2023), LN_KabKota_50K (2022, garis pantai PPKLP 2022), BATAS_WILAYAH (/10 garis kecamatan,/13 area kab/kota), CKAN ADMINISTRASI_AR_DESAKEL (geodatabase), RBI 1:25K/50K (toponimi, garis pantai; login), DEMNAS/BATNAS GeoTIFF (login; kontur kedalaman) {F1}
+    - [ ] Kebijakan berbagi BIG: Kebijakan Satu Peta, Keppres 28/2023, Peraturan BIG 3/2024, geoportal KSP `https://onemap.big.go.id/`; klasifikasi akses Keppres 20/2018: Mengunduh/Melihat/Tertutup; 151 peta tematik dari 23 K/L di 38 provinsi {F1}
+    - [ ] Tidak ada lisensi terbuka untuk RBI/batas desa; pembanding SRGI melarang bagi ke pihak ketiga tanpa izin dan wajib menyebut "Badan Informasi Geospasial" (mungkin juga berlaku RBI = asumsi) {F1}
+    - [ ] Layanan nasional (extent 94,97-141,02 BT) -> filter Batam; BIG mengakui "area tidak terdefinisi" untuk pulau/kepulauan dan desa pemekaran belum masuk: QA visual wajib untuk Belakang Padang, Bulang, Galang {F1}
+  - [ ] 11 › 4. Sumber alternatif resmi dan pembanding
+    - [ ] BPS Wilkerstat desa/MapServer/0 + SLS (MapServer/4, field `nmkec`,`nmdesa`,`kode_sls4`, max 1000, lisensi tidak dinyatakan) {F1}
+    - [ ] COD-AB Indonesia (BPS via OCHA/HDX `https://data.humdata.org/dataset/cod-ab-idn`, level 0-4, basis 2020, CC BY 3.0 IGO menurut mirror GitHub klikpeta-tech/id-kecamatan-geo; teks lisensi di HDX belum terlihat langsung) {F1}
+    - [ ] geoBoundaries IDN (ODbL, ADM0-ADM2 saja, wajib sebut geoBoundaries): tidak cukup untuk kelurahan {F1}
+    - [ ] GADM: redistribusi/komersial dilarang tanpa izin: JANGAN dipakai di situs publik {F1}
+    - [ ] Satu Data Batam: statistik Kampung Tua 37 (2020-2022) vs 24 lokasi (Juni 2024, Dinas Pertanahan), tabular bukan spasial; KONFLIK: jangan pilih salah satu, tampilkan sumber, cek ke Dinas Pertanahan/SK penetapan {F5}
+    - [ ] Dishub Batam LAKIP 2021 (PDF): daftar koridor teks (target 11 koridor; 8 koridor di 2020), tanpa koordinat halte {F4}
+  - [ ] 11 › 5. Halte dan rute Trans Batam: titik paling kosong
+    - [ ] Jumlah halte per koridor (Wikipedia ID): K1 56, K2 78, K3 65, K4 69, K5 41, K6 58, K7 76, K8 78, K9 54 = 575 kemunculan (halte unik lebih sedikit karena dipakai bersama); K5/K6 bentrok dengan laporan 10 (41 vs 65; 41 vs 58) {F4}
+    - [ ] ANTARA Kepri: 27 titik prioritas halte (target 2025); Batam Pos 12/11/2024: untuk K2 dan K8; 2025: 10 halte baru + 4 halte CSR; Kadishub Salim: target 11 koridor (K10 Tembesi-Barelang, K11 Nongsa-Jodoh) {F4}
+    - [ ] Batam Pos 8/10/2026: pengecatan lajur khusus mulai Rabu 7/10 malam, 10 m dari depan halte di 5 halte (Politeknik Negeri Batam, Kantor Jasa Raharja Batam Center, Simpang Kara, Perumahan Plamo, Bank Sumut Batam Center), ~Rp70 juta; lajur penuh ~28 km direncanakan, perluasan 2027 (target, bukan fakta) {F4}
+    - [ ] Kesimpulan: halte dibangun sendiri dari OSM (`highway=bus_stop`, `public_transport=platform`, `route=bus`) + survei/kontribusi warga + sumbang balik ke OSM = satu-satunya jalur bersih lisensi {F4}
+  - [ ] 11 › 6. Lisensi dan kompatibilitas dengan OSM (ODbL)
+    - [ ] Jangan impor data BIG/BP Batam/HANG JEBAT ke OSM (tanpa lisensi kompatibel eksplisit) {F1}
+    - [ ] Tumpuk sebagai layer terpisah di atas basemap (Produced Work), simpan file terpisah (mis. `admin_bigbatam.pmtiles`), jangan merge ke tabel POI turunan OSM, atribusi per sumber; interpretasi umum, bukan nasihat hukum {F1}
+    - [ ] Teks atribusi: "© OpenStreetMap contributors (ODbL)", "Batas wilayah: Badan Informasi Geospasial", "Data: BP Batam", "Boundaries: Badan Pusat Statistik (BPS), via OCHA/HDX, CC BY 3.0 IGO" {F1}
+    - [ ] Risiko: tampil dengan atribusi wajar tapi tanpa jaminan tertulis; aman 100% = COD-AB utama + BIG/BP Batam pembanding, atau email izin ke BIG (`info@big.go.id`) dan PPID BP Batam {F1}
+- [ ] 11 › Daftar Endpoint Teknis
+  - [ ] Pola `?f=pjson` dan `/query?...&f=geojson`; daftar BP Batam (9 URL; token `generateToken` BUKAN untuk kita), BIG (8 URL), BPS (3 URL) -> `data/sumber_data/endpoint.json` (98 entri) + `data/snippets/11-geoportal/1-3.txt` {F1}
+  - [ ] 4 contoh curl GeoJSON (kelurahan BP Batam, kecamatan BP Batam, desa BIG dengan bbox 103.5,0.25,104.5,1.21 + paging resultOffset/resultRecordCount=1000, desa BPS) BELUM dieksekusi; bbox ikut menangkap Bintan/Karimun -> filter `WADMKK='Kota Batam'` (cek nama field) -> `snippets/11-geoportal/4.txt` {F1}
+  - [ ] Alternatif paging otomatis: `pip install esridump`, `esri2geojson "<URL layer>" out.geojson` {F1}
+- [ ] 11 › Recommendations: langkah pengambilan data (berurutan)
+  - [ ] R1 batas kelurahan+kecamatan dulu: tarik COD-AB, BIG KelDesa_10K/BATAS_DESAKEL_AR, BP Batam /27; bandingkan di QGIS (jumlah kelurahan, nama, kode kdebps/Kemendagri, cakupan pulau); satu canonical (saran COD-AB atau BIG), sisanya QA {F1}
+  - [ ] R2 normalisasi: `ogr2ogr -f GeoJSON -t_srs EPSG:4326 -lco RFC7946=YES -lco COORDINATE_PRECISION=6`, `mapshaper -simplify 15% keep-shapes`, atribut `kode_kel,nama_kel,kode_kec,nama_kec,sumber,edisi` {F1}
+  - [ ] R3 isi koordinat kosong lewat join spasial ke OSM (`amenity=school|hospital|clinic|place_of_worship|townhall`, `landuse=cemetery`, `leisure=park|pitch`, `amenity=ferry_terminal`, `highway=bus_stop`), BUKAN menyalin POI pemerintah; POI BP Batam/HANG JEBAT = daftar periksa {F3}
+  - [ ] R4 halte Trans Batam: skema `halte.geojson` (id,nama,koridor[],sumber,tanggal_verifikasi); ambil bus_stop OSM, cocokkan daftar koridor, lengkapi survei warga, upload ke OSM, relasi `route=bus` per koridor {F4}
+  - [ ] R5 Kampung Tua: tak ada data spasial terbuka; daftar nama dari Satu Data Batam, titik via OSM `place=village|hamlet` + toponimi RBI (lihat saja), tandai `status_verifikasi`, ajukan data ke Dinas Pertanahan/BP Batam (folder Pertanahan) {F5}
+  - [ ] R6 rawan bencana: HANG JEBAT hanya referensi visual; layer publik pakai BNPB/InaRISK `inarisk1.bnpb.go.id:6443/arcgis/rest/services` (lisensi tidak jelas; layer terpisah + atribusi) {F3}
+  - [ ] R7 gaya peta laut: garis pantai OSM/Protomaps cukup; kontur kedalaman dari BATNAS (login) -> `gdal_contour -i 5`, layer terpisah atribusi BIG; garis batas perairan desa dari BP Batam /26 (`kelas`=16) sebagai hiasan referensi {F1}
+  - [ ] R8 PMTiles: `tippecanoe -o admin_batam.pmtiles -zg --drop-densest-as-needed -l kelurahan ... -l kecamatan ...` (>=2.17); pisah file per sumber/lisensi (`osm_*`, `admin_big`, `halte_warga`); `attribution` per source di MapLibre {F1}
+  - [ ] R9 `DATA_SOURCES.md`: URL endpoint, tanggal tarik, edisi, lisensi/"tidak dinyatakan", teks atribusi; kirim email izin ke BIG, BP Batam (PPID), Disperkimtan, simpan balasan {F1}
+  - [ ] Ringkasan "hanya referensi/cek" (jangan disalin ke dataset publik): POI BP Batam, jalan 1:50K, PETA_INFRASTRUKTUR (INTERNAL), Bidang Tanah Fisik, Pola Ruang Perpres 87/2011, semua layer HANG JEBAT, toponimi RBI, statistik perumahan HANG JEBAT {F3}
+- [ ] 11 › Caveats
+  - [ ] Tiga tingkat kepastian: Terverifikasi / Perlu dicek (halaman termcondition Ina-Geoportal, isi folder POI/Perindustrian/KEK, XHR HANG JEBAT, edisi BATAS_DESAKEL_AR) / Asumsi (POI BP Batam berisi sekolah/kesehatan/ibadah; kampung tua di folder Pertanahan; "Produced Work" ODbL) {F1}
+  - [ ] Query contoh belum dijalankan; BP Batam tolak crawler, Ina-Geoportal blok bot; endpoint bisa berubah/ditutup: simpan salinan lokal bertanggal tarik {F1}
+  - [ ] Batas BIG 2020 belum mendefinisikan sebagian pulau + pemekaran; QA visual wajib {F1}
+  - [ ] 13.594 dataset = klaim beranda; statistik HANG JEBAT (9 kecamatan) tidak mencakup 12 kecamatan; jumlah halte Wikipedia sekunder; 27 halte prioritas -> 10 baru + 4 CSR; lajur 28 km = target {F4}
+
+## 12-ruang-publik-olahraga-jasa.md
+
+
+- [-] 12 › Seed Data Direktori Batam City Hall: Ruang Publik, Wisata, Olahraga, Belanja, dan Jasa (riset per 4 November 2026) — konteks, tidak perlu fitur
+- [ ] 12 › TL;DR
+  - [ ] Seed siap pakai: wisata keluarga/ruang publik inti, 10 venue padel AYO, golf, GOR Temenggung, supermarket/bahan bangunan/Gramedia, pasar Pemko, money changer berizin BI Nagoya/Harbour Bay, service center Samsung/Xiaomi/OPPO, ekspedisi utama {F3}
+  - [ ] Koordinat: belum ada yang terverifikasi OSM; 10 titik perlu cek ulang (Barelang, Hypermart Mega Mall, Lotte Grosir, Mitra10, Samsung SC, Xiaomi SC, Taman Dang Anom, Bukit Clara, Stadion & GOR Temenggung), sisanya null/perlu_diisi_user {F3}
+  - [ ] Celah riset yang sengaja kosong: Grand Lucky, Depo Bangunan, Taman Mini, Taman Tunas Hijau, Waduk Duriangkang, Pantai Nongsa/Melayu, dealer/bengkel resmi, laundry, percetakan, salon/barbershop, spa, toko kain/bayi/optik, yoga/pilates, kolam renang umum, grup komunitas tukang; jangan diisi data karangan {F3}
+- [ ] 12 › Key Findings
+  - [ ] KF1 Harga tiket wisata tidak konsisten antarsumber (Museum Raja Ali Haji: Kemenbud Rp10.000, Selasa-Minggu 09.00-17.00, Senin tutup; media lain gratis/Rp5.000): pakai angka Kemenbud + catatan "cek di lokasi" {F3}
+  - [ ] KF2 Ocarina: dewasa Rp25.000, anak 2-12 Rp15.000, early bird Minggu 06.00-08.00 Rp10.000, wahana Rp10.000-35.000 terpisah; semua wahana aktif Sabtu-Minggu mulai 14.00 (Travelspromo Agt 2026), Tribun 2023 menyebut 13.00; Senin-Jumat hanya penyewaan/becak/sepeda/bombom car; waktu terbaik sore akhir pekan {F3}
+  - [ ] KF3 Padel: minimal 10 venue di AYO (1 lapangan Padel Box Orchid sampai 8 lapangan Rally Padel/Dragon 89), harga "mulai dari" Rp88.000-350.000 per sesi, dinamis; S Padel Club "coming soon" {F3}
+  - [ ] KF4 Pasar: 41 pasar (36 swasta, 5 pemerintah; JIM UPB 2018); Pemko punya 6 pasar rakyat (Seroja, Hangtuah, Jodoh, Induk Jodoh, Seiharapan, Belakangpadang; Batam Pos 12/2/2018); terkonfirmasi mediacenter: Seroja, Melayu Serumpun Tanjung Piayu, Hang Tuah, TPID {F3}
+  - [ ] KF4b Pasar Induk Jodoh dibangun ulang: KSP Pemko-PT UJKM 17 Maret 2026, relokasi pedagang TOS 3000 mulai 2027, semua pindah 2028, gedung 5 lantai di lahan 2,1 ha; laporan BatamNow 20/8/2026 tentang direktur PT UJKM DPO Bareskrim → jadwal bisa molor; JANGAN tampilkan sebagai pasar beroperasi {F3}
+  - [ ] KF5 Money changer: Kepri 115 kantor pusat KUPVA BB + 60 remitansi ("nomor dua se-Indonesia", BI Kepri, Batamclick 9/11/2023); terkonsentrasi di Nagoya Hill/Central/City Centre/Business Centre, Harbour Bay Mall & Terminal; dokumen BI tak jelas tanggal → cek status izin per entri {F3}
+  - [ ] KF6 Data usang: Celebrity Fitness Kepri Mall ditandai Closed; klaim "Gramedia hanya satu di Batam" salah (Grand Batam Mall buka 14 April 2023) {F3}
+- [ ] 12 › Details
+  - [ ] 12 › A. Ruang publik dan wisata
+    - [ ] Tabel 17 entri: Dataran Engku Putri, Taman Dang Anom, Dataran Engku Hamidah, Taman Rusa Sekupang, Taman Kolam Sekupang, Bukit Clara, Museum Batam Raja Ali Haji, Ocarina, Jembatan Barelang, Pantai Tanjung Pinggir/Viovio/Mirota/Melur/Glory Melur/Nongsa, Pulau Putri, Kepri Coral {F3}
+    - [ ] Harga/jam per tempat (Taman Rusa Rp5.000/2.500 06.00-18.00; Tanjung Pinggir Rp10.000 07.00-18.00 + parkir 100 motor/30 mobil/2 bus + 6 toilet tunai; Viovio Rp15.000/25.000 09.00-23.00; Mirota Rp10.000; Melur gratis/Rp5.000-10.000; Kepri Coral paket ±Rp350.000/400.000) tampil dengan "Harga per [tanggal sumber]" {F3}
+    - [ ] Barelang: 6 jembatan, total 2 km (Wikipedia) atau 2.264 m (detikSumut), Juli 1992-Januari 1998, Jembatan 1 = 642 m; kecamatan "Sagulung (ujung awal) - Galang" {F3}
+    - [ ] Dataran Engku Putri: gratis, jogging track, basket, futsal, skatepark, climbing wall, mini gym, akses banyak gerbang; Taman Dang Anom: diresmikan Des 2020, menara hias 11 m {F3}
+    - [ ] Catatan jalur lari populer (Dataran Engku Putri, Taman Rusa, Ocarina, MTC Nongsa) + jalur sepeda/rute Barelang sebagai route OSM belum diriset {F3}
+  - [ ] 12 › B. Olahraga
+    - [ ] Tabel 27 entri: 10 padel (Sukajadi, Orozon, Rally, Primecourt, Dragon 89, Play Padel, S Padel, BC Padel, Padel Box Orchid, Batu Aji Padel Arena), Kawasan Temenggung Abdul Jamal, GOR Bulutangkis Temenggung, 7 golf, 5 gym jaringan/independen + FIT HUB, climbing wall, skatepark {F3}
+    - [ ] Subkategori dirinci per jenis olahraga (padel, badminton, golf, gym, panjat dinding, skatepark) sesuai permintaan pemilik; futsal/mini soccer/basket/tenis/voli belum ada isinya di laporan ini {F3}
+    - [ ] Kebijakan harga dinamis AYO: tampilkan "mulai dari" + tautan booking, bukan harga pasti {F3}
+    - [ ] Entri status usang/tak pasti: Celebrity Fitness (kemungkinan tutup), S Padel (coming soon), Tamarin Santana (status operasional dicek), gym independen "status perlu dicek" {F3}
+  - [ ] 12 › C. Belanja kebutuhan sehari-hari
+    - [ ] Tabel 20 entri: Hypermart Mega Mall & Nagoya Hill, Lotte Grosir, Grand Lucky, Mitra10, ACE Hardware Sei Panas, Depo Bangunan, Gramedia BCS & Grand Batam Mall, Toko Buku Gloria, 12 pasar {F3}
+    - [ ] Depo Bangunan: cabang Batam tidak ditemukan, JANGAN dimasukkan sebelum dicek (tidak ada di places) {F3}
+    - [ ] Grand Lucky: tanpa alamat/kecamatan/sumber; pertimbangkan sembunyikan di UI {F3}
+    - [ ] Pasar Induk Jodoh: status rencana/pembangunan, tampil dengan badge `rencana`, bukan pasar beroperasi {F3}
+    - [ ] Jam typo Gramedia Grand Batam Mall ("09:00 - 10:00") diberi badge perlu cek; jam BCS 09.00-21.00 vs 10.00-22.00 {F3}
+  - [ ] 12 › D. Jasa dan servis yang terdaftar publik
+    - [ ] Tabel 18 entri: 7 money changer, 4 service center (Samsung Unicom, Samsung Panbil, Xiaomi, OPPO), JNE, 3 kantor pos, J&T, SiCepat, Lion Parcel {F3}
+    - [ ] Kontak: Samsung 0800-112-8888/0800-112-7777 (call center, bukan lokal); nomor Mega Mall money changer +62 778 470151 dari pihak ketiga (Wise); nomor HP Ocarina TIDAK dimasukkan {F3}
+    - [ ] Komunitas "Tukang Langganan": tidak ada grup FB/IG warga terverifikasi (hanya BASCOM skateboard); tukang diisi warga lewat fitur, situs hanya tampilkan usaha berlisting publik (service center resmi) {F6}
+  - [ ] 12 › E. Tag OpenStreetMap dan sumber data terbaik per kategori
+    - [ ] Tabel 27 baris kategori ke tag OSM dan sumber terbaik (data/taksonomi/12-sumber_dan_tag_osm.json); jadi dasar query Overpass kelengkapan dan layer OSM terpisah {F3}
+    - [ ] Tag OSM per tempat (satu tag utama; service center/ekspedisi + `brand=`) sudah diisi di places.json {F3}
+- [ ] 12 › Recommendations
+  - [ ] R1 Impor tabel A-D; entri perlu_diisi_user disembunyikan dari peta (tampil di daftar) sampai pemilik menaruh pin {F3}
+  - [ ] R2 Cocokkan 10 koordinat perlu_cek_ulang dengan OSM (Overpass `name~"Ocarina|Engku Putri|Barelang"` di bbox Batam); selisih <±50 m → naikkan ke terverifikasi {F3}
+  - [ ] R3 Kartu museum dan pantai: "Harga per [tanggal sumber], cek di lokasi"; prioritaskan Kemenbud dan Sisparnas {F3}
+  - [ ] R4 Money changer: tampilkan hanya yang ada di daftar KUPVA BB terbaru BI; cek ulang tiap 6 bulan {F3}
+  - [ ] R5 Riset lanjutan prioritas: Grand Lucky, dealer/bengkel resmi (Astra/Honda/Yamaha/Toyota), kolam renang umum (Sukajadi), yoga/pilates, Waduk Duriangkang, Pantai Nongsa/Melayu {F3}
+- [ ] 12 › Caveats
+  - [ ] Koordinat Plus Code = decode manual, akurasi ±10 m jika kode benar {F3}
+  - [ ] Banyak sumber wisata blog/agregator; angka bertentangan ditulis apa adanya {F3}
+  - [ ] Harga AYO dinamis per slot dan tanggal; daftar BI terindeks mungkin bukan versi terbaru {F3}
+  - [ ] Nomor HP Ocarina tidak dimasukkan (tidak jelas nomor usaha resmi) {F3}
+- [ ] 12 › Data JSON
+  - [ ] Array 82 objek (rp 17, or 27, bl 20, js 18) → data/places/12-ruang-publik-olahraga-jasa.json (kategori `ruang_publik_wisata` dipecah ke ruang_publik/wisata/landmark/budaya) {F3}
+  - [ ] Validasi zod: kategori enum, status_koordinat, null-aman untuk kecamatan/kelurahan {F3}
+- [ ] 12 › Daftar Entri yang Koordinatnya Belum Pasti
+  - [ ] Daftar per kelompok (ruang publik/wisata, olahraga, belanja, jasa) perlu_cek_ulang vs perlu_diisi_user → koordinat_perlu_diisi.csv dan halaman admin isi-koordinat {F3}
+  - [ ] Tampilan UI: perlu_cek_ulang = pin "perkiraan" (garis putus/berongga) + catatan_koordinat; perlu_diisi_user = hanya daftar + badge "lokasi belum diisi" {F3}
+
+## 13-budaya-kalender-kamus.md
+
+
+- [-] 13 › Loket Cerita & Budaya Batam: Kalender Acara, Budaya Melayu, Kamus Mini, Komunitas & Fakta Infografis (riset per November 2026) — konteks, tidak perlu fitur
+- [ ] 13 › TL;DR
+  - [ ] Lima jangkar kalender: BWR (Feb-Mar, mengikuti Ramadan), Kenduri Seni Melayu (Mei-Juli, berpindah), Batam 10K (Juli 2025 → 20 Sep 2026), Sea Eagle Boat Race (28-30 Nov 2025, kembali setelah 12 tahun), Hari Jadi Batam 18 Des (rangkaian 12-20 Des) {F5}
+  - [ ] Acara keagamaan/komunitas ditulis "biasanya" atau "mengikuti kalender lunar/Saka/Hijriah", bukan tanggal pasti {F5}
+  - [ ] Infografis kunci: 1.613.202 wisman 2025 (Singapura 789.674, Malaysia 418.330); penduduk 1,79 juta (BPS) vs 1.394.459 (Dukcapil); Islam ±72%; perairan ±73%; 371 pulau {F5}
+  - [ ] Celah: komposisi suku, jumlah pekerja industri, dan akun resmi sebagian besar komunitas belum terverifikasi (ditandai ⚠️) {F5}
+  - [ ] Legenda status ✅ Terverifikasi / ⚠️ Perlu dicek / ⌛ Mungkin usang → terjemahkan ke badge kartu (bukan hanya emoji/warna) {F5}
+- [ ] 13 › 1. Kalender Acara Tahunan Batam (fokus 2024–2026)
+  - [ ] Cara baca: tanggal = edisi terakhir terdokumentasi, bukan janji tahun depan; Pemko memperbarui kalender tiap tiga bulan → tautkan disbudpar.batam.go.id (Event → Calendar of Event) dan tampilkan "terakhir dicek" {F5}
+  - [ ] 13 › Januari
+    - [ ] Trans Barelang Ultra Marathon 55 km, 17-18 Jan 2026 (start 23.00 WIB), Jembatan 1→6, Sukalari Batam, ✅ rutin {F5}
+    - [ ] Batam Light Festival (s.d. 2 Feb 2025, EO ⚠️), status "pernah" bukan tahunan {F5}
+    - [ ] Pesta Bona Taon marga Batak (biasanya Jan-Mar, jadwal per marga, tidak terpusat) {F5}
+  - [ ] 13 › Februari
+    - [ ] Global Game Jam Batam 1 Feb 2025 (18 game), Mega Mall Batam Centre ⚠️ {F5}
+    - [ ] Perayaan Pongal 8 Feb 2026, Ayola Signature Ocarina, Batam Tamil Sangam ✅ {F5}
+    - [ ] Malam Penyambutan Imlek 16 Feb 2026, Nagoya Komplek Bumi Indah ⚠️ sumber sekunder {F5}
+    - [ ] Batam Wonderfood & Art Ramadhan: ke-7 17 Feb-1 Mar 2026, ke-6 28 Feb-22 Mar 2025, Taman Dang Anom, Disbudpar, sejak 2019; pakai versi Disbudpar (Indonesia.travel 18 Feb-8 Mar 2026); 2025 diikuti 75 UMKM, lomba busana muslim dan tahfidz {F5}
+  - [ ] 13 › Maret
+    - [ ] Cap Go Meh beberapa titik: 27 Feb 2026 (PSMTI), 2 Mar (Vihara Samudra Bakti, Pulau Buluh), 3 Mar puncak (Maha Vihara Duta Maitreya), 7 Mar (PERWAKAB) {F5}
+    - [ ] Pawai Ogoh-ogoh 18 Mar 2026 (Nyepi Saka 1948: 19 Mar), Pura Agung Amerta Bhuana, rute ±3 km; 2026 setelah berbuka karena berdekatan Ramadan; umat Hindu Batam ±700 jiwa/±150 KK (PHDI) {F5}
+    - [ ] Festival Lampu Colok (malam tujuh likur, 27 Ramadan): pernah (Batam Lampu Colok Festival #1, Dataran Engku Hamidah), tidak terbukti rutin; yang rutin ada di Karimun (46 peserta, Rp135 juta, 2025) dan Bengkalis {F5}
+  - [ ] 13 › April–Mei
+    - [ ] Waisak + bazar vegetarian: 12 Mei 2025 (40 stand), 31 Mei 2026 Malam Kesenian "Kasih Semesta", Maha Vihara Duta Maitreya Sungai Panas, bazar sejak 2000 {F5}
+    - [ ] Kenduri Seni Melayu 2025: 16-18 Mei 2025, area parkir HarbourBay, sejak 1999 {F5}
+  - [ ] 13 › Juni–Juli
+    - [ ] Lomba Perahu Jong Kapolda Kepri Cup 24 Jun 2025, Pantai Senja Batu Besar Nongsa ⚠️ {F5}
+    - [ ] Kenduri Seni Melayu 2026: 2-5 Jul 2026 (pembukaan 3 Jul, Didik Nini Thowok), Dataran Engku Putri, masuk KEN 2026 {F5}
+    - [ ] Batam 10K 2025: 13 Jul 2025, Bundaran Madani {F5}
+    - [ ] Festival Mancing Ngarong VI 12 Jul 2026, Pantai Camar, Kampung Tua Teluk Mata Ikan, Nongsa {F5}
+    - [ ] Tahun Baru Islam (≈ pertengahan Juni 2026) belum ada agenda tingkat kota ⚠️ {F5}
+    - [ ] Catatan KSM 2026: ±60 pertunjukan (Tari Jogi WBTb Batam, silat, Joget Kenangan Manis), peserta Johor/Sabah/Singapura/Brunei/Thailand, Sanggar Ritma Bayu (Sabah) Zapin Tidong 8 penari; konflik data: katalog KEN 2025 19-21 Juli vs realisasi 16-18 Mei; edisi "ke-26" dua kali, 2026 "ke-27" ⚠️ {F5}
+  - [ ] 13 › Agustus
+    - [ ] Mandi Safar: Rabu terakhir Safar (≈ Agustus), Kampung Tua Terih, Sambau, Nongsa; tanggal ⚠️ (Tempo salah menulis Juni 2025; ikuti Hijriah) {F5}
+    - [ ] IMOX 5-7 Agu 2026, Radisson Golf & Convention Centre ⚠️ {F5}
+    - [ ] Batam Jazz & Fashion Agu-Sep 2025 (Vina Panduwinata) ⚠️ lokasi tak jelas {F5}
+    - [ ] Batam Bersholawat + Festival Hadroh 23 Agu 2025, Ruko Papa Mama Residence {F5}
+  - [ ] 13 › September
+    - [ ] Batam 10K "Beyond Borders" 20 Sep 2026, 2.200 pelari, kategori 5K baru, depan Kantor Wali Kota; pindah dari Juli → jangan kunci bulannya {F5}
+    - [ ] Batam Khitong Fest & Budaya Nusantara 27 Sep 2026 (40 tatung lokal dan Singapura, 10 kelompok seni), Nagoya {F5}
+    - [ ] International Rock Friend'z 28 Sep 2025, CinCai Cafe, KBC Batam Centre (SOLMI + Disbudpar) {F5}
+  - [ ] 13 › Oktober
+    - [ ] Kenduri WBTb Kota Batam + Makan Berhidang 21 Okt (Gedung LAM) dan 23-25 Okt 2025 (Alun-alun Engku Putri) {F5}
+    - [ ] HUT Museum Batam Raja Ali Haji (ke-5 pada 2025) {F5}
+    - [ ] Sky Lantern Festival 1-6 Okt 2025 (perdana, Green Rose Hotel, Versa Events) ⚠️ jangan dianggap tahunan {F5}
+    - [ ] BMAX + EMAX 28-30 Okt 2026, Radisson ⚠️ {F5}
+    - [ ] Tour de Batam (UCI Gran Fondo) dijadwalkan 4-6 Okt 2024: DIBATALKAN, edisi 2025 juga cancelled ❌ {F5}
+  - [ ] 13 › November
+    - [ ] Batam International Sea Eagle Boat Race 28-30 Nov 2025, hadiah Rp164 juta, Perairan Elang-Elang Belakang Padang, hidup lagi setelah 12 tahun vakum {F5}
+    - [ ] Kita Indonesia Jilid II 2 Nov 2025, Mega Mall, RRI Batam {F5}
+  - [ ] 13 › Desember
+    - [ ] HJB istighasah + ziarah makam zuriat Nong Isa 12 Des 2025 (Masjid At-Taqwa, Kampung Nongsa Pantai) {F5}
+    - [ ] HJB Batam Bersepeda 14 Des 2025 (>2.000 pesepeda), Batam Centre {F5}
+    - [ ] HJB Upacara + Batam Solidarity Airshow 18 Des 2025 (ke-196; 2026 = ke-197), upacara rutin / airshow ⚠️, 19 Des di Nongsa {F5}
+    - [ ] HJB Pawai Budaya Nusantara + malam resepsi 20 Des 2025 (>8.000 peserta vs InfoPublik 19 Des ±5.000) ⚠️ {F5}
+    - [ ] Natal 25 Des: belum ada agenda tingkat kota ⚠️ {F5}
+    - [ ] Kenduri Akhir Tahun & Solidaritas untuk Sumatra 31 Des 2025, Dataran Engku Putri {F5}
+  - [ ] Dicari tapi tidak ditemukan sebagai agenda tahunan: Gawai Dayak (hanya PERWAKAB di Cap Go Meh), "Batam Culture Festival", Batam Marathon 42K, triathlon tahunan, festival kuliner di luar BWR; komunitas Minang/Jawa/Flores/Bugis terlihat lewat Pawai Budaya Nusantara; acara internal paguyuban tanpa sumber publik {F5}
+- [ ] 13 › 2. Budaya Melayu Kepri untuk Warga Batam
+  - [ ] Tabel 15 tradisi/unsur: tepuk tepung tawar, Mandi Safar, pantun, Gurindam Dua Belas, makyong, joget dangkong, Tari Jogi, makan berhidang, lampu colok/tujuh likur, zapin, berzanji, ghazal, baju kurung/teluk belanga/tanjak, pernikahan Melayu, kuliner tradisi → kartu per tradisi {F5}
+  - [ ] Detail Mandi Safar: tahap besapa, berbedak langi (tepung beras + kunyit + limau purut), mandi laut, mandi tolak bala; diajukan WBTb nasional bersama Dzikir Bermata, pengajuan 2024 ditolak tingkat provinsi, 2025 ⚠️ {F5}
+  - [ ] Pantun UNESCO 2020 (Indonesia-Malaysia, diperluas Brunei sidang ke-20); WBTb Kepri 2014. Gurindam Dua Belas: 12 pasal, 23 Rajab 1263 H, WBTb 2013, IKON nasional Perpusnas Des 2025 {F5}
+  - [ ] Status ⚠️ (perlu sumber LAM/Disbud): zapin, berzanji, ghazal, busana, urutan pernikahan, kuliner tradisi → tampil dengan badge atau ditunda sampai ada sumber {F5}
+  - [ ] Rekomendasi konten: seri "Kenalan Sama Tuan Rumah" satu tradisi per kartu + tautan warisanbudaya.kemdikbud.go.id; hindari klaim "asli Batam" (joget dangkong Karimun, Gurindam Penyengat) {F5}
+- [ ] 13 › 3. Kamus Mini Batam (65 entri)
+  - [ ] 65 entri: 30 [S] bersumber, 35 [P] pengamatan perlu validasi warga/ahli bahasa → badge pada tiap entri, [P] jangan tampil sebagai fakta final {F5}
+  - [ ] Konteks: BPNB Kepri mencatat 15 dialek Melayu di Kepri, termasuk Dialek Pecong (Kelurahan Pecong, Batam); bahasa Batam campuran Melayu, Minang, "Medan", serapan SG/MY dan Hokkien {F5}
+  - [ ] Pengelompokan: istilah kota/administrasi, laut-pesisir, dialek Melayu, serapan SG/MY/Hokkien, dunia kerja industri, budaya & acara (JSON tidak punya kolom kelompok → buat) {F5}
+  - [ ] Hindari klaim "khas Batam saja" (banyak kata juga di Riau, Johor, Singapura) {F5}
+- [ ] 13 › 4. Komunitas Kreatif & Budaya Calon Kolaborator
+  - [ ] Tabel 12 komunitas/lembaga: Sukalari Batam, Force Running Club, ABC Runners/Crazy Run/Batam Free Athlete/U Can Run, Batam 10K, SOLMI, SWARA, Komunitas Seniman Kepri, Batam Tamil Sangam, Museum Batam Raja Ali Haji, LAM Kota Batam, BPK Wilayah IV, media lokal {F5}
+  - [ ] Hanya @sukalaribatam dan @batam_10k berstatus ✅; JANGAN publikasikan akun yang belum dicek langsung {F5}
+  - [ ] Belum ditemukan (riset lanjutan): sanggar seni Melayu, komunitas fotografi, ilustrator/desainer, kolektif seni/galeri, taman baca, komunitas sepeda, "Parade Bunyi'an 2025" (16 musisi lokal); cara tercepat minta daftar peserta KSM/BWR/Pawai HJB ke Disbudpar {F5}
+- [ ] 13 › 5. Fakta & Angka untuk Infografis
+  - [ ] 13 › Sejarah pembangunan (timeline)
+    - [ ] 12 titik linimasa: awal 1970-an ±6.000 jiwa/21 dusun; 1970 Keppres 65; 26 Okt 1971 Otorita Batam (Ibnu Sutowo); 22 Nov 1973 Keppres 41; 1976-78 JB Sumarlin; 1978-98 BJ Habibie; 1983 PP 34; 1992 Keppres 28 (Barelang ±715 km²); 1998 JE Habibie/Ismeth Abdullah; 1999 UU 53; 2007 PP 46 BP Batam; 18 Des Hari Jadi (2025 ke-196) {F5}
+  - [ ] 13 › Penduduk & agama
+    - [ ] 1,79 juta (BPS 2025), pertumbuhan 4,66%; 2024 1.722.927 (4,03%); usia terbesar 25-34 {F5}
+    - [ ] 1.394.459 (Dukcapil DKB Sem II 2025): L 705.945, P 688.514; terpadat Sagulung 243.694, Batam Kota 218.580, Sekupang 200.176; paling sedikit Galang 21.108, Belakang Padang 21.468 {F5}
+    - [ ] Selisih ±400 ribu BPS vs Dukcapil = interpretasi (domisili vs KTP/KK), bukan klaim resmi {F5}
+    - [ ] Agama (Dukcapil 31 Des 2024): Islam 72,22%, Protestan 17,69%, Buddha 6,47%, Katolik 3,45%, Konghucu 0,09%, Hindu 0,06%, Penghayat 0,03% (322 orang) {F5}
+    - [ ] Komposisi suku dan jumlah pekerja industri: BELUM ada angka (⚠️); pakai narasi netral; BPS SP2010 / Sakernas / Disnaker sebagai sumber lanjutan {F5}
+  - [ ] 13 › Wisatawan mancanegara
+    - [ ] 2025: 1.613.202 (target 1,5 juta Batam Pos vs 1,7 juta Tempo/Diskominfo → belum capai bila 1,7), Singapura 789.674 (±49%), Malaysia 418.330 (±26%), porsi Batam 79,58% dari 2.027.037 wisman Kepri, bulan tersibuk Desember 195.525 {F5}
+    - [ ] Tren: Jan-Nov 2023 1.043.078 → 2024 1.166.849 (+8,23%); setahun 1.192.931 (2023) → 1.326.831 (2024); Des 2024 159.982; 5 negara teratas Nov 2024: Singapura 58.917, Malaysia 24.375, Tiongkok 3.913, India 3.092, Filipina 1.897; pintu masuk: Batam Centre, Nongsa Pura, HarbourBay, Sekupang, Hang Nadim {F5}
+  - [ ] 13 › Geografi
+    - [ ] 371 pulau (Pemko 2025): Belakang Padang 141, Galang 100, Bulang 86, Nongsa 24, Sekupang 16, Sungai Beduk 4; versi lain 373 (2019), ">400 pulau, 329 bernama" ⌛ {F5}
+    - [ ] Darat 1.038,84 km², perairan 2.791,09 km² (±73% laut); BP Batam 8 pulau 716,30 km² (FTZ), Pemko 365 pulau 322,54 km²; titik tertinggi ±160 mdpl; pulau terluar Nipah, Pelampong, Batu Berhenti, Nongsa {F5}
+    - [ ] Kampung tua 37 "(Perda 2/2004)" ⚠️ — tandai konflik dengan laporan 04 (SK 105/2004 = 33 titik) {F5}
+  - [ ] 5 ide infografis: (1) "Dari 6.000 jadi 1,79 juta" ±55 tahun; (2) "Hampir 3 dari 4 bagian Batam adalah laut"; (3) "±4.400 wisman per hari" (1.613.202 ÷ 365, turunan); (4) "1 dari 2 wisman warga Singapura"; (5) BPS vs Dukcapil sebagai cerita kota pendatang {F5}
+- [ ] 13 › Caveats
+  - [ ] Sumber sekunder (helloswag.id, seniberjalan.com, jadwallari.id) hanya untuk acara tanpa sumber primer, semua ⚠️ {F5}
+  - [ ] Tanggal keagamaan/budaya bergeser (Mandi Safar, lampu colok, Cap Go Meh, Nyepi, Waisak, 1 Muharram): tulis "biasanya bulan X / mengikuti kalender Y" {F5}
+  - [ ] Acara batal/tidak rutin (Tour de Batam UCI, Sky Lantern, Batam Light Festival, Airshow HJB) jangan ditulis "tahunan" {F5}
+  - [ ] Kamus [P] dicek ke warga beragam latar (Melayu tempatan, pendatang Sumatra, Tionghoa Batam) {F5}
+  - [ ] Etnis dan agama: angka resmi + bahasa deskriptif, jangan meranking/melabeli komunitas {F5}
+- [ ] 13 › Blok Data JSON
+  - [ ] 13 › acara.json
+    - [ ] 30 entri JSON asli (ev-001..030) + 4 dari tabel (ev-t01..t04) = 34 di data/budaya/acara.json; kalender menampilkan semua dengan status (rutin/pernah/perlu dicek/tidak pasti) {F5}
+    - [ ] Urutkan berdasarkan `bulan` di frontend (ev-011 bulan 7 sebelum ev-012 bulan 6); ketidakcocokan `bulan` vs tanggal (ev-011 KSM, ev-018 Batam 10K, ev-007 Cap Go Meh) {F5}
+    - [ ] Kosakata `kategori` tidak seragam (keagamaan/religi, tradisi-melayu/budaya-melayu, MICE) → normalisasi untuk filter {F5}
+  - [ ] 13 › kamus.json
+    - [ ] 65 entri k-001..k-065 (kata, arti, contoh, asal, catatan [S]/[P], sumber_url) di data/budaya/kamus.json; 35 [P] punya sumber_url kosong {F5}
+    - [ ] Fitur: pencarian, filter kelompok, badge [S]/[P], kalimat contoh {F5}
+
+## 14-feri-pompong.md
+
+
+- [ ] 14 › Data Loket Langit & Laut + Loket Jalan-jalan: Feri, RoRo, dan Pompong dari Batam (data per 4 November 2026)
+  - [ ] Pembuka: sumber paling dipegang = jadwal resmi operator; feri terakhir Batam->Singapura (WIB): 20:30 Batam Centre (BatamFast) & Harbour Bay (Horizon), 20:35 Batam Centre (Majestic), 20:00 Nongsapura->Tanah Merah, ~17:40-18:00 Sekupang; Punggur->Tanjungpinang ~17:30; RoRo Tg. Uban ~18:00; pompong Sekupang-Belakang Padang 24 jam (malam pesan dulu) {F4}
+- [ ] 14 › TL;DR
+  - [ ] 4 operator Singapura (BatamFast, Majestic, Sindo, Horizon) dari 6 terminal Batam ke HarbourFront (kini Singapore Cruise Centre, 5 HarbourFront Avenue) dan Tanah Merah; 50-70 mnt; ~SGD 43 sekali jalan / SGD 76 PP all-in + fuel surcharge SGD 6 / Rp65.000 sejak 12 Mar 2026 {F4}
+  - [ ] Domestik: Telaga Punggur hub (Tanjungpinang Rp80.500, Tanjung Uban Rp63.500, RoRo Rp27.000 tiket wajib online Ferizy, Lingga, Anambas); Sekupang Domestik (Karimun Rp132.000; Riau Rp600.000); Pelni KM Kelud di Bintang 99, Batu Ampar {F4}
+  - [ ] Pompong: data solid hanya Sekupang-Belakang Padang (PPMS Rp20.000, ~25 mnt); pelantar rakyat lain nego/data lama; belum ada koordinat pelantar rakyat terverifikasi (null/perlu_diisi_user) {F4}
+- [ ] 14 › Key Findings
+  - [ ] KF1 HarbourFront pindah: BatamFast ke Singapore Cruise Centre 7 Jul 2026; Horizon, Majestic, Sindo, Indo Falcon 15 Jul 2026; SCC: "There are no changes to ferry routes, destinations served and scheduling"; gedung baru ~70 m dari lama; HarbourFront Centre lama tutup 27 Jul 2026; ganti semua teks "HarbourFront Centre / 1 Maritime Square" {F4}
+  - [ ] KF2 beda zona waktu: Batam WIB 1 jam di belakang Singapura; jadwal dari Singapura = waktu SG, dari Batam = WIB; simpan jam + zona (`Asia/Singapore` vs `Asia/Jakarta`), jangan disatukan {F4}
+  - [ ] KF3 Gold Coast Bengkong terganggu: jadwal BatamFast 1 Nov 2026 sebagian besar trip HF-GC "Suspended until further notice"; yang jalan: HF->GC 09:35 (Sindo), 10:30; GC->HF 15:30 (Sindo), 19:00 {F4}
+  - [ ] KF4 Sekupang paling cepat tutup: terakhir ke HarbourFront 17:40 (BatamFast) / 18:00 (Majestic); Sindo 20:30 perlu dicek ulang {F4}
+  - [ ] KF5 RoRo Punggur-Tanjung Uban tidak jual tiket di loket: hanya trip.ferizy.com, check-in min 2 jam sebelum berangkat {F4}
+  - [ ] KF6 musim angin utara Nov-Feb (puncak Des-Jan); Batam/Bintan/Lingga/Karimun terhalang pulau (BMKG Hang Nadim, ANTARA Jan 2023), paling terdampak Anambas/Natuna; rute panjang Dumai/Lingga ikut terasa {F4}
+- [ ] 14 › Details
+  - [ ] 14 › 1. Feri internasional Batam–Singapura
+    - [ ] 14 › Tabel operator dan rute
+      - [ ] 8 baris rute (Batam Centre/Sekupang/Harbour Bay/Nongsapura/Gold Coast/Waterfront City <-> HarbourFront/Tanah Merah; Harbour Bay <-> Nirup Island): operator, durasi, harga, link resmi -> `data/feri/rute.json` {F4}
+      - [ ] Biaya tambahan: Sindo mulai SGD 28 + Singapore Passenger Departure Fee SGD 10 (naik dari SGD 7 sejak 1 Nov 2022) + Batam Terminal Fee Rp100.000 (naik dari Rp65.000 sejak 1 Sep 2023); BatamFast SGD 43 / SGD 76 PP sudah termasuk fee; fuel surcharge SGD 6 (SG->Batam) / Rp65.000 (Batam->SG) sejak 12 Mar 2026 (Sindo & Mothership; judul berita BatamFast menulis 14 Mar); penumpang Horizon via pihak ketiga bayar surcharge di konter {F4}
+      - [ ] Cara beli resmi: situs/aplikasi operator atau konter; Klook/KKday/Traveloka hanya agregator; pesan 2-3 hari sebelum Jumat sore, Sabtu pagi, libur nasional SG {F4}
+    - [ ] 14 › Tabel jadwal (tanggal data ditulis per baris; jadwal bisa berubah tanpa pemberitahuan)
+      - [ ] BatamFast (berlaku 1 Nov 2026, batamfast.com): 9 baris arah (BC<->HF, BC<->Tanah Merah, Sekupang<->HF, Nongsapura<->Tanah Merah, HF<->Gold Coast) dengan catatan trip Sindo/hari (Kam-Min, Sab-Min, Jum-Min) -> `jadwal.json` {F4}
+      - [ ] Majestic ("New Timing" mulai Mei 2026, PDF): 6 baris arah; trip khusus akhir pekan/libur tidak terbaca -> perlu_cek_ulang; check-in konter 60 mnt sebelum berangkat {F4}
+      - [ ] Sindo (sindoferry.com.sg/schedules & app.sindoferry.com.sg/schedule, Nov 2026): 7 baris; BC->HF dua halaman beda versi (perlu_cek_ulang); Sekupang 20:30 perlu_cek_ulang; Waterfront Sab-Min saja {F4}
+      - [ ] Horizon (Nov 2026): HF->Harbour Bay 13 trip (SGT), Harbour Bay->HF 13 trip (WIB, terakhir 20:30); check-in tutup 20 mnt (HF) / 30 mnt (Harbour Bay), sumber pihak ketiga perlu_cek_ulang {F4}
+      - [ ] Papan live Singapore Cruise Centre `singaporecruise.com.sg/schedule/ferries/` (status per trip, kode FRDI0600, "CANCELLED"): rujukan visual/tautan saja, JANGAN di-scrape tanpa izin {F4}
+  - [ ] 14 › 2. Feri internasional Batam–Malaysia
+    - [ ] Batam Centre <-> Stulang Laut/Berjaya Waterfront (Indomas; juga Dolphin, Pintas): BC->Stulang (WIB) 06:00, 08:30, 11:40, 13:30; Stulang->BC (MYT) 09:30, 12:00, 15:15, 17:00; 2-2,5 jam; Rp430.000 / Rp650.000 PP (termasuk seaport tax Rp100.000), MYR 123; tarif berlaku 1 Jan 2026; tampilkan kedua nama terminal {F4}
+    - [ ] Harbour Bay <-> Puteri Harbour (Putri Anggreni/Ferry Global Group): HB->PH 07:15 WIB (data 3 Nov 2026); PH->HB (MYT) 07:30, 11:00, 13:00, 18:30 (4 Nov 2026); RM125-172; durasi 1,5-3 jam tidak konsisten {F4}
+    - [ ] Harbour Bay/Batam Centre/Nongsapura <-> Pasir Gudang (Dolphin, Pasir Gudang Ferry, BatamFast Nongsapura): tidak ada jadwal resmi terverifikasi -> tampil "jadwal belum tersedia" {F4}
+  - [ ] 14 › 3. Feri dan kapal domestik dari Batam
+    - [ ] Tabel 12 baris: Punggur->Tanjungpinang (07:30-17:30 tiap ~30 mnt, Rp80.500), Punggur->Tg. Uban speedboat (07:00-18:00, Rp63.500), RoRo ASDP Punggur-Tg. Uban (Trisakti Adinda: dari Punggur 06/10/14/18, dari Uban 08/12/16; Tanjung Burang: dari Punggur 08/12/16, dari Uban 06/10/14/18; KMP Barau docking; dewasa Rp27.000, motor Gol. II Rp51.000, mobil Gol. IVA Rp309.000; data 9 Okt 2026), Dabo Singkep 10:30 Rp306.000 (Seitenam Rp252.000), Senayang-Pancur-Benan-Tajur Biru-Seitenam 11:00 dua hari sekali Rp212.000-252.000, Letung-Tarempa 08:30 2x/minggu cuaca (Rp440.000/494.000), RoRo Mengkapan Buton/Kuala Tungkal (jam belum), Sekupang->Karimun 07:20 Rp132.000 (jadwal lama Dumai Express usang), Dumai Line (Tg. Samak Rp222.000, Selat Panjang Rp282.000, Bengkalis Rp442.000, Buton Rp452.000, Dumai/Kuala Enok/Kuala Tungkal Rp600.000), Tg. Batu (Kundur)/Penyalai 07:45 usang, Harbour Bay Domestik Karimun/Moro (jam belum), Pelni -> `rute.json` + `jadwal.json` {F4}
+    - [ ] Pelni dari Bintang 99 Persada (Batu Ampar; pindah dari Batu Ampar sejak Des 2024): KM Kelud (Jan 2026 juga KM Nggapulu), ~mingguan; contoh Batam->Jakarta Rabu 5 Agu 2026 16:00 (~32 jam; 1A Rp1.283.000-1.308.000; ekonomi mulai ~Rp382.000), Batam->Belawan Minggu 2 Agu 2026 12:00 (~28 jam; ekonomi ~Rp267.000); tiket PELNI Mobile/pelni.co.id/loket cabang {F4}
+    - [ ] Natuna: tidak ada rute reguler terverifikasi dari Batam -> status perlu_diisi_user (tidak ada entri rute) {F4}
+    - [ ] Harga resmi Punggur ditetapkan BP Batam via BatamPort (`batamport.bpbatam.go.id`) = link rujukan domestik terbaik {F4}
+  - [ ] 14 › 4. Pompong dan pancung ke pulau hinterland
+    - [ ] Tabel 12 pelantar: PPMS Sekupang->Belakang Padang (24 jam, malam pesan, berangkat ~6 penumpang, Rp20.000, carter 1-4 org Rp160.000 / 5-10 org Rp200.000, ~25 mnt/5,7 km, tarif sejak Sep 2022 perlu_cek_ulang), Sekupang->Kasu/Pemping/Terong/Pecong (nego; Kasu PP ~Rp180.000), Belakang Padang->Kasu (reguler sekali sehari ~11:00, balik ~07:00; carter Rp150.000-200.000) & Geranting Rp140.000, Sagulung->Pulau Buluh (Rp15.000 2020-21; Lebaran 20-25 rb), Tanjung Riau (barang ke Riau), Batu Ampar/Tg. Sengkuang (kosong), Kampung Tua Telaga Punggur->Ngenang (carter Rp100.000 PP, warga Rp20.000 PP), Jembatan 1 Barelang wisata (Rp10.000, 2016, usang), Jembatan 2 Barelang->Pulau Panjang (Rp60.000 PP, 2014, usang), Sembulang->Mubut Darat/Tunjuk (Rp20-25 rb; PP termasuk tiket masuk Rp70.000), Sungai Budus->Pulau Abang (tidak rutin; ~Rp20.000; paket snorkeling Rp50-60 rb), Setokok (kosong) {F4}
+    - [ ] Tips keselamatan: pelampung dipakai sebelum jalan (terutama anak); tolak kelebihan muatan (PPMS standar 12 penumpang + 1 pengemudi); HP/dokumen di kantong kedap air + uang tunai pecahan kecil; hindari badai/angin kencang dan cek hujandibatam; rute malam hanya pesanan; pulau jauh (Kasu, Terong, Abang) sepakati jam jemput + simpan nomor tekong (tanpa menampilkan nomor pribadi) {F4}
+  - [ ] 14 › 5. Info praktis menyeberang
+    - [ ] Paspor min 6 bulan; WNA isi All Indonesia e-Arrival Card dalam 72 jam sebelum tiba; Singapura & ASEAN bebas visa 30 hari; lainnya VoA USD 35 atau e-VOA; warga Batam ke SG isi SG Arrival Card (perlu_cek_ulang di ica.gov.sg) {F4}
+    - [ ] Check-in min 45 mnt (60 mnt Jumat sore/Sabtu pagi/libur); Majestic 60 mnt; RoRo ASDP 2 jam {F4}
+    - [ ] Barang bawaan: PMK 203/PMK.04/2017 bebas bea & pajak sampai FOB USD 500/orang/kedatangan; kelebihan bea masuk flat 10% + PPN + PPh 0,5-10% (NPWP) / 1-20% (non-NPWP); cukai 200 sigaret/25 cerutu/100 g tembakau iris dan/atau 1 liter etil alkohol (alkohol 21+); PMK 92/2025 (1 Apr 2026) tidak mengubah USD 500; tunai >Rp100 juta wajib dilaporkan {F4}
+    - [ ] Kartu kesehatan: tidak ada kewajiban khusus per Nov 2026; BatamFast menautkan "Quick Travel Requirement" {F4}
+    - [ ] Musim angin utara Nov-Feb: gelombang Batam/Bintan/Karimun/Lingga 1,25-2,5 m, Natuna/Anambas 2,5-4 m+; Dumai Line dihantam ombak 2-3 m pada 4 Jan 2026; tips antimabuk, kursi tengah/belakang, buffer waktu; RoRo Punggur-Uban dijarangkan tiap 1 jam 15 mnt Jan 2026 {F4}
+    - [ ] Feri terakhir day trip dari Singapura: ke Batam Centre 21:40 (BatamFast) / 21:50 (Sindo) SGT; ke Harbour Bay 21:35 SGT; ke Sekupang 19:30 (BatamFast) / 20:40 (Majestic) SGT {F4}
+  - [ ] 14 › 6. Data geometri rute untuk peta
+    - [ ] Pendekatan: (1) `route=ferry` OSM via Overpass (way/relation) + terminal `amenity=ferry_terminal`; (2) rute tidak ada di OSM (terutama pompong) -> LineString manual pelantar ke pelantar + 2-5 titik belok agar tidak memotong daratan; MarineTraffic hanya referensi visual, geometri jangan disalin; (3) satu Feature per rute dengan `rute_id`,`jenis`,`operator`,`durasi_menit`,`sumber_geometri` (osm/manual/perkiraan),`osm_id`; (4) animasi mural `turf.along(line,(t_now-t_depart)/durasi*panjang)` sesuai zona waktu, label "posisi perkiraan, bukan AIS" {F8}
+    - [ ] 2 query Overpass: `route=ferry` bbox (0.70,103.55,1.50,104.60) `out geom`; `amenity=ferry_terminal` + `man_made=pier` (0.85,103.80,1.25,104.20) `out center tags`; urutan bbox south,west,north,east; `osmtogeojson` -> `data/osm/overpass/14-*.overpassql` {F4}
+    - [ ] Contoh GeoJSON `btc-hfc` (geometri perkiraan, 4 titik [lng,lat]; titik HarbourFront 103.8250,1.2600 hanya perkiraan, ganti dengan koordinat SCC terverifikasi) -> `data/raw/14-feri-pompong__1.json` {F4}
+- [ ] 14 › Recommendations
+  - [ ] R1 widget "Feri terakhir hari ini" dari JSON statis ketik-ulang jadwal resmi; tampilkan `tanggal_data`; bila >60 hari munculkan banner "jadwal mungkin sudah berubah"; selalu tombol ke link resmi operator {F4}
+  - [ ] R2 jangan tampilkan harga sebagai angka pasti: "mulai dari" + catatan fee dan fuel surcharge {F4}
+  - [ ] R3 pompong tampil "rute rakyat, tarif nego" kecuali Sekupang-Belakang Padang; tombol "laporkan tarif terbaru" untuk warga {F4}
+  - [ ] R4 prioritas verifikasi koordinat: Singapore Cruise Centre, Nongsapura, Gold Coast Bengkong, Bintang 99, semua pelantar rakyat {F3}
+- [ ] 14 › Caveats
+  - [ ] Jadwal operator bisa berubah kapan saja; ketidakcocokan: Sindo Sekupang 20:30, dua versi Sindo Batam Centre, tanggal fuel surcharge 12 vs 14 Mar 2026 {F4}
+  - [ ] Data pompong mayoritas 2014-2022: tarif kemungkinan naik {F4}
+  - [ ] "terverifikasi" koordinat = min. 2 sumber independen (Wikidata + Waze/Wikimapia) cocok, belum dicek di OSM; koordinat BatamPort untuk Batam Centre, Nongsapura, Telaga Punggur tampak salah ketik: JANGAN dipakai {F3}
+  - [ ] Jadwal Pelni & RoRo per hari bisa beda dari contoh; rujukan final = aplikasi PELNI dan Ferizy {F4}
+- [ ] 14 › Blok data JSON
+  - [ ] 14 › (a) Terminal dan pelantar
+    - [ ] 22 entri (btc, skp, hb, nsp, gcb, wfc, tpg, b99, bta, 11 pelantar pr-*, sg-scc, sg-tmft, my-stl) -> `data/feri/terminal.json` (23 incl. `pr-blp` buatan migrasi); 3 terverifikasi, 4 perlu_cek_ulang, 16 perlu_diisi_user; resolusi ke places via `places_id_index.json`; `sg-*`/`my-*` hanya konteks rute, bukan pin direktori {F4}
+  - [ ] 14 › (b) Rute
+    - [ ] 23 rute (id, asal_id, tujuan, operator[], durasi_menit, harga_kisaran, jenis, link_jadwal_resmi) -> `data/feri/rute.json` (+10 `rute_tambahan` id migrasi) {F4}
+  - [ ] 14 › (c) Contoh jadwal
+    - [ ] 16 entri jadwal (rute_id, arah, jam_berangkat[], hari, tanggal_data) -> `data/feri/jadwal.json` (47 entri); `skp-blp` `jam_berangkat: []` (pompong 24 jam, berangkat saat ~6 penumpang) {F4}
+- [ ] 14 › Daftar terminal dan pelantar yang koordinatnya belum pasti (untuk diisi user)
+  - [ ] 16 perlu diisi: nsp, gcb, b99, sg-scc, sg-tmft, pr-skp, pr-tgr, pr-sgl, pr-bta, pr-ktp, pr-jb1, pr-jb2, pr-smb (Plus Code R7W6+43C belum dikonversi), pr-sbd, pr-stk, pelantar pompong antarpulau Belakang Padang (belum ber-id; migrasi: `pr-blp`) -> isi lewat `data/koordinat_perlu_diisi.csv` / admin klik-peta {F3}
+  - [ ] 4 perlu cek ulang (satu sumber): skp 1.1314,103.9253 (BatamPort), wfc 1.08243,103.93751 (Streetdirectory), bta 1.1648,104.0016 (readmore.id), my-stl 1.471028,103.783083 (Wikipedia) {F3}
+
+## 15-sejarah-arsip.md
+
+
+- [ ] 15 › Sejarah Batam: Riset Garis Waktu, Asal Nama, Perubahan Kota, Arsip Foto, dan Data Infografis (untuk Batam City Hall)
+  - [ ] Dua poros narasi: jejak pemerintahan lokal (mandat Raja Isa 18 Des 1829, arsip Riouw) dan kota hasil proyek negara 1969–1971 (Pertamina lalu Otorita); Batam bukan "pulau kosong" {F5}
+- [ ] 15 › TL;DR
+  - [ ] Garis waktu kuat: Temenggung di Bulang (akhir abad ke-18), mandat 1829, kamp tentara Jepang Rempang–Galang 1945–1946, lalu rangkaian regulasi Keppres 74/1971, Keppres 41/1973, PP 34/1983, Keppres 28/1992, UU 53/1999, UU 44/2007 + PP 46/2007, PP 62/2019, PP 4/2025 {F5}
+  - [ ] Prasejarah dan asal-usul nama "Batam" ditampilkan sebagai belum terverifikasi / cerita rakyat {F5}
+  - [ ] Dulu vs Sekarang paling dramatis: Nagoya/Lubuk Baja, waduk (Sei Harapan sampai Duriangkang), Hang Nadim (4.025 m), Batam Centre, Barelang 1992–1998; tahun konstruksi beda antarsumber wajib berlabel versi {F5}
+  - [ ] Foto/peta paling aman: Leiden/KITLV (cek label per item) dan Nationaal Archief (CC0); NLB/NAS hanya pribadi/riset tanpa izin tertulis; foto BP Batam, Kompas, Batam Pos harus minta izin {F5}
+- [ ] 15 › Key Findings
+  - [ ] 1. Hari Jadi Batam bertumpu pada dokumen (22 Jumadil Akhir 1245 H / 18 Des 1829; salinan di ANRI Arsip Riouw, dialihaksarakan Aswandi Syahri; tiga seminar tim Amsakar Achmad, ditetapkan Perda) {F5}
+  - [ ] 2. Bulang lebih tua sebagai pusat kekuasaan daripada Nongsa; Temenggung pindah ke Singapura 1811 (BPNB Kepri) vs 1818 (buku Nong Isa) = beda versi {F5}
+  - [ ] 3. Asal nama "Batam" tanpa bukti etimologis valid (BPNB Kepri: "belum ada data yang valid"); 3 versi lisan + jejak "Pulau Batang" (VOC 1675) dan "Bantang" (1847) {F5}
+  - [ ] 4. Ledakan penduduk = cerita utama infografis: ±6.000 jiwa (1965, BP Batam) menjadi ±1,28–1,39 juta (2024–2025) dan rekor wisman 1.613.202 (2025) {F5}
+- [ ] 15 › 1. Garis Waktu Sejarah Batam
+  - [ ] Legenda 4 status (terverifikasi / beda versi / cerita rakyat / belum terverifikasi) jadi badge dengan ikon garis, bukan emoji {F5}
+  - [ ] Garis waktu interaktif 49 entri (31 JSON + 18 baris hanya-tabel gw-t01..t18) dengan filter kategori, status, dan penautan ke tokoh {F5}
+  - [ ] Prasejarah: tidak ada situs terkonfirmasi di Pulau Batam; Bukit Kerang Kawal Darat di Bintan; JANGAN tampilkan "zaman batu Batam" sebagai fakta {F5}
+  - [ ] Klaim "dihuni orang Melayu sejak 231 M" ditampilkan sebagai belum terverifikasi (tanpa sumber primer) {F5}
+  - [ ] Abad 15–16 Kesultanan Melaka; nama Hang Nadim = pengaitan simbolik {F5}
+  - [ ] Abad 16–17 "Bulla" (Bulang) di catatan Portugis (dikutip sekunder) {F5}
+  - [ ] 1675 "P. Batang" peta VOC Leiden (item belum ditemukan daring) = beda versi {F5}
+  - [ ] Abad 17–18 Johor-Riau-Lingga-Pahang; Temenggung ditempatkan di Bulang {F5}
+  - [ ] 1757–1802 Temenggung Abdul Jamal di Bulang; Trocki, Prince of Pirates (1979) {F5}
+  - [ ] 1811 atau 1818 Temenggung (Tun Abdul Rahman) pindah ke Singapura {F5}
+  - [ ] 17 Maret 1824 Traktat London: Riau-Lingga (termasuk Batam) ke Belanda {F5}
+  - [ ] 18 Des 1829 mandat Nong Isa (Residen Riouw Letkol C.P.J. Elout; Hari Jadi via Perda 4/2009); setelah 1829 Nongsa menggantikan Selat Bulang {F5}
+  - [ ] 1831 Nong Isa wafat; makam tidak diketahui (yang ada Kompleks Makam Zuriat) {F5}
+  - [ ] 1847 peta "Kaart van de Noordkust van het Eiland Bantang" (survei trigonometri 1846, E.H. Boom) {F5}
+  - [ ] 1 Des 1857 perjanjian Riau-Lingga–Belanda (dikutip sekunder) {F5}
+  - [ ] 1882 J.G. Schot "De Battam Archipel": tiga wakilschap Nongsa, Bulang, Sulit {F5}
+  - [ ] ±1898 Batam Brick Works (Raja Ali Kelana + Ong Sam Leong), bata di Perigi Batu Pulau Buluh {F5}
+  - [ ] 1942–1945 pendudukan Jepang (konteks; detail lokal minim, jangan berspekulasi) {F5}
+  - [ ] Okt 1945–Jul 1946 kamp tentara Jepang Rempang–Galang: repatriasi pertama 24 Apr 1946 (kapal Liberty; WO 203/2460, 20 Jul 1946); Tugu Sembulang 1981: 112.708 serdadu/128 meninggal vs BiblioAsia ±68.000/ >150 meninggal; nama Jepang Galang "Sakae" {F5}
+  - [ ] 1959–1983 Belakang Padang ibu kota Kecamatan Batam {F5}
+  - [ ] 1963–1966 Konfrontasi: peran Batam belum ada sumber, ditandai belum terverifikasi tanpa narasi {F5}
+  - [ ] 1965 desa kecil ±6.000 jiwa (BP Batam) {F5}
+  - [ ] 1969 Pertamina (Ibnu Sutowo), waduk sementara Sei Harapan {F5}
+  - [ ] 26 Okt 1971 Keppres 74/1971 (Hari Bakti BP Batam); 1973 Keppres 41/1973 (HPL); 29 Jun 1974 Keppres 33/1974 (bonded warehouse; pulau sekitar) {F5}
+  - [ ] 1970-an sebutan "Nagoya" (1960-an vs ±1978) = beda versi {F5}
+  - [ ] 1976–1978 konsolidasi J.B. Sumarlin; 1978–1998 era B.J. Habibie (Barelang, 715 km²) {F5}
+  - [ ] 1979–1996 kamp pengungsi Vietnam Galang (nada memorial) {F5}
+  - [ ] 1983 PP 34/1983 Kotamadya Administratif; 1999 UU 53/1999 otonom {F5}
+  - [ ] 1980–1995 Bandara Hang Nadim (Tanjung Uncang dipindah ke Batu Besar; 4.025 m; internasional 1990; diresmikan Soeharto 1995; mulai 1974/1980/1984 = beda versi) {F5}
+  - [ ] 1989–1990-an SIJORI {F5}
+  - [ ] 19 Jun 1992 Keppres 28/1992 (Rempang & Galang); 1992–1998 Barelang (6 jembatan, Rp400 miliar, jembatan I 644 m cable stayed pertama di Indonesia) {F5}
+  - [ ] 1998–2019 pergantian pimpinan Otorita/BP Batam (J.E. Habibie; Ismeth Abdullah; Mustofa Widjaja; Hatanto Reksodipoetro; Lukita Dinarsyah Tuwo; Edy Putra Irawady) {F5}
+  - [ ] 2000 PP 36/2000 FTZ (sekunder); 2007 UU 44/2007 & PP 46/2007 KPBPB 70 tahun; 2009 Perda 4/2009; 2011 PP 5/2011 {F5}
+  - [ ] 27 Sep 2019 Muhammad Rudi Kepala BP Batam (PP 62/2019); 20 Feb 2025 Amsakar Achmad & Li Claudia Chandra (PP 4/2025) {F5}
+  - [ ] 8 Jun 2021 KEK Batam Aero Technic (PP 67/2021) dan KEK Nongsa (PP 68/2021); 2024 KEK Tanjung Sauh (PP 24/2024) dan Pariwisata-Kesehatan (PP 39/2024) {F5}
+  - [ ] 2023 Rempang Eco City: disebut singkat sebagai peristiwa; TANPA luas lahan (angka 8.142 ha ada di laporan, jangan tampil) dan tanpa aspek hukum {F5}
+  - [ ] 2025 rekor wisman 1.613.202 (±79,58% Kepri); Des 2025–Jan 2026 pameran Hari Jadi ke-196 (sketsa Nong Isa, Museum Raja Ali Haji) {F5}
+  - [ ] Semester I 2026 realisasi investasi Rp38,97 triliun (klaim lembaga); Jul 2026 kabel Nongsa–Changi (satu sumber swasta, belum terverifikasi) {F5}
+- [ ] 15 › 2. Asal-Usul Nama "Batam" dan Nama Tempat
+  - [ ] Kesimpulan tampil di atas daftar: tidak ada etimologi terbukti; semua versi berdampingan dengan label {F5}
+  - [ ] 8 versi: Batang (VOC 1675), Bantang (1847), Battam (Schot 1882), akronim "Batu Ampa" (Abdul Razak, Patahnya Gunung Daik), Batang kayu (dewa penunggu), Batang pohon pantai, Batang = jembatan, Pelanduk Putih (Abdul Basyid & Raja Erwan) {F5}
+  - [ ] Nongsa dari "Nong Isa" (apakah sudah bernama Nongsa sebelum 1829 masih terbuka) {F5}
+  - [ ] Nagoya (resmi Lubuk Baja; dulu Teluk Jodoh): Maaz Ismail 2007 survei 1960-an vs Machmur Ismail ±1978; tidak pernah nama administratif {F5}
+  - [ ] Hang Nadim (penamaan simbolik), Barelang (Batam–Rempang–Galang), nama Jepang di Galang 1945–1946 (Sakae, Osamu, Mizuko, Kotobuki; The Straits Times 8 Jul 1946) {F5}
+- [ ] 15 › 3. Perubahan Fisik Kota untuk Fitur "Batam Dulu vs Sekarang"
+  - [ ] 14 pasangan dulu/sekarang (pf-01..pf-14) sebagai kartu + slider tahun; rentang versi tampil di tooltip, versi BP Batam sebagai acuan slider {F5}
+  - [ ] Nagoya/Lubuk Baja (Nagoya Hill mulai 2007), Batam Centre (awal 1990-an), Sekupang & Batu Ampar (Pertamina, 1970-an) {F5}
+  - [ ] Waduk Sei Harapan (1969 sementara; permanen 1979, 210 l/detik), Nongsa (0,7 juta m3, 60 l/detik; 1975/1978), Sei Ladi (8,8 juta m3; 1981–82/1985–86), Muka Kuning (13,4 juta m3; 1989/1990 -> 1991), Duriangkang (100,7 juta m3, ±3.000 l/detik; BP Batam: bangun 1990, operasi 2001; versi lain 1986/1992 dan 1991/1995) {F5}
+  - [ ] Duriangkang: kampung di muara direlokasi ke Tanjung Piayu; perkampungan hilang paling terdokumentasi (topik relokasi: nada faktual, bersumber) {F5}
+  - [ ] Hang Nadim (hutan pesisir Batu Besar; 4.025 x 45 m; 1.762 ha; 1974–1995) {F5}
+  - [ ] Barelang (hanya perahu -> 6 jembatan + jalan 54 km: 52 km jalan + 2 km jembatan; 1992–1998) {F5}
+  - [ ] Kamp Galang -> Wisata Sejarah Galang (sejak 2000): nada memorial, tanpa quest {F5}
+  - [ ] Rempang bekas kamp Jepang (1945–1946: kebun karet diubah jadi kampung dan dermaga tawanan) -> kampung tua + monumen Jepang {F5}
+  - [ ] Nongsa Digital Park (resor Turi Beach/Nongsa Point Marina -> KEK digital, 2021) {F5}
+  - [ ] Pesisir utara 1847 (Teloek Tring, Sungai Senimba) vs kini {F5}
+  - [ ] Catatan: reklamasi belum ada sumber, JANGAN buat pin/entri reklamasi {F5}
+- [ ] 15 › 4. Sumber Arsip Foto dan Peta
+  - [ ] Tabel 11 lembaga (sa-01..sa-11) dengan lisensi, cara kredit, boleh dipakai ulang -> halaman Sumber Arsip + validator kredit foto {F5}
+  - [ ] Hanya pakai ulang item berlabel terbuka (Leiden/KITLV CC-BY/PD; Commons sesuai label; Nationaal Archief CC0 dengan tombol unduh); sisanya hanya tautan {F5}
+  - [ ] Format kredit per lembaga (mis. "Leiden University Libraries, [shelfmark] + persistent URL"; "Foto: [fotografer], Nationaal Archief / [koleksi]"; "Dok. BP Batam") {F5}
+  - [ ] Rekomendasi praktis: mulai fitur "Dulu" dari Leiden/KITLV + Nationaal Archief; ajukan izin ke Humas BP Batam (humas@bpbatam.go.id) dan Museum Raja Ali Haji; undang warga menyumbang foto keluarga dengan formulir izin CC-BY {F5}
+  - [ ] Formulir kirim foto lama warga (izin + kredit + lisensi CC-BY) {F5}
+- [ ] 15 › 5. Bacaan Lanjutan
+  - [ ] 10 judul bacaan (Nong Isa; Prince of Pirates; Grundy-Warr et al. 1999; Lindquist 2009; Phelps 2004; Royle 1997; Smith 1997; Balai Arkeologi Sumut 2021; RPJPD 2025–2045) -> halaman bacaan lanjutan {F5}
+  - [ ] Celah: jurnal kampus lokal (UNRIKA, UMRAH, UIB) dan kajian STPN belum terjaring; cari via Garuda {F5}
+- [ ] 15 › 6. Data untuk Infografis
+  - [ ] Penduduk
+    - [ ] 11 titik data 1965–2025; 1980–2010 satu sumber populer berlabel "perkiraan" {F5}
+    - [ ] Jangan campur BPS (proyeksi) dan Disdukcapil (registrasi) dalam satu garis tanpa keterangan metode; tambahkan field `metode` di kode {F5}
+    - [ ] Angka Databoks 1,79 juta (2025) JANGAN dipakai {F5}
+  - [ ] Luas wilayah, lahan, dan investasi
+    - [ ] Pulau Batam 415 km2; Barelang 715 km2 (BP Batam); Kota Batam 1.034,73 km2 daratan (RPJPD 2025–2045) {F5}
+    - [ ] Hang Nadim 1.762 ha, baru ±40% dimanfaatkan; dibangun 1974 (iNews) masuk catatan versi {F5}
+    - [ ] KEK: Batam Aero Technic 30 ha (Rp7,2 T, 9.976 naker); Nongsa 166,45 ha (Rp16 T, 16.500 naker); Tanjung Sauh 840,67 ha; Pariwisata-Kesehatan ±47 ha {F5}
+    - [ ] Realisasi investasi semester I 2026 Rp38,97 T (klaim BP Batam) {F5}
+    - [ ] Celah: luas lahan dialokasikan per dekade dan jumlah PMA belum ada; TODO minta ke PPID BP Batam {F5}
+  - [ ] Wisatawan mancanegara (BPS Kota Batam)
+    - [ ] 2021: 2.651; 2023: ±1,1–1,19 juta; 2024: 1.326.831 (+3,2 juta domestik); 2025: 1.613.202 (Singapura 789.674; Malaysia 418.330; puncak Des 195.525) {F5}
+- [ ] 15 › Caveats
+  - [ ] Tahun infrastruktur beda antarsumber: slider pakai versi BP Batam, versi lain di tooltip {F5}
+  - [ ] Media lokal saling mengutip (231 M, VOC 1675): kesamaan bunyi bukan verifikasi independen {F5}
+  - [ ] Peta 1847 dan 1882 pasti ada tapi URL item & lisensi Leiden belum ditemukan (cari "Bantang", "Battam-archipel" di catalogue.leidenuniv.nl) {F5}
+  - [ ] Konfrontasi dan pendudukan Jepang di Pulau Batam: jangan isi narasi spekulatif {F5}
+  - [ ] Rempang Eco City hanya disebut sebagai peristiwa; aspek hukum/lahan sengaja tidak dibahas {F5}
+- [ ] 15 › Blok Data JSON
+  - [ ] Blok JSON (garis_waktu 31, sumber_arsip 11, data_penduduk 10) -> data/sejarah/*.json; validasi zod, termasuk status 2 entri tahun 2025 beda metode {F5}
+
+## 16-tokoh-nama-jalan.md
+
+
+- [ ] 16 › Siapa di Balik Nama Jalan: Tokoh-Tokoh yang Namanya Dipakai di Kota Batam
+  - [ ] Tiga lapis nama: elite Johor–Riau–Lingga (Raja Haji Fisabilillah, Engku Putri, Raja Ali Haji, Nong Isa, Temenggung Abdul Jamal, Raja Ali Kelana), tokoh Hikayat Hang Tuah/Sejarah Melayu, pahlawan nasional dan perintis Batam modern (Ibnu Sutowo, B.J. Habibie) {F5}
+- [ ] 16 › TL;DR
+  - [ ] Tiga tokoh paling "Batam" terverifikasi arsip: Nong Isa (mandat 18 Des 1829), Temenggung Abdul Jamal (Bulang), Raja Ali Kelana (Batam Brickworks) {F5}
+  - [ ] Enam jembatan Barelang bernama tokoh Melayu Kepri/Riau daratan; tiga pahlawan nasional (Raja Haji Fisabilillah, Raja Ali Haji, Tuanku Tambusai) {F5}
+  - [ ] "Nara Singa" dan "Sultan Zainal Abidin" hanya dari keterangan BP Batam yang tidak sepenuhnya cocok catatan sejarah -> kartu berlabel "ada perbedaan versi" {F5}
+  - [ ] Hikayat (Hang Tuah, Jebat, Lekir, Lekiu, Kasturi, Dang Merdu) = tokoh hikayat, kesejarahan diperdebatkan; Dang Anom dan Laksamana Bintan belum teridentifikasi; lokasi Jl. Engku Haji Tua, Tengku Sulung, Ibnu Sutowo, Hang Lekiu, Dang Merdu, Dang Anom belum terverifikasi -> status "perlu dicek" {F5}
+- [ ] 16 › Ringkasan singkat
+  - [ ] "Museum terbuka" nama jalan: tiga generasi keluarga Bugis–Melayu (Raja Haji -> Engku Putri & Engku Haji Tua -> Raja Ali Haji) + keluarga Temenggung Bulang {F5}
+  - [ ] Dasar relevansi fitur: warga lebih hafal simpang dan gedung daripada nama jalan protokol (Batamnews) {F5}
+  - [ ] Catatan metode: inventaris dari daftar ruas Dishub 2011 (Tribun Batam + blog), OSM belum ditarik; kolom osm_name_bila_ada harus diisi lewat Overpass {F5}
+- [ ] 16 › Tabel inventaris
+  - [ ] 50 baris inventaris -> 61 entri penamaan.json (jalan 41, jembatan 6, masjid 3, makam 2, kawasan 2, bandara, stadion, gedung, alun-alun, museum, RSUD, julukan) {F5}
+  - [ ] Kelompok a-e (a Melayu Riau-Lingga/Johor/Malaka; b hikayat; c nasional; d pembangunan Batam; e lokal/adat) jadi filter kartu tokoh {F5}
+  - [ ] Bandara Hang Nadim (Nongsa, Kel. Batu Besar); Jl. Hang Nadim (Bulang) {F5}
+  - [ ] Stadion Temenggung Abdul Jamal (kecamatan perlu dicek), makam & masjid (Bulang Lintang), Jl. Temenggung Abdul Jamal, Jl. Raja Maimunah (Bulang) {F5}
+  - [ ] Nongsa (nama kecamatan, dari Nong Isa); Jl. Raja Isa dan Gedung Nong Isa (Batam Centre); Makam Zuriat Nong Isa (Nongsa, Kel. Sambau) {F5}
+  - [ ] Jl. Engku Putri, Jl. Engku Putri Utara, Dataran Engku Putri; kaitan nama Masjid Agung/Raya di Dataran Engku Putri perlu dicek {F5}
+  - [ ] Jembatan Barelang I "Tengku Fisabilillah", II "Nara Singa", III "Raja Ali Haji", IV "Sultan Zainal Abidin", V "Tuanku Tambusai", VI "Raja Kecik" (kecamatan semua perlu dicek) {F5}
+  - [ ] Jl. Raja H. Fisabilillah (Simpang Jam–Bundaran Madani), Jl. Raja Ali Haji (Lubuk Baja dan Bulang), Museum Batam Raja Ali Haji {F5}
+  - [ ] Masjid Sultan Mahmud Riayat Syah (Batu Aji, perlu dicek); Jl. Sultan Abdul Rachman (Lubuk Baja, Simp. Lippo–Simp. Puri Garden; siapa yang dirujuk perlu dicek) {F5}
+  - [ ] Jl. Raja Ali Kelana (Batam Centre), Bumi Perkemahan Raja Ali Kelana, RSUD Embung Fatimah (Batu Aji; alasan nama belum dikonfirmasi) {F5}
+  - [ ] Jl. Engku Haji Tua, Jl. Tengku Sulung, Jl. Ibnu Sutowo, Jl. Hang Lekiu, Jl. Dang Merdu, Jl. Dang Anom: kecamatan/lokasi "perlu dicek" (6 jalan tanpa kecamatan) {F5}
+  - [ ] Jl. Laksamana Bintan (Lubuk Baja, Simp. Pelita Atas–Simp. Rosedale/BNI) dan Jl. Laksamana (Bulang): identitas tokoh perlu dicek {F5}
+  - [ ] Jl. Hang Tuah (Nongsa & Belakang Padang), Hang Jebat, Hang Kesturi (Nongsa & Belakang Padang), Hang Lekir (Nongsa) {F5}
+  - [ ] Jl. Batin Limat dan Jl. Batin Bidin (Galang) {F5}
+  - [ ] Julukan "Jembatan Habibie" (tidak resmi) disimpan sebagai atribut enam jembatan, bukan tempat {F5}
+  - [ ] Jalan pahlawan: Katamso, R. Suprapto, S. Parman, Ahmad Yani, Sudirman, Gajah Mada, Imam Bonjol, Teuku Umar; plus satu baris gabungan 9 jalan (Raden Patah, Yos Sudarso, Diponegoro, Kartini, dr. Cipto, KH Ahmad Dahlan, R.E. Martadinata, Hasanuddin, Pattimura) dengan kecamatan "Lubuk Baja, Batu Ampar, Sekupang, Nongsa" (inkonsisten dengan bagian c) {F5}
+  - [ ] Cocokkan nama jalan dengan OSM via Overpass (kueri contoh di bagian akhir), isi osm_name_bila_ada, verifikasi manual; ruas bisa sudah berganti nama setelah evaluasi 2017 {F5}
+- [ ] 16 › Profil tokoh (format kartu)
+  - [ ] Format kartu: Gelar, Masa hidup, Kisah, Kaitan dengan Batam, Tempat, Status, Sumber (24 profil di profil_tokoh.md) {F5}
+  - [ ] (a) Tokoh Melayu Riau-Lingga, Johor, Malaka, dan Riau daratan
+    - [ ] Nong Isa / Raja Isa bin Raja Ali: putra YDM Riau V; mandat 22 Jumadil Akhir 1245 H (18 Des 1829) dari Sultan Abdul Rahman Muazzam Syah dan YDM VI Raja Jaafar; salinan di ANRI; makam belum ditemukan; tahun wafat beda versi (1831 vs ±50 tahun pada 1833) {F5}
+    - [ ] Temenggung Abdul Jamal (Tun Abdul Jamal bin Tun Abbas): ±1720–1802, menjabat ±1757–1802; markas Bulang sejak 1722; satu dari empat pemegang cap mohor, bendera "Fajar Menyingsing"; tidak pernah bergelar "Temenggung Bulang" {F5}
+    - [ ] Raja Haji Fisabilillah (Marhum Teluk Ketapang): YDM IV 1777–1784; lahir 1725/1727; 6 Jan 1784 menang di Penyengat (hari jadi Tanjungpinang); gugur Teluk Ketapang 18 Jun 1784; Pahlawan Nasional Keppres 072/TK/1997 (11 Agu 1997) + Mahaputera Adipradana {F5}
+    - [ ] Engku Putri Raja Hamidah: ±1774–7 Jul 1844; Penyengat sebagai mas kawin 1803; pemegang regalia (cogan, tepak sirih, keris panjang, nobat), menolak menyerahkannya setelah 1812; regalia akhirnya direbut Belanda {F5}
+    - [ ] Raja Ali Haji: ±1808–±1873; Gurindam Dua Belas, Kitab Pengetahuan Bahasa, Tuhfat al-Nafis, Mukaddimah fi Intizam; Pahlawan Nasional Keppres 089/TK/2004 (5 Nov 2004; Tribunnews: diserahkan 10 Nov 2004) {F5}
+    - [ ] Sultan Mahmud Riayat Syah (Mahmud Syah III): 24 Mar 1756–12 Jan 1811/1812; penobatan 1761/1770; Pahlawan Nasional Keppres 115/TK/2017 (6 Nov 2017; satu artikel Antara keliru 2018); makam Daik {F5}
+    - [ ] Sultan Abdul Rahman Muazzam Syah (I): memerintah 1812–1832; dilantik tanpa regalia; sultan pertama Riau-Lingga setelah Traktat London 1824; pemberi mandat Nong Isa; status perlu dicek apakah jalan merujuk I atau II (1883–1911) {F5}
+    - [ ] Raja Ali Kelana: putra YDM X Raja Muhammad Yusuf; surat 26 Jul 1898 anugerah tanah Batam; Batam Brickworks bersama Ong Sam Leong di Batu Aji (Disbudpar 2021: ±1896, 30.000 bata/hari; sumber lain 1901); misi Utsmaniyah 1904/1905 dan 1913; jual pabrik ±1910; hijrah ke Johor 1911 {F5}
+    - [ ] Tengku Embung Fatimah: dipilih 17 Sep 1883, berkuasa sampai 18 Feb 1885; istri YDM Raja Muhammad Yusuf (menikah 1847); alasan nama RSUD belum dikonfirmasi Pemko {F5}
+    - [ ] Tengku Sulung (Panglima Besar Reteh): ±1799–7 Nov 1858; armada Belanda 9 Okt 1858; Bintang Mahaputera Utama anumerta Keppres 119/TK/TH.2000 (4 Nov 2000); lokasi jalan perlu dicek {F5}
+    - [ ] Raja Narasinga II: memerintah 1473–1532, Sultan Indragiri ke-4; melawan Portugis 1512–1532; BP Batam menulis "Panglima Raja Indragiri Hulu" = beda versi {F5}
+    - [ ] Sultan Zainal Abidin Syah (Tambusai/Rokan): wafat 5 Sep 1916 di Kediri; ditangkap 1904; klaim "sultan Riau-Lingga" tidak bersumber; sumber hanya advertorial BP Batam + Pemkab Rokan Hulu = beda versi {F5}
+    - [ ] Raja Kecik (Sultan Abdul Jalil Rahmat Syah): Johor 1718–1722; kalah dari Bugis 1722; Siak di Buantan (1722/1723); wafat 1746; asal-usul versi hikayat diragukan {F5}
+    - [ ] Laksamana Bintan: jabatan, bukan satu orang; kartu menjelaskan jabatan dan merujuk Hang Tuah/Hang Nadim tanpa klaim satu tokoh {F5}
+  - [ ] (b) Tokoh hikayat/legenda
+    - [ ] Catatan umum kelompok: bersumber Hikayat Hang Tuah dan Sejarah Melayu (versi tertua abad ke-17; naskah tertua HHT ±1758), penggabungan beberapa masa, Hang Kasturi (SM) vs Hang Jebat (HHT) sebagai pemberontak, sumber Portugis/Ryukyu mencatat "laksamana" Malaka tanpa kepastian Hang Tuah {F5}
+    - [ ] Hang Tuah: anak Hang Mahmud dan Dang Merdu; Laksamana Malaka; abad ke-15 (hikayat) {F5}
+    - [ ] Hang Jebat, Hang Kasturi, Hang Lekir, Hang Lekiu: sahabat seperguruan di Bintan {F5}
+    - [ ] Hang Nadim: anak Hang Jebat dan Dang Wangi (Sejarah Melayu), diasuh Hang Tuah; melawan Portugis ±1511–1526; "langlang laut" Batam (Disbud Kepri); bandara internasional diresmikan Soeharto 3 Jan 1995; status semi-historis {F5}
+    - [ ] Dang Merdu (ibu Hang Tuah; nasi kunyit) dan Dang Anom (belum ada sumber; "Dang" = perempuan istana/dayang) {F5}
+  - [ ] (c) Pahlawan nasional dan tokoh nasional (ringkas)
+    - [ ] Tuanku Tambusai (Muhammad Saleh, 5 Nov 1784–12 Nov 1882, "Harimau Padri dari Rokan", Keppres 071/TK/1995; julukan hanya di kartu ini) {F5}
+    - [ ] Pahlawan Revolusi (Katamso, R. Suprapto, S. Parman, Ahmad Yani); Sudirman; Imam Bonjol (1772–1864); Teuku Umar; Gajah Mada (bukan pahlawan nasional resmi) {F5}
+    - [ ] Sembilan tokoh nasional lain (Raden Patah, Diponegoro, Kartini, Cipto Mangunkusumo, KH Ahmad Dahlan, R.E. Martadinata, Hasanuddin, Pattimura, Yos Sudarso): rincian merujuk daftar Pahlawan Nasional Kemensos; 17 entri tokoh.json tanpa sumber biografi {F5}
+  - [ ] (d) Tokoh pembangunan Batam
+    - [ ] Ibnu Sutowo: 23 Sep 1914–12 Jan 2001; Dirut Pertamina 1968–1976; Keppres 65/1970; Ketua Otorita Batam 1971–1976 {F5}
+    - [ ] B.J. Habibie: Ketua Otorita sejak 1978 (Keppres 194/M/1978); penggagas Barelang 1992–1998; "Jembatan Habibie" julukan tidak resmi {F5}
+  - [ ] (e) Tokoh lokal/adat
+    - [ ] Engku Haji Tua (Raja Ahmad bin Raja Haji, "Raja Hitam"): lahir Pulau Biram Dewa, Sungai Carang; haji 1828; Syair Perang Johor (naskah di Leiden); sumber ensiklopedis, cocokkan dengan Tuhfat al-Nafis {F5}
+    - [ ] Batin Limat bin Limbang: kepala adat Rempang–Galang; tawaran perang melawan Belanda 1911 (budayawan Raja Malik Hafrizal); sumber tunggal tradisi lisan = perlu dicek; kantor Kecamatan Galang di Jl. Batin Limat; Batin lain: Lawan, Nama Lembu, Bidin {F5}
+    - [ ] Raja Maimunah: istri Temenggung Abdul Jamal, dimakamkan di sampingnya; biografi minim {F5}
+- [ ] 16 › Hubungan antartokoh
+  - [ ] Diagram silsilah Bugis–Riau (inti): Daeng Celak -> Raja Haji -> Engku Putri / Raja Jaafar / Engku Haji Tua; Engku Haji Tua -> Raja Ali Haji; Engku Putri ⇄ Sultan Mahmud; Mahmud -> Abdul Rahman; Abdul Rahman + Raja Jaafar -> mandat Nong Isa 1829; Nong Isa putra Raja Ali (YDM V) {F5}
+  - [ ] Catatan UI wajib: "Raja Ali" (YDM V, ayah Nong Isa) berbeda orang dari Raja Ali Haji dan Raja Ali Kelana {F5}
+  - [ ] Generasi akhir: Embung Fatimah ⇄ YDM X Raja Muhammad Yusuf -> Abdul Rahman II; Raja Ali Kelana saudara seayah Abdul Rahman II; Batin Limat setia kepada Abdul Rahman II (1911); Tengku Sulung setia kepada Sultan Mahmud Muzaffar Syah (dimakzulkan 1857) {F5}
+  - [ ] Jaringan Temenggung: Tun Abbas -> Abdul Jamal ⇄ Raja Maimunah -> Tun Abdul Hamid -> Temenggung Abdul Rahman (ke Singapura 1811; perjanjian Raffles bersama Sultan Hussein 6 Feb 1819) -> Daeng Ibrahim (lahir Pulau Bulang 1810) -> Abu Bakar (pendiri Johor modern) {F5}
+  - [ ] Johor–Siak–Bugis: Raja Kecik merebut Johor 1718, dikalahkan Bugis 1722; Sultan Sulaiman; jabatan YDM; klaim putra Sultan Mahmud Syah II (dibunuh 1699, versi Hikayat Siak) {F5}
+  - [ ] Laksamana/Hang Tuah (hikayat): Hang Mahmud ⇄ Dang Merdu -> Hang Tuah; lima sahabat; Hang Jebat ⇄ Dang Wangi -> Hang Nadim; Tuah dan Nadim bergelar Laksamana (mata rantai ke Jl. Laksamana) {F5}
+  - [ ] Riau daratan dan antikolonial: Tambusai dan Zainal Abidin sama-sama dari Rokan Hulu; Narasinga II sezaman perang Hang Nadim vs Portugis {F5}
+  - [ ] 23 relasi di relasi.json jadi graf silsilah; relasi di bullet yang tidak ada di JSON (Daeng Celak, Raja Jaafar, Raja Ali YDM V, Raja Muhammad Yusuf, Abdul Rahman II, garis Temenggung, Hang Mahmud, Dang Wangi, Sultan Sulaiman) butuh entri tokoh baru {F5}
+- [ ] 16 › Penamaan resmi (konteks singkat)
+  - [ ] Penetapan oleh SK Wali Kota: 230 ruas, 62 dirilis, 387 km (Tribun Batam 2011); Perda Kota Batam 9/2001 Pasal 11 (nama jalan) {F5}
+  - [ ] Evaluasi 2017 Dishub (usul perpanjang Jl. Engku Putri sampai Bundaran Madani; Peraturan Wali Kota perlu dicek apakah terbit) {F5}
+  - [ ] Usulan 2026: LAM Kepri/Kota Batam; surat LAM Batam No. 10/LAM-BATAM/V/2026 (8 Mei 2026): 46 nama simpang dan bundaran; ruas baru Batam Centre–Bandara belum bernama {F5}
+  - [ ] Aset BP Batam: bandara dan Barelang dinamai di era Otorita, penjelasan nama jembatan bersumber BP Batam {F5}
+- [ ] 16 › Bacaan lanjutan
+  - [ ] Daftar bacaan (Tuhfat al-Nafis / The Precious Gift; Sulalatus Salatin; Hikayat Hang Tuah; Trocki; L.Y. Andaya; Hasan Junus; Aswandi Syahri; Edi Sutrisno; Sabeth Muksin; Rustam S. Abrus; Mahidin Said; Yussuwadinata dkk.) + lembaga (BPK Wilayah IV, BPCB Sumbar, Disbud Kepri, ANRI, Kemensos/IKPNI) {F5}
+- [ ] 16 › Caveats
+  - [ ] Banyak sumber web adalah artikel populer/advertorial; paling kokoh: BPCB/BPNB, Disbud Kepri, Media Center Pemko, Keppres pahlawan; nama Jembatan II & IV hanya dari Humas BP Batam {F5}
+  - [ ] Daftar ruas jalan dari rilis Dishub 2011 via blog; cocokkan dengan OSM {F5}
+  - [ ] Tanggal beda antarsumber ditandai di kartu: lahir Raja Haji, wafat Sultan Mahmud dan Nong Isa, pendirian Siak {F5}
+- [ ] 16 › Blok data JSON
+  - [ ] Blok JSON (tokoh 29, penamaan 40, relasi 23) -> data/tokoh/*.json; tokoh.json 46 (29 + 17 nasional), penamaan.json 61 (40 + 21), validasi zod untuk status_verifikasi campuran {F5}
+  - [ ] Query Overpass contoh: area Batam admin_level 5, way highway name ~ Hang|Raja|Engku|Temenggung|Batin|Sultan|Laksamana|Dang|Tengku|Ibnu -> isi osm_name_bila_ada {F5}
+  - [ ] Tautan nama jalan/tempat di peta ke kartu tokoh (hanya untuk tempat ber-koordinat; jalan lewat pencocokan OSM) {F5}
+
+## File data (setiap file wajib dipakai atau dijelaskan)
+
+- [ ] `data/akomodasi/hotel.csv`
+- [ ] `data/budaya/acara.json`
+- [ ] `data/budaya/budaya_melayu.md`
+- [ ] `data/budaya/fakta_infografis.json`
+- [ ] `data/budaya/kamus.json`
+- [ ] `data/budaya/komunitas.json`
+- [ ] `data/budaya/tradisi_melayu.json`
+- [ ] `data/darurat/nomor_darurat.json`
+- [ ] `data/darurat/nomor_darurat_09.json`
+- [ ] `data/design/boleh_jangan.md`
+- [ ] `data/design/design_tokens.css`
+- [ ] `data/design/design_tokens.json`
+- [ ] `data/design/layer_peta_warna.json`
+- [ ] `data/design/microcopy.json`
+- [ ] `data/design/moodboard.md`
+- [ ] `data/design/palet_ui.json`
+- [ ] `data/design/tinta_riso.json`
+- [ ] `data/design/tipografi_skala.json`
+- [ ] `data/feri/info_praktis.md`
+- [ ] `data/feri/jadwal.json`
+- [ ] `data/feri/rute.json`
+- [ ] `data/feri/terminal.json`
+- [ ] `data/kampung_tua/kampung_tua.json`
+- [ ] `data/kampung_tua/kronologi_legalitas.json`
+- [ ] `data/kampung_tua/narasumber_arsip.md`
+- [ ] `data/kampung_tua/panduan_etika.md`
+- [ ] `data/kampung_tua/sumber_jumlah.json`
+- [ ] `data/komunitas/sumber_rekomendasi_warga.json`
+- [ ] `data/koordinat_perlu_diisi.csv`
+- [ ] `data/koordinat_user.json`
+- [ ] `data/mural/elemen_tabel_tanpa_seed.json`
+- [ ] `data/mural/ikon_prioritas.json`
+- [ ] `data/mural/landmarks.json`
+- [ ] `data/mural/segmen.json`
+- [ ] `data/mural/topik_sensitif.md`
+- [ ] `data/osm/overpass/06-a_kesehatan.overpassql`
+- [ ] `data/osm/overpass/06-b_belanja.overpassql`
+- [ ] `data/osm/overpass/06-c_transportasi.overpassql`
+- [ ] `data/osm/overpass/06-d_olahraga_ibadah_makam.overpassql`
+- [ ] `data/osm/overpass/06-e_hitung_kelengkapan.overpassql`
+- [ ] `data/osm/overpass/10-halte-bus.overpassql`
+- [ ] `data/osm/overpass/10-jalan-utama-map-matching.overpassql`
+- [ ] `data/osm/overpass/10-jejak-trans-batam.overpassql`
+- [ ] `data/osm/overpass/10-relasi-rute-bus-ptv2.overpassql`
+- [ ] `data/osm/overpass/14-jalur-feri.overpassql`
+- [ ] `data/osm/overpass/14-terminal-dan-pelantar.overpassql`
+- [ ] `data/panduan/09-nomor_darurat.json`
+- [ ] `data/panduan/09-rute_pompong.json`
+- [ ] `data/panduan/cara_verifikasi_profesi.md`
+- [ ] `data/panduan/urusan_tanah.json`
+- [ ] `data/panduan/urusan_tanah.md`
+- [ ] `data/places.json`
+- [ ] `data/places_id_index.json`
+- [ ] `data/places_konflik.json`
+- [ ] `data/places_stats.json`
+- [ ] `data/referensi/direktori_hyperlocal.json`
+- [ ] `data/referensi/perbandingan_library_mural.json`
+- [ ] `data/referensi/temuan_kunci_mural.json`
+- [ ] `data/referensi/website_inspirasi.json`
+- [ ] `data/schema/tempat.sql`
+- [ ] `data/sejarah/asal_usul_nama.md`
+- [ ] `data/sejarah/bacaan_lanjutan.md`
+- [ ] `data/sejarah/data_penduduk.json`
+- [ ] `data/sejarah/data_wisman.json`
+- [ ] `data/sejarah/garis_waktu.json`
+- [ ] `data/sejarah/perubahan_fisik.json`
+- [ ] `data/sejarah/sumber_arsip.json`
+- [ ] `data/snippets/02-teknik-mural-peta/1-bash.txt`
+- [ ] `data/snippets/02-teknik-mural-peta/2-ts.txt`
+- [ ] `data/snippets/02-teknik-mural-peta/3-ts.txt`
+- [ ] `data/snippets/02-teknik-mural-peta/4-ts.txt`
+- [ ] `data/snippets/02-teknik-mural-peta/5-bash.txt`
+- [ ] `data/snippets/02-teknik-mural-peta/6-struktur-folder.txt`
+- [ ] `data/snippets/11-geoportal/1.txt`
+- [ ] `data/snippets/11-geoportal/2.txt`
+- [ ] `data/snippets/11-geoportal/3.txt`
+- [ ] `data/snippets/11-geoportal/4.txt`
+- [ ] `data/snippets/11-geoportal/5.txt`
+- [ ] `data/statistik/angka_resmi.json`
+- [ ] `data/sumber_data/endpoint.json`
+- [ ] `data/sumber_data/geoportal.json`
+- [ ] `data/taksonomi/12-sumber_dan_tag_osm.json`
+- [ ] `data/taksonomi/skema_profesi.json`
+- [ ] `data/taksonomi/taksonomi.json`
+- [ ] `data/tokoh/penamaan.json`
+- [ ] `data/tokoh/profil_tokoh.md`
+- [ ] `data/tokoh/relasi.json`
+- [ ] `data/tokoh/tokoh.json`
+- [ ] `data/trans_batam/desain_peta.md`
+- [ ] `data/trans_batam/halte.json`
+- [ ] `data/trans_batam/halte_koordinat_perlu_diisi.csv`
+- [ ] `data/trans_batam/info_praktis.json`
+- [ ] `data/trans_batam/koridor.json`
+- [ ] `data/wilayah/kelurahan.json`
+- [ ] `data/places/*.json` (17 file per laporan; sumber `places.json`, dipakai lewat `places.json`)
+- [ ] `data/raw/*.json` (blok JSON verbatim; cek tidak ada isi yang hilang dibanding file domain)
+- [ ] `data/logs/*.md` (baca bagian "tidak bisa dipetakan" di setiap log dan tangani)

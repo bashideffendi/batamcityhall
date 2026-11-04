@@ -1,0 +1,109 @@
+{
+  "breakpoint": {
+    "desktop": "≥1024 px",
+    "hp": "≤480 px"
+  },
+  "skala": [
+    {
+      "token": "display",
+      "keterangan": null,
+      "desktop": "72 px",
+      "hp": "40 px",
+      "line_height": "1.02",
+      "letter_spacing": "-0.02em",
+      "font": "Serif, opsz 60, wght 400"
+    },
+    {
+      "token": "h1",
+      "keterangan": null,
+      "desktop": "52 px",
+      "hp": "32 px",
+      "line_height": "1.08",
+      "letter_spacing": "-0.015em",
+      "font": "Serif 400"
+    },
+    {
+      "token": "h2",
+      "keterangan": null,
+      "desktop": "36 px",
+      "hp": "26 px",
+      "line_height": "1.15",
+      "letter_spacing": "-0.01em",
+      "font": "Serif 500"
+    },
+    {
+      "token": "h3",
+      "keterangan": null,
+      "desktop": "26 px",
+      "hp": "21 px",
+      "line_height": "1.25",
+      "letter_spacing": "0",
+      "font": "Serif 600"
+    },
+    {
+      "token": "kicker",
+      "keterangan": "Loket 01",
+      "desktop": "13 px",
+      "hp": "12 px",
+      "line_height": "1.2",
+      "letter_spacing": "0.14em",
+      "font": "Serif smcp / kapital"
+    },
+    {
+      "token": "body-lg",
+      "keterangan": "lede",
+      "desktop": "21 px",
+      "hp": "18 px",
+      "line_height": "1.5",
+      "letter_spacing": "0",
+      "font": "Sans 400"
+    },
+    {
+      "token": "body",
+      "keterangan": null,
+      "desktop": "18 px",
+      "hp": "16 px",
+      "line_height": "1.6",
+      "letter_spacing": "0",
+      "font": "Sans 400"
+    },
+    {
+      "token": "small",
+      "keterangan": null,
+      "desktop": "15 px",
+      "hp": "14 px",
+      "line_height": "1.5",
+      "letter_spacing": "0.005em",
+      "font": "Sans 400"
+    },
+    {
+      "token": "caption",
+      "keterangan": null,
+      "desktop": "13 px",
+      "hp": "12.5 px",
+      "line_height": "1.4",
+      "letter_spacing": "0.02em",
+      "font": "Sans 500"
+    },
+    {
+      "token": "data",
+      "keterangan": null,
+      "desktop": "15 px",
+      "hp": "14 px",
+      "line_height": "1.4",
+      "letter_spacing": "0",
+      "font": "Mono 400, tnum"
+    },
+    {
+      "token": "data-lg",
+      "keterangan": "jam feri besar",
+      "desktop": "40 px",
+      "hp": "30 px",
+      "line_height": "1.0",
+      "letter_spacing": "-0.01em",
+      "font": "Mono 300"
+    }
+  ],
+  "catatan": "Panjang baris isi 60–72 karakter (max-width: 38rem). [A]",
+  "sumber_riset": "05-panduan-gaya"
+}

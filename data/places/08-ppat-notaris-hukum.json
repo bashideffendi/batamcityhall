@@ -1,0 +1,1231 @@
+[
+ {
+  "id": "pertanahan-kantah-bpn-batam",
+  "nama": "Kantor Pertanahan (BPN) Kota Batam",
+  "nama_alternatif": [
+   "Kantah Kota Batam"
+  ],
+  "kategori": "pemerintahan",
+  "subkategori": "kantor_pertanahan",
+  "kecamatan": "Sekupang",
+  "kelurahan": "Sungai Harapan",
+  "alamat": "Jl. Jaksa Agung R. Soeprapto, Sungai Harapan, Sekupang, Kota Batam 29428",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": "+6285150000722 (pengaduan)",
+   "email": "kot-batam@atrbpn.go.id",
+   "website": null
+  },
+  "atribut": {
+   "layanan": [
+    "sertifikat",
+    "balik_nama",
+    "pengecekan_sertifikat",
+    "hak_tanggungan",
+    "roya",
+    "PTSL"
+   ],
+   "loket_mpp": true,
+   "kategori_asli": "pertanahan_lahan"
+  },
+  "status_data": "terverifikasi",
+  "catatan": null,
+  "tag_osm": "office=government; government=cadaster",
+  "sumber_url": [
+   "https://kot-batam.atrbpn.go.id/",
+   "https://www.facebook.com/KantahKotaBatam/"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "pertanahan-bp-batam-pusat",
+  "nama": "BP Batam – Kantor Pusat",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "pengelola_lahan_hpl",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Jl. Ibnu Sutowo No. 1, Batam Centre, Kota Batam 29400",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 462047 / 462048",
+   "whatsapp": null,
+   "email": "humas@bpbatam.go.id",
+   "website": null
+  },
+  "atribut": {
+   "layanan": [
+    "alokasi_lahan",
+    "UWT",
+    "izin_peralihan_hak",
+    "perpanjangan_alokasi",
+    "persetujuan_hak_tanggungan"
+   ],
+   "kategori_asli": "pertanahan_lahan"
+  },
+  "status_data": "terverifikasi",
+  "catatan": "Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": "office=government; government=administrative",
+  "sumber_url": [
+   "https://e-ppid.bpbatam.go.id/profil/alamat/",
+   "https://b-care.bpbatam.go.id/"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "pertanahan-bp-batam-lms",
+  "nama": "BP Batam – Land Management System (LMS Online)",
+  "nama_alternatif": [
+   "BP Batam – Land Management System (LMS)",
+   "BP Batam – LMS Online"
+  ],
+  "kategori": "pemerintahan",
+  "subkategori": "layanan_lahan_online",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Jl. Ibnu Sutowo No. 1, Batam Centre (layanan daring: lms.bpbatam.go.id)",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": "Bisa disamakan dengan BP Batam Pusat (daftar koordinat laporan).",
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": "+628117048000 (konsultasi); +628117704770 (penataan); +628117704771 (KSB)",
+   "email": "lms-online@bpbatam.go.id",
+   "website": null
+  },
+  "atribut": {
+   "kanal_online": "https://lms.bpbatam.go.id/portal/",
+   "fitur": [
+    "kalkulator_UWT",
+    "formulir",
+    "lacak_permohonan",
+    "perpanjangan_hak_atas_tanah"
+   ],
+   "masa_UWT_tahun": {
+    "alokasi_awal": 30,
+    "perpanjangan": 20,
+    "pembaruan": 30
+   },
+   "kategori_asli": "pertanahan_lahan"
+  },
+  "status_data": "terverifikasi",
+  "catatan": "Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://lms.bpbatam.go.id/portal/bantuan/kontak-kami",
+   "https://lms.bpbatam.go.id/portal/bantuan/qna/detail/l5"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "pertanahan-ptsp-bp-batam-mpp",
+  "nama": "PTSP BP Batam (loket MPP)",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "ptsp_lahan_perizinan",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Belian",
+  "alamat": "MPP Kota Batam, Lt. Dasar Gedung Sumatera Convention Center, Batam Centre 29400",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": "Pin sama dengan MPP (daftar koordinat laporan).",
+  "jam_layanan": "Senin–Jumat 08.00–16.30 WIB (antrean tutup 15.00)",
+  "kontak": {
+   "telepon": null,
+   "whatsapp": "+628556670011 (info perizinan); +628556670009 (pengaduan)",
+   "email": "tuptsp@bpbatam.go.id",
+   "website": null
+  },
+  "atribut": {
+   "layanan": [
+    "pertanahan",
+    "OSS",
+    "IBOSS",
+    "konsultasi_pertanahan",
+    "penandatanganan_SPPT"
+   ],
+   "kategori_asli": "pertanahan_lahan"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Nomor lama +628117676666 di halaman pengaduan; kelurahan perlu cek.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://ptsp.bpbatam.go.id/en/",
+   "https://ptsp.bpbatam.go.id/en/pengaduan/"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "layanan-mpp-batam",
+  "nama": "Mal Pelayanan Publik (MPP) Kota Batam",
+  "nama_alternatif": [
+   "MPP Kota Batam"
+  ],
+  "kategori": "pemerintahan",
+  "subkategori": "mal_pelayanan_publik",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Belian",
+  "alamat": "Lt. Dasar, Gedung Sumatera Convention Center, Jl. Engku Putri, Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 468278 (call center)",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "instansi": [
+    "Pemko Batam",
+    "BP Batam",
+    "BPN",
+    "KPP Pratama (bergiliran)",
+    "DPMPTSP (Lt. 2)",
+    "Bank BRI"
+   ],
+   "hub": true,
+   "kategori_asli": "pertanahan_lahan"
+  },
+  "status_data": "terverifikasi",
+  "catatan": "Kelurahan: perlu cek (Belian vs Teluk Tering).",
+  "tag_osm": "office=government",
+  "sumber_url": [
+   "https://mpp.batam.go.id/",
+   "https://pajak.go.id/en/node/105674"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "usaha-dpmptsp-batam",
+  "nama": "DPMPTSP Kota Batam",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "perizinan_usaha_daerah",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Belian",
+  "alamat": "Lt. 2 MPP, Gedung Sumatera Convention Centre, Jl. Engku Putri, Batam 29461",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": "Gedung MPP, Lt. 2 (daftar koordinat laporan).",
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 473228",
+   "whatsapp": null,
+   "email": "dpmptsp@batam.go.id",
+   "website": null
+  },
+  "atribut": {
+   "kanal_online": "https://easy.batam.go.id/web/",
+   "kategori_asli": "perizinan_usaha"
+  },
+  "status_data": "terverifikasi",
+  "catatan": "Kelurahan perlu cek.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://easy.batam.go.id/web/"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "lelang-kpknl-batam",
+  "nama": "KPKNL Batam",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "lelang_negara",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Jl. Engku Putri (depan Gedung Pusat Informasi Haji), Batam Centre 29444",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 469825",
+   "whatsapp": null,
+   "email": "kpknlbatam@kemenkeu.go.id",
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "pertanahan_lahan"
+  },
+  "status_data": "terverifikasi",
+  "catatan": "Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": "office=government",
+  "sumber_url": [
+   "https://www.djkn.kemenkeu.go.id/kpknl-batam"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "ppat-wirlisman",
+  "nama": "Kantor Notaris & PPAT Wirlisman, S.H., Sp.N.",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "notaris_ppat",
+  "kecamatan": "Batu Ampar",
+  "kelurahan": "Sungai Jodoh",
+  "alamat": "Komplek Jaya Putra Blok B-5, Jl. Raja Ali Haji, Sungai Jodoh, Batam 29453",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": "Senin–Jumat 07.30–17.00, Sabtu 07.30–12.00 (klaim situs kantor)",
+  "kontak": {
+   "telepon": "(0778) 431931",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "ppat": true,
+   "notaris": true,
+   "wilayah_kerja": "Kota Batam (perlu cek)",
+   "nomor_sk_ppat": null,
+   "kategori_asli": "ppat_notaris"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": null,
+  "tag_osm": "office=notary",
+  "sumber_url": [
+   "https://notarisppat.or.id/",
+   "http://notarisbatamwirlisman.blogspot.com/p/alamat-kantor.html"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "ppat-wany-thamrin",
+  "nama": "Kantor Notaris/PPAT Wany Thamrin, S.H., M.Kn.",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "notaris_ppat",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Komplek Ruko Bintang Raya A No. 12, Jl. Regata, Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 7483660",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "ppat": true,
+   "notaris": true,
+   "pejabat_lelang_kelas_ii": true,
+   "kategori_asli": "ppat_notaris"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Status PPAT/notaris disimpulkan dari email kantor & daftar blog 2019. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": "office=notary",
+  "sumber_url": [
+   "https://ppiddjkn.kemenkeu.go.id/storage/20251128-6391.pdf"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "lelang-juli-cristie",
+  "nama": "Kantor Juli Cristie, S.H., S.E., M.Kn.",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "pejabat_lelang_kelas_ii",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Teluk Tering",
+  "alamat": "Komplek Ruko Rafflesia Business Center Blok B No. 10, Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 472785",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "pejabat_lelang_kelas_ii": true,
+   "ppat": null,
+   "notaris": null,
+   "kategori_asli": "ppat_notaris"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Status notaris/PPAT perlu cek (tabel laporan). Kelurahan perlu cek.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://ppiddjkn.kemenkeu.go.id/storage/20251128-6391.pdf"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "lelang-analis-wida",
+  "nama": "Kantor Analis Wida Delima Pandjaitan, S.H., M.Kn.",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "pejabat_lelang_kelas_ii",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Ruko Royal Sincom Blok E No. 05, Batam Center",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 422555",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "pejabat_lelang_kelas_ii": true,
+   "ppat": null,
+   "notaris": null,
+   "kategori_asli": "ppat_notaris"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Status notaris/PPAT perlu cek (tabel laporan). Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://ppiddjkn.kemenkeu.go.id/storage/20251128-6391.pdf"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "ppat-yondri-darto",
+  "nama": "Kantor PPAT Yondri Darto",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "ppat",
+  "kecamatan": "Lubuk Baja",
+  "kelurahan": "Lubuk Baja Kota",
+  "alamat": "Jl. Sultan Abdul Rachman, Komplek Sulaiman Blok A No. 10–12, Nagoya",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "ppat": true,
+   "notaris": null,
+   "nomor_sk_ppat": null,
+   "usang": "sumber 2019",
+   "kategori_asli": "ppat_notaris",
+   "catatan_kontak": "tidak dipublikasikan resmi"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber blog direktori 2019: kantor bisa sudah pindah, PPAT bisa sudah pensiun atau meninggal, dan nomor SK di sumber itu tidak bisa dipercaya (jangan ditampilkan). Status notaris perlu cek (tabel laporan). Kelurahan perlu cek.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://carialamatlokasi.blogspot.com/2019/08/PPAT-Kepulauan-Riau-Kota-Batam.html"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "ppat-titik-sulistyowati",
+  "nama": "Kantor PPAT Titik Sulistyowati",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "ppat",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Jl. Engku Putri, Ruko Taman Mediterania Blok KK4 No. 3A",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "ppat": true,
+   "notaris": null,
+   "usang": "sumber 2019",
+   "kategori_asli": "ppat_notaris",
+   "catatan_kontak": "tidak dipublikasikan resmi"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber blog direktori 2019: kantor bisa sudah pindah, PPAT bisa sudah pensiun atau meninggal, dan nomor SK di sumber itu tidak bisa dipercaya (jangan ditampilkan). Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://carialamatlokasi.blogspot.com/2019/08/PPAT-Kepulauan-Riau-Kota-Batam.html"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "ppat-najemah",
+  "nama": "Kantor PPAT Najemah",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "ppat",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Ruko Purimas, Jl. Engku Putri Blok B No. 37",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "ppat": true,
+   "notaris": null,
+   "usang": "sumber 2019",
+   "kategori_asli": "ppat_notaris",
+   "catatan_kontak": "tidak dipublikasikan resmi"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber blog direktori 2019: kantor bisa sudah pindah, PPAT bisa sudah pensiun atau meninggal, dan nomor SK di sumber itu tidak bisa dipercaya (jangan ditampilkan). Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://carialamatlokasi.blogspot.com/2019/08/PPAT-Kepulauan-Riau-Kota-Batam.html"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "ppat-rian-sugito",
+  "nama": "Kantor Notaris/PPAT Rian Sugito, S.H., M.Kn.",
+  "nama_alternatif": [
+   "Kantor PPAT Rian Sugito, S.H., M.Kn."
+  ],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "notaris_ppat",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Teluk Tering",
+  "alamat": "Komplek Accelence Blok A No. 16, Jl. Pasir Putih, Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "ppat": true,
+   "notaris": true,
+   "usang": "sumber 2019",
+   "kategori_asli": "ppat_notaris",
+   "catatan_kontak": "tidak dipublikasikan resmi"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber blog direktori 2019: kantor bisa sudah pindah, PPAT bisa sudah pensiun atau meninggal, dan nomor SK di sumber itu tidak bisa dipercaya (jangan ditampilkan). Kelurahan perlu cek.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://carialamatlokasi.blogspot.com/2019/08/PPAT-Kepulauan-Riau-Kota-Batam.html",
+   "https://masuksini.info/berita/daftar-alamat-dan-kontak-notaris-ppat-di-kota-batam"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "ppat-bambang-purwanto",
+  "nama": "Kantor PPAT Bambang Purwanto",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "ppat",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Taman Baloi",
+  "alamat": "Town House Palm View Blok B No. 2",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "ppat": true,
+   "notaris": null,
+   "usang": "sumber 2019",
+   "kategori_asli": "ppat_notaris",
+   "catatan_kontak": "tidak dipublikasikan resmi"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber blog direktori 2019: kantor bisa sudah pindah, PPAT bisa sudah pensiun atau meninggal, dan nomor SK di sumber itu tidak bisa dipercaya (jangan ditampilkan). Kelurahan perlu cek.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://carialamatlokasi.blogspot.com/2019/08/PPAT-Kepulauan-Riau-Kota-Batam.html"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "ppat-yulianti",
+  "nama": "Kantor PPAT Yulianti",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "ppat",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Belian",
+  "alamat": "Lt. 3 Gedung Sumatera Convention Centre, Jl. Engku Putri Kav. 1",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": "Gedung MPP, Lt. 3 (daftar koordinat laporan).",
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "ppat": true,
+   "notaris": null,
+   "usang": "sumber 2019",
+   "kategori_asli": "ppat_notaris",
+   "catatan_kontak": "tidak dipublikasikan resmi"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber blog direktori 2019: kantor bisa sudah pindah, PPAT bisa sudah pensiun atau meninggal, dan nomor SK di sumber itu tidak bisa dipercaya (jangan ditampilkan). Kelurahan perlu cek.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://carialamatlokasi.blogspot.com/2019/08/PPAT-Kepulauan-Riau-Kota-Batam.html"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "ppat-bambang-muchsinanto",
+  "nama": "Kantor PPAT Bambang Muchsinanto",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "ppat",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": "Komplek Tanah Mas Blok E No. 3, Lt. 2",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "ppat": true,
+   "notaris": null,
+   "usang": "sumber 2019",
+   "kategori_asli": "ppat_notaris",
+   "catatan_kontak": "tidak dipublikasikan resmi"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber blog direktori 2019: kantor bisa sudah pindah, PPAT bisa sudah pensiun atau meninggal, dan nomor SK di sumber itu tidak bisa dipercaya (jangan ditampilkan). Kecamatan belum diketahui (laporan: perlu cek). Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://carialamatlokasi.blogspot.com/2019/08/PPAT-Kepulauan-Riau-Kota-Batam.html"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "ppat-kiki",
+  "nama": "Kantor Notaris & PPAT Kiki, S.H., M.Kn.",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "notaris_ppat",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Teluk Tering",
+  "alamat": "Komplek Ruko Mahkota Raya Blok G No. 7, Teluk Tering 29461",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "ppat": true,
+   "notaris": true,
+   "sumber_jenis": "agregator",
+   "kategori_asli": "ppat_notaris",
+   "catatan_kontak": "tidak dipublikasikan"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber agregator.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://jashalegal.com/notaris/kota-batam/profil/kantor-notaris-dan-ppat-kiki-batam-kota"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "hukum-posbakum-pn-batam",
+  "nama": "Posbakum Pengadilan Negeri Batam",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "posbakum",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Gedung PN Batam, Jl. Engku Putri, Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": "hari dan jam kerja pengadilan",
+  "kontak": {
+   "telepon": "(0778) 468828 (telp/fax PN)",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "layanan_gratis": [
+    "informasi_hukum",
+    "konsultasi",
+    "advis",
+    "pembuatan_dokumen_hukum"
+   ],
+   "pendampingan_sidang": false,
+   "dasar": "PERMA 1/2014",
+   "kategori_asli": "bantuan_hukum"
+  },
+  "status_data": "terverifikasi",
+  "catatan": "Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": "amenity=courthouse (atribut)",
+  "sumber_url": [
+   "https://pn-batam.go.id/index.php/pos-bantuan-hukum/"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "hukum-posbakum-pa-batam",
+  "nama": "Posbakum Pengadilan Agama Batam",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "posbakum",
+  "kecamatan": "Sekupang",
+  "kelurahan": "Sungai Harapan",
+  "alamat": "Jl. R.E. Martadinata No. 5, Sungai Harapan, Sekupang",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": "hari dan jam kerja pengadilan",
+  "kontak": {
+   "telepon": "(0778) 323308 (PA Batam)",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "layanan_gratis": [
+    "konsultasi",
+    "pembuatan_gugatan_permohonan"
+   ],
+   "perkara": [
+    "cerai",
+    "harta_bersama",
+    "hadhanah",
+    "nafkah"
+   ],
+   "pendampingan_sidang": false,
+   "kategori_asli": "bantuan_hukum"
+  },
+  "status_data": "terverifikasi",
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://pa-batam.go.id/tentang-pengadian/profile-pengadilan/alamat-pengadilan",
+   "https://ptsp.pa-batam.go.id/syarat-pengajuan-perkara"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "hukum-lbh-mawar-saron-batam",
+  "nama": "LBH Mawar Saron Batam",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "lbh",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Sukajadi",
+  "alamat": "Ruko Permata Niaga Blok D No. 3–4, Komplek Sukajadi, Batam",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 430990",
+   "whatsapp": null,
+   "email": "contact@lbhmawarsaron.or.id",
+   "website": null
+  },
+  "atribut": {
+   "akreditasi_bphn": "perlu cek (2025–2027)",
+   "mitra_kanwil_tahun": [
+    2023
+   ],
+   "layanan_gratis": [
+    "litigasi",
+    "non_litigasi",
+    "konsultasi"
+   ],
+   "kategori_asli": "bantuan_hukum"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Status merujuk ke kemitraan Kemenkumham Kepri 2023; akreditasi BPHN 2025–2027 perlu cek di Sidbankum sebelum diberi badge.",
+  "tag_osm": "office=lawyer; lawyer=legal_aid (usulan)",
+  "sumber_url": [
+   "https://lbhmawarsaron.or.id/contact-us/",
+   "https://kepri.antaranews.com/berita/148707/kemenkumham-kepri-rangkul-tujuh-lbh-beri-bantuan-hukum-gratis"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "hukum-lbh-peduli-harapan-bangsa",
+  "nama": "LBH Peduli dan Harapan Bangsa",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "lbh",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "akreditasi_bphn": "perlu cek",
+   "mitra_kanwil_tahun": [
+    2023
+   ],
+   "kategori_asli": "bantuan_hukum",
+   "catatan_kontak": "belum ditemukan"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Alamat dan kontak belum ditemukan; status merujuk ke kemitraan Kemenkumham Kepri 2023; akreditasi BPHN 2025–2027 perlu cek. Kecamatan belum diketahui (laporan: perlu cek). Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kepri.antaranews.com/berita/148707/kemenkumham-kepri-rangkul-tujuh-lbh-beri-bantuan-hukum-gratis"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "hukum-lbh-yayasan-suara-keadilan",
+  "nama": "LBH Yayasan Suara Keadilan",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "lbh",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "akreditasi_bphn": "perlu cek",
+   "mitra_kanwil_tahun": [
+    2023
+   ],
+   "kategori_asli": "bantuan_hukum",
+   "catatan_kontak": "belum ditemukan"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Alamat dan kontak belum ditemukan; status merujuk ke kemitraan Kemenkumham Kepri 2023; akreditasi BPHN 2025–2027 perlu cek. Kecamatan belum diketahui (laporan: perlu cek). Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://gokepri.com/tujuh-lbh-di-kepri-berikan-bantuan-hukum-gratis-bagi-warga-miskin/"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "hukum-dpc-peradi-batam",
+  "nama": "DPC Peradi Batam & PBH Peradi Batam",
+  "nama_alternatif": [
+   "DPC Peradi Batam & Pusat Bantuan Hukum (PBH) Peradi Batam"
+  ],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "organisasi_advokat",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Kantor Hukum Mustari & Partners, Jl. Engku Puteri, Komplek Batam Centre Square Blok C No. 3 (daftar DPN Maret 2025); alamat sekretariat lama: Ruko KBC Blok A5 No. 5, Batam Centre, Kel. Belian",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": "Dua kandidat alamat (daftar koordinat laporan).",
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "afiliasi_dpn": "peradi.or.id",
+   "layanan_pbh": true,
+   "kategori_asli": "bantuan_hukum",
+   "catatan_kontak": "belum ada telepon kantor resmi"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Konflik alamat: daftar DPN Peradi Maret 2025 (Komplek Batam Centre Square) vs sekretariat lama 2022–2024 (Ruko KBC, Kel. Belian). Peradi terpecah: tampilkan terpisah dari DPC Peradi Batam Raya (peradi.id). Kelurahan perlu cek (tabel laporan: Teluk Tering / Belian (perlu cek)).",
+  "tag_osm": "office=association",
+  "sumber_url": [
+   "https://www.peradi.or.id/files/Alamat%20DPC%20PERADI%20_-_%20Update%20Maret%202025.pdf",
+   "https://www.peradi.or.id/files/Alamat_DPC_PERADI_2024.pdf",
+   "https://www.matakepri.com/detail-news/2022/07/28/25712/www.matakepri.com"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "hukum-dpc-peradi-batam-raya",
+  "nama": "DPC Peradi Batam Raya",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "organisasi_advokat",
+  "kecamatan": "Lubuk Baja",
+  "kelurahan": null,
+  "alamat": "Komplek Nagoya Newton Blok A No. 10, Nagoya, Lubuk Baja",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": "+628127779977 (WA resmi organisasi)",
+   "email": "dpc.batamraya@gmail.com",
+   "website": null
+  },
+  "atribut": {
+   "afiliasi_dpn": "peradi.id",
+   "kategori_asli": "bantuan_hukum"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Peradi terpecah: tampilkan terpisah dari DPC Peradi Batam (peradi.or.id). Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": "office=association",
+  "sumber_url": [
+   "https://peradi.id/dpc/"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "pajak-ikpi-batam",
+  "nama": "IKPI Cabang Batam (sekretariat)",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "asosiasi_konsultan_pajak",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": "Komplek Ruko Royal Sincom Blok C No. 12, Batam",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 461325",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "ketua": "Bunandi (2024–2029)",
+   "kategori_asli": "jasa_dokumen"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Situs ikpikepri.org tampaknya situs turunan pihak ketiga, jadi alamat sekretariat ditandai ⚠️. Kecamatan belum diketahui (laporan: perlu cek). Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": "office=association",
+  "sumber_url": [
+   "https://ikpikepri.org/",
+   "https://ikpi.or.id/en/ikpi-kepri-fokuspenguatan-edukasi-pajak-dan-perluasan-anggota/"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "pajak-akp2i-kepri",
+  "nama": "AKP2I Pengda Kepri",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "asosiasi_konsultan_pajak",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": "Komplek Ruko Buana Bukit Permata Blok Goldstone II No. 26, Batam",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": "sekretariat@akp2ikepri.org",
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "jasa_dokumen"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Kecamatan belum diketahui (laporan: perlu cek). Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": "office=association",
+  "sumber_url": [
+   "https://www.facebook.com/akp2ikepri/"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "kjpp-mbpru-batam",
+  "nama": "KJPP Muttaqin Bambang Purwanto Rozak Uswatun & Rekan – Cabang Batam",
+  "nama_alternatif": [
+   "KJPP MBPRU – Cabang Batam"
+  ],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "kjpp",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Baloi Permai",
+  "alamat": "Komp. Ruko Taman Duta Mas Blok B No. 18, Baloi Permai, Batam 29431",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 4801492",
+   "whatsapp": null,
+   "email": "mbpru.batam@gmail.com",
+   "website": null
+  },
+  "atribut": {
+   "bidang": [
+    "properti"
+   ],
+   "kategori_asli": "jasa_dokumen"
+  },
+  "status_data": "terverifikasi",
+  "catatan": null,
+  "tag_osm": "office=consulting; consulting=valuation (usulan)",
+  "sumber_url": [
+   "https://e-directory.mappi.or.id/kjpp/cabang?dpd_id=4",
+   "https://www.kjpp-mbpru.com/contact"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "kjpp-anr-batam",
+  "nama": "KJPP Aksa, Nelson & Rekan – Cabang Batam",
+  "nama_alternatif": [
+   "KJPP ANR – Cabang Batam"
+  ],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "kjpp",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Sukajadi",
+  "alamat": "Komp. Ruko Permata Niaga Blok E No. 25, Sukajadi, Batam 29432",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 37220003",
+   "whatsapp": null,
+   "email": "batam@kjpp-anr.com",
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "jasa_dokumen"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "MAPPI mencantumkan 0778-3720002. Konflik telepon: situs ANR (0778) 37220003 vs MAPPI 0778-3720002.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kjpp-anr.com/contact/",
+   "https://e-directory.mappi.or.id/kjpp/cabang?dpd_id=4"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "kjpp-damianus-ambur-batam",
+  "nama": "KJPP Damianus Ambur & Rekan – Cabang Batam",
+  "nama_alternatif": [],
+  "kategori": "pertanahan_hukum",
+  "subkategori": "kjpp",
+  "kecamatan": "Sekupang",
+  "kelurahan": null,
+  "alamat": "Perumahan Taman Sari Blok H No. 24 RT 03 RW 04, Tiban, Sekupang",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "0778-8011205",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "jasa_dokumen"
+  },
+  "status_data": "terverifikasi",
+  "catatan": "Kelurahan: Tiban (Baru/Lama/Indah) perlu cek.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://e-directory.mappi.or.id/kjpp/cabang?dpd_id=4"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "usaha-plut-kumkm-batam",
+  "nama": "UPTD PLUT-KUMKM Kota Batam",
+  "nama_alternatif": [
+   "PLUT-KUMKM Kota Batam"
+  ],
+  "kategori": "pemerintahan",
+  "subkategori": "umkm",
+  "kecamatan": "Bengkong",
+  "kelurahan": "Tanjung Buntung",
+  "alamat": "Komplek Golden Prima/Golden City, Tanjung Buntung, Bengkong 29432",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "layanan": [
+    "fasilitasi_NIB",
+    "konsultasi_usaha",
+    "pelatihan"
+   ],
+   "kategori_asli": "perizinan_usaha",
+   "subkategori_asli": "pendampingan_umkm",
+   "catatan_kontak": "belum ada telepon resmi"
+  },
+  "status_data": "terverifikasi",
+  "catatan": null,
+  "tag_osm": "office=government",
+  "sumber_url": [
+   "https://www.plutkumkm-kotabatam.com/",
+   "https://mediacenter.batam.go.id/2022/04/01/gedung-pusat-layanan-umum-terpadu-diresmikan-rudi-tegaskan-pemko-batam-terus-berupaya-perkuat-umkm/"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "usaha-diskum-batam",
+  "nama": "Dinas Koperasi dan Usaha Mikro Kota Batam",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "umkm",
+  "kecamatan": "Sekupang",
+  "kelurahan": "Sungai Harapan",
+  "alamat": "Jl. Pramuka No. 1, Sungai Harapan, Sekupang 29424",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 321670",
+   "whatsapp": null,
+   "email": "ukmbatam@gmail.com",
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "perizinan_usaha",
+   "subkategori_asli": "dinas_umkm"
+  },
+  "status_data": "terverifikasi",
+  "catatan": null,
+  "tag_osm": "office=government",
+  "sumber_url": [
+   "https://diskum.batam.go.id/kontak/"
+  ],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ },
+ {
+  "id": "imigrasi-batam",
+  "nama": "Kantor Imigrasi Batam",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "imigrasi",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": "Jl. Engku Putri No. 3",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 462069",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "disebut_di": "catatan biro jasa (bagian D): kanal resmi urusan paspor"
+  },
+  "status_data": null,
+  "catatan": "Hanya disebut di teks laporan (catatan biro jasa), tidak ada di tabel/JSON; laporan tidak memberi label status. Kecamatan tidak disebut laporan. Kemungkinan duplikat dengan data kantor pemerintahan dari riset lain.",
+  "tag_osm": null,
+  "sumber_url": [],
+  "sumber_riset": "08-ppat-notaris-hukum"
+ }
+]

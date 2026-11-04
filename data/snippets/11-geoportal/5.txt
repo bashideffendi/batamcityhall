@@ -1,0 +1,9 @@
+# Perintah/pola request inline dari teks laporan 11-geoportal (bukan blok kode berpagar); disalin apa adanya, satu per baris.
+?f=pjson
+/query?...&f=geojson
+pip install esridump
+esri2geojson "<URL layer>" out.geojson
+ogr2ogr -f GeoJSON -t_srs EPSG:4326 -lco RFC7946=YES -lco COORDINATE_PRECISION=6 out.geojson in.geojson
+mapshaper in.geojson -simplify 15% keep-shapes -o out.geojson
+gdal_contour -i 5
+tippecanoe -o admin_batam.pmtiles -zg --drop-densest-as-needed -l kelurahan kelurahan.geojson -l kecamatan kecamatan.geojson

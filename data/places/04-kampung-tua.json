@@ -1,0 +1,2376 @@
+[
+  {
+    "id": "kt-nongsa-pantai",
+    "nama": "Kampung Tua Nongsa Pantai",
+    "nama_alternatif": [
+      "Nongsa"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Sambau",
+    "alamat": null,
+    "lat": 1.199,
+    "lng": 104.095,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "Dari 'Nong Isa', nama timang Raja Isa bin Raja Ali",
+      "suku_awal": "Melayu (keturunan Riau-Lingga) dan Bugis",
+      "masa_berdiri": "Awal abad ke-19; mandat 18 Desember 1829; 'Kampong Nongsa' di peta 1847",
+      "yang_bisa_dilihat": [
+        "Kompleks Makam Zuriat Raja Isa (cagar budaya SK 483/2022)",
+        "Pantai Nongsa",
+        "Penyeberangan ke Pulau Putri",
+        "Tradisi: tepuk tepung tawar, mandi Safar, bubur Asyura"
+      ],
+      "cerita_rakyat": null,
+      "ringkasan": "Kampung tempat Raja Isa (Nong Isa) memegang perintah atas Nongsa dan rantau sekitarnya; tanggal mandatnya dijadikan Hari Jadi Kota Batam (Perda 4/2009). Makam Nong Isa sendiri belum diketahui; yang ada adalah makam zuriatnya.",
+      "status_verifikasi_asli": "terverifikasi (sejarah); tahun wafat Nong Isa perlu_cek_ulang",
+      "profil_laporan": "§3 no. 1",
+      "lokasi_profil": "Kelurahan Sambau, Kecamatan Nongsa, pesisir utara menghadap Selat Singapura."
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Status campuran: \"terverifikasi (sejarah); tahun wafat Nong Isa perlu_cek_ulang\". Tahun wafat Nong Isa masih diperdebatkan (media menyebut 1831; catatan Belanda 1833 menyebut ia berusia sekitar 50 tahun pada 1833). Makam Nong Isa sendiri belum diketahui; yang ada makam zuriatnya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://disbud.kepriprov.go.id/asal-usul-nama-kampung-tua-nongsa/",
+      "http://kronologi.ppj.unp.ac.id/index.php/jk/article/download/949/564",
+      "https://kepri.antaranews.com/berita/149763/pemkot-batam-tetapkan-empat-peninggalan-sejarah-jadi-cagar-budaya"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-tereh",
+    "nama": "Kampung Tua Tereh",
+    "nama_alternatif": [
+      "Terih"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Sambau",
+    "alamat": null,
+    "lat": 1.19,
+    "lng": 104.06,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [
+        "Pantai (perlu cek lapangan)"
+      ],
+      "cerita_rakyat": null,
+      "ringkasan": "Kampung tua pesisir di Nongsa yang mulai banyak dikunjungi wisatawan.",
+      "status_verifikasi_asli": "sumber_tunggal"
+    },
+    "status_data": "sumber_tunggal",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all",
+      "https://www.batamnews.co.id/berita-98675-menikmati-suasana-kampung-tua-batam-yang-alami-dan-kental-budaya-melayu.html"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-bakau-serip",
+    "nama": "Kampung Tua Bakau Serip",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Sambau",
+    "alamat": null,
+    "lat": 1.185,
+    "lng": 104.05,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-teluk-mata-ikan",
+    "nama": "Kampung Tua Teluk Mata Ikan",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Sambau",
+    "alamat": null,
+    "lat": 1.17,
+    "lng": 104.13,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu (perlu dicek)",
+      "masa_berdiri": "Pra-Otorita Batam",
+      "yang_bisa_dilihat": [
+        "Gapura kampung tua",
+        "Pantai pasir putih"
+      ],
+      "cerita_rakyat": null,
+      "ringkasan": "Kampung pesisir dengan pantai pasir putih dan deretan kelapa; disambut gapura kuning bergaya Melayu.",
+      "status_verifikasi_asli": "sumber_tunggal",
+      "profil_laporan": "§3 no. 8",
+      "lokasi_profil": "Kelurahan Sambau, Nongsa."
+    },
+    "status_data": "sumber_tunggal",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.batamnews.co.id/berita-98675-menikmati-suasana-kampung-tua-batam-yang-alami-dan-kental-budaya-melayu.html",
+      "https://metropolis.batampos.co.id/amsakar-berkomitmen-selesaikan-persoalan-kampung-tua-di-batam/",
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-kampung-melayu-batu-besar",
+    "nama": "Kampung Tua Kampung Melayu",
+    "nama_alternatif": [
+      "Kampung Melayu Batu Besar"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Batu Besar",
+    "alamat": null,
+    "lat": 1.15,
+    "lng": 104.14,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu",
+      "masa_berdiri": "Akhir abad ke-19 (tutur lisan)",
+      "yang_bisa_dilihat": [
+        "Rumah Limas Potong (rumah pribadi, izin keluarga)"
+      ],
+      "cerita_rakyat": "Pembuka lahan pertama disebut M. Akib dari Malaka, dimakamkan di Teluk Kampung Melayu (tutur lisan)",
+      "ringkasan": "Lokasi Rumah Limas Potong milik keluarga Haji Muhammad Sain (berdiri 1959), cagar budaya Kota Batam.",
+      "status_verifikasi_asli": "terverifikasi (cagar budaya); detail arsitektur perlu_cek_ulang",
+      "profil_laporan": "§3 no. 2",
+      "lokasi_profil": "Kelurahan Batu Besar, Nongsa, dekat Bandara Hang Nadim."
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Status campuran: \"terverifikasi (cagar budaya); detail arsitektur perlu_cek_ulang\". Rumah Limas Potong adalah rumah pribadi milik keluarga; jangan masuk tanpa izin keluarga. Sumber berbeda soal bentuk rumah (rumah panggung kayu vs \"bukan rumah panggung\").",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.detik.com/sumut/berita/d-8088809/cagar-budaya-rumah-limas-potong-batam-memprihatinkan-ini-kata-disparbud",
+      "https://kebudayaan.kemdikbud.go.id/bpnbkepri/meneroka-batu-besar-di-batam/",
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all",
+      "https://gowest.id/kondisi-rumah-haji-sain-yang-dijadikan-cagar-budaya-memprihatinkan/"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-jabi",
+    "nama": "Kampung Tua Jabi",
+    "nama_alternatif": [
+      "Kampung Jabi"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Batu Besar",
+    "alamat": null,
+    "lat": 1.125,
+    "lng": 104.15,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua; disebut dalam legenda batu Malang Orang (antara Jabi dan Tanjung Buton).",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-tanjung-bemban",
+    "nama": "Kampung Tua Tanjung Bemban",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Batu Besar",
+    "alamat": null,
+    "lat": 1.13,
+    "lng": 104.155,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "Dari pohon 'beremban/bemban' yang tumbuh di kampung",
+      "suku_awal": "Melayu (disebut dihuni keturunan raja Riau-Lingga)",
+      "masa_berdiri": "Tak pasti",
+      "yang_bisa_dilihat": [
+        "Gapura Adat Kampung Tua",
+        "Pantai Tanjung Bemban"
+      ],
+      "cerita_rakyat": "Menurut Sejarah Melayu, Sang Nila Utama/Sri Tri Buana berburu pelanduk di sini; legenda anak durhaka yang menjadi batu 'Malang Orang'",
+      "ringkasan": "Kampung pesisir timur yang dikaitkan dengan kisah Sejarah Melayu; banyak warganya pindah ke Batu Besar pascakemerdekaan.",
+      "status_verifikasi_asli": "cerita_rakyat (asal-usul); lokasi terverifikasi",
+      "profil_laporan": "§3 no. 3",
+      "lokasi_profil": "Kelurahan Batu Besar, Nongsa, dekat Hang Nadim dan Pelabuhan Telaga Punggur."
+    },
+    "status_data": "cerita_rakyat",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Status campuran: \"cerita_rakyat (asal-usul); lokasi terverifikasi\". Kisah Sang Nila Utama adalah teks hikayat Sejarah Melayu, bukan bukti arkeologis.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://disbud.kepriprov.go.id/tanjung-bemban/",
+      "https://beplus.id/2019/05/tanjung-bemban-kampung-raja-raja-part-1-beplus-story/"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-batu-besar",
+    "nama": "Kampung Tua Batu Besar",
+    "nama_alternatif": [
+      "Lagorap",
+      "Labong Gorap"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Batu Besar",
+    "alamat": null,
+    "lat": 1.145,
+    "lng": 104.135,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "Dari batu besar dekat bibir pantai; nama lama dari kerang kecil 'gorap'",
+      "suku_awal": "Melayu; Tionghoa sejak ~1870; lalu Bugis",
+      "masa_berdiri": "Akhir abad ke-19",
+      "yang_bisa_dilihat": [
+        "Jejak kebun kelapa",
+        "Sekolah tua (perlu dicek)"
+      ],
+      "cerita_rakyat": null,
+      "ringkasan": "Kampung penghasil kopra yang dijual ke Singapura; disebut punya Sekolah Rakyat pada 1957.",
+      "status_verifikasi_asli": "terverifikasi (BPNB); detail SR 1957 sumber_tunggal",
+      "profil_laporan": "§3 no. 2",
+      "lokasi_profil": "Kelurahan Batu Besar, Nongsa, dekat Bandara Hang Nadim."
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Status campuran: \"terverifikasi (BPNB); detail SR 1957 sumber_tunggal\". Klaim Sekolah Rakyat 1957 bersumber tunggal (blog, GoWest/Beplus); perlu dicek ke Disdik.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kebudayaan.kemdikbud.go.id/bpnbkepri/meneroka-batu-besar-di-batam/",
+      "https://gowest.id/batu-besar-lagorap-penghasil-kopra-di-lintasan-waktu/"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-panglong",
+    "nama": "Kampung Tua Panglong",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Batu Besar",
+    "alamat": null,
+    "lat": 1.14,
+    "lng": 104.125,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "\"Panglong\" lazim berarti tempat olah kayu (dugaan, perlu dicek)",
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang",
+      "diisi_dari_tabel": [
+        "asal_usul_nama"
+      ]
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-kampung-tengah",
+    "nama": "Kampung Tua Kampung Tengah",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Batu Besar",
+    "alamat": null,
+    "lat": 1.135,
+    "lng": 104.12,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-teluk-nipah",
+    "nama": "Kampung Tua Teluk Nipah",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Kabil",
+    "alamat": null,
+    "lat": 1.065,
+    "lng": 104.14,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "Dari pohon nipah (dugaan)",
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang",
+      "diisi_dari_tabel": [
+        "asal_usul_nama"
+      ]
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-telaga-punggur",
+    "nama": "Kampung Tua Telaga Punggur",
+    "nama_alternatif": [
+      "Punggur"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Kabil",
+    "alamat": null,
+    "lat": 1.058,
+    "lng": 104.15,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Kampung tua dekat Pelabuhan Telaga Punggur.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-teluk-lengung",
+    "nama": "Kampung Tua Teluk Lengung",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Kabil",
+    "alamat": null,
+    "lat": 1.08,
+    "lng": 104.15,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-panau",
+    "nama": "Kampung Tua Panau",
+    "nama_alternatif": [
+      "Kampung Panau"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Kabil",
+    "alamat": null,
+    "lat": 1.1,
+    "lng": 104.13,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "Dari penyakit kulit 'panau' istri penghuni pertama (cerita rakyat)",
+      "suku_awal": "Melayu; 1949–1953 berdatangan Bugis, Buton, Flores",
+      "masa_berdiri": "Ramai sejak 1949",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": "Penghuni pertama: istri berpanau dan suami berkulit gelap yang dipanggil 'Wak Keling' (gunakan parafrase)",
+      "ringkasan": "Kampung dekat Nongsa yang penduduknya bertambah pesat pada 1949–1953.",
+      "status_verifikasi_asli": "cerita_rakyat",
+      "profil_laporan": "§3 no. 9",
+      "lokasi_profil": "Kelurahan Kabil, Nongsa."
+    },
+    "status_data": "cerita_rakyat",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kata \"keling\" dalam cerita rakyat bisa dianggap merendahkan; parafrasekan atau beri konteks kutipan cerita lama. Sumber cerita: artikel opini Antara (ditulis pejabat KPPN, bukan sejarawan).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepri.antaranews.com/berita/60967/mengenal-kampung-tua-batam"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-bengkong-laut",
+    "nama": "Kampung Tua Bengkong Laut",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Bengkong",
+    "kelurahan": "Bengkong Laut",
+    "alamat": null,
+    "lat": 1.165,
+    "lng": 104.04,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-bengkong-sadai",
+    "nama": "Kampung Tua Bengkong Sadai",
+    "nama_alternatif": [
+      "Sadai"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Bengkong",
+    "kelurahan": "Sadai",
+    "alamat": null,
+    "lat": 1.15,
+    "lng": 104.04,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-batu-merah",
+    "nama": "Kampung Tua Batu Merah",
+    "nama_alternatif": [
+      "Melcem (kawasan)"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": "Batu Merah",
+    "alamat": null,
+    "lat": 1.168,
+    "lng": 104.01,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "Dari 'Pak Merah', pengumpul batu",
+      "suku_awal": "Dibuka orang Bugis (Daeng Tambak)",
+      "masa_berdiri": "Ramai sejak 1976",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": "Asal nama Batu Merah dari Pak Merah si pengumpul batu",
+      "ringkasan": "Kampung yang dibuka Daeng Tambak lalu diteruskan Pak Merah.",
+      "status_verifikasi_asli": "cerita_rakyat",
+      "profil_laporan": "§3 no. 10",
+      "lokasi_profil": "Kelurahan Batu Merah, Batu Ampar."
+    },
+    "status_data": "cerita_rakyat",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Cerita lokal dari artikel opini Antara; perlu dicek ke tetua.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepri.antaranews.com/berita/60967/mengenal-kampung-tua-batam"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-sei-tering",
+    "nama": "Kampung Tua Sei Tering",
+    "nama_alternatif": [
+      "Melcem"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": "Batu Merah",
+    "alamat": null,
+    "lat": 1.165,
+    "lng": 104.005,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Muara: Tionghoa; hulu: Jawa (versi Antara)",
+      "masa_berdiri": "Dihuni sekitar 1960-an; kampung nelayan kecil pada 1949",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Kawasan yang dikenal sebagai Melcem; dulu ada kelong-kelong milik orang Tionghoa di pinggir pantai.",
+      "status_verifikasi_asli": "sumber_tunggal",
+      "profil_laporan": "§3 no. 10",
+      "lokasi_profil": "Kelurahan Batu Merah, Batu Ampar."
+    },
+    "status_data": "sumber_tunggal",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Cerita lokal dari artikel opini Antara; perlu dicek ke tetua.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepri.antaranews.com/berita/60967/mengenal-kampung-tua-batam"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-tanjung-sengkuang",
+    "nama": "Kampung Tua Tanjung Sengkuang",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": "Tanjung Sengkuang",
+    "alamat": null,
+    "lat": 1.162,
+    "lng": 103.995,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-air-raja",
+    "nama": "Kampung Tua Air Raja",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Tidak dipetakan di laporan (akurasi_koordinat: tidak_dipetakan).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "kecamatan_asli": "Batu Ampar (menurut daftar, janggal)",
+      "kelurahan_asli": "Tanjung Sengkuang (menurut daftar)",
+      "akurasi_koordinat_asli": "tidak_dipetakan",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": null,
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Muncul di daftar 37 versi Ranperda 2019; lokasinya janggal karena Air Raja juga nama kelurahan di Galang.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kecamatan diragukan laporan (asli: \"Batu Ampar (menurut daftar, janggal)\"); \"Air Raja\" juga nama kelurahan di Galang. Kelurahan menurut daftar S1: \"Tanjung Sengkuang (menurut daftar)\" — laporan menyebutnya janggal.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-belian",
+    "nama": "Kampung Tua Belian",
+    "nama_alternatif": [
+      "Kampung Belian"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Belian",
+    "alamat": null,
+    "lat": 1.14,
+    "lng": 104.055,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [
+        "Makam tua (disebut berumur ±200 tahun, panjang 3 m — perlu dicek)"
+      ],
+      "cerita_rakyat": null,
+      "ringkasan": "Kampung tua di tepi Batam Centre.",
+      "status_verifikasi_asli": "sumber_tunggal"
+    },
+    "status_data": "sumber_tunggal",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Klaim makam tua berumur ±200 tahun dan panjang 3 m bersumber blog; perlu dicek.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all",
+      "https://www.yuliamarza.com/2016/08/mengenal-sejarah-kampung-tua-yang-ada.html"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-tanjung-uma",
+    "nama": "Kampung Tua Tanjung Uma",
+    "nama_alternatif": [
+      "Tanjung Ume"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Tanjung Uma",
+    "alamat": null,
+    "lat": 1.158,
+    "lng": 103.988,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "'Uma' = rumah (rumah panggung) di antara Tanjung Pangkal Lepu dan Tanjung Kubur; versi lain dari 'home' atau kerang 'tuma'",
+      "suku_awal": "Melayu dan Bugis dari keluarga diraja Riau-Lingga",
+      "masa_berdiri": "Sebelum kemerdekaan",
+      "yang_bisa_dilihat": [
+        "Bukit Kubur (makam tua)",
+        "Makam di samping Masjid Baitussyakur",
+        "Rumah pelantar"
+      ],
+      "cerita_rakyat": "Makam di Bukit Kubur disebut milik saudara Habib Nuh; tradisi 'jejak tanah' bagi bayi",
+      "ringkasan": "Kampung nelayan dan pekebun kelapa di pesisir utara yang berhadapan dengan Selat Singapura.",
+      "status_verifikasi_asli": "terverifikasi (Disbud Kepri); cerita_rakyat untuk makam",
+      "profil_laporan": "§3 no. 4",
+      "lokasi_profil": "Kelurahan Tanjung Uma, Lubuk Baja."
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Status campuran: \"terverifikasi (Disbud Kepri); cerita_rakyat untuk makam\". Topik sensitif: legalitas Tanjung Uma termasuk yang paling alot (masih diupayakan per Oktober 2026). Jangan sentuh topik lahan di kartu.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://disbud.kepriprov.go.id/tanjung-uma/",
+      "https://ulasan.co/mengintip-sejarah-kampung-tua-tanjung-uma-ditengah-pembagunan-kota-batam/"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-tanjung-riau",
+    "nama": "Kampung Tua Tanjung Riau",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sekupang",
+    "kelurahan": "Tanjung Riau",
+    "alamat": null,
+    "lat": 1.14,
+    "lng": 103.91,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu pesisir",
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [
+        "Pelantar lingkar",
+        "Taman atas laut",
+        "Rumah panggung Melayu pesisir",
+        "Sunset"
+      ],
+      "cerita_rakyat": "Persinggahan raja-raja Johor–Riau–Lingga hingga Indragiri, dengan banyak 'Perigi Raja' (tutur Pak Saptono)",
+      "ringkasan": "Kampung nelayan di atas air; pilot project Kotaku PUPR dengan pelantar lingkar dan taman atas laut.",
+      "status_verifikasi_asli": "terverifikasi (kondisi kini); cerita_rakyat (persinggahan raja)",
+      "profil_laporan": "§3 no. 5",
+      "lokasi_profil": "Kelurahan Tanjung Riau, Sekupang. Dari lampu merah Sekupang ambil arah Sungai Harapan."
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Status campuran: \"terverifikasi (kondisi kini); cerita_rakyat (persinggahan raja)\".",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepri.bpk.go.id/taman-atas-laut-tanjungriau-selesai-ikon-baru-wisata-batam/",
+      "https://kkn.undip.ac.id/?p=324467",
+      "https://journal.uib.ac.id/index.php/jad/article/download/5952/2166/9353",
+      "https://batampos.co.id/2021/05/11/tanjungriau-kampung-tua-yang-disulap-jadi-destinasi-wisata/"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-patam-lestari",
+    "nama": "Kampung Tua Patam Lestari",
+    "nama_alternatif": [
+      "Patam"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sekupang",
+    "kelurahan": "Patam Lestari",
+    "alamat": null,
+    "lat": 1.115,
+    "lng": 103.94,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "Blog: penghulu Kampung Patam ingin meluas ke Pulau Lepu (tak jelas)",
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang",
+      "diisi_dari_tabel": [
+        "asal_usul_nama"
+      ]
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-mentarau",
+    "nama": "Kampung Tua Mentarau",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sekupang",
+    "kelurahan": "Patam Lestari",
+    "alamat": null,
+    "lat": 1.12,
+    "lng": 103.945,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-tiban",
+    "nama": "Kampung Tiban",
+    "nama_alternatif": [
+      "Tiban Kampung"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sekupang",
+    "kelurahan": "Tiban Lama",
+    "alamat": null,
+    "lat": 1.115,
+    "lng": 103.965,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "kelurahan_asli": "Tiban Lama (perlu dicek)",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Orang Ladi pengabdi Raja Melayu; lalu Bugis (keturunan 'Semani'); Minang dan Selayar di hulu",
+      "masa_berdiri": "Tak pasti",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Disebut sebagai kampung tua di artikel Antara, tetapi belum terkonfirmasi ada di daftar resmi 37.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan Tiban Lama perlu dicek. Belum terkonfirmasi ada di daftar resmi 37; laporan menyebutnya kandidat terkuat untuk entri yang gagal dipulihkan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepri.antaranews.com/berita/60967/mengenal-kampung-tua-batam"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-tembesi",
+    "nama": "Kampung Tua Tembesi",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sagulung",
+    "kelurahan": "Tembesi",
+    "alamat": null,
+    "lat": 1.045,
+    "lng": 103.985,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "Dari pohon tembesi (dugaan)",
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang",
+      "diisi_dari_tabel": [
+        "asal_usul_nama"
+      ]
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-tiawangkang",
+    "nama": "Kampung Tua Tiawangkang",
+    "nama_alternatif": [
+      "Tiangwangkang"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sagulung",
+    "kelurahan": "Tembesi",
+    "alamat": null,
+    "lat": 1.02,
+    "lng": 103.97,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-tanjung-gundap",
+    "nama": "Kampung Tua Tanjung Gundap",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sagulung",
+    "kelurahan": "Tembesi",
+    "alamat": null,
+    "lat": 1.015,
+    "lng": 103.96,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-dapur-12",
+    "nama": "Kampung Tua Dapur 12",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sagulung",
+    "kelurahan": "Sei Pelunggut",
+    "alamat": null,
+    "lat": 1.03,
+    "lng": 103.95,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "\"Dapur\" lazim merujuk dapur arang (dugaan)",
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang",
+      "diisi_dari_tabel": [
+        "asal_usul_nama"
+      ]
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-sei-lekop",
+    "nama": "Kampung Tua Sei Lekop",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sagulung",
+    "kelurahan": "Sei Lekop",
+    "alamat": null,
+    "lat": 1.04,
+    "lng": 103.99,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-sei-binti",
+    "nama": "Kampung Tua Sei Binti",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sagulung",
+    "kelurahan": "Sei Binti",
+    "alamat": null,
+    "lat": 1.055,
+    "lng": 103.94,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-cunting",
+    "nama": "Kampung Tua Cunting",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Batu Aji",
+    "kelurahan": "Tanjung Uncang",
+    "alamat": null,
+    "lat": 1.06,
+    "lng": 103.92,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Termasuk daftar 37 kampung tua.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-tanjung-piayu-laut",
+    "nama": "Kampung Tua Tanjung Piayu Laut",
+    "nama_alternatif": [
+      "Piayu Laut"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sei Beduk",
+    "kelurahan": "Tanjung Piayu",
+    "alamat": null,
+    "lat": 1.025,
+    "lng": 104.05,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu",
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [
+        "Rumah kayu pesisir",
+        "Pantai",
+        "Kuliner laut"
+      ],
+      "cerita_rakyat": "Jalur penyamaran Sultan Sulaiman (sumber lemah)",
+      "ringkasan": "Kampung pesisir di ujung Piayu yang berkembang dengan wisata kuliner laut sejak 2010-an dan masih memegang adat leluhur.",
+      "status_verifikasi_asli": "terverifikasi (jurnal); cerita_rakyat sumber_tunggal",
+      "profil_laporan": "§3 no. 7",
+      "lokasi_profil": "Kelurahan Tanjung Piayu, Sei Beduk, di ujung kelurahan, ke arah Jembatan Barelang."
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Status campuran: \"terverifikasi (jurnal); cerita_rakyat sumber_tunggal\". Cerita jalur penyamaran Sultan Sulaiman hanya bersumber keterangan gambar di ResearchGate (lemah).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.journal.unrika.ac.id/index.php/journalhistoria/article/download/5487/3607/",
+      "https://kampungkb.bkkbn.go.id/kampung/1798/kampung-kb-tanjung-piayu"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-bagan",
+    "nama": "Kampung Tua Bagan",
+    "nama_alternatif": [
+      "Tanjung Bagan"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sei Beduk",
+    "kelurahan": "Tanjung Piayu",
+    "alamat": null,
+    "lat": 1.04,
+    "lng": 104.04,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": "'Bebagan' = berkemah saat membuka hutan untuk kebun",
+      "suku_awal": "Melayu (perlu dicek)",
+      "masa_berdiri": "Blog menyebut 1879 (konflik data)",
+      "yang_bisa_dilihat": [
+        "Masjid tua At Taubah",
+        "Makam keluarga tetua adat (Raja Mahmud/Raja Muhammad — perlu dicek)",
+        "Tugu kampung tua"
+      ],
+      "cerita_rakyat": "Dibuka oleh 'Nong Isa' pada 1879 (blog; bertentangan dengan masa hidup Nong Isa)",
+      "ringkasan": "Kampung dengan masjid tua, makam keluarga tetua adat, dan pohon kelapa berumur lebih dari 80 tahun yang dicatat tim STPN 2016.",
+      "status_verifikasi_asli": "terverifikasi (situs, STPN); masa berdiri perlu_cek_ulang",
+      "profil_laporan": "§3 no. 6",
+      "lokasi_profil": "Kelurahan Tanjung Piayu, Sei Beduk. Menurut BKKBN, satu dari tiga kampung tua di kelurahan itu (Bagan, Piayu Laut, Setengar)."
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Status campuran: \"terverifikasi (situs, STPN); masa berdiri perlu_cek_ulang\". Konflik data: blog menyebut kampung dibuka 1879 oleh Nong Isa, tidak mungkin jika Nong Isa wafat sekitar 1830-an. Nama tetua adat Raja Mahmud vs \"Raja Muhammad\" (keterangan foto STPN) perlu dicek. Klaim markas KKO 1965 dari blog, perlu dicek.",
+    "tag_osm": null,
+    "sumber_url": [
+      "http://repository.stpn.ac.id/133/1/3%20menata%20tanah%20kota%20batam%20jalan%20penyelesaian%20penguasaan%20tanah%20kampung%20tua.pdf",
+      "https://www.yuliamarza.com/2016/08/mengenal-sejarah-kampung-tua-yang-ada.html",
+      "https://kampungkb.bkkbn.go.id/kampung/1798/kampung-kb-tanjung-piayu"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-setengar",
+    "nama": "Kampung Tua Setengar",
+    "nama_alternatif": [
+      "Setenga"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": "Sei Beduk",
+    "kelurahan": "Tanjung Piayu",
+    "alamat": null,
+    "lat": 1.03,
+    "lng": 104.03,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": "Pra-1970",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Satu dari tiga kampung tua di Kelurahan Tanjung Piayu menurut BKKBN.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Tabel §2 (kolom 'Yang bisa dilihat') mencatat: \"STPN menyebut warga Setenga pernah direlokasi masa Otorita\" — topik sensitif, bukan untuk kartu.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kampungkb.bkkbn.go.id/kampung/1798/kampung-kb-tanjung-piayu",
+      "http://repository.stpn.ac.id/133/1/3%20menata%20tanah%20kota%20batam%20jalan%20penyelesaian%20penguasaan%20tanah%20kampung%20tua.pdf"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "kt-seranggong",
+    "nama": "Seranggong",
+    "nama_alternatif": [
+      "Seranggon"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_mainland",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Tidak dipetakan di laporan (akurasi_koordinat: tidak_dipetakan).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "mainland",
+      "akurasi_koordinat_asli": "tidak_dipetakan",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": null,
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Entri ke-37 di daftar Ranperda 2019 tanpa kelurahan/kecamatan.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kecamatan tidak disebut laporan. Entri ke-37 di daftar Ranperda 2019 (S1) tanpa kelurahan/kecamatan; status belum jelas, tidak dipetakan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-tanjung-kertang",
+    "nama": "Tanjung Kertang",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": "Rempang Cate",
+    "alamat": null,
+    "lat": 0.97,
+    "lng": 104.14,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "kelurahan_asli": "Rempang Cate (perlu dicek)",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu, Orang Laut, Orang Darat (klaim tokoh warga)",
+      "masa_berdiri": "Diyakini sejak 1834 (klaim)",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Satu dari 16 kampung tua Rempang–Galang versi Ombudsman RI.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan Rempang Cate perlu dicek. Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan",
+      "https://perpustakaan.dpr.go.id/sipinter/index/detail/id/121"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-rempang-cate",
+    "nama": "Rempang Cate",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": "Rempang Cate",
+    "alamat": null,
+    "lat": 0.95,
+    "lng": 104.13,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu, Orang Laut, Orang Darat (klaim tokoh warga)",
+      "masa_berdiri": "Diyakini sejak 1834 (klaim)",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Satu dari 16 kampung tua Rempang–Galang versi Ombudsman RI.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-tebing-tinggi",
+    "nama": "Tebing Tinggi",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.93,
+    "lng": 104.13,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "kelurahan_asli": "perlu dicek",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu, Orang Laut, Orang Darat (klaim tokoh warga)",
+      "masa_berdiri": "Diyakini sejak 1834 (klaim)",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Satu dari 16 kampung tua Rempang–Galang versi Ombudsman RI.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan belum diketahui (laporan: perlu dicek). Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-blongkeng",
+    "nama": "Blongkeng",
+    "nama_alternatif": [
+      "Belongkeng"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.86,
+    "lng": 104.16,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "kelurahan_asli": "perlu dicek",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu, Orang Laut, Orang Darat (klaim tokoh warga)",
+      "masa_berdiri": "Diyakini sejak 1834 (klaim)",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Satu dari 16 kampung tua Rempang–Galang versi Ombudsman RI.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan belum diketahui (laporan: perlu dicek). Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-monggak",
+    "nama": "Monggak",
+    "nama_alternatif": [
+      "Mongak"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.86,
+    "lng": 104.12,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "kelurahan_asli": "perlu dicek",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu, Orang Laut, Orang Darat (klaim tokoh warga)",
+      "masa_berdiri": "Diyakini sejak 1834 (klaim)",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Satu dari 16 kampung tua Rempang–Galang versi Ombudsman RI; kajian Trend Asia menyebut tepian Monggak sebagai lokasi kampung tua pertama di Rempang.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan belum diketahui (laporan: perlu dicek). Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan",
+      "https://trendasia.org/proyek-rempang-eco-city-prahara-daerah-surga-investasi/"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-pasir-panjang",
+    "nama": "Pasir Panjang",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": "Sembulang",
+    "alamat": null,
+    "lat": 0.85,
+    "lng": 104.15,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "kelurahan_asli": "Sembulang (perlu dicek)",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu, Orang Laut, Orang Darat (klaim tokoh warga)",
+      "masa_berdiri": "Diyakini sejak 1834 (klaim)",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Satu dari 16 kampung tua Rempang–Galang versi Ombudsman RI.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan Sembulang perlu dicek. Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-pantai-melayu",
+    "nama": "Pantai Melayu",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": "Rempang Cate",
+    "alamat": null,
+    "lat": 0.88,
+    "lng": 104.13,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu, Orang Laut, Orang Darat (klaim tokoh warga)",
+      "masa_berdiri": "Diyakini sejak 1834 (klaim)",
+      "yang_bisa_dilihat": [
+        "Pantai"
+      ],
+      "cerita_rakyat": null,
+      "ringkasan": "Kampung tua sekaligus destinasi pantai di Rempang.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://sumut.idntimes.com/news/indonesia/indah-permata-sari-15/duka-warga-kampung-tua-rempang-tali-pusar-kami-tertanam-di-sini"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-tanjung-kelingking",
+    "nama": "Tanjung Kelingking",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.92,
+    "lng": 104.1,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "kelurahan_asli": "perlu dicek",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu, Orang Laut, Orang Darat (klaim tokoh warga)",
+      "masa_berdiri": "Diyakini sejak 1834 (klaim)",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Satu dari 16 kampung tua Rempang–Galang versi Ombudsman RI.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan belum diketahui (laporan: perlu dicek). Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-sembulang",
+    "nama": "Sembulang",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": "Sembulang",
+    "alamat": null,
+    "lat": 0.83,
+    "lng": 104.18,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu (tulisan warga)",
+      "masa_berdiri": "Tak pasti",
+      "yang_bisa_dilihat": [
+        "Monumen eks tentara Jepang (disebut GNFI)"
+      ],
+      "cerita_rakyat": "Tokoh pembuka kampung disebut Muse dan Langking (tulisan warga)",
+      "ringkasan": "Gabungan kampung kecil (Sembulang Hulu, Sembulang Tanjung, Pasir Merah, dll.); disebut dalam SK 105/2004 menurut Ombudsman.",
+      "status_verifikasi_asli": "sumber_tunggal",
+      "profil_laporan": "§3 no. 12",
+      "lokasi_profil": "Kelurahan Sembulang, Galang."
+    },
+    "status_data": "sumber_tunggal",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://swarakepri.com/sejarah-kampung-sembulang-pulau-rempang/",
+      "https://www.tempo.co/ekonomi/soroti-sejarah-hukum-kampung-tua-di-rempang-ombudsman-ini-unik-138618"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-dapur-enam",
+    "nama": "Dapur Enam",
+    "nama_alternatif": [
+      "Dapur 6"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": "Sembulang",
+    "alamat": null,
+    "lat": 0.825,
+    "lng": 104.205,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu, Orang Laut, Orang Darat (klaim tokoh warga)",
+      "masa_berdiri": "Tak pasti",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Disebut dalam SK 105/2004 menurut Ombudsman.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.tempo.co/ekonomi/soroti-sejarah-hukum-kampung-tua-di-rempang-ombudsman-ini-unik-138618"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-tanjung-banon",
+    "nama": "Tanjung Banon",
+    "nama_alternatif": [
+      "Tanjung Banun"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": "Sembulang",
+    "alamat": null,
+    "lat": 0.82,
+    "lng": 104.2,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu, Orang Laut, Orang Darat (klaim tokoh warga)",
+      "masa_berdiri": "Tak pasti",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Disebut dalam SK 105/2004 menurut Ombudsman; kini juga lokasi permukiman relokasi.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.tempo.co/ekonomi/soroti-sejarah-hukum-kampung-tua-di-rempang-ombudsman-ini-unik-138618",
+      "https://mongabay.co.id/2025/03/22/longsor-bayangi-komplek-perumahan-relokasi-rempang-eco-city/"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-sungai-raya",
+    "nama": "Sungai Raya",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.9,
+    "lng": 104.16,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar, belum diverifikasi; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum produksi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "kelurahan_asli": "perlu dicek",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu, Orang Laut, Orang Darat (klaim tokoh warga)",
+      "masa_berdiri": "Diyakini sejak 1834 (klaim)",
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Satu dari 16 kampung tua Rempang–Galang versi Ombudsman RI.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan belum diketahui (laporan: perlu dicek). Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-sijantung",
+    "nama": "Sijantung",
+    "nama_alternatif": [
+      "Sijatung"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": "Sijantung",
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Tidak dipetakan di laporan (akurasi_koordinat: tidak_dipetakan).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "kelurahan_asli": "Sijantung (perlu dicek)",
+      "akurasi_koordinat_asli": "tidak_dipetakan",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": null,
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Masuk daftar 16 versi Ombudsman RI; lokasi pulau (Rempang atau Galang) perlu dicek.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan Sijantung perlu dicek. Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Apakah kampung ini ada di Pulau Rempang atau Pulau Galang perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-air-lingka",
+    "nama": "Air Lingka",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Tidak dipetakan di laporan (akurasi_koordinat: tidak_dipetakan).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "kelurahan_asli": "perlu dicek",
+      "akurasi_koordinat_asli": "tidak_dipetakan",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": null,
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Masuk daftar 16 versi Ombudsman RI.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan belum diketahui (laporan: perlu dicek). Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Apakah kampung ini ada di Pulau Rempang atau Pulau Galang perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-kampung-baru",
+    "nama": "Kampung Baru",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Tidak dipetakan di laporan (akurasi_koordinat: tidak_dipetakan).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "kelurahan_asli": "perlu dicek",
+      "akurasi_koordinat_asli": "tidak_dipetakan",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": null,
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Masuk daftar 16 versi Ombudsman RI.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan belum diketahui (laporan: perlu dicek). Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Apakah kampung ini ada di Pulau Rempang atau Pulau Galang perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "rg-tanjung-pengapit",
+    "nama": "Tanjung Pengapit",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rempang_galang",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Tidak dipetakan di laporan (akurasi_koordinat: tidak_dipetakan).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "rempang_galang",
+      "kelurahan_asli": "perlu dicek",
+      "akurasi_koordinat_asli": "tidak_dipetakan",
+      "asal_usul_nama": null,
+      "suku_awal": null,
+      "masa_berdiri": null,
+      "yang_bisa_dilihat": [],
+      "cerita_rakyat": null,
+      "ringkasan": "Masuk daftar 16 versi Ombudsman RI.",
+      "status_verifikasi_asli": "perlu_cek_ulang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan belum diketahui (laporan: perlu dicek). Lapisan Rempang–Galang (16 kampung versi Ombudsman RI); pembagian kelurahan per kampung perlu dicek. Apakah kampung ini ada di Pulau Rempang atau Pulau Galang perlu dicek. Untuk kartu Rempang, laporan menyarankan satu kalimat netral: \"Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.\" Tautkan ke Ombudsman dan BP Batam, dua-duanya. Tampilkan hanya sejarah dan budaya.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "hl-bulang-lintang",
+    "nama": "Pulau Bulang Lintang",
+    "nama_alternatif": [
+      "Pulau Bulang"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "situs_kampung_lama_hinterland",
+    "kecamatan": "Bulang",
+    "kelurahan": "Bulang Lintang",
+    "alamat": null,
+    "lat": 1.0,
+    "lng": 103.88,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "hinterland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu (keluarga Temenggung Riau-Johor)",
+      "masa_berdiri": "Basis keluarga Temenggung sejak 1722",
+      "yang_bisa_dilihat": [
+        "Makam Temenggung Abdul Jamal (cagar budaya SK 483/2022)",
+        "Makam Raja Maimunah",
+        "Masjid",
+        "Benda pusaka di rumah ahli waris (atas izin)"
+      ],
+      "cerita_rakyat": null,
+      "ringkasan": "Pusat keluarga Temenggung; Tun Abdul Jamal (±1720–1802) memerintah dari sini sejak 1757.",
+      "status_verifikasi_asli": "terverifikasi (situs); belum tentu tercatat sebagai 'kampung tua' resmi",
+      "profil_laporan": "§3 no. 11",
+      "lokasi_profil": "Kecamatan Bulang."
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Status campuran: \"terverifikasi (situs); belum tentu tercatat sebagai 'kampung tua' resmi\". Belum tentu tercatat sebagai 'kampung tua' resmi; hinterland belum punya daftar terbuka. Benda pusaka di rumah ahli waris hanya bisa dilihat atas izin.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://disbud.kepriprov.go.id/kompleks-makam-temenggung-abdul-jamal/",
+      "https://mediacenter.batam.go.id/2022/03/01/ardi-dan-asppi-napak-tilas-amir-pulau-buluh/"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "hl-pulau-buluh",
+    "nama": "Pulau Buluh",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "situs_kampung_lama_hinterland",
+    "kecamatan": "Bulang",
+    "kelurahan": "Pulau Buluh",
+    "alamat": null,
+    "lat": 1.07,
+    "lng": 103.93,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "hinterland",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu (perlu dicek)",
+      "masa_berdiri": "Tak pasti",
+      "yang_bisa_dilihat": [
+        "Perigi Batu (cagar budaya SK 483/2022)",
+        "Bangunan kuno"
+      ],
+      "cerita_rakyat": null,
+      "ringkasan": "Pulau dengan perigi batu peninggalan Raja Ali Kelana (versi Disbudpar), bangunan kuno, dan bekas sekolah rakyat.",
+      "status_verifikasi_asli": "terverifikasi (cagar budaya); status kampung tua perlu_cek_ulang"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Status campuran: \"terverifikasi (cagar budaya); status kampung tua perlu_cek_ulang\". Status sebagai kampung tua perlu dicek; hinterland belum punya daftar terbuka.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepri.antaranews.com/berita/149763/pemkot-batam-tetapkan-empat-peninggalan-sejarah-jadi-cagar-budaya",
+      "https://gokepri.com/menelusuri-mosaik-amir-pulau-buluh/"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  },
+  {
+    "id": "hl-belakang-padang",
+    "nama": "Belakang Padang",
+    "nama_alternatif": [
+      "Pulau Penawar Rindu"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "situs_kampung_lama_hinterland",
+    "kecamatan": "Belakang Padang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.153,
+    "lng": 103.893,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapisan": "hinterland",
+      "kelurahan_asli": "perlu dicek",
+      "akurasi_koordinat_asli": "estimasi_kasar_belum_diverifikasi",
+      "asal_usul_nama": null,
+      "suku_awal": "Melayu (perlu dicek)",
+      "masa_berdiri": "Ibu kota Kecamatan Batam 1959–1983",
+      "yang_bisa_dilihat": [
+        "Kantor Camat bersejarah",
+        "Gedung Nasional",
+        "Kompleks Angkatan Laut lama",
+        "Kuliner"
+      ],
+      "cerita_rakyat": null,
+      "ringkasan": "Pulau dengan bangunan bersejarah dan kuliner; pernah menjadi ibu kota Kecamatan Batam.",
+      "status_verifikasi_asli": "sumber_tunggal; status kampung tua perlu_cek_ulang"
+    },
+    "status_data": "sumber_tunggal",
+    "catatan": "Jangan tampilkan batas, luas, atau status lahan. Kelurahan belum diketahui (laporan: perlu dicek). Status campuran: \"sumber_tunggal; status kampung tua perlu_cek_ulang\". Status sebagai kampung tua perlu dicek; hinterland belum punya daftar terbuka.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://disbudpar.batam.go.id/2020/07/29/melihat-wisata-sejarah-di-belakang-padang/"
+    ],
+    "sumber_riset": "04-kampung-tua"
+  }
+]

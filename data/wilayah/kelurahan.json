@@ -1,0 +1,138 @@
+[
+  {
+    "kecamatan": "Batam Kota",
+    "kode": "21.71.10",
+    "kelurahan": [
+      "Baloi Permai",
+      "Belian",
+      "Sukajadi",
+      "Sungai Panas",
+      "Taman Baloi",
+      "Teluk Tering"
+    ]
+  },
+  {
+    "kecamatan": "Batu Aji",
+    "kode": "21.71.12",
+    "kelurahan": [
+      "Bukit Tempayan",
+      "Buliang",
+      "Kibing",
+      "Tanjung Uncang"
+    ]
+  },
+  {
+    "kecamatan": "Batu Ampar",
+    "kode": "21.71.02",
+    "kelurahan": [
+      "Batu Merah",
+      "Kampung Seraya",
+      "Sungai Jodoh",
+      "Tanjung Sengkuang"
+    ]
+  },
+  {
+    "kecamatan": "Belakang Padang",
+    "kode": "21.71.01",
+    "kelurahan": [
+      "Kasu",
+      "Pecong",
+      "Pemping",
+      "Pulau Terong",
+      "Sekanak Raya",
+      "Tanjung Sari"
+    ]
+  },
+  {
+    "kecamatan": "Bengkong",
+    "kode": "21.71.09",
+    "kelurahan": [
+      "Bengkong Indah",
+      "Bengkong Laut",
+      "Sadai",
+      "Tanjung Buntung"
+    ]
+  },
+  {
+    "kecamatan": "Bulang",
+    "kode": "21.71.05",
+    "kelurahan": [
+      "Batu Legong",
+      "Bulang Lintang",
+      "Pantai Gelam",
+      "Pulau Buluh",
+      "Setokok",
+      "Temoyong"
+    ]
+  },
+  {
+    "kecamatan": "Galang",
+    "kode": "21.71.08",
+    "kelurahan": [
+      "Air Raja",
+      "Galang Baru",
+      "Karas",
+      "Pulau Abang",
+      "Rempang Cate",
+      "Sembulang",
+      "Sijantung",
+      "Subang Mas"
+    ]
+  },
+  {
+    "kecamatan": "Lubuk Baja",
+    "kode": "21.71.06",
+    "kelurahan": [
+      "Baloi Indah",
+      "Batu Selicin",
+      "Kampung Pelita",
+      "Lubuk Baja Kota",
+      "Tanjung Uma"
+    ]
+  },
+  {
+    "kecamatan": "Nongsa",
+    "kode": "21.71.04",
+    "kelurahan": [
+      "Batu Besar",
+      "Kabil",
+      "Ngenang",
+      "Sambau"
+    ]
+  },
+  {
+    "kecamatan": "Sagulung",
+    "kode": "21.71.11",
+    "kelurahan": [
+      "Sagulung Kota",
+      "Sungai Binti",
+      "Sungai Langkai",
+      "Sungai Lekop",
+      "Sungai Pelunggut",
+      "Tembesi"
+    ]
+  },
+  {
+    "kecamatan": "Sei Beduk",
+    "kode": "21.71.07",
+    "kelurahan": [
+      "Duriangkang",
+      "Mangsang",
+      "Muka Kuning",
+      "Tanjung Piayu"
+    ]
+  },
+  {
+    "kecamatan": "Sekupang",
+    "kode": "21.71.03",
+    "kelurahan": [
+      "Patam Lestari",
+      "Sungai Harapan",
+      "Tanjung Pinggir",
+      "Tanjung Riau",
+      "Tiban Baru",
+      "Tiban Indah",
+      "Tiban Lama"
+    ]
+  }
+]

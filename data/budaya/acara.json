@@ -1,0 +1,878 @@
+[
+  {
+    "id": "ev-001",
+    "nama": "Trans Barelang Ultra Marathon",
+    "bulan": 1,
+    "tanggal_perkiraan": "2026-01-17/18",
+    "lokasi": "Jembatan 1–6 Barelang",
+    "penyelenggara": "Sukalari Batam",
+    "kategori": "olahraga",
+    "deskripsi": "Ultra 55 km melintasi 6 jembatan, start malam.",
+    "status": "rutin",
+    "sumber_url": "https://jadwallari.id/events/trans-barelang-ultra-marathon/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Januari",
+        "acara": "Trans Barelang Ultra Marathon (TBUM), 55 km",
+        "tanggal": "17–18 Jan 2026 (start 23.00 WIB)",
+        "lokasi": "Jembatan 1 → Jembatan 6 Barelang",
+        "penyelenggara": "Sukalari Batam",
+        "status": "✅ Rutin",
+        "sumber": "https://jadwallari.id/events/trans-barelang-ultra-marathon/"
+      }
+    ]
+  },
+  {
+    "id": "ev-002",
+    "nama": "Pesta Bona Taon marga Batak",
+    "bulan": 1,
+    "tanggal_perkiraan": "Jan–Mar (per marga)",
+    "lokasi": "Beragam",
+    "penyelenggara": "Punguan marga Batak",
+    "kategori": "komunitas-suku",
+    "deskripsi": "Syukuran dan ibadah awal tahun per marga.",
+    "status": "tidak pasti",
+    "sumber_url": "https://www.youtube.com/watch?v=jUW_gSYnNlc",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Januari",
+        "acara": "Pesta Bona Taon (syukuran awal tahun marga Batak)",
+        "tanggal": "Biasanya Jan–Mar",
+        "lokasi": "Beragam",
+        "penyelenggara": "Punguan marga Batak",
+        "status": "⚠️ Jadwal per marga, tidak terpusat",
+        "sumber": "https://www.youtube.com/watch?v=jUW_gSYnNlc"
+      }
+    ]
+  },
+  {
+    "id": "ev-003",
+    "nama": "Global Game Jam Batam",
+    "bulan": 2,
+    "tanggal_perkiraan": "2025-02-01",
+    "lokasi": "Mega Mall Batam Centre",
+    "penyelenggara": "Komunitas game",
+    "kategori": "kreatif",
+    "deskripsi": "Maraton bikin game; 18 game pada 2025.",
+    "status": "pernah",
+    "sumber_url": "https://disbudpar.batam.go.id/2025/02/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Februari",
+        "acara": "Global Game Jam Batam",
+        "tanggal": "1 Feb 2025 (18 game)",
+        "lokasi": "Mega Mall Batam Centre",
+        "penyelenggara": "Komunitas game",
+        "status": "⚠️",
+        "sumber": "https://disbudpar.batam.go.id/2025/02/"
+      }
+    ]
+  },
+  {
+    "id": "ev-004",
+    "nama": "Perayaan Pongal",
+    "bulan": 2,
+    "tanggal_perkiraan": "2026-02-08",
+    "lokasi": "Ayola Signature Ocarina",
+    "penyelenggara": "Batam Tamil Sangam",
+    "kategori": "budaya-komunitas",
+    "deskripsi": "Perayaan panen Tamil; ada peserta dari Singapura.",
+    "status": "pernah",
+    "sumber_url": "https://disbudpar.batam.go.id/2026/02/20/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Februari",
+        "acara": "Perayaan Pongal",
+        "tanggal": "8 Feb 2026",
+        "lokasi": "Ayola Signature Ocarina",
+        "penyelenggara": "Batam Tamil Sangam, didukung Disbudpar",
+        "status": "✅ Pernah",
+        "sumber": "https://disbudpar.batam.go.id/2026/02/20/"
+      }
+    ]
+  },
+  {
+    "id": "ev-005",
+    "nama": "Malam Penyambutan Imlek",
+    "bulan": 2,
+    "tanggal_perkiraan": "2026-02-16",
+    "lokasi": "Nagoya, Komplek Bumi Indah",
+    "penyelenggara": "Komunitas Tionghoa",
+    "kategori": "budaya-tionghoa",
+    "deskripsi": "Panggung hiburan, barongsai, lampion.",
+    "status": "perlu dicek",
+    "sumber_url": "https://www.helloswag.id/blog/event-batam-2026/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Februari",
+        "acara": "Malam Penyambutan Imlek",
+        "tanggal": "16 Feb 2026",
+        "lokasi": "Nagoya (Komplek Bumi Indah)",
+        "penyelenggara": "Komunitas Tionghoa",
+        "status": "⚠️ Sumber sekunder",
+        "sumber": "https://www.helloswag.id/blog/event-batam-2026/"
+      }
+    ]
+  },
+  {
+    "id": "ev-006",
+    "nama": "Batam Wonderfood & Art Ramadhan",
+    "bulan": 2,
+    "tanggal_perkiraan": "2026-02-17/03-01",
+    "lokasi": "Taman Dang Anom, Batam Centre",
+    "penyelenggara": "Disbudpar Kota Batam",
+    "kategori": "pasar-ramadan",
+    "deskripsi": "Bazar takjil, UMKM, seni; edisi ke-7 pada 2026.",
+    "status": "rutin",
+    "sumber_url": "https://disbudpar.batam.go.id/2026/02/20/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Februari",
+        "acara": "Batam Wonderfood & Art Ramadhan (BWR)",
+        "tanggal": "ke-7: 17 Feb–1 Mar 2026; ke-6: 28 Feb–22 Mar 2025",
+        "lokasi": "Taman Dang Anom, Batam Centre",
+        "penyelenggara": "Disbudpar Kota Batam",
+        "status": "✅ Rutin (sejak 2019)",
+        "sumber": "https://disbudpar.batam.go.id/2026/02/20/"
+      }
+    ],
+    "catatan_laporan": [
+      "Catatan BWR: Indonesia.travel menulis 18 Feb–8 Mar 2026. Pakai versi Disbudpar karena itu penyelenggaranya. Edisi 2025 diikuti 75 UMKM lokal, dengan lomba busana muslim dan tahfidz."
+    ]
+  },
+  {
+    "id": "ev-007",
+    "nama": "Cap Go Meh",
+    "bulan": 3,
+    "tanggal_perkiraan": "Hari ke-15 Imlek",
+    "lokasi": "Maha Vihara Duta Maitreya; Pulau Buluh; hotel",
+    "penyelenggara": "Vihara, PSMTI, PERWAKAB",
+    "kategori": "budaya-tionghoa",
+    "deskripsi": "Penutup rangkaian Imlek dengan pentas budaya.",
+    "status": "rutin",
+    "sumber_url": "https://bpbatam.go.id/en/momentum-cap-go-meh-2026-li-claudia-ajak-masyarakat-menjaga-kelestarian-alam/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Maret",
+        "acara": "Cap Go Meh (beberapa titik)",
+        "tanggal": "27 Feb 2026 (PSMTI); 2 Mar 2026 (Vihara Samudra Bakti, Pulau Buluh); 3 Mar 2026 (puncak, Maha Vihara Duta Maitreya); 7 Mar 2026 (PERWAKAB)",
+        "lokasi": "Beragam",
+        "penyelenggara": "PSMTI, vihara, paguyuban",
+        "status": "✅ Rutin",
+        "sumber": "https://bpbatam.go.id/en/momentum-cap-go-meh-2026-li-claudia-ajak-masyarakat-menjaga-kelestarian-alam/"
+      }
+    ]
+  },
+  {
+    "id": "ev-008",
+    "nama": "Pawai Ogoh-ogoh",
+    "bulan": 3,
+    "tanggal_perkiraan": "Malam sebelum Nyepi (2026-03-18)",
+    "lokasi": "Pura Agung Amerta Bhuana",
+    "penyelenggara": "Umat Hindu/PHDI Batam",
+    "kategori": "keagamaan",
+    "deskripsi": "Pawai ±3 km lalu pembakaran ogoh-ogoh.",
+    "status": "rutin",
+    "sumber_url": "https://kepri.antaranews.com/berita/253950/pawai-ogoh-ogoh-menyemarakkan-perayaan-nyepi-di-batam",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Maret",
+        "acara": "Pawai Ogoh-ogoh (malam Pengerupukan)",
+        "tanggal": "18 Mar 2026 (Nyepi Saka 1948: 19 Mar)",
+        "lokasi": "Pura Agung Amerta Bhuana, rute ±3 km",
+        "penyelenggara": "Umat Hindu/PHDI Batam",
+        "status": "✅ Rutin",
+        "sumber": "https://kepri.antaranews.com/berita/253950/pawai-ogoh-ogoh-menyemarakkan-perayaan-nyepi-di-batam"
+      }
+    ],
+    "catatan_laporan": [
+      "Konteks: tahun 2026 pawai ogoh-ogoh dimulai setelah berbuka puasa karena berdekatan dengan Ramadan. Made Karmawan dari Kemenag Batam menjelaskan, \"kegiatan dilaksanakan setelah berbuka agar tidak mengganggu saudara kita yang sedang berbuka\". Wakil Ketua PHDI Batam, Gusti Sudiana, memperkirakan umat Hindu di Batam \"sekitar 700 jiwa, dengan sekitar 150 kepala keluarga\". Festival lampu colok yang rutin dan besar di kawasan ini justru ada di Karimun (46 peserta, total hadiah Rp135 juta pada 2025) dan Bengkalis."
+    ]
+  },
+  {
+    "id": "ev-009",
+    "nama": "Festival Lampu Colok",
+    "bulan": 3,
+    "tanggal_perkiraan": "27 Ramadan",
+    "lokasi": "Dataran Engku Hamidah (edisi #1)",
+    "penyelenggara": "Pemko Batam",
+    "kategori": "tradisi-melayu",
+    "deskripsi": "Lampu minyak tradisional + pawai takbir.",
+    "status": "tidak pasti",
+    "sumber_url": "https://www.liputan6.com/islami/read/5267095/jelang-lebaran-idul-fitri-ada-festival-lampu-colok-di-batam",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Maret",
+        "acara": "Festival Lampu Colok (malam tujuh likur)",
+        "tanggal": "27 Ramadan",
+        "lokasi": "Pernah di Dataran Engku Hamidah",
+        "penyelenggara": "Pemko Batam (\"Batam Lampu Colok Festival #1\")",
+        "status": "⚠️ Pernah, tidak terbukti rutin",
+        "sumber": "https://www.liputan6.com/islami/read/5267095/jelang-lebaran-idul-fitri-ada-festival-lampu-colok-di-batam"
+      }
+    ],
+    "catatan_laporan": [
+      "Konteks: tahun 2026 pawai ogoh-ogoh dimulai setelah berbuka puasa karena berdekatan dengan Ramadan. Made Karmawan dari Kemenag Batam menjelaskan, \"kegiatan dilaksanakan setelah berbuka agar tidak mengganggu saudara kita yang sedang berbuka\". Wakil Ketua PHDI Batam, Gusti Sudiana, memperkirakan umat Hindu di Batam \"sekitar 700 jiwa, dengan sekitar 150 kepala keluarga\". Festival lampu colok yang rutin dan besar di kawasan ini justru ada di Karimun (46 peserta, total hadiah Rp135 juta pada 2025) dan Bengkalis."
+    ]
+  },
+  {
+    "id": "ev-010",
+    "nama": "Waisak & Bazar Vegetarian",
+    "bulan": 5,
+    "tanggal_perkiraan": "Hari Waisak",
+    "lokasi": "Maha Vihara Duta Maitreya",
+    "penyelenggara": "Yayasan Maha Vihara Duta Maitreya",
+    "kategori": "keagamaan",
+    "deskripsi": "Pemandian rupang, bazar vegetarian sejak 2000.",
+    "status": "rutin",
+    "sumber_url": "https://kepri.antaranews.com/berita/221789/vihara-batam-merayakan-waisak-dengan-bazar-vegetarian-dan-ritual-suci",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "April–Mei",
+        "acara": "Waisak + bazar vegetarian",
+        "tanggal": "12 Mei 2025 (40 stand); 31 Mei 2026 (Malam Kesenian \"Kasih Semesta\")",
+        "lokasi": "Maha Vihara Duta Maitreya, Sungai Panas",
+        "penyelenggara": "Yayasan Maha Vihara Duta Maitreya",
+        "status": "✅ Rutin (bazar sejak 2000)",
+        "sumber": "https://kepri.antaranews.com/berita/221789/vihara-batam-merayakan-waisak-dengan-bazar-vegetarian-dan-ritual-suci"
+      }
+    ]
+  },
+  {
+    "id": "ev-011",
+    "nama": "Kenduri Seni Melayu",
+    "bulan": 7,
+    "tanggal_perkiraan": "Mei–Juli (2026-07-02/05)",
+    "lokasi": "Dataran Engku Putri",
+    "penyelenggara": "Disbudpar Kota Batam",
+    "kategori": "festival-budaya",
+    "deskripsi": "Festival seni Melayu serumpun sejak 1999; KEN.",
+    "status": "rutin",
+    "sumber_url": "https://disbudpar.batam.go.id/2026/06/22/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "April–Mei",
+        "acara": "Kenduri Seni Melayu (KSM) 2025",
+        "tanggal": "16–18 Mei 2025",
+        "lokasi": "Area parkir HarbourBay",
+        "penyelenggara": "Disbudpar Kota Batam",
+        "status": "✅ Rutin sejak 1999",
+        "sumber": "https://batam.go.id/kenduri-seni-melayu-2025-merayakan-identitas-budaya-melayu-di-batam-dengan-semarak/"
+      },
+      {
+        "bagian_kalender": "Juni–Juli",
+        "acara": "Kenduri Seni Melayu 2026",
+        "tanggal": "2–5 Jul 2026 (pembukaan 3 Jul, Didik Nini Thowok tampil)",
+        "lokasi": "Dataran Engku Putri",
+        "penyelenggara": "Disbudpar; masuk KEN 2026",
+        "status": "✅",
+        "sumber": "https://disbudpar.batam.go.id/2026/06/22/"
+      }
+    ],
+    "catatan_laporan": [
+      "Catatan KSM: menurut Kadisbudpar Ardiwinata (ANTARA, 4 Jul 2026), KSM 2026 menampilkan \"sekitar 60 pertunjukan seni\", termasuk Tari Jogi (WBTb Kota Batam), silat Melayu, dan Joget Kenangan Manis. Pesertanya datang dari Johor, Sabah, Singapura, Brunei, dan Thailand; dari Sabah antara lain Sanggar Ritma Bayu yang membawakan Tari Zapin Tidong dengan 8 penari. Ada ketidakcocokan data: katalog KEN 2025 menulis 19–21 Juli 2025, padahal realisasinya 16–18 Mei 2025. Edisi 2024 dan 2025 sama-sama disebut \"ke-26\", sedangkan 2026 disebut \"ke-27\". ⚠️"
+    ]
+  },
+  {
+    "id": "ev-012",
+    "nama": "Lomba Perahu Jong Kapolda Cup",
+    "bulan": 6,
+    "tanggal_perkiraan": "2025-06-24",
+    "lokasi": "Pantai Senja, Nongsa",
+    "penyelenggara": "Polda Kepri",
+    "kategori": "lomba-perahu",
+    "deskripsi": "Lomba jong tradisional, Hari Bhayangkara.",
+    "status": "perlu dicek",
+    "sumber_url": "https://seniberjalan.com/rekomendasi-festival-tahunan-batam-untuk-wisatawan/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Juni–Juli",
+        "acara": "Lomba Perahu Jong Kapolda Kepri Cup",
+        "tanggal": "24 Jun 2025",
+        "lokasi": "Pantai Senja, Batu Besar, Nongsa",
+        "penyelenggara": "Polda Kepri",
+        "status": "⚠️ Sumber sekunder",
+        "sumber": "https://seniberjalan.com/rekomendasi-festival-tahunan-batam-untuk-wisatawan/"
+      }
+    ]
+  },
+  {
+    "id": "ev-013",
+    "nama": "Festival Mancing Ngarong",
+    "bulan": 7,
+    "tanggal_perkiraan": "2026-07-12",
+    "lokasi": "Pantai Camar, Nongsa",
+    "penyelenggara": "Warga Teluk Mata Ikan",
+    "kategori": "festival-laut",
+    "deskripsi": "Tradisi memancing pesisir; edisi ke-6.",
+    "status": "rutin",
+    "sumber_url": "https://disbudpar.batam.go.id/2026/07/23/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Juni–Juli",
+        "acara": "Festival Mancing Ngarong VI",
+        "tanggal": "12 Jul 2026",
+        "lokasi": "Pantai Camar, Kampung Tua Teluk Mata Ikan, Nongsa",
+        "penyelenggara": "Warga pesisir, didukung Disbudpar",
+        "status": "✅ Rutin",
+        "sumber": "https://disbudpar.batam.go.id/2026/07/23/"
+      }
+    ]
+  },
+  {
+    "id": "ev-014",
+    "nama": "Mandi Safar",
+    "bulan": 8,
+    "tanggal_perkiraan": "Rabu terakhir Safar",
+    "lokasi": "Kampung Tua Terih, Nongsa",
+    "penyelenggara": "Warga & LAM Kec. Nongsa",
+    "kategori": "tradisi-melayu",
+    "deskripsi": "Tolak bala: doa, berbedak langi, mandi laut.",
+    "status": "rutin",
+    "sumber_url": "https://www.antaranews.com/berita/4528684/pemkot-batam-ajukan-dua-warisan-budaya-tak-benda-ke-tingkat-nasional",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Agustus",
+        "acara": "Mandi Safar",
+        "tanggal": "Rabu terakhir bulan Safar (≈ Agustus)",
+        "lokasi": "Kampung Tua Terih, Sambau, Nongsa",
+        "penyelenggara": "Warga, LAM Kec. Nongsa, Disbudpar",
+        "status": "✅ Rutin (tanggal ⚠️)",
+        "sumber": "https://www.antaranews.com/berita/4528684/pemkot-batam-ajukan-dua-warisan-budaya-tak-benda-ke-tingkat-nasional"
+      }
+    ],
+    "catatan_laporan": [
+      "Catatan Mandi Safar: Tempo menulis Mandi Safar masuk agenda Juni 2025, padahal Safar 1447 H jatuh sekitar akhir Juli–Agustus 2025. Ikuti kalender Hijriah."
+    ]
+  },
+  {
+    "id": "ev-015",
+    "nama": "IMOX",
+    "bulan": 8,
+    "tanggal_perkiraan": "2026-08-05/07",
+    "lokasi": "Radisson Golf & Convention Centre",
+    "penyelenggara": "EO pameran",
+    "kategori": "MICE",
+    "deskripsi": "Expo maritim dan offshore.",
+    "status": "perlu dicek",
+    "sumber_url": "https://www.helloswag.id/blog/event-batam-2026/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Agustus",
+        "acara": "Indonesia Marine & Offshore Expo (IMOX)",
+        "tanggal": "5–7 Agu 2026",
+        "lokasi": "Radisson Golf & Convention Centre",
+        "penyelenggara": "EO pameran",
+        "status": "⚠️ Sumber sekunder",
+        "sumber": "https://www.helloswag.id/blog/event-batam-2026/"
+      }
+    ]
+  },
+  {
+    "id": "ev-016",
+    "nama": "Batam Bersholawat",
+    "bulan": 8,
+    "tanggal_perkiraan": "2025-08-23",
+    "lokasi": "Ruko Papa Mama Residence",
+    "penyelenggara": "Majelis Dzikir Husnul Khotimah",
+    "kategori": "religi",
+    "deskripsi": "Sholawat bersama Az Zahir + Festival Hadroh.",
+    "status": "pernah",
+    "sumber_url": "https://disbudpar.batam.go.id/2025/07/24/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Agustus",
+        "acara": "Batam Bersholawat + Festival Hadroh",
+        "tanggal": "23 Agu 2025",
+        "lokasi": "Ruko Papa Mama Residence, Batam Centre",
+        "penyelenggara": "Majelis Dzikir Husnul Khotimah",
+        "status": "✅ Pernah",
+        "sumber": "https://disbudpar.batam.go.id/2025/07/24/"
+      }
+    ]
+  },
+  {
+    "id": "ev-017",
+    "nama": "Batam Jazz & Fashion",
+    "bulan": 8,
+    "tanggal_perkiraan": "Agu–Sep 2025",
+    "lokasi": "Perlu dicek",
+    "penyelenggara": "Didukung Disbudpar",
+    "kategori": "musik",
+    "deskripsi": "Jazz dan fashion; Vina Panduwinata 2025.",
+    "status": "perlu dicek",
+    "sumber_url": "https://disbudpar.batam.go.id/2025/08/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Agustus",
+        "acara": "Batam Jazz & Fashion (Bajafash)",
+        "tanggal": "Agu–Sep 2025 (Vina Panduwinata)",
+        "lokasi": "⚠️",
+        "penyelenggara": "Didukung Disbudpar",
+        "status": "⚠️",
+        "sumber": "https://disbudpar.batam.go.id/2025/08/"
+      }
+    ]
+  },
+  {
+    "id": "ev-018",
+    "nama": "Batam 10K",
+    "bulan": 9,
+    "tanggal_perkiraan": "2026-09-20 (2025: 13 Juli)",
+    "lokasi": "Kantor Wali Kota, Batam Centre",
+    "penyelenggara": "Disbudpar Kota Batam",
+    "kategori": "olahraga",
+    "deskripsi": "Lari 10K & 5K; 2.200 pelari 2026.",
+    "status": "rutin",
+    "sumber_url": "https://batam.go.id/2-200-pelari-siap-ramaikan-batam-10k-2026-event-unggulan-sport-tourism-kota-batam-makin-semarak/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Juni–Juli",
+        "acara": "Batam 10K 2025",
+        "tanggal": "13 Jul 2025",
+        "lokasi": "Bundaran Madani, Batam Centre",
+        "penyelenggara": "Disbudpar",
+        "status": "✅",
+        "sumber": "https://disbudpar.batam.go.id/2025/07/11/"
+      },
+      {
+        "bagian_kalender": "September",
+        "acara": "Batam 10K \"Beyond Borders\"",
+        "tanggal": "20 Sep 2026 (2.200 pelari; kategori 5K baru)",
+        "lokasi": "Depan Kantor Wali Kota, Jl. Engku Putri",
+        "penyelenggara": "Disbudpar",
+        "status": "✅ Rutin (digelar lagi sejak 2022)",
+        "sumber": "https://batam.go.id/2-200-pelari-siap-ramaikan-batam-10k-2026-event-unggulan-sport-tourism-kota-batam-makin-semarak/"
+      }
+    ],
+    "catatan_laporan": [
+      "Batam 10K pindah dari Juli (2025) ke September (2026), jadi jangan kunci bulannya di kalender."
+    ]
+  },
+  {
+    "id": "ev-019",
+    "nama": "Batam Khitong Fest",
+    "bulan": 9,
+    "tanggal_perkiraan": "2026-09-27",
+    "lokasi": "Nagoya",
+    "penyelenggara": "Warga keturunan Tionghoa",
+    "kategori": "budaya-tionghoa",
+    "deskripsi": "Pawai 40 tatung + 10 kelompok seni Nusantara.",
+    "status": "pernah",
+    "sumber_url": "https://www.antarafoto.com/id/view/2872584/festival-khitong-di-batam",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "September",
+        "acara": "Batam Khitong Fest & Budaya Nusantara",
+        "tanggal": "27 Sep 2026 (40 tatung lokal dan Singapura, 10 kelompok seni)",
+        "lokasi": "Nagoya",
+        "penyelenggara": "Warga keturunan Tionghoa",
+        "status": "✅ Pernah",
+        "sumber": "https://www.antarafoto.com/id/view/2872584/festival-khitong-di-batam"
+      }
+    ]
+  },
+  {
+    "id": "ev-020",
+    "nama": "International Rock Friend'z",
+    "bulan": 9,
+    "tanggal_perkiraan": "2025-09-28",
+    "lokasi": "CinCai Cafe, KBC",
+    "penyelenggara": "SOLMI & Disbudpar",
+    "kategori": "musik-independen",
+    "deskripsi": "Konser rock band dari tiga negara.",
+    "status": "pernah",
+    "sumber_url": "https://disbudpar.batam.go.id/2025/08/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "September",
+        "acara": "International Rock Friend'z",
+        "tanggal": "28 Sep 2025",
+        "lokasi": "CinCai Cafe, KBC Batam Centre",
+        "penyelenggara": "SOLMI + Disbudpar",
+        "status": "✅ Pernah",
+        "sumber": "https://disbudpar.batam.go.id/2025/08/"
+      }
+    ]
+  },
+  {
+    "id": "ev-021",
+    "nama": "Sky Lantern Festival",
+    "bulan": 10,
+    "tanggal_perkiraan": "2025-10-01/06",
+    "lokasi": "Green Rose Hotel Batam",
+    "penyelenggara": "Versa Events",
+    "kategori": "hiburan",
+    "deskripsi": "Pelepasan lampion; edisi perdana.",
+    "status": "pernah",
+    "sumber_url": "https://www.tripzilla.com/batams-sky-lantern-festival/167683",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Oktober",
+        "acara": "Sky Lantern Festival",
+        "tanggal": "1–6 Okt 2025 (perdana)",
+        "lokasi": "Green Rose Hotel Batam",
+        "penyelenggara": "Versa Events (Singapura)",
+        "status": "⚠️ Pernah",
+        "sumber": "https://www.tripzilla.com/batams-sky-lantern-festival/167683"
+      }
+    ],
+    "catatan_laporan": [
+      "Acara batal/tidak rutin (Tour de Batam UCI, Sky Lantern, Batam Light Festival, Airshow HJB) jangan dimasukkan sebagai \"tahunan\"."
+    ]
+  },
+  {
+    "id": "ev-022",
+    "nama": "Kenduri WBTb Kota Batam",
+    "bulan": 10,
+    "tanggal_perkiraan": "2025-10-21/25",
+    "lokasi": "Gedung LAM & Alun-alun Engku Putri",
+    "penyelenggara": "BPK Wilayah IV, Disbudpar, LAM",
+    "kategori": "budaya-melayu",
+    "deskripsi": "Makan berhidang dan pertunjukan WBTb.",
+    "status": "pernah",
+    "sumber_url": "https://disbudpar.batam.go.id/2025/10/23/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Oktober",
+        "acara": "Kenduri WBTb Kota Batam + Makan Berhidang",
+        "tanggal": "21 Okt (Gedung LAM) dan 23–25 Okt 2025",
+        "lokasi": "Alun-alun Engku Putri",
+        "penyelenggara": "BPK Wilayah IV + Disbudpar + LAM Kota Batam",
+        "status": "✅ Pernah",
+        "sumber": "https://disbudpar.batam.go.id/2025/10/23/"
+      }
+    ]
+  },
+  {
+    "id": "ev-023",
+    "nama": "HUT Museum Batam Raja Ali Haji",
+    "bulan": 10,
+    "tanggal_perkiraan": "Oktober",
+    "lokasi": "Alun-alun Engku Putri",
+    "penyelenggara": "Disbudpar",
+    "kategori": "museum",
+    "deskripsi": "Lomba dan seni Melayu; HUT ke-5 pada 2025.",
+    "status": "rutin",
+    "sumber_url": "https://disbudpar.batam.go.id/2025/10/23/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Oktober",
+        "acara": "HUT Museum Batam Raja Ali Haji",
+        "tanggal": "Oktober (HUT ke-5 pada 2025)",
+        "lokasi": "Alun-alun Engku Putri",
+        "penyelenggara": "Disbudpar",
+        "status": "✅",
+        "sumber": "https://disbudpar.batam.go.id/2025/10/23/"
+      }
+    ]
+  },
+  {
+    "id": "ev-024",
+    "nama": "BMAX & EMAX",
+    "bulan": 10,
+    "tanggal_perkiraan": "2026-10-28/30",
+    "lokasi": "Radisson Golf & Convention Centre",
+    "penyelenggara": "EO pameran",
+    "kategori": "MICE",
+    "deskripsi": "Expo manufaktur dan elektronik.",
+    "status": "perlu dicek",
+    "sumber_url": "https://www.helloswag.id/blog/event-batam-2026/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Oktober",
+        "acara": "BMAX + EMAX (expo manufaktur)",
+        "tanggal": "28–30 Okt 2026",
+        "lokasi": "Radisson Golf & Convention Centre",
+        "penyelenggara": "EO pameran",
+        "status": "⚠️ Sumber sekunder",
+        "sumber": "https://www.helloswag.id/blog/event-batam-2026/"
+      }
+    ]
+  },
+  {
+    "id": "ev-025",
+    "nama": "Tour de Batam (UCI)",
+    "bulan": 10,
+    "tanggal_perkiraan": "Dijadwalkan 2024-10-04/06",
+    "lokasi": "Palm Spring–Barelang",
+    "penyelenggara": "MetaSport",
+    "kategori": "olahraga",
+    "deskripsi": "Kualifikasi UCI Gran Fondo; dibatalkan.",
+    "status": "tidak pasti",
+    "sumber_url": "https://www.tourdebatam.com/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Oktober",
+        "acara": "Tour de Batam (UCI Gran Fondo)",
+        "tanggal": "Dijadwalkan 4–6 Okt 2024",
+        "lokasi": "Palm Spring–Barelang",
+        "penyelenggara": "MetaSport",
+        "status": "❌ Dibatalkan 2024; edisi 2025 juga \"Cancelled\"",
+        "sumber": "https://www.tourdebatam.com/"
+      }
+    ],
+    "catatan_laporan": [
+      "Acara batal/tidak rutin (Tour de Batam UCI, Sky Lantern, Batam Light Festival, Airshow HJB) jangan dimasukkan sebagai \"tahunan\"."
+    ]
+  },
+  {
+    "id": "ev-026",
+    "nama": "Sea Eagle Boat Race",
+    "bulan": 11,
+    "tanggal_perkiraan": "2025-11-28/30",
+    "lokasi": "Elang-Elang, Belakang Padang",
+    "penyelenggara": "Disbudpar Kota Batam",
+    "kategori": "lomba-perahu",
+    "deskripsi": "Dayung tradisional, kembali setelah 12 tahun.",
+    "status": "rutin",
+    "sumber_url": "https://disbudpar.batam.go.id/2025/11/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "November",
+        "acara": "Batam International Sea Eagle Boat Race",
+        "tanggal": "28–30 Nov 2025 (hadiah Rp164 juta)",
+        "lokasi": "Perairan Elang-Elang, Belakang Padang",
+        "penyelenggara": "Disbudpar",
+        "status": "✅ Hidup lagi setelah 12 tahun vakum",
+        "sumber": "https://disbudpar.batam.go.id/2025/11/"
+      }
+    ]
+  },
+  {
+    "id": "ev-027",
+    "nama": "HJB: Ziarah & Batam Bersepeda",
+    "bulan": 12,
+    "tanggal_perkiraan": "2025-12-12 & 14",
+    "lokasi": "Nongsa; Batam Centre",
+    "penyelenggara": "Pemko Batam",
+    "kategori": "hari-jadi",
+    "deskripsi": "Istighasah, ziarah Nong Isa, sepeda massal.",
+    "status": "rutin",
+    "sumber_url": "https://mediacenter.batam.go.id/2025/12/08/sederet-rangkaian-hjb-ke-196-batam-suguhkan-atraksi-udara-hingga-hiburan-rakyat-di-malam-resepsi/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Desember",
+        "acara": "HJB: istighasah + ziarah makam zuriat Nong Isa",
+        "tanggal": "12 Des 2025",
+        "lokasi": "Masjid At-Taqwa & Kampung Nongsa Pantai",
+        "penyelenggara": "Pemko Batam",
+        "status": "✅ Rutin",
+        "sumber": "https://mediacenter.batam.go.id/2025/12/08/sederet-rangkaian-hjb-ke-196-batam-suguhkan-atraksi-udara-hingga-hiburan-rakyat-di-malam-resepsi/"
+      },
+      {
+        "bagian_kalender": "Desember",
+        "acara": "HJB: Batam Bersepeda",
+        "tanggal": "14 Des 2025 (>2.000 pesepeda)",
+        "lokasi": "Batam Centre",
+        "penyelenggara": "Pemko Batam",
+        "status": "✅",
+        "sumber": "https://www.kepriprov.go.id/siaran-pers/817-rilis-diskominfo-xii-2025"
+      }
+    ]
+  },
+  {
+    "id": "ev-028",
+    "nama": "HJB: Upacara & Airshow",
+    "bulan": 12,
+    "tanggal_perkiraan": "18 Desember",
+    "lokasi": "Dataran Engku Putri",
+    "penyelenggara": "Pemko Batam & Lanud Hang Nadim",
+    "kategori": "hari-jadi",
+    "deskripsi": "Upacara HJB; flypast F-16 pada 2025.",
+    "status": "rutin",
+    "sumber_url": "https://www.kepriprov.go.id/siaran-pers/817-rilis-diskominfo-xii-2025",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Desember",
+        "acara": "HJB: Upacara + Batam Solidarity Airshow (F-16, paramotor)",
+        "tanggal": "18 Des 2025 (ke-196); 2026 = ke-197",
+        "lokasi": "Dataran Engku Putri; 19 Des di Nongsa",
+        "penyelenggara": "Pemko Batam, Lanud Hang Nadim",
+        "status": "✅ Upacara rutin / airshow ⚠️",
+        "sumber": "https://tni-au.mil.id/berita/detail/dua-f-16-fighting-falcon-meriahkan-upacara-hari-jadi-batam-ke-196"
+      }
+    ],
+    "catatan_laporan": [
+      "Acara batal/tidak rutin (Tour de Batam UCI, Sky Lantern, Batam Light Festival, Airshow HJB) jangan dimasukkan sebagai \"tahunan\"."
+    ]
+  },
+  {
+    "id": "ev-029",
+    "nama": "HJB: Pawai Budaya Nusantara",
+    "bulan": 12,
+    "tanggal_perkiraan": "2025-12-20",
+    "lokasi": "Batam Centre",
+    "penyelenggara": "Pemko Batam & paguyuban",
+    "kategori": "pawai-budaya",
+    "deskripsi": "Pawai lintas paguyuban, >8.000 peserta.",
+    "status": "rutin",
+    "sumber_url": "https://www.keprinews.com/2025/12/blog-post_21.html",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Desember",
+        "acara": "HJB: Pawai Budaya Nusantara + malam resepsi",
+        "tanggal": "20 Des 2025 (>8.000 peserta dari berbagai paguyuban)",
+        "lokasi": "Batam Centre",
+        "penyelenggara": "Pemko Batam + paguyuban",
+        "status": "✅ (jumlah ⚠️)",
+        "sumber": "https://www.keprinews.com/2025/12/blog-post_21.html"
+      }
+    ],
+    "catatan_laporan": [
+      "Catatan Pawai Budaya HJB: InfoPublik menulis 19 Des dengan ±5.000 peserta, sedangkan laporan penutupan menulis >8.000 peserta pada 20 Des. ⚠️"
+    ]
+  },
+  {
+    "id": "ev-030",
+    "nama": "Kenduri Akhir Tahun",
+    "bulan": 12,
+    "tanggal_perkiraan": "2025-12-31",
+    "lokasi": "Dataran Engku Putri",
+    "penyelenggara": "Disbudpar",
+    "kategori": "tahun-baru",
+    "deskripsi": "Doa dan solidaritas untuk Sumatra.",
+    "status": "pernah",
+    "sumber_url": "https://disbudpar.batam.go.id/category/data-informasi/berita/kegiatan/",
+    "asal_data": "json+tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Desember",
+        "acara": "Kenduri Akhir Tahun & Solidaritas untuk Sumatra",
+        "tanggal": "31 Des 2025",
+        "lokasi": "Dataran Engku Putri",
+        "penyelenggara": "Disbudpar",
+        "status": "✅ Pernah",
+        "sumber": "https://disbudpar.batam.go.id/category/data-informasi/berita/kegiatan/"
+      }
+    ]
+  },
+  {
+    "id": "ev-t01",
+    "nama": "Batam Light Festival",
+    "bulan": 1,
+    "tanggal_perkiraan": "s.d. 2 Feb 2025",
+    "lokasi": "Batam",
+    "penyelenggara": "Swasta (EO ⚠️)",
+    "kategori": null,
+    "deskripsi": null,
+    "status": null,
+    "sumber_url": "https://pemilu.antaranews.com/foto/4559778/berlibur-awal-tahun-sambil-menikmati-kilauan-lampu-di-batam-light-festival",
+    "asal_data": "tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Januari",
+        "acara": "Batam Light Festival",
+        "tanggal": "s.d. 2 Feb 2025",
+        "lokasi": "Batam",
+        "penyelenggara": "Swasta (EO ⚠️)",
+        "status": "⚠️ Pernah",
+        "sumber": "https://pemilu.antaranews.com/foto/4559778/berlibur-awal-tahun-sambil-menikmati-kilauan-lampu-di-batam-light-festival"
+      }
+    ],
+    "catatan_laporan": [
+      "Acara batal/tidak rutin (Tour de Batam UCI, Sky Lantern, Batam Light Festival, Airshow HJB) jangan dimasukkan sebagai \"tahunan\"."
+    ]
+  },
+  {
+    "id": "ev-t02",
+    "nama": "Tahun Baru Islam (1 Muharram)",
+    "bulan": null,
+    "tanggal_perkiraan": "≈ pertengahan Juni 2026",
+    "lokasi": "Masjid/kelurahan",
+    "penyelenggara": "Masjid, majelis",
+    "kategori": null,
+    "deskripsi": null,
+    "status": null,
+    "sumber_url": null,
+    "asal_data": "tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Juni–Juli",
+        "acara": "Tahun Baru Islam (1 Muharram)",
+        "tanggal": "≈ pertengahan Juni 2026",
+        "lokasi": "Masjid/kelurahan",
+        "penyelenggara": "Masjid, majelis",
+        "status": "⚠️ Belum ada agenda tingkat kota",
+        "sumber": "—"
+      }
+    ]
+  },
+  {
+    "id": "ev-t03",
+    "nama": "Kita Indonesia (Jilid II)",
+    "bulan": 11,
+    "tanggal_perkiraan": "2 Nov 2025",
+    "lokasi": "Mega Mall Batam Centre",
+    "penyelenggara": "RRI Batam",
+    "kategori": null,
+    "deskripsi": null,
+    "status": null,
+    "sumber_url": "https://disbudpar.batam.go.id/2025/11/",
+    "asal_data": "tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "November",
+        "acara": "Kita Indonesia (Jilid II)",
+        "tanggal": "2 Nov 2025",
+        "lokasi": "Mega Mall Batam Centre",
+        "penyelenggara": "RRI Batam",
+        "status": "✅ Pernah",
+        "sumber": "https://disbudpar.batam.go.id/2025/11/"
+      }
+    ]
+  },
+  {
+    "id": "ev-t04",
+    "nama": "Natal",
+    "bulan": 12,
+    "tanggal_perkiraan": "25 Des",
+    "lokasi": "Gereja-gereja",
+    "penyelenggara": "Gereja dan komunitas",
+    "kategori": null,
+    "deskripsi": null,
+    "status": null,
+    "sumber_url": null,
+    "asal_data": "tabel",
+    "tabel": [
+      {
+        "bagian_kalender": "Desember",
+        "acara": "Natal",
+        "tanggal": "25 Des",
+        "lokasi": "Gereja-gereja",
+        "penyelenggara": "Gereja dan komunitas",
+        "status": "⚠️ Belum ada agenda tingkat kota",
+        "sumber": "—"
+      }
+    ]
+  }
+]

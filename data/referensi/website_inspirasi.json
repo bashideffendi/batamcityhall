@@ -1,0 +1,135 @@
+{
+  "sumber_riset": "01-inspirasi-konsep",
+  "task_id": "wf-2c6ba93f-8eb5-55a3-8f98-dea793d8ad5d",
+  "bagian_laporan": "### 1. Contoh website kota/area yang bagus",
+  "kolom_asli": [
+    "Nama & URL",
+    "Kota/Negara",
+    "Kenapa bagus",
+    "Pelajaran untuk Batam City Hall"
+  ],
+  "catatan": "Konversi 1:1 dari tabel laporan. Nilai teks persis seperti di tabel (termasuk penekanan markdown). 'nama' dan 'url' diurai dari kolom 'Nama & URL'; sel aslinya disimpan di 'sel_asli_nama_url'. Baris The Pudding berisi dua karya dan dua URL dalam satu sel.",
+  "items": [
+    {
+      "no": 1,
+      "nama": "NEONSIGNS.HK",
+      "keterangan_nama": null,
+      "url": [
+        "https://www.neonsigns.hk/?lang=en"
+      ],
+      "kota_negara": "Hong Kong",
+      "kenapa_bagus": "Pameran online museum M+ tentang neon yang mulai punah. Isinya Neon Map crowdsourced, esai, video pembuatan neon, timeline, dan halaman \"Lost & Featured Neon\". Lebih dari 4.000 foto masuk dari publik. Peta bisa difilter per jenis usaha (pegadaian, klub malam), per imagery (hewan, makanan), dan per distrik.",
+      "pelajaran_untuk_batam_city_hall": "Pilih satu \"ikon kota yang hilang/khas\" lalu ajak warga memetakannya. Untuk Batam, kandidatnya: papan nama ruko lama Nagoya, gerobak kopi/teh obeng, gapura kampung tua, atau pelantar kayu. Siapkan kategori \"Sudah Hilang\".",
+      "sel_asli_nama_url": "**NEONSIGNS.HK**, https://www.neonsigns.hk/?lang=en"
+    },
+    {
+      "no": 2,
+      "nama": "OldNYC",
+      "keterangan_nama": null,
+      "url": [
+        "https://www.oldnyc.org/"
+      ],
+      "kota_negara": "New York, AS",
+      "kenapa_bagus": "Beranda oldnyc.org sekarang menyebut 50.000 foto lama dari koleksi Milstein New York Public Library dipetakan per lokasi (saat diluncurkan pada 2015 jumlahnya sekitar 40.000). Warga bisa berkomentar dan memperbaiki typo hasil OCR. Penciptanya, Dan Vanderkam, menulis bahwa pengguna \"fixed thousands of typos\". Kodenya open source.",
+      "pelajaran_untuk_batam_city_hall": "Fitur \"Batam Dulu vs Sekarang\": foto lama Batam (sebelum dan awal pembangunan) di peta, dengan kolom \"saya ingat ini\". Warga Batam yang lama tinggal punya banyak foto keluarga.",
+      "sel_asli_nama_url": "**OldNYC**, https://www.oldnyc.org/"
+    },
+    {
+      "no": 3,
+      "nama": "Fortepan",
+      "keterangan_nama": null,
+      "url": [
+        "https://fortepan.hu/"
+      ],
+      "kota_negara": "Hungaria",
+      "kenapa_bagus": "Arsip foto keluarga yang didirikan pada 2010 oleh Miklós Tamási dan Ákos Szepessy, disusun di timeline dengan slider tahun. Publik bisa mencari, men-tag, dan mengunduh. Menurut Archivum (mitra pendiri), koleksinya kini lebih dari 200.000 foto arsip (angka 110.000 adalah capaian yang dirayakan pameran 2019).",
+      "pelajaran_untuk_batam_city_hall": "Slider tahun cocok untuk Batam yang berubah drastis sejak 1970-an. Fitur \"Geser tahun, lihat Batam berubah\".",
+      "sel_asli_nama_url": "**Fortepan**, https://fortepan.hu/"
+    },
+    {
+      "no": 4,
+      "nama": "Hoodmaps",
+      "keterangan_nama": null,
+      "url": [
+        "https://hoodmaps.com/"
+      ],
+      "kota_negara": "Global (indie, Pieter Levels)",
+      "kenapa_bagus": "Peta crowdsourced tempat warga \"mewarnai\" area kota dengan kategori lucu (hipster, turis, kaya, normies, suits, kampus) dan menulis label nyeleneh. Dibuat solo, masuk longlist Information is Beautiful Awards 2017.",
+      "pelajaran_untuk_batam_city_hall": "Bukti bahwa developer solo bisa bikin peta kota viral asal tone-nya lucu. **Peringatan:** Hoodmaps dikritik soal stereotip. Santa Monica Sun mengutip Bloomberg News: \"The stereotypes speak mostly to how wealthier, white people might see a neighborhood\", dan sebagian label tagging lokalnya disebut rasis. Di Batam yang multietnis, kategori harus aman, misalnya \"area ngopi\", \"area macet jam pulang pabrik\", \"area angin kencang\".",
+      "sel_asli_nama_url": "**Hoodmaps**, https://hoodmaps.com/"
+    },
+    {
+      "no": 5,
+      "nama": "The Pudding – A Tale of Two Cities dan Population Mountains",
+      "keterangan_nama": null,
+      "url": [
+        "https://pudding.cool/2018/03/neighborhoods/",
+        "https://pudding.cool/2018/12/3d-cities-story/"
+      ],
+      "kota_negara": "Seattle/NYC, global",
+      "kenapa_bagus": "Esai visual: usaha apa yang \"khas\" tiap lingkungan (dari data Yelp), dan kepadatan penduduk sebagai gunung 3D, termasuk perbandingan Singapura dan Kuala Lumpur.",
+      "pelajaran_untuk_batam_city_hall": "Format \"esai visual\" untuk konten budaya, misalnya \"Kenapa Batam penuh ruko?\", \"Peta asal daerah warga Batam\", atau \"Kecamatan mana yang paling banyak tukang jahit?\".",
+      "sel_asli_nama_url": "**The Pudding – A Tale of Two Cities**, https://pudding.cool/2018/03/neighborhoods/ dan **Population Mountains**, https://pudding.cool/2018/12/3d-cities-story/"
+    },
+    {
+      "no": 6,
+      "nama": "Kontinentalist",
+      "keterangan_nama": null,
+      "url": [
+        "https://kontinentalist.com/"
+      ],
+      "kota_negara": "Singapura",
+      "kenapa_bagus": "Studio data storytelling soal Asia yang memakai scrollytelling, peta, dan ilustrasi. Pernah membuat infografis digital **Malay Lauk-Pauk** dan peta lipat cetak soal perumahan Singapura.",
+      "pelajaran_untuk_batam_city_hall": "Referensi visual terdekat secara budaya (Melayu, Asia Tenggara). Gaya ilustrasi + data cocok untuk \"Ensiklopedia Lauk Melayu Kepri\" atau \"Peta Kampung Tua\".",
+      "sel_asli_nama_url": "**Kontinentalist**, https://kontinentalist.com/"
+    },
+    {
+      "no": 7,
+      "nama": "Manual Jakarta",
+      "keterangan_nama": null,
+      "url": [
+        "https://manual.co.id/"
+      ],
+      "kota_negara": "Jakarta",
+      "kenapa_bagus": "Media gaya hidup independen sejak 2014 yang menggabungkan editorial (food, street, culture) dengan *Directory* (resto, kafe, bar, street food, toko).",
+      "pelajaran_untuk_batam_city_hall": "Contoh lokal Indonesia: editorial + direktori di satu tempat. Batam-bites bisa naik kelas dengan \"kolom editorial\", tidak hanya daftar.",
+      "sel_asli_nama_url": "**Manual Jakarta**, https://manual.co.id/"
+    },
+    {
+      "no": 8,
+      "nama": "Steady Hand Maps – Seattle Memories Map",
+      "keterangan_nama": null,
+      "url": [
+        "https://steadyhandmaps.com/"
+      ],
+      "kota_negara": "AS",
+      "kenapa_bagus": "Peta kota tangan yang menonjolkan \"the best, the weirdest, the most unique\" dari sebuah kota, termasuk proyek arsip pohon kota bersama Kota Phoenix.",
+      "pelajaran_untuk_batam_city_hall": "Inspirasi gaya peta hand-drawn: Batam yang \"aneh dan khas\", misalnya simpang yang selalu banjir atau pohon besar di kampung tua.",
+      "sel_asli_nama_url": "**Steady Hand Maps – Seattle Memories Map**, https://steadyhandmaps.com/"
+    },
+    {
+      "no": 9,
+      "nama": "Russell Shaw – Illustrated Cities",
+      "keterangan_nama": null,
+      "url": [
+        "https://russellshawdesign.com/illustrated-city-guides"
+      ],
+      "kota_negara": "Beberapa kota AS",
+      "kenapa_bagus": "Garis pena kasar + **satu spot color** per kota, memetakan kota berdasarkan orang dan tempat yang membuatnya berkesan, bukan navigasi.",
+      "pelajaran_untuk_batam_city_hall": "Formula visual yang murah dan konsisten untuk solo dev: line art hitam + satu warna khas Batam (misalnya oranye senja Barelang).",
+      "sel_asli_nama_url": "**Russell Shaw – Illustrated Cities**, https://russellshawdesign.com/illustrated-city-guides"
+    },
+    {
+      "no": 10,
+      "nama": "Kurasi Awwwards (Maps)",
+      "keterangan_nama": null,
+      "url": [
+        "https://www.awwwards.com/awwwards/collections/maps-geolocation-streetview/"
+      ],
+      "kota_negara": "Global",
+      "kenapa_bagus": "Kumpulan contoh peta interaktif ilustratif, seperti peta \"Misato Town\" yang dinavigasi dengan scroll dan efek hujan di peta.",
+      "pelajaran_untuk_batam_city_hall": "Ide interaksi: animasi hujan di peta ilustrasi yang terhubung ke data hujandibatam yang asli.",
+      "sel_asli_nama_url": "**Kurasi Awwwards (Maps)**, https://www.awwwards.com/awwwards/collections/maps-geolocation-streetview/"
+    }
+  ]
+}

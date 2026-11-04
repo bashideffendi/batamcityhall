@@ -1,0 +1,776 @@
+[
+  {
+    "id": "nong_isa",
+    "nama": "Raja Isa bin Raja Ali (Nong Isa)",
+    "gelar": "Pemegang perintah Nongsa",
+    "masa_hidup": "±1780-an – 1831/1833-an (beda versi)",
+    "kelompok": "a",
+    "ringkasan": "Putra YDM V Raja Ali; menerima mandat memerintah Nongsa 18 Des 1829 dari Sultan Abdul Rahman Muazzam Syah dan YDM VI Raja Jaafar.",
+    "kaitan_batam": "Tanggal mandatnya jadi Hari Jadi Kota Batam; asal nama Nongsa.",
+    "status_verifikasi": "terverifikasi_beda_versi",
+    "sumber_url": [
+      "http://disbud.kepriprov.go.id/makam-nong-isa-batam/",
+      "https://kebudayaan.kemdikbud.go.id/bpnbkepri/makam-nong-isa-dan-temenggung-abdul-jamal-jadi-destinasi-wisata/"
+    ],
+    "kelompok_tabel": [
+      "a"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "temenggung_abdul_jamal",
+    "nama": "Tun Abdul Jamal bin Tun Abbas",
+    "gelar": "Temenggung Johor-Riau",
+    "masa_hidup": "±1720 – 1802",
+    "kelompok": "a",
+    "ringkasan": "Temenggung yang berbasis di Pulau Bulang; leluhur Temenggung Johor-Singapura.",
+    "kaitan_batam": "Makam di Pulau Bulang Lintang; nama stadion.",
+    "status_verifikasi": "terverifikasi",
+    "sumber_url": [
+      "https://kebudayaan.kemdikbud.go.id/bpcbsumbar/pulau-bulang-dalam-pusaran-kerajaan-melayu-riau/",
+      "https://kepri.antaranews.com/berita/62685/makam-temenggung-abdul-jamal-bakal-dipugar"
+    ],
+    "kelompok_tabel": [
+      "a/e"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "raja_maimunah",
+    "nama": "Raja Maimunah",
+    "gelar": "Istri Temenggung Abdul Jamal",
+    "masa_hidup": "abad ke-18",
+    "kelompok": "e",
+    "ringkasan": "Dimakamkan di samping suaminya di Pulau Bulang.",
+    "kaitan_batam": "Nama jalan di Bulang.",
+    "status_verifikasi": "terverifikasi",
+    "sumber_url": [
+      "https://kepri.antaranews.com/berita/25686/warisan-sejarah-pulau-bulang-tanpa-rekam-jejak"
+    ],
+    "kelompok_tabel": [
+      "a/e"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "raja_haji_fisabilillah",
+    "nama": "Raja Haji Fisabilillah",
+    "gelar": "Yang Dipertuan Muda Riau IV; Pahlawan Nasional",
+    "masa_hidup": "1725/1727 – 18 Juni 1784",
+    "kelompok": "a",
+    "ringkasan": "Mengalahkan Belanda di Penyengat 6 Jan 1784, gugur di Teluk Ketapang; Keppres 072/TK/1997.",
+    "kaitan_batam": "Jembatan Barelang I dan Jl. Raja H. Fisabilillah.",
+    "status_verifikasi": "terverifikasi",
+    "sumber_url": [
+      "http://ikpni.or.id/pahlawan/raja-haji-fisabilillah/",
+      "https://kepri.antaranews.com/berita/171492/mengenal-tiga-pahlawan-nasional-asal-kepri"
+    ],
+    "kelompok_tabel": [
+      "a/c"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "engku_putri",
+    "nama": "Engku Putri Raja Hamidah",
+    "gelar": "Permaisuri; pemegang regalia",
+    "masa_hidup": "±1774 – 7 Juli 1844",
+    "kelompok": "a",
+    "ringkasan": "Putri Raja Haji; menerima Penyengat sebagai mas kawin 1803; menolak menyerahkan regalia kepada Inggris/Belanda.",
+    "kaitan_batam": "Jl. Engku Putri dan Dataran Engku Putri di pusat pemerintahan.",
+    "status_verifikasi": "terverifikasi",
+    "sumber_url": [
+      "https://disbudpar.tanjungpinangkota.go.id/destinasi-detail/komplek-makam-engku-putri-raja-hamidah-dan-raja-ali-h",
+      "https://kupang.antaranews.com/berita/100885/artikel-sang-penjaga-regalia-kerajaan-melayu"
+    ],
+    "kelompok_tabel": [
+      "a"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "engku_haji_tua",
+    "nama": "Raja Ahmad bin Raja Haji (Engku Haji Tua)",
+    "gelar": "Engku Haji; penasihat YDM VI",
+    "masa_hidup": "akhir abad ke-18 – abad ke-19 (perlu dicek)",
+    "kelompok": "e",
+    "ringkasan": "Putra Raja Haji, ayah Raja Ali Haji; diplomat ke Batavia; haji 1828; pengarang Syair Perang Johor.",
+    "kaitan_batam": "Nama jalan (lokasi perlu dicek).",
+    "status_verifikasi": "terverifikasi",
+    "sumber_url": [
+      "https://ms.wikipedia.org/wiki/Engku_Haji"
+    ],
+    "kelompok_tabel": [
+      "a/e"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "raja_ali_haji",
+    "nama": "Raja Ali Haji",
+    "gelar": "Pujangga; Pahlawan Nasional 2004",
+    "masa_hidup": "±1808 – ±1873 (perlu dicek)",
+    "kelompok": "a",
+    "ringkasan": "Cucu Raja Haji; penulis Gurindam Dua Belas, Tuhfat al-Nafis, Kitab Pengetahuan Bahasa; Keppres 089/TK/2004.",
+    "kaitan_batam": "Jembatan Barelang III, Jl. Raja Ali Haji, Museum Batam Raja Ali Haji.",
+    "status_verifikasi": "terverifikasi",
+    "sumber_url": [
+      "https://www.detik.com/sumut/berita/d-7029197/mengenal-tiga-pahlawan-nasional-dari-provinsi-kepri"
+    ],
+    "kelompok_tabel": [
+      "a/c"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sultan_mahmud_riayat_syah",
+    "nama": "Sultan Mahmud Riayat Syah (Mahmud Syah III)",
+    "gelar": "Sultan Johor-Riau-Lingga-Pahang; Pahlawan Nasional",
+    "masa_hidup": "24 Mar 1756 – 12 Jan 1811/1812",
+    "kelompok": "a",
+    "ringkasan": "Sultan sejak kanak-kanak; gerilya laut melawan Belanda; Keppres 115/TK/2017.",
+    "kaitan_batam": "Masjid Sultan Mahmud Riayat Syah.",
+    "status_verifikasi": "terverifikasi_beda_versi",
+    "sumber_url": [
+      "https://nasional.kompas.com/read/2017/11/10/14115831/mahmud-riayat-syah-pahlawan-nasional-yang-jadi-sultan-sejak-umur-2-tahun",
+      "https://kepri.kemenag.go.id/page/det/mengenal-tiga-pahlawan-nasional-dari-provinsi-kepri"
+    ],
+    "kelompok_tabel": [
+      "a/c"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sultan_abdul_rahman_1",
+    "nama": "Sultan Abdul Rahman Muazzam Syah",
+    "gelar": "Sultan Riau-Lingga I",
+    "masa_hidup": "? – 1832",
+    "kelompok": "a",
+    "ringkasan": "Dilantik 1812 tanpa regalia; pemberi mandat kepada Nong Isa 1829.",
+    "kaitan_batam": "Kemungkinan rujukan Jl. Sultan Abdul Rachman (perlu dicek vs Abdul Rahman II).",
+    "status_verifikasi": "perlu_dicek",
+    "sumber_url": [
+      "https://mediacenter.batam.go.id/2022/12/15/tak-lupakan-sejarah-rudi-ziarah-makam-zuriat-nong-isa/"
+    ],
+    "kelompok_tabel": [
+      "a"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "embung_fatimah",
+    "nama": "Tengku Embung Fatimah",
+    "gelar": "Sultanah Riau-Lingga",
+    "masa_hidup": "abad ke-19; berkuasa 1883–1885",
+    "kelompok": "a",
+    "ringkasan": "Putri Sultan Mahmud IV Muzaffar Syah; dipilih penguasa 1883, menyerahkan takhta kepada putranya Abdul Rahman Muazzam Syah II.",
+    "kaitan_batam": "Nama RSUD di Batu Aji.",
+    "status_verifikasi": "terverifikasi",
+    "sumber_url": [
+      "https://kepri.antaranews.com/berita/200065/melestarikan-cagar-budaya-makam-embung-fatimah-di-pulau-penyengat"
+    ],
+    "kelompok_tabel": [
+      "a"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "raja_ali_kelana",
+    "nama": "Raja Ali ibni Raja Muhammad Yusuf al-Ahmadi (Raja Ali Kelana)",
+    "gelar": "Kelana Riau-Lingga",
+    "masa_hidup": "akhir abad ke-19 – awal abad ke-20 (perlu dicek)",
+    "kelompok": "a",
+    "ringkasan": "Menerima tanah di Batam 1898; mengelola Batam Brickworks di Batu Aji (sekitar 1896, kapasitas 30.000 bata/hari); misi diplomatik ke Utsmaniyah; hijrah ke Johor 1911.",
+    "kaitan_batam": "Perintis industri pertama di Batam; Jl. Raja Ali Kelana.",
+    "status_verifikasi": "terverifikasi_beda_versi",
+    "sumber_url": [
+      "https://gowest.id/raja-ali-kelana/",
+      "https://www.hariankepri.com/raja-ali-kelana-dan-kepemilikan-kepulauan-batam/"
+    ],
+    "kelompok_tabel": [
+      "a/d"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "tengku_sulung",
+    "nama": "Tengku Sulung",
+    "gelar": "Panglima Besar Reteh; Bintang Mahaputera Utama (anumerta, Keppres 119/TK/2000)",
+    "masa_hidup": "±1799 – 7 Nov 1858",
+    "kelompok": "a",
+    "ringkasan": "Memimpin Perang Reteh 1858 melawan Belanda, gugur di benteng Reteh.",
+    "kaitan_batam": "Nama jalan (lokasi perlu dicek).",
+    "status_verifikasi": "terverifikasi",
+    "sumber_url": [
+      "https://www.kompas.com/stori/read/2021/12/16/100000279/tengku-sulung-panglima-besar-reteh-yang-gigih-melawan-belanda?page=all"
+    ],
+    "kelompok_tabel": [
+      "a"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "narasinga_2",
+    "nama": "Raja Narasinga II",
+    "gelar": "Sultan Indragiri ke-4",
+    "masa_hidup": "memerintah 1473–1532",
+    "kelompok": "a",
+    "ringkasan": "Keturunan sultan Malaka; melawan Portugis 1512–1532.",
+    "kaitan_batam": "Jembatan Barelang II; BP Batam menyebutnya 'Panglima Raja Indragiri Hulu'.",
+    "status_verifikasi": "beda_versi",
+    "sumber_url": [
+      "https://batampos.co.id/2020/08/23/ini-fakta-jembatan-ii-barelang/",
+      "https://kebudayaan.kemdikbud.go.id/bpcbsumbar/komplek-makam-narasinga-ii/"
+    ],
+    "kelompok_tabel": [
+      "a"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sultan_zainal_abidin_rokan",
+    "nama": "Sultan Zainal Abidin Syah (Tambusai/Rokan)",
+    "gelar": "Sultan Tambusai",
+    "masa_hidup": "abad ke-19 – 5 Sep 1916",
+    "kelompok": "a",
+    "ringkasan": "Ulama-pejuang Rokan; ditangkap Belanda 1904 dan dibuang ke Jawa.",
+    "kaitan_batam": "Jembatan Barelang IV (versi BP Batam).",
+    "status_verifikasi": "beda_versi",
+    "sumber_url": [
+      "https://batampos.co.id/2020/09/15/fakta-fakta-jembatan-4-barelang/",
+      "https://rokanhulukab.go.id/detailpost/perang-siasat-politik-antara-sultan-zainal-abidin-lawan-kolonial-belanda"
+    ],
+    "kelompok_tabel": [
+      "a"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "raja_kecik",
+    "nama": "Raja Kecik (Sultan Abdul Jalil Rahmat Syah)",
+    "gelar": "Sultan Johor 1718–1722; pendiri Siak",
+    "masa_hidup": "? – 1746",
+    "kelompok": "a",
+    "ringkasan": "Merebut Johor 1718, dikalahkan Bugis 1722, mendirikan Siak di Buantan.",
+    "kaitan_batam": "Jembatan Barelang VI.",
+    "status_verifikasi": "terverifikasi_asal_usul_hikayat",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Raja_Kecil",
+      "https://kesbangpol.riau.go.id/company/berita-detail/97dbed5c-299f-456e-9390-a9c8e7eb2788/kesultanan-siak-sri-inderapura"
+    ],
+    "kelompok_tabel": [
+      "a"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "laksamana_bintan",
+    "nama": "Laksamana (Bintan)",
+    "gelar": "Jabatan panglima laut",
+    "masa_hidup": "-",
+    "kelompok": "a",
+    "ringkasan": "Tokoh spesifik belum teridentifikasi; tampilkan sebagai penjelasan jabatan.",
+    "kaitan_batam": "Jl. Laksamana Bintan, Jl. Laksamana.",
+    "status_verifikasi": "perlu_dicek",
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "a/b"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "hang_tuah",
+    "nama": "Hang Tuah",
+    "gelar": "Laksamana Malaka",
+    "masa_hidup": "abad ke-15 (hikayat)",
+    "kelompok": "b",
+    "ringkasan": "Pahlawan Hikayat Hang Tuah dan Sejarah Melayu; kesejarahan diperdebatkan.",
+    "kaitan_batam": "Jl. Hang Tuah (Nongsa, Belakang Padang).",
+    "status_verifikasi": "hikayat",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Hikayat_Hang_Tuah",
+      "https://en.wikipedia.org/wiki/Hang_Tuah"
+    ],
+    "kelompok_tabel": [
+      "b"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "hang_jebat",
+    "nama": "Hang Jebat",
+    "gelar": "Sahabat Hang Tuah",
+    "masa_hidup": "abad ke-15 (hikayat)",
+    "kelompok": "b",
+    "ringkasan": "Pemberontak dalam Hikayat Hang Tuah, dibunuh Hang Tuah.",
+    "kaitan_batam": "Jl. Hang Jebat (Nongsa).",
+    "status_verifikasi": "hikayat",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Hikayat_Hang_Tuah"
+    ],
+    "kelompok_tabel": [
+      "b"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "hang_kasturi",
+    "nama": "Hang Kasturi",
+    "gelar": "Sahabat Hang Tuah",
+    "masa_hidup": "abad ke-15 (hikayat)",
+    "kelompok": "b",
+    "ringkasan": "Pemberontak versi Sejarah Melayu.",
+    "kaitan_batam": "Jl. Hang Kesturi (Nongsa, Belakang Padang).",
+    "status_verifikasi": "hikayat",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Hikayat_Hang_Tuah"
+    ],
+    "kelompok_tabel": [
+      "b"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "hang_lekir",
+    "nama": "Hang Lekir",
+    "gelar": "Sahabat Hang Tuah",
+    "masa_hidup": "abad ke-15 (hikayat)",
+    "kelompok": "b",
+    "ringkasan": "Salah satu lima bersaudara seperguruan.",
+    "kaitan_batam": "Jl. Hang Lekir (Nongsa).",
+    "status_verifikasi": "hikayat",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Hikayat_Hang_Tuah"
+    ],
+    "kelompok_tabel": [
+      "b"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "hang_lekiu",
+    "nama": "Hang Lekiu",
+    "gelar": "Sahabat Hang Tuah",
+    "masa_hidup": "abad ke-15 (hikayat)",
+    "kelompok": "b",
+    "ringkasan": "Salah satu lima bersaudara seperguruan.",
+    "kaitan_batam": "Jl. Hang Lekiu (lokasi perlu dicek).",
+    "status_verifikasi": "hikayat",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Hikayat_Hang_Tuah"
+    ],
+    "kelompok_tabel": [
+      "b"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "hang_nadim",
+    "nama": "Hang Nadim",
+    "gelar": "Laksamana",
+    "masa_hidup": "akhir abad ke-15 – abad ke-16",
+    "kelompok": "b",
+    "ringkasan": "Menurut Sejarah Melayu anak Hang Jebat, diasuh Hang Tuah; memimpin perlawanan terhadap Portugis pasca 1511.",
+    "kaitan_batam": "Bandara Hang Nadim; perairan Batam disebut wilayah langlang lautnya.",
+    "status_verifikasi": "semi_historis",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Hang_Nadim",
+      "https://hangnadimairport.bpbatam.go.id/about"
+    ],
+    "kelompok_tabel": [
+      "a/b"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "dang_merdu",
+    "nama": "Dang Merdu (Dang Merdu Wati)",
+    "gelar": "Ibu Hang Tuah",
+    "masa_hidup": "hikayat",
+    "kelompok": "b",
+    "ringkasan": "Istri Hang Mahmud, ibu Hang Tuah dalam Hikayat Hang Tuah.",
+    "kaitan_batam": "Jl. Dang Merdu (lokasi perlu dicek).",
+    "status_verifikasi": "hikayat",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Hikayat_Hang_Tuah"
+    ],
+    "kelompok_tabel": [
+      "b"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "dang_anom",
+    "nama": "Dang Anom",
+    "gelar": "-",
+    "masa_hidup": "-",
+    "kelompok": "b",
+    "ringkasan": "Belum ditemukan sumber kredibel.",
+    "kaitan_batam": "Jl. Dang Anom (perlu dicek).",
+    "status_verifikasi": "perlu_dicek",
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "b"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "tuanku_tambusai",
+    "nama": "Tuanku Tambusai (Muhammad Saleh)",
+    "gelar": "Pahlawan Nasional",
+    "masa_hidup": "5 Nov 1784 – 12 Nov 1882",
+    "kelompok": "c",
+    "ringkasan": "Pemimpin Padri dari Dalu-Dalu, Rokan Hulu; Keppres 071/TK/1995.",
+    "kaitan_batam": "Jembatan Barelang V.",
+    "status_verifikasi": "terverifikasi",
+    "sumber_url": [
+      "https://khazanah.republika.co.id/berita/sie577483/kisah-tuanku-tambusai-ulama-penghancur-benteng-belanda"
+    ],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "ibnu_sutowo",
+    "nama": "Ibnu Sutowo",
+    "gelar": "Letjen (Purn.); Dirut Pertamina; Ketua Otorita Batam I",
+    "masa_hidup": "23 Sep 1914 – 12 Jan 2001",
+    "kelompok": "d",
+    "ringkasan": "Penanggung jawab pengembangan Batam sejak Keppres 65/1970; Ketua OB 1971–1976.",
+    "kaitan_batam": "Perintis Batam modern; Jl. Ibnu Sutowo (lokasi perlu dicek).",
+    "status_verifikasi": "terverifikasi",
+    "sumber_url": [
+      "https://www.metrotvnews.com/play/kj2CnVJa-kepemimpinan-bp-batam-dari-masa-ke-masa",
+      "https://batam.go.id/icon_sejarah/"
+    ],
+    "kelompok_tabel": [
+      "d"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "bj_habibie",
+    "nama": "B.J. Habibie",
+    "gelar": "Ketua Otorita Batam; Presiden RI ke-3",
+    "masa_hidup": "1936 – 2019",
+    "kelompok": "d",
+    "ringkasan": "Ketua OB sejak 1978; penggagas Jembatan Barelang.",
+    "kaitan_batam": "Julukan populer 'Jembatan Habibie'.",
+    "status_verifikasi": "terverifikasi",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Barelang_Bridge"
+    ],
+    "kelompok_tabel": [
+      "d"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "batin_limat",
+    "nama": "Batin Limat bin Limbang",
+    "gelar": "Batin (kepala suku) Rempang-Galang",
+    "masa_hidup": "akhir abad ke-19 – awal abad ke-20 (perlu dicek)",
+    "kelompok": "e",
+    "ringkasan": "Menawarkan perang melawan Belanda saat pemakzulan Sultan Abdul Rahman Muazzam Syah II (1911), menurut budayawan.",
+    "kaitan_batam": "Jl. Batin Limat (Galang).",
+    "status_verifikasi": "perlu_dicek",
+    "sumber_url": [
+      "https://pijarkepri.com/2023/09/sejarah-penduduk-rempang-dan-galang/",
+      "https://www.liputan6.com/regional/read/5421347/menulusuri-makam-keramat-teluk-lubuk-lanjut-jejak-awal-peradaban-di-pulau-rempang"
+    ],
+    "kelompok_tabel": [
+      "e"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "batin_bidin",
+    "nama": "Batin Bidin",
+    "gelar": "Batin Rempang",
+    "masa_hidup": "perlu dicek",
+    "kelompok": "e",
+    "ringkasan": "Disebut sebagai salah satu Batin di Pulau Rempang.",
+    "kaitan_batam": "Jl. Batin Bidin (Galang).",
+    "status_verifikasi": "perlu_dicek",
+    "sumber_url": [
+      "https://www.liputan6.com/regional/read/5421347/menulusuri-makam-keramat-teluk-lubuk-lanjut-jejak-awal-peradaban-di-pulau-rempang"
+    ],
+    "kelompok_tabel": [
+      "e"
+    ],
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "katamso",
+    "nama": "Brigjen Katamso",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "Pahlawan Revolusi, korban peristiwa 1965. Nama mereka dipakai untuk jalan di Sagulung, Sei Beduk, dan Batam Kota.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "r_suprapto",
+    "nama": "Letjen R. Suprapto",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "Pahlawan Revolusi, korban peristiwa 1965. Nama mereka dipakai untuk jalan di Sagulung, Sei Beduk, dan Batam Kota.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "s_parman",
+    "nama": "Letjen S. Parman",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "Pahlawan Revolusi, korban peristiwa 1965. Nama mereka dipakai untuk jalan di Sagulung, Sei Beduk, dan Batam Kota.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "ahmad_yani",
+    "nama": "Jenderal Ahmad Yani",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "Pahlawan Revolusi, korban peristiwa 1965. Nama mereka dipakai untuk jalan di Sagulung, Sei Beduk, dan Batam Kota.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "sudirman",
+    "nama": "Jenderal Sudirman",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "panglima besar TNI pertama.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "gajah_mada",
+    "nama": "Gajah Mada",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "Mahapatih Majapahit; bukan pahlawan nasional resmi, tetapi tokoh sejarah nasional.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "imam_bonjol",
+    "nama": "Tuanku Imam Bonjol",
+    "gelar": null,
+    "masa_hidup": "1772–1864",
+    "kelompok": "c",
+    "ringkasan": "pemimpin Perang Padri.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "teuku_umar",
+    "nama": "Teuku Umar",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "pejuang Perang Aceh.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "raden_patah",
+    "nama": "Raden Patah",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "tokoh nasional yang namanya dipakai di Lubuk Baja, Sekupang, dan Nongsa. Rincian masing-masing bisa merujuk ke daftar Pahlawan Nasional Kemensos.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "yos_sudarso",
+    "nama": "Yos Sudarso",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "tokoh nasional yang namanya dipakai di Lubuk Baja, Sekupang, dan Nongsa. Rincian masing-masing bisa merujuk ke daftar Pahlawan Nasional Kemensos.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "diponegoro",
+    "nama": "Diponegoro",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "tokoh nasional yang namanya dipakai di Lubuk Baja, Sekupang, dan Nongsa. Rincian masing-masing bisa merujuk ke daftar Pahlawan Nasional Kemensos.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "kartini",
+    "nama": "Kartini",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "tokoh nasional yang namanya dipakai di Lubuk Baja, Sekupang, dan Nongsa. Rincian masing-masing bisa merujuk ke daftar Pahlawan Nasional Kemensos.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "cipto_mangunkusumo",
+    "nama": "dr. Cipto Mangunkusumo",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "tokoh nasional yang namanya dipakai di Lubuk Baja, Sekupang, dan Nongsa. Rincian masing-masing bisa merujuk ke daftar Pahlawan Nasional Kemensos.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "ahmad_dahlan",
+    "nama": "KH Ahmad Dahlan",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "tokoh nasional yang namanya dipakai di Lubuk Baja, Sekupang, dan Nongsa. Rincian masing-masing bisa merujuk ke daftar Pahlawan Nasional Kemensos.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "re_martadinata",
+    "nama": "R.E. Martadinata",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "tokoh nasional yang namanya dipakai di Lubuk Baja, Sekupang, dan Nongsa. Rincian masing-masing bisa merujuk ke daftar Pahlawan Nasional Kemensos.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "hasanuddin",
+    "nama": "Sultan Hasanuddin",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "tokoh nasional yang namanya dipakai di Lubuk Baja, Sekupang, dan Nongsa. Rincian masing-masing bisa merujuk ke daftar Pahlawan Nasional Kemensos.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  },
+  {
+    "id": "pattimura",
+    "nama": "Pattimura",
+    "gelar": null,
+    "masa_hidup": null,
+    "kelompok": "c",
+    "ringkasan": "tokoh nasional yang namanya dipakai di Lubuk Baja, Sekupang, dan Nongsa. Rincian masing-masing bisa merujuk ke daftar Pahlawan Nasional Kemensos.",
+    "kaitan_batam": null,
+    "status_verifikasi": null,
+    "sumber_url": [],
+    "kelompok_tabel": [
+      "c"
+    ],
+    "sumber_entri": "tabel",
+    "catatan": "Hanya ada di tabel inventaris dan bagian (c); laporan tidak memberi sumber biografi. Sumber penamaan jalan ada di penamaan.json."
+  }
+]

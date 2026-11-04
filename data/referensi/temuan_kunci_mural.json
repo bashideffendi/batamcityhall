@@ -1,0 +1,66 @@
+{
+  "sumber_riset": "02-teknik-mural-peta",
+  "task_id": "wf-63281ef7-42be-5d9b-91ac-0775ff777914",
+  "bagian_laporan": "## Key Findings",
+  "kolom_asli": [
+    "Temuan",
+    "Status"
+  ],
+  "catatan": "Konversi 1:1 dari tabel Key Findings. 'temuan' dan 'status' persis seperti di tabel; 'status_label' hanya teks tebal pertama di kolom Status (tanpa titik akhir) untuk memudahkan filter.",
+  "items": [
+    {
+      "no": 1,
+      "temuan": "Isometric NYC: tile 512×512 hasil model Qwen/Image-Edit yang di-fine-tune (~40 pasangan contoh, ~4 jam, ~$12), dari render Google Maps 3D Tiles, ditampilkan pakai OpenSeadragon",
+      "status": "**Terverifikasi** (tulisan pembuatnya)",
+      "status_label": "Terverifikasi"
+    },
+    {
+      "no": 2,
+      "temuan": "Isometric NYC disajikan sebagai tile DZI lewat Cloudflare",
+      "status": "**Terverifikasi sekunder** (ringkasan diskusi HN)",
+      "status_label": "Terverifikasi sekunder"
+    },
+    {
+      "no": 3,
+      "temuan": "Mural Skytree (teamLab): mural digital panjang 40 m, tinggi 3 m, digambar tangan dengan bantuan digital, ada monitor tertanam yang menampilkan animasi",
+      "status": "**Terverifikasi** (teamLab + liputan)",
+      "status_label": "Terverifikasi"
+    },
+    {
+      "no": 4,
+      "temuan": "Mural Jakarta (jakarta.oyenza.com): stack, format tile, dan cara produksi ilustrasinya",
+      "status": "**Belum terverifikasi.** Situsnya tidak bisa diambil dan repo publiknya tidak ketemu. Pembuat yang sama (Luca Cada Lora / Oyenza) punya repo `isometric-jakarta`, game city builder fork IsoCity (MIT), tapi itu proyek lain",
+      "status_label": "Belum terverifikasi"
+    },
+    {
+      "no": 5,
+      "temuan": "`vips dzsave` mendukung layout `dz`, `zoomify`, `google`, `iiif`, `iiif3`, output ZIP, dan melewati tile kosong (`skip_blanks`)",
+      "status": "**Terverifikasi** (dok libvips)",
+      "status_label": "Terverifikasi"
+    },
+    {
+      "no": 6,
+      "temuan": "PMTiles bisa menyimpan raster PNG/JPEG/WebP, tapi tooling untuk gambar non-geografis masih kurang (maintainer menyarankan tool berbasis Pillow)",
+      "status": "**Terverifikasi** (issue GitHub PMTiles)",
+      "status_label": "Terverifikasi"
+    },
+    {
+      "no": 7,
+      "temuan": "Cloudflare R2: menurut halaman harga resmi Cloudflare (developers.cloudflare.com/workers/platform/pricing/), free tier \"10 GB-month / month\", Class A \"1 million requests / month\", Class B \"10 million requests / month\", dan \"There are no charges for egress bandwidth.\"",
+      "status": "**Terverifikasi** (dok resmi Cloudflare)",
+      "status_label": "Terverifikasi"
+    },
+    {
+      "no": 8,
+      "temuan": "Ukuran bundle (min+gzip): OpenSeadragon 6.1.1 ±88 kB; Leaflet 1.9.x ±40 kB (beranda resmi leafletjs.com: \"Weighing just about 40 KB of JS\"; Leaflet 2.0 beta dirilis 2 Nov 2026 dengan \"Tree-shakable ES modules\", 25,6 kB untuk peta + tile layer); PixiJS v8.22 ±258 kB (bisa di-tree-shake); MapLibre tanpa angka resmi (satu README pihak ketiga menyebut \"379 kB gzipped\", tapi itu termasuk font vektor)",
+      "status": "**Campuran**, lihat tabel Q2",
+      "status_label": "Campuran"
+    },
+    {
+      "no": 9,
+      "temuan": "Kantor Hak Cipta AS (Jan 2025): output murni AI dari prompt tidak bisa dilindungi hak cipta; seleksi, susunan, dan modifikasi oleh manusia bisa dilindungi",
+      "status": "**Terverifikasi** (copyright.gov)",
+      "status_label": "Terverifikasi"
+    }
+  ]
+}

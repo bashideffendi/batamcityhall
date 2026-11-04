@@ -1,0 +1,2278 @@
+[
+  {
+    "id": "trans-bandara-hang-nadim",
+    "nama": "Bandara Internasional Hang Nadim",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "bandara",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Batu Besar",
+    "alamat": "Batu Besar",
+    "lat": 1.12083,
+    "lng": 104.11861,
+    "status_koordinat": "terverifikasi",
+    "catatan_koordinat": "Infobox Wikipedia; laporan (Caveats) menyatakan terverifikasi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "aeroway=aerodrome",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Hang_Nadim_International_Airport"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "trans-pelabuhan-batam-centre",
+    "nama": "Pelabuhan Feri Internasional Batam Centre",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_internasional",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Teluk Tering",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Kandidat ±1.1303, 104.0548 (estimasi). Jangan pakai angka BP Batam 01°17'15\" karena salah ketik (seharusnya ~01°07').",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tujuan": [
+        "Singapura"
+      ]
+    },
+    "status_data": null,
+    "catatan": "[Lintas laporan] 07-direktori-layanan-publik memberi 1.130861, 104.055231 (Wikidata Q12504166, terverifikasi).",
+    "tag_osm": "amenity=ferry_terminal",
+    "sumber_url": [
+      "https://batamport.bpbatam.go.id/batam-centre/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "trans-pelabuhan-harbour-bay",
+    "nama": "Pelabuhan Feri Internasional Harbour Bay",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_internasional",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": null,
+    "alamat": "Harbour Bay",
+    "lat": 1.15371,
+    "lng": 103.99746,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Sumbernya node OSM 703813600 bertipe place=locality, bukan gedung terminal.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tujuan": [
+        "Singapura"
+      ]
+    },
+    "status_data": null,
+    "catatan": "[Lintas laporan] 07-direktori-layanan-publik memberi 1.153889, 103.997111 (Wikidata Q65091241, terverifikasi).",
+    "tag_osm": "amenity=ferry_terminal",
+    "sumber_url": [
+      "https://mapcarta.com/N703813600"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "trans-pelabuhan-sekupang",
+    "nama": "Pelabuhan Feri Internasional Sekupang",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_internasional",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "Sekupang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "BP Batam menyebut 1.1314, 103.9253, sedangkan Waze 1.125328, 103.925633.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tujuan": [
+        "Singapura"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=ferry_terminal",
+    "sumber_url": [
+      "https://batamport.bpbatam.go.id/sekupang/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "trans-pelabuhan-nongsapura",
+    "nama": "Pelabuhan Feri Internasional Nongsapura",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_internasional",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Nongsa Pura",
+    "lat": 1.18834,
+    "lng": 104.09463,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "1.18834, 104.09463 (OSM). TripAdvisor menyebut 1.17283, 104.07809 (beda ~2,5 km).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tujuan": [
+        "Singapura"
+      ]
+    },
+    "status_data": null,
+    "catatan": "[Lintas laporan] 07-direktori-layanan-publik memakai 1.17283, 104.07809 (TripAdvisor, perlu_cek_ulang).",
+    "tag_osm": "amenity=ferry_terminal",
+    "sumber_url": [
+      "https://mapcarta.com/35845432"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "trans-pelabuhan-gold-coast",
+    "nama": "Pelabuhan Gold Coast Bengkong",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_internasional",
+    "kecamatan": "Bengkong",
+    "kelurahan": null,
+    "alamat": "Bengkong",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tujuan": [
+        "Singapura"
+      ]
+    },
+    "status_data": null,
+    "catatan": "[Lintas laporan] 07-direktori-layanan-publik mencantumkan alamat Kawasan Pantai Indah Mutiara Blok B No. 36-37, Golden City (dibuka 2025).",
+    "tag_osm": "amenity=ferry_terminal",
+    "sumber_url": [
+      "https://batam.co.id/transportasi/panduan-feri-batam-singapura-lima-pelabuhan/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "trans-pelabuhan-telaga-punggur",
+    "nama": "Pelabuhan Domestik Telaga Punggur",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_domestik",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Kabil",
+    "alamat": "Telaga Punggur, Kabil",
+    "lat": 1.1175,
+    "lng": 104.1683,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "1.1175, 104.1683 (BP Batam). Wikidata menyebut 1.03523, 104.13340, kemungkinan salah.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "[Lintas laporan] KONFLIK: 07-direktori-layanan-publik justru menyatakan Wikidata 1.035230, 104.133397 terverifikasi dan koordinat BP Batam jelas salah. Wajib dicek sebelum dirender.",
+    "tag_osm": "amenity=ferry_terminal",
+    "sumber_url": [
+      "https://batamport.bpbatam.go.id/telaga-punggur/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-rsud-embung-fatimah",
+    "nama": "RSUD Embung Fatimah",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "rumah_sakit",
+    "kecamatan": "Batu Aji",
+    "kelurahan": "Bukit Tempayan",
+    "alamat": "Jl. Letjen R. Suprapto Blok D 1-9, Bukit Tempayan",
+    "lat": 1.0503185,
+    "lng": 103.9675684,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Direktori pihak ketiga (idalamat). Direktori lain menyebut 1.0651866, 104.0171811.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "[Lintas laporan] 07-direktori-layanan-publik (daftar Kemenkes via Wikipedia) menulis alamat Jl. Pertiwi No. 27, Bukit Tempayan.",
+    "tag_osm": "amenity=hospital",
+    "sumber_url": [
+      "https://idalamat.com/alamat/rsud-embung-fatimah-2382"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-rs-awal-bros",
+    "nama": "RS Awal Bros Batam",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "rumah_sakit",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Baloi Indah",
+    "alamat": "Jl. Gajah Mada Kav. 1, Baloi Indah",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tipe_kandidat": [
+        "A",
+        "B"
+      ]
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Tipe RS Awal Bros tercatat A di satu sumber dan B di sumber lain.",
+    "tag_osm": "amenity=hospital",
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Daftar_rumah_sakit_di_Kota_Batam"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-rs-santa-elisabeth",
+    "nama": "RS Santa Elisabeth",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "rumah_sakit",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Lubuk Baja Kota",
+    "alamat": "Jl. Anggrek, Lubuk Baja Kota",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=hospital",
+    "sumber_url": [
+      "https://ban.wikipedia.org/wiki/Rumah_sakit_ring_Kota_Batam"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-rs-elisabeth-batam-kota",
+    "nama": "RS Elisabeth Batam Kota",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "rumah_sakit",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Belian",
+    "alamat": "Jl. Raja Alikelana No.37, Belian",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=hospital",
+    "sumber_url": [
+      "https://ban.wikipedia.org/wiki/Rumah_sakit_ring_Kota_Batam"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-rs-bhayangkara",
+    "nama": "RS Bhayangkara Batam",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "rumah_sakit",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Batu Besar",
+    "alamat": "Jl. Dang Merdu No.2, Batu Besar",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=hospital",
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Daftar_rumah_sakit_di_Kota_Batam"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-rs-budi-kemuliaan",
+    "nama": "RS Budi Kemuliaan",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "rumah_sakit",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": "Kampung Seraya",
+    "alamat": "Jl. Budi Kemuliaan No.1, Kampung Seraya",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=hospital",
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Daftar_rumah_sakit_di_Kota_Batam"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-rs-bp-batam",
+    "nama": "RS Badan Pengusahaan Batam",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "rumah_sakit",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "Sekupang (perlu cek)",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "[Lintas laporan] 07-direktori-layanan-publik menyebut Jl. Dr. Cipto Mangunkusumo No. 1, Tanjung Pinggir.",
+    "tag_osm": "amenity=hospital",
+    "sumber_url": [
+      "https://ban.wikipedia.org/wiki/Rumah_sakit_ring_Kota_Batam"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-pkm-baloi-permai",
+    "nama": "Puskesmas Baloi Permai",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "puskesmas",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Jl. Graha Legenda Malaka",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=clinic + healthcare=centre",
+    "sumber_url": [
+      "https://komdat.kemkes.go.id/baru/index_rpt.php?folder=dashboard/reports&pg=rptPkmListPuskesmas&kode_kabupaten=2171"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-pkm-botania",
+    "nama": "Puskesmas Botania",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "puskesmas",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Belian",
+    "alamat": "Komp. Botania Garden, Belian",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=clinic + healthcare=centre",
+    "sumber_url": [
+      "https://komdat.kemkes.go.id/baru/index_rpt.php?folder=dashboard/reports&pg=rptPkmListPuskesmas&kode_kabupaten=2171"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-pkm-lubuk-baja",
+    "nama": "Puskesmas Lubuk Baja",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "puskesmas",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Tanjung Uma",
+    "alamat": "Jl. Duyung, Tanjung Uma",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=clinic + healthcare=centre",
+    "sumber_url": [
+      "https://komdat.kemkes.go.id/baru/index_rpt.php?folder=dashboard/reports&pg=rptPkmListPuskesmas&kode_kabupaten=2171"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-pkm-kabil",
+    "nama": "Puskesmas Kabil",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "puskesmas",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Kabil",
+    "alamat": "Jl. Hasanuddin No.1, Kabil",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=clinic + healthcare=centre",
+    "sumber_url": [
+      "https://dinkes.batam.go.id/category/puskesmas/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-pkm-sekupang",
+    "nama": "Puskesmas Sekupang",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "puskesmas",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "Jl. Raja Haji No.6, Sei Harapan",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=clinic + healthcare=centre",
+    "sumber_url": [
+      "https://batam.tribunnews.com/2019/07/17/daftar-lokasi-dan-alamat-puskesmas-di-kota-batam-provinsi-kepri"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-pkm-belakang-padang",
+    "nama": "Puskesmas Belakang Padang",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "puskesmas",
+    "kecamatan": "Belakang Padang",
+    "kelurahan": "Tanjung Sari",
+    "alamat": "Jl. Hang Tuah, Tanjung Sari",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=clinic + healthcare=centre",
+    "sumber_url": [
+      "https://dinkes.batam.go.id/category/puskesmas/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-pkm-galang",
+    "nama": "Puskesmas Galang",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "puskesmas",
+    "kecamatan": "Galang",
+    "kelurahan": "Sembulang",
+    "alamat": "Jl. Batin Limat No.15, Sembulang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=clinic + healthcare=centre",
+    "sumber_url": [
+      "https://dinkes.batam.go.id/category/puskesmas/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "kes-pkm-tanjung-uncang",
+    "nama": "Puskesmas Tanjung Uncang",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "puskesmas",
+    "kecamatan": "Batu Aji",
+    "kelurahan": "Tanjung Uncang",
+    "alamat": "Jl. Brigjen Katamso, Tanjung Uncang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=clinic + healthcare=centre",
+    "sumber_url": [
+      "https://dinkes.batam.go.id/category/puskesmas/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pem-imigrasi-batam",
+    "nama": "Kantor Imigrasi Kelas I Khusus TPI Batam",
+    "nama_alternatif": [
+      "Imigrasi Kelas I Khusus TPI Batam",
+      "Kanim Batam"
+    ],
+    "kategori": "pemerintahan",
+    "subkategori": "imigrasi",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Jl. Engku Putri No.3",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "Senin–Kamis 07.30–16.00 (istirahat 12.00–13.00)",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": "0811-700-2019",
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "unit_layanan": [
+        "ULP Harbourbay"
+      ],
+      "antrean_online": "M-Paspor",
+      "layanan_sabtu": "Paspor Simpatik hari Sabtu secara berkala"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "office=government + government=*",
+    "sumber_url": [
+      "https://batam.imigrasi.go.id/page/kantor-imigrasi"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pem-samsat-batam-centre",
+    "nama": "Samsat Batam Centre",
+    "nama_alternatif": [],
+    "kategori": "pemerintahan",
+    "subkategori": "samsat",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Gedung Graha Kepri Lt. 3, Jl. Engku Putri/Raja Isa No.8",
+    "lat": 1.1243068,
+    "lng": 104.0567985,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Direktori pihak ketiga (dilokasi.com).",
+    "jam_layanan": "Senin–Jumat 08.00–15.00, Sabtu 08.00–12.00",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "gerai_lain": [
+        "Samsat Corner di BCS Mall",
+        "Samsat Corner di Kepri Mall"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "office=government + government=*",
+    "sumber_url": [
+      "https://dilokasi.com/Kepulauan-Riau/Places/Kantor-Samsat-Batam-Centre-4236979",
+      "http://samsatbatamcentre.net/berita/layanan/kantor-samsat",
+      "https://kumparan.com/info-otomotif/samsat-batam-ini-informasi-layanan-dan-jam-operasionalnya-1xYrOqODWqq"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pem-disdukcapil-batam",
+    "nama": "Disdukcapil Kota Batam",
+    "nama_alternatif": [],
+    "kategori": "pemerintahan",
+    "subkategori": "disdukcapil",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "08.00–15.00, istirahat 12.00–13.00",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Alamat di seed: 'Perlu cek'. Alamat perlu dicek (laporan). [Lintas laporan] 07-direktori-layanan-publik menyebut Jl. Ir. Sutami, Sekupang (S6).",
+    "tag_osm": "office=government + government=*",
+    "sumber_url": [
+      "https://disdukcapil.batam.go.id/jam-pelayanan-disdukcapil/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pem-bea-cukai-batam",
+    "nama": "KPU Bea dan Cukai Batam",
+    "nama_alternatif": [],
+    "kategori": "pemerintahan",
+    "subkategori": "bea_cukai",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": null,
+    "alamat": "Jl. Kuda Laut",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": "(0778) 429446",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "office=government + government=*",
+    "sumber_url": [
+      "https://bcbatam.beacukai.go.id/hubungi-kami/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pem-kpp-batam-utara",
+    "nama": "KPP Pratama Batam Utara",
+    "nama_alternatif": [],
+    "kategori": "pemerintahan",
+    "subkategori": "kantor_pajak",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": "Sungai Jodoh",
+    "alamat": "Jl. Kuda Laut No.1, Sungai Jodoh",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "wilayah_kerja": [
+        "Belakang Padang",
+        "Batu Ampar",
+        "Sekupang",
+        "Nongsa",
+        "Galang",
+        "Lubuk Baja"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "office=government + government=*",
+    "sumber_url": [
+      "https://pajak.go.id/en/node/67017"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pem-kpp-batam-selatan",
+    "nama": "KPP Pratama Batam Selatan",
+    "nama_alternatif": [],
+    "kategori": "pemerintahan",
+    "subkategori": "kantor_pajak",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Sukajadi",
+    "alamat": "Adhya Building Tower, Permata Niaga Bukit Indah Blok A No.1, Sukajadi",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "wilayah_kerja": [
+        "Sei Beduk",
+        "Bulang",
+        "Bengkong",
+        "Batam Kota",
+        "Sagulung",
+        "Batu Aji"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "office=government + government=*",
+    "sumber_url": [
+      "https://www.pajak.go.id/en/node/67018"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pem-bp-batam",
+    "nama": "Kantor BP Batam",
+    "nama_alternatif": [],
+    "kategori": "pemerintahan",
+    "subkategori": "bp_batam",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Jl. Ibnu Sutowo No.1",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "office=government",
+    "sumber_url": [
+      "https://bpbatam.go.id/pelayanan-publik-2/spam-sistem-penyediaan-air-minum/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pem-kantor-walikota",
+    "nama": "Kantor Wali Kota Batam",
+    "nama_alternatif": [],
+    "kategori": "pemerintahan",
+    "subkategori": "kantor_pemkot",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Jl. Engku Putri No.1, Teluk Tering",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Kandidat ±1.1282, 104.0548 (estimasi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=townhall",
+    "sumber_url": [
+      "https://satudata.batam.go.id/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pem-abh-pusat",
+    "nama": "Air Batam Hilir - KPP Pusat",
+    "nama_alternatif": [],
+    "kategori": "layanan_publik",
+    "subkategori": "air_bersih",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Ruko Batam Centre Square Blok D No.2",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "Senin–Jumat 08.30–16.30",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "kategori_asli": "pemerintahan",
+      "call_center": "(0778) 5700 000",
+      "operator": "PT Air Batam Hilir (PT Moya Indonesia), SPAM di bawah BP Batam sejak 15 November 2020"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "office=water_utility",
+    "sumber_url": [
+      "https://hilir.airbatam.com/contact"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pem-abh-bengkong",
+    "nama": "Air Batam Hilir - KPP Bengkong",
+    "nama_alternatif": [],
+    "kategori": "layanan_publik",
+    "subkategori": "air_bersih",
+    "kecamatan": "Bengkong",
+    "kelurahan": null,
+    "alamat": "Baraka Business Center Blok B No.9, Jl. Yos Sudarso",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "kategori_asli": "pemerintahan",
+      "call_center": "(0778) 5700 000",
+      "pindah_sejak": "8 Desember 2025"
+    },
+    "status_data": null,
+    "catatan": "KPP Bengkong pindah ke Baraka Business Center mulai 8 Desember 2025; alamat dari berita 2020 sudah basi.",
+    "tag_osm": "office=water_utility",
+    "sumber_url": [
+      "https://hilir.airbatam.com/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pem-abh-batu-aji",
+    "nama": "Air Batam Hilir - KPP Batu Aji",
+    "nama_alternatif": [],
+    "kategori": "layanan_publik",
+    "subkategori": "air_bersih",
+    "kecamatan": "Batu Aji",
+    "kelurahan": null,
+    "alamat": "Komp. Pertokoan Batu Permata (blok perlu cek)",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "kategori_asli": "pemerintahan",
+      "call_center": "(0778) 5700 000"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Teks laporan: 'Komp. Batu Permata, Blok A No.01 atau C No.1 (perlu dicek)'.",
+    "tag_osm": "office=water_utility",
+    "sumber_url": [
+      "https://hilir.airbatam.com/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "ibd-masjid-agung-batam",
+    "nama": "Masjid Agung Batam (Raja Hamidah)",
+    "nama_alternatif": [
+      "Raja Hamidah"
+    ],
+    "kategori": "ibadah",
+    "subkategori": "masjid",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Jl. Engku Putri",
+    "lat": 1.12623971,
+    "lng": 104.05339589,
+    "status_koordinat": "terverifikasi",
+    "catatan_koordinat": "Infobox Wikipedia; laporan (Caveats) menyatakan terverifikasi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=place_of_worship + religion=muslim",
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Masjid_Agung_Batam"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "ibd-masjid-sultan-mahmud-riayat-syah",
+    "nama": "Masjid Sultan Mahmud Riayat Syah",
+    "nama_alternatif": [],
+    "kategori": "ibadah",
+    "subkategori": "masjid",
+    "kecamatan": "Batu Aji",
+    "kelurahan": "Tanjung Uncang",
+    "alamat": "Jl. Brigjen Katamso, Tanjung Uncang",
+    "lat": 1.049569,
+    "lng": 103.933903,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Ini lokasi pengambilan foto, bukan titik bangunan.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "Masjid ini ada di Jl. Brigjen Katamso, Tanjung Uncang, Batu Aji, bukan Tiban.",
+    "tag_osm": "amenity=place_of_worship + religion=muslim",
+    "sumber_url": [
+      "https://commons.wikimedia.org/wiki/File:Masjid_Sultan_Mahmud_Riayat_Syah.jpg",
+      "https://www.batamnews.co.id/berita-98448-mengintip-keunikan-dan-keindahan-masjid-sultan-mahmud-riayat-syah-di-batam-kepulauan-riau.html"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "ibd-masjid-tanwirun-naja",
+    "nama": "Masjid Tanwirun Naja (Masjid Tanjak)",
+    "nama_alternatif": [
+      "Masjid Tanjak"
+    ],
+    "kategori": "ibadah",
+    "subkategori": "masjid",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Alamat di seed: 'Perlu cek'. Kecamatan dan alamat tidak disebut (laporan: perlu cek).",
+    "tag_osm": "amenity=place_of_worship + religion=muslim",
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Daftar_tempat_ibadah_di_Kota_Batam"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "ibd-masjid-jabal-arafah",
+    "nama": "Masjid Jabal Arafah",
+    "nama_alternatif": [],
+    "kategori": "ibadah",
+    "subkategori": "masjid",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Alamat di seed: 'Perlu cek'. Kecamatan dan alamat tidak disebut (laporan: perlu cek). [Lintas laporan] 07-direktori-layanan-publik menyebut Jl. Imam Bonjol, Lubuk Baja.",
+    "tag_osm": "amenity=place_of_worship + religion=muslim",
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Daftar_tempat_ibadah_di_Kota_Batam"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "ibd-gereja-santo-petrus",
+    "nama": "Gereja Santo Petrus",
+    "nama_alternatif": [],
+    "kategori": "ibadah",
+    "subkategori": "gereja_katolik",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": "Jl. Anggrek (kecamatan perlu cek)",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Kecamatan perlu cek (laporan). Sumber FKUB adalah data 2019 (laporan, Caveats: 'Data menua').",
+    "tag_osm": "religion=christian + denomination=*",
+    "sumber_url": [
+      "https://www.fkubbatam.or.id/index.php?p=daftar-rumah-ibadah"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "ibd-gereja-kerahiman-ilahi",
+    "nama": "Gereja Kerahiman Ilahi",
+    "nama_alternatif": [],
+    "kategori": "ibadah",
+    "subkategori": "gereja_katolik",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "Tiban",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Sumber FKUB adalah data 2019 (laporan, Caveats: 'Data menua').",
+    "tag_osm": "religion=christian + denomination=*",
+    "sumber_url": [
+      "https://www.fkubbatam.or.id/index.php?p=daftar-rumah-ibadah"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "ibd-gereja-bible-center",
+    "nama": "Gereja Bible Center",
+    "nama_alternatif": [],
+    "kategori": "ibadah",
+    "subkategori": "gereja",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Sukajadi",
+    "alamat": "Sukajadi",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Sumber FKUB adalah data 2019 (laporan, Caveats: 'Data menua').",
+    "tag_osm": "religion=christian + denomination=*",
+    "sumber_url": [
+      "https://www.fkubbatam.or.id/index.php?p=daftar-rumah-ibadah"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "ibd-vihara-buddhayana",
+    "nama": "Vihara Buddhayana Batam",
+    "nama_alternatif": [],
+    "kategori": "ibadah",
+    "subkategori": "vihara",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": "Nagoya Point Blok L",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Sumber FKUB adalah data 2019 (laporan, Caveats: 'Data menua').",
+    "tag_osm": "religion=buddhist",
+    "sumber_url": [
+      "https://www.fkubbatam.or.id/index.php?p=daftar-rumah-ibadah"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "ibd-vihara-hock-an-kiong",
+    "nama": "Vihara Hock An Kiong",
+    "nama_alternatif": [],
+    "kategori": "ibadah",
+    "subkategori": "vihara",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Kampung Belian",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Sumber FKUB adalah data 2019 (laporan, Caveats: 'Data menua').",
+    "tag_osm": "religion=buddhist",
+    "sumber_url": [
+      "https://www.fkubbatam.or.id/index.php?p=daftar-rumah-ibadah"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "ibd-vihara-dharma-mulia",
+    "nama": "Vihara Dharma Mulia",
+    "nama_alternatif": [],
+    "kategori": "ibadah",
+    "subkategori": "vihara",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Legenda Malaka",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Sumber FKUB adalah data 2019 (laporan, Caveats: 'Data menua').",
+    "tag_osm": "religion=buddhist",
+    "sumber_url": [
+      "https://www.fkubbatam.or.id/index.php?p=daftar-rumah-ibadah"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-mega-mall",
+    "nama": "Mega Mall Batam Centre",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "mal",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Jl. Engku Putri No.1, Teluk Tering",
+    "lat": 1.12924,
+    "lng": 104.05598,
+    "status_koordinat": "terverifikasi",
+    "catatan_koordinat": "OSM via Mapcarta W606276855; laporan (Caveats) menyatakan terverifikasi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "shop=mall",
+    "sumber_url": [
+      "https://mapcarta.com/W606276855"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-nagoya-hill-mall",
+    "nama": "Nagoya Hill Mall",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "mal",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": "Jl. Teuku Umar",
+    "lat": 1.146512,
+    "lng": 104.012342,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Sumber lain menyebut 1.14583, 104.01202.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "shop=mall",
+    "sumber_url": [
+      "https://cityseeker.com/batam/1204133-nagoya-hill-shopping-mall"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-bcs-mall",
+    "nama": "Batam City Square (BCS Mall)",
+    "nama_alternatif": [
+      "BCS Mall"
+    ],
+    "kategori": "belanja",
+    "subkategori": "mal",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Batu Selicin",
+    "alamat": "Jl. Bunga Raya, Batu Selicin",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "layanan_di_dalam": [
+        "Samsat Corner"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "shop=mall",
+    "sumber_url": [
+      "https://kumparan.com/info-otomotif/samsat-batam-ini-informasi-layanan-dan-jam-operasionalnya-1xYrOqODWqq"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-kepri-mall",
+    "nama": "Kepri Mall",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "mal",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Sukajadi",
+    "alamat": "Sukajadi",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "layanan_di_dalam": [
+        "Samsat Corner"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "shop=mall",
+    "sumber_url": [
+      "https://samsatcorner.com/samsat-batam.html"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-grand-batam-mall",
+    "nama": "Grand Batam Mall",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "mal",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Alamat di seed: 'Perlu cek'. Alamat dan kecamatan perlu dicek (laporan); tidak ada sumber URL.",
+    "tag_osm": "shop=mall",
+    "sumber_url": [],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-pasar-tos-3000",
+    "nama": "Pasar Tos 3000",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_tradisional",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": "Kawasan Jodoh",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "Pasar Induk Jodoh (rencana, entri blj-pasar-induk-jodoh) dibangun sebagai bagian penataan kawasan Tos 3000.",
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://metropolis.batampos.co.id/rekomendasi-5-pasar-basah-modern-favorit-warga-batam-belanja-makin-nyaman/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-pasar-fanindo",
+    "nama": "Pasar Fanindo",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_tradisional",
+    "kecamatan": "Batu Aji",
+    "kelurahan": null,
+    "alamat": "Fanindo",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://metropolis.batampos.co.id/rekomendasi-5-pasar-basah-modern-favorit-warga-batam-belanja-makin-nyaman/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-pasar-mega-legenda",
+    "nama": "Pasar Mega Legenda",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_tradisional",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Mega Legenda",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://metropolis.batampos.co.id/rekomendasi-5-pasar-basah-modern-favorit-warga-batam-belanja-makin-nyaman/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-pasar-mitra-raya",
+    "nama": "Pasar Mitra Raya",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_tradisional",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Batam Centre",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://rentalmobilbatam212.com/5-pasar-tradisional-di-batam-yang-tak-pernah-sepi-surganya-belanja-murah-dan-kuliner-lokal/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-pasar-penuin",
+    "nama": "Pasar Penuin",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_tradisional",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": "Penuin",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://mediaindonesia.com/kuliner/716248/menjelajahi-jajanan-pasar-di-batam-kekayaan-kuliner-lokal"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-pasar-aviari",
+    "nama": "Pasar Aviari",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_tradisional",
+    "kecamatan": "Batu Aji",
+    "kelurahan": null,
+    "alamat": "Aviari",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://www.tempo.co/gaya-hidup/60-pasar-ramadan-tersebar-di-batam-ini-daftar-lokasinya-208409"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pub-dataran-engku-putri",
+    "nama": "Dataran Engku Putri",
+    "nama_alternatif": [],
+    "kategori": "ruang_publik",
+    "subkategori": "taman",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Batam Centre",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Kandidat ±1.128, 104.054 (estimasi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "[Lintas laporan] 07-direktori-layanan-publik memberi 1.106639, 104.052681 (batamgems, perlu_cek_ulang), berbeda dari kandidat di laporan ini.",
+    "tag_osm": "leisure=park",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Batam_Center_Ferry_Terminal"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pub-taman-dang-anom",
+    "nama": "Taman Dang Anom",
+    "nama_alternatif": [],
+    "kategori": "ruang_publik",
+    "subkategori": "taman",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Batam Centre",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "leisure=park",
+    "sumber_url": [
+      "https://www.tempo.co/gaya-hidup/60-pasar-ramadan-tersebar-di-batam-ini-daftar-lokasinya-208409"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pub-pantai-melur",
+    "nama": "Pantai Melur",
+    "nama_alternatif": [],
+    "kategori": "ruang_publik",
+    "subkategori": "pantai",
+    "kecamatan": "Galang",
+    "kelurahan": "Sijantung",
+    "alamat": "Sijantung, Pulau Galang",
+    "lat": 0.755748,
+    "lng": 104.186082,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Trip.com (pihak ketiga).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "natural=beach",
+    "sumber_url": [
+      "https://us.trip.com/travel-guide/attraction/galang/pantai-melur-barelang-147494728/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pub-pantai-nongsa",
+    "nama": "Pantai Nongsa",
+    "nama_alternatif": [],
+    "kategori": "ruang_publik",
+    "subkategori": "pantai",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Nongsa",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "Tidak ada sumber URL di laporan.",
+    "tag_osm": "natural=beach",
+    "sumber_url": [],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-sdn-005-batam-kota",
+    "nama": "SD Negeri 005 Batam Kota",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "sd",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Baloi Permai",
+    "alamat": "Plamo Garden, Baloi Permai",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "npsn": "11001568"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=school + isced:level",
+    "sumber_url": [
+      "https://referensi.data.kemendikdasmen.go.id/pendidikan/dikdas/316012/3/jf/all/s1"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-sdn-009-batam-kota",
+    "nama": "SD Negeri 009 Batam Kota",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "sd",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Belian",
+    "alamat": "Komplek Botania Garden, Belian",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "npsn": "11003047"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=school + isced:level",
+    "sumber_url": [
+      "https://referensi.data.kemendikdasmen.go.id/pendidikan/dikdas/316012/3/jf/all/s1"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-smpn-6-batam",
+    "nama": "SMP Negeri 6 Batam",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "smp",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Sungai Panas",
+    "alamat": "Jl. Laksamana Bintan, Sungai Panas",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "npsn": "11000374"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=school + isced:level",
+    "sumber_url": [
+      "https://referensi.data.kemendikdasmen.go.id/pendidikan/dikdas/316012/3/jf/all/s1"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-smpn-12-batam",
+    "nama": "SMP Negeri 12 Batam",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "smp",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Baloi Permai",
+    "alamat": "Legenda Malaka, Baloi Permai",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "npsn": "11001739"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=school + isced:level",
+    "sumber_url": [
+      "https://referensi.data.kemendikdasmen.go.id/pendidikan/dikdas/316012/3/jf/all/s1"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-smp-kalam-kudus-1",
+    "nama": "SMP Kristen Kalam Kudus 1 Batam",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "smp",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Taman Baloi",
+    "alamat": "Kompleks Orchid Park Blok C, Taman Baloi",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "npsn": "11001775"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=school + isced:level",
+    "sumber_url": [
+      "https://referensi.data.kemendikdasmen.go.id/pendidikan/dikdas/316012/3/jf/6/s2"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-smp-binus-batam",
+    "nama": "SMP Swasta Bina Nusantara Batam",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "smp",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Baloi Permai",
+    "alamat": "Plamo Garden G4 9-14, Baloi Permai",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "npsn": "69815455"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=school + isced:level",
+    "sumber_url": [
+      "https://referensi.data.kemendikdasmen.go.id/pendidikan/dikdas/316012/3/jf/6/s2"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-sman-1-batam",
+    "nama": "SMA Negeri 1 Batam",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "sma",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "Sekupang (perlu cek)",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": null,
+    "tag_osm": "amenity=school + isced:level",
+    "sumber_url": [
+      "https://batam.tribunnews.com/2025/06/11/daftar-lengkap-kuota-spmb-sman-20252026-kota-batam-kepri-total-ada-29-sman"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-smkn-5-batam",
+    "nama": "SMK Negeri 5 Batam",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "smk",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Alamat di seed: 'Perlu cek'. Kecamatan dan alamat perlu dicek (laporan).",
+    "tag_osm": "amenity=school + isced:level",
+    "sumber_url": [
+      "https://batam.tribunnews.com/news/686380/dana-bos-2026-smasmk-di-batam-rp-1174-miliar-smk-negeri-5-batam-kelola-rp-106-miliar"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-polibatam",
+    "nama": "Politeknik Negeri Batam",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "politeknik",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Alamat di seed: 'Perlu cek di PDDikti'. Alamat perlu cek di PDDikti (laporan); tidak ada sumber URL.",
+    "tag_osm": "amenity=college",
+    "sumber_url": [],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-unrika",
+    "nama": "Universitas Riau Kepulauan",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "universitas",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Alamat di seed: 'Perlu cek di PDDikti'. Alamat perlu cek di PDDikti (laporan); tidak ada sumber URL.",
+    "tag_osm": "amenity=university",
+    "sumber_url": [],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-upb",
+    "nama": "Universitas Putera Batam",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "universitas",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Alamat di seed: 'Perlu cek di PDDikti'. Alamat perlu cek di PDDikti (laporan); tidak ada sumber URL.",
+    "tag_osm": "amenity=university",
+    "sumber_url": [],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "pdk-uniba",
+    "nama": "Universitas Batam",
+    "nama_alternatif": [],
+    "kategori": "pendidikan",
+    "subkategori": "universitas",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Kawasan Uniba, Belian (perlu cek)",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "sumber_url di seed menunjuk halaman Wikipedia daftar rumah sakit (dipertahankan apa adanya).",
+    "tag_osm": "amenity=university",
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Daftar_rumah_sakit_di_Kota_Batam"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "akm-hotel-maxone",
+    "nama": "Hotel Maxone Batam",
+    "nama_alternatif": [],
+    "kategori": "akomodasi",
+    "subkategori": "hotel",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "bintang": 3
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Alamat di seed: 'Perlu cek'. Alamat perlu cek (laporan). Kecamatan dan kelas bintang dari SISPEK.",
+    "tag_osm": "tourism=hotel + stars",
+    "sumber_url": [
+      "https://sispek.batam.go.id/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "akm-ibis-styles-batam",
+    "nama": "Ibis Styles Hotel Batam",
+    "nama_alternatif": [],
+    "kategori": "akomodasi",
+    "subkategori": "hotel",
+    "kecamatan": "Bengkong",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "bintang": 4
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Alamat di seed: 'Perlu cek'. Alamat perlu cek (laporan). Kecamatan dan kelas bintang dari SISPEK.",
+    "tag_osm": "tourism=hotel + stars",
+    "sumber_url": [
+      "https://sispek.batam.go.id/"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "akm-montigo-resorts",
+    "nama": "Montigo Resorts Batam",
+    "nama_alternatif": [],
+    "kategori": "akomodasi",
+    "subkategori": "resort",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Nongsa",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "tourism=hotel + stars",
+    "sumber_url": [
+      "https://www.1001malam.com/hotel/batam-38/ct/hotel-bintang-5-di-batam"
+    ],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "blj-pasar-induk-jodoh",
+    "nama": "Pasar Induk Jodoh",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_tradisional",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "status_tempat": "rencana",
+      "jumlah_lantai": 5,
+      "luas_lahan": "2,1 hektare",
+      "kapasitas_pedagang": "lebih dari 1.800 pedagang",
+      "mitra_kerja_sama": "PT Usaha Jaya Karya Makmur",
+      "perjanjian_kerja_sama": "Maret 2026 (ANTARA Kepri, GoKepri)",
+      "status_konstruksi": "sudah berjalan menurut Infosatelitnews (21 Agustus 2026)",
+      "relokasi_pedagang": "dijadwalkan 2027–2028 (GoKepri)"
+    },
+    "status_data": "rencana",
+    "catatan": "Disebut di prosa (bagian Belanja dan Caveats), tidak ada di seed JSON. Bagian penataan kawasan Tos 3000. Laporan: tandai status_tempat = \"rencana\" sampai pasar resmi dibuka. Kecamatan tidak disebut laporan. Sumber berita (ANTARA Kepri, GoKepri, Infosatelitnews) tidak punya URL di daftar sumber.",
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [],
+    "sumber_riset": "06-direktori-taksonomi"
+  },
+  {
+    "id": "trans-pelabuhan-waterfront-city",
+    "nama": "Waterfront City/Marina Teluk Senimba",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_internasional",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tujuan": [
+        "Singapura"
+      ],
+      "jadwal": "terbatas"
+    },
+    "status_data": null,
+    "catatan": "Disebut di Key Findings sebagai titik keberangkatan feri ke Singapura dengan jadwal terbatas; tidak ada di seed JSON. Kecamatan tidak disebut laporan. [Lintas laporan] 07-direktori-layanan-publik menempatkannya di Sekupang, kelurahan Tanjung Riau.",
+    "tag_osm": "amenity=ferry_terminal",
+    "sumber_url": [],
+    "sumber_riset": "06-direktori-taksonomi"
+  }
+]

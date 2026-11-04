@@ -1,0 +1,140 @@
+[
+  {
+    "tokoh_a": "raja_haji_fisabilillah",
+    "tokoh_b": "engku_putri",
+    "jenis_hubungan": "ayah-anak",
+    "sumber_url": "https://disbudpar.tanjungpinangkota.go.id/destinasi-detail/komplek-makam-engku-putri-raja-hamidah-dan-raja-ali-h"
+  },
+  {
+    "tokoh_a": "raja_haji_fisabilillah",
+    "tokoh_b": "engku_haji_tua",
+    "jenis_hubungan": "ayah-anak",
+    "sumber_url": "https://ms.wikipedia.org/wiki/Engku_Haji"
+  },
+  {
+    "tokoh_a": "engku_haji_tua",
+    "tokoh_b": "raja_ali_haji",
+    "jenis_hubungan": "ayah-anak",
+    "sumber_url": "https://ms.wikipedia.org/wiki/Engku_Haji"
+  },
+  {
+    "tokoh_a": "raja_haji_fisabilillah",
+    "tokoh_b": "raja_ali_haji",
+    "jenis_hubungan": "kakek-cucu",
+    "sumber_url": "https://www.detik.com/sumut/berita/d-7029197/mengenal-tiga-pahlawan-nasional-dari-provinsi-kepri"
+  },
+  {
+    "tokoh_a": "engku_putri",
+    "tokoh_b": "engku_haji_tua",
+    "jenis_hubungan": "saudara",
+    "sumber_url": "https://ms.wikipedia.org/wiki/Engku_Haji"
+  },
+  {
+    "tokoh_a": "engku_putri",
+    "tokoh_b": "sultan_mahmud_riayat_syah",
+    "jenis_hubungan": "suami-istri",
+    "sumber_url": "https://kebudayaan.kemdikbud.go.id/bpnbkepri/berdarah-melayu-pertama-sejak-kepri-terbentuk-sultan-mahmud-riayat-syah-jadi-pahlawan-nasional/"
+  },
+  {
+    "tokoh_a": "sultan_mahmud_riayat_syah",
+    "tokoh_b": "sultan_abdul_rahman_1",
+    "jenis_hubungan": "ayah-anak",
+    "sumber_url": "https://en.wikipedia.org/wiki/Mahmud_Shah_III_of_Johor"
+  },
+  {
+    "tokoh_a": "engku_putri",
+    "tokoh_b": "sultan_abdul_rahman_1",
+    "jenis_hubungan": "menahan regalia saat penobatan 1812",
+    "sumber_url": "http://digilib.uinsa.ac.id/44087/2/Yune%20Thalia%20Razak_A72213146.pdf"
+  },
+  {
+    "tokoh_a": "sultan_abdul_rahman_1",
+    "tokoh_b": "nong_isa",
+    "jenis_hubungan": "pemberi mandat 1829",
+    "sumber_url": "https://mediacenter.batam.go.id/2022/12/15/tak-lupakan-sejarah-rudi-ziarah-makam-zuriat-nong-isa/"
+  },
+  {
+    "tokoh_a": "temenggung_abdul_jamal",
+    "tokoh_b": "raja_maimunah",
+    "jenis_hubungan": "suami-istri",
+    "sumber_url": "https://kepri.antaranews.com/berita/25686/warisan-sejarah-pulau-bulang-tanpa-rekam-jejak"
+  },
+  {
+    "tokoh_a": "embung_fatimah",
+    "tokoh_b": "raja_ali_kelana",
+    "jenis_hubungan": "ibu tiri (Raja Ali Kelana saudara seayah putra Embung Fatimah)",
+    "sumber_url": "https://www.hariankepri.com/raja-ali-kelana-dan-kepemilikan-kepulauan-batam/"
+  },
+  {
+    "tokoh_a": "batin_limat",
+    "tokoh_b": "embung_fatimah",
+    "jenis_hubungan": "setia kepada putranya, Sultan Abdul Rahman II, saat pemakzulan 1911",
+    "sumber_url": "https://pijarkepri.com/2023/09/sejarah-penduduk-rempang-dan-galang/"
+  },
+  {
+    "tokoh_a": "raja_kecik",
+    "tokoh_b": "raja_haji_fisabilillah",
+    "jenis_hubungan": "kekalahan Raja Kecik dari Bugis (1722) membuka jabatan YDM bagi keluarga Daeng Celak",
+    "sumber_url": "https://en.wikipedia.org/wiki/Sulaiman_Badrul_Alam_Shah_of_Johor"
+  },
+  {
+    "tokoh_a": "hang_tuah",
+    "tokoh_b": "hang_jebat",
+    "jenis_hubungan": "sahabat; Hang Tuah membunuh Hang Jebat (hikayat)",
+    "sumber_url": "https://en.wikipedia.org/wiki/Hikayat_Hang_Tuah"
+  },
+  {
+    "tokoh_a": "hang_tuah",
+    "tokoh_b": "hang_kasturi",
+    "jenis_hubungan": "sahabat; pemberontak versi Sejarah Melayu",
+    "sumber_url": "https://en.wikipedia.org/wiki/Hikayat_Hang_Tuah"
+  },
+  {
+    "tokoh_a": "hang_tuah",
+    "tokoh_b": "hang_lekir",
+    "jenis_hubungan": "sahabat seperguruan",
+    "sumber_url": "https://en.wikipedia.org/wiki/Hikayat_Hang_Tuah"
+  },
+  {
+    "tokoh_a": "hang_tuah",
+    "tokoh_b": "hang_lekiu",
+    "jenis_hubungan": "sahabat seperguruan",
+    "sumber_url": "https://en.wikipedia.org/wiki/Hikayat_Hang_Tuah"
+  },
+  {
+    "tokoh_a": "dang_merdu",
+    "tokoh_b": "hang_tuah",
+    "jenis_hubungan": "ibu-anak (hikayat)",
+    "sumber_url": "https://en.wikipedia.org/wiki/Hikayat_Hang_Tuah"
+  },
+  {
+    "tokoh_a": "hang_jebat",
+    "tokoh_b": "hang_nadim",
+    "jenis_hubungan": "ayah-anak (Sejarah Melayu)",
+    "sumber_url": "https://en.wikipedia.org/wiki/Hang_Nadim"
+  },
+  {
+    "tokoh_a": "hang_tuah",
+    "tokoh_b": "hang_nadim",
+    "jenis_hubungan": "ayah angkat (Sejarah Melayu)",
+    "sumber_url": "https://en.wikipedia.org/wiki/Hang_Nadim"
+  },
+  {
+    "tokoh_a": "hang_tuah",
+    "tokoh_b": "laksamana_bintan",
+    "jenis_hubungan": "pemegang gelar Laksamana",
+    "sumber_url": "https://en.wikipedia.org/wiki/Hang_Tuah"
+  },
+  {
+    "tokoh_a": "tuanku_tambusai",
+    "tokoh_b": "sultan_zainal_abidin_rokan",
+    "jenis_hubungan": "sama-sama pejuang Tambusai/Rokan",
+    "sumber_url": "https://rokanhulukab.go.id/detailpost/perang-siasat-politik-antara-sultan-zainal-abidin-lawan-kolonial-belanda"
+  },
+  {
+    "tokoh_a": "ibnu_sutowo",
+    "tokoh_b": "bj_habibie",
+    "jenis_hubungan": "pendahulu-penerus di Otorita Batam",
+    "sumber_url": "https://www.metrotvnews.com/play/kj2CnVJa-kepemimpinan-bp-batam-dari-masa-ke-masa"
+  }
+]

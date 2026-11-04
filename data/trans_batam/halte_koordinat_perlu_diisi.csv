@@ -1,0 +1,192 @@
+id,nama,kelompok,koridor,kecamatan,alamat,lat,lng,status_koordinat,catatan_koordinat,cari_di_google_maps
+tp-batam-center,Transferpoint Batam Center,tp-batam-center,K1 K2 K5 K6 K7,Batam Kota,Jl. Duyung / kawasan Mega Mall–Pelabuhan Batam Centre (perlu_cek_ulang),1.130856,104.055225,perlu_cek_ulang,"titik terminal feri, halte ±240 m",https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Transferpoint+Batam+Center+Batam
+tp-sekupang,Transferpoint Sekupang,tp-sekupang,K1 K3 K4,Sekupang,Pelabuhan Domestik Sekupang,1.13139,103.92528,perlu_cek_ulang,titik pelabuhan (BP Batam),https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Transferpoint+Sekupang+Batam
+tp-jodoh,Transferpoint Terminal Jodoh,tp-jodoh,K3 K5 K8,Batu Ampar,Sungai Jodoh (Waze plus code 42X3+XR8),,,perlu_diisi_user,"landmark dekat: Jodoh Square II 1.1525,104.0036",https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Transferpoint+Terminal+Jodoh+Batam
+tp-punggur,Transferpoint Punggur,tp-punggur,K8 K9,Nongsa,Pelabuhan Telaga Punggur,1.03523,104.133397,perlu_cek_ulang,"Wikidata; BP Batam memberi 1.1175,104.1683 (konflik ±9 km)",https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Transferpoint+Punggur+Batam
+bandara-hang-nadim,Bandara Hang Nadim (pintu kedatangan),bandara-hang-nadim,K7,Nongsa,Area kedatangan Bandara Internasional Hang Nadim,1.12083,104.11861,perlu_cek_ulang,titik referensi bandara,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bandara+Hang+Nadim+%28pintu+kedatangan%29+Batam
+pelabuhan-nongsa,Pelabuhan Nongsa,pelabuhan-nongsa,K7,Nongsa,Nongsa Pura Ferry Terminal,1.188382,104.094902,perlu_cek_ulang,titik terminal feri (Wikidata),https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pelabuhan+Nongsa+Batam
+teluk-mata-ikan,Teluk Mata Ikan,teluk-mata-ikan,K7,Nongsa,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Teluk+Mata+Ikan+Batam
+pelabuhan-sagulung,Pelabuhan Sagulung,pelabuhan-sagulung,K4,Sagulung,Pelabuhan Rakyat Sagulung,1.026217,103.9255162,perlu_cek_ulang,"koordinat lama = titik landmark, bukan posisi halte",https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pelabuhan+Sagulung+Batam
+hidayatullah,Hidayatullah (A/B),hidayatullah,K2 K4,Sagulung,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Hidayatullah+%28A%2FB%29+Batam
+tanjung-piayu-laut,Tanjung Piayu Laut,tanjung-piayu-laut,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Tanjung+Piayu+Laut+Batam
+harbourbay,Harbourbay,harbourbay,K5,Batu Ampar,"Jl. Duyung, Sungai Jodoh",1.15389,103.99711,perlu_cek_ulang,titik terminal feri (Wikidata),https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Harbourbay+Batam
+kepri-mall,Kepri Mall (A/B),kepri-mall,K2 K6,Batam Kota,Jl. Jend. Sudirman,1.10111,104.03639,perlu_cek_ulang,titik mal,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kepri+Mall+%28A%2FB%29+Batam
+panbil,Panbil Mukakuning / Kawasan Industri Panbil,panbil,K2 K6,Sei Beduk,"Jl. Ahmad Yani, Muka Kuning",1.072,104.024,perlu_cek_ulang,titik Panbil Mall,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Panbil+Mukakuning+%2F+Kawasan+Industri+Panbil+Batam
+politeknik,Politeknik (A/B),politeknik,K2 K6,Batam Kota,"Jl. Ahmad Yani, Batam Centre",1.11869,104.048442,perlu_cek_ulang,titik kampus Polibatam,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Politeknik+%28A%2FB%29+Batam
+mega-mall,Mega Mall,mega-mall,K1 K5,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Mega+Mall+Batam
+bundaran-madani,Bundaran Madani,bundaran-madani,K1 K5,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bundaran+Madani+Batam
+uib,UIB (A/B),uib,K1 K3,,Jl. Gajah Mada (perlu_cek_ulang),,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+UIB+%28A%2FB%29+Batam
+kabil-raya,Kabil Raya,kabil-raya,K8 K9,Nongsa,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kabil+Raya+Batam
+kampung-mangga,Kampung Mangga,kampung-mangga,K7 K9,Nongsa,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kampung+Mangga+Batam
+taman-palapa,Taman Palapa,taman-palapa,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Taman+Palapa+Batam
+telkom-sekupang,Telkom Sekupang,telkom-sekupang,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Telkom+Sekupang+Batam
+shangrila-a,Shangrila A,shangrila,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Shangrila+A+Batam
+lampu-merah-patam-lestari,Lampu Merah Patam Lestari,lampu-merah-patam-lestari,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Lampu+Merah+Patam+Lestari+Batam
+kartini,Kartini,kartini,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kartini+Batam
+stc,STC,stc,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+STC+Batam
+gor-sekupang-a,GOR Sekupang A,gor-sekupang,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+GOR+Sekupang+A+Batam
+mutiara-view,Mutiara View,mutiara-view,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Mutiara+View+Batam
+tiban-iii,Tiban III,tiban-iii,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Tiban+III+Batam
+tiban-raya,Tiban Raya,tiban-raya,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Tiban+Raya+Batam
+taman-sari-a,Taman Sari A,taman-sari,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Taman+Sari+A+Batam
+tiban-center,Tiban Center,tiban-center,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Tiban+Center+Batam
+tiban-ayu-a,Tiban Ayu A,tiban-ayu,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Tiban+Ayu+A+Batam
+tiban-kampung-a,Tiban Kampung A,tiban-kampung,K1 K3,Sekupang,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Tiban+Kampung+A+Batam
+baloi-view,Baloi View,baloi-view,K1,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Baloi+View+Batam
+rs-awal-bros,RS Awal Bros,rs-awal-bros,K1,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+RS+Awal+Bros+Batam
+orchid-a,Orchid A,orchid,K1,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Orchid+A+Batam
+gelael-a,Gelael A,gelael,K1,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Gelael+A+Batam
+raflesia-a,Raflesia A,raflesia,K1 K5,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Raflesia+A+Batam
+kawasaki-a,Kawasaki A,kawasaki,K1 K5,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kawasaki+A+Batam
+royal-grande,Royal Grande,royal-grande,K1 K5,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Royal+Grande+Batam
+kadin,Kadin,kadin,K1 K5,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kadin+Batam
+ikan-daun,Ikan Daun,ikan-daun,K1 K2 K5,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Ikan+Daun+Batam
+inko,INKO,inko,K1 K2 K5,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+INKO+Batam
+engku-putri,Engku Putri,engku-putri,K1 K5,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Engku+Putri+Batam
+imigrasi,Imigrasi,imigrasi,K1 K5,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Imigrasi+Batam
+kantor-pos,Kantor Pos,kantor-pos,K1 K2 K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kantor+Pos+Batam
+harmoni-one,Harmoni One,harmoni-one,K1 K2 K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Harmoni+One+Batam
+green-land,Green Land,green-land,K1,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Green+Land+Batam
+yos-sudarso,Yos Sudarso,yos-sudarso,K1,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Yos+Sudarso+Batam
+kawasaki-b,Kawasaki B,kawasaki,K1 K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kawasaki+B+Batam
+taman-sari-b,Taman Sari B,taman-sari,K1,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Taman+Sari+B+Batam
+cipta-puri,Cipta Puri,cipta-puri,K1,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Cipta+Puri+Batam
+gor-sekupang-b,GOR Sekupang B,gor-sekupang,K1,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+GOR+Sekupang+B+Batam
+sei-harapan,Sei Harapan,sei-harapan,K1 K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Sei+Harapan+Batam
+pci,PCI,pci,K1,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+PCI+Batam
+masjid-agung,Masjid Agung,masjid-agung,K2 K6,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Masjid+Agung+Batam
+centro-coffee,Centro Coffee,centro-coffee,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Centro+Coffee+Batam
+simpang-frangky-b,Simpang Frangky B,simpang-frangky,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Simpang+Frangky+B+Batam
+anggrek-sari,Anggrek Sari,anggrek-sari,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Anggrek+Sari+Batam
+simpang-kara-b,Simpang Kara B,simpang-kara,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Simpang+Kara+B+Batam
+plamo,Plamo,plamo,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Plamo+Batam
+taman-niaga-b,Taman Niaga B,taman-niaga,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Taman+Niaga+B+Batam
+stadion-temenggung-b,Stadion Temenggung B,stadion-temenggung,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Stadion+Temenggung+B+Batam
+top-100-batuaji-b,Top 100 Batuaji B,top-100-batuaji,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Top+100+Batuaji+B+Batam
+simpang-tembesi-b,Simpang Tembesi B,simpang-tembesi,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Simpang+Tembesi+B+Batam
+villa-mukakuning-b,Villa Mukakuning B,villa-mukakuning,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Villa+Mukakuning+B+Batam
+putri-tujuh-b,Putri Tujuh B,putri-tujuh,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Putri+Tujuh+B+Batam
+jpo-plaza-sp-b,JPO Plaza SP B,jpo-plaza-sp,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+JPO+Plaza+SP+B+Batam
+putri-hijau-b,Putri Hijau B,putri-hijau,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Putri+Hijau+B+Batam
+pandawa,Pandawa,pandawa,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pandawa+Batam
+kavling-baru-b,Kavling Baru B,kavling-baru,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kavling+Baru+B+Batam
+buana-raya,Buana Raya,buana-raya,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Buana+Raya+Batam
+puskopkar-b,Puskopkar B,puskopkar,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Puskopkar+B+Batam
+classic-b,Classic B,classic,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Classic+B+Batam
+kavling-lama-b,Kavling Lama B,kavling-lama,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kavling+Lama+B+Batam
+gor-batuaji-b,GOR Batuaji B,gor-batuaji,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+GOR+Batuaji+B+Batam
+base-camp-b,Base Camp B,basecamp,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Base+Camp+B+Batam
+smpn-9-batam-b,SMPN 9 Batam B,smpn-9-batam,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+SMPN+9+Batam+B+Batam
+taman-carina-b,Taman Carina B,taman-carina,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Taman+Carina+B+Batam
+jpo-pjb-b,JPO PJB B,jpo-pjb,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+JPO+PJB+B+Batam
+mts,MTs,mts,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+MTs+Batam
+top-100-regency-b,Top 100 Regency B,top-100-regency,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Top+100+Regency+B+Batam
+tunas,Tunas,tunas,K2,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Tunas+Batam
+taman-kota,Taman Kota,taman-kota,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Taman+Kota+Batam
+pantai-permata,Pantai Permata,pantai-permata,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pantai+Permata+Batam
+baloi-mas,Baloi Mas,baloi-mas,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Baloi+Mas+Batam
+grand-mall,Grand Mall,grand-mall,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Grand+Mall+Batam
+pantai-harapan,Pantai Harapan,pantai-harapan,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pantai+Harapan+Batam
+harmoni-suites,Harmoni Suites,harmoni-suites,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Harmoni+Suites+Batam
+nagoya-hill,Nagoya Hill,nagoya-hill,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Nagoya+Hill+Batam
+bri-nagoya,BRI Nagoya,bri-nagoya,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+BRI+Nagoya+Batam
+top-100-jodoh,Top 100 Jodoh,top-100-jodoh,K3 K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Top+100+Jodoh+Batam
+dc-mall-sw,DC Mall SW,dc-mall-sw,K3 K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+DC+Mall+SW+Batam
+tanjunguma,Tanjunguma,tanjunguma,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Tanjunguma+Batam
+dc-mall,DC Mall,dc-mall,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+DC+Mall+Batam
+pasar-angkasa-b,Pasar Angkasa B,pasar-angkasa,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pasar+Angkasa+B+Batam
+pasar-induk,Pasar Induk,pasar-induk,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pasar+Induk+Batam
+pacific-hotel,Pacific Hotel,pacific-hotel,K3 K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pacific+Hotel+Batam
+bri-jodoh-b,BRI Jodoh B,bri-jodoh,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+BRI+Jodoh+B+Batam
+bca-jodoh-b,BCA Jodoh B,bca-jodoh,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+BCA+Jodoh+B+Batam
+bpjs-ketenagakerjaan,BPJS Ketenagakerjaan,bpjs-ketenagakerjaan,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+BPJS+Ketenagakerjaan+Batam
+dana-graha,Dana Graha,dana-graha,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Dana+Graha+Batam
+bank-mandiri,Bank Mandiri,bank-mandiri,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bank+Mandiri+Batam
+windsor,Windsor,windsor,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Windsor+Batam
+vihara,Vihara,vihara,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Vihara+Batam
+penuin,Penuin,penuin,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Penuin+Batam
+tiban-kampung,Tiban Kampung,tiban-kampung,K3,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Tiban+Kampung+Batam
+latrade,Latrade,latrade,K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Latrade+Batam
+masjid-agung-sultan-riayat-syah,Masjid Agung Sultan Riayat Syah,masjid-agung-sultan-riayat-syah,K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Masjid+Agung+Sultan+Riayat+Syah+Batam
+fanindo,Fanindo,fanindo,K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Fanindo+Batam
+basecamp,Basecamp,basecamp,K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Basecamp+Batam
+jupiter,Jupiter,jupiter,K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Jupiter+Batam
+balai-pelatihan-kesehatan,Balai Pelatihan Kesehatan,balai-pelatihan-kesehatan,K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Balai+Pelatihan+Kesehatan+Batam
+marina-waterfront,Marina Waterfront,marina-waterfront,K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Marina+Waterfront+Batam
+harris-resort,Harris Resort,harris-resort,K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Harris+Resort+Batam
+tanjung-riau,Tanjung Riau,tanjung-riau,K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Tanjung+Riau+Batam
+sunbread,Sunbread,sunbread,K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Sunbread+Batam
+pasar-angkasa,Pasar Angkasa,pasar-angkasa,K5 K8,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pasar+Angkasa+Batam
+polsek-batu-ampar,Polsek Batu Ampar,polsek-batu-ampar,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Polsek+Batu+Ampar+Batam
+monte-siena,Monte Siena,monte-siena,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Monte+Siena+Batam
+bengkong-garama,Bengkong Garama,bengkong-garama,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bengkong+Garama+Batam
+damkar-sei-panas,Damkar Sei Panas,damkar-sei-panas,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Damkar+Sei+Panas+Batam
+bank-riau-kepri,Bank Riau Kepri,bank-riau,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bank+Riau+Kepri+Batam
+rafflesia,Rafflesia,raflesia,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Rafflesia+Batam
+kawasaki,Kawasaki,kawasaki,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kawasaki+Batam
+raflesia-b,Raflesia B,raflesia,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Raflesia+B+Batam
+bank-riau-b,Bank Riau B,bank-riau,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bank+Riau+B+Batam
+damkar-sei-panas-b,Damkar Sei Panas B,damkar-sei-panas,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Damkar+Sei+Panas+B+Batam
+garama-2,Garama 2,bengkong-garama,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Garama+2+Batam
+melchem-2,Melchem 2,melchem-2,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Melchem+2+Batam
+tg-sengkuang,Tg Sengkuang,tg-sengkuang,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Tg+Sengkuang+Batam
+lurah-sengkuang,Lurah Sengkuang,lurah-sengkuang,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Lurah+Sengkuang+Batam
+tvs-2,TVS 2,tvs-2,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+TVS+2+Batam
+sindo-2,Sindo 2,sindo-2,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Sindo+2+Batam
+monte-siena-2,Monte Siena 2,monte-siena,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Monte+Siena+2+Batam
+batu-ampar,Batu Ampar,batu-ampar,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Batu+Ampar+Batam
+damkar-sei-panas-a,Damkar Sei Panas A,damkar-sei-panas,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Damkar+Sei+Panas+A+Batam
+bank-riau-a,Bank Riau A,bank-riau,K5,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bank+Riau+A+Batam
+kampung-jawa,Kampung Jawa,kampung-jawa,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kampung+Jawa+Batam
+laguna,Laguna,laguna,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Laguna+Batam
+oleana,Oleana,oleana,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Oleana+Batam
+bukit-barelang,Bukit Barelang,bukit-barelang,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bukit+Barelang+Batam
+rhabayu-asri-a,Rhabayu Asri A,rhabayu-asri,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Rhabayu+Asri+A+Batam
+smpn-40,SMPN 40,smpn-40,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+SMPN+40+Batam
+simpang-pancur,Simpang Pancur,simpang-pancur,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Simpang+Pancur+Batam
+pasar-pancur,Pasar Pancur,pasar-pancur,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pasar+Pancur+Batam
+simpang-bagan,Simpang Bagan,simpang-bagan,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Simpang+Bagan+Batam
+simpang-atb,Simpang ATB,simpang-atb,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Simpang+ATB+Batam
+bidaayu-pintu-3,Bidaayu Pintu 3,bidaayu-pintu-3,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bidaayu+Pintu+3+Batam
+bidaayu-pintu,Bidaayu Pintu,bidaayu-pintu,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bidaayu+Pintu+Batam
+smpn-16,SMPN 16,smpn-16,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+SMPN+16+Batam
+bidadari,Bidadari,bidadari,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bidadari+Batam
+nusa-indah,Nusa Indah,nusa-indah,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Nusa+Indah+Batam
+bukit-sentosa,Bukit Sentosa,bukit-sentosa,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bukit+Sentosa+Batam
+pintu-4-mukakuning,Pintu 4 Mukakuning,pintu-4-mukakuning,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pintu+4+Mukakuning+Batam
+pintu-3-mukakuning,Pintu 3 Mukakuning,pintu-3-mukakuning,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pintu+3+Mukakuning+Batam
+pintu-2-mukakuning,Pintu 2 Mukakuning,pintu-2-mukakuning,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pintu+2+Mukakuning+Batam
+best-western-panbil,Best Western Panbil,best-western-panbil,K6,Sei Beduk,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Best+Western+Panbil+Batam
+stadion-temenggung,Stadion Temenggung,stadion-temenggung,K6,Batam Kota,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Stadion+Temenggung+Batam
+turi-beach,Turi Beach,turi-beach,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Turi+Beach+Batam
+polda-kepri,Polda Kepri,polda-kepri,K7 K9,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Polda+Kepri+Batam
+bandoeng-resto,Bandoeng Resto,bandoeng-resto,K7 K9,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bandoeng+Resto+Batam
+citra-mas,Citra Mas,citra-mas,K7 K9,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Citra+Mas+Batam
+kampung-tengah,Kampung Tengah,kampung-tengah,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kampung+Tengah+Batam
+simpang-ojek,Simpang Ojek,simpang-ojek,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Simpang+Ojek+Batam
+darul-falah,Darul Falah,darul-falah,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Darul+Falah+Batam
+pura-asri,Pura Asri,pura-asri,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pura+Asri+Batam
+family-garden,Family Garden,family-garden,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Family+Garden+Batam
+pasar-mtc,Pasar MTC,pasar-mtc,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pasar+MTC+Batam
+simpang-bandara,Simpang Bandara,simpang-bandara,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Simpang+Bandara+Batam
+dotamana,Dotamana,dotamana,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Dotamana+Batam
+bida-asri-2,Bida Asri 2,bida-asri-2,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Bida+Asri+2+Batam
+kapita-plaza,Kapita Plaza,kapita-plaza,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kapita+Plaza+Batam
+botania-2,Botania 2,botania-2,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Botania+2+Batam
+uniba,Uniba,uniba,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Uniba+Batam
+mustafa-plaza,Mustafa Plaza,mustafa-plaza,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Mustafa+Plaza+Batam
+kantor-camat-batam-kota,Kantor Camat Batam Kota,kantor-camat-batam-kota,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kantor+Camat+Batam+Kota+Batam
+kda,KDA,kda,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+KDA+Batam
+puri-legenda,Puri Legenda,puri-legenda,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Puri+Legenda+Batam
+grand-mas,Grand Mas,grand-mas,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Grand+Mas+Batam
+purimas,Purimas,purimas,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Purimas+Batam
+gedung-lam,Gedung LAM,gedung-lam,K7,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Gedung+LAM+Batam
+pltu-tanjung-kasam,PLTU Tanjung Kasam,pltu-tanjung-kasam,K8 K9,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+PLTU+Tanjung+Kasam+Batam
+tpa,TPA,tpa,K8 K9,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+TPA+Batam
+polsek-nongsa,Polsek Nongsa,polsek-nongsa,K8 K9,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Polsek+Nongsa+Batam
+pasar-top-one,Pasar Top One,pasar-top-one,K8 K9,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Pasar+Top+One+Batam
+al-munawaroh,Al Munawaroh,al-munawaroh,K9,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Al+Munawaroh+Batam
+bri-batu-besar,BRI Batu Besar,bri-batu-besar,K9,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+BRI+Batu+Besar+Batam
+kampung-sambau,Kampung Sambau,kampung-sambau,K9,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Kampung+Sambau+Batam
+rsbp,RSBP,rsbp,K4,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+RSBP+Batam
+masjid-raya-a,Masjid Raya A,masjid-raya,,,,,,perlu_diisi_user,,https://www.google.com/maps/search/?api=1&query=Halte+Trans+Batam+Masjid+Raya+A+Batam

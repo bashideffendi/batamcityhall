@@ -1,0 +1,76 @@
+{
+  "status": "[A: rekomendasi desain]",
+  "layer": [
+    {
+      "layer": "Darat",
+      "siang": "#F4EFE4",
+      "malam": "#16263A"
+    },
+    {
+      "layer": "Laut",
+      "siang": "#DCE3E1",
+      "malam": "#0F1B2A"
+    },
+    {
+      "layer": "Laut dangkal (0–5 m)",
+      "siang": "#E6EBE7",
+      "malam": "#132235"
+    },
+    {
+      "layer": "Garis kedalaman",
+      "siang": "#8FA5B0, 0,5 px, opacity 0,6",
+      "malam": "#EDE4CF, opacity 0,25"
+    },
+    {
+      "layer": "Waterlining pantai",
+      "siang": "#4E6A7A, opacity 0,35→0,1",
+      "malam": "#EDE4CF, opacity 0,3→0,08"
+    },
+    {
+      "layer": "Bakau (pola arsir)",
+      "siang": "#7C8C6E",
+      "malam": "#8FA597 opacity 0,5"
+    },
+    {
+      "layer": "Hutan (pola arsir)",
+      "siang": "#9AA38A",
+      "malam": "#6F8577 opacity 0,4"
+    },
+    {
+      "layer": "Jalan utama",
+      "siang": "#B9AE98",
+      "malam": "#3A4A5C"
+    },
+    {
+      "layer": "Jalan minor",
+      "siang": "#D8CFBD",
+      "malam": "#26364A"
+    },
+    {
+      "layer": "Bangunan",
+      "siang": "isi #E7DFCF, garis #BFB4A0",
+      "malam": "isi #1B2C41, garis #33465C"
+    },
+    {
+      "layer": "Rute feri",
+      "siang": "#A2482A, putus 4-3",
+      "malam": "#E08A63"
+    },
+    {
+      "layer": "Graticule & 1°N",
+      "siang": "#8B8579 (1°N: #A2482A)",
+      "malam": "#A5AAA8 (1°N: #E08A63)"
+    },
+    {
+      "layer": "Label air",
+      "siang": "#4E6A7A, halo #DCE3E1",
+      "malam": "#7FA3B5, halo #0F1B2A"
+    },
+    {
+      "layer": "Label darat",
+      "siang": "#1C1B19, halo #F4EFE4",
+      "malam": "#EDE4CF, halo #16263A"
+    }
+  ],
+  "sumber_riset": "05-panduan-gaya"
+}

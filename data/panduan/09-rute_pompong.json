@@ -1,0 +1,108 @@
+{
+ "judul": "Rute dan tarif pompong/pancung ke hinterland",
+ "sumber_riset": "09-direktori-celah",
+ "task_id": "wf-c44b0f7c-d7dc-821b-b2f4-992da004e4f7",
+ "catatan_umum": [
+  "Tarif pompong adalah tarif swadaya PPMS dan tekong, bukan tarif resmi pemerintah. Dishub hanya \"mengetahui\" kesepakatan tarif. Untuk pulau lain, tarifnya dinegosiasikan langsung dengan tekong.",
+  "Sejak itu belum ada sumber yang melaporkan perubahan, tapi tetap tandai \"mungkin usang\"."
+ ],
+ "belum_diriset": [
+  "Pulau Kasu",
+  "Pulau Terong (rute spesifik)"
+ ],
+ "rute": [
+  {
+   "id": "rute-sekupang-belakangpadang",
+   "asal": "Sekupang",
+   "tujuan": "Belakang Padang",
+   "tempat_asal_id": "trp-pancungsekupang",
+   "tempat_tujuan_id": "trp-pelbelakangpadang",
+   "moda": "pompong",
+   "operator": "PPMS (Persatuan Pengemudi Motor Sangkut)",
+   "jam_layanan": "24 jam (malam pesan dulu)",
+   "tarif": "Rp20.000/orang sekali jalan",
+   "tarif_idr": 20000,
+   "tarif_sebelumnya": "Rp18.000",
+   "tarif_sejak": "2022-09",
+   "alasan_kenaikan": "kenaikan harga BBM (Razali, pengurus Persatuan Pengemudi Motor Sangkut, kepada Tribun Batam, 5 September 2022)",
+   "tarif_carter": [
+    {
+     "penumpang": "1–4 orang",
+     "tarif": "Rp160.000"
+    },
+    {
+     "penumpang": "5–10 orang",
+     "tarif": "Rp200.000"
+    }
+   ],
+   "sumber_tarif_carter": "Kumparan/Kepripedia",
+   "durasi": "±10–25 menit",
+   "kapasitas": "12 penumpang per pompong",
+   "keterangan_tabel": "24 jam (malam pesan dulu) via PPMS; Rp20.000/orang sekali jalan; ±10–25 menit; 12 penumpang per pompong",
+   "status_data": "perlu_cek_ulang",
+   "catatan": "mungkin usang",
+   "sumber_url": [
+    "https://batam.tribunnews.com/2022/09/05/tarif-tiket-pompong-ke-belakangpadang-batam-naik-dampak-kenaikan-harga-bbm"
+   ]
+  },
+  {
+   "id": "rute-geranting-belakangpadang",
+   "asal": "Pulau Geranting",
+   "tujuan": "Belakang Padang",
+   "tempat_asal_id": null,
+   "tempat_tujuan_id": "trp-pelbelakangpadang",
+   "moda": null,
+   "durasi": "±1 jam",
+   "tarif": "Rp140.000/orang",
+   "tarif_idr": 140000,
+   "keterangan_tabel": "ke Sekupang Rp20.000; Pulau Geranting ke Belakang Padang ±1 jam, Rp140.000/orang",
+   "status_data": null,
+   "sumber_url": [
+    "https://nasional.tvrinews.com/berita/twrlaf5-pulau-belakang-padang-sebuah-permata-tersembunyi-di-wilayah-batam"
+   ]
+  },
+  {
+   "id": "rute-sagulung-pulaubuluh-bulang",
+   "asal": "Sagulung",
+   "tujuan": [
+    "Pulau Buluh",
+    "Bulang Lintang",
+    "pulau Kec. Bulang"
+   ],
+   "tempat_asal_id": "trp-pelsagulung",
+   "tempat_tujuan_id": null,
+   "moda": "pompong/pancung",
+   "durasi": "±5–10 menit (ke Pulau Buluh)",
+   "tarif": "Rp20.000 (pulau dekat) s.d. Rp25.000 (pulau jauh), data 2022",
+   "tarif_idr_min": 20000,
+   "tarif_idr_max": 25000,
+   "tahun_data": 2022,
+   "keterangan_tabel": "pompong/pancung ke Pulau Buluh (±5–10 menit) dan pulau Kec. Bulang: Rp20.000 (pulau dekat) s.d. Rp25.000 (pulau jauh), data 2022",
+   "status_data": "perlu_cek_ulang",
+   "catatan": "mungkin usang",
+   "sumber_url": [
+    "https://gokepri.com/kisah-warga-batam-mudik-lebaran-ke-pulau-bulang-lintang/"
+   ]
+  },
+  {
+   "id": "trp-rutepemping",
+   "asal": null,
+   "tujuan": [
+    "Pulau Pemping",
+    "Pulau Terong",
+    "Pulau Pecung"
+   ],
+   "kecamatan": "Belakang Padang",
+   "tempat_asal_id": null,
+   "tempat_tujuan_id": null,
+   "moda": "pompong",
+   "jam_layanan": "sekali sehari (reguler)",
+   "keterangan_tabel": "pompong reguler sekali sehari, carter mahal (data riset lama)",
+   "status_data": "usang",
+   "catatan": "data riset lama; titik asal tidak disebut laporan",
+   "sumber_url": [
+    "https://www.researchgate.net/publication/316854142_POTRET_KEHIDUPAN_MASYARAKAT_HINTERLAND_KOTA_BATAM"
+   ]
+  }
+ ]
+}

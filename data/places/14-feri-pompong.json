@@ -1,0 +1,701 @@
+[
+  {
+    "id": "btc",
+    "nama": "Pelabuhan Internasional Batam Centre",
+    "nama_alternatif": [
+      "Pelabuhan Batam Centre",
+      "Batam Centre Ferry Terminal"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "terminal_feri_internasional",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Jl. Engku Putri, Batam Centre",
+    "lat": 1.1309,
+    "lng": 104.0552,
+    "status_koordinat": "terverifikasi",
+    "catatan_koordinat": "Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok; belum dicek langsung di OSM.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "terminal_internasional",
+      "rute_id": [
+        "btc-hfc",
+        "btc-tmft",
+        "btc-stl",
+        "batam-pasirgudang"
+      ]
+    },
+    "status_data": null,
+    "catatan": "Koordinat terminal belum dicek langsung di OpenStreetMap. Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok. Koordinat resmi di situs BatamPort untuk Batam Centre, Nongsapura, dan Telaga Punggur tampak salah ketik, jadi jangan dipakai.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.wikidata.org/wiki/Q12504166"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "skp",
+    "nama": "Pelabuhan Internasional & Domestik Sekupang",
+    "nama_alternatif": [
+      "Sekupang Domestik"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "terminal_feri_internasional_domestik",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "Jl. RE Martadinata, Sekupang",
+    "lat": 1.1314,
+    "lng": 103.9253,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Laporan: koordinat ada, baru dari satu sumber (BatamPort); perlu dicek ulang.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "terminal_internasional_domestik",
+      "rute_id": [
+        "skp-hfc",
+        "skp-tbk",
+        "skp-dumai",
+        "skp-kundur-penyalai"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batamport.bpbatam.go.id/sekupang/"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "hb",
+    "nama": "Harbour Bay Ferry Terminal",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "terminal_feri_internasional_domestik",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": null,
+    "alamat": "Harbourbay Downtown, Bayfront Mall",
+    "lat": 1.1539,
+    "lng": 103.9971,
+    "status_koordinat": "terverifikasi",
+    "catatan_koordinat": "Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok; belum dicek langsung di OSM.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "terminal_internasional_domestik",
+      "rute_id": [
+        "hb-hfc",
+        "hb-ph",
+        "hb-nirup",
+        "batam-pasirgudang",
+        "hb-domestik-tbk-moro"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.wikidata.org/wiki/Q65091241"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "nsp",
+    "nama": "Nongsapura Ferry Terminal",
+    "nama_alternatif": [
+      "Nongsapura"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "terminal_feri_internasional",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Nongsa",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi). Koordinat di BatamPort salah salin karena bujurnya sama dengan Sekupang.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "terminal_internasional",
+      "rute_id": [
+        "nsp-tmft",
+        "batam-pasirgudang"
+      ]
+    },
+    "status_data": null,
+    "catatan": "Koordinat terminal belum dicek langsung di OpenStreetMap. Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok. Koordinat resmi di situs BatamPort untuk Batam Centre, Nongsapura, dan Telaga Punggur tampak salah ketik, jadi jangan dipakai.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batamport.bpbatam.go.id/nongsapura/"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "gcb",
+    "nama": "Gold Coast International Ferry Terminal Bengkong",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "terminal_feri_internasional",
+    "kecamatan": "Bengkong",
+    "kelurahan": null,
+    "alamat": "Kawasan Pantai Indah Mutiara Blok B No. 36-37, Bengkong",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "terminal_internasional",
+      "rute_id": [
+        "gcb-hfc"
+      ]
+    },
+    "status_data": null,
+    "catatan": "**Gold Coast Bengkong sedang terganggu.** Di jadwal BatamFast yang berlaku 1 November 2026, sebagian besar trip HarbourFront–Gold Coast bertanda \"Suspended until further notice\". Yang tidak bertanda suspend tinggal HF→GC 09:35 (dioperasikan Sindo) dan 10:30, serta GC→HF 15:30 (Sindo) dan 19:00.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batamstraits.com/2025/04/14/gold-coast-international-ferry-terminal-bengkong-diresmikan-di-batam/"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "wfc",
+    "nama": "Waterfront City Ferry Terminal (Teluk Senimba)",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "terminal_feri_internasional",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "Jl. KH Ahmad Dahlan, Tanjung Uncang",
+    "lat": 1.08243,
+    "lng": 103.93751,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Laporan: koordinat ada, baru dari satu sumber (Streetdirectory); perlu dicek ulang.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "terminal_internasional",
+      "rute_id": [
+        "wfc-hfc"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.streetdirectory.com/indonesia/batam/travel/travel_id_14593/travel_site_10111/travel_no_/"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "tpg",
+    "nama": "Pelabuhan Telaga Punggur (feri & RoRo)",
+    "nama_alternatif": [
+      "Telaga Punggur"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "terminal_feri_domestik",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Telaga Punggur",
+    "lat": 1.0352,
+    "lng": 104.1334,
+    "status_koordinat": "terverifikasi",
+    "catatan_koordinat": "Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok; belum dicek langsung di OSM.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "terminal_domestik",
+      "rute_id": [
+        "tpg-tpi",
+        "tpg-tgu",
+        "tpg-tgu-roro",
+        "tpg-dabo",
+        "tpg-trp",
+        "tpg-senayang",
+        "tpg-roro-mengkapan-kualatungkal"
+      ]
+    },
+    "status_data": null,
+    "catatan": "Koordinat terminal belum dicek langsung di OpenStreetMap. Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok. Koordinat resmi di situs BatamPort untuk Batam Centre, Nongsapura, dan Telaga Punggur tampak salah ketik, jadi jangan dipakai.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.wikidata.org/wiki/Q14236384"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "b99",
+    "nama": "Pelabuhan Bintang 99 Persada (sandar Pelni)",
+    "nama_alternatif": [
+      "Bintang 99"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_pelni",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": null,
+    "alamat": "selatan Pelabuhan Batu Ampar",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelabuhan_pelni",
+      "rute_id": [
+        "b99-pelni"
+      ]
+    },
+    "status_data": null,
+    "catatan": "Kapal Pelni pindah sandar ke Pelabuhan Bintang 99 Persada (Batu Ampar) sejak Desember 2024.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://sumatra.bisnis.com/read/20241202/534/1820818/dermaga-kapal-pelni-pindah-ke-pelabuhan-bintang-99-batam-4-desember-2024"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "bta",
+    "nama": "Pelabuhan Batu Ampar",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_pelni",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": null,
+    "alamat": "Batu Ampar",
+    "lat": 1.1648,
+    "lng": 104.0016,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Laporan: koordinat ada, baru dari satu sumber (readmore.id); perlu dicek ulang.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelabuhan_pelni",
+      "rute_id": []
+    },
+    "status_data": null,
+    "catatan": "Kapal Pelni pindah sandar ke Pelabuhan Bintang 99 Persada (Batu Ampar) sejak Desember 2024 (lihat b99).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://readmore.id/jadwal-kapal/pelabuhan/pelabuhan-batu-ampar"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "pr-skp",
+    "nama": "Pelabuhan Rakyat Sekupang (pompong PPMS)",
+    "nama_alternatif": [
+      "PPMS / KPompong"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "pelantar_pompong",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "bersebelahan Terminal Sekupang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": "Ke Belakang Padang: 24 jam (malam harus pesan); berangkat kalau sudah ±6 penumpang",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelantar_pompong",
+      "rute_id": [
+        "skp-blp",
+        "blp-kasu"
+      ]
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status data di tabel pompong: tarif sejak Sept 2022, perlu_cek_ulang; lemah",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepripedia.com/tarif-boat-pancung-ke-belakang-padang-pp-naik-2-ribu/"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "pr-tgr",
+    "nama": "Pelabuhan Rakyat Tanjung Riau",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelantar_pompong",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "Tanjung Riau",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelantar_pompong",
+      "rute_id": [
+        "pr-tgr-riau"
+      ]
+    },
+    "status_data": null,
+    "catatan": "Status data di tabel pompong: perlu_diisi_user",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://rempangpost.com/pelabuhan-rakyat-tanjung-riau-jalur-senyap-barang-dari-batam-ke-riau/"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "pr-sgl",
+    "nama": "Pelabuhan Rakyat Sagulung",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelantar_pompong",
+    "kecamatan": "Sagulung",
+    "kelurahan": null,
+    "alamat": "dekat Tanjung Uncang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelantar_pompong",
+      "rute_id": [
+        "sgl-buluh"
+      ]
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status data di tabel pompong: perlu_cek_ulang",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.batamnews.co.id/berita-105973-pelabuhan-rakyat-sagulung-batam-tempat-penyeberangan-yang-bersih-dan-layak-dikunjungi.html"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "pr-bta",
+    "nama": "Pelantar Batu Ampar / Tanjung Sengkuang",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelantar_pompong",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelantar_pompong",
+      "rute_id": []
+    },
+    "status_data": null,
+    "catatan": "Status data di tabel pompong: perlu_diisi_user",
+    "tag_osm": null,
+    "sumber_url": [],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "pr-ktp",
+    "nama": "Pelantar Kampung Tua Telaga Punggur",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelantar_pompong",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Kampung Tua Telaga Punggur",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelantar_pompong",
+      "rute_id": [
+        "ktp-ngenang"
+      ]
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status data di tabel pompong: perlu_cek_ulang",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://travel.detik.com/cerita-perjalanan/d-5404649/ngenang-pulau-kenangan-yang-tak-terlupakan"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "pr-jb1",
+    "nama": "Pelantar bawah Jembatan 1 Barelang",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelantar_pompong",
+    "kecamatan": "Bulang",
+    "kelurahan": null,
+    "alamat": "Jembatan 1 Barelang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelantar_pompong",
+      "rute_id": [
+        "pr-jb1-wisata"
+      ]
+    },
+    "status_data": "usang",
+    "catatan": "Kecamatan: JSON menulis \"Bulang\", tabel pompong menulis \"Bulang/Galang\". Status data di tabel pompong: usang",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://ulasan.co/nikmati-keindahan-jembatan-1-barelang-sambil-keliling-naik-kapal-pancung/"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "pr-jb2",
+    "nama": "Pelantar Jembatan 2 Barelang",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelantar_pompong",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": "Jembatan 2 Barelang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelantar_pompong",
+      "rute_id": [
+        "pr-jb2-panjang"
+      ]
+    },
+    "status_data": "usang",
+    "catatan": "Status data di tabel pompong: usang",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.linasasmita.com/2014/12/island-hopping-ke-pulau-panjang_90.html"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "pr-smb",
+    "nama": "Pelabuhan Sembulang",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelantar_pompong",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": "Sembulang, Pulau Rempang (Plus Code R7W6+43C)",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi). Sudah ada Plus Code R7W6+43C, tinggal dikonversi.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelantar_pompong",
+      "rute_id": [
+        "smb-mubut"
+      ]
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status data di tabel pompong: perlu_cek_ulang Alamat memuat Plus Code R7W6+43C (belum dikonversi ke lat/lng).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://sg.trip.com/travel-guide/attraction/galang/pelabuhan-sembulang-137076004"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "pr-sbd",
+    "nama": "Pelabuhan Sungai Budus",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelantar_pompong",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": "±12 km setelah Jembatan 6",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelantar_pompong",
+      "rute_id": [
+        "sbd-abang"
+      ]
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status data di tabel pompong: lemah",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://jalankemanagitu.wordpress.com/tag/diving-pulau-abang/"
+    ],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "pr-stk",
+    "nama": "Pelantar Setokok",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelantar_pompong",
+    "kecamatan": "Bulang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelantar_pompong",
+      "rute_id": []
+    },
+    "status_data": null,
+    "catatan": "Status data di tabel pompong: perlu_diisi_user",
+    "tag_osm": null,
+    "sumber_url": [],
+    "sumber_riset": "14-feri-pompong"
+  },
+  {
+    "id": "pr-blp",
+    "nama": "Pelantar pompong antarpulau di Belakang Padang",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelantar_pompong",
+    "kecamatan": "Belakang Padang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan: belum ada koordinat sama sekali (perlu diisi).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jenis_asli": "pelantar_pompong",
+      "rute_id": [
+        "pr-blp-kasu-geranting"
+      ]
+    },
+    "status_data": "usang",
+    "catatan": "Tidak ada di blok JSON (a); dibuat dari baris tabel pompong \"Belakang Padang (pelantar pompong antarpulau)\". Status data di tabel pompong: data lama",
+    "tag_osm": null,
+    "sumber_url": [],
+    "sumber_riset": "14-feri-pompong"
+  }
+]

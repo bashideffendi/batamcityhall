@@ -1,0 +1,137 @@
+[
+  {
+    "id": "kom-001",
+    "nama": "Sukalari Batam",
+    "jenis": "Lari (penyelenggara TBUM); berdiri sekitar Juni 2018, dulu bernama Sukajadi Running Club",
+    "kontak_publik": "IG @sukalaribatam",
+    "status": "✅",
+    "sumber_url": [
+      "https://metropolis.batampos.co.id/suka-lari-batam-gelar-lunar-new-year-run-2023/"
+    ]
+  },
+  {
+    "id": "kom-002",
+    "nama": "Force Running Club",
+    "jenis": "Lari; lahir dari Barelang Marathon pertama (Des 2017)",
+    "kontak_publik": "runningcrews.com",
+    "status": "⚠️",
+    "sumber_url": [
+      "https://runningcrews.com/crews/force-running-club-batam"
+    ]
+  },
+  {
+    "id": "kom-003",
+    "nama": "ABC Runners Club, Crazy Run Batam, Batam Free Athlete, U Can Run Batam",
+    "jenis": "Lari",
+    "kontak_publik": "⚠️ Akun belum dicek",
+    "status": "⚠️",
+    "sumber_url": [
+      "https://batampos.co.id/2019/03/15/olahraga-fleksibel-dengan-lari/"
+    ],
+    "anggota": [
+      "ABC Runners Club",
+      "Crazy Run Batam",
+      "Batam Free Athlete",
+      "U Can Run Batam"
+    ]
+  },
+  {
+    "id": "kom-004",
+    "nama": "Batam 10K",
+    "jenis": "Event lari Disbudpar",
+    "kontak_publik": "IG @batam_10k",
+    "status": "✅",
+    "sumber_url": [
+      "https://disbudpar.batam.go.id/2026/09/07/tak-hanya-adu-cepat-batam-10k-2026-hadirkan-best-costume-favorit-berhadiah-rp3-juta/"
+    ]
+  },
+  {
+    "id": "kom-005",
+    "nama": "SOLMI Batam",
+    "jenis": "Musik (penggagas Rock Friend'z)",
+    "kontak_publik": "⚠️",
+    "status": "✅ keberadaan",
+    "sumber_url": [
+      "https://disbudpar.batam.go.id/2025/08/"
+    ]
+  },
+  {
+    "id": "kom-006",
+    "nama": "SWARA Kota Batam",
+    "jenis": "Pembawa acara",
+    "kontak_publik": "⚠️",
+    "status": "✅ keberadaan",
+    "sumber_url": [
+      "https://disbudpar.batam.go.id/2026/02/20/"
+    ]
+  },
+  {
+    "id": "kom-007",
+    "nama": "Komunitas Seniman Kepri",
+    "jenis": "Seni; penggagas Wonderfood Ramadan 2019",
+    "kontak_publik": "⚠️",
+    "status": "⌛",
+    "sumber_url": [
+      "https://www.spiritriau.com/Traveler/Wonderfood-Ramadan-Batam-Jadi-Konsep-Pariwisata-Halal"
+    ]
+  },
+  {
+    "id": "kom-008",
+    "nama": "Batam Tamil Sangam",
+    "jenis": "Budaya Tamil (Pongal)",
+    "kontak_publik": "⚠️",
+    "status": "✅ keberadaan",
+    "sumber_url": [
+      "https://disbudpar.batam.go.id/2026/02/20/"
+    ]
+  },
+  {
+    "id": "kom-009",
+    "nama": "Museum Batam Raja Ali Haji",
+    "jenis": "Ruang budaya, punya mini teater (premiere film PIN karya Yanis Alfata, 16 Jul 2026)",
+    "kontak_publik": "Kanal Disbudpar",
+    "status": "✅",
+    "sumber_url": [
+      "https://disbudpar.batam.go.id/2026/07/23/"
+    ]
+  },
+  {
+    "id": "kom-010",
+    "nama": "LAM Kota Batam",
+    "jenis": "Adat Melayu",
+    "kontak_publik": "Gedung LAM",
+    "status": "✅",
+    "sumber_url": [
+      "https://disbudpar.batam.go.id/2025/10/23/"
+    ]
+  },
+  {
+    "id": "kom-011",
+    "nama": "BPK Wilayah IV (Riau & Kepri)",
+    "jenis": "Pelestarian kebudayaan",
+    "kontak_publik": "kebudayaan.kemdikbud.go.id/bpnbkepri",
+    "status": "✅",
+    "sumber_url": [
+      "https://kebudayaan.kemdikbud.go.id/bpnbkepri/15-dialek-bahasa-melayu-di-kepri/"
+    ]
+  },
+  {
+    "id": "kom-012",
+    "nama": "Media lokal online: Batamnews, GoKepri, Kalapena, Ulasan.co, BatamNow",
+    "jenis": "Media (status independen belum dicek)",
+    "kontak_publik": "Situs masing-masing",
+    "status": "⚠️",
+    "sumber_url": [
+      "https://www.batamnews.co.id",
+      "https://gokepri.com",
+      "https://kalapena.id"
+    ],
+    "anggota": [
+      "Batamnews",
+      "GoKepri",
+      "Kalapena",
+      "Ulasan.co",
+      "BatamNow"
+    ]
+  }
+]

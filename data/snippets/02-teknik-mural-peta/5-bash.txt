@@ -1,0 +1,12 @@
+# 1. Unduh subset GEBCO (GeoTIFF) untuk bbox Batam dari situs GEBCO (download app)
+# 2. Potong & haluskan sedikit
+gdalwarp -te 103.5 0.5 104.5 1.5 -r cubic -tr 0.001 0.001 gebco.tif batam_bathy.tif
+# 3. Kontur di kedalaman tertentu (nilai negatif = laut)
+gdal_contour -a depth -fl -2 -5 -10 -20 -30 -50 -100 batam_bathy.tif contours.geojson
+#    atau poligon pita kedalaman (untuk isi warna gradasi):
+gdal_contour -p -amin dmin -amax dmax -fl -200 -100 -50 -30 -20 -10 -5 -2 0 batam_bathy.tif depth_areas.geojson
+# 4. Potong ke laut (buang yang di darat) dengan polygon air OSM
+ogr2ogr -clipsrc water_polygons_batam.shp contours_sea.geojson contours.geojson
+# 5. Sederhanakan & tile
+tippecanoe -o bathy.pmtiles -Z6 -z14 -l contours --simplification=4 contours_sea.geojson
+#    (gabung banyak layer: tippecanoe -o bathy.pmtiles -L contours:contours_sea.geojson -L depth:depth_areas.geojson)

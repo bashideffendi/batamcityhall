@@ -1,0 +1,7 @@
+// data/mural/seg01.gcps.json  ← dibuat sekali lewat tool klik
+type GCP = { resource: [number, number]; geo: [number, number]; label?: string };
+
+import { GcpTransformer } from '@allmaps/transform';
+const t = new GcpTransformer(gcps, 'thinPlateSpline');
+const px = t.transformBackward([104.0305, 1.1450]); // lng,lat → piksel mural
+const geo = t.transformForward([12345, 6789]);      // piksel → lng,lat

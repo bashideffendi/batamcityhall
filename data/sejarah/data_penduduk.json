@@ -1,0 +1,101 @@
+[
+  {
+    "tahun": 1965,
+    "jumlah": 6000,
+    "sumber_url": "https://bpbatam.go.id/sejarah-bp-batam/",
+    "periode_tabel": "1965",
+    "jumlah_tabel": "sekitar 6.000",
+    "catatan": "Versi BP Batam",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "tahun": 1980,
+    "jumlah": 47000,
+    "sumber_url": "https://socreativemedia.com/properti-dan-wajah-baru-batam/",
+    "periode_tabel": "1980",
+    "jumlah_tabel": "47.000",
+    "catatan": "Sumber populer, tanpa rujukan primer",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "tahun": 1990,
+    "jumlah": 135000,
+    "sumber_url": "https://socreativemedia.com/properti-dan-wajah-baru-batam/",
+    "periode_tabel": "1990",
+    "jumlah_tabel": "135.000",
+    "catatan": "Sumber populer",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "tahun": 2000,
+    "jumlah": 455000,
+    "sumber_url": "https://socreativemedia.com/properti-dan-wajah-baru-batam/",
+    "periode_tabel": "2000",
+    "jumlah_tabel": "455.000",
+    "catatan": "Sumber populer",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "tahun": 2010,
+    "jumlah": 949000,
+    "sumber_url": "https://socreativemedia.com/properti-dan-wajah-baru-batam/",
+    "periode_tabel": "2010",
+    "jumlah_tabel": "949.000",
+    "catatan": "Sumber populer",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "tahun": 2012,
+    "jumlah": 1153860,
+    "sumber_url": "https://repository.uin-suska.ac.id/13509/9/9.BAB%20IV_2018266ADN.pdf",
+    "periode_tabel": "2012 (April)",
+    "jumlah_tabel": "1.153.860",
+    "catatan": "Dikutip skripsi",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "tahun": 2015,
+    "jumlah": 1037187,
+    "sumber_url": "https://jdih.batam.go.id/web/sejarah-batam/",
+    "periode_tabel": "2015",
+    "jumlah_tabel": "1.037.187",
+    "catatan": "Disdukcapil",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "tahun": 2024,
+    "jumlah": 1276930,
+    "sumber_url": "https://batamkota.bps.go.id/en/statistics-table/2/MTMyIzI=/proyeksi-penduduk-kota-batam-menurut-kelompok-umur-laki-laki-perempuan-.html",
+    "periode_tabel": "2024 (Juni)",
+    "jumlah_tabel": "1.276.930",
+    "catatan": "Proyeksi BPS (SP2020)",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "tahun": 2024,
+    "jumlah": 1294548,
+    "sumber_url": "https://satudata.batam.go.id/satu/detail/statistik-jumlah-anak-berjenis-kelamin-laki-laki-dan-perempuan-yang-memiliki-kia-menurut-kecamatan-di-kota-batam-tahun-2024-semester-1-dj7dgs",
+    "periode_tabel": "2024 (Semester I)",
+    "jumlah_tabel": "1.294.548",
+    "catatan": "Disdukcapil (registrasi)",
+    "sumber_entri": "tabel"
+  },
+  {
+    "tahun": 2025,
+    "jumlah": 1296960,
+    "sumber_url": "https://en.wikipedia.org/wiki/Batam",
+    "periode_tabel": "2025 (pertengahan)",
+    "jumlah_tabel": "1.296.960",
+    "catatan": "Estimasi resmi BPS (dikutip Wikipedia)",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "tahun": 2025,
+    "jumlah": 1394459,
+    "sumber_url": "https://gowest.id/data-kependudukan-kota-batam-2026/",
+    "periode_tabel": "2025 (Semester II)",
+    "jumlah_tabel": "1.394.459",
+    "catatan": "Disdukcapil (DKB)",
+    "sumber_entri": "json+tabel"
+  }
+]

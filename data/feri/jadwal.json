@@ -1,0 +1,2109 @@
+{
+  "meta": {
+    "sumber_riset": "14-feri-pompong",
+    "task_id": "wf-45ea1918-1dd9-865f-844b-d2b422910e8a",
+    "data_per": "2026-11-04",
+    "keterangan_struktur": "Entri dengan asal_blok_json=true = 16 entri verbatim dari blok JSON (c) (data/raw/14-feri-pompong__4.json), sumber_url diubah jadi array, ditambah \"dari_tabel\" (baris tabel yang cocok). Entri asal_blok_json=false = baris tabel jadwal laporan yang tidak ada di blok JSON. \"trips\" memuat keterangan per keberangkatan dari tabel (operator interline, hari). \"zona_waktu\": SGT=Asia/Singapore, WIB=Asia/Jakarta, MYT=Asia/Kuala_Lumpur. Jam selalu waktu lokal pelabuhan asal.",
+    "zona_waktu_catatan": "**Ada beda zona waktu.** Batam (WIB) satu jam di belakang Singapura. Semua jadwal keberangkatan dari Singapura ditulis dalam waktu Singapura, dan dari Batam dalam WIB. Di kode, simpan jam beserta zona waktunya (`Asia/Singapore` vs `Asia/Jakarta`), jangan disatukan.",
+    "feri_terakhir_catatan": "**Feri terakhir:** untuk day trip, patokannya feri terakhir dari Singapura ke Batam Centre adalah 21:40 (BatamFast) / 21:50 (Sindo) SGT. Ke Harbour Bay 21:35 SGT. Ke Sekupang 19:30 (BatamFast) / 20:40 (Majestic) SGT.",
+    "check_in": {
+      "majestic": "Majestic meminta check-in di konter 60 menit sebelum berangkat.",
+      "horizon": "Check-in Horizon ditutup 20 menit sebelum berangkat di HarbourFront dan 30 menit sebelum berangkat di Harbour Bay (sumber pihak ketiga, perlu_cek_ulang).",
+      "umum": "**Check-in:** datang minimal 45 menit sebelum berangkat, dan 60 menit pada Jumat sore, Sabtu pagi, atau hari libur. Majestic mensyaratkan check-in di konter 60 menit sebelum berangkat. RoRo ASDP minta datang minimal 2 jam sebelumnya."
+    },
+    "papan_live_singapore_cruise_centre": "Catatan untuk Claude Code: Singapore Cruise Centre punya papan kedatangan/keberangkatan live di singaporecruise.com.sg/schedule/ferries/. Isinya status per trip, termasuk kode trip seperti FRDI0600 untuk BatamFast Batam Centre jam 06:00, dan status \"CANCELLED\". Papan ini bisa dijadikan rujukan visual atau tautan di widget. Jangan di-scrape tanpa izin.",
+    "peringatan_jadwal": "Tabel jadwal (tanggal data ditulis per baris; jadwal bisa berubah tanpa pemberitahuan)",
+    "rekomendasi_widget": "**Widget \"Feri terakhir hari ini\":** sumbernya file JSON statis hasil ketik ulang dari jadwal resmi (BatamFast PDF 1 Nov 2026, Majestic PDF Mei 2026, halaman Sindo, halaman Horizon). Tampilkan `tanggal_data`. Kalau `tanggal_data` sudah lebih dari 60 hari, munculkan banner \"jadwal mungkin sudah berubah\". Selalu sertakan tombol ke link resmi operator."
+  },
+  "jadwal": [
+    {
+      "rute_id": "btc-hfc",
+      "arah": "Batam Centre -> HarbourFront (BatamFast, WIB)",
+      "jam_berangkat": [
+        "06:00",
+        "07:00",
+        "08:20",
+        "09:50",
+        "11:10",
+        "12:50",
+        "14:10",
+        "15:20",
+        "16:30",
+        "17:40",
+        "19:00",
+        "20:30"
+      ],
+      "hari": "setiap hari",
+      "tanggal_data": "2026-11-01",
+      "sumber_url": [
+        "https://www.batamfast.com/"
+      ],
+      "asal_blok_json": true,
+      "operator": "BatamFast",
+      "zona_waktu": "Asia/Jakarta",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal BatamFast",
+        "baris": 2,
+        "rute": "Batam Centre → HarbourFront (WIB)",
+        "jam_berangkat": "06:00, 07:00, 08:20, 09:50, 11:10, 12:50, 14:10, 15:20, 16:30, 17:40, 19:00, 20:30",
+        "catatan": null,
+        "zona_waktu": "Asia/Jakarta",
+        "trips": [
+          {
+            "jam": "06:00"
+          },
+          {
+            "jam": "07:00"
+          },
+          {
+            "jam": "08:20"
+          },
+          {
+            "jam": "09:50"
+          },
+          {
+            "jam": "11:10"
+          },
+          {
+            "jam": "12:50"
+          },
+          {
+            "jam": "14:10"
+          },
+          {
+            "jam": "15:20"
+          },
+          {
+            "jam": "16:30"
+          },
+          {
+            "jam": "17:40"
+          },
+          {
+            "jam": "19:00"
+          },
+          {
+            "jam": "20:30"
+          }
+        ],
+        "tanggal_data_teks": "berlaku mulai 1 November 2026, dari batamfast.com"
+      }
+    },
+    {
+      "rute_id": "btc-hfc",
+      "arah": "HarbourFront -> Batam Centre (BatamFast, SGT)",
+      "jam_berangkat": [
+        "07:40",
+        "08:40",
+        "09:30",
+        "10:50",
+        "12:30",
+        "14:20",
+        "15:30",
+        "16:50",
+        "18:00",
+        "19:10",
+        "20:20",
+        "21:40"
+      ],
+      "hari": "setiap hari",
+      "tanggal_data": "2026-11-01",
+      "sumber_url": [
+        "https://www.batamfast.com/"
+      ],
+      "asal_blok_json": true,
+      "operator": "BatamFast",
+      "zona_waktu": "Asia/Singapore",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal BatamFast",
+        "baris": 1,
+        "rute": "HarbourFront → Batam Centre (SGT)",
+        "jam_berangkat": "07:40, 08:40, 09:30, 10:50, 12:30, 14:20, 15:30, 16:50, 18:00, 19:10, 20:20, 21:40",
+        "catatan": null,
+        "zona_waktu": "Asia/Singapore",
+        "trips": [
+          {
+            "jam": "07:40"
+          },
+          {
+            "jam": "08:40"
+          },
+          {
+            "jam": "09:30"
+          },
+          {
+            "jam": "10:50"
+          },
+          {
+            "jam": "12:30"
+          },
+          {
+            "jam": "14:20"
+          },
+          {
+            "jam": "15:30"
+          },
+          {
+            "jam": "16:50"
+          },
+          {
+            "jam": "18:00"
+          },
+          {
+            "jam": "19:10"
+          },
+          {
+            "jam": "20:20"
+          },
+          {
+            "jam": "21:40"
+          }
+        ],
+        "tanggal_data_teks": "berlaku mulai 1 November 2026, dari batamfast.com"
+      }
+    },
+    {
+      "rute_id": "btc-hfc",
+      "arah": "Batam Centre -> HarbourFront (Majestic, WIB)",
+      "jam_berangkat": [
+        "06:00",
+        "07:10",
+        "08:20",
+        "09:30",
+        "10:20",
+        "11:30",
+        "12:20",
+        "13:30",
+        "14:30",
+        "15:15",
+        "16:00",
+        "17:30",
+        "18:30",
+        "20:35"
+      ],
+      "hari": "sebagian trip hanya akhir pekan/libur (perlu_cek_ulang)",
+      "tanggal_data": "2026-05",
+      "sumber_url": [
+        "https://www.majesticfastferry.com.sg/Assets/Schedule/webschedule12052026113353.pdf"
+      ],
+      "asal_blok_json": true,
+      "operator": "Majestic",
+      "zona_waktu": "Asia/Jakarta",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Majestic",
+        "baris": 2,
+        "rute": "Batam Centre → HarbourFront (WIB)",
+        "jam_berangkat": "06:00, 07:10, 08:20, 09:30, 10:20, 11:30, 12:20, 13:30, 14:30, 15:15, 16:00, 17:30, 18:30, 20:35",
+        "catatan": null,
+        "zona_waktu": "Asia/Jakarta",
+        "trips": [
+          {
+            "jam": "06:00"
+          },
+          {
+            "jam": "07:10"
+          },
+          {
+            "jam": "08:20"
+          },
+          {
+            "jam": "09:30"
+          },
+          {
+            "jam": "10:20"
+          },
+          {
+            "jam": "11:30"
+          },
+          {
+            "jam": "12:20"
+          },
+          {
+            "jam": "13:30"
+          },
+          {
+            "jam": "14:30"
+          },
+          {
+            "jam": "15:15"
+          },
+          {
+            "jam": "16:00"
+          },
+          {
+            "jam": "17:30"
+          },
+          {
+            "jam": "18:30"
+          },
+          {
+            "jam": "20:35"
+          }
+        ],
+        "tanggal_data_teks": "jadwal \"New Timing\" yang berlaku mulai Mei 2026, PDF di majesticfastferry.com.sg"
+      }
+    },
+    {
+      "rute_id": "btc-hfc",
+      "arah": "HarbourFront -> Batam Centre (Sindo, SGT)",
+      "jam_berangkat": [
+        "08:00",
+        "09:00",
+        "10:20",
+        "12:00",
+        "13:20",
+        "14:50",
+        "16:10",
+        "17:20",
+        "18:30",
+        "19:40",
+        "20:45",
+        "21:50"
+      ],
+      "hari": "setiap hari",
+      "tanggal_data": "2026-11-04",
+      "sumber_url": [
+        "https://www.sindoferry.com.sg/schedules"
+      ],
+      "asal_blok_json": true,
+      "operator": "Sindo",
+      "zona_waktu": "Asia/Singapore",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Sindo",
+        "baris": 1,
+        "rute": "HarbourFront → Batam Centre (SGT)",
+        "jam_berangkat": "08:00, 09:00, 10:20, 12:00, 13:20, 14:50, 16:10, 17:20, 18:30, 19:40, 20:45, 21:50",
+        "catatan": null,
+        "zona_waktu": "Asia/Singapore",
+        "trips": [
+          {
+            "jam": "08:00"
+          },
+          {
+            "jam": "09:00"
+          },
+          {
+            "jam": "10:20"
+          },
+          {
+            "jam": "12:00"
+          },
+          {
+            "jam": "13:20"
+          },
+          {
+            "jam": "14:50"
+          },
+          {
+            "jam": "16:10"
+          },
+          {
+            "jam": "17:20"
+          },
+          {
+            "jam": "18:30"
+          },
+          {
+            "jam": "19:40"
+          },
+          {
+            "jam": "20:45"
+          },
+          {
+            "jam": "21:50"
+          }
+        ],
+        "tanggal_data_teks": "sindoferry.com.sg/schedules dan app.sindoferry.com.sg/schedule, diakses November 2026"
+      }
+    },
+    {
+      "rute_id": "hb-hfc",
+      "arah": "Harbour Bay -> HarbourFront (Horizon, WIB)",
+      "jam_berangkat": [
+        "06:00",
+        "07:15",
+        "08:30",
+        "09:45",
+        "10:45",
+        "11:45",
+        "12:45",
+        "14:00",
+        "15:30",
+        "16:30",
+        "17:30",
+        "19:15",
+        "20:30"
+      ],
+      "hari": "setiap hari",
+      "tanggal_data": "2026-11-04",
+      "sumber_url": [
+        "https://horizonfastferry.com.sg/"
+      ],
+      "asal_blok_json": true,
+      "operator": "Horizon",
+      "zona_waktu": "Asia/Jakarta",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Horizon",
+        "baris": 2,
+        "rute": "Harbour Bay → HarbourFront (WIB)",
+        "jam_berangkat": "06:00, 07:15, 08:30, 09:45, 10:45, 11:45, 12:45, 14:00, 15:30, 16:30, 17:30, 19:15, 20:30",
+        "catatan": null,
+        "zona_waktu": "Asia/Jakarta",
+        "trips": [
+          {
+            "jam": "06:00"
+          },
+          {
+            "jam": "07:15"
+          },
+          {
+            "jam": "08:30"
+          },
+          {
+            "jam": "09:45"
+          },
+          {
+            "jam": "10:45"
+          },
+          {
+            "jam": "11:45"
+          },
+          {
+            "jam": "12:45"
+          },
+          {
+            "jam": "14:00"
+          },
+          {
+            "jam": "15:30"
+          },
+          {
+            "jam": "16:30"
+          },
+          {
+            "jam": "17:30"
+          },
+          {
+            "jam": "19:15"
+          },
+          {
+            "jam": "20:30"
+          }
+        ],
+        "tanggal_data_teks": "horizonfastferry.com.sg, diakses November 2026"
+      }
+    },
+    {
+      "rute_id": "hb-hfc",
+      "arah": "HarbourFront -> Harbour Bay (Horizon, SGT)",
+      "jam_berangkat": [
+        "08:15",
+        "09:10",
+        "10:15",
+        "11:15",
+        "12:15",
+        "13:15",
+        "14:15",
+        "15:15",
+        "16:30",
+        "17:45",
+        "19:00",
+        "20:15",
+        "21:35"
+      ],
+      "hari": "setiap hari",
+      "tanggal_data": "2026-11-04",
+      "sumber_url": [
+        "https://horizonfastferry.com.sg/"
+      ],
+      "asal_blok_json": true,
+      "operator": "Horizon",
+      "zona_waktu": "Asia/Singapore",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Horizon",
+        "baris": 1,
+        "rute": "HarbourFront → Harbour Bay (SGT)",
+        "jam_berangkat": "08:15, 09:10, 10:15, 11:15, 12:15, 13:15, 14:15, 15:15, 16:30, 17:45, 19:00, 20:15, 21:35",
+        "catatan": null,
+        "zona_waktu": "Asia/Singapore",
+        "trips": [
+          {
+            "jam": "08:15"
+          },
+          {
+            "jam": "09:10"
+          },
+          {
+            "jam": "10:15"
+          },
+          {
+            "jam": "11:15"
+          },
+          {
+            "jam": "12:15"
+          },
+          {
+            "jam": "13:15"
+          },
+          {
+            "jam": "14:15"
+          },
+          {
+            "jam": "15:15"
+          },
+          {
+            "jam": "16:30"
+          },
+          {
+            "jam": "17:45"
+          },
+          {
+            "jam": "19:00"
+          },
+          {
+            "jam": "20:15"
+          },
+          {
+            "jam": "21:35"
+          }
+        ],
+        "tanggal_data_teks": "horizonfastferry.com.sg, diakses November 2026"
+      }
+    },
+    {
+      "rute_id": "nsp-tmft",
+      "arah": "Nongsapura -> Tanah Merah (BatamFast, WIB)",
+      "jam_berangkat": [
+        "06:00",
+        "08:00",
+        "09:30",
+        "12:10",
+        "14:20",
+        "15:40",
+        "17:30",
+        "20:00"
+      ],
+      "hari": "setiap hari",
+      "tanggal_data": "2026-11-01",
+      "sumber_url": [
+        "https://www.batamfast.com/"
+      ],
+      "asal_blok_json": true,
+      "operator": "BatamFast",
+      "zona_waktu": "Asia/Jakarta",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal BatamFast",
+        "baris": 8,
+        "rute": "Nongsapura → Tanah Merah (WIB)",
+        "jam_berangkat": "06:00, 08:00, 09:30, 12:10, 14:20, 15:40, 17:30, 20:00",
+        "catatan": null,
+        "zona_waktu": "Asia/Jakarta",
+        "trips": [
+          {
+            "jam": "06:00"
+          },
+          {
+            "jam": "08:00"
+          },
+          {
+            "jam": "09:30"
+          },
+          {
+            "jam": "12:10"
+          },
+          {
+            "jam": "14:20"
+          },
+          {
+            "jam": "15:40"
+          },
+          {
+            "jam": "17:30"
+          },
+          {
+            "jam": "20:00"
+          }
+        ],
+        "tanggal_data_teks": "berlaku mulai 1 November 2026, dari batamfast.com"
+      }
+    },
+    {
+      "rute_id": "skp-hfc",
+      "arah": "Sekupang -> HarbourFront (Majestic, WIB)",
+      "jam_berangkat": [
+        "06:00",
+        "09:00",
+        "13:10",
+        "16:20",
+        "18:00"
+      ],
+      "hari": "setiap hari (perlu_cek_ulang)",
+      "tanggal_data": "2026-05",
+      "sumber_url": [
+        "https://www.majesticfastferry.com.sg/Assets/Schedule/webschedule12052026113353.pdf"
+      ],
+      "asal_blok_json": true,
+      "operator": "Majestic",
+      "zona_waktu": "Asia/Jakarta",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Majestic",
+        "baris": 6,
+        "rute": "Sekupang → HarbourFront (WIB)",
+        "jam_berangkat": "06:00, 09:00, 13:10, 16:20, 18:00",
+        "catatan": null,
+        "zona_waktu": "Asia/Jakarta",
+        "trips": [
+          {
+            "jam": "06:00"
+          },
+          {
+            "jam": "09:00"
+          },
+          {
+            "jam": "13:10"
+          },
+          {
+            "jam": "16:20"
+          },
+          {
+            "jam": "18:00"
+          }
+        ],
+        "tanggal_data_teks": "jadwal \"New Timing\" yang berlaku mulai Mei 2026, PDF di majesticfastferry.com.sg"
+      }
+    },
+    {
+      "rute_id": "btc-tmft",
+      "arah": "Batam Centre -> Tanah Merah (Majestic, WIB)",
+      "jam_berangkat": [
+        "06:15",
+        "08:25",
+        "09:40",
+        "12:00",
+        "13:00",
+        "15:30",
+        "17:00",
+        "18:00",
+        "19:50"
+      ],
+      "hari": "sebagian trip akhir pekan (perlu_cek_ulang)",
+      "tanggal_data": "2026-05",
+      "sumber_url": [
+        "https://www.majesticfastferry.com.sg/Assets/Schedule/webschedule12052026113353.pdf"
+      ],
+      "asal_blok_json": true,
+      "operator": "Majestic",
+      "zona_waktu": "Asia/Jakarta",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Majestic",
+        "baris": 4,
+        "rute": "Batam Centre → Tanah Merah (WIB)",
+        "jam_berangkat": "06:15, 08:25, 09:40, 12:00, 13:00, 15:30, 17:00, 18:00, 19:50",
+        "catatan": null,
+        "zona_waktu": "Asia/Jakarta",
+        "trips": [
+          {
+            "jam": "06:15"
+          },
+          {
+            "jam": "08:25"
+          },
+          {
+            "jam": "09:40"
+          },
+          {
+            "jam": "12:00"
+          },
+          {
+            "jam": "13:00"
+          },
+          {
+            "jam": "15:30"
+          },
+          {
+            "jam": "17:00"
+          },
+          {
+            "jam": "18:00"
+          },
+          {
+            "jam": "19:50"
+          }
+        ],
+        "tanggal_data_teks": "jadwal \"New Timing\" yang berlaku mulai Mei 2026, PDF di majesticfastferry.com.sg"
+      }
+    },
+    {
+      "rute_id": "btc-stl",
+      "arah": "Batam Centre -> Stulang Laut (Indomas, WIB)",
+      "jam_berangkat": [
+        "06:00",
+        "08:30",
+        "11:40",
+        "13:30"
+      ],
+      "hari": "setiap hari (perlu_cek_ulang)",
+      "tanggal_data": "2026-01-01",
+      "sumber_url": [
+        "https://www.indomasferry.com/"
+      ],
+      "asal_blok_json": true,
+      "operator": "Indomas",
+      "zona_waktu": "Asia/Jakarta",
+      "dari_tabel": {
+        "tabel": "Tabel feri internasional Batam–Malaysia",
+        "baris": 1,
+        "Rute": "Batam Centre ⇄ Stulang Laut (Berjaya Waterfront, Johor Bahru)",
+        "Operator": "Indomas Ferry; juga Dolphin Fast Ferry, Pintas Fast Ferry",
+        "Jadwal": "BC→Stulang (WIB): 06:00, 08:30, 11:40, 13:30. Stulang→BC (MYT): 09:30, 12:00, 15:15, 17:00",
+        "Durasi": "±2–2,5 jam",
+        "Harga": "Dari Batam: Rp430.000 sekali jalan / Rp650.000 PP dewasa (termasuk seaport tax Rp100.000). Dari Stulang: MYR 123 sekali jalan",
+        "Tanggal data": "tarif berlaku mulai 1 Januari 2026 (indomasferry.com)"
+      }
+    },
+    {
+      "rute_id": "hb-ph",
+      "arah": "Puteri Harbour -> Harbour Bay (Putri Anggreni, MYT)",
+      "jam_berangkat": [
+        "07:30",
+        "11:00",
+        "13:00",
+        "18:30"
+      ],
+      "hari": "contoh 4 Nov 2026",
+      "tanggal_data": "2026-11-04",
+      "sumber_url": [
+        "https://ferryglobalgroup.com/schedule"
+      ],
+      "asal_blok_json": true,
+      "operator": "Putri Anggreni",
+      "zona_waktu": "Asia/Kuala_Lumpur",
+      "dari_tabel": {
+        "tabel": "Tabel feri internasional Batam–Malaysia",
+        "baris": 2,
+        "Rute": "Harbour Bay ⇄ Puteri Harbour (Iskandar Puteri)",
+        "Operator": "Putri Anggreni (Ferry Global Group)",
+        "Jadwal": "HB→PH (WIB): 07:15 (data 3 Nov 2026). PH→HB (MYT): 07:30, 11:00, 13:00, 18:30 (data 4 Nov 2026)",
+        "Durasi": "±1,5–3 jam (sumber tidak konsisten)",
+        "Harga": "RM 125–172 (redBus, Economy/Business)",
+        "Tanggal data": "3–4 Nov 2026 (ferryglobalgroup.com/schedule)"
+      }
+    },
+    {
+      "rute_id": "tpg-tgu-roro",
+      "arah": "Telaga Punggur -> Tanjung Uban (RoRo, WIB)",
+      "jam_berangkat": [
+        "06:00",
+        "08:00",
+        "10:00",
+        "12:00",
+        "14:00",
+        "16:00",
+        "18:00"
+      ],
+      "hari": "contoh Jumat 9 Okt 2026",
+      "tanggal_data": "2026-10-09",
+      "sumber_url": [
+        "https://www.batamnews.co.id/berita-130793-jadwal-roro-telaga-punggur-tanjung-uban-jumat-9-oktober-2026-dua-kapal-beroperasi-hingga-sore.html"
+      ],
+      "asal_blok_json": true,
+      "operator": "RoRo",
+      "zona_waktu": "Asia/Jakarta",
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 3,
+        "Asal": "Telaga Punggur (RoRo)",
+        "Tujuan": "Tanjung Uban",
+        "Operator / kapal": "ASDP: KMP Trisakti Adinda, KMP Tanjung Burang (KMP Barau sedang docking)",
+        "Jadwal": "Trisakti Adinda dari Punggur 06:00, 10:00, 14:00, 18:00; Tanjung Burang dari Punggur 08:00, 12:00, 16:00. Dari Tg. Uban: Trisakti Adinda 08:00, 12:00, 16:00; Tanjung Burang 06:00, 10:00, 14:00, 18:00",
+        "Durasi": "±1 jam (perlu_cek_ulang)",
+        "Harga": "Dewasa Rp27.000; motor (Gol. II) Rp51.000; mobil (Gol. IVA) Rp309.000",
+        "Tanggal data": "9 Okt 2026"
+      },
+      "per_kapal": [
+        {
+          "kapal": "KMP Trisakti Adinda",
+          "dari": "Telaga Punggur",
+          "jam_berangkat": [
+            "06:00",
+            "10:00",
+            "14:00",
+            "18:00"
+          ]
+        },
+        {
+          "kapal": "KMP Tanjung Burang",
+          "dari": "Telaga Punggur",
+          "jam_berangkat": [
+            "08:00",
+            "12:00",
+            "16:00"
+          ]
+        }
+      ]
+    },
+    {
+      "rute_id": "tpg-tpi",
+      "arah": "Telaga Punggur -> Tanjungpinang (WIB)",
+      "jam_berangkat": [
+        "07:30",
+        "08:30",
+        "08:45",
+        "09:15",
+        "09:30",
+        "10:00"
+      ],
+      "hari": "contoh sebagian akhir Juli 2026; operasi 07:30-17:30 tiap ±30 menit",
+      "tanggal_data": "2026-07",
+      "sumber_url": [
+        "https://batam.tribunnews.com/kepri/690711/harga-tiket-kapal-ferry-punggur-tanjung-pinang-pada-akhir-juli-2026"
+      ],
+      "asal_blok_json": true,
+      "operator": null,
+      "zona_waktu": "Asia/Jakarta",
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 1,
+        "Asal": "Telaga Punggur",
+        "Tujuan": "Tanjungpinang (SBP)",
+        "Operator / kapal": "MV Oceanna, Marina, Ocean Dragon, Putra Maju",
+        "Jadwal": "07:30–17:30, tiap ±30 menit (contoh Juli 2026: 07:30, 08:30, 08:45, 09:15, 09:30, 10:00 …)",
+        "Durasi": "45–60 mnt",
+        "Harga": "Rp80.500",
+        "Tanggal data": "Feb & Jul 2026"
+      }
+    },
+    {
+      "rute_id": "skp-tbk",
+      "arah": "Sekupang -> Tanjung Balai Karimun (WIB)",
+      "jam_berangkat": [
+        "07:20"
+      ],
+      "hari": "setiap hari (contoh Jul-Agu 2026)",
+      "tanggal_data": "2026-08",
+      "sumber_url": [
+        "https://batam.tribunnews.com/kepri/692964/harga-tiket-kapal-ferry-sekupang-tanjung-balai-karimun-pada-agustus-2026"
+      ],
+      "asal_blok_json": true,
+      "operator": null,
+      "zona_waktu": "Asia/Jakarta",
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 8,
+        "Asal": "Sekupang Domestik",
+        "Tujuan": "Tanjung Balai Karimun",
+        "Operator / kapal": "Dumai Line / Batam Jet 8 & 9",
+        "Jadwal": "07:20 setiap hari (Tribun, Jun–Agu 2026); jadwal lama Dumai Express 07:00, 07:30, 09:30, 13:00, 14:15, 16:15 (usang)",
+        "Durasi": "±1–1,5 jam (perlu_cek_ulang)",
+        "Harga": "Rp132.000",
+        "Tanggal data": "2026"
+      }
+    },
+    {
+      "rute_id": "tpg-dabo",
+      "arah": "Telaga Punggur -> Seitenam - Dabo Singkep (WIB)",
+      "jam_berangkat": [
+        "10:30"
+      ],
+      "hari": "setiap hari",
+      "tanggal_data": "2026-02-17",
+      "sumber_url": [
+        "https://tentangkepri.com/17/02/2026/jadwal-kapal-feri-dari-pelabuhan-punggur-batam-ke-sejumlah-pulau-di-kepri/"
+      ],
+      "asal_blok_json": true,
+      "operator": null,
+      "zona_waktu": "Asia/Jakarta",
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 4,
+        "Asal": "Telaga Punggur",
+        "Tujuan": "Seitenam – Dabo Singkep (Lingga)",
+        "Operator / kapal": "–",
+        "Jadwal": "10:30 setiap hari",
+        "Durasi": "–",
+        "Harga": "Rp306.000 (Seitenam Rp252.000)",
+        "Tanggal data": "Feb 2026"
+      }
+    },
+    {
+      "rute_id": "skp-blp",
+      "arah": "Sekupang <-> Belakang Padang",
+      "jam_berangkat": [],
+      "hari": "24 jam, berangkat saat ±6 penumpang; malam pesan dulu",
+      "tanggal_data": "2025",
+      "sumber_url": [
+        "https://www.researchgate.net/publication/394905333_Pengelolaan_Antrian_Kapal_Pompong_Berbasis_Teknologi_di_Pelabuhan_Sekupang-Belakang_Padang"
+      ],
+      "asal_blok_json": true,
+      "operator": null,
+      "zona_waktu": null,
+      "dari_tabel": {
+        "tabel": "Tabel pompong dan pancung",
+        "baris": 1,
+        "Pelantar": "Pelabuhan Rakyat Sekupang (PPMS / KPompong)",
+        "Kecamatan": "Sekupang",
+        "Tujuan": "Belakang Padang",
+        "Jam operasi": "24 jam (malam harus pesan); berangkat kalau sudah ±6 penumpang",
+        "Tarif": "Rp20.000/orang; carter 1–4 orang Rp160.000, 5–10 orang Rp200.000",
+        "Durasi": "±25 mnt (5,7 km)",
+        "Status data": "tarif sejak Sept 2022, perlu_cek_ulang"
+      }
+    },
+    {
+      "rute_id": "btc-tmft",
+      "arah": "Tanah Merah -> Batam Centre (BatamFast, SGT)",
+      "jam_berangkat": [
+        "10:20",
+        "12:50",
+        "14:30",
+        "17:20",
+        "17:40",
+        "20:30"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-11-01",
+      "sumber_url": [
+        "https://www.batamfast.com/"
+      ],
+      "asal_blok_json": false,
+      "operator": "BatamFast",
+      "zona_waktu": "Asia/Singapore",
+      "trips": [
+        {
+          "jam": "10:20",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "12:50"
+        },
+        {
+          "jam": "14:30",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "17:20"
+        },
+        {
+          "jam": "17:40",
+          "keterangan": "Minggu"
+        },
+        {
+          "jam": "20:30",
+          "keterangan": "Kam–Min"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal BatamFast",
+        "baris": 3,
+        "rute": "Tanah Merah → Batam Centre (SGT)",
+        "jam_berangkat": "10:20 (Sindo), 12:50, 14:30 (Sindo), 17:20, 17:40 (Minggu), 20:30 (Kam–Min)",
+        "tanggal_data_teks": "berlaku mulai 1 November 2026, dari batamfast.com"
+      }
+    },
+    {
+      "rute_id": "btc-tmft",
+      "arah": "Batam Centre -> Tanah Merah (BatamFast, WIB)",
+      "jam_berangkat": [
+        "07:45",
+        "08:00",
+        "09:20",
+        "11:30",
+        "13:20"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-11-01",
+      "sumber_url": [
+        "https://www.batamfast.com/"
+      ],
+      "asal_blok_json": false,
+      "operator": "BatamFast",
+      "zona_waktu": "Asia/Jakarta",
+      "trips": [
+        {
+          "jam": "07:45",
+          "keterangan": "Kam–Min"
+        },
+        {
+          "jam": "08:00",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "09:20"
+        },
+        {
+          "jam": "11:30",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "13:20"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal BatamFast",
+        "baris": 4,
+        "rute": "Batam Centre → Tanah Merah (WIB)",
+        "jam_berangkat": "07:45 (Kam–Min), 08:00 (Sindo), 09:20, 11:30 (Sindo), 13:20",
+        "tanggal_data_teks": "berlaku mulai 1 November 2026, dari batamfast.com"
+      }
+    },
+    {
+      "rute_id": "skp-hfc",
+      "arah": "HarbourFront -> Sekupang (BatamFast, SGT)",
+      "jam_berangkat": [
+        "08:20",
+        "09:20",
+        "10:00",
+        "11:10",
+        "14:10",
+        "16:00",
+        "17:30",
+        "18:10",
+        "19:30"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-11-01",
+      "sumber_url": [
+        "https://www.batamfast.com/"
+      ],
+      "asal_blok_json": false,
+      "operator": "BatamFast",
+      "zona_waktu": "Asia/Singapore",
+      "trips": [
+        {
+          "jam": "08:20"
+        },
+        {
+          "jam": "09:20",
+          "keterangan": "Sab–Sen"
+        },
+        {
+          "jam": "10:00",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "11:10"
+        },
+        {
+          "jam": "14:10",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "16:00",
+          "keterangan": "Sindo, Sab–Min"
+        },
+        {
+          "jam": "17:30"
+        },
+        {
+          "jam": "18:10",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "19:30"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal BatamFast",
+        "baris": 5,
+        "rute": "HarbourFront → Sekupang (SGT)",
+        "jam_berangkat": "08:20, 09:20 (Sab–Sen), 10:00 (Sindo), 11:10, 14:10 (Sindo), 16:00 (Sindo, Sab–Min), 17:30, 18:10 (Sindo), 19:30",
+        "tanggal_data_teks": "berlaku mulai 1 November 2026, dari batamfast.com"
+      }
+    },
+    {
+      "rute_id": "skp-hfc",
+      "arah": "Sekupang -> HarbourFront (BatamFast, WIB)",
+      "jam_berangkat": [
+        "06:00",
+        "07:00",
+        "08:30",
+        "11:20",
+        "12:30",
+        "13:50",
+        "15:20",
+        "15:30",
+        "17:40"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-11-01",
+      "sumber_url": [
+        "https://www.batamfast.com/"
+      ],
+      "asal_blok_json": false,
+      "operator": "BatamFast",
+      "zona_waktu": "Asia/Jakarta",
+      "trips": [
+        {
+          "jam": "06:00"
+        },
+        {
+          "jam": "07:00",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "08:30"
+        },
+        {
+          "jam": "11:20",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "12:30"
+        },
+        {
+          "jam": "13:50",
+          "keterangan": "Sindo, Sab–Min"
+        },
+        {
+          "jam": "15:20",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "15:30",
+          "keterangan": "Jum–Min"
+        },
+        {
+          "jam": "17:40"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal BatamFast",
+        "baris": 6,
+        "rute": "Sekupang → HarbourFront (WIB)",
+        "jam_berangkat": "06:00, 07:00 (Sindo), 08:30, 11:20 (Sindo), 12:30, 13:50 (Sindo, Sab–Min), 15:20 (Sindo), 15:30 (Jum–Min), 17:40",
+        "tanggal_data_teks": "berlaku mulai 1 November 2026, dari batamfast.com"
+      }
+    },
+    {
+      "rute_id": "nsp-tmft",
+      "arah": "Tanah Merah -> Nongsapura (BatamFast, SGT)",
+      "jam_berangkat": [
+        "08:00",
+        "08:50",
+        "10:50",
+        "12:00",
+        "14:20",
+        "16:20",
+        "18:30",
+        "20:20"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-11-01",
+      "sumber_url": [
+        "https://www.batamfast.com/"
+      ],
+      "asal_blok_json": false,
+      "operator": "BatamFast",
+      "zona_waktu": "Asia/Singapore",
+      "trips": [
+        {
+          "jam": "08:00"
+        },
+        {
+          "jam": "08:50"
+        },
+        {
+          "jam": "10:50"
+        },
+        {
+          "jam": "12:00"
+        },
+        {
+          "jam": "14:20"
+        },
+        {
+          "jam": "16:20"
+        },
+        {
+          "jam": "18:30"
+        },
+        {
+          "jam": "20:20"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal BatamFast",
+        "baris": 7,
+        "rute": "Tanah Merah → Nongsapura (SGT)",
+        "jam_berangkat": "08:00, 08:50, 10:50, 12:00, 14:20, 16:20, 18:30, 20:20",
+        "tanggal_data_teks": "berlaku mulai 1 November 2026, dari batamfast.com"
+      }
+    },
+    {
+      "rute_id": "gcb-hfc",
+      "arah": "HarbourFront -> Gold Coast (BatamFast)",
+      "jam_berangkat": [
+        "09:35",
+        "10:30"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-11-01",
+      "sumber_url": [
+        "https://www.batamfast.com/"
+      ],
+      "asal_blok_json": false,
+      "operator": "BatamFast",
+      "zona_waktu": null,
+      "trips": [
+        {
+          "jam": "09:35",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "10:30"
+        }
+      ],
+      "catatan": "trip lain berstatus suspended",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal BatamFast",
+        "baris": 9,
+        "rute": "HarbourFront ⇄ Gold Coast — HF→GC 09:35 (Sindo), 10:30",
+        "jam_berangkat": "HF→GC 09:35 (Sindo), 10:30",
+        "tanggal_data_teks": "berlaku mulai 1 November 2026, dari batamfast.com"
+      },
+      "catatan_zona_waktu": "tabel tidak menyebut zona waktu untuk baris ini; menurut laporan, keberangkatan dari Singapura ditulis SGT dan dari Batam WIB"
+    },
+    {
+      "rute_id": "gcb-hfc",
+      "arah": "Gold Coast -> HarbourFront (BatamFast)",
+      "jam_berangkat": [
+        "15:30",
+        "19:00"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-11-01",
+      "sumber_url": [
+        "https://www.batamfast.com/"
+      ],
+      "asal_blok_json": false,
+      "operator": "BatamFast",
+      "zona_waktu": null,
+      "trips": [
+        {
+          "jam": "15:30",
+          "keterangan": "Sindo"
+        },
+        {
+          "jam": "19:00"
+        }
+      ],
+      "catatan": "trip lain berstatus suspended",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal BatamFast",
+        "baris": 9,
+        "rute": "HarbourFront ⇄ Gold Coast — GC→HF 15:30 (Sindo), 19:00",
+        "jam_berangkat": "GC→HF 15:30 (Sindo), 19:00",
+        "tanggal_data_teks": "berlaku mulai 1 November 2026, dari batamfast.com"
+      },
+      "catatan_zona_waktu": "tabel tidak menyebut zona waktu untuk baris ini; menurut laporan, keberangkatan dari Singapura ditulis SGT dan dari Batam WIB"
+    },
+    {
+      "rute_id": "btc-hfc",
+      "arah": "HarbourFront -> Batam Centre (Majestic, SGT)",
+      "jam_berangkat": [
+        "08:10",
+        "08:50",
+        "09:50",
+        "10:40",
+        "11:45",
+        "12:20",
+        "13:50",
+        "15:20",
+        "16:20",
+        "17:10",
+        "17:50",
+        "18:50",
+        "20:10",
+        "21:20"
+      ],
+      "hari": "sebagian trip hanya akhir pekan, malam libur, dan hari libur (tanda tidak terbaca jelas dari PDF; perlu_cek_ulang)",
+      "tanggal_data": "2026-05",
+      "sumber_url": [
+        "https://www.majesticfastferry.com.sg/Assets/Schedule/webschedule12052026113353.pdf"
+      ],
+      "asal_blok_json": false,
+      "operator": "Majestic",
+      "zona_waktu": "Asia/Singapore",
+      "trips": [
+        {
+          "jam": "08:10"
+        },
+        {
+          "jam": "08:50"
+        },
+        {
+          "jam": "09:50"
+        },
+        {
+          "jam": "10:40"
+        },
+        {
+          "jam": "11:45"
+        },
+        {
+          "jam": "12:20"
+        },
+        {
+          "jam": "13:50"
+        },
+        {
+          "jam": "15:20"
+        },
+        {
+          "jam": "16:20"
+        },
+        {
+          "jam": "17:10"
+        },
+        {
+          "jam": "17:50"
+        },
+        {
+          "jam": "18:50"
+        },
+        {
+          "jam": "20:10"
+        },
+        {
+          "jam": "21:20"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Majestic",
+        "baris": 1,
+        "rute": "HarbourFront → Batam Centre (SGT)",
+        "jam_berangkat": "08:10, 08:50, 09:50, 10:40, 11:45, 12:20, 13:50, 15:20, 16:20, 17:10, 17:50, 18:50, 20:10, 21:20",
+        "tanggal_data_teks": "jadwal \"New Timing\" yang berlaku mulai Mei 2026, PDF di majesticfastferry.com.sg"
+      },
+      "status_data": "perlu_cek_ulang"
+    },
+    {
+      "rute_id": "btc-tmft",
+      "arah": "Tanah Merah -> Batam Centre (Majestic, SGT)",
+      "jam_berangkat": [
+        "08:15",
+        "09:30",
+        "10:30",
+        "12:40",
+        "15:15",
+        "16:45",
+        "18:00",
+        "19:20",
+        "20:45"
+      ],
+      "hari": "sebagian trip hanya akhir pekan, malam libur, dan hari libur (tanda tidak terbaca jelas dari PDF; perlu_cek_ulang)",
+      "tanggal_data": "2026-05",
+      "sumber_url": [
+        "https://www.majesticfastferry.com.sg/Assets/Schedule/webschedule12052026113353.pdf"
+      ],
+      "asal_blok_json": false,
+      "operator": "Majestic",
+      "zona_waktu": "Asia/Singapore",
+      "trips": [
+        {
+          "jam": "08:15"
+        },
+        {
+          "jam": "09:30"
+        },
+        {
+          "jam": "10:30"
+        },
+        {
+          "jam": "12:40"
+        },
+        {
+          "jam": "15:15"
+        },
+        {
+          "jam": "16:45"
+        },
+        {
+          "jam": "18:00"
+        },
+        {
+          "jam": "19:20"
+        },
+        {
+          "jam": "20:45"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Majestic",
+        "baris": 3,
+        "rute": "Tanah Merah → Batam Centre (SGT)",
+        "jam_berangkat": "08:15, 09:30, 10:30, 12:40, 15:15, 16:45, 18:00, 19:20, 20:45",
+        "tanggal_data_teks": "jadwal \"New Timing\" yang berlaku mulai Mei 2026, PDF di majesticfastferry.com.sg"
+      },
+      "status_data": "perlu_cek_ulang"
+    },
+    {
+      "rute_id": "skp-hfc",
+      "arah": "HarbourFront -> Sekupang (Majestic, SGT)",
+      "jam_berangkat": [
+        "08:45",
+        "09:45",
+        "12:45",
+        "17:40",
+        "20:40"
+      ],
+      "hari": "sebagian trip hanya akhir pekan, malam libur, dan hari libur (tanda tidak terbaca jelas dari PDF; perlu_cek_ulang)",
+      "tanggal_data": "2026-05",
+      "sumber_url": [
+        "https://www.majesticfastferry.com.sg/Assets/Schedule/webschedule12052026113353.pdf"
+      ],
+      "asal_blok_json": false,
+      "operator": "Majestic",
+      "zona_waktu": "Asia/Singapore",
+      "trips": [
+        {
+          "jam": "08:45"
+        },
+        {
+          "jam": "09:45"
+        },
+        {
+          "jam": "12:45"
+        },
+        {
+          "jam": "17:40"
+        },
+        {
+          "jam": "20:40"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Majestic",
+        "baris": 5,
+        "rute": "HarbourFront → Sekupang (SGT)",
+        "jam_berangkat": "08:45, 09:45, 12:45, 17:40, 20:40",
+        "tanggal_data_teks": "jadwal \"New Timing\" yang berlaku mulai Mei 2026, PDF di majesticfastferry.com.sg"
+      },
+      "status_data": "perlu_cek_ulang"
+    },
+    {
+      "rute_id": "btc-hfc",
+      "arah": "Batam Centre -> HarbourFront (Sindo, WIB)",
+      "jam_berangkat": [
+        "06:00",
+        "07:20",
+        "08:40",
+        "10:40",
+        "12:40",
+        "14:00",
+        "15:10",
+        "16:10",
+        "17:20",
+        "18:20",
+        "19:30",
+        "20:20"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-11",
+      "sumber_url": [
+        "https://www.sindoferry.com.sg/schedules",
+        "https://app.sindoferry.com.sg/schedule/"
+      ],
+      "asal_blok_json": false,
+      "operator": "Sindo",
+      "zona_waktu": "Asia/Jakarta",
+      "trips": [
+        {
+          "jam": "06:00"
+        },
+        {
+          "jam": "07:20"
+        },
+        {
+          "jam": "08:40"
+        },
+        {
+          "jam": "10:40"
+        },
+        {
+          "jam": "12:40"
+        },
+        {
+          "jam": "14:00"
+        },
+        {
+          "jam": "15:10"
+        },
+        {
+          "jam": "16:10"
+        },
+        {
+          "jam": "17:20"
+        },
+        {
+          "jam": "18:20"
+        },
+        {
+          "jam": "19:30"
+        },
+        {
+          "jam": "20:20"
+        }
+      ],
+      "catatan": "perlu_cek_ulang: kedua halaman Sindo menampilkan versi yang berbeda",
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Sindo",
+        "baris": 2,
+        "rute": "Batam Centre → HarbourFront (WIB)",
+        "jam_berangkat": "06:00, 07:20, 08:40, 10:40, 12:40, 14:00, 15:10, 16:10, 17:20, 18:20, 19:30, 20:20 (perlu_cek_ulang: kedua halaman Sindo menampilkan versi yang berbeda)",
+        "tanggal_data_teks": "sindoferry.com.sg/schedules dan app.sindoferry.com.sg/schedule, diakses November 2026"
+      }
+    },
+    {
+      "rute_id": "skp-hfc",
+      "arah": "Sekupang -> HarbourFront (Sindo, WIB)",
+      "jam_berangkat": [
+        "06:00",
+        "07:00",
+        "08:30",
+        "11:20",
+        "12:30",
+        "13:50",
+        "15:20",
+        "17:00",
+        "20:30"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-11",
+      "sumber_url": [
+        "https://www.sindoferry.com.sg/schedules",
+        "https://app.sindoferry.com.sg/schedule/"
+      ],
+      "asal_blok_json": false,
+      "operator": "Sindo",
+      "zona_waktu": "Asia/Jakarta",
+      "trips": [
+        {
+          "jam": "06:00"
+        },
+        {
+          "jam": "07:00"
+        },
+        {
+          "jam": "08:30"
+        },
+        {
+          "jam": "11:20"
+        },
+        {
+          "jam": "12:30"
+        },
+        {
+          "jam": "13:50"
+        },
+        {
+          "jam": "15:20"
+        },
+        {
+          "jam": "17:00"
+        },
+        {
+          "jam": "20:30",
+          "keterangan": "20:30 perlu_cek_ulang"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Sindo",
+        "baris": 3,
+        "rute": "Sekupang → HarbourFront (WIB)",
+        "jam_berangkat": "06:00, 07:00, 08:30, 11:20, 12:30, 13:50, 15:20, 17:00, 20:30 (20:30 perlu_cek_ulang)",
+        "tanggal_data_teks": "sindoferry.com.sg/schedules dan app.sindoferry.com.sg/schedule, diakses November 2026"
+      }
+    },
+    {
+      "rute_id": "wfc-hfc",
+      "arah": "HarbourFront -> Waterfront (Sindo, SGT)",
+      "jam_berangkat": [
+        "10:00",
+        "14:10"
+      ],
+      "hari": "Sab–Min",
+      "tanggal_data": "2026-11",
+      "sumber_url": [
+        "https://www.sindoferry.com.sg/schedules",
+        "https://app.sindoferry.com.sg/schedule/"
+      ],
+      "asal_blok_json": false,
+      "operator": "Sindo",
+      "zona_waktu": "Asia/Singapore",
+      "trips": [
+        {
+          "jam": "10:00"
+        },
+        {
+          "jam": "14:10"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Sindo",
+        "baris": 4,
+        "rute": "HarbourFront → Waterfront (SGT, Sab–Min)",
+        "jam_berangkat": "10:00, 14:10",
+        "tanggal_data_teks": "sindoferry.com.sg/schedules dan app.sindoferry.com.sg/schedule, diakses November 2026"
+      }
+    },
+    {
+      "rute_id": "wfc-hfc",
+      "arah": "Waterfront -> HarbourFront (Sindo, WIB)",
+      "jam_berangkat": [
+        "13:20",
+        "14:50"
+      ],
+      "hari": "Sab–Min",
+      "tanggal_data": "2026-11",
+      "sumber_url": [
+        "https://www.sindoferry.com.sg/schedules",
+        "https://app.sindoferry.com.sg/schedule/"
+      ],
+      "asal_blok_json": false,
+      "operator": "Sindo",
+      "zona_waktu": "Asia/Jakarta",
+      "trips": [
+        {
+          "jam": "13:20"
+        },
+        {
+          "jam": "14:50"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Sindo",
+        "baris": 5,
+        "rute": "Waterfront → HarbourFront (WIB, Sab–Min)",
+        "jam_berangkat": "13:20, 14:50",
+        "tanggal_data_teks": "sindoferry.com.sg/schedules dan app.sindoferry.com.sg/schedule, diakses November 2026"
+      }
+    },
+    {
+      "rute_id": "btc-tmft",
+      "arah": "Tanah Merah -> Batam Centre (Sindo, SGT)",
+      "jam_berangkat": [
+        "10:20",
+        "12:30",
+        "14:30",
+        "16:30",
+        "17:40"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-11",
+      "sumber_url": [
+        "https://www.sindoferry.com.sg/schedules",
+        "https://app.sindoferry.com.sg/schedule/"
+      ],
+      "asal_blok_json": false,
+      "operator": "Sindo",
+      "zona_waktu": "Asia/Singapore",
+      "trips": [
+        {
+          "jam": "10:20"
+        },
+        {
+          "jam": "12:30"
+        },
+        {
+          "jam": "14:30"
+        },
+        {
+          "jam": "16:30"
+        },
+        {
+          "jam": "17:40"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Sindo",
+        "baris": 6,
+        "rute": "Tanah Merah → Batam Centre (SGT)",
+        "jam_berangkat": "10:20, 12:30, 14:30, 16:30, 17:40",
+        "tanggal_data_teks": "sindoferry.com.sg/schedules dan app.sindoferry.com.sg/schedule, diakses November 2026"
+      }
+    },
+    {
+      "rute_id": "btc-tmft",
+      "arah": "Batam Centre -> Tanah Merah (Sindo, WIB)",
+      "jam_berangkat": [
+        "08:00",
+        "09:20",
+        "11:30",
+        "13:20"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-11",
+      "sumber_url": [
+        "https://www.sindoferry.com.sg/schedules",
+        "https://app.sindoferry.com.sg/schedule/"
+      ],
+      "asal_blok_json": false,
+      "operator": "Sindo",
+      "zona_waktu": "Asia/Jakarta",
+      "trips": [
+        {
+          "jam": "08:00"
+        },
+        {
+          "jam": "09:20"
+        },
+        {
+          "jam": "11:30"
+        },
+        {
+          "jam": "13:20"
+        }
+      ],
+      "catatan": null,
+      "dari_tabel": {
+        "tabel": "Tabel jadwal Sindo",
+        "baris": 7,
+        "rute": "Batam Centre → Tanah Merah (WIB)",
+        "jam_berangkat": "08:00, 09:20, 11:30, 13:20",
+        "tanggal_data_teks": "sindoferry.com.sg/schedules dan app.sindoferry.com.sg/schedule, diakses November 2026"
+      }
+    },
+    {
+      "rute_id": "btc-stl",
+      "arah": "Stulang Laut -> Batam Centre (Indomas, MYT)",
+      "jam_berangkat": [
+        "09:30",
+        "12:00",
+        "15:15",
+        "17:00"
+      ],
+      "hari": null,
+      "tanggal_data": "2026-01-01",
+      "sumber_url": [
+        "https://www.indomasferry.com/"
+      ],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Kuala_Lumpur",
+      "catatan": null,
+      "status_data": null,
+      "dari_tabel": {
+        "tabel": "Tabel feri internasional Batam–Malaysia",
+        "baris": 1,
+        "tanggal_data_teks": "tarif berlaku mulai 1 Januari 2026 (indomasferry.com)",
+        "Rute": "Batam Centre ⇄ Stulang Laut (Berjaya Waterfront, Johor Bahru)",
+        "Operator": "Indomas Ferry; juga Dolphin Fast Ferry, Pintas Fast Ferry",
+        "Jadwal": "BC→Stulang (WIB): 06:00, 08:30, 11:40, 13:30. Stulang→BC (MYT): 09:30, 12:00, 15:15, 17:00",
+        "Durasi": "±2–2,5 jam",
+        "Harga": "Dari Batam: Rp430.000 sekali jalan / Rp650.000 PP dewasa (termasuk seaport tax Rp100.000). Dari Stulang: MYR 123 sekali jalan",
+        "Tanggal data": "tarif berlaku mulai 1 Januari 2026 (indomasferry.com)"
+      }
+    },
+    {
+      "rute_id": "hb-ph",
+      "arah": "Harbour Bay -> Puteri Harbour (Putri Anggreni, WIB)",
+      "jam_berangkat": [
+        "07:15"
+      ],
+      "hari": "data 3 Nov 2026",
+      "tanggal_data": "2026-11-03",
+      "sumber_url": [
+        "https://ferryglobalgroup.com/schedule"
+      ],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": null,
+      "status_data": null,
+      "dari_tabel": {
+        "tabel": "Tabel feri internasional Batam–Malaysia",
+        "baris": 2,
+        "tanggal_data_teks": "3–4 Nov 2026 (ferryglobalgroup.com/schedule)",
+        "Rute": "Harbour Bay ⇄ Puteri Harbour (Iskandar Puteri)",
+        "Operator": "Putri Anggreni (Ferry Global Group)",
+        "Jadwal": "HB→PH (WIB): 07:15 (data 3 Nov 2026). PH→HB (MYT): 07:30, 11:00, 13:00, 18:30 (data 4 Nov 2026)",
+        "Durasi": "±1,5–3 jam (sumber tidak konsisten)",
+        "Harga": "RM 125–172 (redBus, Economy/Business)",
+        "Tanggal data": "3–4 Nov 2026 (ferryglobalgroup.com/schedule)"
+      }
+    },
+    {
+      "rute_id": "batam-pasirgudang",
+      "arah": "Harbour Bay / Batam Centre / Nongsapura -> Pasir Gudang",
+      "jam_berangkat": [],
+      "hari": null,
+      "tanggal_data": null,
+      "sumber_url": [],
+      "asal_blok_json": false,
+      "zona_waktu": null,
+      "catatan": "belum ada jadwal resmi yang terverifikasi",
+      "status_data": "perlu_cek_ulang",
+      "dari_tabel": {
+        "tabel": "Tabel feri internasional Batam–Malaysia",
+        "baris": 3,
+        "tanggal_data_teks": "perlu_cek_ulang",
+        "Rute": "Harbour Bay / Batam Centre / Nongsapura ⇄ Pasir Gudang",
+        "Operator": "Dolphin Fast Ferry, Pasir Gudang Ferry, BatamFast (Nongsapura)",
+        "Jadwal": "belum ada jadwal resmi yang terverifikasi",
+        "Durasi": "±1,5 jam",
+        "Harga": "–",
+        "Tanggal data": "perlu_cek_ulang"
+      }
+    },
+    {
+      "rute_id": "tpg-tgu",
+      "arah": "Telaga Punggur -> Tanjung Uban (speedboat, WIB)",
+      "jam_berangkat": [],
+      "hari": null,
+      "tanggal_data": "2026-02",
+      "sumber_url": [],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": "07:00–18:00, tiap ±30 menit",
+      "status_data": null,
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 2,
+        "tanggal_data_teks": "Feb 2026",
+        "Asal": "Telaga Punggur",
+        "Tujuan": "Tanjung Uban (speedboat)",
+        "Operator / kapal": "antara lain Bayu Indah Group",
+        "Jadwal": "07:00–18:00, tiap ±30 menit",
+        "Durasi": "±15 mnt",
+        "Harga": "Rp63.500",
+        "Tanggal data": "Feb 2026"
+      },
+      "jam_operasi": "07:00–18:00",
+      "interval": "tiap ±30 menit"
+    },
+    {
+      "rute_id": "tpg-tgu-roro",
+      "arah": "Tanjung Uban -> Telaga Punggur (RoRo, WIB)",
+      "jam_berangkat": [
+        "06:00",
+        "08:00",
+        "10:00",
+        "12:00",
+        "14:00",
+        "16:00",
+        "18:00"
+      ],
+      "hari": "contoh 9 Okt 2026",
+      "tanggal_data": "2026-10-09",
+      "sumber_url": [
+        "https://www.batamnews.co.id/berita-130793-jadwal-roro-telaga-punggur-tanjung-uban-jumat-9-oktober-2026-dua-kapal-beroperasi-hingga-sore.html"
+      ],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": null,
+      "status_data": null,
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 3,
+        "tanggal_data_teks": "9 Okt 2026",
+        "Asal": "Telaga Punggur (RoRo)",
+        "Tujuan": "Tanjung Uban",
+        "Operator / kapal": "ASDP: KMP Trisakti Adinda, KMP Tanjung Burang (KMP Barau sedang docking)",
+        "Jadwal": "Trisakti Adinda dari Punggur 06:00, 10:00, 14:00, 18:00; Tanjung Burang dari Punggur 08:00, 12:00, 16:00. Dari Tg. Uban: Trisakti Adinda 08:00, 12:00, 16:00; Tanjung Burang 06:00, 10:00, 14:00, 18:00",
+        "Durasi": "±1 jam (perlu_cek_ulang)",
+        "Harga": "Dewasa Rp27.000; motor (Gol. II) Rp51.000; mobil (Gol. IVA) Rp309.000",
+        "Tanggal data": "9 Okt 2026"
+      },
+      "per_kapal": [
+        {
+          "kapal": "KMP Trisakti Adinda",
+          "dari": "Tanjung Uban",
+          "jam_berangkat": [
+            "08:00",
+            "12:00",
+            "16:00"
+          ]
+        },
+        {
+          "kapal": "KMP Tanjung Burang",
+          "dari": "Tanjung Uban",
+          "jam_berangkat": [
+            "06:00",
+            "10:00",
+            "14:00",
+            "18:00"
+          ]
+        }
+      ]
+    },
+    {
+      "rute_id": "tpg-senayang",
+      "arah": "Telaga Punggur -> Senayang – Pancur – Benan – Tajur Biru – Seitenam (WIB)",
+      "jam_berangkat": [
+        "11:00"
+      ],
+      "hari": "dua hari sekali",
+      "tanggal_data": "2026-02",
+      "sumber_url": [],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": null,
+      "status_data": null,
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 5,
+        "tanggal_data_teks": "Feb 2026",
+        "Asal": "Telaga Punggur",
+        "Tujuan": "Senayang – Pancur – Benan – Tajur Biru – Seitenam",
+        "Operator / kapal": "–",
+        "Jadwal": "11:00, dua hari sekali",
+        "Durasi": "–",
+        "Harga": "Rp212.000–252.000",
+        "Tanggal data": "Feb 2026"
+      }
+    },
+    {
+      "rute_id": "tpg-trp",
+      "arah": "Telaga Punggur -> Letung – Tarempa (WIB)",
+      "jam_berangkat": [
+        "08:30"
+      ],
+      "hari": "2x seminggu, tergantung cuaca",
+      "tanggal_data": "2026-02",
+      "sumber_url": [],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": null,
+      "status_data": null,
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 6,
+        "tanggal_data_teks": "Feb 2026",
+        "Asal": "Telaga Punggur",
+        "Tujuan": "Letung – Tarempa (Anambas)",
+        "Operator / kapal": "–",
+        "Jadwal": "08:30, 2x seminggu, tergantung cuaca",
+        "Durasi": "–",
+        "Harga": "Letung Rp440.000; Tarempa Rp494.000",
+        "Tanggal data": "Feb 2026"
+      }
+    },
+    {
+      "rute_id": "tpg-roro-mengkapan-kualatungkal",
+      "arah": "Telaga Punggur -> Mengkapan Buton, Kuala Tungkal (RoRo)",
+      "jam_berangkat": [],
+      "hari": null,
+      "tanggal_data": null,
+      "sumber_url": [],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": "ada (contoh 2 April 2026), jam belum terverifikasi",
+      "status_data": "perlu_cek_ulang",
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 7,
+        "tanggal_data_teks": "perlu_cek_ulang",
+        "Asal": "Telaga Punggur (RoRo)",
+        "Tujuan": "Mengkapan Buton, Kuala Tungkal",
+        "Operator / kapal": "ASDP",
+        "Jadwal": "ada (contoh 2 April 2026), jam belum terverifikasi",
+        "Durasi": "–",
+        "Harga": "–",
+        "Tanggal data": "perlu_cek_ulang"
+      }
+    },
+    {
+      "rute_id": "skp-tbk",
+      "arah": "Sekupang -> Tanjung Balai Karimun (Dumai Express, jadwal lama)",
+      "jam_berangkat": [
+        "07:00",
+        "07:30",
+        "09:30",
+        "13:00",
+        "14:15",
+        "16:15"
+      ],
+      "hari": null,
+      "tanggal_data": null,
+      "sumber_url": [],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": "jadwal lama Dumai Express (usang)",
+      "status_data": "usang",
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 8,
+        "tanggal_data_teks": "2026",
+        "Asal": "Sekupang Domestik",
+        "Tujuan": "Tanjung Balai Karimun",
+        "Operator / kapal": "Dumai Line / Batam Jet 8 & 9",
+        "Jadwal": "07:20 setiap hari (Tribun, Jun–Agu 2026); jadwal lama Dumai Express 07:00, 07:30, 09:30, 13:00, 14:15, 16:15 (usang)",
+        "Durasi": "±1–1,5 jam (perlu_cek_ulang)",
+        "Harga": "Rp132.000",
+        "Tanggal data": "2026"
+      }
+    },
+    {
+      "rute_id": "skp-dumai",
+      "arah": "Sekupang -> Buton – Bengkalis – Dumai (jadwal lama)",
+      "jam_berangkat": [
+        "07:30"
+      ],
+      "hari": null,
+      "tanggal_data": null,
+      "sumber_url": [],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": "Batam–Buton–Bengkalis–Dumai berangkat 07:30 (jadwal lama)",
+      "status_data": "usang",
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 9,
+        "tanggal_data_teks": "menjelang Lebaran 2026 (batampos)",
+        "Asal": "Sekupang Domestik",
+        "Tujuan": "Tanjung Samak, Selat Panjang, Bengkalis, Buton, Dumai, Kuala Enok, Kuala Tungkal",
+        "Operator / kapal": "Dumai Line Group",
+        "Jadwal": "Batam–Buton–Bengkalis–Dumai berangkat 07:30 (jadwal lama)",
+        "Durasi": "–",
+        "Harga": "Tg. Samak Rp222.000; Selat Panjang Rp282.000; Bengkalis Rp442.000; Buton Rp452.000; Dumai/Kuala Enok/Kuala Tungkal Rp600.000",
+        "Tanggal data": "menjelang Lebaran 2026 (batampos)"
+      }
+    },
+    {
+      "rute_id": "skp-kundur-penyalai",
+      "arah": "Sekupang -> Tanjung Batu (Kundur), Penyalai (jadwal lama)",
+      "jam_berangkat": [
+        "07:45"
+      ],
+      "hari": null,
+      "tanggal_data": null,
+      "sumber_url": [],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": null,
+      "status_data": "usang",
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 10,
+        "tanggal_data_teks": "usang",
+        "Asal": "Sekupang Domestik",
+        "Tujuan": "Tanjung Batu (Kundur), Penyalai",
+        "Operator / kapal": "–",
+        "Jadwal": "07:45 (jadwal lama)",
+        "Durasi": "–",
+        "Harga": "–",
+        "Tanggal data": "usang"
+      }
+    },
+    {
+      "rute_id": "hb-domestik-tbk-moro",
+      "arah": "Harbour Bay -> Tanjung Balai Karimun, Moro (Sri Mandah)",
+      "jam_berangkat": [],
+      "hari": null,
+      "tanggal_data": null,
+      "sumber_url": [],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": "ada di easybook, jam belum terverifikasi",
+      "status_data": "perlu_cek_ulang",
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 11,
+        "tanggal_data_teks": "perlu_cek_ulang",
+        "Asal": "Harbour Bay Domestik",
+        "Tujuan": "Tanjung Balai Karimun, Moro (Sri Mandah)",
+        "Operator / kapal": "–",
+        "Jadwal": "ada di easybook, jam belum terverifikasi",
+        "Durasi": "–",
+        "Harga": "–",
+        "Tanggal data": "perlu_cek_ulang"
+      }
+    },
+    {
+      "rute_id": "b99-pelni",
+      "arah": "Batam -> Jakarta (Tanjung Priok) (KM Kelud, contoh)",
+      "jam_berangkat": [
+        "16:00"
+      ],
+      "hari": "Rabu 5 Agu 2026 (contoh; sekitar mingguan)",
+      "tanggal_data": "2026-08-05",
+      "sumber_url": [
+        "https://papua.tribunnews.com/news/128375/jadwal-kapal-pelni-batam-jakarta-agustus-2026-cek-harga-tiket-km-kelud"
+      ],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": null,
+      "status_data": null,
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 12,
+        "tanggal_data_teks": "Feb–Agu 2026",
+        "Asal": "Bintang 99, Batu Ampar (Pelni)",
+        "Tujuan": "Tanjung Priok (Jakarta), Belawan (Medan), Tanjung Balai Karimun",
+        "Operator / kapal": "PT Pelni, KM Kelud (Januari 2026 juga KM Nggapulu)",
+        "Jadwal": "sekitar mingguan; contoh Batam→Jakarta Rabu 5 Agu 2026 16:00, Batam→Belawan Minggu 2 Agu 2026 12:00",
+        "Durasi": "Jakarta ±32 jam; Belawan ±28 jam",
+        "Harga": "Kelas 1A ke Jakarta Rp1.283.000–1.308.000; ekonomi ke Jakarta mulai ±Rp382.000; ekonomi ke Belawan mulai ±Rp267.000",
+        "Tanggal data": "Feb–Agu 2026"
+      }
+    },
+    {
+      "rute_id": "b99-pelni",
+      "arah": "Batam -> Belawan (KM Kelud, contoh)",
+      "jam_berangkat": [
+        "12:00"
+      ],
+      "hari": "Minggu 2 Agu 2026 (contoh; sekitar mingguan)",
+      "tanggal_data": "2026-08-02",
+      "sumber_url": [
+        "https://papua.tribunnews.com/news/127922/jadwal-kapal-pelni-batam-belawan-agustus-2026-cek-harga-tiket-km-kelud"
+      ],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": null,
+      "status_data": null,
+      "dari_tabel": {
+        "tabel": "Tabel feri dan kapal domestik",
+        "baris": 12,
+        "tanggal_data_teks": "Feb–Agu 2026",
+        "Asal": "Bintang 99, Batu Ampar (Pelni)",
+        "Tujuan": "Tanjung Priok (Jakarta), Belawan (Medan), Tanjung Balai Karimun",
+        "Operator / kapal": "PT Pelni, KM Kelud (Januari 2026 juga KM Nggapulu)",
+        "Jadwal": "sekitar mingguan; contoh Batam→Jakarta Rabu 5 Agu 2026 16:00, Batam→Belawan Minggu 2 Agu 2026 12:00",
+        "Durasi": "Jakarta ±32 jam; Belawan ±28 jam",
+        "Harga": "Kelas 1A ke Jakarta Rp1.283.000–1.308.000; ekonomi ke Jakarta mulai ±Rp382.000; ekonomi ke Belawan mulai ±Rp267.000",
+        "Tanggal data": "Feb–Agu 2026"
+      }
+    },
+    {
+      "rute_id": "pr-blp-kasu-geranting",
+      "arah": "Belakang Padang -> Kasu (pompong reguler)",
+      "jam_berangkat": [
+        "11:00"
+      ],
+      "hari": "sekali sehari (±11:00), balik esok ±07:00",
+      "tanggal_data": null,
+      "sumber_url": [],
+      "asal_blok_json": false,
+      "zona_waktu": "Asia/Jakarta",
+      "catatan": "Jam ditulis \"±11:00\" dan \"±07:00\" di sumber.",
+      "status_data": "usang",
+      "dari_tabel": {
+        "tabel": "Tabel pompong dan pancung",
+        "baris": 3,
+        "tanggal_data_teks": "data lama",
+        "Pelantar": "Belakang Padang (pelantar pompong antarpulau)",
+        "Kecamatan": "Belakang Padang",
+        "Tujuan": "Kasu (pompong reguler sekali sehari ±11:00, balik esok ±07:00); Pulau Geranting",
+        "Jam operasi": "–",
+        "Tarif": "carter ke Kasu Rp150.000–200.000; Geranting Rp140.000/orang",
+        "Durasi": "Kasu ±45 mnt; Geranting ±1 jam",
+        "Status data": "data lama"
+      },
+      "jam_balik": [
+        "07:00"
+      ]
+    }
+  ]
+}

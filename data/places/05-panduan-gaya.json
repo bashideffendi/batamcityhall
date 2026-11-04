@@ -1,0 +1,102 @@
+[
+ {
+  "id": "nagoya-citywalk",
+  "nama": "Nagoya Citywalk",
+  "nama_alternatif": [],
+  "kategori": "belanja",
+  "subkategori": "kawasan_belanja",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "acara": "festival grafiti internasional \"Wave of Wall\" (April 2026, art director Revino Arena)",
+   "relevansi_desain": "menunjukkan ada ekosistem seniman jalanan lokal; grafiti, bukan garis halus, tapi bisa jadi pintu jejaring ilustrator"
+  },
+  "status_data": "terverifikasi",
+  "catatan": "Disebut laporan hanya sebagai lokasi festival Wave of Wall ([V]). Laporan tidak menyebut kecamatan, alamat, maupun jenis tempat; kategori 'belanja' dipilih agen.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://harian.batampos.co.id/2026/04/13/nagoya-citywalk-disulap-jadi-kanvas-raksasa/"
+  ],
+  "sumber_riset": "05-panduan-gaya"
+ },
+ {
+  "id": "jembatan-barelang",
+  "nama": "Jembatan Barelang",
+  "nama_alternatif": [],
+  "kategori": "landmark",
+  "subkategori": "jembatan",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "konteks_desain": "termasuk elemen lambang resmi Kota Batam (Perda Kota Batam No. 3 Tahun 2001) [V]; jangan dipakai sebagai logo/emblem, boleh muncul sebagai ilustrasi di Loket",
+   "warna_terkait": "aksen terakota senja Barelang = Riso Copper #BD6439"
+  },
+  "status_data": "terverifikasi",
+  "catatan": "Topik sensitif untuk branding: siluet Barelang tidak boleh dipakai di logo Batam City Hall. Laporan tidak menyebut kecamatan/lokasi.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://bagumum.batam.go.id/lambang-pemerintah-kota-batam/"
+  ],
+  "sumber_riset": "05-panduan-gaya"
+ },
+ {
+  "id": "pulau-penyengat",
+  "nama": "Pulau Penyengat",
+  "nama_alternatif": [],
+  "kategori": "budaya",
+  "subkategori": "pulau_sejarah_melayu",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "konteks": "pusat budaya buku tempat Raja Ali Haji (1809–1873) hidup dan berkarya (British Library EAP153) [V]",
+   "percetakan": "percetakan kerajaan Mathba'ah al-Riauwiyah mencetak di Penyengat, misalnya terbitan 1313 H / 1895 M [V]",
+   "rusydiah_klub": "tahun berdiri tidak konsisten antarsumber (1880, 1885, 1892, 1895); tulis \"akhir abad ke-19\"",
+   "lokasi_luar_batam": true
+  },
+  "status_data": "terverifikasi",
+  "catatan": "Laporan tidak menyebut kecamatan; Penyengat tidak ada di enum kecamatan Kota Batam, cek apakah perlu tampil di peta Batam. Tahun berdiri Rusydiah Klub konflik antarsumber. Pulau Penyengat ada di Kota Tanjungpinang, bukan Kota Batam.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://eap.bl.uk/project/EAP153",
+   "https://www.kompas.id/artikel/mengingat-tamadun-melayu-di-pulau-penyengat/",
+   "https://jantungmelayu.co/2018/09/taman-penghiburan-rusydiah-club-riouw-pulau-penyengat-tahun-1895/"
+  ],
+  "sumber_riset": "05-panduan-gaya"
+ }
+]

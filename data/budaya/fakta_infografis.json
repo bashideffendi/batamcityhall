@@ -1,0 +1,1136 @@
+{
+  "sumber_riset": "13-budaya-kalender-kamus",
+  "angka": [
+    {
+      "id": "fi-001",
+      "topik": "penduduk",
+      "indikator": "Jumlah penduduk (BPS)",
+      "angka": "1,79 juta",
+      "nilai": 1.79,
+      "satuan": "juta jiwa",
+      "tahun": 2025,
+      "periode": null,
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/08bd1b0506fb113/jumlah-penduduk-kota-batam-1-79-juta-jiwa-data-per-2025"
+      ]
+    },
+    {
+      "id": "fi-002",
+      "topik": "penduduk",
+      "indikator": "Pertumbuhan penduduk rata-rata 5 tahun terakhir (BPS)",
+      "angka": "4,66%",
+      "nilai": 4.66,
+      "satuan": "persen",
+      "tahun": 2025,
+      "periode": "rata-rata 5 tahun terakhir",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/08bd1b0506fb113/jumlah-penduduk-kota-batam-1-79-juta-jiwa-data-per-2025"
+      ]
+    },
+    {
+      "id": "fi-003",
+      "topik": "penduduk",
+      "indikator": "Jumlah penduduk 2024 (BPS)",
+      "angka": "1.722.927",
+      "nilai": 1722927,
+      "satuan": "jiwa",
+      "tahun": 2024,
+      "periode": null,
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/08bd1b0506fb113/jumlah-penduduk-kota-batam-1-79-juta-jiwa-data-per-2025"
+      ]
+    },
+    {
+      "id": "fi-004",
+      "topik": "penduduk",
+      "indikator": "Pertumbuhan penduduk 2024 (BPS)",
+      "angka": "4,03%",
+      "nilai": 4.03,
+      "satuan": "persen",
+      "tahun": 2024,
+      "periode": null,
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/08bd1b0506fb113/jumlah-penduduk-kota-batam-1-79-juta-jiwa-data-per-2025"
+      ]
+    },
+    {
+      "id": "fi-005",
+      "topik": "penduduk",
+      "indikator": "Kelompok usia terbesar",
+      "angka": "25–34 tahun",
+      "nilai": null,
+      "satuan": "rentang usia (tahun)",
+      "tahun": null,
+      "periode": null,
+      "status": "✅",
+      "catatan": "ciri kota pekerja; tahun data tidak disebut terpisah di laporan",
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/08bd1b0506fb113/jumlah-penduduk-kota-batam-1-79-juta-jiwa-data-per-2025"
+      ]
+    },
+    {
+      "id": "fi-006",
+      "topik": "penduduk",
+      "indikator": "Jumlah penduduk (Dukcapil)",
+      "angka": "1.394.459",
+      "nilai": 1394459,
+      "satuan": "jiwa",
+      "tahun": 2025,
+      "periode": "DKB Semester II 2025",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
+      ]
+    },
+    {
+      "id": "fi-007",
+      "topik": "penduduk",
+      "indikator": "Penduduk laki-laki (Dukcapil)",
+      "angka": "705.945",
+      "nilai": 705945,
+      "satuan": "jiwa",
+      "tahun": 2025,
+      "periode": "DKB Semester II 2025",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
+      ]
+    },
+    {
+      "id": "fi-008",
+      "topik": "penduduk",
+      "indikator": "Penduduk perempuan (Dukcapil)",
+      "angka": "688.514",
+      "nilai": 688514,
+      "satuan": "jiwa",
+      "tahun": 2025,
+      "periode": "DKB Semester II 2025",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
+      ]
+    },
+    {
+      "id": "fi-009",
+      "topik": "penduduk",
+      "indikator": "Penduduk per kecamatan: Sagulung (terpadat)",
+      "angka": "243.694",
+      "nilai": 243694,
+      "satuan": "jiwa",
+      "tahun": 2025,
+      "periode": "DKB Semester II 2025",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
+      ],
+      "kecamatan": "Sagulung"
+    },
+    {
+      "id": "fi-010",
+      "topik": "penduduk",
+      "indikator": "Penduduk per kecamatan: Batam Kota",
+      "angka": "218.580",
+      "nilai": 218580,
+      "satuan": "jiwa",
+      "tahun": 2025,
+      "periode": "DKB Semester II 2025",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
+      ],
+      "kecamatan": "Batam Kota"
+    },
+    {
+      "id": "fi-011",
+      "topik": "penduduk",
+      "indikator": "Penduduk per kecamatan: Sekupang",
+      "angka": "200.176",
+      "nilai": 200176,
+      "satuan": "jiwa",
+      "tahun": 2025,
+      "periode": "DKB Semester II 2025",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
+      ],
+      "kecamatan": "Sekupang"
+    },
+    {
+      "id": "fi-012",
+      "topik": "penduduk",
+      "indikator": "Penduduk per kecamatan: Galang (paling sedikit)",
+      "angka": "21.108",
+      "nilai": 21108,
+      "satuan": "jiwa",
+      "tahun": 2025,
+      "periode": "DKB Semester II 2025",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
+      ],
+      "kecamatan": "Galang"
+    },
+    {
+      "id": "fi-013",
+      "topik": "penduduk",
+      "indikator": "Penduduk per kecamatan: Belakang Padang",
+      "angka": "21.468",
+      "nilai": 21468,
+      "satuan": "jiwa",
+      "tahun": 2025,
+      "periode": "DKB Semester II 2025",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
+      ],
+      "kecamatan": "Belakang Padang"
+    },
+    {
+      "id": "fi-014",
+      "topik": "penduduk",
+      "indikator": "Selisih jumlah penduduk BPS vs Dukcapil",
+      "angka": "±400 ribu",
+      "nilai": 400,
+      "satuan": "ribu jiwa",
+      "tahun": 2025,
+      "periode": null,
+      "status": null,
+      "catatan": "BPS menghitung penduduk yang benar-benar tinggal, sedangkan Dukcapil hanya yang ber-KTP/KK Batam. Kemungkinan besar banyak warga pendatang yang tinggal di Batam tapi administrasinya masih di daerah asal. Ini interpretasi, bukan klaim resmi.",
+      "sumber_url": []
+    },
+    {
+      "id": "fi-015",
+      "topik": "agama",
+      "indikator": "Islam",
+      "angka": "72,22%",
+      "nilai": 72.22,
+      "satuan": "persen",
+      "tahun": 2024,
+      "periode": "31 Des 2024 (Dukcapil)",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
+      ]
+    },
+    {
+      "id": "fi-016",
+      "topik": "agama",
+      "indikator": "Kristen Protestan",
+      "angka": "17,69%",
+      "nilai": 17.69,
+      "satuan": "persen",
+      "tahun": 2024,
+      "periode": "31 Des 2024 (Dukcapil)",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
+      ]
+    },
+    {
+      "id": "fi-017",
+      "topik": "agama",
+      "indikator": "Buddha",
+      "angka": "6,47%",
+      "nilai": 6.47,
+      "satuan": "persen",
+      "tahun": 2024,
+      "periode": "31 Des 2024 (Dukcapil)",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
+      ]
+    },
+    {
+      "id": "fi-018",
+      "topik": "agama",
+      "indikator": "Katolik",
+      "angka": "3,45%",
+      "nilai": 3.45,
+      "satuan": "persen",
+      "tahun": 2024,
+      "periode": "31 Des 2024 (Dukcapil)",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
+      ]
+    },
+    {
+      "id": "fi-019",
+      "topik": "agama",
+      "indikator": "Konghucu",
+      "angka": "0,09%",
+      "nilai": 0.09,
+      "satuan": "persen",
+      "tahun": 2024,
+      "periode": "31 Des 2024 (Dukcapil)",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
+      ]
+    },
+    {
+      "id": "fi-020",
+      "topik": "agama",
+      "indikator": "Hindu",
+      "angka": "0,06%",
+      "nilai": 0.06,
+      "satuan": "persen",
+      "tahun": 2024,
+      "periode": "31 Des 2024 (Dukcapil)",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
+      ]
+    },
+    {
+      "id": "fi-021",
+      "topik": "agama",
+      "indikator": "Penghayat Kepercayaan",
+      "angka": "0,03%",
+      "nilai": 0.03,
+      "satuan": "persen",
+      "tahun": 2024,
+      "periode": "31 Des 2024 (Dukcapil)",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
+      ]
+    },
+    {
+      "id": "fi-022",
+      "topik": "agama",
+      "indikator": "Penghayat Kepercayaan (jumlah orang)",
+      "angka": "322 orang",
+      "nilai": 322,
+      "satuan": "orang",
+      "tahun": 2024,
+      "periode": "31 Des 2024 (Dukcapil)",
+      "status": "✅",
+      "catatan": null,
+      "sumber_url": [
+        "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
+      ]
+    },
+    {
+      "id": "fi-023",
+      "topik": "penduduk",
+      "indikator": "Komposisi suku/asal daerah",
+      "angka": null,
+      "nilai": null,
+      "satuan": null,
+      "tahun": null,
+      "periode": null,
+      "status": "⚠️",
+      "catatan": "⚠️ Belum ada angka per suku khusus Kota Batam dari sumber yang bisa dicek. Sensus 2010 adalah sensus terakhir yang memuat data suku; tabel per kota perlu ditarik dari publikasi BPS 2010 \"Kewarganegaraan, Suku Bangsa, Agama dan Bahasa Sehari-hari Penduduk Indonesia\". Sementara itu, pakai narasi netral: \"Melayu sebagai tuan rumah, dengan komunitas besar dari Sumatra Utara, Sumatra Barat, Jawa, Tionghoa, NTT, Sulawesi, dan lain-lain.\"",
+      "sumber_url": []
+    },
+    {
+      "id": "fi-024",
+      "topik": "tenaga_kerja",
+      "indikator": "Jumlah pekerja industri",
+      "angka": null,
+      "nilai": null,
+      "satuan": null,
+      "tahun": null,
+      "periode": null,
+      "status": "⚠️",
+      "catatan": "⚠️ Belum ditemukan. Sumber yang disarankan: BPS Kota Batam (Sakernas/\"Kota Batam Dalam Angka\") atau Disnaker Batam.",
+      "sumber_url": []
+    },
+    {
+      "id": "fi-025",
+      "topik": "wisman",
+      "indikator": "Kunjungan wisman",
+      "angka": "1.613.202",
+      "nilai": 1613202,
+      "satuan": "kunjungan",
+      "tahun": 2025,
+      "periode": null,
+      "status": null,
+      "catatan": "melampaui target 1,5 juta versi Batam Pos/Disbudpar (lihat catatan target di bawah)",
+      "sumber_url": [
+        "https://metropolis.batampos.co.id/kunjungan-wisman-ke-batam-tembus-16-juta-sumbang-79-wisman-kepri/"
+      ]
+    },
+    {
+      "id": "fi-026",
+      "topik": "wisman",
+      "indikator": "Wisman asal Singapura (asal terbesar)",
+      "angka": "789.674",
+      "nilai": 789674,
+      "satuan": "kunjungan",
+      "tahun": 2025,
+      "periode": null,
+      "status": null,
+      "catatan": "±49%",
+      "sumber_url": [
+        "https://metropolis.batampos.co.id/kunjungan-wisman-ke-batam-tembus-16-juta-sumbang-79-wisman-kepri/"
+      ]
+    },
+    {
+      "id": "fi-027",
+      "topik": "wisman",
+      "indikator": "Wisman asal Malaysia",
+      "angka": "418.330",
+      "nilai": 418330,
+      "satuan": "kunjungan",
+      "tahun": 2025,
+      "periode": null,
+      "status": null,
+      "catatan": "±26%",
+      "sumber_url": [
+        "https://metropolis.batampos.co.id/kunjungan-wisman-ke-batam-tembus-16-juta-sumbang-79-wisman-kepri/"
+      ]
+    },
+    {
+      "id": "fi-028",
+      "topik": "wisman",
+      "indikator": "Porsi Batam dari wisman Kepri",
+      "angka": "79,58%",
+      "nilai": 79.58,
+      "satuan": "persen",
+      "tahun": 2025,
+      "periode": null,
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://metropolis.batampos.co.id/kunjungan-wisman-ke-batam-tembus-16-juta-sumbang-79-wisman-kepri/"
+      ]
+    },
+    {
+      "id": "fi-029",
+      "topik": "wisman",
+      "indikator": "Total wisman Kepri",
+      "angka": "2.027.037",
+      "nilai": 2027037,
+      "satuan": "kunjungan",
+      "tahun": 2025,
+      "periode": null,
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://metropolis.batampos.co.id/kunjungan-wisman-ke-batam-tembus-16-juta-sumbang-79-wisman-kepri/"
+      ]
+    },
+    {
+      "id": "fi-030",
+      "topik": "wisman",
+      "indikator": "Bulan tersibuk (Desember)",
+      "angka": "195.525",
+      "nilai": 195525,
+      "satuan": "kunjungan",
+      "tahun": 2025,
+      "periode": "Desember 2025",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://metropolis.batampos.co.id/kunjungan-wisman-ke-batam-tembus-16-juta-sumbang-79-wisman-kepri/"
+      ]
+    },
+    {
+      "id": "fi-031",
+      "topik": "wisman",
+      "indikator": "Kunjungan wisman Jan–Nov 2023",
+      "angka": "1.043.078",
+      "nilai": 1043078,
+      "satuan": "kunjungan",
+      "tahun": 2023,
+      "periode": "Jan–Nov 2023",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.tempo.co/hiburan/kunjungan-wisman-meningkat-ke-batam-50-persen-turis-singapura-1189736"
+      ]
+    },
+    {
+      "id": "fi-032",
+      "topik": "wisman",
+      "indikator": "Kunjungan wisman Jan–Nov 2024",
+      "angka": "1.166.849",
+      "nilai": 1166849,
+      "satuan": "kunjungan",
+      "tahun": 2024,
+      "periode": "Jan–Nov 2024",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.tempo.co/hiburan/kunjungan-wisman-meningkat-ke-batam-50-persen-turis-singapura-1189736"
+      ]
+    },
+    {
+      "id": "fi-033",
+      "topik": "wisman",
+      "indikator": "Pertumbuhan wisman Jan–Nov 2024 vs Jan–Nov 2023",
+      "angka": "+8,23%",
+      "nilai": 8.23,
+      "satuan": "persen",
+      "tahun": 2024,
+      "periode": "Jan–Nov 2024",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.tempo.co/hiburan/kunjungan-wisman-meningkat-ke-batam-50-persen-turis-singapura-1189736"
+      ]
+    },
+    {
+      "id": "fi-034",
+      "topik": "wisman",
+      "indikator": "Kunjungan wisman setahun penuh 2023",
+      "angka": "1.192.931",
+      "nilai": 1192931,
+      "satuan": "kunjungan",
+      "tahun": 2023,
+      "periode": null,
+      "status": null,
+      "catatan": "data BPS Kota Batam yang dikutip Sekda Batam Jefridin kepada Bisnis.com",
+      "sumber_url": [
+        "https://www.tempo.co/hiburan/kunjungan-wisman-meningkat-ke-batam-50-persen-turis-singapura-1189736"
+      ]
+    },
+    {
+      "id": "fi-035",
+      "topik": "wisman",
+      "indikator": "Kunjungan wisman setahun penuh 2024",
+      "angka": "1.326.831",
+      "nilai": 1326831,
+      "satuan": "kunjungan",
+      "tahun": 2024,
+      "periode": null,
+      "status": null,
+      "catatan": "data BPS Kota Batam yang dikutip Sekda Batam Jefridin kepada Bisnis.com",
+      "sumber_url": [
+        "https://www.tempo.co/hiburan/kunjungan-wisman-meningkat-ke-batam-50-persen-turis-singapura-1189736"
+      ]
+    },
+    {
+      "id": "fi-036",
+      "topik": "wisman",
+      "indikator": "Kunjungan wisman Desember 2024",
+      "angka": "159.982",
+      "nilai": 159982,
+      "satuan": "kunjungan",
+      "tahun": 2024,
+      "periode": "Des 2024",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.tempo.co/hiburan/kunjungan-wisman-meningkat-ke-batam-50-persen-turis-singapura-1189736"
+      ]
+    },
+    {
+      "id": "fi-037",
+      "topik": "wisman",
+      "indikator": "5 negara teratas Nov 2024: Singapura",
+      "angka": "58.917",
+      "nilai": 58917,
+      "satuan": "kunjungan",
+      "tahun": 2024,
+      "periode": "Nov 2024",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.tempo.co/hiburan/kunjungan-wisman-meningkat-ke-batam-50-persen-turis-singapura-1189736"
+      ]
+    },
+    {
+      "id": "fi-038",
+      "topik": "wisman",
+      "indikator": "5 negara teratas Nov 2024: Malaysia",
+      "angka": "24.375",
+      "nilai": 24375,
+      "satuan": "kunjungan",
+      "tahun": 2024,
+      "periode": "Nov 2024",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.tempo.co/hiburan/kunjungan-wisman-meningkat-ke-batam-50-persen-turis-singapura-1189736"
+      ]
+    },
+    {
+      "id": "fi-039",
+      "topik": "wisman",
+      "indikator": "5 negara teratas Nov 2024: Tiongkok",
+      "angka": "3.913",
+      "nilai": 3913,
+      "satuan": "kunjungan",
+      "tahun": 2024,
+      "periode": "Nov 2024",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.tempo.co/hiburan/kunjungan-wisman-meningkat-ke-batam-50-persen-turis-singapura-1189736"
+      ]
+    },
+    {
+      "id": "fi-040",
+      "topik": "wisman",
+      "indikator": "5 negara teratas Nov 2024: India",
+      "angka": "3.092",
+      "nilai": 3092,
+      "satuan": "kunjungan",
+      "tahun": 2024,
+      "periode": "Nov 2024",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.tempo.co/hiburan/kunjungan-wisman-meningkat-ke-batam-50-persen-turis-singapura-1189736"
+      ]
+    },
+    {
+      "id": "fi-041",
+      "topik": "wisman",
+      "indikator": "5 negara teratas Nov 2024: Filipina",
+      "angka": "1.897",
+      "nilai": 1897,
+      "satuan": "kunjungan",
+      "tahun": 2024,
+      "periode": "Nov 2024",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://www.tempo.co/hiburan/kunjungan-wisman-meningkat-ke-batam-50-persen-turis-singapura-1189736"
+      ]
+    },
+    {
+      "id": "fi-042",
+      "topik": "wisman",
+      "indikator": "Pintu masuk wisman",
+      "angka": null,
+      "nilai": null,
+      "satuan": null,
+      "tahun": null,
+      "periode": null,
+      "status": null,
+      "catatan": "Pelabuhan Batam Centre, Nongsa Pura, HarbourBay, Sekupang, Bandara Hang Nadim",
+      "sumber_url": [
+        "https://metro.batampos.co.id/kunjungan-wisman-ke-batam-tembus-570-ribu-didominasi-pelancong-asal-singapura/"
+      ]
+    },
+    {
+      "id": "fi-043",
+      "topik": "wisman",
+      "indikator": "Target kunjungan wisman 2025 (versi Batam Pos)",
+      "angka": "1,5 juta",
+      "nilai": 1.5,
+      "satuan": "juta kunjungan",
+      "tahun": 2025,
+      "periode": null,
+      "status": "⚠️",
+      "catatan": "Catatan target 2025: Batam Pos menulis target 1,5 juta. Tempo dan rilis Diskominfo Batam menulis 1,7 juta, dengan kutipan Sekda Jefridin: \"Di tahun 2025, Pemerintah Kota Batam menargetkan kunjungan wisatawan mancanegara sebesar 1,7 juta.\" Kalau patokannya 1,7 juta, realisasi 1.613.202 belum mencapai target. ⚠️",
+      "sumber_url": [
+        "https://metropolis.batampos.co.id/kunjungan-wisman-ke-batam-tembus-16-juta-sumbang-79-wisman-kepri/"
+      ]
+    },
+    {
+      "id": "fi-044",
+      "topik": "wisman",
+      "indikator": "Target kunjungan wisman 2025 (versi Tempo dan rilis Diskominfo Batam)",
+      "angka": "1,7 juta",
+      "nilai": 1.7,
+      "satuan": "juta kunjungan",
+      "tahun": 2025,
+      "periode": null,
+      "status": "⚠️",
+      "catatan": "Catatan target 2025: Batam Pos menulis target 1,5 juta. Tempo dan rilis Diskominfo Batam menulis 1,7 juta, dengan kutipan Sekda Jefridin: \"Di tahun 2025, Pemerintah Kota Batam menargetkan kunjungan wisatawan mancanegara sebesar 1,7 juta.\" Kalau patokannya 1,7 juta, realisasi 1.613.202 belum mencapai target. ⚠️ (URL sumber untuk angka 1,7 juta tidak dicantumkan di laporan)",
+      "sumber_url": []
+    },
+    {
+      "id": "fi-045",
+      "topik": "wisman",
+      "indikator": "Rata-rata wisman per hari",
+      "angka": "±4.400",
+      "nilai": 4400,
+      "satuan": "wisman per hari",
+      "tahun": 2025,
+      "periode": null,
+      "status": "angka turunan",
+      "catatan": "1.613.202 ÷ 365, angka turunan",
+      "sumber_url": [
+        "https://metropolis.batampos.co.id/kunjungan-wisman-ke-batam-tembus-16-juta-sumbang-79-wisman-kepri/"
+      ]
+    },
+    {
+      "id": "fi-046",
+      "topik": "geografi",
+      "indikator": "Jumlah pulau",
+      "angka": "371",
+      "nilai": 371,
+      "satuan": "pulau",
+      "tahun": 2025,
+      "periode": "kompilasi Pemko 2025",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://satudata.batam.go.id/web/wp-content/uploads/2025/07/Kompilasi-Statistik-Sektoral-Tahun-2025.pdf"
+      ]
+    },
+    {
+      "id": "fi-047",
+      "topik": "geografi",
+      "indikator": "Jumlah pulau Kecamatan Belakang Padang",
+      "angka": "Belakang Padang 141",
+      "nilai": 141,
+      "satuan": "pulau",
+      "tahun": 2025,
+      "periode": "kompilasi Pemko 2025",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://satudata.batam.go.id/web/wp-content/uploads/2025/07/Kompilasi-Statistik-Sektoral-Tahun-2025.pdf"
+      ],
+      "kecamatan": "Belakang Padang"
+    },
+    {
+      "id": "fi-048",
+      "topik": "geografi",
+      "indikator": "Jumlah pulau Kecamatan Galang",
+      "angka": "Galang 100",
+      "nilai": 100,
+      "satuan": "pulau",
+      "tahun": 2025,
+      "periode": "kompilasi Pemko 2025",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://satudata.batam.go.id/web/wp-content/uploads/2025/07/Kompilasi-Statistik-Sektoral-Tahun-2025.pdf"
+      ],
+      "kecamatan": "Galang"
+    },
+    {
+      "id": "fi-049",
+      "topik": "geografi",
+      "indikator": "Jumlah pulau Kecamatan Bulang",
+      "angka": "Bulang 86",
+      "nilai": 86,
+      "satuan": "pulau",
+      "tahun": 2025,
+      "periode": "kompilasi Pemko 2025",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://satudata.batam.go.id/web/wp-content/uploads/2025/07/Kompilasi-Statistik-Sektoral-Tahun-2025.pdf"
+      ],
+      "kecamatan": "Bulang"
+    },
+    {
+      "id": "fi-050",
+      "topik": "geografi",
+      "indikator": "Jumlah pulau Kecamatan Nongsa",
+      "angka": "Nongsa 24",
+      "nilai": 24,
+      "satuan": "pulau",
+      "tahun": 2025,
+      "periode": "kompilasi Pemko 2025",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://satudata.batam.go.id/web/wp-content/uploads/2025/07/Kompilasi-Statistik-Sektoral-Tahun-2025.pdf"
+      ],
+      "kecamatan": "Nongsa"
+    },
+    {
+      "id": "fi-051",
+      "topik": "geografi",
+      "indikator": "Jumlah pulau Kecamatan Sekupang",
+      "angka": "Sekupang 16",
+      "nilai": 16,
+      "satuan": "pulau",
+      "tahun": 2025,
+      "periode": "kompilasi Pemko 2025",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://satudata.batam.go.id/web/wp-content/uploads/2025/07/Kompilasi-Statistik-Sektoral-Tahun-2025.pdf"
+      ],
+      "kecamatan": "Sekupang"
+    },
+    {
+      "id": "fi-052",
+      "topik": "geografi",
+      "indikator": "Jumlah pulau Kecamatan Sungai Beduk",
+      "angka": "Sungai Beduk 4",
+      "nilai": 4,
+      "satuan": "pulau",
+      "tahun": 2025,
+      "periode": "kompilasi Pemko 2025",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://satudata.batam.go.id/web/wp-content/uploads/2025/07/Kompilasi-Statistik-Sektoral-Tahun-2025.pdf"
+      ],
+      "kecamatan": "Sei Beduk"
+    },
+    {
+      "id": "fi-053",
+      "topik": "geografi",
+      "indikator": "Jumlah pulau (versi lain 2019)",
+      "angka": "373 pulau (2019)",
+      "nilai": 373,
+      "satuan": "pulau",
+      "tahun": 2019,
+      "periode": null,
+      "status": "⌛",
+      "catatan": "Baris \"Versi lain\" di laporan; tanda ⌛ (mungkin usang)",
+      "sumber_url": [
+        "https://batam.go.id/icon_geografis/"
+      ]
+    },
+    {
+      "id": "fi-054",
+      "topik": "geografi",
+      "indikator": "Jumlah pulau (versi RTRW 2004–2014)",
+      "angka": ">400 pulau",
+      "nilai": null,
+      "satuan": "pulau",
+      "tahun": null,
+      "periode": "RTRW 2004–2014",
+      "status": "⌛",
+      "catatan": "lebih dari 400 pulau; tanda ⌛ (mungkin usang)",
+      "sumber_url": [
+        "https://batam.go.id/icon_geografis/"
+      ]
+    },
+    {
+      "id": "fi-055",
+      "topik": "geografi",
+      "indikator": "Jumlah pulau bernama (versi RTRW 2004–2014)",
+      "angka": "329 bernama",
+      "nilai": 329,
+      "satuan": "pulau",
+      "tahun": null,
+      "periode": "RTRW 2004–2014",
+      "status": "⌛",
+      "catatan": null,
+      "sumber_url": [
+        "https://batam.go.id/icon_geografis/"
+      ]
+    },
+    {
+      "id": "fi-056",
+      "topik": "geografi",
+      "indikator": "Luas daratan",
+      "angka": "1.038,84 km²",
+      "nilai": 1038.84,
+      "satuan": "km²",
+      "tahun": null,
+      "periode": null,
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://kominfo.batam.go.id/statistik-sektoral-pemerintah-kota-batam-2019/"
+      ]
+    },
+    {
+      "id": "fi-057",
+      "topik": "geografi",
+      "indikator": "Luas perairan",
+      "angka": "2.791,09 km²",
+      "nilai": 2791.09,
+      "satuan": "km²",
+      "tahun": null,
+      "periode": null,
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://kominfo.batam.go.id/statistik-sektoral-pemerintah-kota-batam-2019/"
+      ]
+    },
+    {
+      "id": "fi-058",
+      "topik": "geografi",
+      "indikator": "Porsi wilayah laut",
+      "angka": "±73%",
+      "nilai": 73,
+      "satuan": "persen",
+      "tahun": null,
+      "periode": null,
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://kominfo.batam.go.id/statistik-sektoral-pemerintah-kota-batam-2019/"
+      ]
+    },
+    {
+      "id": "fi-059",
+      "topik": "geografi",
+      "indikator": "Pulau di bawah kewenangan BP Batam (FTZ)",
+      "angka": "8 pulau",
+      "nilai": 8,
+      "satuan": "pulau",
+      "tahun": null,
+      "periode": null,
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://iboss.go.id/front/id/page/sejarah"
+      ]
+    },
+    {
+      "id": "fi-060",
+      "topik": "geografi",
+      "indikator": "Luas wilayah kewenangan BP Batam (FTZ)",
+      "angka": "716,30 km²",
+      "nilai": 716.3,
+      "satuan": "km²",
+      "tahun": null,
+      "periode": null,
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://iboss.go.id/front/id/page/sejarah"
+      ]
+    },
+    {
+      "id": "fi-061",
+      "topik": "geografi",
+      "indikator": "Pulau di bawah kewenangan Pemko",
+      "angka": "365 pulau",
+      "nilai": 365,
+      "satuan": "pulau",
+      "tahun": null,
+      "periode": null,
+      "status": null,
+      "catatan": "365 pulau lain",
+      "sumber_url": [
+        "https://iboss.go.id/front/id/page/sejarah"
+      ]
+    },
+    {
+      "id": "fi-062",
+      "topik": "geografi",
+      "indikator": "Luas wilayah kewenangan Pemko",
+      "angka": "322,54 km²",
+      "nilai": 322.54,
+      "satuan": "km²",
+      "tahun": null,
+      "periode": null,
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://iboss.go.id/front/id/page/sejarah"
+      ]
+    },
+    {
+      "id": "fi-063",
+      "topik": "geografi",
+      "indikator": "Titik tertinggi",
+      "angka": "±160 mdpl",
+      "nilai": 160,
+      "satuan": "mdpl",
+      "tahun": null,
+      "periode": null,
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://batam.go.id/icon_geografis/"
+      ]
+    },
+    {
+      "id": "fi-064",
+      "topik": "geografi",
+      "indikator": "Pulau terluar",
+      "angka": null,
+      "nilai": null,
+      "satuan": null,
+      "tahun": null,
+      "periode": null,
+      "status": null,
+      "catatan": "Antara lain Nipah, Pelampong, Batu Berhenti, Nongsa",
+      "sumber_url": [
+        "https://kominfo.batam.go.id/statistik-sektoral-pemerintah-kota-batam-2019/"
+      ]
+    },
+    {
+      "id": "fi-065",
+      "topik": "geografi",
+      "indikator": "Jumlah kampung tua",
+      "angka": "37",
+      "nilai": 37,
+      "satuan": "kampung tua",
+      "tahun": 2004,
+      "periode": "Perda 2/2004",
+      "status": "⚠️",
+      "catatan": null,
+      "sumber_url": [
+        "https://journal.uib.ac.id/index.php/jad/article/download/5952/2166/9353"
+      ]
+    },
+    {
+      "id": "fi-066",
+      "topik": "sejarah",
+      "indikator": "Penduduk Batam awal 1970-an",
+      "angka": "±6.000 jiwa",
+      "nilai": 6000,
+      "satuan": "jiwa",
+      "tahun": null,
+      "periode": "Awal 1970-an",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://iboss.go.id/front/id/page/sejarah"
+      ]
+    },
+    {
+      "id": "fi-067",
+      "topik": "sejarah",
+      "indikator": "Jumlah dusun pesisir awal 1970-an",
+      "angka": "21 dusun",
+      "nilai": 21,
+      "satuan": "dusun",
+      "tahun": null,
+      "periode": "Awal 1970-an",
+      "status": null,
+      "catatan": null,
+      "sumber_url": [
+        "https://iboss.go.id/front/id/page/sejarah"
+      ]
+    },
+    {
+      "id": "fi-068",
+      "topik": "sejarah",
+      "indikator": "Luas wilayah kerja Otorita (Barelang) setelah Keppres 28/1992",
+      "angka": "±715 km²",
+      "nilai": 715,
+      "satuan": "km²",
+      "tahun": 1992,
+      "periode": null,
+      "status": null,
+      "catatan": "(\"115% luas Singapura\")",
+      "sumber_url": [
+        "https://batam.go.id/icon_sejarah/"
+      ]
+    }
+  ],
+  "linimasa_sejarah": [
+    {
+      "id": "sj-001",
+      "tahun": "Awal 1970-an",
+      "peristiwa": "Batam berpenduduk ±6.000 jiwa di 21 dusun pesisir",
+      "sumber_url": [
+        "https://iboss.go.id/front/id/page/sejarah"
+      ]
+    },
+    {
+      "id": "sj-002",
+      "tahun": "1970",
+      "peristiwa": "Keppres 65/1970 tentang Proyek Pengembangan Pulau Batam; basis logistik migas Pertamina",
+      "sumber_url": [
+        "https://batam.go.id/icon_sejarah/"
+      ]
+    },
+    {
+      "id": "sj-003",
+      "tahun": "26 Okt 1971",
+      "peristiwa": "Otorita Batam terbentuk; Ibnu Sutowo ketua pertama (1971–1976). Diperingati sebagai Hari Bakti BP Batam",
+      "sumber_url": [
+        "https://batam.tribunnews.com/2025/02/17/daftar-kepala-bp-batam-dari-masa-ke-masa-dari-ibnu-sutowo-dan-terbaru-amsakar-achmad"
+      ]
+    },
+    {
+      "id": "sj-004",
+      "tahun": "22 Nov 1973",
+      "peristiwa": "Keppres 41/1973: seluruh Pulau Batam ditetapkan sebagai daerah industri",
+      "sumber_url": [
+        "https://bpbatam.go.id/en/about-batam/history-of-batam-2/"
+      ]
+    },
+    {
+      "id": "sj-005",
+      "tahun": "1976–1978",
+      "peristiwa": "Periode konsolidasi di bawah JB Sumarlin",
+      "sumber_url": [
+        "https://www.academia.edu/8164733/Sejarah_Singkat_BATAM"
+      ]
+    },
+    {
+      "id": "sj-006",
+      "tahun": "1978–1998",
+      "peristiwa": "Era BJ Habibie (20 tahun): infrastruktur dan penanaman modal; terinspirasi model Benelux",
+      "sumber_url": [
+        "https://kumparan.com/kumparanbisnis/otorita-batam-rintisan-bj-habibie-yang-kehilangan-otoritasnya-1rqd2670W5v"
+      ]
+    },
+    {
+      "id": "sj-007",
+      "tahun": "1983",
+      "peristiwa": "PP 34/1983: Kotamadya (administratif) Batam terbentuk",
+      "sumber_url": [
+        "https://en.wikipedia.org/wiki/Batam"
+      ]
+    },
+    {
+      "id": "sj-008",
+      "tahun": "1992",
+      "peristiwa": "Keppres 28/1992: wilayah kerja Otorita diperluas menjadi Barelang, ±715 km² (\"115% luas Singapura\")",
+      "sumber_url": [
+        "https://batam.go.id/icon_sejarah/"
+      ]
+    },
+    {
+      "id": "sj-009",
+      "tahun": "1998",
+      "peristiwa": "JE Habibie (Mar–Jul), lalu Ismeth Abdullah",
+      "sumber_url": [
+        "https://www.academia.edu/8164733/Sejarah_Singkat_BATAM"
+      ]
+    },
+    {
+      "id": "sj-010",
+      "tahun": "1999",
+      "peristiwa": "UU 53/1999: Batam menjadi kota otonom",
+      "sumber_url": [
+        "https://en.wikipedia.org/wiki/Batam"
+      ]
+    },
+    {
+      "id": "sj-011",
+      "tahun": "2007",
+      "peristiwa": "PP 46/2007: Otorita berubah menjadi BP Batam (FTZ)",
+      "sumber_url": [
+        "https://batam.tribunnews.com/2025/02/17/daftar-kepala-bp-batam-dari-masa-ke-masa-dari-ibnu-sutowo-dan-terbaru-amsakar-achmad"
+      ]
+    },
+    {
+      "id": "sj-012",
+      "tahun": "18 Des",
+      "peristiwa": "Hari Jadi Batam; 2025 = ke-196, 2026 = ke-197",
+      "sumber_url": [
+        "https://www.kepriprov.go.id/siaran-pers/817-rilis-diskominfo-xii-2025"
+      ]
+    }
+  ],
+  "ide_infografis": [
+    "\"Dari 6.000 jadi 1,79 juta\" dalam ±55 tahun",
+    "\"Hampir 3 dari 4 bagian Batam adalah laut\"",
+    "\"Setiap hari ±4.400 wisman datang\" (1.613.202 ÷ 365, angka turunan)",
+    "\"1 dari 2 wisman adalah warga Singapura\"",
+    "beda angka BPS vs Dukcapil sebagai cerita kota pendatang"
+  ],
+  "catatan_laporan": [
+    "Etnis dan agama: gunakan angka resmi dan bahasa deskriptif. Jangan meranking atau melabeli komunitas."
+  ]
+}

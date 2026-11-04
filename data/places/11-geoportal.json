@@ -1,0 +1,189 @@
+[
+  {
+    "id": "halte-trans-batam-politeknik-negeri-batam",
+    "nama": "Halte Politeknik Negeri Batam",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "halte_trans_batam",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lajur_khusus": "pengecatan lajur khusus Trans Batam dimulai Rabu (7/10) malam, \"sepanjang 10 meter dari depan halte\"",
+      "biaya_pengecatan_lima_halte": "sekitar Rp70 juta",
+      "rencana_lajur_penuh": "sekitar 28 kilometer (Kepala UPT Sucipto), rencana perluasan pada 2027"
+    },
+    "status_data": null,
+    "catatan": "Salah satu dari lima halte yang lajur khususnya dicat menurut Batam Pos (8/10/2026); URL artikel tidak ada di daftar sumber laporan. Laporan tidak menyebut kecamatan maupun koridor halte ini.",
+    "tag_osm": "highway=bus_stop",
+    "sumber_url": [],
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "id": "halte-trans-batam-kantor-jasa-raharja-batam-center",
+    "nama": "Halte Kantor Jasa Raharja Batam Center",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "halte_trans_batam",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lajur_khusus": "pengecatan lajur khusus Trans Batam dimulai Rabu (7/10) malam, \"sepanjang 10 meter dari depan halte\"",
+      "biaya_pengecatan_lima_halte": "sekitar Rp70 juta",
+      "rencana_lajur_penuh": "sekitar 28 kilometer (Kepala UPT Sucipto), rencana perluasan pada 2027"
+    },
+    "status_data": null,
+    "catatan": "Salah satu dari lima halte yang lajur khususnya dicat menurut Batam Pos (8/10/2026); URL artikel tidak ada di daftar sumber laporan. Laporan tidak menyebut kecamatan maupun koridor halte ini.",
+    "tag_osm": "highway=bus_stop",
+    "sumber_url": [],
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "id": "halte-trans-batam-simpang-kara",
+    "nama": "Halte Simpang Kara",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "halte_trans_batam",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lajur_khusus": "pengecatan lajur khusus Trans Batam dimulai Rabu (7/10) malam, \"sepanjang 10 meter dari depan halte\"",
+      "biaya_pengecatan_lima_halte": "sekitar Rp70 juta",
+      "rencana_lajur_penuh": "sekitar 28 kilometer (Kepala UPT Sucipto), rencana perluasan pada 2027"
+    },
+    "status_data": null,
+    "catatan": "Salah satu dari lima halte yang lajur khususnya dicat menurut Batam Pos (8/10/2026); URL artikel tidak ada di daftar sumber laporan. Laporan tidak menyebut kecamatan maupun koridor halte ini.",
+    "tag_osm": "highway=bus_stop",
+    "sumber_url": [],
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "id": "halte-trans-batam-perumahan-plamo",
+    "nama": "Halte Perumahan Plamo",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "halte_trans_batam",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lajur_khusus": "pengecatan lajur khusus Trans Batam dimulai Rabu (7/10) malam, \"sepanjang 10 meter dari depan halte\"",
+      "biaya_pengecatan_lima_halte": "sekitar Rp70 juta",
+      "rencana_lajur_penuh": "sekitar 28 kilometer (Kepala UPT Sucipto), rencana perluasan pada 2027"
+    },
+    "status_data": null,
+    "catatan": "Salah satu dari lima halte yang lajur khususnya dicat menurut Batam Pos (8/10/2026); URL artikel tidak ada di daftar sumber laporan. Laporan tidak menyebut kecamatan maupun koridor halte ini.",
+    "tag_osm": "highway=bus_stop",
+    "sumber_url": [],
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "id": "halte-trans-batam-bank-sumut-batam-center",
+    "nama": "Halte Bank Sumut Batam Center",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "halte_trans_batam",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lajur_khusus": "pengecatan lajur khusus Trans Batam dimulai Rabu (7/10) malam, \"sepanjang 10 meter dari depan halte\"",
+      "biaya_pengecatan_lima_halte": "sekitar Rp70 juta",
+      "rencana_lajur_penuh": "sekitar 28 kilometer (Kepala UPT Sucipto), rencana perluasan pada 2027"
+    },
+    "status_data": null,
+    "catatan": "Salah satu dari lima halte yang lajur khususnya dicat menurut Batam Pos (8/10/2026); URL artikel tidak ada di daftar sumber laporan. Laporan tidak menyebut kecamatan maupun koridor halte ini.",
+    "tag_osm": "highway=bus_stop",
+    "sumber_url": [],
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "id": "disperkimtan-kota-batam",
+    "nama": "Disperkimtan Kota Batam",
+    "nama_alternatif": [],
+    "kategori": "pemerintahan",
+    "subkategori": "dinas",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": "(0778) 8014473",
+      "whatsapp": null,
+      "email": "info@hangjebat.go.id",
+      "website": null
+    },
+    "atribut": {
+      "geoportal": "https://www.hangjebat-geoportal.com/",
+      "peran_data": "pengelola HANG JEBAT Geoportal (dikembangkan bersama Politeknik Negeri Batam); jalur resmi permintaan data perumahan, RTH/lapangan, rawan bencana"
+    },
+    "status_data": null,
+    "catatan": "Kontak diambil dari footer HANG JEBAT Geoportal; alamat kantor tidak disebut laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://hangjebat-geoportal.com/"
+    ],
+    "sumber_riset": "11-geoportal"
+  }
+]

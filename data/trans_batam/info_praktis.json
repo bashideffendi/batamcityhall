@@ -1,0 +1,348 @@
+{
+  "meta": {
+    "sumber_riset": "10-trans-batam",
+    "task_id": "wf-36063ca2-a5e1-819c-a7c8-6e6e789889d3",
+    "versi": "2026-11-04",
+    "keterangan_struktur": "Field \"teks_laporan\" = kalimat verbatim dari bagian \"Info praktis untuk warga\". Field terstruktur lain diturunkan dari kalimat itu tanpa menambah data."
+  },
+  "tarif": {
+    "umum": "Rp5.000",
+    "pelajar": "Rp2.500",
+    "berlaku_tarif_pelajar_untuk": "pelajar, mahasiswa, serta anak-anak di bawah usia 12 tahun",
+    "kutipan_sumber": "Rp 5.000 untuk penumpang umum dan Rp 2.500 bagi pelajar, mahasiswa, serta anak-anak di bawah usia 12 tahun.",
+    "kutipan_oleh": "BatamToday (Paskalis Rianghepat, 3 Juli 2026)",
+    "tarif_bandara": "Tarif ke bandara tidak ada tambahan.",
+    "teks_laporan": "**Tarif**: Rp5.000 umum, Rp2.500 pelajar. BatamToday (Paskalis Rianghepat, 3 Juli 2026) menulis tarifnya \"Rp 5.000 untuk penumpang umum dan Rp 2.500 bagi pelajar, mahasiswa, serta anak-anak di bawah usia 12 tahun.\" Tarif ke bandara tidak ada tambahan. Sejak 1 Januari 2023 pembayaran wajib nontunai, jadi artikel 2026 yang masih menyebut \"tunai di dalam bus\" kemungkinan menyalin template lama. **Jangan tampilkan opsi tunai.**",
+    "sumber_url": [
+      "https://batamtoday.com/news/trans-batam-koridor-7-resmi-layani-bandara-hang-nadim-tarif-mulai-rp-2500"
+    ]
+  },
+  "pembayaran": {
+    "wajib_nontunai_sejak": "2023-01-01",
+    "tampilkan_opsi_tunai": false,
+    "catatan_tunai": "Artikel 2026 yang masih menyebut \"tunai di dalam bus\" kemungkinan menyalin template lama. Jangan tampilkan opsi tunai.",
+    "metode_disebut_sumber": [
+      {
+        "metode": "kartu BRIZZI (BRI)",
+        "jenis": "kartu uang elektronik"
+      },
+      {
+        "metode": "QRIS",
+        "jenis": "QR",
+        "aplikasi": [
+          "LinkAja",
+          "GoPay",
+          "DANA",
+          "OVO",
+          "ShopeePay",
+          "AstraPay"
+        ]
+      },
+      {
+        "metode": "m-banking",
+        "jenis": "m-banking"
+      }
+    ],
+    "metode_seharusnya_diterima": {
+      "metode": [
+        "e-money Mandiri",
+        "TapCash BNI",
+        "Flazz BCA"
+      ],
+      "status_data": "perlu_cek_ulang",
+      "alasan": "Kerja sama kartu uang elektronik ditandatangani 12 Juli 2024 dengan Bank Mandiri, BRI, BNI, BCA, dan PT Nusantara Global Inovasi, tapi sumber berita 2026 hanya konsisten menyebut BRIZZI dan QRIS."
+    },
+    "teks_laporan": "**Cara bayar**: kartu BRIZZI (BRI), QRIS (LinkAja, GoPay, DANA, OVO, ShopeePay, AstraPay), dan m-banking. Kerja sama kartu uang elektronik ditandatangani 12 Juli 2024 dengan Bank Mandiri, BRI, BNI, BCA, dan PT Nusantara Global Inovasi. Artinya e-money Mandiri, TapCash BNI, dan Flazz BCA *seharusnya* diterima, tapi sumber berita 2026 hanya konsisten menyebut BRIZZI dan QRIS. Tandai `perlu_cek_ulang`.",
+    "sumber_url": [
+      "https://mediacenter.batam.go.id/2022/12/15/bus-trans-batam-akan-menerapkan-pembayaran-non-tunai-tahun-2023/"
+    ]
+  },
+  "transit": {
+    "transfer_gratis": null,
+    "temuan": "tidak ditemukan aturan transfer gratis",
+    "asumsi_ui": "tiap naik = satu tarif sampai ada konfirmasi UPT",
+    "teks_laporan": "**Transit/pindah koridor**: tidak ditemukan aturan transfer gratis. Pola lama (era tiket kertas) adalah bayar ulang setiap naik bus baru. Asumsikan **tiap naik = satu tarif** sampai ada konfirmasi UPT.",
+    "status_data": "perlu_cek_ulang"
+  },
+  "fasilitas": {
+    "tipe_halte": [
+      {
+        "tipe": "halte bangunan",
+        "keterangan": "atap dan tempat duduk"
+      },
+      {
+        "tipe": "bus stop",
+        "keterangan": "hanya tiang rambu"
+      }
+    ],
+    "saran_peta": "Untuk peta, beri simbol berbeda.",
+    "bus_baru": [
+      "AC",
+      "CCTV",
+      "GPS"
+    ],
+    "aturan_operasional": "Bus tidak boleh mengetem di halte karena operator dibayar per kilometer (skema BTS).",
+    "teks_laporan": "**Fasilitas halte**: ada dua tipe, *halte bangunan* (atap dan tempat duduk) dan *bus stop* (hanya tiang rambu). Untuk peta, beri simbol berbeda. Bus baru dilengkapi AC, CCTV, dan GPS. Bus tidak boleh mengetem di halte karena operator dibayar per kilometer (skema BTS)."
+  },
+  "aksesibilitas": {
+    "data_resmi": null,
+    "teks_ui": "Belum ada informasi aksesibilitas resmi",
+    "teks_laporan": "**Aksesibilitas & layanan khusus**: tidak ditemukan data resmi soal lantai rendah, ramp, tarif lansia, atau layanan disabilitas. Tulis jujur di UI: \"Belum ada informasi aksesibilitas resmi\"."
+  },
+  "kontak": [
+    {
+      "nama": "Call center Dishub/Trans Batam",
+      "telepon": "0822-8828-6064",
+      "dipublikasikan_oleh": "Media Center Pemkot Batam, Desember 2022",
+      "status_data": "perlu_cek_ulang",
+      "catatan": "perlu_cek_ulang karena sudah lama",
+      "teks_laporan": "**Kontak**: call center Dishub/Trans Batam **0822-8828-6064** (dipublikasikan Media Center Pemkot Batam, Desember 2022, perlu_cek_ulang karena sudah lama).",
+      "sumber_url": [
+        "https://mediacenter.batam.go.id/2022/12/15/bus-trans-batam-akan-menerapkan-pembayaran-non-tunai-tahun-2023/"
+      ]
+    }
+  ],
+  "aplikasi": [
+    {
+      "nama": "SIP TB",
+      "nama_lengkap": "Sistem Informasi Penumpang Trans Batam",
+      "pengembang": "PT Nusantara Global Inovasi",
+      "platform": "Android",
+      "paket": "ngi.muchi.transbatam",
+      "versi": "2.0.1 per Desember 2025",
+      "fitur": [
+        "posisi bus",
+        "rute",
+        "halte terdekat",
+        "tiket nontunai"
+      ],
+      "url": "https://play.google.com/store/apps/details?id=ngi.muchi.transbatam&hl=en_US",
+      "resmi": true,
+      "sumber_url": [
+        "https://play.google.com/store/apps/details?id=ngi.muchi.transbatam&hl=en_US",
+        "https://sip-tb.en.softonic.com/android",
+        "https://kepri.antaranews.com/berita/128765/pemkot-hadirkan-aplikasi-sip-trans-batam-berikan-kemudahan-bagi-masyarakat"
+      ]
+    },
+    {
+      "nama": "Mitra Darat",
+      "catatan": "Untuk K7, UPT juga menyebut pemantauan posisi bus lewat aplikasi Mitra Darat.",
+      "koridor": [
+        "K7"
+      ]
+    },
+    {
+      "nama": "Moovit",
+      "catatan": "Moovit juga menyediakan perencana perjalanan, tapi datanya usang.",
+      "status_data": "usang"
+    }
+  ],
+  "aplikasi_teks_laporan": "**Pelacak bus**: aplikasi SIP TB (Android, Google Play `ngi.muchi.transbatam`) untuk posisi bus, rute, halte terdekat, dan tiket. Untuk K7, UPT juga menyebut aplikasi Mitra Darat. Moovit juga menyediakan perencana perjalanan, tapi datanya usang.",
+  "rencana": {
+    "status": "rencana",
+    "catatan": "bukan layanan aktif",
+    "item": [
+      "lajur khusus BRT bercat merah",
+      "feeder pertama pada pertengahan 2027 (Dapur 12–Fanindo, Dapur 12–Pasar Melayu, kawasan Tiban)",
+      "8 halte baru pada 2026 yang lokasinya belum ditentukan",
+      "Koridor 10 (Tembesi–Barelang/Galang)"
+    ],
+    "teks_laporan": "**Rencana ke depan (bukan layanan aktif)**: lajur khusus BRT bercat merah, feeder pertama pada pertengahan 2027 (Dapur 12–Fanindo, Dapur 12–Pasar Melayu, kawasan Tiban), dan 8 halte baru pada 2026 yang lokasinya belum ditentukan.",
+    "sumber_url": [
+      "https://ulasan.co/batam-siapkan-lajur-khusus-trans-batam-bercat-merah-dan-feeder-mulai-2027/",
+      "https://www.terasbatam.id/trans-batam-siapkan-lajur-khusus-dan-10-koridor/"
+    ]
+  },
+  "konektivitas": [
+    {
+      "titik_penting": "Pelabuhan Batam Centre (feri internasional)",
+      "halte_terdekat": "Transferpoint Batam Center (±240 m dari terminal menurut Moovit)",
+      "koridor": "K1, K2, K5, K6, K7",
+      "status": "perlu_cek_ulang",
+      "halte_id": [
+        "tp-batam-center"
+      ]
+    },
+    {
+      "titik_penting": "Pelabuhan Sekupang (domestik/internasional)",
+      "halte_terdekat": "Transferpoint Sekupang",
+      "koridor": "K1, K3, K4",
+      "status": "perlu_cek_ulang",
+      "halte_id": [
+        "tp-sekupang"
+      ]
+    },
+    {
+      "titik_penting": "Pelabuhan Harbour Bay",
+      "halte_terdekat": "Halte \"Harbourbay\" (Moovit)",
+      "koridor": "K5",
+      "status": "perlu_cek_ulang (urutan K5 2026 tidak menyebutnya)",
+      "halte_id": [
+        "harbourbay"
+      ]
+    },
+    {
+      "titik_penting": "Pelabuhan Telaga Punggur",
+      "halte_terdekat": "Transferpoint Punggur",
+      "koridor": "K8, K9",
+      "status": "perlu_cek_ulang",
+      "halte_id": [
+        "tp-punggur"
+      ]
+    },
+    {
+      "titik_penting": "Pelabuhan Nongsa Pura",
+      "halte_terdekat": "Pelabuhan Nongsa / Teluk Mata Ikan",
+      "koridor": "K7 (dan ujung K9)",
+      "status": "perlu_cek_ulang",
+      "halte_id": [
+        "pelabuhan-nongsa",
+        "teluk-mata-ikan"
+      ]
+    },
+    {
+      "titik_penting": "Pelabuhan Sagulung",
+      "halte_terdekat": "Pelabuhan Sagulung",
+      "koridor": "K4",
+      "status": "perlu_cek_ulang",
+      "halte_id": [
+        "pelabuhan-sagulung"
+      ]
+    },
+    {
+      "titik_penting": "Bandara Hang Nadim",
+      "halte_terdekat": "Halte pintu kedatangan",
+      "koridor": "K7",
+      "status": "terverifikasi (lokasi deskriptif, koordinat belum)",
+      "halte_id": [
+        "bandara-hang-nadim"
+      ]
+    },
+    {
+      "titik_penting": "Mega Mall / One Batam Mall",
+      "halte_terdekat": "Mega Mall; Masjid Raya A (±108 m dari One Batam Mall menurut Moovit)",
+      "koridor": "K1, K2, K5, K6, K7",
+      "status": "perlu_cek_ulang",
+      "halte_id": [
+        "mega-mall",
+        "masjid-raya-a"
+      ]
+    },
+    {
+      "titik_penting": "Grand Mall, Nagoya Hill",
+      "halte_terdekat": "Grand Mall, Nagoya Hill",
+      "koridor": "K3",
+      "status": "dari daftar halte",
+      "halte_id": [
+        "grand-mall",
+        "nagoya-hill"
+      ]
+    },
+    {
+      "titik_penting": "DC Mall, Pasar Induk Jodoh",
+      "halte_terdekat": "DC Mall, DC Mall SW, Pasar Induk",
+      "koridor": "K3, K5, K8",
+      "status": "dari daftar halte",
+      "halte_id": [
+        "dc-mall",
+        "dc-mall-sw",
+        "pasar-induk"
+      ]
+    },
+    {
+      "titik_penting": "Kepri Mall",
+      "halte_terdekat": "Kepri Mall / Kepri Mall B",
+      "koridor": "K2, K6 (K8 lewat Simpang Kepri Mall)",
+      "status": "dari daftar halte",
+      "halte_id": [
+        "kepri-mall"
+      ]
+    },
+    {
+      "titik_penting": "Panbil Mall & kawasan industri",
+      "halte_terdekat": "Panbil Mukakuning; Kawasan Industri Panbil; Best Western Panbil",
+      "koridor": "K2, K6",
+      "status": "dari daftar halte",
+      "halte_id": [
+        "panbil",
+        "best-western-panbil"
+      ]
+    },
+    {
+      "titik_penting": "Batamindo/Mukakuning",
+      "halte_terdekat": "Pintu 2/3/4 Mukakuning; Villa Mukakuning",
+      "koridor": "K6, K2",
+      "status": "dari daftar halte",
+      "halte_id": [
+        "pintu-2-mukakuning",
+        "pintu-3-mukakuning",
+        "pintu-4-mukakuning",
+        "villa-mukakuning-b"
+      ]
+    },
+    {
+      "titik_penting": "Kawasan Tanjung Uncang",
+      "halte_terdekat": "Hidayatullah (ujung K2)",
+      "koridor": "K2",
+      "status": "perlu_cek_ulang",
+      "halte_id": [
+        "hidayatullah"
+      ]
+    },
+    {
+      "titik_penting": "Kawasan Kabil",
+      "halte_terdekat": "Kabil Raya, PLTU Tanjung Kasam",
+      "koridor": "K8, K9",
+      "status": "dari daftar halte",
+      "halte_id": [
+        "kabil-raya",
+        "pltu-tanjung-kasam"
+      ]
+    },
+    {
+      "titik_penting": "RS Awal Bros",
+      "halte_terdekat": "RS Awal Bros",
+      "koridor": "K1",
+      "status": "dari daftar halte",
+      "halte_id": [
+        "rs-awal-bros"
+      ]
+    },
+    {
+      "titik_penting": "RS BP Batam (Sekupang)",
+      "halte_terdekat": "RSBP (rute K4 versi 2022)",
+      "koridor": "K4",
+      "status": "perlu_cek_ulang",
+      "halte_id": [
+        "rsbp"
+      ]
+    },
+    {
+      "titik_penting": "UIB",
+      "halte_terdekat": "UIB A / UIB B",
+      "koridor": "K1, K3",
+      "status": "dari daftar halte",
+      "halte_id": [
+        "uib"
+      ]
+    },
+    {
+      "titik_penting": "Politeknik Negeri Batam",
+      "halte_terdekat": "Politeknik / Politeknik B",
+      "koridor": "K2, K6",
+      "status": "dari daftar halte",
+      "halte_id": [
+        "politeknik"
+      ]
+    },
+    {
+      "titik_penting": "Universitas Batam (Uniba)",
+      "halte_terdekat": "Uniba",
+      "koridor": "K7",
+      "status": "dari daftar halte",
+      "halte_id": [
+        "uniba"
+      ]
+    }
+  ]
+}

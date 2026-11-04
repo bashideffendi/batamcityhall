@@ -1,0 +1,8 @@
+https://web-gis.bpbatam.go.id/arcgis/rest/services?f=pjson
+https://web-gis.bpbatam.go.id/arcgis/rest/services/PROYGISPUSREN21_EKSTERNAL/PETA_ADMINISTRASI_BATAM/MapServer        (layer 0–3)
+https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/27         (kelurahan)
+https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/26         (garis batas)
+https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_POI_/MapServer               (POI)
+https://web-gis.bpbatam.go.id/arcgis/rest/services/Direktorat_Infrastruktur_Kawasan/Utilitas/MapServer
+https://web-gis.bpbatam.go.id/arcgis/rest/services/Fasilitas/WADUK_AR_50K/MapServer/0
+https://web-gis.bpbatam.go.id/arcgis/sharing/rest/generateToken                                                       (token, bukan untuk kita)

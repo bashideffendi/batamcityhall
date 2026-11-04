@@ -1,0 +1,237 @@
+/* Peta laut bersama. Warna hanya dari token data/design/design_tokens.css. */
+.peta {
+  --peta-tepi: 6px;
+  position: relative;
+  height: min(76dvh, 52rem);
+  min-height: 26rem;
+  overflow: hidden;
+  background: var(--bch-map-water);
+  border-bottom: var(--bch-stroke-base) solid var(--bch-rule);
+}
+/* Spesifisitas dinaikkan: CSS MapLibre dimuat belakangan dan memasang position: relative pada wadah. */
+.peta .peta-kanvas {
+  position: absolute;
+  inset: 0;
+}
+.peta .maplibregl-canvas:focus-visible {
+  outline: 2px solid var(--bch-focus);
+  outline-offset: -2px;
+}
+
+/* Bingkai koordinat */
+.peta-tepi {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.peta-tepi-gelap {
+  fill: var(--bch-ink);
+}
+.peta-tepi-terang {
+  fill: var(--bch-paper);
+}
+.peta-tepi-garis {
+  fill: none;
+  stroke: var(--bch-ink);
+  stroke-width: 0.5;
+}
+.peta-tepi-label {
+  font-family: var(--bch-font-mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums slashed-zero;
+  fill: var(--bch-ink);
+  stroke: var(--bch-map-water);
+  stroke-width: 3px;
+  paint-order: stroke;
+}
+
+/* Kartusis: garis luar 1 px, garis dalam 0,5 px, jarak 3 px. Tanpa ornamen keriting. */
+.peta-kartusis {
+  position: absolute;
+  z-index: 3;
+  top: calc(var(--peta-tepi) + var(--bch-space-5));
+  left: calc(var(--peta-tepi) + var(--bch-space-3));
+  max-width: min(19rem, calc(100% - 7rem));
+  padding: var(--bch-space-3) var(--bch-space-4);
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  border: var(--bch-stroke-base) solid var(--bch-ink);
+}
+.peta-kartusis::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: var(--bch-stroke-hair) solid var(--bch-ink);
+  pointer-events: none;
+}
+.peta-kartusis p {
+  margin: 0;
+}
+.peta-kartusis-judul {
+  font-family: var(--bch-font-serif);
+  font-variant-caps: all-small-caps;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+}
+.peta-kartusis-sub {
+  font-family: var(--bch-font-serif);
+  font-style: italic;
+  font-size: var(--bch-text-small);
+  line-height: 1.3;
+  color: var(--bch-sea-ink);
+}
+.peta-kartusis-skala,
+.peta-kartusis-catatan {
+  font-family: var(--bch-font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+.peta-kartusis-skala {
+  margin-top: var(--bch-space-1) !important;
+}
+.peta-kartusis-catatan {
+  color: var(--bch-ink-muted);
+}
+
+.peta-mawar {
+  position: absolute;
+  z-index: 3;
+  top: calc(var(--peta-tepi) + var(--bch-space-5));
+  right: calc(var(--peta-tepi) + var(--bch-space-3));
+  width: 4rem;
+  height: auto;
+  color: var(--bch-ink);
+  pointer-events: none;
+  overflow: visible;
+}
+
+.peta-skala {
+  position: absolute;
+  z-index: 3;
+  left: calc(var(--peta-tepi) + var(--bch-space-3));
+  bottom: calc(var(--peta-tepi) + var(--bch-space-3));
+  display: grid;
+  gap: var(--bch-space-1);
+  padding: var(--bch-space-2);
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  border: var(--bch-stroke-hair) solid var(--bch-rule-strong);
+  pointer-events: none;
+}
+.peta-skala-baris {
+  display: flex;
+  align-items: center;
+  gap: var(--bch-space-2);
+  font-family: var(--bch-font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.peta-skala-baris svg {
+  display: block;
+}
+
+.peta-zoom {
+  position: absolute;
+  z-index: 3;
+  right: calc(var(--peta-tepi) + var(--bch-space-3));
+  bottom: calc(var(--peta-tepi) + var(--bch-space-7));
+  display: grid;
+  background: var(--bch-paper);
+  border: var(--bch-stroke-base) solid var(--bch-ink);
+}
+.peta-zoom-btn {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+  color: var(--bch-ink);
+  cursor: pointer;
+}
+.peta-zoom-btn + .peta-zoom-btn {
+  border-top: var(--bch-stroke-hair) solid var(--bch-rule-strong);
+}
+.peta-zoom-btn:hover {
+  color: var(--bch-accent);
+}
+
+/* Atribusi OSM dan Protomaps wajib tetap terbaca di dua tema. */
+.peta .maplibregl-ctrl-bottom-right {
+  right: var(--peta-tepi);
+  bottom: var(--peta-tepi);
+  z-index: 3;
+}
+.peta .maplibregl-ctrl.maplibregl-ctrl-attrib {
+  margin: 0;
+  padding: 1px 6px;
+  background: var(--bch-paper);
+  color: var(--bch-ink-muted);
+  font-family: var(--bch-font-sans);
+  font-size: 0.6875rem;
+}
+.peta .maplibregl-ctrl-attrib a {
+  color: var(--bch-ink);
+}
+
+.peta-muat,
+.peta-gagal {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: calc(100% - var(--bch-space-7));
+  margin: 0;
+  padding: var(--bch-space-3) var(--bch-space-4);
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  border: var(--bch-stroke-base) solid var(--bch-ink);
+  font-size: var(--bch-text-small);
+  text-align: center;
+}
+.peta-itik {
+  display: flex;
+  justify-content: center;
+  gap: var(--bch-space-1);
+  margin-bottom: var(--bch-space-1);
+}
+.peta-itik svg {
+  animation: peta-itik-jalan calc(var(--bch-dur-slow) * 2) var(--bch-ease-in-out) infinite alternate;
+}
+@keyframes peta-itik-jalan {
+  to {
+    transform: translateX(var(--bch-shift));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .peta-itik svg {
+    animation: none;
+  }
+}
+html[data-gerak="tenang"] .peta-itik svg {
+  animation: none;
+}
+
+@media (max-width: 480px) {
+  .peta-tepi-label {
+    font-size: 10px;
+  }
+  .peta-kartusis {
+    padding: var(--bch-space-2) var(--bch-space-3);
+  }
+  .peta-kartusis-sub {
+    display: none;
+  }
+  .peta-mawar {
+    width: 3rem;
+  }
+}

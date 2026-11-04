@@ -1,0 +1,176 @@
+[
+  {
+    "id": "tp-batam-center",
+    "nama": "Transferpoint Batam Center",
+    "nama_alternatif": [
+      "Transfer Point Batam Center"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "halte_transfer_bus",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Jl. Duyung / kawasan Mega Mall–Pelabuhan Batam Centre (perlu_cek_ulang)",
+    "lat": 1.130856,
+    "lng": 104.055225,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "titik terminal feri, halte ±240 m",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jaringan": "Trans Batam",
+      "koridor": [
+        "K1",
+        "K2",
+        "K5",
+        "K6",
+        "K7"
+      ],
+      "fungsi": "Hub utama, dekat Pelabuhan Batam Centre dan Mega Mall",
+      "urutan": {
+        "K1": 31,
+        "K2": 1,
+        "K5": "akhir",
+        "K6": 27,
+        "K7": "akhir"
+      }
+    },
+    "status_data": null,
+    "catatan": "Koordinat adalah titik terminal feri Batam Centre, bukan halte (halte ±240 m). Alamat ditandai perlu_cek_ulang oleh laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Batam_Center_Ferry_Terminal"
+    ],
+    "sumber_riset": "10-trans-batam"
+  },
+  {
+    "id": "tp-sekupang",
+    "nama": "Transferpoint Sekupang",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "halte_transfer_bus",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "Pelabuhan Domestik Sekupang",
+    "lat": 1.13139,
+    "lng": 103.92528,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "titik pelabuhan (BP Batam)",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jaringan": "Trans Batam",
+      "koridor": [
+        "K1",
+        "K3",
+        "K4"
+      ],
+      "fungsi": "Hub barat",
+      "urutan": {
+        "K1": 1,
+        "K3": 1,
+        "K4": "akhir"
+      }
+    },
+    "status_data": null,
+    "catatan": "Koordinat adalah titik pelabuhan (BP Batam), bukan halte.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batamport.bpbatam.go.id/sekupang-domestik/"
+    ],
+    "sumber_riset": "10-trans-batam"
+  },
+  {
+    "id": "tp-jodoh",
+    "nama": "Transferpoint Terminal Jodoh",
+    "nama_alternatif": [
+      "Terminal Jodoh"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "halte_transfer_bus",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": null,
+    "alamat": "Sungai Jodoh (Waze plus code 42X3+XR8)",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "landmark dekat: Jodoh Square II 1.1525,104.0036",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jaringan": "Trans Batam",
+      "koridor": [
+        "K3",
+        "K5",
+        "K8"
+      ],
+      "fungsi": "Hub utara",
+      "urutan": {
+        "K3": "akhir",
+        "K5": 1,
+        "K8": "akhir"
+      }
+    },
+    "status_data": null,
+    "catatan": "Koordinat belum ada; laporan hanya memberi landmark dekat (Jodoh Square II) di catatan_koordinat.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.waze.com/live-map/directions/id/riau-islands/trans-batam-jodoh-bus-terminal?to=place.ChIJ-fM5rCeK2TERgyGcNjnZ8NQ"
+    ],
+    "sumber_riset": "10-trans-batam"
+  },
+  {
+    "id": "tp-punggur",
+    "nama": "Transferpoint Punggur",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "halte_transfer_bus",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Pelabuhan Telaga Punggur",
+    "lat": 1.03523,
+    "lng": 104.133397,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Wikidata; BP Batam memberi 1.1175,104.1683 (konflik ±9 km)",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "jaringan": "Trans Batam",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "fungsi": "Hub timur",
+      "urutan": {
+        "K8": 1,
+        "K9": 1
+      }
+    },
+    "status_data": null,
+    "catatan": "Koordinat titik Pelabuhan Telaga Punggur dari Wikidata; BP Batam memberi titik lain (konflik ±9 km).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.wikidata.org/wiki/Q14236384"
+    ],
+    "sumber_riset": "10-trans-batam"
+  }
+]

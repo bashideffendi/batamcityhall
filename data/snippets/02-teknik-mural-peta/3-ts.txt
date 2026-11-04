@@ -1,0 +1,5 @@
+// data/ferry/routes.json: polyline piksel per rute + durasi
+// data/ferry/schedule.json: { route: 'batamcentre-harbourfront', depart: '08:00', durationMin: 60 }
+const now = nowInZone('Asia/Jakarta'); // Batam = WIB, UTC+7
+const f = clamp((now - depart) / duration, 0, 1);
+const [x, y, angle] = pointAlongPolyline(routePx, f); // turf.along versi piksel

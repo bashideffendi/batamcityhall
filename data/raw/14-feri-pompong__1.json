@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "rute_id": "btc-hfc",
+        "jenis": "internasional",
+        "operator": ["BatamFast", "Majestic", "Sindo"],
+        "durasi_menit": 70,
+        "sumber_geometri": "perkiraan"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[104.0552, 1.1309], [104.0300, 1.1650], [103.9300, 1.2000], [103.8250, 1.2600]]
+      }
+    }
+  ]
+}

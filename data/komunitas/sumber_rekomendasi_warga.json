@@ -1,0 +1,33 @@
+{
+  "sumber_riset": "12-ruang-publik-olahraga-jasa",
+  "task_id": "wf-094bf2b5-cfa2-84c6-ab02-091743d5de69",
+  "fitur": "Tukang Langganan",
+  "status": "belum_ada_sumber_komunitas_terverifikasi",
+  "kutipan_laporan": "Riset ini belum memverifikasi grup Facebook atau akun Instagram info warga yang spesifik, jadi tidak ada nama grup yang dicantumkan. Komunitas yang terverifikasi baru BASCOM (skateboard). Untuk rekomendasi tukang, lebih aman fitur warga diisi langsung oleh user, sementara situs cukup menampilkan usaha yang punya listing publik (service center resmi di atas).",
+  "sumber_komunitas_tukang": [],
+  "komunitas_terverifikasi_lain": [
+    {
+      "nama": "BASCOM",
+      "bidang": "skateboard",
+      "platform": "X",
+      "akun": "@BASCOMofficial",
+      "url": "https://x.com/bascomofficial?lang=id",
+      "relevan_untuk_tukang_langganan": false,
+      "tempat_terkait": [
+        "or-027"
+      ]
+    }
+  ],
+  "rekomendasi_laporan": {
+    "rekomendasi_tukang": "diisi langsung oleh user lewat fitur warga",
+    "yang_ditampilkan_situs": "usaha yang punya listing publik (service center resmi)",
+    "id_tempat_listing_publik": [
+      "js-008",
+      "js-009",
+      "js-010",
+      "js-011"
+    ]
+  },
+  "riset_lanjutan": "grup komunitas tukang masih bolong (TL;DR laporan); tidak diisi dengan data karangan",
+  "data_pribadi": "tidak ada"
+}

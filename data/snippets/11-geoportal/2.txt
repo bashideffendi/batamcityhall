@@ -1,0 +1,8 @@
+https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH?f=pjson
+https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_KelDesa_10K/MapServer/0
+https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_DESAKEL_AR/MapServer/0
+https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_Kecamatan_10K/MapServer
+https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_KECAMATAN_AR/MapServer
+https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_KabKota_50K/MapServer
+https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_LN_KabKota_50K/MapServer/info/iteminfo
+https://tanahair.indonesia.go.id/sdi/dataset/administrasi_ar_desakel                                                  (CKAN)

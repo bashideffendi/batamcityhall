@@ -1,0 +1,271 @@
+{
+  "sumber_riset": "12-ruang-publik-olahraga-jasa",
+  "task_id": "wf-094bf2b5-cfa2-84c6-ab02-091743d5de69",
+  "tabel": "E. Tag OpenStreetMap dan sumber data terbaik per kategori",
+  "catatan": "Kategori di tabel ini adalah kategori laporan, bukan enum kategori data/places. Nilai disalin persis dari tabel: tag_osm_sel = isi sel apa adanya (termasuk backtick), tag_osm = daftar potongan kode (backtick) yang diekstrak dari sel itu, urutan tetap.",
+  "kolom": [
+    "Kategori",
+    "Tag OSM yang cocok",
+    "Sumber data terbaik"
+  ],
+  "baris": [
+    {
+      "kategori": "Taman/RTH/alun-alun",
+      "tag_osm_sel": "`leisure=park`, `leisure=garden`, `place=square`",
+      "tag_osm": [
+        "leisure=park",
+        "leisure=garden",
+        "place=square"
+      ],
+      "sumber_data_terbaik": "mediacenter.batam.go.id, bpbatam.go.id"
+    },
+    {
+      "kategori": "Taman bermain anak",
+      "tag_osm_sel": "`leisure=playground`",
+      "tag_osm": [
+        "leisure=playground"
+      ],
+      "sumber_data_terbaik": "Survei lapangan / OSM"
+    },
+    {
+      "kategori": "Jogging track",
+      "tag_osm_sel": "`highway=footway` + `footway=track` atau `leisure=track` + `sport=running`",
+      "tag_osm": [
+        "highway=footway",
+        "footway=track",
+        "leisure=track",
+        "sport=running"
+      ],
+      "sumber_data_terbaik": "OSM, Batamnews"
+    },
+    {
+      "kategori": "Skatepark",
+      "tag_osm_sel": "`leisure=pitch` + `sport=skateboard`",
+      "tag_osm": [
+        "leisure=pitch",
+        "sport=skateboard"
+      ],
+      "sumber_data_terbaik": "Komunitas BASCOM"
+    },
+    {
+      "kategori": "Pantai",
+      "tag_osm_sel": "`natural=beach` (+ `fee=yes`, `charge=*`)",
+      "tag_osm": [
+        "natural=beach",
+        "fee=yes",
+        "charge=*"
+      ],
+      "sumber_data_terbaik": "sisparnas.kemenpar.go.id"
+    },
+    {
+      "kategori": "Pulau/landmark/viewpoint",
+      "tag_osm_sel": "`place=island`, `tourism=attraction`, `tourism=viewpoint`, `man_made=bridge`",
+      "tag_osm": [
+        "place=island",
+        "tourism=attraction",
+        "tourism=viewpoint",
+        "man_made=bridge"
+      ],
+      "sumber_data_terbaik": "Wikidata/Wikipedia"
+    },
+    {
+      "kategori": "Museum/galeri",
+      "tag_osm_sel": "`tourism=museum`, `tourism=gallery`",
+      "tag_osm": [
+        "tourism=museum",
+        "tourism=gallery"
+      ],
+      "sumber_data_terbaik": "museum.kemenbud.go.id"
+    },
+    {
+      "kategori": "Taman hiburan",
+      "tag_osm_sel": "`tourism=theme_park`, `leisure=water_park`",
+      "tag_osm": [
+        "tourism=theme_park",
+        "leisure=water_park"
+      ],
+      "sumber_data_terbaik": "IG pengelola, media"
+    },
+    {
+      "kategori": "Padel/badminton/futsal/basket/tenis/voli",
+      "tag_osm_sel": "`leisure=pitch` atau `leisure=sports_centre` + `sport=padel/badminton/soccer/basketball/tennis/volleyball`",
+      "tag_osm": [
+        "leisure=pitch",
+        "leisure=sports_centre",
+        "sport=padel/badminton/soccer/basketball/tennis/volleyball"
+      ],
+      "sumber_data_terbaik": "ayo.co.id, saraga.id"
+    },
+    {
+      "kategori": "Stadion/GOR",
+      "tag_osm_sel": "`leisure=stadium`, `leisure=sports_hall`",
+      "tag_osm": [
+        "leisure=stadium",
+        "leisure=sports_hall"
+      ],
+      "sumber_data_terbaik": "bupa.bpbatam.go.id"
+    },
+    {
+      "kategori": "Gym",
+      "tag_osm_sel": "`leisure=fitness_centre`",
+      "tag_osm": [
+        "leisure=fitness_centre"
+      ],
+      "sumber_data_terbaik": "Situs jaringan (fithub.id)"
+    },
+    {
+      "kategori": "Yoga/pilates",
+      "tag_osm_sel": "`leisure=fitness_centre` + `sport=yoga` / `sport=pilates`",
+      "tag_osm": [
+        "leisure=fitness_centre",
+        "sport=yoga",
+        "sport=pilates"
+      ],
+      "sumber_data_terbaik": "IG studio"
+    },
+    {
+      "kategori": "Kolam renang umum",
+      "tag_osm_sel": "`leisure=sports_centre` + `sport=swimming` atau `leisure=swimming_pool` + `access=yes`",
+      "tag_osm": [
+        "leisure=sports_centre",
+        "sport=swimming",
+        "leisure=swimming_pool",
+        "access=yes"
+      ],
+      "sumber_data_terbaik": "BP Batam, pengelola"
+    },
+    {
+      "kategori": "Golf",
+      "tag_osm_sel": "`leisure=golf_course`",
+      "tag_osm": [
+        "leisure=golf_course"
+      ],
+      "sumber_data_terbaik": "Situs klub, Kompas"
+    },
+    {
+      "kategori": "Panjat dinding",
+      "tag_osm_sel": "`sport=climbing` (+ `climbing=*`)",
+      "tag_osm": [
+        "sport=climbing",
+        "climbing=*"
+      ],
+      "sumber_data_terbaik": "Survei"
+    },
+    {
+      "kategori": "Supermarket/hypermarket",
+      "tag_osm_sel": "`shop=supermarket`, `shop=wholesale`",
+      "tag_osm": [
+        "shop=supermarket",
+        "shop=wholesale"
+      ],
+      "sumber_data_terbaik": "Situs brand, Grab/Apple Maps"
+    },
+    {
+      "kategori": "Pasar",
+      "tag_osm_sel": "`amenity=marketplace`",
+      "tag_osm": [
+        "amenity=marketplace"
+      ],
+      "sumber_data_terbaik": "mediacenter/disperindag.batam.go.id"
+    },
+    {
+      "kategori": "Bahan bangunan",
+      "tag_osm_sel": "`shop=doityourself`, `shop=hardware`, `shop=trade`",
+      "tag_osm": [
+        "shop=doityourself",
+        "shop=hardware",
+        "shop=trade"
+      ],
+      "sumber_data_terbaik": "mitra10.com"
+    },
+    {
+      "kategori": "Buku/ATK",
+      "tag_osm_sel": "`shop=books`, `shop=stationery`",
+      "tag_osm": [
+        "shop=books",
+        "shop=stationery"
+      ],
+      "sumber_data_terbaik": "gramedia.com"
+    },
+    {
+      "kategori": "HP/elektronik",
+      "tag_osm_sel": "`shop=mobile_phone`, `shop=electronics`",
+      "tag_osm": [
+        "shop=mobile_phone",
+        "shop=electronics"
+      ],
+      "sumber_data_terbaik": "Situs brand"
+    },
+    {
+      "kategori": "Kain/bayi/optik/obat",
+      "tag_osm_sel": "`shop=fabric`, `shop=baby_goods`, `shop=optician`, `amenity=pharmacy` / `shop=chemist`",
+      "tag_osm": [
+        "shop=fabric",
+        "shop=baby_goods",
+        "shop=optician",
+        "amenity=pharmacy",
+        "shop=chemist"
+      ],
+      "sumber_data_terbaik": "Situs brand, OSM"
+    },
+    {
+      "kategori": "Money changer",
+      "tag_osm_sel": "`amenity=bureau_de_change`",
+      "tag_osm": [
+        "amenity=bureau_de_change"
+      ],
+      "sumber_data_terbaik": "Daftar KUPVA BB Bank Indonesia"
+    },
+    {
+      "kategori": "Pos/ekspedisi",
+      "tag_osm_sel": "`amenity=post_office` (+ `brand=*`, `operator=*`)",
+      "tag_osm": [
+        "amenity=post_office",
+        "brand=*",
+        "operator=*"
+      ],
+      "sumber_data_terbaik": "posindonesia.co.id, jne.co.id"
+    },
+    {
+      "kategori": "Service center",
+      "tag_osm_sel": "`craft=electronics_repair` + `brand=*`",
+      "tag_osm": [
+        "craft=electronics_repair",
+        "brand=*"
+      ],
+      "sumber_data_terbaik": "Situs brand"
+    },
+    {
+      "kategori": "Dealer/bengkel",
+      "tag_osm_sel": "`shop=car`, `shop=motorcycle`, `shop=car_repair`",
+      "tag_osm": [
+        "shop=car",
+        "shop=motorcycle",
+        "shop=car_repair"
+      ],
+      "sumber_data_terbaik": "Situs APM"
+    },
+    {
+      "kategori": "Cuci kendaraan/laundry/fotokopi",
+      "tag_osm_sel": "`amenity=car_wash`, `shop=laundry` / `shop=dry_cleaning`, `shop=copyshop`",
+      "tag_osm": [
+        "amenity=car_wash",
+        "shop=laundry",
+        "shop=dry_cleaning",
+        "shop=copyshop"
+      ],
+      "sumber_data_terbaik": "OSM, Google Business"
+    },
+    {
+      "kategori": "Salon/barbershop/spa/pijat",
+      "tag_osm_sel": "`shop=hairdresser`, `shop=beauty`, `shop=massage`, `leisure=spa`",
+      "tag_osm": [
+        "shop=hairdresser",
+        "shop=beauty",
+        "shop=massage",
+        "leisure=spa"
+      ],
+      "sumber_data_terbaik": "Situs jaringan"
+    }
+  ]
+}

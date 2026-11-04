@@ -1,0 +1,34 @@
+[
+  {
+    "id": "batam-centre",
+    "name": "Batam Centre Ferry Terminal",
+    "lat": 1.1466,
+    "lng": 104.0531,
+    "blurb_id": "Terminal tersibuk dan paling fleksibel. Banyak rute ke Singapura (HarbourFront) & Johor.",
+    "blurb_en": "The busiest, most flexible terminal. Many routes to Singapore (HarbourFront) & Johor."
+  },
+  {
+    "id": "harbour-bay",
+    "name": "Harbour Bay Ferry Terminal",
+    "lat": 1.1668,
+    "lng": 104.0078,
+    "blurb_id": "Sekitar 45 menit dari HarbourFront Singapura, paling dekat ke pusat Nagoya.",
+    "blurb_en": "About 45 minutes from Singapore's HarbourFront, closest to downtown Nagoya."
+  },
+  {
+    "id": "sekupang",
+    "name": "Sekupang International Ferry Terminal",
+    "lat": 1.1233,
+    "lng": 103.9447,
+    "blurb_id": "Di sisi barat, sekitar 30–40 menit dari pusat kota. Juga melayani domestik.",
+    "blurb_en": "On the west side, about 30–40 minutes from the city centre. Also serves domestic routes."
+  },
+  {
+    "id": "nongsapura",
+    "name": "Nongsapura Ferry Terminal",
+    "lat": 1.1819,
+    "lng": 104.1556,
+    "blurb_id": "Sisi timur, dekat kawasan Nongsa, resort, dan Bandara Hang Nadim.",
+    "blurb_en": "East side, close to Nongsa's resorts and Hang Nadim Airport."
+  }
+]

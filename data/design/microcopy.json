@@ -1,0 +1,42 @@
+[
+  {
+    "konteks": "Cuaca lokal",
+    "id": "Sekupang kering. Batam Centre tidak.",
+    "en": "Sekupang is dry. Batam Centre is not."
+  },
+  {
+    "konteks": "Ombak",
+    "id": "Ombak 1,5 m. Pompong ke Belakangpadang tetap jalan, perut belum tentu.",
+    "en": "1.5 m swell. The pompong runs; your stomach may not."
+  },
+  {
+    "konteks": "Feri",
+    "id": "Feri 10.30 ke HarbourFront: sesuai jadwal. Paspor: tanggung jawab Anda.",
+    "en": "10:30 to HarbourFront: on time. Passport: your department."
+  },
+  {
+    "konteks": "Data lama",
+    "id": "Terakhir dicek 3 minggu lalu. Anggap ini sejarah lisan.",
+    "en": "Last checked 3 weeks ago. Treat as oral history."
+  },
+  {
+    "konteks": "Kosong / 404",
+    "id": "Halaman ini tenggelam. Kemungkinan di sekitar 1°N.",
+    "en": "This page sank. Somewhere near 1°N."
+  },
+  {
+    "konteks": "Memuat",
+    "id": "Itik sedang berbaris…",
+    "en": "The ducks are lining up…"
+  },
+  {
+    "konteks": "Tukang langganan",
+    "id": "Datang Selasa dan Jumat. Kalau hujan, Rabu. Kalau hujan lagi, sabar.",
+    "en": "Tuesdays and Fridays. Wednesdays if it rains. If it rains again, patience."
+  },
+  {
+    "konteks": "Error",
+    "id": "Peta gagal dimuat. Laut masih ada, kami saja yang belum.",
+    "en": "The map didn't load. The sea's still there; we're not."
+  }
+]

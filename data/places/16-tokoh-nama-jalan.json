@@ -1,0 +1,694 @@
+[
+  {
+    "id": "bandara-hang-nadim",
+    "nama": "Bandar Udara Internasional Hang Nadim",
+    "nama_alternatif": [
+      "Bandara Hang Nadim"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "bandara",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Batu Besar",
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "hang_nadim",
+      "penamaan_id": "p01",
+      "jenis_penamaan": "bandara",
+      "kelompok_tokoh": "a/b",
+      "status_tokoh": "semi_historis",
+      "diresmikan_internasional": "3 Januari 1995 oleh Presiden Soeharto"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://hangnadimairport.bpbatam.go.id/about",
+      "https://www.m.batamtoday.com/berita-71652-Inilah-Dasar-dan-Sejarah-Bandara-Internasional-Hang-Nadim-Dikelola-BP-Batam.html"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "stadion-temenggung-abdul-jamal",
+    "nama": "Stadion Temenggung Abdul Jamal",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "stadion",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "temenggung_abdul_jamal",
+      "penamaan_id": "p03",
+      "jenis_penamaan": "stadion",
+      "kelompok_tokoh": "a/e",
+      "status_tokoh": "terverifikasi"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Kecamatan di laporan: Batam Kota/Sei Ladi (perlu dicek); JSON penamaan: null.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Temenggong_Abdul_Jamal"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "makam-temenggung-abdul-jamal",
+    "nama": "Makam Temenggung Abdul Jamal",
+    "nama_alternatif": [],
+    "kategori": "budaya",
+    "subkategori": "makam_bersejarah",
+    "kecamatan": "Bulang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "temenggung_abdul_jamal",
+      "penamaan_id": "p04",
+      "jenis_penamaan": "makam",
+      "kelompok_tokoh": "a/e",
+      "status_tokoh": "terverifikasi",
+      "lokasi_disebut": "Pulau Bulang Lintang",
+      "tokoh_terkait": [
+        "raja_maimunah"
+      ],
+      "keterangan": "Dimakamkan bersama istrinya, Raja Maimunah. Pemko Batam pernah merencanakan pemugaran makam ini bersama tim cagar budaya provinsi."
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://gowest.id/makam-temenggung-abdul-jamal-di-pulau-bulang/",
+      "https://kebudayaan.kemdikbud.go.id/bpcbsumbar/pulau-bulang-dalam-pusaran-kerajaan-melayu-riau/",
+      "https://kepri.antaranews.com/berita/62685/makam-temenggung-abdul-jamal-bakal-dipugar"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "masjid-temenggung-abdul-jamal",
+    "nama": "Masjid Temenggung Abdul Jamal",
+    "nama_alternatif": [],
+    "kategori": "ibadah",
+    "subkategori": "masjid",
+    "kecamatan": "Bulang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "temenggung_abdul_jamal",
+      "penamaan_id": "pt01",
+      "jenis_penamaan": "masjid",
+      "kelompok_tokoh": "a/e",
+      "status_tokoh": "terverifikasi",
+      "lokasi_disebut": "Pulau Bulang (Kec. Bulang)"
+    },
+    "status_data": null,
+    "catatan": "Dari baris tabel gabungan \"Makam & Masjid Temenggung Abdul Jamal\"; tidak ada entri JSON terpisah.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kebudayaan.kemdikbud.go.id/bpcbsumbar/pulau-bulang-dalam-pusaran-kerajaan-melayu-riau/"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "gedung-nong-isa",
+    "nama": "Gedung Nong Isa",
+    "nama_alternatif": [],
+    "kategori": "lainnya",
+    "subkategori": "gedung",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "nong_isa",
+      "penamaan_id": "p09",
+      "jenis_penamaan": "gedung",
+      "kelompok_tokoh": "a",
+      "status_tokoh": "terverifikasi_beda_versi"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "JSON penamaan: kecamatan null; baris tabel gabungan \"Jl. Raja Isa; Gedung Nong Isa\" menyebut Batam Kota (Batam Centre). Fungsi gedung tidak dijelaskan di laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "http://wartasejarah.blogspot.com/2015/12/sejarah-dan-budaya-batam.html",
+      "https://batamtoday.com/news/banjir-kembali-lumpuhkan-batam-centre-anggota-dprd-batam-soroti-drainase-dan-penimbunan-laut"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "makam-zuriat-nong-isa",
+    "nama": "Makam Zuriat Nong Isa",
+    "nama_alternatif": [],
+    "kategori": "budaya",
+    "subkategori": "makam_bersejarah",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Sambau",
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "nong_isa",
+      "penamaan_id": "p10",
+      "jenis_penamaan": "makam",
+      "kelompok_tokoh": "a",
+      "status_tokoh": "terverifikasi_beda_versi",
+      "lokasi_disebut": "Nongsa Pantai (Kel. Sambau)",
+      "keterangan": "Kompleks makam zuriat (keturunan) Nong Isa; makam Nong Isa sendiri belum ditemukan."
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://mediacenter.batam.go.id/2022/12/15/tak-lupakan-sejarah-rudi-ziarah-makam-zuriat-nong-isa/"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "dataran-engku-putri",
+    "nama": "Dataran Engku Putri",
+    "nama_alternatif": [],
+    "kategori": "ruang_publik",
+    "subkategori": "alun_alun",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "engku_putri",
+      "penamaan_id": "p12",
+      "jenis_penamaan": "alun-alun",
+      "kelompok_tokoh": "a",
+      "status_tokoh": "terverifikasi"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "http://wartasejarah.blogspot.com/2015/12/sejarah-dan-budaya-batam.html",
+      "https://jantungmelayu.co/2017/03/nama-jalan-batam-dievaluasi-berharap-unsur-budaya-lokal-lebih-ditonjolkan/"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "masjid-dataran-engku-putri",
+    "nama": "Masjid Agung/Masjid Raya di Dataran Engku Putri",
+    "nama_alternatif": [],
+    "kategori": "ibadah",
+    "subkategori": "masjid",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "engku_putri",
+      "penamaan_id": "pt02",
+      "jenis_penamaan": "masjid",
+      "kelompok_tokoh": "a",
+      "status_tokoh": "terverifikasi",
+      "kaitan_nama": "perlu dicek"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Nama resmi masjid tidak dipastikan (Masjid Agung/Masjid Raya); kaitan nama dengan Engku Putri perlu dicek; sumber di tabel: \"perlu dicek\".",
+    "tag_osm": null,
+    "sumber_url": [],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "jembatan-barelang-1",
+    "nama": "Jembatan Tengku Fisabilillah (Barelang I)",
+    "nama_alternatif": [
+      "Jembatan Barelang I"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "raja_haji_fisabilillah",
+      "penamaan_id": "p14",
+      "jenis_penamaan": "jembatan",
+      "kelompok_tokoh": "a/c",
+      "status_tokoh": "terverifikasi",
+      "kompleks": "Jembatan Barelang",
+      "julukan_populer_kompleks": "Jembatan Habibie (sebutan populer, tidak resmi)",
+      "julukan_tokoh_id": "bj_habibie",
+      "penamaan_julukan_id": "pt04",
+      "menghubungkan": "Batam–Tonton (perlu dicek)"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Kecamatan di laporan: Bulang (perlu dicek).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.detik.com/sumut/berita/d-7613289/jembatan-barelang-ikon-kota-batam-buah-tangan-presiden-habibie"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "jembatan-barelang-2",
+    "nama": "Jembatan Nara Singa (Barelang II)",
+    "nama_alternatif": [
+      "Jembatan Barelang II"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "narasinga_2",
+      "penamaan_id": "p16",
+      "jenis_penamaan": "jembatan",
+      "kelompok_tokoh": "a",
+      "status_tokoh": "beda_versi",
+      "kompleks": "Jembatan Barelang",
+      "julukan_populer_kompleks": "Jembatan Habibie (sebutan populer, tidak resmi)",
+      "julukan_tokoh_id": "bj_habibie",
+      "penamaan_julukan_id": "pt04",
+      "menghubungkan": "Tonton–Nipah"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Kecamatan: JSON \"Bulang (perlu dicek)\", tabel \"Bulang (Tonton–Nipah)\". Identitas tokoh beda versi: BP Batam menyebut \"Panglima Raja Indragiri Hulu\", sumber sejarah menyebut Narasinga II adalah rajanya sendiri.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batampos.co.id/2020/08/23/ini-fakta-jembatan-ii-barelang/"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "jembatan-barelang-3",
+    "nama": "Jembatan Raja Ali Haji (Barelang III)",
+    "nama_alternatif": [
+      "Jembatan Barelang III"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "raja_ali_haji",
+      "penamaan_id": "p17",
+      "jenis_penamaan": "jembatan",
+      "kelompok_tokoh": "a/c",
+      "status_tokoh": "terverifikasi",
+      "kompleks": "Jembatan Barelang",
+      "julukan_populer_kompleks": "Jembatan Habibie (sebutan populer, tidak resmi)",
+      "julukan_tokoh_id": "bj_habibie",
+      "penamaan_julukan_id": "pt04",
+      "menghubungkan": "Nipah–Setokok"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Kecamatan: JSON \"Bulang (perlu dicek)\", tabel \"Bulang (Nipah–Setokok)\".",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.sarahjalan.com/2023/07/6-nama-jembatan-di-barelang-apa-saja-itu.html"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "jembatan-barelang-4",
+    "nama": "Jembatan Sultan Zainal Abidin (Barelang IV)",
+    "nama_alternatif": [
+      "Jembatan Barelang IV"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "sultan_zainal_abidin_rokan",
+      "penamaan_id": "p20",
+      "jenis_penamaan": "jembatan",
+      "kelompok_tokoh": "a",
+      "status_tokoh": "beda_versi",
+      "kompleks": "Jembatan Barelang",
+      "julukan_populer_kompleks": "Jembatan Habibie (sebutan populer, tidak resmi)",
+      "julukan_tokoh_id": "bj_habibie",
+      "penamaan_julukan_id": "pt04",
+      "menghubungkan": "Setokok–Rempang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Kecamatan di laporan: Bulang–Galang (melintasi dua kecamatan). Penjelasan nama hanya dari advertorial BP Batam; beberapa situs wisata menyebutnya sultan Riau-Lingga (tidak bersumber).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batampos.co.id/2020/09/15/fakta-fakta-jembatan-4-barelang/"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "jembatan-barelang-5",
+    "nama": "Jembatan Tuanku Tambusai (Barelang V)",
+    "nama_alternatif": [
+      "Jembatan Barelang V"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "tuanku_tambusai",
+      "penamaan_id": "p21",
+      "jenis_penamaan": "jembatan",
+      "kelompok_tokoh": "c",
+      "status_tokoh": "terverifikasi",
+      "kompleks": "Jembatan Barelang",
+      "julukan_populer_kompleks": "Jembatan Habibie (sebutan populer, tidak resmi)",
+      "julukan_tokoh_id": "bj_habibie",
+      "penamaan_julukan_id": "pt04",
+      "menghubungkan": "Rempang–Galang"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.sarahjalan.com/2023/07/6-nama-jembatan-di-barelang-apa-saja-itu.html",
+      "https://khazanah.republika.co.id/berita/sie577483/kisah-tuanku-tambusai-ulama-penghancur-benteng-belanda"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "jembatan-barelang-6",
+    "nama": "Jembatan Raja Kecik (Barelang VI)",
+    "nama_alternatif": [
+      "Jembatan Barelang VI"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "raja_kecik",
+      "penamaan_id": "p22",
+      "jenis_penamaan": "jembatan",
+      "kelompok_tokoh": "a",
+      "status_tokoh": "terverifikasi_asal_usul_hikayat",
+      "kompleks": "Jembatan Barelang",
+      "julukan_populer_kompleks": "Jembatan Habibie (sebutan populer, tidak resmi)",
+      "julukan_tokoh_id": "bj_habibie",
+      "penamaan_julukan_id": "pt04",
+      "menghubungkan": "Galang–Galang Baru"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.sarahjalan.com/2023/07/6-nama-jembatan-di-barelang-apa-saja-itu.html",
+      "https://id.wikipedia.org/wiki/Abdul_Jalil_Syah_dari_Siak"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "museum-batam-raja-ali-haji",
+    "nama": "Museum Batam Raja Ali Haji",
+    "nama_alternatif": [],
+    "kategori": "budaya",
+    "subkategori": "museum",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "raja_ali_haji",
+      "penamaan_id": "p19",
+      "jenis_penamaan": "museum",
+      "kelompok_tokoh": "a/c",
+      "status_tokoh": "terverifikasi"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Kecamatan di tabel: Batam Kota (perlu dicek); JSON penamaan: null.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batambanget.com/nong-isa-sang-penguasa-pertama-pulau-batam/"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "masjid-sultan-mahmud-riayat-syah",
+    "nama": "Masjid Sultan Mahmud Riayat Syah",
+    "nama_alternatif": [],
+    "kategori": "ibadah",
+    "subkategori": "masjid",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "sultan_mahmud_riayat_syah",
+      "penamaan_id": "p23",
+      "jenis_penamaan": "masjid",
+      "kelompok_tokoh": "a/c",
+      "status_tokoh": "terverifikasi_beda_versi"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Kecamatan di laporan: Batu Aji (perlu dicek).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Daftar_tempat_wisata_di_Kepulauan_Riau"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "bumi-perkemahan-raja-ali-kelana",
+    "nama": "Bumi Perkemahan Raja Ali Kelana",
+    "nama_alternatif": [],
+    "kategori": "ruang_publik",
+    "subkategori": "bumi_perkemahan",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "raja_ali_kelana",
+      "penamaan_id": "p26",
+      "jenis_penamaan": "kawasan",
+      "kelompok_tokoh": "a/d",
+      "status_tokoh": "terverifikasi_beda_versi"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Kecamatan: perlu dicek (laporan).",
+    "tag_osm": null,
+    "sumber_url": [
+      "http://wartasejarah.blogspot.com/2015/12/sejarah-dan-budaya-batam.html"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  },
+  {
+    "id": "rsud-embung-fatimah",
+    "nama": "RSUD Embung Fatimah",
+    "nama_alternatif": [],
+    "kategori": "kesehatan",
+    "subkategori": "rumah_sakit_umum_daerah",
+    "kecamatan": "Batu Aji",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "tokoh_id": "embung_fatimah",
+      "penamaan_id": "p27",
+      "jenis_penamaan": "rumah_sakit",
+      "kelompok_tokoh": "a",
+      "status_tokoh": "terverifikasi",
+      "kategori_asli": "rumah_sakit",
+      "kaitan_nama": "masih asumsi, perlu konfirmasi Pemko"
+    },
+    "status_data": null,
+    "catatan": "Situs resmi RSUD tidak menjelaskan alasan pemilihan nama Embung Fatimah; kaitan penamaan masih asumsi dan perlu konfirmasi Pemko.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://rsud.batam.go.id/sejarah-singkat-rsud/",
+      "https://kepri.antaranews.com/berita/200065/melestarikan-cagar-budaya-makam-embung-fatimah-di-pulau-penyengat"
+    ],
+    "sumber_riset": "16-tokoh-nama-jalan"
+  }
+]

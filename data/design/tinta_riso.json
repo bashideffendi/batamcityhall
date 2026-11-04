@@ -1,0 +1,76 @@
+{
+  "catatan": "Semua hex berikut adalah padanan perkiraan tinta RISO resmi menurut stencil.wiki. Ingat, tinta Riso itu semi-transparan dan hasil aslinya tergantung kertas. Lab lain bahkan memakai hex berbeda untuk nama yang sama; contohnya, BYU Print Lab memakai Bright Red #CC231F, sementara stencil.wiki memakai #F15060. [V]",
+  "aturan_mural": "Maksimal 3 tinta per panel (misalnya Federal Blue + Copper + Charcoal di atas kertas #F4EFE4), overprint dengan mix-blend-mode: multiply, dan tanpa warna di luar tabel ini. [A]",
+  "tinta": [
+    {
+      "tinta": "Black",
+      "hex_stencil_wiki": "#000000",
+      "peran": "tidak dipakai murni. Tinta UI #1C1B19"
+    },
+    {
+      "tinta": "Riso-Federal Blue",
+      "hex_stencil_wiki": "#3D5588",
+      "peran": "laut dalam di mode Mural"
+    },
+    {
+      "tinta": "Medium Blue",
+      "hex_stencil_wiki": "#3255A4",
+      "peran": "cadangan, jarang dipakai"
+    },
+    {
+      "tinta": "Teal",
+      "hex_stencil_wiki": "#00838A",
+      "peran": "tidak dipakai (terlalu jenuh)"
+    },
+    {
+      "tinta": "Lagoon",
+      "hex_stencil_wiki": "#2F6F65",
+      "peran": "bakau/hutan di Mural"
+    },
+    {
+      "tinta": "Hunter Green",
+      "hex_stencil_wiki": "#407060",
+      "peran": "status \"aman/normal\""
+    },
+    {
+      "tinta": "Copper",
+      "hex_stencil_wiki": "#BD6439",
+      "peran": "aksen terakota senja Barelang (dekor/teks besar)"
+    },
+    {
+      "tinta": "Brick",
+      "hex_stencil_wiki": "#A75154",
+      "peran": "alternatif aksen yang lolos AA (4,64:1 di atas kertas)"
+    },
+    {
+      "tinta": "Flat Gold",
+      "hex_stencil_wiki": "#BB8B41",
+      "peran": "pasir/tanah di Mural, jangan untuk UI"
+    },
+    {
+      "tinta": "Charcoal",
+      "hex_stencil_wiki": "#70747C",
+      "peran": "garis sekunder"
+    },
+    {
+      "tinta": "Granite",
+      "hex_stencil_wiki": "#A5AAA8",
+      "peran": "garis graticule malam"
+    },
+    {
+      "tinta": "Indigo",
+      "hex_stencil_wiki": "#484D7A",
+      "peran": "bayangan Mural malam"
+    },
+    {
+      "tinta": "Bisque",
+      "hex_stencil_wiki": "#F2CDCF",
+      "peran": "rona senja tipis di Mural"
+    }
+  ],
+  "sumber_url": [
+    "https://stencil.wiki/wiki/Category:Riso_inks",
+    "https://printlab.byu.edu/riso"
+  ],
+  "sumber_riset": "05-panduan-gaya"
+}

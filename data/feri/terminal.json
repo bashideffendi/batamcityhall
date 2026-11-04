@@ -1,0 +1,473 @@
+{
+  "meta": {
+    "sumber_riset": "14-feri-pompong",
+    "task_id": "wf-45ea1918-1dd9-865f-844b-d2b422910e8a",
+    "data_per": "2026-11-04",
+    "keterangan_struktur": "22 entri pertama verbatim dari blok JSON (a) (data/raw/14-feri-pompong__2.json); sumber_url diubah jadi array. Tambahan: \"rute_id\" (rute di rute.json yang berangkat dari terminal ini), \"catatan_daftar_koordinat\" (baris dari daftar koordinat belum pasti), \"catatan\" (kalimat laporan), dan \"dari_tabel_pompong\" (baris tabel pompong tanpa rute). Entri \"pr-blp\" dibuat saat migrasi.",
+    "arti_terverifikasi": "Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok. Koordinat terminal belum dicek langsung di OpenStreetMap.",
+    "prioritas_verifikasi": "**Prioritas verifikasi koordinat** (lihat daftar di bagian paling akhir): Singapore Cruise Centre, Nongsapura, Gold Coast Bengkong, Bintang 99, dan semua pelantar rakyat."
+  },
+  "terminal": [
+    {
+      "id": "btc",
+      "nama": "Pelabuhan Internasional Batam Centre",
+      "jenis": "terminal_internasional",
+      "kecamatan": "Batam Kota",
+      "alamat": "Jl. Engku Putri, Batam Centre",
+      "lat": 1.1309,
+      "lng": 104.0552,
+      "status_koordinat": "terverifikasi",
+      "sumber_url": [
+        "https://www.wikidata.org/wiki/Q12504166"
+      ],
+      "rute_id": [
+        "btc-hfc",
+        "btc-tmft",
+        "btc-stl",
+        "batam-pasirgudang"
+      ],
+      "catatan_daftar_koordinat": null,
+      "catatan": [
+        "Koordinat terminal belum dicek langsung di OpenStreetMap. Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok. Koordinat resmi di situs BatamPort untuk Batam Centre, Nongsapura, dan Telaga Punggur tampak salah ketik, jadi jangan dipakai."
+      ]
+    },
+    {
+      "id": "skp",
+      "nama": "Pelabuhan Internasional & Domestik Sekupang",
+      "jenis": "terminal_internasional_domestik",
+      "kecamatan": "Sekupang",
+      "alamat": "Jl. RE Martadinata, Sekupang",
+      "lat": 1.1314,
+      "lng": 103.9253,
+      "status_koordinat": "perlu_cek_ulang",
+      "sumber_url": [
+        "https://batamport.bpbatam.go.id/sekupang/"
+      ],
+      "rute_id": [
+        "skp-hfc",
+        "skp-tbk",
+        "skp-dumai",
+        "skp-kundur-penyalai"
+      ],
+      "catatan_daftar_koordinat": "Sekupang (`skp`): 1.1314, 103.9253 (BatamPort)",
+      "catatan": []
+    },
+    {
+      "id": "hb",
+      "nama": "Harbour Bay Ferry Terminal",
+      "jenis": "terminal_internasional_domestik",
+      "kecamatan": "Batu Ampar",
+      "alamat": "Harbourbay Downtown, Bayfront Mall",
+      "lat": 1.1539,
+      "lng": 103.9971,
+      "status_koordinat": "terverifikasi",
+      "sumber_url": [
+        "https://www.wikidata.org/wiki/Q65091241"
+      ],
+      "rute_id": [
+        "hb-hfc",
+        "hb-ph",
+        "hb-nirup",
+        "batam-pasirgudang",
+        "hb-domestik-tbk-moro"
+      ],
+      "catatan_daftar_koordinat": null,
+      "catatan": []
+    },
+    {
+      "id": "nsp",
+      "nama": "Nongsapura Ferry Terminal",
+      "jenis": "terminal_internasional",
+      "kecamatan": "Nongsa",
+      "alamat": "Nongsa",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://batamport.bpbatam.go.id/nongsapura/"
+      ],
+      "rute_id": [
+        "nsp-tmft",
+        "batam-pasirgudang"
+      ],
+      "catatan_daftar_koordinat": "Nongsapura Ferry Terminal (`nsp`). Koordinat di BatamPort salah salin karena bujurnya sama dengan Sekupang.",
+      "catatan": [
+        "Koordinat terminal belum dicek langsung di OpenStreetMap. Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok. Koordinat resmi di situs BatamPort untuk Batam Centre, Nongsapura, dan Telaga Punggur tampak salah ketik, jadi jangan dipakai."
+      ]
+    },
+    {
+      "id": "gcb",
+      "nama": "Gold Coast International Ferry Terminal Bengkong",
+      "jenis": "terminal_internasional",
+      "kecamatan": "Bengkong",
+      "alamat": "Kawasan Pantai Indah Mutiara Blok B No. 36-37, Bengkong",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://batamstraits.com/2025/04/14/gold-coast-international-ferry-terminal-bengkong-diresmikan-di-batam/"
+      ],
+      "rute_id": [
+        "gcb-hfc"
+      ],
+      "catatan_daftar_koordinat": "Gold Coast International Ferry Terminal Bengkong (`gcb`)",
+      "catatan": [
+        "**Gold Coast Bengkong sedang terganggu.** Di jadwal BatamFast yang berlaku 1 November 2026, sebagian besar trip HarbourFront–Gold Coast bertanda \"Suspended until further notice\". Yang tidak bertanda suspend tinggal HF→GC 09:35 (dioperasikan Sindo) dan 10:30, serta GC→HF 15:30 (Sindo) dan 19:00."
+      ]
+    },
+    {
+      "id": "wfc",
+      "nama": "Waterfront City Ferry Terminal (Teluk Senimba)",
+      "jenis": "terminal_internasional",
+      "kecamatan": "Sekupang",
+      "alamat": "Jl. KH Ahmad Dahlan, Tanjung Uncang",
+      "lat": 1.08243,
+      "lng": 103.93751,
+      "status_koordinat": "perlu_cek_ulang",
+      "sumber_url": [
+        "https://www.streetdirectory.com/indonesia/batam/travel/travel_id_14593/travel_site_10111/travel_no_/"
+      ],
+      "rute_id": [
+        "wfc-hfc"
+      ],
+      "catatan_daftar_koordinat": "Waterfront City (`wfc`): 1.08243, 103.93751 (Streetdirectory)",
+      "catatan": []
+    },
+    {
+      "id": "tpg",
+      "nama": "Pelabuhan Telaga Punggur (feri & RoRo)",
+      "jenis": "terminal_domestik",
+      "kecamatan": "Nongsa",
+      "alamat": "Telaga Punggur",
+      "lat": 1.0352,
+      "lng": 104.1334,
+      "status_koordinat": "terverifikasi",
+      "sumber_url": [
+        "https://www.wikidata.org/wiki/Q14236384"
+      ],
+      "rute_id": [
+        "tpg-tpi",
+        "tpg-tgu",
+        "tpg-tgu-roro",
+        "tpg-dabo",
+        "tpg-trp",
+        "tpg-senayang",
+        "tpg-roro-mengkapan-kualatungkal"
+      ],
+      "catatan_daftar_koordinat": null,
+      "catatan": [
+        "Koordinat terminal belum dicek langsung di OpenStreetMap. Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok. Koordinat resmi di situs BatamPort untuk Batam Centre, Nongsapura, dan Telaga Punggur tampak salah ketik, jadi jangan dipakai."
+      ]
+    },
+    {
+      "id": "b99",
+      "nama": "Pelabuhan Bintang 99 Persada (sandar Pelni)",
+      "jenis": "pelabuhan_pelni",
+      "kecamatan": "Batu Ampar",
+      "alamat": "selatan Pelabuhan Batu Ampar",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://sumatra.bisnis.com/read/20241202/534/1820818/dermaga-kapal-pelni-pindah-ke-pelabuhan-bintang-99-batam-4-desember-2024"
+      ],
+      "rute_id": [
+        "b99-pelni"
+      ],
+      "catatan_daftar_koordinat": "Pelabuhan Bintang 99 Persada, Batu Ampar (`b99`)",
+      "catatan": [
+        "Kapal Pelni pindah sandar ke Pelabuhan Bintang 99 Persada (Batu Ampar) sejak Desember 2024."
+      ]
+    },
+    {
+      "id": "bta",
+      "nama": "Pelabuhan Batu Ampar",
+      "jenis": "pelabuhan_pelni",
+      "kecamatan": "Batu Ampar",
+      "alamat": "Batu Ampar",
+      "lat": 1.1648,
+      "lng": 104.0016,
+      "status_koordinat": "perlu_cek_ulang",
+      "sumber_url": [
+        "https://readmore.id/jadwal-kapal/pelabuhan/pelabuhan-batu-ampar"
+      ],
+      "rute_id": [],
+      "catatan_daftar_koordinat": "Pelabuhan Batu Ampar (`bta`): 1.1648, 104.0016 (readmore.id)",
+      "catatan": [
+        "Kapal Pelni pindah sandar ke Pelabuhan Bintang 99 Persada (Batu Ampar) sejak Desember 2024 (lihat b99)."
+      ]
+    },
+    {
+      "id": "pr-skp",
+      "nama": "Pelabuhan Rakyat Sekupang (pompong PPMS)",
+      "jenis": "pelantar_pompong",
+      "kecamatan": "Sekupang",
+      "alamat": "bersebelahan Terminal Sekupang",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://kepripedia.com/tarif-boat-pancung-ke-belakang-padang-pp-naik-2-ribu/"
+      ],
+      "rute_id": [
+        "skp-blp",
+        "blp-kasu"
+      ],
+      "catatan_daftar_koordinat": "Pelabuhan Rakyat Sekupang / pompong PPMS (`pr-skp`)",
+      "catatan": []
+    },
+    {
+      "id": "pr-tgr",
+      "nama": "Pelabuhan Rakyat Tanjung Riau",
+      "jenis": "pelantar_pompong",
+      "kecamatan": "Sekupang",
+      "alamat": "Tanjung Riau",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://rempangpost.com/pelabuhan-rakyat-tanjung-riau-jalur-senyap-barang-dari-batam-ke-riau/"
+      ],
+      "rute_id": [
+        "pr-tgr-riau"
+      ],
+      "catatan_daftar_koordinat": "Pelabuhan Rakyat Tanjung Riau (`pr-tgr`)",
+      "catatan": []
+    },
+    {
+      "id": "pr-sgl",
+      "nama": "Pelabuhan Rakyat Sagulung",
+      "jenis": "pelantar_pompong",
+      "kecamatan": "Sagulung",
+      "alamat": "dekat Tanjung Uncang",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://www.batamnews.co.id/berita-105973-pelabuhan-rakyat-sagulung-batam-tempat-penyeberangan-yang-bersih-dan-layak-dikunjungi.html"
+      ],
+      "rute_id": [
+        "sgl-buluh"
+      ],
+      "catatan_daftar_koordinat": "Pelabuhan Rakyat Sagulung (`pr-sgl`)",
+      "catatan": []
+    },
+    {
+      "id": "pr-bta",
+      "nama": "Pelantar Batu Ampar / Tanjung Sengkuang",
+      "jenis": "pelantar_pompong",
+      "kecamatan": "Batu Ampar",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [],
+      "rute_id": [],
+      "catatan_daftar_koordinat": "Pelantar Batu Ampar / Tanjung Sengkuang (`pr-bta`)",
+      "catatan": [],
+      "dari_tabel_pompong": [
+        {
+          "tabel": "Tabel pompong dan pancung",
+          "baris": 6,
+          "Pelantar": "Pelantar Batu Ampar / Tanjung Sengkuang",
+          "Kecamatan": "Batu Ampar",
+          "Tujuan": "–",
+          "Jam operasi": "–",
+          "Tarif": "–",
+          "Durasi": "–",
+          "Status data": "perlu_diisi_user"
+        }
+      ]
+    },
+    {
+      "id": "pr-ktp",
+      "nama": "Pelantar Kampung Tua Telaga Punggur",
+      "jenis": "pelantar_pompong",
+      "kecamatan": "Nongsa",
+      "alamat": "Kampung Tua Telaga Punggur",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://travel.detik.com/cerita-perjalanan/d-5404649/ngenang-pulau-kenangan-yang-tak-terlupakan"
+      ],
+      "rute_id": [
+        "ktp-ngenang"
+      ],
+      "catatan_daftar_koordinat": "Pelantar Kampung Tua Telaga Punggur (`pr-ktp`)",
+      "catatan": []
+    },
+    {
+      "id": "pr-jb1",
+      "nama": "Pelantar bawah Jembatan 1 Barelang",
+      "jenis": "pelantar_pompong",
+      "kecamatan": "Bulang",
+      "alamat": "Jembatan 1 Barelang",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://ulasan.co/nikmati-keindahan-jembatan-1-barelang-sambil-keliling-naik-kapal-pancung/"
+      ],
+      "rute_id": [
+        "pr-jb1-wisata"
+      ],
+      "catatan_daftar_koordinat": "Pelantar bawah Jembatan 1 Barelang (`pr-jb1`)",
+      "catatan": [
+        "Kecamatan: JSON menulis \"Bulang\", tabel pompong menulis \"Bulang/Galang\"."
+      ]
+    },
+    {
+      "id": "pr-jb2",
+      "nama": "Pelantar Jembatan 2 Barelang",
+      "jenis": "pelantar_pompong",
+      "kecamatan": "Galang",
+      "alamat": "Jembatan 2 Barelang",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://www.linasasmita.com/2014/12/island-hopping-ke-pulau-panjang_90.html"
+      ],
+      "rute_id": [
+        "pr-jb2-panjang"
+      ],
+      "catatan_daftar_koordinat": "Pelantar Jembatan 2 Barelang (`pr-jb2`)",
+      "catatan": []
+    },
+    {
+      "id": "pr-smb",
+      "nama": "Pelabuhan Sembulang",
+      "jenis": "pelantar_pompong",
+      "kecamatan": "Galang",
+      "alamat": "Sembulang, Pulau Rempang (Plus Code R7W6+43C)",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://sg.trip.com/travel-guide/attraction/galang/pelabuhan-sembulang-137076004"
+      ],
+      "rute_id": [
+        "smb-mubut"
+      ],
+      "catatan_daftar_koordinat": "Pelabuhan Sembulang (`pr-smb`). Sudah ada Plus Code R7W6+43C, tinggal dikonversi.",
+      "catatan": []
+    },
+    {
+      "id": "pr-sbd",
+      "nama": "Pelabuhan Sungai Budus",
+      "jenis": "pelantar_pompong",
+      "kecamatan": "Galang",
+      "alamat": "±12 km setelah Jembatan 6",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://jalankemanagitu.wordpress.com/tag/diving-pulau-abang/"
+      ],
+      "rute_id": [
+        "sbd-abang"
+      ],
+      "catatan_daftar_koordinat": "Pelabuhan Sungai Budus (`pr-sbd`)",
+      "catatan": []
+    },
+    {
+      "id": "pr-stk",
+      "nama": "Pelantar Setokok",
+      "jenis": "pelantar_pompong",
+      "kecamatan": "Bulang",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [],
+      "rute_id": [],
+      "catatan_daftar_koordinat": "Pelantar Setokok (`pr-stk`)",
+      "catatan": [],
+      "dari_tabel_pompong": [
+        {
+          "tabel": "Tabel pompong dan pancung",
+          "baris": 12,
+          "Pelantar": "Setokok",
+          "Kecamatan": "Bulang",
+          "Tujuan": "–",
+          "Jam operasi": "–",
+          "Tarif": "–",
+          "Durasi": "–",
+          "Status data": "perlu_diisi_user"
+        }
+      ]
+    },
+    {
+      "id": "sg-scc",
+      "nama": "Singapore Cruise Centre (HarbourFront)",
+      "jenis": "terminal_tujuan",
+      "kecamatan": null,
+      "alamat": "5 HarbourFront Avenue, Singapore 099549",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://sg.news.yahoo.com/batam-fast-run-harbourfront-terminal-100000719.html"
+      ],
+      "rute_id": [],
+      "catatan_daftar_koordinat": "Singapore Cruise Centre HarbourFront, 5 HarbourFront Avenue (`sg-scc`)",
+      "catatan": [
+        "**Terminal HarbourFront sudah pindah.** BatamFast pindah ke Singapore Cruise Centre (HarbourFront), 5 HarbourFront Avenue, mulai 7 Juli 2026. Horizon, Majestic, Sindo, dan Indo Falcon menyusul 15 Juli 2026. Dalam pengumumannya pada 15 Juni 2026, Singapore Cruise Centre menyatakan \"There are no changes to ferry routes, destinations served and scheduling as a result of the move\", dan gedung barunya hanya sekitar 70 m dari terminal lama. HarbourFront Centre lama tutup 27 Juli 2026. Teks lama di situs yang masih menyebut \"HarbourFront Centre / 1 Maritime Square\" perlu diganti."
+      ]
+    },
+    {
+      "id": "sg-tmft",
+      "nama": "Tanah Merah Ferry Terminal",
+      "jenis": "terminal_tujuan",
+      "kecamatan": null,
+      "alamat": "Tanah Merah, Singapura",
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [
+        "https://singaporecruise.com.sg/schedule/ferries/"
+      ],
+      "rute_id": [],
+      "catatan_daftar_koordinat": "Tanah Merah Ferry Terminal (`sg-tmft`)",
+      "catatan": []
+    },
+    {
+      "id": "my-stl",
+      "nama": "Stulang Laut / Berjaya Waterfront Ferry Terminal",
+      "jenis": "terminal_tujuan",
+      "kecamatan": null,
+      "alamat": "Stulang, Johor Bahru",
+      "lat": 1.471028,
+      "lng": 103.783083,
+      "status_koordinat": "perlu_cek_ulang",
+      "sumber_url": [
+        "https://en.wikipedia.org/wiki/Stulang_Laut_Ferry_Terminal"
+      ],
+      "rute_id": [],
+      "catatan_daftar_koordinat": "Stulang Laut / Berjaya Waterfront (`my-stl`): 1.471028, 103.783083 (Wikipedia)",
+      "catatan": [
+        "Satu catatan: Stulang Laut sekarang secara resmi bernama Berjaya Waterfront Ferry Terminal. Media dan warga masih memakai nama \"Stulang Laut\", jadi di UI sebaiknya tampilkan keduanya."
+      ]
+    },
+    {
+      "id": "pr-blp",
+      "nama": "Pelantar pompong antarpulau di Belakang Padang",
+      "jenis": "pelantar_pompong",
+      "kecamatan": "Belakang Padang",
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "sumber_url": [],
+      "id_dibuat_migrasi": true,
+      "rute_id": [
+        "pr-blp-kasu-geranting"
+      ],
+      "catatan_daftar_koordinat": "Pelantar pompong antarpulau di Belakang Padang (belum punya id)",
+      "catatan": [
+        "Tidak ada di blok JSON (a); dibuat dari baris tabel pompong \"Belakang Padang (pelantar pompong antarpulau)\"."
+      ]
+    }
+  ]
+}

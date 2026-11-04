@@ -1,0 +1,1154 @@
+{
+  "sumber_riset": "06-direktori-taksonomi",
+  "keterangan": "Dikonversi dari tabel 'Tabel Taksonomi Lengkap' dan 'Rekomendasi Cara Pengisian' di research/06-direktori-taksonomi.md. Nilai sama dengan sel tabel; hanya format markdown (backtick dan bold) yang dibuang. cara_isi_kode = cara_isi dipecah per koma. kolom_atribut_per_kelompok diambil dari baris 'Kolom' di bagian 'Detail per Kelompok Kategori'.",
+  "legenda_cara_isi": {
+    "R": "data resmi",
+    "O": "OSM/Overpass",
+    "W": "warga/Tukang Langganan",
+    "K": "kurasi manual",
+    "_aturan": "Huruf pertama = sumber utama."
+  },
+  "taksonomi": [
+    {
+      "kategori": "Belanja",
+      "subkategori": "Pasar tradisional/basah",
+      "tag_osm": "amenity=marketplace",
+      "sumber_utama": "OSM, berita lokal, Disperindag",
+      "cara_isi": "O, K",
+      "cara_isi_kode": [
+        "O",
+        "K"
+      ]
+    },
+    {
+      "kategori": "Belanja",
+      "subkategori": "Mal",
+      "tag_osm": "shop=mall, shop=department_store",
+      "sumber_utama": "OSM",
+      "cara_isi": "O",
+      "cara_isi_kode": [
+        "O"
+      ]
+    },
+    {
+      "kategori": "Belanja",
+      "subkategori": "Supermarket / minimarket",
+      "tag_osm": "shop=supermarket, shop=convenience + brand",
+      "sumber_utama": "OSM",
+      "cara_isi": "O",
+      "cara_isi_kode": [
+        "O"
+      ]
+    },
+    {
+      "kategori": "Belanja",
+      "subkategori": "Bahan bangunan",
+      "tag_osm": "shop=hardware, shop=doityourself, shop=trade",
+      "sumber_utama": "OSM + warga",
+      "cara_isi": "O, W",
+      "cara_isi_kode": [
+        "O",
+        "W"
+      ]
+    },
+    {
+      "kategori": "Belanja",
+      "subkategori": "ATK & buku",
+      "tag_osm": "shop=stationery, shop=books",
+      "sumber_utama": "OSM",
+      "cara_isi": "O",
+      "cara_isi_kode": [
+        "O"
+      ]
+    },
+    {
+      "kategori": "Belanja",
+      "subkategori": "HP, elektronik, komputer",
+      "tag_osm": "shop=mobile_phone, shop=electronics, shop=computer",
+      "sumber_utama": "OSM",
+      "cara_isi": "O",
+      "cara_isi_kode": [
+        "O"
+      ]
+    },
+    {
+      "kategori": "Belanja",
+      "subkategori": "Kain & bahan jahit",
+      "tag_osm": "shop=fabric, shop=sewing",
+      "sumber_utama": "Warga + OSM",
+      "cara_isi": "W, O",
+      "cara_isi_kode": [
+        "W",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Belanja",
+      "subkategori": "Optik, bayi, mainan, oleh-oleh",
+      "tag_osm": "shop=optician, shop=baby_goods, shop=toys, shop=gift",
+      "sumber_utama": "OSM",
+      "cara_isi": "O",
+      "cara_isi_kode": [
+        "O"
+      ]
+    },
+    {
+      "kategori": "Belanja",
+      "subkategori": "Barang bekas/impor",
+      "tag_osm": "shop=second_hand",
+      "sumber_utama": "Warga",
+      "cara_isi": "W",
+      "cara_isi_kode": [
+        "W"
+      ]
+    },
+    {
+      "kategori": "Ruang publik",
+      "subkategori": "Taman, playground",
+      "tag_osm": "leisure=park, leisure=garden, leisure=playground",
+      "sumber_utama": "OSM + Satu Data",
+      "cara_isi": "O, R",
+      "cara_isi_kode": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "kategori": "Ruang publik",
+      "subkategori": "Perpustakaan",
+      "tag_osm": "amenity=library",
+      "sumber_utama": "Satu Data (urusan Perpustakaan) + OSM",
+      "cara_isi": "R, O",
+      "cara_isi_kode": [
+        "R",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Ruang publik",
+      "subkategori": "Tempat wisata",
+      "tag_osm": "tourism=attraction, tourism=viewpoint, tourism=museum",
+      "sumber_utama": "SISPEK Disbudpar + riset terpisah",
+      "cara_isi": "R, K",
+      "cara_isi_kode": [
+        "R",
+        "K"
+      ]
+    },
+    {
+      "kategori": "Ruang publik",
+      "subkategori": "Pantai",
+      "tag_osm": "natural=beach",
+      "sumber_utama": "OSM + SISPEK",
+      "cara_isi": "O, R",
+      "cara_isi_kode": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "kategori": "Ruang publik",
+      "subkategori": "Toilet umum",
+      "tag_osm": "amenity=toilets",
+      "sumber_utama": "OSM",
+      "cara_isi": "O",
+      "cara_isi_kode": [
+        "O"
+      ]
+    },
+    {
+      "kategori": "Ibadah",
+      "subkategori": "Masjid & musala",
+      "tag_osm": "amenity=place_of_worship + religion=muslim",
+      "sumber_utama": "SIMAS, Satu Jari Kemenag Batam",
+      "cara_isi": "R, O",
+      "cara_isi_kode": [
+        "R",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Ibadah",
+      "subkategori": "Gereja",
+      "tag_osm": "religion=christian + denomination=*",
+      "sumber_utama": "Bimas Kristen/Katolik, FKUB",
+      "cara_isi": "R, O",
+      "cara_isi_kode": [
+        "R",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Ibadah",
+      "subkategori": "Vihara, klenteng, pura",
+      "tag_osm": "religion=buddhist / chinese_folk / taoist / hindu",
+      "sumber_utama": "Bimas Buddha/Hindu, FKUB",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Pemakaman",
+      "subkategori": "TPU per agama",
+      "tag_osm": "landuse=cemetery, amenity=grave_yard + religion",
+      "sumber_utama": "OSM + Pemko + warga",
+      "cara_isi": "O, K",
+      "cara_isi_kode": [
+        "O",
+        "K"
+      ]
+    },
+    {
+      "kategori": "Transportasi",
+      "subkategori": "Pelabuhan internasional/domestik",
+      "tag_osm": "amenity=ferry_terminal",
+      "sumber_utama": "BP Batam, Imigrasi",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Transportasi",
+      "subkategori": "Dermaga pompong",
+      "tag_osm": "man_made=pier",
+      "sumber_utama": "Warga + OSM",
+      "cara_isi": "W, O",
+      "cara_isi_kode": [
+        "W",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Transportasi",
+      "subkategori": "Halte Trans Batam",
+      "tag_osm": "highway=bus_stop, relasi route=bus",
+      "sumber_utama": "Dishub (SIP TB) + OSM",
+      "cara_isi": "R, O",
+      "cara_isi_kode": [
+        "R",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Transportasi",
+      "subkategori": "Bandara",
+      "tag_osm": "aeroway=aerodrome",
+      "sumber_utama": "BP Batam",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Transportasi",
+      "subkategori": "SPBU, SPKLU, parkir",
+      "tag_osm": "amenity=fuel, amenity=charging_station, amenity=parking",
+      "sumber_utama": "OSM",
+      "cara_isi": "O",
+      "cara_isi_kode": [
+        "O"
+      ]
+    },
+    {
+      "kategori": "Kesehatan",
+      "subkategori": "Rumah sakit",
+      "tag_osm": "amenity=hospital",
+      "sumber_utama": "Kemenkes (kode RS), Dinkes",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Kesehatan",
+      "subkategori": "Puskesmas & pustu",
+      "tag_osm": "amenity=clinic + healthcare=centre (simpan jenis=puskesmas)",
+      "sumber_utama": "Komdat Kemenkes, Dinkes",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Kesehatan",
+      "subkategori": "Klinik",
+      "tag_osm": "amenity=clinic",
+      "sumber_utama": "Dinkes, BPJS",
+      "cara_isi": "R, O",
+      "cara_isi_kode": [
+        "R",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Kesehatan",
+      "subkategori": "Apotek, lab",
+      "tag_osm": "amenity=pharmacy, healthcare=laboratory",
+      "sumber_utama": "OSM + Dinkes",
+      "cara_isi": "O, R",
+      "cara_isi_kode": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "kategori": "Kesehatan",
+      "subkategori": "Dokter per spesialis",
+      "tag_osm": "amenity=doctors + healthcare:speciality=*",
+      "sumber_utama": "Jadwal dokter situs RS + warga",
+      "cara_isi": "W, K",
+      "cara_isi_kode": [
+        "W",
+        "K"
+      ]
+    },
+    {
+      "kategori": "Kesehatan",
+      "subkategori": "Dokter gigi",
+      "tag_osm": "amenity=dentist",
+      "sumber_utama": "OSM + warga",
+      "cara_isi": "O, W",
+      "cara_isi_kode": [
+        "O",
+        "W"
+      ]
+    },
+    {
+      "kategori": "Kesehatan",
+      "subkategori": "Psikolog/psikiater, fisioterapi, bidan",
+      "tag_osm": "healthcare=psychotherapist, physiotherapist, midwife",
+      "sumber_utama": "RS + warga",
+      "cara_isi": "W",
+      "cara_isi_kode": [
+        "W"
+      ]
+    },
+    {
+      "kategori": "Kesehatan",
+      "subkategori": "Dokter hewan",
+      "tag_osm": "amenity=veterinary",
+      "sumber_utama": "OSM + warga",
+      "cara_isi": "O, W",
+      "cara_isi_kode": [
+        "O",
+        "W"
+      ]
+    },
+    {
+      "kategori": "Pendidikan",
+      "subkategori": "PAUD, KB, TK, RA, daycare",
+      "tag_osm": "amenity=kindergarten, amenity=childcare",
+      "sumber_utama": "Kemendikdasmen (PAUD), EMIS",
+      "cara_isi": "R, W",
+      "cara_isi_kode": [
+        "R",
+        "W"
+      ]
+    },
+    {
+      "kategori": "Pendidikan",
+      "subkategori": "SD/MI, SMP/MTs, SMA/SMK/MA/SLB",
+      "tag_osm": "amenity=school + isced:level",
+      "sumber_utama": "Kemendikdasmen, EMIS",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Pendidikan",
+      "subkategori": "Universitas, politeknik",
+      "tag_osm": "amenity=university, amenity=college",
+      "sumber_utama": "PDDikti",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Pendidikan",
+      "subkategori": "Les, bimbel, kursus",
+      "tag_osm": "amenity=prep_school, language_school, music_school, driving_school",
+      "sumber_utama": "OSM + warga",
+      "cara_isi": "W, O",
+      "cara_isi_kode": [
+        "W",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Pemerintahan",
+      "subkategori": "Kantor wali kota, kecamatan, kelurahan",
+      "tag_osm": "amenity=townhall, office=government",
+      "sumber_utama": "Situs Pemko",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Pemerintahan",
+      "subkategori": "Disdukcapil, Samsat, Imigrasi, Bea Cukai, KPP",
+      "tag_osm": "office=government + government=*",
+      "sumber_utama": "Situs instansi",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Pemerintahan",
+      "subkategori": "BPJS, kantor pos",
+      "tag_osm": "office=insurance, amenity=post_office",
+      "sumber_utama": "Situs BPJS, Pos Indonesia",
+      "cara_isi": "R, O",
+      "cara_isi_kode": [
+        "R",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Pemerintahan",
+      "subkategori": "PLN Batam, Air Batam Hilir",
+      "tag_osm": "office=energy_supplier, office=water_utility",
+      "sumber_utama": "Situs PLN Batam, hilir.airbatam.com",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Pemerintahan",
+      "subkategori": "Polisi, damkar",
+      "tag_osm": "amenity=police, amenity=fire_station",
+      "sumber_utama": "Polresta, Damkar + OSM",
+      "cara_isi": "R, O",
+      "cara_isi_kode": [
+        "R",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Pemerintahan",
+      "subkategori": "BP Batam, KUA",
+      "tag_osm": "office=government",
+      "sumber_utama": "bpbatam.go.id, Kemenag",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Akomodasi",
+      "subkategori": "Hotel, guest house, homestay",
+      "tag_osm": "tourism=hotel + stars, tourism=guest_house, tourism=hostel",
+      "sumber_utama": "SISPEK, BPS + OSM",
+      "cara_isi": "R, O",
+      "cara_isi_kode": [
+        "R",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Akomodasi",
+      "subkategori": "Apartemen sewa",
+      "tag_osm": "tourism=apartment",
+      "sumber_utama": "OSM + warga",
+      "cara_isi": "O, W",
+      "cara_isi_kode": [
+        "O",
+        "W"
+      ]
+    },
+    {
+      "kategori": "Akomodasi",
+      "subkategori": "Kos",
+      "tag_osm": "(jarang dipetakan)",
+      "sumber_utama": "Warga",
+      "cara_isi": "W",
+      "cara_isi_kode": [
+        "W"
+      ]
+    },
+    {
+      "kategori": "Olahraga",
+      "subkategori": "Padel, badminton, futsal, mini soccer, basket, tenis, voli",
+      "tag_osm": "leisure=pitch/sports_centre + sport=*",
+      "sumber_utama": "OSM + warga (booking)",
+      "cara_isi": "O, W",
+      "cara_isi_kode": [
+        "O",
+        "W"
+      ]
+    },
+    {
+      "kategori": "Olahraga",
+      "subkategori": "Kolam renang, gym, golf, stadion",
+      "tag_osm": "leisure=swimming_pool, fitness_centre, golf_course, stadium",
+      "sumber_utama": "OSM",
+      "cara_isi": "O",
+      "cara_isi_kode": [
+        "O"
+      ]
+    },
+    {
+      "kategori": "Jasa",
+      "subkategori": "Bengkel, ban, cuci kendaraan",
+      "tag_osm": "shop=car_repair, shop=motorcycle_repair, shop=tyres, amenity=car_wash",
+      "sumber_utama": "Warga + OSM",
+      "cara_isi": "W, O",
+      "cara_isi_kode": [
+        "W",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Jasa",
+      "subkategori": "Servis AC, elektronik, HP, laptop, mesin cuci, kulkas",
+      "tag_osm": "craft=hvac, craft=electronics_repair",
+      "sumber_utama": "Warga",
+      "cara_isi": "W",
+      "cara_isi_kode": [
+        "W"
+      ]
+    },
+    {
+      "kategori": "Jasa",
+      "subkategori": "Tukang kunci, jahit & permak",
+      "tag_osm": "shop=locksmith, craft=tailor",
+      "sumber_utama": "Warga",
+      "cara_isi": "W",
+      "cara_isi_kode": [
+        "W"
+      ]
+    },
+    {
+      "kategori": "Jasa",
+      "subkategori": "Laundry, salon, barbershop",
+      "tag_osm": "shop=laundry, shop=hairdresser, shop=beauty",
+      "sumber_utama": "OSM + warga",
+      "cara_isi": "O, W",
+      "cara_isi_kode": [
+        "O",
+        "W"
+      ]
+    },
+    {
+      "kategori": "Jasa",
+      "subkategori": "Pijat, refleksi, pijat panggilan",
+      "tag_osm": "shop=massage (panggilan: tanpa titik)",
+      "sumber_utama": "Warga + SISPEK",
+      "cara_isi": "W",
+      "cara_isi_kode": [
+        "W"
+      ]
+    },
+    {
+      "kategori": "Jasa",
+      "subkategori": "Fotokopi, percetakan, ekspedisi",
+      "tag_osm": "shop=copyshop, craft=printer, office=courier",
+      "sumber_utama": "OSM + warga",
+      "cara_isi": "O, W",
+      "cara_isi_kode": [
+        "O",
+        "W"
+      ]
+    },
+    {
+      "kategori": "Jasa",
+      "subkategori": "Money changer, bank, ATM",
+      "tag_osm": "amenity=bureau_de_change, amenity=bank, amenity=atm",
+      "sumber_utama": "OSM + warga",
+      "cara_isi": "O, W",
+      "cara_isi_kode": [
+        "O",
+        "W"
+      ]
+    },
+    {
+      "kategori": "Jasa",
+      "subkategori": "Tukang bangunan, listrik, ledeng",
+      "tag_osm": "craft=builder, craft=electrician, craft=plumber",
+      "sumber_utama": "Warga",
+      "cara_isi": "W",
+      "cara_isi_kode": [
+        "W"
+      ]
+    },
+    {
+      "kategori": "Khas Batam",
+      "subkategori": "Agen tiket feri",
+      "tag_osm": "shop=travel_agency",
+      "sumber_utama": "Warga + operator",
+      "cara_isi": "W",
+      "cara_isi_kode": [
+        "W"
+      ]
+    },
+    {
+      "kategori": "Khas Batam",
+      "subkategori": "Urusan paspor",
+      "tag_osm": "lihat Pemerintahan",
+      "sumber_utama": "Imigrasi",
+      "cara_isi": "R",
+      "cara_isi_kode": [
+        "R"
+      ]
+    },
+    {
+      "kategori": "Khas Batam",
+      "subkategori": "Titipan/jastip Singapura",
+      "tag_osm": "(tanpa titik)",
+      "sumber_utama": "Warga",
+      "cara_isi": "W",
+      "cara_isi_kode": [
+        "W"
+      ]
+    },
+    {
+      "kategori": "Khas Batam",
+      "subkategori": "Kawasan industri, dormitory, shuttle",
+      "tag_osm": "landuse=industrial, building=dormitory",
+      "sumber_utama": "Geoportal BP Batam + OSM",
+      "cara_isi": "R, O",
+      "cara_isi_kode": [
+        "R",
+        "O"
+      ]
+    },
+    {
+      "kategori": "Khas Batam",
+      "subkategori": "Klinik MCU kerja, LPK/penyalur kerja",
+      "tag_osm": "amenity=clinic, office=employment_agency",
+      "sumber_utama": "Warga + Disnaker",
+      "cara_isi": "W, R",
+      "cara_isi_kode": [
+        "W",
+        "R"
+      ]
+    }
+  ],
+  "rekomendasi_cara_pengisian": [
+    {
+      "kelompok": "Sekolah, kampus",
+      "paling_cocok": "Resmi",
+      "alasan": "Ada NPSN, lengkap sampai swasta, diperbarui tiap semester"
+    },
+    {
+      "kelompok": "RS, puskesmas, klinik",
+      "paling_cocok": "Resmi + OSM koordinat",
+      "alasan": "Kode stabil, angka bisa dicek ke Dinkes"
+    },
+    {
+      "kelompok": "Rumah ibadah",
+      "paling_cocok": "Resmi + OSM",
+      "alasan": "900+ masjid, alamat resmi ada"
+    },
+    {
+      "kelompok": "Kantor layanan publik",
+      "paling_cocok": "Resmi, kurasi",
+      "alasan": "Sedikit, tapi jam sering berubah → butuh terakhir_diverifikasi"
+    },
+    {
+      "kelompok": "Belanja, SPBU, bank, halte",
+      "paling_cocok": "OSM",
+      "alasan": "Bertitik, ber-brand"
+    },
+    {
+      "kelompok": "Taman, pantai, olahraga",
+      "paling_cocok": "OSM + warga",
+      "alasan": "Geometri dari OSM, info booking dari warga"
+    },
+    {
+      "kelompok": "Hotel",
+      "paling_cocok": "Resmi + OSM",
+      "alasan": "Bintang resmi, koordinat OSM"
+    },
+    {
+      "kelompok": "Dokter per spesialis",
+      "paling_cocok": "Kurasi + warga",
+      "alasan": "Tidak ada data terbuka dokter → tempat → jadwal → BPJS"
+    },
+    {
+      "kelompok": "Jasa, kos, pijat panggilan",
+      "paling_cocok": "Tukang Langganan",
+      "alasan": "Tidak ada di data resmi, nilai utamanya kepercayaan"
+    }
+  ],
+  "kolom_atribut_per_kelompok": [
+    {
+      "kelompok": "Belanja",
+      "subjek": null,
+      "kolom": [
+        {
+          "nama": "jenis_pasar",
+          "keterangan": "basah/kering/campuran"
+        },
+        {
+          "nama": "jam_ramai",
+          "keterangan": null
+        },
+        {
+          "nama": "metode_bayar",
+          "keterangan": null
+        },
+        {
+          "nama": "parkir",
+          "keterangan": null
+        },
+        {
+          "nama": "brand",
+          "keterangan": null
+        },
+        {
+          "nama": "kelengkapan",
+          "keterangan": "array"
+        },
+        {
+          "nama": "harga_relatif",
+          "keterangan": "1–3"
+        }
+      ]
+    },
+    {
+      "kelompok": "Ruang Publik, Wisata, Pantai",
+      "subjek": null,
+      "kolom": [
+        {
+          "nama": "tiket_masuk",
+          "keterangan": null
+        },
+        {
+          "nama": "jam_buka",
+          "keterangan": null
+        },
+        {
+          "nama": "fasilitas",
+          "keterangan": null
+        },
+        {
+          "nama": "ramah_anak",
+          "keterangan": null
+        },
+        {
+          "nama": "aksesibel_kursi_roda",
+          "keterangan": null
+        },
+        {
+          "nama": "akses",
+          "keterangan": "darat/laut"
+        },
+        {
+          "nama": "waktu_terbaik",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Ibadah dan Pemakaman",
+      "subjek": "Ibadah",
+      "kolom": [
+        {
+          "nama": "agama",
+          "keterangan": null
+        },
+        {
+          "nama": "denominasi",
+          "keterangan": null
+        },
+        {
+          "nama": "tipologi",
+          "keterangan": null
+        },
+        {
+          "nama": "jadwal_ibadah",
+          "keterangan": "jam, bahasa"
+        },
+        {
+          "nama": "kapasitas",
+          "keterangan": null
+        },
+        {
+          "nama": "fasilitas",
+          "keterangan": null
+        },
+        {
+          "nama": "id_simas",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Ibadah dan Pemakaman",
+      "subjek": "Makam",
+      "kolom": [
+        {
+          "nama": "agama_makam",
+          "keterangan": null
+        },
+        {
+          "nama": "pengelola",
+          "keterangan": null
+        },
+        {
+          "nama": "masih_menerima",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Transportasi",
+      "subjek": "Pelabuhan",
+      "kolom": [
+        {
+          "nama": "tujuan",
+          "keterangan": null
+        },
+        {
+          "nama": "operator",
+          "keterangan": "Batamfast, Majestic, Sindo, Horizon"
+        },
+        {
+          "nama": "internasional",
+          "keterangan": null
+        },
+        {
+          "nama": "ada_imigrasi",
+          "keterangan": null
+        },
+        {
+          "nama": "link_jadwal",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Transportasi",
+      "subjek": "Halte",
+      "kolom": [
+        {
+          "nama": "koridor",
+          "keterangan": null
+        },
+        {
+          "nama": "tipe_halte",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Transportasi",
+      "subjek": "SPBU",
+      "kolom": [
+        {
+          "nama": "brand",
+          "keterangan": null
+        },
+        {
+          "nama": "24_jam",
+          "keterangan": null
+        },
+        {
+          "nama": "bbm",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Kesehatan",
+      "subjek": "RS",
+      "kolom": [
+        {
+          "nama": "kode_rs",
+          "keterangan": null
+        },
+        {
+          "nama": "tipe",
+          "keterangan": null
+        },
+        {
+          "nama": "kepemilikan",
+          "keterangan": null
+        },
+        {
+          "nama": "igd_24jam",
+          "keterangan": null
+        },
+        {
+          "nama": "terima_bpjs",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Kesehatan",
+      "subjek": "Puskesmas",
+      "kolom": [
+        {
+          "nama": "kode_puskesmas",
+          "keterangan": null
+        },
+        {
+          "nama": "rawat_inap",
+          "keterangan": null
+        },
+        {
+          "nama": "wilayah_kerja",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Kesehatan",
+      "subjek": "Dokter",
+      "kolom": [
+        {
+          "nama": "spesialisasi",
+          "keterangan": null
+        },
+        {
+          "nama": "jadwal",
+          "keterangan": null
+        },
+        {
+          "nama": "terima_bpjs",
+          "keterangan": null
+        },
+        {
+          "nama": "perlu_janji",
+          "keterangan": null
+        },
+        {
+          "nama": "kanal_booking",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Pendidikan",
+      "subjek": null,
+      "kolom": [
+        {
+          "nama": "npsn",
+          "keterangan": null
+        },
+        {
+          "nama": "jenjang",
+          "keterangan": null
+        },
+        {
+          "nama": "status",
+          "keterangan": null
+        },
+        {
+          "nama": "akreditasi",
+          "keterangan": null
+        },
+        {
+          "nama": "kurikulum",
+          "keterangan": null
+        },
+        {
+          "nama": "agama_basis",
+          "keterangan": null
+        },
+        {
+          "nama": "biaya_relatif",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Pendidikan",
+      "subjek": "Les",
+      "kolom": [
+        {
+          "nama": "mata_pelajaran",
+          "keterangan": null
+        },
+        {
+          "nama": "usia",
+          "keterangan": null
+        },
+        {
+          "nama": "mode",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Pemerintahan dan Layanan Publik",
+      "subjek": null,
+      "kolom": [
+        {
+          "nama": "instansi_induk",
+          "keterangan": null
+        },
+        {
+          "nama": "layanan",
+          "keterangan": null
+        },
+        {
+          "nama": "jam_layanan",
+          "keterangan": "JSON + istirahat"
+        },
+        {
+          "nama": "antrean_online",
+          "keterangan": null
+        },
+        {
+          "nama": "kontak_wa",
+          "keterangan": null
+        },
+        {
+          "nama": "wilayah_kerja",
+          "keterangan": null
+        },
+        {
+          "nama": "layanan_sabtu",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Akomodasi",
+      "subjek": null,
+      "kolom": [
+        {
+          "nama": "bintang",
+          "keterangan": null
+        },
+        {
+          "nama": "jumlah_kamar",
+          "keterangan": null
+        },
+        {
+          "nama": "kisaran_harga",
+          "keterangan": null
+        },
+        {
+          "nama": "dekat_pelabuhan",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Akomodasi",
+      "subjek": "Kos",
+      "kolom": [
+        {
+          "nama": "tipe",
+          "keterangan": null
+        },
+        {
+          "nama": "kamar_mandi_dalam",
+          "keterangan": null
+        },
+        {
+          "nama": "ac",
+          "keterangan": null
+        },
+        {
+          "nama": "harga_bulanan_kisaran",
+          "keterangan": null
+        },
+        {
+          "nama": "dekat_kawasan_industri",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Olahraga",
+      "subjek": null,
+      "kolom": [
+        {
+          "nama": "jenis_olahraga",
+          "keterangan": null
+        },
+        {
+          "nama": "jumlah_lapangan",
+          "keterangan": null
+        },
+        {
+          "nama": "indoor",
+          "keterangan": null
+        },
+        {
+          "nama": "permukaan",
+          "keterangan": null
+        },
+        {
+          "nama": "cara_booking",
+          "keterangan": null
+        },
+        {
+          "nama": "link_booking",
+          "keterangan": null
+        },
+        {
+          "nama": "harga_per_jam_kisaran",
+          "keterangan": null
+        },
+        {
+          "nama": "lampu_malam",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Olahraga",
+      "subjek": "Kolam renang",
+      "kolom": [
+        {
+          "nama": "akses",
+          "keterangan": null
+        },
+        {
+          "nama": "kolam_anak",
+          "keterangan": null
+        }
+      ]
+    },
+    {
+      "kelompok": "Jasa dan Servis",
+      "subjek": null,
+      "kolom": [
+        {
+          "nama": "layanan",
+          "keterangan": null
+        },
+        {
+          "nama": "panggilan",
+          "keterangan": null
+        },
+        {
+          "nama": "area_layanan",
+          "keterangan": null
+        },
+        {
+          "nama": "kisaran_harga",
+          "keterangan": null
+        },
+        {
+          "nama": "garansi",
+          "keterangan": null
+        },
+        {
+          "nama": "kontak_wa",
+          "keterangan": null
+        },
+        {
+          "nama": "merek_spesialis",
+          "keterangan": null
+        },
+        {
+          "nama": "rekomendasi_count",
+          "keterangan": null
+        }
+      ]
+    }
+  ]
+}

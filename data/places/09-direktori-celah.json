@@ -1,0 +1,2094 @@
+[
+ {
+  "id": "pub-walikota",
+  "nama": "Kantor Wali Kota Batam",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "pemerintahan_kota",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Teluk Tering",
+  "alamat": "Jl. Engku Putri No.1, Batam Centre 29432",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 462164",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": "Telepon dari direktori pihak ketiga.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://apeksi.id/batam/",
+   "https://idalamat.com/alamat/kantor-walikota-batam-878"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-dprd",
+  "nama": "DPRD Kota Batam",
+  "nama_alternatif": [
+   "DPRD Kota Batam (Sekretariat)"
+  ],
+  "kategori": "pemerintahan",
+  "subkategori": "legislatif",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Teluk Tering",
+  "alamat": "Jl. Engku Putri, Teluk Tering 29432",
+  "lat": 1.1265179,
+  "lng": 104.0552557,
+  "status_koordinat": "perlu_cek_ulang",
+  "catatan_koordinat": "Dari idalamat.com (direktori pihak ketiga; laporan: anggap kasar); belum dicek ke OSM/Wikidata.",
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 464229",
+   "whatsapp": null,
+   "email": "setdprd@batam.go.id",
+   "website": null
+  },
+  "atribut": {
+   "jumlah_anggota": 50,
+   "periode": "2024-2029",
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://dprd.batam.go.id/kontak/",
+   "https://idalamat.com/alamat/11688/kantor-dprd-kota-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-bapenda",
+  "nama": "Bapenda Kota Batam",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "pajak_daerah",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Teluk Tering",
+  "alamat": "Gedung Bersama Pemko Batam Lt. 2, Jl. Raja Isa, Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 470670/71/72",
+   "whatsapp": null,
+   "email": "bapenda@batam.go.id",
+   "website": null
+  },
+  "atribut": {
+   "layanan": [
+    "PBB-P2",
+    "BPHTB",
+    "pajak daerah"
+   ],
+   "online": "https://epbb.batam.go.id",
+   "jemput_bola": "SIBIJAK Ngemall Jumat-Minggu 12.00-20.00 (berkala)",
+   "fax": "470673",
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://bapenda.batam.go.id/media-center/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-dishub",
+  "nama": "Dinas Perhubungan Kota Batam",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "dinas",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Sukajadi",
+  "alamat": "Jl. Jend. Sudirman No.2, Sukajadi 29444",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "catatan_kontak": "belum ada kontak resmi terverifikasi",
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": "Sumber tambahan webarchive batam.go.id bertanda usang.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://idalamat.com/alamat/dinas-perhubungan-kota-batam-40088",
+   "https://webarchive.batam.go.id/humas.com/01/pdf/0915-batam-directory.pdf"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-dinsos",
+  "nama": "Dinas Sosial dan Pemberdayaan Masyarakat Kota Batam",
+  "nama_alternatif": [
+   "Dinas Sosial dan Pemberdayaan Masyarakat",
+   "Dinsos PM Kota Batam"
+  ],
+  "kategori": "pemerintahan",
+  "subkategori": "dinas",
+  "kecamatan": "Sekupang",
+  "kelurahan": "Sungai Harapan",
+  "alamat": "Jl. Raja Haji No.9, Sei Harapan 29425",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 321370",
+   "whatsapp": null,
+   "email": "dinsospm@batam.go.id",
+   "website": null
+  },
+  "atribut": {
+   "mengelola": "Taman Makam Pahlawan",
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": "Alamat lama yang beredar berbeda dengan situs resmi terbaru; pakai hanya subdomain resmi *.batam.go.id.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://dinsospm.batam.go.id/kontak/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-dinkes",
+  "nama": "Dinas Kesehatan Kota Batam",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "dinas",
+  "kecamatan": "Sekupang",
+  "kelurahan": "Sungai Harapan",
+  "alamat": "Jl. Raja Haji No.7, Sekupang",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 323506",
+   "whatsapp": null,
+   "email": "dinkes@batam.go.id",
+   "website": null
+  },
+  "atribut": {
+   "fax": "321856",
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://dinkes.batam.go.id/kontak/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-disdik",
+  "nama": "Dinas Pendidikan Kota Batam",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "dinas",
+  "kecamatan": "Sekupang",
+  "kelurahan": "Sungai Harapan",
+  "alamat": "Jl. Pramuka, Komp. Perkantoran Sekupang",
+  "lat": 1.109933,
+  "lng": 103.953554,
+  "status_koordinat": "perlu_cek_ulang",
+  "catatan_koordinat": "Dari idalamat.com (direktori pihak ketiga; laporan: anggap kasar); belum dicek ke OSM/Wikidata.",
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 322569 / 326189",
+   "whatsapp": null,
+   "email": "disdik@batam.go.id",
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": "Alamat lama yang beredar berbeda dengan situs resmi terbaru; pakai hanya subdomain resmi *.batam.go.id. Jangan pakai disdikkotabatam.org dan disdikbatampemkot.com (situs tidak resmi).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://disdik.batam.go.id/kontak/",
+   "https://idalamat.com/alamat/12417/kantor-dinas-pendidikan-kota-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-disnaker",
+  "nama": "Dinas Tenaga Kerja Kota Batam",
+  "nama_alternatif": [
+   "Disnaker Kota Batam"
+  ],
+  "kategori": "pemerintahan",
+  "subkategori": "dinas",
+  "kecamatan": "Sekupang",
+  "kelurahan": "Sungai Harapan",
+  "alamat": "Jl. Kartini I No.29-30, Sei Harapan 29425",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 327601",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": "usang",
+  "catatan": "Data blog 2017 (telepon data 2017), rawan sudah berubah; cek ulang.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kepriau.com/daftar-alamat-kantor-dinas-kota-batam/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-bpbd",
+  "nama": "BPBD Kota Batam",
+  "nama_alternatif": [],
+  "kategori": "keamanan_darurat",
+  "subkategori": "kebencanaan",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Shop House Orchard Park, Orchard Walk Blok D No.3, Batam Kota 29431",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0811) 70087575",
+   "whatsapp": null,
+   "email": "bpbd@batam.go.id",
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": "Alamat lama yang beredar berbeda dengan situs resmi terbaru; pakai hanya subdomain resmi *.batam.go.id. Jangan pakai bpbd.damkarbatam.com (situs tidak resmi). Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://bpbd.batam.go.id/kontak/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-kemenag",
+  "nama": "Kantor Kementerian Agama Kota Batam",
+  "nama_alternatif": [
+   "Kantor Kemenag"
+  ],
+  "kategori": "pemerintahan",
+  "subkategori": "instansi_vertikal",
+  "kecamatan": "Sekupang",
+  "kelurahan": "Sungai Harapan",
+  "alamat": "Jl. Masjid Baiturrahman No.1, Sei Harapan",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 321124",
+   "whatsapp": "0822-8000-1114",
+   "email": "kemenagkotabatam@kemenag.go.id",
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://batam.kemenag.go.id/main/",
+   "https://www.youtube.com/@kemenagbatam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-ksop",
+  "nama": "KSOP Khusus Batam",
+  "nama_alternatif": [
+   "KSOP Khusus Batam (Syahbandar)"
+  ],
+  "kategori": "pemerintahan",
+  "subkategori": "pelabuhan_syahbandar",
+  "kecamatan": "Sekupang",
+  "kelurahan": null,
+  "alamat": "Jl. RE Martadinata, Sekupang 29433",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 322333",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "fax": "322344",
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": "Kelurahan perlu cek (tabel laporan: Tanjung Pinggir (perlu dicek)).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.ksopkhususbatam.id/spbb.aspx"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-possar",
+  "nama": "Pos SAR Batam (Basarnas)",
+  "nama_alternatif": [],
+  "kategori": "keamanan_darurat",
+  "subkategori": "sar",
+  "kecamatan": "Sekupang",
+  "kelurahan": null,
+  "alamat": "Jl. R.E. Martadinata, Sekupang",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": "24 jam (darurat)",
+  "kontak": {
+   "telepon": "(0771) 319300 (KPP Basarnas Tanjungpinang)",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "induk": "KPP Basarnas Kelas A Tanjungpinang",
+   "kapal": "KN Ganesha 105",
+   "nomor_darurat": "115",
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": "Masih berstatus Pos SAR di bawah KPP Basarnas Kelas A Tanjungpinang; peluang naik status menjadi Kantor SAR Kelas B (disebut 7 Agustus 2026) belum terjadi. Kelurahan perlu cek (tabel laporan: Tanjung Pinggir (perlu dicek)).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://tanjungpinang.basarnas.go.id/berita/no-telepon-penting-22",
+   "https://www.datalpse.com/lelang/3121469-pembangunan-rettening-wall-pos-pencarian-dan-pertolongan-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-kodim",
+  "nama": "Kodim 0316/Batam",
+  "nama_alternatif": [],
+  "kategori": "keamanan_darurat",
+  "subkategori": "militer_tni_ad",
+  "kecamatan": "Batu Ampar",
+  "kelurahan": "Seraya",
+  "alamat": "Jl. Yos Sudarso, Seraya Atas",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "koramil": [
+    "Lubuk Baja",
+    "Sekupang",
+    "Nongsa",
+    "Galang",
+    "Belakang Padang"
+   ],
+   "catatan_kontak": "belum ada kontak resmi",
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://id.wikipedia.org/wiki/Komando_Distrik_Militer_0316",
+   "https://kepripedia.com/kodim-0316-batam-ajak-wartawan-bersinergi-demi-kemajuan-kota-batam/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-kodaeral4",
+  "nama": "Kodaeral IV (ex-Lantamal IV)",
+  "nama_alternatif": [
+   "Lantamal IV"
+  ],
+  "kategori": "keamanan_darurat",
+  "subkategori": "militer_tni_al",
+  "kecamatan": "Batu Ampar",
+  "kelurahan": "Tanjung Sengkuang",
+  "alamat": "Jl. Tamalatea, Tanjung Sengkuang 29432",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "0821-7078-4496 (halaman kontak resmi)",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": "Lanal Batam bergeser ke Tanjung Uban dengan nama Lanal Bintan; Lantamal IV resmi berganti nama menjadi Kodaeral IV pada 11 Agustus 2025. Menggantikan Lanal Batam.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://lantamal4-koarmada1.tnial.mil.id/contact_us/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-lanud",
+  "nama": "Lanud Hang Nadim",
+  "nama_alternatif": [
+   "Lanud Hang Nadim (TNI AU)"
+  ],
+  "kategori": "keamanan_darurat",
+  "subkategori": "militer_tni_au",
+  "kecamatan": "Nongsa",
+  "kelurahan": "Batu Besar",
+  "alamat": "Jl. Hang Jebat Km 3, Batu Besar",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "catatan_kontak": "belum ada kontak resmi",
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.lanudhangnadim.com/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pub-uptransbatam",
+  "nama": "UPT Trans Batam",
+  "nama_alternatif": [],
+  "kategori": "pemerintahan",
+  "subkategori": "transportasi_kota",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "kategori_asli": "layanan_publik"
+  },
+  "status_data": null,
+  "catatan": "Alamat belum ditemukan dan belum ada sumber (masuk daftar celah riset).",
+  "tag_osm": null,
+  "sumber_url": [],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pos-kcu",
+  "nama": "Kantor Pos Batam (KCU)",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kantor_pos",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Jl. Jend. Sudirman, Batam Centre 29444",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 462496 / 462033",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": null,
+  "catatan": "Telepon dari direktori pihak ketiga. Nomor 463150 di idalamat milik PLN Batam, jangan dipakai. Kelurahan perlu cek (tabel laporan: Sukajadi (perlu dicek)).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://idalamat.com/alamat/80618/kantor-pos-batam",
+   "http://karimunbatam.blogspot.com/2014/08/alamat-nomor-telepon-kantor-pos-di-kota-batam-indonesia.html"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pos-nagoya",
+  "nama": "Kantor Pos Nagoya",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kantor_pos_cabang",
+  "kecamatan": "Lubuk Baja",
+  "kelurahan": null,
+  "alamat": "Komp. Wijaya Kusuma Blok E No.01, Nagoya",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 456726",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": "usang",
+  "catatan": "Telepon data 2014. Cabang kantor pos perlu dicek apakah masih buka. Kelurahan perlu cek (tabel laporan: Lubuk Baja Kota (perlu dicek)).",
+  "tag_osm": null,
+  "sumber_url": [
+   "http://karimunbatam.blogspot.com/2014/08/alamat-nomor-telepon-kantor-pos-di-kota-batam-indonesia.html",
+   "https://id.foursquare.com/awwa_s/list/pos-indonesia-di-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pos-jodoh",
+  "nama": "Kantor Pos Jodoh",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kantor_pos_cabang",
+  "kecamatan": "Batu Ampar",
+  "kelurahan": "Sungai Jodoh",
+  "alamat": "Komp. Jodoh Square Blok C No.38",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 459737",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": "usang",
+  "catatan": "Telepon data 2014. Cabang kantor pos perlu dicek apakah masih buka.",
+  "tag_osm": null,
+  "sumber_url": [
+   "http://karimunbatam.blogspot.com/2014/08/alamat-nomor-telepon-kantor-pos-di-kota-batam-indonesia.html"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pos-mukakuning",
+  "nama": "Kantor Pos Muka Kuning",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kantor_pos_cabang",
+  "kecamatan": "Sei Beduk",
+  "kelurahan": null,
+  "alamat": "Shop House Blok D 01-17, Muka Kuning",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": "usang",
+  "catatan": "Nomor telepon di sumber tampak salah ketik (kode 0770), tidak dicantumkan. Cabang kantor pos perlu dicek apakah masih buka. Kelurahan perlu cek (tabel laporan: Muka Kuning (perlu dicek)).",
+  "tag_osm": null,
+  "sumber_url": [
+   "http://karimunbatam.blogspot.com/2014/08/alamat-nomor-telepon-kantor-pos-di-kota-batam-indonesia.html"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pos-batuaji",
+  "nama": "Kantor Pos Batu Aji",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kantor_pos_cabang",
+  "kecamatan": "Batu Aji",
+  "kelurahan": null,
+  "alamat": "Komp. Sentosa Perdana Blok J No.12",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": "usang",
+  "catatan": "Cabang kantor pos perlu dicek apakah masih buka. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://id.foursquare.com/awwa_s/list/pos-indonesia-di-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pos-megalegenda",
+  "nama": "Kantor Pos Mega Legenda",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kantor_pos_cabang",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Komp. Mega Legenda, Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": "usang",
+  "catatan": "Cabang kantor pos perlu dicek apakah masih buka. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://id.foursquare.com/awwa_s/list/pos-indonesia-di-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pos-botania",
+  "nama": "Kantor Pos Botania",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kantor_pos_cabang",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Komp. Botania Plaza, Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": "usang",
+  "catatan": "Cabang kantor pos perlu dicek apakah masih buka. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://id.foursquare.com/awwa_s/list/pos-indonesia-di-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pos-baloi",
+  "nama": "Kantor Pos Baloi",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kantor_pos_cabang",
+  "kecamatan": "Lubuk Baja",
+  "kelurahan": null,
+  "alamat": "Jl. Bunga Raya, Baloi",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": "usang",
+  "catatan": "Cabang kantor pos perlu dicek apakah masih buka. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://id.foursquare.com/awwa_s/list/pos-indonesia-di-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "pos-tiban",
+  "nama": "Kantor Pos Tiban",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kantor_pos_cabang",
+  "kecamatan": "Sekupang",
+  "kelurahan": null,
+  "alamat": "Tiban Palapa Blok AA No.2",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": "usang",
+  "catatan": "Cabang kantor pos perlu dicek apakah masih buka. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://id.foursquare.com/awwa_s/list/pos-indonesia-di-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-batamkota",
+  "nama": "KUA Kecamatan Batam Kota",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Belian",
+  "alamat": "Komp. Perum Cendana Tahap III",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 475468",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kemenagbatam.com/main/detail/kua-batam-kota-siap-berikan-layanan-prima-pada-masyarakat",
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-batuaji",
+  "nama": "KUA Kecamatan Batu Aji",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Batu Aji",
+  "kelurahan": "Kibing",
+  "alamat": "Jl. Suprapto, MKGR, Batu Aji",
+  "lat": 1.0385515,
+  "lng": 103.9960996,
+  "status_koordinat": "perlu_cek_ulang",
+  "catatan_koordinat": "Dari idalamat.com (direktori pihak ketiga; laporan: anggap kasar); belum dicek ke OSM/Wikidata.",
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan. Alamat bentrok dengan KUA Sagulung. Alamat KUA Batu Aji dan KUA Sagulung sama-sama disebut di Jl. R. Suprapto; perlu cek lapangan karena bisa tertukar. Kelurahan perlu cek.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri",
+   "https://idalamat.com/alamat/32814/kantor-urusan-agama-kua-kec-batu-aji-kota-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-batuampar",
+  "nama": "KUA Kecamatan Batu Ampar",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Batu Ampar",
+  "kelurahan": "Sungai Jodoh",
+  "alamat": "Jl. Kuda Laut No.1",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 450917",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan. Alamat versi lain: Jl. Kuda Laut No.3.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-belakangpadang",
+  "nama": "KUA Kecamatan Belakang Padang",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Belakang Padang",
+  "kelurahan": null,
+  "alamat": "Jl. Hang Lekiu No.21",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 312213",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-bengkong",
+  "nama": "KUA Kecamatan Bengkong",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Bengkong",
+  "kelurahan": "Sadai",
+  "alamat": "Jl. Tuah Sakti No.1",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-bulang",
+  "nama": "KUA Kecamatan Bulang",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Bulang",
+  "kelurahan": "Bulang Lintang",
+  "alamat": "Bulang Lintang",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan. Alamat tanpa nama jalan.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-galang",
+  "nama": "KUA Kecamatan Galang",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Galang",
+  "kelurahan": "Sembulang",
+  "alamat": "Jl. Batin Limat No.2, Sembulang",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-lubukbaja",
+  "nama": "KUA Kecamatan Lubuk Baja",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Lubuk Baja",
+  "kelurahan": "Baloi Indah",
+  "alamat": "Belakang Perum Batu Batam Permai",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://batam.kemenag.go.id/main/detail/kua-lubuk-baja-3-pekan-ini-sudah-9-pasang-pengantin-yang-menikah",
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-nongsa",
+  "nama": "KUA Kecamatan Nongsa",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Nongsa",
+  "kelurahan": null,
+  "alamat": "Jl. Hang Kasturi No.7, Nongsa",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-sagulung",
+  "nama": "KUA Kecamatan Sagulung",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Sagulung",
+  "kelurahan": null,
+  "alamat": "Jl. R. Suprapto No.1, Sagulung",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 700227",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan. Rencana kantor baru di Kel. Sei Pelunggut. Alamat KUA Batu Aji dan KUA Sagulung sama-sama disebut di Jl. R. Suprapto; perlu cek lapangan karena bisa tertukar. Pernah menumpang di Rumah Dinas Camat. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://batam.kemenag.go.id/main/detail/kemenag-batam-survey-lokasi-lahan-kua-kecamatan-sagulung",
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-seibeduk",
+  "nama": "KUA Kecamatan Sei Beduk",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Sei Beduk",
+  "kelurahan": "Mangsang",
+  "alamat": "Jl. S. Parman Pintu II, Kav. Bida Ayu, Tg. Piayu",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kua-sekupang",
+  "nama": "KUA Kecamatan Sekupang",
+  "nama_alternatif": [],
+  "kategori": "layanan_publik",
+  "subkategori": "kua",
+  "kecamatan": "Sekupang",
+  "kelurahan": "Sungai Harapan",
+  "alamat": "Jl. Pramuka No.1, Sei Harapan",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": "Senin-Kamis 07.30-16.00; Jumat 07.30-16.30",
+  "kontak": {
+   "telepon": "(0778) 327526",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "daftar_nikah": "simkah4.kemenag.go.id"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Sumber utama daftar Kanwil Kemenag Kepri (~2017), mungkin usang; nomor HP di daftar Kanwil sengaja tidak dimasukkan. Berita 2024 menyebut alamat Jl. Masjid Raya Baiturrahman.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.instagram.com/kua_sekupang_batam/",
+   "https://kepri.kemenag.go.id/page/detmenu/02102017101955_alamatkuaseprovkepri"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kes-pmi",
+  "nama": "UPD PMI Kota Batam",
+  "nama_alternatif": [],
+  "kategori": "kesehatan",
+  "subkategori": "donor_darah",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Jl. Cempaka, Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": "Layanan darah 24/7",
+  "kontak": {
+   "telepon": "(0778) 741368",
+   "whatsapp": "+62 811-7001-9960 (admin donor)",
+   "email": "markas@pmibatam.or.id",
+   "website": null
+  },
+  "atribut": {},
+  "status_data": null,
+  "catatan": "Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://updpmibatam.id/",
+   "https://pmibatam.or.id/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "ibd-stpetrus",
+  "nama": "Paroki Santo Petrus Lubuk Baja",
+  "nama_alternatif": [],
+  "kategori": "ibadah",
+  "subkategori": "gereja_katolik",
+  "kecamatan": "Lubuk Baja",
+  "kelurahan": null,
+  "alamat": null,
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "keuskupan": "Pangkalpinang"
+  },
+  "status_data": null,
+  "catatan": "Alamat belum ada. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://katolikdibatam.wordpress.com/about/kevikepan-kepulauan-riau/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "ibd-stdamian",
+  "nama": "Paroki Santo Damian Bengkong",
+  "nama_alternatif": [],
+  "kategori": "ibadah",
+  "subkategori": "gereja_katolik",
+  "kecamatan": "Bengkong",
+  "kelurahan": "Bengkong Laut",
+  "alamat": "Komp. Green Town, Bengkong Laut 29458",
+  "lat": 1.1540247,
+  "lng": 104.0219444,
+  "status_koordinat": "perlu_cek_ulang",
+  "catatan_koordinat": "Dari Wikipedia (sumber sekunder); belum dicek ke OSM/Wikidata.",
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": "santodamian.com"
+  },
+  "atribut": {
+   "didirikan": "1995-06-11"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://id.wikipedia.org/wiki/Gereja_Santo_Damian,_Bengkong",
+   "https://id.wikipedia.org/wiki/Daftar_paroki_di_Keuskupan_Pangkalpinang"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "ibd-kerahimanilahi",
+  "nama": "Paroki Kerahiman Ilahi Tiban",
+  "nama_alternatif": [],
+  "kategori": "ibadah",
+  "subkategori": "gereja_katolik",
+  "kecamatan": "Sekupang",
+  "kelurahan": "Patam Lestari",
+  "alamat": "Jl. Tiban III, Patam Lestari 29426",
+  "lat": 1.1147716,
+  "lng": 103.9673676,
+  "status_koordinat": "perlu_cek_ulang",
+  "catatan_koordinat": "Dari Wikipedia (sumber sekunder); belum dicek ke OSM/Wikidata.",
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 322886",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.dokpenkwi.org/keuskupan-pangkalpinang-2/4/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "ibd-mbpa",
+  "nama": "Paroki Maria Bunda Pembantu Abadi Batu Aji",
+  "nama_alternatif": [
+   "Paroki MBPA Batu Aji"
+  ],
+  "kategori": "ibadah",
+  "subkategori": "gereja_katolik",
+  "kecamatan": "Batu Aji",
+  "kelurahan": null,
+  "alamat": "Kavling Baru Sumber Jaya, Jl. Gereja, Batu Aji",
+  "lat": 1.0398111,
+  "lng": 103.9676321,
+  "status_koordinat": "perlu_cek_ulang",
+  "catatan_koordinat": "Dari Wikipedia (sumber sekunder); belum dicek ke OSM/Wikidata.",
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "didirikan": "2003-11-01",
+   "keterangan": "paroki ketiga di Pulau Batam (1 November 2003)",
+   "umat": "sekitar 12.000 jiwa (menurut Wikipedia)"
+  },
+  "status_data": null,
+  "catatan": "Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://id.wikipedia.org/wiki/Gereja_Maria_Bunda_Pembantu_Abadi,_Batu_Aji"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "ibd-sthilarius",
+  "nama": "Paroki Santo Hilarius Sei Beduk",
+  "nama_alternatif": [],
+  "kategori": "ibadah",
+  "subkategori": "gereja_katolik",
+  "kecamatan": "Sei Beduk",
+  "kelurahan": "Mangsang",
+  "alamat": "Kavling depan Bida Ayu Blok S, Pintu 1, 29437",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.dokpenkwi.org/keuskupan-pangkalpinang-2/4/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "ibd-stfransiskus",
+  "nama": "Paroki Santo Fransiskus Asisi Kabil",
+  "nama_alternatif": [],
+  "kategori": "ibadah",
+  "subkategori": "gereja_katolik",
+  "kecamatan": "Nongsa",
+  "kelurahan": "Kabil",
+  "alamat": "Jl. Raya Bumi Perkemahan, Kabil 29467",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 7100 212",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {},
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.dokpenkwi.org/keuskupan-pangkalpinang-2/4/",
+   "https://id.wikipedia.org/wiki/Gereja_Santo_Fransiskus_Assisi,_Kabil"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "mkm-tmp",
+  "nama": "Taman Makam Pahlawan Pusara Bhakti Bulan Gebang",
+  "nama_alternatif": [
+   "TMP Bulan Gebang",
+   "TMP Pusara Bhakti Bulan Gebang"
+  ],
+  "kategori": "pemakaman",
+  "subkategori": "taman_makam_pahlawan",
+  "kecamatan": "Batu Aji",
+  "kelurahan": "Bukit Tempayan",
+  "alamat": "Jl. Letjend Suprapto, Bukit Tempayan",
+  "lat": 1.04686,
+  "lng": 103.96752,
+  "status_koordinat": "perlu_cek_ulang",
+  "catatan_koordinat": "Dihitung peneliti dari plus code 2XW9+P2R (wilayah 6PH5); harus dicek di OSM.",
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "plus_code": "6PH52XW9+P2R",
+   "pengelola": "Dinsos PM Kota Batam",
+   "kontak_pengelola": "(0778) 321370",
+   "kategori_asli": "ibadah"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://batam.imigrasi.go.id/berita/2022/08/rangkaian-kegiatan-hdkd-ke-77-imigrasi-batam-laksanakan-kegiatan-bersih-bersih-taman-makam-pahlawan-dan-tempat-ibadah",
+   "https://simapankesos.com/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "trp-pancungsekupang",
+  "nama": "Pelabuhan Pancung Sekupang (pompong ke Belakang Padang)",
+  "nama_alternatif": [
+   "Pelabuhan Pancung/Pengumpan Sekupang"
+  ],
+  "kategori": "transportasi",
+  "subkategori": "pelantar_pompong",
+  "kecamatan": "Sekupang",
+  "kelurahan": null,
+  "alamat": "Kawasan Pelabuhan Sekupang, Jl. RE Martadinata",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": "24 jam (malam pesan dulu)",
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "operator": "PPMS",
+   "tarif_idr": 20000,
+   "tarif_sejak": "2022-09",
+   "operator_nama_lengkap": "Persatuan Pengemudi Motor Sangkut",
+   "tarif": "Rp20.000/orang sekali jalan",
+   "tarif_sebelumnya_idr": 18000,
+   "tarif_carter": "Rp160.000 untuk 1–4 orang dan Rp200.000 untuk 5–10 orang (menurut Kumparan/Kepripedia)",
+   "durasi": "±10–25 menit",
+   "kapasitas": "12 penumpang per pompong"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Tarif swadaya PPMS dan tekong, bukan tarif resmi pemerintah; mungkin usang (data September 2022); rute & tarif lengkap di data/panduan/09-rute_pompong.json. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://batam.tribunnews.com/2022/09/05/tarif-tiket-pompong-ke-belakangpadang-batam-naik-dampak-kenaikan-harga-bbm"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "trp-pelbelakangpadang",
+  "nama": "Pelabuhan Belakang Padang",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "pelabuhan_rakyat",
+  "kecamatan": "Belakang Padang",
+  "kelurahan": null,
+  "alamat": "Pulau Belakang Padang",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "rute": [
+    {
+     "tujuan": "Sekupang",
+     "tarif_idr": 20000
+    },
+    {
+     "tujuan": "Pulau Geranting",
+     "tarif_idr": 140000
+    }
+   ],
+   "durasi_dari_pulau_geranting": "±1 jam"
+  },
+  "status_data": null,
+  "catatan": "Rute & tarif lengkap di data/panduan/09-rute_pompong.json. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://nasional.tvrinews.com/berita/twrlaf5-pulau-belakang-padang-sebuah-permata-tersembunyi-di-wilayah-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "trp-pelsagulung",
+  "nama": "Pelabuhan Rakyat Sagulung",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "pelabuhan_rakyat",
+  "kecamatan": "Sagulung",
+  "kelurahan": null,
+  "alamat": "Sagulung",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "rute": [
+    "Pulau Buluh",
+    "Bulang Lintang",
+    "pulau Kec. Bulang"
+   ],
+   "tarif_idr": "20000-25000 (2022)",
+   "durasi_ke_pulau_buluh": "±5–10 menit",
+   "moda": "pompong/pancung"
+  },
+  "status_data": "perlu_cek_ulang",
+  "catatan": "Tarif data 2022, mungkin usang; rute & tarif lengkap di data/panduan/09-rute_pompong.json. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://gokepri.com/kisah-warga-batam-mudik-lebaran-ke-pulau-bulang-lintang/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "trp-telukssenimba",
+  "nama": "Terminal Feri Waterfront City / Teluk Senimba",
+  "nama_alternatif": [
+   "Waterfront City",
+   "Teluk Senimba"
+  ],
+  "kategori": "transportasi",
+  "subkategori": "terminal_feri_internasional",
+  "kecamatan": "Sekupang",
+  "kelurahan": "Tanjung Riau",
+  "alamat": "Marina City, Tanjung Riau",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "operator": "PT Senimba Bay Resort"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://batamport.bpbatam.go.id/teluk-senimba/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "trp-goldcoast",
+  "nama": "Terminal Feri Gold Coast Bengkong",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "terminal_feri_internasional",
+  "kecamatan": "Bengkong",
+  "kelurahan": null,
+  "alamat": "Kawasan Pantai Indah Mutiara Blok B No.36-37, Bengkong",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "operator": "PT Aneka Sarana Sentosa",
+   "diresmikan": "2025-04-14",
+   "rute": "Batam - Stulang Laut (Malaysia), harian, Ferry Dolphin",
+   "peresmian": "Senin 14 April 2025 oleh Menko AHY bersama Kapolri Listyo Sigit Prabowo"
+  },
+  "status_data": null,
+  "catatan": "Alamat menurut BatamNow; sumber laporan tanpa URL: Ulasan.co dan BatamToday (15 April 2025), BatamNow. Kelurahan belum diketahui (laporan: perlu cek).",
+  "tag_osm": null,
+  "sumber_url": [],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-plnkorporat",
+  "nama": "SPKLU Kantor Korporat PLN Batam",
+  "nama_alternatif": [
+   "SPKLU Ultra Fast Charging Kantor Korporat PLN Batam"
+  ],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Teluk Tering",
+  "alamat": "Jl. Engku Putri No.3, Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "tipe": "3 unit ultra fast",
+   "total_spklu_pln_batam": 26,
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": "Total SPKLU PLN Batam 26 unit (siaran pers 13 Juni 2026); koordinat per unit belum dipublikasikan.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.plnbatam.com/pln-batam-hadirkan-spklu-ultra-fast-charging-dorong-ekosistem-kendaraan-listrik-di-batam/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-grandbatam",
+  "nama": "SPKLU Grand Batam Mall",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": "Batu Ampar",
+  "kelurahan": null,
+  "alamat": "Grand Batam Mall",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.batamramah.com/2026/05/spklu-pln-batam-meluas-ekosistem.html"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-thamrin",
+  "nama": "SPKLU Nagoya Thamrin City",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": "Lubuk Baja",
+  "kelurahan": null,
+  "alamat": "Nagoya Thamrin City",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.batamramah.com/2026/05/spklu-pln-batam-meluas-ekosistem.html"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-harbourbay",
+  "nama": "SPKLU Harbour Bay",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": "Batu Ampar",
+  "kelurahan": null,
+  "alamat": "Harbour Bay",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.batamramah.com/2026/05/spklu-pln-batam-meluas-ekosistem.html"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-megamall",
+  "nama": "SPKLU Mega Mall Batam Centre",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Mega Mall Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.batamramah.com/2026/05/spklu-pln-batam-meluas-ekosistem.html"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-botania2",
+  "nama": "SPKLU Mall Botania 2",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Mall Botania 2",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.batamramah.com/2026/05/spklu-pln-batam-meluas-ekosistem.html"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-astonpelita",
+  "nama": "SPKLU Hotel Aston Pelita",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": "Lubuk Baja",
+  "kelurahan": null,
+  "alamat": "Hotel Aston Pelita",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://wartakepri.co.id/2026/04/30/anda-pengguna-mobil-listrik-di-batam-catat-21-lokasi-spklu-pln-batam/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-panbil",
+  "nama": "SPKLU Panbil Mall",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": "Panbil Mall",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": "Kecamatan tidak disebut laporan.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://wartakepri.co.id/2026/04/30/anda-pengguna-mobil-listrik-di-batam-catat-21-lokasi-spklu-pln-batam/"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-polresta",
+  "nama": "SPKLU Polresta Barelang",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": "Polresta Barelang",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": "Kecamatan tidak disebut laporan.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://batampos.jawapos.com/batam/2604200002/infrastruktur-kendaraan-listrik-digeber-spklu-kian-meluas-di-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-bintangamin",
+  "nama": "SPKLU Masjid Bintang Amin Angkasa",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": null,
+  "kelurahan": null,
+  "alamat": "Masjid Bintang Amin Angkasa",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": "Kecamatan tidak disebut laporan.",
+  "tag_osm": null,
+  "sumber_url": [
+   "https://batampos.jawapos.com/batam/2604200002/infrastruktur-kendaraan-listrik-digeber-spklu-kian-meluas-di-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-pajaksukajadi",
+  "nama": "SPKLU Kantor Pajak Sukajadi",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Sukajadi",
+  "alamat": "Kantor Pajak Sukajadi",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://batampos.jawapos.com/batam/2604200002/infrastruktur-kendaraan-listrik-digeber-spklu-kian-meluas-di-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-golfsukajadi",
+  "nama": "SPKLU Padang Golf Sukajadi",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": "Batam Kota",
+  "kelurahan": "Sukajadi",
+  "alamat": "Padang Golf Sukajadi",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://www.batamramah.com/2026/05/spklu-pln-batam-meluas-ekosistem.html"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-harris",
+  "nama": "SPKLU Hotel Harris Batam Centre",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": "Batam Kota",
+  "kelurahan": null,
+  "alamat": "Hotel Harris Batam Centre",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://batampos.jawapos.com/batam/2604200002/infrastruktur-kendaraan-listrik-digeber-spklu-kian-meluas-di-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "spklu-petratiban",
+  "nama": "SPKLU Kawasan Petra Tiban",
+  "nama_alternatif": [],
+  "kategori": "transportasi",
+  "subkategori": "spklu",
+  "kecamatan": "Sekupang",
+  "kelurahan": null,
+  "alamat": "Kawasan Petra Tiban",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": null,
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "aplikasi": "PLN Mobile"
+  },
+  "status_data": null,
+  "catatan": null,
+  "tag_osm": null,
+  "sumber_url": [
+   "https://batampos.jawapos.com/batam/2604200002/infrastruktur-kendaraan-listrik-digeber-spklu-kian-meluas-di-batam"
+  ],
+  "sumber_riset": "09-direktori-celah"
+ },
+ {
+  "id": "kes-rs-bp-batam",
+  "nama": "RS BP Batam",
+  "nama_alternatif": [],
+  "kategori": "kesehatan",
+  "subkategori": "rumah_sakit",
+  "kecamatan": "Sekupang",
+  "kelurahan": null,
+  "alamat": "Jl. Cipto Mangunkusumo No.1, Tj. Pinggir, Sekupang",
+  "lat": null,
+  "lng": null,
+  "status_koordinat": "perlu_diisi_user",
+  "catatan_koordinat": null,
+  "jam_layanan": null,
+  "kontak": {
+   "telepon": "(0778) 322121",
+   "whatsapp": null,
+   "email": null,
+   "website": null
+  },
+  "atribut": {
+   "layanan_terkait": [
+    "poli jiwa"
+   ],
+   "disebut_di": "bagian B (titik awal klinik/psikolog jiwa)"
+  },
+  "status_data": null,
+  "catatan": "Hanya disebut di teks laporan (bagian B), tidak ada di tabel/JSON; laporan menyebut RS ini sudah ada di data RS riset lain, jadi kemungkinan duplikat.",
+  "tag_osm": null,
+  "sumber_url": [],
+  "sumber_riset": "09-direktori-celah"
+ }
+]

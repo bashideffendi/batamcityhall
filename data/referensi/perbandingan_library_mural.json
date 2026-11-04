@@ -1,0 +1,179 @@
+{
+  "sumber_riset": "02-teknik-mural-peta",
+  "task_id": "wf-63281ef7-42be-5d9b-91ac-0775ff777914",
+  "bagian_laporan": "## 2. Perbandingan library gambar raksasa",
+  "kolom_asli": [
+    "Kriteria",
+    "**OpenSeadragon**",
+    "**Leaflet + CRS.Simple**",
+    "**MapLibre GL (raster, piksel → \"lat/lng palsu\")**",
+    "**deck.gl (OrthographicView + TileLayer)**",
+    "**PixiJS v8 + pixi-viewport**"
+  ],
+  "daftar_kriteria": [
+    "Ukuran (min+gzip)",
+    "Format tile bawaan",
+    "Rendering",
+    "Overlay interaktif",
+    "Animasi partikel/efek",
+    "HP Android menengah",
+    "Next.js",
+    "Cocok untuk"
+  ],
+  "catatan": "Konversi 1:1 dari tabel laporan (kolom = library, baris = kriteria). Nilai teks persis seperti di tabel (termasuk backtick dan penekanan markdown). 'rekomendasi_laporan' adalah paragraf verbatim tepat di bawah tabel. Beberapa nilai ditandai 'asumsi' oleh laporan sendiri; lihat juga bagian Caveats di research/02-teknik-mural-peta.md soal sumber angka ukuran bundle.",
+  "library": [
+    {
+      "nama": "OpenSeadragon",
+      "header_asli": "**OpenSeadragon**",
+      "kriteria": {
+        "Ukuran (min+gzip)": "±88 kB (v6.1.1, laporan size-check CI di fork)",
+        "Format tile bawaan": "DZI, IIIF, Zoomify, gambar biasa",
+        "Rendering": "Canvas 2D (opsional WebGL drawer di versi baru, asumsi)",
+        "Overlay interaktif": "`addOverlay` (elemen DOM), plugin SVG overlay, Annotorious",
+        "Animasi partikel/efek": "Pakai canvas terpisah di atasnya",
+        "HP Android menengah": "Bagus; dirancang untuk gigapixel",
+        "Next.js": "Client-only (`dynamic(() => import(...), { ssr:false })`)",
+        "Cocok untuk": "**Mural seni deep-zoom**"
+      }
+    },
+    {
+      "nama": "Leaflet + CRS.Simple",
+      "header_asli": "**Leaflet + CRS.Simple**",
+      "kriteria": {
+        "Ukuran (min+gzip)": "±40 kB (1.9.x; beranda leafletjs.com: \"Weighing just about 40 KB of JS\"); 2.0 beta (rilis 2 Nov 2026) 25,6 kB untuk peta + tile layer",
+        "Format tile bawaan": "XYZ `{z}/{x}/{y}`; DZI/Zoomify lewat plugin",
+        "Rendering": "DOM `<img>` per tile",
+        "Overlay interaktif": "Marker/Polygon/SVG bawaan, sangat mudah",
+        "Animasi partikel/efek": "Canvas terpisah",
+        "HP Android menengah": "Bagus, tapi DOM berat kalau marker ribuan",
+        "Next.js": "Client-only; ada react-leaflet",
+        "Cocok untuk": "Peta \"game\", prototipe cepat"
+      }
+    },
+    {
+      "nama": "MapLibre GL (raster, piksel → \"lat/lng palsu\")",
+      "header_asli": "**MapLibre GL (raster, piksel → \"lat/lng palsu\")**",
+      "kriteria": {
+        "Ukuran (min+gzip)": "tanpa angka resmi; satu README pihak ketiga: \"379 kB gzipped\" termasuk font (cek Bundlephobia, v6.2.0)",
+        "Format tile bawaan": "XYZ, PMTiles (via `pmtiles` protocol)",
+        "Rendering": "WebGL",
+        "Overlay interaktif": "Layer GeoJSON + `queryRenderedFeatures`; terasa alami karena satu engine dengan Mode Peta",
+        "Animasi partikel/efek": "Custom layer WebGL",
+        "HP Android menengah": "Bagus; satu konteks WebGL dipakai bersama",
+        "Next.js": "Client-only; ada react-map-gl/maplibre",
+        "Cocok untuk": "Kalau mau **satu engine** untuk Peta + Mural"
+      }
+    },
+    {
+      "nama": "deck.gl (OrthographicView + TileLayer)",
+      "header_asli": "**deck.gl (OrthographicView + TileLayer)**",
+      "kriteria": {
+        "Ukuran (min+gzip)": "besar (asumsi: ratusan kB)",
+        "Format tile bawaan": "custom loader",
+        "Rendering": "WebGL",
+        "Overlay interaktif": "Picking bawaan",
+        "Animasi partikel/efek": "Custom layer",
+        "HP Android menengah": "OK, tapi bundle berat",
+        "Next.js": "Bagus (React-first)",
+        "Cocok untuk": "Data-viz berat"
+      }
+    },
+    {
+      "nama": "PixiJS v8 + pixi-viewport",
+      "header_asli": "**PixiJS v8 + pixi-viewport**",
+      "kriteria": {
+        "Ukuran (min+gzip)": "258 kB penuh (Bundlephobia), bisa di-tree-shake",
+        "Format tile bawaan": "tidak ada, harus bikin sendiri",
+        "Rendering": "WebGL",
+        "Overlay interaktif": "Event per sprite; animasi paling bebas",
+        "Animasi partikel/efek": "**Terbaik** (filter, shader, blend mode)",
+        "HP Android menengah": "Bagus kalau culling tile benar; perlu kerja manual",
+        "Next.js": "Client-only; ada @pixi/react",
+        "Cocok untuk": "Mural yang sangat \"game-like\""
+      }
+    }
+  ],
+  "baris_asli": [
+    {
+      "kriteria": "Ukuran (min+gzip)",
+      "nilai": {
+        "**OpenSeadragon**": "±88 kB (v6.1.1, laporan size-check CI di fork)",
+        "**Leaflet + CRS.Simple**": "±40 kB (1.9.x; beranda leafletjs.com: \"Weighing just about 40 KB of JS\"); 2.0 beta (rilis 2 Nov 2026) 25,6 kB untuk peta + tile layer",
+        "**MapLibre GL (raster, piksel → \"lat/lng palsu\")**": "tanpa angka resmi; satu README pihak ketiga: \"379 kB gzipped\" termasuk font (cek Bundlephobia, v6.2.0)",
+        "**deck.gl (OrthographicView + TileLayer)**": "besar (asumsi: ratusan kB)",
+        "**PixiJS v8 + pixi-viewport**": "258 kB penuh (Bundlephobia), bisa di-tree-shake"
+      }
+    },
+    {
+      "kriteria": "Format tile bawaan",
+      "nilai": {
+        "**OpenSeadragon**": "DZI, IIIF, Zoomify, gambar biasa",
+        "**Leaflet + CRS.Simple**": "XYZ `{z}/{x}/{y}`; DZI/Zoomify lewat plugin",
+        "**MapLibre GL (raster, piksel → \"lat/lng palsu\")**": "XYZ, PMTiles (via `pmtiles` protocol)",
+        "**deck.gl (OrthographicView + TileLayer)**": "custom loader",
+        "**PixiJS v8 + pixi-viewport**": "tidak ada, harus bikin sendiri"
+      }
+    },
+    {
+      "kriteria": "Rendering",
+      "nilai": {
+        "**OpenSeadragon**": "Canvas 2D (opsional WebGL drawer di versi baru, asumsi)",
+        "**Leaflet + CRS.Simple**": "DOM `<img>` per tile",
+        "**MapLibre GL (raster, piksel → \"lat/lng palsu\")**": "WebGL",
+        "**deck.gl (OrthographicView + TileLayer)**": "WebGL",
+        "**PixiJS v8 + pixi-viewport**": "WebGL"
+      }
+    },
+    {
+      "kriteria": "Overlay interaktif",
+      "nilai": {
+        "**OpenSeadragon**": "`addOverlay` (elemen DOM), plugin SVG overlay, Annotorious",
+        "**Leaflet + CRS.Simple**": "Marker/Polygon/SVG bawaan, sangat mudah",
+        "**MapLibre GL (raster, piksel → \"lat/lng palsu\")**": "Layer GeoJSON + `queryRenderedFeatures`; terasa alami karena satu engine dengan Mode Peta",
+        "**deck.gl (OrthographicView + TileLayer)**": "Picking bawaan",
+        "**PixiJS v8 + pixi-viewport**": "Event per sprite; animasi paling bebas"
+      }
+    },
+    {
+      "kriteria": "Animasi partikel/efek",
+      "nilai": {
+        "**OpenSeadragon**": "Pakai canvas terpisah di atasnya",
+        "**Leaflet + CRS.Simple**": "Canvas terpisah",
+        "**MapLibre GL (raster, piksel → \"lat/lng palsu\")**": "Custom layer WebGL",
+        "**deck.gl (OrthographicView + TileLayer)**": "Custom layer",
+        "**PixiJS v8 + pixi-viewport**": "**Terbaik** (filter, shader, blend mode)"
+      }
+    },
+    {
+      "kriteria": "HP Android menengah",
+      "nilai": {
+        "**OpenSeadragon**": "Bagus; dirancang untuk gigapixel",
+        "**Leaflet + CRS.Simple**": "Bagus, tapi DOM berat kalau marker ribuan",
+        "**MapLibre GL (raster, piksel → \"lat/lng palsu\")**": "Bagus; satu konteks WebGL dipakai bersama",
+        "**deck.gl (OrthographicView + TileLayer)**": "OK, tapi bundle berat",
+        "**PixiJS v8 + pixi-viewport**": "Bagus kalau culling tile benar; perlu kerja manual"
+      }
+    },
+    {
+      "kriteria": "Next.js",
+      "nilai": {
+        "**OpenSeadragon**": "Client-only (`dynamic(() => import(...), { ssr:false })`)",
+        "**Leaflet + CRS.Simple**": "Client-only; ada react-leaflet",
+        "**MapLibre GL (raster, piksel → \"lat/lng palsu\")**": "Client-only; ada react-map-gl/maplibre",
+        "**deck.gl (OrthographicView + TileLayer)**": "Bagus (React-first)",
+        "**PixiJS v8 + pixi-viewport**": "Client-only; ada @pixi/react"
+      }
+    },
+    {
+      "kriteria": "Cocok untuk",
+      "nilai": {
+        "**OpenSeadragon**": "**Mural seni deep-zoom**",
+        "**Leaflet + CRS.Simple**": "Peta \"game\", prototipe cepat",
+        "**MapLibre GL (raster, piksel → \"lat/lng palsu\")**": "Kalau mau **satu engine** untuk Peta + Mural",
+        "**deck.gl (OrthographicView + TileLayer)**": "Data-viz berat",
+        "**PixiJS v8 + pixi-viewport**": "Mural yang sangat \"game-like\""
+      }
+    }
+  ],
+  "rekomendasi_laporan": "**Rekomendasi:** OpenSeadragon untuk mural, dengan **satu `<canvas>` overlay** (Canvas2D atau PixiJS minimal) yang disinkronkan ke viewport OSD untuk efek hidup. Alternatif yang patut dipertimbangkan serius: **MapLibre untuk keduanya**. Mural diperlakukan sebagai raster di koordinat palsu, misalnya piksel dipetakan ke derajat kecil dekat 0,0. Untungnya, kode layer, popup, dan URL state bisa dipakai bareng dengan Mode Peta. Ruginya, ada distorsi Mercator kalau area palsunya jauh dari ekuator, jadi taruh di sekitar lat 0. Ini **asumsi teknis** dan perlu prototipe."
+}

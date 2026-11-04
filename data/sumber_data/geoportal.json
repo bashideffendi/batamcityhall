@@ -1,0 +1,697 @@
+[
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "nama_dataset": "Peta Perumahan Sekota Batam",
+    "produsen": "Disperkimtan",
+    "tahun": "data berlabel 2026, \"Updated 1 month ago\"",
+    "format": "Peta web + tabel HTML (799 perumahan)",
+    "akses": "Lihat saja",
+    "relevansi": "Sedang: konteks permukiman, cek nama perumahan",
+    "lisensi": "Tidak dicantumkan",
+    "status_verifikasi": "✅ Terverifikasi (halaman statistik: 799 perumahan, 9 kecamatan, 39 kelurahan, 526 developer)",
+    "endpoint": [
+      "https://www.hangjebat-geoportal.com/index.php?page=data-statistik-perumahan-sekota-batam"
+    ],
+    "catatan": "Tabel HTML berisi nama perumahan, kecamatan, kelurahan, developer, tahun. Cakupan hanya 9 kecamatan dan 39 kelurahan (Batam punya 12 kecamatan). Hanya untuk referensi/cek, jangan disalin ke dataset publik.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "nama_dataset": "Peta Perumahan Subsidi",
+    "produsen": "Disperkimtan",
+    "tahun": "❓",
+    "format": "Peta web",
+    "akses": "Lihat saja",
+    "relevansi": "Rendah",
+    "lisensi": "Tidak dicantumkan",
+    "status_verifikasi": null,
+    "endpoint": [],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "nama_dataset": "Peta Serah Terima Perumahan / PSU",
+    "produsen": "Disperkimtan",
+    "tahun": "❓",
+    "format": "Peta web",
+    "akses": "Lihat saja",
+    "relevansi": "Rendah",
+    "lisensi": "Tidak dicantumkan",
+    "status_verifikasi": null,
+    "endpoint": [],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "nama_dataset": "Peta Fasos Lapangan/RTH/Dll dan Jalan Lingkungan",
+    "produsen": "Disperkimtan",
+    "tahun": "❓",
+    "format": "Peta web",
+    "akses": "Lihat saja",
+    "relevansi": "Tinggi: taman, RTH, lapangan olahraga",
+    "lisensi": "Tidak dicantumkan",
+    "status_verifikasi": null,
+    "endpoint": [],
+    "catatan": "Referensi visual saja; minta data resmi ke Disperkimtan.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "nama_dataset": "Peta Permohonan PSU",
+    "produsen": "Disperkimtan",
+    "tahun": "❓",
+    "format": "Peta web",
+    "akses": "Lihat saja",
+    "relevansi": "Rendah",
+    "lisensi": "Tidak dicantumkan",
+    "status_verifikasi": null,
+    "endpoint": [],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "nama_dataset": "Peta Aset Disperkimtan",
+    "produsen": "Disperkimtan",
+    "tahun": "❓",
+    "format": "Peta web",
+    "akses": "Lihat saja",
+    "relevansi": "Sedang: taman/makam yang jadi aset dinas (asumsi)",
+    "lisensi": "Tidak dicantumkan",
+    "status_verifikasi": null,
+    "endpoint": [],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "nama_dataset": "Peta Rawan Bencana (Identifikasi Bencana)",
+    "produsen": "Disperkimtan",
+    "tahun": "❓",
+    "format": "Peta web",
+    "akses": "Lihat saja",
+    "relevansi": "Tinggi untuk layer hujan/banjir",
+    "lisensi": "Tidak dicantumkan",
+    "status_verifikasi": null,
+    "endpoint": [],
+    "catatan": "Cukup jadi referensi visual; untuk layer yang dipublikasikan pakai BNPB/InaRISK.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HANG JEBAT Geoportal (Disperkimtan Kota Batam)",
+    "nama_dataset": "Peta Lokasi Rusunawa",
+    "produsen": "Disperkimtan",
+    "tahun": "❓",
+    "format": "Peta web",
+    "akses": "Lihat saja",
+    "relevansi": "Sedang: layanan warga",
+    "lisensi": "Tidak dicantumkan",
+    "status_verifikasi": null,
+    "endpoint": [],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "PETA_ADMINISTRASI_BATAM: 0 Toponim Ibukota, 1 Administrasi Kota Batam, 2 Administrasi Kecamatan, 3 Administrasi Kab/Kota",
+    "produsen": "BP Batam (Pusren)",
+    "tahun": "❓ (proyek 2021, dari nama folder)",
+    "format": "MapServer, EPSG:4326, query JSON/geoJSON, max 2000",
+    "akses": "Query anonim ✅",
+    "relevansi": "Sangat tinggi: batas kecamatan + toponim ibukota",
+    "lisensi": "\"All Right Reserved\" (footer portal)",
+    "status_verifikasi": "✅ terverifikasi ada (Daftar Endpoint Teknis)",
+    "endpoint": [
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/PROYGISPUSREN21_EKSTERNAL/PETA_ADMINISTRASI_BATAM/MapServer",
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/PROYGISPUSREN21_EKSTERNAL/PETA_ADMINISTRASI_BATAM/MapServer/2/query"
+    ],
+    "catatan": "Layer 2 (kecamatan) dipakai di contoh query #2. Bisa langsung dipakai dengan atribusi sebagai layer terpisah.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/27: Wilayah Administrasi Kelurahan/Desa (poligon; kdepum, namobj, kdebps)",
+    "produsen": "BP Batam",
+    "tahun": "❓",
+    "format": "EPSG:3857, geoJSON, max 2000, minScale 1:100.000",
+    "akses": "Query anonim ✅",
+    "relevansi": "Sangat tinggi: batas kelurahan + kode BPS",
+    "lisensi": "sda = \"All Right Reserved\" (footer portal: \"Copyright BP Batam 2023. All Right Reserved\")",
+    "status_verifikasi": "✅ Terverifikasi",
+    "endpoint": [
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/27",
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/27/query"
+    ],
+    "catatan": "MaxRecordCount 2000. Dipakai di contoh query #1. Bisa langsung dipakai dengan atribusi sebagai layer terpisah.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/26: Batas Wilayah Administrasi (garis: kab/kota, kecamatan, kelurahan, perairan desa, landas kontinen, perairan internasional)",
+    "produsen": "BP Batam",
+    "tahun": "❓",
+    "format": "EPSG:3857, geoJSON",
+    "akses": "Query anonim ✅",
+    "relevansi": "Tinggi: garis batas laut untuk gaya peta laut",
+    "lisensi": "sda = \"All Right Reserved\" (footer portal: \"Copyright BP Batam 2023. All Right Reserved\")",
+    "status_verifikasi": "✅ terverifikasi ada (Daftar Endpoint Teknis)",
+    "endpoint": [
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/26"
+    ],
+    "catatan": "Rekomendasi 7: garis batas perairan desa (kelas=16) sebagai hiasan referensi.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/9 Batas Vegetasi, /16 Bidang Tanah Fisik, /3 Tiang Listrik",
+    "produsen": "BP Batam",
+    "tahun": "❓",
+    "format": "EPSG:3857",
+    "akses": "Query anonim ✅",
+    "relevansi": "Rendah; Bidang Tanah jangan dipakai (data kadaster)",
+    "lisensi": "sda = \"All Right Reserved\" (footer portal: \"Copyright BP Batam 2023. All Right Reserved\")",
+    "status_verifikasi": "✅ (dari kolom Akses)",
+    "endpoint": [
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/9",
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/16",
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/3"
+    ],
+    "catatan": "Bidang Tanah Fisik: hanya referensi, jangan disalin ke dataset publik.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "WEBGIS_TEMATIK_MOBILE_POI_/MapServer (mis. /2 Bank; field klspoi, namobj, codepoi; copyright \"BP BATAM\")",
+    "produsen": "BP Batam",
+    "tahun": "❓",
+    "format": "EPSG:3857, geoJSON",
+    "akses": "Query anonim ✅",
+    "relevansi": "Tinggi untuk cek koordinat: layer lain kemungkinan berisi sekolah, kesehatan, ibadah (asumsi, cek daftar layer)",
+    "lisensi": "sda = \"All Right Reserved\" (footer portal: \"Copyright BP Batam 2023. All Right Reserved\")",
+    "status_verifikasi": "✅ terverifikasi ada (Daftar Endpoint Teknis)",
+    "endpoint": [
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_POI_/MapServer",
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_POI_/MapServer/2"
+    ],
+    "catatan": "Hanya daftar periksa: kalau ada di sini tapi belum di OSM, verifikasi (survei/citra) lalu petakan sendiri di OSM. Jangan disalin.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "Direktorat_Infrastruktur_Kawasan/Utilitas/MapServer: 0 JALAN_LN_50K, 1 KABELLISTRIK_LN_50K",
+    "produsen": "BP Batam",
+    "tahun": "❓",
+    "format": "EPSG:32648 (UTM 48N), max 1000",
+    "akses": "Query anonim ✅",
+    "relevansi": "Rendah (OSM sudah lebih detail)",
+    "lisensi": "sda = \"All Right Reserved\" (footer portal: \"Copyright BP Batam 2023. All Right Reserved\")",
+    "status_verifikasi": "✅ terverifikasi ada (Daftar Endpoint Teknis)",
+    "endpoint": [
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/Direktorat_Infrastruktur_Kawasan/Utilitas/MapServer"
+    ],
+    "catatan": "Jalan 1:50K: hanya referensi, jangan disalin ke dataset publik.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "PROYGISPUSREN21_INTERNAL/PETA_INFRASTRUKTUR/MapServer/1: Infrastruktur Jalan (kategori, th_bangun, panjang_m)",
+    "produsen": "BP Batam",
+    "tahun": "❓",
+    "format": "geoJSON",
+    "akses": "Bisa di-query, tapi foldernya \"INTERNAL\"",
+    "relevansi": "Rendah; jangan dipublikasikan",
+    "lisensi": "sda = \"All Right Reserved\" (footer portal: \"Copyright BP Batam 2023. All Right Reserved\")",
+    "status_verifikasi": null,
+    "endpoint": [
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/PROYGISPUSREN21_INTERNAL/PETA_INFRASTRUKTUR/MapServer/1"
+    ],
+    "catatan": "Folder INTERNAL: hanya referensi.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "Fasilitas/WADUK_AR_50K, Fasilitas/PEMANFAATAN_AR_50K, Fasilitas/MENARATELEPON_PT_50K, Fasilitas/KELOLALIMBAH_PT_50K",
+    "produsen": "BP Batam",
+    "tahun": "❓",
+    "format": "MapServer, max 1000",
+    "akses": "Query anonim ✅",
+    "relevansi": "Waduk: sedang (layer air); sisanya rendah",
+    "lisensi": "sda = \"All Right Reserved\" (footer portal: \"Copyright BP Batam 2023. All Right Reserved\")",
+    "status_verifikasi": "✅ (dari kolom Akses); WADUK_AR_50K ✅ terverifikasi ada (Daftar Endpoint Teknis)",
+    "endpoint": [
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/Fasilitas/WADUK_AR_50K/MapServer/0",
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/Fasilitas/PEMANFAATAN_AR_50K/MapServer/0/generateRenderer",
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/Fasilitas/MENARATELEPON_PT_50K/MapServer/0",
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/Fasilitas/KELOLALIMBAH_PT_50K/MapServer/0"
+    ],
+    "catatan": "URL PEMANFAATAN, MENARATELEPON, KELOLALIMBAH diambil dari daftar sumber laporan.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "Root: PETA_POLA_RUANG_PERPRES_87_TAHUN_2011, PETA_TUTUPAN_LAHAN, PETA_WILAYAH_KERJA_BP_BATAM; Hosted/Basemap (tile, layer \"Wilayah Kerja\")",
+    "produsen": "BP Batam",
+    "tahun": "Perpres 87/2011",
+    "format": "MapServer/tile",
+    "akses": "Lihat ✅",
+    "relevansi": "Sedang: kawasan industri/pola ruang sebagai referensi visual",
+    "lisensi": "sda = \"All Right Reserved\" (footer portal: \"Copyright BP Batam 2023. All Right Reserved\")",
+    "status_verifikasi": "✅ (dari kolom Akses)",
+    "endpoint": [
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/Hosted/Basemap/MapServer"
+    ],
+    "catatan": "Laporan hanya memberi nama layanan root (tanpa URL lengkap) untuk tiga peta pertama. Pola Ruang Perpres 87/2011: hanya referensi, jangan disalin ke dataset publik.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "Folder Perindustrian, KEK, Kawasan_Ekonomi_Khusus, BIFZA, Penduduk_Perkelurahan, POI, SPAM",
+    "produsen": "BP Batam",
+    "tahun": "❓",
+    "format": "❓",
+    "akses": "❓ belum dicek isinya",
+    "relevansi": "Kawasan industri, KEK, penduduk per kelurahan",
+    "lisensi": "sda = \"All Right Reserved\" (footer portal: \"Copyright BP Batam 2023. All Right Reserved\")",
+    "status_verifikasi": "❓ perlu dicek",
+    "endpoint": [],
+    "catatan": "Nama folder tanpa URL lengkap di laporan.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "data_terbatas, data_tertutup, DATACAKRA/Data_Tertutup",
+    "produsen": "BP Batam",
+    "tahun": "–",
+    "format": "–",
+    "akses": "Perlu izin / jangan disentuh",
+    "relevansi": "–",
+    "lisensi": "Tertutup",
+    "status_verifikasi": null,
+    "endpoint": [
+      "https://web-gis.bpbatam.go.id/arcgis/rest/services/DATACAKRA"
+    ],
+    "catatan": "Jangan disentuh tanpa izin.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "Folder Perencanaan, perencanaan2024, Pertanahan, Direktorat_Pengelolaan_Pertanahan",
+    "produsen": "BP Batam",
+    "tahun": null,
+    "format": null,
+    "akses": null,
+    "relevansi": null,
+    "lisensi": null,
+    "status_verifikasi": "❓ perlu dicek",
+    "endpoint": [],
+    "catatan": "Pelabuhan, kampung tua, batimetri: tidak ada layer berlabel jelas di direktori yang terindeks. Folder ini disarankan dicek; kampung tua di folder Pertanahan adalah asumsi tempat paling mungkin.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "Basis data: Sub-Wilayah Pengembangan Batam",
+    "produsen": "Direktorat Pengelolaan Pertanahan",
+    "tahun": "pemutakhiran 2023",
+    "format": null,
+    "akses": null,
+    "relevansi": null,
+    "lisensi": null,
+    "status_verifikasi": "✅ terverifikasi (halaman basis data)",
+    "endpoint": [
+      "https://geoportal.bpbatam.go.id/publication/basis-data/sub-wilayah-pengembangan-batam/?id=23"
+    ],
+    "catatan": "Bidang Pertanahan.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BP Batam (Satu Peta Batam) / ArcGIS Server web-gis.bpbatam.go.id",
+    "nama_dataset": "Basis data: Kontur Kota Batam",
+    "produsen": "Pusat Perencanaan Program Strategis",
+    "tahun": "2023",
+    "format": null,
+    "akses": null,
+    "relevansi": null,
+    "lisensi": null,
+    "status_verifikasi": "✅ terverifikasi (halaman basis data)",
+    "endpoint": [
+      "https://geoportal.bpbatam.go.id/publication/basis-data/kontur-kota-batam/?id=31"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Portal open data BP Batam",
+    "nama_dataset": "Portal open data terpisah (isi belum diketahui)",
+    "produsen": "BP Batam",
+    "tahun": null,
+    "format": null,
+    "akses": null,
+    "relevansi": null,
+    "lisensi": null,
+    "status_verifikasi": "❓ perlu dicek",
+    "endpoint": [
+      "https://data.bpbatam.go.id/"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "nama_dataset": "BATASWILAYAH/Administrasi_AR_KelDesa_10K/MapServer/0: Batas Wilayah Kelurahan/Desa (WADMKC, WADMKD, dll.)",
+    "produsen": "BIG",
+    "tahun": "Okt 2020 (publikasi 23-10-2020)",
+    "format": "1:10.000, EPSG:4326, geoJSON, max 4000",
+    "akses": "Query anonim ✅",
+    "relevansi": "Sangat tinggi",
+    "lisensi": "Copyright BIG; lisensi tidak dinyatakan",
+    "status_verifikasi": "✅ Terverifikasi (JSON layanan berhasil diambil)",
+    "endpoint": [
+      "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_KelDesa_10K/MapServer/0",
+      "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_KelDesa_10K/MapServer/0/query"
+    ],
+    "catatan": "Kapabilitas Map,Query,Data; exportTilesAllowed: false; copyright \"Badan Informasi Geospasial\". Cakupan seluruh Indonesia (extent 94,97–141,02 BT); masih ada \"area tidak terdefinisi untuk ... Pulau/Kepulauan\" dan desa pemekaran yang belum masuk, QA visual wajib untuk Belakang Padang, Bulang, Galang. Filter misal WADMKK='Kota Batam' (cek nama field di /0?f=pjson).",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "nama_dataset": "BATASWILAYAH/BATAS_DESAKEL_AR/MapServer/0: Area Batas Wilayah Administrasi Desa/Kelurahan",
+    "produsen": "BIG",
+    "tahun": "❓ (kemungkinan edisi lebih baru, cek /info/iteminfo)",
+    "format": "geoJSON, max 1000, HasZ",
+    "akses": "Query anonim ✅",
+    "relevansi": "Sangat tinggi",
+    "lisensi": "sda = Copyright BIG; lisensi tidak dinyatakan",
+    "status_verifikasi": "✅ (Daftar Endpoint Teknis BIG); edisi perlu dicek",
+    "endpoint": [
+      "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_DESAKEL_AR/MapServer/0"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "nama_dataset": "BATASWILAYAH/Administrasi_AR_Kecamatan_10K, BATAS_KECAMATAN_AR",
+    "produsen": "BIG",
+    "tahun": "❓",
+    "format": "1:10.000",
+    "akses": "Query anonim ✅",
+    "relevansi": "Sangat tinggi (kecamatan)",
+    "lisensi": "sda = Copyright BIG; lisensi tidak dinyatakan",
+    "status_verifikasi": "✅ (Daftar Endpoint Teknis BIG)",
+    "endpoint": [
+      "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_Kecamatan_10K/MapServer",
+      "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_KECAMATAN_AR/MapServer"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "nama_dataset": "BATASWILAYAH/Administrasi_AR_KabKota_50K",
+    "produsen": "BIG",
+    "tahun": "deskripsi menyebut edisi Sept 2023",
+    "format": "1:50.000",
+    "akses": "Query anonim ✅",
+    "relevansi": "Tinggi (outline kota)",
+    "lisensi": "sda = Copyright BIG; lisensi tidak dinyatakan",
+    "status_verifikasi": "✅ (Daftar Endpoint Teknis BIG)",
+    "endpoint": [
+      "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_KabKota_50K/MapServer"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "nama_dataset": "BATASWILAYAH/Administrasi_LN_KabKota_50K",
+    "produsen": "BIG",
+    "tahun": "2022; memakai garis pantai Pusat Pemetaan Kelautan & Lingkungan Pantai 2022",
+    "format": "1:50.000 garis",
+    "akses": "Query anonim ✅",
+    "relevansi": "Sedang",
+    "lisensi": "sda = Copyright BIG; lisensi tidak dinyatakan",
+    "status_verifikasi": "✅ (Daftar Endpoint Teknis BIG)",
+    "endpoint": [
+      "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_LN_KabKota_50K/MapServer/info/iteminfo"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / ArcGIS Server geoservices.big.go.id",
+    "nama_dataset": "BATASWILAYAH/BATAS_WILAYAH/MapServer (mis. /10 garis kecamatan, /13 area kab/kota)",
+    "produsen": "BIG",
+    "tahun": "❓",
+    "format": "geoJSON, max 1000",
+    "akses": "Query anonim ✅",
+    "relevansi": "Tinggi",
+    "lisensi": "sda = Copyright BIG; lisensi tidak dinyatakan",
+    "status_verifikasi": "✅ (dari kolom Akses)",
+    "endpoint": [
+      "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_WILAYAH/MapServer/10",
+      "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_WILAYAH/MapServer/13"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / katalog CKAN tanahair.indonesia.go.id",
+    "nama_dataset": "CKAN ADMINISTRASI_AR_DESAKEL (2022 rev. 27-12-2022; Sept 2023)",
+    "produsen": "BIG",
+    "tahun": "2022/2023",
+    "format": "Geodatabase",
+    "akses": "Unduh, kemungkinan perlu login ⚠️",
+    "relevansi": "Sangat tinggi (versi terbaru)",
+    "lisensi": "Tidak dicantumkan di halaman CKAN",
+    "status_verifikasi": "✅ Terverifikasi (snippet katalog); unduhan file perlu login, ⚠️ cek langsung",
+    "endpoint": [
+      "https://tanahair.indonesia.go.id/sdi/dataset/administrasi_ar_desakel"
+    ],
+    "catatan": "Tag \"Downloadable Data\".",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG) / katalog CKAN tanahair.indonesia.go.id",
+    "nama_dataset": "CKAN dataset \"Kelurahan\"",
+    "produsen": "BIG",
+    "tahun": null,
+    "format": null,
+    "akses": null,
+    "relevansi": null,
+    "lisensi": "\"No License Provided\"",
+    "status_verifikasi": "✅ Terverifikasi untuk yang tampil",
+    "endpoint": [
+      "https://tanahair.indonesia.go.id/sdi/dataset/kelurahan"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG)",
+    "nama_dataset": "RBI 1:25K/1:50K per wilayah (garis pantai, transportasi, toponimi, bangunan, hidrografi, batimetri)",
+    "produsen": "BIG",
+    "tahun": "bervariasi",
+    "format": "SHP/GDB",
+    "akses": "Unduh setelah login ⚠️",
+    "relevansi": "Tinggi: toponimi dan garis pantai",
+    "lisensi": "Terms of use di /portal-web/termcondition ❓ belum terbaca",
+    "status_verifikasi": "⚠️ perlu login; lisensi ❓",
+    "endpoint": [],
+    "catatan": "Toponimi RBI: hanya referensi (lihat saja), jangan disalin ke dataset publik. Syarat SRGI BIG (produk lain) melarang data dibagikan ke pihak ketiga tanpa izin; mungkin berlaku juga untuk RBI (asumsi).",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Ina-Geoportal (BIG)",
+    "nama_dataset": "DEMNAS / Batimetri Nasional (BATNAS)",
+    "produsen": "BIG",
+    "tahun": "–",
+    "format": "GeoTIFF",
+    "akses": "Unduh setelah login ⚠️",
+    "relevansi": "Tinggi untuk gaya peta laut (kontur kedalaman)",
+    "lisensi": "sda (Terms of use ❓ belum terbaca)",
+    "status_verifikasi": "⚠️ perlu login",
+    "endpoint": [
+      "https://tanahair.indonesia.go.id/portal-web/static/Panduan%20Unduh%20Data%20Demnas.pdf"
+    ],
+    "catatan": "Panduan resmi: \"Silakan masuk atau daftar akun terlebih dahulu\". Rekomendasi 7: gdal_contour -i 5, simpan sebagai layer terpisah dengan atribusi BIG.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BPS (Wilkerstat)",
+    "nama_dataset": "wilkerstat/desa/MapServer/0 (juga /kecamatan, /kabupaten, /provinsi): desa/kelurahan",
+    "produsen": "BPS",
+    "tahun": null,
+    "format": "geoJSON, max 1000",
+    "akses": "Query geoJSON ✅, max 1000",
+    "relevansi": "Desa/kelurahan dan SLS (RT/RW)",
+    "lisensi": "❓ tidak dinyatakan",
+    "status_verifikasi": "✅ Terverifikasi; lisensi ❓",
+    "endpoint": [
+      "https://geoportal.bps.go.id/server/rest/services/wilkerstat/desa/MapServer/0",
+      "https://geoportal.bps.go.id/server/rest/services/wilkerstat/kecamatan/MapServer",
+      "https://geoportal.bps.go.id/server/rest/services/wilkerstat/desa/MapServer/0/query"
+    ],
+    "catatan": "Pembanding (contoh query #4).",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Geoportal BPS (Wilkerstat)",
+    "nama_dataset": "Hosted/Wilkerstat_Publish_Tile_Full/MapServer/4: SLS (sumber wilkerstat_publish_2019; field nmkec, nmdesa, kode_sls4)",
+    "produsen": "BPS",
+    "tahun": null,
+    "format": "geoJSON, max 1000",
+    "akses": "Query geoJSON ✅, max 1000",
+    "relevansi": "Desa/kelurahan dan SLS (RT/RW)",
+    "lisensi": "❓ tidak dinyatakan",
+    "status_verifikasi": "✅ Terverifikasi; lisensi ❓",
+    "endpoint": [
+      "https://geoportal.bps.go.id/server/rest/services/Hosted/Wilkerstat_Publish_Tile_Full/MapServer/4"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HDX (OCHA)",
+    "nama_dataset": "COD-AB Indonesia (BPS via OCHA/HDX): Level 0–4 (level 4 = desa/kelurahan)",
+    "produsen": "Badan Pusat Statistik (BPS), via OCHA/HDX",
+    "tahun": "basis 2020",
+    "format": "file HDX idn_admin_boundaries.geojson.zip",
+    "akses": "Unduh langsung, tanpa login",
+    "relevansi": "Pembanding yang lisensinya paling jelas; saran canonical (COD-AB atau BIG)",
+    "lisensi": "CC BY 3.0 IGO menurut mirror GitHub klikpeta-tech/id-kecamatan-geo, yang mengutip file HDX idn_admin_boundaries.geojson.zip: \"Licence: Creative Commons Attribution 3.0 IGO (CC BY-IGO)\"",
+    "status_verifikasi": "⚠️ teks lisensi belum terlihat langsung di HDX",
+    "endpoint": [
+      "https://data.humdata.org/dataset/cod-ab-idn",
+      "https://github.com/klikpeta-tech/id-kecamatan-geo"
+    ],
+    "catatan": "Atribusi: \"Boundaries: Badan Pusat Statistik (BPS), via OCHA/HDX, CC BY 3.0 IGO\". Halaman HDX menyebut batas \"established in: 2020\".",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "HDX (geoBoundaries)",
+    "nama_dataset": "geoBoundaries IDN: ADM0–ADM2 saja (ADM3/ADM4 tidak terkonfirmasi)",
+    "produsen": "geoBoundaries",
+    "tahun": null,
+    "format": null,
+    "akses": null,
+    "relevansi": "Hanya sampai kota, tidak cukup untuk kelurahan",
+    "lisensi": "ODbL; wajib menyebut geoBoundaries",
+    "status_verifikasi": null,
+    "endpoint": [
+      "https://data.humdata.org/dataset/geoboundaries-admin-boundaries-for-indonesia"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "GADM",
+    "nama_dataset": "GADM: sampai level 3/4",
+    "produsen": "GADM",
+    "tahun": null,
+    "format": null,
+    "akses": null,
+    "relevansi": null,
+    "lisensi": "\"Redistribution or commercial use is not allowed without prior permission\"",
+    "status_verifikasi": "❌ Jangan dipakai di website publik",
+    "endpoint": [
+      "https://gadm.org/license.html"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Satu Data Batam (Pemko)",
+    "nama_dataset": "Statistik Kampung Tua: 37 kampung tua (2020–2022); data lain menyebut 24 lokasi (Juni 2024)",
+    "produsen": "Dinas Pertanahan",
+    "tahun": "2020–2022 (37 kampung tua); Juni 2024 (24 lokasi)",
+    "format": "Tabular, bukan spasial; unduh JSON/Excel",
+    "akses": "Unduh JSON/Excel",
+    "relevansi": null,
+    "lisensi": "❓",
+    "status_verifikasi": null,
+    "endpoint": [
+      "https://satudata.batam.go.id/satu/detail/statistik-jumlah-kampung-tua-4axedn",
+      "https://satudata.batam.go.id/data/detail/jumlahkampungtuadikotabatam20250kotabatamrafjte"
+    ],
+    "catatan": "Konflik data: 37 vs 24 berasal dari dataset berbeda di portal yang sama; mungkin definisi berbeda (ditetapkan vs diusulkan). Jangan pilih salah satu begitu saja; tampilkan sumber dan cek ke Dinas Pertanahan atau SK penetapan Kampung Tua. Laporan tidak memetakan URL mana ke angka mana.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Dishub Batam",
+    "nama_dataset": "LAKIP 2021: daftar koridor dan rute teks (target 11 koridor; 8 koridor di 2020)",
+    "produsen": "Dishub Batam",
+    "tahun": "2021",
+    "format": "PDF",
+    "akses": "Dokumen publik",
+    "relevansi": null,
+    "lisensi": "Dokumen publik",
+    "status_verifikasi": "Tidak ada koordinat halte",
+    "endpoint": [
+      "https://dishub.batam.go.id/wp-content/uploads/sites/3/2024/07/DISHUB_LAKIP_2021_compressed-1.pdf"
+    ],
+    "catatan": null,
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "(tidak ada)",
+    "nama_dataset": "Data halte Trans Batam resmi berformat spasial / GTFS",
+    "produsen": null,
+    "tahun": null,
+    "format": null,
+    "akses": "Tidak ditemukan",
+    "relevansi": "Halte harus dibangun dari OSM plus survei lapangan",
+    "lisensi": null,
+    "status_verifikasi": "✅ Terverifikasi bahwa tidak ada sumber terbuka yang ditemukan",
+    "endpoint": [],
+    "catatan": "Skema yang disarankan: halte.geojson (id, nama, koridor[], sumber, tanggal_verifikasi).",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "Wikipedia bahasa Indonesia",
+    "nama_dataset": "Trans Batam: jumlah halte per koridor (9 koridor aktif)",
+    "produsen": null,
+    "tahun": null,
+    "format": null,
+    "akses": null,
+    "relevansi": null,
+    "lisensi": null,
+    "status_verifikasi": "sumber sekunder",
+    "endpoint": [
+      "https://id.wikipedia.org/wiki/Trans_Batam"
+    ],
+    "catatan": "K1 Sekupang–Batam Centre 56, K2 Tanjung Uncang–Batam Centre 78, K3 Sekupang–Jodoh 65, K4 Sagulung–Sekupang 69, K5 Jodoh–Batam Centre 41, K6 Tanjung Piayu–Batam Centre 58, K7 Nongsa–Batam Centre–Bandara Hang Nadim 76, K8 Punggur–Jodoh 78, K9 Punggur–Nongsa 54. Totalnya 575 kemunculan halte (banyak dipakai bersama antar koridor). Bisa sudah berubah.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "BNPB / InaRISK",
+    "nama_dataset": "Layer rawan bencana InaRISK",
+    "produsen": "BNPB",
+    "tahun": null,
+    "format": null,
+    "akses": null,
+    "relevansi": "Layer hujan/banjir/rawan bencana yang bisa dipublikasikan",
+    "lisensi": "❓",
+    "status_verifikasi": null,
+    "endpoint": [
+      "inarisk1.bnpb.go.id:6443/arcgis/rest/services"
+    ],
+    "catatan": "Perlakukan sebagai layer terpisah dengan atribusi.",
+    "sumber_riset": "11-geoportal"
+  },
+  {
+    "portal": "OpenStreetMap (Overpass/Protomaps)",
+    "nama_dataset": "OpenStreetMap: POI, halte, garis pantai",
+    "produsen": "OpenStreetMap contributors",
+    "tahun": null,
+    "format": null,
+    "akses": null,
+    "relevansi": "Basis halte (highway=bus_stop, public_transport=platform, route=bus), POI (amenity=school|hospital|clinic|place_of_worship|townhall, landuse=cemetery, leisure=park|pitch, amenity=ferry_terminal), garis pantai",
+    "lisensi": "ODbL",
+    "status_verifikasi": null,
+    "endpoint": [],
+    "catatan": "Atribusi \"© OpenStreetMap contributors (ODbL)\". Data BIG/BP Batam/HANG JEBAT jangan diimpor ke OSM; simpan sebagai layer terpisah.",
+    "sumber_riset": "11-geoportal"
+  }
+]

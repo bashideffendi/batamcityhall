@@ -1,0 +1,11 @@
+{
+  "id": "kampung-tua-tanjung-riau",
+  "segment": "seg02",
+  "shape": { "type": "polygon", "points": [[1203,880],[1260,872],[1271,930],[1210,941]] },
+  "geo": [103.95, 1.16],
+  "kind": ["kampung-tua"],
+  "title": { "id": "Kampung Tua Tanjung Riau", "en": "Tanjung Riau Old Village" },
+  "museumLabel": { "year": "…", "material": "…", "body": "…" },
+  "quests": ["temukan-8-kampung-tua"],
+  "source": "Wajib diisi: sumber data/narasumber"
+}

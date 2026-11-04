@@ -1,0 +1,2739 @@
+[
+  {
+    "id": "rp-001",
+    "nama": "Dataran Engku Putri",
+    "nama_alternatif": [
+      "Alun-alun Batam"
+    ],
+    "kategori": "ruang_publik",
+    "subkategori": "alun_alun",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Jl. Engku Putri, Batam Centre",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "24 jam (akses gerbang terbatas)",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "gratis",
+      "fasilitas": [
+        "jogging track",
+        "basket",
+        "futsal",
+        "skatepark",
+        "climbing wall",
+        "mini gym"
+      ],
+      "ramah_anak": true,
+      "kategori_asli": "ruang_publik_wisata",
+      "akses": "lewat beberapa gerbang",
+      "jalur_lari_populer": true,
+      "nama_asli_laporan": "Dataran Engku Putri (Alun-alun Batam)"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "place=square",
+    "sumber_url": [
+      "https://www.goersapp.com/venues/daratan-engku-putri--ptpsmf",
+      "https://www.batamnews.co.id/berita-112710-alun-alun-engku-putri-oase-kegiatan-sosial-dan-olahraga-di-pusat-kota-batam.html",
+      "http://info.co.id/listing/alun-alun-engku-putri/",
+      "https://www.batamnews.co.id/berita-110021-5-rekomendasi-tempat-jogging-di-batam-untuk-menjaga-kebugaran-tubuh.html"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-002",
+    "nama": "Taman Dang Anom",
+    "nama_alternatif": [],
+    "kategori": "ruang_publik",
+    "subkategori": "taman_kota",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Taman Baloi",
+    "alamat": "Jl. Sudirman, samping flyover Laluan Madani (eks Simpang Jam)",
+    "lat": 1.12096,
+    "lng": 104.02067,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Decode manual Plus Code 42CC+97M (kode ditampilkan Trip.com/Saraga); akurasi ±10 m kalau kodenya benar. Belum dicek di OSM.",
+    "jam_layanan": "terbuka, ramai sore-malam",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "gratis",
+      "ramah_anak": true,
+      "kategori_asli": "ruang_publik_wisata",
+      "fasilitas": [
+        "menara hias 11 m",
+        "lampu hias"
+      ],
+      "diresmikan": "Desember 2020"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "leisure=park",
+    "sumber_url": [
+      "https://mediacenter.batam.go.id/2020/12/07/taman-dang-anom-lengkapi-suasana-malam-batam-makin-memesona/",
+      "https://id.trip.com/travel-guide/attraction/batam-center/dang-anom-park-136924806/",
+      "https://tribunbatamtravel.tribunnews.com/2021/01/31/mengintip-keindahan-taman-dang-anom-batam"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-003",
+    "nama": "Dataran Engku Hamidah",
+    "nama_alternatif": [],
+    "kategori": "ruang_publik",
+    "subkategori": "taman_kota",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Batam Center",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "gratis",
+      "kategori_asli": "ruang_publik_wisata"
+    },
+    "status_data": null,
+    "catatan": "Detail belum diriset. Kelurahan perlu dicek.",
+    "tag_osm": "leisure=park",
+    "sumber_url": [
+      "https://transkepri.com/news/detail/6240/di-batam-setelah-engku-hamidah-kemudian-muncul-dang-anom"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-004",
+    "nama": "Taman Rusa Sekupang (Jogging Track)",
+    "nama_alternatif": [],
+    "kategori": "ruang_publik",
+    "subkategori": "taman_satwa",
+    "kecamatan": "Sekupang",
+    "kelurahan": "Tanjung Pinggir",
+    "alamat": "Jl. Cipto Mangunkusumo, Sekupang (masuk lewat area BP Batam)",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "06.00-18.00 (BP Batam) / 07.00-18.00 (media)",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "Rp5.000 dewasa, Rp2.500 anak",
+      "pakan_rusa": "Rp5.000-10.000",
+      "fasilitas": [
+        "jogging track 1 km",
+        "playground",
+        "kolam pancing",
+        "parkir ±50"
+      ],
+      "ramah_anak": true,
+      "kategori_asli": "ruang_publik_wisata",
+      "jalur_lari_populer": true
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "leisure=park",
+    "sumber_url": [
+      "https://bpbatam.go.id/indah-dan-megah-taman-rusa-sekupang-kini-resmi-dibuka/",
+      "https://regional.kompas.com/read/2023/06/08/165736778/taman-rusa-sekupang-di-batam-daya-tarik-harga-tiket-dan-rute?page=all",
+      "https://kumparan.com/jendela-dunia/3-daya-tarik-lokasi-harga-tiket-masuk-dan-jam-buka-taman-rusa-batam-20M88BgR6KN",
+      "https://www.ceritaumi.com/2018/05/berkunjung-ke-taman-rusa-dan-taman.html",
+      "https://www.batamnews.co.id/berita-110021-5-rekomendasi-tempat-jogging-di-batam-untuk-menjaga-kebugaran-tubuh.html"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-005",
+    "nama": "Taman Kolam Sekupang",
+    "nama_alternatif": [],
+    "kategori": "ruang_publik",
+    "subkategori": "taman_kota",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "Sekupang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "pengelola": "BP Batam",
+      "kategori_asli": "ruang_publik_wisata"
+    },
+    "status_data": null,
+    "catatan": "Aset BP Batam. Detail belum diriset. Kelurahan perlu dicek.",
+    "tag_osm": "leisure=park",
+    "sumber_url": [
+      "https://bpbatam.go.id/indah-dan-megah-taman-rusa-sekupang-kini-resmi-dibuka/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-006",
+    "nama": "Bukit Clara",
+    "nama_alternatif": [
+      "Monumen Welcome to Batam",
+      "Bukit Welcome to Batam"
+    ],
+    "kategori": "landmark",
+    "subkategori": "landmark_viewpoint",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Bukit Clara, dekat Masjid Raya Batam Centre",
+    "lat": 1.12221,
+    "lng": 104.05414,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Decode manual Plus Code 43C3+VMJ (kode ditampilkan Trip.com/Saraga); akurasi ±10 m kalau kodenya benar. Belum dicek di OSM.",
+    "jam_layanan": "24 jam",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "gratis",
+      "ramah_anak": true,
+      "kategori_asli": "ruang_publik_wisata",
+      "kuliner": "jajanan kaki lima mulai ±17.00",
+      "nama_asli_laporan": "Bukit Clara / Welcome to Batam"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "tourism=viewpoint",
+    "sumber_url": [
+      "https://id.trip.com/travel-guide/attraction/batam-center/bukit-clara-137309969",
+      "https://www.tempatwisata.pro/wisata/Bukit-Welcome-To-Batam",
+      "https://imigrasilabuanbajo.id/destinasi-wisata-monumen-welcome-to-batam-di-bukit-clara-batam/",
+      "https://rentalmobilbatam212.com/bukit-welcome-to-batam/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-007",
+    "nama": "Museum Batam Raja Ali Haji",
+    "nama_alternatif": [
+      "Museum Raja Ali Haji"
+    ],
+    "kategori": "budaya",
+    "subkategori": "museum",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Jl. Engku Putri Utara No. 1, Dataran Engku Putri",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "Selasa-Minggu 09.00-17.00; Senin & tanggal merah tutup",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "Rp10.000 (registri Kemenbud); sumber lain gratis/Rp5.000",
+      "pengelola": "Disbudpar Kota Batam",
+      "ramah_anak": true,
+      "kategori_asli": "ruang_publik_wisata",
+      "tipe_museum": "Tipe B",
+      "jam_sumber_lain": "09.00–16.00 dengan istirahat Jumat 11.00–13.00"
+    },
+    "status_data": null,
+    "catatan": "Harga tidak konsisten antarsumber: Rp10.000 (registri Kemenbud) vs gratis/Rp5.000 (media lain). Pakai angka Kemenbud dan tampilkan \"cek di lokasi\".",
+    "tag_osm": "tourism=museum",
+    "sumber_url": [
+      "https://museum.kemenbud.go.id/museum/profile/museum+batam+raja+ali+haji",
+      "https://www.nadiftourbatam.com/liburan-edukatif-di-batam-museum-raja-ali-haji-simpan-jejak-kesultanan-melayu-hingga-batam-modern/",
+      "https://www.nadiftourbatam.com/museum-raja-ali-haji-warisan-sejarah-dan-budaya-melayu-di-jantung-kota-batam/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-008",
+    "nama": "Mega Wisata Ocarina",
+    "nama_alternatif": [
+      "Ocarina"
+    ],
+    "kategori": "wisata",
+    "subkategori": "taman_hiburan",
+    "kecamatan": "Bengkong",
+    "kelurahan": "Sadai",
+    "alamat": "Jl. Bunga Raya, Sadai, Bengkong",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "Sen-Jum 08.00-22.00; Sab/libur 07.00-22.00; Min 06.00-22.00",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "Dewasa Rp25.000, anak 2-12 Rp15.000, early bird Minggu Rp10.000",
+      "wahana": "Rp10.000-35.000; semua wahana aktif Sab-Min mulai 14.00",
+      "parkir": "motor Rp5.000, mobil Rp10.000",
+      "ramah_anak": true,
+      "kategori_asli": "ruang_publik_wisata",
+      "media_sosial": {
+        "instagram": "@new.ocarina"
+      },
+      "wahana_hari_kerja": "Senin–Jumat hanya penyewaan, becak, sepeda, dan bombom car (Travelspromo, Agustus 2026)",
+      "wahana_catatan_lain": "Tribun Batam (3/12/2023), mengutip pegawai Ocarina, menyebut wahana mulai pukul 13.00",
+      "waktu_terbaik": "sore di akhir pekan",
+      "jalur_lari_populer": true
+    },
+    "status_data": null,
+    "catatan": "Nomor HP Ocarina di situs pihak ketiga sengaja tidak dimasukkan karena tidak jelas apakah nomor usaha resmi.",
+    "tag_osm": "tourism=theme_park",
+    "sumber_url": [
+      "https://travelspromo.com/htm-wisata/ocarina-batam-mega-wisata/",
+      "https://www.goersapp.com/blog/mega-wisata-ocarina-batam-2025/",
+      "https://kumparan.com/jendela-dunia/mega-wisata-ocarina-batam-destinasi-wisata-untuk-liburan-keluarga-22w37SVi5jg",
+      "https://kepri.pikiran-rakyat.com/wisata/pr-2689207052/jam-buka-dan-harga-tiket-masuk-ocarina-batam-saat-lebaran-2025?page=all",
+      "https://www.batamnews.co.id/berita-110021-5-rekomendasi-tempat-jogging-di-batam-untuk-menjaga-kebugaran-tubuh.html"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-009",
+    "nama": "Jembatan Barelang",
+    "nama_alternatif": [
+      "Jembatan Tengku Fisabilillah",
+      "Jembatan 1"
+    ],
+    "kategori": "landmark",
+    "subkategori": "landmark_viewpoint",
+    "kecamatan": "Sagulung",
+    "kelurahan": null,
+    "alamat": "Jl. Trans Barelang",
+    "lat": 0.98167,
+    "lng": 104.04167,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Wikipedia/DBpedia, belum dicek di OSM.",
+    "jam_layanan": "24 jam",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "gratis",
+      "kategori_asli": "ruang_publik_wisata",
+      "jumlah_jembatan": 6,
+      "panjang_total": "2 km (Wikipedia); 2.264 m (detikSumut)",
+      "panjang_jembatan_1": "642 m",
+      "dibangun": "Juli 1992–Januari 1998",
+      "jarak_dari_bandara": "±1 jam",
+      "nama_asli_laporan": "Jembatan Barelang (Tengku Fisabilillah)"
+    },
+    "status_data": null,
+    "catatan": "Rangkaian 6 jembatan Sagulung–Galang; laporan menulis kecamatan \"Sagulung (ujung awal) – Galang\". Kelurahan perlu dicek.",
+    "tag_osm": "man_made=bridge",
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Jembatan_Barelang",
+      "https://dbpedia.org/page/Barelang_Bridge"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-010",
+    "nama": "Pantai Tanjung Pinggir",
+    "nama_alternatif": [],
+    "kategori": "wisata",
+    "subkategori": "pantai",
+    "kecamatan": "Sekupang",
+    "kelurahan": "Tanjung Pinggir",
+    "alamat": "Tanjung Pinggir, dekat Pelabuhan Sekupang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "07.00-18.00 (Sisparnas); media 07.00-19.00",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "Rp10.000 (Lebaran 2025: Rp15.000; anak Rp5.000)",
+      "pembayaran": "tunai",
+      "parkir": "100 motor, 30 mobil, 2 bus",
+      "toilet": 6,
+      "ramah_anak": true,
+      "kategori_asli": "ruang_publik_wisata",
+      "daya_tarik": "pemandangan Singapura"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "natural=beach",
+    "sumber_url": [
+      "https://sisparnas.kemenpar.go.id/p/133882",
+      "https://regional.kompas.com/read/2022/07/07/195542378/pantai-tanjung-pinggir-daya-tarik-harga-tiket-dan-jam-buka?page=all",
+      "https://kepri.pikiran-rakyat.com/wisata/pr-2689227360/libur-lebaran-2025-pantai-tanjung-pinggir-batam-diserbu-pengunjung?page=all",
+      "https://www.pantainesia.com/pantai-tanjung-pinggir"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-011",
+    "nama": "Pantai Viovio",
+    "nama_alternatif": [],
+    "kategori": "wisata",
+    "subkategori": "pantai",
+    "kecamatan": "Galang",
+    "kelurahan": "Sijantung",
+    "alamat": "Jl. Trans Barelang, setelah Jembatan 5",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "09.00-23.00 (Kompas 2024)",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "Rp15.000 weekday / Rp25.000 weekend (Kompas); sumber lain Rp10.000",
+      "gazebo": "±Rp150.000/hari",
+      "ramah_anak": true,
+      "kategori_asli": "ruang_publik_wisata",
+      "aktivitas": [
+        "ayunan laut",
+        "banana boat"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "natural=beach",
+    "sumber_url": [
+      "https://travel.kompas.com/read/2024/03/17/210500627/pantai-viovio-batam--daya-tarik-harga-tiket-dan-jam-buka?page=all",
+      "https://www.detik.com/sumut/wisata/d-7850767/rekomendasi-destinasi-wisata-pantai-di-batam-untuk-isi-waktu-libur-lebaran",
+      "https://www.zesthotel.com/id-id/zest-hotel-harbour-bay-batam/experiences/viovio-beach",
+      "https://www.pantaipedia.com/pantai-viovio/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-012",
+    "nama": "Pantai Mirota",
+    "nama_alternatif": [],
+    "kategori": "wisata",
+    "subkategori": "pantai",
+    "kecamatan": "Galang",
+    "kelurahan": "Sijantung",
+    "alamat": "Sebelah Pantai Viovio",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "Rp10.000",
+      "pondok": "±Rp200.000",
+      "kategori_asli": "ruang_publik_wisata",
+      "fasilitas": [
+        "villa"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "natural=beach",
+    "sumber_url": [
+      "https://superapps.kompas.com/read/2411479/harga-tiket-masuk-5-pantai-terbaik-di-batam-menikmati-keindahan-sunset-di-pantai-mirota",
+      "https://www.pantaipedia.com/pantai-viovio/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-013",
+    "nama": "Pantai Melur",
+    "nama_alternatif": [],
+    "kategori": "wisata",
+    "subkategori": "pantai",
+    "kecamatan": "Galang",
+    "kelurahan": "Sijantung",
+    "alamat": "Pulau Galang via Barelang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "gratis atau Rp5.000-10.000 (sumber berbeda)",
+      "kategori_asli": "ruang_publik_wisata",
+      "arus": "relatif tenang"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "natural=beach",
+    "sumber_url": [
+      "https://www.detik.com/sumut/wisata/d-7850767/rekomendasi-destinasi-wisata-pantai-di-batam-untuk-isi-waktu-libur-lebaran",
+      "https://superapps.kompas.com/read/2411479/harga-tiket-masuk-5-pantai-terbaik-di-batam-menikmati-keindahan-sunset-di-pantai-mirota",
+      "https://batam.tribunnews.com/2020/12/30/5-pantai-pasir-putih-terbaik-di-barelang-batam-cukup-rogoh-kocek-rp-10-ribu?page=all",
+      "https://jelajahpantai.com/pantai-melur/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-014",
+    "nama": "Pantai Glory Melur",
+    "nama_alternatif": [],
+    "kategori": "wisata",
+    "subkategori": "pantai",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": "Setelah Jembatan 5 Barelang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "kategori_asli": "ruang_publik_wisata",
+      "konsep": "resort",
+      "fasilitas": [
+        "banyak gazebo"
+      ]
+    },
+    "status_data": null,
+    "catatan": "Harga belum diriset. Kelurahan perlu dicek.",
+    "tag_osm": "natural=beach",
+    "sumber_url": [
+      "https://www.detik.com/sumut/wisata/d-7850767/rekomendasi-destinasi-wisata-pantai-di-batam-untuk-isi-waktu-libur-lebaran"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-015",
+    "nama": "Pantai Nongsa",
+    "nama_alternatif": [],
+    "kategori": "wisata",
+    "subkategori": "pantai",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Nongsa",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "kategori_asli": "ruang_publik_wisata"
+    },
+    "status_data": null,
+    "catatan": "Belum diriset. Kelurahan perlu dicek.",
+    "tag_osm": "natural=beach",
+    "sumber_url": [
+      "https://www.detik.com/sumut/wisata/d-7850767/rekomendasi-destinasi-wisata-pantai-di-batam-untuk-isi-waktu-libur-lebaran"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-016",
+    "nama": "Pulau Putri",
+    "nama_alternatif": [],
+    "kategori": "wisata",
+    "subkategori": "pulau_wisata",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Lepas pantai Nongsa",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "kategori_asli": "ruang_publik_wisata"
+    },
+    "status_data": null,
+    "catatan": "Belum diriset. Kelurahan perlu dicek.",
+    "tag_osm": "place=island",
+    "sumber_url": [
+      "https://www.detik.com/sumut/wisata/d-7850767/rekomendasi-destinasi-wisata-pantai-di-batam-untuk-isi-waktu-libur-lebaran"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "rp-017",
+    "nama": "Kepri Coral",
+    "nama_alternatif": [],
+    "kategori": "wisata",
+    "subkategori": "pulau_wisata",
+    "kecamatan": "Galang",
+    "kelurahan": "Pulau Abang",
+    "alamat": "Pulau Pengalap",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "07.00-22.00 (detik)",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "paket one-day ±Rp350.000-400.000 (nonresmi)",
+      "cara_booking": "pengelola/agen",
+      "ramah_anak": true,
+      "kategori_asli": "ruang_publik_wisata",
+      "aktivitas": [
+        "snorkeling"
+      ],
+      "harga_rincian": "±Rp350.000 weekday / Rp400.000 weekend, termasuk boat PP dan makan siang"
+    },
+    "status_data": null,
+    "catatan": "Harga paket dari sumber nonresmi, cek ke pengelola.",
+    "tag_osm": "place=island",
+    "sumber_url": [
+      "https://www.detik.com/sumut/wisata/d-7149877/kepri-coral-resort-batam-lokasi-jam-buka-harga-dan-fasilitas",
+      "https://tempatwisata.net/%E2%88%9A-kepri-coral-batam-wisata-laut-modern-dengan-glass-bottom-boat-dan-keindahan-alam-bawah-laut-review-info/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-001",
+    "nama": "Sukajadi Padel Club",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "padel",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Dekat Sukajadi Swimming Pool & Clubhouse",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapangan": 3,
+      "harga": "Rp350.000 (Court 2)",
+      "cara_booking": "AYO",
+      "catatan_harga": "Harga AYO dinamis per slot dan tanggal."
+    },
+    "status_data": null,
+    "catatan": "Kelurahan perlu dicek.",
+    "tag_osm": "leisure=sports_centre + sport=padel",
+    "sumber_url": [
+      "https://ayo.co.id/v/sukajadi-padel-club"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-002",
+    "nama": "Padel Orozon",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "padel",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Sungai Panas",
+    "alamat": "Ruko Aku Tahu I Blok H No. 1 (samping Sekolah Yehonala)",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapangan": 3,
+      "harga": "mulai Rp180.000",
+      "cara_booking": "AYO",
+      "fasilitas": [
+        "gym",
+        "lounge"
+      ],
+      "catatan_harga": "Harga AYO dinamis per slot dan tanggal."
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "leisure=sports_centre + sport=padel",
+    "sumber_url": [
+      "https://ayo.co.id/v/padel-orozon"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-003",
+    "nama": "Rally Padel",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "padel",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Sungai Panas",
+    "alamat": "Komp. Laksamana Bintan Blok A No. 15",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapangan": 8,
+      "harga": "mulai Rp88.000",
+      "cara_booking": "AYO",
+      "fasilitas": [
+        "café",
+        "pro shop"
+      ],
+      "catatan_harga": "Harga AYO dinamis per slot dan tanggal."
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "leisure=sports_centre + sport=padel",
+    "sumber_url": [
+      "https://ayo.co.id/v/rally-padel"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-004",
+    "nama": "Primecourt",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "padel",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": "Jl. Duyung, Primecourt Centre",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "06.00-24.00 tiap hari",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapangan": 4,
+      "harga": "mulai Rp350.000",
+      "cara_booking": "AYO",
+      "catatan_harga": "Harga AYO dinamis per slot dan tanggal."
+    },
+    "status_data": null,
+    "catatan": "Kecamatan disebut Batu Ampar tetapi perlu dicek. Kelurahan perlu dicek.",
+    "tag_osm": "leisure=sports_centre + sport=padel",
+    "sumber_url": [
+      "https://ayo.co.id/v/primecourt"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-005",
+    "nama": "Dragon 89 Padel",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "padel",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": "Apartemen Monde City (samping Sekolah Mondial)",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "07.00-00.00",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapangan": 8,
+      "harga": "mulai Rp150.000",
+      "cara_booking": "AYO",
+      "catatan_harga": "Harga AYO dinamis per slot dan tanggal."
+    },
+    "status_data": null,
+    "catatan": "Kecamatan dan kelurahan perlu dicek.",
+    "tag_osm": "leisure=sports_centre + sport=padel",
+    "sumber_url": [
+      "https://ayo.co.id/v/dragon-89-padel"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-006",
+    "nama": "Play Padel",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "padel",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Jl. Engku Putri (samping SPBU Ocarina)",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapangan": 2,
+      "harga": "mulai Rp180.000",
+      "cara_booking": "AYO",
+      "catatan_harga": "Harga AYO dinamis per slot dan tanggal."
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "leisure=sports_centre + sport=padel",
+    "sumber_url": [
+      "https://ayo.co/v/play-padel"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-007",
+    "nama": "S Padel Club",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "padel",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Batam Centre",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapangan": 4,
+      "harga": "Rp250.000-320.000",
+      "cara_booking": "AYO",
+      "catatan_harga": "Harga AYO dinamis per slot dan tanggal."
+    },
+    "status_data": "rencana",
+    "catatan": "Masih berstatus \"coming soon\" di AYO. Kelurahan perlu dicek.",
+    "tag_osm": "leisure=sports_centre + sport=padel",
+    "sumber_url": [
+      "https://ayo.co/v/s-padel-club"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-008",
+    "nama": "BC Padel Club",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "padel_pickleball",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Gedung AMP, samping One Batam Mall, Jl. Raja H. Fisabilillah",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapangan": 6,
+      "harga": "mulai Rp99.000",
+      "cara_booking": "AYO",
+      "olahraga": [
+        "padel",
+        "pickleball"
+      ],
+      "harga_court_tertentu": "Rp300.000",
+      "catatan_harga": "Harga AYO dinamis per slot dan tanggal."
+    },
+    "status_data": null,
+    "catatan": "Kelurahan perlu dicek.",
+    "tag_osm": "leisure=sports_centre + sport=padel",
+    "sumber_url": [
+      "https://ayo.co/v/bc-padel-club"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-009",
+    "nama": "Padel Box Orchid",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "padel",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "GOR Bulu Tangkis Orchid Park, Batam Centre",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapangan": 1,
+      "harga": "Rp150.000",
+      "cara_booking": "AYO",
+      "indoor": true,
+      "catatan_harga": "Harga AYO dinamis per slot dan tanggal."
+    },
+    "status_data": null,
+    "catatan": "Kelurahan perlu dicek.",
+    "tag_osm": "leisure=sports_centre + sport=padel",
+    "sumber_url": [
+      "https://ayo.co/v/padel-box-orchid"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-010",
+    "nama": "Batu Aji Padel Arena",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "padel",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": "Workshop Blok G, samping Kantor Camat, seberang OS Hotel Batu Aji",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapangan": 3,
+      "cara_booking": "AYO",
+      "ramah_pemula": true
+    },
+    "status_data": null,
+    "catatan": "Kecamatan Sagulung menurut AYO (laporan menulis \"Sagulung (versi AYO)\"), perlu dicek. Kelurahan perlu dicek.",
+    "tag_osm": "leisure=sports_centre + sport=padel",
+    "sumber_url": [
+      "https://ayo.co/v/batu-aji-padel-arena"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-011",
+    "nama": "Kawasan Olahraga Temenggung Abdul Jamal",
+    "nama_alternatif": [
+      "Stadion Temenggung Abdul Jamal"
+    ],
+    "kategori": "olahraga",
+    "subkategori": "stadion_gor",
+    "kecamatan": "Sei Beduk",
+    "kelurahan": "Muka Kuning",
+    "alamat": "Jl. Ahmad Yani, Muka Kuning",
+    "lat": 1.08599,
+    "lng": 104.03105,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Decode manual Plus Code 32PJ+9CV (kode ditampilkan Trip.com/Saraga); akurasi ±10 m kalau kodenya benar. Belum dicek di OSM.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": "(0778) 462164",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "pengelola": "BP Batam (HGAT)",
+      "cara_booking": "kantor pengelola",
+      "fasilitas": [
+        "stadion",
+        "sport hall",
+        "mini soccer"
+      ],
+      "sewa": "per fasilitas"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "leisure=stadium",
+    "sumber_url": [
+      "https://bupa.bpbatam.go.id/unit-usaha/kawasan-temenggung-abdul-jamal/",
+      "https://us.trip.com/travel-guide/attraction/batam/stadion-temenggung-abdul-jamal-142476048/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-012",
+    "nama": "GOR Bulutangkis Temenggung",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "badminton",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": "Kawasan Temenggung Abdul Jamal",
+    "lat": 1.08909,
+    "lng": 104.0317,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Decode manual Plus Code 32QJ+JMP (kode ditampilkan Trip.com/Saraga); akurasi ±10 m kalau kodenya benar. Belum dicek di OSM.",
+    "jam_layanan": "08.00-22.00",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lapangan": 8,
+      "harga": "Rp85.000/jam; Rp130.000/2 jam"
+    },
+    "status_data": null,
+    "catatan": "Kecamatan perlu dicek: Saraga menyebut Kabil/Nongsa, sedangkan kawasan Temenggung Abdul Jamal tercatat di Sei Beduk. Kelurahan perlu dicek.",
+    "tag_osm": "leisure=sports_centre + sport=badminton",
+    "sumber_url": [
+      "https://saraga.id/venue/gor-bulutangkis-temenggung"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-013",
+    "nama": "Tering Bay Golf & Country Club",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "golf",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Teluk Tering Bay, ±5 menit dari Nongsapura",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "hole": 18,
+      "par": 72,
+      "desainer": "Greg Norman",
+      "cara_booking": "tee time lewat klub/agen"
+    },
+    "status_data": null,
+    "catatan": "Kelurahan perlu dicek.",
+    "tag_osm": "leisure=golf_course",
+    "sumber_url": [
+      "https://www.golfasian.com/golf-courses/indonesia-golf-courses/batam/",
+      "https://travel.kompas.com/read/2019/05/22/143615527/kenalkan-ini-6-lapangan-golf-bertaraf-internasional-di-batam?page=all"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-014",
+    "nama": "Palm Springs Golf & Beach Resort",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "golf",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Nongsa",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "hole": 27,
+      "desainer": "Larry Nelson"
+    },
+    "status_data": null,
+    "catatan": "Kelurahan perlu dicek.",
+    "tag_osm": "leisure=golf_course",
+    "sumber_url": [
+      "https://travel.kompas.com/read/2019/05/22/143615527/kenalkan-ini-6-lapangan-golf-bertaraf-internasional-di-batam?page=all",
+      "https://www.golfsavers.com/indonesia/batam-island-golf-courses"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-015",
+    "nama": "Tamarin Santana Golf Club",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "golf",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": "Nongsa",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "desainer": "Jack Nicklaus"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status operasional perlu dicek. Kelurahan perlu dicek.",
+    "tag_osm": "leisure=golf_course",
+    "sumber_url": [
+      "https://batam-golf.com/batam-golf-paradise/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-016",
+    "nama": "Southlinks Country Club",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "golf",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": "Kawasan Dam Sei Ladi",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "hole": 18,
+      "par": 72,
+      "buka_untuk_umum_sejak": 1996
+    },
+    "status_data": null,
+    "catatan": "Kecamatan perlu dicek (kawasan Sei Ladi). Kelurahan perlu dicek.",
+    "tag_osm": "leisure=golf_course",
+    "sumber_url": [
+      "https://travel.kompas.com/read/2019/05/22/143615527/kenalkan-ini-6-lapangan-golf-bertaraf-internasional-di-batam?page=all"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-017",
+    "nama": "Indah Puri Golf Resort",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "golf",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": "Sekupang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "hole": 18,
+      "desainer": "Ronald Fream"
+    },
+    "status_data": null,
+    "catatan": "Kelurahan perlu dicek.",
+    "tag_osm": "leisure=golf_course",
+    "sumber_url": [
+      "https://www.golfsavers.com/indonesia/batam-island-golf-courses"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-018",
+    "nama": "Padang Golf Sukajadi",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "golf",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Sukajadi",
+    "alamat": "Sukajadi",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "leisure=golf_course",
+    "sumber_url": [
+      "https://travel.kompas.com/read/2019/05/22/143615527/kenalkan-ini-6-lapangan-golf-bertaraf-internasional-di-batam?page=all"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-019",
+    "nama": "Batam Hills Golf Resort",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "golf",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": "Sei Temiang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "Kecamatan perlu dicek (Sei Temiang). Kelurahan perlu dicek.",
+    "tag_osm": "leisure=golf_course",
+    "sumber_url": [
+      "https://batam-golf.com/tag/tering-bay-nongsa/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-020",
+    "nama": "FIT HUB Batam Centre",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "gym_jaringan",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Komp. Raffles City, Jl. Raja H. Fisabilillah Blok E",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "Sen-Jum 05.00-24.00; Sab 06.00-21.00",
+    "kontak": {
+      "telepon": "0851 8282 6565",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "cara_booking": "membership situs/app"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "leisure=fitness_centre",
+    "sumber_url": [
+      "https://fithub.id/location/batam/batam-centre"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-021",
+    "nama": "Celebrity Fitness Kepri Mall",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "gym_jaringan",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Sukajadi",
+    "alamat": "Kepri Mall, Jl. Sudirman",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "usang",
+    "catatan": "Kemungkinan sudah tutup (ditandai \"Closed\" di direktori pihak ketiga).",
+    "tag_osm": "leisure=fitness_centre",
+    "sumber_url": [
+      "https://allabout.events/indonesia-batam-fitness-clubs/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-022",
+    "nama": "The Star Gym Fitness Centre",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "gym_independen",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Air Mas Commercial Complex Blok A2 No. 11",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status operasional perlu dicek.",
+    "tag_osm": "leisure=fitness_centre",
+    "sumber_url": [
+      "https://allabout.events/indonesia-batam-fitness-clubs/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-023",
+    "nama": "The Master Gym",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "gym_independen",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": "Ruko Harbour Bay Blok G15-16, Jl. Duyung",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status operasional perlu dicek. Kecamatan disebut Batu Ampar tetapi perlu dicek. Kelurahan perlu dicek.",
+    "tag_osm": "leisure=fitness_centre",
+    "sumber_url": [
+      "https://allabout.events/indonesia-batam-fitness-clubs/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-024",
+    "nama": "Sport Hill Gym",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "gym_independen",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": "Ruko Puri Mas, sebelah Hotel Kaliban, Batam Center",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status operasional perlu dicek. Kelurahan perlu dicek.",
+    "tag_osm": "leisure=fitness_centre",
+    "sumber_url": [
+      "https://allabout.events/indonesia-batam-fitness-clubs/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-025",
+    "nama": "Revo Gym Batam",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "gym_independen",
+    "kecamatan": null,
+    "kelurahan": "Baloi Permai",
+    "alamat": "Ruko Rananta Blok B No. 7, Jl. The Legend of Malacca",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status operasional perlu dicek. Kecamatan perlu dicek.",
+    "tag_osm": "leisure=fitness_centre",
+    "sumber_url": [
+      "https://allabout.events/indonesia-batam-fitness-clubs/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-026",
+    "nama": "Climbing Wall Dataran Engku Putri",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "panjat_dinding",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Sisi barat Dataran Engku Putri",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "fasilitas publik"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "sport=climbing",
+    "sumber_url": [
+      "http://info.co.id/listing/alun-alun-engku-putri/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "or-027",
+    "nama": "Skatepark Engku Putri",
+    "nama_alternatif": [],
+    "kategori": "olahraga",
+    "subkategori": "skatepark",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Sisi selatan/utara Dataran Engku Putri",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "harga": "gratis",
+      "komunitas": {
+        "nama": "BASCOM",
+        "akun_x": "@BASCOMofficial"
+      }
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "leisure=pitch + sport=skateboard",
+    "sumber_url": [
+      "https://x.com/bascomofficial?lang=id",
+      "http://info.co.id/listing/alun-alun-engku-putri/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-001",
+    "nama": "Hypermart Mega Mall Batam Centre",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "hypermarket",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Mega Mall Batam Centre LG, Jl. Engku Putri No. 1",
+    "lat": 1.12949,
+    "lng": 104.05607,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Apple Maps; Grab 1.12921, 104.05597. Belum dicek di OSM.",
+    "jam_layanan": "10.00-22.00",
+    "kontak": {
+      "telepon": "+62 778 470200",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "shop=supermarket",
+    "sumber_url": [
+      "https://mart.grab.com/id/en/merchant/hypermart-batam-center/6-C3X1WE43NZKKL2",
+      "https://maps.apple.com/place?_provider=9902&address=Jalan+Engku+Putri+Utara+No.+1%2C+Batam%2C+Riau+Islands+29461%2C+Indonesia&coordinate=1.129490%2C104.056068&name=Hypermart&place-id=I1C7C8E8DC7583665"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-002",
+    "nama": "Hypermart Nagoya Hill",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "hypermarket",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Lubuk Baja Kota",
+    "alamat": "Komp. Nagoya Hill Superblock, Jl. Teuku Umar",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "10.00-22.00",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "shop=supermarket",
+    "sumber_url": [
+      "https://batam.co.id/usaha/supermarket/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-003",
+    "nama": "Lotte Grosir Batam",
+    "nama_alternatif": [
+      "Lotte Mart Wholesale"
+    ],
+    "kategori": "belanja",
+    "subkategori": "grosir",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Jl. Engku Putri Utara (depan Harmoni One)",
+    "lat": 1.13083,
+    "lng": 104.04861,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Wikimapia. Belum dicek di OSM.",
+    "jam_layanan": "09.00-21.00",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "buka_sejak": "2016-05-24"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "shop=wholesale",
+    "sumber_url": [
+      "https://batampos.co.id/2016/05/25/lotte-mart-hadir-di-batam-tawarkan-belanja-lebih-murah/",
+      "http://wikimapia.org/35636969/Lotte-Mart-Batam",
+      "https://id.trip.com/travel-guide/shops/batam-center/lotte-grosir-batam-151877789/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-004",
+    "nama": "Grand Lucky",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "supermarket",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Belum diriset; alamat cabang Batam belum ditemukan.",
+    "tag_osm": "shop=supermarket",
+    "sumber_url": [],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-005",
+    "nama": "Mitra10 Batam",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "bahan_bangunan",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Jl. Putri Malu, Batam Centre (Gedung Batam Expo, depan kampus UIB lama)",
+    "lat": 1.13329,
+    "lng": 104.04636,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "idalamat. Belum dicek di OSM.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": "(0778) 470303",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "delivery": true
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "shop=doityourself",
+    "sumber_url": [
+      "https://www.mitra10.com/mitra10-store/Mitra10-Batam",
+      "https://www.mitra10.com/mitra10-stores",
+      "https://idalamat.com/alamat/664132/mitra10-batam-batam-kepulauan-riau",
+      "https://apabuka.com/place/mitra10-batam"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-006",
+    "nama": "ACE Hardware Batam Sei Panas",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "perkakas",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Sungai Panas",
+    "alamat": "Jl. Laksamana Bintan",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Sumber pihak ketiga, cek status.",
+    "tag_osm": "shop=hardware",
+    "sumber_url": [
+      "https://id789926-ace-hardware-batam-sei-panas.contact.page/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-007",
+    "nama": "Gramedia Batam City Square",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "buku_atk",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Batu Selicin",
+    "alamat": "BCS Mall, Jl. Bunga Raya",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "09.00-21.00 (situs Gramedia); sumber lain 10.00-22.00",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "buka_sejak": "2005-11-30"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "shop=books",
+    "sumber_url": [
+      "https://ebooks.gramedia.com/id/toko",
+      "http://regiosumatera.blogspot.com/p/gramedia-batam-city-square.html"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-008",
+    "nama": "Gramedia Grand Batam Mall",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "buku_atk",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Batu Selicin",
+    "alamat": "Grand Batam Mall Lt. 2 A1, Jl. Pembangunan",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "buka_sejak": "2023-04-14"
+    },
+    "status_data": null,
+    "catatan": "Jam di situs Gramedia tertulis \"09:00 - 10:00\" (jelas typo), cek ulang.",
+    "tag_osm": "shop=books",
+    "sumber_url": [
+      "https://www.gramedia.com/store/gramedia-batam-grand-mall",
+      "https://batam.tribunnews.com/2023/04/14/gramedia-kini-hadir-di-grand-batam-mall-ada-diskon-dan-promo-spesial-ramadan"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-009",
+    "nama": "Toko Buku Gloria",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "buku",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": "Jl. Laksamana Bintan, Ruko Grand California Blok B1 No. 10",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "Kecamatan disebut Batam Kota tetapi perlu dicek. Kelurahan perlu dicek.",
+    "tag_osm": "shop=books",
+    "sumber_url": [
+      "https://batam.co.id/lifestyle/toko-buku-gramedia-di-batam/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-010",
+    "nama": "Pasar Seroja (Dapur 12)",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_pemko",
+    "kecamatan": "Sagulung",
+    "kelurahan": "Sei Pelunggut",
+    "alamat": "Kavling Seroja, Dapur 12",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "status_kepemilikan": "milik Pemko"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://mediacenter.batam.go.id/2018/08/18/disperindag-aktifkan-kembali-pasar-seroja/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-011",
+    "nama": "Pasar Melayu Serumpun",
+    "nama_alternatif": [
+      "Pasar Tanjungpiayu"
+    ],
+    "kategori": "belanja",
+    "subkategori": "pasar_pemko",
+    "kecamatan": "Sei Beduk",
+    "kelurahan": "Tanjung Piayu",
+    "alamat": "Tanjung Piayu",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "pedagang": "±200",
+      "status_kepemilikan": "milik Pemko",
+      "nama_asli_laporan": "Pasar Melayu Serumpun (Tanjungpiayu)"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://mediacenter.batam.go.id/2019/09/19/pasar-tanjungpiayu-resmi-milik-pemko-batam/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-012",
+    "nama": "Pasar Hang Tuah",
+    "nama_alternatif": [
+      "Pasar Hangtuah"
+    ],
+    "kategori": "belanja",
+    "subkategori": "pasar_pemko",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Batu Besar",
+    "alamat": "Batu Besar",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "qris": true,
+      "status_kepemilikan": "binaan Disperindag",
+      "keterangan_qris": "percontohan QRIS"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://mediacenter.batam.go.id/2020/10/26/qris-siap-launching-di-pasar-kota-batam/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-013",
+    "nama": "Pasar TPID",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_pemko",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": "Kompleks Dreamland",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "kios": 250,
+      "lapak": 56,
+      "status_kepemilikan": "Pemko"
+    },
+    "status_data": null,
+    "catatan": "Kecamatan dan kelurahan perlu dicek.",
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://disperindag.batam.go.id/2021/01/26/kemenpan-rb-puji-inovasi-pasartpid-disperindag-batam-jadi-contoh-daerah-lain/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-014",
+    "nama": "Pasar Tiban Lama (Dang Merdu)",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar",
+    "kecamatan": "Sekupang",
+    "kelurahan": "Tiban Lama",
+    "alamat": "Tiban Lama",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://mediacenter.batam.go.id/2018/08/18/disperindag-aktifkan-kembali-pasar-seroja/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-015",
+    "nama": "Pasar Induk Belakang Padang",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar",
+    "kecamatan": "Belakang Padang",
+    "kelurahan": null,
+    "alamat": "Belakang Padang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "status_kepemilikan": "pemerintah (versi jurnal)"
+    },
+    "status_data": null,
+    "catatan": "Kelurahan perlu dicek. Kemungkinan sama dengan \"Pasar Belakangpadang\" dalam daftar 6 pasar rakyat milik Pemko (Zarefriadi, Batam Pos 12/2/2018); laporan tidak menyatakannya eksplisit.",
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://www.researchgate.net/publication/367132501"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-016",
+    "nama": "Pasar Rakyat Batu Aji",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar",
+    "kecamatan": "Batu Aji",
+    "kelurahan": "Tanjung Uncang",
+    "alamat": "Tanjung Uncang",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "status_kepemilikan": "pemerintah (versi jurnal)"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://www.researchgate.net/publication/367132501"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-017",
+    "nama": "Pasar Fanindo",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_swasta",
+    "kecamatan": "Batu Aji",
+    "kelurahan": "Tanjung Uncang",
+    "alamat": "Fanindo",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "status_kepemilikan": "swasta"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://ejournal.upbatam.ac.id/index.php/jim/article/download/684/446/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-018",
+    "nama": "Pasar Botania",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_swasta",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Belian",
+    "alamat": "Botania",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "status_kepemilikan": "swasta"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://ejournal.upbatam.ac.id/index.php/jim/article/download/684/446/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-019",
+    "nama": "Pasar Pagi Jodoh",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_pagi",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Lubuk Baja Kota",
+    "alamat": "Jodoh",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "05.30-11.00 (pihak ketiga)",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "status_kepemilikan": "swasta/kaget"
+    },
+    "status_data": "sumber_tunggal",
+    "catatan": "Jam dari sumber pihak ketiga (Traveloka, via riset subagen).",
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://www.traveloka.com/id-id/explore/destination/tempat-belanja-murah-di-batam-acc/386795"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "bl-020",
+    "nama": "Pasar Induk Jodoh",
+    "nama_alternatif": [],
+    "kategori": "belanja",
+    "subkategori": "pasar_pemko",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": "Sungai Jodoh",
+    "alamat": "Jodoh",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "status_kepemilikan": "aset Pemko",
+      "status_pembangunan": "pembangunan; KSP dengan PT UJKM 17/3/2026; relokasi TOS 3000 mulai 2027, semua pedagang pindah 2028",
+      "gedung": "5 lantai",
+      "luas_lahan": "2,1 ha"
+    },
+    "status_data": "rencana",
+    "catatan": "Sedang dibangun ulang dan belum beroperasi; jangan tampilkan sebagai pasar yang beroperasi. KSP Pemko Batam dengan PT Usaha Jaya Karya Makmur (UJKM) diteken Wali Kota Amsakar Achmad 17 Maret 2026 (mediacenter.batam.go.id). Menurut Plh Kadisperindag Suhar (Gokepri), relokasi pedagang TOS 3000 mulai 2027 dan semua pedagang pindah pada 2028. BatamNow (20/8/2026) melaporkan Direktur PT UJKM masuk DPO Bareskrim, jadi jadwal bisa molor.",
+    "tag_osm": "amenity=marketplace",
+    "sumber_url": [
+      "https://kepri.antaranews.com/berita/254178/pemko-batam-bangun-pasar-induk-sediakan-tempat-layak-bagi-pedagang",
+      "https://www.kompas.id/artikel/kegagalan-masa-lalu-jadi-pembelajaran-revitalisasi-pasar-induk-batam"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-001",
+    "nama": "5T Money Changer",
+    "nama_alternatif": [
+      "PT Lima Triniti Valasindo"
+    ],
+    "kategori": "jasa",
+    "subkategori": "money_changer",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": "Komp. Nagoya Paradise Blok B No. 6",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "izin": "klaim BI di situs resmi",
+      "nama_asli_laporan": "5T Money Changer (PT Lima Triniti Valasindo)"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Klaim berlisensi BI dari situs resmi usaha. Status izin wajib dicek ulang ke daftar KUPVA BB terbaru BI (dokumen BI yang terindeks tidak jelas tanggalnya). Kelurahan perlu dicek.",
+    "tag_osm": "amenity=bureau_de_change",
+    "sumber_url": [
+      "https://www.5tmoneychanger.co.id/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-002",
+    "nama": "PT Nagoya Centre Money Changer",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "money_changer",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": null,
+    "alamat": "Gedung Harbour Bay Mall Lower Ground",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "izin": "daftar KUPVA BB BI (cek terbaru)"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status izin wajib dicek ulang ke daftar KUPVA BB terbaru BI (dokumen BI yang terindeks tidak jelas tanggalnya). Kelurahan perlu dicek.",
+    "tag_osm": "amenity=bureau_de_change",
+    "sumber_url": [
+      "https://www.bi.go.id/id/edukasi/PublishingImages/Default/Daftar%20Nama%20Penyelenggara%20KUPVA%20BB%20Berizin.pdf"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-003",
+    "nama": "PT Batam Mega Valasindo",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "money_changer",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": "Komp. Nagoya City Centre Blok A No. 14",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "izin": "daftar KUPVA BB BI"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status izin wajib dicek ulang ke daftar KUPVA BB terbaru BI (dokumen BI yang terindeks tidak jelas tanggalnya). Kelurahan perlu dicek.",
+    "tag_osm": "amenity=bureau_de_change",
+    "sumber_url": [
+      "https://www.bi.go.id/id/edukasi/PublishingImages/Default/Daftar%20Nama%20Penyelenggara%20KUPVA%20BB%20Berizin.pdf"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-004",
+    "nama": "PT Citra Niaga Valasindo",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "money_changer",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Lubuk Baja Kota",
+    "alamat": "Komp. Nagoya Business Centre Blok I No. 3",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "izin": "daftar KUPVA BB BI"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status izin wajib dicek ulang ke daftar KUPVA BB terbaru BI (dokumen BI yang terindeks tidak jelas tanggalnya).",
+    "tag_osm": "amenity=bureau_de_change",
+    "sumber_url": [
+      "https://www.bi.go.id/id/edukasi/PublishingImages/Default/Daftar%20Nama%20Penyelenggara%20KUPVA%20BB%20Berizin.pdf",
+      "https://wise.com/gb/currency-exchange/batam"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-005",
+    "nama": "PT Moneywell Batam Valasindo",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "money_changer",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": "Nagoya Hill Kios Mall Blok LG 03 No. 05",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "izin": "daftar KUPVA BB BI"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Status izin wajib dicek ulang ke daftar KUPVA BB terbaru BI (dokumen BI yang terindeks tidak jelas tanggalnya). Kelurahan perlu dicek.",
+    "tag_osm": "amenity=bureau_de_change",
+    "sumber_url": [
+      "https://www.bi.go.id/id/edukasi/PublishingImages/Default/Daftar%20Nama%20Penyelenggara%20KUPVA%20BB%20Berizin.pdf"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-006",
+    "nama": "PT Alfa Gemilang Valasindo",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "money_changer",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": "Komp. Nagoya Hill Shop Mall Blok Q No. 2",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "izin": "daftar BI 2017, mungkin usang"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Data dari daftar KUPVA berizin BI per 2017, mungkin usang; cek ulang ke daftar BI terbaru. Kelurahan perlu dicek.",
+    "tag_osm": "amenity=bureau_de_change",
+    "sumber_url": [
+      "https://id.scribd.com/document/696042235/Daftar-KUPVA-Berizin-BI-Per-2017"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-007",
+    "nama": "Money Changer Mega Mall Batam Centre",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "money_changer",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Mega Mall Batam Centre, Lantai GF",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": "+62 778 470151",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "izin": "belum dicek"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Nama usaha belum pasti; izin belum dicek. Telepon dari sumber pihak ketiga (Wise).",
+    "tag_osm": "amenity=bureau_de_change",
+    "sumber_url": [
+      "https://wise.com/gb/currency-exchange/batam"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-008",
+    "nama": "Samsung Service Center Batam (Unicom)",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "service_center",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Kampung Pelita",
+    "alamat": "Jl. Raden Patah, Komp. Sriwijaya No. 01-02, Bukit Nagoya",
+    "lat": 1.13891,
+    "lng": 104.01619,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "idalamat; Wikimapia ≈1.1389, 104.0161. Belum dicek di OSM.",
+    "jam_layanan": "Sen-Jum 08.30-17.00; Sab 08.30-15.30",
+    "kontak": {
+      "telepon": "0800-112-8888 / 0800-112-7777",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "Telepon adalah nomor call center Samsung.",
+    "tag_osm": "craft=electronics_repair + brand=Samsung",
+    "sumber_url": [
+      "https://www.brokerindotekno.co.id/wp-content/uploads/2025/05/List-Service-Center-for-TTS-website-downloaded-content.pdf",
+      "https://servicecenter-id.com/samsung-service-center-di-batam/",
+      "https://idalamat.com/alamat/63527/samsung-service-center-batam"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-009",
+    "nama": "Samsung Service Center Nongsa (Panbil)",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "service_center_ac_tv",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Kabil",
+    "alamat": "Ruko Panbil Blok A No. 8, Jl. Ahmad Yani, Komp. Panbil Industri",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "Sen-Jum 09.00-18.00",
+    "kontak": {
+      "telepon": "(0778) 371198",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "produk": [
+        "TV",
+        "AC"
+      ]
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "craft=electronics_repair + brand=Samsung",
+    "sumber_url": [
+      "https://www.brokerindotekno.co.id/wp-content/uploads/2025/05/List-Service-Center-for-TTS-website-downloaded-content.pdf"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-010",
+    "nama": "Xiaomi Exclusive Service Center Batam",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "service_center",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": "Baloi Indah",
+    "alamat": "Komp. Lucky Plaza Lt. 2 No. 12A, Nagoya",
+    "lat": 1.13421,
+    "lng": 104.00143,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "idalamat. Belum dicek di OSM.",
+    "jam_layanan": "Tidak konsisten: 09.00-17.00 Senin-Jumat atau Senin-Sabtu 10.00-20.00 (cek ulang)",
+    "kontak": {
+      "telepon": "(0778) 4882573",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "craft=electronics_repair + brand=Xiaomi",
+    "sumber_url": [
+      "https://idalamat.com/alamat/63008/xiaomi-exclusive-service-batam",
+      "https://www.brokerindotekno.co.id/wp-content/uploads/2025/05/List-Service-Center-for-TTS-website-downloaded-content.pdf",
+      "https://servicecenter-id.com/service-center-xiaomi-batam-komp-lucky-plaza/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-011",
+    "nama": "OPPO Service Center Batam",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "service_center",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": "Komp. Nagoya Hill Superblock GF - GR 11 No. 8, Jl. Teuku Umar",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "Kelurahan perlu dicek.",
+    "tag_osm": "craft=electronics_repair + brand=OPPO",
+    "sumber_url": [
+      "https://www.brokerindotekno.co.id/wp-content/uploads/2025/05/List-Service-Center-for-TTS-website-downloaded-content.pdf"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-012",
+    "nama": "JNE Cabang Utama Batam",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "ekspedisi",
+    "kecamatan": "Sekupang",
+    "kelurahan": "Tiban Indah",
+    "alamat": "Ruko Tiban Centre Blok A No. 11-12, Jl. Gajah Mada",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "08.00-17.00 Sen-Sab (pihak ketiga)",
+    "kontak": {
+      "telepon": "(0778) 5705333",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "kode_cabang": "BTH"
+    },
+    "status_data": null,
+    "catatan": "Jam dari sumber pihak ketiga.",
+    "tag_osm": "amenity=post_office + brand=JNE",
+    "sumber_url": [
+      "https://www.jne.co.id/hubungi-kami",
+      "https://cekresi.com/alamat/jne/di/batam-1801"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-013",
+    "nama": "Kantor Pos Batam (KPRK 29400)",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "pos",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Jl. Jend. Sudirman, Batam Centre",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": "0778-462496",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "Jam layanan tidak konsisten antarsumber, cek ulang.",
+    "tag_osm": "amenity=post_office + brand=Pos Indonesia",
+    "sumber_url": [
+      "https://kemitraan.posindonesia.co.id/information",
+      "https://jambuka-kantorpos.blogspot.com/2017/10/jam-buka-kantor-pos-batam-sudirman.html",
+      "https://idalamat.com/alamat/80618/kantor-pos-batam",
+      "https://kepriau.com/alamat-kantor-pos-batam-dan-nomor-telepon/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-014",
+    "nama": "Kantor Pos Batam Sungai Jodoh",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "pos",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": "Sungai Jodoh",
+    "alamat": "Komp. Jodoh Square Blok C No. 38",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=post_office + brand=Pos Indonesia",
+    "sumber_url": [
+      "http://kantorpos.posindonesia.co.id/kantorposcabangdalamkotalist.php?showmaster=kantorpospemeriksa&fk_Nomor_Dirian=29400"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-015",
+    "nama": "Kantor Pos Batam Fanindo",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "pos",
+    "kecamatan": "Batu Aji",
+    "kelurahan": "Tanjung Uncang",
+    "alamat": "Pasar Fanindo Blok I No. 39-40",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": "amenity=post_office + brand=Pos Indonesia",
+    "sumber_url": [
+      "http://kantorpos.posindonesia.co.id/kantorposcabangdalamkotalist.php?showmaster=kantorpospemeriksa&fk_Nomor_Dirian=29400"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-016",
+    "nama": "J&T Express Batam (Botania 2)",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "ekspedisi",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Belian",
+    "alamat": "Ruko Botania 2 Blok B6 No. 8",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "08.00-17.00 (agregator)",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "kode_gerai": "BTH02"
+    },
+    "status_data": null,
+    "catatan": "Jam dari agregator.",
+    "tag_osm": "amenity=post_office + brand=J&T Express",
+    "sumber_url": [
+      "https://cekresi.com/alamat/jnt/di/batam-1801"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-017",
+    "nama": "SiCepat Batam Kota",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "ekspedisi",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Sungai Panas",
+    "alamat": "Jl. Laksamana Bintan Blok F No. 8, Komp. Tanah Mas",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Data 2022–2023 (PDF gerai SiCepat), mungkin usang.",
+    "tag_osm": "amenity=post_office + brand=SiCepat",
+    "sumber_url": [
+      "https://assets.tokopedia.net/asts/helpcenter/%7B2023%7D/%7B08%7D/Gerai%20Sicepat%20-%20Gerai%20SiCepat%20FM_16.pdf"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  },
+  {
+    "id": "js-018",
+    "nama": "Lion Parcel Batam (agen POS GOVIN)",
+    "nama_alternatif": [],
+    "kategori": "jasa",
+    "subkategori": "ekspedisi",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Belian",
+    "alamat": "Ruko Bunga Raya Blok B No. 2, Jl. Tengku Sulung",
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": "08.00-20.00 (situs agen)",
+    "kontak": {
+      "telepon": "(0778) 7431111",
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {},
+    "status_data": null,
+    "catatan": "Data dari situs agen (lionparcelbatam.id), bukan situs resmi Lion Parcel (lionparcel.com).",
+    "tag_osm": "amenity=post_office + brand=Lion Parcel",
+    "sumber_url": [
+      "https://www.lionparcelbatam.id/alamat-lion-parcel-batam-center/"
+    ],
+    "sumber_riset": "12-ruang-publik-olahraga-jasa"
+  }
+]

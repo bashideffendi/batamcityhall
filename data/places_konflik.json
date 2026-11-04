@@ -1,0 +1,1034 @@
+[
+ {
+  "id": "hotel-wyndham-panbil-batam-hotel",
+  "nama": "WYNDHAM PANBIL BATAM HOTEL",
+  "jenis": "alamat_beda",
+  "a": "JL. AHMAD YANI KEL. MUKA KUNING KEC. SUNGAI BEDUK",
+  "b": "JL AHMAD YANI KEL. SUNGAI BEDUK KEC. MUKA KUNING",
+  "sumber": [
+   [
+    "00-data-hotel-user"
+   ],
+   [
+    "00-data-hotel-user"
+   ]
+  ]
+ },
+ {
+  "id": "tanjung-uma",
+  "nama": "Kampung Tua Tanjung Uma",
+  "jenis": "koordinat_beda",
+  "a": [
+   1.152,
+   104.002,
+   [
+    "03-landmark-jalur-mural"
+   ]
+  ],
+  "b": [
+   1.158,
+   103.988,
+   [
+    "04-kampung-tua"
+   ]
+  ],
+  "jarak_m": 1693
+ },
+ {
+  "id": "kt-tiban",
+  "nama": "Kampung Tua Tiban",
+  "jenis": "koordinat_beda",
+  "a": [
+   1.11,
+   103.96,
+   [
+    "03-landmark-jalur-mural"
+   ]
+  ],
+  "b": [
+   1.115,
+   103.965,
+   [
+    "04-kampung-tua"
+   ]
+  ],
+  "jarak_m": 786
+ },
+ {
+  "id": "terminal-feri-harbour-bay",
+  "nama": "Pelabuhan Feri Internasional Harbour Bay",
+  "jenis": "koordinat_beda",
+  "a": [
+   1.156,
+   103.9955,
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural"
+   ]
+  ],
+  "b": [
+   1.15371,
+   103.99746,
+   [
+    "06-direktori-taksonomi"
+   ]
+  ],
+  "jarak_m": 335
+ },
+ {
+  "id": "terminal-feri-nongsapura",
+  "nama": "Pelabuhan Feri Internasional Nongsapura",
+  "jenis": "alamat_beda",
+  "a": "Jl. Hang Lekiu",
+  "b": "Nongsa Pura",
+  "sumber": [
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural"
+   ],
+   [
+    "06-direktori-taksonomi"
+   ]
+  ]
+ },
+ {
+  "id": "nagoya-hill-mall",
+  "nama": "Nagoya Hill Mall",
+  "jenis": "koordinat_beda",
+  "a": [
+   1.1435,
+   104.0085,
+   [
+    "03-landmark-jalur-mural"
+   ]
+  ],
+  "b": [
+   1.146512,
+   104.012342,
+   [
+    "06-direktori-taksonomi"
+   ]
+  ],
+  "jarak_m": 543
+ },
+ {
+  "id": "pantai-melur",
+  "nama": "Pantai Melur",
+  "jenis": "koordinat_beda",
+  "a": [
+   0.768,
+   104.175,
+   [
+    "03-landmark-jalur-mural"
+   ]
+  ],
+  "b": [
+   0.755748,
+   104.186082,
+   [
+    "06-direktori-taksonomi"
+   ]
+  ],
+  "jarak_m": 1837
+ },
+ {
+  "id": "hotel-montigo-hotel-resort",
+  "nama": "MONTIGO HOTEL & RESORT",
+  "jenis": "alamat_beda",
+  "a": "JL. HANG LEKIR KELURAHAN SAMBAU KEC. NONGSA BATAM",
+  "b": "Nongsa",
+  "sumber": [
+   [
+    "00-data-hotel-user"
+   ],
+   [
+    "06-direktori-taksonomi"
+   ]
+  ]
+ },
+ {
+  "id": "pem-kantor-walikota",
+  "nama": "Kantor Wali Kota Batam",
+  "jenis": "alamat_beda",
+  "a": "Jl. Engku Putri No.1, Teluk Tering",
+  "b": "Jl. Engku Putri No. 01",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-pkm-sekupang",
+  "nama": "Puskesmas Sekupang",
+  "jenis": "alamat_beda",
+  "a": "Jl. Raja Haji No.6, Sei Harapan",
+  "b": "Jl. Raja Haji No. 6",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-pkm-tanjung-uncang",
+  "nama": "Puskesmas Tanjung Uncang",
+  "jenis": "alamat_beda",
+  "a": "Jl. Brigjen Katamso, Tanjung Uncang",
+  "b": "Jl. Brigjen Katamso No. 1",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-pkm-kabil",
+  "nama": "Puskesmas Kabil",
+  "jenis": "alamat_beda",
+  "a": "Jl. Hasanuddin No.1, Kabil",
+  "b": "Jl. Hasanuddin No. 1",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-pkm-botania",
+  "nama": "Puskesmas Botania",
+  "jenis": "alamat_beda",
+  "a": "Komp. Botania Garden, Belian",
+  "b": "Komp. Botania Garden",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-pkm-baloi-permai",
+  "nama": "Puskesmas Baloi Permai",
+  "jenis": "alamat_beda",
+  "a": "Jl. Graha Legenda Malaka",
+  "b": "Graha Legenda Malaka",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-pkm-lubuk-baja",
+  "nama": "Puskesmas Lubuk Baja",
+  "jenis": "alamat_beda",
+  "a": "Jl. Duyung, Tanjung Uma",
+  "b": "Jl. Duyung (cek ulang)",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-pkm-belakang-padang",
+  "nama": "Puskesmas Belakang Padang",
+  "jenis": "alamat_beda",
+  "a": "Jl. Hang Tuah, Tanjung Sari",
+  "b": "Jl. Hang Tuah No. 1",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-pkm-galang",
+  "nama": "Puskesmas Galang",
+  "jenis": "alamat_beda",
+  "a": "Jl. Batin Limat No.15, Sembulang",
+  "b": "Jl. Batin Limat No. 15",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-rsud-embung-fatimah",
+  "nama": "RSUD Embung Fatimah",
+  "jenis": "alamat_beda",
+  "a": "Jl. Letjen R. Suprapto Blok D 1-9, Bukit Tempayan",
+  "b": "Jl. Pertiwi No. 27",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-rs-awal-bros",
+  "nama": "RS Awal Bros Batam",
+  "jenis": "alamat_beda",
+  "a": "Jl. Gajah Mada Kav. 1, Baloi Indah",
+  "b": "Jl. Gajah Mada No. 1",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-rs-bhayangkara",
+  "nama": "RS Bhayangkara Batam",
+  "jenis": "alamat_beda",
+  "a": "Jl. Dang Merdu No.2, Batu Besar",
+  "b": "Jl. Dang Merdu No. 2",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kes-rs-budi-kemuliaan",
+  "nama": "RS Budi Kemuliaan",
+  "jenis": "alamat_beda",
+  "a": "Jl. Budi Kemuliaan No.1, Kampung Seraya",
+  "b": "Jl. Budi Kemuliaan No. 1",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "rs-elisabeth-lubuk-baja",
+  "nama": "RS Santa Elisabeth",
+  "jenis": "alamat_beda",
+  "a": "Jl. Anggrek, Lubuk Baja Kota",
+  "b": "Jl. Anggrek No. 2",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "rs-elisabeth-batam-kota",
+  "nama": "RS Elisabeth Batam Kota",
+  "jenis": "alamat_beda",
+  "a": "Jl. Raja Alikelana No.37, Belian",
+  "b": "Jl. Raja Ali Kelana No. 37",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-batam-centre",
+  "nama": "Pelabuhan Feri Internasional Batam Centre",
+  "jenis": "alamat_beda",
+  "a": "Teluk Tering",
+  "b": "Batam Centre",
+  "sumber": [
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-sekupang",
+  "nama": "Pelabuhan Feri Internasional Sekupang",
+  "jenis": "koordinat_beda",
+  "a": [
+   1.122,
+   103.939,
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi"
+   ]
+  ],
+  "b": [
+   1.125328,
+   103.925633,
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ],
+  "jarak_m": 1531
+ },
+ {
+  "id": "terminal-feri-sekupang",
+  "nama": "Pelabuhan Feri Internasional Sekupang",
+  "jenis": "alamat_beda",
+  "a": "Sekupang",
+  "b": "Jl. R.E. Martadinata",
+  "sumber": [
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-nongsapura",
+  "nama": "Pelabuhan Feri Internasional Nongsapura",
+  "jenis": "koordinat_beda",
+  "a": [
+   1.18838,
+   104.0949,
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi"
+   ]
+  ],
+  "b": [
+   1.17283,
+   104.07809,
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ],
+  "jarak_m": 2546
+ },
+ {
+  "id": "terminal-feri-nongsapura",
+  "nama": "Pelabuhan Feri Internasional Nongsapura",
+  "jenis": "alamat_beda",
+  "a": "Jl. Hang Lekiu",
+  "b": "Nongsa",
+  "sumber": [
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-telaga-punggur",
+  "nama": "Pelabuhan Domestik Telaga Punggur",
+  "jenis": "alamat_beda",
+  "a": "Telaga Punggur, Kabil",
+  "b": "Telaga Punggur",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-gold-coast",
+  "nama": "Pelabuhan Gold Coast Bengkong",
+  "jenis": "alamat_beda",
+  "a": "Bengkong",
+  "b": "Kawasan Pantai Indah Mutiara Blok B No. 36-37, Golden City",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "bandara-hang-nadim",
+  "nama": "Bandar Udara Internasional Hang Nadim",
+  "jenis": "alamat_beda",
+  "a": "Batu Besar",
+  "b": "Jl. Hang Nadim No. 01",
+  "sumber": [
+   [
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "dataran-engku-putri",
+  "nama": "Dataran Engku Putri",
+  "jenis": "koordinat_beda",
+  "a": [
+   1.1275,
+   104.0525,
+   [
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi"
+   ]
+  ],
+  "b": [
+   1.106639,
+   104.052681,
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ],
+  "jarak_m": 2320
+ },
+ {
+  "id": "dataran-engku-putri",
+  "nama": "Dataran Engku Putri",
+  "jenis": "alamat_beda",
+  "a": "Batam Centre",
+  "b": "Jl. Engku Putri No. 1",
+  "sumber": [
+   [
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi"
+   ],
+   [
+    "07-direktori-layanan-publik"
+   ]
+  ]
+ },
+ {
+  "id": "kantor-pertanahan-batam",
+  "nama": "Kantor Pertanahan Kota Batam",
+  "jenis": "alamat_beda",
+  "a": "Jl. Jaksa Agung R. Soeprapto",
+  "b": "Jl. Jaksa Agung R. Soeprapto, Sungai Harapan, Sekupang, Kota Batam 29428",
+  "sumber": [
+   [
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "08-ppat-notaris-hukum"
+   ]
+  ]
+ },
+ {
+  "id": "kantor-bp-batam",
+  "nama": "Kantor BP Batam",
+  "jenis": "alamat_beda",
+  "a": "Jl. Ibnu Sutowo No.1",
+  "b": "Jl. Ibnu Sutowo No. 1, Batam Centre, Kota Batam 29400",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "08-ppat-notaris-hukum"
+   ]
+  ]
+ },
+ {
+  "id": "mpp-batam",
+  "nama": "Mal Pelayanan Publik Kota Batam",
+  "jenis": "alamat_beda",
+  "a": "Lt. Dasar Sumatera Convention Center, Jl. Engku Putri",
+  "b": "Lt. Dasar, Gedung Sumatera Convention Center, Jl. Engku Putri, Batam Centre",
+  "sumber": [
+   [
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "08-ppat-notaris-hukum"
+   ]
+  ]
+ },
+ {
+  "id": "dpmptsp",
+  "nama": "DPMPTSP Kota Batam",
+  "jenis": "alamat_beda",
+  "a": "Pengelola MPP (alamat kantor perlu cek)",
+  "b": "Lt. 2 MPP, Gedung Sumatera Convention Centre, Jl. Engku Putri, Batam 29461",
+  "sumber": [
+   [
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "08-ppat-notaris-hukum"
+   ]
+  ]
+ },
+ {
+  "id": "kantor-imigrasi-batam",
+  "nama": "Kantor Imigrasi Kelas I Khusus TPI Batam",
+  "jenis": "alamat_beda",
+  "a": "Jl. Engku Putri No.3",
+  "b": "Jl. Engku Putri No. 3",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "08-ppat-notaris-hukum"
+   ]
+  ]
+ },
+ {
+  "id": "pem-kantor-walikota",
+  "nama": "Kantor Wali Kota Batam",
+  "jenis": "alamat_beda",
+  "a": "Jl. Engku Putri No.1, Teluk Tering",
+  "b": "Jl. Engku Putri No.1, Batam Centre 29432",
+  "sumber": [
+   [
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "09-direktori-celah"
+   ]
+  ]
+ },
+ {
+  "id": "disnaker-batam",
+  "nama": "Dinas Tenaga Kerja Kota Batam",
+  "jenis": "alamat_beda",
+  "a": "Jl. Kartini I No. 29-30",
+  "b": "Jl. Kartini I No.29-30, Sei Harapan 29425",
+  "sumber": [
+   [
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "09-direktori-celah"
+   ]
+  ]
+ },
+ {
+  "id": "kemenag-batam",
+  "nama": "Kantor Kementerian Agama Kota Batam",
+  "jenis": "alamat_beda",
+  "a": "Jl. Masjid Baiturrahman No. 1",
+  "b": "Jl. Masjid Baiturrahman No.1, Sei Harapan",
+  "sumber": [
+   [
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "09-direktori-celah"
+   ]
+  ]
+ },
+ {
+  "id": "gereja-kerahiman-ilahi-tiban",
+  "nama": "Gereja Kerahiman Ilahi",
+  "jenis": "alamat_beda",
+  "a": "Tiban",
+  "b": "Jl. Tiban III, Patam Lestari 29426",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "09-direktori-celah"
+   ]
+  ]
+ },
+ {
+  "id": "pelabuhan-rakyat-sekupang",
+  "nama": "Pelabuhan Rakyat (Pancung) Sekupang",
+  "jenis": "alamat_beda",
+  "a": "Sebelah terminal domestik Sekupang, Jl. R.E. Martadinata",
+  "b": "Kawasan Pelabuhan Sekupang, Jl. RE Martadinata",
+  "sumber": [
+   [
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "09-direktori-celah"
+   ]
+  ]
+ },
+ {
+  "id": "pompong-belakangpadang",
+  "nama": "Pelabuhan Belakang Padang (Tanjung Sari)",
+  "jenis": "alamat_beda",
+  "a": "Belakang Padang",
+  "b": "Pulau Belakang Padang",
+  "sumber": [
+   [
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "09-direktori-celah"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-gold-coast",
+  "nama": "Pelabuhan Gold Coast Bengkong",
+  "jenis": "alamat_beda",
+  "a": "Bengkong",
+  "b": "Kawasan Pantai Indah Mutiara Blok B No.36-37, Bengkong",
+  "sumber": [
+   [
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "09-direktori-celah"
+   ]
+  ]
+ },
+ {
+  "id": "kes-rs-bp-batam",
+  "nama": "RS Badan Pengusahaan Batam",
+  "jenis": "alamat_beda",
+  "a": "Sekupang (perlu cek)",
+  "b": "Jl. Cipto Mangunkusumo No.1, Tj. Pinggir, Sekupang",
+  "sumber": [
+   [
+    "06-direktori-taksonomi"
+   ],
+   [
+    "09-direktori-celah"
+   ]
+  ]
+ },
+ {
+  "id": "dataran-engku-putri",
+  "nama": "Dataran Engku Putri",
+  "jenis": "alamat_beda",
+  "a": "Batam Centre",
+  "b": "Jl. Engku Putri, Batam Centre",
+  "sumber": [
+   [
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "12-ruang-publik-olahraga-jasa"
+   ]
+  ]
+ },
+ {
+  "id": "pub-taman-dang-anom",
+  "nama": "Taman Dang Anom",
+  "jenis": "alamat_beda",
+  "a": "Batam Centre",
+  "b": "Jl. Sudirman, samping flyover Laluan Madani (eks Simpang Jam)",
+  "sumber": [
+   [
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "12-ruang-publik-olahraga-jasa"
+   ]
+  ]
+ },
+ {
+  "id": "pantai-melur",
+  "nama": "Pantai Melur",
+  "jenis": "alamat_beda",
+  "a": "Sijantung, Pulau Galang",
+  "b": "Pulau Galang via Barelang",
+  "sumber": [
+   [
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi"
+   ],
+   [
+    "12-ruang-publik-olahraga-jasa"
+   ]
+  ]
+ },
+ {
+  "id": "padel-playpadel",
+  "nama": "Play Padel",
+  "jenis": "alamat_beda",
+  "a": "Teluk Tering",
+  "b": "Jl. Engku Putri (samping SPBU Ocarina)",
+  "sumber": [
+   [
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "12-ruang-publik-olahraga-jasa"
+   ]
+  ]
+ },
+ {
+  "id": "padel-boxorchid",
+  "nama": "Padel Box Orchid",
+  "jenis": "alamat_beda",
+  "a": "Orchid Park, Taman Baloi",
+  "b": "GOR Bulu Tangkis Orchid Park, Batam Centre",
+  "sumber": [
+   [
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "12-ruang-publik-olahraga-jasa"
+   ]
+  ]
+ },
+ {
+  "id": "kantor-pos-batam-kcu",
+  "nama": "Kantor Pos Batam (KCU)",
+  "jenis": "alamat_beda",
+  "a": "Jl. Jend. Sudirman, Batam Centre 29444",
+  "b": "Jl. Jend. Sudirman, Batam Centre",
+  "sumber": [
+   [
+    "09-direktori-celah"
+   ],
+   [
+    "12-ruang-publik-olahraga-jasa"
+   ]
+  ]
+ },
+ {
+  "id": "kantor-pos-jodoh",
+  "nama": "Kantor Pos Jodoh",
+  "jenis": "alamat_beda",
+  "a": "Komp. Jodoh Square Blok C No.38",
+  "b": "Komp. Jodoh Square Blok C No. 38",
+  "sumber": [
+   [
+    "09-direktori-celah"
+   ],
+   [
+    "12-ruang-publik-olahraga-jasa"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-batam-centre",
+  "nama": "Pelabuhan Feri Internasional Batam Centre",
+  "jenis": "alamat_beda",
+  "a": "Teluk Tering",
+  "b": "Jl. Engku Putri, Batam Centre",
+  "sumber": [
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "14-feri-pompong"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-sekupang",
+  "nama": "Pelabuhan Feri Internasional Sekupang",
+  "jenis": "koordinat_beda",
+  "a": [
+   1.122,
+   103.939,
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik"
+   ]
+  ],
+  "b": [
+   1.1314,
+   103.9253,
+   [
+    "14-feri-pompong"
+   ]
+  ],
+  "jarak_m": 1847
+ },
+ {
+  "id": "terminal-feri-sekupang",
+  "nama": "Pelabuhan Feri Internasional Sekupang",
+  "jenis": "alamat_beda",
+  "a": "Sekupang",
+  "b": "Jl. RE Martadinata, Sekupang",
+  "sumber": [
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "14-feri-pompong"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-harbour-bay",
+  "nama": "Pelabuhan Feri Internasional Harbour Bay",
+  "jenis": "alamat_beda",
+  "a": "Harbour Bay",
+  "b": "Harbourbay Downtown, Bayfront Mall",
+  "sumber": [
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "14-feri-pompong"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-nongsapura",
+  "nama": "Pelabuhan Feri Internasional Nongsapura",
+  "jenis": "alamat_beda",
+  "a": "Jl. Hang Lekiu",
+  "b": "Nongsa",
+  "sumber": [
+   [
+    "01-inspirasi-konsep",
+    "03-landmark-jalur-mural",
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "14-feri-pompong"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-gold-coast",
+  "nama": "Pelabuhan Gold Coast Bengkong",
+  "jenis": "alamat_beda",
+  "a": "Bengkong",
+  "b": "Kawasan Pantai Indah Mutiara Blok B No. 36-37, Bengkong",
+  "sumber": [
+   [
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik",
+    "09-direktori-celah"
+   ],
+   [
+    "14-feri-pompong"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-waterfront-city",
+  "nama": "Waterfront City/Marina Teluk Senimba",
+  "jenis": "alamat_beda",
+  "a": "Marina City, Tanjung Riau",
+  "b": "Jl. KH Ahmad Dahlan, Tanjung Uncang",
+  "sumber": [
+   [
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik",
+    "09-direktori-celah"
+   ],
+   [
+    "14-feri-pompong"
+   ]
+  ]
+ },
+ {
+  "id": "terminal-feri-telaga-punggur",
+  "nama": "Pelabuhan Domestik Telaga Punggur",
+  "jenis": "alamat_beda",
+  "a": "Telaga Punggur, Kabil",
+  "b": "Telaga Punggur",
+  "sumber": [
+   [
+    "06-direktori-taksonomi",
+    "07-direktori-layanan-publik"
+   ],
+   [
+    "14-feri-pompong"
+   ]
+  ]
+ },
+ {
+  "id": "pelabuhan-rakyat-sekupang",
+  "nama": "Pelabuhan Rakyat (Pancung) Sekupang",
+  "jenis": "alamat_beda",
+  "a": "Sebelah terminal domestik Sekupang, Jl. R.E. Martadinata",
+  "b": "bersebelahan Terminal Sekupang",
+  "sumber": [
+   [
+    "07-direktori-layanan-publik",
+    "09-direktori-celah"
+   ],
+   [
+    "14-feri-pompong"
+   ]
+  ]
+ },
+ {
+  "id": "trp-pelsagulung",
+  "nama": "Pelabuhan Rakyat Sagulung",
+  "jenis": "alamat_beda",
+  "a": "Sagulung",
+  "b": "dekat Tanjung Uncang",
+  "sumber": [
+   [
+    "09-direktori-celah"
+   ],
+   [
+    "14-feri-pompong"
+   ]
+  ]
+ }
+]

@@ -1,0 +1,25 @@
+# 1) Kelurahan BP Batam, output langsung WGS84
+curl -G "https://web-gis.bpbatam.go.id/arcgis/rest/services/WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/27/query" \
+  --data-urlencode "where=1=1" --data-urlencode "outFields=*" \
+  --data-urlencode "outSR=4326" --data-urlencode "f=geojson" -o bpbatam_kelurahan.geojson
+
+# 2) Kecamatan BP Batam
+curl -G "https://web-gis.bpbatam.go.id/arcgis/rest/services/PROYGISPUSREN21_EKSTERNAL/PETA_ADMINISTRASI_BATAM/MapServer/2/query" \
+  --data-urlencode "where=1=1" --data-urlencode "outFields=*" \
+  --data-urlencode "outSR=4326" --data-urlencode "f=geojson" -o bpbatam_kecamatan.geojson
+
+# 3) Desa/kelurahan BIG, difilter bbox Batam, dengan paging
+curl -G "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/Administrasi_AR_KelDesa_10K/MapServer/0/query" \
+  --data-urlencode "where=1=1" \
+  --data-urlencode "geometry=103.5,0.25,104.5,1.21" --data-urlencode "geometryType=esriGeometryEnvelope" \
+  --data-urlencode "inSR=4326" --data-urlencode "spatialRel=esriSpatialRelIntersects" \
+  --data-urlencode "outFields=*" --data-urlencode "outSR=4326" \
+  --data-urlencode "resultOffset=0" --data-urlencode "resultRecordCount=1000" \
+  --data-urlencode "f=geojson" -o big_desakel_batam_p0.geojson
+# Bbox akan ikut menangkap desa Bintan/Karimun di tepi. Filter setelahnya, misal WADMKK='Kota Batam' (cek nama field di /0?f=pjson).
+
+# 4) BPS desa (pembanding)
+curl -G "https://geoportal.bps.go.id/server/rest/services/wilkerstat/desa/MapServer/0/query" \
+  --data-urlencode "where=1=1" --data-urlencode "geometry=103.5,0.25,104.5,1.21" \
+  --data-urlencode "geometryType=esriGeometryEnvelope" --data-urlencode "inSR=4326" \
+  --data-urlencode "outFields=*" --data-urlencode "outSR=4326" --data-urlencode "f=geojson" -o bps_desa_batam.geojson

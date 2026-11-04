@@ -1,0 +1,1883 @@
+[
+  {
+    "id": "jembatan-barelang-1",
+    "nama": "Jembatan Tengku Fisabilillah",
+    "nama_alternatif": [
+      "Jembatan 1",
+      "Jembatan Barelang",
+      "Jembatan Habibie"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.98200,
+    "lng": 104.04126,
+    "status_koordinat": "terverifikasi",
+    "catatan_koordinat": "Akurasi menurut seed: tinggi (Wikidata; Wikipedia EN 0.98167,104.04167). Label tabel: ✅. Saran laporan: cek via Overpass `bridge=yes` + `name~\"<nama jembatan>\"`.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "barelang-1-4",
+      "kategori_asli": "jembatan",
+      "ringkasan": "Cable-stayed 642 m, pilon 118 m, bentang utama 350 m, Batam–Tonton; dibangun Juli 1992–Jan 1998, diprakarsai B.J. Habibie.",
+      "nama_di_tabel": "Jembatan Tengku Fisabilillah (Barelang I)",
+      "kecamatan_tabel": "⚠️ Batas Batam–Bulang",
+      "fakta_tabel": "Cable-stayed, 642 m, dua pilon 118 m, bentang utama 350 m. Menghubungkan Batam–Tonton. Diprakarsai B.J. Habibie. Infobox Wikipedia EN mencatat biaya konstruksi rangkaian jembatan Rp400 miliar, dengan desain konsep oleh Bruce Ramsay dari VSL (Wikipedia EN/ID; Wikidata Q11014933)",
+      "prioritas_ikon_mode_peta": 1,
+      "nomor_barelang": "I",
+      "panjang": "642 m",
+      "menghubungkan": "Batam–Tonton",
+      "tipe_jembatan": "cable-stayed",
+      "bentang_utama": "350 m",
+      "tinggi_pilon": "118 m"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Kecamatan di laporan: \"PERLU-CEK (batas Batam–Bulang)\" (tabel: \"⚠️ Batas Batam–Bulang\"). Konflik tinggi pilon: Wikipedia 118 m vs Indonesia.travel 199 m — laporan memakai 118 m. Abaikan sumber yang menulis jembatan \"rampung 1988\" atau \"dimulai Oktober 1993\". Pembangunan Juli 1992–Januari 1998 (Wikipedia ID); peresmian 25 Januari 1998 (Wikipedia EN).",
+    "tag_osm": "bridge=yes",
+    "sumber_url": [
+      "https://www.wikidata.org/wiki/Q11014933",
+      "https://en.wikipedia.org/wiki/Barelang_Bridge",
+      "https://id.wikipedia.org/wiki/Jembatan_Barelang"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "jembatan-barelang-2",
+    "nama": "Jembatan Nara Singa",
+    "nama_alternatif": [
+      "Jembatan 2"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.9650,
+    "lng": 104.0350,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR ±2 km, wajib cek OSM. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis. Saran laporan: cek via Overpass `bridge=yes` + `name~\"<nama jembatan>\"`.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "barelang-1-4",
+      "kategori_asli": "jembatan",
+      "ringkasan": "Kantilever 420 m, bentang utama 160 m, Tonton–Nipah.",
+      "nama_di_tabel": "Jembatan Nara Singa (Barelang II)",
+      "kecamatan_tabel": "⚠️ Bulang",
+      "fakta_tabel": "Kantilever (balanced cantilever box girder), 420 m, bentang utama 160 m, Tonton–Nipah (Wikipedia ID)",
+      "prioritas_ikon_mode_peta": 20,
+      "nomor_barelang": "II",
+      "panjang": "420 m",
+      "menghubungkan": "Tonton–Nipah",
+      "tipe_jembatan": "kantilever (balanced cantilever box girder)",
+      "bentang_utama": "160 m"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Kecamatan di laporan: \"PERLU-CEK (Bulang)\" (tabel: \"⚠️ Bulang\"). Caveats laporan: kecamatan Tonton, Nipah, dan Setokok kemungkinan Bulang, perlu cek ke data BPS Batam.",
+    "tag_osm": "bridge=yes",
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Jembatan_Barelang"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "jembatan-barelang-3",
+    "nama": "Jembatan Raja Ali Haji",
+    "nama_alternatif": [
+      "Jembatan 3"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.9530,
+    "lng": 104.0320,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR ±2 km, wajib cek OSM. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis. Saran laporan: cek via Overpass `bridge=yes` + `name~\"<nama jembatan>\"`.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "barelang-1-4",
+      "kategori_asli": "jembatan",
+      "ringkasan": "Gelagar 270 m, bentang utama 45 m, Nipah–Setokok; nama dari pujangga Gurindam Dua Belas.",
+      "nama_di_tabel": "Jembatan Raja Ali Haji (Barelang III)",
+      "kecamatan_tabel": "⚠️ Bulang",
+      "fakta_tabel": "Gelagar, 270 m, Nipah–Setokok. Dinamai dari pujangga Gurindam Dua Belas (Wikipedia ID)",
+      "prioritas_ikon_mode_peta": 22,
+      "nomor_barelang": "III",
+      "panjang": "270 m",
+      "menghubungkan": "Nipah–Setokok",
+      "tipe_jembatan": "gelagar",
+      "bentang_utama": "45 m"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Kecamatan di laporan: \"PERLU-CEK (Bulang)\" (tabel: \"⚠️ Bulang\"). Caveats laporan: kecamatan Tonton, Nipah, dan Setokok kemungkinan Bulang, perlu cek ke data BPS Batam. Bentang utama 45 m hanya ada di seed JSON.",
+    "tag_osm": "bridge=yes",
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Jembatan_Barelang"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "jembatan-barelang-4",
+    "nama": "Jembatan Sultan Zainal Abidin",
+    "nama_alternatif": [
+      "Jembatan 4"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.9290,
+    "lng": 104.0450,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR ±2 km, wajib cek OSM. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis. Saran laporan: cek via Overpass `bridge=yes` + `name~\"<nama jembatan>\"`.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "barelang-1-4",
+      "kategori_asli": "jembatan",
+      "ringkasan": "Kantilever 365 m, bentang utama 145 m, Setokok–Rempang; lokasi bentrok warga–aparat 7 Sep 2023.",
+      "nama_di_tabel": "Jembatan Sultan Zainal Abidin (Barelang IV)",
+      "kecamatan_tabel": "⚠️ Bulang/Galang",
+      "fakta_tabel": "Kantilever, 365 m, bentang utama 145 m, Setokok–Rempang (Wikipedia ID; Wikipedia EN). Lokasi bentrok warga dan aparat pada 7 September 2023 (Bisnis; Mongabay)",
+      "prioritas_ikon_mode_peta": 21,
+      "nomor_barelang": "IV",
+      "panjang": "365 m",
+      "menghubungkan": "Setokok–Rempang",
+      "tipe_jembatan": "kantilever",
+      "bentang_utama": "145 m"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Kecamatan di laporan: \"PERLU-CEK (Bulang/Galang)\" (tabel: \"⚠️ Bulang/Galang\"). Lokasi bentrok warga dan aparat 7 September 2023 — kartu netral bertanggal. Topik sensitif (Rempang Eco-City) — sajikan netral, bertanggal, dengan atribusi; lihat data/mural/topik_sensitif.md.",
+    "tag_osm": "bridge=yes",
+    "sumber_url": [
+      "https://sumatra.bisnis.com/read/20230907/533/1692638/polemik-proyek-eco-city-aparat-bentrok-dengan-warga-rempang-di-jembatan-iv-barelang",
+      "https://id.wikipedia.org/wiki/Jembatan_Barelang",
+      "https://en.wikipedia.org/wiki/Barelang_Bridge",
+      "https://mongabay.co.id/2023/09/11/kala-proyek-rempang-eco-city-melaju-warga-menolak-berhadapan-dengan-aparat/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "jembatan-barelang-5",
+    "nama": "Jembatan Tuanku Tambusai",
+    "nama_alternatif": [
+      "Jembatan 5"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.8080,
+    "lng": 104.1600,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR ±3 km, wajib cek OSM. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis. Saran laporan: cek via Overpass `bridge=yes` + `name~\"<nama jembatan>\"`.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "rempang",
+      "kategori_asli": "jembatan",
+      "ringkasan": "Jembatan busur 385 m, bentang utama 245 m, Rempang–Galang.",
+      "nama_di_tabel": "Jembatan Tuanku Tambusai (Barelang V)",
+      "kecamatan_tabel": "Galang",
+      "fakta_tabel": "Jembatan busur, 385 m, bentang utama 245 m, Rempang–Galang (Wikipedia ID). Disebut jembatan busur beton pertama di Indonesia (IIBN) ⚠️",
+      "prioritas_ikon_mode_peta": 12,
+      "nomor_barelang": "V",
+      "panjang": "385 m",
+      "menghubungkan": "Rempang–Galang",
+      "tipe_jembatan": "busur",
+      "bentang_utama": "245 m"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Nama dan spesifikasi ✅ (Key Findings); klaim \"jembatan busur beton pertama di Indonesia\" (IIBN) ⚠️ perlu cek ulang.",
+    "tag_osm": "bridge=yes",
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Jembatan_Barelang",
+      "https://si.indobarunasional.ac.id/melintasi-waktu-mengenal-sejarah-jembatan-barelang-batam/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "jembatan-barelang-6",
+    "nama": "Jembatan Raja Kecik",
+    "nama_alternatif": [
+      "Jembatan 6"
+    ],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.7330,
+    "lng": 104.2150,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR ±3 km, wajib cek OSM. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis. Saran laporan: cek via Overpass `bridge=yes` + `name~\"<nama jembatan>\"`.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "galang",
+      "kategori_asli": "jembatan",
+      "ringkasan": "Jembatan terpendek 180 m, Galang–Galang Baru.",
+      "nama_di_tabel": "Jembatan Raja Kecik (Barelang VI)",
+      "kecamatan_tabel": "Galang",
+      "fakta_tabel": "Jembatan terpendek, 180 m, Galang–Galang Baru (Wikipedia ID)",
+      "prioritas_ikon_mode_peta": 23,
+      "nomor_barelang": "VI",
+      "panjang": "180 m",
+      "menghubungkan": "Galang–Galang Baru",
+      "keterangan": "jembatan terpendek"
+    },
+    "status_data": "terverifikasi",
+    "catatan": null,
+    "tag_osm": "bridge=yes",
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Barelang_Bridge",
+      "https://id.wikipedia.org/wiki/Jembatan_Barelang"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "seafood-bawah-jembatan-1",
+    "nama": "Kuliner seafood bawah Jembatan 1",
+    "nama_alternatif": [
+      "Makan di bawah Jembatan 1"
+    ],
+    "kategori": "khas_batam",
+    "subkategori": "kuliner_seafood",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.9800,
+    "lng": 104.0420,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "barelang-1-4",
+      "kategori_asli": "kuliner",
+      "ringkasan": "Restoran seafood di bawah jembatan, sebagian di atas rakit.",
+      "nama_di_tabel": "Kuliner seafood di bawah Jembatan 1",
+      "kecamatan_tabel": "⚠️",
+      "fakta_tabel": "Restoran seafood berdiri di bawah jembatan, sebagian di atas rakit (Milenianews)"
+    },
+    "status_data": null,
+    "catatan": "Kecamatan di laporan: \"PERLU-CEK\" (tabel: \"⚠️\").",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://milenianews.com/lifestyle/barelang-menyusuri-jembatan-dan-sunyi-di-selatan-batam/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "pelabuhan-sekupang",
+    "nama": "Pelabuhan Ferry Internasional Sekupang",
+    "nama_alternatif": [
+      "Pelabuhan Sekupang"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_feri_internasional",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1220,
+    "lng": 103.9390,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR, wajib cek OSM. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "sekupang-belakang-padang",
+      "kategori_asli": "pelabuhan",
+      "ringkasan": "Pelabuhan feri internasional tertua di Batam; layanan internasional berhenti sejak 14 Apr 2021 (status terkini perlu cek).",
+      "nama_di_tabel": "Pelabuhan Ferry Internasional Sekupang",
+      "kecamatan_tabel": "Sekupang",
+      "fakta_tabel": "Pelabuhan feri internasional tertua di Batam. Kantor Otorita Batam pertama kali berada di Sekupang. Layanan internasional berhenti sejak 14 April 2021 (Terasbatam, 2022) ⚠️ status terkini perlu dicek",
+      "prioritas_ikon_mode_peta": 15
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Layanan feri internasional berhenti sejak 14 April 2021 (Terasbatam, 2022); status terkini/2026 perlu dicek. Catatan warga: Sekupang tetap simpul feri domestik (ke Karimun, Dumai, dan pulau-pulau sekitar); cek jadwal di operator. Kantor Otorita Batam pertama kali berada di Sekupang.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.terasbatam.id/mengenal-pelabuhan-internasional-sekupang-batam/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "pulau-belakang-padang",
+    "nama": "Pulau Belakang Padang",
+    "nama_alternatif": [
+      "Belakang Padang",
+      "BP"
+    ],
+    "kategori": "lainnya",
+    "subkategori": "pulau_kecamatan",
+    "kecamatan": "Belakang Padang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.15213,
+    "lng": 103.89251,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: sedang (Wikidata, impor GeoNames, titik pusat pulau). Label tabel: ✅. Koordinat dari Wikidata Q25005677 (data impor GeoNames, kualitas sedang); titik pusat pulau. Tabel memberi label ✅, tetapi kualitas koordinat disebut sedang.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "sekupang-belakang-padang",
+      "kategori_asli": "pulau-kampung-pesisir",
+      "ringkasan": "Pulau kecamatan di seberang Sekupang; asal Kedai Kopi Ameng (1980).",
+      "nama_di_tabel": "Pulau Belakang Padang",
+      "kecamatan_tabel": "Belakang Padang",
+      "fakta_tabel": "Pulau kecamatan di seberang Sekupang. Koordinat dari Wikidata Q25005677 (data impor GeoNames, kualitas sedang). Kedai Kopi Ameng berawal di sini tahun 1980 (detikFood)",
+      "prioritas_ikon_mode_peta": 16
+    },
+    "status_data": "terverifikasi",
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.wikidata.org/wiki/Q25005677",
+      "https://food.detik.com/info-kuliner/d-7576862/4-kedai-kopi-legendaris-di-batam-ini-punya-kopi-klasik-yang-enak"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "kopi-ameng",
+    "nama": "Kedai Kopi Ameng",
+    "nama_alternatif": [
+      "Kopi Ameng"
+    ],
+    "kategori": "khas_batam",
+    "subkategori": "kedai_kopi",
+    "kecamatan": "Belakang Padang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1520,
+    "lng": 103.8925,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR (level pulau). Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "sekupang-belakang-padang",
+      "kategori_asli": "kedai-kopi",
+      "ringkasan": "Kedai kopi legendaris sejak 1980, berawal di Belakang Padang, kini bercabang di Batam.",
+      "nama_di_tabel": "Kedai Kopi Ameng (asal Belakang Padang)",
+      "kecamatan_tabel": "Belakang Padang",
+      "fakta_tabel": "Berdiri sejak 1980 dan kini bercabang di Batam (detikFood; akun resmi @kopiameng_batam)",
+      "prioritas_ikon_mode_peta": 27,
+      "tahun_berdiri": "1980",
+      "instagram": "@kopiameng_batam"
+    },
+    "status_data": null,
+    "catatan": "Kedai asal di Belakang Padang; kini bercabang di Batam. Koordinat level pulau, bukan alamat cabang.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://food.detik.com/info-kuliner/d-7576862/4-kedai-kopi-legendaris-di-batam-ini-punya-kopi-klasik-yang-enak",
+      "https://www.instagram.com/kopiameng_batam/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "kampung-tua-tiban",
+    "nama": "Kampung Tua Tiban",
+    "nama_alternatif": [
+      "Tiban Kampung"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rujukan",
+    "kecamatan": "Sekupang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1100,
+    "lng": 103.9600,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "sekupang-belakang-padang",
+      "kategori_asli": "kampung-tua-rujukan",
+      "ringkasan": "Kampung tua (cagar budaya Perda RTRW 2/2014); rujukan modul Kampung Tua.",
+      "nama_di_tabel": "Kampung Tua Tiban (rujukan)",
+      "kecamatan_tabel": "Sekupang",
+      "fakta_tabel": "Termasuk Kampung Tua yang ditetapkan sebagai kawasan cagar budaya di Perda RTRW Batam No. 2/2014; dulu dihuni orang Ladi (Batamnews)"
+    },
+    "status_data": null,
+    "catatan": "Topik sensitif (kampung tua): di mural cukup penanda \"Kampung Tua\" yang mengarah ke modul riset terpisah; jangan menulis klaim batas wilayah atau status hukum (lihat data/mural/topik_sensitif.md).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.batamnews.co.id/berita-97750-daftar-kampung-tua-di-batam-lengkap-dengan-sejarahnya.html"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "harbour-bay",
+    "nama": "Harbour Bay Ferry Terminal & Downtown",
+    "nama_alternatif": [
+      "Harbour Bay"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_feri_internasional",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1560,
+    "lng": 103.9955,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR, cek Wikipedia EN Batam Harbour Bay Ferry Terminal/OSM. Label tabel: 🧭. Laporan menyarankan cek Wikipedia EN \"Batam Harbour Bay Ferry Terminal\"/OSM. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "harbourbay-nagoya-jodoh",
+      "kategori_asli": "pelabuhan",
+      "ringkasan": "Terminal feri internasional ke Singapura dengan kawasan seafood, hotel, kafe.",
+      "nama_di_tabel": "Harbour Bay Ferry Terminal & Downtown",
+      "kecamatan_tabel": "Batu Ampar",
+      "fakta_tabel": "Terminal feri internasional ke Singapura yang dikelilingi restoran seafood, hotel, dan kafe (Batam Pos)",
+      "prioritas_ikon_mode_peta": 10
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://metropolis.batampos.co.id/ini-5-pelabuhan-feri-internasional-di-batam-tujuan-singapura-dan-malaysia/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "kawasan-nagoya",
+    "nama": "Kawasan Nagoya",
+    "nama_alternatif": [
+      "Nagoya"
+    ],
+    "kategori": "belanja",
+    "subkategori": "kawasan_ruko",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1440,
+    "lng": 104.0090,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR (titik kawasan). Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "harbourbay-nagoya-jodoh",
+      "kategori_asli": "kawasan-ruko",
+      "ringkasan": "Pusat niaga; nama 'Nagoya' dipakai sejak ~1978 dari pekerja Jepang.",
+      "nama_di_tabel": "Kawasan Nagoya (ruko)",
+      "kecamatan_tabel": "Lubuk Baja",
+      "fakta_tabel": "Nama \"Nagoya\" mulai dipakai sekitar 1978, berasal dari pekerja Jepang perusahaan infrastruktur; nama resmi kawasannya Sungai Jodoh/Lubuk Baja (Terasbatam, kesaksian Machmur Ismail, eks Ketua LAM Batam)",
+      "prioritas_ikon_mode_peta": 11
+    },
+    "status_data": null,
+    "catatan": "Nama \"Nagoya\" dipakai sejak ~1978 dari pekerja Jepang; nama resmi kawasannya Sungai Jodoh/Lubuk Baja (kesaksian Machmur Ismail, eks Ketua LAM Batam). Koordinat adalah titik kawasan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.terasbatam.id/menelisik-nama-nagoya-di-batam-yang-bikin-orang-jepang-penasaran/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "nagoya-hill-mall",
+    "nama": "Nagoya Hill Mall",
+    "nama_alternatif": [
+      "Nagoya Hill"
+    ],
+    "kategori": "belanja",
+    "subkategori": "mal",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1435,
+    "lng": 104.0085,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "harbourbay-nagoya-jodoh",
+      "kategori_asli": "pusat-belanja",
+      "ringkasan": "Mal utama di Nagoya; tahun buka perlu cek.",
+      "nama_di_tabel": "Nagoya Hill Mall",
+      "kecamatan_tabel": "Lubuk Baja",
+      "fakta_tabel": "Salah satu mal utama di pusat niaga Nagoya (Wikipedia EN \"Nagoya, Batam\") ⚠️ tahun buka perlu dicek"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Tahun buka perlu dicek ⚠️.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Nagoya,_Batam"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "pasar-jodoh",
+    "nama": "Pasar Jodoh",
+    "nama_alternatif": [
+      "Jodoh"
+    ],
+    "kategori": "belanja",
+    "subkategori": "pasar_barang_seken",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1480,
+    "lng": 104.0130,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Koordinat sama persis dengan pelantar-sungai-jodoh-hilang. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "harbourbay-nagoya-jodoh",
+      "kategori_asli": "pasar",
+      "ringkasan": "Pasar sejak 1970-an, kini dikenal pasar barang seken/thrift.",
+      "nama_di_tabel": "Pasar Jodoh",
+      "kecamatan_tabel": "Batu Ampar/Lubuk Baja ⚠️",
+      "fakta_tabel": "Ada sejak 1970-an. Dikenal sebagai pasar barang seken dan thrift (Tribun Batam; jurnal Historia UNRIKA)",
+      "prioritas_ikon_mode_peta": 17
+    },
+    "status_data": null,
+    "catatan": "Kecamatan di laporan: \"PERLU-CEK (Batu Ampar/Lubuk Baja)\" (tabel: \"Batu Ampar/Lubuk Baja ⚠️\"). Kisah legenda asal nama Jodoh (Putri Mayang) harus ditandai cerita rakyat, bukan fakta sejarah (lihat data/mural/topik_sensitif.md).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2021/01/28/salah-satu-lokasi-banyak-dikunjungi-ternyata-fakta-sejarah-daerah-jodoh-batam-menyimpan-kenangan",
+      "https://www.journal.unrika.ac.id/index.php/journalhistoria/article/download/6830/pdf"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "pelantar-sungai-jodoh-hilang",
+    "nama": "Perkampungan pelantar Sungai Jodoh",
+    "nama_alternatif": [
+      "Sei Jodoh lama"
+    ],
+    "kategori": "landmark",
+    "subkategori": "batam_yang_hilang",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1480,
+    "lng": 104.0130,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Koordinat sama persis dengan pasar-jodoh. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "harbourbay-nagoya-jodoh",
+      "kategori_asli": "batam-yang-hilang",
+      "ringkasan": "Kampung pelantar pra-1980 tempat pedagang bertukar barang; terbakar 1980 dan 1987.",
+      "nama_di_tabel": "Perkampungan pelantar Sungai Jodoh (**Batam yang hilang**)",
+      "kecamatan_tabel": "Lubuk Baja",
+      "fakta_tabel": "Sebelum 1980 kawasan ini adalah perkampungan pelantar di sungai tempat pedagang dari Indragiri Hilir dan Rengat berdagang. Terbakar 1980, lalu pasar daratnya terbakar lagi 1987. Kini tersisa drainase induk (Tribun Batam)"
+    },
+    "status_data": "usang",
+    "catatan": "Batam yang hilang: perkampungan pelantar ini sudah tidak ada (terbakar 1980; pasar daratnya terbakar lagi 1987; kini tersisa drainase induk). Untuk layer \"dulu vs kini\".",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2021/01/28/salah-satu-lokasi-banyak-dikunjungi-ternyata-fakta-sejarah-daerah-jodoh-batam-menyimpan-kenangan"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "kopi-harum-manis",
+    "nama": "Kedai Kopi Harum Manis",
+    "nama_alternatif": [
+      "Harum Manis"
+    ],
+    "kategori": "khas_batam",
+    "subkategori": "kedai_kopi",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1450,
+    "lng": 104.0100,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "harbourbay-nagoya-jodoh",
+      "kategori_asli": "kedai-kopi",
+      "ringkasan": "Kedai kopi legendaris sejak 1985 di Lubuk Baja.",
+      "nama_di_tabel": "Kedai Kopi Harum Manis",
+      "kecamatan_tabel": "Lubuk Baja",
+      "fakta_tabel": "Berdiri 1985 di Lubuk Baja (detikFood)",
+      "prioritas_ikon_mode_peta": 27,
+      "tahun_berdiri": "1985"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://food.detik.com/info-kuliner/d-7576862/4-kedai-kopi-legendaris-di-batam-ini-punya-kopi-klasik-yang-enak"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "tanjung-uma",
+    "nama": "Kampung Tua Tanjung Uma",
+    "nama_alternatif": [
+      "Tanjung Uma"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rujukan",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1520,
+    "lng": 104.0020,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "harbourbay-nagoya-jodoh",
+      "kategori_asli": "kampung-tua-rujukan",
+      "ringkasan": "Kampung tua pesisir dengan pelantar; rujukan modul Kampung Tua.",
+      "nama_di_tabel": "Kampung Tua Tanjung Uma (rujukan)",
+      "kecamatan_tabel": "Lubuk Baja",
+      "fakta_tabel": "Termasuk daftar kampung tua Batam (Kepri Post/Pikiran Rakyat). Perkampungan pesisir ⚠️ detail sejarah menunggu riset Kampung Tua",
+      "prioritas_ikon_mode_peta": 25
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "⚠️ Detail sejarah menunggu riset Kampung Tua. Topik sensitif (kampung tua): di mural cukup penanda \"Kampung Tua\" yang mengarah ke modul riset terpisah; jangan menulis klaim batas wilayah atau status hukum (lihat data/mural/topik_sensitif.md).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepri.pikiran-rakyat.com/kepri/pr-2689483994/sejarah-10-kampung-tua-di-batam-jejak-orang-ladi-hingga-bugis-di-tanah-melayu?page=all"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "pelabuhan-batu-ampar",
+    "nama": "Pelabuhan Batu Ampar",
+    "nama_alternatif": [
+      "Batu Ampar"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_kargo",
+    "kecamatan": "Batu Ampar",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1630,
+    "lng": 104.0000,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "harbourbay-nagoya-jodoh",
+      "kategori_asli": "pelabuhan-kargo",
+      "ringkasan": "Pelabuhan kargo utama penopang industri.",
+      "nama_di_tabel": "Pelabuhan Batu Ampar",
+      "kecamatan_tabel": "Batu Ampar",
+      "fakta_tabel": "Pelabuhan kargo utama yang mendorong industri manufaktur (Traveloka/umum) ⚠️ sumber primer perlu ditambah",
+      "prioritas_ikon_mode_peta": 24
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "⚠️ Sumber primer perlu ditambah (sumber sekarang Traveloka/umum).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.traveloka.com/id-id/explore/destination/pelabuhan-batam-acc/394540"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "trans-batam",
+    "nama": "Halte Trans Batam",
+    "nama_alternatif": [
+      "Busway Batam",
+      "Busway"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "halte_bus",
+    "kecamatan": "Lubuk Baja",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1460,
+    "lng": 104.0120,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR (ikon generik). Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "harbourbay-nagoya-jodoh",
+      "kategori_asli": "transportasi-ikon-keseharian",
+      "ringkasan": "Trans Batam beroperasi sejak 18 Juli 2005; koridor pertama Sekupang–Batam Centre.",
+      "nama_di_tabel": "Halte Trans Batam (Koridor 5 Jodoh–Batam Centre)",
+      "kecamatan_tabel": "Lubuk Baja",
+      "fakta_tabel": "Trans Batam resmi beroperasi 18 Juli 2005; koridor pertama Sekupang–Batam Centre (Wikipedia ID)",
+      "prioritas_ikon_mode_peta": 28,
+      "layanan": "Trans Batam",
+      "koridor": "Koridor 5 Jodoh–Batam Centre",
+      "mulai_operasi_trans_batam": "18 Juli 2005"
+    },
+    "status_data": null,
+    "catatan": "Ikon generik, bisa berulang di segmen lain. Data layanan (rute Trans Batam) cepat berubah; beri tanggal di UI.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Trans_Batam"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "masjid-agung-raja-hamidah",
+    "nama": "Masjid Agung Raja Hamidah",
+    "nama_alternatif": [
+      "Masjid Agung Batam",
+      "Masjid Raya Batam",
+      "Masjid Agung"
+    ],
+    "kategori": "ibadah",
+    "subkategori": "masjid",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.12624,
+    "lng": 104.05340,
+    "status_koordinat": "terverifikasi",
+    "catatan_koordinat": "Akurasi menurut seed: tinggi (Wikipedia ID, titik bangunan). Label tabel: ✅.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "batam-centre",
+      "kategori_asli": "tempat-ibadah",
+      "ringkasan": "Dibangun 1999–2001 (arsitek Achmad Noe'man); direvitalisasi sejak 2022, dibuka kembali 15 Sep 2024 dengan nama Raja Hamidah.",
+      "nama_di_tabel": "Masjid Agung Raja Hamidah",
+      "kecamatan_tabel": "Batam Kota",
+      "fakta_tabel": "Dibangun 1999–2001, arsitek Achmad Noe'man, menara 66 m (Wikipedia ID). Direvitalisasi sejak 2022 oleh PT Adhi Karya, yang menurut ANTARA Kepri memenangkan proyek senilai Rp167 miliar dari pagu Rp209 miliar (Kadis CKTR Azril Apriansyah kemudian menyebut total setelah addendum sekitar Rp184 miliar, ditambah Rp14 miliar pada 2025). Dibuka kembali 15 September 2024 dengan nama Raja Hamidah (Batamnews; Simpulkepri)",
+      "prioritas_ikon_mode_peta": 3
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Dulu Masjid Agung Batam berbentuk piramida (dibangun 1999–2001, arsitek Achmad Noe'man); direvitalisasi sejak 2022 oleh PT Adhi Karya; dibuka kembali 15 September 2024 dengan nama Masjid Agung Raja Hamidah. Nilai proyek: Rp167 miliar dari pagu Rp209 miliar (ANTARA Kepri); total setelah addendum sekitar Rp184 miliar, ditambah Rp14 miliar pada 2025 (Kadis CKTR Azril Apriansyah). Bentuk lama dicatat terpisah sebagai masjid-piramida-hilang.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Masjid_Agung_Batam",
+      "https://www.batamnews.co.id/berita-91178-6-fakta-diubahnya-wajah-masjid-agung-batam-center-yang-ikonik.html",
+      "https://simpulkepri.com/batam/masjid-agung-raja-hamidah-batam-center/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "masjid-piramida-hilang",
+    "nama": "Masjid Agung Batam (bentuk piramida lama)",
+    "nama_alternatif": [
+      "Masjid piramida"
+    ],
+    "kategori": "landmark",
+    "subkategori": "batam_yang_hilang",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.12624,
+    "lng": 104.05340,
+    "status_koordinat": "terverifikasi",
+    "catatan_koordinat": "Akurasi menurut seed: tinggi (sama dengan masjid). Label tabel: ✅.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "batam-centre",
+      "kategori_asli": "batam-yang-hilang",
+      "ringkasan": "Atap limas tiga irisan (simbol tiga alam) berdiri 2001–2022 sebelum revitalisasi.",
+      "nama_di_tabel": "Masjid Agung bentuk piramida (**Batam yang hilang**)",
+      "kecamatan_tabel": "Batam Kota",
+      "fakta_tabel": "Atap limas segi empat yang \"teriris tiga\" melambangkan alam rahim, dunia, dan akhirat. Ada kolam air mancur yang bisa dipakai berwudhu (Wikipedia ID; Batamnews)"
+    },
+    "status_data": "usang",
+    "catatan": "Batam yang hilang: bentuk piramida lama berdiri 2001–2022 sebelum revitalisasi. Lokasi sama dengan masjid-agung-raja-hamidah; untuk layer arsip/slider dulu–kini.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.batamnews.co.id/berita-91178-6-fakta-diubahnya-wajah-masjid-agung-batam-center-yang-ikonik.html",
+      "https://id.wikipedia.org/wiki/Masjid_Agung_Batam"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "welcome-to-batam",
+    "nama": "Monumen Welcome to Batam",
+    "nama_alternatif": [
+      "WTB"
+    ],
+    "kategori": "landmark",
+    "subkategori": "monumen",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Teluk Tering",
+    "alamat": "Bukit Clara",
+    "lat": 1.1285,
+    "lng": 104.0560,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR (~200 m dari masjid per Wikipedia), wajib cek OSM. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "batam-centre",
+      "kategori_asli": "monumen",
+      "ringkasan": "Huruf putih di Bukit Clara (52 m), dibangun 2010 (Rp472,4 juta), menghadap pelabuhan; tertutup ruko sejak 2024.",
+      "nama_di_tabel": "Welcome to Batam",
+      "kecamatan_tabel": "Batam Kota (Teluk Tering)",
+      "fakta_tabel": "Dibangun 2010 dengan APBD Rp472,4 juta oleh PT Hadi Lestari. Huruf putih di Bukit Clara setinggi 52 m, menghadap pelabuhan Batam Centre, terlihat dari jarak >2 km. Sempat terancam pengerukan bukit 2014. Mulai tertutup ruko/apartemen sejak 2024 (Wikipedia ID; Tempo)",
+      "prioritas_ikon_mode_peta": 2
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Pandangan bebas ke WTB tertutup ruko/apartemen sejak 2024 (masuk \"Batam yang hilang\"). Sempat terancam pengerukan bukit 2014.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://id.wikipedia.org/wiki/Welcome_to_Batam",
+      "https://www.tempo.co/hiburan/ikon-welcome-to-batam-tertutup-bangunan-apartemen-umkm-menjerit-1181434"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "dataran-engku-putri",
+    "nama": "Dataran Engku Putri",
+    "nama_alternatif": [
+      "Alun-alun Batam Centre",
+      "Engku Putri"
+    ],
+    "kategori": "ruang_publik",
+    "subkategori": "alun_alun",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1275,
+    "lng": 104.0525,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "batam-centre",
+      "kategori_asli": "ruang-publik",
+      "ringkasan": "Alun-alun kota, dipugar sejak 2009; nama dari Engku Putri Raja Hamidah.",
+      "nama_di_tabel": "Dataran Engku Putri",
+      "kecamatan_tabel": "Batam Kota",
+      "fakta_tabel": "Dipugar menjadi bentuk sekarang mulai 2009 (GoWest). Dinamai dari Engku Putri Raja Hamidah, putri Raja Haji Fisabilillah, yang menerima Pulau Penyengat sebagai mas kawin sekitar 1801–1802 (Kec. Batam Kota; Tribun Batam)",
+      "prioritas_ikon_mode_peta": 9
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kecbatamkota.batam.go.id/2020/06/26/manifestasi-ketokohan-engku-hamidah/",
+      "https://batam.tribunnews.com/2020/07/14/jadi-pusat-pemerintahan-dan-rekreasi-inilah-sejarah-penamaan-kawasan-engku-putri",
+      "https://gowest.id/dataran-engku-puteri-batam/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "pelabuhan-batam-centre",
+    "nama": "Pelabuhan Ferry Internasional Batam Centre",
+    "nama_alternatif": [
+      "Pelabuhan Batam Centre"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_feri_internasional",
+    "kecamatan": "Batam Kota",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.13086,
+    "lng": 104.05523,
+    "status_koordinat": "terverifikasi",
+    "catatan_koordinat": "Akurasi menurut seed: tinggi (Wikidata, titik terminal). Label tabel: ✅.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "batam-centre",
+      "kategori_asli": "pelabuhan",
+      "ringkasan": "Pelabuhan internasional tersibuk; dikelola KSO BP Batam–PT Synergy Tharada sejak 2002.",
+      "nama_di_tabel": "Pelabuhan Ferry Internasional Batam Centre",
+      "kecamatan_tabel": "Batam Kota",
+      "fakta_tabel": "Sempat mangkrak. Dioperasikan lewat KSO BP Batam–PT Synergy Tharada sejak 2002 (Batam Pos). Kini pelabuhan internasional tersibuk ke Singapura dan Malaysia",
+      "prioritas_ikon_mode_peta": 5
+    },
+    "status_data": "terverifikasi",
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.wikidata.org/wiki/Q12504166",
+      "https://batampos.co.id/2016/08/18/sejarah-beroperasinya-pelabuhan-ferry-internasional-batam-center/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "maha-vihara-duta-maitreya",
+    "nama": "Maha Vihara Duta Maitreya",
+    "nama_alternatif": [
+      "Vihara Maitreya",
+      "Laughing Buddha Temple"
+    ],
+    "kategori": "ibadah",
+    "subkategori": "vihara",
+    "kecamatan": "Batam Kota",
+    "kelurahan": "Sungai Panas",
+    "alamat": "Bukit Beruntung, Sungai Panas",
+    "lat": 1.1292,
+    "lng": 104.0338,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: sedang (decode Plus Code 42HM+MG9 dari Trip.com), cek OSM. Label tabel: ⚠️. Catatan koordinat vihara: diturunkan dari Plus Code \"42HM+MG9\" (Trip.com); akurasi sedang, cocokkan ke OSM.",
+    "jam_layanan": "05.30–23.30, wisatawan sampai 15.00 (data 2018, ⚠️ perlu cek ulang)",
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "batam-centre",
+      "kategori_asli": "tempat-ibadah",
+      "ringkasan": "Didirikan 1991 di lahan ~4 ha Sungai Panas; diresmikan Menag Malik Fadjar 1999.",
+      "nama_di_tabel": "Maha Vihara Duta Maitreya",
+      "kecamatan_tabel": "Batam Kota (Sei Panas)",
+      "fakta_tabel": "Didirikan 1991 di lahan sekitar 4 ha, Bukit Beruntung, Sungai Panas. Diresmikan Menag Malik Fadjar tahun 1999 (Kemenag Kepri; Okezone). Klaim \"terbesar se-Asia Tenggara\" bersumber dari media, bukan pengukuran resmi ⚠️",
+      "prioritas_ikon_mode_peta": 8,
+      "luas_lahan": "sekitar 4 ha",
+      "tahun_berdiri": "1991",
+      "diresmikan": "1999 (Menag Malik Fadjar)"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Klaim \"terbesar se-Asia Tenggara\" bersumber dari media, bukan pengukuran resmi ⚠️ — tulis sebagai \"disebut-sebut\". Jam berkunjung adalah data 2018; data layanan cepat berubah, beri tanggal di UI.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepri.kemenag.go.id/page/det/kunjungi-maha-vihara-duta-maitreya-batam-center-menag-gelorakan-semangat-toleransi",
+      "https://lifestyle.okezone.com/read/2018/04/20/196/1889317/maha-vihara-duta-maitreya-mengenal-lebih-dalam-vihara-terbesar-di-asia-tenggara",
+      "https://www.trip.com/moments/poi-maha-vihara-duta-maitreya-monastery-38699900/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "bandara-hang-nadim",
+    "nama": "Bandar Udara Internasional Hang Nadim",
+    "nama_alternatif": [
+      "Hang Nadim",
+      "BTH"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "bandara",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Batu Besar",
+    "alamat": null,
+    "lat": 1.12083,
+    "lng": 104.11861,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: sedang-tinggi (Wikipedia EN, titik acuan kompleks). Label tabel: ✅. Koordinat dari Wikipedia EN, berupa titik acuan kompleks bandara.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "nongsa-hang-nadim",
+      "kategori_asli": "bandara",
+      "ringkasan": "Landasan 4.025 m, terpanjang di Indonesia; 700 m (1970-an) → 3.600 m (1988) → 4.025 m (1995).",
+      "nama_di_tabel": "Bandar Udara Internasional Hang Nadim",
+      "kecamatan_tabel": "Nongsa (Kel. Batu Besar)",
+      "fakta_tabel": "Landasan 4.025 m, terpanjang di Indonesia. Menurut Wikipedia EN, bandara dibangun untuk menampung pengalihan pesawat dari Bandara Changi Singapura yang berjarak sekitar 30 km (fungsi ini juga disebut BP Batam via Batam Pos); infobox Wikipedia EN mencatat landasan 04/22 sepanjang 4.028 m (berbeda dengan angka 4.025 m) dan 4.173.425 penumpang pada 2024 (DGCA). Dinamai dari Laksamana Hang Nadim (Kesultanan Malaka). Koordinat dari Wikipedia EN, berupa titik acuan kompleks bandara",
+      "prioritas_ikon_mode_peta": 6,
+      "kode_iata": "BTH",
+      "panjang_landasan": "4.025 m (infobox Wikipedia EN: 4.028 m, landasan 04/22)",
+      "penumpang_2024": "4.173.425 (DGCA, via Wikipedia EN)"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "⚠️ Detail tanggal dan panjang landasan awal berbeda-beda: BP Batam (via Batam Pos) 700 m era 70-an → 3.600 m (1988) → 4.025 m (1995); Wikipedia EN: beroperasi resmi sekitar 1978 dengan landasan 850 m (Garuda harian sejak 1984); Intracs: \"resmi dibuka oleh Presiden Soeharto pada 11 Desember 1995\". Infobox Wikipedia EN mencatat 4.028 m (berbeda dengan 4.025 m).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batampos.co.id/2020/07/17/ini-fasilitas-runway-bandara-hang-nadim-batam/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "trans-batam-koridor-7",
+    "nama": "Halte Trans Batam Koridor 7 Bandara",
+    "nama_alternatif": [
+      "Bus bandara"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "halte_bus",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.12083,
+    "lng": 104.11861,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: sedang (memakai titik bandara). Label tabel: ✅. Koordinat memakai titik bandara (sama persis dengan bandara-hang-nadim).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "nongsa-hang-nadim",
+      "kategori_asli": "transportasi-info-warga",
+      "ringkasan": "Koridor 7 Nongsa–Bandara–Batam Centre sejak 2 Juli 2026, interval 20–30 menit.",
+      "nama_di_tabel": "Halte Trans Batam Koridor 7 (Bandara)",
+      "kecamatan_tabel": "Nongsa",
+      "fakta_tabel": "Koridor 7 Nongsa–Bandara–Batam Centre beroperasi mulai 2 Juli 2026, interval 20–30 menit, halte di area kedatangan (BatamToday)",
+      "prioritas_ikon_mode_peta": 28,
+      "layanan": "Trans Batam",
+      "koridor": "Koridor 7 Nongsa–Bandara–Batam Centre",
+      "mulai_operasi": "2 Juli 2026",
+      "interval": "20–30 menit",
+      "lokasi_halte": "area kedatangan bandara"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Data layanan (rute Trans Batam) cepat berubah; beri tanggal di UI.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batamtoday.com/news/bus-datang-tiap-20-30-menit-trans-batam-koridor-7-resmi-mengaspal-hubungkan-nongsa-bandara-hang-nadim-batam-centre"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "pelabuhan-nongsapura",
+    "nama": "Pelabuhan Feri Nongsapura",
+    "nama_alternatif": [
+      "Nongsapura"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_feri_internasional",
+    "kecamatan": "Nongsa",
+    "kelurahan": "Sambau",
+    "alamat": "Jl. Hang Lekiu",
+    "lat": 1.18838,
+    "lng": 104.09490,
+    "status_koordinat": "terverifikasi",
+    "catatan_koordinat": "Akurasi menurut seed: tinggi (Wikidata, cocok dengan Mapcarta). Label tabel: ✅.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "nongsa-hang-nadim",
+      "kategori_asli": "pelabuhan",
+      "ringkasan": "Terminal feri internasional di Jl. Hang Lekiu, Sambau.",
+      "nama_di_tabel": "Pelabuhan Feri Nongsapura",
+      "kecamatan_tabel": "Nongsa (Kel. Sambau)",
+      "fakta_tabel": "Terminal feri internasional di Jl. Hang Lekiu (Wikidata Q12504175, cocok dengan Mapcarta)",
+      "prioritas_ikon_mode_peta": 19
+    },
+    "status_data": "terverifikasi",
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.wikidata.org/wiki/Q12504175",
+      "https://mapcarta.com/35845432"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "kampung-tua-nongsa",
+    "nama": "Kampung Tua Nongsa",
+    "nama_alternatif": [
+      "Nongsa"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rujukan",
+    "kecamatan": "Nongsa",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.1950,
+    "lng": 104.1000,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "nongsa-hang-nadim",
+      "kategori_asli": "kampung-tua-rujukan",
+      "ringkasan": "Dibuka Raja Isa, disebut pusat pemerintahan pertama; rujukan modul Kampung Tua.",
+      "nama_di_tabel": "Kampung Tua Nongsa (rujukan)",
+      "kecamatan_tabel": "Nongsa",
+      "fakta_tabel": "Dibuka pertama kali oleh Raja Isa dan disebut sebagai pusat pemerintahan pertama (Batamnews) ⚠️ detail menunggu riset Kampung Tua"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "⚠️ Detail menunggu riset Kampung Tua. Topik sensitif (kampung tua): di mural cukup penanda \"Kampung Tua\" yang mengarah ke modul riset terpisah; jangan menulis klaim batas wilayah atau status hukum (lihat data/mural/topik_sensitif.md).",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.batamnews.co.id/berita-97750-daftar-kampung-tua-di-batam-lengkap-dengan-sejarahnya.html"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "batamindo",
+    "nama": "Batamindo Industrial Park",
+    "nama_alternatif": [
+      "Batamindo",
+      "Mukakuning"
+    ],
+    "kategori": "lainnya",
+    "subkategori": "kawasan_industri",
+    "kecamatan": "Sei Beduk",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.06222,
+    "lng": 104.02917,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: rendah-sedang (Wikimapia, perkiraan kawasan). Label tabel: ⚠️. Koordinat berasal dari Wikimapia (perkiraan kawasan); label tabel ⚠️.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "koridor-industri",
+      "kategori_asli": "kawasan-industri",
+      "ringkasan": "Didirikan 1990, 320 ha, hasil kerja sama ekonomi Indonesia–Singapura 1989.",
+      "nama_di_tabel": "Batamindo Industrial Park",
+      "kecamatan_tabel": "Sei Beduk",
+      "fakta_tabel": "Didirikan 1990, luas 320 ha, berangkat dari kesepakatan ekonomi Indonesia–Singapura 1989 (BP Batam Pusbang; ANTARA). Dulu bernama Sungai Mekah Kuning. Koordinat berasal dari Wikimapia (perkiraan kawasan)",
+      "prioritas_ikon_mode_peta": 14,
+      "tahun_berdiri": "1990",
+      "luas": "320 ha",
+      "nama_lama": "Sungai Mekah Kuning"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://pusbang.bpbatam.go.id/detailpost/profil-kawasan-batamindo-industrial-park"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "bus-karyawan",
+    "nama": "Bus karyawan & pergantian shift",
+    "nama_alternatif": [
+      "Bus jemputan"
+    ],
+    "kategori": "transportasi",
+    "subkategori": "bus_karyawan",
+    "kecamatan": "Sei Beduk",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.0622,
+    "lng": 104.0292,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR (ikon generik). Label tabel: 🧭. Koordinat hampir sama dengan batamindo. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "koridor-industri",
+      "kategori_asli": "ikon-keseharian",
+      "ringkasan": "Kawasan industri beroperasi tiga shift; bus jemputan jadi pemandangan harian.",
+      "nama_di_tabel": "Bus karyawan & pergantian shift",
+      "kecamatan_tabel": "Sei Beduk",
+      "fakta_tabel": "Kawasan beroperasi tiga shift, 24 jam (Coklat Rocklate/umum ⚠️)",
+      "prioritas_ikon_mode_peta": 29
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Ikon generik keseharian (bukan lokasi tetap). Klaim tiga shift/24 jam bersumber Coklat Rocklate/umum ⚠️.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepri.antaranews.com/berita/201921/pertama-di-indonesia-rumah-asuh-terintegrasi-bagi-anak-pekerja-di-kawasan-industri",
+      "https://coklatrocklate.com/kawasan-industri-muka-kuning-kota-batam/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "masjid-sultan-mahmud-riayat-syah",
+    "nama": "Masjid Sultan Mahmud Riayat Syah",
+    "nama_alternatif": [
+      "Masjid Agung II",
+      "Masjid Agung Batu Aji"
+    ],
+    "kategori": "ibadah",
+    "subkategori": "masjid",
+    "kecamatan": "Batu Aji",
+    "kelurahan": "Tanjung Uncang",
+    "alamat": null,
+    "lat": 1.04957,
+    "lng": 103.93390,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: sedang (posisi kamera foto Wikimedia Commons, radius ratusan meter). Label tabel: ⚠️. Koordinat dari posisi kamera foto Wikimedia Commons (radius ratusan meter); label tabel ⚠️.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "koridor-industri",
+      "kategori_asli": "tempat-ibadah",
+      "ringkasan": "Batu pertama 30 Apr 2017, diresmikan 20 Sep 2019; 25.000 jemaah, menara 99 m, kubah bentang 63 m.",
+      "nama_di_tabel": "Masjid Sultan Mahmud Riayat Syah",
+      "kecamatan_tabel": "Batu Aji (Kel. Tanjung Uncang)",
+      "fakta_tabel": "Peletakan batu pertama 30 April 2017, diresmikan 20 September 2019 oleh Wali Kota Muhammad Rudi. Kapasitas 25.000 jemaah, menara 99 m, kubah utama bentang 63 m, 8 payung membran ala Masjid Nabawi (ANTARA; Kemdikbud BPNB Kepri). Dibangun karena pekerja galangan kapal kesulitan Jumatan di dekat pabrik (Batamnews). Koordinat dari posisi kamera foto Commons",
+      "prioritas_ikon_mode_peta": 4,
+      "kapasitas": "25.000 jemaah",
+      "tinggi_menara": "99 m",
+      "bentang_kubah_utama": "63 m",
+      "peletakan_batu_pertama": "30 April 2017",
+      "diresmikan": "20 September 2019"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Klaim \"masjid terbesar di Sumatra\" berasal dari media; tulis sebagai \"disebut-sebut\" kalau tidak ada sumber resmi.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepri.antaranews.com/berita/59122/wali-kota-resmikan-penggunaan-masjid-sultan",
+      "https://kebudayaan.kemdikbud.go.id/bpnbkepri/sultan-mahmud-riayat-syah-masjid-terbesar-di-sumatra/",
+      "https://www.batamnews.co.id/berita-98448-mengintip-keunikan-dan-keindahan-masjid-sultan-mahmud-riayat-syah-di-batam-kepulauan-riau.html",
+      "https://commons.wikimedia.org/wiki/File:Masjid_Sultan_Mahmud_Riayat_Syah.jpg"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "galangan-tanjung-uncang",
+    "nama": "Galangan kapal Tanjung Uncang",
+    "nama_alternatif": [
+      "Shipyard Tanjung Uncang",
+      "Shipyard"
+    ],
+    "kategori": "lainnya",
+    "subkategori": "galangan_kapal",
+    "kecamatan": "Batu Aji",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.0700,
+    "lng": 103.9150,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "koridor-industri",
+      "kategori_asli": "industri-maritim",
+      "ringkasan": "Klaster galangan kapal; pekerjanya jadi alasan dibangunnya Masjid Sultan Mahmud Riayat Syah.",
+      "nama_di_tabel": "Galangan kapal Tanjung Uncang",
+      "kecamatan_tabel": "Batu Aji",
+      "fakta_tabel": "Klaster galangan kapal di Tanjung Uncang (konteks dari ANTARA/Batamnews soal pekerja galangan) ⚠️ perlu sumber primer per galangan",
+      "prioritas_ikon_mode_peta": 18
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Klaster galangan kapal, bukan satu galangan. ⚠️ Perlu sumber primer per galangan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.batamnews.co.id/berita-98448-mengintip-keunikan-dan-keindahan-masjid-sultan-mahmud-riayat-syah-di-batam-kepulauan-riau.html"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "pasar-aviari",
+    "nama": "Pasar Aviari Batu Aji",
+    "nama_alternatif": [
+      "Aviari"
+    ],
+    "kategori": "belanja",
+    "subkategori": "pasar_barang_seken",
+    "kecamatan": "Batu Aji",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 1.0450,
+    "lng": 103.9650,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "koridor-industri",
+      "kategori_asli": "pasar",
+      "ringkasan": "Pasar alternatif barang seken di Batu Aji.",
+      "nama_di_tabel": "Pasar Aviari Batu Aji",
+      "kecamatan_tabel": "Batu Aji",
+      "fakta_tabel": "Alternatif pasar barang seken selain Jodoh (Batam.co.id) ⚠️"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "⚠️ Sumber hanya Batam.co.id.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.co.id/wisata/pasar-jodoh-batam-panduan-barang-seken/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "pulau-rempang",
+    "nama": "Pulau Rempang",
+    "nama_alternatif": [
+      "Rempang"
+    ],
+    "kategori": "lainnya",
+    "subkategori": "pulau",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.8500,
+    "lng": 104.1000,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR (titik pulau). Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "rempang",
+      "kategori_asli": "pulau-sensitif",
+      "ringkasan": "Pulau terbesar di jalur; penduduk ~5.000 warga Melayu (Wikipedia EN) hingga 7.500–10.000 jiwa di 16 kampung tua (Tempo); lokasi PSN Rempang Eco-City.",
+      "nama_di_tabel": "Pulau Rempang (kawasan)",
+      "kecamatan_tabel": "Galang",
+      "fakta_tabel": "Angka penduduknya berbeda antarsumber. Wikipedia EN \"Rempang Island\" menyebut sekitar 5.000 orang Melayu Rempang dari tiga subkelompok (Melayu Galang, Orang Darat, dan Orang Laut), sedangkan Tempo menyebut 7.500 hingga 10 ribu jiwa di 16 kampung tua. Walhi Riau (Ahlul Fadli, via Betahita) menyebut warga sudah bermukim setidaknya sejak 1834 ⚠️"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Angka penduduk berbeda antarsumber: ~5.000 orang Melayu Rempang dari tiga subkelompok (Wikipedia EN) vs 7.500–10 ribu jiwa di 16 kampung tua (Tempo); Walhi Riau (via Betahita) menyebut warga bermukim setidaknya sejak 1834 ⚠️. Topik sensitif (Rempang Eco-City) — sajikan netral, bertanggal, dengan atribusi; lihat data/mural/topik_sensitif.md.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://en.wikipedia.org/wiki/Rempang_Island"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "tanjung-banon",
+    "nama": "Hunian relokasi Tanjung Banon",
+    "nama_alternatif": [
+      "Tanjung Banon"
+    ],
+    "kategori": "lainnya",
+    "subkategori": "hunian_relokasi",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.8900,
+    "lng": 104.0900,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR, wajib cek OSM. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "rempang",
+      "kategori_asli": "topik-sensitif",
+      "ringkasan": "Per 20 Jul 2025: 125 KK/436 jiwa menempati hunian baru (304 unit dibangun).",
+      "nama_di_tabel": "Hunian relokasi Tanjung Banon",
+      "kecamatan_tabel": "Galang",
+      "fakta_tabel": "Per 20 Juli 2025 tercatat 125 KK/436 jiwa telah menempati hunian baru, dari total 304 unit yang dibangun (Bisnis; BP Batam). September 2025, Menteri Transmigrasi menyebut 432 KK siap direlokasi, meminta maaf kepada warga, dan menyerahkan 45 SHM (Kompas)",
+      "prioritas_ikon_mode_peta": 30
+    },
+    "status_data": null,
+    "catatan": "Data bertanggal, wajib diperbarui berkala (per 20 Juli 2025: 125 KK/436 jiwa dari 304 unit; September 2025: 432 KK siap direlokasi, 45 SHM diserahkan). Penanda netral, bukan ikon dekoratif. Topik sensitif (Rempang Eco-City) — sajikan netral, bertanggal, dengan atribusi; lihat data/mural/topik_sensitif.md.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://sumatra.bisnis.com/read/20250721/533/1894791/update-proyek-rempang-eco-city-436-warga-tempati-tanjung-banon",
+      "https://www.kompas.com/properti/read/2025/09/29/130000221/warga-rempang-dipindahkan-ke-tanjung-banon-dapat-ganti-rugi-apa-saja-"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "kampung-tua-rempang",
+    "nama": "Kampung tua Rempang (Sembulang, Pasir Merah, dll.)",
+    "nama_alternatif": [
+      "Sembulang"
+    ],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rujukan",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.8050,
+    "lng": 104.1400,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "rempang",
+      "kategori_asli": "kampung-tua-rujukan",
+      "ringkasan": "Kampung Melayu tua; Sembulang lokasi tahap pertama yang diminta dikosongkan 2023.",
+      "nama_di_tabel": "Kampung tua Rempang: Sembulang, Pasir Merah, dll. (rujukan)",
+      "kecamatan_tabel": "Galang",
+      "fakta_tabel": "Sembulang adalah lokasi tahap pertama yang diminta dikosongkan pada 2023 (Mongabay)"
+    },
+    "status_data": null,
+    "catatan": "Mewakili beberapa kampung (Sembulang, Pasir Merah, dll.), bukan satu titik. Topik sensitif (kampung tua): di mural cukup penanda \"Kampung Tua\" yang mengarah ke modul riset terpisah; jangan menulis klaim batas wilayah atau status hukum (lihat data/mural/topik_sensitif.md). Topik sensitif (Rempang Eco-City) — sajikan netral, bertanggal, dengan atribusi; lihat data/mural/topik_sensitif.md.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://mongabay.co.id/2023/09/11/kala-proyek-rempang-eco-city-melaju-warga-menolak-berhadapan-dengan-aparat/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "kamp-pengungsi-galang",
+    "nama": "Bekas Kamp Pengungsi Galang",
+    "nama_alternatif": [
+      "Kampung Vietnam",
+      "Camp Vietnam"
+    ],
+    "kategori": "landmark",
+    "subkategori": "situs_sejarah_memorial",
+    "kecamatan": "Galang",
+    "kelurahan": "Sijantung",
+    "alamat": null,
+    "lat": 0.76938,
+    "lng": 104.19126,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: sedang-tinggi (Wikidata, satu titik untuk kompleks). Label tabel: ✅. Wikidata Q4258770, satu titik untuk seluruh kompleks.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "galang",
+      "kategori_asli": "situs-sejarah-memorial",
+      "ringkasan": "Kamp pengungsi Indochina 1979–1996, est. ~250.000 orang (The Australian via Wikipedia EN); upacara penutupan 8 Sep 1996.",
+      "nama_di_tabel": "Bekas Kamp Pengungsi Galang",
+      "kecamatan_tabel": "Galang (Kel. Sijantung)",
+      "fakta_tabel": "Menampung pengungsi Indochina 1979–1996, sekitar 250.000 orang menurut Wikipedia EN yang mengutip Stephen Fitzpatrick di The Australian (\"Galang's refugee hell\", 5 November 2009). Kamp dibagi Camp One (pendatang baru) dan Camp Two (sudah disetujui untuk dimukimkan ulang). Diserahkan ke Otorita Batam 1997 (Wikipedia EN; Wikidata Q4258770). Upacara penutupan 8 September 1996 (Kompas.id)",
+      "prioritas_ikon_mode_peta": 7,
+      "periode": "1979–1996",
+      "diserahkan_ke_otorita_batam": "1997",
+      "upacara_penutupan": "8 September 1996"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Jumlah pengungsi berbeda: Kompas 122.000–250.000; Wikipedia EN ~250.000 (estimasi, mengutip The Australian 5 November 2009); Kompas: 140.738 orang diproses 1979–1990. Tanggal penutupan bervariasi (2, 3, atau 8 September 1996) — pakai \"September 1996\" dan sebut 8 September sebagai upacara penutupan. Topik sensitif (bekas kamp pengungsi Galang) — nada memorial, bahasa faktual, tanpa quest jenaka; lihat data/mural/topik_sensitif.md.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.wikidata.org/wiki/Q4258770",
+      "https://en.wikipedia.org/wiki/Galang_Refugee_Camp",
+      "https://www.kompas.id/artikel/arsip-foto-kompas-pulau-galang-dan-memori-kampung-vietnam"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "museum-camp-vietnam",
+    "nama": "Museum Camp Vietnam",
+    "nama_alternatif": [
+      "Museum Galang"
+    ],
+    "kategori": "wisata",
+    "subkategori": "museum",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.7694,
+    "lng": 104.1913,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI (memakai titik kompleks kamp). Label tabel: 🧭. Memakai titik kompleks kamp. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "galang",
+      "kategori_asli": "museum",
+      "ringkasan": "Bekas kantor P3V; menyimpan ribuan foto, alat makan, kendaraan UNHCR.",
+      "nama_di_tabel": "Museum Camp Vietnam",
+      "kecamatan_tabel": "Galang",
+      "fakta_tabel": "Bekas kantor P3V yang dialihfungsikan menjadi museum. Menyimpan ribuan foto, alat makan, dan kendaraan UNHCR (Tempo; Telusuri)"
+    },
+    "status_data": null,
+    "catatan": "Bekas kantor P3V. Bagian kompleks bekas kamp. Topik sensitif (bekas kamp pengungsi Galang) — nada memorial, bahasa faktual, tanpa quest jenaka; lihat data/mural/topik_sensitif.md.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.tempo.co/hiburan/melihat-camp-vietnam-pulau-galang-yang-direncanakan-untuk-warga-gaza-2060748",
+      "https://telusuri.id/eksplorasi-situs-kamp-pengungsi-vietnam-di-batam/"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "monumen-perahu-pengungsi",
+    "nama": "Monumen perahu pengungsi",
+    "nama_alternatif": [
+      "Perahu Vietnam"
+    ],
+    "kategori": "landmark",
+    "subkategori": "monumen_memorial",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.7694,
+    "lng": 104.1913,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI (memakai titik kompleks kamp). Label tabel: 🧭. Memakai titik kompleks kamp. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "galang",
+      "kategori_asli": "monumen-memorial",
+      "ringkasan": "Perahu pengungsi dipajang di taman kompleks kamp.",
+      "nama_di_tabel": "Monumen kapal pengungsi",
+      "kecamatan_tabel": "Galang",
+      "fakta_tabel": "Perahu pengungsi dipajang di taman kompleks kamp (Kompas)",
+      "prioritas_ikon_mode_peta": 26
+    },
+    "status_data": null,
+    "catatan": "Di taman kompleks bekas kamp. Topik sensitif (bekas kamp pengungsi Galang) — nada memorial, bahasa faktual, tanpa quest jenaka; lihat data/mural/topik_sensitif.md.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://travel.kompas.com/read/2020/03/23/230449327/sejarah-pulau-galang-di-batam-eks-tempat-pengungsian-vietnam?page=all"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "makam-nghia-trang",
+    "nama": "Makam Nghia Trang",
+    "nama_alternatif": [
+      "Makam pengungsi"
+    ],
+    "kategori": "landmark",
+    "subkategori": "makam_memorial",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.7694,
+    "lng": 104.1913,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI (memakai titik kompleks kamp). Label tabel: 🧭. Memakai titik kompleks kamp. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "galang",
+      "kategori_asli": "memorial",
+      "ringkasan": "Sedikitnya 503 pengungsi dimakamkan di sini.",
+      "nama_di_tabel": "Makam Nghia Trang",
+      "kecamatan_tabel": "Galang",
+      "fakta_tabel": "Sedikitnya 503 pengungsi dimakamkan di sini (Kompas TV)"
+    },
+    "status_data": null,
+    "catatan": "Kartu hening tanpa poin quest/interaksi game. Topik sensitif (bekas kamp pengungsi Galang) — nada memorial, bahasa faktual, tanpa quest jenaka; lihat data/mural/topik_sensitif.md.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.kompas.tv/lifestyle/467746/sejarah-pulau-galang-dipakai-kamp-pengungsi-vietnam-sekarang-diusulkan-jadi-penampungan-rohingya?page=all"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "vihara-quan-am-tu",
+    "nama": "Vihara Quan Am Tu",
+    "nama_alternatif": [
+      "Vihara Kwan Im Galang"
+    ],
+    "kategori": "ibadah",
+    "subkategori": "vihara",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": 0.7694,
+    "lng": 104.1913,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI (memakai titik kompleks kamp). Label tabel: 🧭. Memakai titik kompleks kamp. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "galang",
+      "kategori_asli": "tempat-ibadah",
+      "ringkasan": "Vihara di kompleks bekas kamp pengungsi.",
+      "nama_di_tabel": "Vihara Quan Am Tu",
+      "kecamatan_tabel": "Galang",
+      "fakta_tabel": "Vihara di kompleks bekas kamp (detikSumut)"
+    },
+    "status_data": null,
+    "catatan": "Di kompleks bekas kamp pengungsi Galang.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.detik.com/sumut/berita/d-8050803/sejarah-pulau-galang-dari-tampung-pengungsi-vietnam-hingga-warga-gaza"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "pantai-melur",
+    "nama": "Pantai Melur",
+    "nama_alternatif": [
+      "Melur",
+      "Glory Melur"
+    ],
+    "kategori": "wisata",
+    "subkategori": "pantai",
+    "kecamatan": "Galang",
+    "kelurahan": "Sijantung",
+    "alamat": null,
+    "lat": 0.7680,
+    "lng": 104.1750,
+    "status_koordinat": "perlu_cek_ulang",
+    "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR; koordinat blog 1.0708,104.1442 terbukti salah. Label tabel: 🧭. Peringatan koordinat: Wisatago mencantumkan 1.0708, 104.1442 — titik itu jatuh di Pulau Batam, jelas salah; jangan pakai koordinat dari blog. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "galang",
+      "kategori_asli": "pantai",
+      "ringkasan": "Pantai pasir putih ~1 km dari kamp, setelah Jembatan V; reservasi gazebo disarankan.",
+      "nama_di_tabel": "Pantai Melur",
+      "kecamatan_tabel": "Galang (Sijantung)",
+      "fakta_tabel": "Pantai pasir putih sekitar 1 km dari kamp, setelah Jembatan V. Sekitar 1,5 jam dari Batam Centre, dan gazebo sebaiknya dipesan dulu (Tempo; GNFI)",
+      "prioritas_ikon_mode_peta": 13,
+      "booking": "gazebo sebaiknya dipesan dulu",
+      "jarak": "sekitar 1 km dari kamp; sekitar 1,5 jam dari Batam Centre"
+    },
+    "status_data": null,
+    "catatan": null,
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.tempo.co/hiburan/liburan-ke-pantai-glory-melur-batam-jangan-lupa-reservasi-gazebo-168369",
+      "https://www.goodnewsfromindonesia.id/2025/10/30/pantai-melur-batam-pesona-pasir-putih-dan-wahana-air-di-pulau-galang-batam"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "kawasan-rempang-eco-city",
+    "nama": "Kawasan Rempang Eco-City",
+    "nama_alternatif": [
+      "Eco-City"
+    ],
+    "kategori": "lainnya",
+    "subkategori": "kawasan_proyek_strategis_nasional",
+    "kecamatan": "Galang",
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan tidak memberi koordinat (—).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "rempang",
+      "asal_entri": "tabel Segmen 7 (tidak ada di seed JSON)",
+      "nama_di_tabel": "Kawasan Rempang Eco-City",
+      "kecamatan_tabel": "Galang",
+      "fakta_tabel": "Ditetapkan sebagai PSN lewat Permenko Perekonomian No. 7/2023 (28 Agustus 2023). BP Batam menyebut lahan pengembangan 7.572 ha, sementara hak pengelolaan PT MEG sekitar 17.000 ha (Tirto; Harian Haluan; Walhi)",
+      "dasar_hukum_psn": "Permenko Perekonomian No. 7/2023 (28 Agustus 2023)",
+      "luas_lahan": "7.572 ha lahan pengembangan (BP Batam) vs sekitar 17.000 ha hak pengelolaan PT MEG"
+    },
+    "status_data": "rencana",
+    "catatan": "Jangan diilustrasikan sebagai bangunan jadi; cukup penanda area/plang. Klaim yang masih diperdebatkan: nilai investasi (Rp174 triliun hingga Rp381 triliun), keterlibatan Xinyi (bantahan baru bersumber BatamNow mengutip BHRRC ⚠️), dan luas lahan. Topik sensitif (Rempang Eco-City) — sajikan netral, bertanggal, dengan atribusi; lihat data/mural/topik_sensitif.md.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://tirto.id/apa-itu-rempang-eco-city-yang-jadi-pemicu-bentrok-warga-aparat-gPSy",
+      "https://www.harianhaluan.com/news/1010088266/mengulik-proyek-pembangunan-eco-city-di-pulau-rempang-kepulauan-riau-yang-sedang-dalam-konflik-panas",
+      "https://www.walhiriau.or.id/wp-content/uploads/2024/07/Kronik-PSN-Rempang-Eco-City-Kontroversi-Investasi-Tiongkok-dan-resistensi-Masyarakat-Rempang-FINAL-1.pdf"
+    ],
+    "sumber_riset": "03-landmark-jalur-mural"
+  },
+  {
+    "id": "kampung-tua-batu-aji-mukakuning",
+    "nama": "Kampung Tua Batu Aji & Mukakuning",
+    "nama_alternatif": [],
+    "kategori": "kampung_tua",
+    "subkategori": "kampung_tua_rujukan",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": "Laporan tidak memberi koordinat (—).",
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "segmen_mural": "koridor-industri",
+      "asal_entri": "tabel Segmen 5 (tidak ada di seed JSON)",
+      "nama_di_tabel": "Kampung Tua Batu Aji & Mukakuning (rujukan)",
+      "kecamatan_tabel": "Batu Aji/Sei Beduk",
+      "fakta_tabel": "Masuk daftar 10 kampung tua (Kepri Post)"
+    },
+    "status_data": null,
+    "catatan": "Kecamatan di laporan: \"Batu Aji/Sei Beduk\" (dua kampung tua dalam satu baris, kecamatan tidak tunggal). Sumber disebut \"Kepri Post\" tanpa URL. Topik sensitif (kampung tua): di mural cukup penanda \"Kampung Tua\" yang mengarah ke modul riset terpisah; jangan menulis klaim batas wilayah atau status hukum (lihat data/mural/topik_sensitif.md).",
+    "tag_osm": null,
+    "sumber_url": [],
+    "sumber_riset": "03-landmark-jalur-mural"
+  }
+]

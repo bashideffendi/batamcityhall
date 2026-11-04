@@ -1,0 +1,516 @@
+[
+  {
+    "id": "waduk-sei-harapan",
+    "nama": "Waduk Sei Harapan",
+    "nama_alternatif": [],
+    "kategori": "lainnya",
+    "subkategori": "waduk",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "dulu": "Waduk sementara untuk Pertamina Sambu",
+      "sekarang": "Waduk tertua; permanen beroperasi 1979 (210 l/detik)",
+      "tahun_kunci": "1969 → 1979",
+      "perubahan_fisik_id": "pf-04"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Kecamatan tidak disebut di laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batampos.co.id/2020/10/21/sejarah-pembangunan-waduk-di-batam/"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "waduk-nongsa",
+    "nama": "Waduk Nongsa",
+    "nama_alternatif": [
+      "Dam Nongsa"
+    ],
+    "kategori": "lainnya",
+    "subkategori": "waduk",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "dulu": "Sungai",
+      "sekarang": "Waduk 0,7 juta m³, 60 l/detik",
+      "tahun_kunci": "1975 atau 1978",
+      "dibangun_oleh": "pekerja Jepang (Taisei) — disebut \"Dam Nongsa\" di garis waktu",
+      "perubahan_fisik_id": "pf-05"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Tahun pembangunan berbeda antarsumber (1975 atau 1978). Kecamatan tidak disebut di laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://batam.tribunnews.com/2020/06/17/jadi-sumber-air-baku-inilah-profil-enam-waduk-di-kota-batam-paling-luas-duriangkang",
+      "https://www.thejakartapost.com/travel/2019/12/17/nagoya-a-quarter-of-japanese-legacy-in-batam"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "waduk-sei-ladi",
+    "nama": "Waduk Sei Ladi",
+    "nama_alternatif": [],
+    "kategori": "lainnya",
+    "subkategori": "waduk",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "dulu": "Lembah sungai",
+      "sekarang": "Waduk 8,8 juta m³",
+      "tahun_kunci": "1981–1982 atau 1985–1986",
+      "perubahan_fisik_id": "pf-06"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Tahun pembangunan berbeda antarsumber (1981–1982 atau 1985–1986). Kecamatan tidak disebut di laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://gowest.id/sejarah-pengelolaan-air-bersih-di-batam-1-waduk-waduk-di-batam-duriangkang-yang-fenomenal/"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "waduk-muka-kuning",
+    "nama": "Waduk Muka Kuning",
+    "nama_alternatif": [],
+    "kategori": "lainnya",
+    "subkategori": "waduk",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "dulu": "Sungai",
+      "sekarang": "Waduk 13,4 juta m³, hulu Duriangkang",
+      "tahun_kunci": "1989/1990 → 1991",
+      "perubahan_fisik_id": "pf-07"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Tahun pembangunan berbeda antarsumber (1989/1990 → 1991). Kecamatan tidak disebut di laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://jurnalsda.pusair-pu.go.id/index.php/JSDA/article/download/690/529"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "waduk-duriangkang",
+    "nama": "Waduk Duriangkang",
+    "nama_alternatif": [],
+    "kategori": "lainnya",
+    "subkategori": "waduk",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "dulu": "Muara sungai berair asin dan kampung Duriangkang (warganya direlokasi ke Tanjung Piayu)",
+      "sekarang": "Waduk terbesar (100,7 juta m³, sekitar 3.000 l/detik)",
+      "tahun_kunci": "Versi BP Batam: dibangun 1990, operasi 2001 (versi lain 1986/1992; 1991/1995)",
+      "perubahan_fisik_id": "pf-08"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Tahun konstruksi berbeda antarsumber; laporan menyarankan versi BP Batam sebagai acuan. Perkampungan hilang yang paling terdokumentasi adalah Duriangkang (warga direlokasi ke Tanjung Piayu). Kecamatan tidak disebut di laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://pengling.bpbatam.go.id/en/portfolio/waduk-duriangkang/",
+      "https://ylgi.org/dam-duriangkang-batam/"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "bandara-hang-nadim",
+    "nama": "Bandara Hang Nadim",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "bandara",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "lokasi_disebut": "Batu Besar (lokasi semula direncanakan di Tanjung Uncang, dipindah karena mengganggu jalur Paya Lebar)",
+      "landasan": "4.025 × 45 m, terpanjang di Indonesia",
+      "luas_area": "1.762 ha",
+      "pemanfaatan_lahan": "baru sekitar 40 persen (iNews.id)",
+      "penerbangan_internasional": "1990",
+      "diresmikan": "Soeharto, 1995",
+      "tahun_kunci": "1974–1995 (versi berbeda)",
+      "dulu": "Hutan pesisir Batu Besar; lokasi semula direncanakan di Tanjung Uncang",
+      "sekarang": "Landasan 4.025 × 45 m, terpanjang di Indonesia; area 1.762 ha",
+      "asal_nama": "Laksamana Hang Nadim (Melaka), penamaan simbolik",
+      "perubahan_fisik_id": "pf-09"
+    },
+    "status_data": "perlu_cek_ulang",
+    "catatan": "Tahun mulai pembangunan berbeda antarsumber (1974/1980/1984; iNews menyebut dibangun 1974). Laporan ini hanya menyebut lokasi Batu Besar; kecamatan tidak disebut.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.batamnews.co.id/berita-64150-infografis-sejarah-pembangunan-bandara-hang-nadim.html",
+      "https://www.m.batamtoday.com/berita-71652-Inilah-Dasar-dan-Sejarah-Bandara-Internasional-Hang-Nadim-Dikelola-BP-Batam.html",
+      "https://www.inews.id/regional/regional/profil-bandara-hang-nadim-tempat-dengan-nama-laksamana-hebat-dari-kerajaan-malaka"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "jembatan-barelang",
+    "nama": "Jembatan Barelang",
+    "nama_alternatif": [],
+    "kategori": "landmark",
+    "subkategori": "jembatan",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "menghubungkan": "Batam–Tonton–Nipah–Setokok–Rempang–Galang–Galang Baru",
+      "jumlah_jembatan": 6,
+      "biaya": "Rp400 miliar",
+      "jembatan_i": "644 m, cable stayed pertama di Indonesia",
+      "panjang_total": "54 km (52 km jalan, 2 km jembatan)",
+      "tahun_kunci": "1992–1998",
+      "asal_nama": "akronim Batam–Rempang–Galang",
+      "perubahan_fisik_id": "pf-10"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Kompleks enam jembatan lintas pulau; kecamatan tidak disebut di laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kepri.antaranews.com/berita/168210/bp-batam-berikan-penjelasan-terkait-pemegang-hpl-kawasan-rempang",
+      "https://batampos.co.id/2018/11/07/jembatan-barelang-destinasi-wisata-batam-paling-hits-di-instagram/"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "kamp-pengungsi-galang",
+    "nama": "Wisata Sejarah Galang",
+    "nama_alternatif": [
+      "Kamp Galang",
+      "Kamp pengungsi Vietnam di Galang"
+    ],
+    "kategori": "wisata",
+    "subkategori": "wisata_sejarah",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "dulu": "Kamp pengungsi Vietnam",
+      "sekarang": "Wisata Sejarah Galang (sejak 2000)",
+      "periode_kamp": "1979–1996",
+      "wisata_sejak": "2000",
+      "lokasi_disebut": "Galang",
+      "perubahan_fisik_id": "pf-11"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Kecamatan tidak disebut di laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kompas.id/baca/kompas_multimedia/mengonsentrasikan-pulau-galang/",
+      "https://www.melayupedia.com/berita/42/tak-hanya-kota-industri-batam-juga-punya-3-wisata-heritage-yang-wajib-dikunjungi"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "tugu-jepang-sembulang",
+    "nama": "Tugu Jepang di Sembulang",
+    "nama_alternatif": [
+      "Monumen tentara Jepang"
+    ],
+    "kategori": "landmark",
+    "subkategori": "monumen",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "dibangun_oleh": "Rempang Friendship Association",
+      "tahun_dibangun": "1981",
+      "isi_tugu": "112.708 serdadu, 128 di antaranya meninggal",
+      "lokasi_disebut": "Sembulang (Rempang)",
+      "konteks": "Kamp tentara Jepang di Rempang–Galang, Okt 1945 – Juli 1946",
+      "perubahan_fisik_id": "pf-12"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Jumlah tawanan berbeda versi: tugu mencatat 112.708 serdadu (128 meninggal); BiblioAsia menyebut sekitar 68.000 diinternir di Rempang dan lebih dari 150 meninggal di Rempang dan Galang. Kecamatan tidak disebut di laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://historia.id/militer/articles/tentara-jepang-di-pulau-rempang-dan-pulau-galang-vqZr0",
+      "https://isomer-user-content.by.gov.sg/339/11d54ac8-9e5b-46d4-b71d-0c9f60c96b3b/BA-Oct-Dec2026-Rempang.pdf"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "makam-temenggung-abdul-jamal",
+    "nama": "Makam Temenggung Abdul Jamal",
+    "nama_alternatif": [],
+    "kategori": "budaya",
+    "subkategori": "makam_cagar_budaya",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "status_cagar_budaya": "cagar budaya Kota Batam",
+      "tokoh": "Temenggung Abdul Jamal (1757–1802)",
+      "lokasi_disebut": "Bulang"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Laporan menyebut 'dimakamkan di Bulang' (Pulau Bulang) tanpa menyebut kecamatan secara eksplisit. Tahun jabatan Temenggung berbeda versi.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://kebudayaan.kemdikbud.go.id/bpnbkepri/makam-nong-isa-dan-temenggung-abdul-jamal-jadi-destinasi-wisata/",
+      "https://www.nlb.gov.sg/biblio/4082016",
+      "https://metro.batampos.co.id/pemko-batam-tetapkan-4-benda-peninggalan-sejarah-baru/"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "perigi-batu-pulau-buluh",
+    "nama": "Perigi Batu Pulau Buluh",
+    "nama_alternatif": [],
+    "kategori": "budaya",
+    "subkategori": "cagar_budaya",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "status_cagar_budaya": "cagar budaya",
+      "keterangan": "Masih ada bata bertuliskan \"Batam Brick works\" dari pabrik bata pertama di Batam (sekitar 1898, Raja Ali Kelana dan Ong Sam Leong)",
+      "lokasi_disebut": "Pulau Buluh"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Kecamatan tidak disebut di laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://metro.batampos.co.id/pemko-batam-tetapkan-4-benda-peninggalan-sejarah-baru/"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "pelabuhan-batu-ampar",
+    "nama": "Pelabuhan Batu Ampar",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_kargo",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "dulu": "Basis logistik Pertamina; Pelabuhan Batu Ampar dibangun pekerja Jepang",
+      "sekarang": "pelabuhan kargo Batu Ampar",
+      "tahun_kunci": "1970-an",
+      "dibangun_oleh": "pekerja Jepang (Taisei)",
+      "perubahan_fisik_id": "pf-03"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Laporan hanya menyebut nama kawasan Batu Ampar; kecamatan tidak disebut eksplisit.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.terasbatam.id/sejarah-nagoya-di-batam/",
+      "https://www.thejakartapost.com/travel/2019/12/17/nagoya-a-quarter-of-japanese-legacy-in-batam"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "pelabuhan-sekupang",
+    "nama": "Pelabuhan Internasional Sekupang",
+    "nama_alternatif": [],
+    "kategori": "transportasi",
+    "subkategori": "pelabuhan_internasional",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "dulu": "Basis logistik Pertamina",
+      "sekarang": "Pelabuhan internasional Sekupang",
+      "tahun_kunci": "1970-an",
+      "perubahan_fisik_id": "pf-03"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Laporan hanya menyebut nama kawasan Sekupang; kecamatan tidak disebut eksplisit.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.terasbatam.id/sejarah-nagoya-di-batam/"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  },
+  {
+    "id": "nongsa-digital-park",
+    "nama": "Nongsa Digital Park",
+    "nama_alternatif": [
+      "KEK Nongsa"
+    ],
+    "kategori": "lainnya",
+    "subkategori": "kawasan_ekonomi_khusus",
+    "kecamatan": null,
+    "kelurahan": null,
+    "alamat": null,
+    "lat": null,
+    "lng": null,
+    "status_koordinat": "perlu_diisi_user",
+    "catatan_koordinat": null,
+    "jam_layanan": null,
+    "kontak": {
+      "telepon": null,
+      "whatsapp": null,
+      "email": null,
+      "website": null
+    },
+    "atribut": {
+      "dasar_hukum": "PP 68/2021 (KEK Nongsa)",
+      "luas": "166,45 ha",
+      "target_investasi": "Rp16 triliun",
+      "target_tenaga_kerja": "16.500",
+      "dulu": "Kawasan resor (Turi Beach, Nongsa Point Marina)",
+      "sekarang": "KEK digital & data center",
+      "tahun_kunci": "2021",
+      "perubahan_fisik_id": "pf-13"
+    },
+    "status_data": "terverifikasi",
+    "catatan": "Kecamatan tidak disebut di laporan.",
+    "tag_osm": null,
+    "sumber_url": [
+      "https://www.ekon.go.id/publikasi/detail/3067/menko-airlangga-kek-batam-dapat-menjadi-contoh-dan-"
+    ],
+    "sumber_riset": "15-sejarah-arsip"
+  }
+]

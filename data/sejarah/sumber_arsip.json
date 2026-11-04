@@ -1,0 +1,209 @@
+[
+  {
+    "id": "sa-01",
+    "nama_lembaga": "Leiden University Libraries (KITLV)",
+    "koleksi": "Southeast Asian & Caribbean Images; Maps KITLV",
+    "contoh_url": "https://digitalcollections.universiteitleiden.nl/imagecollection-kitlv",
+    "lisensi": "Per item; banyak CC-BY",
+    "cara_kredit": "Leiden University Libraries, [shelfmark], [persistent URL]",
+    "boleh_dipakai_ulang": "ya_jika_label_terbuka",
+    "lembaga_tabel": "Leiden University Libraries – KITLV",
+    "isi_relevan": "Foto kolonial Riau, peta 1847 \"Bantang\", peta Schot 1882, foto \"Schepen op de rede te Samboe bij Batam\" (KITLV A874)",
+    "titik_masuk_tabel": "https://digitalcollections.universiteitleiden.nl/imagecollection-kitlv ; https://digitalcollections.universiteitleiden.nl/maps-kitlv",
+    "titik_masuk_url": [
+      "https://digitalcollections.universiteitleiden.nl/imagecollection-kitlv",
+      "https://digitalcollections.universiteitleiden.nl/maps-kitlv"
+    ],
+    "lisensi_tabel": "Per item; banyak CC-BY, sebagian dibatasi hak cipta",
+    "cara_kredit_tabel": "\"Leiden University Libraries, [shelfmark]\" + persistent URL",
+    "boleh_dipakai_ulang_tabel": "Ya, jika label item CC-BY/Public Domain",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sa-02",
+    "nama_lembaga": "Wikimedia Commons (donasi KITLV)",
+    "koleksi": "Photographs from KITLV",
+    "contoh_url": "https://commons.wikimedia.org/wiki/Category:Photographs_from_KITLV",
+    "lisensi": "Sesuai label berkas",
+    "cara_kredit": "Sesuai template berkas",
+    "boleh_dipakai_ulang": "ya_sesuai_label",
+    "lembaga_tabel": "Wikimedia Commons – donasi KITLV",
+    "isi_relevan": "Sekitar 5.574 foto resolusi tinggi abad ke-19–20 dari Leiden/KITLV",
+    "titik_masuk_tabel": "https://commons.wikimedia.org/wiki/Category:Photographs_from_KITLV",
+    "titik_masuk_url": [
+      "https://commons.wikimedia.org/wiki/Category:Photographs_from_KITLV"
+    ],
+    "lisensi_tabel": "Sesuai label berkas",
+    "cara_kredit_tabel": "Sesuai template berkas",
+    "boleh_dipakai_ulang_tabel": "Ya, sesuai label",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sa-03",
+    "nama_lembaga": "Nationaal Archief",
+    "koleksi": "Fotocollectie (open data)",
+    "contoh_url": "https://www.nationaalarchief.nl/onderzoeken/fotos",
+    "lisensi": "CC0 / Public Domain",
+    "cara_kredit": "Foto: [fotografer], Nationaal Archief / [koleksi]",
+    "boleh_dipakai_ulang": "ya",
+    "lembaga_tabel": "Nationaal Archief (Belanda)",
+    "isi_relevan": "Foto kolonial, Anefo 1945–1989",
+    "titik_masuk_tabel": "https://www.nationaalarchief.nl/onderzoeken/fotos",
+    "titik_masuk_url": [
+      "https://www.nationaalarchief.nl/onderzoeken/fotos"
+    ],
+    "lisensi_tabel": "Menurut halaman open data Nationaal Archief, sekitar 418.000 foto (38% dari foto yang sudah didigitalisasi) berlisensi CC0/Public Domain. Foto boleh dipakai \"zonder toestemming... zelfs voor commerciële doeleinden\", tetapi hanya jika ada tombol unduh dan label CC0/Public Domain.",
+    "cara_kredit_tabel": "\"Foto: [fotografer], Nationaal Archief / [koleksi]\"",
+    "boleh_dipakai_ulang_tabel": "Ya untuk item CC0",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sa-04",
+    "nama_lembaga": "ANRI",
+    "koleksi": "Arsip Riouw",
+    "contoh_url": null,
+    "lisensi": "Belum diriset",
+    "cara_kredit": "ANRI, Arsip Riouw",
+    "boleh_dipakai_ulang": "minta_izin",
+    "lembaga_tabel": "ANRI",
+    "isi_relevan": "Arsip Riouw: salinan surat pengukuhan Raja Isa 1829",
+    "titik_masuk_tabel": "Koleksi Arsip Riouw",
+    "titik_masuk_url": [],
+    "lisensi_tabel": "Belum diriset",
+    "cara_kredit_tabel": "ANRI + nama koleksi",
+    "boleh_dipakai_ulang_tabel": "Minta izin",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sa-05",
+    "nama_lembaga": "NLB Singapore",
+    "koleksi": "PictureSG",
+    "contoh_url": "https://eresources.nlb.gov.sg/pictures/TermsAndConditions",
+    "lisensi": "Pribadi dan non-komersial; lainnya lewat permohonan",
+    "cara_kredit": "Acknowledgement NLB",
+    "boleh_dipakai_ulang": "tidak_tanpa_izin",
+    "lembaga_tabel": "NLB Singapore – PictureSG",
+    "isi_relevan": "Foto Singapura, sebagian Kepulauan Riau",
+    "titik_masuk_tabel": "https://eresources.nlb.gov.sg/pictures/TermsAndConditions",
+    "titik_masuk_url": [
+      "https://eresources.nlb.gov.sg/pictures/TermsAndConditions"
+    ],
+    "lisensi_tabel": "Unduhan hanya untuk \"personal and non-commercial purposes\"; reproduksi lain lewat Digital Reproduction Services",
+    "cara_kredit_tabel": "Pernyataan acknowledgement NLB",
+    "boleh_dipakai_ulang_tabel": "Tidak otomatis; tautkan saja atau ajukan izin",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sa-06",
+    "nama_lembaga": "NLB Singapore",
+    "koleksi": "BiblioAsia / NewspaperSG",
+    "contoh_url": "https://isomer-user-content.by.gov.sg/339/11d54ac8-9e5b-46d4-b71d-0c9f60c96b3b/BA-Oct-Dec2026-Rempang.pdf",
+    "lisensi": "Hak cipta NLB/pemegang asli",
+    "cara_kredit": "BiblioAsia, NLB",
+    "boleh_dipakai_ulang": "tautkan_saja",
+    "lembaga_tabel": "NLB – BiblioAsia/NewspaperSG",
+    "isi_relevan": "Artikel BiblioAsia tentang tawanan Jepang di Rempang (Okt–Des 2026); *The Straits Times* 1946",
+    "titik_masuk_tabel": "https://isomer-user-content.by.gov.sg/339/11d54ac8-9e5b-46d4-b71d-0c9f60c96b3b/BA-Oct-Dec2026-Rempang.pdf",
+    "titik_masuk_url": [
+      "https://isomer-user-content.by.gov.sg/339/11d54ac8-9e5b-46d4-b71d-0c9f60c96b3b/BA-Oct-Dec2026-Rempang.pdf"
+    ],
+    "lisensi_tabel": "Hak cipta NLB/pemegang asli",
+    "cara_kredit_tabel": "BiblioAsia, NLB",
+    "boleh_dipakai_ulang_tabel": "Tautkan saja; gambar perlu izin",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sa-07",
+    "nama_lembaga": "National Archives of Singapore",
+    "koleksi": "Photographs Database",
+    "contoh_url": "https://www.nas.gov.sg/archivesonline/photographs/ordering",
+    "lisensi": "Hak pakai lewat e-Request berbayar",
+    "cara_kredit": "Sesuai ketentuan NAS",
+    "boleh_dipakai_ulang": "tidak_tanpa_izin",
+    "lembaga_tabel": "National Archives of Singapore",
+    "isi_relevan": "Foto pemerintah Singapura (mis. kerja sama SIJORI)",
+    "titik_masuk_tabel": "https://www.nas.gov.sg/archivesonline/photographs/ordering",
+    "titik_masuk_url": [
+      "https://www.nas.gov.sg/archivesonline/photographs/ordering"
+    ],
+    "lisensi_tabel": "Hak pakai lewat e-Request berbayar",
+    "cara_kredit_tabel": "Sesuai ketentuan NAS",
+    "boleh_dipakai_ulang_tabel": "Tidak tanpa izin",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sa-08",
+    "nama_lembaga": "BP Batam",
+    "koleksi": "E-book, galeri, geoportal",
+    "contoh_url": "https://bpbatam.go.id/publikasi/e-book/",
+    "lisensi": "All Rights Reserved",
+    "cara_kredit": "Dok. BP Batam",
+    "boleh_dipakai_ulang": "minta_izin",
+    "lembaga_tabel": "BP Batam (Otorita Batam)",
+    "isi_relevan": "Foto pembangunan 1970-an–1990-an, e-book, geoportal",
+    "titik_masuk_tabel": "https://bpbatam.go.id/publikasi/e-book/ ; https://geoportal.bpbatam.go.id/",
+    "titik_masuk_url": [
+      "https://bpbatam.go.id/publikasi/e-book/",
+      "https://geoportal.bpbatam.go.id/"
+    ],
+    "lisensi_tabel": "\"All Right Reserved\"",
+    "cara_kredit_tabel": "\"Dok. BP Batam\"",
+    "boleh_dipakai_ulang_tabel": "Minta izin (humas@bpbatam.go.id)",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sa-09",
+    "nama_lembaga": "Museum Batam Raja Ali Haji",
+    "koleksi": "Koleksi museum, sketsa Nong Isa",
+    "contoh_url": "https://museum.batam.go.id/",
+    "lisensi": "Belum ada informasi",
+    "cara_kredit": "Koleksi Museum Batam Raja Ali Haji",
+    "boleh_dipakai_ulang": "minta_izin",
+    "lembaga_tabel": "Museum Batam Raja Ali Haji",
+    "isi_relevan": "Sketsa wajah Nong Isa, artefak, tugu batas kota administratif",
+    "titik_masuk_tabel": "https://museum.batam.go.id/",
+    "titik_masuk_url": [
+      "https://museum.batam.go.id/"
+    ],
+    "lisensi_tabel": "Belum ada informasi",
+    "cara_kredit_tabel": "\"Koleksi Museum Batam Raja Ali Haji\"",
+    "boleh_dipakai_ulang_tabel": "Minta izin",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sa-10",
+    "nama_lembaga": "Pertamina / Kompas / Batam Pos",
+    "koleksi": "Arsip foto pembangunan",
+    "contoh_url": null,
+    "lisensi": "Komersial",
+    "cara_kredit": "Sesuai perjanjian",
+    "boleh_dipakai_ulang": "minta_izin",
+    "lembaga_tabel": "Pertamina, Kompas, Batam Pos",
+    "isi_relevan": "Foto era Ibnu Sutowo, pembangunan 1970–1990-an",
+    "titik_masuk_tabel": "(kontak langsung)",
+    "titik_masuk_url": [],
+    "lisensi_tabel": "Hak cipta komersial",
+    "cara_kredit_tabel": "Sesuai perjanjian",
+    "boleh_dipakai_ulang_tabel": "Minta izin/lisensi",
+    "sumber_entri": "json+tabel"
+  },
+  {
+    "id": "sa-11",
+    "nama_lembaga": "Penulis lokal (gowest.id, bintorosuryo.com)",
+    "koleksi": "Repro peta lama, cerita lokal",
+    "contoh_url": "https://gowest.id/peta-pesisir-utara-pulau-bantang-i-e-batam/",
+    "lisensi": "Hak cipta penulis",
+    "cara_kredit": "Penulis + sumber asli",
+    "boleh_dipakai_ulang": "petunjuk_saja",
+    "lembaga_tabel": "Penulis lokal (gowest.id, bintorosuryo.com)",
+    "isi_relevan": "Repro peta lama Leiden, cerita Nongsa, sejarah waduk",
+    "titik_masuk_tabel": "https://gowest.id/peta-pesisir-utara-pulau-bantang-i-e-batam/",
+    "titik_masuk_url": [
+      "https://gowest.id/peta-pesisir-utara-pulau-bantang-i-e-batam/"
+    ],
+    "lisensi_tabel": "Hak cipta penulis",
+    "cara_kredit_tabel": "Penulis + sumber asli",
+    "boleh_dipakai_ulang_tabel": "Petunjuk saja; lacak item aslinya",
+    "sumber_entri": "json+tabel"
+  }
+]

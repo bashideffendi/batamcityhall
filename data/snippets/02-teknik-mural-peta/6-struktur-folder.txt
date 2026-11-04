@@ -1,0 +1,22 @@
+/app
+  /(site)/page.tsx
+  /peta/page.tsx                 ← client component MapView (dynamic, ssr:false)
+  /mural/[segment]/page.tsx      ← MuralViewer + generateMetadata per spot
+  /api/rain/route.ts             ← proxy hujandibatam → poligon (lat/lng) + cache 5 mnt
+  /api/ferry/route.ts            ← Sheets → JSON, revalidate 3600
+  /api/og/[spot]/route.tsx
+/components
+  /map/MapView.tsx  /map/layers/*.ts  /map/Graticule.tsx
+  /mural/MuralViewer.tsx  /mural/OverlayCanvas.ts  /mural/effects/{rain,waves,ferry,daylight}.ts
+  /mural/HotspotLayer.tsx  /mural/MuseumCard.tsx  /mural/QuestBadge.tsx  /mural/StopStrip.tsx
+/lib
+  geo/tps.ts  geo/densify.ts  time/batam.ts (Asia/Jakarta + suncalc)  data/sheets.ts  data/supabase.ts
+/data
+  mural/segments.json            ← id, nama perhentian, url .dzi, ukuran px, urutan strip
+  mural/seg01.gcps.json  mural/seg01.hotspots.json  mural/seg01.water-mask.png
+  quests.json  ferry/routes.px.json
+  map/style.day.json  map/style.night.json
+/scripts
+  tile-segment.sh (vips dzsave → rclone ke R2)
+  bathy.sh (gdal → tippecanoe → pmtiles)
+  gcp-tool/ (micro-app Vite: MapLibre + OSD berdampingan)

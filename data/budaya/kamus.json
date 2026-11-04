@@ -1,0 +1,587 @@
+[
+  {
+    "id": "k-001",
+    "kata": "ruli",
+    "arti": "Rumah liar",
+    "contoh": "Dulu kawasan tu penuh ruli.",
+    "asal": "Akronim Batam",
+    "catatan": "[S]",
+    "sumber_url": "https://bpiw.pu.go.id/bankdata/dictionary/words?q=Rumah+liar/Ruli&id=1540"
+  },
+  {
+    "id": "k-002",
+    "kata": "pancung",
+    "arti": "Perahu motor kecil antarpulau",
+    "contoh": "Naik pancung ke Belakang Padang.",
+    "asal": "Melayu Kepri",
+    "catatan": "[S]",
+    "sumber_url": "https://www.antaranews.com/foto/2716049/sarana-transportasi-perahu-di-batam"
+  },
+  {
+    "id": "k-003",
+    "kata": "pompong",
+    "arti": "Perahu kayu bermesin, muat ±10–30 orang",
+    "contoh": "Pompong terakhir jam lima.",
+    "asal": "Melayu Kepri",
+    "catatan": "[S]",
+    "sumber_url": "https://rri.co.id/kepulauan-riau/daerah/866606/pompong-masih-menjadi-transportasi-utama-warga-belakang-padang"
+  },
+  {
+    "id": "k-004",
+    "kata": "tekong",
+    "arti": "Nakhoda perahu",
+    "contoh": "Tanya tekong, boleh singgah?",
+    "asal": "Melayu",
+    "catatan": "[S]",
+    "sumber_url": "https://rri.co.id/kepulauan-riau/daerah/866606/pompong-masih-menjadi-transportasi-utama-warga-belakang-padang"
+  },
+  {
+    "id": "k-005",
+    "kata": "hinterland",
+    "arti": "Pulau-pulau penyangga di luar pulau utama",
+    "contoh": "Sekolah di hinterland masih kurang guru.",
+    "asal": "Inggris",
+    "catatan": "[S]",
+    "sumber_url": "https://www.antaranews.com/foto/2716049/sarana-transportasi-perahu-di-batam"
+  },
+  {
+    "id": "k-006",
+    "kata": "mainland",
+    "arti": "Pulau Batam utama/pusat kota",
+    "contoh": "Besok aku ke mainland.",
+    "asal": "Inggris",
+    "catatan": "[S]",
+    "sumber_url": "https://www.antaranews.com/foto/2716049/sarana-transportasi-perahu-di-batam"
+  },
+  {
+    "id": "k-007",
+    "kata": "pelantar",
+    "arti": "Dermaga/jalan papan di atas air",
+    "contoh": "Duduk di pelantar tengok senja.",
+    "asal": "Melayu",
+    "catatan": "[S]",
+    "sumber_url": "https://mediaindonesia.com/weekend/523347/joget-dangkong-dan-mak-dara"
+  },
+  {
+    "id": "k-008",
+    "kata": "UWTO",
+    "arti": "Uang Wajib Tahunan Otorita; sewa lahan ke BP Batam",
+    "contoh": "UWTO rumah habis tahun depan.",
+    "asal": "Akronim",
+    "catatan": "[S] istilah lama",
+    "sumber_url": "https://kepri.antaranews.com/berita/34781/apa-itu-uwto"
+  },
+  {
+    "id": "k-009",
+    "kata": "UWT",
+    "arti": "Nama baru UWTO",
+    "contoh": "Sekarang sebut UWT.",
+    "asal": "Akronim",
+    "catatan": "[S]",
+    "sumber_url": "https://batam.tribunnews.com/2025/08/25/memahami-uwto-batam-ramai-lagi-setelah-buruh-minta-hapuskan-uwt-lahan-di-bawah-200-meter"
+  },
+  {
+    "id": "k-010",
+    "kata": "kampung tua",
+    "arti": "Permukiman penduduk asli sebelum Batam dibangun",
+    "contoh": "Tanjung Riau tu kampung tua.",
+    "asal": "Perda Batam",
+    "catatan": "[S]",
+    "sumber_url": "https://journal.uib.ac.id/index.php/jad/article/download/5952/2166/9353"
+  },
+  {
+    "id": "k-011",
+    "kata": "Otorita",
+    "arti": "Sebutan lama BP Batam",
+    "contoh": "Lahan ni punya Otorita dulu.",
+    "asal": "Otorita Batam",
+    "catatan": "[S]",
+    "sumber_url": "https://bpbatam.go.id/en/about-batam/history-of-batam-2/"
+  },
+  {
+    "id": "k-012",
+    "kata": "FTZ",
+    "arti": "Kawasan perdagangan bebas",
+    "contoh": "Barang murah sebab FTZ.",
+    "asal": "Inggris",
+    "catatan": "[S]",
+    "sumber_url": "https://iboss.go.id/front/id/page/sejarah"
+  },
+  {
+    "id": "k-013",
+    "kata": "Barelang",
+    "arti": "Batam–Rempang–Galang; nama jembatan",
+    "contoh": "Weekend gowes ke Barelang.",
+    "asal": "Akronim",
+    "catatan": "[S]",
+    "sumber_url": "https://iboss.go.id/front/id/page/sejarah"
+  },
+  {
+    "id": "k-014",
+    "kata": "BBK",
+    "arti": "Batam–Bintan–Karimun",
+    "contoh": "Kawasan BBK satu paket.",
+    "asal": "Akronim",
+    "catatan": "[S]",
+    "sumber_url": "https://iboss.go.id/front/id/page/sejarah"
+  },
+  {
+    "id": "k-015",
+    "kata": "dataran",
+    "arti": "Lapangan/alun-alun kota",
+    "contoh": "Jumpa di Dataran Engku Putri.",
+    "asal": "Melayu",
+    "catatan": "[S]",
+    "sumber_url": "https://www.indonesia.travel/fr/en/destination/sumatra/riau-islands/dataran-engku-putri/"
+  },
+  {
+    "id": "k-016",
+    "kata": "aok",
+    "arti": "Ya, betul",
+    "contoh": "Aok, aku dah sampai.",
+    "asal": "Melayu Kepri",
+    "catatan": "[S]",
+    "sumber_url": "https://www.batamnews.co.id/berita-106115-mengenal-dialek-batam-bahasa-yang-membuat-orang-luar-terheran-heran-ada-teh-obeng-hingga-menyemak.html"
+  },
+  {
+    "id": "k-017",
+    "kata": "awak",
+    "arti": "Saya (kadang: kamu)",
+    "contoh": "Awak tak tau pulak.",
+    "asal": "Melayu/Minang",
+    "catatan": "[S]",
+    "sumber_url": "https://www.batamnews.co.id/berita-106115-mengenal-dialek-batam-bahasa-yang-membuat-orang-luar-terheran-heran-ada-teh-obeng-hingga-menyemak.html"
+  },
+  {
+    "id": "k-018",
+    "kata": "tak",
+    "arti": "Tidak",
+    "contoh": "Tak ape lah.",
+    "asal": "Melayu",
+    "catatan": "[S]",
+    "sumber_url": "https://www.batamnews.co.id/berita-106115-mengenal-dialek-batam-bahasa-yang-membuat-orang-luar-terheran-heran-ada-teh-obeng-hingga-menyemak.html"
+  },
+  {
+    "id": "k-019",
+    "kata": "tak nak",
+    "arti": "Tidak mau",
+    "contoh": "Budak tu tak nak makan.",
+    "asal": "Melayu",
+    "catatan": "[S]",
+    "sumber_url": "https://www.batamnews.co.id/berita-106115-mengenal-dialek-batam-bahasa-yang-membuat-orang-luar-terheran-heran-ada-teh-obeng-hingga-menyemak.html"
+  },
+  {
+    "id": "k-020",
+    "kata": "teh obeng",
+    "arti": "Es teh manis",
+    "contoh": "Bang, teh obeng satu!",
+    "asal": "Lokal Batam/Kepri",
+    "catatan": "[S] istilah; arti [P]",
+    "sumber_url": "https://www.batamnews.co.id/berita-106115-mengenal-dialek-batam-bahasa-yang-membuat-orang-luar-terheran-heran-ada-teh-obeng-hingga-menyemak.html"
+  },
+  {
+    "id": "k-021",
+    "kata": "menyemak",
+    "arti": "Mengganggu, menghalangi",
+    "contoh": "Jangan menyemak kat situ.",
+    "asal": "Melayu/Medan",
+    "catatan": "[S] istilah; arti [P]",
+    "sumber_url": "https://www.batamnews.co.id/berita-106115-mengenal-dialek-batam-bahasa-yang-membuat-orang-luar-terheran-heran-ada-teh-obeng-hingga-menyemak.html"
+  },
+  {
+    "id": "k-022",
+    "kata": "saye",
+    "arti": "Saya (bunyi akhir a menjadi e)",
+    "contoh": "Saye dari Tanjung Uma.",
+    "asal": "Melayu Kepri",
+    "catatan": "[S]",
+    "sumber_url": "https://www.batamnews.co.id/berita-98543-keunikan-dialek-melayu-di-kepulauan-riau-menelusuri-ciri-khas-setiap-daerah.html"
+  },
+  {
+    "id": "k-023",
+    "kata": "ape",
+    "arti": "Apa",
+    "contoh": "Ape cerite?",
+    "asal": "Melayu Kepri",
+    "catatan": "[S]",
+    "sumber_url": "https://www.batamnews.co.id/berita-98543-keunikan-dialek-melayu-di-kepulauan-riau-menelusuri-ciri-khas-setiap-daerah.html"
+  },
+  {
+    "id": "k-024",
+    "kata": "kite",
+    "arti": "Kita",
+    "contoh": "Kite pergi same-same.",
+    "asal": "Melayu Kepri",
+    "catatan": "[S]",
+    "sumber_url": "http://jurnal.idebahasa.or.id/index.php/Idebahasa/article/download/8/2/"
+  },
+  {
+    "id": "k-025",
+    "kata": "cakap",
+    "arti": "Bicara",
+    "contoh": "Kite cakap-cakap dulu.",
+    "asal": "Melayu",
+    "catatan": "[S]",
+    "sumber_url": "http://jurnal.idebahasa.or.id/index.php/Idebahasa/article/download/8/2/"
+  },
+  {
+    "id": "k-026",
+    "kata": "nak",
+    "arti": "Mau",
+    "contoh": "Nak ke mane?",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-027",
+    "kata": "macam mane",
+    "arti": "Bagaimana",
+    "contoh": "Macam mane kabar?",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-028",
+    "kata": "tengok",
+    "arti": "Lihat",
+    "contoh": "Tengok tu, kapal besar.",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-029",
+    "kata": "dah",
+    "arti": "Sudah",
+    "contoh": "Dah makan?",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-030",
+    "kata": "budak",
+    "arti": "Anak, bocah",
+    "contoh": "Budak-budak main kat pantai.",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-031",
+    "kata": "bini",
+    "arti": "Istri",
+    "contoh": "Bini aku orang Natuna.",
+    "asal": "Melayu",
+    "catatan": "[P] kasual",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-032",
+    "kata": "laki",
+    "arti": "Suami",
+    "contoh": "Laki die kerja di galangan.",
+    "asal": "Melayu",
+    "catatan": "[P] kasual",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-033",
+    "kata": "mak cik",
+    "arti": "Bibi/ibu-ibu",
+    "contoh": "Mak cik, lontong satu.",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-034",
+    "kata": "pak cik",
+    "arti": "Paman/bapak-bapak",
+    "contoh": "Pak cik tu tekong lama.",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-035",
+    "kata": "cik",
+    "arti": "Sapaan hormat",
+    "contoh": "Cik, berape ni?",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-036",
+    "kata": "kedai",
+    "arti": "Warung, toko",
+    "contoh": "Beli kat kedai depan.",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-037",
+    "kata": "balik kampong",
+    "arti": "Mudik",
+    "contoh": "Lebaran balik kampong ke Padang.",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-038",
+    "kata": "makan angin",
+    "arti": "Jalan-jalan",
+    "contoh": "Sore makan angin ke Ocarina.",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-039",
+    "kata": "pening",
+    "arti": "Pusing",
+    "contoh": "Pening tengok macet.",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-040",
+    "kata": "lah",
+    "arti": "Partikel penegas",
+    "contoh": "Cepat lah!",
+    "asal": "Melayu/Singlish",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-041",
+    "kata": "alamak",
+    "arti": "Seruan kaget",
+    "contoh": "Alamak, feri dah jalan!",
+    "asal": "Melayu/Singlish",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-042",
+    "kata": "tapau",
+    "arti": "Bungkus bawa pulang",
+    "contoh": "Nasi lemak, tapau satu.",
+    "asal": "Kanton via SG/MY",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-043",
+    "kata": "tauke",
+    "arti": "Bos, pemilik usaha",
+    "contoh": "Tauke kedai tu baik.",
+    "asal": "Hokkien",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-044",
+    "kata": "angpau",
+    "arti": "Amplop merah berisi uang",
+    "contoh": "Dapat angpau dari tauke.",
+    "asal": "Hokkien",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-045",
+    "kata": "kamsia",
+    "arti": "Terima kasih",
+    "contoh": "Kamsia, cik!",
+    "asal": "Hokkien",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-046",
+    "kata": "kopitiam",
+    "arti": "Kedai kopi ala Tionghoa-Melayu",
+    "contoh": "Sarapan di kopitiam Nagoya.",
+    "asal": "Hokkien-Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-047",
+    "kata": "kopi O",
+    "arti": "Kopi hitam manis",
+    "contoh": "Kopi O satu.",
+    "asal": "SG/MY",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-048",
+    "kata": "teh tarik",
+    "arti": "Teh susu dituang tinggi",
+    "contoh": "Teh tarik kurang manis.",
+    "asal": "Melayu/SG/MY",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-049",
+    "kata": "boleh tahan",
+    "arti": "Lumayan",
+    "contoh": "Rasenye boleh tahan.",
+    "asal": "Melayu/MY",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-050",
+    "kata": "jom",
+    "arti": "Ayo",
+    "contoh": "Jom makan!",
+    "asal": "Melayu/MY",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-051",
+    "kata": "sing dollar",
+    "arti": "Dolar Singapura",
+    "contoh": "Harganya dalam sing dollar.",
+    "asal": "Inggris/SG",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-052",
+    "kata": "kerja PT",
+    "arti": "Bekerja di pabrik kawasan industri",
+    "contoh": "Dia kerja PT di Muka Kuning.",
+    "asal": "Lokal",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-053",
+    "kata": "operator",
+    "arti": "Buruh produksi pabrik",
+    "contoh": "Lowongan operator dibuka.",
+    "asal": "Inggris",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-054",
+    "kata": "mess",
+    "arti": "Asrama pekerja",
+    "contoh": "Masih tinggal di mess.",
+    "asal": "Inggris",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-055",
+    "kata": "shift",
+    "arti": "Giliran kerja",
+    "contoh": "Minggu ni shift malam.",
+    "asal": "Inggris",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-056",
+    "kata": "ruko",
+    "arti": "Rumah toko",
+    "contoh": "Kantornya di ruko Nagoya.",
+    "asal": "Akronim",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-057",
+    "kata": "kereta",
+    "arti": "Sepeda motor",
+    "contoh": "Parkir kereta di situ.",
+    "asal": "Melayu/Medan",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-058",
+    "kata": "ojol",
+    "arti": "Ojek online",
+    "contoh": "Pesan ojol dari pelabuhan.",
+    "asal": "Akronim nasional",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-059",
+    "kata": "kelong",
+    "arti": "Rumah jaring ikan di laut",
+    "contoh": "Makan seafood di kelong.",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  },
+  {
+    "id": "k-060",
+    "kata": "jong",
+    "arti": "Perahu layar mini untuk lomba",
+    "contoh": "Lomba jong di Pantai Senja.",
+    "asal": "Melayu",
+    "catatan": "[S]",
+    "sumber_url": "https://seniberjalan.com/rekomendasi-festival-tahunan-batam-untuk-wisatawan/"
+  },
+  {
+    "id": "k-061",
+    "kata": "tepuk tepung tawar",
+    "arti": "Prosesi adat memberi berkah",
+    "contoh": "Pengantin ditepuk tepung tawar.",
+    "asal": "Melayu",
+    "catatan": "[S]",
+    "sumber_url": "https://repositori.kemendikdasmen.go.id/17250/1/WBTB%20final%20COVER.pdf"
+  },
+  {
+    "id": "k-062",
+    "kata": "tujuh likur",
+    "arti": "Malam ke-27 Ramadan",
+    "contoh": "Malam tujuh likur kampung terang.",
+    "asal": "Melayu",
+    "catatan": "[S]",
+    "sumber_url": "https://www.liputan6.com/islami/read/5267095/jelang-lebaran-idul-fitri-ada-festival-lampu-colok-di-batam"
+  },
+  {
+    "id": "k-063",
+    "kata": "makan berhidang",
+    "arti": "Makan bersama ala Melayu",
+    "contoh": "Kenduri ni makan berhidang.",
+    "asal": "Melayu",
+    "catatan": "[S]",
+    "sumber_url": "https://disbudpar.batam.go.id/2025/10/23/"
+  },
+  {
+    "id": "k-064",
+    "kata": "kenduri",
+    "arti": "Jamuan, perayaan",
+    "contoh": "Datang ke Kenduri Seni Melayu.",
+    "asal": "Melayu",
+    "catatan": "[S]",
+    "sumber_url": "https://batam.go.id/kenduri-seni-melayu-2025-merayakan-identitas-budaya-melayu-di-batam-dengan-semarak/"
+  },
+  {
+    "id": "k-065",
+    "kata": "tanjak",
+    "arti": "Ikat kepala lipat laki-laki Melayu",
+    "contoh": "Pakai tanjak ke acara HJB.",
+    "asal": "Melayu",
+    "catatan": "[P]",
+    "sumber_url": ""
+  }
+]
