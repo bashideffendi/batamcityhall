@@ -1,0 +1,356 @@
+/* Mode Mural. Warna hanya dari token. Tanpa backdrop-filter di atas gambar. */
+.mural-kepala {
+  padding-bottom: var(--bch-space-3);
+}
+.mural-panggung {
+  position: relative;
+  height: min(68dvh, 46rem);
+  min-height: 22rem;
+  background: var(--bch-map-water);
+  border-block: var(--bch-stroke-base) solid var(--bch-rule);
+}
+.mural-penampil {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+.mural-osd {
+  position: absolute;
+  inset: 0;
+}
+.mural-penampil .openseadragon-canvas:focus-visible {
+  outline: 2px solid var(--bch-focus);
+  outline-offset: -3px;
+}
+.mural-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+/* Cahaya: overprint multiply di atas gambar, statis, tidak beranimasi. */
+.mural-cahaya {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+.mural-cahaya[data-fase="siang"] {
+  display: none;
+}
+.mural-cahaya[data-fase="senja"] {
+  background: linear-gradient(to bottom, var(--riso-copper), var(--riso-bisque));
+  opacity: 0.5;
+}
+.mural-cahaya[data-fase="malam"] {
+  background: var(--riso-indigo);
+  opacity: 0.6;
+}
+.mural-pesan {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: var(--bch-space-5);
+  text-align: center;
+  color: var(--bch-ink);
+  pointer-events: none;
+}
+.mural-label {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  max-width: calc(100% - 1rem);
+  padding: 0.15rem 0.5rem;
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  border: var(--bch-stroke-fine) solid var(--bch-rule-strong);
+  font-size: var(--bch-text-caption);
+  line-height: 1.4;
+  pointer-events: none;
+}
+.mural-label-atas {
+  top: 0.5rem;
+  left: 0.5rem;
+}
+.mural-label-feri {
+  bottom: 0.5rem;
+  left: 0.5rem;
+}
+.mural-kontrol {
+  position: absolute;
+  z-index: 3;
+  top: 2.5rem;
+  right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--bch-space-1);
+}
+.mural-kontrol .bch-btn {
+  min-width: 44px;
+  min-height: 44px;
+  padding-inline: var(--bch-space-2);
+}
+
+/* Strip perhentian */
+.mural-strip {
+  overflow-x: auto;
+  background: var(--bch-paper-2);
+  border-bottom: var(--bch-stroke-base) solid var(--bch-rule);
+}
+.mural-strip ol {
+  display: flex;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: max-content;
+}
+.mural-strip li {
+  border-right: var(--bch-stroke-fine) solid var(--bch-rule);
+}
+.mural-strip button {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--bch-space-2);
+  align-items: baseline;
+  width: 11.5rem;
+  min-height: 44px;
+  height: 100%;
+  padding: var(--bch-space-2) var(--bch-space-3);
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.mural-strip button:hover {
+  background: var(--bch-paper-3);
+}
+.mural-strip button:focus-visible {
+  outline: 2px solid var(--bch-focus);
+  outline-offset: -2px;
+}
+.mural-strip button[aria-current="true"] {
+  background: var(--bch-paper);
+  box-shadow: inset 0 -3px 0 var(--bch-accent);
+}
+.mural-strip-nomor {
+  grid-row: span 2;
+  font-variant-numeric: tabular-nums;
+  color: var(--bch-ink-muted);
+}
+.mural-strip-nama {
+  font-size: var(--bch-text-small);
+  font-weight: 500;
+  line-height: 1.3;
+}
+.mural-strip-status {
+  font-size: var(--bch-text-caption);
+  color: var(--bch-ink-muted);
+}
+@media (min-width: 1100px) {
+  .mural-strip ol {
+    min-width: 0;
+  }
+  .mural-strip li {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .mural-strip button {
+    width: 100%;
+  }
+}
+.mural-segera {
+  margin-bottom: var(--bch-space-5);
+}
+.mural-segera-tempat {
+  margin: var(--bch-space-2) 0 0;
+}
+
+.mural-bawah {
+  padding-top: var(--bch-space-5);
+}
+.mural-kolom {
+  display: grid;
+  gap: var(--bch-space-6);
+}
+@media (min-width: 900px) {
+  .mural-kolom {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+.mural-kolom h2 {
+  margin: 0;
+  font-size: var(--bch-text-h3, 1.25rem);
+}
+.mural-daftar {
+  margin: var(--bch-space-3) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--bch-stroke-fine) solid var(--bch-rule);
+}
+.mural-daftar li {
+  border-bottom: var(--bch-stroke-fine) solid var(--bch-rule);
+}
+.mural-daftar button {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  align-items: baseline;
+  width: 100%;
+  min-height: 44px;
+  padding: var(--bch-space-2) var(--bch-space-1);
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.mural-daftar button:hover {
+  background: var(--bch-paper-2);
+}
+.mural-daftar button:focus-visible {
+  outline: 2px solid var(--bch-focus);
+  outline-offset: -2px;
+}
+.mural-daftar-nomor {
+  font-variant-numeric: tabular-nums;
+  color: var(--bch-ink-muted);
+}
+.mural-daftar-nama {
+  font-weight: 500;
+}
+.mural-daftar-nama .bch-sel-kecil {
+  font-weight: 400;
+  margin-top: 0;
+}
+.mural-sisi {
+  display: grid;
+  gap: var(--bch-space-5);
+  min-width: 0;
+}
+.mural-quest,
+.mural-keadaan {
+  display: grid;
+  gap: var(--bch-space-2);
+}
+.mural-quest-progres {
+  font-weight: 500;
+}
+.mural-quest-target {
+  display: grid;
+  gap: var(--bch-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--bch-text-small);
+}
+.mural-quest-tombol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-2);
+  margin: 0;
+}
+.mural-keadaan .bch-sel-kecil button {
+  min-height: 44px;
+}
+.mural-catatan-bawah {
+  margin-top: var(--bch-space-6);
+}
+
+/* Kartu museum */
+.mural-kartu {
+  margin: auto;
+  width: min(36rem, calc(100vw - 1.5rem));
+  max-height: calc(100dvh - 1.5rem);
+  padding: 0;
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  border: var(--bch-stroke-base) solid var(--bch-rule-strong);
+}
+.mural-kartu::backdrop {
+  background: var(--bch-ink);
+  opacity: 0.45;
+}
+.mural-kartu-isi {
+  padding: var(--bch-space-5);
+}
+.mural-kartu-atas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bch-space-3);
+}
+.mural-tutup {
+  min-height: 44px;
+  min-width: 44px;
+}
+.mural-kartu-judul {
+  margin: var(--bch-space-1) 0;
+  font-size: var(--bch-text-h2);
+  line-height: 1.2;
+}
+.mural-kartu-tautan {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-2) var(--bch-space-4);
+  margin: var(--bch-space-3) 0 0;
+}
+.mural-kartu-tautan a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.mural-kartu-quest {
+  margin-block: var(--bch-space-3);
+}
+
+/* Alat GCP */
+.gcp-panggung {
+  display: grid;
+  gap: var(--bch-space-3);
+}
+@media (min-width: 900px) {
+  .gcp-panggung {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+.gcp-panel {
+  position: relative;
+  height: min(60dvh, 34rem);
+  min-height: 20rem;
+  background: var(--bch-map-water);
+  border: var(--bch-stroke-base) solid var(--bch-rule);
+}
+.gcp-panel > div {
+  position: absolute;
+  inset: 0;
+}
+.gcp-tanda {
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--bch-paper);
+  border: 2px solid var(--bch-accent);
+}
+.gcp-kontrol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-2);
+  align-items: end;
+  margin-block: var(--bch-space-3);
+}
+.gcp-keluaran {
+  width: 100%;
+  min-height: 12rem;
+  font-family: var(--bch-font-mono);
+  font-size: var(--bch-text-small);
+}

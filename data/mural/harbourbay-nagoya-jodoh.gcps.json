@@ -1,0 +1,106 @@
+{
+  "segmen": "harbourbay-nagoya-jodoh",
+  "catatan": "GCP placeholder: kisi 3x3 dari proyeksi linear gambar placeholder. Ganti dengan hasil /mural/gcp.",
+  "transformasi": "thinPlateSpline",
+  "gcps": [
+    {
+      "resource": [
+        0,
+        0
+      ],
+      "geo": [
+        103.982,
+        1.167
+      ],
+      "label": "kisi 0/0"
+    },
+    {
+      "resource": [
+        0,
+        1280
+      ],
+      "geo": [
+        103.982,
+        1.1520000000000001
+      ],
+      "label": "kisi 0/0.5"
+    },
+    {
+      "resource": [
+        0,
+        2560
+      ],
+      "geo": [
+        103.982,
+        1.137
+      ],
+      "label": "kisi 0/1"
+    },
+    {
+      "resource": [
+        2048,
+        0
+      ],
+      "geo": [
+        104.006,
+        1.167
+      ],
+      "label": "kisi 0.5/0"
+    },
+    {
+      "resource": [
+        2048,
+        1280
+      ],
+      "geo": [
+        104.006,
+        1.1520000000000001
+      ],
+      "label": "kisi 0.5/0.5"
+    },
+    {
+      "resource": [
+        2048,
+        2560
+      ],
+      "geo": [
+        104.006,
+        1.137
+      ],
+      "label": "kisi 0.5/1"
+    },
+    {
+      "resource": [
+        4096,
+        0
+      ],
+      "geo": [
+        104.03,
+        1.167
+      ],
+      "label": "kisi 1/0"
+    },
+    {
+      "resource": [
+        4096,
+        1280
+      ],
+      "geo": [
+        104.03,
+        1.1520000000000001
+      ],
+      "label": "kisi 1/0.5"
+    },
+    {
+      "resource": [
+        4096,
+        2560
+      ],
+      "geo": [
+        104.03,
+        1.137
+      ],
+      "label": "kisi 1/1"
+    }
+  ]
+}
