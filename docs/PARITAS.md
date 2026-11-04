@@ -66,3 +66,10 @@ Asal kode: hujandibatam `45281a64de5fe068de9d95b9bbc73ba4eb5af4db`, batam-bites 
 - ☐ Peta redirect 301 per path untuk kedua situs
 - ☐ `sw.js` pengganti: bersihkan cache, arahkan ke situs baru
 - ☐ Situs lama tetap hidup selama transisi. Jangan push, deploy, atau mengubah DNS/Vercel situs lama tanpa persetujuan eksplisit
+
+## Tambahan fase 3 (tidak ada di situs lama)
+
+- ✔ Koordinat dari `tools/import_koordinat.py` sampai ke `/makan` — tes unit
+- ✔ "Lagi hujan di {kecamatan}" di detail Makan, "Buat berteduh" di detail hujan — e2e
+- ✔ Rating tetap tidak tampil, termasuk di direktori — tes unit dan e2e
+- ☐ Feri terakhir di detail Makan — fase 4

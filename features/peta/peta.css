@@ -235,3 +235,98 @@ html[data-gerak="tenang"] .peta-itik svg {
     width: 3rem;
   }
 }
+
+/* Kartu pin: panel samping di layar lebar, bottom sheet di HP */
+.peta-kartu {
+  position: absolute;
+  z-index: 4;
+  top: calc(var(--peta-tepi) + var(--bch-space-3));
+  left: calc(var(--peta-tepi) + var(--bch-space-3));
+  max-height: calc(100% - 2 * var(--peta-tepi) - 2 * var(--bch-space-3));
+  width: min(22rem, calc(100% - 2rem));
+  overflow-y: auto;
+  padding: var(--bch-space-4);
+  background: var(--bch-paper-2);
+  color: var(--bch-ink);
+  border: var(--bch-stroke-base) solid var(--bch-ink);
+  border-radius: var(--bch-radius-1);
+}
+.peta-kartu h2 {
+  margin: var(--bch-space-1) 0 0;
+  font-size: var(--bch-text-h3);
+  line-height: 1.25;
+}
+.peta-kartu-tutup {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: calc(var(--bch-space-3) * -1);
+  background: none;
+  border: 0;
+  color: var(--bch-ink);
+  cursor: pointer;
+}
+.peta-kartu-lain {
+  display: grid;
+  gap: var(--bch-space-1);
+}
+@media (max-width: 640px) {
+  .peta-kartu {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-height: 62%;
+    border-width: var(--bch-stroke-base) 0 0;
+    border-radius: 0;
+  }
+}
+
+/* Legenda lapisan: di bawah peta supaya tidak menabrak ornamen chart */
+.peta-lapisan {
+  margin: 0;
+  padding: var(--bch-space-3) var(--bch-space-4);
+  border: 0;
+  border-bottom: var(--bch-stroke-base) solid var(--bch-rule);
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--bch-space-4);
+  row-gap: var(--bch-space-1);
+  align-items: center;
+}
+.peta-lapisan legend {
+  float: left;
+  margin-right: var(--bch-space-3);
+  padding: 0;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  color: var(--bch-ink-muted);
+}
+.peta-lapisan label {
+  display: inline-flex;
+  gap: var(--bch-space-2);
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.peta-lapisan label .bch-data {
+  color: var(--bch-ink-muted);
+}
+.peta-lapisan-catatan {
+  flex-basis: 100%;
+  margin: var(--bch-space-1) 0 0;
+  font-size: var(--bch-text-small);
+  color: var(--bch-ink-muted);
+}
+.peta-lapisan-contoh {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--bch-accent);
+}
+.peta-lapisan-contoh[data-jenis="pasti"] {
+  background: var(--bch-accent);
+}

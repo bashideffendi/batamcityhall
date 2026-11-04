@@ -2,6 +2,7 @@ import placesRaw from "@/data/makan/places.json";
 import categoriesRaw from "@/data/makan/categories.json";
 import areasRaw from "@/data/makan/areas.json";
 import ferriesRaw from "@/data/makan/ferries.json";
+import koordinatUser from "@/data/koordinat_user.json";
 import type { Place, Category, Area, Ferry, PlaceWithGeo } from "./types";
 
 export const categories = categoriesRaw as Category[];
@@ -40,8 +41,19 @@ function tanpaRating(p: Place): Omit<Place, "rating" | "reviews"> {
   return salinan as Omit<Place, "rating" | "reviews">;
 }
 
+type KoordinatUser = Record<string, { lat: number; lng: number }>;
+
+/** Koordinat hasil tools/import_koordinat.py menimpa koordinat lama: tempatnya jadi bukan lagi perkiraan. */
+export function terapkanKoordinat<T extends { id: string; lat: number; lng: number; coord_approx: boolean }>(
+  p: T,
+  koordinat: KoordinatUser,
+): T {
+  const k = Object.hasOwn(koordinat, p.id) ? koordinat[p.id] : undefined;
+  return k ? { ...p, lat: k.lat, lng: k.lng, coord_approx: false } : p;
+}
+
 export const places: PlaceWithGeo[] = (placesRaw as unknown as Place[]).map((mentah) => {
-  const p = tanpaRating(mentah);
+  const p = terapkanKoordinat(tanpaRating(mentah), koordinatUser as KoordinatUser);
   const nf = nearestFerry(p.lat, p.lng);
   return { ...p, nearestFerryId: nf.id, nearestFerryKm: Math.round(nf.km * 10) / 10 };
 });

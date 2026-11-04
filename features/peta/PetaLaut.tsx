@@ -1,18 +1,38 @@
 "use client";
 
-import { Map as MapLibre, type ErrorEvent } from "maplibre-gl";
+import { Map as MapLibre, type ErrorEvent, type GeoJSONSource, type MapLayerMouseEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSiteTheme } from "@/components/site/useSiteTheme";
+import { useNow } from "@/features/langit-laut/hooks/useBrowser";
+import { useResource } from "@/features/langit-laut/hooks/useResource";
+import type { FramesResponse } from "@/features/langit-laut/lib/api-types";
+import { ageMinutesOf } from "@/features/langit-laut/lib/radar";
+import { RADAR_OLD_MIN } from "@/features/langit-laut/lib/status";
 import { readTheme } from "@/lib/theme";
 import { pasangGlobalPeta, webglAda } from "./global";
 import ItikBerbaris from "./ItikBerbaris";
+import KartuPin from "./KartuPin";
+import {
+  gayaBeranda,
+  GRUP_AWAL,
+  GRUP_PIN,
+  grupDari,
+  LAYER_KLASTER,
+  LAYER_KLIK_PIN,
+  SUMBER_PIN,
+  type PinPeta,
+} from "./lapisan";
 import { Kartusis, Mawar, SkalaBatang } from "./OrnamenChart";
 import { baseStyle, MAP_BOUNDS, SOURCE_ID, TAMPILAN_AWAL } from "./style";
 import TepiChart from "./TepiChart";
 import { usePandangan } from "./usePandangan";
 
 type Status = "memuat" | "siap" | "gagal";
+
+const SEGAR_MS = 2 * 60 * 1000;
+const TICK_MS = 30 * 1000;
 
 // Terjemahan teks kontrol bawaan MapLibre. Map.Title menjadi aria-label kanvas.
 const TEKS_PETA = {
@@ -32,6 +52,13 @@ export default function PetaLaut() {
   const [status, setStatus] = useState<Status>(() => (webglAda() ? "memuat" : "gagal"));
   const theme = useSiteTheme();
   const pandangan = usePandangan(map);
+  const [pins, setPins] = useState<PinPeta[] | null>(null);
+  const [pinGagal, setPinGagal] = useState(false);
+  const [aktif, setAktif] = useState<ReadonlySet<string>>(() => new Set(GRUP_AWAL));
+  const [hujan, setHujan] = useState(true);
+  const [pilihId, setPilihId] = useState(() => new URLSearchParams(window.location.search).get("tempat"));
+  const now = useNow(TICK_MS);
+  const frames = useResource<FramesResponse>("/api/frames", SEGAR_MS, hujan, false);
 
   useEffect(() => {
     const el = wadah.current;
@@ -85,62 +112,189 @@ export default function PetaLaut() {
   }, []);
 
   useEffect(() => {
-    map?.setStyle(baseStyle(theme, window.location.origin));
-  }, [map, theme]);
+    let hidup = true;
+    fetch("/info/direktori/pin.json")
+      .then((r) => {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json() as Promise<PinPeta[]>;
+      })
+      .then((d) => hidup && setPins(d))
+      .catch(() => hidup && setPinGagal(true));
+    return () => {
+      hidup = false;
+    };
+  }, []);
+
+  const pilih = useMemo(
+    () => pins?.find((p) => p.id === pilihId || p.lain.some((l) => l.id === pilihId)) ?? null,
+    [pins, pilihId],
+  );
+  // Pin yang dibuka lewat tautan tetap tampil walau grupnya sedang dimatikan.
+  const pinTampil = useMemo(
+    () => (pins ?? []).filter((p) => aktif.has(grupDari(p.k)) || p.id === pilih?.id),
+    [pins, aktif, pilih],
+  );
+
+  const terakhir = hujan ? frames.data?.frames.at(-1) : undefined;
+  const umurRadar = terakhir ? ageMinutesOf(terakhir.ts, now) : null;
+  const radarTs = terakhir && umurRadar !== null && umurRadar <= RADAR_OLD_MIN ? terakhir.ts : null;
+
+  useEffect(() => {
+    map?.setStyle(gayaBeranda(baseStyle(theme, window.location.origin), { theme, pins: pinTampil, radarTs }));
+  }, [map, theme, pinTampil, radarTs]);
+
+  // Tautan ?tempat=: peta langsung ke pinnya, cukup dekat supaya tidak tertelan klaster.
+  useEffect(() => {
+    if (!map || !pins) return;
+    const id = new URLSearchParams(window.location.search).get("tempat");
+    const p = id && pins.find((x) => x.id === id || x.lain.some((l) => l.id === id));
+    if (p) map.jumpTo({ center: [p.lng, p.lat], zoom: Math.max(map.getZoom(), 14) });
+  }, [map, pins]);
+
+  const ubahPilih = useCallback((id: string | null) => {
+    setPilihId(id);
+    const url = new URL(window.location.href);
+    if (id) url.searchParams.set("tempat", id);
+    else url.searchParams.delete("tempat");
+    window.history.replaceState(null, "", url);
+  }, []);
+
+  useEffect(() => {
+    if (!map || !pins) return;
+    const klikPin = (e: MapLayerMouseEvent) => {
+      const id = e.features?.[0]?.properties?.id;
+      if (typeof id !== "string") return;
+      ubahPilih(id);
+      map.easeTo({ center: e.lngLat, animate: !gerakTenang() });
+    };
+    const klikKlaster = async (e: MapLayerMouseEvent) => {
+      const f = e.features?.[0];
+      const sumber = map.getSource<GeoJSONSource>(SUMBER_PIN);
+      if (!f || !sumber) return;
+      const zoom = await sumber.getClusterExpansionZoom(f.properties.cluster_id);
+      map.easeTo({ center: e.lngLat, zoom, animate: !gerakTenang() });
+    };
+    const masuk = () => {
+      map.getCanvas().style.cursor = "pointer";
+    };
+    const keluar = () => {
+      map.getCanvas().style.cursor = "";
+    };
+    map.on("click", LAYER_KLIK_PIN, klikPin);
+    map.on("click", LAYER_KLASTER, klikKlaster);
+    for (const l of [LAYER_KLIK_PIN, LAYER_KLASTER]) {
+      map.on("mouseenter", l, masuk);
+      map.on("mouseleave", l, keluar);
+    }
+    return () => {
+      map.off("click", LAYER_KLIK_PIN, klikPin);
+      map.off("click", LAYER_KLASTER, klikKlaster);
+      for (const l of [LAYER_KLIK_PIN, LAYER_KLASTER]) {
+        map.off("mouseenter", l, masuk);
+        map.off("mouseleave", l, keluar);
+      }
+    };
+  }, [map, pins, ubahPilih]);
+
+  const ubahGrup = (id: string, nyala: boolean) => {
+    const baru = new Set(aktif);
+    if (nyala) baru.add(id);
+    else baru.delete(id);
+    setAktif(baru);
+  };
 
   return (
-    <section className="peta" aria-label="Peta laut Batam" data-status={status} data-tema={theme}>
-      <div ref={wadah} className="peta-kanvas" />
-      {status === "gagal" && <p className="peta-gagal">Peta gagal dimuat. Laut masih ada, kami saja yang belum.</p>}
-      {status === "memuat" && <ItikBerbaris />}
-      {status === "siap" && map && pandangan && (
-        <>
-          <TepiChart map={map} pandangan={pandangan} />
-          <Kartusis pandangan={pandangan} />
-          <Mawar />
-          <SkalaBatang pandangan={pandangan} />
-          <div className="peta-zoom">
-            <button
-              type="button"
-              className="peta-zoom-btn"
-              aria-label="Perbesar peta"
-              onClick={() => map.zoomIn({ animate: !gerakTenang() })}
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.25"
-                strokeLinecap="round"
-                aria-hidden="true"
+    <>
+      <section
+        className="peta"
+        aria-label="Peta laut Batam"
+        data-status={status}
+        data-tema={theme}
+        data-pin-tampil={pins ? pinTampil.length : undefined}
+        data-radar={radarTs ?? undefined}
+      >
+        <div ref={wadah} className="peta-kanvas" />
+        {status === "gagal" && <p className="peta-gagal">Peta gagal dimuat. Laut masih ada, kami saja yang belum.</p>}
+        {status === "memuat" && <ItikBerbaris />}
+        {status === "siap" && pilih && <KartuPin pin={pilih} onTutup={() => ubahPilih(null)} />}
+        {status === "siap" && map && pandangan && (
+          <>
+            <TepiChart map={map} pandangan={pandangan} />
+            <Kartusis pandangan={pandangan} />
+            <Mawar />
+            <SkalaBatang pandangan={pandangan} />
+            <div className="peta-zoom">
+              <button
+                type="button"
+                className="peta-zoom-btn"
+                aria-label="Perbesar peta"
+                onClick={() => map.zoomIn({ animate: !gerakTenang() })}
               >
-                <path d="M12 5v14M5 12h14" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              className="peta-zoom-btn"
-              aria-label="Perkecil peta"
-              onClick={() => map.zoomOut({ animate: !gerakTenang() })}
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.25"
-                strokeLinecap="round"
-                aria-hidden="true"
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                className="peta-zoom-btn"
+                aria-label="Perkecil peta"
+                onClick={() => map.zoomOut({ animate: !gerakTenang() })}
               >
-                <path d="M5 12h14" />
-              </svg>
-            </button>
-          </div>
-        </>
-      )}
-    </section>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+            </div>
+          </>
+        )}
+      </section>
+      <fieldset className="peta-lapisan">
+        <legend>Lapisan peta</legend>
+        <label>
+          <input type="checkbox" checked={hujan} onChange={(e) => setHujan(e.target.checked)} />
+          Hujan
+          <span className="bch-data">
+            {!hujan
+              ? ""
+              : radarTs
+                ? `radar MSS, ${umurRadar} menit lalu`
+                : frames.error
+                  ? "radar gagal dimuat"
+                  : "radar belum tersedia"}
+          </span>
+        </label>
+        {GRUP_PIN.map((g) => (
+          <label key={g.id}>
+            <input type="checkbox" checked={aktif.has(g.id)} onChange={(e) => ubahGrup(g.id, e.target.checked)} />
+            {g.label}
+            {pins && <span className="bch-data">{pins.filter((p) => grupDari(p.k) === g.id).length}</span>}
+          </label>
+        ))}
+        <p className="peta-lapisan-catatan">
+          <span className="peta-lapisan-contoh" data-jenis="pasti" aria-hidden="true" /> terverifikasi{" "}
+          <span className="peta-lapisan-contoh" data-jenis="kira" aria-hidden="true" /> perkiraan.{" "}
+          {pinGagal ? "Pin gagal dimuat. " : "Tempat tanpa koordinat tidak muncul di peta. "}
+          <Link href="/info/direktori">Lihat semua sebagai daftar</Link>
+        </p>
+      </fieldset>
+    </>
   );
 }

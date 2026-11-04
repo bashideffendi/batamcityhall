@@ -42,6 +42,7 @@ import CctvBlock from "./panel/CctvBlock";
 import Conditions from "./panel/Conditions";
 import { ControlStack, Footer, Transport, ViewSelector } from "./panel/Controls";
 import Credit from "./panel/Credit";
+import Berteduh from "@/features/direktori/Berteduh";
 import { ForecastSection, KecTable, PerairanInfo } from "./panel/DetailSections";
 import ForecastStrip from "./panel/ForecastStrip";
 import { OfsCategories, OfsScale, RainOpacity, RainScale } from "./panel/Legends";
@@ -525,6 +526,7 @@ export default function RadarMap() {
                 {radar.frames.length > 0 && (
                   <KecTable echo={radar.echo} when={rv.latestWhen} fresh={rv.fresh} scope={scope} />
                 )}
+                <Berteduh echo={radar.echo} segar={rv.fresh} />
                 <ForecastSection fc={forecast.data} tiles={tiles} note={strip.note} />
                 <Conditions data={conditions.data} error={conditions.error} />
                 <RainOpacity opacity={opacity} onOpacity={setOpacity} />

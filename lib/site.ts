@@ -115,7 +115,7 @@ export const LOKET: Loket[] = [
 ];
 
 /** Loket yang halamannya sudah jadi. Beranda hanya menautkan loket yang terdaftar di sini. */
-export const LOKET_DIBUKA: readonly string[] = ["01", "02"];
+export const LOKET_DIBUKA: readonly string[] = ["01", "02", "06"];
 
 export const HALAMAN_PENDUKUNG = [
   { label: "Tentang", href: "/tentang" },

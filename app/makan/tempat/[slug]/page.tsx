@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { tempatPerId } from "@/features/direktori/data";
+import HujanKecamatan from "@/features/direktori/HujanKecamatan";
 import DetailView from "@/features/makan/components/DetailView";
 import { getPlace, places } from "@/features/makan/lib/data";
 
@@ -20,5 +22,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function Halaman({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   if (!getPlace(slug)) notFound();
-  return <DetailView slug={slug} />;
+  const kecamatan = tempatPerId.get(slug)?.kecamatan;
+  return <DetailView slug={slug} cuaca={kecamatan ? <HujanKecamatan kecamatan={kecamatan} /> : null} />;
 }

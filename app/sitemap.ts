@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
+import { DAFTAR_KATEGORI, slugKategori, slugKecamatan, TEMPAT } from "@/features/direktori/data";
 import { places } from "@/features/makan/lib/data";
+import { KECAMATAN } from "@/lib/data/schema";
 import { trails } from "@/features/makan/lib/trails";
 import { LOKET, LOKET_DIBUKA, SITE_URL } from "@/lib/site";
 
@@ -25,6 +27,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}/makan/jalur/${t.id}`,
       changeFrequency: "monthly" as const,
       priority: 0.5,
+    })),
+    ...["direktori", "darurat", "urusan-tanah", "bantuan-hukum", "jasa-dokumen", "warga-baru"].map((h) => ({
+      url: `${SITE_URL}/info/${h}`,
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    })),
+    ...DAFTAR_KATEGORI.map((k) => ({
+      url: `${SITE_URL}/info/direktori/${slugKategori(k.kategori)}`,
+      changeFrequency: "weekly" as const,
+      priority: 0.5,
+    })),
+    ...KECAMATAN.map((k) => ({
+      url: `${SITE_URL}/info/kecamatan/${slugKecamatan(k)}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    })),
+    ...TEMPAT.map((p) => ({
+      url: `${SITE_URL}/info/tempat/${p.id}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.4,
+    })),
+    ...["kontribusi", "koreksi", "privasi", "syarat"].map((h) => ({
+      url: `${SITE_URL}/${h}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.3,
     })),
     { url: `${SITE_URL}/tentang`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${SITE_URL}/kolofon`, changeFrequency: "monthly", priority: 0.3 },

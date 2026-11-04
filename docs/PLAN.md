@@ -53,12 +53,21 @@ Kalau uji visual gagal, catat di sini dan jangan lanjut sebelum diputuskan (prom
 
 **Jalur Trans Batam geografis:** ditunda. 0 dari 191 halte berkoordinat terverifikasi. Fase 4 memprioritaskan diagram skematik SVG, peta hanya menampilkan hub bergaya "perkiraan" (brief 10).
 
+## Sisa fase 3
+
+- Formulir koreksi belum ada, jadi tautan "Kabari kami" berujung di halaman yang mengakui hal itu. Formulir di fase 6. Pemilik bisa memberi alamat email sementara.
+- Belum dikerjakan: harga pangan Bapanas, kalender event, panduan "KTP pindahan", pencocokan koordinat lewat Overpass (butir 14), layer OSM terpisah, legenda asal data R/O/W/K per kartu, angka hotel sebagai rentang, halaman admin "Data yang perlu dicek ulang", cek daftar KUPVA BI.
+- Pencarian dan "Di sekitarku" belum ada di atas peta beranda. Pencarian ada di `/info/direktori`.
+- Semua pin berbentuk lingkaran. Bentuk per layer dan sketsa landmark menunggu ilustrasi.
+- Widget hujan di detail Makan selalu berbahasa Indonesia, sama seperti `/info`, sampai tombol bahasa situs ada.
+- Gambar OG dibuat di `/info/tempat/[id]`, bukan di `/?tempat=`, supaya beranda tetap statis. Tautan WhatsApp yang menuju kartu sebaiknya memakai alamat itu.
+- Sisa butir `{F3}` di `COVERAGE.md` sebagian besar soal kolom dan sumber yang belum diriset. Dicentang hanya bila entrinya ada di data dan tampil; fakta per butir tidak dicek ulang satu per satu.
+
 ## Sisa fase 2
 
 - Paritas ◐: situs belum punya tombol bahasa, jadi Makan punya tombol sendiri.
 - Belum diuji di HP nyata: pasang PWA, petunjuk iOS, Web Share, "Dekat saya".
 - Belum terbukti dari IP Vercel: header jujur ke BMKG. Kalau ditolak, ambil langsung dari browser (CORS terbuka). Pemilik pernah bilang boleh ikut cara hujandibatam bila jalur jujur gagal, tetapi cara itu tidak bisa diuji dari Claude Code.
-- **Koordinat Makan:** `tools/import_koordinat.py` hanya memperbarui `places.json`, sedangkan `/makan` membaca `data/makan/places.json`. Koordinat yang diisi pemilik belum sampai ke UI Makan. Sambungkan sebelum pemilik mulai mengisi.
 - 2 kemungkinan duplikat kuliner (DATA_DECISIONS).
 - Butir `{F2}` lain di COVERAGE belum dikerjakan: gempa, peringatan dini CAP, indikator "aman nyebrang", cron ingest, harga pangan.
 
@@ -93,10 +102,10 @@ Tinjau daftar ini saat menyentuh fase terkait; butir yang menggantung sampai fas
 
 8. Koordinat di `data/koordinat_perlu_diisi.csv` dan `data/trans_batam/halte_koordinat_perlu_diisi.csv`. Situs tetap jalan tanpa ini. Urutan isi usulan: camat, puskesmas, RS, polsek, pelantar pompong; pelabuhan dan MPP bisa didahulukan karena jadi hub.
 9. Ilustrasi mural dan landmark, siapa ilustratornya, honor. Segmen pertama: Barelang 1–6 atau Harbour Bay–Nagoya? AI boleh untuk isian latar?
-10. Tanggal "terakhir dicek" untuk entri awal: tanggal paket riset (Nov 2026) atau "belum pernah dicek"? `places.json` belum punya field ini.
-11. Nama notaris/PPAT perorangan boleh tampil, atau hanya "kantor" sampai pemiliknya konfirmasi?
+10. Tanggal "terakhir dicek" untuk entri awal. Sementara tampil "Belum dicek ulang sejak riset Nov 2026", kecuali kuliner yang punya `last_verified`. Tidak ada tanggal yang dikarang.
+11. Nama notaris/PPAT perorangan boleh tampil, atau hanya "kantor" sampai pemiliknya konfirmasi? Sementara tampil dalam kartu Beta, sesuai brief 08.
 12. Angka "±1.600 ha" dan "1.450 sertifikat" boleh tampil di garis waktu sebagai kutipan beratribusi? Default: tidak, sesuai larangan luas lahan.
-13. Kartu Rempang: siapa yang menyetujui teksnya?
+13. Kartu Rempang: siapa yang menyetujui teksnya? Sementara Rempang Eco-City hanya kartu minimal tanpa label status.
 14. Boleh menjalankan Overpass publik dan mengumumkan hitung kelengkapan di halaman data?
 15. Email izin ke BIG, PPID BP Batam, Disperkimtan: pemilik yang kirim. Akun Ina-Geoportal untuk BATNAS/RBI hanya bisa didaftarkan pemilik. Tarikan dari server BP Batam yang `robots.txt`-nya menolak crawler: default tidak.
 16. Survei lapangan halte Trans Batam, konfirmasi UPT Trans Batam/Dishub, dan sumbangan hasil ke OSM.

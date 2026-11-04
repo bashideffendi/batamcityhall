@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { categoryMap, areaMap, ferryMap, getPlace } from "../lib/data";
 import { useCurrency } from "../lib/currency";
 import { formatKm } from "../lib/format";
@@ -13,7 +13,7 @@ import Ikon from "./Ikon";
 
 const MiniMap = dynamic(() => import("./MiniMap"), { ssr: false });
 
-export default function DetailView({ slug }: { slug: string }) {
+export default function DetailView({ slug, cuaca }: { slug: string; cuaca?: ReactNode }) {
   const { t, lang } = useI18n();
   const { fmt, currency } = useCurrency();
   const [pesan, setPesan] = useState("");
@@ -141,6 +141,8 @@ export default function DetailView({ slug }: { slug: string }) {
           )}
         </div>
       </div>
+
+      {cuaca}
 
       <p className="mk-catatan">
         {t("checked")} <span className="bch-data">{p.last_verified}</span>. {t("recheck")}

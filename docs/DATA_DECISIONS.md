@@ -27,6 +27,14 @@ Keputusan soal data, dengan alasan. Pemilik proyek bisa mengubah semuanya. Butir
 | "Buka sekarang" di Makan | Dihitung menurut WIB, jam yang tidak jelas dijawab tidak tahu | Berbeda dari situs lama |
 | Rating Google | Tetap ada di `atribut` dan JSON, tidak ditampilkan | Direktori fase 3 juga tidak boleh menampilkannya |
 
+| Catatan `places.json` di kartu | Disaring, kategori kampung tua, lainnya, kuliner, dan akomodasi tidak menampilkan catatan | Sebagian besar catatan kerja penyusun |
+| Atribut `places.json` di kartu | Daftar putih di `features/direktori/data.ts` | Rating, luas lahan, dan id internal ada di kolom yang sama |
+| Catatan urusan tanah yang menyebut riset | Diganti "Belum ada catatan." | Baris BPHTB berisi catatan kerja, data tidak diubah |
+| `cara_verifikasi_profesi.md` | Ditulis ulang di halaman, tidak ditampilkan mentah | Berisi instruksi untuk penyusun dan nama ketua IKPI |
+| Rempang Eco-City di direktori | Kartu minimal, tanpa label "rencana" | Prompt bagian 6 meminta teks bertanggal dan beratribusi; menunggu PLAN butir 13 |
+| Pin di titik yang sama | Satu pin, sisanya tertulis di kartu | Kompleks kamp Galang dan Masjid Agung punya beberapa entri di satu titik |
+| Angka notaris, PPAT, OBH | Ditambahkan ke `angka_resmi.json` dari brief 08 | Brief meminta disimpan di sana; cocok dengan `research/08` (dicek 5 Nov 2026) |
+
 ## Perlu keputusan pemilik
 
 - Kemungkinan duplikat kuliner, belum digabung: `kedai-kopi-ameng` ↔ `kopi-ameng`, `kedai-kopi-harum-manis` ↔ `kopi-harum-manis`.

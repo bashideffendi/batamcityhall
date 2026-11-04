@@ -14,7 +14,7 @@ Aturan:
 - [ ] batam-bites: semua fitur di daftar paritas berjalan di /makan
 - [x] scripts/konversi-makan.mjs, data/places/17-batam-bites.json · batam-bites: data dipindah ke data/makan/, konversi ke data/places/17-batam-bites.json, kategori `kuliner` ditambahkan
 - [x] features/makan, data/koordinat_perlu_diisi.csv · batam-bites: 117 koordinat perkiraan ditandai perlu_cek_ulang dan masuk CSV koordinat
-- [ ] Widget silang (hujan per kecamatan di kartu, berteduh terdekat, feri terakhir di detail makan, Hari Ini, mural)
+- [ ] HujanKecamatan dan Berteduh jalan; feri terakhir (F4) dan mural belum · Widget silang (hujan per kecamatan di kartu, berteduh terdekat, feri terakhir di detail makan, Hari Ini, mural)
 - [x] KecamatanLayer, atribusi di peta dan Credit · Batas kecamatan BIG dari hujandibatam dipakai ulang (lisensi dicatat)
 - [x] lib/site.ts · Atribusi gabungan di footer/kolofon
 - [ ] Peta redirect 301 + sw.js pengganti siap (eksekusi hanya setelah izin pemilik proyek)
@@ -127,8 +127,8 @@ Aturan:
   - [ ] 01 › Cara menggabungkan hujandibatam & batam-bites
     - [ ] Domain payung + satu peta dasar bersama (MapLibre + style ilustrasi); semua jadi layer {F1}
     - [ ] Fase transisi: kedua situs lama tetap hidup, header bersama, redirect pelan-pelan {F9}
-    - [ ] Data bersama: satu skema "tempat" untuk resto dan tukang (id, nama, koordinat, kategori, kecamatan, sumber, terakhir dicek) {F3}
-    - [ ] Widget silang: resto "lagi hujan di sini"; peta hujan "warung kopi terdekat buat berteduh" {F3}
+    - [x] lib/data/schema.ts · Data bersama: satu skema "tempat" untuk resto dan tukang (id, nama, koordinat, kategori, kecamatan, sumber, terakhir dicek) {F3}
+    - [x] HujanKecamatan, Berteduh · Widget silang: resto "lagi hujan di sini"; peta hujan "warung kopi terdekat buat berteduh" {F3}
   - [ ] 01 › Konsep visual
     - [-] diganti palet chart 05/00 · Gaya line art goyah + palet terbatas (oranye senja, biru Selat, hijau bakau, kuning ruko), satu spot color per section -- DIGANTI palet chart 05/00 {F1}
     - [ ] Peta hibrida: vektor OSM di-style "kertas" + ikon landmark garis (bukan menggambar seluruh peta) {F1}
@@ -679,7 +679,7 @@ Aturan:
 - [ ] 05 › 7. Referensi website premium & pola yang ditiru
   - [ ] Tabel 6 situs (Kontinentalist, Cooper Hewitt, The Pudding, Zolima/Saigoneer, M+, Rijksmuseum) dan pola yang dipinjam; tiru blok kredit (Code/Data/Design/Illustration) di halaman Loket dan semangat open-source di Kolofon {F1}
   - [ ] 05 › Pola konkret untuk komponen [A]
-    - [ ] Kartu label museum: kicker smcp + nomor mono, h3 serif, italic sea-ink, rule 0.5px + pucuk rebung mini, body sans, baris mono BUKA/DICEK/koordinat; tanpa bayangan, garis 1 px rule, radius 2 px, sulur awan larat pojok kanan atas saat hover {F3}
+    - [x] KartuTempat, /info/tempat/[id]; sulur awan larat saat hover belum, menunggu aset ornamen · Kartu label museum: kicker smcp + nomor mono, h3 serif, italic sea-ink, rule 0.5px + pucuk rebung mini, body sans, baris mono BUKA/DICEK/koordinat; tanpa bayangan, garis 1 px rule, radius 2 px, sulur awan larat pojok kanan atas saat hover {F3}
     - [ ] Strip navigasi: tinggi 44 px, wordmark kiri, "Loket 01-07" smcp tengah (geser di HP), toggle siang/malam ikon bulan sabit garis kanan; menu HP = daftar isi majalah layar penuh (nomor besar mono, judul serif, satu baris deskripsi) {F1}
     - [ ] Tombol layer peta: legenda chart (swatch pola 16 px + nama smcp + checkbox persegi 14 px), kiri bawah, berbingkai kartusis, bukan toggle iOS {F1}
     - [ ] Halaman Loket: nomor raksasa serif 160 px `accent-riso` opacity 0,9, judul, lede 1 kalimat, grid 12 kolom desktop/4 kolom HP, "Kolofon Loket" di akhir (sumber, tanggal dicek, penyusun) {F1}
@@ -742,35 +742,35 @@ Aturan:
 - [ ] 06 › Batam City Hall: Rancangan Direktori & Seed Data
   - [ ] Strategi tiga lapis sumber: data resmi (sekolah, faskes, ibadah, kantor), OSM/Overpass (belanja, transportasi, olahraga, ruang publik), Tukang Langganan (jasa harian, dokter spesialis, kos) {F3}
 - [ ] 06 › TL;DR
-  - [ ] Data resmi jadi tulang punggung 4 kelompok: 437 SD, 240 SMP, 195 SMA/SMK/SLB (NPSN); Dinkes 21 puskesmas, 63 pustu, 21 RS, 156 klinik (smt 1 2024); Kemenag 972 masjid; Imigrasi/Samsat/Bea Cukai/KPP/Air Batam Hilir punya alamat dan jam resmi {F3}
+  - [x] features/direktori/angka.ts · Data resmi jadi tulang punggung 4 kelompok: 437 SD, 240 SMP, 195 SMA/SMK/SLB (NPSN); Dinkes 21 puskesmas, 63 pustu, 21 RS, 156 klinik (smt 1 2024); Kemenag 972 masjid; Imigrasi/Samsat/Bea Cukai/KPP/Air Batam Hilir punya alamat dan jam resmi {F3}
   - [ ] OSM untuk kategori bertitik (mal, minimarket, SPBU, halte, lapangan, gym, money changer) via area Overpass relasi 10660353 (area 3610660353), lalu kurasi; jalankan query hitung kelengkapan dulu {F3}
   - [ ] Tukang Langganan wajib untuk jasa dan dokter per spesialis (jadwal dokter, status BPJS tidak ada di data resmi) {F6}
-  - [ ] Hanya sebagian kecil koordinat seed terverifikasi; sisanya perlu_diisi_user/perlu_cek_ulang -> badge di UI {F3}
+  - [x] lencana() di features/direktori/data.ts · Hanya sebagian kecil koordinat seed terverifikasi; sisanya perlu_diisi_user/perlu_cek_ulang -> badge di UI {F3}
 - [ ] 06 › Key Findings
   - [ ] Enum kecamatan: 12 kecamatan, 64 kelurahan, kode 21.71.01-21.71.12 (12 nama persis ada di brief) {F1}
-  - [ ] Kesehatan smt 1 2024: 3 RS pemerintah, 18 swasta, 21 puskesmas, 63 pustu, 156 klinik/polindes, 570 posyandu, total 831 faskes; klinik turun dari 183 (smt 1 2023) -> angka klinik hanya indikatif {F3}
-  - [ ] Rumah ibadah: angka antarsumber berbeda (Kemenag 972 masjid = 1 Agung/12 Besar/849 Jami/110 tempat publik; BPS 2022 912 masjid/616 musala/3 pura/38 vihara; Satu Data 2023 75 vihara (35 di Lubuk Baja) dan 52 gereja; FKUB 2019 82 gereja Kristen di Batam Kota saja) -> tampilkan dengan sumber dan tahun, anggap 52 gereja baru sebagian {F3}
-  - [ ] Sekolah: Kemendikdasmen paling andal; menengah 195 = SMA 115 + SMK 70 + SLB 10; terbanyak Batam Kota 46, Sagulung 27, Sekupang 24; negeri 145 SD, 66 SMP, 29 SMA negeri ikut SPMB 2025/2026 {F3}
+  - [x] features/direktori/angka.ts, hanya total 831 yang tampil · Kesehatan smt 1 2024: 3 RS pemerintah, 18 swasta, 21 puskesmas, 63 pustu, 156 klinik/polindes, 570 posyandu, total 831 faskes; klinik turun dari 183 (smt 1 2023) -> angka klinik hanya indikatif {F3}
+  - [x] features/direktori/angka.ts, angka tampil dengan sumber dan tahun · Rumah ibadah: angka antarsumber berbeda (Kemenag 972 masjid = 1 Agung/12 Besar/849 Jami/110 tempat publik; BPS 2022 912 masjid/616 musala/3 pura/38 vihara; Satu Data 2023 75 vihara (35 di Lubuk Baja) dan 52 gereja; FKUB 2019 82 gereja Kristen di Batam Kota saja) -> tampilkan dengan sumber dan tahun, anggap 52 gereja baru sebagian {F3}
+  - [x] features/direktori/angka.ts · Sekolah: Kemendikdasmen paling andal; menengah 195 = SMA 115 + SMK 70 + SLB 10; terbanyak Batam Kota 46, Sagulung 27, Sekupang 24; negeri 145 SD, 66 SMP, 29 SMA negeri ikut SPMB 2025/2026 {F3}
   - [ ] Hotel ditampilkan sebagai rentang angka (BPS via GoKepri 75 bintang/160 nonbintang, 9.004/5.065 kamar; GoWest 69/108; Disbudpar 275; kompilasi lain 69 bintang dari 282 properti, 142 di Lubuk Baja); rujukan primer Tabel 24.1 Kompilasi Statistik Sektoral 2025 + SISPEK {F3}
   - [ ] Transportasi: Trans Batam 9 koridor aktif; jumlah bus beda (65 unit vs 45 bus kata Kepala UPT, Kompas.id 13/9/2024); tarif Rp5.000 umum/Rp2.500 pelajar, nontunai sejak 1/1/2023; masuk Bandara Hang Nadim 1 Juni 2026 dengan 19 bus BTS (Terasbatam) {F4}
   - [ ] Feri ke Singapura dari 5 pelabuhan (Batam Centre, Sekupang, Nongsapura, Harbour Bay, Gold Coast Bengkong) + Waterfront City/Marina Teluk Senimba jadwal terbatas {F4}
-  - [ ] Air bersih bukan PDAM: SPAM Batam di bawah BP Batam sejak 15 Nov 2020, operator PT Moya Indonesia lewat PT Air Batam Hilir; KPP Bengkong Air Batam Hilir pindah ke Baraka Business Center 8 Des 2025 (alamat berita 2020 basi) {F3}
+  - [x] data/places.json, atribut operator tampil di /info/tempat/[id] · Air bersih bukan PDAM: SPAM Batam di bawah BP Batam sejak 15 Nov 2020, operator PT Moya Indonesia lewat PT Air Batam Hilir; KPP Bengkong Air Batam Hilir pindah ke Baraka Business Center 8 Des 2025 (alamat berita 2020 basi) {F3}
 - [ ] 06 › Tabel Taksonomi Lengkap
-  - [ ] Tabel 59 baris (kategori, subkategori, tag OSM, sumber utama, cara isi) -> data/taksonomi/taksonomi.json; jadi menu kategori/subkategori direktori {F3}
+  - [x] /info/direktori/[kategori]/[sub], SUB_KOSONG · Tabel 59 baris (kategori, subkategori, tag OSM, sumber utama, cara isi) -> data/taksonomi/taksonomi.json; jadi menu kategori/subkategori direktori {F3}
   - [ ] Legenda cara isi R/O/W/K (huruf pertama = sumber utama) tampil sebagai asal data per kartu {F3}
   - [ ] Peta tag OSM per subkategori dipakai sebagai kolom tag_osm dan filter query Overpass {F3}
 - [ ] 06 › Detail per Kelompok Kategori
-  - [ ] Intro: bagian ini fokus sumber dan kolom; contoh tempat ada di seed {F3}
+  - [-] konteks, tidak perlu fitur · Intro: bagian ini fokus sumber dan kolom; contoh tempat ada di seed {F3}
   - [ ] 06 › 1. Belanja
     - [ ] Sumber: mal/supermarket/minimarket dari OSM (brand); pasar tradisional dikurasi (berita lokal, Disperindag) {F3}
-    - [ ] Pasar Induk Jodoh: PKS Pemko + PT Usaha Jaya Karya Makmur Maret 2026, gedung 5 lantai, lahan 2,1 ha, >1.800 pedagang, kawasan Tos 3000, konstruksi berjalan (Infosatelitnews 21/8/2026) -> status rencana {F3}
+    - [x] lencana rencana · Pasar Induk Jodoh: PKS Pemko + PT Usaha Jaya Karya Makmur Maret 2026, gedung 5 lantai, lahan 2,1 ha, >1.800 pedagang, kawasan Tos 3000, konstruksi berjalan (Infosatelitnews 21/8/2026) -> status rencana {F3}
     - [ ] Kolom atribut: jenis_pasar (basah/kering/campuran), jam_ramai, metode_bayar, parkir, brand, kelengkapan[], harga_relatif 1-3 {F3}
   - [ ] 06 › 2. Ruang Publik, Wisata, Pantai
     - [ ] Sumber: SISPEK Disbudpar (wajib difilter, memuat diskotik dan salon), taman/pantai OSM poligon -> centroid, perpustakaan dari Satu Data {F3}
     - [ ] Kolom: tiket_masuk, jam_buka, fasilitas, ramah_anak, aksesibel_kursi_roda, akses (darat/laut), waktu_terbaik {F3}
   - [ ] 06 › 3. Ibadah dan Pemakaman
     - [ ] Sumber: SIMAS Kemenag, Satu Jari Kemenag Batam (266 dataset dari 9 unit), FKUB 2019 per kecamatan, OSM koordinat; TPU belum punya dataset terbuka -> OSM landuse=cemetery lalu verifikasi warga {F3}
-    - [ ] Koreksi: Masjid Sultan Mahmud Riayat Syah di Jl. Brigjen Katamso, Tanjung Uncang, Batu Aji (bukan Tiban) {F3}
+    - [x] data/places.json · Koreksi: Masjid Sultan Mahmud Riayat Syah di Jl. Brigjen Katamso, Tanjung Uncang, Batu Aji (bukan Tiban) {F3}
     - [ ] Kolom ibadah: agama, denominasi, tipologi, jadwal_ibadah (jam, bahasa), kapasitas, fasilitas, id_simas; makam: agama_makam, pengelola, masih_menerima {F3}
   - [ ] 06 › 4. Transportasi
     - [ ] Pelabuhan/bandara dari BP Batam; koordinat Batam Centre di halaman BP Batam (lintang 01 derajat 17 menit 15 detik) salah ketik (seharusnya ~01 derajat 07 menit), jangan dipakai mentah {F4}
@@ -787,12 +787,12 @@ Aturan:
     - [ ] Sekolah swasta tampil setara negeri; kursi Disdik 16.044 (145 SD negeri) dan 16.803 (66 SMP negeri); lulusan SD ~23.000 -> ~6.000-7.000 tak tertampung SMP negeri (GoKepri Juni 2026) {F3}
     - [ ] Kolom: npsn, jenjang, status, akreditasi, kurikulum, agama_basis, biaya_relatif; les: mata_pelajaran, usia, mode {F3}
   - [ ] 06 › 7. Pemerintahan dan Layanan Publik
-    - [ ] Kolom: instansi_induk, layanan, jam_layanan (JSON + istirahat), antrean_online, kontak_wa, wilayah_kerja, layanan_sabtu {F3}
-    - [ ] Imigrasi Kelas I Khusus TPI Batam: Jl. Engku Putri No.3, Sen-Kam 07.30-16.00 (istirahat 12.00-13.00), ULP Harbourbay, antrean M-Paspor, Paspor Simpatik Sabtu berkala, WA 0811-700-2019 {F3}
-    - [ ] Samsat Batam Centre: Graha Kepri Lt.3, Jl. Engku Putri/Raja Isa No.8, Sen-Jum 08.00-15.00, Sab 08.00-12.00; Samsat Corner di BCS Mall dan Kepri Mall {F3}
-    - [ ] Disdukcapil 08.00-15.00 (istirahat 12.00-13.00), alamat perlu dicek; KPU Bea Cukai Jl. Kuda Laut Batu Ampar (0778) 429446 {F3}
-    - [ ] KPP Pratama Batam Utara (Jl. Kuda Laut No.1; wilayah Belakang Padang, Batu Ampar, Sekupang, Nongsa, Galang, Lubuk Baja) dan Batam Selatan (Adhya Building Tower; wilayah Sei Beduk, Bulang, Bengkong, Batam Kota, Sagulung, Batu Aji) {F3}
-    - [ ] Air Batam Hilir call center (0778) 5700 000; KPP Pusat (Ruko Batam Centre Square D2, 08.30-16.30), KPP Bengkong (Baraka Business Center B9), KPP Batu Aji (Batu Permata, blok perlu cek) {F3}
+    - [x] atributPublik · Kolom: instansi_induk, layanan, jam_layanan (JSON + istirahat), antrean_online, kontak_wa, wilayah_kerja, layanan_sabtu {F3}
+    - [x] data/places.json, /info/tempat/[id] · Imigrasi Kelas I Khusus TPI Batam: Jl. Engku Putri No.3, Sen-Kam 07.30-16.00 (istirahat 12.00-13.00), ULP Harbourbay, antrean M-Paspor, Paspor Simpatik Sabtu berkala, WA 0811-700-2019 {F3}
+    - [x] data/places.json, /info/tempat/[id] · Samsat Batam Centre: Graha Kepri Lt.3, Jl. Engku Putri/Raja Isa No.8, Sen-Jum 08.00-15.00, Sab 08.00-12.00; Samsat Corner di BCS Mall dan Kepri Mall {F3}
+    - [x] data/places.json, /info/tempat/[id] · Disdukcapil 08.00-15.00 (istirahat 12.00-13.00), alamat perlu dicek; KPU Bea Cukai Jl. Kuda Laut Batu Ampar (0778) 429446 {F3}
+    - [x] data/places.json, /info/tempat/[id] · KPP Pratama Batam Utara (Jl. Kuda Laut No.1; wilayah Belakang Padang, Batu Ampar, Sekupang, Nongsa, Galang, Lubuk Baja) dan Batam Selatan (Adhya Building Tower; wilayah Sei Beduk, Bulang, Bengkong, Batam Kota, Sagulung, Batu Aji) {F3}
+    - [x] data/places.json, /info/tempat/[id] · Air Batam Hilir call center (0778) 5700 000; KPP Pusat (Ruko Batam Centre Square D2, 08.30-16.30), KPP Bengkong (Baraka Business Center B9), KPP Batu Aji (Batu Permata, blok perlu cek) {F3}
     - [ ] PLN Batam, BPJS, kantor pos, polisi, damkar: belum diverifikasi di laporan ini -> tarik OSM lalu cocokkan situs resmi (kemudian diisi laporan 07/09) {F3}
   - [ ] 06 › 8. Akomodasi
     - [ ] SISPEK: hotel dengan kecamatan dan bintang (Maxone Lubuk Baja bintang 3; Ibis Styles Bengkong bintang 4); kos hanya lewat warga dan ditampilkan per kelurahan (bukan titik) demi privasi pemilik {F6}
@@ -835,48 +835,48 @@ Aturan:
 
 
 - [ ] 07 › Seed Data Tambahan "Batam City Hall": Layanan Publik, Kesehatan, Ibadah, Olahraga, Transportasi & Ruang Publik
-  - [ ] Yang paling bisa dipercaya: 12 kecamatan + 64 kelurahan, 21 puskesmas, 21 RS, kantor vertikal (PN, PA, Kejari, BPN, Polresta, Disdukcapil, MPP, PLN, BPJS), koordinat terminal feri Wikidata/OSM; koordinat kelurahan/polsek/KUA/jasa/pelantar pompong hampir semua null {F3}
+  - [-] konteks, tidak perlu fitur · Yang paling bisa dipercaya: 12 kecamatan + 64 kelurahan, 21 puskesmas, 21 RS, kantor vertikal (PN, PA, Kejari, BPN, Polresta, Disdukcapil, MPP, PLN, BPJS), koordinat terminal feri Wikidata/OSM; koordinat kelurahan/polsek/KUA/jasa/pelantar pompong hampir semua null {F3}
 - [ ] 07 › TL;DR
   - [ ] Siap pakai: nama+alamat resmi 21 puskesmas (Dinkes/Kemenkes), 21 RS (daftar Kemenkes via Wikipedia), MPP (Lt. Dasar Sumatera Convention Center), Disdukcapil (Jl. Ir. Sutami, Sekupang), PN, PA, BPN, Polresta Barelang, PLN Batam, BPJS; koordinat terverifikasi hanya 5 (Batam Centre, Harbour Bay, Telaga Punggur, Hang Nadim, Jembatan Barelang 1) {F3}
   - [ ] Data usang/berubah: PLN UP3 Tiban pindah dari Jl. RE. Martadinata ke Ruko Golden Sand Blok A No.12B-15 Tiban sejak 4 Agustus 2025 (gokepri 8/8/2025); lahan makam Kristen TPU Sei Temiang pindah ke sebelah makam Tionghoa; PN Batam kini di Jl. Engku Haji Tua Batam Centre; alamat kecamatan sumber 2009 wajib dicek ulang -> kolom `catatan` {F3}
   - [ ] Belum terisi: KUA, kantor pos, DPRD, money changer, ekspedisi, laundry, percetakan, servis resmi, SPBU, terminal bus -> ditandai perlu_diisi_user, tidak ada data karangan di peta {F3}
 - [ ] 07 › Ringkasan Singkat
-  - [ ] Prinsip: koordinat hanya jika ada sumber yang bisa dicek (Wikidata, OSM via Mapcarta, peta resmi); selain itu null {F3}
-  - [ ] Definisi status koordinat: terverifikasi (Wikidata/Wikipedia/OSM, dicocokkan >=1 sumber lain), perlu_cek_ulang (idalamat, batamgems, Waze, TripAdvisor, presisi rendah), perlu_diisi_user (null) {F3}
-  - [ ] Daftar Sumber kode S1-S54 (dipetakan ke `sumber_url` setiap entri) {F3}
+  - [-] konteks; prinsipnya dipakai: koordinat tidak ditebak · Prinsip: koordinat hanya jika ada sumber yang bisa dicek (Wikidata, OSM via Mapcarta, peta resmi); selain itu null {F3}
+  - [-] konteks; definisi dipakai di lencana · Definisi status koordinat: terverifikasi (Wikidata/Wikipedia/OSM, dicocokkan >=1 sumber lain), perlu_cek_ulang (idalamat, batamgems, Waze, TripAdvisor, presisi rendah), perlu_diisi_user (null) {F3}
+  - [-] konteks; sumber per tempat ada di sumber_url · Daftar Sumber kode S1-S54 (dipetakan ke `sumber_url` setiap entri) {F3}
 - [ ] 07 › 1. Pemerintahan & Layanan Publik
   - [ ] 07 › 1a. 12 Kantor Kecamatan
-    - [ ] Tabel 12 kantor camat (nama, kelurahan, alamat, kontak); hanya Batam Kota ber-koordinat (1.1066722, 104.0803667, perlu_cek_ulang; telp (0778) 7485042); 10 alamat data 2009 (S3) -> semua perlu cek ulang; kelurahan Bulang/Sagulung/Sekupang "perlu cek" {F3}
+    - [x] /info/kecamatan/[slug] · Tabel 12 kantor camat (nama, kelurahan, alamat, kontak); hanya Batam Kota ber-koordinat (1.1066722, 104.0803667, perlu_cek_ulang; telp (0778) 7485042); 10 alamat data 2009 (S3) -> semua perlu cek ulang; kelurahan Bulang/Sagulung/Sekupang "perlu cek" {F3}
   - [ ] 07 › 1b. 64 Kelurahan (daftar resmi Kemendagri)
-    - [ ] Tabel 12 kecamatan (kode 21.71.xx, jumlah kelurahan 6/4/4/6/4/6/8/5/4/6/4/7 = 64) -> data/wilayah/kelurahan.json; buat 64 entri `kantor_kelurahan` (alamat null, lat/lng null, perlu_diisi_user, sumber S1) {F3}
-    - [ ] Jangan pakai kelurahan lama dari situs kode pos ("Baloi", "Nongsa", "Bengkong Harapan", "Bukit Senyum": sebelum Perda 2/2005) {F3}
+    - [x] /info/kecamatan/[slug], data/wilayah/kelurahan.json · Tabel 12 kecamatan (kode 21.71.xx, jumlah kelurahan 6/4/4/6/4/6/8/5/4/6/4/7 = 64) -> data/wilayah/kelurahan.json; buat 64 entri `kantor_kelurahan` (alamat null, lat/lng null, perlu_diisi_user, sumber S1) {F3}
+    - [x] data/wilayah/kelurahan.json · Jangan pakai kelurahan lama dari situs kode pos ("Baloi", "Nongsa", "Bengkong Harapan", "Bukit Senyum": sebelum Perda 2/2005) {F3}
   - [ ] 07 › 1c. Kantor Layanan Publik Utama
-    - [ ] Tabel 23 baris: Wali Kota, Disdukcapil (0778) 322287, MPP (call center 0778 468278; tanggal operasi 7 Des 2017 vs 27 Nov 2017, diresmikan MenPAN-RB 20 Sep 2018), Gerai Disdukcapil di MPP (KK, KIA, pindah, akta lahir/kematian, IKD sejak 5 Mei 2023), DPMPTSP, 5 kantor PLN Batam, 2 BPJS TK, BPJS Kesehatan (data blog 2018), Polresta Barelang, PN, PA (WA 0812-6658-8031), Kejari, BPN (WA 0851-5000-0722), Disnaker, Kemenag, DPRD, Kantor Pos, KUA 12 {F3}
-    - [ ] MPP jadi hub: Gerai Disdukcapil, DPMPTSP, BP Batam PTSP, BPN, pajak di satu gedung {F3}
+    - [x] /info/direktori/pemerintahan · Tabel 23 baris: Wali Kota, Disdukcapil (0778) 322287, MPP (call center 0778 468278; tanggal operasi 7 Des 2017 vs 27 Nov 2017, diresmikan MenPAN-RB 20 Sep 2018), Gerai Disdukcapil di MPP (KK, KIA, pindah, akta lahir/kematian, IKD sejak 5 Mei 2023), DPMPTSP, 5 kantor PLN Batam, 2 BPJS TK, BPJS Kesehatan (data blog 2018), Polresta Barelang, PN, PA (WA 0812-6658-8031), Kejari, BPN (WA 0851-5000-0722), Disnaker, Kemenag, DPRD, Kantor Pos, KUA 12 {F3}
+    - [x] /info/urusan-tanah · MPP jadi hub: Gerai Disdukcapil, DPMPTSP, BP Batam PTSP, BPN, pajak di satu gedung {F3}
   - [ ] 07 › 1d. Polsek (di bawah Polresta Barelang)
-    - [ ] Tabel 13 polsek (alamat, telepon; Sagulung/Belakang Padang/Galang/KKP tanpa telepon; KKB (0778) 479276); data kompilasi 2020; nama kapolsek TIDAK dicantumkan {F3}
+    - [x] /info/darurat, /info/kecamatan/[slug] · Tabel 13 polsek (alamat, telepon; Sagulung/Belakang Padang/Galang/KKP tanpa telepon; KKB (0778) 479276); data kompilasi 2020; nama kapolsek TIDAK dicantumkan {F3}
   - [ ] 07 › 1e. Pemadam Kebakaran
-    - [ ] Darurat 113/112; call center Damkar BP Batam (Pos Duriangkang) 0811-6060-113; armada BP Batam "110 personel serta lebih dari 10 unit mobil... 6 pos aktif dan 2 pos pasif... response time maksimal 15 menit" {F3}
-    - [ ] Tabel 10 unit damkar (kantor dinas Pemko Jl. Pramuka No.2 (0778) 325622; Pos Pemko Sei Panas, Kabil, Tembesi; Pos BP Batam Sekupang, Sagulung, Batu Ampar, Punggur, Nongsa, Duriangkang) -> data/darurat/nomor_darurat.json {F3}
-    - [ ] Peringatan: damkarbatam.com dan bpbd.damkarbatam.com BUKAN situs resmi (alamat Prabumulih, koordinat Jakarta) -> jangan dipakai/ditautkan {F3}
+    - [x] /info/darurat · Darurat 113/112; call center Damkar BP Batam (Pos Duriangkang) 0811-6060-113; armada BP Batam "110 personel serta lebih dari 10 unit mobil... 6 pos aktif dan 2 pos pasif... response time maksimal 15 menit" {F3}
+    - [x] /info/darurat · Tabel 10 unit damkar (kantor dinas Pemko Jl. Pramuka No.2 (0778) 325622; Pos Pemko Sei Panas, Kabil, Tembesi; Pos BP Batam Sekupang, Sagulung, Batu Ampar, Punggur, Nongsa, Duriangkang) -> data/darurat/nomor_darurat.json {F3}
+    - [x] /info/darurat, tautanAman · Peringatan: damkarbatam.com dan bpbd.damkarbatam.com BUKAN situs resmi (alamat Prabumulih, koordinat Jakarta) -> jangan dipakai/ditautkan {F3}
 - [ ] 07 › 2. Perpustakaan
-  - [ ] Tabel 4: Dispusip (Kantor Dinas Bersama Jl. Raja Isa No.17 Lt.4), Perpustakaan Keliling (baca di tempat, tidak bisa dipinjam, ajukan surat; tanpa titik), Perpustakaan Masjid Jabal Arafah (08.00-19.00, +62 811 7087 997), Pojok Perpustakaan MPP; alamat lama Dispusip "Jl. Engku Putri No.1 Lt.7" kemungkinan usang {F3}
+  - [x] /info/direktori/perpustakaan · Tabel 4: Dispusip (Kantor Dinas Bersama Jl. Raja Isa No.17 Lt.4), Perpustakaan Keliling (baca di tempat, tidak bisa dipinjam, ajukan surat; tanpa titik), Perpustakaan Masjid Jabal Arafah (08.00-19.00, +62 811 7087 997), Pojok Perpustakaan MPP; alamat lama Dispusip "Jl. Engku Putri No.1 Lt.7" kemungkinan usang {F3}
   - [ ] Perpustakaan provinsi, perpustakaan kampus terbuka, TBM: belum terverifikasi {F3}
 - [ ] 07 › 3. Kesehatan
   - [ ] 07 › 3a. 21 Puskesmas
-    - [ ] Tabel 21 puskesmas dengan status rawat inap dari Komdat (rawat inap / non / perlu cek; Lubuk Baja "Non rawat inap (perlu cek)"; Sei Panas masuk Bengkong menurut Komdat) -> atribut.rawat_inap + rawat_inap_label {F3}
+    - [x] /info/direktori/kesehatan · Tabel 21 puskesmas dengan status rawat inap dari Komdat (rawat inap / non / perlu cek; Lubuk Baja "Non rawat inap (perlu cek)"; Sei Panas masuk Bengkong menurut Komdat) -> atribut.rawat_inap + rawat_inap_label {F3}
     - [ ] Catatan: tautan menu Dinkes "Puskesmas Tanjung Uncang" ke subdomain Tanjung Sengkuang adalah salah tautan, bukan penggabungan {F3}
   - [ ] 07 › 3b. 21 Rumah Sakit (kode Kemenkes, via S29)
-    - [ ] Tabel 21 RS dengan tipe (A/B/C/D/khusus; RS Awal Bros "A, beberapa sumber menyebut B"; RS Bhayangkara D; RS Charis Medika D; RSKI Pulau Galang khusus) -> atribut.tipe {F3}
+    - [x] /info/direktori/kesehatan · Tabel 21 RS dengan tipe (A/B/C/D/khusus; RS Awal Bros "A, beberapa sumber menyebut B"; RS Bhayangkara D; RS Charis Medika D; RSKI Pulau Galang khusus) -> atribut.tipe {F3}
     - [ ] RS Awal Bros Batu Aji (tipe C, avitaliahealth) tidak ada di daftar Wikipedia: mungkin RS ke-22, perlu cek {F3}
     - [ ] Seed lama RS mungkin sudah ber-koordinat: pakai yang lama bila ada; klinik 24 jam, lab, apotek 24 jam belum diriset {F3}
 - [ ] 07 › 4. Ibadah & Pemakaman
-  - [ ] Tabel 11 baris: Pura Agung Amerta Bhuana (terbesar di Batam, padmasana 13 m, diresmikan 16 Jun 2004, Jl. Gajah Mada No.3 Sei Ladi, 1.112828,104.002754 perlu cek), Pura Satya Dharma, Pura Sekupang, Masjid Jabal Arafah, TPU Sei Temiang (+ lahan Kristen baru mulai Maret 2024, akses terjal), TPU Taman Langgeng/Sei Panas, TPU Kavling Bagan, TPU Sambau, Pemakaman Tionghoa Sambau, Krematorium Yayasan Halim (+62 778 425205) {F3}
+  - [x] /info/direktori/ibadah · Tabel 11 baris: Pura Agung Amerta Bhuana (terbesar di Batam, padmasana 13 m, diresmikan 16 Jun 2004, Jl. Gajah Mada No.3 Sei Ladi, 1.112828,104.002754 perlu cek), Pura Satya Dharma, Pura Sekupang, Masjid Jabal Arafah, TPU Sei Temiang (+ lahan Kristen baru mulai Maret 2024, akses terjal), TPU Taman Langgeng/Sei Panas, TPU Kavling Bagan, TPU Sambau, Pemakaman Tionghoa Sambau, Krematorium Yayasan Halim (+62 778 425205) {F3}
   - [ ] Gereja per denominasi (Katolik, HKBP, GPdI, GBI), klenteng utama, TMP: belum terverifikasi (kemudian sebagian diisi laporan 09) {F3}
   - [ ] Biaya makam media 2019 (~Rp1,35 juta dewasa Sei Temiang) USANG: Pemko ambil alih pengelolaan dan tanggung biaya gali tutup di Sei Temiang, Sei Panas, Kavling Bagan (S35) {F3}
   - [ ] Usulan TPU baru: 6 lokasi 148 ha (30 Agt 2023: Sei Temiang 55, Tiban Lama 20, Tanjungpiayu 23, Tembesi 10, Sambau 33, Sekanak 7 ha) lalu 5 lokasi ~122,31 ha (Batamtimes 26/5/2025, menunggu Amdal) -> BELUM boleh ditampilkan sebagai TPU beroperasi; angka di angka_resmi.json {F3}
 - [ ] 07 › 5. Olahraga
-  - [ ] Tabel: Stadion Temenggung Abdul Jamal (kapasitas 10.000 menurut BP Batam vs 2.800 Wikipedia; reservasi via HGAT BP Batam), Sport Hall/GOR TAJ (badminton, voli, basket, atletik, panahan), The Padel House, Play Padel (2 lapangan, mulai Rp180.000/sesi), Padel Box Orchid (mulai Rp88.000), Tamora Padel Club (5 lapangan, mulai Rp350.000; plus code 43J7+4C), 10 padel lain di AYO (BC Padel Club, Dragon 89, TAO Padel Academy, Seaside Premium Padel, Zabbo, Padel Hill, Court One, Grand Padel Arena Nagoya, IPadel Club, Penguin Padel) + Rally Padel {F3}
+  - [x] /info/direktori/olahraga · Tabel: Stadion Temenggung Abdul Jamal (kapasitas 10.000 menurut BP Batam vs 2.800 Wikipedia; reservasi via HGAT BP Batam), Sport Hall/GOR TAJ (badminton, voli, basket, atletik, panahan), The Padel House, Play Padel (2 lapangan, mulai Rp180.000/sesi), Padel Box Orchid (mulai Rp88.000), Tamora Padel Club (5 lapangan, mulai Rp350.000; plus code 43J7+4C), 10 padel lain di AYO (BC Padel Club, Dragon 89, TAO Padel Academy, Seaside Premium Padel, Zabbo, Padel Hill, Court One, Grand Padel Arena Nagoya, IPadel Club, Penguin Padel) + Rally Padel {F3}
   - [ ] Padel cepat usang: 4 Des 2025 Batam Pos "tiga lapangan aktif"; Nov 2026 AYO >=15 venue -> ambil berkala dari AYO; futsal, mini soccer, tenis, kolam renang umum, gym, jogging track, skatepark belum terverifikasi {F3}
 - [ ] 07 › 6. Jasa & Servis
   - [ ] Belum ada data terverifikasi (bengkel resmi, dealer, money changer Nagoya/Harbour Bay, ekspedisi JNE/J&T/SiCepat/Pos, laundry, percetakan, servis resmi): ambil dari locator resmi tiap merek {F3}
@@ -889,11 +889,11 @@ Aturan:
   - [ ] Pompong Sekupang-Belakang Padang: koperasi PPMS, ±25 menit, Rp20.000/penumpang (paper ResearchGate, diterima 22/11/2024); pembanding gokepri 21/1/2022 Rp16.000 -> Rp18.000 per 17/1/2022 {F4}
   - [ ] Jumlah SPBU belum terverifikasi {F3}
 - [ ] 07 › 8. Ruang Publik
-  - [ ] Tabel: Dataran/Alun-alun Engku Putri (1.106639,104.052681 cek ulang), Jembatan Barelang 1 Tengku Fisabilillah (0.981694,104.041500 terverifikasi; Galang/Bulang perbatasan), Pulau Belakang Padang (wisata pulau), Taman Dang Anom/Taman Kolam/Taman Mini/Taman Rusa (null); taman kota, pantai, RTH lain belum terverifikasi {F3}
+  - [x] /info/direktori/landmark · Tabel: Dataran/Alun-alun Engku Putri (1.106639,104.052681 cek ulang), Jembatan Barelang 1 Tengku Fisabilillah (0.981694,104.041500 terverifikasi; Galang/Bulang perbatasan), Pulau Belakang Padang (wisata pulau), Taman Dang Anom/Taman Kolam/Taman Mini/Taman Rusa (null); taman kota, pantai, RTH lain belum terverifikasi {F3}
 - [ ] 07 › Rekomendasi untuk Claude Code
-  - [ ] Import JSON + generate 64 entri kelurahan dari tabel 1b {F3}
-  - [ ] Entri koordinat null jangan dirender di peta, tampil di daftar dengan badge "lokasi belum diisi" {F3}
-  - [ ] Tambah field `catatan` untuk data usang (PLN Tiban, TPU Kristen, alamat kecamatan 2009) {F3}
+  - [x] /info/kecamatan/[slug] · Import JSON + generate 64 entri kelurahan dari tabel 1b {F3}
+  - [x] daftarPin, lencana · Entri koordinat null jangan dirender di peta, tampil di daftar dengan badge "lokasi belum diisi" {F3}
+  - [x] catatanPublik · Tambah field `catatan` untuk data usang (PLN Tiban, TPU Kristen, alamat kecamatan 2009) {F3}
   - [ ] Prioritas isi manual koordinat: kantor kecamatan -> puskesmas -> RS -> polsek -> pelantar pompong (urutan prioritas CSV) {F3}
 - [ ] 07 › Data JSON
   - [ ] 127 objek JSON -> data/raw/07-...__1.json; places 212 = 127 + 64 kelurahan + 21 dari tabel/prosa (Pojok Perpustakaan MPP, Pura Satya Dharma, Pura Sekupang, DPRD, RS Awal Bros Batu Aji, 11 venue padel, Pulau Belakang Padang, 4 taman) -> data/places/07-direktori-layanan-publik.json {F3}
@@ -906,62 +906,62 @@ Aturan:
 
 
 - [ ] 08 › Direktori Profesi & Jasa Administrasi Kota Batam: Seed Data PPAT, Notaris, Lahan, Bantuan Hukum, dan Jasa Dokumen
-  - [ ] Belum ada daftar PPAT/notaris Batam lengkap, resmi, dan terunduh; seed = (1) simpul layanan resmi + (2) sampel kantor PPAT/notaris berstatus perlu_cek_ulang + tombol "cara verifikasi" {F3}
-  - [ ] Angka profesi: 139 notaris di Batam (Kanwil Kemenkum Kepri, April 2025; 268 se-Kepri); 125 anggota PPAT Batam (BatamToday Sep 2022); IPPAT "sekitar 140" (BatamInfo Sep 2025, wilayah tak tegas) -> tampil dengan tahun, PPAT ditandai "mungkin usang" (tidak ada file data khusus) {F3}
+  - [x] /info/bantuan-hukum, label Beta · Belum ada daftar PPAT/notaris Batam lengkap, resmi, dan terunduh; seed = (1) simpul layanan resmi + (2) sampel kantor PPAT/notaris berstatus perlu_cek_ulang + tombol "cara verifikasi" {F3}
+  - [x] /info/bantuan-hukum, data/statistik/angka_resmi.json · Angka profesi: 139 notaris di Batam (Kanwil Kemenkum Kepri, April 2025; 268 se-Kepri); 125 anggota PPAT Batam (BatamToday Sep 2022); IPPAT "sekitar 140" (BatamInfo Sep 2025, wilayah tak tegas) -> tampil dengan tahun, PPAT ditandai "mungkin usang" (tidak ada file data khusus) {F3}
 - [ ] 08 › TL;DR
-  - [ ] Urusan tanah terbagi tiga loket: BP Batam (HPL, alokasi lahan, UWT, izin peralihan hak, perpanjangan alokasi), BPN/Kantah (sertifikat, balik nama, hak tanggungan), PPAT (AJB, APHT) vs notaris (PPJB, perjanjian, akta usaha) {F3}
+  - [x] /info/urusan-tanah · Urusan tanah terbagi tiga loket: BP Batam (HPL, alokasi lahan, UWT, izin peralihan hak, perpanjangan alokasi), BPN/Kantah (sertifikat, balik nama, hak tanggungan), PPAT (AJB, APHT) vs notaris (PPJB, perjanjian, akta usaha) {F3}
   - [ ] Skala profesi besar tapi data tertutup: 139 notaris, 125 PPAT; formasi notaris Kota Batam 2025 = 0 kursi (AHU, "Penuh"); daftar per nama hanya di sistem internal ATR/BPN, AHU, MPD -> semua entri PPAT/notaris perlu_cek_ulang {F3}
-  - [ ] Posbakum PN Batam (Batam Centre) dan PA Batam (Sekupang) = bantuan hukum gratis paling pasti; LBH: Mawar Saron (Sukajadi), PBH Peradi Batam; daftar OBH akreditasi BPHN 2025-2027 untuk Batam belum terbaca (9 OBH se-Kepri dikontrak 14 April 2025) {F3}
+  - [x] /info/bantuan-hukum · Posbakum PN Batam (Batam Centre) dan PA Batam (Sekupang) = bantuan hukum gratis paling pasti; LBH: Mawar Saron (Sukajadi), PBH Peradi Batam; daftar OBH akreditasi BPHN 2025-2027 untuk Batam belum terbaca (9 OBH se-Kepri dikontrak 14 April 2025) {F3}
 - [ ] 08 › Ringkasan praktis: urusan tanah/rumah di Batam, ke mana untuk apa?
-  - [ ] Penjelasan HPL BP Batam + UWT (Uang Wajib Tahunan, dulu UWTO) dibayar di muka seluruh masa alokasi: 30 tahun alokasi awal, 20 tahun perpanjangan, 30 tahun pembaruan; faktur tak dilunasi -> lahan kembali dikuasai BP Batam -> data/panduan/urusan_tanah.md/.json (`masa_uwt_tahun`) {F3}
-  - [ ] Tabel 8 baris "Kebutuhan warga -> Ke mana -> Catatan" (UWT/perpanjangan -> LMS Online + PTSP BP Batam MPP; IPH/alokasi/hak tanggungan/pecah PL/arsip -> BP Batam LMS/PTSP/B-CARE; sertifikat/balik nama/roya/PTSL -> Kantah BPN Sekupang + loket MPP, WA 0851 5000 0722; AJB/APHT/hibah -> PPAT; PPJB/sewa/kuasa/wasiat/PT/CV/yayasan/koperasi -> notaris (NPAK untuk koperasi); BPHTB/PBB -> Bapenda; PPh final/NPWP -> KPP Pratama atau loket pajak MPP (Batam Selatan bergiliran Senin-Selasa); rumah lelang -> KPKNL atau Pejabat Lelang Kelas II (4 nama per 26 Nov 2025)) -> `urusan_tanah.json` kebutuhan[8] {F3}
-  - [ ] Urutan umum jual-beli rumah di lahan HPL BP Batam (5 langkah: cek UWT/sisa alokasi -> Izin Peralihan Hak -> PPAT cek sertifikat di BPN + pajak BPHTB/PPh -> tanda tangan AJB -> PPAT daftar balik nama) dengan penafian "gambaran praktis, wajib cek PPAT/BP Batam" {F3}
-  - [ ] Persyaratan perpanjangan alokasi: identitas, PBB tahun terakhir, sertifikat/dokumen lahan (SKPL, SPPL, gambar lokasi, faktur UWT) lewat layanan "Perpanjangan Hak Atas Tanah" LMS {F3}
+  - [x] /info/urusan-tanah · Penjelasan HPL BP Batam + UWT (Uang Wajib Tahunan, dulu UWTO) dibayar di muka seluruh masa alokasi: 30 tahun alokasi awal, 20 tahun perpanjangan, 30 tahun pembaruan; faktur tak dilunasi -> lahan kembali dikuasai BP Batam -> data/panduan/urusan_tanah.md/.json (`masa_uwt_tahun`) {F3}
+  - [x] /info/urusan-tanah · Tabel 8 baris "Kebutuhan warga -> Ke mana -> Catatan" (UWT/perpanjangan -> LMS Online + PTSP BP Batam MPP; IPH/alokasi/hak tanggungan/pecah PL/arsip -> BP Batam LMS/PTSP/B-CARE; sertifikat/balik nama/roya/PTSL -> Kantah BPN Sekupang + loket MPP, WA 0851 5000 0722; AJB/APHT/hibah -> PPAT; PPJB/sewa/kuasa/wasiat/PT/CV/yayasan/koperasi -> notaris (NPAK untuk koperasi); BPHTB/PBB -> Bapenda; PPh final/NPWP -> KPP Pratama atau loket pajak MPP (Batam Selatan bergiliran Senin-Selasa); rumah lelang -> KPKNL atau Pejabat Lelang Kelas II (4 nama per 26 Nov 2025)) -> `urusan_tanah.json` kebutuhan[8] {F3}
+  - [x] /info/urusan-tanah · Urutan umum jual-beli rumah di lahan HPL BP Batam (5 langkah: cek UWT/sisa alokasi -> Izin Peralihan Hak -> PPAT cek sertifikat di BPN + pajak BPHTB/PPh -> tanda tangan AJB -> PPAT daftar balik nama) dengan penafian "gambaran praktis, wajib cek PPAT/BP Batam" {F3}
+  - [x] /info/urusan-tanah · Persyaratan perpanjangan alokasi: identitas, PBB tahun terakhir, sertifikat/dokumen lahan (SKPL, SPPL, gambar lokasi, faktur UWT) lewat layanan "Perpanjangan Hak Atas Tanah" LMS {F3}
 - [ ] 08 › Key Findings
   - [ ] Jumlah profesi (139 notaris/268 Kepri; PPAT 125 dari ~220 Kepri BatamToday 2022, 237 Kepri Pemprov rakor 13/9/2022; formasi AHU 0 kursi) {F3}
-  - [ ] Tidak ada daftar PPAT/notaris resmi terbuka; satu-satunya publik resmi = Daftar Pejabat Lelang Kelas II DJKN 26 Nov 2025; sisanya blog 2019 + agregator; nomor SK "9-XVII-PPAT-2008" di blog 2019 = kesalahan templat, JANGAN dipakai {F3}
-  - [ ] PPAT Sementara (camat; PP 37/1998) tidak ditemukan sumber -> kolom `ppat_sementara` "tidak diketahui", konfirmasi ke Kantah {F3}
+  - [x] /info/bantuan-hukum · Tidak ada daftar PPAT/notaris resmi terbuka; satu-satunya publik resmi = Daftar Pejabat Lelang Kelas II DJKN 26 Nov 2025; sisanya blog 2019 + agregator; nomor SK "9-XVII-PPAT-2008" di blog 2019 = kesalahan templat, JANGAN dipakai {F3}
+  - [x] /info/bantuan-hukum, /info/kecamatan/[slug] · PPAT Sementara (camat; PP 37/1998) tidak ditemukan sumber -> kolom `ppat_sementara` "tidak diketahui", konfirmasi ke Kantah {F3}
   - [ ] OBH terakreditasi BPHN 2025-2027: nasional 597 PBH diperpanjang (dari 619 aktif 2022-2024) + 190 baru; kontrak Kanwil Kepri 9 OBH (14 Apr 2025), TA 2026 ditandatangani 6 Mar 2026; mitra Batam periode 2023: LBH Mawar Saron, LBH Peduli dan Harapan Bangsa, LBH Yayasan Suara Keadilan {F3}
-  - [ ] MPP (Lt. Dasar Sumatera Convention Center, Jl. Engku Putri) satu gedung untuk Pemko, BP Batam PTSP, BPN, pajak, DPMPTSP (Lt.2) -> pin hub utama {F3}
+  - [x] /info/urusan-tanah · MPP (Lt. Dasar Sumatera Convention Center, Jl. Engku Putri) satu gedung untuk Pemko, BP Batam PTSP, BPN, pajak, DPMPTSP (Lt.2) -> pin hub utama {F3}
 - [ ] 08 › Details per kategori
   - [ ] Catatan umum: semua lat/lng null (perlu_diisi_user); cara isi cepat via openstreetmap.org "Show address" atau Nominatim; legenda status data centang = resmi, peringatan = sekunder/usang {F3}
   - [ ] 08 › A. Pertanahan, lahan, dan perizinan (simpul resmi)
-    - [ ] Tabel 7 simpul: Kantah BPN, BP Batam Pusat (Jl. Ibnu Sutowo No.1, (0778) 462047/462048), BP Batam LMS Online (WA konsultasi +62 811-7048-000, penataan +62 811-7704-770, KSB +62 811-7704-771), PTSP BP Batam di MPP, MPP, DPMPTSP (Lt.2 MPP, (0778) 473228), KPKNL Batam ((0778) 469825) {F3}
+    - [x] /info/urusan-tanah, /info/tempat/[id] · Tabel 7 simpul: Kantah BPN, BP Batam Pusat (Jl. Ibnu Sutowo No.1, (0778) 462047/462048), BP Batam LMS Online (WA konsultasi +62 811-7048-000, penataan +62 811-7704-770, KSB +62 811-7704-771), PTSP BP Batam di MPP, MPP, DPMPTSP (Lt.2 MPP, (0778) 473228), KPKNL Batam ((0778) 469825) {F3}
     - [ ] Konflik WA PTSP BP Batam: +62 811-7676-666 (halaman pengaduan lama) vs +62 855-6670-011 (beranda terbaru; pengaduan +62 855-6670-009) -> pakai yang terbaru + perlu_cek_ulang {F3}
-    - [ ] Jam PTSP BP Batam di MPP: 08.00-16.30 WIB, antrean tutup 15.00 {F3}
+    - [x] /info/tempat/pertanahan-ptsp-bp-batam-mpp · Jam PTSP BP Batam di MPP: 08.00-16.30 WIB, antrean tutup 15.00 {F3}
   - [ ] 08 › B. PPAT dan Notaris (sampel, semua perlu cek ulang)
-    - [ ] Pola: satu entri per kantor dengan atribut ppat/notaris/pejabat_lelang_kelas_ii (boolean) {F3}
-    - [ ] Tabel 12 kantor sampel (Wirlisman, Wany Thamrin, Juli Cristie, Wida Delima Pandjaitan, Yondri Darto, Titik Sulistyowati, Najemah, Rian Sugito, Bambang Purwanto, Yulianti, Bambang Muchsinanto, Kiki); kontak resmi hanya Wirlisman, Wany Thamrin, Juli Cristie, Wida Delima (telepon kantor) {F3}
-    - [ ] Sebaran: menumpuk di Batam Kota, Lubuk Baja (Nagoya), Batu Ampar (Sei Jodoh); sebagian kecil Sekupang, Batu Aji, Bengkong, Sagulung; kecamatan pulau praktis tak ada -> kartu info "PPAT terdekat di Batam Kota/Lubuk Baja; tanyakan PPAT Sementara ke Kantah" {F3}
-    - [ ] Cara verifikasi (tombol "cek status"): PPAT -> Kantah Kota Batam (WA pengaduan) atau portal ATR/BPN, pastikan wilayah kerja Kota Batam; notaris -> ahu.go.id, MPD Notaris Kota Batam, Pengda INI; Pejabat Lelang Kelas II -> PDF DJKN 26 Nov 2025 -> data/panduan/cara_verifikasi_profesi.md {F3}
+    - [x] lencana, adalahProfesi · Pola: satu entri per kantor dengan atribut ppat/notaris/pejabat_lelang_kelas_ii (boolean) {F3}
+    - [x] /info/direktori/pertanahan-hukum, label Beta · Tabel 12 kantor sampel (Wirlisman, Wany Thamrin, Juli Cristie, Wida Delima Pandjaitan, Yondri Darto, Titik Sulistyowati, Najemah, Rian Sugito, Bambang Purwanto, Yulianti, Bambang Muchsinanto, Kiki); kontak resmi hanya Wirlisman, Wany Thamrin, Juli Cristie, Wida Delima (telepon kantor) {F3}
+    - [x] /info/direktori/pertanahan-hukum · Sebaran: menumpuk di Batam Kota, Lubuk Baja (Nagoya), Batu Ampar (Sei Jodoh); sebagian kecil Sekupang, Batu Aji, Bengkong, Sagulung; kecamatan pulau praktis tak ada -> kartu info "PPAT terdekat di Batam Kota/Lubuk Baja; tanyakan PPAT Sementara ke Kantah" {F3}
+    - [x] /info/bantuan-hukum#cek-status · Cara verifikasi (tombol "cek status"): PPAT -> Kantah Kota Batam (WA pengaduan) atau portal ATR/BPN, pastikan wilayah kerja Kota Batam; notaris -> ahu.go.id, MPD Notaris Kota Batam, Pengda INI; Pejabat Lelang Kelas II -> PDF DJKN 26 Nov 2025 -> data/panduan/cara_verifikasi_profesi.md {F3}
   - [ ] 08 › C. Bantuan hukum dan profesi hukum
-    - [ ] Tabel 7: Posbakum PN, Posbakum PA, LBH Mawar Saron ((0778) 430990), LBH Peduli dan Harapan Bangsa (alamat belum ditemukan), LBH Yayasan Suara Keadilan (alamat belum ditemukan), DPC Peradi Batam & PBH (dua kandidat alamat: Batam Centre Square Blok C No.3 daftar DPN Maret 2025 vs Ruko KBC Blok A5 No.5), DPC Peradi Batam Raya (Nagoya Newton Blok A No.10; WA +62 812-7779-977) {F3}
-    - [ ] Posbakum PN/PA gratis: informasi hukum, konsultasi, advis, bantuan membuat dokumen (gugatan/permohonan), dasar PERMA 1/2014; PA: harta bersama, hadhanah, nafkah; umumnya TIDAK mendampingi di sidang -> rujuk ke OBH {F3}
-    - [ ] OBH terakreditasi BPHN: litigasi (pidana, perdata, TUN) + non-litigasi gratis bagi warga miskin (syarat SKTM + dokumen perkara); mitra dilarang meminta "uang rokok/uang makan" {F3}
-    - [ ] Peradi terpecah: DPC Peradi Batam (peradi.or.id) dan Batam Raya (peradi.id) = dua entri dengan atribut `afiliasi_dpn` {F3}
-    - [ ] Advokat perorangan: JANGAN dibuat daftar; arahkan minta rujukan DPC, cek KTA di situs organisasi, pastikan disumpah di Pengadilan Tinggi {F3}
+    - [x] /info/bantuan-hukum · Tabel 7: Posbakum PN, Posbakum PA, LBH Mawar Saron ((0778) 430990), LBH Peduli dan Harapan Bangsa (alamat belum ditemukan), LBH Yayasan Suara Keadilan (alamat belum ditemukan), DPC Peradi Batam & PBH (dua kandidat alamat: Batam Centre Square Blok C No.3 daftar DPN Maret 2025 vs Ruko KBC Blok A5 No.5), DPC Peradi Batam Raya (Nagoya Newton Blok A No.10; WA +62 812-7779-977) {F3}
+    - [x] /info/bantuan-hukum · Posbakum PN/PA gratis: informasi hukum, konsultasi, advis, bantuan membuat dokumen (gugatan/permohonan), dasar PERMA 1/2014; PA: harta bersama, hadhanah, nafkah; umumnya TIDAK mendampingi di sidang -> rujuk ke OBH {F3}
+    - [x] /info/bantuan-hukum · OBH terakreditasi BPHN: litigasi (pidana, perdata, TUN) + non-litigasi gratis bagi warga miskin (syarat SKTM + dokumen perkara); mitra dilarang meminta "uang rokok/uang makan" {F3}
+    - [x] /info/bantuan-hukum · Peradi terpecah: DPC Peradi Batam (peradi.or.id) dan Batam Raya (peradi.id) = dua entri dengan atribut `afiliasi_dpn` {F3}
+    - [x] /info/bantuan-hukum, tidak ada daftar · Advokat perorangan: JANGAN dibuat daftar; arahkan minta rujukan DPC, cek KTA di situs organisasi, pastikan disumpah di Pengadilan Tinggi {F3}
   - [ ] 08 › D. Jasa dokumen, pajak, penilai, dan usaha
     - [ ] Tabel 7: IKPI Cabang Batam (Royal Sincom Blok C No.12, (0778) 461325, ketua Bunandi 2024-2029; situs ikpikepri.org kemungkinan pihak ketiga), AKP2I Pengda Kepri, KJPP MBPRU, KJPP Aksa Nelson & Rekan (telepon dua versi 0778-37220003 vs 0778-3720002), KJPP Damianus Ambur & Rekan, UPTD PLUT-KUMKM (Golden Prima/Golden City Tanjung Buntung Bengkong), Dinas Koperasi dan Usaha Mikro ((0778) 321670) {F3}
-    - [ ] Konsultan pajak perorangan: pakai direktori anggota IKPI + pastikan izin praktik DJP {F3}
+    - [x] /info/jasa-dokumen · Konsultan pajak perorangan: pakai direktori anggota IKPI + pastikan izin praktik DJP {F3}
     - [ ] KJPP: sumber terbaik e-directory.mappi.or.id (cabang lain: KJPP Syarif Endang & Rekan, KJPP Toto Suharto & Rekan, alamat Orchid Park, Mega Legenda, Orchid Point belum dicocokkan) -> ambil langsung dari MAPPI; dibutuhkan untuk penilaian rumah (KPR, waris, lelang, sengketa) {F3}
-    - [ ] KJA/KAP belum diriset (TODO): sumber PPPK Kemenkeu dan IAPI {F3}
-    - [ ] Penerjemah tersumpah: TIDAK ada entri; kartu hanya panduan verifikasi (minta nomor SK format AHU-xx.AH.03.07.tahun, cocokkan pasangan bahasa, konfirmasi instansi penerima; dokumen SG/MY biasanya Inggris-Indonesia) {F3}
-    - [ ] Legalisasi dokumen: Apostille online via Ditjen AHU untuk negara anggota Konvensi; non-anggota: Kemenkum -> Kemenlu -> kedutaan; status Singapura/Malaysia dalam Konvensi harus dicek di AHU/HCCH sebelum ditampilkan {F3}
-    - [ ] Biro jasa STNK/paspor: JANGAN dibuat daftar; arahkan ke Samsat, Kantor Imigrasi Batam (Jl. Engku Putri No.3, (0778) 462069), MPP {F3}
-    - [ ] Izin usaha: NIB lewat OSS (oss.go.id); FTZ diurus PTSP BP Batam (OSS, IBOSS), izin daerah DPMPTSP (easy.batam.go.id); PLUT-KUMKM fasilitasi NIB {F3}
+    - [x] /info/jasa-dokumen, tertulis belum diriset · KJA/KAP belum diriset (TODO): sumber PPPK Kemenkeu dan IAPI {F3}
+    - [x] /info/jasa-dokumen, tanpa entri · Penerjemah tersumpah: TIDAK ada entri; kartu hanya panduan verifikasi (minta nomor SK format AHU-xx.AH.03.07.tahun, cocokkan pasangan bahasa, konfirmasi instansi penerima; dokumen SG/MY biasanya Inggris-Indonesia) {F3}
+    - [x] /info/jasa-dokumen, status negara tidak ditulis · Legalisasi dokumen: Apostille online via Ditjen AHU untuk negara anggota Konvensi; non-anggota: Kemenkum -> Kemenlu -> kedutaan; status Singapura/Malaysia dalam Konvensi harus dicek di AHU/HCCH sebelum ditampilkan {F3}
+    - [x] /info/jasa-dokumen, tanpa daftar · Biro jasa STNK/paspor: JANGAN dibuat daftar; arahkan ke Samsat, Kantor Imigrasi Batam (Jl. Engku Putri No.3, (0778) 462069), MPP {F3}
+    - [x] /info/jasa-dokumen · Izin usaha: NIB lewat OSS (oss.go.id); FTZ diurus PTSP BP Batam (OSS, IBOSS), izin daerah DPMPTSP (easy.batam.go.id); PLUT-KUMKM fasilitasi NIB {F3}
 - [ ] 08 › Skema data per kategori (usulan)
   - [ ] Tabel 11 baris (PPAT, notaris, pertanahan/lahan, posbakum, OBH/LBH, organisasi advokat, konsultan pajak, KJPP, penerjemah tersumpah, pejabat lelang/KPKNL, izin usaha/UMKM) dengan atribut khusus + tag OSM usulan (office=notary, office=lawyer+lawyer=legal_aid [usulan], office=association, office=tax_advisor, office=consulting+consulting=valuation [usulan], office=translator) -> data/taksonomi/skema_profesi.json (11 baris) {F3}
 - [ ] 08 › Recommendations
-  - [ ] MPP sebagai pin "hub" dengan sub-daftar loket (BP Batam/PTSP, BPN, pajak, DPMPTSP) + kartu "Urusan tanah" menaut ke BP Batam, BPN, MPP {F3}
+  - [x] /info/urusan-tanah · MPP sebagai pin "hub" dengan sub-daftar loket (BP Batam/PTSP, BPN, pajak, DPMPTSP) + kartu "Urusan tanah" menaut ke BP Batam, BPN, MPP {F3}
   - [ ] Kategori PPAT/notaris berlabel "Beta - data komunitas, verifikasi sendiri" + formulir koreksi untuk pemilik kantor; jangan tampilkan nomor SK dari blog 2019 {F3}
-  - [ ] Posbakum PN dan PA sebagai entri bantuan hukum utama; LBH baru dapat badge "terakreditasi BPHN 2025-2027" setelah dicek di Sidbankum {F3}
-  - [ ] Kartu informasi (bukan pin kosong) untuk kecamatan pulau Belakang Padang, Bulang, Galang {F3}
+  - [x] /info/bantuan-hukum, tanpa badge akreditasi · Posbakum PN dan PA sebagai entri bantuan hukum utama; LBH baru dapat badge "terakreditasi BPHN 2025-2027" setelah dicek di Sidbankum {F3}
+  - [x] /info/kecamatan/[slug] · Kartu informasi (bukan pin kosong) untuk kecamatan pulau Belakang Padang, Bulang, Galang {F3}
   - [ ] Validasi ulang tiap 6 bulan (WA BP Batam sering ganti, alamat DPC advokat berpindah) -> halaman admin "perlu dicek ulang" {F10}
 - [ ] 08 › Caveats
-  - [ ] Semua koordinat sengaja null; tidak ada yang terverifikasi {F3}
-  - [ ] Daftar PPAT dari blog 2019: kantor mungkin pindah, PPAT pensiun/meninggal, nomor SK tak bisa dipercaya {F3}
-  - [ ] PPAT 125 = data 2022; notaris 139 = April 2025; "sekitar 140" belum jelas wilayah {F3}
-  - [ ] Status LBH di tabel C merujuk kemitraan 2023, bukan akreditasi 2025-2027 {F3}
+  - [-] konteks, tidak perlu fitur · Semua koordinat sengaja null; tidak ada yang terverifikasi {F3}
+  - [-] konteks; dijawab dengan label Beta · Daftar PPAT dari blog 2019: kantor mungkin pindah, PPAT pensiun/meninggal, nomor SK tak bisa dipercaya {F3}
+  - [-] konteks; angka tampil dengan tahun · PPAT 125 = data 2022; notaris 139 = April 2025; "sekitar 140" belum jelas wilayah {F3}
+  - [-] konteks; badge akreditasi tidak dipasang · Status LBH di tabel C merujuk kemitraan 2023, bukan akreditasi 2025-2027 {F3}
   - [ ] Konflik data: WA PTSP BP Batam (dua versi), telepon KJPP ANR (dua versi), alamat DPC Peradi Batam (KBC vs Batam Centre Square); kelurahan Batam Centre (Teluk Tering/Belian/Baloi Permai) berdasar petunjuk sumber {F3}
 - [ ] 08 › Data JSON (seed)
   - [ ] 33 objek (pertanahan_lahan 6, perizinan_usaha 3, ppat_notaris 12, bantuan_hukum 7, jasa_dokumen 5) -> data/raw/08-...__1.json -> data/places/08-ppat-notaris-hukum.json (34 tempat = 33 + Kantor Imigrasi dari prosa; 24 pertanahan_hukum + 10 pemerintahan) {F3}
@@ -980,38 +980,38 @@ Aturan:
   - [ ] Celah belum diriset (daftar kerja, bukan data): klinik 24 jam, lab klinik, apotek 24 jam, klinik hewan, psikolog RS, gereja Protestan, klenteng/vihara tambahan, masjid besar per kecamatan, terminal bus, pool travel, SPBU, UPT Trans Batam {F3}
 - [ ] 09 › Ringkasan singkat
   - [ ] Lima kelompok data: layanan publik/pemerintahan, kesehatan pelengkap, ibadah+makam, transportasi, nomor darurat nasional tanpa titik peta {F3}
-  - [ ] Lanal Batam sudah tidak ada di Batam (pindah Tanjung Uban jadi Lanal Bintan); Lantamal IV berganti Kodaeral IV (11 Agustus 2025, Batam Pos) -> entri benar: Kodaeral IV (ex-Lantamal IV) di Tanjung Sengkuang, Batu Ampar {F3}
+  - [x] catatanPublik di /info/tempat/pub-kodaeral4 · Lanal Batam sudah tidak ada di Batam (pindah Tanjung Uban jadi Lanal Bintan); Lantamal IV berganti Kodaeral IV (11 Agustus 2025, Batam Pos) -> entri benar: Kodaeral IV (ex-Lantamal IV) di Tanjung Sengkuang, Batu Ampar {F3}
   - [ ] Basarnas di Batam masih Pos SAR di bawah KPP Kelas A Tanjungpinang; usulan naik jadi Kantor SAR Kelas B (7 Agustus 2026, Kepala KPP Fazli, KoranBatam) BELUM terjadi {F3}
-  - [ ] Waspada situs tidak resmi: disdikkotabatam.org ("Jl. Trans Papua"), disdikbatampemkot.com (hotline 021), bpbd.damkarbatam.com ("Provinsi Batam", kode 021) -> hanya pakai `*.batam.go.id` {F3}
+  - [x] tautanAman, /info/darurat · Waspada situs tidak resmi: disdikkotabatam.org ("Jl. Trans Papua"), disdikbatampemkot.com (hotline 021), bpbd.damkarbatam.com ("Provinsi Batam", kode 021) -> hanya pakai `*.batam.go.id` {F3}
   - [ ] Tarif pompong Sekupang-Belakang Padang naik Rp18.000 -> Rp20.000/orang (Razali PPMS, Tribun Batam 5/9/2022); carter Rp160.000 (1-4 orang) dan Rp200.000 (5-10 orang) (Kumparan/Kepripedia); tandai "mungkin usang" {F4}
   - [ ] SPKLU PLN Batam 26 unit (siaran pers 13 Juni 2026; 21 titik + 3 unit ultra fast di Kantor Korporat) {F3}
 - [ ] 09 › Key Findings dan Tabel per Kategori
-  - [ ] Legenda koordinat: terverifikasi (resmi/OSM/Wikidata), perlu_cek_ulang (Wikipedia, direktori pihak ketiga, plus code), perlu_diisi_user; data sebelum 2023 ditandai usang {F3}
+  - [-] konteks, tidak perlu fitur · Legenda koordinat: terverifikasi (resmi/OSM/Wikidata), perlu_cek_ulang (Wikipedia, direktori pihak ketiga, plus code), perlu_diisi_user; data sebelum 2023 ditandai usang {F3}
   - [ ] 09 › A. Layanan Publik dan Pemerintahan
-    - [ ] Tabel 16 kantor: Wali Kota ((0778) 462164), DPRD (1.1265179,104.0552557; 50 anggota periode 2024-2029), Bapenda (Gedung Bersama Pemko Lt.2 Jl. Raja Isa; layanan PBB-P2, BPHTB; epbb.batam.go.id; SIBIJAK Ngemall Jum-Min 12.00-20.00 berkala), Dishub, Dinsos PM (mengelola TMP), Dinkes, Disdik (1.109933,103.953554), Disnaker (usang 2017), BPBD, Kemenag (WA 0822-8000-1114), KSOP Khusus Batam, Pos SAR (115; KPP Tanjungpinang (0771) 319300; KN Ganesha 105), Kodim 0316/Batam (koramil Lubuk Baja, Sekupang, Nongsa, Galang, Belakang Padang), Kodaeral IV, Lanud Hang Nadim, UPT Trans Batam (alamat belum ditemukan) {F3}
-    - [ ] Kantor Pos: KCU Jl. Jend. Sudirman ((0778) 462496/462033; nomor 463150 di idalamat milik PLN Batam, jangan dipakai) + 8 cabang (Nagoya, Jodoh, Muka Kuning [nomor tampak salah ketik], Batu Aji, Mega Legenda, Botania, Baloi, Tiban) sumber blog 2014/Foursquare = usang, perlu cek masih buka {F3}
-    - [ ] KUA 12 kecamatan: sumber Kanwil Kemenag Kepri "Alamat KUA se Prov Kepri" (~2017) -> mungkin usang; nomor HP di daftar Kanwil sengaja TIDAK dimasukkan, hanya nomor kantor (0778); KUA Batu Aji (1.0385515,103.9960996 cek ulang) dan KUA Sagulung sama-sama "Jl. R. Suprapto" (bisa tertukar; Sagulung rencana pindah ke Sei Pelunggut); KUA Batu Ampar alamat No.1 vs No.3; KUA Sekupang Jl. Pramuka No.1 vs Jl. Masjid Raya Baiturrahman, jam Sen-Kam 07.30-16.00, Jum 07.30-16.30; pendaftaran nikah lewat SIMKAH (simkah4.kemenag.go.id) {F3}
+    - [x] /info/direktori/pemerintahan · Tabel 16 kantor: Wali Kota ((0778) 462164), DPRD (1.1265179,104.0552557; 50 anggota periode 2024-2029), Bapenda (Gedung Bersama Pemko Lt.2 Jl. Raja Isa; layanan PBB-P2, BPHTB; epbb.batam.go.id; SIBIJAK Ngemall Jum-Min 12.00-20.00 berkala), Dishub, Dinsos PM (mengelola TMP), Dinkes, Disdik (1.109933,103.953554), Disnaker (usang 2017), BPBD, Kemenag (WA 0822-8000-1114), KSOP Khusus Batam, Pos SAR (115; KPP Tanjungpinang (0771) 319300; KN Ganesha 105), Kodim 0316/Batam (koramil Lubuk Baja, Sekupang, Nongsa, Galang, Belakang Padang), Kodaeral IV, Lanud Hang Nadim, UPT Trans Batam (alamat belum ditemukan) {F3}
+    - [x] /info/direktori/layanan-publik/kantor-pos · Kantor Pos: KCU Jl. Jend. Sudirman ((0778) 462496/462033; nomor 463150 di idalamat milik PLN Batam, jangan dipakai) + 8 cabang (Nagoya, Jodoh, Muka Kuning [nomor tampak salah ketik], Batu Aji, Mega Legenda, Botania, Baloi, Tiban) sumber blog 2014/Foursquare = usang, perlu cek masih buka {F3}
+    - [x] /info/direktori/layanan-publik/kua · KUA 12 kecamatan: sumber Kanwil Kemenag Kepri "Alamat KUA se Prov Kepri" (~2017) -> mungkin usang; nomor HP di daftar Kanwil sengaja TIDAK dimasukkan, hanya nomor kantor (0778); KUA Batu Aji (1.0385515,103.9960996 cek ulang) dan KUA Sagulung sama-sama "Jl. R. Suprapto" (bisa tertukar; Sagulung rencana pindah ke Sei Pelunggut); KUA Batu Ampar alamat No.1 vs No.3; KUA Sekupang Jl. Pramuka No.1 vs Jl. Masjid Raya Baiturrahman, jam Sen-Kam 07.30-16.00, Jum 07.30-16.30; pendaftaran nikah lewat SIMKAH (simkah4.kemenag.go.id) {F3}
   - [ ] 09 › B. Kesehatan Pelengkap
-    - [ ] UPD PMI Kota Batam (donor darah; Jl. Cempaka Batam Centre; layanan darah 24/7; (0778) 741368; WA admin donor +62 811-7001-9960; markas@pmibatam.or.id) {F3}
-    - [ ] Ambulans 119 sebagai nomor darurat nasional (non-lokasi; pengelola Batam belum diverifikasi) -> digabung ke nomor darurat {F3}
+    - [x] /info/direktori/kesehatan/donor-darah · UPD PMI Kota Batam (donor darah; Jl. Cempaka Batam Centre; layanan darah 24/7; (0778) 741368; WA admin donor +62 811-7001-9960; markas@pmibatam.or.id) {F3}
+    - [x] /info/darurat · Ambulans 119 sebagai nomor darurat nasional (non-lokasi; pengelola Batam belum diverifikasi) -> digabung ke nomor darurat {F3}
     - [ ] Celah belum diriset: klinik 24 jam per kecamatan, Prodia/Kimia Farma/Pramita, apotek 24 jam, klinik/psikolog jiwa RS, klinik hewan; titik awal klinik jiwa = poli jiwa RSUD Embung Fatimah dan RS BP Batam (Jl. Cipto Mangunkusumo No.1, Tj. Pinggir, Sekupang, (0778) 322121) {F3}
   - [ ] 09 › C. Ibadah dan Makam
-    - [ ] Tabel 6 paroki Katolik (Santo Petrus Lubuk Baja [tanpa alamat], Santo Damian Bengkong 1.1540247,104.0219444 didirikan 11/6/1995, Kerahiman Ilahi Tiban 1.1147716,103.9673676 (0778) 322886, Maria Bunda Pembantu Abadi Batu Aji 1.0398111,103.9676321 didirikan 1/11/2003 ~12.000 umat [paroki ketiga di Pulau Batam], Santo Hilarius Sei Beduk, Santo Fransiskus Asisi Kabil (0778) 7100 212; keuskupan Pangkalpinang) {F3}
-    - [ ] TMP Pusara Bhakti Bulan Gebang (Jl. Letjend Suprapto, Bukit Tempayan; 1.04686,103.96752 dihitung peneliti dari plus code 2XW9+P2R (6PH5), wajib dicek OSM; dikelola Dinsos PM (0778) 321370) {F3}
+    - [x] /info/direktori/ibadah/gereja-katolik · Tabel 6 paroki Katolik (Santo Petrus Lubuk Baja [tanpa alamat], Santo Damian Bengkong 1.1540247,104.0219444 didirikan 11/6/1995, Kerahiman Ilahi Tiban 1.1147716,103.9673676 (0778) 322886, Maria Bunda Pembantu Abadi Batu Aji 1.0398111,103.9676321 didirikan 1/11/2003 ~12.000 umat [paroki ketiga di Pulau Batam], Santo Hilarius Sei Beduk, Santo Fransiskus Asisi Kabil (0778) 7100 212; keuskupan Pangkalpinang) {F3}
+    - [x] /info/direktori/pemakaman · TMP Pusara Bhakti Bulan Gebang (Jl. Letjend Suprapto, Bukit Tempayan; 1.04686,103.96752 dihitung peneliti dari plus code 2XW9+P2R (6PH5), wajib dicek OSM; dikelola Dinsos PM (0778) 321370) {F3}
     - [ ] Gereja Protestan (HKBP, GBI, GPdI, GKPS, GMIM, GKI, Bethel), klenteng/vihara tambahan, masjid besar per kecamatan belum diriset {F3}
   - [ ] 09 › D. Transportasi
     - [ ] Tabel 4 pelantar/pelabuhan rakyat: Pancung Sekupang (24 jam malam pesan dulu via PPMS; Rp20.000; ±10-25 menit; 12 penumpang per pompong), Belakang Padang (ke Sekupang Rp20.000; Pulau Geranting ±1 jam Rp140.000/orang), Sagulung (ke Pulau Buluh ±5-10 menit dan pulau Bulang Rp20.000-25.000, data 2022), rute Pemping/Terong/Pecung (non-lokasi, pompong reguler sekali sehari, carter mahal, data riset lama) -> data/panduan/09-rute_pompong.json (4 rute) {F4}
     - [ ] Terminal Feri Waterfront City/Teluk Senimba (Marina City Tanjung Riau; operator PT Senimba Bay Resort) dan Gold Coast Bengkong (Kawasan Pantai Indah Mutiara Blok B No.36-37; PT Aneka Sarana Sentosa; diresmikan 14 April 2025 oleh Menko AHY + Kapolri; rute harian Batam-Stulang Laut Malaysia, Ferry Dolphin) {F4}
-    - [ ] SPKLU: 1 Kantor Korporat PLN Batam (3 unit ultra fast) + 13 titik lain (Grand Batam Mall, Nagoya Thamrin City, Harbour Bay, Mega Mall, Mall Botania 2, Aston Pelita, Panbil Mall, Polresta Barelang, Masjid Bintang Amin Angkasa, Kantor Pajak Sukajadi, Padang Golf Sukajadi, Harris Batam Centre, Petra Tiban) = 14 entri; total resmi 26 unit; ketersediaan via PLN Mobile {F3}
+    - [x] /info/direktori/transportasi/spklu · SPKLU: 1 Kantor Korporat PLN Batam (3 unit ultra fast) + 13 titik lain (Grand Batam Mall, Nagoya Thamrin City, Harbour Bay, Mega Mall, Mall Botania 2, Aston Pelita, Panbil Mall, Polresta Barelang, Masjid Bintang Amin Angkasa, Kantor Pajak Sukajadi, Padang Golf Sukajadi, Harris Batam Centre, Petra Tiban) = 14 entri; total resmi 26 unit; ketersediaan via PLN Mobile {F3}
     - [ ] SPKLU yang hanya disebut nama: Kantor Disyan 1 dan 2, Taman Golf Residence, showroom BYD, Kantor PP Polri, Metro Showroom, Kongkow Driving Range, Grand Mercure -> tambah lewat PLN Mobile; terminal bus, pool travel, SPBU belum diriset {F3}
   - [ ] 09 › E. Nomor Darurat dan Pengaduan (non-lokasi, tanpa titik peta)
-    - [ ] Tabel 6: 112 (pengelola lokal belum diverifikasi), 110 polisi, 113 damkar, 115 SAR/Basarnas (ke Pos SAR Batam/KPP Tanjungpinang), 119 ambulans, LAPOR! (lapor.go.id; BP Batam ditpam.laporsp4n@bpbatam.go.id) -> data/panduan/09-nomor_darurat.json + data/darurat/nomor_darurat_09.json {F3}
+    - [x] /info/darurat · Tabel 6: 112 (pengelola lokal belum diverifikasi), 110 polisi, 113 damkar, 115 SAR/Basarnas (ke Pos SAR Batam/KPP Tanjungpinang), 119 ambulans, LAPOR! (lapor.go.id; BP Batam ditpam.laporsp4n@bpbatam.go.id) -> data/panduan/09-nomor_darurat.json + data/darurat/nomor_darurat_09.json {F3}
 - [ ] 09 › Data JSON
   - [ ] 65 objek (layanan_publik 16 kantor + 9 pos + 12 KUA; kesehatan 1; ibadah 7; transportasi 6 + 14 SPKLU) -> data/raw/09-...__1.json -> data/places/09-direktori-celah.json (65 = 64 JSON tanpa trp-rutepemping + RS BP Batam dari prosa) {F3}
 - [ ] 09 › Caveats
-  - [ ] Tak satu pun koordinat dicek langsung ke OSM/Wikidata; idalamat.com kasar dan kadang tertukar (nomor PLN Batam di entri Pos Indonesia) {F3}
+  - [-] konteks; semua tampil sebagai perkiraan · Tak satu pun koordinat dicek langsung ke OSM/Wikidata; idalamat.com kasar dan kadang tertukar (nomor PLN Batam di entri Pos Indonesia) {F3}
   - [ ] Terminal Batam Centre: lintang BP Batam 01°17'15" LU terlalu ke utara (seharusnya ~1,13°) -> cek OSM {F4}
-  - [ ] Data usang: daftar KUA Kanwil (~2017), kantor pos (blog 2014, Foursquare), Disnaker (blog 2017) {F3}
+  - [-] konteks; status usang tampil lewat lencana · Data usang: daftar KUA Kanwil (~2017), kantor pos (blog 2014, Foursquare), Disnaker (blog 2017) {F3}
   - [ ] Tarif pompong swadaya PPMS/tekong, bukan tarif resmi (Dishub hanya "mengetahui"); pulau lain dinegosiasikan dengan tekong {F4}
   - [ ] Celah belum diriset sama sekali (daftar kerja): klinik 24 jam, lab klinik, apotek 24 jam, klinik hewan, psikolog RS, gereja Protestan, klenteng/vihara tambahan, masjid besar per kecamatan, terminal bus, pool travel, SPBU, UPT Trans Batam, Pulau Kasu, rute Pulau Terong {F3}
 - [ ] 09 › Daftar Entri dengan Koordinat Belum Pasti (per kategori)
@@ -1213,46 +1213,46 @@ Aturan:
   - [ ] KF6 Data usang: Celebrity Fitness Kepri Mall ditandai Closed; klaim "Gramedia hanya satu di Batam" salah (Grand Batam Mall buka 14 April 2023) {F3}
 - [ ] 12 › Details
   - [ ] 12 › A. Ruang publik dan wisata
-    - [ ] Tabel 17 entri: Dataran Engku Putri, Taman Dang Anom, Dataran Engku Hamidah, Taman Rusa Sekupang, Taman Kolam Sekupang, Bukit Clara, Museum Batam Raja Ali Haji, Ocarina, Jembatan Barelang, Pantai Tanjung Pinggir/Viovio/Mirota/Melur/Glory Melur/Nongsa, Pulau Putri, Kepri Coral {F3}
+    - [x] /info/direktori/ruang-publik, wisata, landmark · Tabel 17 entri: Dataran Engku Putri, Taman Dang Anom, Dataran Engku Hamidah, Taman Rusa Sekupang, Taman Kolam Sekupang, Bukit Clara, Museum Batam Raja Ali Haji, Ocarina, Jembatan Barelang, Pantai Tanjung Pinggir/Viovio/Mirota/Melur/Glory Melur/Nongsa, Pulau Putri, Kepri Coral {F3}
     - [ ] Harga/jam per tempat (Taman Rusa Rp5.000/2.500 06.00-18.00; Tanjung Pinggir Rp10.000 07.00-18.00 + parkir 100 motor/30 mobil/2 bus + 6 toilet tunai; Viovio Rp15.000/25.000 09.00-23.00; Mirota Rp10.000; Melur gratis/Rp5.000-10.000; Kepri Coral paket ±Rp350.000/400.000) tampil dengan "Harga per [tanggal sumber]" {F3}
     - [ ] Barelang: 6 jembatan, total 2 km (Wikipedia) atau 2.264 m (detikSumut), Juli 1992-Januari 1998, Jembatan 1 = 642 m; kecamatan "Sagulung (ujung awal) - Galang" {F3}
-    - [ ] Dataran Engku Putri: gratis, jogging track, basket, futsal, skatepark, climbing wall, mini gym, akses banyak gerbang; Taman Dang Anom: diresmikan Des 2020, menara hias 11 m {F3}
+    - [x] atributPublik · Dataran Engku Putri: gratis, jogging track, basket, futsal, skatepark, climbing wall, mini gym, akses banyak gerbang; Taman Dang Anom: diresmikan Des 2020, menara hias 11 m {F3}
     - [ ] Catatan jalur lari populer (Dataran Engku Putri, Taman Rusa, Ocarina, MTC Nongsa) + jalur sepeda/rute Barelang sebagai route OSM belum diriset {F3}
   - [ ] 12 › B. Olahraga
-    - [ ] Tabel 27 entri: 10 padel (Sukajadi, Orozon, Rally, Primecourt, Dragon 89, Play Padel, S Padel, BC Padel, Padel Box Orchid, Batu Aji Padel Arena), Kawasan Temenggung Abdul Jamal, GOR Bulutangkis Temenggung, 7 golf, 5 gym jaringan/independen + FIT HUB, climbing wall, skatepark {F3}
-    - [ ] Subkategori dirinci per jenis olahraga (padel, badminton, golf, gym, panjat dinding, skatepark) sesuai permintaan pemilik; futsal/mini soccer/basket/tenis/voli belum ada isinya di laporan ini {F3}
+    - [x] /info/direktori/olahraga · Tabel 27 entri: 10 padel (Sukajadi, Orozon, Rally, Primecourt, Dragon 89, Play Padel, S Padel, BC Padel, Padel Box Orchid, Batu Aji Padel Arena), Kawasan Temenggung Abdul Jamal, GOR Bulutangkis Temenggung, 7 golf, 5 gym jaringan/independen + FIT HUB, climbing wall, skatepark {F3}
+    - [x] /info/direktori/olahraga/[sub] · Subkategori dirinci per jenis olahraga (padel, badminton, golf, gym, panjat dinding, skatepark) sesuai permintaan pemilik; futsal/mini soccer/basket/tenis/voli belum ada isinya di laporan ini {F3}
     - [ ] Kebijakan harga dinamis AYO: tampilkan "mulai dari" + tautan booking, bukan harga pasti {F3}
-    - [ ] Entri status usang/tak pasti: Celebrity Fitness (kemungkinan tutup), S Padel (coming soon), Tamarin Santana (status operasional dicek), gym independen "status perlu dicek" {F3}
+    - [x] lencana · Entri status usang/tak pasti: Celebrity Fitness (kemungkinan tutup), S Padel (coming soon), Tamarin Santana (status operasional dicek), gym independen "status perlu dicek" {F3}
   - [ ] 12 › C. Belanja kebutuhan sehari-hari
-    - [ ] Tabel 20 entri: Hypermart Mega Mall & Nagoya Hill, Lotte Grosir, Grand Lucky, Mitra10, ACE Hardware Sei Panas, Depo Bangunan, Gramedia BCS & Grand Batam Mall, Toko Buku Gloria, 12 pasar {F3}
-    - [ ] Depo Bangunan: cabang Batam tidak ditemukan, JANGAN dimasukkan sebelum dicek (tidak ada di places) {F3}
-    - [ ] Grand Lucky: tanpa alamat/kecamatan/sumber; pertimbangkan sembunyikan di UI {F3}
-    - [ ] Pasar Induk Jodoh: status rencana/pembangunan, tampil dengan badge `rencana`, bukan pasar beroperasi {F3}
-    - [ ] Jam typo Gramedia Grand Batam Mall ("09:00 - 10:00") diberi badge perlu cek; jam BCS 09.00-21.00 vs 10.00-22.00 {F3}
+    - [x] /info/direktori/belanja · Tabel 20 entri: Hypermart Mega Mall & Nagoya Hill, Lotte Grosir, Grand Lucky, Mitra10, ACE Hardware Sei Panas, Depo Bangunan, Gramedia BCS & Grand Batam Mall, Toko Buku Gloria, 12 pasar {F3}
+    - [x] tidak ada di places.json, dicek 5 Nov 2026 · Depo Bangunan: cabang Batam tidak ditemukan, JANGAN dimasukkan sebelum dicek (tidak ada di places) {F3}
+    - [-] Grand Lucky tetap tampil dengan 'Kecamatan belum diketahui' dan badge perlu cek ulang, supaya jumlah cocok dengan statistik · Grand Lucky: tanpa alamat/kecamatan/sumber; pertimbangkan sembunyikan di UI {F3}
+    - [x] lencana rencana · Pasar Induk Jodoh: status rencana/pembangunan, tampil dengan badge `rencana`, bukan pasar beroperasi {F3}
+    - [x] catatanPublik · Jam typo Gramedia Grand Batam Mall ("09:00 - 10:00") diberi badge perlu cek; jam BCS 09.00-21.00 vs 10.00-22.00 {F3}
   - [ ] 12 › D. Jasa dan servis yang terdaftar publik
-    - [ ] Tabel 18 entri: 7 money changer, 4 service center (Samsung Unicom, Samsung Panbil, Xiaomi, OPPO), JNE, 3 kantor pos, J&T, SiCepat, Lion Parcel {F3}
+    - [x] /info/direktori/jasa · Tabel 18 entri: 7 money changer, 4 service center (Samsung Unicom, Samsung Panbil, Xiaomi, OPPO), JNE, 3 kantor pos, J&T, SiCepat, Lion Parcel {F3}
     - [ ] Kontak: Samsung 0800-112-8888/0800-112-7777 (call center, bukan lokal); nomor Mega Mall money changer +62 778 470151 dari pihak ketiga (Wise); nomor HP Ocarina TIDAK dimasukkan {F3}
     - [ ] Komunitas "Tukang Langganan": tidak ada grup FB/IG warga terverifikasi (hanya BASCOM skateboard); tukang diisi warga lewat fitur, situs hanya tampilkan usaha berlisting publik (service center resmi) {F6}
   - [ ] 12 › E. Tag OpenStreetMap dan sumber data terbaik per kategori
     - [ ] Tabel 27 baris kategori ke tag OSM dan sumber terbaik (data/taksonomi/12-sumber_dan_tag_osm.json); jadi dasar query Overpass kelengkapan dan layer OSM terpisah {F3}
     - [ ] Tag OSM per tempat (satu tag utama; service center/ekspedisi + `brand=`) sudah diisi di places.json {F3}
 - [ ] 12 › Recommendations
-  - [ ] R1 Impor tabel A-D; entri perlu_diisi_user disembunyikan dari peta (tampil di daftar) sampai pemilik menaruh pin {F3}
+  - [x] daftarPin · R1 Impor tabel A-D; entri perlu_diisi_user disembunyikan dari peta (tampil di daftar) sampai pemilik menaruh pin {F3}
   - [ ] R2 Cocokkan 10 koordinat perlu_cek_ulang dengan OSM (Overpass `name~"Ocarina|Engku Putri|Barelang"` di bbox Batam); selisih <±50 m → naikkan ke terverifikasi {F3}
   - [ ] R3 Kartu museum dan pantai: "Harga per [tanggal sumber], cek di lokasi"; prioritaskan Kemenbud dan Sisparnas {F3}
   - [ ] R4 Money changer: tampilkan hanya yang ada di daftar KUPVA BB terbaru BI; cek ulang tiap 6 bulan {F3}
   - [ ] R5 Riset lanjutan prioritas: Grand Lucky, dealer/bengkel resmi (Astra/Honda/Yamaha/Toyota), kolam renang umum (Sukajadi), yoga/pilates, Waduk Duriangkang, Pantai Nongsa/Melayu {F3}
 - [ ] 12 › Caveats
-  - [ ] Koordinat Plus Code = decode manual, akurasi ±10 m jika kode benar {F3}
-  - [ ] Banyak sumber wisata blog/agregator; angka bertentangan ditulis apa adanya {F3}
-  - [ ] Harga AYO dinamis per slot dan tanggal; daftar BI terindeks mungkin bukan versi terbaru {F3}
-  - [ ] Nomor HP Ocarina tidak dimasukkan (tidak jelas nomor usaha resmi) {F3}
+  - [-] konteks, tidak perlu fitur · Koordinat Plus Code = decode manual, akurasi ±10 m jika kode benar {F3}
+  - [-] konteks, tidak perlu fitur · Banyak sumber wisata blog/agregator; angka bertentangan ditulis apa adanya {F3}
+  - [-] konteks, tidak perlu fitur · Harga AYO dinamis per slot dan tanggal; daftar BI terindeks mungkin bukan versi terbaru {F3}
+  - [x] data/places.json, dicek 5 Nov 2026 · Nomor HP Ocarina tidak dimasukkan (tidak jelas nomor usaha resmi) {F3}
 - [ ] 12 › Data JSON
-  - [ ] Array 82 objek (rp 17, or 27, bl 20, js 18) → data/places/12-ruang-publik-olahraga-jasa.json (kategori `ruang_publik_wisata` dipecah ke ruang_publik/wisata/landmark/budaya) {F3}
-  - [ ] Validasi zod: kategori enum, status_koordinat, null-aman untuk kecamatan/kelurahan {F3}
+  - [x] data/places.json, /info/direktori · Array 82 objek (rp 17, or 27, bl 20, js 18) → data/places/12-ruang-publik-olahraga-jasa.json (kategori `ruang_publik_wisata` dipecah ke ruang_publik/wisata/landmark/budaya) {F3}
+  - [x] lib/data/schema.ts, scripts/validate-data.ts · Validasi zod: kategori enum, status_koordinat, null-aman untuk kecamatan/kelurahan {F3}
 - [ ] 12 › Daftar Entri yang Koordinatnya Belum Pasti
   - [ ] Daftar per kelompok (ruang publik/wisata, olahraga, belanja, jasa) perlu_cek_ulang vs perlu_diisi_user → koordinat_perlu_diisi.csv dan halaman admin isi-koordinat {F3}
-  - [ ] Tampilan UI: perlu_cek_ulang = pin "perkiraan" (garis putus/berongga) + catatan_koordinat; perlu_diisi_user = hanya daftar + badge "lokasi belum diisi" {F3}
+  - [x] lapisan.ts: pin kosong = perkiraan, daftarPin · Tampilan UI: perlu_cek_ulang = pin "perkiraan" (garis putus/berongga) + catatan_koordinat; perlu_diisi_user = hanya daftar + badge "lokasi belum diisi" {F3}
 
 ## 13-budaya-kalender-kamus.md
 

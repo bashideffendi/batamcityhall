@@ -590,3 +590,204 @@ a.bch-card:hover {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10'%3E%3Cpath d='M0 10 8 1l8 9' fill='none' stroke='%238B8579' stroke-width='.75'/%3E%3C/svg%3E");
   margin-block: var(--bch-space-5);
 }
+
+/* ---------- Direktori (Loket 06) ---------- */
+.bch-measure {
+  max-width: var(--bch-measure);
+}
+.bch-rebung-mini {
+  width: 48px;
+  height: 6px;
+  margin-top: calc(var(--bch-space-3) * -1 + var(--bch-space-1));
+  margin-bottom: var(--bch-space-3);
+  background-repeat: repeat-x;
+  background-size: 8px 6px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6'%3E%3Cpath d='M0 6 4 1l4 5' fill='none' stroke='%238B8579' stroke-width='.75'/%3E%3C/svg%3E");
+}
+.bch-sub-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-2);
+  margin-top: var(--bch-space-5);
+}
+.bch-sub-nav a {
+  display: inline-flex;
+  gap: var(--bch-space-2);
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--bch-space-3);
+  border: var(--bch-stroke-base) solid var(--bch-rule);
+  border-radius: var(--bch-radius-1);
+  text-decoration: none;
+  color: var(--bch-ink);
+}
+.bch-sub-nav a:hover {
+  border-color: var(--bch-accent);
+}
+.bch-sub-nav a[data-kosong] {
+  border-style: dashed;
+  color: var(--bch-ink-muted);
+}
+.bch-kelengkapan {
+  margin: var(--bch-space-4) 0 0;
+  max-width: var(--bch-measure);
+  display: grid;
+  gap: var(--bch-space-2);
+}
+.bch-kartu-atribut {
+  margin: var(--bch-space-2) 0 0;
+}
+.bch-kartu-atribut div {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--bch-space-2);
+}
+.bch-kartu-atribut dt {
+  color: var(--bch-ink-muted);
+}
+.bch-kartu-atribut dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.bch-kartu-museum {
+  max-width: var(--bch-measure);
+}
+.bch-kartu-museum h1 {
+  margin: var(--bch-space-1) 0;
+  font-size: var(--bch-text-h2);
+  line-height: 1.2;
+}
+.bch-kartu-fakta {
+  margin: var(--bch-space-3) 0;
+  display: grid;
+  gap: var(--bch-space-2);
+}
+.bch-kartu-fakta > div {
+  display: grid;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+  gap: var(--bch-space-3);
+}
+.bch-kartu-fakta dt {
+  color: var(--bch-ink-muted);
+}
+.bch-kartu-fakta dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px) {
+  .bch-kartu-fakta > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}
+.bch-sel-kecil {
+  display: block;
+  font-size: var(--bch-text-small);
+  color: var(--bch-ink-muted);
+  margin-top: var(--bch-space-1);
+}
+.bch-penjelajah {
+  display: grid;
+  gap: var(--bch-space-5);
+}
+@media (min-width: 900px) {
+  .bch-penjelajah {
+    grid-template-columns: 18rem minmax(0, 1fr);
+    align-items: start;
+  }
+}
+.bch-penjelajah-filter {
+  display: grid;
+  gap: var(--bch-space-3);
+}
+.bch-penjelajah-cek {
+  display: flex;
+  gap: var(--bch-space-2);
+  align-items: center;
+  min-height: 44px;
+}
+.bch-penjelajah-daftar {
+  display: grid;
+  margin-bottom: var(--bch-space-4);
+}
+.bch-penjelajah-daftar li {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--bch-space-3);
+  row-gap: var(--bch-space-1);
+  align-items: baseline;
+  padding-block: var(--bch-space-3);
+  border-bottom: var(--bch-stroke-hair) solid var(--bch-rule-strong);
+}
+.bch-tautan-tombol {
+  margin-left: var(--bch-space-3);
+  min-height: 44px;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--bch-accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.bch-nomor-daftar {
+  display: grid;
+  gap: var(--bch-space-3);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  margin-top: var(--bch-space-5);
+}
+.bch-nomor {
+  display: block;
+  font-family: var(--bch-font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-size: var(--bch-text-h1);
+  line-height: 1.1;
+  min-height: 44px;
+}
+.bch-berteduh {
+  margin-block: var(--bch-space-4);
+}
+.bch-berteduh h3 {
+  margin: 0 0 var(--bch-space-2);
+  font-size: var(--bch-text-body);
+}
+.bch-berteduh span,
+.bch-berteduh p {
+  font-size: var(--bch-text-small);
+  color: var(--bch-ink-muted);
+}
+.bch-berteduh p {
+  margin: var(--bch-space-2) 0 0;
+}
+@media (max-width: 640px) {
+  .bch-tabel-tumpuk thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .bch-tabel-tumpuk,
+  .bch-tabel-tumpuk tbody,
+  .bch-tabel-tumpuk tr,
+  .bch-tabel-tumpuk td {
+    display: block;
+    width: 100%;
+  }
+  .bch-tabel-tumpuk tr {
+    padding-block: var(--bch-space-3);
+    border-bottom: var(--bch-stroke-hair) solid var(--bch-rule-strong);
+  }
+  .bch-tabel-tumpuk td {
+    border: 0;
+    padding: var(--bch-space-1) 0;
+  }
+  .bch-tabel-tumpuk td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: var(--bch-text-caption);
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.08em;
+    color: var(--bch-ink-muted);
+  }
+}

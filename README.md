@@ -4,7 +4,7 @@ Balai warga, bukan balai kota. Website kota indie dan non-komersial untuk Batam:
 
 Proyek independen warga Batam, bukan situs resmi Pemerintah Kota Batam atau BP Batam. Untuk layanan resmi: batam.go.id.
 
-**Status:** fase 2: Langit & Laut dan Makan sudah jalan, tetapi belum di-deploy. Lihat `docs/LANJUTKAN.md`.
+**Status:** fase 3: Langit & Laut, Makan, dan Info Warga sudah jalan, tetapi belum di-deploy. Lihat `docs/LANJUTKAN.md`.
 
 ## Menyiapkan
 

@@ -680,6 +680,30 @@
       ],
       "catatan": "Daftar cepat usang; ambil berkala dari AYO.",
       "sumber_riset": "07-direktori-layanan-publik"
+    },
+    {
+      "topik": "profesi_hukum",
+      "indikator": "notaris_batam",
+      "nilai": 139,
+      "satuan": "notaris",
+      "sumber": "Kanwil Kemenkum Kepri",
+      "tahun": "April 2025"
+    },
+    {
+      "topik": "profesi_hukum",
+      "indikator": "anggota_ppat_batam",
+      "nilai": 125,
+      "satuan": "anggota",
+      "sumber": "BatamToday",
+      "tahun": "September 2022"
+    },
+    {
+      "topik": "profesi_hukum",
+      "indikator": "obh_terakreditasi_kepri",
+      "nilai": 9,
+      "satuan": "OBH",
+      "sumber": "Kontrak Kanwil Kemenkum Kepri",
+      "tahun": "14 April 2025"
     }
   ]
 }

@@ -1,4 +1,4 @@
-# LANJUTKAN: titik henti 5 November 2026, akhir fase 2
+# LANJUTKAN: titik henti 5 November 2026, akhir fase 3
 
 Untuk sesi Claude Code berikutnya. Semua yang perlu diketahui ada di repo. Komunikasi dengan pemilik proyek dalam Bahasa Indonesia.
 
@@ -23,18 +23,18 @@ Folder `Desktop\batam-city-hall`, cabang `fase-1-fondasi`, belum ada remote dan 
 | `/`, `/tentang`, `/kolofon`, 404, PWA, galat | Selesai. Hari Ini belum punya feri terakhir (fase 4) |
 | `/langit-laut` | Port selesai, jalan dengan sumber asli. Rincian bukti di `PARITAS.md` |
 | `/makan` | Port selesai. Satu butir ◐: tombol bahasa situs belum ada |
+| `/info`, direktori, kartu tempat, darurat, urusan tanah, bantuan hukum | Selesai untuk data yang ada. Sisa di `PLAN.md` |
+| Pin dan radar di peta beranda | Selesai. Lapisan dibangun di `features/peta/lapisan.ts` |
 | `public/tiles/batam.pmtiles` | Di-gitignore, 46 MB. Kalau hilang, jalankan `node scripts/extract-basemap.mjs` (kurang dari 30 menit) |
 | Tes | `npm test`; `npm run build` lalu `npm run test:e2e` |
 | `docs/COVERAGE.md` | Baru sebagian dicentang. Sisa F1 dan F2 ada di `PLAN.md` |
 | `scripts/dev/build-coverage.mjs` | Jangan dijalankan lagi: COVERAGE sudah mulai dicentang |
 
-## Langkah berikutnya: fase 3
+## Langkah berikutnya: fase 4
 
-1. Baca brief `06`, `07`, `08`, `09`, `12`.
-2. Direktori dari `data/places.json`, sekarang 892 tempat termasuk kuliner. Jumlah per kategori harus cocok dengan `places_stats.json`. Jangan menampilkan rating di `atribut`.
-3. `places.json` belum punya tanggal terakhir dicek (PLAN butir 10): tanyakan dulu.
-4. Sambungkan impor koordinat ke `data/makan/` sebelum pemilik mulai mengisi CSV.
-5. Perbarui `COVERAGE.md`, `PARITAS.md`, `CHANGELOG.md` di akhir tiap fase. Build dan tes harus lulus.
+1. Baca brief `09` dan `10`: Trans Batam, feri, pompong.
+2. Sambungkan feri terakhir ke Hari Ini dan detail Makan.
+3. Perbarui `COVERAGE.md`, `PARITAS.md`, `CHANGELOG.md` di akhir fase. Build dan tes harus lulus.
 
 ## Yang perlu diingat
 
@@ -48,5 +48,8 @@ Folder `Desktop\batam-city-hall`, cabang `fase-1-fondasi`, belum ada remote dan 
 - Kode lama bisa di-clone ulang untuk referensi dan uji paritas: `github.com/bashideffendi/hujandibatam` dan `github.com/bashideffendi/batam-bites`.
 - Next.js 16 berbeda dari ingatan lama (mis. `proxy.md` di samping `middleware.md`). Baca `node_modules/next/dist/docs/` sebelum menulis fitur baru.
 - CSS MapLibre dimuat belakangan dan bisa menimpa gaya wadah peta; naikkan spesifisitas bila perlu.
-- Lapisan fitur di peta berawalan `ll-` supaya bertahan saat tema berganti (`lib/peta-lapisan.ts`).
+- Lapisan fitur di peta berawalan `ll-` supaya bertahan saat tema berganti (`lib/peta-lapisan.ts`). Peta beranda memakai `lp-` dan membangun ulang seluruh gaya (`features/peta/lapisan.ts`).
+- **`places.json` tidak aman ditampilkan mentah:** `catatan` dan `atribut` memuat catatan kerja dan rating. Lewat `catatanPublik` dan `atributPublik`.
+- Tiruan `/api/prakiraan` di e2e harus 503, bukan `{}`: Langit & Laut menganggap respons 200 berbentuk lengkap.
+- Satu tes tema di `situs.spec.ts` pernah gagal sekali saat seluruh suite jalan dengan 4 worker, lalu lulus sendirian 3 kali dan lulus di suite penuh dengan 3 worker. Pakai `--workers=3`.
 - Di Windows, backslash dalam heredoc Bash bisa berubah. Tulis skrip dengan alat tulis file. Path zip bisa melewati batas 260 karakter kalau diekstrak ke folder sementara yang dalam.
