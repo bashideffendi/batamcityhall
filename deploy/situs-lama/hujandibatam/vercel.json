@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "regions": ["sin1"],
+  "redirects": [
+    {
+      "source": "/((?!sw\\.js$|api/).*)",
+      "destination": "https://DOMAIN-BARU/langit-laut",
+      "permanent": true
+    }
+  ]
+}

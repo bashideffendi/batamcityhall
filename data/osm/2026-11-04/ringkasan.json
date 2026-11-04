@@ -1,0 +1,63 @@
+{
+ "tanggal": "2026-11-04",
+ "sumber": "https://overpass-api.de/api/interpreter",
+ "lisensi": "ODbL, © OpenStreetMap contributors",
+ "hasil": {
+  "06-a_kesehatan.overpassql": {
+   "elemen": 120
+  },
+  "06-b_belanja.overpassql": {
+   "elemen": 323
+  },
+  "06-c_transportasi.overpassql": {
+   "elemen": 238
+  },
+  "06-d_olahraga_ibadah_makam.overpassql": {
+   "elemen": 986
+  },
+  "06-e_hitung_kelengkapan.overpassql": {
+   "elemen": 3,
+   "hitung": [
+    {
+     "nodes": "503",
+     "ways": "271",
+     "relations": "1",
+     "areas": "0",
+     "total": "775"
+    },
+    {
+     "nodes": "189",
+     "ways": "112",
+     "relations": "0",
+     "areas": "0",
+     "total": "301"
+    },
+    {
+     "nodes": "165",
+     "ways": "0",
+     "relations": "0",
+     "areas": "0",
+     "total": "165"
+    }
+   ]
+  },
+  "10-halte-bus.overpassql": {
+   "elemen": 165
+  },
+  "10-jalan-utama-map-matching.overpassql": {
+   "status": 502
+  },
+  "10-jejak-trans-batam.overpassql": {
+   "elemen": 0
+  },
+  "10-relasi-rute-bus-ptv2.overpassql": {
+   "elemen": 1091
+  },
+  "14-jalur-feri.overpassql": {
+   "elemen": 103
+  },
+  "14-terminal-dan-pelantar.overpassql": {
+   "elemen": 696
+  }
+ }
+}

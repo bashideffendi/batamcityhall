@@ -47,8 +47,8 @@ export default function WargaBaru() {
 
         <h2>Keliling kota</h2>
         <p>
-          <Link href="/langit-laut">Cek hujan dan ombak</Link>, lalu <Link href="/makan">cari makan</Link>. Panduan
-          Trans Batam dan feri menyusul.
+          <Link href="/langit-laut">Cek hujan dan ombak</Link>, lalu <Link href="/makan">cari makan</Link>. Untuk
+          berpindah, ada <Link href="/jalan">Trans Batam dan feri</Link>.
         </p>
       </div>
     </div>

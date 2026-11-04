@@ -25,6 +25,7 @@ async function tiruApi(page: Page, hujanDi: string | null = null) {
       },
     }),
   );
+  await page.route("**/api/berita", (r) => r.fulfill({ status: 503, json: {} }));
   await page.route("**/api/radar-citra/**", (r) => r.fulfill({ status: 404, body: "" }));
   await page.route("**/api/ofs-frame", (r) => r.fulfill({ json: { frames: [], nowIndex: 0 } }));
   await page.route("**/api/perairan", (r) => r.fulfill({ json: { warns: [] } }));

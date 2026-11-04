@@ -22,6 +22,7 @@ const PINTU = [
     nama: "Jasa dokumen & usaha",
     lede: "Konsultan pajak, penilai, izin usaha, legalisasi.",
   },
+  { href: "/info/berita", nama: "Berita", lede: "Judul dari media lokal dan sumber resmi. Tautan saja." },
   { href: "/info/warga-baru", nama: "Warga baru", lede: "Baru pindah ke Batam? Mulai dari sini." },
 ];
 

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Memindahkan tempat tersimpan</title>
+  </head>
+  <body>
+    <p id="pesan">Memindahkan daftar tersimpan ke situs baru.</p>
+    <p><a id="lanjut" href="https://DOMAIN-BARU/makan/tersimpan">Lanjut ke situs baru</a></p>
+    <script>
+      // Favorit ada di localStorage domain ini, jadi hanya bisa dibaca dari sini.
+      var tujuan = "https://DOMAIN-BARU/makan/tersimpan";
+      try {
+        var isi = JSON.parse(localStorage.getItem("bb_favorites") || "[]");
+        if (Array.isArray(isi) && isi.length) {
+          tujuan += "?simpan=" + isi.filter(function (s) { return typeof s === "string"; }).map(encodeURIComponent).join(",");
+        }
+      } catch (e) {
+        document.getElementById("pesan").textContent = "Daftar tersimpan tidak terbaca.";
+      }
+      document.getElementById("lanjut").href = tujuan;
+      location.replace(tujuan);
+    </script>
+  </body>
+</html>

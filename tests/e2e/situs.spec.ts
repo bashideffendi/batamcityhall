@@ -24,6 +24,7 @@ async function porsiWarna(page: Page, hex: string) {
 
 // Kotak Hari Ini memanggil route yang menarik data MSS dan BMKG. Tes tidak boleh membebani server mereka.
 test.beforeEach(async ({ page }) => {
+  await page.route("**/api/berita", (r) => r.fulfill({ json: { item: [], sumber: [] } }));
   await page.route("**/api/frames", (r) => r.fulfill({ json: { frames: [], stale: true, echo: null } }));
   await page.route("**/api/ofs-frame", (r) =>
     r.fulfill({

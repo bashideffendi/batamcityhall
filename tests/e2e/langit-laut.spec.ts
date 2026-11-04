@@ -69,6 +69,7 @@ const ECHO_HUJAN = {
 };
 
 async function tiruSumber(page: Page, opsi: { citraGagal?: boolean; echo?: unknown } = {}) {
+  await page.route("**/api/berita", (r) => r.fulfill({ status: 503, json: {} }));
   await page.route("**/api/frames", (r) =>
     r.fulfill({ json: { frames: frames(), stale: false, echo: opsi.echo ?? null } }),
   );

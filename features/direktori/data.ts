@@ -37,7 +37,7 @@ export const DAFTAR_KATEGORI: InfoKategori[] = [
   { kategori: "jasa", nama: "Jasa", lede: "Money changer, service center, ekspedisi." },
   { kategori: "pertanahan_hukum", nama: "Pertanahan & Hukum", lede: "PPAT, notaris, bantuan hukum, pengadilan, KJPP." },
   { kategori: "kuliner", nama: "Kuliner", lede: "Tempat makan dari Loket Makan." },
-  { kategori: "kampung_tua", nama: "Kampung Tua", lede: "Daftar kampung tua. Ceritanya menyusul di Loket 05." },
+  { kategori: "kampung_tua", nama: "Kampung Tua", lede: "Daftar kampung tua. Ceritanya ada di Loket 05." },
   { kategori: "landmark", nama: "Landmark", lede: "Jembatan, monumen, dan penanda kota." },
   { kategori: "budaya", nama: "Budaya", lede: "Museum, cagar budaya, lembaga adat." },
   { kategori: "khas_batam", nama: "Khas Batam", lede: "Hal-hal yang rasanya hanya ada di sini." },

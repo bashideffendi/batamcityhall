@@ -1,0 +1,250 @@
+[
+ {
+  "id": "blj-mega-mall",
+  "nama": "Mega Mall Batam Centre",
+  "status": "terverifikasi",
+  "osm_nama": "Mega Mall Batam Centre",
+  "osm": "way/606276855",
+  "jarak_m": 0
+ },
+ {
+  "id": "pura-amertabhuana",
+  "nama": "Pura Agung Amerta Bhuana",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Pura Agung Amerta Bhuana",
+  "osm": "node/702341133",
+  "jarak_m": 0
+ },
+ {
+  "id": "bl-005",
+  "nama": "Mitra10 Batam",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Mitra10",
+  "osm": "node/9354940659",
+  "jarak_m": 12
+ },
+ {
+  "id": "kes-rsud-embung-fatimah",
+  "nama": "RSUD Embung Fatimah",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "RSUD Embung Fatimah",
+  "osm": "way/788340430",
+  "jarak_m": 13
+ },
+ {
+  "id": "terminal-feri-batam-centre",
+  "nama": "Pelabuhan Feri Internasional Batam Centre",
+  "status": "terverifikasi",
+  "osm_nama": "Pelabuhan Batam Centre",
+  "osm": "relation/10478271",
+  "jarak_m": 13
+ },
+ {
+  "id": "mkm-tmp",
+  "nama": "Taman Makam Pahlawan Pusara Bhakti Bulan Gebang",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Makam Pahlawan",
+  "osm": "way/633334448",
+  "jarak_m": 16
+ },
+ {
+  "id": "masjid-agung-raja-hamidah",
+  "nama": "Masjid Agung Raja Hamidah",
+  "status": "terverifikasi",
+  "osm_nama": "Masjid Agung Batam",
+  "osm": "node/1324450032",
+  "jarak_m": 18
+ },
+ {
+  "id": "masjid-piramida-hilang",
+  "nama": "Masjid Agung Batam (bentuk piramida lama)",
+  "status": "terverifikasi",
+  "osm_nama": "Masjid Agung Batam",
+  "osm": "node/1324450032",
+  "jarak_m": 18
+ },
+ {
+  "id": "gereja-kerahiman-ilahi-tiban",
+  "nama": "Paroki Kerahiman Ilahi Tiban",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Gereja Kerahiman Ilahi",
+  "osm": "way/733197511",
+  "jarak_m": 26
+ },
+ {
+  "id": "bl-001",
+  "nama": "Hypermart Mega Mall Batam Centre",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Mega Mall Batam Centre",
+  "osm": "way/606276855",
+  "jarak_m": 30
+ },
+ {
+  "id": "terminal-feri-nongsapura",
+  "nama": "Pelabuhan Feri Internasional Nongsapura",
+  "status": "terverifikasi",
+  "osm_nama": "Terminal Feri Nongsa",
+  "osm": "relation/10478245",
+  "jarak_m": 50
+ },
+ {
+  "id": "maha-vihara-duta-maitreya",
+  "nama": "Maha Vihara Duta Maitreya",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Balai Pengobatan Maha Vihara Duta Maitreya",
+  "osm": "node/9843077199",
+  "jarak_m": 55
+ },
+ {
+  "id": "masjid-sultan-mahmud-riayat-syah",
+  "nama": "Masjid Sultan Mahmud Riayat Syah",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Masjid Mahmud",
+  "osm": "node/12408548849",
+  "jarak_m": 139
+ },
+ {
+  "id": "dataran-engku-putri",
+  "nama": "Dataran Engku Putri",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Engku Putri",
+  "osm": "node/10594193842",
+  "jarak_m": 177
+ },
+ {
+  "id": "terminal-feri-telaga-punggur",
+  "nama": "Pelabuhan Domestik Telaga Punggur",
+  "status": "terverifikasi",
+  "osm_nama": "Telaga Punggur",
+  "osm": "node/7717932286",
+  "jarak_m": 254
+ },
+ {
+  "id": "tp-sekupang",
+  "nama": "Transferpoint Sekupang",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Transferpoint Sekupang (Pelabuhan Sekupang)",
+  "osm": "node/6770166285",
+  "jarak_m": 670
+ },
+ {
+  "id": "pelabuhan-batu-ampar",
+  "nama": "Pelabuhan Batu Ampar",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Batu Ampar Batam",
+  "osm": "node/9571235006",
+  "jarak_m": 691
+ },
+ {
+  "id": "pem-samsat-batam-centre",
+  "nama": "Samsat Batam Centre",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Pelabuhan Batam Centre",
+  "osm": "relation/10478271",
+  "jarak_m": 736
+ },
+ {
+  "id": "terminal-feri-waterfront-city",
+  "nama": "Pelabuhan Feri Internasional Waterfront City (Teluk Senimba)",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Waterfront City Ferry Terminal",
+  "osm": "node/624972413",
+  "jarak_m": 866
+ },
+ {
+  "id": "pasar-jodoh",
+  "nama": "Pasar Jodoh",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Pasar Jodoh (Wet Market)",
+  "osm": "node/736621174",
+  "jarak_m": 936
+ },
+ {
+  "id": "kampung-tua-nongsa",
+  "nama": "Kampung Tua Nongsa",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Terminal Feri Nongsa",
+  "osm": "relation/10478245",
+  "jarak_m": 973
+ },
+ {
+  "id": "love-seafood",
+  "nama": "Love Seafood Batam Centre",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Pelabuhan Batam Centre",
+  "osm": "relation/10478271",
+  "jarak_m": 1087
+ },
+ {
+  "id": "kt-nongsa-pantai",
+  "nama": "Kampung Tua Nongsa Pantai",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Terminal Feri Nongsa",
+  "osm": "relation/10478245",
+  "jarak_m": 1230
+ },
+ {
+  "id": "terminal-feri-sekupang",
+  "nama": "Pelabuhan Feri Internasional & Domestik Sekupang",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Sekupang (Batam)",
+  "osm": "node/6497262402",
+  "jarak_m": 1447
+ },
+ {
+  "id": "pasar-aviari",
+  "nama": "Pasar Aviari Batu Aji",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Pasar",
+  "osm": "way/734452181",
+  "jarak_m": 1663
+ },
+ {
+  "id": "kt-tembesi",
+  "nama": "Kampung Tua Tembesi",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Lapangan Bola Kampung Tua Tembesi",
+  "osm": "way/55925676",
+  "jarak_m": 1869
+ },
+ {
+  "id": "kt-batu-merah",
+  "nama": "Kampung Tua Batu Merah",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Masjid Batu Merah",
+  "osm": "node/736645539",
+  "jarak_m": 2043
+ },
+ {
+  "id": "hl-bulang-lintang",
+  "nama": "Pulau Bulang Lintang",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Pelabuhan Bulang Lintang",
+  "osm": "node/702330955",
+  "jarak_m": 2478
+ },
+ {
+  "id": "kt-teluk-mata-ikan",
+  "nama": "Kampung Tua Teluk Mata Ikan",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Masjid Mata Ikan",
+  "osm": "way/643016723",
+  "jarak_m": 2506
+ },
+ {
+  "id": "kt-telaga-punggur",
+  "nama": "Kampung Tua Telaga Punggur",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Telaga Punggur",
+  "osm": "node/7717932286",
+  "jarak_m": 3387
+ },
+ {
+  "id": "kt-tanjung-sengkuang",
+  "nama": "Kampung Tua Tanjung Sengkuang",
+  "status": "perlu_cek_ulang",
+  "osm_nama": "Masjid Sengkuang",
+  "osm": "node/736645638",
+  "jarak_m": 4031
+ }
+]

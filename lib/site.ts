@@ -68,6 +68,8 @@ export const LOKET: Loket[] = [
     isi: [
       { label: "Trans Batam", href: "/jalan/trans-batam" },
       { label: "Feri & pompong", href: "/jalan/feri" },
+      { label: "Pompong", href: "/jalan/pompong" },
+      { label: "Peta", href: "/jalan/peta" },
       { label: "CCTV", href: "/langit-laut?mode=cctv" },
     ],
   },
@@ -84,6 +86,7 @@ export const LOKET: Loket[] = [
       { label: "Kalender", href: "/cerita/kalender" },
       { label: "Kamus", href: "/cerita/kamus" },
       { label: "Budaya Melayu", href: "/cerita/budaya" },
+      { label: "Komunitas", href: "/cerita/komunitas" },
       { label: "Angka Batam", href: "/cerita/angka" },
     ],
   },
@@ -97,6 +100,7 @@ export const LOKET: Loket[] = [
       { label: "Nomor darurat", href: "/info/darurat" },
       { label: "Urusan tanah", href: "/info/urusan-tanah" },
       { label: "Bantuan hukum", href: "/info/bantuan-hukum" },
+      { label: "Jasa dokumen", href: "/info/jasa-dokumen" },
       { label: "Berita", href: "/info/berita" },
       { label: "Warga baru", href: "/info/warga-baru" },
     ],
@@ -109,13 +113,14 @@ export const LOKET: Loket[] = [
     isi: [
       { label: "Mural", href: "/mural" },
       { label: "Kartu pos", href: "/main/kartu-pos" },
-      { label: "Vibe map", href: "/main/vibe" },
+      { label: "Peta vibe", href: "/main/vibe" },
+      { label: "Ke Singapura atau ke Nagoya?", href: "/main/singapura-atau-nagoya" },
     ],
   },
 ];
 
 /** Loket yang halamannya sudah jadi. Beranda hanya menautkan loket yang terdaftar di sini. */
-export const LOKET_DIBUKA: readonly string[] = ["01", "02", "06"];
+export const LOKET_DIBUKA: readonly string[] = ["01", "02", "03", "04", "05", "06", "07"];
 
 export const HALAMAN_PENDUKUNG = [
   { label: "Tentang", href: "/tentang" },

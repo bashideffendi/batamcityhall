@@ -53,8 +53,8 @@ export default function Tentang() {
 
         <h2>Keadaan sekarang</h2>
         <p>
-          Situs ini masih dibangun. Yang sudah jalan: peta laut, Langit &amp; Laut, Makan, dan Info Warga. Loket lain
-          dibuka bertahap, dan daftarnya ada di beranda.
+          Situs ini masih muda. Semua loket sudah dibuka, tetapi isinya belum sama matang. Ilustrasi mural masih
+          sementara, dan Tukang Langganan menunggu rekomendasi warga.
         </p>
         <p>
           Huruf, lisensi, dan atribusi ada di <Link href="/kolofon">Kolofon</Link>.
