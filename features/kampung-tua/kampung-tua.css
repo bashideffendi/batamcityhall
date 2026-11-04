@@ -1,0 +1,197 @@
+/* Loket 05, Kampung Tua. Warna hanya dari token. Tanpa animasi. */
+.peta[data-peta="kampung-tua"] {
+  height: min(64dvh, 40rem);
+  min-height: 24rem;
+  margin-top: var(--bch-space-4);
+  border: var(--bch-stroke-base) solid var(--bch-rule);
+}
+
+.kt-ikon {
+  flex: none;
+  vertical-align: -0.15em;
+}
+
+/* Penanda: area sentuh 44 px, tanda yang terlihat jauh lebih kecil. */
+.kt-penanda {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--bch-accent);
+}
+.kt-penanda:focus-visible {
+  outline: 2px solid var(--bch-focus);
+  outline-offset: -6px;
+  border-radius: 50%;
+}
+/* Pin "melayang": lingkaran berongga dengan cincin samar. Tidak pernah terisi, supaya tidak terbaca sebagai titik pasti. */
+.kt-lingkar {
+  position: relative;
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+}
+.kt-lingkar::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  opacity: 0.35;
+}
+.kt-penanda[data-lapisan="rempang"] .kt-lingkar {
+  border-style: dashed;
+}
+.kt-penanda[data-lapisan="hinterland"] .kt-lingkar {
+  border-style: dotted;
+}
+
+.kt-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-1) var(--bch-space-4);
+  align-items: center;
+}
+.kt-legenda-butir {
+  display: inline-flex;
+  gap: var(--bch-space-2);
+  align-items: center;
+}
+
+/* Daftar: alternatif peta untuk keyboard dan pembaca layar. */
+.kt-bagian {
+  margin-top: var(--bch-space-6);
+  scroll-margin-top: var(--bch-space-5);
+}
+.kt-kecamatan {
+  margin: var(--bch-space-4) 0 var(--bch-space-1);
+  font-size: var(--bch-text-body);
+}
+.kt-daftar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  column-gap: var(--bch-space-5);
+}
+@media (min-width: 720px) {
+  .kt-daftar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.kt-daftar a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
+  padding-block: var(--bch-space-1);
+  border-bottom: var(--bch-stroke-hair) solid var(--bch-rule);
+  text-decoration: none;
+  color: var(--bch-ink);
+}
+.kt-daftar-nama {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-2);
+  align-items: center;
+  text-decoration: underline;
+  text-decoration-thickness: var(--bch-stroke-hair);
+  text-underline-offset: 0.15em;
+}
+.kt-daftar-ket {
+  font-size: var(--bch-text-small);
+  color: var(--bch-ink-muted);
+}
+
+/* Cerita rakyat harus terlihat beda dari sejarah: garis putus dan ikon, bukan warna saja. */
+.kt-cerita {
+  margin-block: var(--bch-space-4);
+  padding: var(--bch-space-3) var(--bch-space-4);
+  border: var(--bch-stroke-base) dashed var(--bch-rule-strong);
+  max-width: var(--bch-measure);
+}
+.kt-cerita-label {
+  display: flex;
+  gap: var(--bch-space-2);
+  align-items: center;
+  margin: 0 0 var(--bch-space-1);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  color: var(--bch-ink-muted);
+}
+.kt-cerita p:last-child {
+  margin-bottom: 0;
+}
+
+/* Spesifisitas dinaikkan: .bch-prose ul memasang poin dan indentasi. */
+.bch-prose ul.kt-profil {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--bch-space-3);
+}
+.kt-profil li {
+  padding-bottom: var(--bch-space-3);
+  border-bottom: var(--bch-stroke-hair) solid var(--bch-rule);
+}
+.kt-profil p {
+  margin: var(--bch-space-1) 0 0;
+}
+
+/* Pita bertanggal */
+.kt-pita {
+  display: grid;
+  gap: var(--bch-space-1);
+  margin-top: var(--bch-space-4);
+  padding: var(--bch-space-3) var(--bch-space-4);
+  border: var(--bch-stroke-base) solid var(--bch-rule-strong);
+  max-width: var(--bch-measure);
+}
+.kt-pita-tanggal {
+  font-family: var(--bch-font-serif);
+  font-size: var(--bch-text-h3);
+  line-height: 1.3;
+}
+
+/* Kronologi */
+.kt-kronologi {
+  list-style: none;
+  margin: var(--bch-space-4) 0 0;
+  padding: 0;
+  max-width: var(--bch-measure);
+}
+.kt-kronologi > li {
+  display: grid;
+  gap: var(--bch-space-1);
+  padding-block: var(--bch-space-3);
+  border-top: var(--bch-stroke-hair) solid var(--bch-rule);
+}
+.kt-kronologi-tgl {
+  font-family: var(--bch-font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-size: var(--bch-text-small);
+}
+.kt-kronologi p {
+  margin: 0;
+}
+.kt-kronologi-siapa {
+  font-size: var(--bch-text-small);
+  color: var(--bch-ink-muted);
+}
+.kt-kronologi li[data-disaring="true"] .kt-kronologi-isi {
+  color: var(--bch-ink-muted);
+}
+
+.kt-rujukan {
+  max-width: var(--bch-measure);
+}
+.bch-sub-nav a[aria-current="page"] {
+  border-color: var(--bch-ink);
+}

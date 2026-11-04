@@ -1,0 +1,119 @@
+/* Siapa di Balik Nama Jalan. Warna hanya dari token. */
+.nj-bagian {
+  margin-top: var(--bch-space-7);
+  scroll-margin-top: var(--bch-space-5);
+}
+.nj-filter {
+  display: grid;
+  gap: var(--bch-space-3);
+  margin-top: var(--bch-space-4);
+  max-width: var(--bch-measure);
+  align-items: end;
+}
+@media (min-width: 720px) {
+  .nj-filter {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  }
+}
+/* Pembeda sejarah dan hikayat: bentuk garis dan kata, bukan warna saja. */
+.nj-kartu[data-hikayat="true"] {
+  border-style: dashed;
+}
+.nj-kartu h4 {
+  font-size: var(--bch-text-body);
+}
+
+/* Diagram */
+.nj-graf-kisi {
+  display: grid;
+  gap: var(--bch-space-5);
+  margin-top: var(--bch-space-4);
+}
+@media (min-width: 900px) {
+  .nj-graf-kisi {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+.nj-graf {
+  margin: 0;
+  max-width: 34rem;
+}
+.nj-graf figcaption {
+  margin-bottom: var(--bch-space-2);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  color: var(--bch-ink-muted);
+}
+.nj-graf svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.nj-garis {
+  fill: none;
+  stroke: var(--bch-rule-strong);
+  stroke-width: 1;
+}
+.nj-garis[data-perlu-dicek="true"] {
+  stroke-dasharray: 4 3;
+}
+.nj-label {
+  font-size: 11.5px;
+  fill: var(--bch-ink-muted);
+  stroke: var(--bch-paper);
+  stroke-width: 3px;
+  paint-order: stroke;
+}
+.nj-simpul {
+  text-decoration: none;
+}
+.nj-simpul rect {
+  fill: var(--bch-paper);
+  stroke: var(--bch-ink);
+  stroke-width: 1;
+}
+.nj-simpul[data-status="hikayat"] rect,
+.nj-simpul[data-status="semi-historis"] rect {
+  stroke-dasharray: 5 3;
+}
+.nj-simpul:hover rect {
+  stroke: var(--bch-accent);
+}
+.nj-simpul:focus-visible {
+  outline: none;
+}
+.nj-simpul:focus-visible rect {
+  stroke: var(--bch-focus);
+  stroke-width: 2.5;
+}
+.nj-simpul-nama {
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  fill: var(--bch-ink);
+}
+.nj-simpul-status {
+  font-size: 11.5px;
+  fill: var(--bch-ink-muted);
+}
+.nj-relasi {
+  max-width: var(--bch-measure);
+  padding-left: var(--bch-space-5);
+}
+.nj-relasi li {
+  margin-block: var(--bch-space-2);
+}
+.nj-penamaan-nama {
+  font-weight: 600;
+}
+.nj-penamaan-catatan {
+  display: block;
+  margin-top: var(--bch-space-1);
+  font-size: var(--bch-text-small);
+  color: var(--bch-ink-muted);
+}
+.nj-tabel-sel-tautan a {
+  display: inline-block;
+  overflow-wrap: anywhere;
+}

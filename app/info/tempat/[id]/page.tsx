@@ -20,6 +20,7 @@ import {
 } from "@/features/direktori/data";
 import HujanKecamatan from "@/features/direktori/HujanKecamatan";
 import { DaftarLencana } from "@/features/direktori/KartuTempat";
+import { idKartuKampung } from "@/features/kampung-tua/data";
 import { MAPPED_CAMS } from "@/features/langit-laut/lib/cctv";
 import { haversineKm } from "@/features/makan/lib/data";
 
@@ -105,8 +106,12 @@ export default async function Tempat({ params }: Props) {
 
         {minimal ? (
           <p className="mt-3">
-            Kartu ini hanya memuat nama dan letak umumnya. Batas, luas, dan status lahan tidak kami tampilkan. Ceritanya
-            menyusul di Loket Cerita &amp; Budaya.
+            Kartu ini hanya memuat nama dan letak umumnya. Batas, luas, dan status lahan tidak kami tampilkan.{" "}
+            {idKartuKampung(p) ? (
+              <Link href={`/cerita/kampung-tua/${idKartuKampung(p)}`}>Baca ceritanya di Loket Cerita &amp; Budaya</Link>
+            ) : (
+              "Ceritanya ada di Loket Cerita & Budaya."
+            )}
           </p>
         ) : (
           <dl className="bch-kartu-fakta">

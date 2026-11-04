@@ -1,0 +1,262 @@
+/* Loket 05: kalender, kamus, budaya Melayu, komunitas. Warna hanya dari token --bch-*. */
+
+.bud-kartu {
+  height: 100%;
+  scroll-margin-top: var(--bch-space-7);
+  overflow-wrap: anywhere;
+}
+.bud-fakta {
+  margin: var(--bch-space-3) 0 0;
+  display: grid;
+  gap: var(--bch-space-2);
+}
+.bud-fakta dt {
+  color: var(--bch-ink-muted);
+  font-size: var(--bch-text-small);
+}
+.bud-fakta dd {
+  margin: 0;
+}
+.bud-edisi {
+  display: block;
+}
+.bud-edisi + .bud-edisi {
+  margin-top: var(--bch-space-2);
+}
+.bud-edisi-judul {
+  display: block;
+  font-size: var(--bch-text-small);
+}
+.bud-rinci {
+  margin: var(--bch-space-2) 0 0;
+  font-size: var(--bch-text-small);
+  color: var(--bch-ink-muted);
+}
+.bud-tempat {
+  margin: var(--bch-space-2) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--bch-space-3);
+}
+.bud-tempat a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* ---------- Kontrol ---------- */
+.bud-kontrol {
+  display: grid;
+  gap: var(--bch-space-3);
+  margin-top: var(--bch-space-5);
+  align-items: end;
+}
+.bud-kontrol[hidden] {
+  display: none;
+}
+@media (min-width: 720px) {
+  .bud-kontrol {
+    grid-template-columns: repeat(auto-fit, minmax(13rem, max-content));
+  }
+  .bud-kontrol-lebar {
+    grid-column: 1 / -1;
+    max-width: 32rem;
+  }
+}
+.bud-kontrol .bch-select,
+.bud-kontrol .bch-input {
+  width: 100%;
+  min-height: 44px;
+}
+.bud-pilih-tampilan {
+  display: inline-flex;
+  gap: var(--bch-space-2);
+}
+.bud-tombol {
+  min-height: 44px;
+  padding: 0 var(--bch-space-4);
+  background: transparent;
+  color: var(--bch-ink);
+  border: var(--bch-stroke-base) solid var(--bch-rule-strong);
+  border-radius: var(--bch-radius-1);
+  font: inherit;
+  cursor: pointer;
+}
+.bud-tombol:hover {
+  border-color: var(--bch-accent);
+}
+.bud-tombol[aria-pressed="true"] {
+  background: var(--bch-ink);
+  color: var(--bch-paper);
+  border-color: var(--bch-ink);
+}
+.bud-jumlah {
+  margin: var(--bch-space-4) 0 0;
+  font-family: var(--bch-font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-size: var(--bch-text-data);
+  color: var(--bch-ink-muted);
+}
+
+/* ---------- Tampilan per bulan ---------- */
+.bud-tahun {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+  gap: var(--bch-space-2);
+  margin-top: var(--bch-space-4);
+}
+.bud-bulan {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 44px;
+  padding: var(--bch-space-2) var(--bch-space-3);
+  background: var(--bch-paper-2);
+  color: var(--bch-ink);
+  border: var(--bch-stroke-base) solid var(--bch-rule);
+  border-radius: var(--bch-radius-1);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.bud-bulan:hover {
+  border-color: var(--bch-accent);
+}
+.bud-bulan[data-kosong] {
+  background: transparent;
+  border-style: dashed;
+}
+.bud-bulan .bch-data {
+  font-size: var(--bch-text-caption);
+  color: var(--bch-ink-muted);
+}
+.bud-bulan[aria-pressed="true"] {
+  background: var(--bch-ink);
+  color: var(--bch-paper);
+  border-color: var(--bch-ink);
+}
+.bud-bulan[aria-pressed="true"] .bch-data {
+  color: var(--bch-paper);
+}
+
+/* ---------- Legenda ---------- */
+.bud-legenda {
+  margin: var(--bch-space-4) 0 0;
+  max-width: var(--bch-measure);
+  display: grid;
+  gap: var(--bch-space-2);
+}
+.bud-legenda div {
+  display: grid;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+  gap: var(--bch-space-3);
+  align-items: baseline;
+}
+.bud-legenda dt {
+  margin: 0;
+}
+.bud-legenda dd {
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .bud-legenda div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--bch-space-1);
+  }
+}
+
+/* ---------- Kamus: entri bergaya kamus cetak, bukan kartu ---------- */
+.bud-huruf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-1);
+  margin-top: var(--bch-space-4);
+}
+.bud-huruf a,
+.bud-huruf span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  font-family: var(--bch-font-serif);
+  font-size: var(--bch-text-body);
+  text-decoration: none;
+}
+.bud-huruf a {
+  border: var(--bch-stroke-base) solid var(--bch-rule);
+  border-radius: var(--bch-radius-1);
+  color: var(--bch-ink);
+}
+.bud-huruf a:hover {
+  border-color: var(--bch-accent);
+}
+.bud-huruf span {
+  color: var(--bch-ink-muted);
+  opacity: 0.5;
+}
+.bud-kelompok-huruf {
+  margin-top: var(--bch-space-7);
+  scroll-margin-top: var(--bch-space-7);
+}
+.bud-kelompok-huruf > h2 {
+  margin: 0;
+  padding-bottom: var(--bch-space-2);
+  border-bottom: var(--bch-stroke-base) solid var(--bch-rule-strong);
+}
+.bud-entri {
+  display: grid;
+  gap: var(--bch-space-2);
+  padding-block: var(--bch-space-4);
+  border-bottom: var(--bch-stroke-hair) solid var(--bch-rule);
+  overflow-wrap: anywhere;
+  scroll-margin-top: var(--bch-space-7);
+}
+@media (min-width: 720px) {
+  .bud-entri {
+    grid-template-columns: 13rem minmax(0, 1fr);
+    gap: var(--bch-space-5);
+    max-width: 52rem;
+  }
+}
+.bud-entri h3 {
+  margin: 0;
+  font-size: var(--bch-text-h3);
+  line-height: 1.25;
+  font-weight: 600;
+}
+.bud-arti,
+.bud-contoh {
+  margin: 0;
+}
+.bud-contoh {
+  margin-top: var(--bch-space-2);
+  font-family: var(--bch-font-serif);
+  font-style: italic;
+  color: var(--bch-sea-ink);
+}
+.bud-arti-label {
+  display: block;
+  font-family: var(--bch-font-sans);
+  font-style: normal;
+  font-size: var(--bch-text-caption);
+  color: var(--bch-ink-muted);
+}
+
+/* ---------- Budaya dan komunitas ---------- */
+.bud-nomor {
+  font-family: var(--bch-font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+.bud-anggota {
+  margin: var(--bch-space-2) 0 0;
+}
+.bud-tautan-kaki {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.bud-kanal-kosong {
+  color: var(--bch-ink-muted);
+}
