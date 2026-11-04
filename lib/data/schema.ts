@@ -154,6 +154,19 @@ export const taksonomiSchema = z.looseObject({
   taksonomi: z.array(z.looseObject({ kategori: z.string(), subkategori: z.string() })),
 });
 
+/** Terminal Makan, hasil scripts/konversi-makan.mjs --feri dari data situs. */
+export const makanFerrySchema = z.array(
+  z.object({
+    id: z.string(),
+    id_kanonik: z.string(),
+    label: z.string(),
+    nama: z.string(),
+    lat: z.number(),
+    lng: z.number(),
+    status_koordinat: z.enum(STATUS_KOORDINAT),
+  }),
+);
+
 /** Skema data makan asli batam-bites (features/makan/lib/types.ts). */
 export const makanPlaceSchema = z.looseObject({
   id: z.string(),

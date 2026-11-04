@@ -18,7 +18,15 @@ const BY_AREA: [string, Cam[]][] = (() => {
 })();
 
 const PinSvg = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden
+  >
     <path d={CAM_PATH_A} />
     <path d={CAM_PATH_B} />
   </svg>

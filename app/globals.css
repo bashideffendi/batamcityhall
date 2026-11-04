@@ -521,6 +521,39 @@ a.bch-card:hover {
   color: var(--bch-accent);
 }
 
+/* Kotak Hari Ini di beranda */
+.bch-hari-ini {
+  margin-block: var(--bch-space-6);
+  padding: var(--bch-space-4);
+  background: var(--bch-paper-2);
+  border: var(--bch-stroke-base) solid var(--bch-rule);
+  border-radius: var(--bch-radius-1);
+  max-width: var(--bch-measure);
+}
+.bch-hari-ini h2 {
+  margin: 0;
+  font-size: var(--bch-text-h3);
+}
+.bch-hari-ini dl {
+  margin: var(--bch-space-3) 0;
+  display: grid;
+  gap: var(--bch-space-3);
+}
+.bch-hari-ini dl > div {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: var(--bch-space-3);
+  align-items: baseline;
+}
+.bch-hari-ini dd {
+  margin: 0;
+  display: grid;
+}
+.bch-hari-ini dd span {
+  font-size: var(--bch-text-small);
+  color: var(--bch-ink-muted);
+}
+
 /* Daftar kolofon: nama di kiri, keterangan di kanan */
 .bch-daftar {
   display: grid;

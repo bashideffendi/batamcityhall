@@ -300,7 +300,12 @@ const LAYER_DIBUANG = new Set([
   "landuse_pedestrian",
 ]);
 
-export function baseStyle(theme: MapTheme, origin: string): StyleSpecification {
+export type OpsiGaya = {
+  /** Ornamen chart beranda: selubung siluet dan graticule. Langit & Laut mematikannya. */
+  chart?: boolean;
+};
+
+export function baseStyle(theme: MapTheme, origin: string, { chart = true }: OpsiGaya = {}): StyleSpecification {
   const flavor = flavorFor(theme);
   const c = PALET[theme];
   const base = layers(SOURCE_ID, flavor, { lang: "id" }) as LayerSpecification[];
@@ -309,10 +314,10 @@ export function baseStyle(theme: MapTheme, origin: string): StyleSpecification {
   const tuned = base
     .filter((l) => !LAYER_DIBUANG.has(l.id))
     .map((l): LayerSpecification => {
-      if ((l.id === "places_locality" || l.id === "places_subplace") && l.type === "symbol") {
+      if (chart && (l.id === "places_locality" || l.id === "places_subplace") && l.type === "symbol") {
         l = { ...l, paint: { ...l.paint, "text-opacity": ["case", DI_LUAR_FOKUS, OPACITY_LABEL_LUAR, 1] } };
       }
-      if (l.id.startsWith("roads_labels") && l.type === "symbol") {
+      if (chart && l.id.startsWith("roads_labels") && l.type === "symbol") {
         return { ...l, paint: { ...l.paint, "text-opacity": ["case", DI_LUAR_FOKUS, 0, 1] } };
       }
       if (l.id === "buildings" && l.type === "fill") {
@@ -355,13 +360,15 @@ export function baseStyle(theme: MapTheme, origin: string): StyleSpecification {
   const garis = tuned.filter((l) => l.type !== "symbol");
   const merged: LayerSpecification[] = [
     ...garis.filter((l) => !DI_ATAS_SELUBUNG(l.id)),
-    { id: "selubung-luar-fokus", type: "fill", source: "luar-fokus", paint: { "fill-color": c.land } },
+    ...(chart
+      ? [{ id: "selubung-luar-fokus", type: "fill", source: "luar-fokus", paint: { "fill-color": c.land } } as const]
+      : []),
     ...garis.filter((l) => l.id.startsWith("water")),
     ...waterlining(theme),
     ...garis.filter((l) => DI_ATAS_SELUBUNG(l.id) && !l.id.startsWith("water")),
-    ...graticuleLayers(theme),
+    ...(chart ? graticuleLayers(theme) : []),
     ...tuned.filter((l) => l.type === "symbol"),
-    labelSatuUtara(theme),
+    ...(chart ? [labelSatuUtara(theme)] : []),
   ];
 
   // Protokol pmtiles dan glyph dimuat di luar konteks dokumen, jadi URL harus absolut.
@@ -377,13 +384,21 @@ export function baseStyle(theme: MapTheme, origin: string): StyleSpecification {
         attribution:
           '<a href="https://openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a>, <a href="https://protomaps.com" target="_blank" rel="noopener">Protomaps</a>',
       },
-      "luar-fokus": {
-        type: "geojson",
-        data: { type: "Feature", properties: {}, geometry: LUAR_FOKUS as unknown as GeoJSON.MultiPolygon },
-      },
-      "graticule-1": { type: "geojson", data: graticule(BATAS, 1) },
-      "graticule-5": { type: "geojson", data: graticule(BATAS, 5) },
-      "garis-1n": { type: "geojson", data: garisSatuUtara(BATAS) },
+      ...(chart
+        ? {
+            "luar-fokus": {
+              type: "geojson" as const,
+              data: {
+                type: "Feature" as const,
+                properties: {},
+                geometry: LUAR_FOKUS as unknown as GeoJSON.MultiPolygon,
+              },
+            },
+            "graticule-1": { type: "geojson" as const, data: graticule(BATAS, 1) },
+            "graticule-5": { type: "geojson" as const, data: graticule(BATAS, 5) },
+            "garis-1n": { type: "geojson" as const, data: garisSatuUtara(BATAS) },
+          }
+        : {}),
     },
     layers: merged,
   };

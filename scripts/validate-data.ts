@@ -30,6 +30,7 @@ const CHECKS: [string, ZodType][] = [
   ["data/mural/landmarks.json", s.landmarkSchema],
   ["data/taksonomi/taksonomi.json", s.taksonomiSchema],
   ["data/makan/places.json", s.makanPlaceSchema.array()],
+  ["data/makan/ferries.json", s.makanFerrySchema],
 ];
 
 let failed = 0;
@@ -64,6 +65,18 @@ for (const p of places) {
     console.error(`GANDA   id ${p.id}`);
   }
   ids.add(p.id);
+}
+
+// Silang: sumber Makan satu, jadi tiap tempat harus ikut masuk places.json sebagai kuliner, dengan koordinat
+// yang sama. Kalau gagal, jalankan scripts/konversi-makan.mjs lalu tools/merge_places.py.
+const makan = read("data/makan/places.json") as { id: string; lat: number; lng: number; coord_approx: boolean }[];
+const perId = new Map(places.map((p) => [p.id, p]));
+for (const m of makan) {
+  const p = perId.get(m.id);
+  if (p?.kategori !== "kuliner" || (p.status_koordinat !== "terverifikasi" && (p.lat !== m.lat || p.lng !== m.lng))) {
+    failed++;
+    console.error(`SILANG  data/makan/places.json ${m.id} tidak cocok dengan places.json`);
+  }
 }
 
 // Larangan: data pajak tidak boleh ada di file hotel.

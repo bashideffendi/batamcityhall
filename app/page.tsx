@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HariIniMuat from "@/features/hari-ini/HariIniMuat";
 import PetaMuat from "@/features/peta/PetaMuat";
 import { LOKET, LOKET_DIBUKA, SITE_TAGLINE, type Loket } from "@/lib/site";
 
@@ -26,6 +27,7 @@ export default function Beranda() {
           Peta laut, hujan, feri, direktori, cerita. Tanpa iklan, tanpa listing berbayar. Situs ini masih dibangun, dan
           loketnya dibuka satu per satu.
         </p>
+        <HariIniMuat />
         <div className="bch-rebung" aria-hidden="true" />
         <h2 className="mb-5">Daftar loket</h2>
         <ol className="bch-grid">

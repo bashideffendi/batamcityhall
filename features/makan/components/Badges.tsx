@@ -1,62 +1,61 @@
 "use client";
 
-import { useI18n, HALAL_LABEL, LABEL_LABEL } from "@/features/makan/lib/i18n";
-import type { HalalStatus, RecLabel } from "@/features/makan/lib/types";
+import { useI18n, HALAL_LABEL, LABEL_LABEL, PRICE_HINT } from "../lib/i18n";
+import { isOpenNow } from "../lib/format";
+import type { HalalStatus, PriceTier, RecLabel } from "../lib/types";
+import { useSekarang } from "../lib/waktu";
 
-const HALAL_STYLE: Record<HalalStatus, string> = {
-  halal: "bg-halal/12 text-halal",
-  "non-halal": "bg-nonhalal/12 text-nonhalal",
-  "muslim-friendly": "bg-muslim/12 text-muslim",
-};
-const HALAL_DOT: Record<HalalStatus, string> = {
-  halal: "bg-halal",
-  "non-halal": "bg-nonhalal",
-  "muslim-friendly": "bg-muslim",
+// Status selalu berupa kata, warna hanya penguat (data/design/boleh_jangan.md).
+const NADA_HALAL: Record<HalalStatus, string | undefined> = {
+  halal: "ok",
+  "muslim-friendly": "caution",
+  "non-halal": undefined,
 };
 
-export function HalalBadge({
-  status,
-  size = "sm",
-}: {
-  status: HalalStatus;
-  size?: "sm" | "md";
-}) {
+export function HalalBadge({ status }: { status: HalalStatus }) {
   const { lang } = useI18n();
   return (
-    <span
-      className={`inline-flex items-center gap-1 rounded-full font-bold ${HALAL_STYLE[status]} ${
-        size === "md" ? "px-2.5 py-1 text-xs" : "px-2 py-0.5 text-[10px]"
-      }`}
-    >
-      <span className={`h-1.5 w-1.5 rounded-full ${HALAL_DOT[status]}`} />
+    <span className="bch-badge" data-tone={NADA_HALAL[status]}>
       {HALAL_LABEL[status][lang]}
     </span>
   );
 }
 
-const LABEL_STYLE: Record<RecLabel, string> = {
-  legendaris: "bg-amber/15 text-[#a9710a]",
-  hits: "bg-brick/12 text-brick-dark",
-  "wajib-coba": "bg-teal/12 text-teal-dark",
-  "hidden-gem": "bg-ink/8 text-ink",
-};
-
+/** Label kurasi: gaya label museum, bukan lencana warna-warni. */
 export function LabelBadge({ label }: { label: RecLabel }) {
   const { lang } = useI18n();
+  return <span className="mk-label">{LABEL_LABEL[label][lang]}</span>;
+}
+
+export function PriceTag({ tier }: { tier: PriceTier }) {
+  const { lang } = useI18n();
   return (
-    <span
-      className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold ${LABEL_STYLE[label]}`}
-    >
-      {LABEL_LABEL[label][lang]}
+    <span>
+      {tier} · {PRICE_HINT[tier][lang]}
     </span>
   );
 }
 
-export function PriceTag({ tier }: { tier: string }) {
+/** Buka atau tutup. Tidak tampil di HTML statis dan tidak tampil kalau jamnya tidak diketahui. */
+export function OpenStatus({ hours }: { hours: string }) {
+  const { t } = useI18n();
+  const sekarang = useSekarang();
+  if (sekarang === null) return null;
+  const open = isOpenNow(hours, new Date(sekarang));
+  if (open === null) return null;
   return (
-    <span className="text-xs font-bold text-muted">
-      <span className="text-ink">{tier}</span>
-      <span className="opacity-30">{"$$$".slice(tier.length)}</span>
+    <span className="bch-badge" data-tone={open ? "ok" : undefined}>
+      {open ? t("open_now") : t("closed_now")}
+    </span>
+  );
+}
+
+/** Penanda perkiraan area. Tampil selama coord_approx true. */
+export function PerkiraanBadge() {
+  const { t } = useI18n();
+  return (
+    <span className="bch-badge mk-perkiraan" data-tone="caution">
+      {t("approx_badge")}
     </span>
   );
 }

@@ -3,6 +3,7 @@ import { IBM_Plex_Mono, Plus_Jakarta_Sans, Source_Serif_4 } from "next/font/goog
 import "./globals.css";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteNav from "@/components/site/SiteNav";
+import ServiceWorkerRegister from "@/features/langit-laut/components/ServiceWorkerRegister";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 
 // Font di-self-host next/font: tidak ada request ke Google dari browser pengguna.
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <SiteFooter />
+        <ServiceWorkerRegister />
       </body>
     </html>
   );

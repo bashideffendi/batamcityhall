@@ -4,15 +4,13 @@ import { placeMap } from "./data";
 
 export const trails = trailsRaw as Trail[];
 
-export const trailMap: Record<string, Trail> = Object.fromEntries(
-  trails.map((t) => [t.id, t]),
-);
+export const trailMap: Record<string, Trail> = Object.fromEntries(trails.map((t) => [t.id, t]));
 
 export function getTrail(id: string): Trail | undefined {
-  return trailMap[id];
+  return Object.hasOwn(trailMap, id) ? trailMap[id] : undefined;
 }
 
-/** Resolve a trail's stop ids into place objects, dropping any unknown ids. */
+/** Id perhentian menjadi objek tempat. Id yang tidak dikenal dilewati. */
 export function trailStops(t: Trail): PlaceWithGeo[] {
   return t.stops.map((id) => placeMap[id]).filter(Boolean) as PlaceWithGeo[];
 }

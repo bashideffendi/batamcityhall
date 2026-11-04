@@ -16,7 +16,8 @@ const MODES: { key: Mode; label: string }[] = [
 export function ModeSwitch({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => void }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const onKey = (e: KeyboardEvent, i: number) => {
-    const step = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
+    const step =
+      e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
     if (!step) return;
     e.preventDefault();
     const j = (i + step + MODES.length) % MODES.length;

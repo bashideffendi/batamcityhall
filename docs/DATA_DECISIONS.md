@@ -17,6 +17,22 @@ Keputusan soal data, dengan alasan. Pemilik proyek bisa mengubah semuanya. Butir
 | Polygon `LUAR_FOKUS` di `features/peta/style.ts` | Efek gambar, bukan batas wilayah | Hanya untuk menjadikan Singapura-Johor dan Bintan siluet. Jangan dipakai untuk data atau hitungan apa pun |
 | Teks `/tentang` dan `/kolofon` | Draf, perlu dibaca pemilik | Termasuk kalimat bantuan AI dan rencana merilis token terbuka |
 
+| Mask daratan Ombak | `earth` peta dasar, bukan CircleGeo | Menyimpang dari prompt 4.0 butir 4. CircleGeo terbaca satu tingkat lebih kasar di MapLibre; yang ini lebih tajam dan tanpa server luar |
+| Peringatan dini saat `Kep. Riau` tidak ada di `warnings.json` | Status "Belum Tersedia", tidak pernah "aman" | File itu tidak memuat semua provinsi |
+| Kuliner di `koordinat_perlu_diisi.csv` | Prioritas 3 | Pilihan saat port, pemilik bisa mengubah |
+| Koordinat terminal feri di Makan | Dari `places.json` kanonik | Nongsapura bergeser ±6,8 km dari batam-bites, jadi hasil "dekat terminal" berubah |
+| Kecamatan kuliner | 30 dari 117 kosong, dicatat di `catatan` | Tidak tertulis di alamat atau nama area, tidak ditebak |
+| `status_data` kuliner | Dari field `verified` batam-bites (18 terverifikasi) | Arti field itu tidak didefinisikan di sumber |
+| `sumber_url` kuliner | Kosong | batam-bites tidak punya URL sumber per tempat |
+| "Buka sekarang" di Makan | Dihitung menurut WIB, jam yang tidak jelas dijawab tidak tahu | Berbeda dari situs lama |
+| Rating Google | Tetap ada di `atribut` dan JSON, tidak ditampilkan | Direktori fase 3 juga tidak boleh menampilkannya |
+
+## Perlu keputusan pemilik
+
+- Kemungkinan duplikat kuliner, belum digabung: `kedai-kopi-ameng` ↔ `kopi-ameng`, `kedai-kopi-harum-manis` ↔ `kopi-harum-manis`.
+- 14 tempat beralamat beberapa cabang, tetapi hanya punya satu pin.
+- Sekupang: catatan `places.json` menyebut layanan internasional berhenti sejak 2021 dan perlu dicek. UI hanya menulis "cek ke operator".
+
 ## Usulan, belum diterapkan
 
 ### Konflik antarlaporan

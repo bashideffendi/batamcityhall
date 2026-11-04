@@ -2,72 +2,92 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { areaMap } from "../lib/data";
+import { useFilters } from "../lib/filters";
+import { useI18n } from "../lib/i18n";
+import { HalalBadge } from "./Badges";
 import FilterBar from "./FilterBar";
+import Ikon from "./Ikon";
 import MiniCard from "./MiniCard";
-import PlaceCard from "./PlaceCard";
-import { useFilters } from "@/features/makan/lib/filters";
-import { useI18n } from "@/features/makan/lib/i18n";
+import SearchBar from "./SearchBar";
 
-const MapCanvas = dynamic(() => import("./MapCanvas"), {
-  ssr: false,
-  loading: () => (
-    <div className="grid h-full w-full place-items-center bg-[#aadaff]/40 text-sm font-semibold text-muted">
-      Memuat peta…
-    </div>
-  ),
-});
+const MapCanvas = dynamic(() => import("./MapCanvas"), { ssr: false });
+
+// Daftar di samping peta: alternatif keyboard untuk pin. Memilih baris menggerakkan peta dan membuka
+// kartu yang sama seperti mengetuk pin.
+function DaftarPeta() {
+  const { results, selectedId, setSelectedId } = useFilters();
+  const { t, lang } = useI18n();
+  const wadah = useRef<HTMLUListElement>(null);
+
+  // Pin yang diketuk di peta ikut terlihat di daftar.
+  useEffect(() => {
+    if (!selectedId) return;
+    wadah.current?.querySelector(`[data-id="${CSS.escape(selectedId)}"]`)?.scrollIntoView({ block: "nearest" });
+  }, [selectedId]);
+
+  if (results.length === 0) return <p className="mk-kosong">{t("no_results")}</p>;
+  return (
+    <ul ref={wadah} className="mk-peta-daftar" aria-label={t("map_list")} tabIndex={0}>
+      {results.map((p) => (
+        <li key={p.id} data-id={p.id}>
+          <button
+            type="button"
+            className="mk-peta-baris"
+            aria-pressed={selectedId === p.id}
+            onClick={() => setSelectedId(p.id)}
+          >
+            <Ikon nama={p.category} />
+            <span className="mk-peta-nama">
+              <span>{p.name}</span>
+              <span className="bch-card-loc">{areaMap[p.area]?.name}</span>
+            </span>
+            <span className="mk-sr">{t("show_on_map")}</span>
+          </button>
+          <HalalBadge status={p.halal} />
+          <Link href={`/makan/tempat/${p.id}`} lang={lang}>
+            {t("detail")}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function MapView() {
   const { results } = useFilters();
   const { t } = useI18n();
 
   return (
-    <div className="md:flex md:h-[calc(100dvh-3.5rem)]">
-      {/* Desktop list panel */}
-      <aside className="hidden md:flex md:w-[360px] md:shrink-0 md:flex-col md:border-r md:border-line">
+    <div className="mk-peta-halaman" data-jumlah-pin={results.length}>
+      <aside className="mk-peta-sisi">
+        <h1 className="mk-sr">{t("nav_map")}</h1>
+        <SearchBar />
         <FilterBar />
-        <div className="border-b border-line px-4 py-2">
-          <span className="text-xs font-bold text-muted">
+        <div className="mk-hasil-baris">
+          <span className="bch-data" role="status">
             {results.length} {t("results")}
           </span>
-        </div>
-        <div className="no-scrollbar flex-1 space-y-2.5 overflow-y-auto px-3 py-3">
-          {results.length === 0 ? (
-            <p className="mt-10 text-center text-sm text-muted">{t("no_results")}</p>
-          ) : (
-            results.map((p) => <PlaceCard key={p.id} place={p} />)
-          )}
-        </div>
-      </aside>
-
-      {/* Map area */}
-      <div className="relative h-[calc(100dvh-3.5rem-4.25rem)] w-full overflow-hidden md:h-auto md:flex-1">
-        <MapCanvas />
-
-        {/* Mobile-only floating filter bar */}
-        <div className="pointer-events-none absolute inset-x-0 top-2 z-[600] md:hidden">
-          <div className="pointer-events-auto mx-2 rounded-full border border-line bg-bg/95 shadow-[var(--shadow-card)] backdrop-blur">
-            <FilterBar floating />
-          </div>
-        </div>
-
-        {/* Mobile-only result count + list toggle */}
-        <div className="pointer-events-none absolute inset-x-0 top-[60px] z-[550] flex items-center justify-between px-3 md:hidden">
-          <span className="pointer-events-auto rounded-full bg-ink/85 px-3 py-1 text-[11px] font-bold text-white backdrop-blur">
-            {results.length} {t("results")}
-          </span>
-          <Link
-            href="/daftar"
-            className="pointer-events-auto flex items-center gap-1.5 rounded-full bg-card px-3.5 py-2 text-xs font-bold shadow-[var(--shadow-card)]"
-          >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01" />
-            </svg>
+          <Link href="/makan/daftar" className="mk-kicker-ikon">
+            <Ikon nama="daftar" ukuran={18} />
             {t("view_list")}
           </Link>
         </div>
-
+        <div className="mk-peta-daftar-desktop">
+          <DaftarPeta />
+        </div>
+      </aside>
+      <div className="mk-peta-utama">
+        <MapCanvas />
         <MiniCard />
+        <div className="mk-legenda">
+          <p>
+            <span className="mk-legenda-pin" aria-hidden="true" />
+            {t("map_legend")}
+          </p>
+          <p>{t("map_legend_ferry")}</p>
+        </div>
       </div>
     </div>
   );

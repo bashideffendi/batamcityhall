@@ -53,7 +53,7 @@ export default function Tentang() {
 
         <h2>Keadaan sekarang</h2>
         <p>
-          Situs ini masih dibangun. Yang sudah jalan baru peta dasar dan halaman ini. Loket lain dibuka bertahap, dan
+          Situs ini masih dibangun. Yang sudah jalan: peta laut, Langit &amp; Laut, dan Makan. Loket lain dibuka bertahap, dan
           daftarnya ada di beranda.
         </p>
         <p>

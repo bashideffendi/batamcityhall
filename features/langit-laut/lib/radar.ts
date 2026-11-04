@@ -5,7 +5,7 @@
 // Pola URL: <MSS_FILE_BASE>/dpsri_240km_<YYYYMMDDHHMM>0000dBR.dpsri.png
 // Timestamp di nama file pakai jam Singapura (SGT = WIB + 1 jam).
 // ---------------------------------------------------------------------------
-import { CARTO_SUBDOMAINS, cartoTile, ofsTilePath } from "./sources";
+import { MSS_FILE_BASE, ofsTilePath } from "./sources";
 
 export type Frame = {
   url: string; // URL PNG radar
@@ -19,7 +19,7 @@ export type ViewKey = "batam" | "regional" | "kepri" | "natuna" | "kamera";
 // Mode tampilan: HUJAN (radar) · OMBAK (field gelombang OFS BMKG) · CCTV (kamera Batam).
 export type Mode = "hujan" | "ombak" | "cctv";
 
-// Leaflet butuh bounds [[south, west], [north, east]].
+// Bounds ditulis [[south, west], [north, east]]; lib/peta-lapisan.ts mengubahnya untuk MapLibre.
 //
 // KALIBRASI (diperbarui 2026-09-26, audit ronde 2):
 // MSS nggak publish bbox. Citra 240 km = 480×480 px dan produknya memang 480 km
@@ -36,14 +36,16 @@ export const RADAR_BOUNDS: [[number, number], [number, number]] = [
 /** Resolusi nominal citra radar — dipakai di keterangan legend. */
 export const RADAR_KM_PER_PX = 1;
 
-export const MIN_ZOOM = 7;
-export const MAX_ZOOM = 12; // dikunci: lebih dari ini radar (1 km/px) mulai pecah
+// Angka zoom MapLibre (tile 512 px) = zoom Leaflet situs lama (tile 256 px) dikurangi 1, jadi skala
+// di layar sama persis dengan hujandibatam.
+export const MIN_ZOOM = 6;
+export const MAX_ZOOM = 11; // dikunci: lebih dari ini radar (1 km/px) mulai pecah
 // Mode CCTV nggak punya overlay radar, jadi batas 12 di atas nggak relevan di sana.
-// Di zoom 17 semua pin sudah terpisah (kipas layar 24 px, jarak minimum ±45 px) —
+// Di zoom 16 semua pin sudah terpisah (kipas layar 24 px, jarak minimum ±45 px) —
 // lebih dalam dari itu tidak ada gunanya.
-export const CCTV_MAX_ZOOM = 17;
+export const CCTV_MAX_ZOOM = 16;
 // Mode OMBAK: boleh zoom-out lebih jauh (nggak ada radar yang pecah) biar laut jauh keliatan.
-export const OMBAK_MIN_ZOOM = 5;
+export const OMBAK_MIN_ZOOM = 4;
 
 // Preset view — bounding box wilayah asli (bukan center/zoom tebakan). Label dipakai
 // apa adanya di tombol "Wilayah Peta".
@@ -69,28 +71,6 @@ export const VIEW_KEYS: Record<Mode, ViewKey[]> = {
 /** View bawaan per mode (CCTV selalu kotak kamera). */
 export const defaultViewFor = (mode: Mode): ViewKey => (mode === "cctv" ? "kamera" : DEFAULT_VIEW);
 
-// CARTO basemap raster WAJIB API key sejak 2026-09 (tanpa key → watermark "API KEY
-// REQUIRED"). Key di env NEXT_PUBLIC_CARTO_KEY (repo PUBLIC → JANGAN hardcode).
-// Key ini ketarik browser jadi memang KELIHATAN di client; yang membatasi penyalah-
-// gunaan cuma restriksi Referer di dashboard CARTO — Referer bisa dipalsukan dari
-// skrip, jadi anggap ini pagar rendah: nyalakan alert pemakaian di dashboard, dan
-// key bisa diganti kapan saja lewat env Vercel. Gratis s/d 5 juta tile/bulan.
-export const CARTO_KEY = process.env.NEXT_PUBLIC_CARTO_KEY
-  ? `?key=${process.env.NEXT_PUBLIC_CARTO_KEY}`
-  : "";
-
-// Basemap per tema (CARTO) — minimalis biar radar pop & kesan elegant.
-export const TILES: Record<ThemeMode, string> = {
-  light: cartoTile("light_all", CARTO_KEY), // Positron
-  dark: cartoTile("dark_all", CARTO_KEY), // Dark Matter
-};
-/** Label saja (dipasang DI ATAS mask darat di mode OMBAK). */
-export const LABEL_TILES: Record<ThemeMode, string> = {
-  light: cartoTile("light_only_labels", CARTO_KEY),
-  dark: cartoTile("dark_only_labels", CARTO_KEY),
-};
-export { CARTO_SUBDOMAINS };
-
 // Penanda kota buat orientasi (mode HUJAN saja). Batam tak perlu: sudah ada label kecamatan.
 export const PLACES: { name: string; lat: number; lng: number }[] = [
   { name: "Singapura", lat: 1.29, lng: 103.85 },
@@ -114,6 +94,10 @@ export const LEGEND: string[] = [
   "#d200a5",
 ];
 export const LEGEND_LABELS = ["Ringan", "Sedang", "Lebat"] as const;
+
+/** URL asli citra MSS. Browser memakainya lewat app/api/radar-citra (lihat komentar di sana). */
+export const radarUrl = (ts: string) => `${MSS_FILE_BASE}/dpsri_240km_${ts}0000dBR.dpsri.png`;
+export const radarCitra = (ts: string) => `/api/radar-citra/${ts}`;
 
 // Tema default berdasar jam WIB (06.00–18.00 = terang). Dipakai client-side saja.
 export function timeBasedTheme(): ThemeMode {

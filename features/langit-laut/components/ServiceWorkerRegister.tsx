@@ -6,6 +6,8 @@ import { useEffect } from "react";
 // sebagai PWA di Chrome Android (butuh SW dengan fetch handler).
 export default function ServiceWorkerRegister() {
   useEffect(() => {
+    // Di pengembangan, cache service worker hanya membingungkan.
+    if (process.env.NODE_ENV !== "production") return;
     if (typeof navigator === "undefined" || !("serviceWorker" in navigator)) return;
     const onLoad = () => {
       navigator.serviceWorker.register("/sw.js").catch(() => {

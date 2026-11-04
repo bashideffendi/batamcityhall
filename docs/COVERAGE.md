@@ -8,15 +8,15 @@ Aturan:
 
 ## Peleburan situs lama (CLAUDE_CODE_PROMPT bagian 4.0; rinci di docs/PARITAS.md)
 
-- [ ] hujandibatam: semua fitur di daftar paritas berjalan di /langit-laut
-- [ ] hujandibatam: semua aturan kejujuran (proksi MSS, Langsung/Tertunda/Terputus, frame 404, OFS basi, cek playlist CCTV, tanpa autoplay massal) dipertahankan
-- [ ] hujandibatam: uji paritas visual radar & ombak (situs lama vs baru) lulus
+- [x] app/langit-laut, features/langit-laut · hujandibatam: semua fitur di daftar paritas berjalan di /langit-laut
+- [x] docs/PARITAS.md · hujandibatam: semua aturan kejujuran (proksi MSS, Langsung/Tertunda/Terputus, frame 404, OFS basi, cek playlist CCTV, tanpa autoplay massal) dipertahankan
+- [x] docs/PARITAS.md, terhadap kode lama lokal karena situs lama mati · hujandibatam: uji paritas visual radar & ombak (situs lama vs baru) lulus
 - [ ] batam-bites: semua fitur di daftar paritas berjalan di /makan
-- [ ] batam-bites: data dipindah ke data/makan/, konversi ke data/places/17-batam-bites.json, kategori `kuliner` ditambahkan
-- [ ] batam-bites: 117 koordinat perkiraan ditandai perlu_cek_ulang dan masuk CSV koordinat
+- [x] scripts/konversi-makan.mjs, data/places/17-batam-bites.json · batam-bites: data dipindah ke data/makan/, konversi ke data/places/17-batam-bites.json, kategori `kuliner` ditambahkan
+- [x] features/makan, data/koordinat_perlu_diisi.csv · batam-bites: 117 koordinat perkiraan ditandai perlu_cek_ulang dan masuk CSV koordinat
 - [ ] Widget silang (hujan per kecamatan di kartu, berteduh terdekat, feri terakhir di detail makan, Hari Ini, mural)
-- [ ] Batas kecamatan BIG dari hujandibatam dipakai ulang (lisensi dicatat)
-- [ ] Atribusi gabungan di footer/kolofon
+- [x] KecamatanLayer, atribusi di peta dan Credit · Batas kecamatan BIG dari hujandibatam dipakai ulang (lisensi dicatat)
+- [x] lib/site.ts · Atribusi gabungan di footer/kolofon
 - [ ] Peta redirect 301 + sw.js pengganti siap (eksekusi hanya setelah izin pemilik proyek)
 
 ## 00-keputusan-percakapan.md
@@ -94,16 +94,16 @@ Aturan:
     - [x] lib/site.ts, app/tentang · Visi "balai warga online" -- nada awal (santai, selipan Melayu, "Ape kabar, Batam?", maskot lucu) DIKOREKSI keputusan 00: premium/artsy/kalem, informasi dulu {F1}
   - [ ] 01 › Struktur menu ("Loket")
     - [x] lib/site.ts LOKET · 8 loket versi 01 (Beranda, Langit & Laut, Perut, Tukang Langganan, Jalan-jalan, Cerita & Budaya, Info Warga, Main-main) diganti struktur 00 bagian 3 (Loket 01-07) {F1}
-    - [ ] Beranda: peta + widget hari ini (hujan, ombak, feri terakhir, gempa terakhir) {F2}
+    - [-] ditunda: feri terakhir fase 4; gempa belum dikerjakan · Beranda: peta + widget hari ini (hujan, ombak, feri terakhir, gempa terakhir) {F2}
     - [ ] Langit & Laut: radar, prakiraan BMKG, peringatan dini, "Bisa nyebrang ke pulau hari ini?" (+ pengingat bukan pengganti syahbandar), gempa {F2}
     - [ ] Loket Info Warga: harga pangan Batam, layanan publik (Samsat, Disdukcapil, PLN, air), nomor darurat, kalender event {F3}
   - [ ] 01 › Daftar fitur per kelompok
     - [ ] A. Cuaca & Laut: radar di atas peta ilustrasi; animasi tetes hujan doodle (DITOLAK gaya doodle oleh 00; ganti gaya chart/riso) {F2}
-    - [ ] A. Prakiraan BMKG per kelurahan: 3 hari, per 3 jam, update 2x sehari, kode adm4 {F2}
+    - [x] app/api/prakiraan · A. Prakiraan BMKG per kelurahan: 3 hari, per 3 jam, update 2x sehari, kode adm4 {F2}
     - [ ] A. Peringatan dini nowcast BMKG (CAP/XML sampai kecamatan) {F2}
     - [ ] A. Cuaca perairan BMKG + indikator "Aman nyebrang ke Pulau Abang/Galang?" dengan penafian syahbandar {F2}
     - [ ] A. Gempa terkini autogempa.json (kotak Hari Ini "bila relevan") {F2}
-    - [ ] B. Peta makan dengan filter (buka subuh, dekat pelabuhan, halal, kopi+roti, seafood Barelang) {F2}
+    - [x] app/makan/peta · B. Peta makan dengan filter (buka subuh, dekat pelabuhan, halal, kopi+roti, seafood Barelang) {F2}
     - [ ] B. Editorial pendek gaya Manual Jakarta ("5 Mi Lendir yang Diperdebatkan Warga") {F9}
     - [ ] B. Infografis "Lauk-Pauk Melayu Kepri" {F5}
     - [ ] C. Kartu tukang "kartu nama": nama, keahlian, area, perkiraan harga, jam buka, cara kontak, siapa merekomendasi + kapan {F6}
@@ -154,9 +154,9 @@ Aturan:
     - [ ] Infografis D3 / Rough.js / Observable Plot {F5}
     - [ ] Data & form: Sheets+Tally lalu Supabase (prompt: Supabase untuk kiriman warga; JSON statis untuk direktori) {F6}
     - [ ] Cron/ingest Vercel Cron atau GitHub Actions untuk tarik/cache BMKG (contoh QuakeLog 15 menit) {F2}
-    - [ ] Sumber BMKG prakiraan: api.bmkg.go.id/publik/prakiraan-cuaca?adm4={kode}; wajib atribusi {F2}
+    - [x] features/langit-laut/lib/sources.ts · Sumber BMKG prakiraan: api.bmkg.go.id/publik/prakiraan-cuaca?adm4={kode}; wajib atribusi {F2}
     - [ ] Sumber BMKG peringatan dini CAP: data.bmkg.go.id/peringatan-dini-cuaca/ {F2}
-    - [ ] Sumber BMKG maritim: peta-maritim.bmkg.go.id/public_api/perairan {F2}
+    - [x] features/langit-laut/lib/sources.ts, endpoint baru marine2026-data · Sumber BMKG maritim: peta-maritim.bmkg.go.id/public_api/perairan {F2}
     - [ ] Sumber BMKG gempa: autogempa.json, gempaterkini.json, gempadirasakan.json; ~60 req/menit/IP -> wajib cache {F2}
     - [x] scripts/extract-basemap.mjs, features/peta/style.ts · OSM/Protomaps peta dasar {F1}
     - [ ] Panel Harga Pangan Bapanas panelharga.badanpangan.go.id (cutoff 13.00 WIB; belum ada API resmi) {F3}
@@ -703,7 +703,7 @@ Aturan:
     - [ ] Kata promosi wisata: "surga tersembunyi", "wajib dikunjungi", "hits", "instagramable", "kekinian", "healing" {F1}
     - [ ] Bahasa birokrasi: "dalam rangka", "guna", "sehubungan dengan", "dihimbau" {F1}
     - [ ] Lelucon merendahkan kelompok (pendatang, Orang Laut, buruh pabrik, Singapura "tetangga sombong") {F1}
-    - [ ] Tidak bercanda soal bencana/kecelakaan laut/banjir saat sedang terjadi; peringatan cuaca aktif ditulis lurus {F2}
+    - [x] panel dan kotak Hari Ini memakai teks lurus · Tidak bercanda soal bencana/kecelakaan laut/banjir saat sedang terjadi; peringatan cuaca aktif ditulis lurus {F2}
     - [ ] Bahasa campur dipaksakan ("so basically guys"); satu bahasa per kalimat {F1}
 - [ ] 05 › Moodboard (link referensi, dikelompokkan)
   - [ ] Daftar link referensi (peta lama, Melayu/Jawi, tipografi, warna/cetak, tekstur, ilustrasi, editorial, larangan logo) disimpan di data/design/moodboard.md; tampilkan yang relevan sebagai atribusi di Kolofon {F1}

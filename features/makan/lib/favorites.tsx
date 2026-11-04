@@ -1,70 +1,36 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  useCallback,
-  type ReactNode,
-} from "react";
+import { useSyncExternalStore } from "react";
+import { buatSimpanan } from "./simpanan";
 
-interface FavCtx {
-  ids: string[];
-  has: (id: string) => boolean;
-  toggle: (id: string) => void;
-  ready: boolean;
-}
+const KOSONG: string[] = [];
 
-const Ctx = createContext<FavCtx | null>(null);
-const KEY = "bb_favorites";
+const simpanan = buatSimpanan<string[]>(
+  "bch-makan-tersimpan",
+  KOSONG,
+  (m) => {
+    const v: unknown = m ? JSON.parse(m) : KOSONG;
+    return Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : KOSONG;
+  },
+  (v) => JSON.stringify(v),
+);
 
-export function FavoritesProvider({ children }: { children: ReactNode }) {
-  const [ids, setIds] = useState<string[]>([]);
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(KEY);
-      if (raw) setIds(JSON.parse(raw));
-    } catch {
-      /* ignore */
-    }
-    setReady(true);
-  }, []);
-
-  const persist = (next: string[]) => {
-    setIds(next);
-    try {
-      localStorage.setItem(KEY, JSON.stringify(next));
-    } catch {
-      /* ignore */
-    }
-  };
-
-  const toggle = useCallback((id: string) => {
-    setIds((prev) => {
-      const next = prev.includes(id)
-        ? prev.filter((x) => x !== id)
-        : [...prev, id];
-      try {
-        localStorage.setItem(KEY, JSON.stringify(next));
-      } catch {
-        /* ignore */
-      }
-      return next;
-    });
-  }, []);
-
-  const has = useCallback((id: string) => ids.includes(id), [ids]);
-
-  return (
-    <Ctx.Provider value={{ ids, has, toggle, ready }}>{children}</Ctx.Provider>
-  );
-}
+const tanpaLangganan = () => () => {};
 
 export function useFavorites() {
-  const ctx = useContext(Ctx);
-  if (!ctx) throw new Error("useFavorites must be used within FavoritesProvider");
-  return ctx;
+  const ids = useSyncExternalStore(simpanan.langgan, simpanan.ambil, simpanan.ambilServer);
+  // false di server dan saat hydration, supaya pesan "belum ada" tidak berkedip untuk yang punya daftar.
+  const ready = useSyncExternalStore(
+    tanpaLangganan,
+    () => true,
+    () => false,
+  );
+  return {
+    ids,
+    ready,
+    has: (id: string) => ids.includes(id),
+    toggle: (id: string) => simpanan.simpan(ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id]),
+    /** Tambah banyak slug sekaligus (impor). Yang sudah ada tidak digandakan. */
+    tambah: (baru: readonly string[]) => simpanan.simpan([...new Set([...ids, ...baru])]),
+  };
 }

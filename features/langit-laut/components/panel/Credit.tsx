@@ -4,7 +4,7 @@ const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
 
 // Kredit sumber + catatan privasi sebagai bagian Detail tersendiri: satu baris per sumber
 // (label → pemilik data), sama dengan daftar label → nilai lain di panel. Atribusi
-// peta/radar/gelombang juga tampil di kontrol atribusi Leaflet.
+// peta/radar/gelombang juga tampil di kontrol atribusi peta.
 const ROWS: { k: string; v: ReactNode }[] = [
   {
     k: "Radar Hujan",
@@ -59,8 +59,8 @@ const ROWS: { k: string; v: ReactNode }[] = [
           OpenStreetMap
         </a>
         ,{" "}
-        <a href="https://carto.com/attributions" {...ext}>
-          CARTO
+        <a href="https://protomaps.com" {...ext}>
+          Protomaps
         </a>
       </>
     ),

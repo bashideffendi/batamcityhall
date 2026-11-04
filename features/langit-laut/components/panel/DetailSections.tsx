@@ -1,6 +1,12 @@
 import type { EchoSummary, ForecastResponse, PerairanResponse } from "@/features/langit-laut/lib/api-types";
 import { KEC_RAIN_MIN_KM2, type RainScope } from "@/features/langit-laut/lib/kecamatan";
-import { KAB_LIST, kecTable, perairanDetail, type ForecastStripView, type KecRow } from "@/features/langit-laut/lib/status";
+import {
+  KAB_LIST,
+  kecTable,
+  perairanDetail,
+  type ForecastStripView,
+  type KecRow,
+} from "@/features/langit-laut/lib/status";
 import { WeatherIcon } from "../icons";
 
 function KecGrid({ rows }: { rows: KecRow[] }) {
@@ -65,8 +71,8 @@ export function KecTable({
         <KecGrid rows={groups[0].rows} />
       )}
       <p className="d-note">
-        Dihitung dari radar MSS (1 piksel ≈ 1 km²) di atas daratan tiap kecamatan, jadi hujan di laut tidak
-        ikut. Kecamatan disebut hujan kalau luasnya minimal {KEC_RAIN_MIN_KM2} km².{" "}
+        Dihitung dari radar MSS (1 piksel ≈ 1 km²) di atas daratan tiap kecamatan, jadi hujan di laut tidak ikut.
+        Kecamatan disebut hujan kalau luasnya minimal {KEC_RAIN_MIN_KM2} km².{" "}
         {total > 0 &&
           (scope === "batam"
             ? `Tabel ini berisi ${total} kecamatan Kota Batam; pilih Wilayah Kepri untuk melihat Tanjungpinang, Bintan, Karimun, dan Lingga. `
@@ -93,9 +99,7 @@ export function ForecastSection({
   if (!fc && !note) return null;
   return (
     <section className="d-sec">
-      <h3 className="d-title">
-        Prakiraan BMKG {fc?.detail && <small>Kel. {fc.detail}</small>}
-      </h3>
+      <h3 className="d-title">Prakiraan BMKG {fc?.detail && <small>Kel. {fc.detail}</small>}</h3>
       {tiles.slots.length > 0 && (
         <ul className="fc-tiles">
           {tiles.slots.map((s) => (
@@ -111,7 +115,9 @@ export function ForecastSection({
       <div className="d-text">
         {note && <p>{note}</p>}
         {tiles.hasHaze && (
-          <p className="d-muted">Udara Kabur: istilah BMKG untuk jarak pandang berkurang oleh asap, debu, atau uap air.</p>
+          <p className="d-muted">
+            Udara Kabur: istilah BMKG untuk jarak pandang berkurang oleh asap, debu, atau uap air.
+          </p>
         )}
       </div>
     </section>
@@ -137,7 +143,9 @@ export function PerairanInfo({ p, error, now }: { p: PerairanResponse | null; er
         </dl>
       ) : (
         <p className="d-note">
-          {error || p ? "Teks prakiraan perairan BMKG sedang tidak tersedia. Warna di peta tetap dari model BMKG." : "Memuat…"}
+          {error || p
+            ? "Teks prakiraan perairan BMKG sedang tidak tersedia. Warna di peta tetap dari model BMKG."
+            : "Memuat…"}
         </p>
       )}
     </section>

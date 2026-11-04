@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Bangun data kecamatan Kepulauan Riau untuk app dari data/kecamatan-kepri.geojson
+// Bangun data kecamatan Kepulauan Riau untuk app dari data/wilayah/kecamatan-kepri.geojson
 // (batas resmi Badan Informasi Geospasial, edisi Juni 2026). Jalankan ulang kalau sumber
 // atau RADAR_BOUNDS berubah:
 //
@@ -10,9 +10,9 @@
 // memang tidak bisa dihitung.
 //
 // Hasil:
-//   lib/kecamatan-geo.json  — geometri DISEDERHANAKAN (Douglas–Peucker: Batam ±33 m, kab/kota
+//   features/langit-laut/lib/kecamatan-geo.json  — geometri DISEDERHANAKAN (Douglas–Peucker: Batam ±33 m, kab/kota
 //                             lain ±55 m; pulau kecil dibuang) + titik label, untuk peta (klien).
-//   lib/kecamatan-mask.ts   — piksel radar (480×480, 1 km/px) yang jatuh di daratan tiap
+//   features/langit-laut/lib/kecamatan-mask.ts   — piksel radar (480×480, 1 km/px) yang jatuh di daratan tiap
 //                             kecamatan + bobot pecahannya (sub-sampel 4×4 per piksel, jadi
 //                             piksel pantai dihitung sebagian). Dipakai server (lib/echo.ts).
 // ---------------------------------------------------------------------------
@@ -34,7 +34,7 @@ const MIN_RING_KM2 = { Batam: 0.01, default: 0.03 };
 // Urutan kab/kota di UI (Batam dulu, lalu dari yang terdekat).
 const KAB_ORDER = ["Batam", "Tanjungpinang", "Bintan", "Karimun", "Lingga", "Anambas", "Natuna"];
 
-const src = JSON.parse(readFileSync(new URL("../data/kecamatan-kepri.geojson", import.meta.url), "utf8"));
+const src = JSON.parse(readFileSync(new URL("../data/wilayah/kecamatan-kepri.geojson", import.meta.url), "utf8"));
 
 // ---- geometri -------------------------------------------------------------
 const KM_LAT = 110.57;
@@ -249,9 +249,9 @@ const geo = {
       };
     }),
 };
-writeFileSync(new URL("../lib/kecamatan-geo.json", import.meta.url), JSON.stringify(geo));
+writeFileSync(new URL("../features/langit-laut/lib/kecamatan-geo.json", import.meta.url), JSON.stringify(geo));
 
-const ts = `// DIHASILKAN oleh scripts/build-kecamatan.mjs dari data/kecamatan-kepri.geojson
+const ts = `// DIHASILKAN oleh scripts/build-kecamatan.mjs dari data/wilayah/kecamatan-kepri.geojson
 // (batas kecamatan Badan Informasi Geospasial, edisi Juni 2026). JANGAN diedit tangan —
 // jalankan ulang skripnya.
 //
@@ -263,7 +263,7 @@ export const KEC_MASK_SIZE = { w: ${W}, h: ${H}, sub2: ${SUB2} } as const;
 export const KEC_MASK: { code: string; name: string; kab: string; landKm2: number; idx: number[]; w: number[] }[] =
   ${JSON.stringify(rows)};
 `;
-writeFileSync(new URL("../lib/kecamatan-mask.ts", import.meta.url), ts);
+writeFileSync(new URL("../features/langit-laut/lib/kecamatan-mask.ts", import.meta.url), ts);
 
 const byKab = {};
 for (const r of rows) (byKab[r.kab] ??= []).push(r);

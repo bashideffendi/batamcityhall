@@ -3,6 +3,7 @@ export type PriceTier = "$" | "$$" | "$$$";
 export type RecLabel = "legendaris" | "hits" | "wajib-coba" | "hidden-gem";
 export type Lang = "id" | "en" | "zh";
 
+/** Baris data/makan/places.json apa adanya. */
 export interface Place {
   id: string;
   name: string;
@@ -36,13 +37,12 @@ export interface Place {
   last_verified: string;
 }
 
+/** Emoji dan warna lama tetap ada di JSON, tetapi tidak dipakai UI. */
 export interface Category {
   id: string;
   name_id: string;
   name_en: string;
   name_zh: string;
-  emoji: string;
-  color: string;
 }
 
 export interface Area {
@@ -50,21 +50,27 @@ export interface Area {
   name: string;
 }
 
+/** Terminal dari data feri situs (scripts/konversi-makan.mjs --feri), bukan data batam-bites. */
 export interface Ferry {
   id: string;
-  name: string;
+  id_kanonik: string;
+  label: string;
+  nama: string;
   lat: number;
   lng: number;
-  blurb_id: string;
-  blurb_en: string;
+  status_koordinat: "terverifikasi" | "perlu_cek_ulang" | "perlu_diisi_user";
 }
 
-/** A place enriched with a computed nearest-ferry distance. */
-export interface PlaceWithGeo extends Place {
+/**
+ * Tempat seperti yang dilihat UI. Rating dan jumlah ulasan sengaja dibuang di lib/data.ts, jadi tidak
+ * ada komponen yang bisa menampilkan atau mengurutkan berdasarkan angka itu (docs/DATA_DECISIONS.md).
+ */
+export interface PlaceWithGeo extends Omit<Place, "rating" | "reviews"> {
   nearestFerryId: string;
   nearestFerryKm: number;
 }
 
+/** Emoji dan warna lama tetap ada di JSON, tetapi tidak dipakai UI. */
 export interface Trail {
   id: string;
   title_id: string;
@@ -76,8 +82,6 @@ export interface Trail {
   duration_id: string;
   duration_en: string;
   duration_zh: string;
-  emoji: string;
-  color: string;
   area: string;
   stops: string[];
 }

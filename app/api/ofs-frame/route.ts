@@ -7,7 +7,7 @@
 // Request paralel berbagi SATU promise in-flight biar BMKG nggak dihajar.
 // Respons kasih `source`, `ageH`, `expired` — klien yang memutuskan label jujurnya.
 import type { OfsResponse } from "@/features/langit-laut/lib/api-types";
-import { OFS_MODELRUN, OFS_REFERER, ofsTilePath } from "@/features/langit-laut/lib/sources";
+import { BMKG_HEADERS, OFS_MODELRUN, ofsTilePath } from "@/features/langit-laut/lib/sources";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 20;
@@ -23,12 +23,6 @@ const BLIND_TTL_MS = 60 * 1000;
 // (< maxDuration 20), dan hasilnya di-cache jadi jarang terjadi.
 const MODELRUN_TIMEOUT_MS = 6000;
 const PROBE_TIMEOUT_MS = 4000;
-const BROWSER_HEADERS = {
-  "User-Agent":
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-  Accept: "*/*",
-  Referer: OFS_REFERER,
-};
 
 type Source = OfsResponse["source"];
 
@@ -54,7 +48,7 @@ async function runHasTiles(base: Date): Promise<boolean> {
       cache: "no-store",
       redirect: "manual", // kalau BMKG pindah host lagi, ketahuan di log (bukan diam-diam ikut 301)
       signal: AbortSignal.timeout(PROBE_TIMEOUT_MS),
-      headers: BROWSER_HEADERS,
+      headers: BMKG_HEADERS,
     });
     if (r.status >= 300 && r.status < 400) console.warn("[ofs] tile redirect →", r.headers.get("location"));
     return r.ok && (r.headers.get("content-type") ?? "").includes("image");
@@ -68,7 +62,7 @@ async function fetchModelrun(): Promise<Date | null> {
     const res = await fetch(OFS_MODELRUN, {
       cache: "no-store",
       signal: AbortSignal.timeout(MODELRUN_TIMEOUT_MS),
-      headers: BROWSER_HEADERS,
+      headers: BMKG_HEADERS,
     });
     if (!res.ok) return null;
     const j = await res.json();

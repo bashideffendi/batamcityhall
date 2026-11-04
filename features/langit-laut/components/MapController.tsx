@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-import { useMap } from "react-leaflet";
 import { reduceMotion } from "@/features/langit-laut/lib/client";
+import { keLngLatBounds, kePaddingMapLibre, type Padding } from "@/features/langit-laut/lib/peta-lapisan";
 import {
   CCTV_MAX_ZOOM,
   MAX_ZOOM,
@@ -12,8 +12,9 @@ import {
   type Mode,
   type ViewKey,
 } from "@/features/langit-laut/lib/radar";
+import { usePeta } from "./PetaLangit";
 
-export type Padding = { paddingTopLeft: [number, number]; paddingBottomRight: [number, number] };
+export type { Padding };
 
 // Batas zoom per mode + fit peta ke bounding box view, dengan padding dinamis sesuai
 // tinggi panel/topbar asli. Fit ulang saat rotasi layar — bukan tiap resize kecil.
@@ -28,7 +29,7 @@ export default function MapController({
   getPadding: () => Padding;
   collapsed: boolean;
 }) {
-  const map = useMap();
+  const map = usePeta();
   const mounted = useRef(false);
   const viewRef = useRef(view);
   const modeRef = useRef(mode);
@@ -38,34 +39,28 @@ export default function MapController({
   });
 
   const fit = useCallback(
-    (v: ViewKey, animate: boolean, duration = 0.8) => {
-      const b = VIEWS[v].bounds;
-      const opts = getPadding();
-      if (!animate || reduceMotion()) map.fitBounds(b, { ...opts, animate: false });
-      else map.flyToBounds(b, { ...opts, duration });
+    (v: ViewKey, animate: boolean, duration = 800) => {
+      const b = keLngLatBounds(VIEWS[v].bounds);
+      const padding = kePaddingMapLibre(getPadding());
+      if (!animate || reduceMotion()) map.fitBounds(b, { padding, animate: false });
+      else map.fitBounds(b, { padding, duration });
     },
     [map, getPadding],
   );
 
-  // SATU effect untuk [mode, view]: batas zoom ditulis langsung ke options (setMinZoom/
-  // setMaxZoom Leaflet memicu setZoom BERANIMASI yang berebut sama flyToBounds), lalu fit.
-  //  - OMBAK: zoom-out lebih jauh (gak ada radar yg pecah) biar laut jauh keliatan;
+  // SATU effect untuk [mode, view]: batas zoom diperbarui, lalu fit.
+  //  - OMBAK: zoom-out lebih jauh (tak ada radar yang pecah) biar laut jauh kelihatan;
   //  - CCTV: zoom-in lebih dalam biar pin berdempet bisa dipisah & diklik;
   //  - ganti mode TANPA ganti view tetap reframe (tinggi panel beda per mode).
   useEffect(() => {
-    const min = mode === "ombak" ? OMBAK_MIN_ZOOM : MIN_ZOOM;
-    const max = mode === "cctv" ? CCTV_MAX_ZOOM : MAX_ZOOM;
-    map.options.minZoom = min;
-    map.options.maxZoom = max;
-    map.fire("zoomlevelschange");
+    map.setMinZoom(mode === "ombak" ? OMBAK_MIN_ZOOM : MIN_ZOOM);
+    map.setMaxZoom(mode === "cctv" ? CCTV_MAX_ZOOM : MAX_ZOOM);
     if (!mounted.current) {
       mounted.current = true;
-      map.invalidateSize();
+      map.resize();
       fit(view, false);
       return;
     }
-    const z = map.getZoom();
-    if (z < min || z > max) map.setZoom(Math.min(max, Math.max(min, z)), { animate: false });
     fit(view, true);
   }, [mode, view, map, fit]);
 
@@ -79,19 +74,17 @@ export default function MapController({
       return;
     }
     if (modeRef.current === "cctv") return;
-    fit(viewRef.current, true, 0.4);
+    fit(viewRef.current, true, 400);
   }, [collapsed, fit]);
 
-  // resize: invalidateSize selalu (debounce), tapi fit ulang HANYA kalau lebar berubah
-  // banyak (rotasi/split-screen) — toolbar browser muncul/hilang atau keluar fullscreen
-  // video CCTV jangan sampai membuang pan/zoom pengguna.
+  // resize: fit ulang HANYA kalau lebar berubah banyak (rotasi/split-screen) — toolbar browser
+  // muncul/hilang atau keluar fullscreen video CCTV jangan sampai membuang pan/zoom pengguna.
   useEffect(() => {
     let lastW = window.innerWidth;
     let t: number | null = null;
     const onResize = () => {
       if (t !== null) window.clearTimeout(t);
       t = window.setTimeout(() => {
-        map.invalidateSize();
         const w = window.innerWidth;
         if (Math.abs(w - lastW) > 80) {
           lastW = w;
@@ -104,7 +97,7 @@ export default function MapController({
       window.removeEventListener("resize", onResize);
       if (t !== null) window.clearTimeout(t);
     };
-  }, [map, fit]);
+  }, [fit]);
 
   return null;
 }

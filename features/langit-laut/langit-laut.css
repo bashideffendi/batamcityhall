@@ -1,124 +1,82 @@
-@import "tailwindcss";
-
-/* ===== Token tema =====
-   Didefinisikan lewat [data-theme] — dipasang di <html> (skrip inline layout, sebelum
-   paint) DAN di wrapper app; nilainya sama. Sistem panel:
-   - 4 gaya teks: wordmark 20 (Fraunces) · jawaban 22/28 · isi 15/20 · meta 13/18.
-     Tanpa huruf kapital-kecil (uppercase); letter-spacing hanya di jawaban.
-   - radius: --r-sheet 20 (panel/lembar) · --r-ctl 12 (segmen/chip/daftar) · 999 (bulat).
-   - satu bayangan panel. Aksen hanya untuk thumb, tautan, pin, cincin fokus; warna lain = data.
-   Kontras --text-muted & --stale-text diukur di atas panel alpha yang menumpuk warna radar
-   paling terang (kuning #ffff00): terang 6,0:1 & 5,3:1, gelap 6,7:1 & 7,6:1. */
-[data-theme="light"] {
-  --map-bg: #e8eaed;
-  --scrim-top: linear-gradient(180deg, rgba(248, 249, 251, 0.94) 0%, rgba(248, 249, 251, 0.78) 40%, rgba(248, 249, 251, 0));
-  --panel-bg: rgba(252, 252, 253, 0.94);
-  --panel-solid: #f8f9fb;
-  --panel-border: rgba(20, 24, 33, 0.1);
-  --panel-shadow: 0 8px 28px rgba(16, 20, 30, 0.14);
-  --text: #15171c;
-  --text-2: #2e3440;
-  --text-muted: #5b616e;
-  --warn-bg: #fff3dc;
-  --accent: #2f6fb3;
-  --accent-soft: rgba(47, 111, 179, 0.16);
-  --on-accent: #ffffff;
-  --wordmark: #15171c;
-  --live-dot: #1aa06a;
-  --stale-text: #9a5b00;
-  --ctl-bg: rgba(255, 255, 255, 0.92);
-  --ctl-border: rgba(20, 24, 33, 0.1);
-  --seg-track: rgba(20, 24, 33, 0.055);
-  --seg-active-bg: #ffffff;
-  --seg-active-border: rgba(20, 24, 33, 0.55); /* ≥3:1 terhadap track (penanda non-teks) */
-  --handle: rgba(20, 24, 33, 0.5); /* ≥3:1: pegangan adalah kontrol */
-  --play-bg: #15171c;
-  --play-color: #f8f9fb;
-  --track: rgba(20, 24, 33, 0.14);
-  --thumb: #2f6fb3;
-  --place-text: #3b4150;
-  --place-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 1px 3px rgba(255, 255, 255, 0.9);
-  --link: #2f6fb3;
-  --radar-blend: normal;
-  --radar-filter: saturate(1.05);
-  --cam-pin-bg: #2f6fb3;
-  --cam-pin-fg: #ffffff;
-  --cam-pin-ring: rgba(255, 255, 255, 0.92);
-  --cam-pin-dead: #6f7580;
+/* Langit & Laut, dari hujandibatam. Warna dipetakan ke token data/design/design_tokens.css lewat
+   variabel lama supaya aturan komponen tidak perlu ditulis ulang. Semua aturan dibatasi .app-root
+   karena CSS global tetap terpasang setelah pindah halaman.
+   Sistem panel: jawaban 22/28, isi 15/20, meta 13/18. Aksen hanya untuk thumb, pin, cincin fokus;
+   warna lain = data. */
+.ll-halaman {
+  --ll-h: calc(100dvh - var(--bch-nav-h) - 56px);
+  position: relative;
+  height: var(--ll-h);
+  min-height: 24rem;
+  isolation: isolate;
+  overflow: hidden;
 }
-
-[data-theme="dark"] {
-  --map-bg: #0c0d10;
-  --scrim-top: linear-gradient(180deg, rgba(10, 11, 14, 0.9) 0%, rgba(10, 11, 14, 0.72) 40%, rgba(10, 11, 14, 0));
-  --panel-bg: rgba(20, 22, 28, 0.9);
-  --panel-solid: #16181d;
-  --panel-border: rgba(255, 255, 255, 0.1);
-  --panel-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
-  --text: #f2f3f5;
-  --text-2: rgba(255, 255, 255, 0.84);
-  --text-muted: rgba(255, 255, 255, 0.64);
-  --warn-bg: rgba(242, 180, 92, 0.13);
-  --accent: #6ea2dd;
-  --accent-soft: rgba(110, 162, 221, 0.16);
-  --on-accent: #0c1018;
-  --wordmark: #f2f3f5;
-  --live-dot: #34c08a;
-  --stale-text: #f2b45c;
-  --ctl-bg: rgba(22, 24, 29, 0.88);
-  --ctl-border: rgba(255, 255, 255, 0.12);
-  --seg-track: rgba(255, 255, 255, 0.07);
-  --seg-active-bg: rgba(255, 255, 255, 0.14);
-  --seg-active-border: rgba(255, 255, 255, 0.36); /* ≥3:1 terhadap track */
-  --handle: rgba(255, 255, 255, 0.4);
-  --play-bg: #f2f3f5;
-  --play-color: #0c0d10;
-  --track: rgba(255, 255, 255, 0.18);
-  --thumb: #6ea2dd;
-  --place-text: #e6e9ef;
-  --place-shadow: 0 1px 5px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 0.9);
-  --link: #8fb8e8;
-  --radar-blend: screen;
-  --radar-filter: saturate(1.12) brightness(1.04);
-  --cam-pin-bg: #6ea2dd;
-  --cam-pin-fg: #0c0d10;
-  --cam-pin-ring: rgba(0, 0, 0, 0.55);
-  --cam-pin-dead: #5b616e;
-}
-
-/* Token yang sama di kedua tema + alias nama lama. */
-[data-theme] {
+.app-root {
+  --font-ui: var(--bch-font-sans);
+  font-family: var(--bch-font-sans);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+  --map-bg: var(--bch-map-water);
+  --panel-bg: var(--bch-paper);
+  --panel-solid: var(--bch-paper);
+  --panel-border: var(--bch-rule);
+  --panel-shadow: var(--bch-shadow-lift);
+  --text: var(--bch-ink);
+  --text-2: var(--bch-ink);
+  --text-muted: var(--bch-ink-muted);
+  --warn-bg: var(--bch-status-caution-bg);
+  --accent: var(--bch-accent);
+  --on-accent: var(--bch-paper);
+  --wordmark: var(--bch-ink);
+  --live-dot: var(--bch-status-ok);
+  --stale-text: var(--bch-status-caution);
+  --ctl-bg: var(--bch-paper);
+  --ctl-border: var(--bch-rule);
+  --seg-active-bg: var(--bch-paper);
+  --play-bg: var(--bch-ink);
+  --play-color: var(--bch-paper);
+  --thumb: var(--bch-accent);
+  --place-text: var(--bch-ink);
+  --link: var(--bch-sea-ink);
+  --cam-pin-bg: var(--bch-accent);
+  --cam-pin-fg: var(--bch-paper);
+  --cam-pin-dead: var(--bch-ink-muted);
   --text-dim: var(--text-muted);
   --credit: var(--text-muted);
   --dot-ringan: #00babf;
   --dot-sedang: #ffa500;
   --dot-lebat: #e50000;
-  --r-sheet: 20px;
-  --r-ctl: 12px;
+  --r-sheet: var(--bch-radius-2);
+  --r-ctl: var(--bch-radius-1);
   --s1: 4px;
   --s2: 8px;
   --s3: 12px;
   --s4: 16px;
   --s5: 24px;
+  /* siang */
+  --scrim-top: linear-gradient(180deg, rgba(244, 239, 228, 0.94) 0%, rgba(244, 239, 228, 0.78) 40%, rgba(244, 239, 228, 0));
+  --accent-soft: rgba(162, 72, 42, 0.14);
+  --seg-track: rgba(28, 27, 25, 0.055);
+  --seg-active-border: rgba(28, 27, 25, 0.55); /* ≥3:1 terhadap track (penanda non-teks) */
+  --handle: rgba(28, 27, 25, 0.5);
+  --track: rgba(28, 27, 25, 0.14);
+  --place-shadow: 0 0 3px #f4efe4, 0 0 3px #f4efe4, 0 1px 3px rgba(244, 239, 228, 0.9);
+  --cam-pin-ring: rgba(244, 239, 228, 0.92);
 }
-
-* {
-  box-sizing: border-box;
+html[data-theme="night"] .app-root {
+  --scrim-top: linear-gradient(180deg, rgba(15, 27, 42, 0.9) 0%, rgba(15, 27, 42, 0.72) 40%, rgba(15, 27, 42, 0));
+  --accent-soft: rgba(224, 138, 99, 0.16);
+  --seg-track: rgba(237, 228, 207, 0.07);
+  --seg-active-border: rgba(237, 228, 207, 0.36);
+  --handle: rgba(237, 228, 207, 0.4);
+  --track: rgba(237, 228, 207, 0.18);
+  --place-shadow: 0 1px 5px rgba(15, 27, 42, 0.95), 0 0 2px rgba(15, 27, 42, 0.9);
+  --cam-pin-ring: rgba(15, 27, 42, 0.55);
 }
-html,
-body {
-  height: 100%;
-  margin: 0;
-  background: var(--map-bg, #0c0d10);
-  font-family: var(--font-ui), "Plus Jakarta Sans", system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  /* tarik-ke-bawah di panel jangan memicu pull-to-refresh Chrome / bounce iOS */
-  overscroll-behavior: none;
-  overflow: hidden;
-}
-h1,
-h2,
-h3,
-h4 {
+.app-root h1,
+.app-root h2,
+.app-root h3,
+.app-root h4 {
   margin: 0;
   font: inherit;
 }
@@ -160,25 +118,30 @@ h4 {
   inset: -13px -8px;
 }
 
-/* ===== Leaflet ===== */
-.leaflet-container {
-  height: 100%;
-  width: 100%;
-  font-family: inherit;
-  /* stacking context sendiri: kontrol Leaflet (z 1000) nggak lagi bersaing sama panel (z 500) */
-  isolation: isolate;
-}
-/* leaflet.css dimuat SESUDAH file ini dan memasang latar #ddd → naikkan spesifisitas supaya
-   tema gelap tidak berkedip abu terang sebelum tile termuat. */
-.app-root .leaflet-container {
+/* ===== Peta ===== */
+.app-root .ll-peta {
+  position: absolute;
+  inset: 0;
   background: var(--map-bg);
 }
-.leaflet-image-layer {
-  mix-blend-mode: var(--radar-blend);
-  filter: var(--radar-filter);
+.ll-peta-gagal {
+  position: absolute;
+  z-index: 300;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: calc(100% - 3rem);
+  margin: 0;
+  padding: var(--s3) var(--s4);
+  background: var(--panel-solid);
+  border: 1px solid var(--bch-ink);
+  color: var(--text);
+  font-size: 15px;
+  text-align: center;
 }
 /* label kecamatan (KecamatanLayer): teks di tengah titik label, gaya sama dengan label kota */
-.leaflet-marker-icon.kec-label-icon {
+.kec-label-icon {
   overflow: visible;
   pointer-events: none;
 }
@@ -250,19 +213,28 @@ h4 {
 .kec-dot[data-level="lebat"] {
   background: var(--dot-lebat);
 }
-.leaflet-tooltip.place-label {
-  background: transparent;
-  border: none;
-  box-shadow: none;
+.place-dot {
+  position: absolute;
+  left: -2.5px;
+  top: -2.5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--panel-solid);
+  border: 1px solid var(--bch-rule-strong);
+}
+.place-label {
+  position: absolute;
+  left: 8px;
+  top: 0;
+  transform: translateY(-50%);
+  white-space: nowrap;
   color: var(--place-text);
   font-weight: 600;
   font-size: 10.5px;
   letter-spacing: 0.04em;
   text-shadow: var(--place-shadow);
   padding: 0;
-}
-.leaflet-tooltip.place-label::before {
-  display: none;
 }
 
 /* ===== scrim ===== */
@@ -317,7 +289,7 @@ h4 {
   min-width: 0;
 }
 .brand .name {
-  font-family: var(--font-fraunces), "Fraunces", Georgia, serif;
+  font-family: var(--bch-font-serif);
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
@@ -427,8 +399,6 @@ h4 {
   display: flex;
   flex-direction: column;
   background: var(--panel-bg);
-  -webkit-backdrop-filter: blur(11px);
-  backdrop-filter: blur(11px);
   border: 1px solid var(--panel-border);
   border-radius: var(--r-sheet);
   box-shadow: var(--panel-shadow);
@@ -778,7 +748,7 @@ h4 {
   gap: 2px;
 }
 /* Slider: kotak sentuh 24 px, track visual 4 px lewat pseudo-element. */
-input[type="range"].rng {
+.app-root input[type="range"].rng {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -956,7 +926,7 @@ input[type="range"].rng:disabled {
    tepat di bawah bilah atas dan SELURUH panel jadi satu area gulir besar (dulu Detail
    bergulir di kotak kecil ±36dvh di dalam panel 70dvh — terlalu sempit). */
 .panel[data-detail="true"] {
-  max-height: calc(100dvh - 72px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  max-height: calc(var(--ll-h) - 72px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
 }
 /* daftar kelompok: sisakan ruang peta supaya gelembung terpilih tetap terlihat */
 .panel[data-listing="true"] {
@@ -1143,7 +1113,7 @@ input[type="range"].rng:disabled {
   align-items: center;
   gap: 9px;
   margin: 0;
-  font-family: var(--font-fraunces), "Fraunces", Georgia, serif;
+  font-family: var(--bch-font-serif);
   font-weight: 500;
   font-size: 22px;
   line-height: 1;
@@ -1484,16 +1454,21 @@ input[type="range"].rng:disabled {
 }
 
 /* ===== CCTV: pin kamera di peta ===== */
-/* Hit-box 44×44 (target sentuh), visual lebih kecil di tengah. Tanpa kotak putih default Leaflet.
-   Spesifisitas dinaikkan: leaflet.css (dimuat sesudah file ini) memasang
-   `.leaflet-marker-icon{display:block}` → tanpa ini pin duduk di pojok kiri-atas kotak,
-   meleset 10 px dari titik aslinya (dan garis rambut kipas ikut meleset). */
-.leaflet-marker-icon.cam-hit {
+/* Hit-box 44×44 (target sentuh), visual lebih kecil di tengah. */
+.cam-marker.is-top {
+  z-index: 2;
+}
+.cam-hit {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   background: transparent;
   border: 0;
   display: grid;
   place-items: center;
   cursor: pointer;
+  font: inherit;
 }
 /* Pin: isian SOLID warna aksen + halo kontras (putih transparan nyaru di Positron). */
 .cam-pin {
@@ -1588,10 +1563,14 @@ input[type="range"].rng:disabled {
     0 0 0 5px var(--accent),
     0 4px 12px rgba(0, 0, 0, 0.3);
 }
-.leaflet-tooltip.cam-label {
-  background: transparent;
-  border: none;
-  box-shadow: none;
+.cam-label {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% - 6px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
   color: var(--place-text);
   font-weight: 600;
   font-size: 10px;
@@ -1599,14 +1578,15 @@ input[type="range"].rng:disabled {
   text-shadow: var(--place-shadow);
   padding: 0;
 }
-.leaflet-tooltip.cam-label::before {
-  display: none;
+.cam-hit:hover .cam-label,
+.cam-hit:focus-visible .cam-label {
+  display: block;
 }
 
 /* ===== CCTV: pemutar (satu stream, on-demand) ===== */
 .cctv-backdrop {
   position: fixed;
-  inset: 0;
+  inset: var(--bch-nav-h) 0 0 0;
   z-index: 1200;
   display: grid;
   place-items: center;
@@ -1618,7 +1598,7 @@ input[type="range"].rng:disabled {
    bikin compositor HP low-end kerja keras tanpa manfaat visual). Muat di layar landscape. */
 .cctv-modal {
   width: min(720px, 100%, calc((100dvh - 132px) * 16 / 9));
-  max-height: calc(100dvh - 32px);
+  max-height: calc(var(--ll-h) - 32px);
   display: flex;
   flex-direction: column;
   border-radius: var(--r-sheet);
@@ -1808,11 +1788,11 @@ input[type="range"].rng:disabled {
 }
 
 /* ===== fokus keyboard (WCAG 2.4.7) ===== */
-:focus-visible {
+.app-root :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
-.leaflet-container :focus-visible {
+.ll-peta :focus-visible {
   outline-offset: 0;
 }
 .mode-btn:focus-visible,
@@ -1833,8 +1813,6 @@ input[type="range"].rng:disabled {
   gap: 10px;
   max-width: calc(100% - 20px);
   background: var(--panel-bg);
-  -webkit-backdrop-filter: blur(11px);
-  backdrop-filter: blur(11px);
   border: 1px solid var(--panel-border);
   border-radius: var(--r-ctl);
   box-shadow: var(--panel-shadow);
@@ -1870,11 +1848,9 @@ input[type="range"].rng:disabled {
   height: 16px;
 }
 
-/* ===== atribusi peta (Leaflet) — wajib & terbaca ===== */
-.leaflet-control-attribution {
+/* ===== atribusi peta — wajib & terbaca ===== */
+.app-root .maplibregl-ctrl.maplibregl-ctrl-attrib {
   background: var(--panel-bg) !important;
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
   color: var(--text-muted) !important;
   font-family: var(--font-ui), "Plus Jakarta Sans", system-ui, sans-serif !important;
   font-size: 10px !important;
@@ -1886,18 +1862,18 @@ input[type="range"].rng:disabled {
   border-bottom: 0;
   max-width: 78vw;
 }
-.leaflet-control-attribution a {
+.app-root .maplibregl-ctrl-attrib a {
   color: var(--link) !important;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 /* ===== ukuran layar ===== */
 /* HP & tablet (panel di tengah bawah): atribusi duduk DI ATAS panel */
 @media (max-width: 899px) {
-  .leaflet-bottom.leaflet-right {
+  .app-root .maplibregl-ctrl-bottom-right {
     bottom: calc(var(--panel-h, 0px) + 10px + env(safe-area-inset-bottom, 0px));
   }
-  .leaflet-control-attribution {
+  .app-root .maplibregl-ctrl.maplibregl-ctrl-attrib {
     border-radius: 8px 0 0 8px;
     border-bottom: 1px solid var(--panel-border);
   }
@@ -1905,7 +1881,7 @@ input[type="range"].rng:disabled {
 /* HP tegak: Detail terbuka → panel memanjang sampai bilah atas, atribusi (yang duduk di atas
    panel) akan menumpuk bilah atas. Sembunyikan; kredit lengkap ada di bagian bawah Detail. */
 @media (max-width: 899px) and (min-height: 481px) {
-  .app-root:has(.panel[data-detail="true"]:not([data-collapsed="true"])) .leaflet-control-attribution {
+  .app-root:has(.panel[data-detail="true"]:not([data-collapsed="true"])) .maplibregl-ctrl-attrib {
     visibility: hidden;
   }
 }
@@ -1965,8 +1941,6 @@ input[type="range"].rng:disabled {
     border-right: 1px solid var(--panel-border);
     border-radius: 0;
     background: var(--panel-solid);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
     box-shadow: 8px 0 32px rgba(10, 14, 24, 0.08);
     padding: 0 var(--pad) 28px;
     animation: fadein 0.4s ease both;
@@ -2086,7 +2060,7 @@ input[type="range"].rng:disabled {
     width: 340px;
     border: 1px solid var(--panel-border);
     border-radius: var(--r-sheet);
-    max-height: calc(100dvh - 74px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    max-height: calc(var(--ll-h) - 74px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
     overflow-y: auto;
     animation: none;
   }
@@ -2094,7 +2068,7 @@ input[type="range"].rng:disabled {
      (spesifisitas atribut lebih tinggi dari .panel saja) */
   .panel[data-detail],
   .panel[data-listing] {
-    max-height: calc(100dvh - 74px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    max-height: calc(var(--ll-h) - 74px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
   }
   .panel-detail {
     max-height: none;
@@ -2103,7 +2077,7 @@ input[type="range"].rng:disabled {
   .cam-list .cam-rows {
     max-height: none;
   }
-  .leaflet-bottom.leaflet-right {
+  .app-root .maplibregl-ctrl-bottom-right {
     right: 364px;
     bottom: 0;
   }
@@ -2120,8 +2094,6 @@ input[type="range"].rng:disabled {
   .panel,
   .ios-hint {
     background: var(--panel-solid);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
   }
 }
 
@@ -2155,7 +2127,7 @@ input[type="range"].rng:disabled {
   color: var(--text, #f2f3f5);
 }
 .err-title {
-  font-family: var(--font-fraunces), "Fraunces", Georgia, serif;
+  font-family: var(--bch-font-serif);
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 8px;

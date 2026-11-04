@@ -1,5 +1,5 @@
 {
- "_keterangan": "Grup entri yang mewakili tempat yang SAMA tetapi tidak tertangkap otomatis oleh merge_places.py (nama/kategori/subkategori berbeda antarlaporan). Setiap grup digabung menjadi satu entri dengan id = 'id' dan nama = 'nama'. 'anggota' = id asli di data/places/*.json. Id anggota tetap bisa dicari lewat field id_alias dan data/places_id_index.json. Tambahkan grup baru di sini kalau menemukan duplikat lain, lalu jalankan ulang tools/merge_places.py.",
+ "_keterangan": "Grup entri yang mewakili tempat yang SAMA tetapi tidak tertangkap otomatis oleh merge_places.py (nama/kategori/subkategori berbeda antarlaporan). Setiap grup digabung menjadi satu entri dengan id = 'id' dan nama = 'nama'. 'anggota' = id asli di data/places/*.json. Id anggota tetap bisa dicari lewat field id_alias dan data/places_id_index.json. Kunci opsional 'id_alias' = id dari modul lain yang menunjuk tempat ini tetapi bukan entri di data/places/*.json (mis. id terminal di data/makan). Tambahkan grup baru di sini kalau menemukan duplikat lain, lalu jalankan ulang tools/merge_places.py.",
  "grup": [
   {
    "id": "jembatan-barelang-1",
@@ -45,6 +45,9 @@
     "trans-pelabuhan-batam-centre",
     "feri-batamcentre",
     "btc"
+   ],
+   "id_alias": [
+    "batam-centre"
    ]
   },
   {
@@ -67,6 +70,9 @@
     "trans-pelabuhan-sekupang",
     "feri-sekupang",
     "skp"
+   ],
+   "id_alias": [
+    "sekupang"
    ]
   },
   {
@@ -78,6 +84,9 @@
     "trans-pelabuhan-nongsapura",
     "feri-nongsapura",
     "nsp"
+   ],
+   "id_alias": [
+    "nongsapura"
    ]
   },
   {

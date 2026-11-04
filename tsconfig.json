@@ -17,5 +17,5 @@
     "paths": { "@/*": ["./*"] }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
-  "exclude": ["node_modules", "features/makan/pages-asal", "features/makan/components", "features/langit-laut/components", "research", "docs"]
+  "exclude": ["node_modules", "research", "docs"]
 }

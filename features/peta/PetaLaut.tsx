@@ -1,11 +1,11 @@
 "use client";
 
-import { addProtocol, Map as MapLibre, setWorkerUrl, type ErrorEvent } from "maplibre-gl";
+import { Map as MapLibre, type ErrorEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { Protocol } from "pmtiles";
 import { useEffect, useRef, useState } from "react";
 import { useSiteTheme } from "@/components/site/useSiteTheme";
 import { readTheme } from "@/lib/theme";
+import { pasangGlobalPeta, webglAda } from "./global";
 import ItikBerbaris from "./ItikBerbaris";
 import { Kartusis, Mawar, SkalaBatang } from "./OrnamenChart";
 import { baseStyle, MAP_BOUNDS, SOURCE_ID, TAMPILAN_AWAL } from "./style";
@@ -23,25 +23,6 @@ const TEKS_PETA = {
   "CooperativeGesturesHandler.MobileHelpText": "Geser dengan dua jari untuk menggerakkan peta",
 };
 
-// Worker dan protokol bersifat global di MapLibre, jadi cukup dipasang sekali per halaman.
-// MapLibre 6 mencari worker di sebelah modulnya sendiri, dan setelah dibundel berkas itu tidak ada di
-// sana. Pola new URL(..., import.meta.url) membuat bundler menyalinnya sebagai aset statis.
-let globalTerpasang = false;
-function pasangGlobal() {
-  if (globalTerpasang) return;
-  setWorkerUrl(new URL("../../node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs", import.meta.url).href);
-  addProtocol("pmtiles", new Protocol().tile);
-  globalTerpasang = true;
-}
-
-const webglAda = () => {
-  try {
-    return !!document.createElement("canvas").getContext("webgl2");
-  } catch {
-    return false;
-  }
-};
-
 const gerakTenang = () =>
   document.documentElement.dataset.gerak === "tenang" || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -55,7 +36,7 @@ export default function PetaLaut() {
   useEffect(() => {
     const el = wadah.current;
     if (!el || !webglAda()) return;
-    pasangGlobal();
+    pasangGlobalPeta();
 
     const m = new MapLibre({
       container: el,

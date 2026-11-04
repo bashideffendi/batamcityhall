@@ -17,7 +17,7 @@ KECAMATAN = ["Batam Kota", "Batu Aji", "Batu Ampar", "Belakang Padang", "Bengkon
              "Galang", "Lubuk Baja", "Nongsa", "Sagulung", "Sei Beduk", "Sekupang"]
 KATEGORI = ["pemerintahan", "layanan_publik", "keamanan_darurat", "kesehatan", "pendidikan", "perpustakaan",
             "ibadah", "pemakaman", "transportasi", "belanja", "ruang_publik", "wisata", "olahraga",
-            "akomodasi", "jasa", "pertanahan_hukum", "landmark", "kampung_tua", "budaya", "khas_batam", "lainnya"]
+            "akomodasi", "jasa", "pertanahan_hukum", "landmark", "kampung_tua", "budaya", "khas_batam", "kuliner", "lainnya"]
 STATUS_KOORD = ["terverifikasi", "perlu_cek_ulang", "perlu_diisi_user"]
 RANK = {"terverifikasi": 0, "perlu_cek_ulang": 1, "perlu_diisi_user": 2}
 FIELDS = ["id", "nama", "nama_alternatif", "kategori", "subkategori", "kecamatan", "kelurahan", "alamat",
@@ -168,6 +168,9 @@ def main():
             m["nama"] = g["nama"]
         if g.get("catatan") and g["catatan"] not in (m.get("catatan") or ""):
             m["catatan"] = ((m.get("catatan") or "") + " | " + g["catatan"]).strip(" |")
+        # id dari modul lain yang menunjuk tempat ini tetapi bukan entri di data/places/*.json
+        if g.get("id_alias"):
+            m["id_alias"] = sorted(set(m.get("id_alias", []) + g["id_alias"]))
     for m in merged:
         m["nama_alternatif"] = sorted(set(m["nama_alternatif"]) - {m["nama"]})
         m.setdefault("id_alias", [])
@@ -201,7 +204,7 @@ def main():
     # daftar untuk diisi pemilik proyek: urut prioritas, dengan tautan pencarian Google Maps
     PRIO = {"keamanan_darurat": 1, "kesehatan": 1, "transportasi": 1, "pemerintahan": 1, "layanan_publik": 1,
             "pertanahan_hukum": 2, "perpustakaan": 2, "pendidikan": 2, "ibadah": 2, "pemakaman": 2, "belanja": 2,
-            "ruang_publik": 3, "wisata": 3, "landmark": 3, "kampung_tua": 3, "budaya": 3, "khas_batam": 3, "olahraga": 3,
+            "ruang_publik": 3, "wisata": 3, "landmark": 3, "kampung_tua": 3, "budaya": 3, "khas_batam": 3, "kuliner": 3, "olahraga": 3,
             "jasa": 4, "lainnya": 4, "akomodasi": 5}
     rows = [m for m in merged if m["status_koordinat"] != "terverifikasi" and not m["atribut"].get("lokasi_luar_batam")]
     rows.sort(key=lambda m: (PRIO.get(m["kategori"], 4), m["kategori"], m["kecamatan"] or "~", m["nama"]))

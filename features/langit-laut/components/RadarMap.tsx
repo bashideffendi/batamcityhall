@@ -1,35 +1,12 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {
-  AttributionControl,
-  CircleMarker,
-  ImageOverlay,
-  MapContainer,
-  Pane,
-  TileLayer,
-  Tooltip,
-} from "react-leaflet";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { ConditionsResponse, ForecastResponse } from "@/features/langit-laut/lib/api-types";
 import { CCTV_HOST, MAPPED_CAMS, loadHls, type Cam } from "@/features/langit-laut/lib/cctv";
 import { isSmallLandscape, isWide, reduceMotion, saveData } from "@/features/langit-laut/lib/client";
 import { readInitialState } from "@/features/langit-laut/lib/initial-state";
 import { PREF, writePref } from "@/features/langit-laut/lib/prefs";
-import {
-  CARTO_SUBDOMAINS,
-  DEFAULT_VIEW,
-  LABEL_TILES,
-  MAX_ZOOM,
-  MIN_ZOOM,
-  PLACES,
-  RADAR_BOUNDS,
-  TILES,
-  VIEW_KEYS,
-  defaultViewFor,
-  type Mode,
-  type ViewKey,
-} from "@/features/langit-laut/lib/radar";
+import { DEFAULT_VIEW, VIEW_KEYS, defaultViewFor, type Mode, type ViewKey } from "@/features/langit-laut/lib/radar";
 import {
   cctvAnswer,
   forecastStrip,
@@ -50,11 +27,14 @@ import { useResource } from "@/features/langit-laut/hooks/useResource";
 import { useThemeMode } from "@/features/langit-laut/hooks/useThemeMode";
 import CctvLayer, { type CamGroup, type CctvApi } from "./CctvLayer";
 import CctvPlayer from "./CctvPlayer";
-import KecamatanLayer from "./KecamatanLayer";
+import KecamatanLayer, { TempatLayer } from "./KecamatanLayer";
+import LandMask from "./LandMask";
 import IosInstallHint from "./IosInstallHint";
 import MapController, { type Padding } from "./MapController";
 import OfsField from "./OfsField";
 import Panel from "./Panel";
+import PetaLangit from "./PetaLangit";
+import RadarLayer from "./RadarLayer";
 import Topbar from "./Topbar";
 import CamDirectory from "./panel/CamDirectory";
 import CamList from "./panel/CamList";
@@ -73,14 +53,11 @@ import { Answer, WarnRow } from "./panel/Status";
 // hook, aturan tampilan + salinan ada di lib/status.ts, potongan UI di components/panel/*.
 // ---------------------------------------------------------------------------
 
-// leaflet.vectorgrid (48 KB) cuma dibutuhkan mode OMBAK → jangan ikut chunk peta utama.
-const LandMask = dynamic(() => import("./LandMask"), { ssr: false });
-
 const TICK_MS = 30 * 1000; // label "X menit lalu" dihitung ulang
 const CONDITIONS_MS = 2 * 60 * 1000;
 const FORECAST_MS = 30 * 60 * 1000; // prakiraan BMKG 3-jaman; server menahan 15–30 menit
 /** "Perbesar Peta ke Sini" dari daftar kelompok: cukup dekat untuk memisahkan pin. */
-const GROUP_ZOOM = 16;
+const GROUP_ZOOM = 15;
 
 const MODE_META: Record<Mode, { sub: string; panel: string }> = {
   hujan: { sub: "Radar Hujan Batam dan Sekitarnya", panel: "Radar Hujan" },
@@ -101,7 +78,7 @@ function applyStateParams(p: URLSearchParams, mode: Mode, view: ViewKey, cam: Ca
 
 export default function RadarMap() {
   // Komponen ini client-only (dynamic ssr:false) jadi aman baca window/localStorage di initializer.
-  const init = useMemo(readInitialState, []);
+  const [init] = useState(readInitialState);
 
   const [mode, setMode] = useState<Mode>(init.mode);
   const [view, setView] = useState<ViewKey>(init.view);
@@ -135,11 +112,7 @@ export default function RadarMap() {
   const conditions = useResource<ConditionsResponse>("/api/conditions", CONDITIONS_MS, mode === "hujan", false);
   const forecast = useResource<ForecastResponse>("/api/prakiraan", FORECAST_MS, mode === "hujan", true);
 
-  const { theme, toggle: toggleTheme } = useThemeMode(
-    init.theme,
-    init.themeOverride,
-    () => playing || !!activeCam,
-  );
+  const theme = useThemeMode(() => playing || !!activeCam);
   const { canInstall, install } = useInstallPrompt();
   const { share, toast } = useShare();
 
@@ -176,7 +149,8 @@ export default function RadarMap() {
     const base =
       ignoreDetail && det && panel?.dataset.detail === "true" ? Math.min(panelH, det.offsetTop + 14) : panelH;
     // padding atas+bawah tak boleh menghabiskan tinggi peta (fitBounds lalu lari ke zoom batas)
-    const bottom = Math.min(Math.round(base) + 24, window.innerHeight - (topH + 8) - 120);
+    const tinggi = wrapperRef.current?.clientHeight ?? window.innerHeight;
+    const bottom = Math.min(Math.round(base) + 24, tinggi - (topH + 8) - 120);
     return { paddingTopLeft: [14, topH + 8], paddingBottomRight: [14, Math.max(24, bottom)] };
   }, []);
   const getViewPadding = useCallback(() => getPadding(true), [getPadding]);
@@ -206,14 +180,6 @@ export default function RadarMap() {
     }
   }, [mode, view, activeCam]);
 
-  // Keluar dari mode CCTV = matikan stream yang lagi jalan + tutup daftar kelompok.
-  useEffect(() => {
-    if (mode !== "cctv") {
-      setActiveCam(null);
-      setCamGroup(null);
-    }
-  }, [mode]);
-
   // Masuk mode CCTV: pemanasan — preconnect ke host Pemko (tanpa payload) + chunk hls.js
   // (aset kita sendiri). Nol byte video sebelum pin diketuk.
   useEffect(() => {
@@ -229,7 +195,7 @@ export default function RadarMap() {
     };
   }, [mode]);
 
-  // Tinggi panel → CSS var (atribusi Leaflet di HP duduk DI ATAS panel, bukan tertimpa).
+  // Tinggi panel → CSS var (atribusi peta di HP duduk DI ATAS panel, bukan tertimpa).
   useEffect(() => {
     const el = panelRef.current;
     const wrap = wrapperRef.current;
@@ -246,6 +212,8 @@ export default function RadarMap() {
     if (next === mode) return;
     setPlaying(false);
     setCamGroup(null);
+    // Keluar dari mode CCTV = matikan stream yang lagi jalan.
+    if (next !== "cctv") setActiveCam(null);
     if (next === "cctv") {
       mapView.current = view;
       setView("kamera");
@@ -335,7 +303,8 @@ export default function RadarMap() {
       window.setTimeout(() => {
         const panel = panelRef.current;
         const det = panel?.querySelector<HTMLElement>("#panel-detail");
-        if (panel && det) panel.scrollTo({ top: Math.max(0, det.offsetTop - 64), behavior: reduceMotion() ? "auto" : "smooth" });
+        if (panel && det)
+          panel.scrollTo({ top: Math.max(0, det.offsetTop - 64), behavior: reduceMotion() ? "auto" : "smooth" });
       }, 40);
     }
   };
@@ -389,7 +358,7 @@ export default function RadarMap() {
           : activeCam
             ? `CCTV ${activeCam.name}, Batam`
             : "Kamera Lalu Lintas Kota Batam";
-    share({ title: "Hujan di Batam", text, url });
+    share({ title: "Langit & Laut · Batam City Hall", text, url });
   };
 
   const modalOpen = !!activeCam;
@@ -397,70 +366,27 @@ export default function RadarMap() {
   const firstTime = radar.frames[0]?.time;
 
   return (
-    <div ref={wrapperRef} data-theme={theme} className="app-root" style={{ position: "absolute", inset: 0 }}>
+    <div ref={wrapperRef} className="app-root" style={{ position: "absolute", inset: 0 }}>
       <div className="map-wrap" style={{ position: "absolute", inset: 0 }} inert={modalOpen}>
-        <MapContainer
-          center={[0.9, 104.0]}
-          zoom={9}
-          minZoom={MIN_ZOOM}
-          maxZoom={MAX_ZOOM}
-          zoomControl={false}
-          attributionControl={false}
-          style={{ position: "absolute", inset: 0 }}
-        >
-          <AttributionControl position="bottomright" prefix={false} />
-          <TileLayer
-            key={theme}
-            url={TILES[theme]}
-            subdomains={CARTO_SUBDOMAINS}
-            maxZoom={20}
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>, <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'
-          />
-          {mode === "hujan" && current && !rv.currentBroken && (
-            <ImageOverlay
-              url={current.url}
-              bounds={RADAR_BOUNDS}
-              opacity={opacity}
-              zIndex={300}
-              attribution="Radar: Meteorological Service Singapore"
-              eventHandlers={{ error: () => radar.markBroken(current.url) }}
-            />
-          )}
-          {/* Batas 12 kecamatan Kota Batam; yang sedang hujan disorot hanya saat peta
-              menampilkan citra terbaru (hujan per kecamatan dihitung dari citra itu). */}
+        <PetaLangit theme={theme}>
           {mode === "hujan" && (
-            <KecamatanLayer rainy={rainyKecs} showRain={showKec} theme={theme} />
-          )}
-          {/* Field gelombang OFS (double-buffer, nggak berkedip) di atas basemap */}
-          {mode === "ombak" && ofs.ofs?.baserun && ov.valid && (
-            <OfsField
-              baserun={ofs.ofs.baserun}
-              valid={ov.valid}
-              opacity={ov.opacity}
-              onTilesDown={ofs.setTilesDown}
+            <RadarLayer
+              url={current && !rv.currentBroken ? current.url : null}
+              opacity={opacity}
+              theme={theme}
+              onBroken={radar.markBroken}
             />
           )}
-          {/* Mask daratan (fill = warna land basemap) di atas field → darat nol-tint, laut field */}
-          {mode === "ombak" && <LandMask theme={theme} onStatus={ofs.setMaskOk} />}
-          {/* Label kota/negara di atas mask (basemap asli ketutup field+mask) */}
-          {mode === "ombak" && (
-            <Pane name="ombak-labels" style={{ zIndex: 270, pointerEvents: "none" }}>
-              <TileLayer url={LABEL_TILES[theme]} subdomains={CARTO_SUBDOMAINS} maxZoom={20} />
-            </Pane>
+          {/* Batas kecamatan; yang sedang hujan disorot hanya saat peta menampilkan citra terbaru
+              (hujan per kecamatan dihitung dari citra itu). */}
+          {mode === "hujan" && <KecamatanLayer rainy={rainyKecs} showRain={showKec} theme={theme} />}
+          {mode === "hujan" && <TempatLayer />}
+          {/* Field gelombang OFS (double-buffer, tidak berkedip) */}
+          {mode === "ombak" && ofs.ofs?.baserun && ov.valid && (
+            <OfsField baserun={ofs.ofs.baserun} valid={ov.valid} opacity={ov.opacity} onTilesDown={ofs.setTilesDown} />
           )}
-          {mode === "hujan" &&
-            PLACES.map((p) => (
-              <CircleMarker
-                key={p.name}
-                center={[p.lat, p.lng]}
-                radius={2.5}
-                pathOptions={{ color: "#6b7280", weight: 1, fillColor: "#ffffff", fillOpacity: 1 }}
-              >
-                <Tooltip permanent direction="right" offset={[6, 0]} className="place-label">
-                  {p.name}
-                </Tooltip>
-              </CircleMarker>
-            ))}
+          {/* Mask daratan di atas field → darat nol-tint, laut field. Label peta dasar tetap di atasnya. */}
+          {mode === "ombak" && <LandMask theme={theme} onStatus={ofs.setMaskOk} />}
           {mode === "cctv" && (
             <CctvLayer
               onPick={pickCam}
@@ -473,15 +399,13 @@ export default function RadarMap() {
             />
           )}
           <MapController view={view} mode={mode} getPadding={getViewPadding} collapsed={collapsed} />
-        </MapContainer>
+        </PetaLangit>
       </div>
 
       <div className="scrim-top" />
 
       <Topbar
         sub={MODE_META[mode].sub}
-        theme={theme}
-        onToggleTheme={toggleTheme}
         onShare={onShare}
         canInstall={canInstall}
         onInstall={install}
@@ -503,15 +427,7 @@ export default function RadarMap() {
           mode === "hujan" ? rain.mini : mode === "ombak" ? ombak.mini : `${MAPPED_CAMS.length} Kamera Lalu Lintas`
         }
         miniDot={mode === "hujan" ? rain.dot : null}
-        head={
-          <SidebarHead
-            theme={theme}
-            onToggleTheme={toggleTheme}
-            onShare={onShare}
-            canInstall={canInstall}
-            onInstall={install}
-          />
-        }
+        head={<SidebarHead onShare={onShare} canInstall={canInstall} onInstall={install} />}
       >
         {mode === "hujan" && (
           <>
@@ -559,7 +475,9 @@ export default function RadarMap() {
                 ready={ov.ready}
                 onTogglePlay={togglePlay}
                 playLabel={
-                  ov.lastWib ? `Putar Prakiraan Ombak sampai ${ov.lastWib.day} ${ov.lastWib.time}` : "Putar Prakiraan Ombak"
+                  ov.lastWib
+                    ? `Putar Prakiraan Ombak sampai ${ov.lastWib.day} ${ov.lastWib.time}`
+                    : "Putar Prakiraan Ombak"
                 }
                 label="Waktu Prakiraan Ombak"
                 valueText={ov.sliderText}
@@ -600,11 +518,13 @@ export default function RadarMap() {
         />
 
         {/* Detail: di HP dilipat (tombol Detail/Daftar); di laptop selalu tampil di sidebar. */}
-        {(
+        {
           <div id="panel-detail" className="panel-detail">
             {mode === "hujan" && (
               <>
-                {radar.frames.length > 0 && <KecTable echo={radar.echo} when={rv.latestWhen} fresh={rv.fresh} scope={scope} />}
+                {radar.frames.length > 0 && (
+                  <KecTable echo={radar.echo} when={rv.latestWhen} fresh={rv.fresh} scope={scope} />
+                )}
                 <ForecastSection fc={forecast.data} tiles={tiles} note={strip.note} />
                 <Conditions data={conditions.data} error={conditions.error} />
                 <RainOpacity opacity={opacity} onOpacity={setOpacity} />
@@ -619,17 +539,11 @@ export default function RadarMap() {
             {mode === "cctv" && <CamDirectory dead={deadCams} onPick={pickCam} />}
             <Credit />
           </div>
-        )}
+        }
       </Panel>
 
       {activeCam && (
-        <CctvPlayer
-          key={activeCam.slug}
-          cam={activeCam}
-          onClose={closeCam}
-          onDead={onDead}
-          autoStart={camAutoStart}
-        />
+        <CctvPlayer key={activeCam.slug} cam={activeCam} onClose={closeCam} onDead={onDead} autoStart={camAutoStart} />
       )}
 
       {toast && (

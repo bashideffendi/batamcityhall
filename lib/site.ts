@@ -13,7 +13,6 @@ export const ATTRIBUTION = [
   "Citra radar © Meteorological Service Singapore",
   "Kondisi cuaca © National Environment Agency (data.gov.sg)",
   "Prakiraan gelombang & cuaca © BMKG",
-  "Daratan © OpenStreetMap contributors (via CircleGeo)",
   "Peta dasar © OpenStreetMap contributors, Protomaps",
   "CCTV © Pemerintah Kota Batam",
   "Batimetri GEBCO",
@@ -116,7 +115,7 @@ export const LOKET: Loket[] = [
 ];
 
 /** Loket yang halamannya sudah jadi. Beranda hanya menautkan loket yang terdaftar di sini. */
-export const LOKET_DIBUKA: readonly string[] = [];
+export const LOKET_DIBUKA: readonly string[] = ["01", "02"];
 
 export const HALAMAN_PENDUKUNG = [
   { label: "Tentang", href: "/tentang" },

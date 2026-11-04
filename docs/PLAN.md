@@ -29,27 +29,38 @@ Mengikuti bagian 9 prompt, tanpa perubahan urutan.
 
 **Glyph peta:** `scripts/build-glyphs.mjs` merender PBF dari Source Serif 4 dan Plus Jakarta Sans dengan tiny-sdf di Chromium. Tanpa dependensi native. Sudah dibangun ke `public/glyphs/` (1,3 MB, ikut repo) dan terbukti tampil di MapLibre.
 
-**Peta dasar:** `scripts/extract-basemap.mjs` membuat `public/tiles/batam.pmtiles` memakai library npm `pmtiles`, bbox `103.55,0.45,104.75,1.5`, z0–15. Dipilih karena unduhan `pmtiles.exe` ditolak izin auto mode. Sekitar 30 menit (14.380 tile, build 2 Nov 2026, hasil 39 MB). Berkas di-gitignore; produksi lewat R2 dan `NEXT_PUBLIC_PMTILES_URL`.
+**Peta dasar:** `scripts/extract-basemap.mjs` membuat `public/tiles/batam.pmtiles` memakai library npm `pmtiles`, tiga wilayah bertingkat: fokus `103.55,0.45,104.75,1.5` z15, Kepri z12, Luas z10 (tampilan Natuna dan sekeliling radar). Dipilih karena unduhan `pmtiles.exe` ditolak izin auto mode. 15.477 tile, 46 MB, kurang dari setengah jam (build 2 Nov 2026). Di-gitignore, jadi **deploy butuh R2** dan `NEXT_PUBLIC_PMTILES_URL` (butir 5). Wilayah di luar itu kosong kalau di-zoom lebih dalam dari z10.
 
 **Worker MapLibre:** MapLibre 6 mencari worker di sebelah modulnya, dan setelah dibundel berkas itu tidak ada. `PetaLaut` memakai `setWorkerUrl(new URL(..., import.meta.url))` supaya Turbopack menyalinnya sebagai aset. Terbukti di dev dan build produksi.
 
 **Urutan lapisan:** jalan dan bangunan, selubung `LUAR_FOKUS`, air, waterlining, jembatan, graticule, label. Protomaps menggabungkan jalan satu tile menjadi satu fitur di zoom rendah, jadi ekspresi `within` tidak bisa memisahkan Batam dari Bintan. Efeknya: jalan yang melintasi air tanpa tag jembatan tertutup air. Cek saat uji paritas fase 2.
 
-**Kode lama saat fase 1:** `features/makan` dan `features/langit-laut/components` dikeluarkan dari ESLint, dan komponennya dari `tsconfig.json`, karena masih terikat Leaflet. Masukkan kembali saat di-port.
+**Radar:** PNG MSS lewat `/api/radar-citra/[ts]`, cache panjang karena per timestamp tidak berubah. Ini menambah pemakaian function dan bandwidth Vercel dibanding situs lama yang memuat langsung dari browser. Perhatikan setelah deploy, apalagi situs lama sedang kena 402.
 
-**Lapisan radar di MapLibre (risiko paritas):** WebGL butuh izin CORS, Leaflet tidak.
+**Zoom:** angka zoom MapLibre = Leaflet situs lama dikurangi 1.
+
+**Lapisan radar di MapLibre:** WebGL butuh izin CORS, Leaflet tidak. Semua rencana di tabel ini sudah diterapkan di fase 2.
 
 | Sumber | `Access-Control-Allow-Origin` (dites 4 Nov 2026) | Rencana |
 |---|---|---|
 | Radar MSS | hanya `https://www.weather.gov.sg` | route same-origin untuk PNG radar, cache panjang (asalnya `max-age=2592000`), lalu `image` source dengan `RADAR_BOUNDS` |
-| Tile OFS BMKG | belum diketahui; curl dari laptop gagal di TLS (exit 35) | cek `fetch` dari browser. Kalau tidak diizinkan: tile `<img>` di bawah canvas MapLibre yang lautnya transparan, darat digambar dari CircleGeo. Tetap dimuat langsung dari browser pengguna seperti situs lama |
-| CircleGeo | `*` | `vector` source, layer `indocg` |
+| Tile OFS BMKG | diizinkan: `fetch` mode cors dari `http://localhost:3000` berhasil, `image/png` | `raster` source langsung di MapLibre, dimuat dari browser pengguna seperti situs lama |
+| CircleGeo | `*` | tidak dipakai: mask memakai `earth` peta dasar sendiri, CircleGeo terlalu kasar di MapLibre |
 | CCTV Pemko | `*` | tetap hls.js |
 | Protomaps build | tidak ada | jangan dipakai langsung dari browser; lewat hasil ekstrak |
 
 Kalau uji visual gagal, catat di sini dan jangan lanjut sebelum diputuskan (prompt 4.0 butir 4).
 
 **Jalur Trans Batam geografis:** ditunda. 0 dari 191 halte berkoordinat terverifikasi. Fase 4 memprioritaskan diagram skematik SVG, peta hanya menampilkan hub bergaya "perkiraan" (brief 10).
+
+## Sisa fase 2
+
+- Paritas ◐: situs belum punya tombol bahasa, jadi Makan punya tombol sendiri.
+- Belum diuji di HP nyata: pasang PWA, petunjuk iOS, Web Share, "Dekat saya".
+- Belum terbukti dari IP Vercel: header jujur ke BMKG. Kalau ditolak, ambil langsung dari browser (CORS terbuka). Pemilik pernah bilang boleh ikut cara hujandibatam bila jalur jujur gagal, tetapi cara itu tidak bisa diuji dari Claude Code.
+- **Koordinat Makan:** `tools/import_koordinat.py` hanya memperbarui `places.json`, sedangkan `/makan` membaca `data/makan/places.json`. Koordinat yang diisi pemilik belum sampai ke UI Makan. Sambungkan sebelum pemilik mulai mengisi.
+- 2 kemungkinan duplikat kuliner (DATA_DECISIONS).
+- Butir `{F2}` lain di COVERAGE belum dikerjakan: gempa, peringatan dini CAP, indikator "aman nyebrang", cron ingest, harga pangan.
 
 ## Sisa butir berlabel F1
 
@@ -66,8 +77,12 @@ Tinjau daftar ini saat menyentuh fase terkait; butir yang menggantung sampai fas
 
 ### Perlu dijawab sebelum fase terkait
 
-1. **Header ke BMKG.** `/api/ofs-frame` dan `/api/perairan` hujandibatam mengirim User-Agent Chrome dan Referer BMKG karena firewall BMKG menolak `Mozilla/5.0` polos. Usulan: coba User-Agent jujur (`BatamCityHall/0.1` + URL situs). Bila ditolak, panel menulis data tidak tersedia. Belum dijawab. Sampai dijawab, dua route itu jangan dijalankan dari mesin pengembangan; uji dengan data tiruan. Menentukan fase 2.
-2. **Situs lama.** Kapan boleh redirect, dan izin sebelum mengubah repo, deploy, atau DNS situs lama. Fase 9.
+1. **Header ke BMKG: terjawab, identitas jujur sudah terpasang** (`BMKG_HEADERS`, tanpa Referer). Dasarnya, uji 4 Nov 2026 dari PC pemilik:
+   - `maritim.bmkg.go.id/apidoc` menyebut `marine2026-data/` API publik: tanpa autentikasi, CORS diizinkan. `api21/modelrun` tidak tercantum di sana.
+   - Dengan User-Agent jujur tanpa Referer, `perairan/P.R.02.json`, `warning/warnings.json`, dan `api21/modelrun` semuanya 200, JSON, `Access-Control-Allow-Origin: *`. Dari browser juga lolos, termasuk tile OFS.
+   - Belum terbukti dari IP Vercel. Komentar di `ofs-frame` mencatat BMKG suka memblokir permintaan server. Kalau itu terjadi, urutannya: ambil langsung dari browser (CORS terbuka), baru bahas lagi dengan pemilik. Pemilik pernah bilang boleh ikut cara hujandibatam bila jalur jujur gagal, tetapi cara itu tidak bisa diuji dari Claude Code.
+   - `warnings.json` tidak memuat semua provinsi: 25 dari 38 tidak ada pada 4 Nov 2026, termasuk `Kep. Riau`, dan kunci `Indonesia` hanya berisi samudra. Jadi kunci yang hilang bukan berarti aman, dan status tetap "Belum Tersedia". Belum diketahui apakah kunci itu muncul saat ada peringatan. Layak ditanyakan ke BMKG atau dipantau.
+2. **Situs lama.** Kapan boleh redirect, dan izin sebelum mengubah repo, deploy, atau DNS situs lama. Fase 9. Sejak setidaknya 4 Nov 2026 keduanya membalas HTTP 402; pemilik perlu mengecek akun Vercel.
 3. **Rating Google di data makan** boleh tampil? Default: tidak. Fase 2.
 4. **Proyek Supabase dan Vercel**, atau izin membuatnya. Fase 6 dan deploy.
 5. **Bucket aset** (Cloudflare R2 atau lain) untuk PMTiles dan tile mural. Sebelum deploy.

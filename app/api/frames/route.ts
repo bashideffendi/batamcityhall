@@ -1,6 +1,5 @@
-import type { Frame } from "@/features/langit-laut/lib/radar";
+import { radarCitra, radarUrl, type Frame } from "@/features/langit-laut/lib/radar";
 import type { EchoSummary, FramesResponse } from "@/features/langit-laut/lib/api-types";
-import { MSS_FILE_BASE } from "@/features/langit-laut/lib/sources";
 import { batamStats, type EchoStats } from "@/features/langit-laut/lib/echo";
 import { KOTA_UTAMA } from "@/features/langit-laut/lib/kecamatan";
 
@@ -42,9 +41,7 @@ function tsOf(d: Date): string {
   );
 }
 
-function urlFor(ts: string): string {
-  return `${MSS_FILE_BASE}/dpsri_240km_${ts}0000dBR.dpsri.png`;
-}
+const urlFor = radarUrl;
 
 function parseTs(ts: string): Date {
   // UTC field = wall-clock SGT
@@ -69,7 +66,7 @@ function tsToWib(ts: string): { time: string; date: string } {
 
 function toFrame(ts: string): Frame {
   const { time, date } = tsToWib(ts);
-  return { url: urlFor(ts), ts, time, date };
+  return { url: radarCitra(ts), ts, time, date };
 }
 
 async function exists(ts: string): Promise<boolean> {

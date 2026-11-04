@@ -4,7 +4,7 @@ Balai warga, bukan balai kota. Website kota indie dan non-komersial untuk Batam:
 
 Proyek independen warga Batam, bukan situs resmi Pemerintah Kota Batam atau BP Batam. Untuk layanan resmi: batam.go.id.
 
-**Status:** fase 1 selesai: peta dasar siang/malam, Tentang, Kolofon. Fase 2 belum dimulai. Lihat `docs/LANJUTKAN.md`.
+**Status:** fase 2: Langit & Laut dan Makan sudah jalan, tetapi belum di-deploy. Lihat `docs/LANJUTKAN.md`.
 
 ## Menyiapkan
 
@@ -37,7 +37,8 @@ node scripts/extract-basemap.mjs
 | Build produksi | `npm run build` |
 | Tes unit | `npm test` |
 | Tes e2e + aksesibilitas (sesudah build) | `npm run test:e2e` |
-| Bangun ulang grain dan ikon iOS | `node scripts/build-aset.mjs` |
-| Ekstrak peta dasar (sekitar 30 menit) | `node scripts/extract-basemap.mjs [YYYYMMDD] [maxzoom] [keluaran]` |
+| Bangun ulang grain dan ikon | `node scripts/build-aset.mjs` |
+| Konversi data Makan ke skema tempat | `node scripts/konversi-makan.mjs`, lalu `python tools/merge_places.py` |
+| Ekstrak peta dasar (kurang dari 30 menit) | `node scripts/extract-basemap.mjs [YYYYMMDD] [maxzoom] [keluaran]` |
 
 Bagian penarikan OSM dan pembuatan tile mural ditulis saat fase terkait selesai. Rincian isi data: `docs/PAKET_HANDOFF.md`.

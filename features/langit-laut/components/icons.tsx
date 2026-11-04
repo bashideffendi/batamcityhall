@@ -84,7 +84,8 @@ export const IconWarn = ({ className }: P) => (
 // ---- ikon cuaca (garis tipis) untuk prakiraan BMKG & pembanding NEA ----
 const CLOUD_D = "M7.5 18.5h9.8a4 4 0 0 0 .5-7.97 5.6 5.6 0 0 0-10.8 1.5A3.25 3.25 0 0 0 7.5 18.5Z";
 const CLOUD_HI_D = "M7.5 15h9.8a4 4 0 0 0 .5-7.97 5.6 5.6 0 0 0-10.8 1.5A3.25 3.25 0 0 0 7.5 15Z";
-const SUN_RAYS = "M12 2.5v2M12 19.5v2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M2.5 12h2M19.5 12h2M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4";
+const SUN_RAYS =
+  "M12 2.5v2M12 19.5v2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M2.5 12h2M19.5 12h2M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4";
 export const IconCloud = ({ className }: P) => (
   <svg className={className} {...line} strokeWidth={1.6}>
     <path d={CLOUD_D} />
@@ -179,7 +180,15 @@ export const IconWind = ({ className, deg }: P & { deg: number }) => (
   </svg>
 );
 export const IconUv = ({ className, color }: P & { color: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={1.7} strokeLinecap="round" aria-hidden>
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    strokeWidth={1.7}
+    strokeLinecap="round"
+    aria-hidden
+  >
     <circle cx="12" cy="12" r="3.6" />
     <path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.1 5.1l1.7 1.7M17.2 17.2l1.7 1.7M18.9 5.1l-1.7 1.7M6.8 17.2l-1.7 1.7" />
   </svg>

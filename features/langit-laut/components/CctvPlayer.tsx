@@ -2,7 +2,15 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import type { ErrorData } from "hls.js";
-import { CCTV_CREDIT, CCTV_MB_PER_MIN, checkCam, loadHls, streamUrl, type Cam, type CamCheck } from "@/features/langit-laut/lib/cctv";
+import {
+  CCTV_CREDIT,
+  CCTV_MB_PER_MIN,
+  checkCam,
+  loadHls,
+  streamUrl,
+  type Cam,
+  type CamCheck,
+} from "@/features/langit-laut/lib/cctv";
 import { IconClose } from "./icons";
 
 // ---------------------------------------------------------------------------
@@ -30,16 +38,7 @@ type Props = {
 };
 
 type State =
-  | "idle"
-  | "checking"
-  | "connecting"
-  | "fetching"
-  | "playing"
-  | "buffering"
-  | "paused"
-  | "blocked"
-  | "dead"
-  | "error";
+  "idle" | "checking" | "connecting" | "fetching" | "playing" | "buffering" | "paused" | "blocked" | "dead" | "error";
 
 type Verdict = CamCheck["verdict"];
 
@@ -53,7 +52,9 @@ const fmtLastSeen = (ms: number) =>
   }).format(new Date(ms)) + " WIB";
 
 const fmtTime = (ms: number) =>
-  new Intl.DateTimeFormat("id-ID", { timeZone: "Asia/Jakarta", hour: "2-digit", minute: "2-digit" }).format(new Date(ms));
+  new Intl.DateTimeFormat("id-ID", { timeZone: "Asia/Jakarta", hour: "2-digit", minute: "2-digit" }).format(
+    new Date(ms),
+  );
 
 const wibDay = (ms: number) => new Date(ms + 7 * 3600 * 1000).toISOString().slice(0, 10);
 
@@ -73,8 +74,10 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
   const closeRef = useRef<HTMLButtonElement>(null);
   const onCloseRef = useRef(onClose);
   const onDeadRef = useRef(onDead);
-  onCloseRef.current = onClose;
-  onDeadRef.current = onDead;
+  useEffect(() => {
+    onCloseRef.current = onClose;
+    onDeadRef.current = onDead;
+  });
   const titleId = useId();
 
   const [started, setStarted] = useState(autoStart);

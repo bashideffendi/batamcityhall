@@ -2,6 +2,7 @@
 // npm `pmtiles` (tanpa binary tambahan). Padanan perintah resmi:
 //   pmtiles extract https://build.protomaps.com/<YYYYMMDD>.pmtiles batam.pmtiles \
 //     --bbox=103.55,0.45,104.75,1.5 --maxzoom=15
+// Bedanya, skrip ini menggabungkan beberapa wilayah dengan zoom maksimum berbeda.
 //
 // Pakai:  node scripts/extract-basemap.mjs [YYYYMMDD] [maxzoom] [berkas-keluaran]
 // Keluaran: public/tiles/batam.pmtiles (di-gitignore; produksi diunggah ke R2).
@@ -13,8 +14,14 @@ import { PMTiles, zxyToTileId } from "pmtiles";
 
 const ROOT = join(import.meta.dirname, "..");
 const OUT = process.argv[4] ? resolve(process.argv[4]) : join(ROOT, "public", "tiles", "batam.pmtiles");
-// research/00 bagian 9.2: bbox kunci peta.
-const BBOX = { w: 103.55, s: 0.45, e: 104.75, n: 1.5 };
+// Tiga wilayah bertingkat. Fokus: kunci peta beranda (research/00 bagian 9.2). Kepri dan Luas: tampilan
+// "Kepri", "Luas", dan "Natuna" di Langit & Laut (lib/radar.ts VIEWS), plus sekeliling citra radar MSS.
+const WILAYAH = [
+  { nama: "fokus", w: 103.55, s: 0.45, e: 104.75, n: 1.5, maxzoom: 15 },
+  { nama: "kepri", w: 103.1, s: -0.7, e: 104.95, n: 1.6, maxzoom: 12 },
+  { nama: "luas", w: 101.5, s: -1.6, e: 108.4, n: 5.0, maxzoom: 10 },
+];
+const BBOX = WILAYAH[2];
 const CONCURRENCY = 12;
 
 const pad = (n) => String(n).padStart(2, "0");
@@ -30,13 +37,20 @@ const lat2y = (lat, z) => {
   return Math.floor(((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2) * 2 ** z);
 };
 
-const coords = [];
-for (let z = 0; z <= MAX_ZOOM; z++) {
-  const [x0, x1] = [lon2x(BBOX.w, z), lon2x(BBOX.e, z)];
-  const [y0, y1] = [lat2y(BBOX.n, z), lat2y(BBOX.s, z)];
-  for (let x = x0; x <= x1; x++) for (let y = y0; y <= y1; y++) coords.push({ z, x, y, id: zxyToTileId(z, x, y) });
+const kandidat = new Map();
+for (const r of WILAYAH) {
+  for (let z = 0; z <= Math.min(MAX_ZOOM, r.maxzoom); z++) {
+    const [x0, x1] = [lon2x(r.w, z), lon2x(r.e, z)];
+    const [y0, y1] = [lat2y(r.n, z), lat2y(r.s, z)];
+    for (let x = x0; x <= x1; x++) {
+      for (let y = y0; y <= y1; y++) {
+        const id = zxyToTileId(z, x, y);
+        kandidat.set(id, { z, x, y, id });
+      }
+    }
+  }
 }
-coords.sort((a, b) => a.id - b.id);
+const coords = [...kandidat.values()].sort((a, b) => a.id - b.id);
 console.log(`build ${BUILD}, z0-${MAX_ZOOM}, ${coords.length} kandidat tile`);
 
 const src = new PMTiles(`https://build.protomaps.com/${BUILD}.pmtiles`);

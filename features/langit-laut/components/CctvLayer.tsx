@@ -1,40 +1,34 @@
 "use client";
 
-import { Marker, Tooltip, useMap, useMapEvents } from "react-leaflet";
-import L from "leaflet";
-import { useEffect, useMemo, useRef, useState, type MutableRefObject } from "react";
+import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type RefObject } from "react";
 import { MAPPED_CAMS, type Cam } from "@/features/langit-laut/lib/cctv";
 import { reduceMotion } from "@/features/langit-laut/lib/client";
+import { geserKeDalam, kePaddingMapLibre, pikselDunia, type Padding } from "@/features/langit-laut/lib/peta-lapisan";
 import { CCTV_MAX_ZOOM } from "@/features/langit-laut/lib/radar";
 import { CAM_PATH_A, CAM_PATH_B } from "./icons";
-import type { Padding } from "./MapController";
+import { usePeta } from "./PetaLangit";
+import PetaMarker from "./PetaMarker";
 
-// Pin kamera di peta. Ikon dibikin per kamera (divIcon) — murah, nggak narik apa-apa
-// dari jaringan. Stream baru jalan pas kamera dipilih (lihat CctvPlayer).
+// Pin kamera di peta. Stream baru jalan pas kamera dipilih (lihat CctvPlayer).
 //
 // Varian visual: biasa · perkiraan (ring putus-putus; koordinatnya bisa meleset ratusan
 // meter) · gagal diputar tadi (abu; dari sesi ini, bukan hardcode) · KELOMPOK (lingkaran
 // berangka). Area sentuh 44×44 (WCAG 2.5.8) walau visualnya lebih kecil.
-const PIN_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${CAM_PATH_A}"/><path d="${CAM_PATH_B}"/></svg>`;
 
 // Beberapa kamera duduk di satu titik yang sama (dua kamera satu simpang, beda arah
 // hadap). Dikipas di RUANG LAYAR saat render (bukan mengarang koordinat di data): tiap
 // anggota digeser 24 px mengelilingi titik aslinya, dengan garis rambut ke titik asli.
-// Dulu dikipas 45 m di bumi → di layar baru terpisah di zoom 16–17.
 const FAN_PX = 24;
 
 // Pengelompokan per UNIT = kamera-kamera di satu koordinat (dihitung dari titik ASLI, tanpa
 // offset kipas), supaya kamera kembar tidak pernah terbelah antara gelembung dan pin. Unit
 // yang jaraknya di layar ≤ 28 px digabung; jangkar TETAP dan dipilih dari unit terpadat
-// (bobot = jumlah kamera) — cara lama (centroid bergeser, 40 px) merantai kamera sejauh
-// beberapa km jadi satu gumpalan 21. Unit yang tak bergabung tampil sebagai pin (terkipas
-// kalau kembar). Simulasi 28 koordinat: z11 (zoom buka HP) 12 penanda, kelompok 9/8/2,
-// jarak minimum ±30 px; z16 tinggal satu pasangan (Southlink, 53 m); z17 semua terpisah.
+// (bobot = jumlah kamera). Unit yang tak bergabung tampil sebagai pin (terkipas kalau kembar).
 const CLUSTER_PX = 28;
 // Kelompok sampai 9 kamera → ketuk = daftar di panel. Lebih dari itu (cuma kalau
-// pengguna zoom keluar sendiri) → ketuk memperbesar peta ke zoom 12.
+// pengguna zoom keluar sendiri) → ketuk memperbesar peta.
 export const LIST_MAX = 9;
-const BIG_GROUP_ZOOM = 12;
+const BIG_GROUP_ZOOM = 11;
 
 type Placed = { cam: Cam; pos: [number, number]; off: [number, number]; site: string };
 type Group = { key: string; members: Placed[]; center: [number, number] };
@@ -70,7 +64,7 @@ function fanOut(cams: Cam[]): Placed[] {
   return out;
 }
 
-function clusterize(placed: Placed[], map: L.Map, zoom: number): Group[] {
+function clusterize(placed: Placed[], zoom: number): Group[] {
   const single = (p: Placed): Group => ({ key: p.cam.slug, members: [p], center: p.pos });
   if (zoom >= CCTV_MAX_ZOOM) return placed.map(single);
   // unit = kamera-kamera di satu koordinat
@@ -81,7 +75,7 @@ function clusterize(placed: Placed[], map: L.Map, zoom: number): Group[] {
     else unitMap.set(p.site, [p]);
   }
   const units = [...unitMap.values()];
-  const px = units.map((u) => map.project(u[0].pos, zoom));
+  const px = units.map((u) => pikselDunia(u[0].pos[0], u[0].pos[1], zoom));
   const r2 = CLUSTER_PX * CLUSTER_PX;
   const near = (i: number, j: number) => {
     const dx = px[i].x - px[j].x;
@@ -117,37 +111,20 @@ function clusterize(placed: Placed[], map: L.Map, zoom: number): Group[] {
   return out;
 }
 
-const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
-
-function camIcon(cam: Cam, failed: boolean, off: [number, number]) {
-  const [dx, dy] = off;
-  const cls = ["cam-pin", cam.approx ? "is-approx" : "", failed ? "is-mati" : ""].filter(Boolean).join(" ");
-  // Nama aksesibel per pin (prop `alt` Marker diabaikan Leaflet untuk divIcon).
-  const label = `Kamera ${cam.name}${cam.approx ? ", posisi perkiraan" : ""}${failed ? ", gagal diputar tadi" : ""}`;
-  // Pin terkipas: garis rambut dari pusat pin ke titik asli kamera.
-  const line =
-    dx || dy
-      ? `<i class="cam-fan-line" style="width:${Math.hypot(dx, dy).toFixed(1)}px;transform:rotate(${Math.atan2(-dy, -dx).toFixed(4)}rad)"></i>`
-      : "";
-  return L.divIcon({
-    className: "cam-hit",
-    html: `${line}<span class="${cls}" role="img" aria-label="${esc(label)}">${PIN_SVG}</span>`,
-    iconSize: [44, 44],
-    iconAnchor: [22 - dx, 22 - dy],
-    tooltipAnchor: [dx, dy],
-  });
-}
-
-function clusterIcon(n: number, allFailed: boolean, selected: boolean) {
-  const hint = n > LIST_MAX ? "ketuk untuk memperbesar" : "ketuk untuk memilih";
-  const cls = ["cam-cluster", allFailed ? "is-mati" : "", selected ? "is-selected" : ""].filter(Boolean).join(" ");
-  return L.divIcon({
-    className: "cam-hit",
-    html: `<span class="${cls}" role="img" aria-label="${n} kamera berdekatan, ${hint}">${n}</span>`,
-    iconSize: [44, 44],
-    iconAnchor: [22, 22],
-  });
-}
+const PinIkon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d={CAM_PATH_A} />
+    <path d={CAM_PATH_B} />
+  </svg>
+);
 
 type Props = {
   onPick: (cam: Cam) => void;
@@ -158,44 +135,68 @@ type Props = {
   /** kelompok ≤9 diketuk (daftar tampil di panel) / seleksi hilang (null) */
   onCluster: (g: CamGroup | null) => void;
   selectedKey: string | null;
-  apiRef: MutableRefObject<CctvApi | null>;
+  apiRef: RefObject<CctvApi | null>;
   /** fokuskan jawaban panel (marker yang difokus hilang sesudah zoom) */
   focusPanel: () => void;
 };
 
+const onKey = (e: KeyboardEvent, activate: () => void) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    e.stopPropagation();
+    activate();
+  }
+};
+
 export default function CctvLayer({ onPick, dead, getPadding, onCluster, selectedKey, apiRef, focusPanel }: Props) {
-  const map = useMap();
+  const map = usePeta();
   const [zoom, setZoom] = useState(() => map.getZoom());
-  const markers = useRef(new Map<string, L.Marker>());
   const onClusterRef = useRef(onCluster);
+  const selectedRef = useRef(selectedKey);
   useEffect(() => {
     onClusterRef.current = onCluster;
-  });
-  useMapEvents({
-    zoomend: () => setZoom(map.getZoom()),
-    // ketuk peta kosong = tutup daftar kelompok
-    click: () => {
-      if (selectedKey) onClusterRef.current(null);
-    },
+    selectedRef.current = selectedKey;
   });
 
+  useEffect(() => {
+    const onZoom = () => setZoom(map.getZoom());
+    // ketuk peta kosong = tutup daftar kelompok. Ketukan pada pin ikut sampai ke sini lebih dulu,
+    // lalu handler React pin membuka kembali kelompok yang diketuk.
+    const onClick = () => {
+      if (selectedRef.current) onClusterRef.current(null);
+    };
+    map.on("zoomend", onZoom);
+    map.on("click", onClick);
+    return () => {
+      map.off("zoomend", onZoom);
+      map.off("click", onClick);
+    };
+  }, [map]);
+
   const placed = useMemo(() => fanOut(MAPPED_CAMS), []);
-  const groups = useMemo(() => clusterize(placed, map, zoom), [placed, map, zoom]);
+  const groups = useMemo(() => clusterize(placed, zoom), [placed, zoom]);
 
   // API imperatif untuk panel (Perbesar Peta ke Sini, kembalikan fokus).
   useEffect(() => {
     apiRef.current = {
       zoomToCams: (cams, maxZoom) => {
-        const pts = cams.filter((c) => c.lat != null && c.lng != null).map((c) => L.latLng(c.lat!, c.lng!));
+        const pts = cams.filter((c) => c.lat != null && c.lng != null);
         if (!pts.length) return;
-        const opts = { ...getPadding(), maxZoom };
-        const b = L.latLngBounds(pts);
-        if (reduceMotion()) map.fitBounds(b, { ...opts, animate: false });
-        else map.flyToBounds(b, { ...opts, duration: 0.6 });
+        const lats = pts.map((c) => c.lat as number);
+        const lngs = pts.map((c) => c.lng as number);
+        map.fitBounds(
+          [
+            [Math.min(...lngs), Math.min(...lats)],
+            [Math.max(...lngs), Math.max(...lats)],
+          ],
+          { padding: kePaddingMapLibre(getPadding()), maxZoom, animate: !reduceMotion(), duration: 600 },
+        );
       },
       focusGroup: (key) => {
-        const el = markers.current.get(key)?.getElement();
-        el?.focus({ preventScroll: true });
+        map
+          .getContainer()
+          .querySelector<HTMLElement>(`[data-cam-key="${CSS.escape(key)}"]`)
+          ?.focus({ preventScroll: true });
       },
     };
     return () => {
@@ -214,46 +215,20 @@ export default function CctvLayer({ onPick, dead, getPadding, onCluster, selecte
     const g = groups.find((x) => x.key === selectedKey);
     if (!g) return;
     const t = window.setTimeout(() => {
-      const pad = getPadding();
-      map.panInside(L.latLng(g.center[0], g.center[1]), {
-        paddingTopLeft: L.point(pad.paddingTopLeft[0] + 24, pad.paddingTopLeft[1] + 24),
-        paddingBottomRight: L.point(pad.paddingBottomRight[0] + 24, pad.paddingBottomRight[1] + 8),
-        animate: !reduceMotion(),
-      });
+      const pad = kePaddingMapLibre(getPadding());
+      const el = map.getContainer();
+      const p = map.project([g.center[1], g.center[0]]);
+      const [dx, dy] = geserKeDalam(
+        p,
+        { w: el.clientWidth, h: el.clientHeight },
+        { left: pad.left + 24, top: pad.top + 24, right: pad.right + 24, bottom: pad.bottom + 8 },
+      );
+      if (dx || dy) map.panBy([dx, dy], { animate: !reduceMotion() });
     }, 90);
     return () => window.clearTimeout(t);
     // groups sengaja tidak jadi dependensi: geser sekali saat kelompok dipilih
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedKey, map, getPadding]);
-
-  // Ikon dibuat ulang HANYA saat susunan kelompok, status gagal, atau seleksi berubah —
-  // bukan tiap render induk (yang terjadi tiap ~30 detik).
-  const items = useMemo(
-    () =>
-      groups.map((g) => {
-        if (g.members.length > 1) {
-          const allFailed = g.members.every((m) => dead.has(m.cam.slug));
-          return {
-            key: g.key,
-            position: g.center,
-            icon: clusterIcon(g.members.length, allFailed, g.key === selectedKey),
-            group: g,
-            cam: null as Cam | null,
-            label: "",
-          };
-        }
-        const { cam, pos, off } = g.members[0];
-        const failed = dead.has(cam.slug);
-        return {
-          key: g.key,
-          position: pos,
-          icon: camIcon(cam, failed, off),
-          group: g,
-          cam: cam as Cam | null,
-          label: `${cam.name}${cam.approx ? " · Posisi Perkiraan" : ""}${failed ? " · Gagal Tadi" : ""}`,
-        };
-      }),
-    [groups, dead, selectedKey],
-  );
 
   // Gelembung ≤9 → daftar di panel; lebih dari itu → perbesar peta. Lewat keyboard, fokus
   // dipindah ke panel sesudah zoom (gelembung yang difokus dilepas saat pecah).
@@ -268,49 +243,71 @@ export default function CctvLayer({ onPick, dead, getPadding, onCluster, selecte
     }
   };
 
-  // Leaflet hanya mengubah Enter jadi klik untuk marker ber-popup → aktifkan sendiri
-  // lewat keyboard (Enter/Spasi) supaya pin & gelembung bisa dipakai tanpa mouse.
-  const onKey = (activate: () => void) => (e: L.LeafletKeyboardEvent) => {
-    const k = e.originalEvent;
-    if (k.key === "Enter" || k.key === " ") {
-      k.preventDefault();
-      activate();
-    }
-  };
-
-  const setRef = (key: string) => (m: L.Marker | null) => {
-    if (m) markers.current.set(key, m);
-    else markers.current.delete(key);
-  };
-
   return (
     <>
-      {items.map((it) =>
-        it.cam ? (
-          <Marker
-            key={it.key}
-            ref={setRef(it.key)}
-            position={it.position}
-            icon={it.icon}
-            eventHandlers={{ click: () => onPick(it.cam as Cam), keydown: onKey(() => onPick(it.cam as Cam)) }}
-            keyboard
-          >
-            <Tooltip direction="top" offset={[0, -18]} className="cam-label">
-              {it.label}
-            </Tooltip>
-          </Marker>
-        ) : (
-          <Marker
-            key={it.key}
-            ref={setRef(it.key)}
-            position={it.position}
-            icon={it.icon}
-            zIndexOffset={it.key === selectedKey ? 1000 : 0}
-            eventHandlers={{ click: () => openGroup(it.group), keydown: onKey(() => openGroup(it.group, true)) }}
-            keyboard
-          />
-        ),
-      )}
+      {groups.map((g) => {
+        if (g.members.length > 1) {
+          const n = g.members.length;
+          const allFailed = g.members.every((m) => dead.has(m.cam.slug));
+          const hint = n > LIST_MAX ? "ketuk untuk memperbesar" : "ketuk untuk memilih";
+          const cls = ["cam-cluster", allFailed ? "is-mati" : "", g.key === selectedKey ? "is-selected" : ""]
+            .filter(Boolean)
+            .join(" ");
+          return (
+            <PetaMarker
+              key={g.key}
+              posisi={g.center}
+              className={g.key === selectedKey ? "cam-marker is-top" : "cam-marker"}
+            >
+              <button
+                type="button"
+                className="cam-hit"
+                data-cam-key={g.key}
+                aria-label={`${n} kamera berdekatan, ${hint}`}
+                onClick={() => openGroup(g)}
+                onKeyDown={(e) => onKey(e, () => openGroup(g, true))}
+              >
+                <span className={cls}>{n}</span>
+              </button>
+            </PetaMarker>
+          );
+        }
+        const { cam, pos, off } = g.members[0];
+        const failed = dead.has(cam.slug);
+        const [dx, dy] = off;
+        const cls = ["cam-pin", cam.approx ? "is-approx" : "", failed ? "is-mati" : ""].filter(Boolean).join(" ");
+        return (
+          <PetaMarker key={g.key} posisi={pos} geser={off} className="cam-marker">
+            <button
+              type="button"
+              className="cam-hit"
+              data-cam-key={g.key}
+              aria-label={`Kamera ${cam.name}${cam.approx ? ", posisi perkiraan" : ""}${failed ? ", gagal diputar tadi" : ""}`}
+              onClick={() => onPick(cam)}
+              onKeyDown={(e) => onKey(e, () => onPick(cam))}
+            >
+              {/* Pin terkipas: garis rambut dari pusat pin ke titik asli kamera. */}
+              {(dx !== 0 || dy !== 0) && (
+                <i
+                  className="cam-fan-line"
+                  style={{
+                    width: `${Math.hypot(dx, dy).toFixed(1)}px`,
+                    transform: `rotate(${Math.atan2(-dy, -dx).toFixed(4)}rad)`,
+                  }}
+                />
+              )}
+              <span className={cls}>
+                <PinIkon />
+              </span>
+              <span className="cam-label">
+                {cam.name}
+                {cam.approx ? " · Posisi Perkiraan" : ""}
+                {failed ? " · Gagal Tadi" : ""}
+              </span>
+            </button>
+          </PetaMarker>
+        );
+      })}
     </>
   );
 }

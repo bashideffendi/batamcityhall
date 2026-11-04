@@ -50,7 +50,7 @@ Selain blok JSON, kalau laporan punya TABEL berisi data terstruktur yang tidak a
 ```
 
 Aturan normalisasi:
-- `kategori` enum: `pemerintahan`, `layanan_publik`, `keamanan_darurat`, `kesehatan`, `pendidikan`, `perpustakaan`, `ibadah`, `pemakaman`, `transportasi`, `belanja`, `ruang_publik`, `wisata`, `olahraga`, `akomodasi`, `jasa`, `pertanahan_hukum`, `landmark`, `kampung_tua`, `budaya`, `khas_batam`, `lainnya`. Pilih yang paling cocok; simpan kategori asli laporan di `atribut.kategori_asli` kalau berbeda.
+- `kategori` enum: `pemerintahan`, `layanan_publik`, `keamanan_darurat`, `kesehatan`, `pendidikan`, `perpustakaan`, `ibadah`, `pemakaman`, `transportasi`, `belanja`, `ruang_publik`, `wisata`, `olahraga`, `akomodasi`, `jasa`, `pertanahan_hukum`, `landmark`, `kampung_tua`, `budaya`, `khas_batam`, `kuliner`, `lainnya`. Pilih yang paling cocok; simpan kategori asli laporan di `atribut.kategori_asli` kalau berbeda.
 - `kecamatan` enum persis: `Batam Kota`, `Batu Aji`, `Batu Ampar`, `Belakang Padang`, `Bengkong`, `Bulang`, `Galang`, `Lubuk Baja`, `Nongsa`, `Sagulung`, `Sei Beduk`, `Sekupang`. ("Sungai Beduk" → `Sei Beduk`.) Kalau laporan ragu/tidak menyebut, `null` dan tulis keraguannya di `catatan`.
 - Koordinat: salin persis. Kalau `lat`/`lng` null → `status_koordinat` WAJIB `perlu_diisi_user`. Kalau ada angka tetapi laporan menyebut estimasi/kasar/sedang/rendah/pihak ketiga/perlu cek → `perlu_cek_ulang`. Hanya `terverifikasi` kalau laporan menyatakan terverifikasi.
 - `sumber_url` selalu array (ubah string tunggal jadi array; buang null).

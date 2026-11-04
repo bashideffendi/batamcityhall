@@ -2,6 +2,7 @@
 //   public/tex/grain-256.webp        grain siang, untuk mix-blend multiply
 //   public/tex/grain-256-light.webp  grain malam, untuk mix-blend screen
 //   app/apple-icon.png               ikon iOS 180 px dari public/logo/monogram.svg
+//   public/icon-192.png, icon-512.png ikon PWA dari sumber yang sama
 //
 //   node scripts/build-aset.mjs
 //
@@ -82,5 +83,15 @@ await page.setContent(
 );
 writeFileSync(join(ROOT, "app", "apple-icon.png"), await page.screenshot());
 console.log("apple-icon.png: 180×180");
+
+for (const ukuran of [192, 512]) {
+  const sisi = Math.round(ukuran * 0.72);
+  await page.setViewportSize({ width: ukuran, height: ukuran });
+  await page.setContent(
+    `<!doctype html><style>html,body{margin:0;background:#F4EFE4;display:grid;place-items:center;height:100%}svg{display:block;width:${sisi}px;height:${sisi}px}</style>${svg}`,
+  );
+  writeFileSync(join(ROOT, "public", `icon-${ukuran}.png`), await page.screenshot());
+  console.log(`icon-${ukuran}.png`);
+}
 
 await browser.close();

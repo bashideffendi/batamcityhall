@@ -6,9 +6,7 @@ import {
   VIEWS,
   VIEW_KEYS,
   defaultViewFor,
-  timeBasedTheme,
   type Mode,
-  type ThemeMode,
   type ViewKey,
 } from "./radar";
 
@@ -20,8 +18,6 @@ export type InitialState = {
   collapsed: boolean;
   /** bagian Detail panel terbuka */
   detail: boolean;
-  themeOverride: ThemeMode | null;
-  theme: ThemeMode;
   recentCams: Cam[];
   /** petunjuk "Ketuk Pin atau Angka…" masih perlu ditampilkan */
   camHint: boolean;
@@ -69,9 +65,6 @@ export function readInitialState(): InitialState {
   if (urlView && VIEW_KEYS[mode].includes(urlView)) view = urlView;
   else if (sv && sv in VIEWS && VIEW_KEYS[mode].includes(sv as ViewKey)) view = sv as ViewKey;
 
-  const st = readPref(PREF.theme);
-  const themeOverride: ThemeMode | null = st === "light" || st === "dark" ? st : null;
-
   const recentCams = readRecentCams();
   return {
     mode,
@@ -79,8 +72,6 @@ export function readInitialState(): InitialState {
     cam,
     collapsed: readPref(PREF.collapsed) === "1",
     detail: readPref(PREF.detail) === "1",
-    themeOverride,
-    theme: themeOverride ?? timeBasedTheme(),
     recentCams,
     // pernah memilih kamera (tercatat di "Baru Kamu Buka") = sudah paham, petunjuk tak perlu
     camHint: readPref(PREF.camHint) !== "1" && recentCams.length === 0,

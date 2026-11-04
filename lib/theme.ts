@@ -47,6 +47,8 @@ export function subscribeTheme(onChange: () => void): () => void {
 export function followSystemTheme(): () => void {
   const mq = window.matchMedia("(prefers-color-scheme: dark)");
   const onChange = () => {
+    // Langit & Laut ikut jam WIB, bukan preferensi sistem (useThemeMode).
+    if (window.location.pathname.startsWith("/langit-laut")) return;
     if (!storedTheme()) applyTheme(mq.matches ? "night" : "day");
   };
   mq.addEventListener("change", onChange);

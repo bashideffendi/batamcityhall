@@ -2,21 +2,13 @@
 // tinggi gelombang per jam, angin/hembusan, arus, cuaca — plus PERINGATAN DINI gelombang yang
 // menyebut perairan Batam. Data persis Batam (bukan proksi), pelengkap field warna OFS.
 // Penguraian & pemilihan jam yang berlaku ada di lib/perairan.ts.
-//
-// WAF BMKG menolak User-Agent "Mozilla/5.0" polos tapi menerima UA browser lengkap.
 import type { PerairanResponse, PerairanWarn } from "@/features/langit-laut/lib/api-types";
 import { emptyPerairan, parseBulletin, pickPerairan, warnAt } from "@/features/langit-laut/lib/perairan";
-import { OFS_PERAIRAN, OFS_REFERER, OFS_WARNINGS } from "@/features/langit-laut/lib/sources";
+import { BMKG_HEADERS, OFS_PERAIRAN, OFS_WARNINGS } from "@/features/langit-laut/lib/sources";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 10;
 
-const HEADERS = {
-  "User-Agent":
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-  Accept: "application/json",
-  Referer: OFS_REFERER,
-};
 // Latensi BMKG terukur 0,7–3,6 dtk → 8 dtk (4 dtk pernah bikin 503 di panggilan pertama).
 const FETCH_TIMEOUT_MS = 8000;
 // Berkas terbit ±sekali sehari (issued 12.00 UTC, Last-Modified ±00.00 UTC) dan mencakup
@@ -43,7 +35,7 @@ async function getJson(url: string, fresh = false): Promise<Raw> {
   const res = await fetch(url, {
     ...(fresh ? { cache: "no-store" as const } : { next: { revalidate: 1800 } }),
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-    headers: HEADERS,
+    headers: BMKG_HEADERS,
   });
   if (!res.ok) throw new Error(`http ${res.status}`);
   return (await res.json()) as Raw;
@@ -61,7 +53,9 @@ export async function GET() {
       bulletins = [...bulletins.filter((x) => x.from !== b.from), b]
         .filter((x) => Date.parse(x.until) > now)
         .slice(-4);
-    } else console.warn('[perairan] peringatan: skema berubah (key "Kep. Riau".data.warning tidak dikenali)');
+      // warnings.json tidak selalu memuat semua provinsi (4 Nov 2026: 25 dari 38 tidak ada), jadi ini
+      // bukan berarti tidak ada peringatan. Statusnya tetap "unknown", tidak pernah "aman".
+    } else console.warn('[perairan] peringatan: tidak ada buletin "Kep. Riau" di warnings.json, atau skemanya berubah');
   } else console.warn("[perairan] peringatan gagal:", (w.reason as Error)?.message);
   const known = now - warnFetchedAt < WARN_FRESH_MS ? bulletins : [];
 

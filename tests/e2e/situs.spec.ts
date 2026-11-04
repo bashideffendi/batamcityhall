@@ -22,6 +22,19 @@ async function porsiWarna(page: Page, hex: string) {
   return cocok / (png.width * png.height);
 }
 
+// Kotak Hari Ini memanggil route yang menarik data MSS dan BMKG. Tes tidak boleh membebani server mereka.
+test.beforeEach(async ({ page }) => {
+  await page.route("**/api/frames", (r) => r.fulfill({ json: { frames: [], stale: true, echo: null } }));
+  await page.route("**/api/ofs-frame", (r) =>
+    r.fulfill({
+      json: { baserun: "", frames: [], nowIndex: 0, fallback: true, source: "blind", ageH: 0, expired: false },
+    }),
+  );
+  await page.route("**/api/perairan", (r) =>
+    r.fulfill({ json: { code: "P.R.02", name: "", issued: "", current: null, upcoming: false, warns: [], slots: [] } }),
+  );
+});
+
 test.describe("teks wajib", () => {
   for (const path of ["/", "/tentang", "/kolofon", "/tidak-ada"]) {
     test(`disclaimer dan atribusi ada di ${path}`, async ({ page }) => {
@@ -43,7 +56,7 @@ test.describe("halaman", () => {
 
   test("Tentang memuat angka dari statistik data", async ({ page }) => {
     await page.goto("/tentang");
-    await expect(page.getByText("Direktori saat ini memuat 775 tempat")).toBeVisible();
+    await expect(page.getByText("Direktori saat ini memuat 892 tempat")).toBeVisible();
   });
 
   test("Kolofon mencatat ketiga huruf", async ({ page }) => {
