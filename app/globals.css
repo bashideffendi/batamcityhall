@@ -791,3 +791,18 @@ a.bch-card:hover {
     color: var(--bch-ink-muted);
   }
 }
+.bch-menu-lede {
+  display: block;
+  font-size: var(--bch-text-small);
+  font-weight: 400;
+  color: var(--bch-ink-muted);
+}
+.bch-osm-daftar {
+  display: grid;
+  gap: var(--bch-space-2);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+}
+.bch-osm-daftar a {
+  display: inline-block;
+  padding-block: var(--bch-space-2);
+}

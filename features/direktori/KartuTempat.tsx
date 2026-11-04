@@ -8,6 +8,7 @@ import {
   labelSub,
   teksDicek,
   type Place,
+  jamPublik,
 } from "./data";
 
 // Kartu label museum (research/05): kicker, nama, lokasi italic, garis, lalu fakta. Versi ringkas untuk
@@ -56,7 +57,7 @@ export default function KartuTempat({ p }: { p: Place }) {
       <p className="bch-card-meta mt-2 mb-0">
         {p.jam_layanan && (
           <>
-            {p.jam_layanan}
+            {jamPublik(p)}
             <br />
           </>
         )}

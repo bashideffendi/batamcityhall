@@ -12,6 +12,7 @@ import {
   catatanPublik,
   DAFTAR_KATEGORI,
   daftarPin,
+  jamPublik,
   kartuMinimal,
   kategoriDariSlug,
   kontakPublik,
@@ -94,6 +95,13 @@ describe("data sensitif tidak sampai ke warga", () => {
     expect(tautanAman("https://disdikkotabatam.org")).toBe(false);
     expect(tautanAman("https://batam.go.id")).toBe(true);
     expect(kontakPublik(contoh({ kontak: { website: "bpbd.damkarbatam.com" } }))).toEqual([]);
+  });
+
+  it("jam layanan tanpa emoji catatan", () => {
+    expect(jamPublik({ jam_layanan: "05.30–23.30 (data 2018, ⚠️ perlu cek ulang)" })).toBe(
+      "05.30–23.30 (data 2018, perlu cek ulang)",
+    );
+    expect(jamPublik({ jam_layanan: null })).toBeNull();
   });
 
   it("tanggal dicek tidak dikarang", () => {
@@ -269,5 +277,13 @@ describe("berteduh", () => {
     ];
     expect(pilihBerteduh(baris, ["LUBUK BAJA"]).map((x) => x.id)).toEqual(["a", "b", "f"]);
     expect(pilihBerteduh(baris, [])).toEqual([]);
+  });
+});
+
+describe("catatan kurasi", () => {
+  it("catatan penting tetap sampai ke warga tanpa kata kerja penyusun", () => {
+    const p = tempatPerId.get("pub-possar") as Place;
+    expect(catatanPublik(p)).toContain("Masih berstatus Pos SAR");
+    expect(catatanPublik(p)).not.toMatch(/laporan|tabel/i);
   });
 });

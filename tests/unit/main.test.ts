@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { bungkus } from "@/features/main/gambar-kartu";
 import { hitungOngkos, TARIF } from "@/features/main/ongkos";
+import { cariPin } from "@/features/peta/CariPeta";
+import type { PinPeta } from "@/features/peta/lapisan";
 
 describe("ongkos", () => {
   it("menghitung dari tarif tercatat", () => {
@@ -36,5 +38,19 @@ describe("bungkus teks", () => {
 
   it("kosong tidak menghasilkan baris", () => {
     expect(bungkus("   ", lebar, 10)).toEqual([]);
+  });
+});
+
+describe("cari pin", () => {
+  const pin = (id: string, nama: string, lokasi = "Sekupang") => ({ id, nama, lokasi, lain: [] }) as unknown as PinPeta;
+  const pins = [pin("a", "Masjid Agung"), pin("b", "Agung Jaya", "Nongsa"), pin("c", "Pasar Baru")];
+
+  it("awalan nama didahulukan, lokasi juga dicari", () => {
+    expect(cariPin(pins, "agung").map((p) => p.id)).toEqual(["b", "a"]);
+    expect(cariPin(pins, "nongsa").map((p) => p.id)).toEqual(["b"]);
+  });
+
+  it("kata terlalu pendek tidak mencari", () => {
+    expect(cariPin(pins, "a")).toEqual([]);
   });
 });

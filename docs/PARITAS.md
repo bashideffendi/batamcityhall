@@ -52,7 +52,7 @@ Asal kode: hujandibatam `45281a64de5fe068de9d95b9bbc73ba4eb5af4db`, batam-bites 
 - ✔ Detail: menu andalan, jam + buka sekarang, harga IDR + kurs SGD/MYR/USD, pembayaran, mini-map, tombol Navigasi (kueri `gmaps`) — e2e; opsi USD dan kursnya kode
 - ✔ 5 jalur kuliner dengan peta jalur — e2e, live
 - ✔ Favorit localStorage + ekspor/impor atau tautan daftar slug — e2e simpan, muat ulang, tautan `?simpan=`, impor
-- ◐ ID/EN (+ 中文 bila ada isinya), ikut tombol bahasa situs — bahasa jalan, tetapi situs belum punya tombol bahasa, jadi Makan punya tombol sendiri. Teks 中文 untuk UI baru belum dibaca penutur
+- ✔ ID/EN (+ 中文 bila ada isinya) — e2e. Menyimpang dari prompt: tombol bahasa hanya di Makan, karena hanya loket ini yang punya terjemahan; tombol di header akan menjanjikan bahasa yang tidak ada (DATA_DECISIONS). Teks 中文 untuk UI baru belum dibaca penutur
 - ✔ About: prinsip tanpa listing berbayar, penafian halal "kurasi best-effort, verifikasi langsung bila ragu" — e2e
 - ✔ PWA — manifest dan sw.js situs yang sama; pemasangan belum diuji di HP nyata
 - ✔ Label kurasi bergaya label museum; emoji kategori diganti ikon garis — e2e
@@ -63,13 +63,13 @@ Asal kode: hujandibatam `45281a64de5fe068de9d95b9bbc73ba4eb5af4db`, batam-bites 
 
 ## Pengalihan (hanya setelah semua ✔ dan izin pemilik)
 
-- ☐ Peta redirect 301 per path untuk kedua situs
-- ☐ `sw.js` pengganti: bersihkan cache, arahkan ke situs baru
-- ☐ Situs lama tetap hidup selama transisi. Jangan push, deploy, atau mengubah DNS/Vercel situs lama tanpa persetujuan eksplisit
+- ✔ Peta redirect 301 per path untuk kedua situs: siap di `deploy/situs-lama/`, dites `tests/unit/redirect-lama.test.ts`, **belum dijalankan**
+- ✔ `sw.js` pengganti: bersihkan cache, arahkan ke situs baru: siap, **belum dijalankan dan belum pernah dicoba di browser dengan service worker lama**. Favorit batam-bites pindah lewat `saved.html`
+- ☐ Eksekusi pengalihan: menunggu izin eksplisit pemilik. Situs lama tidak disentuh
 
 ## Tambahan fase 3 (tidak ada di situs lama)
 
 - ✔ Koordinat dari `tools/import_koordinat.py` sampai ke `/makan` — tes unit
 - ✔ "Lagi hujan di {kecamatan}" di detail Makan, "Buat berteduh" di detail hujan — e2e
 - ✔ Rating tetap tidak tampil, termasuk di direktori — tes unit dan e2e
-- ☐ Feri terakhir di detail Makan — fase 4
+- ✔ Feri terakhir di detail Makan — fase 4, e2e

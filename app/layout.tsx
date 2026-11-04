@@ -21,6 +21,8 @@ const sans = Plus_Jakarta_Sans({
   variable: "--font-sans",
 });
 const mono = IBM_Plex_Mono({
+  // Bukan huruf utama: jangan bersaing dengan teks judul saat halaman pertama dimuat.
+  preload: false,
   subsets: ["latin"],
   weight: ["300", "400"],
   display: "swap",

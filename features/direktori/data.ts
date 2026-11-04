@@ -172,7 +172,29 @@ const CATATAN_INTERNAL =
   /laporan|seed|riset|prosa|jangan|DPO|^\[|lintas|koordinat|brief|ringkasan|\bJSON\b|isi manual|disimpulkan|tabel|digabung|perlu (di)?cek|sumber lain|\[V\]|\[A\]|wiki|sengaja|kapolsek|ikon|quest|topik sensitif|di UI|untuk layer|kartu hening|disebut-sebut|webarchive|\bentri\b|\(S\d+\)/i;
 const KATEGORI_TANPA_CATATAN = new Set(["kampung_tua", "lainnya", "kuliner", "akomodasi"]);
 
+/** Jam layanan tanpa tanda catatan penyusun. */
+export const jamPublik = (p: Pick<Place, "jam_layanan">) => p.jam_layanan?.replace(/\s*⚠️\s*/gu, " ").trim() ?? null;
+
+// Catatan penting yang tersaring karena bercampur catatan kerja: ditulis ulang dari catatan aslinya, tanpa fakta baru.
+const CATATAN_KURASI: Record<string, string> = {
+  "pub-possar":
+    "Masih berstatus Pos SAR di bawah KPP Basarnas Kelas A Tanjungpinang. Peluang naik status menjadi Kantor SAR Kelas B, yang disebut pada 7 Agustus 2026, belum terjadi.",
+  "pln-tiban":
+    "Kantor baru sejak 4 Agustus 2025, pindah dari Jl. RE. Martadinata, Kawasan Industri Sekupang. Alamat lama sudah usang.",
+  "tpu-seitemiang":
+    "Lahan makam Kristen dipindah ke lahan baru di sebelah makam Tionghoa. Pemko mengambil alih pengelolaan dan menanggung biaya gali tutup makam di Sei Temiang, Sei Panas, dan Kavling Bagan. Biaya makam 2019 yang dikutip media sudah usang.",
+  "kua-batuaji":
+    "Alamat KUA Batu Aji dan KUA Sagulung sama-sama disebut di Jl. R. Suprapto, jadi bisa tertukar. Cek dulu sebelum datang.",
+  "kua-sagulung":
+    "Alamat KUA Batu Aji dan KUA Sagulung sama-sama disebut di Jl. R. Suprapto, jadi bisa tertukar. Cek dulu sebelum datang.",
+  "kes-rs-awal-bros": "Tipe RS tercatat A di satu sumber dan B di sumber lain.",
+  "or-015": "Status operasional perlu dicek.",
+  "terminal-feri-sekupang": "Jadwal feri antarsumber sering berbeda, cek ke operator.",
+  "kantor-pos-jodoh": "Telepon data 2014. Cabang kantor pos perlu dicek apakah masih buka.",
+};
+
 export function catatanPublik(p: Place): string | null {
+  if (Object.hasOwn(CATATAN_KURASI, p.id)) return CATATAN_KURASI[p.id];
   if (!p.catatan || KATEGORI_TANPA_CATATAN.has(p.kategori) || CATATAN_INTERNAL.test(p.catatan)) return null;
   return p.catatan.replace(/\s*⚠️\s*/g, " ").trim();
 }
@@ -220,6 +242,10 @@ const ATRIBUT: Record<string, string> = {
   ramah_anak: "Ramah anak",
   parkir: "Parkir",
   waktu_terbaik: "Waktu terbaik",
+  wahana: "Wahana",
+  wahana_hari_kerja: "Wahana hari kerja",
+  toilet: "Toilet",
+  total_spklu_pln_batam: "Total SPKLU PLN Batam",
   pembayaran: "Pembayaran",
   agama_makam: "Agama",
   akses: "Akses",
@@ -364,7 +390,7 @@ export function daftarPin(sumber: Place[] = TEMPAT): Pin[] {
       perkiraan: p.status_koordinat !== "terverifikasi",
       lokasi: lokasiTeks(p),
       alamat: p.alamat,
-      jam: p.jam_layanan,
+      jam: jamPublik(p),
       lencana: lencana(p),
       lain: [],
     });

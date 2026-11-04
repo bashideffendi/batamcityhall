@@ -330,3 +330,46 @@ html[data-gerak="tenang"] .peta-itik svg {
 .peta-lapisan-contoh[data-jenis="pasti"] {
   background: var(--bch-accent);
 }
+
+.peta-cari {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--bch-space-2) var(--bch-space-3);
+  align-items: end;
+  padding: var(--bch-space-3) var(--bch-space-4) 0;
+  max-width: 44rem;
+}
+.peta-cari-pesan,
+.peta-cari-hasil {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+.peta-cari-pesan {
+  font-size: var(--bch-text-small);
+  color: var(--bch-ink-muted);
+}
+.peta-cari-hasil button {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: var(--bch-space-2) 0;
+  background: none;
+  border: 0;
+  border-bottom: var(--bch-stroke-hair) solid var(--bch-rule-strong);
+  color: var(--bch-ink);
+  text-align: left;
+  cursor: pointer;
+}
+.peta-cari-hasil button:hover {
+  color: var(--bch-accent);
+}
+.peta-cari-hasil span {
+  color: var(--bch-ink-muted);
+  font-size: var(--bch-text-small);
+}
+.peta-cari-kosong {
+  padding-block: var(--bch-space-2);
+  font-size: var(--bch-text-small);
+  color: var(--bch-ink-muted);
+}

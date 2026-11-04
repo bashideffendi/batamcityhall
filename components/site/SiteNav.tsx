@@ -90,7 +90,10 @@ export default function SiteNav() {
               <li key={l.nomor}>
                 <Link href={l.href} prefetch={LOKET_DIBUKA.includes(l.nomor) ? undefined : false}>
                   <span className="no">{l.nomor}</span>
-                  <span>{l.nama}</span>
+                  <span>
+                    {l.nama}
+                    <span className="bch-menu-lede">{l.lede}</span>
+                  </span>
                 </Link>
               </li>
             ))}

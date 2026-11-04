@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import poi from "@/data/osm/lapisan/poi.json";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -51,6 +52,7 @@ export default async function Subkategori({ params }: Props) {
   const { kategori, sub } = await params;
   const h = cari(kategori, sub);
   if (!h) notFound();
+  const osm = (poi.daftar as Record<string, { nama: string; osm: string }[]>)[`${kategori}/${sub}`] ?? [];
   return (
     <div className="bch-page">
       <p className="bch-kicker m-0">
@@ -73,6 +75,24 @@ export default async function Subkategori({ params }: Props) {
             ))}
           </ul>
         </>
+      )}
+      {osm.length > 0 && (
+        <section data-daftar-osm>
+          <h2 className="mt-7 mb-2">Menurut OpenStreetMap</h2>
+          <p className="bch-note">
+            {osm.length} nama dari OpenStreetMap, ditarik {poi.ditarik}. Ini data relawan yang belum kami cek, jadi
+            tidak masuk hitungan direktori. Bisa sudah tutup atau pindah. © OpenStreetMap contributors, ODbL.
+          </p>
+          <ul className="bch-osm-daftar mt-3">
+            {osm.map((t) => (
+              <li key={t.osm}>
+                <a href={`https://www.openstreetmap.org/${t.osm}`} rel="noopener noreferrer">
+                  {t.nama}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
     </div>
   );

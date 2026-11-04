@@ -12,6 +12,7 @@ import { ageMinutesOf } from "@/features/langit-laut/lib/radar";
 import { RADAR_OLD_MIN } from "@/features/langit-laut/lib/status";
 import { readTheme } from "@/lib/theme";
 import { pasangGlobalPeta, webglAda } from "./global";
+import CariPeta, { type PesanLokasi } from "./CariPeta";
 import ItikBerbaris from "./ItikBerbaris";
 import KartuPin from "./KartuPin";
 import {
@@ -57,6 +58,8 @@ export default function PetaLaut() {
   const [aktif, setAktif] = useState<ReadonlySet<string>>(() => new Set(GRUP_AWAL));
   const [hujan, setHujan] = useState(true);
   const [pilihId, setPilihId] = useState(() => new URLSearchParams(window.location.search).get("tempat"));
+  const [saya, setSaya] = useState<[number, number] | null>(null);
+  const [pesanLokasi, setPesanLokasi] = useState<PesanLokasi>(null);
   const now = useNow(TICK_MS);
   const frames = useResource<FramesResponse>("/api/frames", SEGAR_MS, hujan, false);
 
@@ -140,8 +143,8 @@ export default function PetaLaut() {
   const radarTs = terakhir && umurRadar !== null && umurRadar <= RADAR_OLD_MIN ? terakhir.ts : null;
 
   useEffect(() => {
-    map?.setStyle(gayaBeranda(baseStyle(theme, window.location.origin), { theme, pins: pinTampil, radarTs }));
-  }, [map, theme, pinTampil, radarTs]);
+    map?.setStyle(gayaBeranda(baseStyle(theme, window.location.origin), { theme, pins: pinTampil, radarTs, saya }));
+  }, [map, theme, pinTampil, radarTs, saya]);
 
   // Tautan ?tempat=: peta langsung ke pinnya, cukup dekat supaya tidak tertelan klaster.
   useEffect(() => {
@@ -195,6 +198,34 @@ export default function PetaLaut() {
       }
     };
   }, [map, pins, ubahPilih]);
+
+  const pilihDariCari = (p: PinPeta) => {
+    ubahPilih(p.id);
+    map?.easeTo({ center: [p.lng, p.lat], zoom: Math.max(map.getZoom(), 14), animate: !gerakTenang() });
+  };
+
+  const keSekitar = () => {
+    if (!navigator.geolocation) {
+      setPesanLokasi({ teks: "Browser ini tidak bisa memberi lokasi." });
+      return;
+    }
+    setPesanLokasi({ teks: "Mencari lokasi Anda…" });
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        const [[w, s], [e, n]] = MAP_BOUNDS;
+        if (coords.longitude < w || coords.longitude > e || coords.latitude < s || coords.latitude > n) {
+          setPesanLokasi({ teks: "Anda di luar peta Batam." });
+          return;
+        }
+        const titik: [number, number] = [coords.longitude, coords.latitude];
+        setSaya(titik);
+        setPesanLokasi({ teks: "Titik Anda hanya tersimpan di layar ini, tidak dikirim ke mana pun." });
+        map?.easeTo({ center: titik, zoom: Math.max(map.getZoom(), 14), animate: !gerakTenang() });
+      },
+      () => setPesanLokasi({ teks: "Lokasi tidak tersedia. Izinnya mungkin belum diberikan." }),
+      { timeout: 10_000, maximumAge: 0 },
+    );
+  };
 
   const ubahGrup = (id: string, nyala: boolean) => {
     const baru = new Set(aktif);
@@ -266,6 +297,7 @@ export default function PetaLaut() {
           </>
         )}
       </section>
+      {pins && <CariPeta pins={pins} onPilih={pilihDariCari} onSekitar={keSekitar} pesan={pesanLokasi} />}
       <fieldset className="peta-lapisan">
         <legend>Lapisan peta</legend>
         <label>

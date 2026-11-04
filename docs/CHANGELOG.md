@@ -1,5 +1,41 @@
 # CHANGELOG
 
+## 2026-11-05 · Fase 10: audit
+
+- `COVERAGE.md` tanpa `[ ]`: tiap baris sudah `[x]` atau `[-]` dengan alasan. 99 butir berstatus ditunda dengan syaratnya. Baris sisa diklasifikasi tiga agen dengan memeriksa kode, belum dicek ulang satu per satu oleh pemimpin.
+- Jelajah build produksi: 2.607 alamat, 0 tautan internal rusak, tidak ada catatan penyusun yang lolos kecuali satu tanda ⚠️ di jam layanan, sudah dibetulkan.
+- Lighthouse (preset HP, renderer perangkat lunak): aksesibilitas dan SEO 100 di 6 halaman yang diuji. Performa 85 sampai 88, beranda 56 karena peta WebGL tanpa GPU. Belum diuji di HP asli.
+- Baru dari temuan audit: pencarian tempat dan "Di sekitarku" di peta beranda, daftar OSM berlabel di subkategori kosong, catatan publik untuk alamat usang (`CATATAN_KURASI`), satu baris penjelas di menu HP, atribusi BIG.
+- Label Makan "Hits", "Wajib Coba", "Hidden Gem" diganti karena masuk daftar hindari.
+- `docs/TODO_PEMILIK.md`, `docs/KONFLIK_DATA.md`.
+
+## 2026-11-05 · Fase 9: Main-main, redirect, OSM
+
+- `/main`, `/main/kartu-pos` (gambar di browser, tanpa server), `/main/vibe` (hanya ngopi dan macet), `/main/singapura-atau-nagoya` (kurs diisi pengguna).
+- `deploy/situs-lama/`: redirect 301, `sw.js` pengganti, halaman pindah favorit. **Disiapkan, belum dijalankan.** Peta path di `lib/redirect-lama.ts`.
+- Overpass dijalankan 4 Nov 2026 UTC (`data/osm/2026-11-04`): 775 tempat ibadah, 301 sekolah, 165 halte bus. Satu query (jalan utama) gagal 502 dan tidak diulang. **Temuan yang membantah riset:** OSM sudah punya relasi Koridor 1 dan 113 halte bertanda Trans Batam. Jadi garis K1 dan halte OSM kini tampil di `/jalan/peta` sebagai lapisan terpisah berlabel.
+- Tiga koordinat naik ke terverifikasi karena cocok OSM di bawah 50 m: Pura Agung Amerta Bhuana, Mitra10, RSUD Embung Fatimah. TMP dan paroki tetap perkiraan sesuai brief 09.
+
+## 2026-11-05 · Fase 8: Mural
+
+- `/mural` dengan OpenSeadragon, satu segmen placeholder berlabel (Harbour Bay–Nagoya–Jodoh), strip 8 perhentian, hotspot dengan alternatif daftar, quest "Jejak pusat niaga", overlay siang/senja/malam, hujan per kecamatan, kapal feri berlabel "posisi perkiraan, bukan AIS". Tool GCP di `/mural/gcp`. Pipeline di `docs/MURAL.md`, belum pernah dijalankan dengan ilustrasi asli.
+
+## 2026-11-05 · Fase 7: Berita
+
+- `/info/berita`, `/api/berita`, widget beranda. 6 feed valid: Batam Pos, Antara Kepri, GoWest, GoKepri, Ulasan.co, Media Center Pemko Batam. Hanya judul, sumber, waktu, tautan. Yang menolak dicatat di `docs/SUMBER_BERITA.md`, tidak diakali.
+
+## 2026-11-05 · Fase 6: Tukang Langganan
+
+- `/tukang`, `/tukang/rekomendasi`, `/koreksi`, `/admin`, `/admin/cek-ulang`, `/admin/koordinat`, migrasi `supabase/`. Aturan 2 rekomendasi dan persetujuan moderator diuji. **Hanya mode contoh dan mode mati yang teruji di browser. Supabase belum pernah dijalankan sungguhan.**
+
+## 2026-11-05 · Fase 5: Cerita & Budaya
+
+- `/cerita`, `/cerita/sejarah`, `/cerita/dulu`, `/cerita/kampung-tua` (56 kartu), `/cerita/rempang` (draf), `/cerita/nama-jalan` (46 kartu), `/cerita/kalender`, `/cerita/kamus`, `/cerita/budaya`, `/cerita/komunitas`, `/cerita/angka`. Tes menghitung semua item terhadap file data. Belum ada foto lama yang tampil, semua lewat tautan arsip.
+
+## 2026-11-05 · Fase 4: Jalan-jalan
+
+- `/jalan`, `/jalan/trans-batam` dan 10 halaman koridor dengan diagram skematik dan strip map, `/jalan/peta`, `/jalan/feri`, panduan menyeberang, `/jalan/pompong`. Widget feri terakhir di Hari Ini dan detail Makan, dengan semua jebakan data di brief 14 diuji unit.
+
 ## 2026-11-05 · Fase 3: Info Warga, direktori, dan pin di peta
 
 Sisa fase 3 dicatat di `PLAN.md`. Riset Overpass, harga pangan, dan formulir koreksi belum dikerjakan.

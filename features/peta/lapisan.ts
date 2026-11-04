@@ -62,9 +62,9 @@ export function pinKeGeoJson(pins: PinPeta[]): GeoJSON.FeatureCollection {
   };
 }
 
-type Lapisan = { theme: MapTheme; pins: PinPeta[]; radarTs: string | null };
+type Lapisan = { theme: MapTheme; pins: PinPeta[]; radarTs: string | null; saya?: [number, number] | null };
 
-export function gayaBeranda(base: StyleSpecification, { theme, pins, radarTs }: Lapisan): StyleSpecification {
+export function gayaBeranda(base: StyleSpecification, { theme, pins, radarTs, saya }: Lapisan): StyleSpecification {
   const c = PALET[theme];
   const sources = { ...base.sources };
   const iLabel = base.layers.findIndex((l) => l.type === "symbol");
@@ -149,6 +149,21 @@ export function gayaBeranda(base: StyleSpecification, { theme, pins, radarTs }: 
       paint: { "circle-radius": 16, "circle-opacity": 0 },
     },
   ];
+
+  if (saya) {
+    sources["lp-saya"] = { type: "geojson", data: { type: "Point", coordinates: saya } };
+    atasLabel.push({
+      id: "lp-saya",
+      type: "circle",
+      source: "lp-saya",
+      paint: {
+        "circle-radius": 8,
+        "circle-color": c.ink,
+        "circle-stroke-color": c.land,
+        "circle-stroke-width": 3,
+      },
+    });
+  }
 
   return {
     ...base,

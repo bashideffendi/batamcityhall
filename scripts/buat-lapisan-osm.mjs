@@ -101,6 +101,69 @@ const pembungkus = (features) => ({
 writeFileSync("data/osm/lapisan/feri.geojson.json", JSON.stringify(pembungkus(fiturFeri)) + "\n");
 writeFileSync("data/osm/lapisan/halte.geojson.json", JSON.stringify(pembungkus(fiturHalte)) + "\n");
 
+// --- Tempat menurut OSM untuk subkategori yang belum punya data kurasi. Tidak masuk hitungan direktori. ---
+const PETA_POI = [
+  ["06-a_kesehatan.json", "kesehatan/klinik", (t) => t.amenity === "clinic"],
+  ["06-a_kesehatan.json", "kesehatan/apotek", (t) => t.amenity === "pharmacy"],
+  ["06-a_kesehatan.json", "kesehatan/laboratorium", (t) => t.healthcare === "laboratory"],
+  ["06-a_kesehatan.json", "kesehatan/dokter-umum", (t) => t.amenity === "doctors"],
+  ["06-a_kesehatan.json", "kesehatan/dokter-gigi", (t) => t.amenity === "dentist"],
+  ["06-a_kesehatan.json", "kesehatan/dokter-hewan", (t) => t.amenity === "veterinary"],
+  ["06-b_belanja.json", "belanja/minimarket", (t) => t.shop === "convenience"],
+  ["06-c_transportasi.json", "transportasi/spbu", (t) => t.amenity === "fuel"],
+  ["06-c_transportasi.json", "transportasi/terminal-bus", (t) => t.amenity === "bus_station"],
+  ["06-d_olahraga_ibadah_makam.json", "olahraga/tenis", (t) => /tennis/.test(t.sport ?? "") && t.leisure === "pitch"],
+  [
+    "06-d_olahraga_ibadah_makam.json",
+    "olahraga/basket",
+    (t) => /basketball/.test(t.sport ?? "") && t.leisure === "pitch",
+  ],
+  [
+    "06-d_olahraga_ibadah_makam.json",
+    "olahraga/voli",
+    (t) => /volleyball/.test(t.sport ?? "") && t.leisure === "pitch",
+  ],
+  [
+    "06-d_olahraga_ibadah_makam.json",
+    "olahraga/futsal",
+    (t) => /futsal/.test(t.sport ?? "") || /futsal/i.test(t.name ?? ""),
+  ],
+  [
+    "06-d_olahraga_ibadah_makam.json",
+    "ibadah/klenteng",
+    (t) =>
+      t.amenity === "place_of_worship" &&
+      (/taoist|confucian|chinese_folk/.test(t.religion ?? "") || /kl?enteng/i.test(t.name ?? "")),
+  ],
+];
+const poi = {};
+for (const [berkas, kunci, cocok] of PETA_POI) {
+  const lihat = new Set();
+  poi[kunci] = baca(berkas)
+    .filter((e) => e.tags?.name && cocok(e.tags))
+    .filter((e) => {
+      const n = e.tags.name.toLowerCase();
+      if (lihat.has(n)) return false;
+      lihat.add(n);
+      return true;
+    })
+    .map((e) => ({ nama: e.tags.name, osm: `${e.type}/${e.id}` }))
+    .sort((a, b) => a.nama.localeCompare(b.nama, "id"));
+}
+writeFileSync(
+  "data/osm/lapisan/poi.json",
+  JSON.stringify({
+    atribusi: "© OpenStreetMap contributors, ODbL",
+    ditarik: folder.split(/[\\/]/).at(-1),
+    daftar: poi,
+  }) + "\n",
+);
+console.log(
+  Object.entries(poi)
+    .map(([k, v]) => `${k}:${v.length}`)
+    .join(" "),
+);
+
 // --- Usulan koordinat halte: nama persis sama, untuk ditinjau. Tidak diimpor otomatis. ---
 const norma = (s) =>
   s

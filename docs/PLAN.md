@@ -53,34 +53,19 @@ Kalau uji visual gagal, catat di sini dan jangan lanjut sebelum diputuskan (prom
 
 **Jalur Trans Batam geografis:** ditunda. 0 dari 191 halte berkoordinat terverifikasi. Fase 4 memprioritaskan diagram skematik SVG, peta hanya menampilkan hub bergaya "perkiraan" (brief 10).
 
-## Sisa fase 3
+## Keadaan akhir fase 10
 
-- Formulir koreksi belum ada, jadi tautan "Kabari kami" berujung di halaman yang mengakui hal itu. Formulir di fase 6. Pemilik bisa memberi alamat email sementara.
-- Belum dikerjakan: harga pangan Bapanas, kalender event, panduan "KTP pindahan", pencocokan koordinat lewat Overpass (butir 14), layer OSM terpisah, legenda asal data R/O/W/K per kartu, angka hotel sebagai rentang, halaman admin "Data yang perlu dicek ulang", cek daftar KUPVA BI.
-- Pencarian dan "Di sekitarku" belum ada di atas peta beranda. Pencarian ada di `/info/direktori`.
-- Semua pin berbentuk lingkaran. Bentuk per layer dan sketsa landmark menunggu ilustrasi.
-- Widget hujan di detail Makan selalu berbahasa Indonesia, sama seperti `/info`, sampai tombol bahasa situs ada.
-- Gambar OG dibuat di `/info/tempat/[id]`, bukan di `/?tempat=`, supaya beranda tetap statis. Tautan WhatsApp yang menuju kartu sebaiknya memakai alamat itu.
-- Sisa butir `{F3}` di `COVERAGE.md` sebagian besar soal kolom dan sumber yang belum diriset. Dicentang hanya bila entrinya ada di data dan tampil; fakta per butir tidak dicek ulang satu per satu.
+Semua fase sudah dikerjakan. Kriteria yang **tidak** terpenuhi penuh:
 
-## Sisa fase 2
+- Fase 6: alur kirim, moderasi, tampil terbukti di mode contoh, belum di Supabase sungguhan.
+- Fase 8: satu segmen dengan placeholder, pipeline ilustrasi asli belum pernah dijalankan.
+- Fase 9: redirect siap, eksekusi menunggu izin.
+- Fase 10: uji HP asli belum.
+- Jalur Trans Batam: hanya Koridor 1, dari OSM. Koridor lain menunggu OSM atau survei halte.
 
-- Paritas ◐: situs belum punya tombol bahasa, jadi Makan punya tombol sendiri.
-- Belum diuji di HP nyata: pasang PWA, petunjuk iOS, Web Share, "Dekat saya".
-- Belum terbukti dari IP Vercel: header jujur ke BMKG. Kalau ditolak, ambil langsung dari browser (CORS terbuka). Pemilik pernah bilang boleh ikut cara hujandibatam bila jalur jujur gagal, tetapi cara itu tidak bisa diuji dari Claude Code.
-- 2 kemungkinan duplikat kuliner (DATA_DECISIONS).
-- Butir `{F2}` lain di COVERAGE belum dikerjakan: gempa, peringatan dini CAP, indikator "aman nyebrang", cron ingest, harga pangan.
+Butir yang ditunda ada di `COVERAGE.md` dengan syaratnya (cari `[-] ditunda`). Yang perlu pemilik lakukan: `TODO_PEMILIK.md`.
 
-## Sisa butir berlabel F1
-
-Kriteria fase 1 di tabel atas terpenuhi, tetapi 108 butir `{F1}` di `COVERAGE.md` masih `[ ]`. Label F1 di sana diberikan saat merakit riset dan lebih luas dari kriteria fase. Sisanya, urut kelompok:
-
-- Butuh data atau aset dari luar: kontur GEBCO dan semua turunannya (`[-]`), pengecekan koordinat lewat Overpass, batas wilayah dan seluruh saran geoportal laporan 11, serat kertas dari scan CC0 (`[-]`).
-- Komponen peta yang ikut tumbuh bersama layer: tombol layer legenda chart, sketsa landmark, arsiran bakau dan hutan, lampu pelabuhan, badge ketidakpastian. Dikerjakan di fase 3 dan 5.
-- Ornamen dan komponen: awan larat, selembayung, tiang pelantar, halaman Loket, blok kredit, deskripsi di menu HP, modul bertipe dari `design_tokens.json`.
-- Aturan yang berlaku terus (nada, daftar hindari, kolofon): dicentang saat audit fase 10, bukan sekarang.
-
-Tinjau daftar ini saat menyentuh fase terkait; butir yang menggantung sampai fase 10 harus punya alasan.
+Catatan teknis yang masih berlaku: peta dan radar lewat function Vercel menambah bandwidth; widget hujan dan feri di detail Makan selalu berbahasa Indonesia; gambar OG ada di `/info/tempat/[id]`, bukan di `/?tempat=`, supaya beranda tetap statis.
 
 ## Pertanyaan untuk pemilik proyek
 

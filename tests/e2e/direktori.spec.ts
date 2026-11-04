@@ -98,6 +98,15 @@ test.describe("direktori", () => {
     await expect(page.locator(".bch-lede")).toContainText("Belum ada data. Kenal tempatnya?");
   });
 
+  test("subkategori kosong menampilkan daftar OSM terpisah dan berlabel", async ({ page }) => {
+    await page.goto("/info/direktori/kesehatan/apotek");
+    await expect(page.locator(".bch-lede")).toContainText("Belum ada data");
+    const osm = page.locator("[data-daftar-osm]");
+    await expect(osm).toContainText("OpenStreetMap");
+    await expect(osm).toContainText("belum kami cek");
+    expect(await osm.locator("li").count()).toBeGreaterThan(5);
+  });
+
   test("kategori dan tempat yang tidak ada 404", async ({ page }) => {
     expect((await page.goto("/info/direktori/tidak-ada"))?.status()).toBe(404);
     expect((await page.goto("/info/tempat/tidak-ada"))?.status()).toBe(404);
@@ -246,6 +255,27 @@ test.describe("pin di peta beranda", () => {
     await expect(page.locator(".peta")).toHaveAttribute("data-status", "siap", { timeout: 30_000 });
     await expect(page.locator(".peta")).toHaveAttribute("data-pin-tampil", /^\d+$/);
     await expect(page.getByRole("complementary", { name: /Kartu/ })).toHaveCount(0);
+  });
+
+  test("cari tempat membuka kartunya", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator(".peta")).toHaveAttribute("data-status", "siap", { timeout: 30_000 });
+    await page.getByLabel("Cari tempat di peta").fill("masjid agung raja");
+    await page.getByRole("button", { name: /Masjid Agung Raja Hamidah/ }).click();
+    await expect(page.getByRole("complementary", { name: /Kartu Masjid Agung Raja Hamidah/ })).toBeVisible();
+    expect(page.url()).toContain("tempat=masjid-agung-raja-hamidah");
+  });
+
+  test("di sekitarku: di luar Batam dikatakan terus terang", async ({ page, context }) => {
+    await context.grantPermissions(["geolocation"]);
+    await context.setGeolocation({ latitude: -6.2, longitude: 106.8 });
+    await page.goto("/");
+    await expect(page.locator(".peta")).toHaveAttribute("data-status", "siap", { timeout: 30_000 });
+    await page.getByRole("button", { name: "Di sekitarku" }).click();
+    await expect(page.locator(".peta-cari-pesan")).toContainText("di luar peta Batam");
+    await context.setGeolocation({ latitude: 1.13, longitude: 104.05 });
+    await page.getByRole("button", { name: "Di sekitarku" }).click();
+    await expect(page.locator(".peta-cari-pesan")).toContainText("tidak dikirim ke mana pun");
   });
 
   test("ada jalan keluar keyboard ke daftar", async ({ page }) => {

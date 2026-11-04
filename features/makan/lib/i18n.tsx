@@ -41,7 +41,7 @@ const DICT = {
   near_me: { id: "Dekat saya", en: "Near me", zh: "我附近" },
   featured: { id: "Pilihan", en: "Picks", zh: "精选" },
   legendary: { id: "Legendaris", en: "Legendary", zh: "老字号" },
-  hits: { id: "Hits", en: "Trending", zh: "人气" },
+  hits: { id: "Ramai", en: "Busy", zh: "人气" },
   browse_cat: { id: "Jelajahi kategori", en: "Browse categories", zh: "浏览分类" },
   browse_cat_sub: {
     id: "{n} kategori kuliner di Batam.",
@@ -306,9 +306,9 @@ export const HALAL_LABEL: Record<HalalStatus, Tri> = {
 
 export const LABEL_LABEL: Record<RecLabel, Tri> = {
   legendaris: { id: "Legendaris", en: "Legendary", zh: "老字号" },
-  hits: { id: "Hits", en: "Trending", zh: "人气" },
-  "wajib-coba": { id: "Wajib Coba", en: "Must Try", zh: "必吃" },
-  "hidden-gem": { id: "Hidden Gem", en: "Hidden Gem", zh: "隐藏宝藏" },
+  hits: { id: "Ramai", en: "Busy", zh: "人气" },
+  "wajib-coba": { id: "Layak dikejar", en: "Worth the trip", zh: "必吃" },
+  "hidden-gem": { id: "Agak tersembunyi", en: "Off the main road", zh: "隐藏宝藏" },
 };
 
 export const PRICE_HINT: Record<PriceTier, Tri> = {

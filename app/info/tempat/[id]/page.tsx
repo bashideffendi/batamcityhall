@@ -5,6 +5,7 @@ import {
   adalahProfesi,
   atributPublik,
   catatanPublik,
+  jamPublik,
   kartuMinimal,
   kontakPublik,
   LABEL_BETA,
@@ -148,7 +149,7 @@ export default async function Tempat({ params }: Props) {
         <p className="bch-card-meta mt-3 mb-0" data-baris-museum>
           {p.jam_layanan && !minimal && (
             <>
-              BUKA {p.jam_layanan}
+              BUKA {jamPublik(p)}
               <br />
             </>
           )}

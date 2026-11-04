@@ -15,7 +15,8 @@ export const ATTRIBUTION = [
   "Prakiraan gelombang & cuaca © BMKG",
   "Peta dasar © OpenStreetMap contributors, Protomaps",
   "CCTV © Pemerintah Kota Batam",
-  "Batimetri GEBCO",
+  "Batas kecamatan © Badan Informasi Geospasial",
+  "Lapisan OSM © OpenStreetMap contributors, ODbL",
 ] as const;
 
 export type Loket = {

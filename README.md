@@ -4,7 +4,7 @@ Balai warga, bukan balai kota. Website kota indie dan non-komersial untuk Batam:
 
 Proyek independen warga Batam, bukan situs resmi Pemerintah Kota Batam atau BP Batam. Untuk layanan resmi: batam.go.id.
 
-**Status:** fase 3: Langit & Laut, Makan, dan Info Warga sudah jalan, tetapi belum di-deploy. Lihat `docs/LANJUTKAN.md`.
+**Status:** fase 10 selesai di komputer pengembang, semua loket jalan, belum di-deploy. Yang perlu pemilik lakukan: `docs/TODO_PEMILIK.md`.
 
 ## Menyiapkan
 
@@ -28,6 +28,13 @@ node scripts/extract-basemap.mjs
 | Impor koordinat tempat | `python tools/import_koordinat.py data/koordinat_perlu_diisi.csv` |
 | Impor koordinat halte | `python tools/import_koordinat.py data/trans_batam/halte_koordinat_perlu_diisi.csv` |
 | Bangun ulang glyph peta | `node scripts/build-glyphs.mjs` |
+| Menambah tempat | Tambah berkas di `data/places/`, jalankan penggabungan, lalu validasi. Duplikat didaftarkan di `tools/merge_aliases.json`, bukan dihapus |
+| Menarik OSM | `node scripts/tarik-overpass.mjs [awalan query]`: hasil bertanggal di `data/osm/`, identitas jujur, jeda 30 detik antar query |
+| Membuat lapisan OSM | `node scripts/buat-lapisan-osm.mjs data/osm/<tanggal>`: jalur Koridor 1, feri, halte, daftar subkategori, usulan koordinat halte |
+| Cek koordinat terhadap OSM | `node scripts/cek-koordinat-osm.mjs data/osm/<tanggal>`: hanya laporan, data kurasi tidak berubah |
+| Laporan konflik data | `node scripts/tulis-konflik.mjs` menulis `docs/KONFLIK_DATA.md` |
+| Mengisi koordinat dengan klik peta | `/admin/koordinat`: unduh CSV, lalu impor seperti di atas |
+| Membuat tile mural | `node scripts/buat-mural-placeholder.mjs` untuk placeholder; ilustrasi asli lewat `vips dzsave` ke R2, rincian di `docs/MURAL.md` |
 
 ## Menjalankan dan menguji
 
@@ -41,4 +48,12 @@ node scripts/extract-basemap.mjs
 | Konversi data Makan ke skema tempat | `node scripts/konversi-makan.mjs`, lalu `python tools/merge_places.py` |
 | Ekstrak peta dasar (kurang dari 30 menit) | `node scripts/extract-basemap.mjs [YYYYMMDD] [maxzoom] [keluaran]` |
 
-Bagian penarikan OSM dan pembuatan tile mural ditulis saat fase terkait selesai. Rincian isi data: `docs/PAKET_HANDOFF.md`.
+Tes e2e juga bisa diarahkan ke server yang sudah jalan: `E2E_URL=http://localhost:3000 npx playwright test`. Tes Tukang Langganan punya dua mode, lihat bagian atas `tests/e2e/tukang.spec.ts`.
+
+## Formulir dan admin
+
+Tanpa Supabase, formulir jujur menyatakan belum menerima kiriman. `NEXT_PUBLIC_MODE_CONTOH=1` memakai data fiktif berlabel di memori server, untuk dev dan e2e saja. Skema ada di `supabase/migrations/`.
+
+## Dokumen
+
+`docs/TODO_PEMILIK.md`, `docs/LANJUTKAN.md`, `docs/PLAN.md`, `docs/COVERAGE.md`, `docs/PARITAS.md`, `docs/DATA_DECISIONS.md`, `docs/KONFLIK_DATA.md`, `docs/CHANGELOG.md`, `docs/MURAL.md`, `docs/SUMBER_BERITA.md`, `deploy/situs-lama/README.md`. Isi paket data: `docs/PAKET_HANDOFF.md`.

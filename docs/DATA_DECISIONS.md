@@ -35,6 +35,27 @@ Keputusan soal data, dengan alasan. Pemilik proyek bisa mengubah semuanya. Butir
 | Pin di titik yang sama | Satu pin, sisanya tertulis di kartu | Kompleks kamp Galang dan Masjid Agung punya beberapa entri di satu titik |
 | Angka notaris, PPAT, OBH | Ditambahkan ke `angka_resmi.json` dari brief 08 | Brief meminta disimpan di sana; cocok dengan `research/08` (dicek 5 Nov 2026) |
 
+| Data OSM | Lapisan terpisah berlabel, tidak masuk hitungan direktori dan tidak mengubah `halte.json` | Prompt bagian 5 butir 4 |
+| Tiga koordinat cocok OSM di bawah 50 m | Naik ke terverifikasi | Aturan brief 12. TMP dan paroki dikecualikan brief 09 |
+| Warna malam koridor | Warna data dicampur putih sampai kontras 3:1 | Laporan tidak menyediakan varian malam |
+| `tanggal_data` berbentuk bulan | Dihitung dari awal bulan; kosong dianggap lama | Lebih aman untuk peringatan 60 hari |
+| Jadwal berstatus usang | Tidak pernah jadi "terakhir" | Brief 14 |
+| 1,79 juta penduduk (Databoks) | Tampil berlabel beda versi di `/cerita/angka`, tidak masuk grafik | Brief melarang, prompt minta semua item tampil |
+| `gw-008`, `gw-011` | Status diturunkan ke beda versi | Laporan 04, 15, 16 berbeda |
+| Lima butir legalitas kampung tua | Tanggal dan sumber tampil, isi soal luas dan status lahan tidak | Prompt bagian 6 |
+| Enam kutipan Rempang | Berlabel "tautan belum tercatat" | Riset tidak menyimpan URL-nya |
+| `sumber_rekomendasi_warga.json` | Tidak ditampilkan | Catatan riset, bukan data untuk warga |
+| Status Tour de Batam | "Dibatalkan", mengikuti kolom tabel | `catatan_laporan` memuat salah tempel antar-acara |
+| Kanal komunitas | Hanya yang berstatus terverifikasi, 5 entri | Kontak lain belum pasti |
+| Izin tukang | Syarat tampil, kontak tampil hanya dengan izin | Prompt bagian 7 |
+| Layar admin | Kontak perekomendasi tersamar | Prompt bagian 7 |
+| Segmen mural pertama | Harbour Bay–Nagoya–Jodoh | Barelang tanpa jadwal feri, quest 6 jembatan tidak bisa tuntas di satu segmen |
+| Cache berita | Memori 20 menit dan `s-maxage`, bukan `revalidate` | Cache fetch menyajikan salinan lama saat feed mati, jadi status tidak jujur |
+| Berita nasional | Tidak disaring kata kunci, ditulis di halaman | Penyaringan bisa salah buang |
+| Tombol bahasa | Hanya di Makan | Loket lain tidak punya terjemahan |
+| Indikator "Aman nyebrang?" | Tidak dibuat | Keselamatan, butuh ambang sah dan penafian syahbandar |
+| Konflik `places_konflik.json` | Nilai hasil penggabungan dipakai, daftar di `KONFLIK_DATA.md` | Tidak ditebak |
+
 ## Perlu keputusan pemilik
 
 - Kemungkinan duplikat kuliner, belum digabung: `kedai-kopi-ameng` ↔ `kopi-ameng`, `kedai-kopi-harum-manis` ↔ `kopi-harum-manis`.

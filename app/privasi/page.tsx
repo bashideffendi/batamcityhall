@@ -34,6 +34,10 @@ export default async function Privasi() {
             Radar, cuaca, dan peringatan perairan diambil server kami dari sumber resminya. Peta ombak dan video CCTV
             dimuat langsung dari server sumbernya, sehingga server itu menerima alamat IP Anda.
           </li>
+          <li>
+            Tombol &ldquo;Di sekitarku&rdquo; di peta meminta lokasi dari browser Anda. Lokasi itu hanya dipakai di
+            layar Anda, dan tidak dikirim ke server kami.
+          </li>
           <li>Penyedia hosting bisa mencatat log teknis, seperti alamat IP, untuk menjalankan situs.</li>
         </ul>
 
