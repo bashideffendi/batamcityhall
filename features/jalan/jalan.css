@@ -1,0 +1,588 @@
+/* Loket 04. Warna hanya dari token, kecuali warna koridor dari data (--k, dengan varian malam --k-malam). */
+.jl-k {
+  --warna: var(--k);
+}
+:root[data-theme="night"] .jl-k {
+  --warna: var(--k-malam);
+}
+
+.jl-nav a[aria-current="page"] {
+  border-color: var(--bch-ink);
+  font-weight: 600;
+}
+
+.jl-tautan-resmi {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.jl-catatan-kecil {
+  font-size: var(--bch-text-caption);
+  color: var(--bch-ink-muted);
+}
+.jl-blok {
+  display: block;
+}
+.jl-putus-kata {
+  overflow-wrap: anywhere;
+}
+.jl-daftar-rapat {
+  margin: var(--bch-space-2) 0 0;
+  padding-left: 1.2em;
+  display: grid;
+  gap: var(--bch-space-1);
+}
+.jl-kontak {
+  display: block;
+}
+
+/* ---------- Chip koridor: selalu ada teks, warna hanya penanda ---------- */
+.jl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-weight: 600;
+  color: var(--bch-ink);
+}
+.jl-chip-warna {
+  display: inline-block;
+  flex: none;
+  width: 1.4em;
+  height: 0.5em;
+  border-radius: 2px;
+  background: var(--warna);
+}
+[data-rencana] .jl-chip-warna,
+.jl-chip-tautan[data-rencana] .jl-chip-warna {
+  background: none;
+  border-top: 2px dashed var(--bch-ink-muted);
+  height: 0;
+}
+.jl-chip-besar {
+  font-size: 0.6em;
+  vertical-align: 0.15em;
+}
+.jl-judul-koridor {
+  overflow-wrap: anywhere;
+}
+.jl-chip-rencana {
+  margin-left: 0.4em;
+  font-size: var(--bch-text-caption);
+  color: var(--bch-ink-muted);
+}
+.jl-kartu-koridor[data-rencana] {
+  border-style: dashed;
+}
+.jl-kartu-koridor h3 {
+  margin-top: var(--bch-space-1);
+}
+
+/* ---------- Diagram skematik ---------- */
+.jl-skema {
+  margin: 0;
+}
+.jl-skema-kanvas {
+  background: var(--bch-paper);
+  border: var(--bch-stroke-hair) solid var(--bch-rule);
+  border-radius: var(--bch-radius-1);
+}
+.jl-skema-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.jl-skema-svg[data-orientasi="hp"] {
+  display: none;
+}
+@media (max-width: 720px) {
+  .jl-skema-svg[data-orientasi="lebar"] {
+    display: none;
+  }
+  .jl-skema-svg[data-orientasi="hp"] {
+    display: block;
+  }
+}
+.jl-skema figcaption {
+  margin-top: var(--bch-space-2);
+  max-width: var(--bch-measure);
+}
+.jl-skema-svg a {
+  text-decoration: none;
+}
+.jl-skema-svg text {
+  fill: var(--bch-ink);
+  stroke: var(--bch-paper);
+  stroke-width: 3px;
+  paint-order: stroke;
+  stroke-linejoin: round;
+}
+.jl-garis path,
+.jl-rencana path,
+.jl-feri-garis path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.jl-garis-sentuh {
+  stroke: transparent;
+  stroke-width: 20px;
+}
+.jl-garis-casing {
+  stroke: var(--bch-paper);
+}
+.jl-garis-warna {
+  stroke: var(--warna);
+}
+.jl-garis-warna[data-putus] {
+  stroke-dasharray: 2 7;
+}
+.jl-tick {
+  stroke: var(--warna);
+  stroke-width: 1.5px;
+  stroke-linecap: butt !important;
+}
+.jl-lencana rect {
+  fill: var(--bch-paper);
+  stroke: var(--warna);
+  stroke-width: 1.5px;
+}
+.jl-lencana text {
+  font-family: var(--bch-font-mono);
+  font-weight: 600;
+  stroke: none;
+}
+.jl-garis:hover .jl-garis-warna:not([data-putus]) {
+  stroke-width: 6.5px;
+}
+.jl-garis:focus-visible {
+  outline: none;
+}
+.jl-garis:focus-visible .jl-lencana rect {
+  stroke: var(--bch-focus);
+  stroke-width: 3px;
+}
+.jl-kapsul-luar,
+.jl-kapsul-dalam {
+  fill: none;
+  stroke-linecap: round;
+}
+.jl-kapsul-luar {
+  stroke: var(--bch-ink);
+}
+.jl-kapsul-dalam {
+  stroke: var(--bch-paper);
+}
+.jl-ikon path {
+  fill: none;
+  stroke: var(--bch-sea-ink);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.jl-rencana-garis {
+  fill: none;
+  stroke: var(--bch-ink);
+  stroke-width: 1.5px;
+  stroke-dasharray: 5 5;
+  opacity: 0.55;
+}
+.jl-feri-garis path,
+.jl-feri-garis-contoh {
+  fill: none;
+  stroke: var(--bch-sea-ink);
+  stroke-width: 1px;
+}
+.jl-feri-garis text {
+  fill: var(--bch-sea-ink);
+  font-style: italic;
+}
+.jl-label-gap {
+  fill: var(--bch-ink-muted) !important;
+  font-style: italic;
+}
+[data-redup] {
+  opacity: 0.22;
+}
+.jl-skema-svg a:focus-visible .jl-rencana-garis {
+  opacity: 1;
+  stroke-width: 2.5px;
+}
+
+/* Legenda */
+.jl-legenda {
+  margin-top: var(--bch-space-4);
+}
+.jl-legenda h3 {
+  margin: 0 0 var(--bch-space-2);
+  font-size: var(--bch-text-kicker);
+}
+.jl-legenda-koridor {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  column-gap: var(--bch-space-4);
+}
+.jl-chip-tautan {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: 44px;
+  color: var(--bch-ink);
+  text-decoration: none;
+}
+.jl-chip-tautan:hover {
+  text-decoration: underline;
+}
+.jl-chip-tautan .jl-chip-warna {
+  height: 0.6em;
+}
+.jl-legenda-simbol-daftar {
+  list-style: none;
+  margin: var(--bch-space-3) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--bch-space-2);
+  font-size: var(--bch-text-small);
+  max-width: var(--bch-measure);
+}
+.jl-legenda-simbol-daftar li {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  align-items: start;
+  gap: var(--bch-space-2);
+}
+.jl-legenda-simbol {
+  display: block;
+}
+.jl-legenda-garis {
+  fill: none;
+  stroke: var(--bch-ink);
+  stroke-width: 3.5px;
+}
+.jl-legenda-tick {
+  fill: none;
+  stroke: var(--bch-ink);
+  stroke-width: 1.5px;
+}
+
+/* ---------- Strip map ---------- */
+.jl-tab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-1);
+  border-bottom: var(--bch-stroke-base) solid var(--bch-rule);
+}
+.jl-tab button {
+  min-height: 44px;
+  padding: var(--bch-space-1) var(--bch-space-3);
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  color: var(--bch-ink);
+  font: inherit;
+  font-size: var(--bch-text-small);
+  text-align: left;
+  cursor: pointer;
+}
+.jl-tab button[aria-selected="true"] {
+  border-bottom-color: var(--warna);
+  font-weight: 600;
+}
+.jl-strip-sumber {
+  margin: var(--bch-space-3) 0 0;
+}
+.jl-strip-catatan {
+  margin: var(--bch-space-2) 0 0;
+  font-size: var(--bch-text-small);
+  max-width: var(--bch-measure);
+}
+.jl-strip-daftar {
+  list-style: none;
+  margin: var(--bch-space-3) 0 0;
+  padding: 0;
+}
+@media (min-width: 900px) {
+  .jl-strip-daftar {
+    columns: 2;
+    column-gap: var(--bch-space-6);
+  }
+}
+.jl-strip-halte,
+.jl-strip-gap {
+  position: relative;
+  padding: var(--bch-space-1) 0 var(--bch-space-2) 1.75rem;
+  break-inside: avoid;
+}
+/* Garis tiap baris menyambung ke baris berikutnya. Baris gap memakai garis putus, jadi tidak pernah menyatu. */
+.jl-strip-halte::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--warna);
+}
+.jl-strip-halte::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.9em;
+  width: 0.7rem;
+  height: 2px;
+  background: var(--warna);
+}
+.jl-strip-halte[data-ujung]::after {
+  left: 0.05rem;
+  top: 0.65em;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--bch-paper);
+  border: 3px solid var(--bch-ink);
+}
+.jl-strip-halte:first-child::before {
+  top: 0.9em;
+}
+.jl-strip-halte:last-child::before {
+  bottom: auto;
+  height: 0.9em;
+}
+.jl-strip-gap::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 4px dotted var(--warna);
+}
+.jl-strip-gap .jl-strip-nama {
+  font-style: italic;
+  color: var(--bch-ink-muted);
+  font-size: var(--bch-text-small);
+}
+.jl-strip-nama {
+  display: block;
+}
+.jl-strip-transit {
+  font-size: var(--bch-text-caption);
+  color: var(--bch-ink-muted);
+  white-space: nowrap;
+}
+.jl-strip-meta {
+  display: block;
+  font-size: var(--bch-text-caption);
+  color: var(--bch-ink-muted);
+}
+.jl-pindah {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--bch-space-2);
+}
+.jl-pindah li {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: var(--bch-space-2);
+  align-items: baseline;
+}
+.jl-chip-tautan-kecil {
+  min-height: 44px;
+}
+
+/* ---------- Widget feri terakhir ---------- */
+.jl-feri {
+  padding: var(--bch-space-4);
+  background: var(--bch-paper-2);
+  border: var(--bch-stroke-base) solid var(--bch-rule);
+  border-radius: var(--bch-radius-1);
+}
+.jl-feri h2 {
+  margin: 0;
+  font-size: var(--bch-text-h3);
+}
+.jl-feri h3 {
+  margin: var(--bch-space-5) 0 0;
+  font-size: var(--bch-text-body);
+}
+.jl-feri .bch-note {
+  background: var(--bch-paper);
+  margin: var(--bch-space-2) 0 0;
+}
+.jl-feri .bch-note[data-tone="caution"] {
+  background: var(--bch-status-caution-bg);
+}
+.jl-feri-kini {
+  margin: var(--bch-space-1) 0 0;
+  color: var(--bch-ink-muted);
+}
+.jl-feri-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: var(--bch-space-3);
+  margin-top: var(--bch-space-3);
+}
+.jl-feri-rute {
+  padding: var(--bch-space-3);
+  background: var(--bch-paper);
+  border: var(--bch-stroke-hair) solid var(--bch-rule);
+  border-radius: var(--bch-radius-1);
+}
+.jl-feri-rute h4 {
+  margin: 0;
+  font-size: var(--bch-text-body);
+  font-weight: 600;
+}
+.jl-feri-rute ul {
+  list-style: none;
+  margin: var(--bch-space-2) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--bch-space-3);
+}
+.jl-feri-baris {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0 var(--bch-space-2);
+  align-items: baseline;
+}
+.jl-feri-operator {
+  font-size: var(--bch-text-small);
+  overflow-wrap: anywhere;
+}
+.jl-feri-jam {
+  text-align: right;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.jl-feri-wib {
+  display: block;
+  font-weight: 400;
+  color: var(--bch-ink-muted);
+  font-size: var(--bch-text-caption);
+}
+.jl-feri-teks {
+  grid-column: 1 / -1;
+  font-size: var(--bch-text-small);
+}
+.jl-feri-lencana,
+.jl-feri-baris .jl-feri-meta {
+  grid-column: 1 / -1;
+}
+.jl-feri-lencana:empty {
+  display: none;
+}
+.jl-feri-lencana {
+  margin-top: var(--bch-space-1);
+}
+.jl-feri-meta {
+  font-size: var(--bch-text-caption);
+  color: var(--bch-ink-muted);
+}
+.jl-feri-kosong {
+  margin-top: var(--bch-space-4);
+  font-size: var(--bch-text-small);
+}
+.jl-feri-kosong summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+.jl-feri-kosong ul {
+  margin: var(--bch-space-1) 0 0;
+  padding-left: 1.2em;
+  display: grid;
+  gap: var(--bch-space-1);
+}
+
+/* ---------- Kartu rute ---------- */
+.jl-daftar-rute {
+  display: grid;
+  gap: var(--bch-space-4);
+  margin-top: var(--bch-space-4);
+}
+.jl-kartu-rute h3 {
+  margin-top: var(--bch-space-1);
+  overflow-wrap: anywhere;
+}
+.jl-kartu-fakta {
+  margin-block: var(--bch-space-2);
+}
+.jl-kartu-catatan {
+  margin: var(--bch-space-2) 0 0;
+  font-size: var(--bch-text-small);
+  max-width: var(--bch-measure);
+}
+.jl-caption {
+  text-align: left;
+  font-size: var(--bch-text-caption);
+  color: var(--bch-ink-muted);
+  padding-block: var(--bch-space-2);
+}
+.jl-tabel-jadwal td:nth-child(2) {
+  min-width: 14rem;
+}
+.jl-jam-daftar {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.7rem;
+}
+.jl-jam-daftar small {
+  font-family: var(--bch-font-sans);
+  font-size: var(--bch-text-caption);
+  color: var(--bch-ink-muted);
+}
+.jl-zona {
+  font-size: var(--bch-text-caption);
+  color: var(--bch-ink-muted);
+}
+.jl-jadwal-kosong {
+  margin: var(--bch-space-2) 0 0;
+  font-style: italic;
+}
+.jl-tautan-operator {
+  list-style: none;
+  margin: var(--bch-space-3) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: 0 var(--bch-space-4);
+}
+
+/* ---------- Peta ---------- */
+.jl-page-atas {
+  flex: none;
+  padding-bottom: var(--bch-space-5);
+}
+.jl-page-bawah {
+  padding-top: var(--bch-space-5);
+}
+.jl-kartu-titik + .jl-kartu-titik {
+  margin-top: var(--bch-space-3);
+  padding-top: var(--bch-space-3);
+  border-top: var(--bch-stroke-hair) solid var(--bch-rule);
+}
+.jl-popup .maplibregl-popup-content {
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  border: var(--bch-stroke-hair) solid var(--bch-rule-strong);
+  border-radius: var(--bch-radius-1);
+  box-shadow: none;
+  padding: var(--bch-space-1) var(--bch-space-2);
+  font-size: var(--bch-text-caption);
+}
+.jl-popup .maplibregl-popup-tip {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .jl-tabel-jadwal td:nth-child(2) {
+    min-width: 0;
+  }
+}

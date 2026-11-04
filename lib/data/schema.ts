@@ -123,8 +123,23 @@ export const komunitasSchema = z.array(z.looseObject({ id: z.string(), nama: z.s
 export const tradisiSchema = z.array(z.looseObject({ id: z.string(), nama: z.string() }));
 export const faktaSchema = z.looseObject({ angka: z.array(z.looseObject({ id: z.string() })) });
 
+// Tiga bentuk jumlah_halte_sumber: angka, {nilai: angka, catatan}, {nilai: [a, b], status} (brief 10).
+const jumlahHalteSchema = z.union([
+  z.number(),
+  z.looseObject({ nilai: z.union([z.number(), z.array(z.number())]) }),
+]);
+
 export const koridorSchema = z.looseObject({
-  koridor: z.array(z.looseObject({ id: z.string(), nama: z.string() })),
+  koridor: z.array(
+    z.looseObject({
+      id: z.string(),
+      nama: z.string(),
+      warna: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
+      status: z.enum(["aktif", "rencana"]),
+      headway_menit: z.looseObject({ pagi_sibuk: z.number(), siang_sore: z.number() }).nullable().optional(),
+      jumlah_halte_sumber: jumlahHalteSchema.optional(),
+    }),
+  ),
 });
 export const halteSchema = z.looseObject({
   halte: z.array(
@@ -134,18 +149,64 @@ export const halteSchema = z.looseObject({
       lat: z.number().nullable(),
       lng: z.number().nullable(),
       status_koordinat: z.enum(STATUS_KOORDINAT),
+      kelompok: z.string(),
+      koridor: z.array(z.string()),
     }),
   ),
-  pola: z.array(z.looseObject({ id: z.string(), koridor: z.string(), halte: z.array(z.unknown()) })),
+  // Item pola ada dua jenis: halte, dan gap ("…", ada halte yang tidak tercantum di sumber).
+  pola: z.array(
+    z.looseObject({
+      id: z.string(),
+      koridor: z.string(),
+      arah: z.string(),
+      jumlah_halte_sumber: jumlahHalteSchema.nullable(),
+      halte: z.array(
+        z.union([
+          z.looseObject({ jenis: z.literal("halte"), halte_id: z.string(), nama_di_sumber: z.string() }),
+          z.looseObject({ jenis: z.literal("gap") }),
+        ]),
+      ),
+    }),
+  ),
   halte_transit: z.array(z.looseObject({})),
 });
 
-export const terminalSchema = z.looseObject({ terminal: z.array(z.looseObject({ id: z.string(), nama: z.string() })) });
-export const ruteSchema = z.looseObject({
-  rute: z.array(z.looseObject({ id: z.string() })),
-  rute_tambahan: z.array(z.looseObject({ id: z.string() })),
+export const terminalSchema = z.looseObject({
+  terminal: z.array(
+    z.looseObject({
+      id: z.string(),
+      nama: z.string(),
+      jenis: z.string(),
+      lat: z.number().nullable(),
+      lng: z.number().nullable(),
+      status_koordinat: z.enum(STATUS_KOORDINAT),
+    }),
+  ),
 });
-export const jadwalSchema = z.looseObject({ jadwal: z.array(z.looseObject({ rute_id: z.string() })) });
+const ruteFeriSchema = z.looseObject({
+  id: z.string(),
+  asal_id: z.string().nullable(),
+  tujuan: z.string(),
+  operator: z.array(z.string()),
+  jenis: z.enum(["internasional", "domestik", "pompong"]).nullable(),
+});
+export const ruteSchema = z.looseObject({
+  rute: z.array(ruteFeriSchema),
+  rute_tambahan: z.array(ruteFeriSchema),
+});
+const jamSchema = z.string().regex(/^\d{2}:\d{2}$/);
+// Jam selalu waktu lokal pelabuhan asal. zona_waktu null berarti jam itu tidak boleh dipakai widget (brief 14).
+export const jadwalSchema = z.looseObject({
+  jadwal: z.array(
+    z.looseObject({
+      rute_id: z.string(),
+      arah: z.string(),
+      jam_berangkat: z.array(jamSchema),
+      zona_waktu: z.enum(["Asia/Jakarta", "Asia/Singapore", "Asia/Kuala_Lumpur"]).nullable(),
+      tanggal_data: z.string().nullable(),
+    }),
+  ),
+});
 
 export const segmenSchema = z.array(z.looseObject({ id: z.string(), urutan: z.number(), label: z.string() }));
 export const landmarkSchema = z.array(z.looseObject({ id: z.string(), nama: z.string() }));

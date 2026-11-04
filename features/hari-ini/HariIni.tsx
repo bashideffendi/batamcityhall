@@ -1,6 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useMemo } from "react";
+import { hitungFeri, ringkasHariIni } from "@/features/jalan/feri-terakhir";
+import { useEntriFeri } from "@/features/jalan/useFeri";
 import { useNow, useOffline } from "@/features/langit-laut/hooks/useBrowser";
 import { useResource } from "@/features/langit-laut/hooks/useResource";
 import type { FramesResponse, OfsResponse, PerairanResponse } from "@/features/langit-laut/lib/api-types";
@@ -21,8 +24,25 @@ function teksPeringatan(p: PerairanResponse | null, error: boolean, now: number)
   return current.text || "BMKG tidak menyebut Perairan Kep. Batam di buletin yang berlaku.";
 }
 
+/** Baris feri: jadwal statis, jadi tidak pernah terbaca sebagai status kapal sekarang. */
+function BarisFeri({ now }: { now: number }) {
+  const { data, gagal } = useEntriFeri();
+  const ringkas = useMemo(() => (data ? ringkasHariIni(hitungFeri(data, new Date(now))) : null), [data, now]);
+  return (
+    <div data-baris="feri">
+      <dt className="bch-kicker">Feri</dt>
+      <dd>
+        <Link href="/jalan/feri" prefetch={false}>
+          {gagal ? "Jadwal feri gagal dimuat. Cek ke operator." : (ringkas?.judul ?? "Memuat…")}
+        </Link>
+        {ringkas?.rincian && <span>{ringkas.rincian}</span>}
+      </dd>
+    </div>
+  );
+}
+
 // Kotak "Hari Ini" di beranda (CLAUDE_CODE_PROMPT 4.1), dari sumber dan aturan yang sama dengan
-// Langit & Laut. Baris feri terakhir menyusul bersama data feri di fase 4.
+// Langit & Laut. Feri terakhir dari jadwal statis data/feri/.
 export default function HariIni() {
   const offline = useOffline();
   const now = useNow(TICK_MS);
@@ -79,8 +99,12 @@ export default function HariIni() {
             </a>
           </dd>
         </div>
+        <BarisFeri now={now} />
       </dl>
-      <p className="bch-attrib">Hujan dari radar MSS Singapura, proksi untuk Batam. Ombak dan peringatan dari BMKG.</p>
+      <p className="bch-attrib">
+        Hujan dari radar MSS Singapura, proksi untuk Batam. Ombak dan peringatan dari BMKG. Feri dari jadwal operator
+        yang kami salin, bukan status kapal.
+      </p>
     </section>
   );
 }

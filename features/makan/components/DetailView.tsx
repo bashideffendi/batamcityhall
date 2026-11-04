@@ -13,7 +13,7 @@ import Ikon from "./Ikon";
 
 const MiniMap = dynamic(() => import("./MiniMap"), { ssr: false });
 
-export default function DetailView({ slug, cuaca }: { slug: string; cuaca?: ReactNode }) {
+export default function DetailView({ slug, cuaca, feri }: { slug: string; cuaca?: ReactNode; feri?: ReactNode }) {
   const { t, lang } = useI18n();
   const { fmt, currency } = useCurrency();
   const [pesan, setPesan] = useState("");
@@ -143,6 +143,7 @@ export default function DetailView({ slug, cuaca }: { slug: string; cuaca?: Reac
       </div>
 
       {cuaca}
+      {feri && <div className="mt-6">{feri}</div>}
 
       <p className="mk-catatan">
         {t("checked")} <span className="bch-data">{p.last_verified}</span>. {t("recheck")}
