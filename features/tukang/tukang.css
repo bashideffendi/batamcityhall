@@ -1,0 +1,265 @@
+/* Loket 03 Tukang Langganan, koreksi data, dan admin. Warna hanya dari token --bch-*. */
+.bch-tk-form {
+  display: grid;
+  gap: var(--bch-space-4);
+  max-width: var(--bch-measure);
+}
+.bch-tk-form-kecil {
+  display: grid;
+  gap: var(--bch-space-2);
+}
+.bch-tk-petunjuk {
+  color: var(--bch-ink-muted);
+  font-size: var(--bch-text-caption);
+}
+.bch-tk-galat {
+  color: var(--bch-status-danger);
+  font-size: var(--bch-text-small);
+}
+.bch-tk-galat:empty {
+  display: none;
+}
+.bch-input[aria-invalid="true"],
+.bch-select[aria-invalid="true"],
+.bch-textarea[aria-invalid="true"] {
+  border-color: var(--bch-status-danger);
+}
+
+/* Di luar layar, bukan display:none, karena robot sering melewati kolom yang disembunyikan penuh. */
+.bch-tk-madu {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.bch-tk-pilihan {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.bch-tk-pilihan legend {
+  padding: 0;
+  margin-bottom: var(--bch-space-1);
+  font-size: var(--bch-text-small);
+}
+.bch-tk-pilihan-isi {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0 var(--bch-space-3);
+}
+.bch-tk-cek {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--bch-space-2);
+  min-height: 44px;
+  padding-block: var(--bch-space-2);
+  cursor: pointer;
+  font-size: var(--bch-text-small);
+}
+.bch-tk-cek input {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  accent-color: var(--bch-accent);
+}
+
+.bch-tk-jumlah {
+  font-family: var(--bch-font-serif);
+  font-size: var(--bch-text-h3);
+  line-height: var(--bch-leading-heading);
+}
+.bch-tk-cerita {
+  list-style: none;
+  margin: var(--bch-space-3) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--bch-space-3);
+}
+.bch-tk-cerita li {
+  padding-left: var(--bch-space-3);
+  border-left: var(--bch-stroke-base) solid var(--bch-rule);
+}
+.bch-tk-tombol {
+  display: grid;
+  gap: var(--bch-space-2);
+  margin-top: var(--bch-space-3);
+}
+.bch-tk-tombol-baris {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-2);
+}
+.bch-tk-tombol-baris .bch-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.bch-tk-tautan {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--bch-ink);
+  font: inherit;
+  font-size: var(--bch-text-small);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.bch-tk-tautan:hover {
+  color: var(--bch-accent);
+}
+.bch-tk-saring {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--bch-space-3);
+  margin-block: var(--bch-space-4);
+}
+.bch-tk-saring .bch-field {
+  flex: 1 1 14rem;
+  max-width: 22rem;
+}
+
+/* Admin */
+.bch-adm-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bch-space-2) var(--bch-space-4);
+  margin-block: var(--bch-space-3) var(--bch-space-5);
+  padding-bottom: var(--bch-space-3);
+  border-bottom: var(--bch-stroke-fine) solid var(--bch-rule);
+}
+.bch-adm-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.bch-adm-daftar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--bch-space-4);
+}
+.bch-adm-aksi {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bch-space-2);
+  margin-top: var(--bch-space-2);
+}
+.bch-adm-rek {
+  margin-top: var(--bch-space-3);
+  padding-left: var(--bch-space-3);
+  border-left: var(--bch-stroke-base) solid var(--bch-rule);
+}
+.bch-adm-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--bch-space-2);
+  margin-top: var(--bch-space-3);
+}
+.bch-adm-form .bch-field {
+  flex: 1 1 14rem;
+}
+
+/* Isi koordinat */
+.bch-adm-koordinat {
+  display: grid;
+  gap: var(--bch-space-4);
+}
+@media (min-width: 900px) {
+  .bch-adm-koordinat {
+    grid-template-columns: minmax(18rem, 24rem) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+.bch-adm-saring {
+  display: grid;
+  gap: var(--bch-space-2);
+}
+.bch-adm-titik {
+  list-style: none;
+  margin: var(--bch-space-3) 0 0;
+  padding: 0;
+  max-height: 26rem;
+  overflow-y: auto;
+  border: var(--bch-stroke-fine) solid var(--bch-rule);
+  border-radius: var(--bch-radius-1);
+}
+.bch-adm-titik button {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: var(--bch-space-2) var(--bch-space-3);
+  background: none;
+  border: 0;
+  border-bottom: var(--bch-stroke-hair) solid var(--bch-rule);
+  color: var(--bch-ink);
+  font: inherit;
+  font-size: var(--bch-text-small);
+  text-align: left;
+  cursor: pointer;
+}
+.bch-adm-titik button:hover {
+  background: var(--bch-paper-2);
+}
+.bch-adm-titik button[aria-current="true"] {
+  background: var(--bch-paper-3);
+  font-weight: 600;
+}
+.bch-adm-peta {
+  position: relative;
+  width: 100%;
+  height: min(60vh, 34rem);
+  min-height: 20rem;
+  border: var(--bch-stroke-base) solid var(--bch-rule-strong);
+  border-radius: var(--bch-radius-1);
+  overflow: hidden;
+  background: var(--bch-paper-2);
+}
+.bch-adm-pin {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--bch-radius-pill);
+  border: 2px solid var(--bch-paper);
+  background: var(--bch-accent);
+  box-shadow: 0 0 0 1px var(--bch-ink);
+}
+.bch-adm-pin[data-jenis="lama"] {
+  background: transparent;
+  border: 2px dashed var(--bch-ink);
+  box-shadow: none;
+}
+.bch-adm-unduh {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-2);
+  margin-top: var(--bch-space-3);
+}
+
+/* Jarak antarblok di halaman yang menumpuk catatan dan formulir. */
+.bch-tk-halaman .bch-lede + .bch-note,
+.bch-tk-halaman .bch-note + .bch-note,
+.bch-tk-halaman .bch-note + .bch-tk-form,
+.bch-tk-halaman .bch-lede + .bch-tk-form,
+.bch-tk-halaman .bch-lede + .bch-adm-koordinat,
+.bch-tk-halaman .bch-note + p {
+  margin-top: var(--bch-space-4);
+}
+.bch-tk-halaman .bch-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.bch-tk-halaman .bch-sub-nav a[aria-current="page"] {
+  border-color: var(--bch-ink);
+  border-style: solid;
+  color: var(--bch-ink);
+  font-weight: 600;
+}
