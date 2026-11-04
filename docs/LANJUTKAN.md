@@ -16,7 +16,7 @@ Brief ditulis subagen yang membaca laporan sampai habis. Isinya ringkasan, bukan
 
 ## Keadaan repo
 
-Folder `Desktop\batam-city-hall`, cabang `fase-1-fondasi`, belum ada commit. Node.js 26.13, Git 2.56, Python 3.13, dan Chromium Playwright terpasang di PC pemilik.
+Folder `Desktop\batam-city-hall`, cabang `fase-1-fondasi`, belum ada remote dan belum di-push. Git di PC ini belum punya identitas global; commit fase 1 memakai `bashideffendi <bashide@gmail.com>` lewat `git -c`. Node.js 26.13, Git 2.56, Python 3.13, dan Chromium Playwright terpasang di PC pemilik.
 
 | Bagian | Keadaan |
 |---|---|
