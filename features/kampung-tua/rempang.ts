@@ -2,13 +2,16 @@
 // meninjaunya. Tiap butir bertanggal dan beratribusi, tanpa komentar redaksi.
 // Sengaja tidak dimuat: luas lahan versi mana pun, status sertifikat (SHM), dan nilai investasi yang belum bertanggal.
 // Sumber tanpa url berarti riset menyebut medianya tanpa mencatat tautan; kami tidak menebak alamatnya.
-export type Pihak = "pemerintah" | "ombudsman" | "warga" | "media";
+export type Pihak = "pemerintah" | "bp_batam" | "ombudsman" | "media" | "warga" | "walhi";
 
+// Label pelaku dipisah (pedoman 3.7). Dipakai juga oleh kronologi legalitas.
 export const LABEL_PIHAK: Record<Pihak, string> = {
-  pemerintah: "Pemerintah atau BP Batam",
+  pemerintah: "Pemerintah",
+  bp_batam: "BP Batam",
   ombudsman: "Ombudsman",
-  warga: "Warga atau Walhi",
-  media: "Laporan media",
+  media: "Media",
+  warga: "Warga",
+  walhi: "Walhi",
 };
 
 export type ButirRempang = {
@@ -58,7 +61,7 @@ export const KRONOLOGI_REMPANG: ButirRempang[] = [
   },
   {
     tanggal: "13 September 2023",
-    pihak: "warga",
+    pihak: "walhi",
     teks: 'Koordinator Riset Walhi Riau, Umi Ma\'rufah, menyebut "perlawanan masyarakat di 16 Kampung Melayu Tua di Rempang Galang".',
     sumber: [{ label: "Walhi Riau" }],
   },
@@ -92,7 +95,7 @@ export const KRONOLOGI_REMPANG: ButirRempang[] = [
   },
   {
     tanggal: "Maret 2025",
-    pihak: "pemerintah",
+    pihak: "bp_batam",
     teks: "BP Batam (Ariastuty Sirait) menyatakan proyek ini masih ada di Lampiran IV Perpres 12/2025, bagian arah pembangunan kewilayahan.",
     sumber: [
       {
@@ -103,7 +106,7 @@ export const KRONOLOGI_REMPANG: ButirRempang[] = [
   },
   {
     tanggal: "20 Juli 2025",
-    pihak: "pemerintah",
+    pihak: "bp_batam",
     teks: "Menurut BP Batam via Bisnis, 125 KK atau 436 jiwa menempati hunian di Tanjung Banon.",
     sumber: [
       {
@@ -131,13 +134,13 @@ export const KRONOLOGI_REMPANG: ButirRempang[] = [
   },
   {
     tanggal: "12 Mei 2026",
-    pihak: "pemerintah",
+    pihak: "bp_batam",
     teks: 'Ketik.com mengutip Deputi Pelayanan Umum BP Batam Ariastuty Sirait: total penghuni Tanjung Banon "kini mencapai 242 KK atau sebanyak 842 jiwa".',
     sumber: [{ label: "Ketik.com" }],
   },
   {
     tanggal: "15 Juni 2026",
-    pihak: "warga",
+    pihak: "walhi",
     teks: "Walhi Riau dan LBH Pekanbaru mengecam pematokan di Pantai Melayu untuk Sekolah Merah Putih. Tanggapan BP Batam soal ini belum kami peroleh.",
     sumber: [
       {
@@ -151,20 +154,20 @@ export const KRONOLOGI_REMPANG: ButirRempang[] = [
 /** Pernyataan yang tercatat di riset tanpa tanggal pasti. Dipisah, bukan diberi tanggal kira-kira. */
 export const TANPA_TANGGAL: ButirRempang[] = [
   {
-    tanggal: "Tanggal belum tercatat",
-    pihak: "pemerintah",
+    tanggal: "Tanpa tanggal",
+    pihak: "bp_batam",
     teks: 'Kepala BP Batam saat itu, Muhammad Rudi, menyatakan "hanya ada 3 kampung": Sembulang Hulu, Sembulang Tanjung, Pasir Panjang. BP Batam di kesempatan lain menyebut empat kampung.',
     sumber: [{ label: "BP Batam" }],
   },
   {
-    tanggal: "Tanggal belum tercatat",
+    tanggal: "Tanpa tanggal",
     pihak: "ombudsman",
     teks: 'Lagat Parroha Patar Siadari dari Ombudsman Perwakilan Kepri, dikutip Kompas.id, menyebut "lebih dari 70 persen warga di lima kampung menolak relokasi atau penggeseran".',
     sumber: [{ label: "Kompas.id" }],
   },
   {
-    tanggal: "Tanggal belum tercatat",
-    pihak: "warga",
+    tanggal: "Tanpa tanggal",
+    pihak: "walhi",
     teks: 'Eko Yunanda dari Walhi Riau, mengutip kajian Kronik PSN Rempang Eco-City (via Betahita): "hanya 20% masyarakat di lima kampung tua" yang menerima relokasi, yaitu Sembulang Pasir Merah, Sembulang Hulu, Sembulang Tanjung, Pasir Panjang, dan Belongkeng.',
     sumber: [
       {

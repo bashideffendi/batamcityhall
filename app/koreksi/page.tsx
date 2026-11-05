@@ -9,8 +9,9 @@ import { JENIS_KOREKSI } from "@/features/tukang/kategori";
 import "@/features/tukang/tukang.css";
 
 export const metadata: Metadata = {
-  title: "Koreksi data",
-  description: "Cara mengoreksi data di Batam City Hall, dan meminta data pribadi dihapus.",
+  title: "Kirim Koreksi",
+  description:
+    "Bantu kami memperbaiki data: tempat yang sudah tutup, pindah, berganti nomor, atau titik yang keliru di peta.",
 };
 
 type Props = { searchParams: Promise<{ tempat?: string; tukang?: string; jenis?: string }> };
@@ -24,9 +25,10 @@ export default async function Koreksi({ searchParams }: Props) {
 
   return (
     <div className="bch-page bch-tk-halaman">
-      <p className="bch-kicker m-0">Koreksi data</p>
-      <h1 className="mt-2">Ada yang salah?</h1>
-      <p className="bch-lede">Pasti ada. Sebagian besar data di sini belum dicek ulang di lapangan.</p>
+      <h1>Kirim Koreksi</h1>
+      <p className="bch-lede">
+        Bantu kami memperbaiki data: tempat yang sudah tutup, pindah, berganti nomor, atau titik yang keliru di peta.
+      </p>
 
       {tempat && (
         <p className="bch-note" data-koreksi-tempat={tempat.id}>
@@ -35,7 +37,7 @@ export default async function Koreksi({ searchParams }: Props) {
       )}
       {q.tempat && !tempat && (
         <p className="bch-note" data-tone="caution">
-          Kode tempat di tautan ini tidak kami kenal. Tulis nama tempatnya di kolom isi.
+          Kode tempat di tautan ini tidak kami kenal. Tulis nama tempatnya di kolom di bawah.
         </p>
       )}
       {tukangId && <p className="bch-note">Koreksi untuk satu entri Tukang Langganan.</p>}
@@ -44,18 +46,18 @@ export default async function Koreksi({ searchParams }: Props) {
       {mode !== "mati" && <FormKoreksi tempatId={tempat?.id ?? null} tukangId={tukangId} jenisAwal={jenisAwal} />}
 
       <div className="bch-prose mt-6">
-        <h2>Yang akan paling membantu</h2>
+        <h2>Yang Paling Membantu</h2>
         <ul>
-          <li>Tempat yang sudah tutup, pindah, atau ganti nomor.</li>
+          <li>Tempat yang sudah tutup, pindah, atau berganti nomor.</li>
           <li>Titik lokasi tempat yang belum ada di peta.</li>
-          <li>Pemilik kantor PPAT atau notaris yang ingin data kantornya diperbaiki atau dihapus.</li>
+          <li>Permintaan pemilik kantor PPAT atau notaris untuk memperbaiki atau menghapus data kantornya.</li>
           <li>
-            Tukang atau perekomendasi yang ingin datanya dikoreksi atau dihapus. Soal apa saja yang kami simpan, lihat{" "}
-            <Link href="/privasi">Privasi</Link>.
+            Permintaan tukang atau perekomendasi untuk mengoreksi atau menghapus datanya. Data yang kami simpan
+            dijelaskan di <Link href="/privasi">Kebijakan Privasi</Link>.
           </li>
         </ul>
         <p>
-          Cara kerja data kami ada di <Link href="/tentang">Tentang</Link>.
+          Cara data dihimpun dijelaskan di <Link href="/tentang">Tentang</Link>.
         </p>
       </div>
     </div>

@@ -1,42 +1,47 @@
 [
   {
-    "konteks": "Cuaca lokal",
-    "id": "Sekupang kering. Batam Centre tidak.",
-    "en": "Sekupang is dry. Batam Centre is not."
+    "konteks": "Memuat peta",
+    "id": "Memuat peta",
+    "en": "Loading map"
   },
   {
-    "konteks": "Ombak",
-    "id": "Ombak 1,5 m. Pompong ke Belakangpadang tetap jalan, perut belum tentu.",
-    "en": "1.5 m swell. The pompong runs; your stomach may not."
+    "konteks": "Memuat data",
+    "id": "Memuat data",
+    "en": "Loading data"
   },
   {
-    "konteks": "Feri",
-    "id": "Feri 10.30 ke HarbourFront: sesuai jadwal. Paspor: tanggung jawab Anda.",
-    "en": "10:30 to HarbourFront: on time. Passport: your department."
+    "konteks": "Tidak tersambung",
+    "id": "Perangkat tidak tersambung ke internet. Data yang tampil adalah data terakhir yang tersimpan.",
+    "en": "This device is not connected to the internet. The data shown is the last saved copy."
   },
   {
-    "konteks": "Data lama",
-    "id": "Terakhir dicek 3 minggu lalu. Anggap ini sejarah lisan.",
-    "en": "Last checked 3 weeks ago. Treat as oral history."
+    "konteks": "Galat umum, judul",
+    "id": "Halaman Ini Tidak Dapat Dimuat",
+    "en": "This page could not be loaded"
   },
   {
-    "konteks": "Kosong / 404",
-    "id": "Halaman ini tenggelam. Kemungkinan di sekitar 1°N.",
-    "en": "This page sank. Somewhere near 1°N."
+    "konteks": "Galat umum, isi",
+    "id": "Terjadi masalah saat memuat halaman. Coba muat ulang dalam beberapa saat.",
+    "en": "Something went wrong while loading the page. Try reloading in a moment."
   },
   {
-    "konteks": "Memuat",
-    "id": "Itik sedang berbaris…",
-    "en": "The ducks are lining up…"
+    "konteks": "404, judul",
+    "id": "Halaman Tidak Ditemukan",
+    "en": "Page not found"
   },
   {
-    "konteks": "Tukang langganan",
-    "id": "Datang Selasa dan Jumat. Kalau hujan, Rabu. Kalau hujan lagi, sabar.",
-    "en": "Tuesdays and Fridays. Wednesdays if it rains. If it rains again, patience."
+    "konteks": "404, isi",
+    "id": "Alamatnya mungkin salah ketik atau halamannya sudah dipindahkan.",
+    "en": "The address may be mistyped, or the page has moved."
   },
   {
-    "konteks": "Error",
-    "id": "Peta gagal dimuat. Laut masih ada, kami saja yang belum.",
-    "en": "The map didn't load. The sea's still there; we're not."
+    "konteks": "Hasil pencarian kosong",
+    "id": "Tidak ada hasil untuk “{kata}”. Coba kata lain atau hapus saringan.",
+    "en": "No results for “{kata}”. Try another word or clear the filters."
+  },
+  {
+    "konteks": "Catatan data di bawah halaman",
+    "id": "Data dihimpun pada November 2026. Sebagian lokasi masih perkiraan.",
+    "en": "Data compiled in November 2026. Some locations are approximate."
   }
 ]

@@ -1,15 +1,17 @@
 "use client";
 
-import { useCallback, useSyncExternalStore } from "react";
+import { useCallback, useSyncExternalStore, type ReactNode } from "react";
 import { buatSimpanan } from "./simpanan";
 import type { Lang, HalalStatus, RecLabel, PriceTier } from "./types";
 
 type Tri = { id: string; en: string; zh: string };
 
+// Naskah bahasa Indonesia mengikuti docs/PEDOMAN.md 3.4 persis, bahasa Inggris mengikuti 2.10.
+// `*kata*` berarti miring (lihat miring() di bawah).
 const DICT = {
-  loket: { id: "Loket 02 · Makan", en: "Counter 02 · Food", zh: "02 号窗口 · 美食" },
+  loket: { id: "LOKET 02", en: "Counter 02", zh: "02 号窗口" },
   nav_label: { id: "Halaman Makan", en: "Food pages", zh: "美食页面" },
-  nav_home: { id: "Mulai", en: "Start", zh: "首页" },
+  nav_home: { id: "Beranda", en: "Home", zh: "首页" },
   nav_map: { id: "Peta", en: "Map", zh: "地图" },
   nav_list: { id: "Daftar", en: "List", zh: "列表" },
   nav_cat: { id: "Kategori", en: "Categories", zh: "分类" },
@@ -19,69 +21,72 @@ const DICT = {
   language: { id: "Bahasa", en: "Language", zh: "语言" },
   currency: { id: "Mata uang", en: "Currency", zh: "货币" },
 
-  home_title: {
-    id: "Makan enak di Batam, tanpa nyasar.",
-    en: "Eat well in Batam, without getting lost.",
-    zh: "在巴淡岛吃好，不迷路。",
-  },
+  home_title: { id: "Makan", en: "Food", zh: "美食" },
   home_lede: {
-    id: "{n} tempat makan pilihan: warung lama, seafood, sup ikan, kopitiam. Gratis, tanpa iklan, tanpa listing berbayar.",
-    en: "{n} hand-picked places: old warungs, seafood, fish soup, kopitiam. Free, no ads, no paid listings.",
-    zh: "{n} 家精选餐饮：老店、海鲜、鱼汤、咖啡店。免费，无广告，无付费收录。",
+    id: "Loket ini memuat {n} tempat makan pilihan di Batam: *kopitiam*, makanan laut, mi, dan warung lama. Tidak ada tempat yang membayar untuk masuk daftar ini.",
+    en: "This counter lists {n} selected places to eat in Batam: *kopitiam*, seafood, noodles, and old *warung*. No place pays to be on this list.",
+    zh: "本窗口收录巴淡岛 {n} 家精选餐饮：咖啡店、海鲜、面食和老店。没有任何店铺付费入选。",
   },
-  search_label: { id: "Cari tempat makan", en: "Search food places", zh: "搜索餐饮" },
-  search_ph: { id: "Cari tempat, menu, kategori", en: "Search places, dishes, categories", zh: "搜索店铺、菜品、分类" },
+  search_label: { id: "Cari tempat makan", en: "Search places to eat", zh: "搜索餐饮" },
+  search_ph: { id: "Cari tempat, menu, atau kategori", en: "Search places, dishes, or categories", zh: "搜索店铺、菜品、分类" },
   search_clear: { id: "Hapus pencarian", en: "Clear search", zh: "清除搜索" },
-  near_ferry: { id: "Dekat Terminal Ferry", en: "Near Ferry Terminal", zh: "渡轮码头附近" },
+  near_ferry: { id: "Dekat Terminal Feri", en: "Near the ferry terminals", zh: "渡轮码头附近" },
   near_ferry_note: {
-    id: "Tempat yang terminal terdekatnya ini, dalam radius sekitar {km} km. Jarak dihitung dari perkiraan area.",
-    en: "Places whose nearest terminal is this one, within about {km} km. Distance uses the approximate area.",
-    zh: "以此为最近码头、约 {km} 公里内的店铺。距离按大致区域计算。",
+    id: "Tempat makan dalam radius sekitar {km} km dari terminal feri.",
+    en: "Places to eat within about {km} km of a ferry terminal.",
+    zh: "渡轮码头约 {km} 公里范围内的餐饮。",
   },
   near_me: { id: "Dekat saya", en: "Near me", zh: "我附近" },
   featured: { id: "Pilihan", en: "Picks", zh: "精选" },
   legendary: { id: "Legendaris", en: "Legendary", zh: "老字号" },
-  hits: { id: "Ramai", en: "Busy", zh: "人气" },
-  browse_cat: { id: "Jelajahi kategori", en: "Browse categories", zh: "浏览分类" },
+  popular: { id: "Sedang Populer", en: "Popular now", zh: "近期热门" },
+  browse_cat: { id: "Jelajahi Kategori", en: "Browse categories", zh: "浏览分类" },
   browse_cat_sub: {
-    id: "{n} kategori kuliner di Batam.",
-    en: "{n} categories of Batam's food.",
-    zh: "巴淡岛美食 {n} 个分类。",
+    id: "Tempat makan di Batam disusun dalam {n} kategori.",
+    en: "Places to eat in Batam, sorted into {n} categories.",
+    zh: "巴淡岛餐饮分为 {n} 个类别。",
   },
   see_all: { id: "Lihat semua", en: "See all", zh: "查看全部" },
   view_map: { id: "Lihat peta", en: "View map", zh: "查看地图" },
   view_list: { id: "Lihat daftar", en: "View list", zh: "查看列表" },
-  filters: { id: "Filter", en: "Filters", zh: "筛选" },
-  filter_close: { id: "Tutup filter", en: "Close filters", zh: "关闭筛选" },
+  filters: { id: "Saring", en: "Filter", zh: "筛选" },
+  filters_title: { id: "Saringan", en: "Filters", zh: "筛选" },
+  filter_close: { id: "Tutup saringan", en: "Close filters", zh: "关闭筛选" },
   reset: { id: "Atur ulang", en: "Reset", zh: "重置" },
   apply: { id: "Terapkan", en: "Apply", zh: "应用" },
   sort: { id: "Urutkan", en: "Sort", zh: "排序" },
   sort_featured: { id: "Pilihan", en: "Picks", zh: "精选" },
-  sort_nearest_ferry: { id: "Terdekat dari ferry", en: "Nearest to ferry", zh: "距渡轮最近" },
+  sort_nearest_ferry: { id: "Terdekat dari feri", en: "Nearest to a ferry terminal", zh: "距渡轮最近" },
   sort_nearby: { id: "Terdekat dari saya", en: "Nearest to me", zh: "离我最近" },
-  sort_az: { id: "Nama A–Z", en: "Name A–Z", zh: "名称 A–Z" },
+  sort_az: { id: "Nama A—Z", en: "Name A—Z", zh: "名称 A—Z" },
   category: { id: "Kategori", en: "Category", zh: "分类" },
   area: { id: "Area", en: "Area", zh: "区域" },
   price: { id: "Harga", en: "Price", zh: "价格" },
   halal_label: { id: "Status halal", en: "Halal status", zh: "清真状态" },
-  ferry: { id: "Terminal ferry", en: "Ferry terminal", zh: "渡轮码头" },
+  ferry: { id: "Terminal feri", en: "Ferry terminal", zh: "渡轮码头" },
   labels: { id: "Label", en: "Labels", zh: "标签" },
   results: { id: "tempat", en: "places", zh: "家" },
   no_results: {
-    id: "Tidak ada tempat yang cocok. Coba longgarkan filter.",
-    en: "No places match. Try loosening the filters.",
-    zh: "没有符合条件的店铺。试试放宽筛选。",
+    id: "Tidak ada tempat yang cocok. Coba hapus saringan.",
+    en: "No places match. Try removing a filter.",
+    zh: "没有符合条件的店铺。试试取消筛选。",
+  },
+  no_results_q: {
+    id: "Tidak ada hasil untuk “{kata}”. Coba kata lain atau hapus saringan.",
+    en: "No results for “{kata}”. Try another word or remove a filter.",
+    zh: "没有与“{kata}”相关的结果。试试其他关键词或取消筛选。",
   },
   open_now: { id: "Buka sekarang", en: "Open now", zh: "营业中" },
   closed_now: { id: "Tutup sekarang", en: "Closed now", zh: "已打烊" },
-  hours: { id: "Jam buka", en: "Hours", zh: "营业时间" },
-  hours_unknown: { id: "Jam buka belum tercatat", en: "Hours not listed", zh: "营业时间未知" },
-  hours_tz: {
-    id: "Status dihitung menurut WIB.",
-    en: "Status follows Batam time (WIB).",
-    zh: "状态按巴淡岛时间 (WIB) 计算。",
+  open_until: { id: "Buka sekarang, sampai pukul {jam} WIB", en: "Open now, until {jam} WIB", zh: "营业中，至 {jam} WIB" },
+  closed_until: {
+    id: "Tutup sekarang, buka lagi pukul {jam} WIB",
+    en: "Closed now, opens again at {jam} WIB",
+    zh: "已打烊，{jam} WIB 再营业",
   },
-  navigate: { id: "Navigasi", en: "Navigate", zh: "导航" },
+  hours: { id: "Jam buka", en: "Opening hours", zh: "营业时间" },
+  hours_unknown: { id: "Jam buka tidak diketahui", en: "Opening hours unknown", zh: "营业时间未知" },
+  navigate: { id: "Petunjuk arah", en: "Directions", zh: "导航" },
   save: { id: "Simpan", en: "Save", zh: "收藏" },
   unsave: { id: "Hapus dari tersimpan", en: "Remove from saved", zh: "取消收藏" },
   share: { id: "Bagikan", en: "Share", zh: "分享" },
@@ -91,15 +96,15 @@ const DICT = {
   payment: { id: "Pembayaran", en: "Payment", zh: "支付方式" },
   pay_cash: { id: "Tunai", en: "Cash", zh: "现金" },
   pay_card: { id: "Kartu", en: "Card", zh: "刷卡" },
-  price_unknown: { id: "Harga belum tercatat", en: "Price not listed", zh: "价格未知" },
+  price_range: { id: "Kisaran harga", en: "Price range", zh: "价格区间" },
   price_note: {
     id: "Konversi memakai kurs perkiraan pertengahan 2026, bukan kurs hari ini.",
     en: "Conversion uses an approximate mid-2026 rate, not today's.",
     zh: "外币金额按 2026 年中的约估汇率换算，并非今日汇率。",
   },
-  from_ferry: { id: "dari", en: "from", zh: "距" },
-  from_you: { id: "dari kamu", en: "from you", zh: "距您" },
-  about_prefix: { id: "sekitar", en: "about", zh: "约" },
+  ferry_nearest: { id: "Terminal feri terdekat", en: "Nearest ferry terminal", zh: "最近的渡轮码头" },
+  ferry_distance: { id: "Sekitar {km} dari {nama}", en: "About {km} from {nama}", zh: "距 {nama} 约 {km}" },
+  from_you: { id: "Sekitar {km} dari kamu", en: "About {km} from you", zh: "距您约 {km}" },
   locating: { id: "Mencari lokasi", en: "Locating", zh: "定位中" },
   loc_denied: {
     id: "Lokasi tidak tersedia. Izinkan akses lokasi lalu coba lagi.",
@@ -109,33 +114,33 @@ const DICT = {
   detail: { id: "Lihat detail", en: "View details", zh: "查看详情" },
   show_on_map: { id: "Tampilkan di peta", en: "Show on map", zh: "在地图上显示" },
   close: { id: "Tutup", en: "Close", zh: "关闭" },
-  back_list: { id: "Kembali ke daftar", en: "Back to list", zh: "返回列表" },
+  breadcrumb: { id: "Remah roti", en: "Breadcrumb", zh: "导航路径" },
+  crumb_root: { id: "Makan", en: "Food", zh: "美食" },
   back_trails: { id: "Semua jalur", en: "All trails", zh: "全部路线" },
   call: { id: "Telepon", en: "Call", zh: "致电" },
-  checked: { id: "Terakhir dicek", en: "Last checked", zh: "最后核对" },
-  recheck: { id: "Cek ulang sebelum berangkat.", en: "Re-check before you go.", zh: "出发前请再次确认。" },
-  info_verified: { id: "Info terverifikasi", en: "Info verified", zh: "信息已核实" },
+  checked: { id: "Data diperiksa pada {bulan}.", en: "Data checked in {bulan}.", zh: "数据核对于 {bulan}。" },
+  report: { id: "Laporkan data yang salah", en: "Report incorrect data", zh: "报告错误数据" },
 
-  // Kejujuran koordinat. Frasa "perkiraan area" dipakai persis di UI bahasa Indonesia.
-  approx_badge: { id: "Perkiraan area", en: "Approximate area", zh: "大致区域" },
+  // Keterangan peta kecil: teks, tautan Petunjuk arah, lalu penutup.
   approx_loc: {
-    id: "Lokasi di peta adalah perkiraan area, bukan titik pasti tempat ini. Untuk arah, pakai tombol Navigasi.",
-    en: "The map shows an approximate area, not this place's exact spot. For directions, use the Navigate button.",
-    zh: "地图显示的是大致区域，并非店铺的确切位置。如需路线，请使用导航按钮。",
+    id: "Titik di peta adalah perkiraan area. Gunakan",
+    en: "The point on the map is an approximate area. Use",
+    zh: "地图上的点为大致区域。请使用",
   },
+  approx_loc_end: { id: "untuk lokasi persisnya.", en: "for the exact location.", zh: "查看确切位置。" },
   map_legend: {
-    id: "Lingkaran berongga: perkiraan area, bukan titik pasti.",
-    en: "Hollow circle: approximate area, not an exact spot.",
-    zh: "空心圆：大致区域，并非确切位置。",
+    id: "Garis putus-putus menandai lokasi perkiraan.",
+    en: "A dashed ring marks an approximate location.",
+    zh: "虚线圈表示大致位置。",
   },
   map_legend_ferry: {
-    id: "Titik berlabel: terminal feri. Berongga kalau koordinatnya belum pasti.",
-    en: "Labelled dot: ferry terminal. Hollow if its coordinates are not confirmed.",
-    zh: "带标签的点：渡轮码头。坐标未确认时为空心。",
+    id: "Ikon kapal menandai terminal feri.",
+    en: "A ferry icon marks a terminal.",
+    zh: "渡轮图标表示码头。",
   },
   map_title: {
-    id: "Peta tempat makan Batam. Semua pin adalah perkiraan area. Daftar yang sama ada di samping peta.",
-    en: "Map of food places in Batam. All pins are approximate areas. The same list sits beside the map.",
+    id: "Peta tempat makan di Batam. Semua titik adalah perkiraan area. Daftar yang sama ada di samping peta.",
+    en: "Map of places to eat in Batam. All points are approximate areas. The same list sits beside the map.",
     zh: "巴淡岛餐饮地图。所有标记均为大致区域。地图旁有相同的列表。",
   },
   map_mini_title: {
@@ -145,64 +150,60 @@ const DICT = {
   },
   map_trail_title: { id: "Peta jalur kuliner", en: "Food trail map", zh: "美食路线地图" },
   map_failed: {
-    id: "Peta gagal dimuat. Laut masih ada, kami saja yang belum.",
-    en: "The map failed to load. The sea is still there, we just aren't yet.",
-    zh: "地图加载失败。海还在，只是我们还没到。",
+    id: "Peta tidak dapat dimuat. Coba muat ulang dalam beberapa saat.",
+    en: "The map could not load. Try reloading in a moment.",
+    zh: "地图无法加载。请稍后重新加载。",
   },
   map_loading: { id: "Memuat peta", en: "Loading map", zh: "正在加载地图" },
   map_list: { id: "Daftar di peta", en: "List on the map", zh: "地图列表" },
   map_ferry_loc: { id: "Terminal feri", en: "Ferry terminal", zh: "渡轮码头" },
-  coord_unsure: { id: "koordinat belum pasti", en: "coordinates unconfirmed", zh: "坐标未确认" },
 
-  saved_title: { id: "Tempat tersimpan", en: "Saved places", zh: "我的收藏" },
+  saved_title: { id: "Tempat Tersimpan", en: "Saved places", zh: "我的收藏" },
   saved_empty: {
-    id: "Belum ada tempat tersimpan. Tekan ikon hati untuk menyimpan.",
-    en: "No saved places yet. Press the heart icon to save.",
-    zh: "还没有收藏。点击爱心图标即可收藏。",
+    id: "Belum ada tempat tersimpan. Tekan Simpan di halaman tempat makan untuk menyimpannya.",
+    en: "No saved places yet. Press Save on a place's page to save it.",
+    zh: "还没有收藏。在店铺页面点击“收藏”即可保存。",
   },
   saved_local: {
-    id: "Tersimpan di perangkat ini saja, tanpa akun.",
-    en: "Stored on this device only, no account.",
-    zh: "仅保存在此设备，无需账号。",
+    id: "Daftar ini hanya tersimpan di peramban perangkat ini.",
+    en: "This list is stored only in this device's browser.",
+    zh: "此列表仅保存在本设备的浏览器中。",
   },
   all_places: { id: "Semua tempat", en: "All places", zh: "所有店铺" },
-  export_title: { id: "Bawa ke perangkat lain", en: "Take it to another device", zh: "带到其他设备" },
+  all_places_title: { id: "Semua Tempat", en: "All places", zh: "所有店铺" },
+  export_title: { id: "Pindahkan ke Perangkat Lain", en: "Move to another device", zh: "转移到其他设备" },
   export_sub: {
-    id: "Tautan ini berisi daftar tempat tersimpanmu. Buka di perangkat lain, atau tempel di kolom impor.",
-    en: "This link holds your saved list. Open it on another device, or paste it into the import box.",
-    zh: "此链接包含您的收藏列表。在其他设备打开，或粘贴到导入框。",
+    id: "Salin tautan berikut, lalu buka di perangkat lain.",
+    en: "Copy this link, then open it on another device.",
+    zh: "复制以下链接，然后在其他设备上打开。",
   },
   export_label: { id: "Tautan daftar", en: "List link", zh: "列表链接" },
   copy_link: { id: "Salin tautan", en: "Copy link", zh: "复制链接" },
-  import_label: {
-    id: "Impor: tempel tautan atau daftar slug",
-    en: "Import: paste a link or slug list",
-    zh: "导入：粘贴链接或 slug 列表",
-  },
-  import_btn: { id: "Impor", en: "Import", zh: "导入" },
-  import_done: { id: "{n} tempat ditambahkan.", en: "{n} places added.", zh: "已添加 {n} 家。" },
+  import_label: { id: "Tautan dari perangkat lain", en: "Link from another device", zh: "来自其他设备的链接" },
+  import_btn: { id: "Tempel tautan", en: "Paste link", zh: "粘贴链接" },
+  import_done: { id: "Ditambahkan {n} tempat.", en: "Added {n} places.", zh: "已添加 {n} 家。" },
   import_rejected: {
-    id: "{n} tidak dikenal dan dilewati.",
-    en: "{n} unknown and skipped.",
-    zh: "{n} 个无法识别，已跳过。",
+    id: "Sebanyak {n} tempat tidak dikenal dan dilewati.",
+    en: "Skipped {n} unknown places.",
+    zh: "{n} 家无法识别，已跳过。",
   },
   import_none: {
-    id: "Tidak ada slug yang dikenal di teks itu.",
-    en: "No known slugs in that text.",
-    zh: "文本中没有可识别的 slug。",
+    id: "Tidak ada tempat yang dikenal di tautan itu.",
+    en: "No known places in that link.",
+    zh: "该链接中没有可识别的店铺。",
   },
   link_found: {
-    id: "Tautan ini membawa {n} tempat.",
-    en: "This link carries {n} places.",
+    id: "Tautan ini berisi {n} tempat.",
+    en: "This link holds {n} places.",
     zh: "此链接包含 {n} 家店铺。",
   },
   link_add: { id: "Tambahkan ke tersimpan", en: "Add to saved", zh: "加入收藏" },
 
-  trails: { id: "Jalur kuliner", en: "Food trails", zh: "美食路线" },
+  trails: { id: "Jalur Kuliner", en: "Food trails", zh: "美食路线" },
   trails_sub: {
-    id: "Rute tematik kurasi. Tinggal ikuti urutannya.",
-    en: "Curated themed routes. Just follow the order.",
-    zh: "主题美食路线，跟着顺序走就行。",
+    id: "Jalur kuliner adalah rute makan bertema yang bisa diikuti dalam setengah hari atau sehari.",
+    en: "Food trails are themed eating routes you can follow in half a day or a day.",
+    zh: "美食路线是可在半天或一天内走完的主题用餐路线。",
   },
   trail_line_note: {
     id: "Garis menunjukkan urutan perhentian, bukan rute jalan. Titiknya perkiraan area.",
@@ -210,89 +211,64 @@ const DICT = {
     zh: "线条表示站点顺序，并非行车路线。各点为大致区域。",
   },
   stops: { id: "perhentian", en: "stops", zh: "站" },
-  stops_list: { id: "Urutan perhentian", en: "Order of stops", zh: "站点顺序" },
+  stops_list: { id: "Urutan Perhentian", en: "Order of stops", zh: "站点顺序" },
   duration: { id: "Durasi", en: "Duration", zh: "时长" },
 
-  about_title: { id: "Tentang Loket Makan", en: "About the Food Counter", zh: "关于美食窗口" },
-  about_lede: {
-    id: "Peta kuliner saku untuk Batam, dikurasi tangan. {n} tempat, dipilih untuk warga dan untuk yang baru turun dari ferry.",
-    en: "A pocket food map for Batam, hand-curated. {n} places, picked for residents and for travellers fresh off the ferry.",
-    zh: "巴淡岛口袋美食地图，人工精选。{n} 家店铺，为居民和刚下渡轮的旅客挑选。",
+  about_title: { id: "Tentang Loket Makan", en: "About the food counter", zh: "关于美食窗口" },
+  about_choose_t: { id: "Cara Memilih", en: "How places are chosen", zh: "挑选方式" },
+  about_choose: {
+    id: "Tempat dipilih dan dikunjungi oleh penyusun. Tidak ada tempat yang membayar untuk masuk daftar ini, dan urutan tidak dapat dibeli.",
+    en: "Places are chosen and visited by the compilers. No place pays to be on this list, and the order cannot be bought.",
+    zh: "店铺由编者挑选并实地到访。没有店铺付费入选，排序也不能购买。",
   },
-  about_promise_t: { id: "Janji kurasi", en: "Curation promise", zh: "精选承诺" },
-  about_promise: {
-    id: "Tanpa listing berbayar, tanpa endorse, tanpa bias iklan. Tujuannya satu: kasih tahu di mana makan enak, halal atau bukan, dan cara ke sananya.",
-    en: "No paid listings, no sponsorships, no ad bias. One goal: tell you where to eat well, whether it's halal, and how to get there.",
-    zh: "无付费收录，无代言，无广告偏见。只有一个目标：告诉您哪里好吃、是否清真、怎么去。",
-  },
-  about_labels_t: { id: "Arti label", en: "What the labels mean", zh: "标签含义" },
-  about_l_wajib: { id: "Ikonik, jangan dilewatkan.", en: "Iconic, don't miss it.", zh: "标志性美食，不容错过。" },
+  about_labels_t: { id: "Arti Label", en: "What the labels mean", zh: "标签含义" },
   about_l_legend: {
-    id: "Sudah puluhan tahun, teruji waktu.",
-    en: "Decades old, stood the test of time.",
-    zh: "数十年老店，经得起时间考验。",
+    id: "sudah buka puluhan tahun dan tetap ramai.",
+    en: "open for decades and still busy.",
+    zh: "开业数十年，至今依然热闹。",
   },
-  about_l_hits: { id: "Lagi ramai diperbincangkan.", en: "Being talked about right now.", zh: "近期热议。" },
-  about_l_gem: {
-    id: "Tersembunyi tapi layak dicari.",
-    en: "Tucked away but worth the hunt.",
-    zh: "藏得深，但值得寻找。",
-  },
-  about_halal_t: { id: "Status halal", en: "Halal status", zh: "清真状态" },
+  about_l_kurator: { id: "tempat yang paling kami sarankan.", en: "the places we recommend most.", zh: "我们最推荐的店铺。" },
+  about_l_populer: { id: "banyak dibicarakan belakangan ini.", en: "much talked about lately.", zh: "近期讨论较多。" },
+  about_l_jarang: { id: "bagus, tetapi tidak mudah ditemukan.", en: "good, but not easy to find.", zh: "不错，但不容易找到。" },
+  about_halal_t: { id: "Status Halal", en: "Halal status", zh: "清真状态" },
   about_halal: {
-    id: 'Status halal adalah kurasi best-effort, verifikasi langsung bila ragu. "Ramah Muslim" berarti umumnya aman, tetapi tempatnya bisa menyajikan menu non-halal.',
-    en: 'Halal status is a best-effort curation, verify on site if unsure. "Muslim-Friendly" means generally fine, but the venue may also serve non-halal items.',
-    zh: "清真状态是尽力而为的筛选，如有疑问请当面确认。“穆斯林友好”表示一般可以，但店内也可能供应非清真菜品。",
+    id: "Status halal adalah hasil kurasi, bukan sertifikasi. Ramah muslim berarti tempat ini umumnya dapat dikunjungi muslim, tetapi juga dapat menyajikan menu nonhalal. Bila ragu, tanyakan langsung kepada pengelolanya.",
+    en: "Halal status is the result of curation, not certification. Muslim-friendly means Muslims can generally visit, but the place may also serve non-halal dishes. If unsure, ask the management directly.",
+    zh: "清真状态是筛选结果，并非认证。“穆斯林友好”表示穆斯林一般可以前往，但店内也可能供应非清真菜品。如有疑问，请直接询问店家。",
   },
-  about_coord_t: { id: "Lokasi di peta", en: "Locations on the map", zh: "地图上的位置" },
+  about_coord_t: { id: "Lokasi di Peta", en: "Locations on the map", zh: "地图上的位置" },
   about_coord: {
-    id: "{a} dari {n} tempat masih memakai perkiraan area: titik tengah area dengan sedikit geseran, bukan titik tempatnya. Tombol Navigasi mencari nama tempat di Google Maps.",
-    en: "{a} of {n} places still use an approximate area: the area's centre with a small offset, not the place itself. The Navigate button searches the place's name on Google Maps.",
-    zh: "{n} 家中有 {a} 家仍使用大致区域：区域中心加少量偏移，并非店铺本身。导航按钮会在 Google 地图上搜索店名。",
+    id: "Titik di peta menunjukkan perkiraan area. Gunakan tombol Petunjuk arah untuk lokasi yang tepat.",
+    en: "Points on the map show an approximate area. Use the Directions button for the exact location.",
+    zh: "地图上的点表示大致区域。如需确切位置，请使用导航按钮。",
   },
-  about_rating_t: { id: "Tanpa angka bintang", en: "No star ratings", zh: "不显示星级" },
+  about_rating_t: { id: "Tanpa Penilaian Bintang", en: "No star ratings", zh: "不显示星级" },
   about_rating: {
-    id: "Angka rating Google tidak ditampilkan dan tidak dipakai untuk mengurutkan. Urutan pilihan datang dari kurasi.",
-    en: "Google rating numbers are not shown and not used for ordering. The picks come from curation.",
-    zh: "不显示 Google 评分，也不用于排序。精选来自人工筛选。",
+    id: "Situs ini tidak menampilkan penilaian bintang. Urutan tempat disusun berdasarkan kurasi.",
+    en: "This site does not show star ratings. Places are ordered by curation.",
+    zh: "本站不显示星级评分。店铺排序依据人工筛选。",
   },
-  about_ferry_t: { id: "Terminal ferry", en: "Ferry terminals", zh: "渡轮码头" },
-  about_ferry: {
-    id: "Nama dan koordinat dari data feri situs ini. Rute dan jadwal bisa berubah, cek ke operator.",
-    en: "Names and coordinates come from this site's ferry data. Routes and schedules change, check with the operator.",
-    zh: "名称和坐标来自本站渡轮数据。航线和时刻可能变动，请向运营方确认。",
-  },
-  about_qris_t: { id: "QRIS lintas negara", en: "Cross-border QRIS", zh: "跨境 QRIS" },
+  about_qris_t: { id: "QRIS Lintas Negara", en: "Cross-border QRIS", zh: "跨境 QRIS" },
   about_qris: {
-    id: "Turis dari Singapura (OCBC, UOB, DBS menyusul) dan Malaysia (DuitNow) bisa memindai QRIS pakai aplikasi bank sendiri, tanpa tukar uang. Cari tanda QRIS di kasir.",
-    en: "Travellers from Singapore (OCBC, UOB, DBS later) and Malaysia (DuitNow) can scan QRIS with their own bank app, no money changing. Look for the QRIS sign at the counter.",
+    id: "Turis dari Singapura (OCBC, UOB, DBS menyusul) dan Malaysia (DuitNow) dapat memindai QRIS dengan aplikasi bank sendiri, tanpa menukar uang. Cari tanda QRIS di kasir.",
+    en: "Travellers from Singapore (OCBC, UOB, DBS later) and Malaysia (DuitNow) can scan QRIS with their own bank app, with no money changing. Look for the QRIS sign at the counter.",
     zh: "来自新加坡（OCBC、UOB，DBS 随后）和马来西亚（DuitNow）的旅客可用本国银行 App 扫描 QRIS，无需换汇。请留意收银台的 QRIS 标识。",
   },
-  about_tips_t: { id: "Tips lokal", en: "Local tips", zh: "本地贴士" },
+  about_tips_t: { id: "Kiat Makan di Batam", en: "Local tips", zh: "本地贴士" },
   about_tip1: {
-    id: "Sup ikan dan bubur sering habis siang. Datang pagi.",
+    id: "Sup ikan dan bubur sering habis pada siang hari. Datanglah pagi.",
     en: "Fish soup and congee often sell out by noon. Go early.",
     zh: "鱼汤和粥常在中午前售罄，请早点去。",
   },
   about_tip2: {
-    id: "Di restoran seafood, tanya harga per kg atau porsi sebelum pesan.",
-    en: "At seafood spots, ask the price per kg or portion before ordering.",
+    id: "Di restoran makanan laut, tanyakan harga per kg atau per porsi sebelum memesan.",
+    en: "At seafood restaurants, ask the price per kg or per portion before ordering.",
     zh: "在海鲜餐厅，点菜前先问每公斤或每份的价格。",
   },
   about_tip3: {
-    id: "Tiket ferry akhir pekan cepat habis. Pesan lebih awal.",
+    id: "Tiket feri akhir pekan cepat habis. Pesan lebih awal.",
     en: "Weekend ferry tickets sell fast. Book ahead.",
     zh: "周末船票很快售罄，请提前预订。",
-  },
-  about_source: {
-    id: "Info dikumpulkan dari Google Maps, TripAdvisor, dan sumber lokal pada pertengahan 2026. Bisa berubah, cek sebelum berangkat.",
-    en: "Info gathered from Google Maps, TripAdvisor and local sources in mid-2026. Subject to change, check before you go.",
-    zh: "信息收集自 Google 地图、TripAdvisor 和本地来源（2026 年中）。可能变动，出发前请确认。",
-  },
-  about_note: {
-    id: "Dikurasi tangan dari {n} tempat. Tanpa listing berbayar, tanpa bias iklan.",
-    en: "Hand-curated from {n} places. No paid listings, no ad bias.",
-    zh: "从 {n} 家店铺中人工精选。无付费收录，无广告偏见。",
   },
 } satisfies Record<string, Tri>;
 
@@ -300,21 +276,23 @@ export type KunciTeks = keyof typeof DICT;
 
 export const HALAL_LABEL: Record<HalalStatus, Tri> = {
   halal: { id: "Halal", en: "Halal", zh: "清真" },
-  "non-halal": { id: "Non-Halal", en: "Non-Halal", zh: "非清真" },
-  "muslim-friendly": { id: "Ramah Muslim", en: "Muslim-Friendly", zh: "穆斯林友好" },
+  "non-halal": { id: "Nonhalal", en: "Non-halal", zh: "非清真" },
+  "muslim-friendly": { id: "Ramah muslim", en: "Muslim-friendly", zh: "穆斯林友好" },
 };
 
+// Kode data lama tetap dipakai sebagai kunci. Yang tampil hanya nama label di pedoman 3.4.
 export const LABEL_LABEL: Record<RecLabel, Tri> = {
   legendaris: { id: "Legendaris", en: "Legendary", zh: "老字号" },
-  hits: { id: "Ramai", en: "Busy", zh: "人气" },
-  "wajib-coba": { id: "Layak dikejar", en: "Worth the trip", zh: "必吃" },
-  "hidden-gem": { id: "Agak tersembunyi", en: "Off the main road", zh: "隐藏宝藏" },
+  "wajib-coba": { id: "Pilihan kurator", en: "Curator's pick", zh: "编者精选" },
+  hits: { id: "Sedang populer", en: "Popular now", zh: "近期热门" },
+  "hidden-gem": { id: "Jarang diketahui", en: "Little known", zh: "鲜为人知" },
 };
 
+// Hanya untuk tombol saringan. Di kartu dan detail, harga selalu berupa kisaran dari price_idr.
 export const PRICE_HINT: Record<PriceTier, Tri> = {
-  $: { id: "Hemat", en: "Cheap", zh: "实惠" },
-  $$: { id: "Sedang", en: "Mid", zh: "中等" },
-  $$$: { id: "Premium", en: "Premium", zh: "高档" },
+  $: { id: "Harga rendah", en: "Lower price", zh: "较低价位" },
+  $$: { id: "Harga menengah", en: "Mid price", zh: "中等价位" },
+  $$$: { id: "Harga tinggi", en: "Higher price", zh: "较高价位" },
 };
 
 export const LANGS: { code: Lang; label: string; nama: string }[] = [
@@ -337,7 +315,7 @@ export function useI18n() {
   const t = useCallback(
     (key: KunciTeks, isi?: Record<string, string | number>) => {
       let teks: string = DICT[key][lang];
-      for (const [k, v] of Object.entries(isi ?? {})) teks = teks.replace(`{${k}}`, String(v));
+      for (const [k, v] of Object.entries(isi ?? {})) teks = teks.replace(`{${k}}`, () => String(v));
       return teks;
     },
     [lang],
@@ -359,4 +337,24 @@ export function placeDesc(lang: Lang, p: { desc_id: string; desc_en: string; des
   if (lang === "id") return p.desc_id;
   if (lang === "zh") return p.desc_zh || p.desc_en;
   return p.desc_en;
+}
+
+/** Tanda & di nama terminal dari data situs ditulis dengan kata (pedoman 2.7). */
+export function namaTerminal(lang: Lang, nama: string): string {
+  return lang === "zh" ? nama : nama.replace(/\s*&\s*/g, lang === "id" ? " dan " : " and ");
+}
+
+const POLA_MIRING = /\*([^*]+)\*|\b(kopitiam|dim sum)\b/gi;
+
+/** Kata asing di dalam kalimat dimiringkan (pedoman 2.4): `*kata*` di naskah, dan kata yang dikenal di teks data. */
+export function miring(teks: string): ReactNode[] {
+  const hasil: ReactNode[] = [];
+  let awal = 0;
+  for (const m of teks.matchAll(POLA_MIRING)) {
+    hasil.push(teks.slice(awal, m.index));
+    hasil.push(<em key={m.index}>{m[1] ?? m[2]}</em>);
+    awal = m.index + m[0].length;
+  }
+  hasil.push(teks.slice(awal));
+  return hasil;
 }

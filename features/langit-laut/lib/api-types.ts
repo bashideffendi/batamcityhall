@@ -177,3 +177,71 @@ export type OfsResponse = {
   /** frame terakhir sudah lewat → data belum diperbarui BMKG. */
   expired: boolean;
 };
+
+/** Satu gempa dari berkas BMKG. Kolom teks disalin apa adanya; jarak dan arah dihitung situs ini. */
+export type GempaDaftar = "terbaru" | "m5" | "dirasakan";
+export type Gempa = {
+  /** ISO UTC, dari kolom DateTime BMKG */
+  waktu: string;
+  /** teks BMKG, mis. "04 Nov 2026" */
+  tanggal: string;
+  /** teks BMKG, mis. "14:56:34 WIB" */
+  jam: string;
+  lat: number | null;
+  lon: number | null;
+  magnitudo: number | null;
+  kedalamanKm: number | null;
+  wilayah: string;
+  /** teks BMKG; "" kalau daftarnya tidak memuat kolom ini */
+  potensi: string;
+  /** teks BMKG berskala MMI, mis. "III Sigi, II Palu" */
+  dirasakan: string;
+  /** nama berkas peta guncangan; hanya ada di gempa terbaru */
+  shakemap: string;
+  daftar: GempaDaftar[];
+  /** jarak lurus dari Batam Kota, null kalau koordinat tidak terbaca */
+  jarakKm: number | null;
+  /** arah dari Batam, mis. "barat laut" */
+  arah: string;
+};
+export type GempaResponse = {
+  /** sebagian = ada berkas yang gagal; basi = semua gagal, ini data terakhir yang berhasil */
+  status: "ok" | "sebagian" | "basi" | "gagal";
+  /** ISO, kapan data berhasil diambil dari BMKG */
+  diambil: string;
+  gempa: Gempa[];
+};
+
+/** Satu peringatan dini cuaca BMKG (CAP). Teks disalin apa adanya. */
+export type PeringatanCuaca = {
+  /** identifier CAP */
+  id: string;
+  /** kode berkas, mis. "CKR20261105001" */
+  kode: string;
+  kejadian: string;
+  judul: string;
+  deskripsi: string;
+  /** ISO UTC */
+  terbit: string;
+  mulai: string;
+  sampai: string;
+  /** nilai CAP apa adanya, mis. "Moderate" */
+  keparahan: string;
+  urgensi: string;
+  kepastian: string;
+  /** areaDesc, mis. "Kep. Riau" */
+  wilayah: string;
+  /** kecamatan Kota Batam yang kena: disebut di teks BMKG atau titiknya di dalam poligon */
+  batam: string[];
+  /** tautan infografis BMKG, "" kalau tidak ada */
+  web: string;
+  /** cincin poligon [bujur, lintang]; hanya dikirim untuk ?poligon=1 */
+  poligon?: [number, number][][];
+};
+export type PeringatanResponse = {
+  /** sebagian = ada XML yang gagal; basi = RSS gagal, ini data terakhir yang berhasil */
+  status: "ok" | "sebagian" | "basi" | "gagal";
+  /** ISO, kapan data berhasil diambil dari BMKG */
+  diambil: string;
+  peringatan: PeringatanCuaca[];
+};

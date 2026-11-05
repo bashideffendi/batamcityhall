@@ -1,49 +1,53 @@
 import type { Metadata } from "next";
+import { ROBOTS_TERSEMBUNYI } from "@/lib/site";
 import Link from "next/link";
 import { NavKampungTua, PitaBertanggal } from "@/features/kampung-tua/Bagian";
-import { LEGALITAS } from "@/features/kampung-tua/data";
+import { LEGALITAS_TAMPIL } from "@/features/kampung-tua/data";
+import { LABEL_PIHAK } from "@/features/kampung-tua/rempang";
 import "@/features/kampung-tua/kampung-tua.css";
 
+const LEDE = "Keputusan dan peristiwa penting tentang kampung tua disusun menurut tanggal.";
+
 export const metadata: Metadata = {
-  title: "Kronologi legalitas kampung tua",
-  description: "Garis waktu bertanggal soal kampung tua di Batam, dengan siapa yang mengatakan apa.",
+  title: "Kronologi Legalitas Kampung Tua",
+  robots: ROBOTS_TERSEMBUNYI,
+  description: LEDE,
 };
 
 export default function Legalitas() {
-  const disaring = LEGALITAS.filter((b) => b.disaring).length;
   return (
     <div className="bch-page">
       <p className="bch-kicker m-0">
         <Link href="/cerita/kampung-tua">Kampung Tua</Link> · Kronologi
       </p>
-      <h1 className="mt-2">Kronologi legalitas</h1>
-      <p className="bch-lede">Apa yang terjadi, kapan, dan siapa yang mencatatnya.</p>
-      <PitaBertanggal catatan="Situasinya terus bergerak. Peristiwa terakhir yang kami catat: 16 Oktober 2026." />
+      <h1 className="mt-2">Kronologi Legalitas Kampung Tua</h1>
+      <PitaBertanggal />
+      <p className="bch-lede">{LEDE}</p>
       <NavKampungTua aktif="legalitas" />
 
       <p className="bch-measure mt-5">
-        Kami tidak menampilkan luas, batas, atau status lahan. {disaring} butir di bawah sudah disaring dan ditandai.
-        Untuk urusan tanah Anda sendiri, lihat <Link href="/info/urusan-tanah">panduan urusan tanah</Link>.
+        Halaman ini tidak memuat batas wilayah, luas, atau status lahan. Untuk urusan tanah sendiri, lihat{" "}
+        <Link href="/info/urusan-tanah">panduan urusan tanah</Link>.
       </p>
 
       <ol className="kt-kronologi" data-kronologi-legalitas>
-        {LEGALITAS.map((b) => (
-          <li key={b.tanggal} data-disaring={b.disaring}>
-            <span className="kt-kronologi-tgl">{b.tanggal}</span>
-            <p className="kt-kronologi-isi">{b.peristiwa}</p>
-            <p className="kt-kronologi-siapa">Menurut: {b.siapa}</p>
-            {b.disaring && (
+        {LEGALITAS_TAMPIL.map((b) => (
+          <li key={b.tanggal} data-pihak={b.pelaku ?? undefined}>
+            <span className="kt-kronologi-tgl">{b.tanggalTeks}</span>
+            {b.pelaku && (
               <p>
-                <span className="bch-badge">Sebagian isi disaring</span>
+                <span className="bch-badge">{LABEL_PIHAK[b.pelaku]}</span>
               </p>
             )}
+            <p className="kt-kronologi-isi">{b.peristiwa}</p>
+            <p className="kt-kronologi-siapa">Dicatat oleh {b.siapa}</p>
           </li>
         ))}
       </ol>
 
       <p className="bch-measure mt-5">
-        Sejak 2025, Wali Kota Batam Amsakar Achmad juga merangkap Kepala BP Batam. Ada yang keliru?{" "}
-        <Link href="/koreksi">Kabari kami</Link>.
+        Sejak 2025, Wali Kota Batam Amsakar Achmad juga merangkap Kepala BP Batam.{" "}
+        <Link href="/koreksi">Kirim koreksi</Link>
       </p>
     </div>
   );

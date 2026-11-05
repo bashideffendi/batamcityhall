@@ -40,7 +40,6 @@ export default function OfsField({ baserun, valid, opacity, onTilesDown }: Props
       scheme: "tms",
       tileSize: 256,
       maxzoom: 8,
-      attribution: "Gelombang: BMKG OFS",
     });
     // Frame pertama langsung tampil. Frame berikutnya menunggu tile-nya siap.
     tambahLayer(map, {

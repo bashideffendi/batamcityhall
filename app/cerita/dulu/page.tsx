@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
+import { ROBOTS_TERSEMBUNYI } from "@/lib/site";
 import CatatanMode from "@/features/tukang/CatatanMode";
 import FormFoto from "@/features/tukang/FormFoto";
 import { modeKiriman } from "@/features/tukang/mode";
 import "@/features/tukang/tukang.css";
 import Link from "next/link";
-import { DaftarSumber } from "@/features/sejarah/Status";
 import { ARSIP, KARTU_DULU, TAHUN_KINI, TITIK_DULU } from "@/features/sejarah/dulu";
 import DuluVsSekarang from "@/features/sejarah/DuluVsSekarang";
 import "@/features/sejarah/sejarah.css";
 
 export const metadata: Metadata = {
-  title: "Batam Dulu vs Sekarang",
-  description:
-    "Empat belas lokasi di Batam, dulu dan sekarang, dengan slider tahun dan sumber arsip yang lisensinya jelas.",
+  title: "Batam Dulu dan Sekarang",
+  robots: ROBOTS_TERSEMBUNYI,
+  description: "Empat belas lokasi di Batam, dulu dan sekarang, dengan penggeser tahun dan daftar arsip.",
 };
 
 export default function BatamDulu() {
@@ -21,17 +21,16 @@ export default function BatamDulu() {
     <div className="bch-page">
       <p className="bch-kicker m-0">
         <Link href="/cerita" prefetch={false}>
-          Loket 05
+          LOKET 05
         </Link>
       </p>
-      <h1 className="mt-2">Batam Dulu vs Sekarang</h1>
+      <h1 className="mt-2">Batam Dulu dan Sekarang</h1>
       <p className="bch-lede">
-        Geser tahun, lihat apa yang sedang berubah. Tahun pembangunan sering berbeda antarsumber, jadi versinya ikut
-        ditulis.
+        Geser tahun untuk melihat lokasi yang sedang berubah. Tahun pembangunan sering berbeda antarsumber, jadi
+        versinya ikut ditulis.
       </p>
       <p className="bch-note" data-catatan-foto>
-        Belum ada foto lama di halaman ini. Kami belum menemukan foto per lokasi yang label lisensinya sudah dicek, jadi
-        yang ada baru tautan ke arsip asli di bagian Sumber arsip.
+        Halaman ini belum memuat foto lama. Lembaga yang menyimpan arsipnya ada di bagian Arsip.
       </p>
 
       <div className="mt-5">
@@ -40,12 +39,11 @@ export default function BatamDulu() {
 
       <section id="arsip" className="sj-jangkar mt-8" aria-labelledby="judul-arsip">
         <h2 id="judul-arsip" className="mb-2">
-          Sumber arsip
+          Arsip
         </h2>
         <p className="bch-measure mt-0">
-          {ARSIP.length} lembaga. Gambar hanya boleh dipakai ulang kalau label itemnya terbuka, dan selalu dikredit
-          dengan format lembaganya. Peta 1847 dan 1882 pasti ada, tetapi tautan item dan label lisensinya di Leiden
-          belum kami temukan.
+          Bagian ini memuat {ARSIP.length} lembaga. Gambar hanya boleh dipakai ulang bila label itemnya terbuka, dan
+          selalu dikredit dengan format lembaganya.
         </p>
         <ul className="sj-versi" data-arsip={ARSIP.length}>
           {ARSIP.map((a) => (
@@ -68,7 +66,6 @@ export default function BatamDulu() {
                   <dd>{a.kredit}</dd>
                 </div>
               </dl>
-              <DaftarSumber sumber={a.tautan} kosong="Belum ada tautan: kontak langsung ke lembaganya." />
             </li>
           ))}
         </ul>
@@ -76,7 +73,7 @@ export default function BatamDulu() {
 
       <section id="kirim-foto" className="sj-jangkar mt-8" aria-labelledby="judul-kirim">
         <h2 id="judul-kirim" className="mb-2">
-          Punya foto lama Batam?
+          Kirim Foto Lama Batam
         </h2>
         {modeFoto === "mati" ? (
           <>
@@ -122,7 +119,8 @@ export default function BatamDulu() {
           <>
             <CatatanMode mode={modeFoto} />
             <p className="bch-measure">
-              Berlisensi CC BY, dengan kredit nama Anda. Berkas fotonya kami minta setelah moderator menghubungi Anda.
+              Foto berlisensi CC BY dan memuat kredit nama pengirim. Moderator menghubungi pengirim sebelum meminta
+              berkas foto.
             </p>
             <FormFoto />
           </>

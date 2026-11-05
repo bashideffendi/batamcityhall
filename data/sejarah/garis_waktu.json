@@ -14,7 +14,7 @@
     "tahun_tabel": "Prasejarah – awal Masehi",
     "peristiwa_tabel": "Belum ada situs prasejarah terkonfirmasi di Pulau Batam",
     "penjelasan": "Situs prasejarah terdekat yang diteliti adalah Bukit Kerang Kawal Darat di Bintan (akhir prasejarah, sekitar awal Masehi). Jangan tampilkan \"zaman batu Batam\" sebagai fakta.",
-    "status_tabel": "❓ (Batam) / ✅ (Bintan)",
+    "status_tabel": "Belum terverifikasi (Batam) / Tercatat (Bintan)",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -33,7 +33,7 @@
     "tahun_tabel": "231 M",
     "peristiwa_tabel": "\"Dihuni orang Melayu sejak 231 Masehi\"",
     "penjelasan": "Klaim yang sering dikutip media, tanpa sumber primer yang bisa dicek.",
-    "status_tabel": "❓",
+    "status_tabel": "Belum terverifikasi",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -52,7 +52,7 @@
     "tahun_tabel": "Abad ke-15–16",
     "peristiwa_tabel": "Masa Kesultanan Melaka",
     "penjelasan": "Perairan Batam berada di lingkup kekuasaan Melayu (Singapura–Melaka–Johor). Nama bandara Hang Nadim diambil dari laksamana Melaka yang melawan Portugis — pengaitan simbolik.",
-    "status_tabel": "✅ (konteks umum)",
+    "status_tabel": "Tercatat (konteks umum)",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -71,7 +71,7 @@
     "tahun_tabel": "Abad ke-16–17",
     "peristiwa_tabel": "Bulang dalam catatan Portugis",
     "penjelasan": "Aswandi Syahri mencatat laporan Portugis tentang pelabuhan \"Bulla\" (Bulang) dekat Selat Singapura dan Pulau Batam.",
-    "status_tabel": "⚠️ (dikutip sekunder)",
+    "status_tabel": "Berbeda versi (dikutip sekunder)",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -92,7 +92,7 @@
     "tahun_tabel": "1675",
     "peristiwa_tabel": "\"Pulau Batang\" di peta VOC",
     "penjelasan": "Peta rute pelayaran VOC di Perpustakaan Universitas Leiden mencantumkan \"P. Batang\". Item spesifiknya belum ditemukan daring.",
-    "status_tabel": "⚠️",
+    "status_tabel": "Berbeda versi",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -111,7 +111,7 @@
     "tahun_tabel": "Abad ke-17–18",
     "peristiwa_tabel": "Kesultanan Johor-Riau",
     "penjelasan": "Batam bagian dari Kesultanan Johor-Riau-Lingga-Pahang; pejabat Temenggung ditempatkan di Pulau Bulang.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -134,7 +134,7 @@
     "tahun_tabel": "1757–1802",
     "peristiwa_tabel": "Temenggung Abdul Jamal di Bulang",
     "penjelasan": "Berkedudukan dan dimakamkan di Bulang; makamnya kini cagar budaya Kota Batam. Carl Trocki (*Prince of Pirates*, 1979) membahas peran Temenggung sebagai \"penguasa laut\" yang membawahi orang laut.",
-    "status_tabel": "✅ (makam & peran) / ⚠️ (tahun jabatan)",
+    "status_tabel": "Tercatat (makam dan peran) / Berbeda versi (tahun jabatan)",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -156,7 +156,7 @@
     "tahun_tabel": "1811 atau 1818",
     "peristiwa_tabel": "Temenggung pindah ke Singapura",
     "penjelasan": "Tun Abdul Rahman memindahkan kedudukan Temenggung dari Bulang ke Singapura; pelabuhan Selat Bulang mulai sepi.",
-    "status_tabel": "⚠️ (1811 vs 1818)",
+    "status_tabel": "Berbeda versi (1811 vs 1818)",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -175,7 +175,7 @@
     "tahun_tabel": "17 Maret 1824",
     "peristiwa_tabel": "Traktat London",
     "penjelasan": "Perjanjian Inggris–Belanda: Singapura dan Semenanjung ke Inggris, Riau-Lingga (termasuk Batam) ke Belanda. Batam menjadi \"pulau kembar\" Singapura di sisi Belanda.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -200,7 +200,7 @@
     "tahun_tabel": "18 Desember 1829",
     "peristiwa_tabel": "Mandat Nong Isa",
     "penjelasan": "Raja Isa, putra Raja Ali (YDM Riau V), dikukuhkan memegang perintah atas Nongsa dan rantaunya; surat ditandai Residen Riouw Letkol C.P.J. Elout. Menjadi Hari Jadi Kota Batam (Perda 4/2009).",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -219,7 +219,7 @@
     "tahun_tabel": "Setelah 1829",
     "peristiwa_tabel": "Nongsa menggantikan Selat Bulang",
     "penjelasan": "Kapal dari Tanjungpinang/Penyengat singgah dulu di Nongsa sebelum menyeberang ke Singapura.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -240,7 +240,7 @@
     "tahun_tabel": "1831",
     "peristiwa_tabel": "Nong Isa wafat",
     "penjelasan": "Administrasi Nongsa berkembang mencakup seluruh \"Batam Archipel\". Letak makam Nong Isa sendiri tidak diketahui; yang ada adalah Kompleks Makam Zuriat.",
-    "status_tabel": "✅ (tahun) / ❓ (makam)",
+    "status_tabel": "Tercatat (tahun) / Belum terverifikasi (makam)",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -261,7 +261,7 @@
     "tahun_tabel": "1847",
     "peristiwa_tabel": "Peta \"Kaart van de Noordkust van het Eiland Bantang\"",
     "penjelasan": "Survei trigonometri 1846 (E.H. Boom) memetakan pesisir utara: Nongsa, Tj. Batoe, Teloek Tring, Sungai Senimba, Tanjung Pinggir.",
-    "status_tabel": "✅ (ada) / ❓ (URL item Leiden)",
+    "status_tabel": "Tercatat (ada) / Belum terverifikasi (URL item Leiden)",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -280,7 +280,7 @@
     "tahun_tabel": "1 Desember 1857",
     "peristiwa_tabel": "Perjanjian Riau-Lingga–Belanda",
     "penjelasan": "Dasar kekuasaan Belanda atas wilayah Riau-Lingga termasuk Galang.",
-    "status_tabel": "⚠️ (dikutip sekunder)",
+    "status_tabel": "Berbeda versi (dikutip sekunder)",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -301,7 +301,7 @@
     "tahun_tabel": "1882",
     "peristiwa_tabel": "J.G. Schot, \"De Battam Archipel\"",
     "penjelasan": "Artikel dan peta Schot (*De Indische Gids*) mencatat tiga *wakilschap*: Nongsa, Bulang, Sulit.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -323,7 +323,7 @@
     "tahun_tabel": "sekitar 1898",
     "peristiwa_tabel": "Batam Brick Works",
     "penjelasan": "Pabrik bata pertama di Batam oleh Raja Ali Kelana dan pengusaha Singapura Ong Sam Leong; bata bertuliskan \"Batam Brick works\" masih ada di Perigi Batu Pulau Buluh (cagar budaya).",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -342,7 +342,7 @@
     "tahun_tabel": "1942–1945",
     "peristiwa_tabel": "Pendudukan Jepang",
     "penjelasan": "Batam di bawah pendudukan militer Jepang bersama Kepulauan Riau. Detail lokal di Pulau Batam masih minim sumber.",
-    "status_tabel": "✅ (konteks) / ❓ (detail)",
+    "status_tabel": "Tercatat (konteks) / Belum terverifikasi (detail)",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -362,7 +362,7 @@
     "tahun_tabel": "Okt 1945 – Juli 1946",
     "peristiwa_tabel": "Rempang–Galang jadi kamp tentara Jepang",
     "penjelasan": "Menurut BiblioAsia (NLB, 2026), orang Jepang tinggal di Rempang \"between October 1945 and July 1946\". Pulau ini terletak 2,5 km di tenggara Batam. Angkatan Laut ditempatkan di Rempang Utara, sedangkan Angkatan Darat di Rempang Selatan, Galang, dan Galang Baru. Repatriasi pertama dimulai 24 April 1946 dengan kapal Liberty. Tanggal ini tercatat dalam laporan primer British Liaison Staff Rempang tertanggal 20 Juli 1946 (National Archives UK, WO 203/2460). Jumlah tawanan berbeda versi. Tugu Jepang di Sembulang (dibangun Rempang Friendship Association, 1981) mencatat 112.708 serdadu, 128 di antaranya meninggal. BiblioAsia menyebut sekitar 68.000 orang diinternir di Rempang, dan lebih dari 150 orang meninggal di Rempang dan Galang.",
-    "status_tabel": "✅ (periode & repatriasi) / ⚠️ (jumlah)",
+    "status_tabel": "Tercatat (periode dan repatriasi) / Berbeda versi (jumlah)",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -381,7 +381,7 @@
     "tahun_tabel": "1959–1983",
     "peristiwa_tabel": "Belakang Padang ibu kota Kecamatan Batam",
     "penjelasan": "Pusat pemerintahan kecamatan ada di Belakang Padang, bukan di Pulau Batam.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -398,7 +398,7 @@
     "tahun_tabel": "1963–1966",
     "peristiwa_tabel": "Konfrontasi Indonesia–Malaysia",
     "penjelasan": "Kepulauan Riau menjadi garis depan konfrontasi. Peran spesifik Pulau Batam belum ditemukan sumber yang bisa dicek.",
-    "status_tabel": "❓ (detail Batam)",
+    "status_tabel": "Belum terverifikasi (detail Batam)",
     "sumber_entri": "tabel",
     "catatan": "Kolom sumber di tabel: — (perlu riset lanjutan)"
   },
@@ -417,7 +417,7 @@
     "tahun_tabel": "1965",
     "peristiwa_tabel": "Desa kecil",
     "penjelasan": "BP Batam mencatat Batam masih desa kecil di Kecamatan Pulau Buluh/Belakang Padang, sekitar 6.000 jiwa.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -438,7 +438,7 @@
     "tahun_tabel": "1969",
     "peristiwa_tabel": "Pertamina masuk",
     "penjelasan": "Pertamina di bawah Ibnu Sutowo menjadikan Batam basis logistik migas; waduk sementara Sei Harapan dibangun untuk Pertamina Sambu.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -460,7 +460,7 @@
     "tahun_tabel": "26 Oktober 1971",
     "peristiwa_tabel": "Keppres 74/1971",
     "penjelasan": "Batam ditetapkan menjadi daerah industri; dibentuk badan penguasa (authority). Ibnu Sutowo ketua pertama; tanggal ini diperingati sebagai Hari Bakti BP Batam.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -481,7 +481,7 @@
     "tahun_tabel": "1973",
     "peristiwa_tabel": "Keppres 41/1973",
     "penjelasan": "Pulau Batam ditetapkan lingkungan kerja daerah industri; tanah diserahkan dengan hak pengelolaan kepada Otorita Batam.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -500,7 +500,7 @@
     "tahun_tabel": "29 Juni 1974",
     "peristiwa_tabel": "Keppres 33/1974",
     "penjelasan": "*Bonded warehouse*; pulau-pulau sekitar (Janda Berhias, Tanjung Sauh, Ngenang, Kasem, Moi-moi) masuk wilayah kerja.",
-    "status_tabel": "⚠️ (dikutip sekunder)",
+    "status_tabel": "Berbeda versi (dikutip sekunder)",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -521,7 +521,7 @@
     "tahun_tabel": "1970-an",
     "peristiwa_tabel": "Lahirnya nama \"Nagoya\"",
     "penjelasan": "Pekerja Jepang (Taisei) yang membangun Pelabuhan Batu Ampar dan Dam Nongsa menyebut kawasan Lubuk Baja/Teluk Jodoh \"Nagoya\".",
-    "status_tabel": "⚠️ (1960-an vs sekitar 1978)",
+    "status_tabel": "Berbeda versi (1960-an vs sekitar 1978)",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -540,7 +540,7 @@
     "tahun_tabel": "1976–1978",
     "peristiwa_tabel": "Periode Konsolidasi (J.B. Sumarlin)",
     "penjelasan": "Setelah krisis keuangan Pertamina banyak proyek terhambat; Sumarlin memimpin konsolidasi.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -561,7 +561,7 @@
     "tahun_tabel": "1978–1998",
     "peristiwa_tabel": "Era B.J. Habibie",
     "penjelasan": "Pembangunan prasarana dan penanaman modal; kantor pusat Otorita dipindah ke Batam; konsep Barelang memperluas wilayah menjadi 715 km².",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -580,7 +580,7 @@
     "tahun_tabel": "1979–1996",
     "peristiwa_tabel": "Kamp pengungsi Vietnam di Galang",
     "penjelasan": "Penampungan pengungsi Indochina; kini Wisata Sejarah Galang.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -599,7 +599,7 @@
     "tahun_tabel": "1983",
     "peristiwa_tabel": "PP 34/1983",
     "penjelasan": "Kecamatan Batam ditingkatkan menjadi Kotamadya Administratif.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -621,7 +621,7 @@
     "tahun_tabel": "1980–1995",
     "peristiwa_tabel": "Bandara Hang Nadim",
     "penjelasan": "Lokasi awal Tanjung Uncang dipindah ke Batu Besar karena mengganggu jalur Paya Lebar. Landasan 4.025 m, penerbangan internasional 1990, diresmikan Soeharto 1995.",
-    "status_tabel": "⚠️ (mulai 1974/1980/1984)",
+    "status_tabel": "Berbeda versi (mulai 1974/1980/1984)",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -640,7 +640,7 @@
     "tahun_tabel": "1989–1990-an",
     "peristiwa_tabel": "Segitiga Pertumbuhan SIJORI",
     "penjelasan": "Kerja sama Singapura–Johor–Riau menjadikan Batam inti zona industri lintas batas.",
-    "status_tabel": "✅ (literatur akademik)",
+    "status_tabel": "Tercatat (literatur akademik)",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -661,7 +661,7 @@
     "tahun_tabel": "19 Juni 1992",
     "peristiwa_tabel": "Keppres 28/1992",
     "penjelasan": "Wilayah kerja Otorita Batam diperluas ke Pulau Rempang dan Galang.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -683,7 +683,7 @@
     "tahun_tabel": "1992–1998",
     "peristiwa_tabel": "Jembatan Barelang",
     "penjelasan": "Enam jembatan menghubungkan Batam–Tonton–Nipah–Setokok–Rempang–Galang–Galang Baru; biaya Rp400 miliar; jembatan I (644 m) adalah *cable stayed* pertama di Indonesia.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -702,7 +702,7 @@
     "tahun_tabel": "1998–2019",
     "peristiwa_tabel": "Pergantian pimpinan Otorita/BP Batam",
     "penjelasan": "J.E. Habibie (Mar–Jul 1998), Ismeth Abdullah (1998–2005), Mustofa Widjaja (2005–2016), Hatanto Reksodipoetro (2016–2017), Lukita Dinarsyah Tuwo (2017–2018), Edy Putra Irawady (2019, transisi).",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -721,7 +721,7 @@
     "tahun_tabel": "1999",
     "peristiwa_tabel": "UU 53/1999",
     "penjelasan": "Kotamadya administratif menjadi daerah otonom Kota Batam.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -740,7 +740,7 @@
     "tahun_tabel": "2000",
     "peristiwa_tabel": "PP 36/2000",
     "penjelasan": "Penetapan Batam sebagai kawasan perdagangan bebas (dikutip sekunder).",
-    "status_tabel": "⚠️",
+    "status_tabel": "Berbeda versi",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -757,9 +757,9 @@
       "https://batam.tribunnews.com/2025/02/17/daftar-kepala-bp-batam-dari-masa-ke-masa-dari-ibnu-sutowo-dan-terbaru-amsakar-achmad"
     ],
     "tahun_tabel": "2007",
-    "peristiwa_tabel": "UU 44/2007 & PP 46/2007",
+    "peristiwa_tabel": "UU 44/2007 dan PP 46/2007",
     "penjelasan": "Batam ditetapkan KPBPB (FTZ) untuk 70 tahun; Otorita Batam berubah menjadi BP Batam.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -778,7 +778,7 @@
     "tahun_tabel": "2009",
     "peristiwa_tabel": "Perda 4/2009",
     "penjelasan": "18 Desember 1829 ditetapkan sebagai Hari Jadi Kota Batam.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -797,7 +797,7 @@
     "tahun_tabel": "2011",
     "peristiwa_tabel": "PP 5/2011",
     "penjelasan": "Cakupan KPBPB Batam: Batam, Tonton, Setokok, Nipah, Rempang, Galang, Galang Baru, Janda Berhias dan gugusannya.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -819,7 +819,7 @@
     "tahun_tabel": "27 September 2019",
     "peristiwa_tabel": "Wali Kota ex-officio Kepala BP Batam",
     "penjelasan": "Berdasarkan PP 62/2019, Muhammad Rudi dilantik Menko Perekonomian Darmin Nasution sebagai Kepala BP Batam.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -841,7 +841,7 @@
     "tahun_tabel": "8 Juni 2021",
     "peristiwa_tabel": "KEK pertama di Batam",
     "penjelasan": "PP 67/2021 (KEK Batam Aero Technic, 30 ha) dan PP 68/2021 (KEK Nongsa, 166,45 ha).",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -860,7 +860,7 @@
     "tahun_tabel": "2023",
     "peristiwa_tabel": "Rempang Eco City",
     "penjelasan": "Ditetapkan proyek strategis nasional (rencana 8.142 ha). Disebut singkat; aspek hukum di luar cakupan.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -877,9 +877,9 @@
       "https://golaw.id/blog/kek-batam-pusat-pertumbuhan-baru-untuk-digital-data-center-dan-aviasi/"
     ],
     "tahun_tabel": "2024",
-    "peristiwa_tabel": "KEK Tanjung Sauh & KEK Pariwisata-Kesehatan",
+    "peristiwa_tabel": "KEK Tanjung Sauh dan KEK Pariwisata-Kesehatan",
     "penjelasan": "PP 24/2024 (Tanjung Sauh, 840,67 ha) dan PP 39/2024 (Pariwisata dan Kesehatan Internasional Batam, sekitar 47 ha).",
-    "status_tabel": "⚠️ (dikutip sekunder)",
+    "status_tabel": "Berbeda versi (dikutip sekunder)",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -901,9 +901,9 @@
       "https://owntalk.co.id/2025/02/20/tongkat-kepemimpinan-bp-batam-diserahkan-kepada-amsakar-li-claudia/"
     ],
     "tahun_tabel": "20 Februari 2025",
-    "peristiwa_tabel": "Amsakar Achmad & Li Claudia Chandra",
+    "peristiwa_tabel": "Amsakar Achmad dan Li Claudia Chandra",
     "penjelasan": "Dilantik Presiden sebagai Wali Kota/Wakil, lalu hari yang sama sebagai Kepala/Wakil Kepala BP Batam; PP 4/2025 menjadikan Wakil Wali Kota ex-officio Wakil Kepala.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -922,7 +922,7 @@
     "tahun_tabel": "2025",
     "peristiwa_tabel": "Rekor wisman",
     "penjelasan": "1.613.202 kunjungan wisman (BPS Kota Batam), sekitar 79,58% dari total Kepri.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "json+tabel",
     "catatan": null
   },
@@ -941,7 +941,7 @@
     "tahun_tabel": "Des 2025–Jan 2026",
     "peristiwa_tabel": "Hari Jadi ke-196",
     "penjelasan": "Pameran mini Nong Isa, termasuk sketsa wajah Nong Isa koleksi Museum Batam Raja Ali Haji.",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -960,7 +960,7 @@
     "tahun_tabel": "Semester I 2026",
     "peristiwa_tabel": "Realisasi investasi",
     "penjelasan": "BP Batam melaporkan realisasi investasi Rp38,97 triliun.",
-    "status_tabel": "⚠️ (klaim lembaga)",
+    "status_tabel": "Berbeda versi (klaim lembaga)",
     "sumber_entri": "tabel",
     "catatan": null
   },
@@ -979,7 +979,7 @@
     "tahun_tabel": "Juli 2026",
     "peristiwa_tabel": "Kabel bawah laut Nongsa–Changi",
     "penjelasan": "Disebut mendarat Juli 2026; hanya satu sumber swasta.",
-    "status_tabel": "❓",
+    "status_tabel": "Belum terverifikasi",
     "sumber_entri": "json+tabel",
     "catatan": null
   }

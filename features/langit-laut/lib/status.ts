@@ -1,8 +1,8 @@
 // ---------------------------------------------------------------------------
 // Turunan TAMPILAN dari data mentah — fungsi murni (tanpa React, tanpa I/O), jadi
 // gampang diuji dan satu-satunya tempat aturan "jujur soal kesegaran" + SALINAN panel
-// didefinisikan. Gaya tulis: Title Case untuk judul/label/baris singkat (kata tugas EYD
-// tetap kecil), kalimat penjelasan tetap kalimat biasa.
+// didefinisikan. Salinan mengikuti PEDOMAN 3.3 dan 3.11: label berkapital di awal saja,
+// kalimat data persis templatnya, tanpa lelucon saat ada peringatan.
 // ---------------------------------------------------------------------------
 import type {
   EchoSummary,
@@ -24,10 +24,12 @@ import {
 import { currentSlot, warnAt } from "./perairan";
 import { ageMinutesOf, ofsValidWib, tsToInstant, type Frame } from "./radar";
 
-/** Di atas ini citra radar dianggap terlambat (MSS terlambat/macet). */
-export const LIVE_MAX_AGE_MIN = 18;
-/** Lebih dari ini: bukan lagi "terlambat n menit" tapi "belum diperbarui". */
-export const RADAR_OLD_MIN = 60;
+/** PEDOMAN 3.3. Langsung: umur citra kurang dari 15 menit. */
+export const LIVE_MAX_AGE_MIN = 15;
+/** PEDOMAN 3.3. Tertunda sampai 30 menit; lebih dari itu Terputus dan peta hujan tidak ditampilkan. */
+export const RADAR_OLD_MIN = 30;
+/** Radius deteksi gema di sekitar Batam (lib/echo.ts). */
+const RADIUS_GEMA_KM = 20;
 /** Run OFS lebih tua dari 2 siklus (12 jam) = BMKG mandek. Umur wajar run terbaru 8–20 jam. */
 export const OFS_STALE_H = 24;
 /** Respons lama (tanpa per kecamatan): kelas baru disebut kalau luasnya ≥ ini (1 px = 1 km²). */
@@ -55,68 +57,39 @@ export type Caption = { left: string; right: string | null; warn: boolean; toNow
 
 // ---- teks ------------------------------------------------------------------
 export const fmtM = (n: number) => String(n).replace(".", ",");
-/** "0.5 - 1.25 m" → "0,5–1,25 m" */
-export const fmtWave = (s: string) => s.replace(/\./g, ",").replace(/\s*-\s*/, "–");
+/** "0.5 - 1.25 m" → "0,5—1,25 m" */
+export const fmtWave = (s: string) => s.replace(/\./g, ",").replace(/\s*-\s*/, "—");
 export const ktToKmh = (kt: number) => Math.round(kt * 1.852);
 
-// Kata tugas (EYD) yang tetap huruf kecil di tengah judul.
-const SMALL = new Set([
-  "di", "ke", "dari", "dan", "atau", "yang", "untuk", "pada", "dengan", "per", "sejak",
-  "sampai", "hingga", "oleh", "dalam", "bagi", "tentang", "antara", "serta", "tetapi",
-]);
-const ACRONYMS = new Set(["BMKG", "MSS", "NEA", "PSI", "UV", "WIB", "PTZ", "BI", "DPRD", "SP"]);
-// Satuan tetap huruf kecil ("2,5 m", "40 km/j").
-const UNITS = new Set(["m", "mm", "cm", "km", "km/j", "km/jam", "knot", "kt", "meter"]);
+const SINGKATAN = /\b(bmkg|mss|nea|psi|uv|wib)\b/gi;
 
-function titleWord(w: string, first: boolean): string {
-  const bare = w.replace(/^[^\p{L}\d]+|[^\p{L}\d]+$/gu, "");
-  // akronim yang dikenal tetap kapital; kata lain yang SELURUHNYA kapital ("HUJAN") dirapikan
-  if (ACRONYMS.has(bare.toUpperCase()) && bare === bare.toUpperCase()) return w;
-  // angka/kode ("0.5", "E.02") dibiarkan apa adanya
-  if (/\d/.test(bare)) return w;
-  const lower = w.toLowerCase();
-  if (!first && (SMALL.has(bare.toLowerCase()) || UNITS.has(bare.toLowerCase()))) return lower;
-  // Kapital di awal tiap bagian kata ulang/garis miring/kurung: "abu-abu" → "Abu-Abu".
-  return lower.replace(/(^|[-/(“"'])(\p{L})/gu, (_, p: string, c: string) => p + c.toUpperCase());
-}
-
-/** Title Case bahasa Indonesia: "waspada angin kencang dan gelombang tinggi" → "Waspada Angin Kencang dan Gelombang Tinggi". */
+/** Label berkapital di awal saja (PEDOMAN 2.3): "HUJAN PETIR" → "Hujan petir". Singkatan tetap kapital. */
 export function titleCase(s: string): string {
-  const t = s.trim().replace(/\s+/g, " ");
+  const t = s.trim().replace(/\s+/g, " ").toLowerCase();
   if (!t) return "";
-  let first = true;
-  return t
-    .split(" ")
-    .map((w) => {
-      const out = titleWord(w, first);
-      if (/[\p{L}\d]/u.test(w)) first = false;
-      // sesudah titik dua / titik, kata berikutnya dianggap awal lagi
-      if (/[:.]$/.test(w)) first = true;
-      return out;
-    })
-    .join(" ");
+  return (t[0].toUpperCase() + t.slice(1)).replace(SINGKATAN, (m) => m.toUpperCase());
 }
 
 const ARAH: Record<string, string> = {
-  U: "Utara",
-  TL: "Timur Laut",
-  T: "Timur",
-  TG: "Tenggara",
-  S: "Selatan",
-  BD: "Barat Daya",
-  B: "Barat",
-  BL: "Barat Laut",
+  U: "utara",
+  TL: "timur laut",
+  T: "timur",
+  TG: "tenggara",
+  S: "selatan",
+  BD: "barat daya",
+  B: "barat",
+  BL: "barat laut",
 };
-/** Kode mata angin NEA ("TL") atau teks BMKG ("timur laut") → "Timur Laut". */
-export const arahLengkap = (kode: string) => ARAH[kode.trim().toUpperCase()] ?? titleCase(kode);
+/** Kode mata angin NEA ("TL") atau teks BMKG ("Timur Laut") → "timur laut". */
+export const arahLengkap = (kode: string) => ARAH[kode.trim().toUpperCase()] ?? kode.trim().toLowerCase();
 
-/** Menit → "Baru Saja" / "25 Menit" / "2,5 Jam". */
+/** Menit → "baru saja" / "25 menit" / "2,5 jam". */
 function durasi(min: number): string {
-  if (min < 1) return "Baru Saja";
-  if (min < 90) return `${min} Menit`;
-  return `${fmtM(Math.round(min / 30) / 2)} Jam`;
+  if (min < 1) return "baru saja";
+  if (min < 90) return `${min} menit`;
+  return `${fmtM(Math.round(min / 30) / 2)} jam`;
 }
-const lalu = (min: number) => (min < 1 ? "Baru Saja" : `${durasi(min)} Lalu`);
+const lalu = (min: number) => (min < 1 ? "Baru saja" : `${durasi(min)} lalu`);
 
 /** Tanggal WIB (YYYY-MM-DD) dari instant ms. */
 const wibDay = (ms: number) => new Date(ms + 7 * 3600 * 1000).toISOString().slice(0, 10);
@@ -181,7 +154,7 @@ export function radarView(a: {
   };
 }
 
-/** Wilayah peta → cakupan jawaban: "Batam" = Kota Batam; "Kepri"/"Luas" = semua kab/kota Kepri. */
+/** Wilayah peta → cakupan jawaban: "Batam" = Kota Batam; "Kepulauan Riau"/"Luas" = semua kab/kota Kepri. */
 export const scopeOf = (view: string): RainScope => (view === "batam" ? "batam" : "kepri");
 
 /** Daftar kecamatan untuk satu cakupan: Kepri dari `region.kec`, Batam dari `kec` akar. */
@@ -211,15 +184,11 @@ export function rainLevel(e: EchoSummary, scope: RainScope = "batam"): EchoLevel
 }
 
 const LEVEL_TEXT: Record<EchoLevel, string> = {
-  ringan: "Hujan Ringan",
-  sedang: "Hujan Sedang",
-  lebat: "Hujan Lebat",
+  ringan: "Hujan ringan",
+  sedang: "Hujan sedang",
+  lebat: "Hujan lebat",
 };
-/** Persen area, dibulatkan; "<1" kalau di bawah 0,5%. */
-const pctArea = (coverage: number) => {
-  const p = coverage * 100;
-  return p < 0.5 ? "<1" : String(Math.round(p));
-};
+const LEVEL_KATA: Record<EchoLevel, string> = { ringan: "ringan", sedang: "sedang", lebat: "lebat" };
 
 /** "Sekupang" · "Sekupang dan Batu Aji" · "Sekupang, Batu Aji, dan Sagulung". */
 export function joinNames(names: string[]): string {
@@ -228,54 +197,33 @@ export function joinNames(names: string[]): string {
   return `${names.slice(0, -1).join(", ")}, dan ${names[names.length - 1]}`;
 }
 
-/**
- * Di mana hujannya, dua bentuk:
- *  - `phrase` untuk kalimat ("Hujan Ringan di …"): nama kecamatan / "5 Kecamatan Kepri";
- *  - `line` untuk baris konteks panel ("Di Sekupang dan Batu Aji", "5 Kecamatan di Batam dan Bintan").
- * Batam: nama kecamatan (≤3) atau "5 dari 12 Kecamatan". Kepri: nama + kab/kota dalam kurung
- * (≤2), atau jumlah kecamatan per kab/kota.
- */
-function rainWhere(echo: EchoSummary, scope: RainScope): { phrase: string; line: string; none: string } {
+/** Kalimat hujan PEDOMAN 3.11. null kalau gema belum diketahui. */
+export function kalimatHujan(echo: EchoSummary | null, scope: RainScope = "batam"): string | null {
+  if (!echo) return null;
   const sc = scoped(echo, scope);
-  const none = scope === "batam" ? "Kota Batam" : "Kepri";
-  if (!sc.kec) return { phrase: "Sekitar Batam", line: "Sekitar Batam", none: "Sekitar Batam" }; // respons lama
+  const tempat = scope === "batam" ? "Batam" : "Kepulauan Riau";
+  if (!sc.kec) {
+    return sc.near ? `Ada hujan sekitar ${RADIUS_GEMA_KM} km dari Batam, belum masuk wilayah kota.` : `Belum ada hujan yang terpantau di ${tempat}.`;
+  }
   const rainy = rainyKec(sc.kec);
-  if (!rainy.length) return { phrase: none, line: none, none };
-  if (scope === "batam") {
-    if (rainy.length <= 3) {
-      const names = joinNames(rainy.map((k) => k.name));
-      return { phrase: names, line: `Di ${names}`, none };
-    }
-    const n = `${rainy.length} dari ${sc.kec.length} Kecamatan`;
-    return { phrase: n, line: `Di ${n}`, none };
+  if (!rainy.length) {
+    return sc.near && scope === "batam"
+      ? `Ada hujan sekitar ${RADIUS_GEMA_KM} km dari Batam, belum masuk wilayah kota.`
+      : `Belum ada hujan yang terpantau di ${tempat}.`;
   }
-  const kabs = [...new Set(rainy.map((k) => k.kab))].sort((a, b) => kabRank(a) - kabRank(b));
-  if (rainy.length <= 2) {
-    // satu kab/kota: "Nongsa dan Sekupang (Batam)"; beda: "Bintan Timur (Bintan) dan Meral (Karimun)"
-    const names =
-      kabs.length === 1
-        ? `${joinNames(rainy.map((k) => k.name))} (${kabs[0]})`
-        : joinNames(rainy.map((k) => `${k.name} (${k.kab})`));
-    return { phrase: names, line: `Di ${names}`, none };
+  const level = rainy[0].level;
+  if (rainy.length <= 3) {
+    return `Hujan ${LEVEL_KATA[level]} di Kecamatan ${joinNames(rainy.map((k) => k.name))}.`;
   }
-  const where = kabs.length <= 3 ? joinNames(kabs) : `${kabs.length} Kabupaten/Kota`;
-  return { phrase: `${rainy.length} Kecamatan Kepri`, line: `${rainy.length} Kecamatan di ${where}`, none };
+  const jumlah = scope === "batam" ? `${rainy.length} dari ${sc.kec.length} kecamatan` : `${rainy.length} kecamatan Kepulauan Riau`;
+  return `Hujan di ${jumlah}, paling deras di ${rainy[0].name} (${LEVEL_KATA[level]}).`;
 }
 
-type Cond = { text: string; level: EchoLevel | null; known: boolean; where: string; line: string; none: string };
-function rainCond(echo: EchoSummary | null, scope: RainScope): Cond {
-  if (!echo) return { text: "Lihat Warna di Peta", level: null, known: false, where: "", line: "", none: "" };
-  const w = rainWhere(echo, scope);
-  const sc = scoped(echo, scope);
-  if (sc.near) {
-    const level = rainLevel(echo, scope) ?? "ringan";
-    return { text: LEVEL_TEXT[level], level, known: true, where: w.phrase, line: w.line, none: w.none };
-  }
-  if (sc.lastTs) return { text: "Hujan Sudah Reda", level: null, known: true, where: w.none, line: w.none, none: w.none };
-  return { text: "Tidak Ada Hujan", level: null, known: true, where: w.none, line: w.none, none: w.none };
+/** Status citra PEDOMAN 3.3. */
+export function statusRadar(umurMenit: number | null): "Langsung" | "Tertunda" | "Terputus" {
+  if (umurMenit === null || umurMenit > RADAR_OLD_MIN) return "Terputus";
+  return umurMenit < LIVE_MAX_AGE_MIN ? "Langsung" : "Tertunda";
 }
-/** "Hujan Ringan di Sekupang dan Batu Aji" / "Tidak Ada Hujan di Kota Batam". */
-const condSentence = (c: Cond) => (c.known ? `${c.text} di ${c.where}` : c.text);
 
 export function rainAnswer(a: {
   echo: EchoSummary | null;
@@ -287,7 +235,7 @@ export function rainAnswer(a: {
   /** Kota Batam (bawaan) atau semua kab/kota Kepri dalam jangkauan radar */
   scope?: RainScope;
 }): Answer {
-  const { echo, frames, rv, status, offline, now } = a;
+  const { echo, rv, status, offline } = a;
   const scope = a.scope ?? "batam";
   const latest = rv.latest;
   const base = (headline: string, context: string, extra: Partial<Answer> = {}): Answer => ({
@@ -297,69 +245,46 @@ export function rainAnswer(a: {
     dot: null,
     retry: false,
     mini: headline,
-    share: "Radar Hujan Batam",
-    live: [headline, context].filter(Boolean).join(". "),
+    share: "Radar hujan Batam",
+    live: [headline, context].filter(Boolean).join(" "),
     ...extra,
   });
+  const TIDAK_TERSAMBUNG = "Perangkat tidak tersambung ke internet. Data yang tampil adalah data terakhir yang tersimpan.";
 
   if (!latest) {
-    if (offline) return base("Kamu Sedang Offline", "Radar Muncul Lagi Saat Ada Sinyal");
-    if (status === "error") return base("Radar Belum Bisa Dimuat", "", { retry: true });
-    return base("Memuat Radar…", "", { tone: "muted", live: "" });
+    if (offline) return base(TIDAK_TERSAMBUNG, "", { mini: "Tidak tersambung" });
+    if (status === "error") return base("Data radar belum dapat dimuat.", "", { retry: true, mini: "Radar terputus" });
+    return base("Memuat data", "", { tone: "muted", live: "" });
   }
 
-  const cond = rainCond(echo, scope);
   const t = latest.time;
-  const lastLabel = `Terakhir ${whenLabel(latest, now)}`;
-  const share = cond.known ? `Radar ${t} WIB: ${condSentence(cond)}` : `Radar Hujan Batam ${t} WIB`;
+  const age = rv.latestAge ?? 0;
+  const kalimat = kalimatHujan(echo, scope);
+  const barisWaktu = (s: string) => `Citra pukul ${t} WIB · ${s}`;
+  const share = kalimat ? `Radar pukul ${t} WIB: ${kalimat}` : `Radar hujan Batam pukul ${t} WIB`;
   const mini = (h: string) => `${h} · ${t}`;
 
-  if (offline) {
-    const ctx = `${lastLabel}: ${condSentence(cond)}`;
-    return base("Kamu Sedang Offline", ctx, { mini: mini("Offline"), share });
-  }
-  if (status === "error") {
-    const ctx = `${lastLabel}: ${condSentence(cond)}`;
-    return base("Radar Terputus", ctx, { retry: true, mini: mini("Radar Terputus"), share });
-  }
-  const age = rv.latestAge ?? 0;
-  if (age > RADAR_OLD_MIN) {
-    const ctx = `${lastLabel}: ${condSentence(cond)}`;
-    return base("Radar Belum Diperbarui", ctx, { mini: mini("Radar Belum Diperbarui"), share });
-  }
-  if (age > LIVE_MAX_AGE_MIN) {
-    const h = `Radar Terlambat ${age} Menit`;
-    const ctx = `Pukul ${t}: ${condSentence(cond)}`;
-    // live tanpa angka menit: kalau tidak, pembaca layar berbunyi tiap menit
-    return base(h, ctx, { mini: mini("Radar Terlambat"), share, live: `Radar terlambat. ${ctx}` });
+  if (offline) return base(TIDAK_TERSAMBUNG, kalimat ? `Pukul ${t} WIB: ${kalimat}` : "", { mini: mini("Tidak tersambung"), share });
+  if (status === "error" || age > RADAR_OLD_MIN) {
+    const h = `Data radar belum diperbarui sejak pukul ${t} WIB sehingga peta hujan tidak ditampilkan.`;
+    return base(h, barisWaktu("Terputus"), { retry: status === "error", mini: mini("Radar terputus"), share, live: h });
   }
 
-  // Normal: citra terbaru segar.
-  let context: string;
-  // Jam citra radar ada di ujung kanan penggeser ("Terbaru 11.30 WIB"), jadi baris konteks
-  // cukup menyebut DI MANA — muat satu baris di HP.
-  const sc = echo ? scoped(echo, scope) : null;
-  if (!echo || !sc) context = "Deteksi Hujan Gagal, Lihat Warna di Peta";
-  else if (sc.near) context = echo.kec ? cond.line : `Sekitar Batam, ${pctArea(echo.coverage)}% Area`;
-  else if (sc.lastTs) {
-    const last = frames.find((f) => f.ts === sc.lastTs)?.time;
-    context = `${cond.none}, Terakhir ${last ?? "—"}`;
-  } else {
-    const lb = echo.lookbackMin >= 60 && echo.lookbackMin % 60 === 0 ? `${echo.lookbackMin / 60} Jam` : `${echo.lookbackMin} Menit`;
-    context = `${cond.none}, ${lb} Terakhir`;
-  }
+  const singkat = echo ? (rainyKec(kecList(echo, scope))[0] ? LEVEL_TEXT[rainyKec(kecList(echo, scope))[0].level] : "Tidak hujan") : "Radar hujan";
+  const stat = statusRadar(age);
   const answer: Answer = {
-    headline: cond.text,
-    context,
-    tone: "normal",
-    dot: cond.level,
+    headline: kalimat ?? "Deteksi hujan otomatis sedang gangguan. Lihat warna di peta.",
+    context: barisWaktu(stat),
+    tone: stat === "Tertunda" ? "warn" : "normal",
+    dot: echo ? (rainyKec(kecList(echo, scope))[0]?.level ?? null) : null,
     retry: false,
-    mini: mini(cond.text),
+    mini: mini(singkat),
     share,
-    live: `${cond.text}. ${context}. Radar ${t} WIB`,
+    // tanpa angka menit: kalau tidak, pembaca layar berbunyi tiap menit
+    live: `${kalimat ?? "Deteksi hujan gangguan."} Citra pukul ${t} WIB.`,
   };
   // Penggeser di riwayat: jawaban tetap milik citra TERBARU, ditandai "Terkini:".
-  if (!rv.isLatest) return { ...answer, headline: `Terkini: ${cond.text}`, tone: "muted" };
+  if (!rv.isLatest) return { ...answer, headline: `Terkini: ${answer.headline}`, tone: "muted" };
   return answer;
 }
 
@@ -370,8 +295,8 @@ export function rainCaption(rv: RadarView, now: number): Caption {
   // penentunya ("Lalu", "Tidak Tersedia") tidak terpotong di 360 px.
   if (rv.currentBroken) {
     return rv.isLatest
-      ? { left: `Peta ${current.time} Tidak Tersedia`, right: null, warn: true, toNow: false }
-      : { left: `${current.time} Tidak Tersedia`, right: null, warn: true, toNow: true };
+      ? { left: `Peta ${current.time} tidak tersedia`, right: null, warn: true, toNow: false }
+      : { left: `${current.time} tidak tersedia`, right: null, warn: true, toNow: true };
   }
   if (!rv.isLatest) {
     const age = ageMinutesOf(current.ts, now) ?? 0;
@@ -379,7 +304,7 @@ export function rainCaption(rv: RadarView, now: number): Caption {
   }
   return {
     left: rv.spanMin !== null ? lalu(rv.spanMin) : "",
-    right: rv.fresh ? `Terbaru ${latest.time} WIB` : rv.latestWhen,
+    right: rv.fresh ? "Terbaru" : rv.latestWhen,
     warn: false,
     toNow: false,
   };
@@ -405,7 +330,7 @@ export function kecTable(e: EchoSummary | null, scope: RainScope = "batam"): Kec
       name: k.name,
       level,
       rain: k.rain,
-      text: level ? `${LEVEL_TEXT[level].replace("Hujan ", "")} · ${fmtM(Math.max(1, Math.round(k.rain)))} km²` : "Tidak Hujan",
+      text: level ? LEVEL_TEXT[level] : "Tidak hujan",
     };
     const g = groups.get(k.kab);
     if (g) g.push(row);
@@ -448,13 +373,13 @@ export type ForecastStripView = {
 
 export function forecastStrip(fc: ForecastResponse | null, error: boolean, now: number, n = 3): ForecastStripView {
   if (!fc) {
-    return { slots: [], inline: null, note: error ? "Prakiraan BMKG belum bisa dimuat." : null, hasHaze: false };
+    return { slots: [], inline: null, note: error ? "Prakiraan cuaca belum dapat dimuat." : null, hasHaze: false };
   }
   const slots = fc.slots
     .filter((s) => Date.parse(s.utc) > now)
     .slice(0, n)
     .map((s) => ({ time: s.time, t: s.t, desc: titleCase(s.desc) }));
-  if (!slots.length) return { slots, inline: null, note: "Prakiraan BMKG belum diperbarui.", hasHaze: false };
+  if (!slots.length) return { slots, inline: null, note: "Prakiraan cuaca belum diperbarui.", hasHaze: false };
   return {
     slots,
     inline: `Nanti: ${slots
@@ -510,15 +435,15 @@ export function ofsView(a: {
   const problem = !ready
     ? null
     : tilesDown
-      ? "Peta Ombak Gagal Dimuat di Perangkat Ini"
+      ? "Peta gelombang gagal dimuat di perangkat ini."
       : ofs?.expired
-        ? "BMKG Belum Memperbarui Peta Ombak"
+        ? "Peta gelombang belum diperbarui."
         : ofs?.source === "blind"
-          ? "Waktu Peta Ombak Belum Pasti"
+          ? "Waktu peta gelombang belum pasti."
           : (ofs?.ageH ?? 0) > OFS_STALE_H
-            ? `Peta Ombak Lama, Dibuat ${ofs?.ageH} Jam Lalu`
+            ? `Peta gelombang dibuat ${ofs?.ageH} jam lalu.`
             : maskOk === false
-              ? "Warna di Atas Daratan Bukan Data"
+              ? "Warna di atas daratan bukan data."
               : null;
 
   return {
@@ -544,12 +469,12 @@ export function ofsCaption(ov: OfsView): Caption {
   if (ov.phase === "now") {
     // data kedaluwarsa: frame "sekarang" hanyalah frame terakhir yang tersedia
     return ov.expired
-      ? { left: `Peta ${day} ${time}, Terakhir Tersedia`, right: null, warn: true, toNow: false } // muat di 360 px
-      : { left: `Peta BMKG ${time} WIB, Sekarang`, right: null, warn: false, toNow: false };
+      ? { left: `Peta ${day} ${time}, terakhir tersedia`, right: null, warn: true, toNow: false } // muat di 360 px
+      : { left: `Pukul ${time} WIB, sekarang`, right: null, warn: false, toNow: false };
   }
   // berbagi baris dengan "Ke Sekarang" → versi pendek
-  if (ov.phase === "future") return { left: `${day} ${time}, Prakiraan`, right: null, warn: false, toNow: true };
-  return { left: `${time}, Sudah Lewat`, right: null, warn: false, toNow: true };
+  if (ov.phase === "future") return { left: `${day} ${time}, prakiraan`, right: null, warn: false, toNow: true };
+  return { left: `${time}, sudah lewat`, right: null, warn: false, toNow: true };
 }
 
 const HARI = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
@@ -569,28 +494,34 @@ function wibParts(s: string): { day: string; date: string; time: string; key: st
   };
 }
 const hhmm = (iso: string) => wibParts(iso)?.time ?? "";
-/** Jendela berlaku prakiraan: "Sen 07.00–19.00 WIB" / "Sen 19.00 – Sel 07.00 WIB". */
+/** Jendela berlaku prakiraan: "Sen 07.00—19.00 WIB" / "Sen 19.00—Sel 07.00 WIB". */
 function windowText(fromIso: string, toIso: string): string {
   const a = wibParts(fromIso);
   const b = wibParts(toIso);
   if (!a || !b) return "";
-  return a.key === b.key ? `${a.day} ${a.time}–${b.time} WIB` : `${a.day} ${a.time} – ${b.day} ${b.time} WIB`;
+  return a.key === b.key ? `${a.day} ${a.time}—${b.time} WIB` : `${a.day} ${a.time}—${b.day} ${b.time} WIB`;
 }
 
-/**
- * Angin panel: "Angin 15 km/j dari Tenggara" (kecepatan rata-rata jam ini; hembusan di Detail).
- * Respons bentuk lama (rentang min–maks): "Angin 17–78 km/j dari Utara". null kalau tak lengkap.
- */
-function windKmh(e: PerairanEntry): string | null {
+/** "4 km/jam dari barat laut". Respons lama (rentang): "17—78 km/jam dari utara". null kalau tak lengkap. */
+export function anginKmh(e: PerairanEntry): string | null {
   const from = e.windFrom ? ` dari ${arahLengkap(e.windFrom)}` : "";
-  if (e.windKt != null) return `Angin ${ktToKmh(e.windKt)} km/j${from}`;
+  if (e.windKt != null) return `${ktToKmh(e.windKt)} km/jam${from}`;
   if (e.windMinKt === null || e.windMaxKt === null) return null;
-  return `Angin ${ktToKmh(e.windMinKt)}–${ktToKmh(e.windMaxKt)} km/j${from}`;
+  return `${ktToKmh(e.windMinKt)}—${ktToKmh(e.windMaxKt)} km/jam${from}`;
 }
-/** Tinggi gelombang jam ini: "0,5 m" (bentuk lama: rentang teks "0,5–1,25 m"). */
+/** Tinggi gelombang jam ini: "0,5 m" (bentuk lama: rentang teks "0,5—1,25 m"). */
 const waveText = (e: PerairanEntry) => (e.waveM != null ? `${fmtM(e.waveM)} m` : fmtWave(e.waveDesc));
-/** Rentang meter "0,4–0,6 m" (satu angka kalau sama). */
-const rangeM = (a: number, b: number) => (a === b ? `${fmtM(a)} m` : `${fmtM(a)}–${fmtM(b)} m`);
+/** Rentang meter "0,4—0,6 m" (satu angka kalau sama). */
+const rangeM = (a: number, b: number) => (a === b ? `${fmtM(a)} m` : `${fmtM(a)}—${fmtM(b)} m`);
+
+/** Kalimat gelombang PEDOMAN 3.11. */
+export function kalimatGelombang(e: PerairanEntry): string {
+  const kat = (e.waveCat || "").trim().toLowerCase();
+  const tinggi = waveText(e);
+  const angin = anginKmh(e);
+  const satu = `Gelombang${kat ? ` ${kat}` : ""}${tinggi ? `, sekitar ${tinggi},` : ""} di perairan Batam.`;
+  return angin ? `${satu} Angin ${angin}.` : satu;
+}
 
 export function ofsAnswer(
   p: PerairanResponse | null,
@@ -607,34 +538,34 @@ export function ofsAnswer(
     retry: false,
     // bilah mini = judul, supaya gangguan/offline tetap terlihat saat panel diciutkan
     mini: headline,
-    share: "Prakiraan Ombak Perairan Batam (BMKG)",
-    live: [headline, context].filter(Boolean).join(". "),
+    share: "Prakiraan gelombang perairan Batam",
+    live: [headline, context].filter(Boolean).join(" "),
     warning: null,
     ...extra,
   });
 
   if (ov.failed && !ov.ready) {
     return offline
-      ? plain("Kamu Sedang Offline", "Peta Ombak Muncul Lagi Saat Ada Sinyal", { tone: "warn" })
-      : plain("Data Ombak Gangguan", "Belum Bisa Memuat Data BMKG", { tone: "warn", retry: true });
+      ? plain("Perangkat tidak tersambung ke internet. Data yang tampil adalah data terakhir yang tersimpan.", "", {
+          tone: "warn",
+          mini: "Tidak tersambung",
+        })
+      : plain("Data gelombang belum dapat dimuat.", "", { tone: "warn", retry: true, mini: "Data gelombang terputus" });
   }
   const { entry: e, upcoming } = currentSlot(p, now);
   if (!e) {
-    if (!ov.ready || (!p && !perairanError)) return plain("Memuat Prakiraan Ombak…", "", { tone: "muted", live: "" });
-    return plain("Lihat Warna di Peta", "Teks Prakiraan Perairan BMKG Belum Tersedia", {
-      mini: "Ombak · Lihat Warna di Peta",
+    if (!ov.ready || (!p && !perairanError)) return plain("Memuat data", "", { tone: "muted", live: "" });
+    return plain("Prakiraan teks perairan Batam belum tersedia. Warna di peta tetap dari model gelombang.", "", {
+      mini: "Gelombang: lihat warna di peta",
     });
   }
 
-  const cat = titleCase(e.waveCat) || "—";
+  const cat = titleCase(e.waveCat) || "Gelombang";
   const range = waveText(e);
-  const headline = `Ombak ${cat}${range ? `, ${range}` : ""}`;
-  const wind = windKmh(e);
+  const headline = kalimatGelombang(e);
   const context = upcoming
-    ? `Mulai ${hhmm(e.validFrom)}${wind ? ` · ${wind}` : ""}`
-    : wind
-      ? `Perairan Batam · ${wind}`
-      : `Perairan Batam · Berlaku sampai ${hhmm(e.validTo)} WIB`;
+    ? `Prakiraan berlaku mulai pukul ${hhmm(e.validFrom)} WIB`
+    : `Prakiraan berlaku sampai pukul ${hhmm(e.validTo)} WIB`;
   const warning = warnText(p, e, now);
   return {
     headline,
@@ -642,33 +573,33 @@ export function ofsAnswer(
     tone: "normal",
     dot: null,
     retry: false,
-    mini: `Ombak ${cat}${range ? ` · ${range}` : ""}`,
-    share: `Ombak Perairan Batam (BMKG): ${cat}${range ? `, ${range}` : ""}.${warning ? ` ${warning}.` : ""}`,
-    live: [warning, headline, context].filter(Boolean).join(". "),
+    mini: `${cat}${range ? ` · ${range}` : ""}`,
+    share: `Gelombang perairan Batam: ${cat.toLowerCase()}${range ? `, ${range}` : ""}.${warning ? ` ${warning}` : ""}`,
+    live: [warning, headline, context].filter(Boolean).join(" "),
     warning,
   };
 }
 
 /**
- * Chip peringatan: "Peringatan Gelombang Tinggi 2,5–4 m", dengan "· Mulai 07.00" kalau buletin
- * belum berlaku. Respons lama tanpa `warn` → teks warning di entri.
+ * Kalimat peringatan gelombang PEDOMAN 3.11, ditulis lurus. Respons lama tanpa `warns` → teks di entri.
  */
 function warnText(p: PerairanResponse | null, e: PerairanEntry, now: number): string | null {
-  if (!p?.warns) return e.warning ? titleCase(e.warning) : null;
+  if (!p?.warns) return e.warning || null;
   const { current, next } = warnAt(p.warns, now);
-  if (current.status === "ok" && current.text) return titleCase(current.text);
-  // sekarang jelas aman, tapi buletin berikut menyebut Batam → beri tahu kapan mulainya
-  if (current.status === "ok" && next?.text) return `${titleCase(next.text)} · Mulai ${hhmm(next.from)}`;
-  // status sekarang tak diketahui (buletin yang berlaku malam ini sudah ditimpa BMKG) tapi
-  // buletin terbaru menyebut Batam → anggap berlaku (lebih aman daripada diam)
-  if (current.status !== "ok" && next?.text) return titleCase(next.text);
+  const kalimat = (t: string, until: string) =>
+    `${t} untuk perairan Batam${until ? ` sampai pukul ${hhmm(until)} WIB` : ""}.`;
+  if (current.status === "ok" && current.text) return kalimat(current.text, current.until);
+  // sekarang tidak ada, tetapi buletin berikut menyebut Batam → beri tahu kapan mulainya
+  if (current.status === "ok" && next?.text) return `${next.text} untuk perairan Batam mulai pukul ${hhmm(next.from)} WIB.`;
+  // status sekarang tak diketahui tetapi buletin terbaru menyebut Batam → anggap berlaku (lebih aman daripada diam)
+  if (current.status !== "ok" && next?.text) return kalimat(next.text, next.until);
   return null;
 }
-/** Baris "Peringatan" di Detail — "Belum Tersedia" kalau berkas peringatan gagal dimuat. */
+/** Baris "Peringatan" di Detail. */
 function warnRows(p: PerairanResponse, e: PerairanEntry, now: number): { k: string; v: string }[] {
   if (!p.warns) {
     const until = e.warningUntil ? wibParts(e.warningUntil) : null;
-    return [{ k: "Peringatan", v: e.warning ? `${titleCase(e.warning)}${until ? ` (s.d. ${until.day} ${until.time} WIB)` : ""}` : "Tidak Ada" }];
+    return [{ k: "Peringatan", v: e.warning ? `${e.warning}${until ? `, sampai ${until.day} ${until.time} WIB` : ""}` : "Tidak ada" }];
   }
   const { current, next } = warnAt(p.warns, now);
   const until = current.until ? wibParts(current.until) : null;
@@ -677,35 +608,35 @@ function warnRows(p: PerairanResponse, e: PerairanEntry, now: number): { k: stri
       k: "Peringatan",
       v:
         current.status !== "ok"
-          ? "Belum Tersedia"
+          ? "Status belum dapat dimuat"
           : current.text
-            ? `${titleCase(current.text)}${until ? ` (s.d. ${until.day} ${until.time} WIB)` : ""}`
-            : "Tidak Ada",
+            ? `${current.text}${until ? `, sampai ${until.day} ${until.time} WIB` : ""}`
+            : "Tidak ada",
     },
   ];
   if (next) {
     const from = wibParts(next.from);
-    if (from) rows.push({ k: "Buletin Berikut", v: `Mulai ${from.day} ${from.time} WIB: ${next.text ? titleCase(next.text) : "Tidak Ada"}` });
+    if (from) rows.push({ k: "Peringatan berikutnya", v: `Mulai ${from.day} ${from.time} WIB: ${next.text || "tidak ada"}` });
   }
   return rows;
 }
 
-/** Isi "Prakiraan Perairan Batam (BMKG)" di Detail: label → nilai. */
+/** Isi "Prakiraan Perairan Batam": label → nilai (PEDOMAN 3.3). */
 export function perairanDetail(p: PerairanResponse | null, now: number = Date.now()): { k: string; v: string }[] {
   const e = currentSlot(p, now).entry;
   if (!p || !e) return [];
   const rows: { k: string; v: string }[] = [];
   const wave = waveText(e);
-  rows.push({ k: "Ombak", v: `${titleCase(e.waveCat)}${wave ? `, ${wave}` : ""}` });
-  if (e.next12) rows.push({ k: "12 Jam ke Depan", v: rangeM(e.next12.minM, e.next12.maxM) });
+  rows.push({ k: "Tinggi gelombang", v: `${titleCase(e.waveCat)}${wave ? `, ${wave}` : ""}` });
+  if (e.next12) rows.push({ k: "12 jam ke depan", v: rangeM(e.next12.minM, e.next12.maxM) });
   const from = e.windFrom ? ` dari ${arahLengkap(e.windFrom)}` : "";
   if (e.windKt != null) {
-    rows.push({ k: "Angin", v: `${fmtM(e.windKt)} knot (${ktToKmh(e.windKt)} km/j)${from}` });
-    if (e.gustKt != null) rows.push({ k: "Hembusan", v: `${fmtM(e.gustKt)} knot (${ktToKmh(e.gustKt)} km/j)` });
+    rows.push({ k: "Angin", v: `${fmtM(e.windKt)} knot (${ktToKmh(e.windKt)} km/jam)${from}` });
+    if (e.gustKt != null) rows.push({ k: "Embusan", v: `${fmtM(e.gustKt)} knot (${ktToKmh(e.gustKt)} km/jam)` });
   } else if (e.windMinKt !== null && e.windMaxKt !== null) {
     rows.push({
       k: "Angin",
-      v: `${e.windMinKt}–${e.windMaxKt} knot (${ktToKmh(e.windMinKt)}–${ktToKmh(e.windMaxKt)} km/j)${from}`,
+      v: `${e.windMinKt}—${e.windMaxKt} knot (${ktToKmh(e.windMinKt)}—${ktToKmh(e.windMaxKt)} km/jam)${from}`,
     });
   }
   if (e.currentKt != null) {
@@ -716,16 +647,14 @@ export function perairanDetail(p: PerairanResponse | null, now: number = Date.no
   const win = windowText(e.validFrom, e.validTo);
   if (win) rows.push({ k: "Berlaku", v: win });
   const issued = p.issued ? wibParts(p.issued) : null;
-  if (issued) rows.push({ k: "Terbit", v: `${issued.day} ${issued.date}, ${issued.time} WIB` });
-  const station = p.station || e.station;
-  if (station) rows.push({ k: "Penerbit", v: titleCase(station.toLowerCase()) });
+  if (issued) rows.push({ k: "Diterbitkan", v: `${issued.day} ${issued.date}, ${issued.time} WIB` });
   return rows;
 }
 
 // ---- CCTV -----------------------------------------------------------------
 export function cctvAnswer(total: number, failed: number): { headline: string; context: string } {
   return {
-    headline: `${total} Kamera Lalu Lintas`,
-    context: `Kamera Pemko Batam${failed > 0 ? ` · ${failed} Gagal Diputar Tadi` : ""}`,
+    headline: `${total} titik kamera`,
+    context: `Kamera lalu lintas di ${total} titik jalan utama Batam.${failed > 0 ? ` Ada ${failed} kamera yang gagal diputar.` : ""}`,
   };
 }

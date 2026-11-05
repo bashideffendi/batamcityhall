@@ -45,29 +45,45 @@ export default function TombolKartu({ id, nama }: { id: string; nama: string }) 
   return (
     <div className="bch-tk-tombol">
       <div className="bch-tk-tombol-baris">
+        <span className="bch-card-meta">Masih buka?</span>
         <button
           type="button"
-          className="bch-btn"
-          data-variant="ghost"
+          className="bch-tk-tautan"
+          aria-label={`Ya, ${nama} masih buka`}
           disabled={sinyalTerkirim}
           onClick={() => sinyal("masih_buka")}
         >
-          Masih buka?
+          Ya
         </button>
         <button
           type="button"
-          className="bch-btn"
-          data-variant="ghost"
+          className="bch-tk-tautan"
+          aria-label={`Sudah pindah atau tutup: ${nama}`}
           disabled={sinyalTerkirim}
           onClick={() => sinyal("sudah_pindah")}
         >
-          Sudah pindah/tutup
+          Sudah pindah atau tutup
         </button>
+        {!lapor && (
+          <>
+            <span className="bch-card-meta" aria-hidden="true">
+              ·
+            </span>
+            <button
+              type="button"
+              className="bch-tk-tautan"
+              aria-label={`Laporkan ${nama}`}
+              onClick={() => setLapor(true)}
+            >
+              Laporkan
+            </button>
+          </>
+        )}
       </div>
       <p className="bch-card-meta m-0" role="status">
         {pesan}
       </p>
-      {lapor ? (
+      {lapor && (
         <form className="bch-tk-form-kecil" onSubmit={kirimLaporan} noValidate>
           <label className="bch-field">
             Apa masalahnya?
@@ -88,15 +104,6 @@ export default function TombolKartu({ id, nama }: { id: string; nama: string }) 
             </button>
           </div>
         </form>
-      ) : (
-        <button
-          type="button"
-          className="bch-tk-tautan"
-          aria-label={`Laporkan masalah: ${nama}`}
-          onClick={() => setLapor(true)}
-        >
-          Laporkan masalah
-        </button>
       )}
     </div>
   );

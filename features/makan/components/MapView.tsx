@@ -10,7 +10,7 @@ import { HalalBadge } from "./Badges";
 import FilterBar from "./FilterBar";
 import Ikon from "./Ikon";
 import MiniCard from "./MiniCard";
-import SearchBar from "./SearchBar";
+import SearchBar, { PesanKosong } from "./SearchBar";
 
 const MapCanvas = dynamic(() => import("./MapCanvas"), { ssr: false });
 
@@ -27,7 +27,7 @@ function DaftarPeta() {
     wadah.current?.querySelector(`[data-id="${CSS.escape(selectedId)}"]`)?.scrollIntoView({ block: "nearest" });
   }, [selectedId]);
 
-  if (results.length === 0) return <p className="mk-kosong">{t("no_results")}</p>;
+  if (results.length === 0) return <PesanKosong />;
   return (
     <ul ref={wadah} className="mk-peta-daftar" aria-label={t("map_list")} tabIndex={0}>
       {results.map((p) => (

@@ -14,7 +14,7 @@ import { tambahLayer, usePeta } from "./PetaLangit";
 // dengan mode lain dan tidak butuh server luar. Kalau peta dasar gagal → onStatus(false), supaya panel
 // bisa jujur "warna di atas pulau bukan data".
 const ID = "ll-land";
-const warnaDarat = (t: ThemeMode) => PALET[t === "dark" ? "night" : "day"].land;
+const warnaDarat = (t: ThemeMode) => PALET[t === "dark" ? "dark" : "light"].land;
 
 export default function LandMask({ theme, onStatus }: { theme: ThemeMode; onStatus?: (ok: boolean) => void }) {
   const map = usePeta();

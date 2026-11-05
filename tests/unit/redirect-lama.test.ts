@@ -7,7 +7,7 @@ const baca = (p: string) => readFileSync(join(process.cwd(), "deploy/situs-lama"
 
 describe("peta redirect", () => {
   it("hujandibatam membawa parameter", () => {
-    expect(alamatBaruHujan("/", "?mode=ombak&view=kepri")).toBe("/langit-laut?mode=ombak&view=kepri");
+    expect(alamatBaruHujan("/", "?mode=ombak&view=kepri")).toBe("/cuaca/gelombang?view=kepri");
   });
 
   it("batam-bites per path", () => {

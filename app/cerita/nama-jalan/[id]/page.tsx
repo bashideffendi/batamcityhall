@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { DaftarSumber } from "@/features/kampung-tua/Bagian";
 import { IkonCeritaRakyat } from "@/features/kampung-tua/Ikon";
 import {
   CATATAN_HIKAYAT,
@@ -50,35 +49,33 @@ export default async function KartuTokoh({ params }: Props) {
         <div className="bch-rebung-mini" aria-hidden="true" />
         <p className="m-0" data-status-tokoh={t.status.grup}>
           <span className="bch-badge" data-tone={t.status.nada}>
-            {t.status.hikayat && <IkonCeritaRakyat ukuran={12} />}
+            {t.status.grup === "hikayat" && <IkonCeritaRakyat ukuran={12} />}
             {t.status.teks}
           </span>
         </p>
 
-        <dl className="bch-kartu-fakta">
-          <div>
-            <dt>Masa hidup</dt>
-            <dd>{t.masaHidup ?? "Belum diketahui"}</dd>
-          </div>
-          {t.kaitan && (
-            <div>
-              <dt>Kaitan dengan Batam</dt>
-              <dd>{t.kaitan}</dd>
-            </div>
-          )}
-          {t.tempatTeks && (
-            <div>
-              <dt>Tempat</dt>
-              <dd>{t.tempatTeks}</dd>
-            </div>
-          )}
-          {t.statusTeks && (
-            <div>
-              <dt>Status</dt>
-              <dd>{t.statusTeks}</dd>
-            </div>
-          )}
-        </dl>
+        {(t.masaHidup || t.kaitan || t.tempatTeks) && (
+          <dl className="bch-kartu-fakta">
+            {t.masaHidup && (
+              <div>
+                <dt>Masa hidup</dt>
+                <dd>{t.masaHidup}</dd>
+              </div>
+            )}
+            {t.kaitan && (
+              <div>
+                <dt>Kaitan dengan Batam</dt>
+                <dd>{t.kaitan}</dd>
+              </div>
+            )}
+            {t.tempatTeks && (
+              <div>
+                <dt>Tempat</dt>
+                <dd>{t.tempatTeks}</dd>
+              </div>
+            )}
+          </dl>
+        )}
       </article>
 
       <div className="bch-prose mt-5">
@@ -97,12 +94,6 @@ export default async function KartuTokoh({ params }: Props) {
 
         <h2>Kisah</h2>
         <p>{t.kisah ?? t.ringkasan}</p>
-        {t.ringkas && (
-          <p className="bch-note">
-            Kartu ini ringkas dan tanpa verifikasi. Kami belum punya sumber biografi untuk tokoh ini, jadi tidak kami
-            isi dengan tebakan.
-          </p>
-        )}
         {t.catatan.map((c) => (
           <p key={c} className="bch-note" data-tone="caution">
             {c}
@@ -111,7 +102,7 @@ export default async function KartuTokoh({ params }: Props) {
 
         {nama.length > 0 && (
           <>
-            <h2>Nama yang dipakai</h2>
+            <h2>Nama yang Dipakai</h2>
             <ul data-nama-dipakai>
               {nama.map((n) => (
                 <li key={n.id}>
@@ -123,8 +114,7 @@ export default async function KartuTokoh({ params }: Props) {
                     n.nama
                   )}{" "}
                   <span className="bch-sel-kecil">
-                    {n.jenis}, {n.letak.replace(/\s*\(perlu dicek\)/, "")}
-                    {n.lokasiPerluDicek && ", lokasi perlu dicek"}
+                    {n.jenis}, {n.letak}
                     {n.catatan && `. ${n.catatan}`}
                   </span>
                 </li>
@@ -164,7 +154,7 @@ export default async function KartuTokoh({ params }: Props) {
                       <>
                         {" "}
                         <span className="bch-badge" data-tone="caution">
-                          Perlu dicek
+                          Belum terverifikasi
                         </span>
                       </>
                     )}
@@ -175,17 +165,11 @@ export default async function KartuTokoh({ params }: Props) {
           </>
         )}
 
-        <h2>Sumber</h2>
-        <DaftarSumber urls={t.sumber} />
-        {t.sumber.length === 0 && nama.some((n) => n.sumber) && (
-          <p>Sumber nama tempatnya ada di daftar nama tempat, tetapi itu bukan sumber biografi.</p>
-        )}
-
         <p>
           <Link href="/cerita/nama-jalan#relasi" prefetch={false}>
             Lihat silsilah
           </Link>{" "}
-          · Ada yang keliru? <Link href="/koreksi">Kabari kami</Link>.
+          · <Link href="/koreksi">Kirim koreksi</Link>
         </p>
       </div>
     </div>

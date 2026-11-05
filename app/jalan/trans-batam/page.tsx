@@ -1,56 +1,39 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import DiagramSkematik, { gayaKoridor } from "@/features/jalan/DiagramSkematik";
+import { kapital } from "@/features/jalan/feri-terakhir";
 import InfoPraktisTrans from "@/features/jalan/InfoPraktisTrans";
 import JalanNav from "@/features/jalan/JalanNav";
-import {
-  INFO,
-  KORIDOR,
-  lencanaKoridor,
-  slugKoridor,
-  teksHeadway,
-  teksJam,
-  TEKS_TANGGAL_DATA,
-} from "@/features/jalan/trans-data";
+import { CATATAN_DAFTAR_HALTE, KORIDOR, lencanaKoridor, slugKoridor, teksJam } from "@/features/jalan/trans-data";
 
 export const metadata: Metadata = {
   title: "Trans Batam",
-  description: "Diagram 9 koridor aktif Trans Batam, urutan halte, jam operasi, headway, tarif, dan cara bayar.",
+  description:
+    "Sembilan koridor beroperasi dan satu koridor direncanakan. Diagram koridor, urutan halte, jam operasi, tarif, dan cara bayar Trans Batam.",
 };
 
 export default function TransBatam() {
-  const sipTb = INFO.aplikasi.find((a) => a.nama === "SIP TB");
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Loket 04 · Jalan-jalan</p>
+      <p className="bch-kicker m-0">Loket 04 · Transportasi</p>
       <h1 className="mt-2">Trans Batam</h1>
-      <p className="bch-lede">9 koridor aktif, 1 rencana. Tarif Rp5.000, pelajar Rp2.500, nontunai.</p>
+      <p className="bch-lede">
+        Sembilan koridor beroperasi dan satu koridor direncanakan. Tarif Rp5.000 untuk umum dan Rp2.500 untuk pelajar,
+        mahasiswa, serta anak di bawah 12 tahun. Pembayaran nontunai.
+      </p>
       <JalanNav aktif="/jalan/trans-batam" />
 
-      <p className="bch-note mt-5">
-        Data {TEKS_TANGGAL_DATA}. Daftar halte berasal dari media sekunder yang menyalin SIP TB dan Dishub, jadi bisa
-        salah ketik atau terpotong. Belum ada satu pun koordinat halte yang terverifikasi.{" "}
-        <Link href="/koreksi" prefetch={false}>
-          Lapor kalau ada yang salah
-        </Link>
-        .
-      </p>
-      <p className="mt-3">
-        Mau tahu posisi bus? Pakai{" "}
-        <a href={sipTb?.url} target="_blank" rel="noopener" className="jl-tautan-resmi">
-          aplikasi SIP TB
-        </a>{" "}
-        (Android). Situs ini tidak melacak bus.
-      </p>
-
-      <h2 className="mt-7 mb-4">Diagram</h2>
+      <h2 className="mt-7 mb-4">Diagram Koridor</h2>
       <DiagramSkematik />
 
-      <h2 className="mt-7 mb-4">Koridor</h2>
+      <h2 className="mt-7 mb-3">Posisi Bus</h2>
+      <p>Posisi bus dapat dilihat di aplikasi SIP TB. Situs ini tidak melacak bus.</p>
+
+      <h2 className="mt-7 mb-4">Semua Koridor</h2>
       <ul className="bch-grid jl-grid-koridor">
         {KORIDOR.map((k) => {
           const jam = teksJam(k);
-          const headway = teksHeadway(k);
+          const lencana = lencanaKoridor(k);
           return (
             <li key={k.id}>
               <Link
@@ -66,23 +49,16 @@ export default function TransBatam() {
                   <span className="bch-data">{k.id}</span>
                 </span>
                 <h3>{k.nama}</h3>
-                {k.status === "aktif" ? (
-                  <span className="bch-card-meta">
-                    {jam}
-                    <br />
-                    Headway: {headway.teks}
-                    {headway.perluCek ? ", perlu cek ulang" : ""}
+                {jam && <span className="bch-card-meta">{jam}</span>}
+                {lencana.length > 0 && (
+                  <span className="bch-badges mt-2">
+                    {lencana.map((l) => (
+                      <span key={l.teks} className="bch-badge" data-tone={l.nada}>
+                        {kapital(l.teks)}
+                      </span>
+                    ))}
                   </span>
-                ) : (
-                  <span className="bch-card-meta">Belum beroperasi. Belum ada jadwal dan daftar halte.</span>
                 )}
-                <span className="bch-badges mt-2">
-                  {lencanaKoridor(k).map((l) => (
-                    <span key={l.teks} className="bch-badge" data-tone={l.nada}>
-                      {l.teks}
-                    </span>
-                  ))}
-                </span>
               </Link>
             </li>
           );
@@ -92,6 +68,13 @@ export default function TransBatam() {
       <div className="mt-7">
         <InfoPraktisTrans />
       </div>
+
+      <p className="jl-catatan-kecil mt-7">
+        {CATATAN_DAFTAR_HALTE}{" "}
+        <Link href="/koreksi" prefetch={false}>
+          Kirim koreksi
+        </Link>
+      </p>
     </div>
   );
 }

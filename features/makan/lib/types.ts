@@ -37,7 +37,7 @@ export interface Place {
   last_verified: string;
 }
 
-/** Emoji dan warna lama tetap ada di JSON, tetapi tidak dipakai UI. */
+/** Warna lama tetap ada di JSON, tetapi tidak dipakai UI. */
 export interface Category {
   id: string;
   name_id: string;
@@ -70,18 +70,17 @@ export interface PlaceWithGeo extends Omit<Place, "rating" | "reviews"> {
   nearestFerryKm: number;
 }
 
-/** Emoji dan warna lama tetap ada di JSON, tetapi tidak dipakai UI. */
+/** Warna lama tetap ada di JSON, tetapi tidak dipakai UI. Bahasa Inggris ada di bawah `en` (pedoman 2.10). */
 export interface Trail {
   id: string;
   title_id: string;
-  title_en: string;
   title_zh: string;
   subtitle_id: string;
-  subtitle_en: string;
   subtitle_zh: string;
   duration_id: string;
-  duration_en: string;
   duration_zh: string;
   area: string;
+  area_zh: string;
+  en: { title: string; subtitle: string; duration: string; area: string };
   stops: string[];
 }

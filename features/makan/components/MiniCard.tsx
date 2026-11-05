@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { placeMap, categoryMap, ferryMap } from "../lib/data";
 import { useFilters } from "../lib/filters";
-import { formatKm } from "../lib/format";
+import { formatKmDesimal } from "../lib/format";
 import { useI18n, catName } from "../lib/i18n";
-import { HalalBadge, PerkiraanBadge } from "./Badges";
+import { HalalBadge } from "./Badges";
 import FavButton from "./FavButton";
 import Ikon from "./Ikon";
 
@@ -31,11 +31,12 @@ export default function MiniCard() {
       <h2>{p.name}</h2>
       <div className="bch-badges">
         <HalalBadge status={p.halal} />
-        {p.coord_approx && <PerkiraanBadge />}
       </div>
-      <p className="bch-card-meta">
-        {t("about_prefix")} {formatKm(p.nearestFerryKm, lang)} {t("from_ferry")} {ferry?.label}
-      </p>
+      {ferry && (
+        <p className="bch-card-meta">
+          {t("ferry_distance", { km: formatKmDesimal(p.nearestFerryKm, lang), nama: ferry.label })}
+        </p>
+      )}
       <div className="mk-aksi">
         <Link href={`/makan/tempat/${p.id}`} className="bch-btn">
           {t("detail")}

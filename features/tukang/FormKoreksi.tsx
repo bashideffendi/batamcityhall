@@ -65,8 +65,8 @@ export default function FormKoreksi({
 
       <Kolom
         nama="isi"
-        label="Yang perlu dibetulkan"
-        petunjuk="Sebutkan nama tempatnya kalau belum tertulis di atas. Sumbernya juga, kalau ada."
+        label="Yang perlu diperbaiki"
+        petunjuk="Sebutkan nama tempatnya bila belum tertulis di atas, juga asal informasinya bila ada."
         galat={galat.isi}
       >
         {(a) => <textarea {...a} className="bch-textarea" name="isi" rows={5} maxLength={1500} />}
@@ -74,8 +74,8 @@ export default function FormKoreksi({
 
       <Kolom
         nama="kontak"
-        label="Nomor HP atau surel (boleh kosong)"
-        petunjuk="Tidak pernah ditampilkan. Wajib untuk permintaan soal data pribadi, supaya kami bisa memastikan itu data Anda."
+        label="Nomor ponsel atau surel (boleh dikosongkan)"
+        petunjuk="Tidak pernah ditampilkan. Wajib untuk permintaan tentang data pribadi supaya kami dapat memastikan data itu milikmu."
         galat={galat.kontak}
       >
         {(a) => <input {...a} className="bch-input" name="kontak" maxLength={120} autoComplete="off" />}
@@ -87,7 +87,7 @@ export default function FormKoreksi({
 
       <div>
         <button type="submit" className="bch-btn" disabled={mengirim}>
-          {mengirim ? "Mengirim…" : "Kirim koreksi"}
+          {mengirim ? "Mengirim" : "Kirim koreksi"}
         </button>
       </div>
     </form>

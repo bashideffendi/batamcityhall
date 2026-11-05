@@ -41,7 +41,7 @@
 }
 .nj-graf figcaption {
   margin-bottom: var(--bch-space-2);
-  font-variant-caps: all-small-caps;
+  font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--bch-ink-muted);
 }

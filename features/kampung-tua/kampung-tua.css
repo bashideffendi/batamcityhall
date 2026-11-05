@@ -28,28 +28,10 @@
   outline-offset: -6px;
   border-radius: 50%;
 }
-/* Pin "melayang": lingkaran berongga dengan cincin samar. Tidak pernah terisi, supaya tidak terbaca sebagai titik pasti. */
-.kt-lingkar {
-  position: relative;
+.kt-penanda svg {
   display: block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid currentColor;
-}
-.kt-lingkar::after {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 1px solid currentColor;
-  opacity: 0.35;
-}
-.kt-penanda[data-lapisan="rempang"] .kt-lingkar {
-  border-style: dashed;
-}
-.kt-penanda[data-lapisan="hinterland"] .kt-lingkar {
-  border-style: dotted;
+  width: 44px;
+  height: 44px;
 }
 
 .kt-legenda {
@@ -121,7 +103,7 @@
   gap: var(--bch-space-2);
   align-items: center;
   margin: 0 0 var(--bch-space-1);
-  font-variant-caps: all-small-caps;
+  font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--bch-ink-muted);
 }

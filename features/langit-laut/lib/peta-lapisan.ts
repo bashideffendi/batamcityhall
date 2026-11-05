@@ -8,7 +8,7 @@ export const AWALAN = "ll-";
 
 // Urutan gambar dari bawah ke atas, semuanya di bawah label peta. Arsiran kecamatan di bawah radar
 // supaya warna radar tetap asli; mask daratan di atas field ombak supaya darat tidak ikut berwarna.
-const URUTAN = ["ll-kec-fill", "ll-radar", "ll-kec-line", "ll-ofs", "ll-land"];
+const URUTAN = ["ll-kec-fill", "ll-cap-fill", "ll-radar", "ll-kec-line", "ll-cap-line", "ll-ofs", "ll-land"];
 
 export function peringkat(id: string): number {
   const i = URUTAN.findIndex((u) => id === u || id.startsWith(`${u}-`));

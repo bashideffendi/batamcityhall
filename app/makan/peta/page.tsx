@@ -3,7 +3,7 @@ import MapView from "@/features/makan/components/MapView";
 
 export const metadata: Metadata = {
   title: "Peta",
-  description: "Peta tempat makan Batam. Pin masih berupa perkiraan area.",
+  description: "Peta tempat makan di Batam. Titik di peta adalah perkiraan area.",
 };
 
 export default function Peta() {

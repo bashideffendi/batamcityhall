@@ -2,14 +2,14 @@
 
 import { Map as MapLibre, Popup, type ErrorEvent, type MapLayerMouseEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { IkonLingkaran } from "@/components/map/icons";
+import { muatGambar, WARNA } from "@/features/peta/gambar-penanda";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSiteTheme } from "@/components/site/useSiteTheme";
 import { pasangGlobalPeta, webglAda } from "@/features/peta/global";
 import ItikBerbaris from "@/features/peta/ItikBerbaris";
-import { Kartusis, Mawar, SkalaBatang } from "@/features/peta/OrnamenChart";
 import { baseStyle, MAP_BOUNDS, SOURCE_ID, TAMPILAN_AWAL } from "@/features/peta/style";
-import TepiChart from "@/features/peta/TepiChart";
 import { usePandangan } from "@/features/peta/usePandangan";
 import { readTheme } from "@/lib/theme";
 import { gayaJalan, LAYER_KLIK, type LapisanOsm } from "./peta-lapisan";
@@ -23,7 +23,7 @@ const TANPA_RUTE: KoleksiRute = { type: "FeatureCollection", features: [] };
 const gerakTenang = () =>
   document.documentElement.dataset.gerak === "tenang" || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const NAMA_JENIS = { hub: "Hub Trans Batam", halte: "Halte Trans Batam", terminal: "Terminal feri" };
+const NAMA_JENIS = { hub: "Titik transit Trans Batam", halte: "Halte Trans Batam", terminal: "Terminal feri" };
 
 function KartuTitik({ titik, onTutup }: { titik: TitikJalan[]; onTutup: () => void }) {
   const tutup = useRef<HTMLButtonElement>(null);
@@ -39,7 +39,7 @@ function KartuTitik({ titik, onTutup }: { titik: TitikJalan[]; onTutup: () => vo
       }}
     >
       <div className="bch-kicker-row bch-kicker">
-        <span>Jalan-jalan</span>
+        <span>Transportasi</span>
         <button ref={tutup} type="button" className="peta-kartu-tutup" aria-label="Tutup kartu" onClick={onTutup}>
           <svg
             width="16"
@@ -62,10 +62,10 @@ function KartuTitik({ titik, onTutup }: { titik: TitikJalan[]; onTutup: () => vo
           </p>
           <div className="bch-badges mt-2">
             <span className="bch-badge" data-tone={t.perkiraan ? "caution" : "ok"}>
-              {t.perkiraan ? "lokasi perkiraan" : "lokasi terverifikasi"}
+              {t.perkiraan ? "Lokasi perkiraan" : "Lokasi terverifikasi"}
             </span>
           </div>
-          <p className="mt-2 mb-0">{t.catatan}</p>
+          {t.catatan && <p className="mt-2 mb-0">{t.catatan}</p>}
           <p className="mt-2 mb-0">
             <Link href={t.href} prefetch={false}>
               Buka kartu lengkap
@@ -120,13 +120,14 @@ export default function PetaJalan({
       fadeDuration: gerakTenang() ? 0 : 300,
       attributionControl: { compact: false },
       locale: {
-        "Map.Title": "Peta hub Trans Batam dan terminal feri. Daftar lengkapnya ada di bawah peta.",
+        "Map.Title": "Peta titik transit Trans Batam dan terminal feri. Daftar lengkapnya ada di bawah peta.",
         "AttributionControl.ToggleAttribution": "Buka atau tutup atribusi",
         "CooperativeGesturesHandler.WindowsHelpText": "Tekan Ctrl sambil menggulir untuk memperbesar peta",
         "CooperativeGesturesHandler.MacHelpText": "Tekan ⌘ sambil menggulir untuk memperbesar peta",
         "CooperativeGesturesHandler.MobileHelpText": "Geser dengan dua jari untuk menggerakkan peta",
       },
     });
+    m.on("styleimagemissing", (e) => muatGambar(m, e.id));
     m.touchZoomRotate.disableRotation();
     m.keyboard.disableRotation();
     let selesai = false;
@@ -195,22 +196,20 @@ export default function PetaJalan({
     <>
       <section
         className="peta jl-peta"
-        aria-label="Peta hub Trans Batam dan terminal feri"
+        aria-label="Peta titik transit Trans Batam dan terminal feri"
         data-status={status}
         data-tema={theme}
         data-titik={tampil.length}
         data-rute={rute.features.length}
       >
         <div ref={wadah} className="peta-kanvas" />
-        {status === "gagal" && <p className="peta-gagal">Peta gagal dimuat. Laut masih ada, kami saja yang belum.</p>}
+        {status === "gagal" && (
+          <p className="peta-gagal">Peta tidak dapat dimuat. Coba muat ulang dalam beberapa saat.</p>
+        )}
         {status === "memuat" && <ItikBerbaris />}
         {status === "siap" && dipilih.length > 0 && <KartuTitik titik={dipilih} onTutup={() => setPilih([])} />}
         {status === "siap" && map && pandangan && (
           <>
-            <TepiChart map={map} pandangan={pandangan} />
-            <Kartusis pandangan={pandangan} />
-            <Mawar />
-            <SkalaBatang pandangan={pandangan} />
             <div className="peta-zoom">
               <button
                 type="button"
@@ -268,14 +267,13 @@ export default function PetaJalan({
         </label>
         <label>
           <input type="checkbox" checked={osmNyala} onChange={(e) => setOsmNyala(e.target.checked)} />
-          Jalur dan halte dari OSM
+          Jalur dan halte dari OpenStreetMap
           <span className="bch-data">{osm.halte.features.length} halte</span>
         </label>
         <p className="peta-lapisan-catatan">
-          <span className="peta-lapisan-contoh" data-jenis="pasti" aria-hidden="true" /> terverifikasi{" "}
-          <span className="peta-lapisan-contoh" data-jenis="kira" aria-hidden="true" /> lokasi perkiraan. Lingkaran
-          besar berongga adalah hub Trans Batam, titiknya landmark terdekat dan bukan posisi halte. Tempat tanpa
-          koordinat tidak muncul di peta.
+          <IkonLingkaran glyph="halte" warna={WARNA.transportasi} ukuran={18} /> Lokasi pasti{" "}
+          <IkonLingkaran glyph="halte" warna={WARNA.transportasi} ukuran={18} garis /> Lokasi perkiraan. Titik transit Trans
+          Batam mengikuti penanda kota terdekat dan belum tentu posisi halte.
         </p>
       </fieldset>
     </>

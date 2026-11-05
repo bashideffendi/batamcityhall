@@ -1,13 +1,12 @@
 import { Fragment } from "react";
-import type { KunciStatus, Sumber } from "./data";
+import type { KunciStatus } from "./data";
 
-// Empat status laporan 15 plus satu campuran. Selalu kata dan ikon garis, tidak pernah warna saja, tidak pernah emoji.
+// Label status sejarah, satu per butir (pedoman 3.7). Selalu kata dan ikon garis, tidak pernah warna saja atau emoji.
 export const LABEL_STATUS: Record<KunciStatus, string> = {
-  terverifikasi: "Terverifikasi",
-  perbedaan_versi: "Beda versi",
+  terverifikasi: "Tercatat",
+  perbedaan_versi: "Berbeda versi",
   belum_terverifikasi: "Belum terverifikasi",
   cerita_rakyat: "Cerita rakyat",
-  campuran: "Konteks umum terverifikasi; detail lokal belum",
 };
 
 const NADA: Record<KunciStatus, "ok" | "caution" | "info" | undefined> = {
@@ -15,7 +14,6 @@ const NADA: Record<KunciStatus, "ok" | "caution" | "info" | undefined> = {
   perbedaan_versi: "caution",
   belum_terverifikasi: undefined,
   cerita_rakyat: "info",
-  campuran: "info",
 };
 
 const GARIS: Record<KunciStatus, React.ReactNode> = {
@@ -29,12 +27,6 @@ const GARIS: Record<KunciStatus, React.ReactNode> = {
   ),
   cerita_rakyat: (
     <path d="M8 4.5C6.5 3.2 4.5 3 2.5 3.3v9c2-.3 4-.1 5.5 1.2 1.5-1.3 3.5-1.5 5.5-1.2v-9C11.5 3 9.5 3.2 8 4.5Zm0 0v9" />
-  ),
-  campuran: (
-    <>
-      <circle cx="8" cy="8" r="5.5" />
-      <path d="M8 2.5v11" />
-    </>
   ),
 };
 
@@ -52,23 +44,6 @@ export function LencanaStatus({ status }: { status: KunciStatus }) {
       <IkonStatus status={status} />
       {LABEL_STATUS[status]}
     </span>
-  );
-}
-
-export function DaftarSumber({ sumber, kosong }: { sumber: Sumber[]; kosong?: string }) {
-  if (!sumber.length) return <p className="sj-sumber">{kosong ?? "Sumber: belum ada yang bisa dicek."}</p>;
-  return (
-    <p className="sj-sumber">
-      Sumber:{" "}
-      {sumber.map((s, i) => (
-        <Fragment key={s.url}>
-          {i > 0 && ", "}
-          <a href={s.url} rel="noopener noreferrer">
-            {s.nama}
-          </a>
-        </Fragment>
-      ))}
-    </p>
   );
 }
 

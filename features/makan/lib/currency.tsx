@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 import { buatSimpanan } from "./simpanan";
 import { convertPrice, CURRENCIES, type Currency } from "./format";
+import type { Lang } from "./types";
 
 const simpanan = buatSimpanan<Currency>(
   "bch-makan-mata-uang",
@@ -17,6 +18,6 @@ export function useCurrency() {
     currency,
     setCurrency: simpanan.simpan,
     /** Format teks harga rupiah ke mata uang aktif. */
-    fmt: (priceIdr: string) => convertPrice(priceIdr, currency),
+    fmt: (priceIdr: string, lang: Lang) => convertPrice(priceIdr, currency, lang),
   };
 }

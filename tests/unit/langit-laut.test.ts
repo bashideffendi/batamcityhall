@@ -25,7 +25,12 @@ describe("permintaan ke BMKG", () => {
     expect(BMKG_HEADERS).not.toHaveProperty("Referer");
   });
 
-  it.each(["app/api/ofs-frame/route.ts", "app/api/perairan/route.ts"])("%s tidak menyamar sebagai browser", (p) => {
+  it.each([
+    "app/api/ofs-frame/route.ts",
+    "app/api/perairan/route.ts",
+    "app/api/gempa/route.ts",
+    "app/api/peringatan-cuaca/route.ts",
+  ])("%s tidak menyamar sebagai browser", (p) => {
     const kode = baca(p);
     expect(kode).not.toMatch(/Mozilla|Chrome\/\d|Referer/);
     expect(kode).toContain("BMKG_HEADERS");
@@ -53,7 +58,7 @@ describe("peringatan dini", () => {
       },
     });
     expect(b?.status).toBe("ok");
-    expect(b?.text).toBe("Peringatan Gelombang Tinggi 2,5–4 m");
+    expect(b?.text).toBe("Peringatan gelombang tinggi");
   });
 });
 
@@ -134,6 +139,8 @@ describe("urutan lapisan", () => {
     expect(peringkat("ll-kec-fill")).toBeLessThan(peringkat("ll-radar"));
     expect(peringkat("ll-radar")).toBeLessThan(peringkat("ll-kec-line"));
     expect(peringkat("ll-ofs-12")).toBeLessThan(peringkat("ll-land"));
+    expect(peringkat("ll-cap-fill")).toBeLessThan(peringkat("ll-radar"));
+    expect(peringkat("ll-radar")).toBeLessThan(peringkat("ll-cap-line"));
   });
 
   it("lapisan baru selalu di bawah label peta", () => {
@@ -149,14 +156,14 @@ describe("urutan lapisan", () => {
   it("ganti tema mempertahankan lapisan fitur", () => {
     const radar: LayerSpecification = { id: "ll-radar", type: "raster", source: "ll-radar" };
     const lama: StyleSpecification = {
-      ...baseStyle("day", "http://x", { chart: false }),
+      ...baseStyle("light", "http://x", { chart: false }),
       sources: {
-        ...baseStyle("day", "http://x", { chart: false }).sources,
+        ...baseStyle("light", "http://x", { chart: false }).sources,
         "ll-radar": { type: "image", url: "/a.png", coordinates: sudutCitra(RADAR_BOUNDS) },
       },
     };
     lama.layers = [...lama.layers, radar];
-    const baru = baseStyle("night", "http://x", { chart: false });
+    const baru = baseStyle("dark", "http://x", { chart: false });
     const hasil = gabungGaya(lama, baru);
     expect(hasil.sources["ll-radar"]).toBeDefined();
     const ids = hasil.layers.map((l) => l.id);
@@ -167,7 +174,7 @@ describe("urutan lapisan", () => {
 });
 
 describe("gaya peta tanpa ornamen chart", () => {
-  const gaya = baseStyle("day", "http://x", { chart: false });
+  const gaya = baseStyle("light", "http://x", { chart: false });
 
   it("tanpa selubung siluet dan graticule", () => {
     const ids = gaya.layers.map((l) => l.id);

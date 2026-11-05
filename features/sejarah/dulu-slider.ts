@@ -1,5 +1,5 @@
 // Logika slider murni, tanpa data mentah, supaya aman dibawa ke klien dan mudah dites.
-import type { KunciStatus, Sumber } from "./data";
+import type { KunciStatus } from "./data";
 
 export type KartuDulu = {
   id: string;
@@ -12,7 +12,6 @@ export type KartuDulu = {
   selesai: number;
   versi: string | null;
   catatan: string | null;
-  sumber: Sumber[];
 };
 
 export type TitikDulu = { pf: string; id: string; nama: string; lat: number; lng: number; perkiraan: boolean };

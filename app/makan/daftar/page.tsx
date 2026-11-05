@@ -3,7 +3,7 @@ import { DaftarMakan } from "@/features/makan/components/HalamanMakan";
 
 export const metadata: Metadata = {
   title: "Daftar",
-  description: "Semua tempat makan pilihan di Batam, dengan filter halal, kategori, area, harga, dan terminal feri.",
+  description: "Semua tempat makan pilihan di Batam. Saring menurut status halal, kategori, area, harga, dan terminal feri.",
 };
 
 export default function Daftar() {

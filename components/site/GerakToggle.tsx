@@ -8,7 +8,7 @@ const subscribe = (onChange: () => void) => {
 };
 const readTenang = () => document.documentElement.dataset.gerak === "tenang";
 
-// Tombol "Gerak: hidup/tenang" (CLAUDE_CODE_PROMPT bagian 8). prefers-reduced-motion tetap
+// Tombol "Animasi: aktif/nonaktif" (PEDOMAN 3.1). prefers-reduced-motion tetap
 // berlaku lewat token CSS; tombol ini tambahan untuk yang ingin memilih sendiri.
 export default function GerakToggle() {
   const tenang = useSyncExternalStore(subscribe, readTenang, () => false);
@@ -40,7 +40,7 @@ export default function GerakToggle() {
         font: "inherit",
       }}
     >
-      Gerak: {tenang ? "tenang" : "hidup"}
+      Animasi: {tenang ? "nonaktif" : "aktif"}
     </button>
   );
 }

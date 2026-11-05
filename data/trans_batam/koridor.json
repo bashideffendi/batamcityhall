@@ -5,7 +5,7 @@
     "versi": "2026-11-04",
     "jumlah_koridor_aktif": 9,
     "keterangan_struktur": "Field level atas = verbatim dari blok JSON laporan (data/raw/10-trans-batam__1.json). \"dari_tabel\" = sel dari tabel koridor laporan (markup ** dibuang). \"warna_palet\" = baris palet dari bagian Referensi desain. \"tambahan_bus_2026\" = rincian Key Finding 3. \"catatan_laporan\" = kalimat verbatim laporan yang relevan per koridor.",
-    "catatan_antarsumber": [
+    "catatan_laporan": [
       "**Sumber terbaik untuk K7**: berita peluncuran 29 Juni–3 Juli 2026 (BatamToday, Tribun Batam, ANTARA Kepri, RRI, Terasbatam), yang mengutip langsung Kepala UPT Trans Batam. Artikel InspirasiToday Mei 2026 (06.00–18.00, 3 bus) sudah **usang** untuk K7.",
       "**Jumlah halte dan jam per koridor**: seri artikel Kepri Post (kepri.pikiran-rakyat.com) dan InspirasiToday 2025–2026 menyebut datanya \"mengutip aplikasi SIP TB\" atau \"situs Dishub\". Isinya berulang tiap bulan, kadang dengan salah ketik (contohnya artikel K8 Juni 2026 menulis \"Rute: Nongsa–Batam Center\"). Anggap sebagai sumber sekunder.",
       "**Dua penomoran lama yang harus diabaikan**: RailTravel Station (terakhir diubah April 2024, isinya era 2017, tarif Rp4.000) memakai K5 = Piayu–Jodoh, K6 = Nongsa–BC, K7 = Punggur–Jodoh. Moovit versi Indonesia juga masih memakai penomoran lama ini. **Jangan dipakai.**",
@@ -92,7 +92,7 @@
   "koridor": [
     {
       "id": "K1",
-      "nama": "Sekupang – Batam Centre",
+      "nama": "Sekupang—Batam Centre",
       "warna": "#2F4C7E",
       "status": "aktif",
       "jam": "05:45-19:00",
@@ -131,7 +131,7 @@
     },
     {
       "id": "K2",
-      "nama": "Tanjung Uncang – Batam Centre",
+      "nama": "Tanjung Uncang—Batam Centre",
       "warna": "#B5532F",
       "status": "aktif",
       "jam": "05:45-19:00",
@@ -166,7 +166,7 @@
     },
     {
       "id": "K3",
-      "nama": "Sekupang – Jodoh",
+      "nama": "Sekupang—Jodoh",
       "warna": "#1F7A74",
       "status": "aktif",
       "jam": "06:00-19:00",
@@ -199,7 +199,7 @@
     },
     {
       "id": "K4",
-      "nama": "Sagulung – Sekupang",
+      "nama": "Sagulung—Sekupang",
       "warna": "#9A7533",
       "status": "aktif",
       "jam": "06:00-18:00",
@@ -229,7 +229,7 @@
     },
     {
       "id": "K5",
-      "nama": "Jodoh – Batam Centre",
+      "nama": "Jodoh—Batam Centre",
       "warna": "#C0444F",
       "status": "aktif",
       "jam": "06:00-18:00",
@@ -273,7 +273,7 @@
     },
     {
       "id": "K6",
-      "nama": "Tanjung Piayu – Batam Centre",
+      "nama": "Tanjung Piayu—Batam Centre",
       "warna": "#7A4466",
       "status": "aktif",
       "jam": "06:00-18:00",
@@ -316,7 +316,7 @@
     },
     {
       "id": "K7",
-      "nama": "Nongsa – Bandara Hang Nadim – Batam Centre",
+      "nama": "Nongsa—Bandara Hang Nadim—Batam Centre",
       "warna": "#2E86A8",
       "status": "aktif",
       "mulai": "2026-07-02",
@@ -365,7 +365,7 @@
     },
     {
       "id": "K8",
-      "nama": "Punggur – Jodoh",
+      "nama": "Punggur—Jodoh",
       "warna": "#5E7D3A",
       "status": "aktif",
       "jam": "06:00-18:00",
@@ -397,7 +397,7 @@
     },
     {
       "id": "K9",
-      "nama": "Punggur – Nongsa",
+      "nama": "Punggur—Nongsa",
       "warna": "#6B7F8E",
       "status": "aktif",
       "jam": "06:00-18:00",
@@ -434,7 +434,7 @@
     },
     {
       "id": "K10",
-      "nama": "Tembesi – Barelang/Galang",
+      "nama": "Tembesi—Barelang/Galang",
       "warna": "#1C1B19",
       "status": "rencana",
       "sumber_url": [

@@ -3,6 +3,7 @@
 import fakta from "@/data/budaya/fakta_infografis.json";
 import resmi from "@/data/statistik/angka_resmi.json";
 import { keSumber, type Sumber } from "./data";
+import { rapiTeks } from "./rapi";
 
 type Fakta = (typeof fakta.angka)[number];
 
@@ -12,17 +13,20 @@ export type BarisFakta = {
   indikator: string;
   angka: string;
   tahun: string;
-  status: string;
+  /** Satu label sesuai pedoman 3.7. Kosong bila data tidak memberi status: tidak ada label yang ditampilkan. */
+  status: string | null;
   catatan: string | null;
-  sumber: Sumber[];
 };
 
+// "Mungkin usang" di data selalu baris versi lain, jadi labelnya Berbeda versi. Angka turunan tidak diberi label:
+// catatannya sudah menulis cara menghitungnya.
 const STATUS_KATA: Record<string, string> = {
-  "✅": "Terverifikasi",
-  "⚠️": "Beda versi",
-  "⌛": "Mungkin usang",
-  "angka turunan": "Angka turunan",
+  Tercatat: "Tercatat",
+  "Berbeda versi": "Berbeda versi",
+  "Mungkin usang": "Berbeda versi",
 };
+
+const ANGKA_KOSONG = "Belum ada angka";
 
 const CATATAN_DATABOKS =
   "Angka agregator. Jauh di atas proyeksi BPS 1.296.960 (pertengahan 2025) dan registrasi Disdukcapil 1.394.459 (Semester II 2025). Tidak kami pakai di grafik.";
@@ -30,30 +34,27 @@ const CATATAN_DATABOKS =
 // Laporan 15 melarang 1,79 juta sebagai patokan, laporan 13 mencatatnya, dan prompt meminta semua item tampil.
 // Jalan tengah yang aman: tetap tampil, berlabel, dan tidak dipakai di grafik atau judul infografis.
 const UBAHAN_FAKTA: Record<string, Partial<BarisFakta>> = {
-  "fi-001": { status: "Beda versi", catatan: CATATAN_DATABOKS },
-  "fi-002": { status: "Beda versi", catatan: "Dari artikel Databoks yang sama. Tidak kami pakai di grafik." },
+  "fi-001": { status: "Berbeda versi", catatan: CATATAN_DATABOKS },
+  "fi-002": { status: "Berbeda versi", catatan: "Dari artikel Databoks yang sama. Tidak kami pakai di grafik." },
   "fi-003": {
-    status: "Beda versi",
+    status: "Berbeda versi",
     catatan: CATATAN_DATABOKS.replace(
       "Jauh di atas proyeksi BPS 1.296.960 (pertengahan 2025) dan registrasi Disdukcapil 1.394.459 (Semester II 2025)",
       "Jauh di atas proyeksi BPS 1.276.930 (Juni 2024) dan registrasi Disdukcapil 1.294.548 (Semester I 2024)",
     ),
   },
-  "fi-004": { status: "Beda versi", catatan: "Dari artikel Databoks yang sama. Tidak kami pakai di grafik." },
+  "fi-004": { status: "Berbeda versi", catatan: "Dari artikel Databoks yang sama. Tidak kami pakai di grafik." },
   "fi-005": { catatan: "Ciri kota pekerja." },
   "fi-009": { indikator: "Penduduk per kecamatan: Sagulung (terbanyak)" },
   "fi-012": { indikator: "Penduduk per kecamatan: Galang (paling sedikit)" },
   "fi-014": {
-    status: "Interpretasi",
+    status: "Belum terverifikasi",
     catatan:
       "Dihitung dari angka Databoks. BPS menghitung penduduk yang benar-benar tinggal, sedangkan Dukcapil hanya yang ber-KTP/KK Batam. Ini interpretasi, bukan klaim resmi. Angka BPS pertengahan 2025 lewat Wikipedia (1.296.960) justru di bawah Dukcapil, jadi selisih ini belum tentu berlaku.",
   },
-  "fi-023": {
-    angka: "Belum ada angka",
-    catatan:
-      "Belum ada angka per suku khusus Kota Batam dari sumber yang bisa dicek. Sensus 2010 adalah sensus terakhir yang memuat data suku.",
-  },
-  "fi-024": { angka: "Belum ada angka", catatan: "Belum ditemukan." },
+  // Dua baris tanpa angka tidak tampil (pedoman prinsip 7). Tetap ada di SEMUA_FAKTA.
+  "fi-023": { angka: ANGKA_KOSONG, catatan: null },
+  "fi-024": { angka: ANGKA_KOSONG, catatan: null },
   "fi-025": {
     catatan:
       "Melampaui target 1,5 juta versi Batam Pos/Disbudpar, belum mencapai target 1,7 juta versi Tempo dan Diskominfo.",
@@ -80,25 +81,33 @@ const UBAHAN_FAKTA: Record<string, Partial<BarisFakta>> = {
   "fi-068": { catatan: "“115% luas Singapura”." },
 };
 
+const TANPA_TAHUN = "Tahun tidak disebut";
+
 const tahunFakta = (f: Fakta) => {
   const p = f.periode;
   if (p && /\d{4}/.test(p)) return p;
   if (p && f.tahun) return `${f.tahun}, ${p}`;
   if (p) return p;
-  return f.tahun ? String(f.tahun) : "Tahun belum disebut";
+  return f.tahun ? String(f.tahun) : TANPA_TAHUN;
 };
 
 function keBaris(f: Fakta): BarisFakta {
-  return {
+  const baris: BarisFakta = {
     id: f.id,
     topik: f.topik,
     indikator: f.indikator,
-    angka: f.angka ?? "Belum ada angka",
+    angka: f.angka ?? ANGKA_KOSONG,
     tahun: tahunFakta(f),
-    status: f.status ? (STATUS_KATA[f.status] ?? f.status) : "Belum dinilai",
+    status: f.status ? (STATUS_KATA[f.status] ?? null) : null,
     catatan: f.catatan,
-    sumber: keSumber(f.sumber_url),
     ...UBAHAN_FAKTA[f.id],
+  };
+  return {
+    ...baris,
+    indikator: rapiTeks(baris.indikator).replace(" vs ", " dibanding "),
+    angka: rapiTeks(baris.angka),
+    tahun: rapiTeks(baris.tahun),
+    catatan: baris.catatan ? rapiTeks(baris.catatan) : null,
   };
 }
 
@@ -113,12 +122,12 @@ export const KELOMPOK_FAKTA: { topik: string; judul: string; lede?: string; bari
     judul: "Agama",
     lede: "Data Dukcapil, 31 Desember 2024. Urut abjad, bukan peringkat.",
   },
-  { topik: "tenaga_kerja", judul: "Tenaga kerja" },
-  { topik: "wisman", judul: "Wisatawan mancanegara" },
+  { topik: "tenaga_kerja", judul: "Tenaga Kerja" },
+  { topik: "wisman", judul: "Wisatawan Mancanegara" },
   { topik: "geografi", judul: "Geografi" },
-  { topik: "sejarah", judul: "Angka sejarah" },
+  { topik: "sejarah", judul: "Angka Sejarah" },
 ].map((k) => {
-  const baris = SEMUA_FAKTA.filter((f) => f.topik === k.topik);
+  const baris = SEMUA_FAKTA.filter((f) => f.topik === k.topik && f.angka !== ANGKA_KOSONG);
   return {
     ...k,
     baris: k.topik === "agama" ? [...baris].sort((a, b) => ID_COLLATOR.compare(a.indikator, b.indikator)) : baris,
@@ -127,9 +136,8 @@ export const KELOMPOK_FAKTA: { topik: string; judul: string; lede?: string; bari
 
 export const LINIMASA = fakta.linimasa_sejarah.map((l) => ({
   id: l.id,
-  tahun: l.tahun,
-  peristiwa: l.peristiwa,
-  sumber: keSumber(l.sumber_url),
+  tahun: rapiTeks(l.tahun),
+  peristiwa: rapiTeks(l.peristiwa),
 }));
 
 // ---------- Luas dan investasi (brief 15: celah, tidak ada di file data; angka dari research/15 bagian 6) ----------
@@ -150,28 +158,28 @@ export const LUAS_INVESTASI: BarisLuas[] = [
   {
     indikator: "Pulau Batam",
     angka: "415 km²",
-    tahun: "Tahun belum disebut",
+    tahun: TANPA_TAHUN,
     catatan: "Versi BP Batam.",
     sumber: keSumber([URL_BP]),
   },
   {
     indikator: "Konsep Barelang",
     angka: "715 km²",
-    tahun: "Tahun belum disebut",
+    tahun: TANPA_TAHUN,
     catatan: "Versi BP Batam.",
     sumber: keSumber([URL_BP]),
   },
   {
     indikator: "Kota Batam, daratan",
     angka: "1.034,73 km²",
-    tahun: "RPJPD 2025–2045",
+    tahun: "RPJPD 2025—2045",
     catatan: null,
     sumber: keSumber([URL_RPJPD]),
   },
   {
     indikator: "Bandara Hang Nadim",
     angka: "1.762 hektare, sekitar 40 persen terpakai",
-    tahun: "Tahun belum disebut",
+    tahun: TANPA_TAHUN,
     catatan: "Menurut profil iNews.id, yang juga menyebut bandara dibangun 1974. Sumber lain menyebut 1980 atau 1984.",
     sumber: keSumber([URL_INEWS]),
   },
@@ -193,14 +201,14 @@ export const LUAS_INVESTASI: BarisLuas[] = [
     indikator: "KEK Tanjung Sauh",
     angka: "840,67 ha",
     tahun: "PP 24/2024",
-    catatan: "Dikutip sekunder.",
+    catatan: null,
     sumber: keSumber([URL_GOLAW]),
   },
   {
     indikator: "KEK Pariwisata dan Kesehatan Internasional",
     angka: "Sekitar 47 ha",
     tahun: "PP 39/2024",
-    catatan: "Dikutip sekunder.",
+    catatan: null,
     sumber: keSumber([URL_GOLAW]),
   },
   {
@@ -211,9 +219,6 @@ export const LUAS_INVESTASI: BarisLuas[] = [
     sumber: keSumber([URL_MI]),
   },
 ];
-
-export const CELAH_LUAS =
-  "Luas lahan yang dialokasikan per dekade dan jumlah perusahaan PMA dari masa ke masa belum ditemukan di sumber terbuka.";
 
 // ---------- Angka resmi pilihan ----------
 
@@ -226,8 +231,6 @@ export type BarisResmi = {
   angka: string;
   tahun: string;
   catatan: string | null;
-  asal: string | null;
-  sumber: Sumber[];
 };
 
 const angkaTeks = (n: unknown) => (typeof n === "number" ? n.toLocaleString("id-ID") : String(n ?? ""));
@@ -238,11 +241,9 @@ function pilih(indikator: string, label: string, angka?: string, catatan?: strin
   return {
     indikator,
     label,
-    angka: angka ?? [angkaTeks(d.nilai), d.satuan].filter(Boolean).join(" "),
-    tahun: d.tahun ?? "Tahun belum disebut",
-    catatan: catatan ?? null,
-    asal: d.sumber,
-    sumber: keSumber(d.sumber_url_terkait),
+    angka: rapiTeks(angka ?? [angkaTeks(d.nilai), d.satuan].filter(Boolean).join(" ")),
+    tahun: rapiTeks(d.tahun ?? TANPA_TAHUN),
+    catatan: catatan ? rapiTeks(catatan) : null,
   };
 }
 
@@ -262,7 +263,7 @@ export const ANGKA_RESMI: { judul: string; lede?: string; baris: BarisResmi[] }[
       pilih("sd_negeri", "SD negeri", "145 sekolah", "16.044 kursi disiapkan."),
       pilih("smp_negeri", "SMP negeri", "66 sekolah", "16.803 kursi disiapkan."),
       pilih("sma_negeri_ikut_spmb", "SMA negeri yang ikut SPMB"),
-      pilih("lulusan_sd", "Lulusan SD", undefined, "Sekitar 6.000–7.000 siswa tidak tertampung di SMP negeri."),
+      pilih("lulusan_sd", "Lulusan SD", undefined, "Sekitar 6.000—7.000 siswa tidak tertampung di SMP negeri."),
     ],
   },
   {
@@ -272,7 +273,7 @@ export const ANGKA_RESMI: { judul: string; lede?: string; baris: BarisResmi[] }[
         "faskes_total",
         "Fasilitas kesehatan",
         "831 fasilitas",
-        "RS pemerintah 3, RS swasta 18, puskesmas 21, pustu 63, klinik dan polindes 156, posyandu 570. Judul dataset di tautan menyebut tenaga kesehatan.",
+        "RS pemerintah 3, RS swasta 18, puskesmas 21, pustu 63, klinik dan polindes 156, posyandu 570.",
       ),
       pilih(
         "klinik_polindes",
@@ -283,7 +284,7 @@ export const ANGKA_RESMI: { judul: string; lede?: string; baris: BarisResmi[] }[
     ],
   },
   {
-    judul: "Tempat ibadah",
+    judul: "Tempat Ibadah",
     lede: "Urut abjad, bukan peringkat. Sumbernya berbeda, jadi jangan dibandingkan langsung.",
     baris: [
       pilih("tempat_ibadah_bps", "BPS 2022", "Masjid 912, musala 616, pura 3, vihara 38"),

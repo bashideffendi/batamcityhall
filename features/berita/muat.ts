@@ -1,6 +1,7 @@
 // Menarik semua feed dan menggabungkannya. Tidak menyentuh jaringan sendiri: `ambilTeks` diberikan
 // dari luar, jadi perilaku feed mati bisa diuji tanpa memanggil situs media.
 import { bacaFeed, type ItemFeed } from "./rss";
+import { tentangBatam } from "./saring";
 import type { BeritaItem, BeritaResponse, StatusFeed, SumberBerita } from "./sumber";
 
 export const MAKS_PER_SUMBER = 10;
@@ -50,7 +51,9 @@ export async function muatBerita({ sumber, ambilTeks, ingatan, now, saatGagal }:
   const hasil = await Promise.all(
     sumber.map(async (s) => {
       try {
-        const item = rapikanItem(bacaFeed(await ambilTeks(s.feed)).item, now);
+        // Disaring sebelum dibatasi, supaya berita nasional tidak memakan jatah per sumber.
+        const feed = bacaFeed(await ambilTeks(s.feed)).item.filter((i) => tentangBatam(i.judul));
+        const item = rapikanItem(feed, now);
         ingatan.set(s.id, { item, at: now });
         return { s, item, status: (item.length ? "ok" : "kosong") as StatusFeed };
       } catch (e) {

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { ROBOTS_TERSEMBUNYI } from "@/lib/site";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Cara mural ini dibuat",
+  robots: ROBOTS_TERSEMBUNYI,
   description: "Bagian mana yang digambar skrip, mana yang menunggu ilustrator, dan dari mana data hidupnya.",
 };
 

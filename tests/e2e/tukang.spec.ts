@@ -20,18 +20,18 @@ const unik = (dasar: string) => `${dasar} ${Date.now().toString(36)}${(nomor += 
 /** Isi lewat formulir sungguhan. */
 async function kirimLewatForm(page: Page, nama: string, kontak: string) {
   await page.goto("/tukang/rekomendasi");
-  await page.getByLabel("Nama tukang atau usahanya").fill(nama);
-  await page.getByLabel("Jasa", { exact: true }).selectOption("laundry");
+  await page.getByLabel("Nama tukang atau usaha").fill(nama);
+  await page.getByLabel("Jenis jasa", { exact: true }).selectOption("laundry");
   await page.getByRole("checkbox", { name: "Sekupang" }).check();
-  await page.getByLabel("Cara menghubungi tukangnya").fill(`Kios ${nama}`);
-  await page.getByLabel("Kapan terakhir memakai jasanya").fill("2026-10");
+  await page.getByLabel("Cara menghubungi").fill(`Kios ${nama}`);
+  await page.getByLabel("Terakhir memakai jasa").fill("2026-10");
   await page.getByLabel("Cerita singkat").fill(`Cerita rekaan untuk menguji alur ${nama}.`);
-  await page.getByRole("checkbox", { name: "rapi", exact: true }).check();
-  await page.getByLabel("Nomor HP atau surel Anda").fill(kontak);
-  await page.getByRole("checkbox", { name: /bukan pemilik/ }).check();
+  await page.getByRole("checkbox", { name: "Rapi", exact: true }).check();
+  await page.getByLabel("Kontakmu").fill(kontak);
+  await page.getByRole("checkbox", { name: /tidak memiliki hubungan usaha/ }).check();
   await page.getByRole("checkbox", { name: /setuju kontak saya disimpan/ }).check();
   await page.getByRole("button", { name: "Kirim rekomendasi" }).click();
-  await expect(page.getByRole("status")).toContainText("masuk antrean moderator");
+  await expect(page.getByRole("status")).toContainText("Rekomendasimu akan kami periksa sebelum tampil");
 }
 
 async function kirimLewatApi(request: APIRequestContext, nama: string, kontak: string) {
@@ -82,7 +82,7 @@ async function tanpaGeserSamping(page: Page) {
 }
 
 async function axeDuaTema(page: Page, url: string, tunggu?: (p: Page) => Promise<void>) {
-  for (const tema of ["day", "night"]) {
+  for (const tema of ["light", "dark"]) {
     await page.addInitScript((t) => localStorage.setItem("bch-theme", t), tema);
     await page.goto(url);
     await tunggu?.(page);
@@ -126,11 +126,11 @@ test.describe("mode contoh", () => {
     const kartuPublik = page.locator("article", { hasText: nama });
     await expect(kartuPublik).toBeVisible();
     await expect(kartuPublik).toContainText("Direkomendasikan 2 warga");
-    await expect(kartuPublik).toContainText("CONTOH FIKTIF");
-    await expect(kartuPublik).toContainText("rapi");
-    await expect(kartuPublik).toContainText(/Terakhir dicek \d+ \w+ \d{4}/);
+    await expect(kartuPublik).toContainText("Contoh fiktif");
+    await expect(kartuPublik).toContainText("Rapi");
+    await expect(kartuPublik).toContainText(/Terakhir diperiksa \w+ \d{4}/);
     // Izin dicatat tanpa izin kontak, jadi kontak tukang juga tidak tampil.
-    await expect(kartuPublik).toContainText("Kontak belum diizinkan tampil");
+    await expect(kartuPublik.getByRole("link", { name: /Hubungi/ })).toHaveCount(0);
     await expect(kartuPublik).not.toContainText(`Kios ${nama}`);
 
     for (const teks of [await (await request.get("/tukang?jasa=laundry")).text(), await page.content()]) {
@@ -164,14 +164,14 @@ test.describe("mode contoh", () => {
 
     await page.goto("/tukang?jasa=laundry");
     const kartu = page.locator("article", { hasText: nama });
-    await kartu.getByRole("button", { name: "Masih buka?" }).click();
+    await kartu.getByRole("button", { name: /^Ya/ }).click();
     await expect(kartu.getByText("Dicatat: masih buka")).toBeVisible();
-    await expect(kartu.getByRole("button", { name: "Sudah pindah/tutup" })).toBeDisabled();
+    await expect(kartu.getByRole("button", { name: /Sudah pindah atau tutup/ })).toBeDisabled();
 
     await page.reload();
     await expect(kartu).toContainText("Kata warga: 1 masih buka, 0 sudah pindah");
 
-    await kartu.getByRole("button", { name: /Laporkan masalah/ }).click();
+    await kartu.getByRole("button", { name: /^Laporkan/ }).click();
     await kartu.getByRole("button", { name: "Kirim laporan" }).click();
     await expect(kartu.getByRole("alert")).toContainText("Tulis masalahnya");
     await kartu.getByLabel("Apa masalahnya?").fill("Rekaan untuk menguji laporan.");
@@ -194,10 +194,10 @@ test.describe("mode contoh", () => {
   test("formulir menunjukkan galat per kolom, dan honeypot tidak tersimpan", async ({ page, request }) => {
     await page.goto("/tukang/rekomendasi");
     await page.getByRole("button", { name: "Kirim rekomendasi" }).click();
-    await expect(page.getByRole("alert").first()).toContainText("perlu dibetulkan");
-    await expect(page.getByText("Tulis nama tukang atau nama usahanya.")).toBeVisible();
-    await expect(page.getByText("Centang persetujuan dulu.")).toBeVisible();
-    await expect(page.getByLabel("Nama tukang atau usahanya")).toHaveAttribute("aria-invalid", "true");
+    await expect(page.getByRole("alert").first()).toContainText("perlu diperbaiki");
+    await expect(page.getByText("Isi nama tukang atau nama usahanya.")).toBeVisible();
+    await expect(page.getByText("Centang persetujuan untuk mengirim.").first()).toBeVisible();
+    await expect(page.getByLabel("Nama tukang atau usaha")).toHaveAttribute("aria-invalid", "true");
 
     const nama = unik("Robot Madu");
     const r = await request.post("/api/tukang/rekomendasi", {
@@ -212,7 +212,7 @@ test.describe("mode contoh", () => {
     const isi = unik("Kantor ini sudah pindah, kata rekaan");
     await page.goto("/koreksi?tempat=pub-bpbd");
     await expect(page.locator("[data-koreksi-tempat]")).toContainText("BPBD");
-    await page.getByLabel("Yang perlu dibetulkan").fill(isi);
+    await page.getByLabel("Yang perlu diperbaiki").fill(isi);
     await page.getByRole("button", { name: "Kirim koreksi" }).click();
     await expect(page.getByRole("status")).toContainText("koreksinya masuk");
 
@@ -230,10 +230,10 @@ test.describe("mode contoh", () => {
 
     await page.goto("/koreksi?jenis=hapus_data");
     await expect(page.getByLabel("Jenis koreksi")).toHaveValue("hapus_data");
-    await page.getByLabel("Yang perlu dibetulkan").fill("Tolong hapus semua rekomendasi saya, rekaan.");
+    await page.getByLabel("Yang perlu diperbaiki").fill("Tolong hapus semua rekomendasi saya, rekaan.");
     await page.getByRole("button", { name: "Kirim koreksi" }).click();
-    await expect(page.getByText("Permintaan soal data pribadi butuh kontak")).toBeVisible();
-    await page.getByLabel("Nomor HP atau surel (boleh kosong)").fill(kontak);
+    await expect(page.getByText("Permintaan tentang data pribadi memerlukan kontak")).toBeVisible();
+    await page.getByLabel("Nomor ponsel atau surel (boleh dikosongkan)").fill(kontak);
     await page.getByRole("checkbox", { name: /Kalau saya meninggalkan kontak/ }).check();
     await page.getByRole("button", { name: "Kirim koreksi" }).click();
     await expect(page.getByRole("status")).toContainText("koreksinya masuk");
@@ -417,7 +417,7 @@ test.describe("mode contoh", () => {
 
   test("/tukang menyaring per jasa dan kecamatan, dan jujur saat kosong", async ({ page }) => {
     await page.goto("/tukang?jasa=jastip-singapura");
-    await expect(page.locator("[data-kosong-tukang]")).toContainText("Belum ada tukang yang cocok");
+    await expect(page.locator("[data-kosong-tukang]")).toContainText("Belum ada nama yang cocok");
     await page.goto("/tukang");
     await expect(page.getByRole("link", { name: "Pijat panggilan" })).toBeVisible();
     await page.getByLabel("Kecamatan").selectOption("Bulang");
@@ -435,15 +435,15 @@ test.describe("build produksi tanpa Supabase", () => {
 
   test("/tukang jujur kosong, tanpa data fiktif", async ({ page }) => {
     await page.goto("/tukang");
-    await expect(page.locator("[data-kosong-tukang]")).toContainText("Belum ada tukang");
-    await expect(page.getByText("CONTOH FIKTIF")).toHaveCount(0);
+    await expect(page.locator("[data-kosong-tukang]")).toContainText("Belum ada nama di daftar ini");
+    await expect(page.getByText("Contoh fiktif")).toHaveCount(0);
     await expect(page.locator("article")).toHaveCount(0);
   });
 
   test("formulir menyatakan belum menerima kiriman", async ({ page, request }) => {
     for (const url of ["/tukang/rekomendasi", "/koreksi"]) {
       await page.goto(url);
-      await expect(page.locator("[data-mode-mati]")).toContainText("belum menerima kiriman");
+      await expect(page.locator("[data-mode-mati]")).toContainText("belum aktif");
       await expect(page.locator("form")).toHaveCount(0);
     }
     for (const url of ["/api/tukang/rekomendasi", "/api/koreksi", "/api/kiriman-foto"]) {

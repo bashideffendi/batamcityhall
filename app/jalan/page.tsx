@@ -1,48 +1,39 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import DaftarNomor from "@/components/site/DaftarNomor";
+import PembukaLoket from "@/components/site/PembukaLoket";
 import FeriTerakhirMuat from "@/features/jalan/FeriTerakhirMuat";
 
 export const metadata: Metadata = {
-  title: "Jalan-jalan",
-  description: "Trans Batam, feri, dan pompong. Cara berpindah di Batam tanpa harus punya motor.",
+  title: "Transportasi",
+  description: "Loket ini memuat bus Trans Batam, feri ke Singapura dan Malaysia, dan pompong antarpulau.",
 };
 
 const PINTU = [
-  {
-    href: "/jalan/trans-batam",
-    nama: "Trans Batam",
-    lede: "9 koridor aktif dan 1 rencana. Diagram, urutan halte, jam, tarif.",
-  },
-  { href: "/jalan/peta", nama: "Peta", lede: "Hub Trans Batam dan terminal feri. Lokasi perkiraan ditandai berongga." },
-  { href: "/jalan/feri", nama: "Feri", lede: "Singapura, Malaysia, domestik. Jadwal bertanggal dan tautan operator." },
-  { href: "/jalan/pompong", nama: "Pompong", lede: "Rute rakyat ke pulau. Tarif swadaya, bukan tarif resmi." },
-  {
-    href: "/jalan/feri/panduan",
-    nama: "Panduan menyeberang",
-    lede: "Paspor, check-in, barang bawaan, musim angin utara.",
-  },
-  { href: "/langit-laut?mode=cctv", nama: "CCTV", lede: "Lihat dulu kondisi jalan sebelum keluar." },
+  { href: "/jalan/trans-batam", nama: "Trans Batam", ket: "sembilan koridor, tarif Rp5.000" },
+  { href: "/jalan/peta", nama: "Peta Transportasi", ket: "koridor bus, terminal feri, dan pelabuhan rakyat" },
+  { href: "/jalan/feri", nama: "Feri", ket: "jadwal ke Singapura, Johor, dan pulau sekitar" },
+  { href: "/jalan/pompong", nama: "Pompong", ket: "perahu ke pulau-pulau di sekitar Batam" },
+  { href: "/jalan/feri/panduan", nama: "Panduan Menyeberang", ket: "paspor, lapor masuk, dan barang bawaan" },
 ];
 
 export default function Jalan() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Loket 04</p>
-      <h1 className="mt-2">Jalan-jalan</h1>
-      <p className="bch-lede">Trans Batam, feri, pelabuhan. Cara berpindah tanpa harus punya motor.</p>
-
-      <ul className="bch-grid mt-5">
-        {PINTU.map((p) => (
-          <li key={p.href}>
-            <Link href={p.href} className="bch-card h-full" prefetch={false}>
-              <h2>{p.nama}</h2>
-              <span>{p.lede}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-7">
+      <PembukaLoket
+        nomor="04"
+        lede={
+          <>
+            Loket ini memuat bus Trans Batam, feri ke Singapura dan Malaysia, dan <em>pompong</em> antarpulau.
+          </>
+        }
+      />
+      <section className="bch-seksi" aria-labelledby="isi-loket">
+        <h2 id="isi-loket" className="bch-kicker bch-kepala-penanda">
+          Isi loket ini
+        </h2>
+        <DaftarNomor isi={PINTU} />
+      </section>
+      <div className="bch-seksi">
         <FeriTerakhirMuat varian="ringkas" />
       </div>
     </div>

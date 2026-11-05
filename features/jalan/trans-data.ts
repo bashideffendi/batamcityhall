@@ -62,7 +62,8 @@ export const TRANSIT = halteRaw.halte_transit as { halte: string; koridor: strin
 export const INFO = infoRaw;
 export const VERSI_DATA = koridorRaw.meta.versi;
 
-export const TEKS_TANGGAL_DATA = "per 4 Nov 2026";
+/** Catatan bawah halaman Trans Batam (pedoman 3.6). */
+export const CATATAN_DAFTAR_HALTE = "Daftar halte dihimpun pada November 2026 dan mungkin belum lengkap.";
 
 export const slugKoridor = (id: string) => id.toLowerCase();
 export const koridorDariSlug = (slug: string) => KORIDOR.find((k) => slugKoridor(k.id) === slug);
@@ -135,7 +136,40 @@ export function koridorDiKelompok(kelompok: string): string[] {
 
 // ---------- Teks koridor ----------
 
-export const teksJam = (k: Koridor) => (k.jam ? `${k.jam.replace("-", "–")} WIB` : null);
+export const teksJam = (k: Koridor) => (k.jam ? `${k.jam.replace("-", "—").replace(/:/g, ".")} WIB` : null);
+
+/** Nomor koridor untuk judul: "K1" menjadi "1". */
+export const nomorKoridor = (k: Pick<Koridor, "id">) => k.id.replace(/^K/, "");
+
+/** "TP Sekupang → TP Batam Center" menjadi "Transferpoint Sekupang—Transferpoint Batam Center". */
+export const ruteKoridor = (k: Koridor) =>
+  k.dari_tabel?.terminal_a_ke_b?.replace(/TP /g, "Transferpoint ").replace(/\s*→\s*/g, "—") ?? null;
+
+/** Selang keberangkatan untuk tabel koridor. null berarti belum diketahui, dan barisnya tidak ditampilkan. */
+export function teksSelang(k: Koridor): string | null {
+  if (k.headway_menit) {
+    return `pagi sibuk ${k.headway_menit.pagi_sibuk} menit, siang sampai sore ${k.headway_menit.siang_sore} menit`;
+  }
+  const t = k.dari_tabel?.headway ?? "";
+  const tunggal = t.match(/Moovit lama: (\d+)/);
+  if (tunggal) return `sekitar ${tunggal[1]} menit`;
+  const rentang = t.match(/±(\d+)–(\d+)/);
+  if (rentang) return `sekitar ${rentang[1]}—${rentang[2]} menit`;
+  if (/jarang/.test(t)) return "jarang, 1 sampai 3 bus";
+  return null;
+}
+
+/** Jumlah halte untuk tabel koridor. Dua angka berarti sumbernya berbeda; keduanya ditulis apa adanya. */
+export function teksJumlah(k: Koridor): string | null {
+  const j = k.jumlah_halte_sumber;
+  if (j === undefined) return null;
+  if (typeof j === "number") return String(j);
+  if (Array.isArray(j.nilai)) return j.nilai.join(" atau ");
+  return `${j.nilai}${j.catatan ? `, ${j.catatan}` : ""}`;
+}
+
+// teksHeadway, teksJumlahHalte, dan labelGap tidak lagi tampil ke pembaca. Bentuknya dipertahankan karena
+// tests/unit/skema.test.ts memeriksanya. Tampilan memakai teksSelang, teksJumlah, dan LABEL_CELAH.
 
 export function teksHeadway(k: Koridor): { teks: string; perluCek: boolean } {
   if (k.headway_menit) {
@@ -166,49 +200,41 @@ export function totalHalte(j: JumlahHalte | null | undefined): number | null {
   return null;
 }
 
+/** Label status: satu per koridor, dan hanya untuk koridor yang belum beroperasi. */
 export function lencanaKoridor(k: Koridor): { teks: string; nada?: "ok" | "caution" }[] {
   if (k.status === "rencana") return [{ teks: "rencana, belum beroperasi", nada: "caution" }];
-  const hasil: { teks: string; nada?: "ok" | "caution" }[] = [{ teks: "sumber sekunder" }];
-  const s = k.dari_tabel?.status_data ?? "";
-  if (/^Jam terverifikasi/.test(s)) hasil.push({ teks: "jam dari berita", nada: "ok" });
-  if (/Jumlah halte bertentangan/.test(s)) hasil.push({ teks: "jumlah halte bertentangan", nada: "caution" });
-  if (/bandara perlu_cek_ulang/.test(s)) hasil.push({ teks: "urutan halte bandara perlu cek ulang", nada: "caution" });
-  if (/Penomoran/.test(s)) hasil.push({ teks: "penomoran sempat tumpang tindih", nada: "caution" });
-  return hasil;
+  return [];
 }
 
 /** Jeda Jumat: hanya dari jadwal Moovit lama, belum dikonfirmasi (koridor.json, jeda_jumat perlu_cek_ulang). */
 export const JEDA_JUMAT: Record<string, string> = {
-  K1: "Jadwal Moovit lama dari Batam Center melompat dari 10.55 ke 13.20 tiap Jumat. Dugaan jeda salat Jumat, belum dikonfirmasi.",
-  K3: "Jadwal Moovit lama dari Jodoh melompat dari 11.10 ke 13.15 tiap Jumat. Dugaan jeda salat Jumat, belum dikonfirmasi.",
+  K1: "Pada Jumat siang, keberangkatan dari Batam Centre melompat dari pukul 10.55 ke 13.20 WIB. Jadwal ini mungkin sudah berubah.",
+  K3: "Pada Jumat siang, keberangkatan dari Jodoh melompat dari pukul 11.10 ke 13.15 WIB. Jadwal ini mungkin sudah berubah.",
 };
 
 export const CATATAN_KORIDOR: Record<string, string> = {
-  K7: "Mulai beroperasi lewat bandara 2 Juli 2026. Halte bandara ada di area pintu kedatangan. Bandara ke Batam Centre sekitar 30 menit. Tidak ada tarif tambahan ke bandara. Armada 5 bus dan 1 cadangan.",
-  K9: "Berangkat pertama dari Nongsa 06:00, dari Punggur 06:40.",
+  K7: "Mulai beroperasi lewat bandara pada 2 Juli 2026. Halte bandara ada di area pintu kedatangan. Perjalanan dari bandara ke Batam Centre sekitar 30 menit. Tidak ada tarif tambahan ke bandara. Armada lima bus dan satu cadangan. Posisi bus K7 dapat dilihat di aplikasi SIP TB dan Mitra Darat.",
+  K9: "Keberangkatan pertama dari Nongsa pukul 06.00 WIB dan dari Punggur pukul 06.40 WIB.",
 };
 
 /** Catatan arah per pola, ditulis ulang. Kolom pola.catatan memuat instruksi penyusun. */
 const CATATAN_POLA: Record<string, string> = {
   K1_balik: "Arah balik lewat jalan berbeda: Green Land, Yos Sudarso, Cipta Puri, Sei Harapan.",
-  K2_ke_tanjung_uncang: "Arah sebaliknya diawali Hidayatullah A menurut Moovit.",
+  K2_ke_tanjung_uncang: "Arah sebaliknya diawali Hidayatullah A.",
   K3_balik:
     "Arah balik berbeda dari arah pergi: lewat Top 100 Jodoh, DC Mall SW, Pasar Induk, Windsor, Vihara, Penuin.",
-  K4_ke_sekupang: "Daftar ringkas. Versi 2022 juga menyebut RSBP sebelum Sekupang.",
-  K5_ke_jodoh_moovit: "Daftar Moovit, kemungkinan usang. Hanya untuk cek silang.",
-  K5_ke_batam_center_moovit_ujung:
-    "Daftar Moovit, kemungkinan usang. Hanya ujung rute, bagian awalnya tidak tercantum.",
-  K7_pergi:
-    "Polda Kepri, Bandoeng Resto, Citra Mas, dan Kampung Mangga juga dilayani K9. Posisi halte bandara di urutan perlu dicek ulang.",
-  K8_ke_jodoh: "Daftar sangat ringkas.",
-  K9_pergi: "Enam halte pertama sama dengan K8. Ujung di Nongsa tidak tercantum.",
+  K4_ke_sekupang: "Daftar ini ringkas. Versi 2022 juga menyebut RSBP sebelum Sekupang.",
+  K5_ke_jodoh_moovit: "Daftar ini berasal dari jadwal lama dan mungkin sudah berubah.",
+  K5_ke_batam_center_moovit_ujung: "Daftar ini berasal dari jadwal lama dan hanya memuat ujung rute.",
+  K7_pergi: "Polda Kepri, Bandoeng Resto, Citra Mas, dan Kampung Mangga juga dilayani K9.",
+  K9_pergi: "Enam halte pertama sama dengan K8. Ujung di Nongsa belum tercatat.",
 };
 
 const LABEL_ARAH: Record<string, string> = {
   K1_balik: "Batam Centre → Sekupang (sebagian)",
   K5_ke_batam_center: "Jodoh → Batam Centre",
-  K5_ke_jodoh_moovit: "Batam Centre → Jodoh (Moovit)",
-  K5_ke_batam_center_moovit_ujung: "Ujung arah Batam Centre (Moovit)",
+  K5_ke_jodoh_moovit: "Batam Centre → Jodoh (jadwal lama)",
+  K5_ke_batam_center_moovit_ujung: "Ujung arah Batam Centre (jadwal lama)",
 };
 
 // ---------- Strip map ----------
@@ -222,7 +248,6 @@ export type BarisStrip =
       lokasi: "pasti" | "perkiraan" | "belum";
       /** Koridor lain di halte ini. */
       transit: string[];
-      catatan: string | null;
       ujung: boolean;
     }
   | { jenis: "gap"; kunci: string; label: string };
@@ -230,10 +255,10 @@ export type BarisStrip =
 export type ArahStrip = {
   id: string;
   label: string;
-  sumber: string;
   catatan: string | null;
+  /** Bentuk lama, hanya untuk tests/unit/skema.test.ts. Tampilan memakai `tercatat`. */
   tercantum: string;
-  perluCek: boolean;
+  tercatat: string;
   baris: BarisStrip[];
 };
 
@@ -249,12 +274,14 @@ export function hitungGap(pola: Pola, total?: JumlahHalte | null): number | null
 export const labelGap = (n: number | null) =>
   n === null ? "halte tidak tercantum di sumber" : `±${n} halte tidak tercantum di sumber`;
 
+/** Baris celah di urutan halte (pedoman 3.6). */
+export const LABEL_CELAH = "Beberapa halte di antaranya belum tercatat.";
+
 export function arahStrip(pola: Pola): ArahStrip {
-  const n = hitungGap(pola);
   const halteSaja = pola.halte.filter((h) => h.jenis === "halte");
   const total = totalHalte(pola.jumlah_halte_sumber);
   const baris: BarisStrip[] = pola.halte.map((item, i) => {
-    if (item.jenis === "gap") return { jenis: "gap", kunci: `gap-${i}`, label: labelGap(n) };
+    if (item.jenis === "gap") return { jenis: "gap", kunci: `gap-${i}`, label: LABEL_CELAH };
     const h = halteId.get(item.halte_id);
     const kelompok = h?.kelompok ?? item.halte_id;
     return {
@@ -269,20 +296,21 @@ export function arahStrip(pola: Pola): ArahStrip {
             ? "perkiraan"
             : "belum",
       transit: koridorDiKelompok(kelompok).filter((k) => k !== pola.koridor),
-      catatan: h?.catatan_urutan?.[pola.id]?.replace(/perlu_cek_ulang/g, "perlu cek ulang") ?? null,
       ujung: item === halteSaja[0] || item === halteSaja[halteSaja.length - 1],
     };
   });
   return {
     id: pola.id,
     label: LABEL_ARAH[pola.id] ?? pola.arah,
-    sumber: pola.sumber.split(";")[0].trim(),
     catatan: CATATAN_POLA[pola.id] ?? null,
     tercantum:
       total !== null && total > halteSaja.length
         ? `${halteSaja.length} dari ${total} halte tercantum di sumber.`
         : `${halteSaja.length} halte tercantum di sumber.`,
-    perluCek: pola.status_data === "perlu_cek_ulang",
+    tercatat:
+      total !== null && total > halteSaja.length
+        ? `${halteSaja.length} dari ${total} halte tercatat.`
+        : `${halteSaja.length} halte tercatat.`,
     baris,
   };
 }
@@ -315,12 +343,6 @@ export function pindahKoridor(id: string): { koridor: string; halte: string[] }[
   return hasil;
 }
 
-export function kataKonektivitas(status: string): { teks: string; nada?: "caution" } {
-  if (status.startsWith("perlu_cek_ulang")) return { teks: "perlu cek ulang", nada: "caution" };
-  if (status.startsWith("terverifikasi")) return { teks: "lokasi deskriptif, koordinat belum ada" };
-  return { teks: status };
-}
-
 export const konektivitasKoridor = (id: string) => INFO.konektivitas.filter((k) => memuatKoridor(k.koridor, id));
 
 // ---------- Titik di peta ----------
@@ -340,7 +362,7 @@ export type TitikJalan = {
 const CATATAN_HUB: Record<string, string> = {
   "tp-batam-center": "Titik terminal feri, bukan halte. Halte sekitar 240 m dari sini.",
   "tp-sekupang": "Titik pelabuhan, bukan halte.",
-  "tp-punggur": "Titik Pelabuhan Telaga Punggur, bukan halte. Sumber lain memberi titik berbeda.",
+  "tp-punggur": "Titik Pelabuhan Telaga Punggur, bukan halte.",
 };
 
 export const adalahHub = (h: Pick<Halte, "id">) => h.id.startsWith("tp-");
@@ -362,7 +384,7 @@ export function titikTransDiPeta(halte: Halte[] = HALTE): TitikJalan[] {
         lat: h.lat,
         lng: h.lng,
         perkiraan: !pasti,
-        catatan: pasti ? "Koordinat sudah dicek." : (CATATAN_HUB[h.id] ?? "Titik landmark, bukan posisi halte."),
+        catatan: pasti ? "" : (CATATAN_HUB[h.id] ?? "Titik penanda kota, bukan posisi halte."),
         rincian: `Trans Batam ${h.koridor.join(", ")}`,
         href: adalahHub(h) ? `/info/tempat/${h.id}` : `/jalan/trans-batam/${slugKoridor(h.koridor[0])}`,
       },
@@ -375,5 +397,3 @@ export const HUB_TANPA_TITIK = HALTE.filter((h) => adalahHub(h) && h.lat === nul
   nama: h.nama,
   koridor: h.koridor,
 }));
-
-export const jumlahHalteBelumDiisi = (halte: Halte[] = HALTE) => halte.filter((h) => h.lat === null).length;

@@ -1,6 +1,7 @@
 "use client";
 
 import { Map as MapLibre, NavigationControl, type ErrorEvent, type LayerSpecification } from "maplibre-gl";
+import { muatGambar } from "@/features/peta/gambar-penanda";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { useSiteTheme } from "@/components/site/useSiteTheme";
@@ -78,6 +79,7 @@ export default function PetaMakan({
     if (!el || !webglAda()) return;
     pasangGlobalPeta();
     const a = awal.current;
+    const indonesia = bahasaAwal.current === "id";
     const m = new MapLibre({
       container: el,
       style: baseStyle(readTheme(), window.location.origin, { chart: false }),
@@ -96,14 +98,19 @@ export default function PetaMakan({
       attributionControl: { compact: false },
       locale: {
         "Map.Title": a.judul,
-        "AttributionControl.ToggleAttribution": "Buka atau tutup atribusi",
-        "NavigationControl.ZoomIn": bahasaAwal.current === "id" ? "Perbesar peta" : "Zoom in",
-        "NavigationControl.ZoomOut": bahasaAwal.current === "id" ? "Perkecil peta" : "Zoom out",
-        "CooperativeGesturesHandler.WindowsHelpText": "Ctrl + scroll",
-        "CooperativeGesturesHandler.MacHelpText": "⌘ + scroll",
-        "CooperativeGesturesHandler.MobileHelpText": "Geser dengan dua jari",
+        "AttributionControl.ToggleAttribution": indonesia ? "Buka atau tutup atribusi" : "Toggle attribution",
+        "NavigationControl.ZoomIn": indonesia ? "Perbesar peta" : "Zoom in",
+        "NavigationControl.ZoomOut": indonesia ? "Perkecil peta" : "Zoom out",
+        "CooperativeGesturesHandler.WindowsHelpText": indonesia
+          ? "Tekan Ctrl sambil menggulir untuk memperbesar peta"
+          : "Hold Ctrl and scroll to zoom the map",
+        "CooperativeGesturesHandler.MacHelpText": indonesia
+          ? "Tekan ⌘ sambil menggulir untuk memperbesar peta"
+          : "Hold ⌘ and scroll to zoom the map",
+        "CooperativeGesturesHandler.MobileHelpText": indonesia ? "Geser dengan dua jari" : "Use two fingers to move the map",
       },
     });
+    m.on("styleimagemissing", (e) => muatGambar(m, e.id));
     if (a.interaktif) {
       m.touchZoomRotate.disableRotation();
       m.keyboard.disableRotation();

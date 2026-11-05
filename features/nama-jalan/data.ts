@@ -6,6 +6,7 @@ import penamaanRaw from "@/data/tokoh/penamaan.json";
 import relasiRaw from "@/data/tokoh/relasi.json";
 import tokohRaw from "@/data/tokoh/tokoh.json";
 import { tautanAman, TEMPAT, type Nada } from "@/features/direktori/data";
+import { rapiAtauKosong, rapiTeks } from "@/features/sejarah/rapi";
 
 export const KELOMPOK: { id: string; nama: string }[] = [
   { id: "a", nama: "Melayu Riau-Lingga, Johor, Malaka, dan Riau daratan" },
@@ -15,41 +16,33 @@ export const KELOMPOK: { id: string; nama: string }[] = [
   { id: "e", nama: "Tokoh lokal dan adat" },
 ];
 
-export type GrupStatus = "terverifikasi" | "beda_versi" | "hikayat" | "semi_historis" | "perlu_dicek" | "ringkas";
+export type GrupStatus = "terverifikasi" | "beda_versi" | "belum_terverifikasi" | "hikayat";
 
 export const GRUP_STATUS: { id: GrupStatus; nama: string }[] = [
-  { id: "terverifikasi", nama: "Terverifikasi" },
-  { id: "beda_versi", nama: "Beda versi" },
-  { id: "hikayat", nama: "Hikayat" },
-  { id: "semi_historis", nama: "Semi-historis" },
-  { id: "perlu_dicek", nama: "Perlu dicek" },
-  { id: "ringkas", nama: "Ringkas, tanpa verifikasi" },
+  { id: "terverifikasi", nama: "Tercatat" },
+  { id: "beda_versi", nama: "Berbeda versi" },
+  { id: "belum_terverifikasi", nama: "Belum terverifikasi" },
+  { id: "hikayat", nama: "Cerita rakyat" },
 ];
 
 export type StatusTokoh = { grup: GrupStatus; teks: string; nada: Nada; hikayat: boolean };
 
+const BEDA_VERSI: StatusTokoh = { grup: "beda_versi", teks: "Berbeda versi", nada: "caution", hikayat: false };
+
+// Label status satu per kartu (pedoman 3.7). `hikayat` menentukan bingkai kartu, bukan labelnya: Hang Nadim tetap
+// berbingkai hikayat, tetapi perlawanannya tercatat, jadi labelnya bukan Cerita rakyat.
 const STATUS: Record<string, StatusTokoh> = {
-  terverifikasi: { grup: "terverifikasi", teks: "Sejarah, terverifikasi", nada: "ok", hikayat: false },
-  terverifikasi_beda_versi: {
-    grup: "beda_versi",
-    teks: "Sejarah, terverifikasi, ada beda versi",
-    nada: "caution",
-    hikayat: false,
-  },
-  beda_versi: { grup: "beda_versi", teks: "Ada perbedaan versi", nada: "caution", hikayat: false },
-  terverifikasi_asal_usul_hikayat: {
-    grup: "beda_versi",
-    teks: "Sejarah, terverifikasi. Asal-usulnya versi hikayat",
-    nada: "caution",
-    hikayat: false,
-  },
-  hikayat: { grup: "hikayat", teks: "Tokoh hikayat, kesejarahan diperdebatkan", nada: "info", hikayat: true },
-  semi_historis: { grup: "semi_historis", teks: "Semi-historis", nada: "info", hikayat: true },
-  perlu_dicek: { grup: "perlu_dicek", teks: "Perlu dicek", nada: "caution", hikayat: false },
+  terverifikasi: { grup: "terverifikasi", teks: "Tercatat", nada: "ok", hikayat: false },
+  terverifikasi_beda_versi: BEDA_VERSI,
+  beda_versi: BEDA_VERSI,
+  terverifikasi_asal_usul_hikayat: BEDA_VERSI,
+  hikayat: { grup: "hikayat", teks: "Cerita rakyat", nada: "info", hikayat: true },
+  semi_historis: { grup: "belum_terverifikasi", teks: "Belum terverifikasi", nada: "info", hikayat: true },
+  perlu_dicek: { grup: "belum_terverifikasi", teks: "Belum terverifikasi", nada: "caution", hikayat: false },
 };
 const STATUS_RINGKAS: StatusTokoh = {
-  grup: "ringkas",
-  teks: "Ringkas, tanpa verifikasi",
+  grup: "belum_terverifikasi",
+  teks: "Belum terverifikasi",
   nada: undefined,
   hikayat: false,
 };
@@ -67,16 +60,29 @@ const GANTI_RINGKASAN: Record<string, string> = {
 };
 
 function ringkasanTokoh(id: string, teks: string): string {
-  if (GANTI_RINGKASAN[id]) return GANTI_RINGKASAN[id];
-  return kapital(
-    teks.replace(
-      "Rincian masing-masing bisa merujuk ke daftar Pahlawan Nasional Kemensos.",
-      "Biografinya belum kami tulis. Rujukannya daftar Pahlawan Nasional Kemensos.",
-    ),
+  if (GANTI_RINGKASAN[id]) return rapiTeks(GANTI_RINGKASAN[id]);
+  return rapiTeks(
+    kapital(teks.replace(" Rincian masing-masing bisa merujuk ke daftar Pahlawan Nasional Kemensos.", "")),
   );
 }
 
-const nilai = (s: string | null | undefined) => (s && s !== "-" ? s : null);
+// Tanda "perlu dicek" di data adalah catatan kerja (pedoman 2.9), jadi tidak ikut tampil.
+const tanpaCatatan = (s: string) =>
+  s
+    .replace(/,\s*perlu dicek\)/gi, ")")
+    .replace(/\s*\((?:lokasi |tahun pasti |tahun lahir dan wafat )?perlu dicek\)/gi, "")
+    .trim();
+
+const nilai = (s: string | null | undefined) => {
+  if (!s || s === "-") return null;
+  const t = tanpaCatatan(s);
+  return !t || /^perlu dicek$/i.test(t) ? null : rapiTeks(t);
+};
+
+// Kaitan yang di data masih berbunyi catatan penyusun.
+const GANTI_KAITAN: Record<string, string> = {
+  sultan_abdul_rahman_1: "Kemungkinan rujukan Jl. Sultan Abdul Rachman, bisa juga Abdul Rahman II.",
+};
 const awalKapital = (s: string | null) => (s ? kapital(s) : null);
 
 type ProfilMd = {
@@ -186,10 +192,13 @@ const TAMBAHAN: Record<string, { catatan: string[]; sumber?: string[] }> = {
     catatan: ['Dijuluki "Harimau Padri dari Rokan".'],
   },
   embung_fatimah: {
-    catatan: ["Kaitan nama RSUD Embung Fatimah masih asumsi dan perlu konfirmasi Pemko."],
+    catatan: ["Kaitan nama RSUD Embung Fatimah masih asumsi."],
   },
   engku_putri: {
-    catatan: ["Kaitan nama Masjid di Dataran Engku Putri perlu dicek."],
+    catatan: ["Kaitan nama Masjid di Dataran Engku Putri belum dipastikan."],
+  },
+  hang_nadim: {
+    catatan: ["Perlawanannya terhadap Portugis tercatat, tetapi silsilahnya hanya berasal dari Sejarah Melayu."],
   },
   hang_tuah: {
     catatan: [
@@ -246,14 +255,14 @@ export const TOKOH: Tokoh[] = tokohRaw.map((t) => {
     masaPendek: awalKapital(nilai(t.masa_hidup)),
     kelompok: t.kelompok,
     ringkasan: ringkasanTokoh(t.id, t.ringkasan),
-    kisah: p?.kisah ?? null,
-    kaitan: awalKapital(nilai(p?.kaitan) ?? nilai(t.kaitan_batam)),
-    tempatTeks: p?.tempat ?? null,
+    kisah: nilai(p?.kisah),
+    kaitan: GANTI_KAITAN[t.id] ?? awalKapital(nilai(p?.kaitan) ?? nilai(t.kaitan_batam)),
+    tempatTeks: nilai(p?.tempat),
     statusTeks: awalKapital(p?.status ?? null),
     status,
     sumber,
-    catatan: tambah?.catatan ?? [],
-    ringkas: status.grup === "ringkas",
+    catatan: (tambah?.catatan ?? []).map(rapiTeks),
+    ringkas: t.status_verifikasi === null,
   };
 });
 export const tokohPerId = new Map(TOKOH.map((t) => [t.id, t]));
@@ -277,20 +286,20 @@ export const CATATAN_HIKAYAT = [
   "Kisah mereka berasal dari Hikayat Hang Tuah dan Sejarah Melayu (Sulalatus Salatin). Versi tertua kedua teks itu ditulis sekitar abad ke-17; naskah Hikayat Hang Tuah tertua yang diketahui berasal dari sekitar 1758.",
   "Para peneliti menilai hikayat ini menggabungkan peristiwa dari beberapa masa pemerintahan ke dalam satu raja dan membesar-besarkan peran Hang Tuah.",
   "Kedua teks saling berbeda: dalam Sejarah Melayu yang memberontak adalah Hang Kasturi, sedangkan dalam Hikayat Hang Tuah pemberontaknya Hang Jebat.",
-  'Sumber Portugis dan Ryukyu mencatat seorang "laksamana" Malaka, tetapi belum bisa dipastikan bahwa itu Hang Tuah.',
+  "Sumber Portugis dan Ryukyu mencatat seorang “laksamana” Malaka, tetapi belum bisa dipastikan bahwa itu Hang Tuah.",
 ];
 
 const CATATAN_GABUNGAN =
-  "Kecamatan per jalan belum dirinci. Sumbernya menyebut gabungan: Lubuk Baja, Batu Ampar, Sekupang, Nongsa.";
+  "Kecamatan per jalan belum dirinci. Yang tercatat gabungan: Lubuk Baja, Batu Ampar, Sekupang, dan Nongsa.";
 
 // Catatan di penamaan.json sebagian catatan kerja. Hanya versi ini yang tampil.
 const CATATAN_PENAMAAN: Record<string, string> = {
   p16: 'Ada perbedaan versi. BP Batam menyebut "Panglima Raja Indragiri Hulu"; sumber sejarah menyebut rajanya sendiri.',
   p20: "Ada perbedaan versi. Penjelasannya hanya dari advertorial BP Batam dan situs Pemkab Rokan Hulu.",
   p24: "Merujuk Sultan Abdul Rahman Muazzam Syah I atau II, belum dipastikan.",
-  p27: "Kaitan penamaan masih asumsi, perlu konfirmasi Pemko.",
-  pt02: "Nama resmi masjid tidak dipastikan. Kaitan nama dengan Engku Putri perlu dicek.",
-  pt03: "Tokohnya gelar Laksamana, perlu dicek.",
+  p27: "Kaitan penamaan masih asumsi.",
+  pt02: "Nama resmi masjid dan kaitannya dengan Engku Putri belum dipastikan.",
+  pt03: "Tokohnya bergelar Laksamana, belum dipastikan.",
   pt04: "Sebutan populer, tidak resmi. Nama resmi keenam jembatan memakai nama tokoh Melayu.",
   ...Object.fromEntries(Array.from({ length: 9 }, (_, i) => [`pt${13 + i}`, CATATAN_GABUNGAN])),
 };
@@ -333,12 +342,12 @@ export const PENAMAAN: Penamaan[] = penamaanRaw.map((p) => {
     id: p.id,
     nama: p.nama_tempat,
     jenis: LABEL_JENIS[p.jenis] ?? kapital(p.jenis),
-    letak: letak ?? "Belum diketahui",
+    letak: nilai(letak) ?? "Belum diketahui",
     lokasiPerluDicek: p.kecamatan === null || /perlu dicek/.test(p.kecamatan),
     tokohId: p.tokoh_id,
     tokohNama: tokohPerId.get(p.tokoh_id)?.nama ?? p.tokoh_id,
     sumber,
-    catatan: CATATAN_PENAMAAN[p.id] ?? null,
+    catatan: rapiAtauKosong(CATATAN_PENAMAAN[p.id]),
     tempat: tempat ? { id: tempat.id, nama: tempat.nama, lat: tempat.lat } : null,
   };
 });
@@ -374,7 +383,7 @@ export const RELASI: Relasi[] = relasiRaw.map((r) => {
     b: r.tokoh_b,
     namaA: tokohPerId.get(r.tokoh_a)?.nama ?? r.tokoh_a,
     namaB: tokohPerId.get(r.tokoh_b)?.nama ?? r.tokoh_b,
-    jenis: JENIS_DIGANTI[id] ?? r.jenis_hubungan,
+    jenis: rapiTeks(JENIS_DIGANTI[id] ?? r.jenis_hubungan),
     sumber: tautanAman(r.sumber_url) ? r.sumber_url : null,
     perluDicek: RELASI_PERLU_DICEK.has(id),
   };
@@ -394,7 +403,7 @@ export const GARIS_TANPA_KARTU: { judul: string; isi: string; sumber?: string }[
   },
   {
     judul: "Temenggung: Bulang, Johor, Singapura",
-    isi: "Bendahara Tun Abbas ayah Temenggung Abdul Jamal. Abdul Jamal ayah Tun Abdul Hamid, ayah Temenggung Abdul Rahman, yang pindah ke Singapura (1811 atau 1818, beda versi) dan bersama Sultan Hussein menandatangani perjanjian dengan Raffles pada 6 Februari 1819. Abdul Rahman ayah Temenggung Daeng Ibrahim (lahir di Pulau Bulang, 1810), ayah Abu Bakar, pendiri Kesultanan Johor modern.",
+    isi: "Bendahara Tun Abbas ayah Temenggung Abdul Jamal. Abdul Jamal ayah Tun Abdul Hamid, ayah Temenggung Abdul Rahman, yang pindah ke Singapura (1811 atau 1818, berbeda versi) dan bersama Sultan Hussein menandatangani perjanjian dengan Raffles pada 6 Februari 1819. Abdul Rahman ayah Temenggung Daeng Ibrahim (lahir di Pulau Bulang, 1810), ayah Abu Bakar, pendiri Kesultanan Johor modern.",
     sumber: "https://en.wikipedia.org/wiki/Temenggong_Abdul_Rahman",
   },
   {
@@ -418,7 +427,7 @@ export const PENAMAAN_RESMI: { judul: string; isi: string }[] = [
   },
   {
     judul: "Evaluasi 2017",
-    isi: "Dinas Perhubungan mengevaluasi nama-nama jalan, misalnya usulan memperpanjang Jl. Engku Putri sampai Bundaran Madani. Hasilnya direncanakan dituangkan dalam Peraturan Wali Kota. Apakah sudah terbit, perlu dicek.",
+    isi: "Dinas Perhubungan mengevaluasi nama-nama jalan, misalnya usulan memperpanjang Jl. Engku Putri sampai Bundaran Madani. Hasilnya direncanakan dituangkan dalam Peraturan Wali Kota. Belum diketahui apakah peraturan itu sudah terbit.",
   },
   {
     judul: "Usulan 2026",
@@ -440,12 +449,12 @@ export const SUMBER_PENAMAAN_RESMI = [
 export const BACAAN = [
   "Raja Ali Haji, Tuhfat al-Nafis. Terjemahan Inggris: Virginia Matheson dan Barbara Watson Andaya, The Precious Gift (Oxford University Press, 1982).",
   "Sulalatus Salatin/Sejarah Melayu (edisi A. Samad Ahmad, Dewan Bahasa dan Pustaka) dan Hikayat Hang Tuah (edisi Kassim Ahmad, DBP).",
-  "Carl A. Trocki, Prince of Pirates: The Temenggongs and the Development of Johor and Singapore, 1784–1885 (1979).",
-  "Leonard Y. Andaya, The Kingdom of Johor 1641–1728 (1975), serta Barbara Watson Andaya dan Leonard Andaya, A History of Malaysia.",
+  "Carl A. Trocki, Prince of Pirates: The Temenggongs and the Development of Johor and Singapore, 1784—1885 (1979).",
+  "Leonard Y. Andaya, The Kingdom of Johor 1641—1728 (1975), serta Barbara Watson Andaya dan Leonard Andaya, A History of Malaysia.",
   "Virginia Matheson Hooker: kajian tentang Tuhfat al-Nafis dan penulisan sejarah Melayu.",
   "Hasan Junus, Engku Puteri Raja Hamidah: Pemegang Regalia Kerajaan Riau (UNRI Press, 2002).",
   "Aswandi Syahri: tulisan tentang sejarah Riau-Lingga dan Batam.",
-  "Edi Sutrisno dkk., Bercermin Sejarah Menyongsong Batam Masa Depan (2007); Sabeth Muksin, Mengungkap Fakta Pembangunan Batam.",
-  "Rustam S. Abrus, Sejarah Perjuangan Panglima Besar Reteh Tengku Sulung Melawan Belanda Tahun 1858; Mahidin Said, Tuanku Tambusai Berjuang; Yussuwadinata dkk., Riwayat Singkat Pahlawan Nasional Raja Haji Fisabilillah (2010).",
+  "Edi Sutrisno dan kawan-kawan, Bercermin Sejarah Menyongsong Batam Masa Depan (2007); Sabeth Muksin, Mengungkap Fakta Pembangunan Batam.",
+  "Rustam S. Abrus, Sejarah Perjuangan Panglima Besar Reteh Tengku Sulung Melawan Belanda Tahun 1858; Mahidin Said, Tuanku Tambusai Berjuang; Yussuwadinata dan kawan-kawan, Riwayat Singkat Pahlawan Nasional Raja Haji Fisabilillah (2010).",
   "Lembaga: BPK Wilayah IV (eks BPNB Kepri), BPCB Sumbar, Dinas Kebudayaan Provinsi Kepri, ANRI (Arsip Riouw), serta daftar Pahlawan Nasional Kemensos dan IKPNI.",
 ];

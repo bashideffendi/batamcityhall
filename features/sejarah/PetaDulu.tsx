@@ -103,7 +103,7 @@ export default function PetaDulu({ titik, keadaan, dipilih, onPilih }: Props) {
   if (gagal)
     return (
       <p className="bch-note" data-tone="caution">
-        Peta gagal dimuat. Laut masih ada, kami saja yang belum. Semua titik tetap ada di daftar kartu.
+        Peta gagal dimuat. Semua lokasi tetap ada di daftar.
       </p>
     );
   return <div ref={wadah} className="sj-peta" data-titik={titik.length} />;

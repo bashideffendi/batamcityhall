@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-11-05 · Gempa dan peringatan dini cuaca BMKG
+
+- `/api/gempa`: gabungan autogempa, gempaterkini, dan gempadirasakan. Ditahan 60 detik per instance, jadi paling sering 3 permintaan per menit per instance, jauh di bawah batas BMKG 60 per menit per IP.
+- `/api/peringatan-cuaca`: RSS nowcast sebagai daftar, XML CAP sebagai isi, hanya Kep. Riau. RSS ditarik paling sering sekali per menit, tiap XML cukup sekali. `?poligon=1` menyertakan poligon untuk peta.
+- Header jujur (`BMKG_HEADERS`) lolos ke semua sumber ini dari PC pemilik, 5 Nov 2026. Belum diuji dari IP server.
+- `/langit-laut/peringatan`, `/langit-laut/gempa`: halaman baru, teks BMKG disalin apa adanya, atribusi tampil, gagal ditulis gagal.
+- Kotak Hari Ini: baris Cuaca hanya bila peringatan mengenai Batam atau datanya gagal, baris Gempa hanya bila relevan (ambang di `DATA_DECISIONS.md`). Baris lama "Peringatan" jadi "Peringatan laut".
+- Radar: label peringatan di panel mengikuti wilayah yang dipilih, poligon BMKG di peta, bagian Detail, kredit sumber.
+- Kecamatan Batam ditentukan dari teks BMKG atau titik label di dalam poligon. Diuji ke dua peringatan asli, 5 Nov 2026: Batu Aji dan Sagulung untuk yang satu, tidak ada untuk yang lain, cocok dengan teksnya.
+- Belum terlihat di data asli, jadi belum teruji dengan data sungguhan: pesan CAP `Update` dan `Cancel`, dan kalimat `Potensi` yang benar-benar menyebut tsunami.
+- Cek di PC ini: build, tsc, lint lulus; unit 608/608; e2e suite penuh 700 lulus, 29 dilewati, 1 gagal (`situs.spec.ts:113`). Setelah perbaikan terakhir, `langit-laut`, `situs`, `direktori`, `berita`, `jalan`, dan `mural` diulang: 403 lulus, 1 dilewati.
+- `situs.spec.ts:113` gagal bukan karena perubahan ini: diulang 16 kali, gagal 16 di commit sebelumnya dan 14 sesudahnya. Penyebabnya di `LANJUTKAN.md`.
+
 ## 2026-11-05 · Pratinjau Railway dan paket review
 
 - `railway.json`, `.node-version` (22), `scripts/siapkan-peta.mjs`, `deploy/peta-dasar.json`: build di Railway mengunduh `batam.pmtiles` dari cabang `aset-peta` dengan cek ukuran dan sha256. Vercel di-pause, jadi pratinjau pindah ke Railway. Diuji di sesi cloud: unduh dari cabang, build, `PORT` dihormati. Belum dicoba di Railway sungguhan.

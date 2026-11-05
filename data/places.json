@@ -8289,7 +8289,7 @@
   "lat": 1.13329,
   "lng": 104.04636,
   "status_koordinat": "terverifikasi",
-  "catatan_koordinat": "OSM Mitra10 cocok, selisih 12 m (node/9354940659), dicek 2026-11-05.",
+  "catatan_koordinat": "diisi/dicek pemilik proyek 2026-11-05",
   "jam_layanan": null,
   "kontak": {
    "telepon": "(0778) 470303",
@@ -10220,7 +10220,7 @@
   "lat": 1.112828,
   "lng": 104.002754,
   "status_koordinat": "terverifikasi",
-  "catatan_koordinat": "OSM cocok, selisih 0 m (node/702341133), dicek 2026-11-05.",
+  "catatan_koordinat": "diisi/dicek pemilik proyek 2026-11-05",
   "jam_layanan": null,
   "kontak": {
    "telepon": null,
@@ -13630,7 +13630,7 @@
   "kecamatan": "Bulang",
   "kelurahan": "Bulang Lintang",
   "alamat": null,
-  "lat": 1,
+  "lat": 1.0,
   "lng": 103.88,
   "status_koordinat": "perlu_cek_ulang",
   "catatan_koordinat": "Estimasi kasar (±1–3 km) dari letak kelurahan/pesisir; belum dicek ke OSM/Wikidata. Wajib di-geocode ulang (Nominatim/OSM) dan dikoreksi manual sebelum dipakai untuk petunjuk arah.",
@@ -16347,7 +16347,7 @@
   "lat": 1.0503185,
   "lng": 103.9675684,
   "status_koordinat": "terverifikasi",
-  "catatan_koordinat": "OSM RSUD Embung Fatimah cocok, selisih 13 m (way/788340430), dicek 2026-11-05.",
+  "catatan_koordinat": "diisi/dicek pemilik proyek 2026-11-05",
   "jam_layanan": "IGD 24 jam",
   "kontak": {
    "telepon": null,
@@ -16603,9 +16603,9 @@
     "pecel lele"
    ],
    "signature": "Ayam penyet, pecel lele",
-   "desc_id": "Ayam penyet dan pecel lele ramah kantong, depan Ocean di Lubuk Baja/Baloi.",
-   "desc_en": "Wallet-friendly smashed fried chicken and pecel lele, opposite Ocean in Lubuk Baja/Baloi.",
-   "desc_zh": "平价的拍扁炸鸡(ayam penyet)和炸鲶鱼(pecel lele),位于Lubuk Baja/Baloi的Ocean对面。",
+   "desc_id": "Ayam penyet dan pecel lele di depan Ocean, Lubuk Baja/Baloi.",
+   "desc_en": "Smashed fried chicken and pecel lele, opposite Ocean in Lubuk Baja/Baloi.",
+   "desc_zh": "拍扁炸鸡(ayam penyet)和炸鲶鱼(pecel lele),位于Lubuk Baja/Baloi的Ocean对面。",
    "price_tier": "$",
    "price_idr": "mulai Rp14.000",
    "payments": [
@@ -16661,8 +16661,8 @@
     "pecel lele",
     "sambal ijo"
    ],
-   "signature": "Ayam penyet, pecel lele, sambal ijo",
-   "desc_id": "Ayam penyet dan pecel lele dengan sambal ijo di Bunga Raya, Batam Kota.",
+   "signature": "Ayam penyet, pecel lele, sambal hijau",
+   "desc_id": "Ayam penyet dan pecel lele dengan sambal hijau di Bunga Raya, Batam Kota.",
    "desc_en": "Smashed fried chicken and pecel lele with green sambal in Bunga Raya, Batam Kota.",
    "desc_zh": "巴淡市Bunga Raya的拍扁炸鸡和炸鲶鱼,配青参巴酱(sambal ijo)。",
    "price_tier": "$",
@@ -16719,13 +16719,13 @@
    ],
    "subcategory": [
     "ayam penyet",
-    "mie ayam",
+    "mi ayam",
     "bakso"
    ],
-   "signature": "Ayam penyet, mie ayam, bakso",
-   "desc_id": "Ayam penyet, mie ayam, dan bakso ramah kantong di Batam Centre.",
-   "desc_en": "Wallet-friendly smashed fried chicken, chicken noodles, and meatballs in Batam Centre.",
-   "desc_zh": "巴淡中心的平价拍扁炸鸡、鸡肉面和肉丸。",
+   "signature": "Ayam penyet, mi ayam, bakso",
+   "desc_id": "Ayam penyet, mi ayam, dan bakso di Batam Centre.",
+   "desc_en": "Smashed fried chicken, chicken noodles, and meatballs in Batam Centre.",
+   "desc_zh": "巴淡中心的拍扁炸鸡、鸡肉面和肉丸。",
    "price_tier": "$",
    "price_idr": "Rp15.000",
    "payments": [
@@ -16956,9 +16956,9 @@
     "pangsit"
    ],
    "signature": "Bakso, pangsit",
-   "desc_id": "Bakso Arema yang nikmat dengan pangsit di Batam.",
-   "desc_en": "Tasty Arema-style meatballs with wontons in Batam.",
-   "desc_zh": "巴淡岛美味的Arema式肉丸配馄饨。",
+   "desc_id": "Bakso Arema dengan pangsit di Batam.",
+   "desc_en": "Arema-style meatballs with wontons in Batam.",
+   "desc_zh": "巴淡岛的Arema式肉丸配馄饨。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -17013,9 +17013,9 @@
     "bakso"
    ],
    "signature": "Bakso porsi melimpah",
-   "desc_id": "Bakso porsi melimpah dan murah dengan lima cabang di seantero Batam.",
-   "desc_en": "Generous, cheap meatball bowls with five branches across Batam.",
-   "desc_zh": "分量足、价格便宜的肉丸,在巴淡岛有五家分店。",
+   "desc_id": "Bakso porsi melimpah dengan lima cabang di Batam.",
+   "desc_en": "Generous meatball bowls with five branches across Batam.",
+   "desc_zh": "分量足的肉丸,在巴淡岛有五家分店。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -17126,12 +17126,12 @@
    "tags": [],
    "subcategory": [
     "bakso",
-    "mie ayam"
+    "mi ayam"
    ],
-   "signature": "Bakso daging, mie ayam",
-   "desc_id": "Bakso 100% daging dan mie ayam enak di Mega Legenda, buka siang hingga tengah malam.",
-   "desc_en": "100% beef meatballs and tasty chicken noodles at Mega Legenda, open afternoon to midnight.",
-   "desc_zh": "Mega Legenda的100%纯牛肉肉丸和美味鸡肉面,从下午营业到午夜。",
+   "signature": "Bakso daging, mi ayam",
+   "desc_id": "Bakso 100% daging dan mi ayam di Mega Legenda, buka siang hingga tengah malam.",
+   "desc_en": "Meatballs of 100% beef and chicken noodles at Mega Legenda, open afternoon to midnight.",
+   "desc_zh": "Mega Legenda的100%纯牛肉肉丸和鸡肉面,从下午营业到午夜。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -17302,9 +17302,9 @@
     "sate"
    ],
    "signature": "Bubur ayam, sate hati/usus/telur puyuh",
-   "desc_id": "Bubur ayam berating tinggi di Kabil dengan aneka sate hati, usus, dan telur puyuh.",
-   "desc_en": "Highly-rated chicken porridge in Kabil with assorted liver, intestine, and quail-egg satay.",
-   "desc_zh": "Kabil评价极高的鸡肉粥，配肝脏、肠子和鹌鹑蛋等各式沙嗲(sate)。",
+   "desc_id": "Bubur ayam di Kabil dengan aneka sate hati, usus, dan telur puyuh.",
+   "desc_en": "Chicken porridge in Kabil with assorted liver, intestine, and quail-egg satay.",
+   "desc_zh": "Kabil的鸡肉粥，配肝脏、肠子和鹌鹑蛋等各式沙嗲(sate)。",
    "price_tier": "$",
    "price_idr": "Rp15.000",
    "payments": [
@@ -17361,9 +17361,9 @@
     "bubur ayam"
    ],
    "signature": "Bubur ayam bandung",
-   "desc_id": "Bubur ayam Bandung yang sangat populer di Tiban, sering habis jam 8-9 pagi.",
-   "desc_en": "A very popular Bandung-style chicken porridge in Tiban, often sold out by 8-9 am.",
-   "desc_zh": "Tiban超人气的万隆式鸡肉粥，常常早上八九点就卖光。",
+   "desc_id": "Bubur ayam bandung yang populer di Tiban, sering habis pukul 08.00—09.00 WIB.",
+   "desc_en": "Popular Bandung-style chicken porridge in Tiban, often sold out by 08.00—09.00 WIB.",
+   "desc_zh": "Tiban颇受欢迎的万隆式鸡肉粥，常常早上八九点就卖光。",
    "price_tier": "$",
    "price_idr": "Rp12.000",
    "payments": [
@@ -17420,9 +17420,9 @@
     "bubur ayam"
    ],
    "signature": "Bubur ayam bogor",
-   "desc_id": "Bubur ayam Bogor legendaris yang dikenal luas warga Batam Centre.",
-   "desc_en": "A legendary Bogor-style chicken porridge well known to Batam Centre residents.",
-   "desc_zh": "巴淡中心居民熟知的传奇茂物式鸡肉粥。",
+   "desc_id": "Bubur ayam bogor yang dikenal luas warga Batam Centre.",
+   "desc_en": "Bogor-style chicken porridge well known to Batam Centre residents.",
+   "desc_zh": "巴淡中心居民熟知的茂物式鸡肉粥。",
    "price_tier": "$",
    "price_idr": "Rp15.000–25.000",
    "payments": [
@@ -17478,9 +17478,9 @@
     "bubur ikan"
    ],
    "signature": "Bubur ayam, bubur ikan tenggiri, ketan durian",
-   "desc_id": "Bubur ayam, bubur ikan tenggiri, dan ketan durian berating tinggi di Botania Garden.",
-   "desc_en": "Highly-rated chicken porridge, mackerel fish porridge, and durian sticky rice in Botania Garden.",
-   "desc_zh": "Botania Garden评价极高的鸡肉粥、马鲛鱼粥和榴莲糯米。",
+   "desc_id": "Bubur ayam, bubur ikan tenggiri, dan ketan durian di Botania Garden.",
+   "desc_en": "Chicken porridge, mackerel fish porridge, and durian sticky rice in Botania Garden.",
+   "desc_zh": "Botania Garden的鸡肉粥、马鲛鱼粥和榴莲糯米。",
    "price_tier": "$",
    "price_idr": "Rp20.000",
    "payments": [
@@ -17593,10 +17593,10 @@
     "bubur",
     "seafood"
    ],
-   "signature": "Bubur seafood",
-   "desc_id": "Bubur dan seafood berating tinggi di Batama Nusa Permai, Lubuk Baja.",
-   "desc_en": "Highly-rated porridge and seafood at Batama Nusa Permai, Lubuk Baja.",
-   "desc_zh": "Lubuk Baja的Batama Nusa Permai评价极高的粥品和海鲜。",
+   "signature": "Bubur makanan laut",
+   "desc_id": "Bubur dan makanan laut di Batama Nusa Permai, Lubuk Baja.",
+   "desc_en": "Porridge and seafood at Batama Nusa Permai, Lubuk Baja.",
+   "desc_zh": "Lubuk Baja的Batama Nusa Permai的粥品和海鲜。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -17653,9 +17653,9 @@
     "bubur ikan"
    ],
    "signature": "Bubur ikan tenggiri, sapo, mee hoon kueh",
-   "desc_id": "Bubur ikan tenggiri, sapo, dan mee hoon kueh berating tinggi di Baloi Abadi.",
-   "desc_en": "Highly-rated mackerel fish porridge, claypot, and mee hoon kueh in Baloi Abadi.",
-   "desc_zh": "Baloi Abadi评价极高的马鲛鱼粥、煲仔菜和面粉粿(mee hoon kueh)。",
+   "desc_id": "Bubur ikan tenggiri, sapo, dan mee hoon kueh di Baloi Abadi.",
+   "desc_en": "Mackerel fish porridge, claypot, and mee hoon kueh in Baloi Abadi.",
+   "desc_zh": "Baloi Abadi的马鲛鱼粥、煲仔菜和面粉粿(mee hoon kueh)。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -17711,8 +17711,8 @@
     "specialty coffee",
     "roastery"
    ],
-   "signature": "Specialty coffee, single origin",
-   "desc_id": "Cafe specialty coffee yang me-roasting biji kopi Gayo/Mandailing/Toraja sendiri di Sukajadi, Batam Kota.",
+   "signature": "Kopi spesialti, kopi satu asal",
+   "desc_id": "Kafe kopi spesialti yang menyangrai sendiri biji kopi Gayo, Mandailing, dan Toraja di Sukajadi, Batam Kota.",
    "desc_en": "A specialty coffee cafe roasting its own Gayo/Mandailing/Toraja beans in Sukajadi, Batam Kota.",
    "desc_zh": "自家烘焙Gayo/Mandailing/Toraja咖啡豆的精品咖啡馆,位于巴淡市Sukajadi。",
    "price_tier": "$$",
@@ -17772,8 +17772,8 @@
     "cafe",
     "view kota"
    ],
-   "signature": "Kopi, view kota",
-   "desc_id": "Cafe dengan view kota dari ketinggian di Kampung Pelita, Lubuk Baja.",
+   "signature": "Kopi, pemandangan kota",
+   "desc_id": "Kafe dengan pemandangan kota dari ketinggian di Kampung Pelita, Lubuk Baja.",
    "desc_en": "A cafe with elevated city views in Kampung Pelita, Lubuk Baja.",
    "desc_zh": "Lubuk Baja的Kampung Pelita,可居高俯瞰城市景色的咖啡馆。",
    "price_tier": "$$",
@@ -17829,11 +17829,10 @@
     "ramah keluarga"
    ],
    "subcategory": [
-    "cafe",
-    "instagramable"
+    "cafe"
    ],
-   "signature": "Kopi, suasana instagramable",
-   "desc_id": "Cafe dengan pohon besar di tengah ruangan dan jembatan kaca di Belian.",
+   "signature": "Kopi",
+   "desc_id": "Kafe dengan pohon besar di tengah ruangan dan jembatan kaca di Belian.",
    "desc_en": "A cafe with a large tree in the centre of the room and a glass bridge in Belian.",
    "desc_zh": "Belian的咖啡馆,室内中央有一棵大树,还设有玻璃桥。",
    "price_tier": "$$",
@@ -17891,9 +17890,9 @@
     "cafe",
     "coffee"
    ],
-   "signature": "Kopi, bites",
-   "desc_id": "Cafe kopi dan camilan di The Promenade, Harbour Bay Downtown, Batu Ampar.",
-   "desc_en": "A coffee and bites cafe at The Promenade, Harbour Bay Downtown, Batu Ampar.",
+   "signature": "Kopi, camilan",
+   "desc_id": "Kafe kopi dan camilan di The Promenade, Harbour Bay Downtown, Batu Ampar.",
+   "desc_en": "A coffee and snacks cafe at The Promenade, Harbour Bay Downtown, Batu Ampar.",
    "desc_zh": "位于Batu Ampar的Harbour Bay Downtown的The Promenade的咖啡与小食咖啡馆。",
    "price_tier": "$$",
    "price_idr": null,
@@ -17953,8 +17952,8 @@
     "live music",
     "view pantai"
    ],
-   "signature": "Kopi, live music",
-   "desc_id": "Cafe dengan live music dan view pantai di Tanjung Uma, buka sore hingga dini hari.",
+   "signature": "Kopi, musik langsung",
+   "desc_id": "Kafe dengan musik langsung dan pemandangan pantai di Tanjung Uma, buka sore hingga dini hari.",
    "desc_en": "A cafe with live music and beach views in Tanjung Uma, open evening to early morning.",
    "desc_zh": "Tanjung Uma的咖啡馆,有现场音乐和海滩景观,从傍晚营业到凌晨。",
    "price_tier": "$$",
@@ -18013,8 +18012,8 @@
     "cafe",
     "semi-outdoor"
    ],
-   "signature": "Kopi, suasana semi-outdoor",
-   "desc_id": "Cafe berkonsep menyatu dengan pepohonan, semi-outdoor di Batu Besar, Nongsa.",
+   "signature": "Kopi, suasana semiterbuka",
+   "desc_id": "Kafe berkonsep menyatu dengan pepohonan, semiterbuka, di Batu Besar, Nongsa.",
    "desc_en": "A cafe with a concept blending into the trees, semi-outdoor in Batu Besar, Nongsa.",
    "desc_zh": "以与树木融为一体为概念的半户外咖啡馆,位于Nongsa的Batu Besar。",
    "price_tier": "$$",
@@ -18071,8 +18070,8 @@
     "cafe",
     "vintage"
    ],
-   "signature": "Kopi, suasana vintage",
-   "desc_id": "Cafe berkonsep vintage barang antik di Tiban Lama, Sekupang.",
+   "signature": "Kopi, suasana antik",
+   "desc_id": "Kafe berkonsep barang antik di Tiban Lama, Sekupang.",
    "desc_en": "A cafe with a vintage antique-display concept in Tiban Lama, Sekupang.",
    "desc_zh": "Sekupang的Tiban Lama,以古董陈列为概念的复古咖啡馆。",
    "price_tier": "$$",
@@ -18133,7 +18132,7 @@
     "mille crepes"
    ],
    "signature": "Mille crepes, red velvet, macaroon",
-   "desc_id": "Cafe dessert dengan mille crepes, red velvet, dan macaroon di BCS, Mega Mall, dan Nagoya Hill.",
+   "desc_id": "Kafe hidangan penutup dengan mille crepes, red velvet, dan macaroon di BCS, Mega Mall, dan Nagoya Hill.",
    "desc_en": "A dessert cafe with mille crepes, red velvet, and macarons at BCS, Mega Mall, and Nagoya Hill.",
    "desc_zh": "甜品咖啡馆,供应千层可丽饼(mille crepes)、红丝绒和马卡龙,设点于BCS、Mega Mall和Nagoya Hill。",
    "price_tier": "$$",
@@ -18168,7 +18167,7 @@
   "subkategori": "dimsum-chinese",
   "kecamatan": "Lubuk Baja",
   "kelurahan": null,
-  "alamat": "Batu Selicin, Lubuk Baja, Batam City, Riau Islands 29444",
+  "alamat": "Batu Selicin, Lubuk Baja, Kota Batam, Kepulauan Riau 29444",
   "lat": 1.1487,
   "lng": 104.0096,
   "status_koordinat": "perlu_cek_ulang",
@@ -18196,9 +18195,9 @@
     "street food"
    ],
    "signature": "Cha Kue 3T",
-   "desc_id": "Lapak cha kue yang menonjol lewat menu Cha Kue 3T, cocok untuk pemburu street food khas komunitas Tionghoa lokal. Tersembunyi di belakang Gideon Hotel.",
-   "desc_en": "A cha kue stall that stands out for its 3T Cha Kue, perfect for hunters of local Chinese community street food. Hidden behind Gideon Hotel.",
-   "desc_zh": "凭招牌Cha Kue 3T脱颖而出的炒粿(cha kue)摊,本地华人社区街头美食爱好者的好去处。藏身Gideon Hotel后方。",
+   "desc_id": "Lapak cha kue dengan menu Cha Kue 3T, jajanan khas komunitas Tionghoa lokal. Letaknya di belakang Gideon Hotel.",
+   "desc_en": "A cha kue stall known for its 3T Cha Kue, a street snack of the local Chinese community. Located behind Gideon Hotel.",
+   "desc_zh": "以招牌Cha Kue 3T闻名的炒粿(cha kue)摊,属本地华人社区的街头小吃。位于Gideon Hotel后方。",
    "price_tier": "$",
    "price_idr": "Rp18.000–35.000",
    "payments": [
@@ -18253,7 +18252,7 @@
     "babi panggang karo"
    ],
    "signature": "Babi panggang Karo",
-   "desc_id": "Babi panggang Karo (BPK) di Golden City, Bengkong. Non-halal.",
+   "desc_id": "Babi panggang Karo (BPK) di Golden City, Bengkong. Nonhalal.",
    "desc_en": "Karo-style roast pork (BPK) at Golden City, Bengkong. Non-halal.",
    "desc_zh": "Bengkong的Golden City供应卡罗式烤猪(BPK)。非清真。",
    "price_tier": "$",
@@ -18287,7 +18286,7 @@
   "subkategori": "dimsum-chinese",
   "kecamatan": "Lubuk Baja",
   "kelurahan": null,
-  "alamat": "Komplek Sri Jaya Abadi, Block A 7/8, Lubuk Baja Kota, Batam City, Riau Islands 29432",
+  "alamat": "Komplek Sri Jaya Abadi, Block A 7/8, Lubuk Baja Kota, Kota Batam, Kepulauan Riau 29432",
   "lat": 1.1451,
   "lng": 104.0078,
   "status_koordinat": "perlu_cek_ulang",
@@ -18313,9 +18312,9 @@
     "teochew"
    ],
    "signature": "Bak kut teh Teochew, iga",
-   "desc_id": "Bak kut teh gaya Teochew berkuah ringan dengan iga empuk, versi Batam yang tidak terlalu herbal. Favorit sarapan non-halal. Non-halal.",
-   "desc_en": "Light Teochew-style bak kut teh with fall-off-the-bone ribs, a Batam version that is not too herbal. A non-halal breakfast favourite. Non-halal.",
-   "desc_zh": "潮州式清汤肉骨茶,排骨软烂脱骨,巴淡岛版本不会太药材味,是非清真早餐的最爱。非清真。",
+   "desc_id": "Bak kut teh gaya Teochew berkuah ringan dengan iga empuk, versi Batam yang tidak terlalu herbal. Favorit sarapan. Nonhalal.",
+   "desc_en": "Light Teochew-style bak kut teh with tender ribs, a Batam version that is not too herbal. A breakfast favourite. Non-halal.",
+   "desc_zh": "潮州式清汤肉骨茶,排骨软烂,巴淡岛版本不会太药材味,是早餐常选。非清真。",
    "price_tier": "$$",
    "price_idr": "Rp45.000–90.000",
    "payments": [
@@ -18373,8 +18372,8 @@
     "ayce",
     "kopi"
    ],
-   "signature": "AYCE dimsum, kopi",
-   "desc_id": "Dimsum all-you-can-eat dengan kopi di Business Centre, Teluk Tering.",
+   "signature": "Dim sum sepuasnya, kopi",
+   "desc_id": "Dim sum sepuasnya dengan kopi di Business Centre, Teluk Tering.",
    "desc_en": "All-you-can-eat dim sum with coffee at the Business Centre, Teluk Tering.",
    "desc_zh": "Teluk Tering的Business Centre,点心任食(自助)配咖啡。",
    "price_tier": "$$",
@@ -18432,10 +18431,10 @@
     "dimsum",
     "kopitiam"
    ],
-   "signature": "Aneka dimsum, sambal",
-   "desc_id": "Dimsum dengan sambal menggoda di Batam.",
-   "desc_en": "Dim sum with tempting sambal in Batam.",
-   "desc_zh": "巴淡岛的点心,配诱人参巴酱(sambal)。",
+   "signature": "Aneka dim sum, sambal",
+   "desc_id": "Dim sum dengan sambal di Batam.",
+   "desc_en": "Dim sum with sambal in Batam.",
+   "desc_zh": "巴淡岛的点心,配参巴酱(sambal)。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -18492,10 +18491,10 @@
     "dimsum",
     "chinese"
    ],
-   "signature": "Aneka dimsum, chinese food",
-   "desc_id": "Dimsum dan masakan Chinese autentik di Jl. Ahmad Yani, Batam Kota.",
-   "desc_en": "Authentic dim sum and Chinese cuisine on Jl. Ahmad Yani, Batam Kota.",
-   "desc_zh": "巴淡市Jl. Ahmad Yani的正宗点心和中式料理。",
+   "signature": "Aneka dim sum, masakan Tionghoa",
+   "desc_id": "Dim sum dan masakan Tionghoa di Jl. Ahmad Yani, Batam Kota.",
+   "desc_en": "Dim sum and Chinese food on Jl. Ahmad Yani, Batam Kota.",
+   "desc_zh": "巴淡市Jl. Ahmad Yani的点心和中式料理。",
    "price_tier": "$$",
    "price_idr": null,
    "payments": [
@@ -18528,7 +18527,7 @@
   "subkategori": "dimsum-chinese",
   "kecamatan": "Bengkong",
   "kelurahan": null,
-  "alamat": "Ruko Jl. Pasir Putih No.15&16 Blok 1, Sadai, Bengkong",
+  "alamat": "Ruko Jl. Pasir Putih No.15 dan 16 Blok 1, Sadai, Bengkong",
   "lat": 1.1553,
   "lng": 104.0303,
   "status_koordinat": "perlu_cek_ulang",
@@ -18552,10 +18551,10 @@
    "subcategory": [
     "dimsum"
    ],
-   "signature": "Aneka dimsum",
-   "desc_id": "Dimsum halal dengan harga terjangkau di Sadai, Bengkong, buka dari pagi.",
-   "desc_en": "Affordable halal dim sum in Sadai, Bengkong, open from morning.",
-   "desc_zh": "Bengkong的Sadai一带价格实惠的清真点心,清晨开档。",
+   "signature": "Aneka dim sum",
+   "desc_id": "Dim sum halal di Sadai, Bengkong, buka dari pagi.",
+   "desc_en": "Halal dim sum in Sadai, Bengkong, open from morning.",
+   "desc_zh": "Bengkong的Sadai一带的清真点心,清晨开档。",
    "price_tier": "$",
    "price_idr": "Rp18.000",
    "payments": [
@@ -18612,9 +18611,9 @@
     "bak kut teh"
    ],
    "signature": "Bak kut teh",
-   "desc_id": "Bak kut teh yang sangat dikenal di koridor wisata Nagoya, kuah gurih dengan daging empuk. Non-halal.",
-   "desc_en": "A bak kut teh well known along the Nagoya tourist corridor, flavourful broth with tender pork. Non-halal.",
-   "desc_zh": "Nagoya旅游区内颇有名气的肉骨茶,汤头鲜香、肉质软嫩。非清真。",
+   "desc_id": "Bak kut teh di koridor wisata Nagoya, kuah gurih dengan daging empuk. Nonhalal.",
+   "desc_en": "Bak kut teh along the Nagoya tourist corridor, flavourful broth with tender pork. Non-halal.",
+   "desc_zh": "Nagoya旅游区内的肉骨茶,汤头鲜香、肉质软嫩。非清真。",
    "price_tier": "$$",
    "price_idr": "Rp45.000–90.000",
    "payments": [
@@ -18669,8 +18668,8 @@
     "dimsum",
     "suimian"
    ],
-   "signature": "Aneka dimsum, suimian",
-   "desc_id": "Banyak varian dimsum dan suimian dengan beberapa cabang di Batam.",
+   "signature": "Aneka dim sum, suimian",
+   "desc_id": "Banyak varian dim sum dan suimian dengan beberapa cabang di Batam.",
    "desc_en": "Many dim sum and suimian variants with several Batam branches.",
    "desc_zh": "口味繁多的点心和水面(suimian),在巴淡岛有多家分店。",
    "price_tier": "$$",
@@ -18730,7 +18729,7 @@
     "nasi lemak"
    ],
    "signature": "Kopi kental, roti bakar kaya, nasi lemak, martabak",
-   "desc_id": "Kopi kental khas Melayu-Tionghoa dengan roti bakar, kaya toast, nasi lemak, dan martabak di Lubuk Baja.",
+   "desc_id": "Kopi kental khas Melayu-Tionghoa dengan roti bakar, roti kaya, nasi lemak, dan martabak di Lubuk Baja.",
    "desc_en": "Thick Malay-Chinese coffee with toast, kaya toast, nasi lemak, and martabak in Lubuk Baja.",
    "desc_zh": "Lubuk Baja的马来华人风味浓咖啡，配烤面包、咖椰(kaya)吐司、椰浆饭和煎饼(martabak)。",
    "price_tier": "$",
@@ -18764,7 +18763,7 @@
   "subkategori": "kopitiam",
   "kecamatan": "Batam Kota",
   "kelurahan": null,
-  "alamat": "Ruko Royal Sincom Blok.F No.18-19, Batam Center, Tlk. Tering, Kec. Batam Kota, Kota Batam, Kepulauan Riau 29444",
+  "alamat": "Ruko Royal Sincom Blok.F No.18-19, Batam Centre, Tlk. Tering, Kec. Batam Kota, Kota Batam, Kepulauan Riau 29444",
   "lat": 1.1294,
   "lng": 104.0471,
   "status_koordinat": "perlu_cek_ulang",
@@ -18791,12 +18790,12 @@
     "kopitiam",
     "nasi lemak",
     "prata",
-    "mie lendir"
+    "mi lendir"
    ],
-   "signature": "Kopi sanger, butter coffee, nasi lemak, prata, mie lendir, roti bakar",
-   "desc_id": "Kopitiam modern yang nyaman untuk keluarga dan tamu hotel tapi tetap kuat pada menu Melayu lokal, dengan kopi sanger dan butter coffee yang dipuji. WiFi kencang dan terjangkau.",
-   "desc_en": "A modern kopitiam comfortable for families and hotel guests yet still strong on local Malay dishes, with praised kopi sanger and butter coffee. Fast WiFi and affordable.",
-   "desc_zh": "现代风咖啡店，适合家庭和酒店住客，却依旧主打本地马来料理，三花咖啡(kopi sanger)和牛油咖啡广受好评。WiFi快、价格实惠。",
+   "signature": "Kopi sanger, butter coffee, nasi lemak, prata, mi lendir, roti bakar",
+   "desc_id": "Kopitiam modern yang nyaman untuk keluarga dan tamu hotel, dengan menu Melayu lokal, kopi sanger, dan butter coffee. Tersedia WiFi.",
+   "desc_en": "A modern kopitiam comfortable for families and hotel guests, with local Malay dishes, kopi sanger, and butter coffee. WiFi available.",
+   "desc_zh": "现代风咖啡店，适合家庭和酒店住客，供应本地马来料理、三花咖啡(kopi sanger)和牛油咖啡。提供WiFi。",
    "price_tier": "$$",
    "price_idr": "Rp20.000–60.000",
    "payments": [
@@ -18855,9 +18854,9 @@
     "kopi siantar"
    ],
    "signature": "Kopi Siantar, roti bakar",
-   "desc_id": "Cabang kopi otentik sejak 1925 dari Pematang Siantar yang hadir di Nagoya.",
-   "desc_en": "A branch of authentic coffee since 1925 from Pematang Siantar, now in Nagoya.",
-   "desc_zh": "源自Pematang Siantar、始于1925年的正宗咖啡品牌，如今落户Nagoya。",
+   "desc_id": "Cabang kedai kopi asal Pematang Siantar sejak 1925 di Nagoya.",
+   "desc_en": "A branch of a Pematang Siantar coffee house dating from 1925, now in Nagoya.",
+   "desc_zh": "源自Pematang Siantar、始于1925年的咖啡品牌，如今落户Nagoya。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -18918,10 +18917,10 @@
     "teh tarik",
     "sarapan melayu"
    ],
-   "signature": "Teh tarik dingin, mie lendir, lontong sayur, nasi lemak, roti kirai",
-   "desc_id": "Kopitiam legendaris asal Belakang Padang sejak 1980 dengan teh tarik dingin yang disebut terbaik di Batam, kini punya 5-6 cabang. Sarapan Melayu seperti mie lendir, lontong sayur, dan nasi lemak.",
-   "desc_en": "A legendary kopitiam from Belakang Padang since 1980 whose iced teh tarik is called the best in Batam, now with 5-6 branches. Malay breakfasts like mee lendir, lontong sayur, and nasi lemak.",
-   "desc_zh": "源自Belakang Padang、始于1980年的传奇咖啡店(kopitiam)，冰拉茶被誉为巴淡岛最好喝，如今已有五六家分店。供应黏面、椰浆菜饭(lontong sayur)、椰浆饭(nasi lemak)等马来式早餐。",
+   "signature": "Teh tarik dingin, mi lendir, lontong sayur, nasi lemak, roti kirai",
+   "desc_id": "Kopitiam asal Belakang Padang sejak 1980, kini punya 5—6 cabang. Andalannya teh tarik dingin dan sarapan Melayu seperti mi lendir, lontong sayur, dan nasi lemak.",
+   "desc_en": "A kopitiam from Belakang Padang since 1980, now with 5—6 branches. Known for iced teh tarik and Malay breakfasts such as mee lendir, lontong sayur, and nasi lemak.",
+   "desc_zh": "源自Belakang Padang、始于1980年的咖啡店(kopitiam)，如今已有五六家分店。招牌是冰拉茶，另有黏面、椰浆菜饭(lontong sayur)、椰浆饭(nasi lemak)等马来式早餐。",
    "price_tier": "$",
    "price_idr": "Rp10.000–40.000",
    "payments": [
@@ -18979,9 +18978,9 @@
     "mee soto"
    ],
    "signature": "Lopis, mee soto, lontong, nasi uduk, kway tiao goreng",
-   "desc_id": "Sarapan ekonomis populer di Nagoya untuk lopis, mee soto, lontong, nasi uduk, dan kway tiao goreng dengan wok hei.",
-   "desc_en": "A popular budget breakfast in Nagoya for lopis, mee soto, lontong, nasi uduk, and fried kway tiao with wok hei.",
-   "desc_zh": "Nagoya人气经济早餐店，主打lopis糯米糕、马来面汤(mee soto)、椰浆糕(lontong)、香饭(nasi uduk)和带镬气的炒粿条。",
+   "desc_id": "Sarapan di Nagoya dengan lopis, mee soto, lontong, nasi uduk, dan kway tiao goreng beraroma wajan.",
+   "desc_en": "Breakfast in Nagoya with lopis, mee soto, lontong, nasi uduk, and fried kway tiao with wok hei.",
+   "desc_zh": "Nagoya的早餐店，主打lopis糯米糕、马来面汤(mee soto)、椰浆糕(lontong)、香饭(nasi uduk)和带镬气的炒粿条。",
    "price_tier": "$",
    "price_idr": "Rp15.000–40.000",
    "payments": [
@@ -19038,9 +19037,9 @@
     "kopitiam"
    ],
    "signature": "Kopi, sarapan kopitiam",
-   "desc_id": "Kopitiam legendaris sekitar 20 tahun di kawasan Nagoya.",
-   "desc_en": "A legendary kopitiam of around 20 years in the Nagoya area.",
-   "desc_zh": "Nagoya一带约20年历史的传奇咖啡店。",
+   "desc_id": "Kopitiam berusia sekitar 20 tahun di kawasan Nagoya.",
+   "desc_en": "A kopitiam of around 20 years in the Nagoya area.",
+   "desc_zh": "Nagoya一带约20年历史的咖啡店。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -19072,7 +19071,7 @@
   "subkategori": "kopitiam",
   "kecamatan": "Bengkong",
   "kelurahan": null,
-  "alamat": "Batam Centre, Pasar Pasir Putih C No.10-12, Sadai, Bengkong, Batam City, Riau Islands 29444",
+  "alamat": "Batam Centre, Pasar Pasir Putih C No.10-12, Sadai, Bengkong, Kota Batam, Kepulauan Riau 29444",
   "lat": 1.1559,
   "lng": 104.0317,
   "status_koordinat": "perlu_cek_ulang",
@@ -19102,9 +19101,9 @@
     "roti bakar"
    ],
    "signature": "Nasi lemak, laksa, roti bakar",
-   "desc_id": "Kopitiam yang sedang booming di Pasar Pasir Putih, kuat untuk nasi lemak, laksa, dan roti bakar dengan ruang luas dan terang.",
-   "desc_en": "A currently booming kopitiam at Pasar Pasir Putih, strong on nasi lemak, laksa, and toast, with a large, bright space.",
-   "desc_zh": "Pasir Putih市场内正当红的咖啡店，椰浆饭(nasi lemak)、叻沙和烤面包最出彩，空间宽敞明亮。",
+   "desc_id": "Kopitiam di Pasar Pasir Putih dengan nasi lemak, laksa, dan roti bakar, serta ruang yang luas dan terang.",
+   "desc_en": "A kopitiam at Pasar Pasir Putih serving nasi lemak, laksa, and toast, with a large, bright space.",
+   "desc_zh": "Pasir Putih市场内的咖啡店，供应椰浆饭(nasi lemak)、叻沙和烤面包，空间宽敞明亮。",
    "price_tier": "$$",
    "price_idr": "Rp20.000–55.000",
    "payments": [
@@ -19163,10 +19162,10 @@
     "chinese",
     "nusantara"
    ],
-   "signature": "Masakan nusantara, chinese food, kopi",
-   "desc_id": "Kopitiam dan food market full AC di Nagoya Thamrin City dengan masakan nusantara dan chinese, harga terjangkau.",
-   "desc_en": "A fully air-conditioned kopitiam and food market at Nagoya Thamrin City with Indonesian and Chinese dishes at affordable prices.",
-   "desc_zh": "Nagoya Thamrin City内全冷气的咖啡店兼美食广场，供应印尼群岛料理和中式菜，价格实惠。",
+   "signature": "Masakan Nusantara, masakan Tionghoa, kopi",
+   "desc_id": "Kopitiam dan pusat makanan berpendingin udara di Nagoya Thamrin City dengan masakan Nusantara dan Tionghoa.",
+   "desc_en": "A fully air-conditioned kopitiam and food market at Nagoya Thamrin City with Indonesian and Chinese dishes.",
+   "desc_zh": "Nagoya Thamrin City内全冷气的咖啡店兼美食广场，供应印尼群岛料理和中式菜。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -19223,9 +19222,9 @@
     "sio bak"
    ],
    "signature": "Char siew, sio bak, nasi hainan",
-   "desc_id": "Kopitiam terkenal dengan char siew dan sio bak yang disebut roast pork terbaik di Batam, plus nasi hainan. Non-halal.",
-   "desc_en": "A kopitiam famous for char siew and sio bak hailed as the best roast pork in Batam, plus Hainan rice. Non-halal.",
-   "desc_zh": "以叉烧和烧肉(sio bak，被誉为巴淡岛最好的烧肉)闻名的咖啡店，另有海南饭。非清真。",
+   "desc_id": "Kopitiam dengan char siew, sio bak, dan nasi hainan. Nonhalal.",
+   "desc_en": "A kopitiam serving char siew, sio bak, and Hainan rice. Non-halal.",
+   "desc_zh": "供应叉烧、烧肉(sio bak)和海南饭的咖啡店。非清真。",
    "price_tier": "$$",
    "price_idr": null,
    "payments": [
@@ -19315,7 +19314,7 @@
   "subkategori": "martabak-prata",
   "kecamatan": "Lubuk Baja",
   "kelurahan": null,
-  "alamat": "Komplek Bumi Indah, Jl. Imam Bonjol Blok B No.9-10, Lubuk Baja (cabang Jodoh & Botania)",
+  "alamat": "Komplek Bumi Indah, Jl. Imam Bonjol Blok B No.9-10, Lubuk Baja (cabang Jodoh dan Botania)",
   "lat": 1.1476,
   "lng": 104.0088,
   "status_koordinat": "perlu_cek_ulang",
@@ -19347,9 +19346,9 @@
     "briyani"
    ],
    "signature": "Martabak kambing, martabak telur, roti prata/canai, nasi briyani, teh tarik",
-   "desc_id": "Martabak dan prata India legendaris yang buka 24 jam; martabak kambing/sapi/ayam, roti canai, nasi briyani, dan teh tarik. Camilan malam ikonik Batam.",
-   "desc_en": "A legendary Indian martabak and prata spot open 24 hours; mutton/beef/chicken martabak, roti canai, briyani rice, and teh tarik. An iconic Batam late-night snack.",
-   "desc_zh": "24小时营业的传奇印度煎饼(martabak)与印度甩饼(prata)店；羊肉/牛肉/鸡肉煎饼、印度抛饼(roti canai)、印度香饭(briyani)和拉茶应有尽有，是巴淡岛标志性的宵夜。",
+   "desc_id": "Martabak dan prata India yang buka 24 jam: martabak kambing, sapi, dan ayam, roti canai, nasi briyani, serta teh tarik.",
+   "desc_en": "An Indian martabak and prata spot open 24 hours: mutton, beef, and chicken martabak, roti canai, briyani rice, and teh tarik.",
+   "desc_zh": "24小时营业的印度煎饼(martabak)与印度甩饼(prata)店；羊肉/牛肉/鸡肉煎饼、印度抛饼(roti canai)、印度香饭(briyani)和拉茶应有尽有。",
    "price_tier": "$",
    "price_idr": "Rp15.000–38.000",
    "payments": [
@@ -19524,9 +19523,9 @@
     "bakmi medan"
    ],
    "signature": "Bakmi medan",
-   "desc_id": "Bakmi Medan legendaris di Indoor Nagoya Foodcourt. Non-halal.",
-   "desc_en": "A legendary Medan-style bakmi at the Indoor Nagoya Foodcourt. Non-halal.",
-   "desc_zh": "Nagoya室内美食广场内的传奇棉兰式拌面(bakmi)。非清真。",
+   "desc_id": "Bakmi medan di Indoor Nagoya Foodcourt. Nonhalal.",
+   "desc_en": "Medan-style bakmi at the Indoor Nagoya Foodcourt. Non-halal.",
+   "desc_zh": "Nagoya室内美食广场内的棉兰式拌面(bakmi)。非清真。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -19578,13 +19577,13 @@
    "labels": [],
    "tags": [],
    "subcategory": [
-    "mie ayam",
+    "mi ayam",
     "bakso"
    ],
-   "signature": "Mie ayam, bakso",
-   "desc_id": "Mie ayam dan bakso murah berating tinggi di Sungai Panas, Batam Kota.",
-   "desc_en": "Cheap, highly-rated chicken noodles and meatballs in Sungai Panas, Batam Kota.",
-   "desc_zh": "巴淡市Sungai Panas一带物美价廉、评价极高的鸡肉面和肉丸(bakso)。",
+   "signature": "Mi ayam, bakso",
+   "desc_id": "Mi ayam dan bakso di Sungai Panas, Batam Kota.",
+   "desc_en": "Chicken noodles and meatballs in Sungai Panas, Batam Kota.",
+   "desc_zh": "巴淡市Sungai Panas一带的鸡肉面和肉丸(bakso)。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -19636,14 +19635,14 @@
    "labels": [],
    "tags": [],
    "subcategory": [
-    "mie ayam",
+    "mi ayam",
     "bakso",
     "chili oil"
    ],
-   "signature": "Mie ayam chili oil, bakso tetelan, es durian",
-   "desc_id": "Mie ayam chili oil dan bakso tetelan di Bida Asri 2, plus es durian yang menggoda.",
-   "desc_en": "Chili-oil chicken noodles and beef-tendon meatballs in Bida Asri 2, plus tempting durian ice.",
-   "desc_zh": "Bida Asri 2的红油鸡肉面和牛筋肉丸，还有诱人的榴莲冰。",
+   "signature": "Mi ayam minyak cabai, bakso tetelan, es durian",
+   "desc_id": "Mi ayam minyak cabai dan bakso tetelan di Bida Asri 2, serta es durian.",
+   "desc_en": "Chilli-oil chicken noodles and beef-tendon meatballs in Bida Asri 2, plus durian ice.",
+   "desc_zh": "Bida Asri 2的红油鸡肉面和牛筋肉丸，还有榴莲冰。",
    "price_tier": "$",
    "price_idr": "Rp18.000–32.000",
    "payments": [
@@ -19700,9 +19699,9 @@
     "kwetiau"
    ],
    "signature": "Kwetiau goreng",
-   "desc_id": "Kwetiau legendaris Batam. Non-halal.",
-   "desc_en": "A legendary Batam kwetiau. Non-halal.",
-   "desc_zh": "巴淡岛传奇粿条。非清真。",
+   "desc_id": "Kwetiau goreng di Batam. Nonhalal.",
+   "desc_en": "Fried kwetiau in Batam. Non-halal.",
+   "desc_zh": "巴淡岛的炒粿条。非清真。",
    "price_tier": "$$",
    "price_idr": null,
    "payments": [
@@ -19734,7 +19733,7 @@
   "subkategori": "mie-bakmi",
   "kecamatan": "Lubuk Baja",
   "kelurahan": null,
-  "alamat": "Nagoya Food Court (tersebar di banyak foodcourt)",
+  "alamat": "Nagoya Food Court (tersebar di banyak pujasera)",
   "lat": 1.1465,
   "lng": 104.0095,
   "status_koordinat": "perlu_cek_ulang",
@@ -19758,7 +19757,7 @@
     "kwetiau"
    ],
    "signature": "Bakmi, kwetiau",
-   "desc_id": "Bakmi dan kwetiau ekonomis yang ada di hampir setiap foodcourt Batam.",
+   "desc_id": "Bakmi dan kwetiau ekonomis yang ada di hampir setiap pujasera di Batam.",
    "desc_en": "Budget bakmi and kwetiau found in almost every Batam food court.",
    "desc_zh": "经济实惠的拌面和粿条，几乎每个巴淡岛美食广场都有。",
    "price_tier": "$",
@@ -19814,13 +19813,13 @@
    ],
    "tags": [],
    "subcategory": [
-    "mie ayam",
+    "mi ayam",
     "gerobakan"
    ],
-   "signature": "Mie ayam hijau, mie ayam",
-   "desc_id": "Mie ayam gerobakan legendaris (termasuk mie ayam hijau) yang tersebar di Pasar Bengkong Harapan, Palm Spring Batam Centre, dan Baloi Indah.",
-   "desc_en": "Legendary pushcart chicken noodles (including green chicken noodles) found at Bengkong Harapan market, Palm Spring Batam Centre, and Baloi Indah.",
-   "desc_zh": "传奇手推车鸡肉面(含绿色鸡肉面)，分布于Bengkong Harapan市场、Palm Spring Batam Centre和Baloi Indah。",
+   "signature": "Mi ayam hijau, mi ayam",
+   "desc_id": "Mi ayam gerobakan (termasuk mi ayam hijau) yang tersebar di Pasar Bengkong Harapan, Palm Spring Batam Centre, dan Baloi Indah.",
+   "desc_en": "Pushcart chicken noodles (including green chicken noodles) found at Bengkong Harapan market, Palm Spring Batam Centre, and Baloi Indah.",
+   "desc_zh": "手推车鸡肉面(含绿色鸡肉面)，分布于Bengkong Harapan市场、Palm Spring Batam Centre和Baloi Indah。",
    "price_tier": "$",
    "price_idr": "Rp12.000",
    "payments": [
@@ -19873,12 +19872,12 @@
    ],
    "tags": [],
    "subcategory": [
-    "mie ayam"
+    "mi ayam"
    ],
-   "signature": "Mie ayam",
-   "desc_id": "Mie ayam hidden gem ramah kantong di Tiban 1, buka dari pagi hingga malam.",
-   "desc_en": "A wallet-friendly hidden-gem chicken noodle in Tiban 1, open morning to night.",
-   "desc_zh": "Tiban 1的隐世平价鸡肉面，从早营业到晚。",
+   "signature": "Mi ayam",
+   "desc_id": "Mi ayam di Tiban 1, buka dari pagi hingga malam.",
+   "desc_en": "Chicken noodles in Tiban 1, open morning to night.",
+   "desc_zh": "Tiban 1的鸡肉面，从早营业到晚。",
    "price_tier": "$",
    "price_idr": "Rp13.000–22.000",
    "payments": [
@@ -19930,11 +19929,11 @@
    "labels": [],
    "tags": [],
    "subcategory": [
-    "mie ayam",
+    "mi ayam",
     "pangsit"
    ],
-   "signature": "Mie ayam, pangsit",
-   "desc_id": "Mie ayam dan pangsit di Penuin Centre yang buka pagi.",
+   "signature": "Mi ayam, pangsit",
+   "desc_id": "Mi ayam dan pangsit di Penuin Centre yang buka pagi.",
    "desc_en": "Chicken noodles and wontons at Penuin Centre, open in the morning.",
    "desc_zh": "Penuin Centre的鸡肉面与馄饨店，清晨开档。",
    "price_tier": "$",
@@ -19993,15 +19992,15 @@
     "ramah keluarga"
    ],
    "subcategory": [
-    "mie lendir",
+    "mi lendir",
     "nasi kari",
     "kopitiam",
     "sarapan"
    ],
-   "signature": "Mie lendir, nasi kari, prata, kopi tarik",
-   "desc_id": "Sarapan legendaris Batam: mie lendir (mie kuning + kuah kacang kental + telur rebus), nasi kari, prata, dan kopi tarik. Datang pagi karena menu andalan cepat habis.",
-   "desc_en": "A legendary Batam breakfast: mee lendir (yellow noodles in thick peanut gravy with boiled egg), curry rice, prata, and kopi tarik. Come early as the signature dishes sell out.",
-   "desc_zh": "巴淡岛传奇早餐：黏面(mie lendir，黄面配浓花生酱汁加水煮蛋)、咖喱饭、印度煎饼(prata)和拉茶(kopi tarik)。招牌菜很快售罄，记得早到。",
+   "signature": "Mi lendir, nasi kari, prata, kopi tarik",
+   "desc_id": "Sarapan Batam: mi lendir (mi kuning, kuah kacang kental, dan telur rebus), nasi kari, prata, dan kopi tarik. Datang pagi karena menu andalan cepat habis.",
+   "desc_en": "Batam breakfast: mee lendir (yellow noodles in thick peanut gravy with boiled egg), curry rice, prata, and kopi tarik. Come early as the signature dishes sell out.",
+   "desc_zh": "巴淡岛早餐：黏面(mi lendir，黄面配浓花生酱汁加水煮蛋)、咖喱饭、印度煎饼(prata)和拉茶(kopi tarik)。招牌菜很快售罄，记得早到。",
    "price_tier": "$",
    "price_idr": "Rp15.000–40.000",
    "payments": [
@@ -20058,13 +20057,13 @@
     "ramah keluarga"
    ],
    "subcategory": [
-    "mie tarempa",
+    "mi tarempa",
     "luti gendang"
    ],
-   "signature": "Mie tarempa kering/lembab/basah, luti gendang",
-   "desc_id": "Alamat paling aman untuk mencicipi mie tarempa gepeng bumbu pedas-manis-gurih dengan topping ikan tongkol, plus luti gendang yang wajib coba. Sangat representatif identitas kuliner Kepri.",
-   "desc_en": "The safest address to try flat tarempa noodles in a sweet-savoury-spicy sauce topped with tuna, plus the must-try luti gendang. Deeply representative of Riau Islands food culture.",
-   "desc_zh": "品尝达临巴扁面(mie tarempa)最稳妥的地址，甜咸微辣酱汁配金枪鱼，再加必试的鱼酥饼(luti gendang)，最能代表廖内群岛的饮食文化。",
+   "signature": "Mi tarempa kering/lembap/basah, luti gendang",
+   "desc_id": "Mi tarempa gepeng berbumbu pedas-manis-gurih dengan ikan tongkol, serta luti gendang.",
+   "desc_en": "Flat tarempa noodles in a sweet-savoury-spicy sauce topped with tuna, plus luti gendang.",
+   "desc_zh": "达临巴扁面(mi tarempa)，甜咸微辣酱汁配金枪鱼，另有鱼酥饼(luti gendang)。",
    "price_tier": "$$",
    "price_idr": "Rp19.000–45.000",
    "payments": [
@@ -20125,7 +20124,7 @@
     "roti goreng"
    ],
    "signature": "Luti gendang isi ikan tuna/bilis/udang",
-   "desc_id": "Toko luti gendang khas Kepri, roti goreng isi abon ikan tuna/bilis/udang, tersebar dengan pusat di Belian dan gerai Bengkong Laut yang buka 24 jam.",
+   "desc_id": "Toko luti gendang khas Kepulauan Riau, roti goreng isi abon ikan tuna/bilis/udang, tersebar dengan pusat di Belian dan gerai Bengkong Laut yang buka 24 jam.",
    "desc_en": "A specialist for luti gendang, the Riau Islands fried bread stuffed with tuna/anchovy/shrimp floss, with a hub in Belian and a 24-hour Bengkong Laut outlet.",
    "desc_zh": "专卖廖内群岛特色鱼酥饼(luti gendang)的店——油炸面包夹金枪鱼/江鱼仔/虾肉松，以Belian为总店，Bengkong Laut分店24小时营业。",
    "price_tier": "$",
@@ -20189,9 +20188,9 @@
     "chicken rice"
    ],
    "signature": "Nasi ayam hainan, ayam rebus/panggang, sambal",
-   "desc_id": "Chicken rice Batam paling terkenal dan stabil untuk turis: nasi harum, ayam empuk, sambal mantap, buka 24 jam. Legendaris lebih dari 15 tahun.",
-   "desc_en": "Batam's most famous and consistent chicken rice for tourists: fragrant rice, tender chicken, great sambal, open 24 hours. A legend of over 15 years.",
-   "desc_zh": "巴淡岛最有名、最稳定的海南鸡饭，游客首选：饭香、鸡嫩、参巴酱(sambal)出色，24小时营业，称霸超过15年的老字号。",
+   "desc_id": "Nasi ayam hainan dengan nasi harum, ayam empuk, dan sambal, buka 24 jam. Sudah berjalan lebih dari 15 tahun.",
+   "desc_en": "Hainanese chicken rice with fragrant rice, tender chicken, and sambal, open 24 hours. Running for over 15 years.",
+   "desc_zh": "海南鸡饭，饭香、鸡嫩，配参巴酱(sambal)，24小时营业，已超过15年。",
    "price_tier": "$$",
    "price_idr": "Rp25.000–50.000",
    "payments": [
@@ -20397,7 +20396,7 @@
   "subkategori": "nasi-ayam-hainan",
   "kecamatan": "Batu Ampar",
   "kelurahan": null,
-  "alamat": "Harbour Bay Ferry Terminal (Kampoeng Mama), Batu Ampar",
+  "alamat": "Terminal Feri Harbour Bay (Kampoeng Mama), Batu Ampar",
   "lat": 1.1639,
   "lng": 104.0058,
   "status_koordinat": "perlu_cek_ulang",
@@ -20421,7 +20420,7 @@
     "chicken rice"
    ],
    "signature": "Nasi ayam hainan, ayam lembut",
-   "desc_id": "Nasi ayam hainan dengan ayam lembut dan porsi besar di Harbour Bay Ferry Terminal (Kampoeng Mama), praktis sebelum naik feri.",
+   "desc_id": "Nasi ayam hainan dengan ayam lembut dan porsi besar di Terminal Feri Harbour Bay (Kampoeng Mama), praktis sebelum naik feri.",
    "desc_en": "Hainanese chicken rice with tender chicken and big portions at Harbour Bay Ferry Terminal (Kampoeng Mama), handy before boarding the ferry.",
    "desc_zh": "位于Harbour Bay渡轮码头(Kampoeng Mama)的海南鸡饭，鸡肉鲜嫩、分量大，登船前来一份正合适。",
    "price_tier": "$$",
@@ -20543,9 +20542,9 @@
     "ampera"
    ],
    "signature": "Aneka lauk Padang",
-   "desc_id": "Rumah makan Padang yang disebut paling legend di Batam, di Bengkong Indah.",
-   "desc_en": "A Padang restaurant called the most legendary in Batam, in Bengkong Indah.",
-   "desc_zh": "位于Bengkong Indah、被誉为巴淡岛最传奇的巴东饭餐厅。",
+   "desc_id": "Rumah makan Padang di Bengkong Indah.",
+   "desc_en": "A Padang restaurant in Bengkong Indah.",
+   "desc_zh": "位于Bengkong Indah的巴东饭餐厅。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -20717,9 +20716,9 @@
     "nasi padang"
    ],
    "signature": "Aneka lauk Padang",
-   "desc_id": "Rumah makan Padang berating tinggi di Batam.",
-   "desc_en": "A highly-rated Padang restaurant in Batam.",
-   "desc_zh": "巴淡岛一家评价极高的巴东饭餐厅。",
+   "desc_id": "Rumah makan Padang di Batam.",
+   "desc_en": "A Padang restaurant in Batam.",
+   "desc_zh": "巴淡岛的一家巴东饭餐厅。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -20775,9 +20774,9 @@
     "pangek"
    ],
    "signature": "Pangek, aneka lauk Padang",
-   "desc_id": "Rumah makan Padang berating tinggi dengan andalan pangek.",
-   "desc_en": "A highly-rated Padang restaurant whose signature is pangek.",
-   "desc_zh": "评价极高的巴东饭餐厅，招牌是pangek鱼。",
+   "desc_id": "Rumah makan Padang dengan andalan pangek.",
+   "desc_en": "A Padang restaurant whose signature is pangek.",
+   "desc_zh": "巴东饭餐厅，招牌是pangek鱼。",
    "price_tier": "$",
    "price_idr": null,
    "payments": [
@@ -20834,9 +20833,9 @@
     "gulai"
    ],
    "signature": "Gulai kepala ikan, aneka lauk Pariaman",
-   "desc_id": "Resep autentik Padang Pariaman dengan nasi panas boleh nambah dan sekitar 50 lauk; andalan gulai kepala ikan.",
-   "desc_en": "Authentic Padang Pariaman recipes with free hot-rice refills and around 50 dishes; the signature is fish-head curry.",
-   "desc_zh": "正宗巴东Pariaman食谱，热饭免费添加，约50种配菜；招牌是鱼头咖喱(gulai kepala ikan)。",
+   "desc_id": "Resep Padang Pariaman dengan nasi panas yang boleh ditambah dan sekitar 50 lauk; andalannya gulai kepala ikan.",
+   "desc_en": "Padang Pariaman recipes with free hot-rice refills and around 50 dishes; the signature is fish-head curry.",
+   "desc_zh": "巴东Pariaman食谱，热饭免费添加，约50种配菜；招牌是鱼头咖喱(gulai kepala ikan)。",
    "price_tier": "$",
    "price_idr": "mulai Rp19.000",
    "payments": [
@@ -20868,7 +20867,7 @@
   "subkategori": "nasi-padang",
   "kecamatan": null,
   "kelurahan": null,
-  "alamat": "Mega Mall Batam Centre & Kepri Mall",
+  "alamat": "Mega Mall Batam Centre dan Kepri Mall",
   "lat": 1.1289,
   "lng": 104.0455,
   "status_koordinat": "perlu_cek_ulang",
@@ -20953,7 +20952,7 @@
     "minang"
    ],
    "signature": "Rendang, gulai, aneka lauk Padang",
-   "desc_id": "Rumah makan Padang dengan empat cabang di Batam, terkenal lauk kaya rempah.",
+   "desc_id": "Rumah makan Padang dengan empat cabang di Batam, dikenal dengan lauk kaya rempah.",
    "desc_en": "A Padang restaurant with four Batam branches, famous for richly-spiced dishes.",
    "desc_zh": "巴东饭(nasi padang)餐厅，在巴淡岛有四家分店，以香料浓郁的菜肴闻名。",
    "price_tier": "$",
@@ -21125,8 +21124,8 @@
     "oleh-oleh",
     "cake ogura"
    ],
-   "signature": "Cake ogura",
-   "desc_id": "Cake ogura yang airy dengan banyak outlet termasuk di Bandara.",
+   "signature": "Kue ogura",
+   "desc_id": "Kue ogura yang ringan dengan banyak gerai, termasuk di bandara.",
    "desc_en": "Airy ogura cake with many outlets including at the airport.",
    "desc_zh": "口感轻盈的相思蛋糕(ogura cake),多处门店有售,包括机场。",
    "price_tier": "$$",
@@ -21307,10 +21306,10 @@
     "kue",
     "kek pisang"
    ],
-   "signature": "Kek pisang aneka topping",
-   "desc_id": "Pelopor kek pisang Batam sejak 2006 dengan aneka topping, oleh-oleh wajib sebelum pulang. Tersedia di banyak outlet termasuk Bandara Hang Nadim.",
-   "desc_en": "The pioneer of Batam banana cake since 2006 with various toppings, a must-buy souvenir before leaving. Available at many outlets including Hang Nadim Airport.",
-   "desc_zh": "始于2006年的巴淡岛香蕉蛋糕(kek pisang)开创者,口味繁多,离岛前必买伴手礼。多处门店有售,包括汉那丁机场。",
+   "signature": "Kek pisang aneka taburan",
+   "desc_id": "Pelopor kek pisang Batam sejak 2006 dengan aneka taburan. Tersedia di banyak gerai, termasuk Bandara Hang Nadim.",
+   "desc_en": "The pioneer of Batam banana cake since 2006, with various toppings. Available at many outlets including Hang Nadim Airport.",
+   "desc_zh": "始于2006年的巴淡岛香蕉蛋糕(kek pisang)开创者,口味繁多。多处门店有售,包括汉那丁机场。",
    "price_tier": "$$",
    "price_idr": "Rp60.000/kotak",
    "payments": [
@@ -21343,7 +21342,7 @@
   "subkategori": "oleh-oleh",
   "kecamatan": "Lubuk Baja",
   "kelurahan": null,
-  "alamat": "Hypermart Nagoya & Mall BCS",
+  "alamat": "Hypermart Nagoya dan Mall BCS",
   "lat": 1.1462,
   "lng": 104.0093,
   "status_koordinat": "perlu_cek_ulang",
@@ -21431,10 +21430,10 @@
     "kue lapis",
     "layer cake"
    ],
-   "signature": "Kue lapis buttery, layer cake",
-   "desc_id": "Layer cake modern Batam berating sangat tinggi, buttery dan lembut, sangat praktis sebagai oleh-oleh dari Nagoya Hill. Staf ramah dan sampling konsisten dipuji.",
-   "desc_en": "A very highly-rated modern Batam layer cake, buttery and soft, extremely convenient as a souvenir from Nagoya Hill. Friendly staff and sampling consistently praised.",
-   "desc_zh": "评价极高的现代巴淡岛千层蛋糕(layer cake),牛油香浓、口感绵软,在Nagoya Hill购买极为方便。店员亲切、试吃稳定,口碑相传。",
+   "signature": "Kue lapis mentega",
+   "desc_id": "Kue lapis modern Batam yang lembut dan kaya mentega, praktis sebagai oleh-oleh dari Nagoya Hill. Stafnya ramah dan pengunjung dapat mencicipi contoh kue.",
+   "desc_en": "A modern Batam layer cake, buttery and soft, convenient as a souvenir from Nagoya Hill. Friendly staff and samples to taste.",
+   "desc_zh": "现代巴淡岛千层蛋糕(layer cake),牛油香浓、口感绵软,在Nagoya Hill购买方便。店员亲切,可试吃。",
    "price_tier": "$$$",
    "price_idr": "Rp120.000–350.000/box",
    "payments": [
@@ -21552,9 +21551,9 @@
     "gado-gado"
    ],
    "signature": "Nasi lemak, gado-gado",
-   "desc_id": "Legendaris dari Tanjungpinang sejak 1998 (generasi ke-2/3) dengan nasi lemak hemat dan gado-gado di Pasar Pasir Putih.",
-   "desc_en": "A legend from Tanjungpinang since 1998 (2nd/3rd generation) with budget nasi lemak and gado-gado at Pasar Pasir Putih.",
-   "desc_zh": "源自丹戎槟榔、始于1998年的传奇老店(已传至第二/三代),Pasir Putih市场内的平价椰浆饭和加多加多(gado-gado)。",
+   "desc_id": "Asal Tanjungpinang sejak 1998 (generasi kedua dan ketiga) dengan nasi lemak dan gado-gado di Pasar Pasir Putih.",
+   "desc_en": "From Tanjungpinang since 1998 (second and third generation) with nasi lemak and gado-gado at Pasar Pasir Putih.",
+   "desc_zh": "源自丹戎槟榔、始于1998年的老店(已传至第二、三代),Pasir Putih市场内的椰浆饭和加多加多(gado-gado)。",
    "price_tier": "$",
    "price_idr": "Rp8.000–25.000",
    "payments": [
@@ -21586,7 +21585,7 @@
   "subkategori": "pecel-gado",
   "kecamatan": "Batam Kota",
   "kelurahan": null,
-  "alamat": "Mitra Raya 2 Blok A-B.12A-12B & B.15, Batam Kota",
+  "alamat": "Mitra Raya 2 Blok A-B.12A-12B dan B.15, Batam Kota",
   "lat": 1.1324,
   "lng": 104.0496,
   "status_koordinat": "perlu_cek_ulang",
@@ -21787,13 +21786,13 @@
    "subcategory": [
     "sarapan melayu",
     "gado-gado",
-    "mie lendir",
+    "mi lendir",
     "nasi lemak"
    ],
-   "signature": "Gado-gado, mie lendir, prata, nasi lemak",
-   "desc_id": "Sarapan Melayu tepi Pantai Nongsa lebih dari 20 tahun: gado-gado, mie lendir, prata, dan nasi lemak.",
+   "signature": "Gado-gado, mi lendir, prata, nasi lemak",
+   "desc_id": "Sarapan Melayu tepi Pantai Nongsa lebih dari 20 tahun: gado-gado, mi lendir, prata, dan nasi lemak.",
    "desc_en": "Malay breakfast on Nongsa Beach for over 20 years: gado-gado, mee lendir, prata, and nasi lemak.",
-   "desc_zh": "Nongsa海滩边经营超过20年的马来式早餐:加多加多(gado-gado)、黏面(mie lendir)、印度煎饼(prata)和椰浆饭(nasi lemak)。",
+   "desc_zh": "Nongsa海滩边经营超过20年的马来式早餐:加多加多(gado-gado)、黏面(mi lendir)、印度煎饼(prata)和椰浆饭(nasi lemak)。",
    "price_tier": "$",
    "price_idr": "Rp15.000",
    "payments": [
@@ -21910,9 +21909,9 @@
     "gulai kambing"
    ],
    "signature": "Sate kambing, gulai kambing",
-   "desc_id": "Sate dan gulai kambing legendaris di Bengkong Indah, dulu ada kandang kambing di sebelahnya.",
-   "desc_en": "Legendary mutton satay and curry in Bengkong Indah, which used to have a goat pen next door.",
-   "desc_zh": "Bengkong Indah的传奇羊肉沙嗲与羊肉咖喱，从前隔壁还曾有羊圈。",
+   "desc_id": "Sate dan gulai kambing di Bengkong Indah, dulu ada kandang kambing di sebelahnya.",
+   "desc_en": "Mutton satay and curry in Bengkong Indah, which used to have a goat pen next door.",
+   "desc_zh": "Bengkong Indah的羊肉沙嗲与羊肉咖喱，从前隔壁还曾有羊圈。",
    "price_tier": "$$",
    "price_idr": null,
    "payments": [
@@ -21967,9 +21966,9 @@
     "sate kambing"
    ],
    "signature": "Sate kambing",
-   "desc_id": "Sate kambing empuk yang sering dikunjungi publik figur, di Belian dan Orchid Park.",
-   "desc_en": "Tender mutton satay frequently visited by public figures, in Belian and Orchid Park.",
-   "desc_zh": "鲜嫩的羊肉沙嗲(sate kambing)，常有名人光顾，设点于Belian和Orchid Park。",
+   "desc_id": "Sate kambing empuk di Belian dan Orchid Park.",
+   "desc_en": "Tender mutton satay in Belian and Orchid Park.",
+   "desc_zh": "鲜嫩的羊肉沙嗲(sate kambing)，设点于Belian和Orchid Park。",
    "price_tier": "$$",
    "price_idr": "mulai Rp70.000",
    "payments": [
@@ -22021,13 +22020,13 @@
    "labels": [],
    "tags": [],
    "subcategory": [
-    "sop tulang",
+    "sup tulang",
     "iga bakar"
    ],
-   "signature": "Iga bakar, sop tulang sapi",
-   "desc_id": "Iga bakar dan sop tulang empuk dengan harga terjangkau di Belian, selalu ramai.",
-   "desc_en": "Tender grilled ribs and bone soup at affordable prices in Belian, always busy.",
-   "desc_zh": "Belian的鲜嫩烤牛肋和牛骨汤，价格实惠，总是座无虚席。",
+   "signature": "Iga bakar, sup tulang sapi",
+   "desc_id": "Iga bakar dan sup tulang empuk di Belian, selalu ramai.",
+   "desc_en": "Tender grilled ribs and bone soup in Belian, always busy.",
+   "desc_zh": "Belian的鲜嫩烤牛肋和牛骨汤，总是座无虚席。",
    "price_tier": "$$",
    "price_idr": null,
    "payments": [
@@ -22149,9 +22148,9 @@
     "sunset view"
    ],
    "signature": "Siput gonggong, flower crab, scallop with garlic, kerapu steam, udang nestum",
-   "desc_id": "Tujuan makan seafood dengan pemandangan Jembatan Barelang dan sunset; pilih seafood segar langsung di lokasi. Sering dikunjungi pejabat.",
-   "desc_en": "A seafood destination with views of the Barelang Bridge and sunset; pick your fresh seafood on the spot. Frequented by officials.",
-   "desc_zh": "可一边欣赏巴蓝降大桥(Barelang Bridge)和日落一边品尝海鲜的好去处，现场挑选新鲜海产，连官员也常光顾。",
+   "desc_id": "Restoran makanan laut dengan pemandangan Jembatan Barelang dan matahari terbenam. Makanan laut segar dipilih langsung di lokasi.",
+   "desc_en": "A seafood restaurant with views of the Barelang Bridge and the sunset; pick your fresh seafood on the spot.",
+   "desc_zh": "可一边欣赏巴蓝降大桥(Barelang Bridge)和日落一边品尝海鲜的餐厅，现场挑选新鲜海产。",
    "price_tier": "$$$",
    "price_idr": "Rp150.000–350.000",
    "payments": [
@@ -22206,10 +22205,10 @@
     "seafood",
     "steam"
    ],
-   "signature": "Aneka seafood steam",
-   "desc_id": "Salah satu rujukan seafood steam terbaik di Batam menurut ulasan turis di TripAdvisor.",
-   "desc_en": "Rated one of the best for steamed seafood in Batam by tourist reviews on TripAdvisor.",
-   "desc_zh": "据TripAdvisor游客评价，是巴淡岛清蒸海鲜数一数二的好去处。",
+   "signature": "Aneka makanan laut kukus",
+   "desc_id": "Aneka makanan laut kukus di Batam.",
+   "desc_en": "Assorted steamed seafood in Batam.",
+   "desc_zh": "巴淡岛的各式清蒸海鲜。",
    "price_tier": "$$$",
    "price_idr": null,
    "payments": [
@@ -22268,7 +22267,7 @@
     "gonggong",
     "kelong"
    ],
-   "signature": "Gonggong rebus, paket seafood",
+   "signature": "Gonggong rebus, paket makanan laut",
    "desc_id": "Restoran panggung di pesisir utara Batam yang butuh lebih dari 70 kg gonggong per minggu, dipasok nelayan dari Pulau Buluh dan Rempang. Banyak dikunjungi wisatawan luar negeri.",
    "desc_en": "A stilted restaurant on Batam's north coast that goes through over 70 kg of gonggong a week, supplied by fishermen from Buluh and Rempang islands. Popular with foreign visitors.",
    "desc_zh": "位于巴淡岛北岸的吊脚楼餐厅，每周消耗超过70公斤香螺(gonggong)，由Buluh岛和Rempang岛的渔民供应，深受外国游客欢迎。",
@@ -22335,10 +22334,10 @@
     "kelong",
     "kepiting"
    ],
-   "signature": "Kepiting saus padang, kepiting lada hitam, udang mentega/cereal, gonggong rebus, sotong",
-   "desc_id": "Restoran seafood panggung di atas air yang melegenda lintas generasi, favorit turis Singapura dan Malaysia. Cocok untuk rombongan besar dengan kepiting saus padang, udang mentega, dan gonggong rebus.",
-   "desc_en": "A legendary stilted seafood restaurant over the water, a favourite of Singaporean and Malaysian tourists. Great for big groups with chili-padang crab, butter prawns, and boiled gonggong.",
-   "desc_zh": "传奇水上吊脚楼海鲜餐厅，几代人的最爱，深受新加坡和马来西亚游客欢迎。适合大团聚餐，招牌有巴东辣椒蟹、牛油虾和白灼香螺(gonggong)。",
+   "signature": "Kepiting saus padang, kepiting lada hitam, udang mentega/sereal, gonggong rebus, sotong",
+   "desc_id": "Restoran makanan laut panggung di atas air, favorit turis Singapura dan Malaysia. Cocok untuk rombongan besar dengan kepiting saus padang, udang mentega, dan gonggong rebus.",
+   "desc_en": "A stilted seafood restaurant over the water, a favourite of Singaporean and Malaysian tourists. Suits big groups, with chilli-padang crab, butter prawns, and boiled gonggong.",
+   "desc_zh": "水上吊脚楼海鲜餐厅，深受新加坡和马来西亚游客欢迎。适合大团聚餐，招牌有巴东辣椒蟹、牛油虾和白灼香螺(gonggong)。",
    "price_tier": "$$$",
    "price_idr": "Rp150.000–350.000",
    "payments": [
@@ -22398,8 +22397,8 @@
     "chinese",
     "live music"
    ],
-   "signature": "Aneka seafood, masakan chinese",
-   "desc_id": "Perpaduan kuliner Indonesia-Tionghoa di tepi Harbour Bay dengan view matahari terbenam dan live music di akhir pekan.",
+   "signature": "Aneka makanan laut, masakan Tionghoa",
+   "desc_id": "Perpaduan masakan Indonesia dan Tionghoa di tepi Harbour Bay dengan pemandangan matahari terbenam dan musik langsung di akhir pekan.",
    "desc_en": "A blend of Indonesian-Chinese cuisine on the Harbour Bay waterfront with sunset views and weekend live music.",
    "desc_zh": "坐落Harbour Bay海滨，融合印尼与中式风味，可赏日落，周末还有现场音乐。",
    "price_tier": "$$$",
@@ -22434,7 +22433,7 @@
   "subkategori": "seafood-gonggong",
   "kecamatan": "Sagulung",
   "kelurahan": null,
-  "alamat": "Jl. Kp. Tua Tiangwangkang, Tembesi, Sagulung, Batam City, Riau Islands 29472",
+  "alamat": "Jl. Kp. Tua Tiangwangkang, Tembesi, Sagulung, Kota Batam, Kepulauan Riau 29472",
   "lat": 1.0339,
   "lng": 104.0132,
   "status_koordinat": "perlu_cek_ulang",
@@ -22465,9 +22464,9 @@
     "sunset view"
    ],
    "signature": "Sotong saus padang, kerang hijau bakar, udang segar",
-   "desc_id": "Pengalaman makan kelong paling atmosferik di Barelang: di atas laut, sunset, dan pilih seafood langsung dari tank. Destination dining sesungguhnya.",
-   "desc_en": "The most atmospheric kelong dining in Barelang: over the sea, sunset views, and seafood picked straight from the tank. True destination dining.",
-   "desc_zh": "巴蓝降(Barelang)氛围感最强的海上吊脚楼(kelong)用餐体验：临海、看日落、从水缸里现挑海鲜，真正值得专程一去。",
+   "desc_id": "Restoran kelong di atas laut di Barelang dengan pemandangan matahari terbenam. Makanan laut dipilih langsung dari tangki.",
+   "desc_en": "A kelong restaurant over the sea in Barelang with sunset views and seafood picked straight from the tank.",
+   "desc_zh": "巴蓝降(Barelang)的海上吊脚楼(kelong)餐厅，可看日落，从水缸里现挑海鲜。",
    "price_tier": "$$$",
    "price_idr": "Rp140.000–320.000",
    "payments": [
@@ -22499,7 +22498,7 @@
   "subkategori": "seafood-gonggong",
   "kecamatan": "Batam Kota",
   "kelurahan": null,
-  "alamat": "Jl. Raja H. Fisabilillah No.12B, Teluk Tering, Batam Kota, Batam City, Riau Islands 29444",
+  "alamat": "Jl. Raja H. Fisabilillah No.12B, Teluk Tering, Batam Kota, Kota Batam, Kepulauan Riau 29444",
   "lat": 1.1286,
   "lng": 104.0457,
   "status_koordinat": "perlu_cek_ulang",
@@ -22529,9 +22528,9 @@
     "udang"
    ],
    "signature": "Udang segar, aneka kepiting, ikan bakar",
-   "desc_id": "Salah satu restoran seafood paling ramai di Batam Centre dengan area dine-in luas, ramah rombongan, dan penyajian cepat. Udang segarnya jadi bintang.",
-   "desc_en": "One of the busiest seafood restaurants in Batam Centre, with spacious dine-in seating, group-friendly service, and quick serving. Fresh prawns steal the show.",
-   "desc_zh": "巴淡中心(Batam Centre)人气最旺的海鲜餐厅之一，堂食空间宽敞，适合团体，上菜快，新鲜大虾最抢镜。",
+   "desc_id": "Restoran makanan laut di Batam Centre yang ramai, dengan area makan di tempat yang luas, cocok untuk rombongan, dan penyajian cepat. Andalannya udang segar.",
+   "desc_en": "A busy seafood restaurant in Batam Centre with spacious dine-in seating, room for groups, and quick service. Fresh prawns are the signature dish.",
+   "desc_zh": "巴淡中心(Batam Centre)人气较旺的海鲜餐厅，堂食空间宽敞，适合团体，上菜快，招牌是新鲜大虾。",
    "price_tier": "$$$",
    "price_idr": "Rp120.000–280.000",
    "payments": [
@@ -22591,9 +22590,9 @@
     "udang"
    ],
    "signature": "Gonggong, aneka udang, petai",
-   "desc_id": "Gerai seafood di 168 Food Court Seraya yang dikenal dengan gonggong, aneka udang, dan petai. Harga ramah kantong.",
-   "desc_en": "A seafood stall at 168 Food Court Seraya known for gonggong, assorted prawns, and petai. Wallet-friendly prices.",
-   "desc_zh": "位于Seraya 168美食广场的海鲜摊，以香螺(gonggong)、各式鲜虾和臭豆(petai)闻名，价格亲民。",
+   "desc_id": "Gerai makanan laut di 168 Food Court Seraya yang dikenal dengan gonggong, aneka udang, dan petai.",
+   "desc_en": "A seafood stall at 168 Food Court Seraya known for gonggong, assorted prawns, and petai.",
+   "desc_zh": "位于Seraya 168美食广场的海鲜摊，以香螺(gonggong)、各式鲜虾和臭豆(petai)闻名。",
    "price_tier": "$$",
    "price_idr": "Rp75.000",
    "payments": [
@@ -22625,7 +22624,7 @@
   "subkategori": "seafood-gonggong",
   "kecamatan": "Nongsa",
   "kelurahan": null,
-  "alamat": "Pantai, Jl. H. Moh. Saleh, RT.002/RW.001, Batu Besar, Nongsa, Batam City, Riau Islands 29465",
+  "alamat": "Pantai, Jl. H. Moh. Saleh, RT.002/RW.001, Batu Besar, Nongsa, Kota Batam, Kepulauan Riau 29465",
   "lat": 1.1742,
   "lng": 104.1133,
   "status_koordinat": "perlu_cek_ulang",
@@ -22658,9 +22657,9 @@
     "chili crab"
    ],
    "signature": "Chili crab, black pepper crab, udang telur asin, steam prawn, assam fish, gonggong",
-   "desc_id": "Restoran kelong di atas laut sejak 1980-an, favorit warga lokal dan hanya 5–10 menit dari Bandara Hang Nadim. Chili crab-nya disebut salah satu yang terbaik di pulau ini.",
-   "desc_en": "A seafood restaurant on stilts over the sea since the 1980s, a local favourite just 5–10 minutes from Hang Nadim Airport. Its chili crab is hailed as one of the best on the island.",
-   "desc_zh": "建于1980年代的海上吊脚楼海鲜餐厅，本地人最爱，距汉那丁机场仅5至10分钟车程。其辣椒蟹被誉为全岛数一数二。",
+   "desc_id": "Restoran kelong di atas laut sejak 1980-an, favorit warga lokal dan hanya 5—10 menit dari Bandara Hang Nadim. Menu andalannya chili crab dan black pepper crab.",
+   "desc_en": "A seafood restaurant on stilts over the sea since the 1980s, a local favourite just 5—10 minutes from Hang Nadim Airport. Signature dishes include chilli crab and black pepper crab.",
+   "desc_zh": "建于1980年代的海上吊脚楼海鲜餐厅，本地人常去，距汉那丁机场仅5至10分钟车程。招牌有辣椒蟹和黑胡椒蟹。",
    "price_tier": "$$$",
    "price_idr": "Rp140.000–320.000",
    "payments": [
@@ -22719,13 +22718,12 @@
    "subcategory": [
     "seafood",
     "kepiting",
-    "gonggong",
-    "premium"
+    "gonggong"
    ],
    "signature": "Kepiting saus Sei Enam, sotong goreng asam, udang kipas merica putih, kakap asam pedas, gonggong pedas",
-   "desc_id": "Restoran seafood legendaris sejak 1970-an dengan meja bundar berputar ala Tionghoa, sering dipuji sebagai seafood terenak di Batam untuk yang mengutamakan rasa di atas harga.",
-   "desc_en": "A legendary seafood restaurant since the 1970s with Chinese-style rotating round tables, often praised as the best-tasting seafood in Batam for those who value flavour over price.",
-   "desc_zh": "始于1970年代的传奇海鲜餐厅，配备中式旋转圆桌，常被赞为巴淡岛最好吃的海鲜，适合重味道多过价钱的食客。",
+   "desc_id": "Restoran makanan laut sejak 1970-an dengan meja bundar berputar ala Tionghoa. Menu andalannya kepiting saus Sei Enam dan sotong goreng asam.",
+   "desc_en": "A seafood restaurant since the 1970s with Chinese-style rotating round tables. Signature dishes include Sei Enam sauce crab and sour fried squid.",
+   "desc_zh": "始于1970年代的海鲜餐厅，配备中式旋转圆桌。招牌有Sei Enam酱蟹和酸炒墨鱼。",
    "price_tier": "$$$",
    "price_idr": "Rp150.000–350.000",
    "payments": [
@@ -22790,10 +22788,10 @@
     "udang",
     "scallop"
    ],
-   "signature": "Kepiting telur asin, kepiting lada hitam, udang cereal/mentega, scallop, ikan bakar, otak-otak",
-   "desc_id": "Seafood tepi laut paling dikenal di Harbour Bay, hanya beberapa menit dari terminal feri dan ramai turis Singapura-Malaysia. Andalannya kepiting telur asin/lada hitam dan udang cereal.",
-   "desc_en": "The best-known seaside seafood spot at Harbour Bay, just minutes from the ferry terminal and packed with Singaporean-Malaysian tourists. Salted-egg/black-pepper crab and cereal prawns are the stars.",
-   "desc_zh": "Harbour Bay最知名的海边海鲜餐厅，距渡轮码头仅几分钟，常常坐满新马游客。咸蛋黄/黑胡椒螃蟹和麦片虾是这里的招牌。",
+   "signature": "Kepiting telur asin, kepiting lada hitam, udang sereal/mentega, scallop, ikan bakar, otak-otak",
+   "desc_id": "Restoran makanan laut di tepi laut Harbour Bay, beberapa menit dari terminal feri dan ramai turis Singapura dan Malaysia. Andalannya kepiting telur asin, kepiting lada hitam, dan udang sereal.",
+   "desc_en": "A seaside seafood restaurant at Harbour Bay, minutes from the ferry terminal and busy with Singaporean and Malaysian tourists. Signature dishes are salted-egg crab, black-pepper crab, and cereal prawns.",
+   "desc_zh": "Harbour Bay海边的海鲜餐厅，距渡轮码头仅几分钟，常有新马游客。招牌是咸蛋黄螃蟹、黑胡椒螃蟹和麦片虾。",
    "price_tier": "$$$",
    "price_idr": "Rp150.000–350.000",
    "payments": [
@@ -22909,7 +22907,7 @@
     "bebek goreng"
    ],
    "signature": "Bebek goreng, sambal korek",
-   "desc_id": "Bebek goreng krispi marinasi rempah dengan sambal korek, seberang BCS Mall, Lubuk Baja.",
+   "desc_id": "Bebek goreng renyah berbumbu rempah dengan sambal korek, di seberang BCS Mall, Lubuk Baja.",
    "desc_en": "Crispy spice-marinated fried duck with sambal korek, opposite BCS Mall, Lubuk Baja.",
    "desc_zh": "香料腌制的酥脆炸鸭配辣椒酱(sambal korek)，位于Lubuk Baja，BCS Mall对面。",
    "price_tier": "$$",
@@ -22970,8 +22968,8 @@
     "lalapan"
    ],
    "signature": "Prasmanan Sunda, lalapan",
-   "desc_id": "Masakan Sunda prasmanan dengan 30+ menu dan lalapan gratis di Mega Legenda Junction.",
-   "desc_en": "Sundanese buffet-style food with 30+ dishes and free fresh vegetables at Mega Legenda Junction.",
+   "desc_id": "Masakan Sunda prasmanan dengan lebih dari 30 menu dan lalapan gratis di Mega Legenda Junction.",
+   "desc_en": "Sundanese buffet-style food with over 30 dishes and free fresh vegetables at Mega Legenda Junction.",
    "desc_zh": "Mega Legenda Junction的巽他自助餐，30多道菜，免费鲜蔬。",
    "price_tier": "$",
    "price_idr": "Rp3.000–20.000",
@@ -23030,9 +23028,9 @@
     "ikan bakar"
    ],
    "signature": "Ikan bakar, masakan Sunda",
-   "desc_id": "Rumah makan Sunda berating tinggi dengan ikan bakar di Jl. Engku Putri.",
-   "desc_en": "A highly-rated Sundanese restaurant with grilled fish on Jl. Engku Putri.",
-   "desc_zh": "Jl. Engku Putri一带评价极高的巽他料理餐厅，主打烤鱼。",
+   "desc_id": "Rumah makan Sunda dengan ikan bakar di Jl. Engku Putri.",
+   "desc_en": "A Sundanese restaurant with grilled fish on Jl. Engku Putri.",
+   "desc_zh": "Jl. Engku Putri一带的巽他料理餐厅，主打烤鱼。",
    "price_tier": "$$",
    "price_idr": null,
    "payments": [
@@ -23095,9 +23093,9 @@
     "view singapura"
    ],
    "signature": "Ikan bakar, masakan Sunda",
-   "desc_id": "Rumah makan Sunda legendaris sejak 1992 di Bukit Senyum dengan pemandangan ke arah Singapura.",
-   "desc_en": "A legendary Sundanese restaurant since 1992 at Bukit Senyum with views toward Singapore.",
-   "desc_zh": "始于1992年的传奇巽他料理餐厅，坐落Bukit Senyum，可眺望新加坡方向的景色。",
+   "desc_id": "Rumah makan Sunda sejak 1992 di Bukit Senyum dengan pemandangan ke arah Singapura.",
+   "desc_en": "A Sundanese restaurant since 1992 at Bukit Senyum with views towards Singapore.",
+   "desc_zh": "始于1992年的巽他料理餐厅，坐落Bukit Senyum，可眺望新加坡方向的景色。",
    "price_tier": "$$",
    "price_idr": null,
    "payments": [
@@ -23219,8 +23217,8 @@
     "lalapan"
    ],
    "signature": "Prasmanan Sunda, lalapan",
-   "desc_id": "Masakan Sunda prasmanan dengan 30+ menu khas dan lalapan gratis di Mega Mall Batam Centre.",
-   "desc_en": "Sundanese buffet-style food with 30+ specialty dishes and free fresh vegetables at Mega Mall Batam Centre.",
+   "desc_id": "Masakan Sunda prasmanan dengan lebih dari 30 menu khas dan lalapan gratis di Mega Mall Batam Centre.",
+   "desc_en": "Sundanese buffet-style food with over 30 dishes and free fresh vegetables at Mega Mall Batam Centre.",
    "desc_zh": "Mega Mall Batam Centre的巽他自助餐，30多道特色菜，免费鲜蔬。",
    "price_tier": "$",
    "price_idr": "Rp3.000–20.000",
@@ -23278,8 +23276,8 @@
     "sup ikan",
     "laksa"
    ],
-   "signature": "Sop ikan original, sop ikan laksa",
-   "desc_id": "Kedai sop ikan berusia sekitar 30 tahun di Nagoya dengan sop ikan original dan sop ikan laksa.",
+   "signature": "Sup ikan original, sup ikan laksa",
+   "desc_id": "Kedai sup ikan berusia sekitar 30 tahun di Nagoya dengan sup ikan original dan sup ikan laksa.",
    "desc_en": "A fish soup stall of about 30 years in Nagoya, serving original fish soup and fish soup laksa.",
    "desc_zh": "Nagoya一间约30年历史的鱼汤老店，供应原味鱼汤和叻沙鱼汤。",
    "price_tier": "$$",
@@ -23340,12 +23338,12 @@
    "subcategory": [
     "sup ikan",
     "otak-otak",
-    "seafood chinese"
+    "makanan laut tionghoa"
    ],
    "signature": "Sup ikan tenggiri, sup ikan campur (ikan+udang+cumi), otak-otak",
-   "desc_id": "Ikon sup ikan Batam yang menyebut diri pelopor sup seafood di Indonesia; kuah bening segar dengan ikan tenggiri, sangat ramai saat makan siang. Hati-hati ada warung tiruan di sebelah.",
-   "desc_en": "The icon of Batam fish soup, billing itself as the pioneer of seafood soup in Indonesia; clear, fresh broth with mackerel, packed at lunchtime. Beware the copycat stall next door.",
-   "desc_zh": "巴淡岛鱼汤(sup ikan)的招牌老店，自称印尼海鲜汤的开创者；汤底清澈鲜甜配马鲛鱼，午市常常座无虚席。注意隔壁有山寨档口。",
+   "desc_id": "Rumah makan sup ikan yang menyebut diri pelopor sup makanan laut di Indonesia; kuah bening segar dengan ikan tenggiri, sangat ramai saat makan siang. Hati-hati, ada warung tiruan di sebelahnya.",
+   "desc_en": "A fish soup restaurant that bills itself as the pioneer of seafood soup in Indonesia; clear, fresh broth with mackerel, packed at lunchtime. Beware the copycat stall next door.",
+   "desc_zh": "自称印尼海鲜汤开创者的鱼汤(sup ikan)餐馆；汤底清澈配马鲛鱼，午市常常客满。注意隔壁有山寨档口。",
    "price_tier": "$$",
    "price_idr": "Rp40.000–90.000",
    "payments": [
@@ -23403,10 +23401,10 @@
     "sup ikan",
     "asam pedas"
    ],
-   "signature": "Sop ikan, asam pedas",
-   "desc_id": "Sop ikan legendaris di Komplek Windsor Central, Lubuk Baja, dengan andalan sop ikan dan asam pedas.",
-   "desc_en": "A legendary fish soup at Windsor Central, Lubuk Baja, with fish soup and asam pedas as the mainstays.",
-   "desc_zh": "位于Lubuk Baja的Windsor Central的传奇鱼汤店，招牌是鱼汤和亚参鱼(asam pedas)。",
+   "signature": "Sup ikan, asam pedas",
+   "desc_id": "Sup ikan di Komplek Windsor Central, Lubuk Baja, dengan andalan sup ikan dan asam pedas.",
+   "desc_en": "Fish soup at Windsor Central, Lubuk Baja, with fish soup and asam pedas as the mainstays.",
+   "desc_zh": "位于Lubuk Baja的Windsor Central的鱼汤店，招牌是鱼汤和亚参鱼(asam pedas)。",
    "price_tier": "$$",
    "price_idr": "Rp50.000",
    "payments": [
@@ -23464,9 +23462,9 @@
     "bihun"
    ],
    "signature": "Sup ikan murni, sup ikan campur, bihun",
-   "desc_id": "Hidden gem tanpa papan nama di Nongsa dekat pos polisi; sup ikan murni atau campur dengan bihun yang sering habis menjelang siang.",
-   "desc_en": "A signless hidden gem in Nongsa near the police post; pure or mixed fish soup with vermicelli that often sells out by midday.",
-   "desc_zh": "藏身Nongsa警岗附近、连招牌都没有的隐世小店；纯鱼汤或杂锦鱼汤配米粉，常常未到中午就售罄。",
+   "desc_id": "Kedai tanpa papan nama di Nongsa dekat pos polisi; sup ikan murni atau campur dengan bihun yang sering habis menjelang siang.",
+   "desc_en": "A stall with no signboard in Nongsa near the police post; pure or mixed fish soup with vermicelli that often sells out by midday.",
+   "desc_zh": "Nongsa警岗附近没有招牌的小店；纯鱼汤或杂锦鱼汤配米粉，常常未到中午就售罄。",
    "price_tier": "$",
    "price_idr": "Rp30.000–35.000",
    "payments": [
@@ -23522,10 +23520,10 @@
    "subcategory": [
     "sup ikan"
    ],
-   "signature": "Sop ikan porsi melimpah",
-   "desc_id": "Sop ikan legendaris di kawasan Penuin dengan porsi ikan yang melimpah, buka dari pagi sampai malam.",
-   "desc_en": "A legendary fish soup in the Penuin area with generous portions of fish, open from morning to night.",
-   "desc_zh": "Penuin一带的传奇鱼汤店，鱼料分量十足，从早营业到晚。",
+   "signature": "Sup ikan porsi melimpah",
+   "desc_id": "Sup ikan di kawasan Penuin dengan porsi ikan yang melimpah, buka dari pagi sampai malam.",
+   "desc_en": "Fish soup in the Penuin area with generous portions of fish, open from morning to night.",
+   "desc_zh": "Penuin一带的鱼汤店，鱼料分量十足，从早营业到晚。",
    "price_tier": "$$",
    "price_idr": null,
    "payments": [
@@ -34066,7 +34064,7 @@
   "kelurahan": null,
   "alamat": "Batu Ampar",
   "lat": 1.163,
-  "lng": 104,
+  "lng": 104.0,
   "status_koordinat": "perlu_cek_ulang",
   "catatan_koordinat": "Akurasi menurut seed: ESTIMASI-KASAR. Label tabel: 🧭. Semua titik 🧭 harus dicek di OSM sebelum dirilis.",
   "jam_layanan": null,

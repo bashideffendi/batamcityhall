@@ -91,6 +91,7 @@
 .bch-tk-tombol-baris {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--bch-space-2);
 }
 .bch-tk-tombol-baris .bch-btn:disabled {
@@ -99,8 +100,10 @@
 }
 .bch-tk-tautan {
   justify-self: start;
+  min-width: 44px;
   min-height: 44px;
   padding: 0;
+  text-align: start;
   background: none;
   border: 0;
   color: var(--bch-ink);
@@ -111,6 +114,10 @@
 }
 .bch-tk-tautan:hover {
   color: var(--bch-accent);
+}
+.bch-tk-tautan:disabled {
+  color: var(--bch-ink-muted);
+  cursor: default;
 }
 .bch-tk-saring {
   display: flex;
@@ -208,7 +215,7 @@
   cursor: pointer;
 }
 .bch-adm-titik button:hover {
-  background: var(--bch-paper-2);
+  background: var(--bch-paper);
 }
 .bch-adm-titik button[aria-current="true"] {
   background: var(--bch-paper-3);
@@ -222,7 +229,7 @@
   border: var(--bch-stroke-base) solid var(--bch-rule-strong);
   border-radius: var(--bch-radius-1);
   overflow: hidden;
-  background: var(--bch-paper-2);
+  background: var(--bch-paper);
 }
 .bch-adm-pin {
   width: 18px;

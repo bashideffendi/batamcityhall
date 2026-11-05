@@ -99,7 +99,7 @@
 /* Strip perhentian */
 .mural-strip {
   overflow-x: auto;
-  background: var(--bch-paper-2);
+  background: var(--bch-paper);
   border-bottom: var(--bch-stroke-base) solid var(--bch-rule);
 }
 .mural-strip ol {
@@ -214,7 +214,7 @@
   cursor: pointer;
 }
 .mural-daftar button:hover {
-  background: var(--bch-paper-2);
+  background: var(--bch-paper);
 }
 .mural-daftar button:focus-visible {
   outline: 2px solid var(--bch-focus);

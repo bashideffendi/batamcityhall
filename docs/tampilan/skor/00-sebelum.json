@@ -1,0 +1,1575 @@
+{
+ "label": "00-sebelum",
+ "waktu": "2026-11-05T05:30:16.640Z",
+ "hasil": [
+  {
+   "alamat": "/",
+   "nama": "Beranda",
+   "skor": 4,
+   "butir": {
+    "1": "71% teks di dalam kotak",
+    "4": "belum dicek ulang",
+    "6": "Itik sedang berbaris, Balai warga, bukan balai kota",
+    "7": "Cek langsung, bukan situs resmi, layanan resmi, 1 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 71,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [
+     "belum dicek ulang"
+    ],
+    "satuKata": [],
+    "jenaka": [
+     "Itik sedang berbaris",
+     "Balai warga, bukan balai kota"
+    ],
+    "tautanGo": 1,
+    "sebutan": [
+     "Cek langsung",
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Balai warga, bukan balai kota.",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cuaca",
+   "nama": "Cuaca dan Laut",
+   "skor": null,
+   "butir": {
+    "catatan": "halaman belum ada"
+   }
+  },
+  {
+   "alamat": "/cuaca/hujan",
+   "nama": "Radar Hujan",
+   "skor": 2,
+   "butir": {
+    "1": "100% teks di dalam kotak",
+    "7": "bukan situs resmi, layanan resmi, 5 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 100,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 5,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Langit & Laut",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cuaca/gelombang",
+   "nama": "Tinggi Gelombang",
+   "skor": 2,
+   "butir": {
+    "1": "100% teks di dalam kotak",
+    "7": "bukan situs resmi, layanan resmi, 5 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 100,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 5,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Langit & Laut",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cuaca/cctv",
+   "nama": "CCTV Lalu Lintas",
+   "skor": 3,
+   "butir": {
+    "1": "100% teks di dalam kotak",
+    "6": "Itik sedang berbaris",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 100,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [
+     "Itik sedang berbaris"
+    ],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cuaca/peringatan",
+   "nama": "Peringatan Dini Cuaca",
+   "skor": 2,
+   "butir": {
+    "1": "80% teks di dalam kotak",
+    "7": "Sumber:, bukan situs resmi, layanan resmi, 2 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 80,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 2,
+    "sebutan": [
+     "Sumber:",
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Peringatan dini cuaca",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cuaca/gempa",
+   "nama": "Gempa Terkini",
+   "skor": 1,
+   "butir": {
+    "7": "Sumber:, bukan situs resmi, layanan resmi, 2 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 5,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 2,
+    "sebutan": [
+     "Sumber:",
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Gempa terkini",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/makan",
+   "nama": "Makan",
+   "skor": 3,
+   "butir": {
+    "1": "88% teks di dalam kotak",
+    "2": "17 objek berlabel ganda",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 88,
+    "labelGanda": 17,
+    "kotakCatatan": 1,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Eat well in Batam, without getting lost.",
+    "utamaTerlihat": true,
+    "adaCari": true,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/makan/peta",
+   "nama": "Makan: peta",
+   "skor": 1,
+   "butir": {
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 42,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Map",
+    "utamaTerlihat": true,
+    "adaCari": true,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/makan/daftar",
+   "nama": "Makan: daftar",
+   "skor": 3,
+   "butir": {
+    "1": "99% teks di dalam kotak",
+    "2": "67 objek berlabel ganda",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 99,
+    "labelGanda": 67,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "All places",
+    "utamaTerlihat": true,
+    "adaCari": true,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/makan/kategori",
+   "nama": "Makan: kategori",
+   "skor": 2,
+   "butir": {
+    "1": "85% teks di dalam kotak",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 85,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Browse categories",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/makan/jalur",
+   "nama": "Makan: jalur",
+   "skor": 2,
+   "butir": {
+    "1": "88% teks di dalam kotak",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 88,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Food trails",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/makan/jalur/halal-nagoya",
+   "nama": "Makan: satu jalur",
+   "skor": 3,
+   "butir": {
+    "1": "68% teks di dalam kotak",
+    "2": "4 objek berlabel ganda",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 68,
+    "labelGanda": 4,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Halal Food Trail — Nagoya",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/makan/tempat/golden-prawn-933",
+   "nama": "Makan: detail tempat",
+   "skor": 2,
+   "butir": {
+    "2": "2 objek berlabel ganda",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 43,
+    "labelGanda": 2,
+    "kotakCatatan": 1,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Golden Prawn 933",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/makan/tersimpan",
+   "nama": "Makan: tersimpan",
+   "skor": 1,
+   "butir": {
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 3,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Saved places",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/makan/tentang",
+   "nama": "Makan: tentang",
+   "skor": 2,
+   "butir": {
+    "2": "1 objek berlabel ganda",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 10,
+    "labelGanda": 1,
+    "kotakCatatan": 1,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "About the Food Counter",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/tukang",
+   "nama": "Tukang Langganan",
+   "skor": 3,
+   "butir": {
+    "1": "73% teks di dalam kotak",
+    "3": "3 kotak catatan",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 73,
+    "labelGanda": 0,
+    "kotakCatatan": 3,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Tukang Langganan",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/tukang/rekomendasi",
+   "nama": "Kirim Rekomendasi",
+   "skor": 1,
+   "butir": {
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 33,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Kirim rekomendasi",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/jalan",
+   "nama": "Transportasi",
+   "skor": 5,
+   "butir": {
+    "1": "97% teks di dalam kotak",
+    "2": "9 objek berlabel ganda",
+    "3": "2 kotak catatan",
+    "4": "perlu cek ulang, data lama",
+    "7": "bukan situs resmi, layanan resmi, 1 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 97,
+    "labelGanda": 9,
+    "kotakCatatan": 2,
+    "catatanKerja": [
+     "perlu cek ulang",
+     "data lama"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 1,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Jalan-jalan",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/jalan/trans-batam",
+   "nama": "Trans Batam",
+   "skor": 3,
+   "butir": {
+    "2": "8 objek berlabel ganda",
+    "4": "perlu cek ulang, sumber sekunder, jam dari berita",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 38,
+    "labelGanda": 8,
+    "kotakCatatan": 1,
+    "catatanKerja": [
+     "perlu cek ulang",
+     "sumber sekunder",
+     "jam dari berita"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Trans Batam",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/jalan/trans-batam/k1",
+   "nama": "Koridor 1",
+   "skor": 3,
+   "butir": {
+    "2": "1 objek berlabel ganda",
+    "4": "sumber sekunder, jam dari berita, perlu cek ulang, lokasi belum diisi",
+    "7": "Sumber:, bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 9,
+    "labelGanda": 1,
+    "kotakCatatan": 1,
+    "catatanKerja": [
+     "sumber sekunder",
+     "jam dari berita",
+     "perlu cek ulang",
+     "lokasi belum diisi"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "Sumber:",
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "K1\n Sekupang – Batam Centre",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/jalan/peta",
+   "nama": "Peta Transportasi",
+   "skor": 2,
+   "butir": {
+    "4": "lokasi belum diisi",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 12,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [
+     "lokasi belum diisi"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Peta",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/jalan/feri",
+   "nama": "Feri",
+   "skor": 5,
+   "butir": {
+    "1": "97% teks di dalam kotak",
+    "2": "34 objek berlabel ganda",
+    "3": "6 kotak catatan",
+    "4": "perlu cek ulang, data lama",
+    "7": "bukan situs resmi, layanan resmi, 1 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 97,
+    "labelGanda": 34,
+    "kotakCatatan": 6,
+    "catatanKerja": [
+     "perlu cek ulang",
+     "data lama"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 1,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Feri",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/jalan/feri/panduan",
+   "nama": "Panduan Menyeberang",
+   "skor": 2,
+   "butir": {
+    "4": "perlu cek ulang",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 3,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [
+     "perlu cek ulang"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Panduan menyeberang",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/jalan/pompong",
+   "nama": "Pompong",
+   "skor": 2,
+   "butir": {
+    "4": "perlu cek ulang",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 14,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [
+     "perlu cek ulang"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Pompong",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cerita",
+   "nama": "Cerita dan Budaya",
+   "skor": 2,
+   "butir": {
+    "1": "90% teks di dalam kotak",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 90,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Cerita & Budaya",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cerita/sejarah",
+   "nama": "Sejarah Batam",
+   "skor": 2,
+   "butir": {
+    "2": "50 objek berlabel ganda",
+    "7": "Sumber:, bukan situs resmi, layanan resmi, 14 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 14,
+    "labelGanda": 50,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 14,
+    "sebutan": [
+     "Sumber:",
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Sejarah Batam",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cerita/kampung-tua",
+   "nama": "Kampung Tua",
+   "skor": 2,
+   "butir": {
+    "4": "tidak menebak, lokasi belum diisi",
+    "7": "bukan situs resmi, layanan resmi, 7 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 8,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [
+     "tidak menebak",
+     "lokasi belum diisi"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 7,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Kampung Tua",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cerita/nama-jalan",
+   "nama": "Siapa di Balik Nama Jalan",
+   "skor": 2,
+   "butir": {
+    "3": "2 kotak catatan",
+    "7": "bukan situs resmi, layanan resmi, 7 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 39,
+    "labelGanda": 0,
+    "kotakCatatan": 2,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 7,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Siapa di Balik Nama Jalan",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cerita/kalender",
+   "nama": "Kalender Acara",
+   "skor": 4,
+   "butir": {
+    "1": "95% teks di dalam kotak",
+    "2": "11 objek berlabel ganda",
+    "4": "sumber sekunder",
+    "7": "Sumber:, bukan situs resmi, layanan resmi, 14 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 95,
+    "labelGanda": 11,
+    "kotakCatatan": 0,
+    "catatanKerja": [
+     "sumber sekunder"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 14,
+    "sebutan": [
+     "Sumber:",
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Kalender acara",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cerita/kamus",
+   "nama": "Kamus",
+   "skor": 2,
+   "butir": {
+    "2": "65 objek berlabel ganda",
+    "7": "Sumber:, bukan situs resmi, layanan resmi, 7 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 20,
+    "labelGanda": 65,
+    "kotakCatatan": 1,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 7,
+    "sebutan": [
+     "Sumber:",
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Kamus Melayu Kepri dan bahasa Batam",
+    "utamaTerlihat": true,
+    "adaCari": true,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cerita/budaya",
+   "nama": "Budaya Melayu",
+   "skor": 2,
+   "butir": {
+    "1": "84% teks di dalam kotak",
+    "7": "Sumber:, bukan situs resmi, layanan resmi, 5 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 84,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 5,
+    "sebutan": [
+     "Sumber:",
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Budaya Melayu",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cerita/komunitas",
+   "nama": "Komunitas",
+   "skor": 3,
+   "butir": {
+    "1": "73% teks di dalam kotak",
+    "6": "kami saja yang belum",
+    "7": "Sumber:, bukan situs resmi, layanan resmi, 7 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 73,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [
+     "kami saja yang belum"
+    ],
+    "tautanGo": 7,
+    "sebutan": [
+     "Sumber:",
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Komunitas",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/cerita/angka",
+   "nama": "Batam dalam Angka",
+   "skor": 1,
+   "butir": {
+    "7": "Sumber:, bukan situs resmi, layanan resmi, 18 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 5,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 18,
+    "sebutan": [
+     "Sumber:",
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Angka Batam",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/info",
+   "nama": "Informasi Warga",
+   "skor": 2,
+   "butir": {
+    "1": "83% teks di dalam kotak",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 83,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Info Warga",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/info/direktori",
+   "nama": "Direktori",
+   "skor": 4,
+   "butir": {
+    "1": "53% teks di dalam kotak",
+    "4": "perlu cek ulang, lokasi belum diisi",
+    "7": "bukan situs resmi, layanan resmi",
+    "9": "kolom cari di bawah layar pertama"
+   },
+   "rincian": {
+    "porsiKotak": 53,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [
+     "perlu cek ulang",
+     "lokasi belum diisi"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Direktori",
+    "utamaTerlihat": true,
+    "adaCari": true,
+    "cariTerlihat": false,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/info/direktori/kesehatan",
+   "nama": "Direktori: kategori",
+   "skor": 4,
+   "butir": {
+    "1": "97% teks di dalam kotak",
+    "2": "5 objek berlabel ganda",
+    "4": "belum dicek ulang, lokasi belum diisi, perlu cek ulang",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 97,
+    "labelGanda": 5,
+    "kotakCatatan": 0,
+    "catatanKerja": [
+     "belum dicek ulang",
+     "lokasi belum diisi",
+     "perlu cek ulang"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Kesehatan",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/info/kecamatan/batam-kota",
+   "nama": "Kecamatan",
+   "skor": 4,
+   "butir": {
+    "1": "81% teks di dalam kotak",
+    "2": "1 objek berlabel ganda",
+    "4": "belum dicek ulang, lokasi belum diisi, perlu cek ulang",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 81,
+    "labelGanda": 1,
+    "kotakCatatan": 0,
+    "catatanKerja": [
+     "belum dicek ulang",
+     "lokasi belum diisi",
+     "perlu cek ulang"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Kecamatan Batam Kota",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/info/darurat",
+   "nama": "Nomor Darurat",
+   "skor": 3,
+   "butir": {
+    "3": "3 kotak catatan",
+    "4": "belum diverifikasi",
+    "7": "bukan situs resmi, layanan resmi, 1 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 32,
+    "labelGanda": 0,
+    "kotakCatatan": 3,
+    "catatanKerja": [
+     "belum diverifikasi"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 1,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Nomor darurat",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/info/urusan-tanah",
+   "nama": "Urusan Tanah dan Rumah",
+   "skor": 3,
+   "butir": {
+    "3": "2 kotak catatan",
+    "4": "beta",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 5,
+    "labelGanda": 0,
+    "kotakCatatan": 2,
+    "catatanKerja": [
+     "beta"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Urusan tanah: ke mana untuk apa",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/info/bantuan-hukum",
+   "nama": "Bantuan Hukum",
+   "skor": 5,
+   "butir": {
+    "1": "75% teks di dalam kotak",
+    "2": "19 objek berlabel ganda",
+    "3": "2 kotak catatan",
+    "4": "belum dicek ulang, lokasi belum diisi, perlu cek ulang, beta",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 75,
+    "labelGanda": 19,
+    "kotakCatatan": 2,
+    "catatanKerja": [
+     "belum dicek ulang",
+     "lokasi belum diisi",
+     "perlu cek ulang",
+     "beta"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Bantuan hukum",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/info/jasa-dokumen",
+   "nama": "Jasa Dokumen dan Usaha",
+   "skor": 4,
+   "butir": {
+    "1": "56% teks di dalam kotak",
+    "2": "8 objek berlabel ganda",
+    "4": "belum dicek ulang, perlu cek ulang, lokasi belum diisi",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 56,
+    "labelGanda": 8,
+    "kotakCatatan": 0,
+    "catatanKerja": [
+     "belum dicek ulang",
+     "perlu cek ulang",
+     "lokasi belum diisi"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Jasa dokumen & usaha",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/info/berita",
+   "nama": "Berita Batam",
+   "skor": 1,
+   "butir": {
+    "7": "bukan situs resmi, layanan resmi, 11 tautan .go.id"
+   },
+   "rincian": {
+    "porsiKotak": 8,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 11,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Berita Batam",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/main",
+   "nama": "Ruang Main",
+   "skor": 2,
+   "butir": {
+    "1": "82% teks di dalam kotak",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 82,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Main-main",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/main/kartu-pos",
+   "nama": "Kartu Pos",
+   "skor": 1,
+   "butir": {
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 0,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Kartu pos",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/main/singapura-atau-nagoya",
+   "nama": "Singapura atau Nagoya",
+   "skor": 2,
+   "butir": {
+    "4": "tidak menebak",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 8,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [
+     "tidak menebak"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Ke Singapura atau ke Nagoya?",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/tentang",
+   "nama": "Tentang",
+   "skor": 2,
+   "butir": {
+    "6": "Balai warga, bukan balai kota",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 9,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [
+     "Balai warga, bukan balai kota"
+    ],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Balai warga, bukan balai kota",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/kolofon",
+   "nama": "Kolofon",
+   "skor": 1,
+   "butir": {
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 0,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Dari apa situs ini dibuat",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/koreksi",
+   "nama": "Kirim Koreksi",
+   "skor": 2,
+   "butir": {
+    "4": "belum dicek ulang",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 18,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [
+     "belum dicek ulang"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Ada yang salah?",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/kontribusi",
+   "nama": "Cara Berkontribusi",
+   "skor": 1,
+   "butir": {
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 0,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Balai warga diisi warga",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/privasi",
+   "nama": "Kebijakan Privasi",
+   "skor": 3,
+   "butir": {
+    "3": "2 kotak catatan",
+    "4": "draf",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 6,
+    "labelGanda": 0,
+    "kotakCatatan": 2,
+    "catatanKerja": [
+     "draf"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Privasi",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/syarat",
+   "nama": "Syarat Penggunaan",
+   "skor": 2,
+   "butir": {
+    "4": "draf, beta",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 5,
+    "labelGanda": 0,
+    "kotakCatatan": 1,
+    "catatanKerja": [
+     "draf",
+     "beta"
+    ],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Syarat penggunaan",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/tidak-ada-halaman-ini",
+   "nama": "404",
+   "skor": 2,
+   "butir": {
+    "6": "tenggelam",
+    "7": "bukan situs resmi, layanan resmi"
+   },
+   "rincian": {
+    "porsiKotak": 0,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [
+     "tenggelam"
+    ],
+    "tautanGo": 0,
+    "sebutan": [
+     "bukan situs resmi",
+     "layanan resmi"
+    ],
+    "mati": 0,
+    "judul": "Halaman ini tenggelam.",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  }
+ ]
+}

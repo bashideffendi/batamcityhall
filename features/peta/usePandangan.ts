@@ -2,7 +2,7 @@
 
 import type { Map as MapLibre } from "maplibre-gl";
 import { useEffect, useState } from "react";
-import type { Batas } from "./graticule";
+type Batas = { west: number; south: number; east: number; north: number };
 
 export type Pandangan = { zoom: number; lintang: number; batas: Batas; lebar: number; tinggi: number };
 

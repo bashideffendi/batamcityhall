@@ -4,7 +4,7 @@ import TersimpanMakan from "@/features/makan/components/TersimpanMakan";
 
 export const metadata: Metadata = {
   title: "Tersimpan",
-  description: "Tempat makan yang kamu simpan di perangkat ini. Bisa dibawa lewat tautan.",
+  description: "Daftar tempat makan yang tersimpan di peramban perangkat ini.",
 };
 
 // useSearchParams di halaman statis harus berada di dalam Suspense.

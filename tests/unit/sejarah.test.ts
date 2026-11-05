@@ -11,7 +11,6 @@ import {
   JUMLAH_MENTAH,
   metodePenduduk,
   PENDUDUK,
-  rincianStatus,
   tahunUrut,
   WISMAN,
 } from "@/features/sejarah/data";
@@ -21,6 +20,8 @@ import { keadaanPada, perhentian } from "@/features/sejarah/dulu-slider";
 import { ESAI } from "@/features/sejarah/esai";
 import { jalurBatang, seriPenduduk, titikLepas } from "@/features/sejarah/hitung-grafik";
 import { bacaanLanjutan, namaTempat, versiNama } from "@/features/sejarah/md";
+import { rapiTeks } from "@/features/sejarah/rapi";
+import { LABEL_STATUS } from "@/features/sejarah/Status";
 import { cariTempat } from "@/features/direktori/data";
 
 // Kata yang menandakan catatan penyusun lolos ke warga.
@@ -77,8 +78,19 @@ describe("garis waktu", () => {
     for (const id of Object.values(HALAMAN_TOKOH)) expect(ada.has(id), id).toBe(true);
   });
 
-  it("gw-t06 berstatus campuran, bukan kosong", () => {
-    expect(GARIS_WAKTU.find((e) => e.id === "gw-t06")!.status).toBe("campuran");
+  it("gw-t06 yang status datanya kosong tampil belum terverifikasi", () => {
+    expect(GARIS_WAKTU.find((e) => e.id === "gw-t06")!.status).toBe("belum_terverifikasi");
+  });
+
+  it("satu label per butir, dari empat label pedoman", () => {
+    expect(Object.values(LABEL_STATUS)).toEqual(["Tercatat", "Berbeda versi", "Belum terverifikasi", "Cerita rakyat"]);
+    for (const e of GARIS_WAKTU) expect(Object.keys(LABEL_STATUS), e.id).toContain(e.status);
+  });
+
+  it("bentuk untuk browser tanpa tautan sumber", () => {
+    expect(JSON.stringify(GARIS_WAKTU)).not.toMatch(/https?:|\.go\.id/);
+    expect(JSON.stringify(KARTU_DULU)).not.toMatch(/https?:|\.go\.id/);
+    expect(JSON.stringify(ARSIP)).not.toMatch(/https?:|\.go\.id/);
   });
 
   it("dua versi jumlah di kamp Jepang tampil berdampingan", () => {
@@ -87,12 +99,17 @@ describe("garis waktu", () => {
     expect(e.teks).toContain("68.000");
   });
 
-  it("rincian status memakai kata, bukan emoji", () => {
-    expect(rincianStatus("✅ (ada) / ❓ (URL item Leiden)")).toBe(
-      "terverifikasi (ada) / belum terverifikasi (URL item Leiden)",
-    );
-    expect(rincianStatus("✅")).toBeNull();
-    expect(rincianStatus(null)).toBeNull();
+  it("data mentah bebas emoji status", () => {
+    expect(JSON.stringify(mentah)).not.toMatch(/✅|⚠|❓/);
+    expect(JSON.stringify(perubahan)).not.toMatch(/✅|⚠|❓/);
+  });
+
+  it("teks data dirapikan: rentang, bulan, petik", () => {
+    expect(rapiTeks("Okt 1945 – Juli 1946")).toBe("Oktober 1945—Juli 1946");
+    expect(rapiTeks("Mar–Jul 1998")).toBe("Maret—Juli 1998");
+    expect(rapiTeks("17–18 Jan 2026")).toBe("17—18 Januari 2026");
+    expect(rapiTeks('menyebut "laksamana" Malaka')).toBe("menyebut “laksamana” Malaka");
+    expect(rapiTeks("Jan van Riebeeck")).toBe("Jan van Riebeeck");
   });
 
   it("tahun urut dari teks bebas", () => {
@@ -113,14 +130,14 @@ describe("asal nama dan bacaan", () => {
   it("8 versi, semua berlabel", () => {
     const v = versiNama();
     expect(v).toHaveLength(8);
-    for (const x of v) expect(x.status.length, x.versi).toBeGreaterThan(0);
-    expect(v.filter((x) => x.status.includes("cerita_rakyat"))).toHaveLength(5);
+    for (const x of v) expect(Object.keys(LABEL_STATUS), x.versi).toContain(x.status);
+    expect(v.filter((x) => x.status === "cerita_rakyat")).toHaveLength(5);
   });
 
   it("5 nama tempat dengan label", () => {
     const t = namaTempat();
     expect(t.map((x) => x.nama.split(" ")[0])).toEqual(["Nongsa", "Nagoya", "Hang", "Barelang", "Nama"]);
-    expect(t[0].status).toEqual(["cerita_rakyat", "perbedaan_versi"]);
+    expect(t[0].status).toBe("cerita_rakyat");
     expect(t[0].isi).not.toMatch(/[📜⚠]/u);
   });
 
@@ -219,7 +236,7 @@ describe("Batam Dulu", () => {
 
   it("gaya peta memuat titik tanpa mengubah lapisan dasar", () => {
     const dasar = { version: 8 as const, sources: {}, layers: [] };
-    const gaya = gayaDulu(dasar, "day", TITIK_DULU, {}, null);
+    const gaya = gayaDulu(dasar, "light", TITIK_DULU, {}, null);
     expect(gaya.layers.map((l) => l.id)).toContain("dulu-klik");
     expect(titikKeGeoJson(TITIK_DULU, {}).features).toHaveLength(TITIK_DULU.length);
     expect(titikKeGeoJson(TITIK_DULU, { "pf-09": "dalam" }).features.filter((f) => f.properties?.aktif)).toHaveLength(
@@ -235,9 +252,15 @@ describe("Batam Dulu", () => {
 });
 
 describe("Angka Batam", () => {
-  it("semua fakta tampil, masing-masing di satu kelompok", () => {
+  it("semua fakta berangka tampil, masing-masing di satu kelompok", () => {
     expect(SEMUA_FAKTA).toHaveLength(fakta.angka.length);
-    expect(KELOMPOK_FAKTA.flatMap((k) => k.baris.map((b) => b.id)).sort()).toEqual(fakta.angka.map((a) => a.id).sort());
+    // Dua baris tanpa angka tidak tampil (pedoman prinsip 7).
+    expect(KELOMPOK_FAKTA.flatMap((k) => k.baris.map((b) => b.id)).sort()).toEqual(
+      fakta.angka
+        .map((a) => a.id)
+        .filter((id) => id !== "fi-023" && id !== "fi-024")
+        .sort(),
+    );
     expect(LINIMASA).toHaveLength(fakta.linimasa_sejarah.length);
   });
 
@@ -250,15 +273,24 @@ describe("Angka Batam", () => {
         expect(`${b.label} ${b.angka} ${b.catatan ?? ""}`, b.indikator).not.toMatch(CATATAN_PENYUSUN);
   });
 
-  it("angka kosong ditulis belum ada, bukan nol", () => {
+  it("angka kosong tidak diisi nol", () => {
     for (const id of ["fi-023", "fi-024"]) {
       expect(SEMUA_FAKTA.find((b) => b.id === id)!.angka).toBe("Belum ada angka");
     }
   });
 
-  it("1,79 juta tampil berlabel beda versi dan dinyatakan tidak dipakai", () => {
+  it("status angka satu label atau kosong", () => {
+    for (const b of SEMUA_FAKTA) {
+      expect([null, "Tercatat", "Berbeda versi", "Belum terverifikasi"], b.id).toContain(b.status);
+    }
+    expect(SEMUA_FAKTA.find((x) => x.id === "fi-053")!.status).toBe("Berbeda versi");
+    expect(SEMUA_FAKTA.find((x) => x.id === "fi-045")!.status).toBeNull();
+    expect(JSON.stringify(fakta.angka)).not.toMatch(/✅|⚠|⌛/);
+  });
+
+  it("1,79 juta tampil berlabel berbeda versi dan dinyatakan tidak dipakai", () => {
     const b = SEMUA_FAKTA.find((x) => x.id === "fi-001")!;
-    expect(b.status).toBe("Beda versi");
+    expect(b.status).toBe("Berbeda versi");
     expect(b.catatan).toContain("Tidak kami pakai");
   });
 

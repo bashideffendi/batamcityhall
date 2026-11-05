@@ -79,6 +79,10 @@ async function tiruApi(page: Page, berita: Parameters<Page["route"]>[1]) {
   await page.route("**/api/radar-citra/**", (r) => r.fulfill({ status: 404, body: "" }));
   await page.route("**/api/ofs-frame", (r) => r.fulfill({ json: { frames: [], nowIndex: 0 } }));
   await page.route("**/api/perairan", (r) => r.fulfill({ json: { warns: [] } }));
+  await page.route("**/api/gempa", (r) => r.fulfill({ json: { status: "ok", diambil: "", gempa: [] } }));
+  await page.route("**/api/peringatan-cuaca**", (r) =>
+    r.fulfill({ json: { status: "ok", diambil: "", peringatan: [] } }),
+  );
   await page.route("**/api/conditions", (r) => r.fulfill({ json: {} }));
   await page.route("**/api/prakiraan", (r) => r.fulfill({ status: 503, json: {} }));
 }
@@ -86,7 +90,7 @@ async function tiruApi(page: Page, berita: Parameters<Page["route"]>[1]) {
 const tiruIsi = (page: Page, isi: BeritaResponse = ISI) => tiruApi(page, (r) => r.fulfill({ json: isi }));
 
 test.describe("halaman berita", () => {
-  test("daftar terbaru dulu, dikelompokkan menurut hari WIB", async ({ page }) => {
+  test("daftar terbaru dulu, tiap baris memuat media, tanggal, dan jam WIB", async ({ page }) => {
     await tiruIsi(page);
     await page.goto("/info/berita");
     await expect(page.getByRole("heading", { level: 1, name: "Berita Batam" })).toBeVisible();
@@ -96,17 +100,23 @@ test.describe("halaman berita", () => {
       "Judul hari sebelumnya dari A",
       "Judul tanpa waktu dari A",
     ]);
-    const hari = page.locator(".bch-berita-hari h2");
-    await expect(hari.nth(0)).toHaveText("Kamis, 5 November 2026");
-    await expect(hari.nth(1)).toHaveText("Rabu, 4 November 2026");
-    await expect(hari.nth(2)).toHaveText("Waktu tidak terbaca");
-    await expect(page.locator('li[data-sumber="b"] .bch-berita-meta')).toHaveText("Media B · 01.30 WIB");
+    // 18.30 UTC 4 Nov = 01.30 WIB 5 Nov: hari WIB, bukan hari UTC
+    await expect(page.locator('li[data-sumber="b"] .bch-berita-meta')).toHaveText(
+      "Media B · 5 November 2026, pukul 01.30 WIB",
+    );
+    await expect(page.locator(".bch-berita-meta").filter({ hasText: "4 November 2026" })).toHaveText(
+      "Media A · 4 November 2026, pukul 10.15 WIB",
+    );
+    // Berita tanpa waktu cukup menampilkan medianya.
+    await expect(page.locator(".bch-berita-daftar li").last().locator(".bch-berita-meta")).toHaveText("Media A");
   });
 
   test("hanya tautan ke artikel asli, dengan rel yang benar", async ({ page }) => {
     await tiruIsi(page);
     await page.goto("/info/berita");
-    await expect(page.getByText("Halaman ini hanya daftar tautan.")).toBeVisible();
+    await expect(page.locator(".bch-lede")).toHaveText(
+      "Judul berita terbaru tentang Batam dari media lokal. Setiap judul membuka artikel di situs medianya.",
+    );
     const tautan = page.getByRole("link", { name: "Judul pertama dari A" });
     await expect(tautan).toHaveAttribute("href", "https://media-a.example/1");
     await expect(tautan).toHaveAttribute("rel", "noopener noreferrer");
@@ -116,38 +126,30 @@ test.describe("halaman berita", () => {
     expect(new Set(rel)).toEqual(new Set(["noopener noreferrer"]));
   });
 
-  test("filter sumber", async ({ page }) => {
+  test("saringan media: Semua media dan media yang ada judulnya", async ({ page }) => {
     await tiruIsi(page);
     await page.goto("/info/berita");
-    const pilih = page.getByLabel("Sumber");
+    const pilih = page.getByLabel("Media");
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", "4");
+    await expect(pilih.locator("option")).toHaveText(["Semua media", "Media A", "Media B"]);
     await pilih.selectOption("b");
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", "1");
     await expect(page.locator(".bch-berita-daftar a")).toHaveText(["Judul lintas tengah malam dari B"]);
-    await pilih.selectOption("c");
-    await expect(page.getByText("Belum ada judul dari Media C.")).toBeVisible();
-    await expect(page.locator(".bch-berita-daftar a")).toHaveCount(0);
     await pilih.selectOption("");
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", "4");
   });
 
-  test("status per feed ditulis jujur, dengan kata", async ({ page }) => {
+  test("status sumber dan tautan situs media tidak tampil", async ({ page }) => {
     await tiruIsi(page);
     await page.goto("/info/berita");
-    const baris = (id: string) => page.locator(`tr[data-sumber="${id}"]`);
-    await expect(baris("a")).toContainText("Berhasil");
-    await expect(baris("a")).toContainText("Terakhir berhasil 5 Nov 2026");
-    await expect(baris("a")).toContainText("08.00 WIB");
-    await expect(baris("b")).toContainText("Gagal dimuat");
-    await expect(baris("b")).toContainText("Terakhir berhasil 5 Nov 2026");
-    await expect(baris("b")).toContainText("05.30 WIB");
-    await expect(baris("c")).toContainText("Gagal dimuat");
-    await expect(baris("c")).toContainText("Belum ada pengambilan yang berhasil tercatat.");
-    await expect(baris("c")).not.toContainText("Terakhir berhasil");
-    await expect(baris("d")).toContainText("Kosong");
+    await expect(page.locator(".bch-berita-daftar a").first()).toBeVisible();
+    await expect(page.locator("main")).not.toContainText("Status sumber");
+    await expect(page.locator("main")).not.toContainText("Terakhir berhasil");
+    await expect(page.locator("main")).not.toContainText("feed");
+    await expect(page.locator("tr[data-sumber]")).toHaveCount(0);
   });
 
-  test("semua feed gagal: 503 tetap menampilkan status tiap sumber", async ({ page }) => {
+  test("semua feed gagal: 503 menampilkan kalimat kosong", async ({ page }) => {
     const gagal: BeritaResponse = {
       diperbarui: ISI.diperbarui,
       item: [],
@@ -155,21 +157,20 @@ test.describe("halaman berita", () => {
     };
     await tiruApi(page, (r) => r.fulfill({ status: 503, json: gagal }));
     await page.goto("/info/berita");
-    await expect(page.getByText("Belum ada judul yang bisa ditampilkan.")).toBeVisible();
-    await expect(page.locator('tr[data-sumber="a"]')).toContainText("Gagal dimuat");
+    await expect(page.getByText("Belum ada berita baru tentang Batam hari ini.")).toBeVisible();
   });
 
   test("route tidak terjangkau: pesan gagal, halaman tetap berdiri", async ({ page }) => {
     await tiruApi(page, (r) => r.abort());
     await page.goto("/info/berita");
-    await expect(page.getByText("Daftar berita gagal dimuat.")).toBeVisible();
+    await expect(page.getByText("Terjadi masalah saat memuat data.")).toBeVisible();
     await expect(page.getByRole("heading", { level: 1, name: "Berita Batam" })).toBeVisible();
   });
 
   test("balasan bukan bentuk yang dikenal tidak dianggap berhasil", async ({ page }) => {
     await tiruApi(page, (r) => r.fulfill({ json: { apa: "ini" } }));
     await page.goto("/info/berita");
-    await expect(page.getByText("Daftar berita gagal dimuat.")).toBeVisible();
+    await expect(page.getByText("Terjadi masalah saat memuat data.")).toBeVisible();
   });
 
   test("judul sangat panjang tidak membuat scroll horizontal di 360 px", async ({ page }) => {
@@ -181,7 +182,6 @@ test.describe("halaman berita", () => {
     await page.setViewportSize({ width: 360, height: 740 });
     await page.goto("/info/berita");
     await expect(page.locator(".bch-berita-daftar a").first()).toBeVisible();
-    await expect(page.locator('tr[data-sumber="a"]')).toBeVisible();
     const lebih = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(lebih).toBeLessThanOrEqual(0);
   });
@@ -198,7 +198,7 @@ test.describe("halaman berita", () => {
       await tiruIsi(page);
       await page.emulateMedia({ colorScheme: tema });
       await page.goto("/info/berita");
-      await expect(page.locator("tr[data-sumber]").first()).toBeVisible();
+      await expect(page.locator(".bch-berita-daftar a").first()).toBeVisible();
       const hasil = await new AxeBuilder({ page }).analyze();
       expect(hasil.violations.map((v) => `${v.id}: ${v.nodes[0]?.target}`)).toEqual([]);
     });
@@ -218,14 +218,17 @@ test.describe("widget beranda", () => {
   };
   const widget = (page: Page) => page.locator(".bch-berita-widget");
 
-  test("paling banyak lima judul, sumber, waktu, dan tautan ke halaman berita", async ({ page }) => {
+  test("tiga judul, media, waktu, dan tautan ke halaman berita", async ({ page }) => {
     await tiruIsi(page, banyak);
     await page.goto("/");
-    await expect(widget(page).locator("li")).toHaveCount(5);
+    await expect(widget(page).locator("li")).toHaveCount(3);
     await expect(widget(page).locator("li a").first()).toHaveText("Judul nomor 1");
     await expect(widget(page).locator("li a").first()).toHaveAttribute("rel", "noopener noreferrer");
-    await expect(widget(page).locator(".bch-berita-meta").first()).toHaveText("Media A · 5 Nov 2026, 08.00 WIB");
-    await widget(page).getByRole("link", { name: "Semua judul dan status sumber" }).click();
+    // Hari ini ditulis jamnya, hari lain ditulis tanggalnya (3.2). Tes berjalan setelah tanggal contoh.
+    await expect(widget(page).locator(".bch-berita-meta").first()).toHaveText(
+      /^Media A · (pukul 08\.00 WIB|5 November 2026)$/,
+    );
+    await widget(page).getByRole("link", { name: "Semua berita" }).click();
     await expect(page).toHaveURL(/\/info\/berita$/);
   });
 
@@ -234,21 +237,21 @@ test.describe("widget beranda", () => {
     const res = await page.goto("/");
     const html = (await res?.text()) ?? "";
     expect(html).not.toContain("Judul nomor 1");
-    expect(html).toContain("Memuat judul");
+    expect(html).toContain("Memuat data");
   });
 
   test("gagal berarti satu kalimat pendek, beranda tetap utuh", async ({ page }) => {
     await tiruApi(page, (r) => r.abort());
     await page.goto("/");
-    await expect(widget(page)).toContainText("Judul berita belum bisa dimuat.");
+    await expect(widget(page)).toContainText("Berita tidak dapat dimuat saat ini.");
     await expect(page.getByRole("heading", { name: "Daftar loket" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Hari ini" })).toBeVisible();
   });
 
-  test("feed kosong semua: pesan pendek yang sama", async ({ page }) => {
+  test("tidak ada berita tentang Batam: kalimat kosong dari pedoman", async ({ page }) => {
     await tiruIsi(page, { ...ISI, item: [] });
     await page.goto("/");
-    await expect(widget(page)).toContainText("Judul berita belum bisa dimuat.");
+    await expect(widget(page)).toContainText("Belum ada berita baru tentang Batam hari ini.");
   });
 
   test("tidak ada scroll horizontal di 360 px", async ({ page }) => {
@@ -268,7 +271,7 @@ test.describe("widget beranda", () => {
       await tiruIsi(page, banyak);
       await page.emulateMedia({ colorScheme: tema });
       await page.goto("/");
-      await expect(widget(page).locator("li")).toHaveCount(5);
+      await expect(widget(page).locator("li")).toHaveCount(3);
       const hasil = await new AxeBuilder({ page }).include(".bch-berita-widget").analyze();
       expect(hasil.violations.map((v) => `${v.id}: ${v.nodes[0]?.target}`)).toEqual([]);
     });

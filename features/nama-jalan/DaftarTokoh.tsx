@@ -56,7 +56,7 @@ export default function DaftarTokoh({ tokoh, kelompok, grupStatus, catatanHikaya
               setS("");
             }}
           >
-            Hapus filter
+            Hapus saringan
           </button>
         )}
       </div>
@@ -97,7 +97,7 @@ export default function DaftarTokoh({ tokoh, kelompok, grupStatus, catatanHikaya
                     {t.masaHidup && <p className="bch-card-meta m-0">{t.masaHidup}</p>}
                     <p className="mt-2 mb-2">{t.ringkasan}</p>
                     <span className="bch-badge" data-tone={t.status.nada}>
-                      {t.status.hikayat && <IkonCeritaRakyat ukuran={12} />}
+                      {t.status.grup === "hikayat" && <IkonCeritaRakyat ukuran={12} />}
                       {t.status.teks}
                     </span>
                   </article>
@@ -107,7 +107,7 @@ export default function DaftarTokoh({ tokoh, kelompok, grupStatus, catatanHikaya
           </section>
         );
       })}
-      {tampil.length === 0 && <p>Tidak ada tokoh dengan filter ini.</p>}
+      {tampil.length === 0 && <p>Tidak ada tokoh untuk saringan ini.</p>}
     </>
   );
 }

@@ -135,10 +135,7 @@ export default function TersimpanMakan() {
     <div className="bch-page">
       <p className="bch-kicker m-0">{t("loket")}</p>
       <h1 className="mt-2">{t("saved_title")}</h1>
-      <p className="bch-lede">
-        {ready ? `${saved.length} ${t("results")}. ` : ""}
-        {t("saved_local")}
-      </p>
+      <p className="bch-lede">{t("saved_local")}</p>
       <TawaranTautan />
 
       {ready && saved.length === 0 && (

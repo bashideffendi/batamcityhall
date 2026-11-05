@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { fiturTempat, koleksi, lapisanMini, SUMBER } from "../lib/peta";
+import { ferryMap } from "../lib/data";
+import { fiturFeri, fiturTempat, koleksi, lapisanMini, SUMBER } from "../lib/peta";
 import type { PlaceWithGeo } from "../lib/types";
 import PetaMakan, { pasangLapisan, usePeta } from "./PetaMakan";
 
@@ -12,7 +13,12 @@ function PinMini({ place }: { place: PlaceWithGeo }) {
     () =>
       pasangLapisan(
         map,
-        { [SUMBER.mini]: { type: "geojson", data: koleksi([fiturTempat(place)]) } },
+        {
+          [SUMBER.mini]: {
+            type: "geojson",
+            data: koleksi(ferryMap[place.nearestFerryId] ? [fiturFeri(ferryMap[place.nearestFerryId]), fiturTempat(place)] : [fiturTempat(place)]),
+          },
+        },
         lapisanMini(temaAwal.current),
       ),
     [map, place],

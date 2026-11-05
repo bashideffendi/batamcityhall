@@ -74,6 +74,10 @@ async function tiruApi(
         }),
   );
   await page.route("**/api/ofs-frame", (r) => r.fulfill({ json: { frames: [], nowIndex: 0 } }));
+  await page.route("**/api/gempa", (r) => r.fulfill({ json: { status: "ok", diambil: "", gempa: [] } }));
+  await page.route("**/api/peringatan-cuaca**", (r) =>
+    r.fulfill({ json: { status: "ok", diambil: "", peringatan: [] } }),
+  );
   await page.route("**/api/conditions", (r) => r.fulfill({ json: {} }));
   await page.route("**/api/prakiraan", (r) => r.fulfill({ status: 503, json: {} }));
   await page.route("**/api/radar-citra/**", (r) => r.fulfill({ status: 404, body: "" }));
@@ -391,7 +395,7 @@ test.describe("alat GCP", () => {
 });
 
 test.describe("aksesibilitas dan tata letak", () => {
-  for (const tema of ["day", "night"] as const) {
+  for (const tema of ["light", "dark"] as const) {
     test(`axe bersih, tema ${tema}`, async ({ page }) => {
       await page.addInitScript((t) => localStorage.setItem("bch-theme", t), tema);
       await tiruApi(page, { hujan: true });

@@ -9,10 +9,10 @@
     "umum": "Rp5.000",
     "pelajar": "Rp2.500",
     "berlaku_tarif_pelajar_untuk": "pelajar, mahasiswa, serta anak-anak di bawah usia 12 tahun",
-    "kutipan_sumber": "Rp 5.000 untuk penumpang umum dan Rp 2.500 bagi pelajar, mahasiswa, serta anak-anak di bawah usia 12 tahun.",
+    "sumber_kutipan": "Rp 5.000 untuk penumpang umum dan Rp 2.500 bagi pelajar, mahasiswa, serta anak-anak di bawah usia 12 tahun.",
     "kutipan_oleh": "BatamToday (Paskalis Rianghepat, 3 Juli 2026)",
     "tarif_bandara": "Tarif ke bandara tidak ada tambahan.",
-    "teks_laporan": "**Tarif**: Rp5.000 umum, Rp2.500 pelajar. BatamToday (Paskalis Rianghepat, 3 Juli 2026) menulis tarifnya \"Rp 5.000 untuk penumpang umum dan Rp 2.500 bagi pelajar, mahasiswa, serta anak-anak di bawah usia 12 tahun.\" Tarif ke bandara tidak ada tambahan. Sejak 1 Januari 2023 pembayaran wajib nontunai, jadi artikel 2026 yang masih menyebut \"tunai di dalam bus\" kemungkinan menyalin template lama. **Jangan tampilkan opsi tunai.**",
+    "catatan_laporan": "**Tarif**: Rp5.000 umum, Rp2.500 pelajar. BatamToday (Paskalis Rianghepat, 3 Juli 2026) menulis tarifnya \"Rp 5.000 untuk penumpang umum dan Rp 2.500 bagi pelajar, mahasiswa, serta anak-anak di bawah usia 12 tahun.\" Tarif ke bandara tidak ada tambahan. Sejak 1 Januari 2023 pembayaran wajib nontunai, jadi artikel 2026 yang masih menyebut \"tunai di dalam bus\" kemungkinan menyalin template lama. **Jangan tampilkan opsi tunai.**",
     "sumber_url": [
       "https://batamtoday.com/news/trans-batam-koridor-7-resmi-layani-bandara-hang-nadim-tarif-mulai-rp-2500"
     ]
@@ -52,7 +52,7 @@
       "status_data": "perlu_cek_ulang",
       "alasan": "Kerja sama kartu uang elektronik ditandatangani 12 Juli 2024 dengan Bank Mandiri, BRI, BNI, BCA, dan PT Nusantara Global Inovasi, tapi sumber berita 2026 hanya konsisten menyebut BRIZZI dan QRIS."
     },
-    "teks_laporan": "**Cara bayar**: kartu BRIZZI (BRI), QRIS (LinkAja, GoPay, DANA, OVO, ShopeePay, AstraPay), dan m-banking. Kerja sama kartu uang elektronik ditandatangani 12 Juli 2024 dengan Bank Mandiri, BRI, BNI, BCA, dan PT Nusantara Global Inovasi. Artinya e-money Mandiri, TapCash BNI, dan Flazz BCA *seharusnya* diterima, tapi sumber berita 2026 hanya konsisten menyebut BRIZZI dan QRIS. Tandai `perlu_cek_ulang`.",
+    "catatan_laporan": "**Cara bayar**: kartu BRIZZI (BRI), QRIS (LinkAja, GoPay, DANA, OVO, ShopeePay, AstraPay), dan m-banking. Kerja sama kartu uang elektronik ditandatangani 12 Juli 2024 dengan Bank Mandiri, BRI, BNI, BCA, dan PT Nusantara Global Inovasi. Artinya e-money Mandiri, TapCash BNI, dan Flazz BCA *seharusnya* diterima, tapi sumber berita 2026 hanya konsisten menyebut BRIZZI dan QRIS. Tandai `perlu_cek_ulang`.",
     "sumber_url": [
       "https://mediacenter.batam.go.id/2022/12/15/bus-trans-batam-akan-menerapkan-pembayaran-non-tunai-tahun-2023/"
     ]
@@ -61,7 +61,7 @@
     "transfer_gratis": null,
     "temuan": "tidak ditemukan aturan transfer gratis",
     "asumsi_ui": "tiap naik = satu tarif sampai ada konfirmasi UPT",
-    "teks_laporan": "**Transit/pindah koridor**: tidak ditemukan aturan transfer gratis. Pola lama (era tiket kertas) adalah bayar ulang setiap naik bus baru. Asumsikan **tiap naik = satu tarif** sampai ada konfirmasi UPT.",
+    "catatan_laporan": "**Transit/pindah koridor**: tidak ditemukan aturan transfer gratis. Pola lama (era tiket kertas) adalah bayar ulang setiap naik bus baru. Asumsikan **tiap naik = satu tarif** sampai ada konfirmasi UPT.",
     "status_data": "perlu_cek_ulang"
   },
   "fasilitas": {
@@ -82,21 +82,21 @@
       "GPS"
     ],
     "aturan_operasional": "Bus tidak boleh mengetem di halte karena operator dibayar per kilometer (skema BTS).",
-    "teks_laporan": "**Fasilitas halte**: ada dua tipe, *halte bangunan* (atap dan tempat duduk) dan *bus stop* (hanya tiang rambu). Untuk peta, beri simbol berbeda. Bus baru dilengkapi AC, CCTV, dan GPS. Bus tidak boleh mengetem di halte karena operator dibayar per kilometer (skema BTS)."
+    "catatan_laporan": "**Fasilitas halte**: ada dua tipe, *halte bangunan* (atap dan tempat duduk) dan *bus stop* (hanya tiang rambu). Untuk peta, beri simbol berbeda. Bus baru dilengkapi AC, CCTV, dan GPS. Bus tidak boleh mengetem di halte karena operator dibayar per kilometer (skema BTS)."
   },
   "aksesibilitas": {
     "data_resmi": null,
     "teks_ui": "Belum ada informasi aksesibilitas resmi",
-    "teks_laporan": "**Aksesibilitas & layanan khusus**: tidak ditemukan data resmi soal lantai rendah, ramp, tarif lansia, atau layanan disabilitas. Tulis jujur di UI: \"Belum ada informasi aksesibilitas resmi\"."
+    "catatan_laporan": "**Aksesibilitas & layanan khusus**: tidak ditemukan data resmi soal lantai rendah, ramp, tarif lansia, atau layanan disabilitas. Tulis jujur di UI: \"Belum ada informasi aksesibilitas resmi\"."
   },
   "kontak": [
     {
-      "nama": "Call center Dishub/Trans Batam",
+      "nama": "Pusat panggilan Trans Batam",
       "telepon": "0822-8828-6064",
       "dipublikasikan_oleh": "Media Center Pemkot Batam, Desember 2022",
       "status_data": "perlu_cek_ulang",
       "catatan": "perlu_cek_ulang karena sudah lama",
-      "teks_laporan": "**Kontak**: call center Dishub/Trans Batam **0822-8828-6064** (dipublikasikan Media Center Pemkot Batam, Desember 2022, perlu_cek_ulang karena sudah lama).",
+      "catatan_laporan": "**Kontak**: call center Dishub/Trans Batam **0822-8828-6064** (dipublikasikan Media Center Pemkot Batam, Desember 2022, perlu_cek_ulang karena sudah lama).",
       "sumber_url": [
         "https://mediacenter.batam.go.id/2022/12/15/bus-trans-batam-akan-menerapkan-pembayaran-non-tunai-tahun-2023/"
       ]
@@ -143,11 +143,11 @@
     "catatan": "bukan layanan aktif",
     "item": [
       "lajur khusus BRT bercat merah",
-      "feeder pertama pada pertengahan 2027 (Dapur 12–Fanindo, Dapur 12–Pasar Melayu, kawasan Tiban)",
-      "8 halte baru pada 2026 yang lokasinya belum ditentukan",
-      "Koridor 10 (Tembesi–Barelang/Galang)"
+      "bus pengumpan pertama pada pertengahan 2027 (Dapur 12—Fanindo, Dapur 12—Pasar Melayu, kawasan Tiban)",
+      "delapan halte baru pada 2026, lokasinya belum ditentukan",
+      "Koridor 10 (Tembesi—Barelang/Galang)"
     ],
-    "teks_laporan": "**Rencana ke depan (bukan layanan aktif)**: lajur khusus BRT bercat merah, feeder pertama pada pertengahan 2027 (Dapur 12–Fanindo, Dapur 12–Pasar Melayu, kawasan Tiban), dan 8 halte baru pada 2026 yang lokasinya belum ditentukan.",
+    "catatan_laporan": "**Rencana ke depan (bukan layanan aktif)**: lajur khusus BRT bercat merah, feeder pertama pada pertengahan 2027 (Dapur 12–Fanindo, Dapur 12–Pasar Melayu, kawasan Tiban), dan 8 halte baru pada 2026 yang lokasinya belum ditentukan.",
     "sumber_url": [
       "https://ulasan.co/batam-siapkan-lajur-khusus-trans-batam-bercat-merah-dan-feeder-mulai-2027/",
       "https://www.terasbatam.id/trans-batam-siapkan-lajur-khusus-dan-10-koridor/"
@@ -156,7 +156,7 @@
   "konektivitas": [
     {
       "titik_penting": "Pelabuhan Batam Centre (feri internasional)",
-      "halte_terdekat": "Transferpoint Batam Center (±240 m dari terminal menurut Moovit)",
+      "halte_terdekat": "Transferpoint Batam Center (sekitar 240 m dari terminal)",
       "koridor": "K1, K2, K5, K6, K7",
       "status": "perlu_cek_ulang",
       "halte_id": [
@@ -164,7 +164,7 @@
       ]
     },
     {
-      "titik_penting": "Pelabuhan Sekupang (domestik/internasional)",
+      "titik_penting": "Pelabuhan Sekupang (domestik dan internasional)",
       "halte_terdekat": "Transferpoint Sekupang",
       "koridor": "K1, K3, K4",
       "status": "perlu_cek_ulang",
@@ -174,7 +174,7 @@
     },
     {
       "titik_penting": "Pelabuhan Harbour Bay",
-      "halte_terdekat": "Halte \"Harbourbay\" (Moovit)",
+      "halte_terdekat": "Halte Harbourbay",
       "koridor": "K5",
       "status": "perlu_cek_ulang (urutan K5 2026 tidak menyebutnya)",
       "halte_id": [
@@ -191,8 +191,8 @@
       ]
     },
     {
-      "titik_penting": "Pelabuhan Nongsa Pura",
-      "halte_terdekat": "Pelabuhan Nongsa / Teluk Mata Ikan",
+      "titik_penting": "Pelabuhan Nongsapura",
+      "halte_terdekat": "Pelabuhan Nongsa atau Teluk Mata Ikan",
       "koridor": "K7 (dan ujung K9)",
       "status": "perlu_cek_ulang",
       "halte_id": [
@@ -219,8 +219,8 @@
       ]
     },
     {
-      "titik_penting": "Mega Mall / One Batam Mall",
-      "halte_terdekat": "Mega Mall; Masjid Raya A (±108 m dari One Batam Mall menurut Moovit)",
+      "titik_penting": "Mega Mall dan One Batam Mall",
+      "halte_terdekat": "Mega Mall; Masjid Raya A (sekitar 108 m dari One Batam Mall)",
       "koridor": "K1, K2, K5, K6, K7",
       "status": "perlu_cek_ulang",
       "halte_id": [
@@ -251,7 +251,7 @@
     },
     {
       "titik_penting": "Kepri Mall",
-      "halte_terdekat": "Kepri Mall / Kepri Mall B",
+      "halte_terdekat": "Kepri Mall atau Kepri Mall B",
       "koridor": "K2, K6 (K8 lewat Simpang Kepri Mall)",
       "status": "dari daftar halte",
       "halte_id": [
@@ -259,7 +259,7 @@
       ]
     },
     {
-      "titik_penting": "Panbil Mall & kawasan industri",
+      "titik_penting": "Panbil Mall dan kawasan industri",
       "halte_terdekat": "Panbil Mukakuning; Kawasan Industri Panbil; Best Western Panbil",
       "koridor": "K2, K6",
       "status": "dari daftar halte",
@@ -269,7 +269,7 @@
       ]
     },
     {
-      "titik_penting": "Batamindo/Mukakuning",
+      "titik_penting": "Batamindo dan Mukakuning",
       "halte_terdekat": "Pintu 2/3/4 Mukakuning; Villa Mukakuning",
       "koridor": "K6, K2",
       "status": "dari daftar halte",
@@ -319,7 +319,7 @@
     },
     {
       "titik_penting": "UIB",
-      "halte_terdekat": "UIB A / UIB B",
+      "halte_terdekat": "UIB A atau UIB B",
       "koridor": "K1, K3",
       "status": "dari daftar halte",
       "halte_id": [
@@ -328,7 +328,7 @@
     },
     {
       "titik_penting": "Politeknik Negeri Batam",
-      "halte_terdekat": "Politeknik / Politeknik B",
+      "halte_terdekat": "Politeknik atau Politeknik B",
       "koridor": "K2, K6",
       "status": "dari daftar halte",
       "halte_id": [

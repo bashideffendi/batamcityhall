@@ -8,6 +8,7 @@ import {
   type Ingatan,
 } from "@/features/berita/muat";
 import { bacaFeed, bacaWaktu, bersihkanJudul, FeedRusak, tautanAman } from "@/features/berita/rss";
+import { tentangBatam } from "@/features/berita/saring";
 import { SUMBER_BERITA, type SumberBerita } from "@/features/berita/sumber";
 
 const RSS = `<?xml version="1.0" encoding="UTF-8"?>
@@ -276,7 +277,7 @@ const rssDari = (id: string, n: number) =>
   `<rss><channel>${Array.from(
     { length: n },
     (_, i) =>
-      `<item><title>${id} ${i}</title><link>https://${id}.id/${i}</link><pubDate>Wed, 04 Nov 2026 ${String(i % 24).padStart(2, "0")}:00:00 +0000</pubDate></item>`,
+      `<item><title>Batam ${id} ${i}</title><link>https://${id}.id/${i}</link><pubDate>Wed, 04 Nov 2026 ${String(i % 24).padStart(2, "0")}:00:00 +0000</pubDate></item>`,
   ).join("")}</channel></rss>`;
 
 describe("batas dan urutan", () => {
@@ -411,6 +412,97 @@ describe("muatBerita", () => {
     });
     expect(hasil.item).toEqual([]);
     expect(hasil.sumber.every((s) => s.status === "gagal")).toBe(true);
+  });
+});
+
+describe("saringan judul tentang Batam (pedoman 8.4)", () => {
+  it("kata kunci wilayah, 12 kecamatan, dan kawasan utama lolos", () => {
+    for (const judul of [
+      "Banjir rob di Batam meluas",
+      "BATAM: harga cabai naik",
+      "Gubernur Kepri meninjau pelabuhan",
+      "Nelayan Kepulauan Riau melaut lagi",
+      "Jembatan Barelang ditutup sementara",
+      "Warga Rempang menggelar musyawarah",
+      "Pulau Galang kedatangan wisatawan",
+      "Kantor Camat Bulang pindah",
+      "Feri ke Belakang Padang ditambah",
+      "Nongsa jadi tuan rumah lomba",
+      "Bintan buka rute baru",
+      "Tanjungpinang gelar festival",
+      "Hujan di Tanjung Pinang",
+      "Kemacetan di Sei Beduk",
+      "Sagulung menggelar bazar",
+      "Pasar Lubuk Baja direnovasi",
+      "Batu Ampar kembali banjir",
+      "Pembangunan di Batam Kota",
+      "Macet panjang di Nagoya",
+      "Pasar Jodoh ditata ulang",
+      "Halte baru di Tiban",
+      "Perbaikan jalan Batu Aji",
+      "Batuaji dilanda hujan",
+      "Kecelakaan di Sekupang",
+      "Feri Harbour Bay tertunda",
+      "Bengkong kekurangan air",
+      "Galangan di Tanjung Uncang sepi",
+      "Kawasan Muka Kuning ramai",
+    ]) {
+      expect(tentangBatam(judul), judul).toBe(true);
+    }
+  });
+
+  it("judul nasional dan internasional tidak lolos", () => {
+    for (const judul of [
+      "Presiden meresmikan bendungan di Jawa Tengah",
+      "Harga emas dunia naik lagi",
+      "Banjir besar melanda Jakarta",
+      "Pemilu Amerika Serikat memasuki babak akhir",
+    ]) {
+      expect(tentangBatam(judul), judul).toBe(false);
+    }
+  });
+
+  it("kata umum yang mirip nama tempat tidak lolos", () => {
+    for (const judul of [
+      "Warga galang dana untuk korban banjir",
+      "Galang Dana untuk Korban Gempa",
+      "Menggalang kekuatan menjelang pemilu",
+      "Kisah artis menemukan jodoh",
+      "Rezeki tiban bagi petani kopi",
+      "Batamnews berganti alamat",
+    ]) {
+      expect(tentangBatam(judul), judul).toBe(false);
+    }
+  });
+
+  it("muatBerita membuang judul di luar Batam sebelum dibatasi per sumber", async () => {
+    const nasional = Array.from(
+      { length: 15 },
+      (_, i) =>
+        `<item><title>Berita nasional ${i}</title><link>https://a.id/n${i}</link><pubDate>Wed, 04 Nov 2026 20:00:00 +0000</pubDate></item>`,
+    ).join("");
+    const lokal =
+      "<item><title>Batam menggelar festival</title><link>https://a.id/b</link><pubDate>Wed, 04 Nov 2026 01:00:00 +0000</pubDate></item>";
+    const hasil = await muatBerita({
+      sumber: [sumber("a")],
+      ambilTeks: async () => `<rss><channel>${nasional}${lokal}</channel></rss>`,
+      ingatan: new Map(),
+      now: NOW,
+    });
+    expect(hasil.item.map((i) => i.judul)).toEqual(["Batam menggelar festival"]);
+    expect(hasil.sumber[0]).toMatchObject({ status: "ok", jumlah: 1 });
+  });
+
+  it("feed yang isinya berita nasional semua tercatat kosong, tidak diisi berita lain", async () => {
+    const hasil = await muatBerita({
+      sumber: [sumber("a")],
+      ambilTeks: async () =>
+        "<rss><channel><item><title>Harga emas naik</title><link>https://a.id/1</link></item></channel></rss>",
+      ingatan: new Map(),
+      now: NOW,
+    });
+    expect(hasil.item).toEqual([]);
+    expect(hasil.sumber[0]).toMatchObject({ status: "kosong", jumlah: 0 });
   });
 });
 

@@ -1,26 +1,22 @@
 import Link from "next/link";
-import { LABEL_CONTOH, teksBulan, teksTerakhirDicek, type TukangPublik } from "./aturan";
-import { namaJasa } from "./kategori";
+import { LABEL_CONTOH, tautanTelepon, teksBulan, teksTerakhirDiperiksa, type TukangPublik } from "./aturan";
+import { namaJasa, teksTag } from "./kategori";
 import TombolKartu from "./TombolKartu";
 
-// Kartu label museum, pola yang sama dengan features/direktori/KartuTempat.tsx. Tanpa rating bintang.
+// Kartu tukang mengikuti PEDOMAN 3.5. Pola sama dengan features/direktori/KartuTempat.tsx. Tanpa rating bintang.
 export default function KartuTukang({ t, contoh }: { t: TukangPublik; contoh: boolean }) {
+  const diperiksa = teksTerakhirDiperiksa(t.terakhirDicek);
+  const telepon = t.kontak ? tautanTelepon(t.kontak) : null;
+
   return (
     <article className="bch-card h-full" data-tukang={t.id}>
-      <p className="bch-kicker-row bch-kicker m-0">
-        <span>{namaJasa(t.jasa)}</span>
-      </p>
       <h3>{t.nama}</h3>
       <p className="bch-card-loc">
-        {t.areaKecamatan.join(", ")}
+        {namaJasa(t.jasa)} · {t.areaKecamatan.join(", ")}
         {t.areaCatatan ? `, ${t.areaCatatan}` : ""}
       </p>
       <hr className="bch-card-rule" />
       <div className="bch-rebung-mini" aria-hidden="true" />
-
-      <p className="bch-tk-jumlah m-0" data-jumlah-rekomendasi={t.jumlahRekomendasi}>
-        Direkomendasikan {t.jumlahRekomendasi} warga
-      </p>
 
       <ul className="bch-tk-cerita">
         {t.cerita.map((c, i) => (
@@ -31,31 +27,20 @@ export default function KartuTukang({ t, contoh }: { t: TukangPublik; contoh: bo
         ))}
       </ul>
 
-      {(contoh || t.panggilan || t.tag.length > 0) && (
+      {t.tag.length > 0 && <p className="m-0 mt-2">{t.tag.map((g) => teksTag(g.teks)).join(" · ")}</p>}
+      {t.panggilan && <p className="m-0 mt-2">Bisa dipanggil ke rumah</p>}
+
+      {contoh && (
         <div className="bch-badges mt-2">
-          {contoh && (
-            <span className="bch-badge" data-tone="caution">
-              {LABEL_CONTOH}
-            </span>
-          )}
-          {t.panggilan && (
-            <span className="bch-badge" data-tone="info">
-              Bisa dipanggil ke rumah
-            </span>
-          )}
-          {t.tag.map((g) => (
-            <span key={g.teks} className="bch-badge">
-              {g.teks}
-              {g.jumlah > 1 ? ` · ${g.jumlah}` : ""}
-            </span>
-          ))}
+          <span className="bch-badge" data-tone="caution">
+            {LABEL_CONTOH}
+          </span>
         </div>
       )}
 
-      <p className="m-0 mt-2">{t.kontak ?? "Kontak belum diizinkan tampil."}</p>
-
-      <p className="bch-card-meta mt-2 mb-0">
-        {teksTerakhirDicek(t.terakhirDicek)}
+      <p className="bch-card-meta mt-2 mb-0" data-jumlah-rekomendasi={t.jumlahRekomendasi}>
+        Direkomendasikan {t.jumlahRekomendasi} warga
+        {diperiksa ? ` · ${diperiksa}` : ""}
         {t.masihBuka + t.sudahPindah > 0 && (
           <>
             <br />
@@ -63,6 +48,18 @@ export default function KartuTukang({ t, contoh }: { t: TukangPublik; contoh: bo
           </>
         )}
       </p>
+
+      {t.kontak &&
+        (telepon ? (
+          <p className="m-0 mt-2">
+            <a href={telepon} className="bch-btn" aria-label={`Hubungi ${t.nama}`}>
+              Hubungi
+            </a>{" "}
+            <span className="bch-data">{t.kontak}</span>
+          </p>
+        ) : (
+          <p className="m-0 mt-2">{t.kontak}</p>
+        ))}
 
       <TombolKartu id={t.id} nama={t.nama} />
 

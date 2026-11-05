@@ -1,20 +1,9 @@
 import Link from "next/link";
-import {
-  adalahProfesi,
-  atributPublik,
-  lencana,
-  lokasiTeks,
-  namaKategori,
-  labelSub,
-  teksDicek,
-  type Place,
-  jamPublik,
-} from "./data";
+import { labelSub, labelTempat, lokasiTeks, punyaHalaman, punyaTitik, statusBaris, type Place } from "./data";
 
-// Kartu label museum (research/05): kicker, nama, lokasi italic, garis, lalu fakta. Versi ringkas untuk
-// daftar; isi lengkap, sumber, dan kontak ada di halaman tempat.
-export function DaftarLencana({ p }: { p: Parameters<typeof lencana>[0] }) {
-  const isi = lencana(p);
+/** Paling banyak satu label, dan hanya untuk keadaan yang mengubah cara membaca barisnya. */
+export function DaftarLencana({ p }: { p: Parameters<typeof labelTempat>[0] }) {
+  const isi = labelTempat(p);
   if (!isi.length) return null;
   return (
     <div className="bch-badges mt-2">
@@ -27,50 +16,38 @@ export function DaftarLencana({ p }: { p: Parameters<typeof lencana>[0] }) {
   );
 }
 
+// Baris tempat (PEDOMAN 3.8, 4.5): nama, {jenis} · {kelurahan}, {kecamatan}, dan satu status di kanan. Hanya yang
+// ada isinya yang tampil. Tempat yang hanya punya nama tidak punya halaman, jadi namanya tidak ditautkan.
 export default function KartuTempat({ p }: { p: Place }) {
-  const atribut = atributPublik(p).slice(0, 3);
+  const lokasi = lokasiTeks(p);
+  const status = statusBaris(p);
+  const catatan = labelTempat(p).map((l) => l.teks);
+  const meta = [labelSub(p.subkategori), lokasi, ...catatan].filter(Boolean).join(" · ");
   return (
-    <article className="bch-card h-full">
-      <p className="bch-kicker-row bch-kicker m-0">
-        <span>{namaKategori(p.kategori)}</span>
-        <span>{labelSub(p.subkategori)}</span>
-      </p>
-      <h3>
-        <Link href={`/info/tempat/${p.id}`} prefetch={false}>
-          {p.nama}
-        </Link>
+    <article className="bch-baris">
+      <h3 className="nama">
+        {punyaHalaman(p) ? (
+          <Link href={`/info/tempat/${p.id}`} prefetch={false}>
+            {p.nama}
+          </Link>
+        ) : (
+          p.nama
+        )}
       </h3>
-      <p className="bch-card-loc">{lokasiTeks(p)}</p>
-      <hr className="bch-card-rule" />
-      <div className="bch-rebung-mini" aria-hidden="true" />
-      {p.alamat && <p className="m-0">{p.alamat}</p>}
-      {atribut.length > 0 && (
-        <dl className="bch-kartu-atribut">
-          {atribut.map((a) => (
-            <div key={a.label}>
-              <dt>{a.label}</dt>
-              <dd>{a.nilai}</dd>
-            </div>
-          ))}
-        </dl>
+      {status && (
+        <span className="bch-status" data-tone={p.atribut.igd_24jam === true ? "ok" : undefined}>
+          {status}
+        </span>
       )}
-      <p className="bch-card-meta mt-2 mb-0">
-        {p.jam_layanan && (
+      <p className="meta">
+        {meta}
+        {punyaTitik(p) && (
           <>
-            {jamPublik(p)}
-            <br />
+            {meta && " · "}
+            <b>Ada di peta</b>
           </>
         )}
-        {teksDicek(p)}
       </p>
-      <DaftarLencana p={p} />
-      {adalahProfesi(p) && (
-        <p className="mt-2 mb-0">
-          <Link href="/info/bantuan-hukum#cek-status" prefetch={false}>
-            Cek status
-          </Link>
-        </p>
-      )}
     </article>
   );
 }

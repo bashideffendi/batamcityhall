@@ -8,10 +8,26 @@ export type Zona = "Asia/Jakarta" | "Asia/Singapore" | "Asia/Kuala_Lumpur";
 export const AMBANG_DATA_LAMA_HARI = 60;
 
 const MENIT_UTC: Record<Zona, number> = { "Asia/Jakarta": 420, "Asia/Singapore": 480, "Asia/Kuala_Lumpur": 480 };
-const SINGKATAN: Record<Zona, string> = { "Asia/Jakarta": "WIB", "Asia/Singapore": "SGT", "Asia/Kuala_Lumpur": "MYT" };
+// Penulisan zona di tampilan mengikuti pedoman 2.6: "21.40 waktu Singapura".
+const SINGKATAN: Record<Zona, string> = {
+  "Asia/Jakarta": "WIB",
+  "Asia/Singapore": "waktu Singapura",
+  "Asia/Kuala_Lumpur": "waktu Malaysia",
+};
 
 export const singkatanZona = (z: Zona) => SINGKATAN[z];
-const zonaSah = (z: string | null | undefined): Zona | null => (z && z in MENIT_UTC ? (z as Zona) : null);
+export const zonaSah = (z: string | null | undefined): Zona | null => (z && z in MENIT_UTC ? (z as Zona) : null);
+
+/** Jam mesin "20:30" menjadi jam tampilan "20.30" (pedoman 2.6). */
+export const jamTitik = (t: string) => t.replace(/\b(\d{1,2}):(\d{2})\b/g, "$1.$2");
+
+export const kapital = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+
+/** Tautan jadwal yang boleh tampil. Situs pemerintah tidak ditautkan (pedoman 2.9). */
+export const tautanPublik = (url: string | null | undefined) => (!url || /\.go\.id(\/|$)/i.test(url) ? null : url);
+
+/** "tiap ±30 menit" menjadi "sekitar 30 menit sekali". */
+export const teksInterval = (t: string) => t.replace(/tiap\s*±?\s*(\d+)\s*menit/i, "sekitar $1 menit sekali");
 
 /** Bentuk baris di data/feri/jadwal.json. */
 export type JadwalMentah = {
@@ -101,24 +117,34 @@ export function bacaHari(teks: string | null | undefined): number[] | null {
 const ASAL_LUAR_BATAM = /^(HarbourFront|Tanah Merah|Stulang|Puteri Harbour|Tanjung Uban)/i;
 const PERLU_CEK = /perlu_cek/i;
 
-function pecahArah(arah: string): { asal: string; tujuan: string; dalamKurung: string | null } {
+export function pecahArah(arah: string): { asal: string; tujuan: string; dalamKurung: string | null } {
   if (arah.includes("<->")) {
     const [a, b] = arah.split("<->").map((s) => s.trim());
     return { asal: a, tujuan: b ?? "", dalamKurung: null };
   }
   const [kiri, kanan = ""] = arah.split("->").map((s) => s.trim());
   const kurung = kanan.match(/\(([^()]*)\)\s*$/);
-  return { asal: kiri, tujuan: kanan.replace(/\s*\([^()]*\)\s*$/, "").trim(), dalamKurung: kurung?.[1] ?? null };
+  return {
+    asal: kiri,
+    tujuan: kanan
+      .replace(/\s*\([^()]*\)\s*$/, "")
+      .replace(/\s+[–—-]\s+/g, "—")
+      .trim(),
+    dalamKurung: kurung?.[1] ?? null,
+  };
 }
 
 const BUKAN_OPERATOR = /^(WIB|SGT|MYT|contoh|jadwal lama|pompong reguler|speedboat)$/i;
 
-function operatorEntri(j: JadwalMentah, r: RuteMentah): string | null {
+const gabungOperator = (r: RuteMentah) =>
+  r.operator.length ? r.operator.join(", ").replace(/,\s*lainnya$/, " dan lainnya") : null;
+
+export function operatorEntri(j: JadwalMentah, r: RuteMentah): string | null {
   if (j.per_kapal?.length) return "ASDP";
   if (j.operator && j.operator !== "RoRo") return j.operator;
   const dariArah = pecahArah(j.arah).dalamKurung?.split(",")[0].trim();
   if (dariArah && !BUKAN_OPERATOR.test(dariArah) && dariArah !== "RoRo") return dariArah;
-  return r.operator.length ? r.operator.join(", ") : null;
+  return gabungOperator(r);
 }
 
 function bacaTrip(jam: string, keterangan: string | null | undefined, hariEntri: number[] | null): Trip {
@@ -155,14 +181,59 @@ function jendelaOperasi(j: JadwalMentah): EntriFeri["operasi"] {
   return { buka: m[1], tutup: m[2], interval: j.interval ?? j.hari?.match(/tiap\s+±?\d+\s*menit/i)?.[0] ?? null };
 }
 
-/** Teks hari tanpa istilah penyusun. "perlu_cek_ulang" sudah menjadi lencana sendiri. */
-function hariPublik(hari: string | null | undefined): string | null {
+const NAMA_HARI: Record<string, string> = {
+  min: "Minggu",
+  sen: "Senin",
+  sel: "Selasa",
+  rab: "Rabu",
+  kam: "Kamis",
+  jum: "Jumat",
+  sab: "Sabtu",
+};
+const NAMA_BULAN: Record<string, string> = {
+  Jan: "Januari",
+  Feb: "Februari",
+  Mar: "Maret",
+  Apr: "April",
+  Mei: "Mei",
+  Jun: "Juni",
+  Jul: "Juli",
+  Agu: "Agustus",
+  Sep: "September",
+  Okt: "Oktober",
+  Nov: "November",
+  Des: "Desember",
+};
+const RENTANG_BULAN =
+  /\b(Jan|Feb|Mar|Apr|Mei|Jun|Jul|Agu|Sep|Okt|Nov|Des)\s*[–—-]\s*(Jan|Feb|Mar|Apr|Mei|Jun|Jul|Agu|Sep|Okt|Nov|Des)\b/g;
+const TANGGAL_PENDEK = /\b(\d{1,2}) (Jan|Feb|Mar|Apr|Mei|Jun|Jul|Agu|Sep|Okt|Nov|Des) (\d{4})\b/g;
+const RENTANG_HARI = new RegExp(POLA_RENTANG.source, "gi");
+
+/**
+ * Teks hari untuk pembaca: tanpa istilah penyusun, hari dan bulan ditulis penuh, jam bertitik. Kolom mentahnya tetap
+ * dibaca mesin (bacaHari, jendelaOperasi), jadi perapian hanya di sini.
+ */
+export function hariPublik(hari: string | null | undefined, zona: Zona | null = null): string | null {
   if (!hari) return null;
+  const z = zona ? ` ${SINGKATAN[zona]}` : "";
   const t = hari
     .replace(/\s*\(tanda tidak terbaca[^)]*\)/i, "")
     .replace(/\s*\(?perlu_cek_ulang\)?/gi, "")
-    .trim();
-  return t || null;
+    .replace(/\s*\(contoh; sekitar mingguan\)/i, " (sekitar mingguan)")
+    .replace(/^data\s/i, "contoh ")
+    .replace(
+      /operasi\s+(\d{2}:\d{2})\s*[–—-]\s*(\d{2}:\d{2})\s+tiap\s+±?(\d+)\s*menit/i,
+      (_, a: string, b: string, n: string) => `operasi ${a}—${b}${z}, sekitar ${n} menit sekali`,
+    )
+    .replace(RENTANG_BULAN, (_, a: string, b: string) => `${NAMA_BULAN[a]}—${NAMA_BULAN[b]}`)
+    .replace(TANGGAL_PENDEK, (_, h: string, b: string, y: string) => `${h} ${NAMA_BULAN[b]} ${y}`)
+    .replace(/\b(Senin|Selasa|Rabu|Kamis|Jumat|Sabtu|Minggu) (\d{1,2} )/g, "$1, $2")
+    .replace(RENTANG_HARI, (_, a: string, b: string) => `${NAMA_HARI[a.toLowerCase()]}—${NAMA_HARI[b.toLowerCase()]}`)
+    .replace(/\bakhir pekan\/libur\b/, "akhir pekan atau hari libur")
+    .replace(/\b2x seminggu\b/, "dua kali seminggu")
+    .replace(/\btrip\b/g, "keberangkatan")
+    .replace(/±\s*/g, "sekitar ");
+  return jamTitik(t).trim() || null;
 }
 
 function jenisDari(j: JadwalMentah, zona: Zona | null): JenisJadwal {
@@ -199,7 +270,7 @@ export function normalisasi(
       asal: namaAsal,
       tujuan: r.tujuan,
       asalIds,
-      operator: r.operator.length ? r.operator.join(", ") : null,
+      operator: gabungOperator(r),
       zona: null,
       jenisJadwal: "belum_tersedia",
       trips: [],
@@ -210,7 +281,7 @@ export function normalisasi(
       contoh: false,
       terganggu: false,
       adaJadwalUsang: usang,
-      link: r.link_jadwal_resmi ?? null,
+      link: tautanPublik(r.link_jadwal_resmi),
     });
 
     if (!aktif.length) {
@@ -228,7 +299,7 @@ export function normalisasi(
       const { asal, tujuan: tujuanArah, dalamKurung } = pecahArah(j.arah);
       // Dua rute ke Tanjung Uban hanya beda kapal.
       const kapal = dalamKurung?.match(/speedboat|RoRo/i)?.[0];
-      const tujuan = kapal ? `${tujuanArah} (${kapal})` : tujuanArah;
+      const tujuan = kapal ? `${tujuanArah} (${kapal === "RoRo" ? kapal : "kapal cepat"})` : tujuanArah;
       const operator = operatorEntri(j, r);
       const trips = tripsEntri(j);
       hasil.push({
@@ -243,7 +314,7 @@ export function normalisasi(
         jenisJadwal,
         trips,
         operasi: jendelaOperasi(j),
-        hariTeks: hariPublik(j.hari),
+        hariTeks: hariPublik(j.hari, zona),
         tanggalData: j.tanggal_data ?? null,
         // Majestic: tanda hari di PDF tidak terbaca, jadi semua jamnya ditandai (jebakan g).
         perluCek:
@@ -254,7 +325,7 @@ export function normalisasi(
         contoh: /contoh|^data\s/i.test(j.hari ?? ""),
         terganggu: /suspended/i.test(j.catatan ?? ""),
         adaJadwalUsang: milik.length > aktif.length,
-        link: r.link_jadwal_resmi ?? null,
+        link: tautanPublik(r.link_jadwal_resmi),
       });
     }
   }
@@ -326,7 +397,20 @@ export const dataSudahLama = (tanggal: string | null, now: Date) => {
   return u === null || u > AMBANG_DATA_LAMA_HARI;
 };
 
-const BULAN = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+const BULAN = [
+  "Januari",
+  "Februari",
+  "Maret",
+  "April",
+  "Mei",
+  "Juni",
+  "Juli",
+  "Agustus",
+  "September",
+  "Oktober",
+  "November",
+  "Desember",
+];
 export function teksTanggal(t: string | null): string {
   const m = t?.match(/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/);
   if (!m) return "tanggal tidak tercatat";
@@ -334,6 +418,10 @@ export function teksTanggal(t: string | null): string {
   if (m[2]) return `${BULAN[Number(m[2]) - 1]} ${m[1]}`;
   return m[1];
 }
+
+/** Satu baris di bawah rute untuk jadwal yang sudah lama atau masih diragukan (pedoman 3.6). */
+export const catatanJadwalLama = (tanggal: string | null) =>
+  tanggal ? `Jadwal per ${teksTanggal(tanggal)}. Tanyakan kepada operator.` : "Tanyakan jadwal kepada operator.";
 
 // ---------- Perhitungan ----------
 
@@ -357,9 +445,18 @@ export type HasilFeri = EntriFeri & {
   perkiraan: boolean;
   menitLagi: number | null;
   berikutnya: string | null;
+  /** Keberangkatan paling awal besok, waktu lokal pelabuhan asal. */
+  pertamaBesok: string | null;
   catatanTrip: string | null;
   dataLama: boolean;
 };
+
+function hitungPertamaBesok(e: EntriFeri, now: Date): string | null {
+  if (e.jenisJadwal !== "jam" || !e.zona) return null;
+  const besok = (waktuDiZona(now, e.zona).hari + 1) % 7;
+  const jam = e.trips.filter((t) => !t.hari || t.hari.includes(besok)).map((t) => t.jam);
+  return jam.sort((a, b) => keMenit(a) - keMenit(b))[0] ?? null;
+}
 
 export function hitungSatu(e: EntriFeri, now: Date): HasilFeri {
   const dasar = {
@@ -369,6 +466,7 @@ export function hitungSatu(e: EntriFeri, now: Date): HasilFeri {
     perkiraan: false,
     menitLagi: null,
     berikutnya: null,
+    pertamaBesok: hitungPertamaBesok(e, now),
     catatanTrip: null,
     dataLama: dataSudahLama(e.tanggalData, now),
   };
@@ -436,16 +534,20 @@ export const keSingapura = (h: HasilFeri) => h.arah === "dari_batam" && /Harbour
 
 export type RingkasFeri = { judul: string; rincian: string; adaDataLama: boolean };
 
+const gabungDan = (daftar: string[]) =>
+  daftar.length < 3 ? daftar.join(" dan ") : `${daftar.slice(0, -1).join(", ")}, dan ${daftar[daftar.length - 1]}`;
+
 /**
- * Kalimat kotak Hari Ini. Hanya jam yang tidak ditandai perlu dicek, per terminal, supaya kalimat satu baris
- * tidak bersandar pada angka yang masih diragukan. Rincian lengkap ada di widget.
+ * Kalimat kotak Hari Ini, mengikuti templat Feri di pedoman 3.11. Hanya jam yang tidak diragukan, per terminal, supaya
+ * kalimat satu baris tidak bersandar pada angka yang belum pasti. Rincian lengkap ada di widget.
  */
 export function ringkasHariIni(hasil: HasilFeri[]): RingkasFeri {
-  const pasti = hasil.filter((h) => keSingapura(h) && h.jenisJadwal === "jam" && !h.perluCek && h.jam);
+  const sahih = hasil.filter((h) => keSingapura(h) && h.jenisJadwal === "jam" && !h.perluCek);
+  const pasti = sahih.filter((h) => h.jam);
   if (!pasti.length) {
     return {
       judul: "Jadwal feri ke Singapura belum tersedia.",
-      rincian: "Cek langsung ke operator.",
+      rincian: "Tanyakan jadwal kepada operator.",
       adaDataLama: false,
     };
   }
@@ -456,36 +558,69 @@ export function ringkasHariIni(hasil: HasilFeri[]): RingkasFeri {
   }
   const daftar = [...perAsal.values()].sort((a, b) => keMenit(b.jam as string) - keMenit(a.jam as string));
   const masih = daftar.filter((h) => h.status === "masih_ada");
-  const acuan = (masih[0] ?? daftar[0]).jam as string;
-  const sejam = (masih.length ? masih : daftar).filter((h) => h.jam === acuan).map((h) => h.asal);
-  const lain = daftar.filter((h) => !sejam.includes(h.asal)).map((h) => `${h.asal} ${h.jam}`);
-  const adaDataLama = daftar.some((h) => h.dataLama);
-  const judul = masih.length
-    ? `Ke Singapura terakhir ${acuan} WIB dari ${sejam.join(" dan ")}.`
-    : `Feri ke Singapura hari ini sudah habis. Terakhir ${acuan} WIB.`;
-  const bagian = [lain.length ? `${lain.join(", ")}.` : "", "Jadwal bisa berubah, cek operator."];
-  if (adaDataLama) bagian.push("Jadwal mungkin sudah berubah.");
-  return { judul, rincian: bagian.filter(Boolean).join(" "), adaDataLama };
+  const barisLama = daftar.find((h) => h.dataLama);
+  const catatanLama = barisLama ? catatanJadwalLama(barisLama.tanggalData) : "";
+
+  if (!masih.length) {
+    const besok = sahih
+      .flatMap((h) => (h.pertamaBesok ? [h.pertamaBesok] : []))
+      .sort((a, b) => keMenit(a) - keMenit(b))[0];
+    return {
+      judul: "Tidak ada lagi keberangkatan ke Singapura hari ini.",
+      rincian: [besok ? `Keberangkatan pertama besok pukul ${jamTitik(besok)} WIB.` : "", catatanLama]
+        .filter(Boolean)
+        .join(" "),
+      adaDataLama: !!barisLama,
+    };
+  }
+
+  const acuan = masih[0].jam as string;
+  const sejam = masih.filter((h) => h.jam === acuan).map((h) => h.asal);
+  const lain = daftar.filter((h) => !sejam.includes(h.asal)).map((h) => `${h.asal} ${jamTitik(h.jam as string)} WIB`);
+  return {
+    judul: `Feri terakhir ke Singapura hari ini: pukul ${jamTitik(acuan)} WIB dari ${gabungDan(sejam)}.`,
+    rincian: [lain.length ? `Terminal lain: ${lain.join(", ")}.` : "", catatanLama].filter(Boolean).join(" "),
+    adaDataLama: !!barisLama,
+  };
 }
+
+/** Isi baris angka Hari Ini: jam feri terakhir ke Singapura yang masih ada, atau jam pertama besok bila sudah habis. */
+export function barisFeriSingapura(hasil: HasilFeri[]): { jam: string | null; terminal: string; besok: string | null } | null {
+  const sahih = hasil.filter((h) => keSingapura(h) && h.jenisJadwal === "jam" && !h.perluCek);
+  const masih = sahih.filter((h) => h.jam && h.status === "masih_ada").sort((a, b) => keMenit(b.jam as string) - keMenit(a.jam as string));
+  if (!sahih.some((h) => h.jam)) return null;
+  if (masih.length) {
+    const acuan = masih[0].jam as string;
+    const terminal = [...new Set(masih.filter((h) => h.jam === acuan).map((h) => h.asal))];
+    return { jam: jamTitik(acuan), terminal: gabungDan(terminal), besok: null };
+  }
+  const besok = sahih.flatMap((h) => (h.pertamaBesok ? [h.pertamaBesok] : [])).sort((a, b) => keMenit(a) - keMenit(b))[0];
+  return { jam: null, terminal: "", besok: besok ? jamTitik(besok) : null };
+}
+
+const daftarJam = (h: HasilFeri) => {
+  const jam = h.trips.map((t) => jamTitik(t.jam)).join(", ");
+  return h.zona ? `${jam} ${singkatanZona(h.zona)}` : jam;
+};
 
 /** Kalimat status satu baris, selalu kata, tidak hanya warna. */
 export function teksStatus(h: HasilFeri): string {
   switch (h.status) {
     case "masih_ada":
-      return h.menitLagi === 0 ? "berangkat sekarang" : "masih ada";
+      return h.menitLagi === 0 ? "Berangkat sekarang" : "Masih ada";
     case "sudah_lewat":
-      return "sudah lewat";
+      return "Sudah lewat";
     case "tidak_hari_ini":
-      return `tidak berlayar hari ini${h.hariTeks ? ` (${h.hariTeks})` : ""}`;
+      return `Tidak berlayar hari ini${h.hariTeks ? ` (${h.hariTeks})` : ""}`;
     case "hari_tertentu":
-      return `jam ${h.trips.map((t) => t.jam).join(", ")}, ${h.hariTeks ?? "hari tertentu"}. Belum tentu hari ini`;
+      return `Pukul ${daftarJam(h)}, ${h.hariTeks ?? "hari tertentu"}. Belum tentu hari ini.`;
     case "bukan_harian":
-      return `bukan jadwal harian. Contoh: ${h.hariTeks ?? ""}, ${h.trips.map((t) => t.jam).join(", ")}`;
+      return `Bukan jadwal harian. Contoh: ${h.hariTeks ?? ""}, pukul ${daftarJam(h)}.`;
     case "teks":
-      return h.hariTeks ?? "tanpa jam tetap";
+      return h.hariTeks ? kapital(h.hariTeks) : "Tanpa jam tetap";
     case "zona_belum_jelas":
-      return "zona waktu belum jelas di sumber, lihat jadwal lengkap";
+      return "Lihat jadwal lengkap";
     case "belum_tersedia":
-      return "jadwal belum tersedia";
+      return "Jadwal belum tersedia";
   }
 }

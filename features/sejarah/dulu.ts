@@ -2,8 +2,9 @@
 import perubahan from "@/data/sejarah/perubahan_fisik.json";
 import arsip from "@/data/sejarah/sumber_arsip.json";
 import { cariTempat } from "@/features/direktori/data";
-import { keSumber, type KunciStatus, type Sumber } from "./data";
+import type { KunciStatus } from "./data";
 import type { KartuDulu, TitikDulu } from "./dulu-slider";
+import { rapiAtauKosong, rapiTeks } from "./rapi";
 
 // Acuan slider menurut laporan 15: versi BP Batam bila ada. Kalau tidak ada, dipakai rentang terlebar dari
 // `tahun_kunci`. Dekade ("1970-an") dibaca 1970 sampai 1979. Tes memastikan angkanya berasal dari tahun_kunci.
@@ -52,16 +53,15 @@ export const KARTU_DULU: KartuDulu[] = perubahan
     const r = RENTANG[p.id];
     return {
       id: p.id,
-      lokasi: p.lokasi,
-      dulu: p.dulu,
-      sekarang: p.sekarang,
-      tahunKunci: p.tahun_kunci,
+      lokasi: rapiTeks(p.lokasi),
+      dulu: rapiTeks(p.dulu),
+      sekarang: rapiTeks(p.sekarang),
+      tahunKunci: rapiTeks(p.tahun_kunci),
       status: p.status_verifikasi as KunciStatus,
       mulai: r.mulai,
       selesai: r.selesai,
-      versi: r.versi ?? null,
+      versi: rapiAtauKosong(r.versi),
       catatan: p.catatan,
-      sumber: keSumber(p.sumber_url),
     };
   })
   .sort((a, b) => a.mulai - b.mulai || a.selesai - b.selesai);
@@ -102,7 +102,6 @@ export type Arsip = {
   lisensi: string;
   kredit: string;
   pakaiUlang: { teks: string; nada: "ok" | "caution" | "danger" | "info" };
-  tautan: Sumber[];
 };
 
 export const ARSIP: Arsip[] = arsip.map((a) => ({
@@ -113,5 +112,4 @@ export const ARSIP: Arsip[] = arsip.map((a) => ({
   lisensi: a.lisensi,
   kredit: a.cara_kredit_tabel.replace(/"/g, ""),
   pakaiUlang: LABEL_PAKAI_ULANG[a.boleh_dipakai_ulang],
-  tautan: keSumber(a.titik_masuk_url),
 }));

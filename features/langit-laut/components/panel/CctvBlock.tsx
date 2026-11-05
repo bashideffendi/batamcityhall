@@ -18,7 +18,7 @@ export default function CctvBlock({ recent, dead, onPick, showHint }: Props) {
       {recent.length > 0 && (
         <div className="cam-recent">
           <div className="cam-lab" id="cam-recent-lab">
-            Baru Kamu Buka
+            Terakhir Dibuka
           </div>
           <div className="chip-row" role="group" aria-labelledby="cam-recent-lab">
             {recent.map((c) => {
@@ -26,14 +26,14 @@ export default function CctvBlock({ recent, dead, onPick, showHint }: Props) {
               return (
                 <button key={c.slug} className="cam-chip" data-failed={failed || undefined} onClick={() => onPick(c)}>
                   {c.name}
-                  {failed ? " · Gagal Tadi" : ""}
+                  {failed ? " · Kamera tidak aktif" : ""}
                 </button>
               );
             })}
           </div>
         </div>
       )}
-      {showHint && <p className="cam-hint">Ketuk Pin atau Angka untuk Memilih Kamera</p>}
+      {showHint && <p className="cam-hint">Ketuk titik di peta untuk memilih kamera.</p>}
     </div>
   );
 }

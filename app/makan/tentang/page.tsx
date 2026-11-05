@@ -3,7 +3,7 @@ import { TentangMakan } from "@/features/makan/components/HalamanMakan";
 
 export const metadata: Metadata = {
   title: "Tentang",
-  description: "Prinsip kurasi Loket Makan: tanpa listing berbayar, dan penafian status halal.",
+  description: "Cara memilih tempat, arti label, dan status halal di Loket Makan.",
 };
 
 export default function Tentang() {

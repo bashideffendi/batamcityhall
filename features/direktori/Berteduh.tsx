@@ -17,7 +17,7 @@ export function pilihBerteduh(baris: BarisIndeks[], kecamatanHujan: string[]): B
     .slice(0, MAKS);
 }
 
-// "Warung kopi buat berteduh" di detail hujan. Indeks hanya dimuat kalau radar memang melihat hujan di Batam.
+// Kedai kopi untuk berteduh di detail hujan. Indeks hanya dimuat kalau radar memang melihat hujan di Batam.
 export default function Berteduh({ echo, segar }: { echo: EchoSummary | null; segar: boolean }) {
   const [baris, setBaris] = useState<BarisIndeks[] | null>(null);
   const kecamatan = useMemo(
@@ -51,7 +51,7 @@ export default function Berteduh({ echo, segar }: { echo: EchoSummary | null; se
 
   return (
     <section className="bch-berteduh" aria-label="Tempat berteduh">
-      <h3>Buat berteduh</h3>
+      <h3>Tempat Berteduh</h3>
       <ul>
         {isi.map((b) => (
           <li key={b.id}>
@@ -62,7 +62,9 @@ export default function Berteduh({ echo, segar }: { echo: EchoSummary | null; se
           </li>
         ))}
       </ul>
-      <p>Hujan menurut perkiraan radar. Jam buka tempatnya belum tentu cocok, cek dulu.</p>
+      <p>
+        <em>Kopitiam</em> dan kafe di kecamatan yang sedang hujan menurut perkiraan radar.
+      </p>
     </section>
   );
 }

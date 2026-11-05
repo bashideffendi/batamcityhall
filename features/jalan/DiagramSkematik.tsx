@@ -5,7 +5,6 @@ import {
   hitungGap,
   kelompokDariHalte,
   KORIDOR,
-  labelGap,
   namaKelompok,
   POLA,
   slugKoridor,
@@ -24,7 +23,7 @@ export const SUMBER_SKEMA: SumberSkema = {
     const p = POLA.find((x) => x.id === POLA_GAP[id]);
     if (!p) return null;
     const n = hitungGap(p);
-    return n === null ? null : labelGap(n);
+    return n === null ? null : `sekitar ${n} halte belum tercatat`;
   },
 };
 
@@ -237,7 +236,7 @@ export function LegendaSkema() {
             >
               <span className="jl-chip-warna" aria-hidden="true" />
               <span className="bch-data">{k.id}</span> {k.nama}
-              {k.status === "rencana" && <span className="jl-chip-rencana">rencana</span>}
+              {k.status === "rencana" && <span className="jl-chip-rencana">Rencana</span>}
             </Link>
           </li>
         ))}
@@ -248,40 +247,14 @@ export function LegendaSkema() {
             <path d="M12 3V17" className="jl-kapsul-luar" strokeWidth="9" />
             <path d="M12 3V17" className="jl-kapsul-dalam" strokeWidth="4.5" />
           </Contoh>
-          Halte transfer: pindah koridor di sini
+          Halte transit
         </li>
         <li>
           <Contoh lebar={24}>
             <path d="M12 10V10.01" className="jl-kapsul-luar" strokeWidth="11" />
             <path d="M12 10V10.01" className="jl-kapsul-dalam" strokeWidth="6" />
           </Contoh>
-          Terminal atau ujung koridor
-        </li>
-        <li>
-          <Contoh>
-            <path d="M2 10H38" className="jl-legenda-garis" />
-            <path d="M12 10V15M20 10V15M28 10V15" className="jl-legenda-tick" />
-          </Contoh>
-          Tick: halte yang tercantum di sumber. Halte bangunan dan tiang rambu belum dibedakan, datanya belum ada per
-          halte
-        </li>
-        <li>
-          <Contoh>
-            <path d="M2 10H38" className="jl-legenda-garis" strokeDasharray="5 4" />
-          </Contoh>
-          Garis putus berwarna: ada halte yang tidak tercantum di sumber. Bukan berarti jalannya lurus
-        </li>
-        <li>
-          <Contoh>
-            <path d="M2 10H38" className="jl-rencana-garis" />
-          </Contoh>
-          Garis tipis putus abu: rencana, belum beroperasi
-        </li>
-        <li>
-          <Contoh>
-            <path d="M2 10H38" className="jl-feri-garis-contoh" />
-          </Contoh>
-          Garis tipis biru: feri
+          Ujung koridor
         </li>
         <li>
           <Contoh lebar={24}>
@@ -295,6 +268,12 @@ export function LegendaSkema() {
           </Contoh>
           Bandara
         </li>
+        <li>
+          <Contoh>
+            <path d="M2 10H38" className="jl-rencana-garis" />
+          </Contoh>
+          Koridor rencana
+        </li>
       </ul>
     </div>
   );
@@ -304,8 +283,8 @@ export function LegendaSkema() {
 // 0/45/90). CSS memilih salah satu, jadi tanpa JavaScript pun tampil.
 export default function DiagramSkematik({ sorot, legenda = true }: { sorot?: string; legenda?: boolean }) {
   const judul = sorot
-    ? `Diagram skematik Trans Batam, ${sorot} ditebalkan. Bukan peta: jarak dan arah tidak sesuai bumi.`
-    : "Diagram skematik Trans Batam, 9 koridor aktif dan 1 rencana. Bukan peta: jarak dan arah tidak sesuai bumi.";
+    ? `Diagram koridor Trans Batam, ${sorot} ditebalkan. Diagram ini menyederhanakan rute. Jarak dan arah tidak sesuai peta.`
+    : "Diagram koridor Trans Batam: sembilan koridor beroperasi dan satu koridor direncanakan. Diagram ini menyederhanakan rute. Jarak dan arah tidak sesuai peta.";
   return (
     <figure className="jl-skema" data-sorot={sorot}>
       <div className="jl-skema-kanvas">
@@ -313,8 +292,7 @@ export default function DiagramSkematik({ sorot, legenda = true }: { sorot?: str
         <Svg d={HP} sorot={sorot} judul={judul} />
       </div>
       <figcaption className="jl-catatan-kecil">
-        Diagram, bukan peta. Jarak dan arah tidak sesuai bumi. Di layar kecil diagram diputar: Sekupang di atas, Punggur
-        di bawah. Satu jalur per koridor, arah pergi dan balik yang berbeda ada di halaman tiap koridor.
+        Diagram ini menyederhanakan rute. Jarak dan arah tidak sesuai peta.
       </figcaption>
       {legenda && <LegendaSkema />}
     </figure>

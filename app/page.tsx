@@ -1,56 +1,86 @@
+import Image from "next/image";
 import Link from "next/link";
+import ceritaPilihan from "@/data/beranda/cerita_pilihan.json";
 import BeritaWidget from "@/features/berita/BeritaWidget";
+import { TEMPAT } from "@/features/direktori/data";
 import HariIniMuat from "@/features/hari-ini/HariIniMuat";
+import { jenisDari } from "@/features/peta/jenis-tempat";
 import PetaMuat from "@/features/peta/PetaMuat";
-import { LOKET, LOKET_DIBUKA, SITE_TAGLINE, type Loket } from "@/lib/site";
+import { LOKET } from "@/lib/site";
+import "@/features/hari-ini/beranda.css";
 
-function IsiKartu({ loket, dibuka }: { loket: Loket; dibuka: boolean }) {
-  return (
-    <>
-      <div className="bch-kicker-row bch-kicker">
-        <span>Loket {loket.nomor}</span>
-        {!dibuka && <span>Belum dibuka</span>}
-      </div>
-      <h3>{loket.nama}</h3>
-      <hr className="bch-card-rule" />
-      <p className="m-0">{loket.lede}</p>
-    </>
-  );
-}
+// Jumlah dihitung dari data saat build (PEDOMAN 5.3).
+const JUMLAH_BERTITIK = TEMPAT.filter((p) => p.lat != null && p.lng != null && jenisDari(p.kategori, p.subkategori)).length;
+const JUMLAH_HOTEL = TEMPAT.filter((p) => p.kategori === "akomodasi").length;
 
 export default function Beranda() {
   return (
-    <>
-      <PetaMuat />
-      <div className="bch-page">
-        <h1 className="bch-display m-0">{SITE_TAGLINE}.</h1>
-        <p className="bch-lede">
-          Peta laut, hujan, feri, direktori, cerita. Tanpa iklan, tanpa listing berbayar. Sebagian besar datanya belum
-          dicek ulang di lapangan, dan kami menulisnya terang-terangan.
-        </p>
-        <HariIniMuat />
-        <BeritaWidget />
-        <div className="bch-rebung" aria-hidden="true" />
-        <h2 className="mb-5">Daftar loket</h2>
-        <ol className="bch-grid">
-          {LOKET.map((l) => {
-            const dibuka = LOKET_DIBUKA.includes(l.nomor);
-            return (
-              <li key={l.nomor}>
-                {dibuka ? (
-                  <Link href={l.href} className="bch-card h-full">
-                    <IsiKartu loket={l} dibuka />
-                  </Link>
-                ) : (
-                  <div className="bch-card h-full">
-                    <IsiKartu loket={l} dibuka={false} />
-                  </div>
-                )}
-              </li>
-            );
-          })}
+    <div className="br-halaman">
+      <HariIniMuat />
+
+      <section className="br-seksi" aria-labelledby="br-tempat">
+        <div className="bch-kepala-bagian">
+          <div>
+            <p className="bch-kicker bch-penanda-biru m-0">Peta</p>
+            <h2 id="br-tempat">Cari tempat di Batam</h2>
+          </div>
+          <p>
+            Pilih jenis tempat yang ingin ditampilkan. Setiap jenis punya ikon sendiri. Saat ini {JUMLAH_BERTITIK} tempat
+            sudah punya titik lokasi; sisanya sedang dilengkapi.
+          </p>
+        </div>
+        <PetaMuat jumlahTanpaTitik={{ hotel: JUMLAH_HOTEL }} />
+      </section>
+
+      <section className="br-seksi" aria-labelledby="br-loket">
+        <div className="bch-kepala-bagian">
+          <div>
+            <p className="bch-kicker bch-penanda-biru m-0">Loket</p>
+            <h2 id="br-loket">Tujuh loket informasi kota</h2>
+          </div>
+          <p>Setiap loket mengumpulkan satu jenis informasi. Mulai dari yang paling sering dicari: cuaca, laut, dan tempat makan.</p>
+        </div>
+        <ol className="br-indeks">
+          {LOKET.map((l) => (
+            <li key={l.nomor}>
+              <Link href={l.href} className="butir">
+                <Image className="gambar" src={l.grafis} alt="" width={420} height={420} unoptimized loading="lazy" />
+                <span className="no">{l.nomor}</span>
+                <span className="nama">{l.nama}</span>
+                <span className="ket">{l.lede}.</span>
+              </Link>
+            </li>
+          ))}
+          <li className="bch-ajakan">
+            <h3>Ada yang keliru atau sudah berubah?</h3>
+            <p>Jam buka, alamat, atau nama tempat yang sudah tidak sesuai bisa kamu laporkan.</p>
+            <Link href="/koreksi" className="bch-aksi">
+              Kirim koreksi →
+            </Link>
+          </li>
         </ol>
+      </section>
+
+      <section className="br-seksi br-cerita" aria-labelledby="br-cerita">
+        <figure>
+          <Image className="bch-grafis" src={ceritaPilihan.gambar.src} alt="" width={1200} height={800} unoptimized loading="lazy" />
+          <figcaption>{ceritaPilihan.gambar.keterangan}</figcaption>
+        </figure>
+        <div>
+          <p className="bch-kicker br-cerita-penanda m-0">{ceritaPilihan.penanda}</p>
+          <h2 id="br-cerita">{ceritaPilihan.judul}</h2>
+          {ceritaPilihan.paragraf.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+          <Link href={ceritaPilihan.tautan.href} className="bch-aksi">
+            {ceritaPilihan.tautan.label} →
+          </Link>
+        </div>
+      </section>
+
+      <div className="br-seksi br-berita">
+        <BeritaWidget />
       </div>
-    </>
+    </div>
   );
 }

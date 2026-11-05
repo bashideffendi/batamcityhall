@@ -19,10 +19,14 @@ export type TitikVibe = {
   perkiraan: boolean;
 };
 
-const JENIS = { ngopi: "Ngopi", macet: "Macet" } as const;
+const JENIS = { ngopi: "Kopi", macet: "Macet" } as const;
 const KETERANGAN = {
-  ngopi: "Kopitiam dan kafe dari Loket Makan. Titiknya perkiraan.",
-  macet: "Kamera CCTV Pemko. Kami tidak menilai macet atau tidak: lihat sendiri.",
+  ngopi: (
+    <>
+      Daftar <em>kopitiam</em> dan kafe dari Loket Makan. Titiknya merupakan perkiraan.
+    </>
+  ),
+  macet: "Kamera lalu lintas dari Loket Cuaca dan Laut. Peta ini tidak menilai kepadatan jalan.",
 };
 
 function gaya(base: StyleSpecification, theme: MapTheme, titik: TitikVibe[]): StyleSpecification {
@@ -77,7 +81,7 @@ export default function PetaVibe({ titik }: { titik: TitikVibe[] }) {
     pasangGlobalPeta();
     const m = new MapLibre({
       container: el,
-      style: baseStyle("day", window.location.origin),
+      style: baseStyle("light", window.location.origin),
       bounds: TAMPILAN_AWAL,
       fitBoundsOptions: { padding: 16 },
       maxBounds: MAP_BOUNDS,
@@ -106,7 +110,7 @@ export default function PetaVibe({ titik }: { titik: TitikVibe[] }) {
       <div
         ref={wadah}
         className="mm-vibe-peta"
-        aria-label="Peta vibe Batam. Daftar yang sama ada di bawah peta."
+        aria-label="Peta suasana Batam. Daftar yang sama ada di bawah peta."
         role="region"
       />
       <fieldset className="mm-vibe-saring">

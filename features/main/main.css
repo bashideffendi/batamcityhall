@@ -6,7 +6,7 @@
 }
 .mm-hasil {
   padding: var(--bch-space-4);
-  background: var(--bch-paper-2);
+  background: var(--bch-paper);
   border: var(--bch-stroke-base) solid var(--bch-rule);
   border-radius: var(--bch-radius-1);
 }

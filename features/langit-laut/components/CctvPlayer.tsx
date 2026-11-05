@@ -3,7 +3,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import type { ErrorData } from "hls.js";
 import {
-  CCTV_CREDIT,
   CCTV_MB_PER_MIN,
   checkCam,
   loadHls,
@@ -487,18 +486,18 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
 
   const badge: { text: string; cls: string } =
     state === "playing"
-      ? { text: "Langsung", cls: "is-live" }
+      ? { text: "Siaran langsung", cls: "is-live" }
       : state === "buffering"
-        ? { text: "Tersendat", cls: "is-muted" }
+        ? { text: "Siaran tersendat", cls: "is-muted" }
         : state === "paused"
-          ? { text: "Dijeda", cls: "is-muted" }
+          ? { text: "Siaran dijeda", cls: "is-muted" }
           : state === "dead"
-            ? { text: "Mati", cls: "is-off" }
+            ? { text: "Kamera tidak aktif", cls: "is-off" }
             : state === "error"
-              ? { text: "Gangguan", cls: "is-off" }
+              ? { text: "Kamera tidak aktif", cls: "is-off" }
               : state === "idle" || state === "blocked"
-                ? { text: "Siap", cls: "is-muted" }
-                : { text: "Menyambung…", cls: "is-muted" };
+                ? { text: "Siap diputar", cls: "is-muted" }
+                : { text: "Menyambung", cls: "is-muted" };
 
   const statusText =
     state === "checking"
@@ -553,7 +552,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
               {note && <div className="cctv-note">{note}</div>}
               {showRetry && (
                 <button className="cctv-retry" onClick={retry}>
-                  Coba Lagi
+                  Muat ulang
                 </button>
               )}
             </div>
@@ -574,13 +573,13 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
                 else if (videoRef.current?.error) retry();
                 else videoRef.current?.play().catch(() => setState("blocked"));
               }}
-              aria-label="Putar Kamera"
+              aria-label="Putar kamera"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden>
                 <path d="M8 5v14l11-7z" />
               </svg>
-              Ketuk untuk Memutar
-              {!started && <span className="cctv-note">Siaran Video Sekitar {CCTV_MB_PER_MIN} MB per Menit</span>}
+              Ketuk untuk memutar
+              {!started && <span className="cctv-note">Siaran memakai sekitar {CCTV_MB_PER_MIN} MB per menit.</span>}
             </button>
           )}
 
@@ -594,18 +593,18 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
                 Coba kamera lain di sekitar situ.
               </div>
               <button className="cctv-retry" onClick={retry}>
-                Cek Lagi
+                Periksa lagi
               </button>
             </div>
           )}
 
           {state === "error" && (
             <div className="cctv-overlay">
-              <div className="cctv-stage-text">{note ?? "Kamera Belum Bisa Diakses"}</div>
+              <div className="cctv-stage-text">{note ?? "Kamera tidak aktif"}</div>
               {hint && <div className="cctv-note">{hint}</div>}
               {tech && (
                 <details className="cctv-tech">
-                  <summary>Info Teknis</summary>
+                  <summary>Keterangan teknis</summary>
                   {tech}
                 </details>
               )}
@@ -620,9 +619,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
           <span className={`cctv-live ${badge.cls}`}>
             <span className="dot" /> {badge.text}
           </span>
-          <span className="cctv-credit">
-            {CCTV_CREDIT} · Sekitar {CCTV_MB_PER_MIN} MB per Menit
-          </span>
+          <span className="cctv-credit">Sekitar {CCTV_MB_PER_MIN} MB per menit</span>
         </div>
         <div className="sr-only" role="status" aria-live="polite">
           {statusText}

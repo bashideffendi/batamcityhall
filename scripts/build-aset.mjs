@@ -1,6 +1,4 @@
 // Bangun aset statis tanpa dependensi native, memakai Chromium (Playwright):
-//   public/tex/grain-256.webp        grain siang, untuk mix-blend multiply
-//   public/tex/grain-256-light.webp  grain malam, untuk mix-blend screen
 //   app/apple-icon.png               ikon iOS 180 px dari public/logo/monogram.svg
 //   public/icon-192.png, icon-512.png ikon PWA dari sumber yang sama
 //

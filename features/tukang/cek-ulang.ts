@@ -6,7 +6,7 @@ export const TANGGAL_RISET = "2026-11";
 export type AlasanCek = "perlu_cek_ulang" | "usang" | "lewat_6_bulan";
 
 export const NAMA_ALASAN: Record<AlasanCek, string> = {
-  perlu_cek_ulang: "Status perlu cek ulang",
+  perlu_cek_ulang: "Status perlu diperiksa ulang",
   usang: "Status usang",
   lewat_6_bulan: "Lebih dari 6 bulan sejak dicek",
 };

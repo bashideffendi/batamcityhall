@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { baseStyle, LUAR_FOKUS, MAP_BOUNDS, PALET, SOURCE_ID, type MapTheme } from "@/features/peta/style";
 
 const ORIGIN = "http://localhost:3000";
-const TEMA: MapTheme[] = ["day", "night"];
+const TEMA: MapTheme[] = ["light", "dark"];
 
 // Mengumpulkan semua nilai string di dalam objek style, termasuk di dalam ekspresi.
 function semuaString(nilai: unknown, out: string[] = []): string[] {
@@ -42,7 +42,7 @@ describe.each(TEMA)("baseStyle %s", (tema) => {
       if (l.type !== "symbol") continue;
       const tf = l.layout?.["text-font"];
       semuaString(tf)
-        .filter((s) => /Source Serif|Plus Jakarta|Noto/.test(s))
+        .filter((s) => /Newsreader|Plus Jakarta/.test(s))
         .forEach((s) => font.add(s));
     }
     expect(font.size).toBeGreaterThan(0);
@@ -58,26 +58,22 @@ describe.each(TEMA)("baseStyle %s", (tema) => {
     }
   });
 
-  it("urutan lapisan: jalan, selubung, air, waterlining, jembatan, graticule, label", () => {
-    const urutan = [
-      "earth",
-      "buildings",
-      "roads_major",
-      "selubung-luar-fokus",
-      "water",
-      "waterline-0",
-      "roads_bridges_major",
-      "graticule-5",
-    ].map((id) => ids.indexOf(id));
+  it("urutan lapisan: jalan, selubung, air, garis pantai, jembatan, label", () => {
+    const urutan = ["earth", "buildings", "roads_major", "selubung-luar-fokus", "water", "garis-pantai", "roads_bridges_major"].map((id) =>
+      ids.indexOf(id),
+    );
     expect(urutan.every((i) => i >= 0)).toBe(true);
     expect(urutan).toEqual([...urutan].sort((a, b) => a - b));
-    expect(layers.findIndex((l) => l.type === "symbol")).toBeGreaterThan(ids.indexOf("graticule-5"));
-    expect(ids[ids.length - 1]).toBe("garis-1n-label");
+    expect(layers.findIndex((l) => l.type === "symbol")).toBeGreaterThan(ids.indexOf("garis-pantai"));
   });
 
-  it("selubung memakai warna darat, tidak ada warna baru", () => {
+  it("tanpa garis koordinat dan garis 1 derajat", () => {
+    expect(ids.filter((id) => /graticule|garis-1n|waterline/.test(id))).toEqual([]);
+  });
+
+  it("selubung memakai warna pulau di luar Batam", () => {
     const selubung = layers.find((l) => l.id === "selubung-luar-fokus");
-    expect(selubung?.type === "fill" && selubung.paint?.["fill-color"]).toBe(PALET[tema].land);
+    expect(selubung?.type === "fill" && selubung.paint?.["fill-color"]).toBe(PALET[tema].landOther);
   });
 
   it("area luar fokus tidak menyentuh Batam, Rempang, dan Galang", () => {
@@ -86,20 +82,14 @@ describe.each(TEMA)("baseStyle %s", (tema) => {
     expect(Math.min(...timur.map(([lng]) => lng))).toBeGreaterThan(104.18);
   });
 
-  it("garis 1°N berlabel dan beraksen", () => {
-    const label = layers.find((l) => l.id === "garis-1n-label");
-    expect(label?.type === "symbol" && label.layout?.["text-field"]).toBe("1°00′ U");
-    const garis = layers.find((l) => l.id === "garis-1n");
-    expect(garis?.type === "line" && garis.paint?.["line-color"]).toBe(PALET[tema].line1n);
-  });
 });
 
 describe("tema", () => {
   it("warna darat dan laut sesuai token", () => {
-    expect(PALET.day.land).toBe("#F4EFE4");
-    expect(PALET.day.water).toBe("#DCE3E1");
-    expect(PALET.night.land).toBe("#16263A");
-    expect(PALET.night.water).toBe("#0F1B2A");
+    expect(PALET.light.land).toBe("#FFF5E0");
+    expect(PALET.light.water).toBe("#E4EFF7");
+    expect(PALET.dark.land).toBe("#22201B");
+    expect(PALET.dark.water).toBe("#16222C");
   });
 
   it("bbox mengikuti keputusan research/00", () => {

@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
   await page.route("**/api/**", (r) => r.fulfill({ status: 503, json: {} }));
 });
 
-async function aturTema(page: Page, tema: "day" | "night") {
+async function aturTema(page: Page, tema: "light" | "dark") {
   await page.addInitScript((t) => localStorage.setItem("bch-theme", t), tema);
 }
 
@@ -18,22 +18,14 @@ const tanpaGeserSamping = (page: Page) =>
   page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth);
 
 test.describe("landing", () => {
-  test("menaut ke semua sub-halaman", async ({ page }) => {
+  test("menaut ke delapan sub-halaman, Batam Dulu disembunyikan", async ({ page }) => {
     await page.goto("/cerita");
-    await expect(page.getByRole("heading", { level: 1, name: "Cerita & Budaya" })).toBeVisible();
-    for (const h of [
-      "sejarah",
-      "dulu",
-      "kampung-tua",
-      "nama-jalan",
-      "kalender",
-      "kamus",
-      "budaya",
-      "angka",
-      "komunitas",
-    ]) {
+    await expect(page.locator("main .bch-kicker").first()).toContainText("LOKET 05");
+    await expect(page.getByRole("heading", { level: 1, name: "Cerita dan Budaya" })).toBeVisible();
+    for (const h of ["sejarah", "kampung-tua", "nama-jalan", "budaya", "kalender", "kamus", "komunitas", "angka"]) {
       await expect(page.locator(`main a[href="/cerita/${h}"]`)).toHaveCount(1);
     }
+    await expect(page.locator('main a[href="/cerita/dulu"]')).toHaveCount(0);
   });
 });
 
@@ -47,7 +39,7 @@ test.describe("sejarah", () => {
   test("filter status bekerja dan bisa dibatalkan", async ({ page }) => {
     await page.goto("/cerita/sejarah");
     await page.locator('[data-filter-status="belum_terverifikasi"]').click();
-    await expect(page.locator("[data-gw]")).toHaveCount(4);
+    await expect(page.locator("[data-gw]")).toHaveCount(5);
     await expect(page.locator('[data-filter-status="belum_terverifikasi"]')).toHaveAttribute("aria-pressed", "true");
     await page.getByRole("button", { name: "Tampilkan semua" }).click();
     await expect(page.locator("[data-gw]")).toHaveCount(garis.length);
@@ -74,6 +66,8 @@ test.describe("sejarah", () => {
     await expect(page.locator('[data-versi-nama] [data-status="cerita_rakyat"]')).toHaveCount(5);
     const teks = await page.locator("main").innerText();
     expect(teks).not.toMatch(/Jangan tampilkan|Sajikan|task_id|Disalin|zaman batu/i);
+    expect(teks).not.toMatch(/Sumber:|Rincian status|Baca sumbernya|Campuran/);
+    await expect(page.locator('main a[href^="http"]')).toHaveCount(0);
   });
 
   test("grafik penduduk memakai SVG dan semua titik ada di tabel", async ({ page }) => {
@@ -128,26 +122,28 @@ test.describe("Batam Dulu", () => {
     await page.goto("/cerita/dulu");
     await expect(page.locator(".sj-peta[data-titik]")).toHaveAttribute("data-titik", "5");
     await expect(page.locator(".sj-peta canvas")).toBeVisible({ timeout: 30_000 });
-    await expect(page.locator('[data-pf="pf-04"]')).toContainText("koordinatnya belum ada");
+    await expect(page.locator('[data-pf="pf-04"]').getByRole("button", { name: "Tunjukkan di peta" })).toHaveCount(0);
     await expect(page.locator('[data-pf="pf-09"]').getByRole("button", { name: "Tunjukkan di peta" })).toBeVisible();
   });
 });
 
 test.describe("Angka", () => {
-  test("semua fakta dan linimasa tampil dengan tahun dan sumber", async ({ page }) => {
+  test("semua fakta berangka dan linimasa tampil dengan tahun, tanpa tautan sumber", async ({ page }) => {
     await page.goto("/cerita/angka");
-    await expect(page.locator("[data-fi]")).toHaveCount(fakta.angka.length);
+    await expect(page.getByRole("heading", { level: 1, name: "Batam dalam Angka" })).toBeVisible();
+    await expect(page.locator("[data-fi]")).toHaveCount(fakta.angka.length - 2);
+    await expect(page.locator('main a[href^="http"]')).toHaveCount(0);
     await expect(page.locator("[data-linimasa] li")).toHaveCount(fakta.linimasa_sejarah.length);
     await expect(page.locator("[data-ide] > li")).toHaveCount(fakta.ide_infografis.length);
-    await expect(page.locator('[data-fi="fi-023"]')).toContainText("Belum ada angka");
+    await expect(page.locator('[data-fi="fi-023"]')).toHaveCount(0);
     await expect(page.locator('[data-fi="fi-001"]')).toContainText("Tidak kami pakai");
     await expect(page.locator('[data-resmi="jumlah_kecamatan"]')).toContainText("12");
     const teks = await page.locator("main").innerText();
-    expect(teks).not.toMatch(/⚠|✅|⌛|di laporan|Perda 2\/2004/);
+    expect(teks).not.toMatch(/⚠|✅|⌛|di laporan|Perda 2\/2004|Belum dinilai|Dikutip sekunder/);
   });
 });
 
-for (const tema of ["day", "night"] as const) {
+for (const tema of ["light", "dark"] as const) {
   for (const url of ["/cerita", "/cerita/sejarah", "/cerita/dulu", "/cerita/angka"]) {
     test(`axe ${url} tema ${tema}`, async ({ page }) => {
       await aturTema(page, tema);

@@ -68,7 +68,7 @@ test.describe("kalender", () => {
     await page.getByLabel("Kategori").selectOption({ label: "Pameran dagang" });
     await expect(page.locator("[data-acara]")).toHaveCount(pameran);
     await expect(page).toHaveURL(/kategori=pameran/);
-    await page.getByRole("button", { name: "Hapus filter" }).click();
+    await page.getByRole("button", { name: "Hapus saringan" }).click();
     await expect(page.locator("[data-acara]")).toHaveCount(acara.length);
 
     await page.getByLabel("Status").selectOption({ label: "Dibatalkan" });
@@ -107,12 +107,12 @@ test.describe("kalender", () => {
   test("tanggal tidak dikarang: acara tidak pasti tertulis tidak pasti", async ({ page }) => {
     await page.goto("/cerita/kalender");
     const safar = page.locator('[data-acara="ev-014"]');
-    await expect(safar).toContainText("Tanggal tidak pasti");
+    await expect(safar).toContainText("Tanggal belum pasti");
     await expect(safar).toContainText("Rabu terakhir bulan Safar");
     await expect(safar).toContainText("Mengikuti kalender Hijriah");
-    await expect(page.locator('[data-acara="ev-t02"]')).toContainText("Tanggal tidak pasti");
-    await expect(page.locator('[data-acara="ev-011"]')).toContainText("16–18 Mei 2025");
-    await expect(page.locator('[data-acara="ev-011"]')).not.toContainText("Tanggal tidak pasti");
+    await expect(page.locator('[data-acara="ev-t02"]')).toContainText("Belum pasti");
+    await expect(page.locator('[data-acara="ev-011"]')).toContainText("16—18 Mei 2025");
+    await expect(page.locator('[data-acara="ev-011"]')).not.toContainText("belum pasti");
   });
 
   test("catatan penyusun dan ikon tidak sampai ke halaman", async ({ page }) => {
@@ -121,6 +121,8 @@ test.describe("kalender", () => {
     expect(teks).not.toMatch(/[⚠✅❌⌛]/);
     expect(teks).not.toMatch(/jangan dimasukkan|jangan kunci|pakai versi disbudpar/i);
     expect(teks).not.toMatch(/tahunan/i);
+    expect(teks).not.toMatch(/Sumber:|Sumber sekunder|Terakhir dicek|\.go\.id/);
+    await expect(page.locator('main a[href^="http"]')).toHaveCount(0);
   });
 
   test("kartu menaut ke tempat di direktori", async ({ page }) => {
@@ -142,7 +144,7 @@ test.describe("kamus", () => {
     await expect(kotak).toHaveValue("pompong");
     await kotak.fill("xyzzy");
     await expect(page.locator("[data-kata]")).toHaveCount(0);
-    await expect(page.getByText("Kata itu belum ada di kamus")).toBeVisible();
+    await expect(page.getByText("Tidak ada hasil untuk “xyzzy”. Coba kata lain atau hapus saringan.")).toBeVisible();
     await kotak.fill("");
     await expect(page.locator("[data-kata]")).toHaveCount(kamus.length);
   });
@@ -154,8 +156,11 @@ test.describe("kamus", () => {
     await expect(page.locator('[data-kata="k-055"]')).toBeVisible();
   });
 
-  test("per huruf dan label asal", async ({ page }) => {
+  test("per huruf, label asal, tanda bintang, dan arti berpetik tunggal", async ({ page }) => {
     await page.goto("/cerita/kamus");
+    await expect(page.locator("[data-keterangan-bintang]")).toHaveText(
+      "Kata bertanda * masih menunggu pemeriksaan penutur.",
+    );
     await expect(page.getByRole("heading", { level: 2, name: "P", exact: true })).toBeVisible();
     await page
       .getByRole("navigation", { name: "Lompat ke huruf" })
@@ -165,36 +170,38 @@ test.describe("kamus", () => {
     const pompong = page.locator('[data-kata="k-003"]');
     await expect(pompong).toContainText("Melayu Kepri");
     await expect(pompong).toContainText("Pompong terakhir jam lima.");
-    await expect(pompong).toContainText("Bersumber");
+    await expect(pompong.getByRole("heading", { level: 3 })).toHaveText("pompong");
+    await expect(page.locator('[data-kata="k-001"]')).toContainText("‘rumah liar’");
     const nak = page.locator('[data-kata="k-026"]');
-    await expect(nak).toContainText("Pengamatan, belum divalidasi");
-    await expect(nak).toContainText("Arti menurut pengamatan");
+    await expect(nak.getByRole("heading", { level: 3 })).toHaveText("nak*");
+    await expect(page.locator('main a[href^="http"]')).toHaveCount(0);
   });
 });
 
 test.describe("budaya", () => {
-  test("instruksi penyusun tersaring, sumber tertulis tampil", async ({ page }) => {
+  test("instruksi penyusun tersaring, tanpa tautan sumber", async ({ page }) => {
     await page.goto("/cerita/budaya");
     const teks = await page.locator("main").innerText();
     expect(teks).not.toMatch(/Rekomendasi konten|Buat seri|[⚠✅❌⌛]/);
     expect(teks.replace("bukan asli Batam", "")).not.toMatch(/asli Batam/);
-    await expect(
-      page.locator('[data-tradisi="tr-001"]').getByRole("link", { name: "repositori.kemendikdasmen.go.id" }),
-    ).toBeVisible();
-    await expect(page.locator('[data-tradisi="tr-014"]')).toContainText("Perlu sumber LAM");
-    await expect(page.locator('[data-tradisi="tr-014"]')).toContainText("Belum ada sumber tertulis");
+    await expect(page.locator('[data-tradisi="tr-001"]')).toContainText("Tercatat");
+    await expect(page.locator('[data-tradisi="tr-014"]')).toContainText("Belum terverifikasi");
+    expect(teks).not.toMatch(/Sumber:|Belum ada sumber tertulis|Perlu sumber/);
+    await expect(page.locator('main a[href^="http"]')).toHaveCount(0);
   });
 });
 
 test.describe("komunitas", () => {
-  test("kanal hanya yang sudah dicek, referensi pemilik tidak tampil", async ({ page }) => {
+  test("kanal hanya yang tercatat, tanpa catatan kerja dan tautan pemerintah", async ({ page }) => {
     await page.goto("/cerita/komunitas");
     await expect(page.getByRole("link", { name: "Instagram @sukalaribatam" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Instagram @batam_10k" })).toBeVisible();
-    await expect(page.locator('[data-komunitas="kom-005"]')).toContainText("Kanal belum dicek");
-    await expect(page.locator('[data-komunitas="kom-002"]')).toContainText("Kanal belum dicek");
+    await expect(page.locator('[data-komunitas="kom-005"] [data-kanal]')).toHaveCount(0);
+    await expect(page.locator('[data-komunitas="kom-002"] [data-kanal]')).toHaveCount(0);
+    await expect(page.locator('main a[href*=".go.id"]')).toHaveCount(0);
     const teks = await page.locator("main").innerText();
     expect(teks).not.toMatch(/BASCOM|Tukang Langganan|wa\.me|(\+62|\b08)\d{7,}/);
+    expect(teks).not.toMatch(/Kanal belum dicek|Sumber:|Terakhir dicek/);
   });
 });
 

@@ -73,3 +73,10 @@ Asal kode: hujandibatam `45281a64de5fe068de9d95b9bbc73ba4eb5af4db`, batam-bites 
 - ✔ "Lagi hujan di {kecamatan}" di detail Makan, "Buat berteduh" di detail hujan — e2e
 - ✔ Rating tetap tidak tampil, termasuk di direktori — tes unit dan e2e
 - ✔ Feri terakhir di detail Makan — fase 4, e2e
+
+## Baru, tidak ada di situs lama
+
+Bukan syarat pengalihan, dicatat supaya perbandingan tidak salah baca.
+
+- Peringatan dini cuaca BMKG di panel Hujan (label, bagian Detail, poligon di peta) dan `/langit-laut/peringatan` — e2e, live 5 Nov 2026
+- Gempa BMKG di `/langit-laut/gempa` dan baris bila relevan di kotak Hari Ini — e2e, live 5 Nov 2026

@@ -129,7 +129,7 @@ function BidangWisman({ data, lebar, kelas }: { data: TitikWisman[]; lebar: numb
               {d.tahun}
             </text>
             <text x={kiri} y={y + 18} className="sj-g-teks">
-              {d.jumlah != null ? ribu(d.jumlah) : "sekitar 1,1–1,19 juta (beda sumber)"}
+              {d.jumlah != null ? ribu(d.jumlah) : "sekitar 1,1—1,19 juta (berbeda sumber)"}
             </text>
             <path d={jalurBatang(kiri, y + 26, Math.max(fx(utama), 2), 20)} className="sj-batang" />
             {tepi && (

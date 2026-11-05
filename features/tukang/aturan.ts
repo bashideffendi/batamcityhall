@@ -1,7 +1,7 @@
 // Aturan Tukang Langganan sebagai fungsi murni (research/00 bagian 4). Tanpa node:crypto dan tanpa env.
 
 export const MIN_PEREKOMENDASI = 2;
-export const LABEL_CONTOH = "CONTOH FIKTIF";
+export const LABEL_CONTOH = "Contoh fiktif";
 export const VERSI_PERSETUJUAN = "2026-11-draf";
 
 export type StatusModerasi = "menunggu" | "disetujui" | "ditolak";
@@ -196,7 +196,18 @@ export function teksTanggal(iso: string): string {
   return `${Number(m[3])} ${BULAN[Number(m[2]) - 1] ?? ""} ${m[1]}`;
 }
 
+/** Untuk layar moderator. */
 export const teksTerakhirDicek = (t: string | null) => (t ? `Terakhir dicek ${teksTanggal(t)}` : "Belum pernah dicek");
+
+/** Untuk kartu publik (PEDOMAN 3.5). Tanpa tanggal, bagian ini tidak tampil. */
+export const teksTerakhirDiperiksa = (t: string | null) => (t ? `Terakhir diperiksa ${teksBulan(t)}` : null);
+
+/** Nomor telepon menjadi tautan tombol Hubungi. Alamat dan teks lain tidak punya tautan. */
+export function tautanTelepon(kontak: string): string | null {
+  const k = kontak.trim();
+  if (k.includes("@") || !kontakSah(k)) return null;
+  return `tel:+${normalKontak(k)}`;
+}
 
 /** Hari ini menurut Batam. Kolom terakhir dicek berupa tanggal. */
 export const hariIni = (sekarang = new Date()) => new Date(sekarang.getTime() + 7 * 3600e3).toISOString().slice(0, 10);

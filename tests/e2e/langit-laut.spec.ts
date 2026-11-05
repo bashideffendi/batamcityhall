@@ -76,6 +76,10 @@ async function tiruSumber(page: Page, opsi: { citraGagal?: boolean; echo?: unkno
   await page.route("**/api/radar-citra/**", (r) =>
     opsi.citraGagal ? r.fulfill({ status: 404, body: "" }) : r.fulfill({ contentType: "image/png", body: png }),
   );
+  await page.route("**/api/gempa", (r) => r.fulfill({ json: { status: "ok", diambil: "", gempa: [] } }));
+  await page.route("**/api/peringatan-cuaca**", (r) =>
+    r.fulfill({ json: { status: "ok", diambil: "", peringatan: [] } }),
+  );
   await page.route("**/api/conditions", (r) => r.fulfill({ json: {} }));
   await page.route("**/api/prakiraan", (r) => r.fulfill({ status: 503, json: {} }));
   await page.route("**/api/ofs-frame", (r) => {
@@ -266,11 +270,11 @@ test.describe("Langit & Laut", () => {
 
   test("tema ikut tombol situs dan tersimpan", async ({ page }) => {
     await tiruSumber(page);
-    await page.addInitScript(() => localStorage.setItem("bch-theme", "day"));
+    await page.addInitScript(() => localStorage.setItem("bch-theme", "light"));
     await page.goto("/langit-laut");
     await petaSiap(page);
     await page.getByRole("button", { name: "Ganti ke chart malam" }).click();
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "night");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   });
 
   test("halaman lain tidak terganggu CSS Langit & Laut setelah navigasi klien", async ({ page }) => {
@@ -297,7 +301,7 @@ test.describe("Langit & Laut", () => {
     await expect(footer).toContainText("bukan situs resmi");
   });
 
-  for (const tema of ["day", "night"] as const) {
+  for (const tema of ["light", "dark"] as const) {
     for (const mode of ["hujan", "ombak", "cctv"]) {
       test(`axe ${mode} tema ${tema}`, async ({ page }) => {
         await tiruSumber(page);
@@ -343,5 +347,271 @@ test.describe("PWA", () => {
     expect((await request.get("/sw.js")).status()).toBe(200);
     expect((await request.get("/icon-192.png")).status()).toBe(200);
     expect((await request.get("/icon-512.png")).status()).toBe(200);
+  });
+});
+
+// ---- Peringatan dini cuaca dan gempa. Semua ditiru: tes tidak boleh memanggil BMKG. ----
+const jamLagi = (jam: number) => new Date(Date.now() + jam * 3600000).toISOString();
+
+const PERINGATAN_BATAM = {
+  id: "2.49.0.1.360.0.2026.11.05.03.21.001",
+  kode: "CKR20261105001",
+  kejadian: "Hujan Lebat dan Petir",
+  judul: "Hujan Lebat disertai Petir di Kep. Riau",
+  deskripsi:
+    "Hujan lebat disertai petir akan terjadi di sebagian wilayah Kep. Riau, khususnya di BATU AJI, SAGULUNG.\n Kondisi ini berpotensi menimbulkan dampak berupa jarak pandang berkurang.",
+  terbit: jamLagi(-1),
+  mulai: jamLagi(-1),
+  sampai: jamLagi(1),
+  keparahan: "Moderate",
+  urgensi: "Immediate",
+  kepastian: "Observed",
+  wilayah: "Kep. Riau",
+  batam: ["Batu Aji", "Sagulung"],
+  web: "https://nowcasting.bmkg.go.id/infografis/CKR/2026/11/05/infografis.jpg",
+  poligon: [
+    [
+      [103.97, 1.04],
+      [104.0, 1.04],
+      [104.0, 1.07],
+      [103.97, 1.04],
+    ],
+  ],
+};
+const PERINGATAN_LUAR = {
+  ...PERINGATAN_BATAM,
+  id: "2.49.0.1.360.0.2026.11.05.03.21.002",
+  kode: "CKR20261105002",
+  deskripsi: "Hujan lebat disertai petir akan terjadi di sebagian wilayah Kep. Riau, khususnya di KARIMUN, MORO.",
+  batam: [],
+};
+const GEMPA_DEKAT = {
+  waktu: jamLagi(-2),
+  tanggal: "05 Nov 2026",
+  jam: "09:00:00 WIB",
+  lat: 0.5,
+  lon: 101,
+  magnitudo: 5.3,
+  kedalamanKm: 10,
+  wilayah: "Pusat gempa berada di darat 40 km utara Pekanbaru",
+  potensi: "Tidak berpotensi tsunami",
+  dirasakan: "III Pekanbaru",
+  shakemap: "20261105090000.mmi.jpg",
+  daftar: ["terbaru"],
+  jarakKm: 280,
+  arah: "barat",
+};
+const GEMPA_JAUH = {
+  ...GEMPA_DEKAT,
+  waktu: jamLagi(-30),
+  lat: -1.14,
+  lon: 120.15,
+  magnitudo: 3.4,
+  wilayah: "Pusat gempa berada di darat 40 km timur laut Sigi",
+  dirasakan: "III Sigi, II Palu",
+  potensi: "",
+  shakemap: "",
+  daftar: ["dirasakan"],
+  jarakKm: 1796,
+  arah: "timur",
+};
+
+async function tiruPeringatan(page: Page, peringatan: unknown[], status = "ok") {
+  await page.route("**/api/peringatan-cuaca**", (r) =>
+    r.fulfill({ json: { status, diambil: jamLagi(0), peringatan } }),
+  );
+}
+async function tiruGempa(page: Page, gempa: unknown[], status = "ok") {
+  await page.route("**/api/gempa", (r) => r.fulfill({ json: { status, diambil: jamLagi(0), gempa } }));
+}
+
+test.describe("peringatan cuaca di kotak Hari Ini", () => {
+  test("yang mengenai Batam disebut kecamatannya", async ({ page }) => {
+    await tiruSumber(page);
+    await tiruPeringatan(page, [PERINGATAN_BATAM]);
+    await page.goto("/");
+    const baris = page.locator('.bch-hari-ini [data-baris="cuaca"]');
+    await expect(baris).toContainText("Hujan Lebat dan Petir di Batu Aji dan Sagulung sampai");
+    await expect(baris.locator("a")).toHaveAttribute("href", "/langit-laut/peringatan");
+  });
+
+  test("tidak ada atau hanya di luar Batam: barisnya tidak tampil", async ({ page }) => {
+    await tiruSumber(page);
+    await tiruPeringatan(page, [PERINGATAN_LUAR]);
+    await page.goto("/");
+    await expect(page.locator(".bch-hari-ini").getByRole("heading", { name: "Hari ini" })).toBeVisible();
+    await expect(page.locator('.bch-hari-ini [data-baris="feri"]')).toBeVisible();
+    await expect(page.locator('.bch-hari-ini [data-baris="cuaca"]')).toHaveCount(0);
+  });
+
+  test("sudah lewat menurut jam pengguna: barisnya tidak tampil", async ({ page }) => {
+    await tiruSumber(page);
+    await tiruPeringatan(page, [{ ...PERINGATAN_BATAM, sampai: jamLagi(-0.1) }]);
+    await page.goto("/");
+    await expect(page.locator('.bch-hari-ini [data-baris="feri"]')).toBeVisible();
+    await expect(page.locator('.bch-hari-ini [data-baris="cuaca"]')).toHaveCount(0);
+  });
+
+  test("sumber gagal ditulis gagal, tidak diam-diam kosong", async ({ page }) => {
+    await tiruSumber(page);
+    await page.route("**/api/peringatan-cuaca**", (r) =>
+      r.fulfill({ status: 503, json: { status: "gagal", diambil: "", peringatan: [] } }),
+    );
+    await page.goto("/");
+    const baris = page.locator('.bch-hari-ini [data-baris="cuaca"]');
+    await expect(baris).toContainText("gagal dimuat");
+    await expect(baris).not.toContainText("aman");
+  });
+});
+
+test.describe("jalan masuk ke halaman BMKG", () => {
+  test("kotak Hari Ini selalu menaut ke peringatan dan gempa", async ({ page }) => {
+    await tiruSumber(page);
+    await page.goto("/");
+    const tautan = page.locator(".bch-hari-ini [data-tautan-bmkg]");
+    await expect(tautan.getByRole("link", { name: "Peringatan cuaca" })).toHaveAttribute(
+      "href",
+      "/langit-laut/peringatan",
+    );
+    await expect(tautan.getByRole("link", { name: "Gempa terkini" })).toHaveAttribute("href", "/langit-laut/gempa");
+  });
+});
+
+test.describe("gempa di kotak Hari Ini", () => {
+  test("gempa dekat disebut dengan jaraknya", async ({ page }) => {
+    await tiruSumber(page);
+    await tiruGempa(page, [GEMPA_DEKAT, GEMPA_JAUH]);
+    await page.goto("/");
+    const baris = page.locator('.bch-hari-ini [data-baris="gempa"]');
+    await expect(baris).toContainText("M 5,3, ±280 km barat Batam");
+    await expect(baris).toContainText("Dirasakan: III Pekanbaru");
+    await expect(baris.locator("a")).toHaveAttribute("href", "/langit-laut/gempa");
+  });
+
+  test("tidak relevan: barisnya tidak tampil", async ({ page }) => {
+    await tiruSumber(page);
+    await tiruGempa(page, [GEMPA_JAUH]);
+    await page.goto("/");
+    await expect(page.locator('.bch-hari-ini [data-baris="feri"]')).toBeVisible();
+    await expect(page.locator('.bch-hari-ini [data-baris="gempa"]')).toHaveCount(0);
+  });
+});
+
+test.describe("halaman peringatan cuaca", () => {
+  test("Batam di atas, teks BMKG disalin, atribusi ada", async ({ page }) => {
+    await tiruPeringatan(page, [PERINGATAN_BATAM, PERINGATAN_LUAR]);
+    await page.goto("/langit-laut/peringatan");
+    await expect(page.getByRole("heading", { level: 1, name: "Peringatan dini cuaca" })).toBeVisible();
+    const batam = page.locator('section[aria-labelledby="peringatan-batam"]');
+    await expect(batam.locator("[data-peringatan]")).toHaveCount(1);
+    await expect(batam).toContainText("Kecamatan di Batam: Batu Aji dan Sagulung");
+    await expect(batam).toContainText("khususnya di BATU AJI, SAGULUNG");
+    await expect(batam.getByRole("link", { name: "Infografis BMKG" })).toHaveAttribute(
+      "href",
+      /nowcasting\.bmkg\.go\.id/,
+    );
+    const lain = page.locator('section[aria-labelledby="peringatan-kepri"]');
+    await expect(lain.locator("[data-peringatan]")).toHaveCount(1);
+    await expect(page.locator("[data-daftar-peringatan] .bch-attrib")).toContainText("Sumber: BMKG");
+    await expect(page.locator("[data-peringatan]").first().locator(".bch-badge")).toContainText("Berlaku");
+  });
+
+  test("kosong tidak ditulis aman", async ({ page }) => {
+    await tiruPeringatan(page, []);
+    await page.goto("/langit-laut/peringatan");
+    const isi = page.locator("[data-daftar-peringatan]");
+    await expect(isi).toContainText("BMKG tidak menyebut kecamatan di Batam");
+    await expect(isi).toContainText("Tidak ada peringatan tidak berarti cuaca pasti baik");
+  });
+
+  test("gagal memberi jalan ke BMKG", async ({ page }) => {
+    await page.route("**/api/peringatan-cuaca**", (r) =>
+      r.fulfill({ status: 503, json: { status: "gagal", diambil: "", peringatan: [] } }),
+    );
+    await page.goto("/langit-laut/peringatan");
+    const catatan = page.locator('[data-status="gagal"]');
+    await expect(catatan).toContainText("gagal dimuat");
+    await expect(catatan.getByRole("link", { name: "buka daftar BMKG" })).toHaveAttribute("href", /bmkg\.go\.id/);
+    await expect(catatan.getByRole("button", { name: "Coba lagi" })).toBeVisible();
+  });
+
+  test("sebagian gagal diberi tahu", async ({ page }) => {
+    await tiruPeringatan(page, [PERINGATAN_LUAR], "sebagian");
+    await page.goto("/langit-laut/peringatan");
+    await expect(page.locator('[data-status="sebagian"]')).toContainText("belum lengkap");
+  });
+
+  test("lolos axe", async ({ page }) => {
+    await tiruPeringatan(page, [PERINGATAN_BATAM, PERINGATAN_LUAR]);
+    await page.goto("/langit-laut/peringatan");
+    await expect(page.locator("[data-peringatan]").first()).toBeVisible();
+    const { violations } = await new AxeBuilder({ page }).analyze();
+    expect(violations.map((v) => v.id)).toEqual([]);
+  });
+});
+
+test.describe("halaman gempa", () => {
+  test("gempa terbaru dan daftar, jarak dihitung dari Batam", async ({ page }) => {
+    await tiruGempa(page, [GEMPA_DEKAT, GEMPA_JAUH]);
+    await page.goto("/langit-laut/gempa");
+    await expect(page.getByRole("heading", { level: 1, name: "Gempa terkini" })).toBeVisible();
+    const terbaru = page.locator("[data-gempa-terbaru]");
+    await expect(terbaru).toContainText("M 5,3");
+    await expect(terbaru).toContainText("±280 km barat Batam");
+    await expect(terbaru).toContainText("Tidak berpotensi tsunami");
+    await expect(terbaru.getByRole("link", { name: "Peta guncangan BMKG" })).toHaveAttribute(
+      "href",
+      "https://static.bmkg.go.id/20261105090000.mmi.jpg",
+    );
+    await expect(page.locator("[data-gempa]")).toHaveCount(1);
+    await expect(page.locator("[data-gempa]")).toContainText("±1.800 km timur Batam");
+    await expect(page.locator("[data-tsunami]")).toHaveCount(0);
+    await expect(page.locator("[data-daftar-gempa] .bch-attrib")).toContainText("BMKG");
+  });
+
+  test("potensi tsunami dari BMKG ditampilkan dengan ikon dan kata", async ({ page }) => {
+    await tiruGempa(page, [{ ...GEMPA_JAUH, waktu: jamLagi(-1), potensi: "Berpotensi tsunami" }]);
+    await page.goto("/langit-laut/gempa");
+    const catatan = page.locator("[data-tsunami]");
+    await expect(catatan).toContainText("BMKG menyebut potensi tsunami");
+    await expect(catatan).toContainText("tidak menilai apakah Batam terdampak");
+    await expect(catatan.locator("svg")).toHaveCount(1);
+  });
+
+  test("gagal memberi jalan ke BMKG", async ({ page }) => {
+    await page.route("**/api/gempa", (r) =>
+      r.fulfill({ status: 503, json: { status: "gagal", diambil: "", gempa: [] } }),
+    );
+    await page.goto("/langit-laut/gempa");
+    const catatan = page.locator('[data-status="gagal"]');
+    await expect(catatan).toContainText("gagal dimuat");
+    await expect(catatan.getByRole("link", { name: "buka data BMKG" })).toHaveAttribute("href", /bmkg\.go\.id/);
+  });
+
+  test("lolos axe", async ({ page }) => {
+    await tiruGempa(page, [GEMPA_DEKAT, GEMPA_JAUH]);
+    await page.goto("/langit-laut/gempa");
+    await expect(page.locator("[data-gempa-terbaru]")).toBeVisible();
+    const { violations } = await new AxeBuilder({ page }).analyze();
+    expect(violations.map((v) => v.id)).toEqual([]);
+  });
+});
+
+test.describe("peringatan cuaca di radar", () => {
+  test("label di panel mengikuti wilayah Batam", async ({ page }) => {
+    await tiruSumber(page);
+    await tiruPeringatan(page, [PERINGATAN_BATAM]);
+    await page.goto("/langit-laut");
+    const chip = page.locator(".warn-chip");
+    await expect(chip).toContainText("Peringatan dini BMKG: Hujan Lebat dan Petir di Batu Aji dan Sagulung");
+    await expect(chip.getByRole("link")).toHaveAttribute("href", "/langit-laut/peringatan");
+  });
+
+  test("peringatan di luar Batam tidak memberi label pada wilayah Batam", async ({ page }) => {
+    await tiruSumber(page);
+    await tiruPeringatan(page, [PERINGATAN_LUAR]);
+    await page.goto("/langit-laut");
+    await expect(page.locator(".answer")).toBeVisible();
+    await expect(page.locator(".warn-chip")).toHaveCount(0);
   });
 });

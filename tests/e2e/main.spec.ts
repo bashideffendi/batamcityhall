@@ -5,12 +5,16 @@ test.beforeEach(async ({ page }) => {
   await page.route("**/api/**", (r) => r.fulfill({ status: 503, json: {} }));
 });
 
-test("kalkulator tidak menebak kurs", async ({ page }) => {
+test("kalkulator menunggu kurs dari pengguna", async ({ page }) => {
   await page.goto("/main/singapura-atau-nagoya");
-  await expect(page.getByRole("status")).toContainText("Kami tidak menebak kurs");
+  await expect(page.getByRole("status")).toContainText("Isi kurs dan jumlah orang");
   await page.getByLabel(/Kurs 1 dolar/).fill("12000");
-  await expect(page.getByRole("status")).toContainText("Rp1.049.000");
-  await expect(page.getByRole("status")).toContainText("Rp10.000");
+  await expect(page.getByRole("status")).toContainText(
+    "Ongkos pulang-pergi untuk 1 orang sekitar Rp1 juta, termasuk tiket feri dan biaya tambahan.",
+  );
+  await page.getByLabel("Jumlah orang").fill("2");
+  await expect(page.getByRole("status")).toContainText("untuk 2 orang sekitar Rp2,1 juta");
+  await expect(page.getByText("Perhitungan memakai tarif feri per 4 November 2026.")).toBeVisible();
 });
 
 test("kartu pos menggambar dan bisa diunduh", async ({ page }) => {
@@ -30,9 +34,9 @@ test("kartu pos menggambar dan bisa diunduh", async ({ page }) => {
   expect(unduhan.suggestedFilename()).toBe("kartu-pos-batam.png");
 });
 
-test("peta vibe punya daftar dan tanpa kategori kelompok", async ({ page }) => {
+test("peta suasana punya daftar dan tanpa kategori kelompok", async ({ page }) => {
   await page.goto("/main/vibe");
-  await expect(page.getByRole("heading", { name: "Ngopi", level: 2 })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Kopi", level: 2 })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Macet", level: 2 })).toBeVisible();
   const label = await page.locator(".mm-vibe-saring label").allTextContents();
   expect(label.join(" ")).not.toMatch(/etnis|suku|agama|kelas/i);

@@ -3,12 +3,6 @@
 import { useId, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import type { ArahStrip } from "./trans-data";
 
-const LOKASI = {
-  pasti: "lokasi terverifikasi",
-  perkiraan: "lokasi perkiraan",
-  belum: "lokasi belum diisi",
-};
-
 // Strip map: semua nama halte berurutan, satu tab per arah. Gap tampil sebagai garis putus dan tidak pernah
 // disambung. Nomor urut sengaja tidak ditampilkan: setelah gap, angka di data bukan nomor halte yang sebenarnya.
 export default function StripMap({ arah, gaya }: { arah: ArahStrip[]; gaya: CSSProperties }) {
@@ -51,17 +45,7 @@ export default function StripMap({ arah, gaya }: { arah: ArahStrip[]; gaya: CSSP
         ))}
       </div>
       <div role="tabpanel" id={`${dasar}-p`} aria-labelledby={`${dasar}-t${aktif}`} tabIndex={0}>
-        <p className="bch-card-meta jl-strip-sumber">
-          {a.tercantum} Sumber: {a.sumber}.
-          {a.perluCek && (
-            <>
-              {" "}
-              <span className="bch-badge" data-tone="caution">
-                perlu cek ulang
-              </span>
-            </>
-          )}
-        </p>
+        <p className="bch-card-meta jl-strip-sumber">{a.tercatat}</p>
         {a.catatan && <p className="jl-strip-catatan">{a.catatan}</p>}
         <ol className="jl-strip-daftar" data-arah={a.id}>
           {a.baris.map((b) =>
@@ -73,11 +57,7 @@ export default function StripMap({ arah, gaya }: { arah: ArahStrip[]; gaya: CSSP
               <li key={b.kunci} className="jl-strip-halte" data-ujung={b.ujung ? "" : undefined}>
                 <span className="jl-strip-nama">
                   {b.nama}
-                  {b.transit.length > 0 && <span className="jl-strip-transit"> pindah ke {b.transit.join(", ")}</span>}
-                </span>
-                <span className="jl-strip-meta">
-                  {LOKASI[b.lokasi]}
-                  {b.catatan ? `. ${b.catatan}` : ""}
+                  {b.transit.length > 0 && <span className="jl-strip-transit"> Transit ke {b.transit.join(", ")}</span>}
                 </span>
               </li>
             ),

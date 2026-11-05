@@ -1,5 +1,5 @@
-// Angka pembanding "baru N dari M terdata" dari data/statistik/angka_resmi.json. Direktori jauh di bawah
-// angka resmi, dan itu ditulis terang-terangan, bukan disembunyikan.
+// Angka pembanding "baru N dari M terdata" dari data/statistik/angka_resmi.json. Sumber dan tahunnya tetap
+// dibawa untuk Kolofon, tetapi tidak tampil di halaman direktori (pedoman 2.9).
 import raw from "@/data/statistik/angka_resmi.json";
 import { TEMPAT, type Place } from "./data";
 
@@ -26,7 +26,7 @@ const PEMBANDING: Partial<Record<Place["kategori"], Pembanding[]>> = {
   ],
   ibadah: [
     { label: "masjid", indikator: "masjid", cocok: (p) => p.subkategori === "masjid" },
-    { label: "vihara", indikator: "vihara", cocok: (p) => p.subkategori === "vihara" },
+    { label: "wihara", indikator: "vihara", cocok: (p) => p.subkategori === "vihara" },
     {
       label: "gereja",
       indikator: "gereja",

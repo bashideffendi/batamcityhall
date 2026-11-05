@@ -19,7 +19,7 @@ Railway berbayar setelah kredit percobaan habis; cek harga di railway.com. Langk
 1. **Vercel.** Beri tahu nama proyek Vercel, atau izinkan membuatnya. Repo GitHub sudah ada.
 2. **Bucket aset** (Cloudflare R2 atau lain) untuk `public/tiles/batam.pmtiles` (46 MB, tidak ikut Git), lalu isi `NEXT_PUBLIC_PMTILES_URL`.
 3. **Domain**, lalu isi `NEXT_PUBLIC_SITE_URL`.
-4. **Uji sumber BMKG dari IP Vercel.** Header jujur sudah lolos dari PC ini, belum dari server Vercel. Kalau ditolak, ambil dari browser (CORS terbuka).
+4. **Uji sumber BMKG dari IP Vercel.** Header jujur sudah lolos dari PC ini, termasuk gempa dan peringatan dini cuaca (5 Nov 2026), belum dari server Vercel. Kalau ditolak, ambil dari browser (CORS terbuka).
 5. **URL donasi** bila sudah ada (`NEXT_PUBLIC_DONASI_URL`).
 
 ## Supaya formulir jalan
@@ -41,6 +41,7 @@ Tanpa Supabase, semua formulir (rekomendasi tukang, koreksi, foto lama) jujur me
 | Kartu Rempang Eco-City di direktori | Minimal, tanpa label status | `kartuMinimal` |
 | `/cerita/rempang` dan `/cerita/kampung-tua/legalitas` | Tayang berlabel draf | **Mohon dibaca dulu sebelum situs tayang** |
 | Angka ±1.600 ha dan 1.450 sertifikat | Tidak tampil, dicatat di daftar butir yang disaring | `features/kampung-tua/` |
+| Gempa di kotak Hari Ini | Hanya gempa 24 jam terakhir yang dirasakan di Kepri, dalam 300 km, M 6 ke atas dalam 1.000 km, atau disebut BMKG berpotensi tsunami | `features/langit-laut/lib/gempa.ts` |
 | Indikator "Aman nyebrang?" | **Tidak dibuat.** Soal keselamatan butuh ambang yang sah dan penafian syahbandar | - |
 | Segmen mural pertama | Harbour Bay–Nagoya–Jodoh, bukan Barelang (alasan di `docs/MURAL.md`) | `docs/MURAL.md` |
 | Quest 6 jembatan | Belum jalan: Jembatan IV, V, VI ada di segmen lain atau lokasinya bentrok | `docs/MURAL.md` |
@@ -65,4 +66,4 @@ Tanpa Supabase, semua formulir (rekomendasi tukang, koreksi, foto lama) jujur me
 7. **Konflik data:** 63 konflik di `docs/KONFLIK_DATA.md`. Situs memakai nilai hasil penggabungan.
 8. **Uji di HP Android dan iOS asli:** PWA, Web Share, "Di sekitarku", performa mural dan peta.
 9. **Situs lama:** keduanya membalas HTTP 402 saat dicek 4 Nov 2026, cek akun Vercel. Paket pengalihan sudah siap di `deploy/situs-lama/`, dijalankan hanya atas izin Anda.
-10. **Fitur yang ditunda** (alasan di `COVERAGE.md`): gempa, peringatan dini CAP, harga pangan Bapanas, panduan KTP pindahan, kontur GEBCO, notifikasi hujan, halaman "Batam yang hilang", Barelang scrollytelling, kuis tokoh.
+10. **Fitur yang ditunda** (alasan di `COVERAGE.md`): harga pangan Bapanas, panduan KTP pindahan, kontur GEBCO, notifikasi hujan, halaman "Batam yang hilang", Barelang scrollytelling, kuis tokoh.

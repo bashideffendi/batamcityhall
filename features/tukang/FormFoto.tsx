@@ -33,7 +33,7 @@ export default function FormFoto() {
   if (hasil?.ok) {
     return (
       <p className="bch-note" role="status">
-        Terima kasih. Moderator akan menghubungi lewat kontak Anda untuk mengambil fotonya.
+        Terima kasih. Moderator akan menghubungi kontakmu untuk mengambil fotonya.
       </p>
     );
   }
@@ -44,22 +44,22 @@ export default function FormFoto() {
         {hasil && !hasil.ok ? hasil.pesan : ""}
       </p>
       <KolomMadu />
-      <Kolom nama="judul" label="Foto apa ini" galat={galat.judul}>
+      <Kolom nama="judul" label="Judul atau isi foto" galat={galat.judul}>
         {(a) => <input {...a} className="bch-input" name="judul" maxLength={120} />}
       </Kolom>
-      <Kolom nama="lokasi" label="Lokasi di foto" petunjuk="Kira-kira juga boleh." galat={galat.lokasi}>
+      <Kolom nama="lokasi" label="Lokasi foto" petunjuk="Perkiraan juga boleh." galat={galat.lokasi}>
         {(a) => <input {...a} className="bch-input" name="lokasi" maxLength={120} />}
       </Kolom>
       <Kolom nama="perkiraan_tahun" label="Tahun atau perkiraan tahun" galat={galat.perkiraan_tahun}>
         {(a) => <input {...a} className="bch-input" name="perkiraan_tahun" maxLength={40} />}
       </Kolom>
-      <Kolom nama="cerita" label="Ceritanya (boleh kosong)" galat={galat.cerita}>
+      <Kolom nama="cerita" label="Cerita (boleh dikosongkan)" galat={galat.cerita}>
         {(a) => <textarea {...a} className="bch-textarea" name="cerita" rows={4} maxLength={800} />}
       </Kolom>
       <Kolom nama="kredit" label="Nama untuk kredit foto" galat={galat.kredit}>
         {(a) => <input {...a} className="bch-input" name="kredit" maxLength={80} />}
       </Kolom>
-      <Kolom nama="kontak" label="Nomor HP atau surel" petunjuk="Tidak pernah ditampilkan." galat={galat.kontak}>
+      <Kolom nama="kontak" label="Nomor ponsel atau surel" petunjuk="Tidak pernah ditampilkan." galat={galat.kontak}>
         {(a) => <input {...a} className="bch-input" name="kontak" maxLength={120} autoComplete="off" />}
       </Kolom>
       <CekPersetujuan nama="punya_hak" galat={galat.punya_hak}>
@@ -70,7 +70,7 @@ export default function FormFoto() {
       </CekPersetujuan>
       <div>
         <button type="submit" className="bch-btn" disabled={mengirim}>
-          {mengirim ? "Mengirim…" : "Kirim keterangan foto"}
+          {mengirim ? "Mengirim" : "Kirim keterangan foto"}
         </button>
       </div>
     </form>

@@ -2,7 +2,8 @@
 // diambil hanya baris tabel dan butir nama tempat; kesimpulan dan catatan penyusun ditulis sendiri di halaman.
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { rincianStatus, type KunciStatus } from "./data";
+import type { KunciStatus } from "./data";
+import { rapiTeks } from "./rapi";
 
 const baca = (nama: string) => readFileSync(path.join(process.cwd(), "data/sejarah", nama), "utf8");
 
@@ -25,25 +26,23 @@ function barisTabel(md: string, kepala: string): string[][] {
   return hasil;
 }
 
-function statusDariTanda(t: string): KunciStatus[] {
-  const hasil: KunciStatus[] = [];
-  if (t.includes("✅")) hasil.push("terverifikasi");
-  if (t.includes("📜")) hasil.push("cerita_rakyat");
-  if (t.includes("⚠️")) hasil.push("perbedaan_versi");
-  return hasil;
+/** Satu label per butir. Bila data memberi dua tanda, cerita rakyat didahulukan, lalu perbedaan versi. */
+function statusDariTanda(t: string): KunciStatus {
+  if (t.includes("📜")) return "cerita_rakyat";
+  if (t.includes("⚠️")) return "perbedaan_versi";
+  return "terverifikasi";
 }
 
-export type VersiNama = { versi: string; isi: string; asal: string; status: KunciStatus[]; rincian: string | null };
-export type NamaTempat = { nama: string; isi: string; status: KunciStatus[] };
+export type VersiNama = { versi: string; isi: string; asal: string; status: KunciStatus };
+export type NamaTempat = { nama: string; isi: string; status: KunciStatus };
 export type Bacaan = { judul: string; penulis: string; isi: string; url: string };
 
 export function uraiVersiNama(md: string): VersiNama[] {
   return barisTabel(md, "Versi").map(([versi, isi, asal, tanda]) => ({
-    versi: versi.replace(/"/g, ""),
-    isi,
-    asal,
+    versi: rapiTeks(versi.replace(/"/g, "")),
+    isi: rapiTeks(isi),
+    asal: rapiTeks(asal).replace(/ & /g, " dan "),
     status: statusDariTanda(tanda),
-    rincian: rincianStatus(tanda),
   }));
 }
 
@@ -55,15 +54,20 @@ export function uraiNamaTempat(md: string): NamaTempat[] {
     .map((m) => {
       const akhir = m[2].match(/\s*((?:✅|⚠️|📜|\/)+)\s*$/);
       return {
-        nama: m[1],
-        isi: akhir ? m[2].slice(0, akhir.index).trim() : m[2],
-        status: akhir ? statusDariTanda(akhir[1]) : [],
+        nama: rapiTeks(m[1]),
+        isi: rapiTeks(akhir ? m[2].slice(0, akhir.index).trim() : m[2]),
+        status: statusDariTanda(akhir ? akhir[1] : ""),
       };
     });
 }
 
 export function uraiBacaan(md: string): Bacaan[] {
-  return barisTabel(md, "Judul").map(([judul, penulis, isi, url]) => ({ judul, penulis, isi, url }));
+  return barisTabel(md, "Judul").map(([judul, penulis, isi, url]) => ({
+    judul: rapiTeks(judul),
+    penulis: rapiTeks(penulis.replace(/\s*\(penerbit\/tahun belum pasti[^)]*\)/, "")).replace(/ & /g, " dan "),
+    isi: rapiTeks(isi),
+    url,
+  }));
 }
 
 export const versiNama = () => uraiVersiNama(baca("asal_usul_nama.md"));

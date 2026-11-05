@@ -1,14 +1,14 @@
 "use client";
 
-import { useI18n, HALAL_LABEL, LABEL_LABEL, PRICE_HINT } from "../lib/i18n";
-import { isOpenNow } from "../lib/format";
-import type { HalalStatus, PriceTier, RecLabel } from "../lib/types";
+import { useI18n, HALAL_LABEL, LABEL_LABEL } from "../lib/i18n";
+import { isOpenNow, statusJam } from "../lib/format";
+import type { HalalStatus, RecLabel } from "../lib/types";
 import { useSekarang } from "../lib/waktu";
 
 // Status selalu berupa kata, warna hanya penguat (data/design/boleh_jangan.md).
 const NADA_HALAL: Record<HalalStatus, string | undefined> = {
   halal: "ok",
-  "muslim-friendly": "caution",
+  "muslim-friendly": "ok",
   "non-halal": undefined,
 };
 
@@ -27,15 +27,6 @@ export function LabelBadge({ label }: { label: RecLabel }) {
   return <span className="mk-label">{LABEL_LABEL[label][lang]}</span>;
 }
 
-export function PriceTag({ tier }: { tier: PriceTier }) {
-  const { lang } = useI18n();
-  return (
-    <span>
-      {tier} · {PRICE_HINT[tier][lang]}
-    </span>
-  );
-}
-
 /** Buka atau tutup. Tidak tampil di HTML statis dan tidak tampil kalau jamnya tidak diketahui. */
 export function OpenStatus({ hours }: { hours: string }) {
   const { t } = useI18n();
@@ -50,12 +41,15 @@ export function OpenStatus({ hours }: { hours: string }) {
   );
 }
 
-/** Penanda perkiraan area. Tampil selama coord_approx true. */
-export function PerkiraanBadge() {
+/** Kalimat jam buka di tabel detail (pedoman 3.11). Sama seperti OpenStatus, hanya tampil di browser. */
+export function KalimatJam({ hours }: { hours: string }) {
   const { t } = useI18n();
-  return (
-    <span className="bch-badge mk-perkiraan" data-tone="caution">
-      {t("approx_badge")}
-    </span>
-  );
+  const sekarang = useSekarang();
+  if (sekarang === null) return null;
+  const s = statusJam(hours, new Date(sekarang));
+  if (!s) return null;
+  const teks = s.jam
+    ? t(s.buka ? "open_until" : "closed_until", { jam: s.jam })
+    : t(s.buka ? "open_now" : "closed_now");
+  return <span className="mk-catatan mk-blok">{teks}</span>;
 }

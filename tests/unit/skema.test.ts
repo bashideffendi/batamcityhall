@@ -381,20 +381,22 @@ describe("routes.geojson", () => {
   const base = { version: 8, sources: {}, layers: [] } as StyleSpecification;
   it("tanpa data tidak ada lapisan garis, dengan data memakai line-offset", () => {
     const titik = titikTransDiPeta();
-    const kosong = gayaJalan(base, { theme: "day", titik, rute: RUTE_KOSONG });
+    const kosong = gayaJalan(base, { theme: "light", titik, rute: RUTE_KOSONG });
     expect(kosong.layers.some((l) => l.type === "line")).toBe(false);
     expect(kosong.layers.map((l) => l.id)).toContain(LAYER_KLIK);
 
-    const ada = gayaJalan(base, { theme: "night", titik, rute: bacaRuteGeo(teks(fitur())) });
+    const ada = gayaJalan(base, { theme: "dark", titik, rute: bacaRuteGeo(teks(fitur())) });
     const garis = ada.layers.find((l) => l.id === "jl-rute-garis");
     expect(garis?.type).toBe("line");
     expect(JSON.stringify(garis)).toContain("line-offset");
   });
 
-  it("hub bergaya berongga", () => {
-    const g = gayaJalan(base, { theme: "day", titik: titikTransDiPeta(), rute: RUTE_KOSONG });
-    const hub = g.layers.find((l) => l.id === "jl-hub-kira") as { paint: Record<string, unknown> };
-    expect(hub.paint["circle-color"]).toBe("rgba(0,0,0,0)");
-    expect(hub.paint["circle-stroke-width"]).toBeGreaterThan(0);
+  it("penanda memakai ikon gaya A, lokasi perkiraan diberi garis putus-putus", () => {
+    const fc = titikKeGeoJson(titikTransDiPeta());
+    const ikon = fc.features.map((f) => String(f.properties?.ikon));
+    expect(ikon.every((i) => i.startsWith("mk~"))).toBe(true);
+    for (const f of fc.features) expect(String(f.properties?.ikon).endsWith("~p")).toBe(f.properties?.perkiraan === true);
+    const g = gayaJalan(base, { theme: "light", titik: titikTransDiPeta(), rute: RUTE_KOSONG });
+    expect(g.layers.find((l) => l.id === "jl-titik-ikon")?.type).toBe("symbol");
   });
 });

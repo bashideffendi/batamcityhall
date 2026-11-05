@@ -1,9 +1,9 @@
 {
- "judul": "Ringkasan praktis: urusan tanah/rumah di Batam, ke mana untuk apa?",
+ "judul": "Urusan tanah dan rumah di Batam",
  "sumber_riset": "08-ppat-notaris-hukum",
  "task_id": "wf-306cd9c5-0488-8f2f-89b3-675ce767e1e0",
- "format_nilai": "markdown inline (nilai disalin persis dari tabel laporan, termasuk **tebal**)",
- "pengantar": "Batam berbeda dari kota lain. Di atas sebagian besar tanah Pulau Batam ada **Hak Pengelolaan (HPL) BP Batam**. Akibatnya, sertifikat HGB warga \"menumpang\" di atas HPL itu, dan warga wajib membayar **UWT (Uang Wajib Tahunan, dulu UWTO)** ke BP Batam. UWT dibayar di muka untuk seluruh masa alokasi, bukan per tahun: **30 tahun** untuk alokasi awal, **20 tahun** untuk perpanjangan, dan **30 tahun** untuk pembaruan. Kalau faktur tidak dilunasi sampai masa alokasi berakhir, lahan kembali dikuasai BP Batam.",
+ "format_nilai": "markdown inline, hanya **tebal**",
+ "pengantar": "Di atas sebagian besar tanah Pulau Batam ada **Hak Pengelolaan (HPL) BP Batam**. Akibatnya, sertifikat HGB warga berada di atas HPL itu, dan warga wajib membayar **UWT (Uang Wajib Tahunan, dulu UWTO)** ke BP Batam. UWT dibayar di muka untuk seluruh masa alokasi, bukan per tahun: **30 tahun** untuk alokasi awal, **20 tahun** untuk perpanjangan, dan **30 tahun** untuk pembaruan. Kalau faktur tidak dilunasi sampai masa alokasi berakhir, lahan kembali dikuasai BP Batam.",
  "masa_uwt_tahun": {
   "alokasi_awal": 30,
   "perpanjangan": 20,
@@ -11,18 +11,18 @@
  },
  "kebutuhan": [
   {
-   "kebutuhan_warga": "Cek/bayar UWT, perpanjangan alokasi lahan, simulasi biaya",
-   "ke_mana": "**BP Batam – LMS Online** (lms.bpbatam.go.id) dan loket **PTSP BP Batam di MPP**",
-   "catatan": "Perpanjangan diajukan lewat layanan \"Perpanjangan Hak Atas Tanah\" di LMS. Syaratnya: identitas, PBB tahun terakhir, sertifikat atau dokumen lahan (SKPL, SPPL, gambar lokasi, faktur UWT).",
+   "kebutuhan_warga": "Pemeriksaan dan pembayaran UWT, perpanjangan alokasi lahan, dan simulasi biaya",
+   "ke_mana": "**LMS Online BP Batam** dan loket **PTSP BP Batam di MPP**",
+   "catatan": "Perpanjangan diajukan lewat layanan “Perpanjangan Hak Atas Tanah” di LMS. Syaratnya: identitas, PBB tahun terakhir, sertifikat atau dokumen lahan (SKPL, SPPL, gambar lokasi, faktur UWT).",
    "tempat_terkait": [
     "pertanahan-bp-batam-lms",
     "pertanahan-ptsp-bp-batam-mpp"
    ]
   },
   {
-   "kebutuhan_warga": "Izin Peralihan Hak (IPH) sebelum jual-beli, alokasi tanah, persetujuan hak tanggungan, pecah PL, salinan arsip dokumen alokasi",
-   "ke_mana": "**BP Batam** (LMS / PTSP di MPP / B-CARE untuk pengaduan)",
-   "catatan": "Katalog B-CARE menyebut layanan \"Izin Peralihan Hak, Pengalokasian Tanah, Perpanjang Hak Atas Tanah dan Pelayanan Hak Tanggungan\".",
+   "kebutuhan_warga": "Izin Peralihan Hak (IPH) sebelum jual beli, alokasi tanah, persetujuan hak tanggungan, pecah PL, dan salinan arsip dokumen alokasi",
+   "ke_mana": "**BP Batam**: LMS Online, PTSP di MPP, atau B-CARE untuk pengaduan",
+   "catatan": "Katalog B-CARE menyebut layanan “Izin Peralihan Hak, Pengalokasian Tanah, Perpanjang Hak Atas Tanah dan Pelayanan Hak Tanggungan”.",
    "tempat_terkait": [
     "pertanahan-bp-batam-pusat",
     "pertanahan-bp-batam-lms",
@@ -30,16 +30,16 @@
    ]
   },
   {
-   "kebutuhan_warga": "Sertifikat (HGB/HM), balik nama, pengecekan sertifikat, pendaftaran dan roya hak tanggungan, PTSL",
+   "kebutuhan_warga": "Sertifikat (HGB atau HM), balik nama, pemeriksaan sertifikat, pendaftaran dan roya hak tanggungan, dan PTSL",
    "ke_mana": "**Kantor Pertanahan (BPN) Kota Batam**, Jl. Jaksa Agung R. Soeprapto, Sungai Harapan, Sekupang. Ada juga loket BPN di MPP.",
-   "catatan": "WA pengaduan resmi: 0851 5000 0722.",
+   "catatan": "WhatsApp pengaduan: 0851 5000 0722.",
    "tempat_terkait": [
     "pertanahan-kantah-bpn-batam",
     "layanan-mpp-batam"
    ]
   },
   {
-   "kebutuhan_warga": "Akta Jual Beli (AJB), Akta Pemberian Hak Tanggungan (APHT), hibah, tukar-menukar, inbreng tanah",
+   "kebutuhan_warga": "Akta Jual Beli (AJB), Akta Pemberian Hak Tanggungan (APHT), hibah, tukar-menukar, dan inbreng tanah",
    "ke_mana": "**PPAT** (umumnya notaris yang merangkap PPAT)",
    "catatan": "PPAT berwenang hanya di wilayah kerjanya (Kota Batam).",
    "tempat_terkait": [],
@@ -49,7 +49,7 @@
    ]
   },
   {
-   "kebutuhan_warga": "PPJB (sebelum AJB), perjanjian sewa, kuasa, wasiat, pendirian PT/CV/yayasan/koperasi",
+   "kebutuhan_warga": "PPJB (sebelum AJB), perjanjian sewa, kuasa, wasiat, dan pendirian PT, CV, yayasan, atau koperasi",
    "ke_mana": "**Notaris**",
    "catatan": "Notaris yang punya sertifikasi NPAK bisa membuat akta koperasi.",
    "tempat_terkait": [],
@@ -60,23 +60,24 @@
   {
    "kebutuhan_warga": "BPHTB (pajak pembeli) dan PBB",
    "ke_mana": "**Bapenda Kota Batam** (mitra IPPAT)",
-   "catatan": "Alamat Bapenda tidak tercakup riset ini, jadi perlu ditambahkan dari riset kantor pemerintahan sebelumnya.",
+   "catatan": "",
+   "catatan_internal": "Alamat Bapenda tidak tercakup riset ini, jadi perlu ditambahkan dari riset kantor pemerintahan sebelumnya.",
    "tempat_terkait": [
     "pub-bapenda"
    ]
   },
   {
-   "kebutuhan_warga": "PPh final penjual, NPWP",
+   "kebutuhan_warga": "PPh final penjual dan NPWP",
    "ke_mana": "**KPP Pratama** atau loket pajak di MPP",
-   "catatan": "KPP Pratama Batam Selatan melayani di MPP secara bergiliran (jadwal yang pernah diumumkan: Senin–Selasa).",
+   "catatan": "KPP Pratama Batam Selatan melayani di MPP secara bergiliran (jadwal yang pernah diumumkan: Senin—Selasa).",
    "tempat_terkait": [
     "layanan-mpp-batam"
    ]
   },
   {
-   "kebutuhan_warga": "Rumah lelang (bank/negara)",
+   "kebutuhan_warga": "Rumah lelang dari bank atau negara",
    "ke_mana": "**KPKNL Batam** atau **Pejabat Lelang Kelas II**",
-   "catatan": "Daftar resmi Pejabat Lelang Kelas II per 26 November 2025 memuat 4 nama dengan wilayah jabatan Batam.",
+   "catatan": "Daftar resmi Pejabat Lelang Kelas II per 26 November 2025 memuat empat nama dengan wilayah jabatan Batam.",
    "tempat_terkait": [
     "lelang-kpknl-batam"
    ],
@@ -87,12 +88,12 @@
  ],
  "catatan_tempat_terkait": "id tempat merujuk ke data/places/08-ppat-notaris-hukum.json; 'pub-bapenda' ada di data/places/09-direktori-celah.json (laporan 08 sendiri tidak memuat alamat Bapenda).",
  "urutan_jual_beli_rumah": {
-  "judul": "Urutan umum jual-beli rumah di lahan HPL BP Batam",
-  "catatan": "gambaran praktis saja; detail wajib dicek ke PPAT atau BP Batam",
+  "judul": "Urutan jual beli rumah di lahan HPL BP Batam",
+  "catatan_internal": "gambaran praktis saja; detail wajib dicek ke PPAT atau BP Batam",
   "langkah": [
-   "cek status UWT dan sisa masa alokasi di BP Batam",
+   "periksa status UWT dan sisa masa alokasi di BP Batam",
    "urus Izin Peralihan Hak di BP Batam",
-   "PPAT cek sertifikat di BPN, lalu pajak dibayar (BPHTB oleh pembeli, PPh oleh penjual)",
+   "PPAT memeriksa sertifikat di BPN, lalu pajak dibayar (BPHTB oleh pembeli, PPh oleh penjual)",
    "tanda tangan AJB di PPAT",
    "PPAT mendaftarkan balik nama ke BPN"
   ]

@@ -20,7 +20,7 @@ const SWARAKEPRI = "https://swarakepri.com/sejarah-kampung-sembulang-pulau-rempa
 
 export const PROFIL: Profil[] = [
   {
-    judul: "Kampung asal Hari Jadi Batam",
+    judul: "Kampung Asal Hari Jadi Batam",
     kampung: ["kt-nongsa-pantai"],
     butir: [
       {
@@ -56,7 +56,7 @@ export const PROFIL: Profil[] = [
     ],
   },
   {
-    judul: 'Dari "Lagorap" ke kopra',
+    judul: "Dari “Lagorap” ke Kopra",
     kampung: ["kt-batu-besar", "kt-kampung-melayu-batu-besar"],
     butir: [
       {
@@ -70,7 +70,7 @@ export const PROFIL: Profil[] = [
         sumber: BPNB_BATU_BESAR,
       },
       {
-        teks: "Sekolah Rakyat pertama 1957 disebut blog dan GoWest. GoWest juga menyebut SD 001 Nongsa sebagai yang tertua. Perlu dicek ke Dinas Pendidikan.",
+        teks: "Sekolah Rakyat pertama 1957 disebut blog dan GoWest. GoWest juga menyebut SD 001 Nongsa sebagai yang tertua.",
         label: "perlu_cek_ulang",
         sumber: "https://gowest.id/batu-besar-lagorap-penghasil-kopra-di-lintasan-waktu/",
       },
@@ -90,7 +90,7 @@ export const PROFIL: Profil[] = [
     ],
   },
   {
-    judul: "Kampung legenda",
+    judul: "Kampung Legenda",
     kampung: ["kt-tanjung-bemban"],
     butir: [
       {
@@ -116,7 +116,7 @@ export const PROFIL: Profil[] = [
     ],
   },
   {
-    judul: "Tanah bertuah di depan Jodoh",
+    judul: "Tanah Bertuah di Depan Jodoh",
     kampung: ["kt-tanjung-uma"],
     butir: [
       {
@@ -146,7 +146,7 @@ export const PROFIL: Profil[] = [
     ],
   },
   {
-    judul: "Pelantar yang jadi ruang publik",
+    judul: "Pelantar yang Jadi Ruang Publik",
     kampung: ["kt-tanjung-riau"],
     butir: [
       {
@@ -155,7 +155,7 @@ export const PROFIL: Profil[] = [
         sumber: "https://kkn.undip.ac.id/?p=324467",
       },
       {
-        teks: "Pilot project Kotaku Kementerian PUPR: pelantar lingkar, plaza, taman atas laut, gapura. Dananya Rp15 miliar APBN dan Rp1,562 miliar APBD, ditargetkan selesai Juni 2021.",
+        teks: "Proyek percontohan Kotaku Kementerian PUPR: pelantar lingkar, plaza, taman atas laut, gapura. Dananya Rp15 miliar APBN dan Rp1,562 miliar APBD, ditargetkan selesai Juni 2021.",
         label: "terverifikasi",
         sumber: "https://kepri.bpk.go.id/taman-atas-laut-tanjungriau-selesai-ikon-baru-wisata-batam/",
       },
@@ -171,7 +171,7 @@ export const PROFIL: Profil[] = [
     ],
   },
   {
-    judul: "Masjid tua dan makam tetua",
+    judul: "Masjid Tua dan Makam Tetua",
     kampung: ["kt-bagan"],
     butir: [
       {
@@ -185,24 +185,24 @@ export const PROFIL: Profil[] = [
         sumber: BLOG_YULIA,
       },
       {
-        teks: "Blog yang sama menyebut kampung ini dibuka 1879 oleh Nong Isa. Itu tidak cocok dengan masa hidup Nong Isa, jadi kami tandai perlu dicek.",
+        teks: "Blog yang sama menyebut kampung ini dibuka 1879 oleh Nong Isa. Tahun itu tidak cocok dengan masa hidup Nong Isa.",
         label: "perlu_cek_ulang",
         sumber: BLOG_YULIA,
       },
       {
-        teks: 'Tim STPN 2016 mencatat makam keluarga tetua adat Raja Mahmud. Keterangan fotonya menulis "Raja Muhammad", jadi namanya perlu dicek. Tim yang sama mencatat kompleks makam warga, pohon kelapa berumur lebih dari 80 tahun, dan tugu kampung tua.',
+        teks: 'Tim STPN 2016 mencatat makam keluarga tetua adat Raja Mahmud. Keterangan fotonya menulis "Raja Muhammad". Tim yang sama mencatat kompleks makam warga, pohon kelapa berumur lebih dari 80 tahun, dan tugu kampung tua.',
         label: "terverifikasi",
         sumber: STPN,
       },
       {
-        teks: 'Masjid tua At Taubah, menurut cerita berdiri di lahan tempat "bebagan". Disebut juga sebagai markas KKO pada 1965 (blog, perlu dicek).',
+        teks: 'Masjid tua At Taubah, menurut cerita berdiri di lahan tempat "bebagan". Sebuah blog juga menyebutnya markas KKO pada 1965.',
         label: "perlu_cek_ulang",
         sumber: BLOG_YULIA,
       },
     ],
   },
   {
-    judul: "Ujung selatan, wisata kuliner laut",
+    judul: "Ujung Selatan, Wisata Kuliner Laut",
     kampung: ["kt-tanjung-piayu-laut"],
     butir: [
       {
@@ -211,7 +211,7 @@ export const PROFIL: Profil[] = [
         sumber: "https://www.journal.unrika.ac.id/index.php/journalhistoria/article/download/5487/3607/",
       },
       {
-        teks: "Cerita jalur penyamaran Sultan Sulaiman. Sumbernya hanya keterangan gambar di ResearchGate, jadi lemah.",
+        teks: "Cerita jalur penyamaran Sultan Sulaiman.",
         label: "cerita_rakyat",
       },
       {
@@ -221,7 +221,7 @@ export const PROFIL: Profil[] = [
     ],
   },
   {
-    judul: "Pantai kelapa di Nongsa",
+    judul: "Pantai Kelapa di Nongsa",
     kampung: ["kt-teluk-mata-ikan"],
     butir: [
       {
@@ -233,7 +233,7 @@ export const PROFIL: Profil[] = [
     ],
   },
   {
-    judul: "Nama dari panau",
+    judul: "Nama dari Panau",
     kampung: ["kt-panau"],
     butir: [
       {
@@ -263,7 +263,7 @@ export const PROFIL: Profil[] = [
         sumber: ANTARA_OPINI,
       },
       {
-        teks: "Semua ini cerita lokal dari artikel opini. Perlu dicek ke tetua.",
+        teks: "Semua ini cerita lokal dari artikel opini.",
         label: "perlu_cek_ulang",
       },
     ],
@@ -303,7 +303,7 @@ export const PROFIL: Profil[] = [
         sumber: SWARAKEPRI,
       },
       {
-        teks: "Tokoh pembuka yang disebut antara lain Muse dan Langking. Nipis, istri Langking, wafat 1958 dan dimakamkan di pemakaman umum Al Fajri. Ini tulisan warga, belum dicek ulang.",
+        teks: "Tokoh pembuka yang disebut antara lain Muse dan Langking. Nipis, istri Langking, wafat 1958 dan dimakamkan di pemakaman umum Al Fajri. Ini tulisan warga.",
         label: "cerita_rakyat",
         sumber: SWARAKEPRI,
       },
@@ -313,10 +313,11 @@ export const PROFIL: Profil[] = [
 
 export const profilUntuk = (id: string) => PROFIL.find((p) => p.kampung.includes(id)) ?? null;
 
+// Label status satu per butir (pedoman 3.7). Sumber tunggal dan yang belum dipastikan sama-sama belum terverifikasi.
 export const LABEL_BUTIR: Record<LabelButir, { teks: string; nada: "ok" | "caution" | "info" }> = {
-  terverifikasi: { teks: "Terverifikasi", nada: "ok" },
-  sumber_tunggal: { teks: "Sumber tunggal", nada: "caution" },
+  terverifikasi: { teks: "Tercatat", nada: "ok" },
+  sumber_tunggal: { teks: "Belum terverifikasi", nada: "caution" },
   cerita_rakyat: { teks: "Cerita rakyat", nada: "info" },
-  perlu_cek_ulang: { teks: "Perlu dicek ulang", nada: "caution" },
-  beda_versi: { teks: "Beda versi", nada: "caution" },
+  perlu_cek_ulang: { teks: "Belum terverifikasi", nada: "caution" },
+  beda_versi: { teks: "Berbeda versi", nada: "caution" },
 };

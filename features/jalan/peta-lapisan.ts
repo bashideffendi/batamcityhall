@@ -1,6 +1,7 @@
 // Lapisan peta Loket 04. Fungsi murni supaya bisa dites tanpa WebGL.
-// Berongga = lokasi perkiraan, penuh = terverifikasi (prompt 4.2). Tidak ada garis rute kecuali dari loader.
+// Penanda gaya A, garis putus-putus = lokasi perkiraan (PEDOMAN 5.4). Tidak ada garis rute kecuali dari loader.
 import type { LayerSpecification, StyleSpecification } from "maplibre-gl";
+import { namaGambar, WARNA } from "@/features/peta/gambar-penanda";
 import { FONT, PALET, type MapTheme } from "@/features/peta/style";
 import type { KoleksiRute } from "./rute-geo";
 import type { TitikJalan } from "./trans-data";
@@ -15,7 +16,14 @@ export function titikKeGeoJson(titik: TitikJalan[]): GeoJSON.FeatureCollection {
     features: titik.map((t) => ({
       type: "Feature",
       geometry: { type: "Point", coordinates: [t.lng, t.lat] },
-      properties: { id: t.id, nama: t.nama, jenis: t.jenis, perkiraan: t.perkiraan },
+      properties: {
+        id: t.id,
+        nama: t.nama,
+        jenis: t.jenis,
+        perkiraan: t.perkiraan,
+        // Pelabuhan memakai ikon feri, titik transit dan halte memakai ikon halte (PEDOMAN 5.4).
+        ikon: namaGambar(t.jenis === "terminal" ? "feri" : "halte", WARNA.transportasi, t.perkiraan),
+      },
     })),
   };
 }
@@ -100,39 +108,13 @@ export function gayaJalan(
   }
   const titikLayers: LayerSpecification[] = [
     {
-      id: "jl-hub-kira",
-      type: "circle",
+      id: "jl-titik-ikon",
+      type: "symbol",
       source: SUMBER_TITIK,
-      filter: ["all", ["==", ["get", "jenis"], "hub"], ["==", ["get", "perkiraan"], true]],
-      paint: {
-        "circle-radius": 10,
-        "circle-color": "rgba(0,0,0,0)",
-        "circle-stroke-color": c.ink,
-        "circle-stroke-width": 2,
-      },
-    },
-    {
-      id: "jl-terminal-kira",
-      type: "circle",
-      source: SUMBER_TITIK,
-      filter: ["all", ["!=", ["get", "jenis"], "hub"], ["==", ["get", "perkiraan"], true]],
-      paint: {
-        "circle-radius": 5.5,
-        "circle-color": c.land,
-        "circle-stroke-color": c.accent,
-        "circle-stroke-width": 2,
-      },
-    },
-    {
-      id: "jl-titik-pasti",
-      type: "circle",
-      source: SUMBER_TITIK,
-      filter: ["==", ["get", "perkiraan"], false],
-      paint: {
-        "circle-radius": 6,
-        "circle-color": c.accent,
-        "circle-stroke-color": c.land,
-        "circle-stroke-width": 1.5,
+      layout: {
+        "icon-image": ["get", "ikon"],
+        "icon-allow-overlap": true,
+        "icon-ignore-placement": true,
       },
     },
     {
@@ -143,11 +125,12 @@ export function gayaJalan(
       layout: {
         "text-field": ["get", "nama"],
         "text-font": [FONT.poi],
-        "text-size": 12,
-        "text-offset": [0, 1.3],
+        "text-size": 12.5,
+        "text-offset": [0, 1.5],
         "text-anchor": "top",
+        "text-optional": true,
       },
-      paint: { "text-color": c.ink, "text-halo-color": c.land, "text-halo-width": 1.5 },
+      paint: { "text-color": WARNA.tinta, "text-halo-color": WARNA.putih, "text-halo-width": 1.5 },
     },
     // Area sentuh tak terlihat: titik kecil terlalu sulit untuk jari.
     {

@@ -14,10 +14,9 @@ import {
 } from "./label";
 import { useParamUrl } from "./useParamUrl";
 
-const LUAR = { target: "_blank", rel: "noopener noreferrer" } as const;
 const KODE_TIDAK_TETAP = "lain";
 
-function KartuAcara({ a, dicek }: { a: AcaraPublik; dicek: string }) {
+function KartuAcara({ a }: { a: AcaraPublik }) {
   const status = LABEL_STATUS[a.status];
   const adaTahun = a.edisi.some((e) => /20\d\d/.test(e.tanggal));
   return (
@@ -27,13 +26,13 @@ function KartuAcara({ a, dicek }: { a: AcaraPublik; dicek: string }) {
         <span>{a.bulan ? BULAN[a.bulan - 1] : BULAN_TIDAK_TETAP}</span>
       </p>
       <h3>{a.nama}</h3>
-      <p className="bch-card-loc">{a.lokasi}</p>
+      {a.lokasi && <p className="bch-card-loc">{a.lokasi}</p>}
       <hr className="bch-card-rule" />
       <div className="bch-rebung-mini" aria-hidden="true" />
       {a.deskripsi && <p className="m-0">{a.deskripsi}</p>}
       <dl className="bud-fakta">
         <div>
-          <dt>{adaTahun && !a.tanggalTidakPasti ? "Edisi terdokumentasi" : "Tanggal"}</dt>
+          <dt>{adaTahun && !a.tanggalTidakPasti ? "Edisi tercatat" : "Tanggal"}</dt>
           <dd>
             {a.edisi.map((e) => (
               <span key={`${e.judul}-${e.tanggal}`} className="bud-edisi" data-tanggal>
@@ -43,6 +42,9 @@ function KartuAcara({ a, dicek }: { a: AcaraPublik; dicek: string }) {
               </span>
             ))}
             {a.pola && <span className="bch-sel-kecil">{a.pola}</span>}
+            {a.tanggalTidakPasti && a.status !== "belum pasti" && (
+              <span className="bch-sel-kecil">Tanggal belum pasti</span>
+            )}
           </dd>
         </div>
         <div>
@@ -54,37 +56,13 @@ function KartuAcara({ a, dicek }: { a: AcaraPublik; dicek: string }) {
         <span className="bch-badge" data-tone={status.nada}>
           {status.teks}
         </span>
-        {a.tanggalTidakPasti && (
-          <span className="bch-badge" data-tone="caution">
-            Tanggal tidak pasti
-          </span>
-        )}
-        {a.sumber?.sekunder && (
-          <span className="bch-badge" data-tone="caution">
-            Sumber sekunder
-          </span>
-        )}
       </div>
-      {a.statusRinci && a.statusRinci !== "Sumber sekunder" && <p className="bud-rinci">{a.statusRinci}</p>}
+      {a.statusRinci && <p className="bud-rinci">{a.statusRinci}</p>}
       {a.catatan.map((c) => (
         <p key={c} className="bud-rinci">
           {c}
         </p>
       ))}
-      <p className="bch-card-meta mt-3 mb-0">
-        {a.sumber ? (
-          <>
-            Sumber:{" "}
-            <a href={a.sumber.href} {...LUAR}>
-              {a.sumber.label}
-            </a>
-          </>
-        ) : (
-          "Belum ada sumber tertulis"
-        )}
-        <br />
-        Terakhir dicek {dicek}
-      </p>
       {a.tempat.length > 0 && (
         <p className="bud-tempat">
           {a.tempat.map((t) => (
@@ -98,12 +76,12 @@ function KartuAcara({ a, dicek }: { a: AcaraPublik; dicek: string }) {
   );
 }
 
-function Kisi({ isi, dicek }: { isi: AcaraPublik[]; dicek: string }) {
+function Kisi({ isi }: { isi: AcaraPublik[] }) {
   return (
     <ul className="bch-grid">
       {isi.map((a) => (
         <li key={a.id}>
-          <KartuAcara a={a} dicek={dicek} />
+          <KartuAcara a={a} />
         </li>
       ))}
     </ul>
@@ -114,7 +92,7 @@ const judulBulan = (b: number | null) => (b ? BULAN[b - 1] : BULAN_TIDAK_TETAP);
 const kodeBulan = (b: number | null) => (b ? String(b) : KODE_TIDAK_TETAP);
 
 // Urutan acara sudah disiapkan data.ts. Di sini hanya filter dan cara tampil. Tanpa JS, tampilan daftar lengkap.
-export default function Kalender({ acara, dicek }: { acara: AcaraPublik[]; dicek: string }) {
+export default function Kalender({ acara }: { acara: AcaraPublik[] }) {
   const { siap, param, tulis } = useParamUrl();
   const kelompok = param.get("kategori") ?? "";
   const status = param.get("status") ?? "";
@@ -189,7 +167,7 @@ export default function Kalender({ acara, dicek }: { acara: AcaraPublik[]; dicek
             data-reset
             onClick={() => tulis({ kategori: null, status: null })}
           >
-            Hapus filter
+            Hapus saringan
           </button>
         )}
       </div>
@@ -198,7 +176,7 @@ export default function Kalender({ acara, dicek }: { acara: AcaraPublik[]; dicek
         {hasil.length} dari {acara.length} acara
       </p>
 
-      {hasil.length === 0 && <p className="bch-note">Tidak ada acara yang cocok. Coba longgarkan filternya.</p>}
+      {hasil.length === 0 && <p className="bch-note">Tidak ada acara untuk saringan ini. Coba hapus saringan.</p>}
 
       {perBulan ? (
         <>
@@ -225,9 +203,9 @@ export default function Kalender({ acara, dicek }: { acara: AcaraPublik[]; dicek
           <section data-bulan-terpilih={dipilihKode}>
             <h2 className="mt-6 mb-3">{judulBulan(dipilih)}</h2>
             {kelompokBulan.get(dipilih)?.length ? (
-              <Kisi isi={kelompokBulan.get(dipilih) ?? []} dicek={dicek} />
+              <Kisi isi={kelompokBulan.get(dipilih) ?? []} />
             ) : (
-              <p className="bch-note">Belum ada acara tercatat untuk pilihan ini.</p>
+              <p className="bch-note">Belum ada acara untuk bulan ini.</p>
             )}
           </section>
         </>
@@ -236,12 +214,8 @@ export default function Kalender({ acara, dicek }: { acara: AcaraPublik[]; dicek
           kelompokBulan.get(b)?.length ? (
             <section key={kodeBulan(b)} id={`bulan-${kodeBulan(b)}`}>
               <h2 className="mt-7 mb-3">{judulBulan(b)}</h2>
-              {b === null && (
-                <p className="bch-measure">
-                  Acara yang bulannya bergeser tiap tahun dan belum punya bulan tetap di data.
-                </p>
-              )}
-              <Kisi isi={kelompokBulan.get(b) ?? []} dicek={dicek} />
+              {b === null && <p className="bch-measure">Acara yang bulannya bergeser setiap tahun.</p>}
+              <Kisi isi={kelompokBulan.get(b) ?? []} />
             </section>
           ) : null,
         )

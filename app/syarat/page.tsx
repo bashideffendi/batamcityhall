@@ -1,29 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FOOTER_DISCLAIMER } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Syarat",
-  description: "Draf syarat penggunaan Batam City Hall.",
+  title: "Syarat Penggunaan",
+  description: "Syarat penggunaan Batam City Hall, proyek independen warga Batam.",
 };
 
 export default function Syarat() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Syarat</p>
-      <h1 className="mt-2">Syarat penggunaan</h1>
-      <p className="bch-note" data-tone="caution">
-        Draf, belum ditinjau ahli hukum.
-      </p>
+      <h1>Syarat Penggunaan</h1>
       <div className="bch-prose">
-        <p>{FOOTER_DISCLAIMER}</p>
+        <p>Batam City Hall adalah proyek independen warga Batam.</p>
         <ul>
-          <li>Data disusun sebaik mungkin dan bisa keliru atau usang. Untuk urusan penting, pastikan ke kantornya.</li>
+          <li>Data disusun sebaik mungkin dan dapat keliru atau usang. Untuk urusan penting, pastikan kembali sebelum bertindak.</li>
           <li>Panduan urusan tanah dan bantuan hukum adalah gambaran praktis, bukan nasihat hukum.</li>
-          <li>Cuaca dan ombak di sini bukan pengganti peringatan resmi dan bukan dasar keselamatan pelayaran.</li>
-          <li>Daftar PPAT, notaris, dan pejabat lelang berstatus Beta. Verifikasi sendiri sebelum memakai jasanya.</li>
           <li>
-            Atribusi dan lisensi sumber ada di <Link href="/kolofon">Kolofon</Link>.
+            Informasi cuaca, gelombang, peringatan dini, dan gempa di situs ini tidak menggantikan peringatan resmi dan
+            tidak dapat dijadikan dasar keselamatan pelayaran.
+          </li>
+          <li>Daftar PPAT, notaris, dan pejabat lelang belum seluruhnya diperiksa. Periksa sendiri sebelum memakai jasanya.</li>
+          <li>
+            Kredit data dan lisensi ada di <Link href="/kolofon">Kolofon</Link>.
           </li>
         </ul>
       </div>

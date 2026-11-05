@@ -78,8 +78,8 @@ export const GUGUS: Gugus[] = [
       { id: "raja_ali_kelana", nama: "Raja Ali Kelana", x: TENGAH, y: 230 },
     ],
     tepi: [
-      { relasi: "batin_limat>embung_fatimah", label: "setia 1911, perlu dicek" },
-      { relasi: "embung_fatimah>raja_ali_kelana", label: "ibu tiri, perlu dicek" },
+      { relasi: "batin_limat>embung_fatimah", label: "setia 1911" },
+      { relasi: "embung_fatimah>raja_ali_kelana", label: "ibu tiri" },
     ],
   },
   {
@@ -114,13 +114,11 @@ export const GUGUS: Gugus[] = [
   },
 ];
 
+// `kode` dipakai CSS untuk bingkai simpul. `teks` adalah label yang tampil.
 const statusPendek = (id: string) => {
-  const g = tokohPerId.get(id)?.status.grup;
-  if (g === "hikayat") return "hikayat";
-  if (g === "semi_historis") return "semi-historis";
-  if (g === "beda_versi") return "beda versi";
-  if (g === "perlu_dicek") return "perlu dicek";
-  return "sejarah";
+  const t = tokohPerId.get(id)?.status;
+  if (t?.hikayat) return { kode: t.grup === "hikayat" ? "hikayat" : "semi-historis", teks: t.teks.toLowerCase() };
+  return { kode: "sejarah", teks: (t?.teks ?? "Tercatat").toLowerCase() };
 };
 
 /** Titik potong garis dari pusat simpul ke tepi kotaknya, supaya panah tidak tertutup kotak. */
@@ -189,13 +187,13 @@ function Graf({ g }: { g: Gugus }) {
         {g.simpul.map((s) => {
           const status = statusPendek(s.id);
           return (
-            <a key={s.id} href={`/cerita/nama-jalan/${s.id}`} className="nj-simpul" data-status={status}>
+            <a key={s.id} href={`/cerita/nama-jalan/${s.id}`} className="nj-simpul" data-status={status.kode}>
               <rect x={s.x - W / 2} y={s.y - H / 2} width={W} height={H} rx={2} />
               <text x={s.x} y={s.y - 3} textAnchor="middle" className="nj-simpul-nama">
                 {s.nama}
               </text>
               <text x={s.x} y={s.y + 14} textAnchor="middle" className="nj-simpul-status">
-                {status}
+                {status.teks}
               </text>
             </a>
           );
@@ -213,7 +211,7 @@ export default function DiagramRelasi() {
           <Graf key={g.id} g={g} />
         ))}
       </div>
-      <h3 id="relasi-teks">Hubungan yang sama, dalam teks</h3>
+      <h3 id="relasi-teks">Hubungan yang Sama dalam Teks</h3>
       <ol className="nj-relasi" data-relasi-teks>
         {RELASI.map((r) => (
           <li key={r.id}>
@@ -229,7 +227,7 @@ export default function DiagramRelasi() {
               <>
                 {" "}
                 <span className="bch-badge" data-tone="caution">
-                  Perlu dicek
+                  Belum terverifikasi
                 </span>
               </>
             )}

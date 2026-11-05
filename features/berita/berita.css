@@ -2,7 +2,7 @@
 .bch-berita-widget {
   margin-block: var(--bch-space-6);
   padding: var(--bch-space-4);
-  background: var(--bch-paper-2);
+  background: var(--bch-paper);
   border: var(--bch-stroke-base) solid var(--bch-rule);
   border-radius: var(--bch-radius-1);
   max-width: var(--bch-measure);
@@ -23,7 +23,6 @@
   list-style: none;
   margin: var(--bch-space-3) 0;
   padding: 0;
-  max-width: var(--bch-measure);
 }
 .bch-berita-daftar li {
   padding-bottom: var(--bch-space-2);
@@ -38,11 +37,20 @@
   min-height: 44px;
   padding-block: var(--bch-space-2);
   overflow-wrap: anywhere;
+  font-family: var(--bch-font-display);
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--bch-ink);
+  text-decoration: none;
+}
+.bch-berita-daftar a:hover {
+  color: var(--bch-link);
 }
 .bch-berita-meta {
   display: block;
   margin: 0;
-  font-size: var(--bch-text-small);
+  font-family: var(--bch-font-mono);
+  font-size: 0.8125rem;
   color: var(--bch-ink-muted);
 }
 .bch-berita-semua {

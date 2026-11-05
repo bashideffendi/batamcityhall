@@ -2,9 +2,6 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 import places from "../../data/makan/places.json";
 
-const DISCLAIMER =
-  "Proyek independen warga Batam, bukan situs resmi Pemerintah Kota Batam atau BP Batam. Untuk layanan resmi: batam.go.id.";
-
 // Bahasa Makan ikut browser kalau belum dipilih: tes berjalan dalam bahasa Indonesia.
 test.use({ locale: "id-ID" });
 
@@ -30,14 +27,15 @@ test.describe("kerangka situs", () => {
       const res = await page.goto(path);
       expect(res?.status()).toBe(200);
       await expect(page.locator("header.bch-nav")).toBeVisible();
-      await expect(page.locator("footer")).toContainText(DISCLAIMER);
+      await expect(page.locator("footer")).toContainText("Proyek independen warga Batam");
+      await expect(page.locator("footer")).not.toContainText("batam.go.id");
       await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
     });
   }
 
   test("slug tidak dikenal berstatus 404", async ({ page }) => {
     expect((await page.goto("/makan/tempat/tidak-ada"))?.status()).toBe(404);
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Halaman ini tenggelam.");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Halaman Tidak Ditemukan");
     expect((await page.goto("/makan/jalur/tidak-ada"))?.status()).toBe(404);
   });
 });
@@ -52,25 +50,26 @@ test.describe("daftar dan filter", () => {
     await jumlah(page, 80);
     await page.getByRole("searchbox").fill("golden prawn");
     await jumlah(page, 0);
-    await expect(page.getByText("Tidak ada tempat yang cocok.")).toBeVisible();
+    await expect(page.getByText("Tidak ada hasil untuk “golden prawn”. Coba kata lain atau hapus saringan.")).toBeVisible();
     await page.getByRole("button", { name: "Hapus pencarian" }).click();
     await jumlah(page, 80);
   });
 
-  test("lembar filter: 17 kategori, 15 area, harga, terminal, label", async ({ page }) => {
+  test("lembar saringan: 17 kategori, 15 area, harga, terminal, label", async ({ page }) => {
     await page.goto("/makan/daftar");
-    await page.getByRole("button", { name: "Filter", exact: true }).click();
+    await page.getByRole("button", { name: "Saring", exact: true }).click();
     const lembar = page.getByRole("dialog");
     await expect(lembar).toBeVisible();
     const grup = (nama: string) => lembar.getByRole("group", { name: nama }).getByRole("button");
     await expect(grup("Kategori")).toHaveCount(17);
     await expect(grup("Area")).toHaveCount(15);
     await expect(grup("Harga")).toHaveCount(3);
-    await expect(grup("Terminal ferry")).toHaveCount(4);
+    await expect(grup("Terminal feri")).toHaveCount(4);
     await expect(grup("Label")).toHaveCount(4);
     await expect(grup("Status halal")).toHaveCount(3);
 
-    await grup("Harga").filter({ hasText: "$$$" }).click();
+    await expect(lembar.getByText(/\$|Hemat|Premium/)).toHaveCount(0);
+    await grup("Harga").filter({ hasText: "Harga tinggi" }).click();
     await expect(lembar.getByRole("button", { name: /Terapkan · 10 tempat/ })).toBeVisible();
     await lembar.getByRole("button", { name: /Terapkan/ }).click();
     await expect(lembar).toBeHidden();
@@ -100,9 +99,9 @@ test.describe("daftar dan filter", () => {
     await jumlah(page, 80);
   });
 
-  test("shortcut Dekat Terminal Ferry membuka peta terfilter", async ({ page }) => {
+  test("pintasan Dekat Terminal Feri membuka peta tersaring", async ({ page }) => {
     await page.goto("/makan");
-    await expect(page.getByRole("heading", { name: "Dekat Terminal Ferry" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Dekat Terminal Feri" })).toBeVisible();
     await page.getByRole("button", { name: /Harbour Bay/ }).click();
     await page.waitForURL("**/makan/peta");
     const n = Number(await page.locator(".mk-peta-halaman").getAttribute("data-jumlah-pin"));
@@ -112,30 +111,47 @@ test.describe("daftar dan filter", () => {
 });
 
 test.describe("detail tempat", () => {
-  test("menu, jam, harga dan kurs, pembayaran, peta, navigasi", async ({ page }) => {
+  test("menu, jam, harga dan kurs, pembayaran, peta, petunjuk arah", async ({ page }) => {
     await page.goto("/makan/tempat/golden-prawn-933");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Golden Prawn 933");
     await expect(page.getByText("Menu andalan")).toBeVisible();
     await expect(page.getByText(/Kepiting saus padang/)).toBeVisible();
-    await expect(page.getByText("09.30–23.00")).toBeVisible();
-    await expect(page.getByText(/Rp150\.000–350\.000/)).toBeVisible();
+    await expect(page.getByText("09.30—23.00 WIB")).toBeVisible();
+    await expect(page.getByText(/Rp150\.000—Rp350\.000/)).toBeVisible();
     await expect(page.getByText("Tunai, QRIS, Kartu")).toBeVisible();
-    await expect(page.locator(".bch-card-meta, .bch-badges").getByText(/Buka sekarang|Tutup sekarang/)).toBeVisible();
-    await expect(page.locator(".mk-label").filter({ hasText: "Legendaris" })).toBeVisible();
+    await expect(page.locator(".mk-detail").getByText(/(Buka|Tutup) sekarang, (sampai|buka lagi) pukul/)).toBeVisible();
+    // Satu label kurasi, walau data menyimpan dua. Harga tanpa simbol $ dan tanpa kata "Premium".
+    await expect(page.locator(".mk-label")).toHaveCount(1);
+    await expect(page.locator(".mk-label")).toHaveText("Legendaris");
+    await expect(page.locator(".mk-detail-lencana .bch-badge")).toHaveCount(1);
+    expect(await page.locator("main").innerText()).not.toMatch(/\$\$|Premium|Info terverifikasi/);
+    await expect(page.getByRole("link", { name: "Laporkan data yang salah" })).toHaveAttribute(
+      "href",
+      "/koreksi?tempat=golden-prawn-933",
+    );
+    await expect(page.getByText("Data diperiksa pada Juni 2026.")).toBeVisible();
 
-    const nav = page.getByRole("link", { name: "Navigasi" });
+    const nav = page.getByRole("link", { name: "Petunjuk arah" }).first();
     await expect(nav).toHaveAttribute("href", /google\.com\/maps\/search.*Golden\+Prawn/);
     await expect(page.getByRole("link", { name: "Telepon" })).toBeVisible();
 
     await page.getByLabel("Mata uang").selectOption("SGD");
-    await expect(page.getByText("~S$13–29")).toBeVisible();
+    await expect(page.getByText("~S$13—S$29")).toBeVisible();
     await expect(page.getByText(/kurs perkiraan/)).toBeVisible();
     await page.getByLabel("Mata uang").selectOption("MYR");
-    await expect(page.getByText("~RM42–99")).toBeVisible();
+    await expect(page.getByText("~RM42—RM99")).toBeVisible();
     await page.getByLabel("Mata uang").selectOption("IDR");
 
     await petaSiap(page);
     await expect(page.locator(".maplibregl-ctrl-attrib")).toContainText("OpenStreetMap");
+  });
+
+  test("nomor ponsel disembunyikan, tombol petunjuk arah tetap ada", async ({ page }) => {
+    const ponsel = places.find((p) => /^\+62 8/.test(p.phone))!;
+    await page.goto(`/makan/tempat/${ponsel.id}`);
+    await expect(page.getByRole("link", { name: "Petunjuk arah" }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "Telepon" })).toHaveCount(0);
+    expect(await page.locator("main").innerText()).not.toContain(ponsel.phone);
   });
 
   test("rating dan jumlah ulasan tidak tampil, di layar maupun di HTML", async ({ page }) => {
@@ -155,16 +171,15 @@ test.describe("detail tempat", () => {
     expect(daftar).not.toMatch(/ulasan/i);
     await expect(page.getByRole("combobox", { name: "Urutkan" }).locator("option")).toHaveText([
       "Pilihan",
-      "Terdekat dari ferry",
-      "Nama A–Z",
+      "Terdekat dari feri",
+      "Nama A—Z",
     ]);
   });
 
   test("koordinat tampil sebagai perkiraan area", async ({ page }) => {
     await page.goto("/makan/tempat/golden-prawn-933");
-    await expect(page.locator(".mk-perkiraan")).toHaveText("Perkiraan area");
-    await expect(page.getByText(/perkiraan area, bukan titik pasti/)).toBeVisible();
-    await expect(page.getByText(/sekitar .*km.* dari Pelabuhan Feri/)).toBeVisible();
+    await expect(page.getByText(/Titik di peta adalah perkiraan area\. Gunakan Petunjuk arah untuk lokasi persisnya\./)).toBeVisible();
+    await expect(page.getByText(/Sekitar \d+,\d km dari Pelabuhan Feri/)).toBeVisible();
     // Halaman statis tidak boleh mencetak status buka: jam build bukan jam pembaca.
     const html = await (await page.request.get("/makan/tempat/golden-prawn-933")).text();
     expect(html).not.toMatch(/>(Buka|Tutup) sekarang</);
@@ -187,7 +202,7 @@ test.describe("peta", () => {
   test("legenda perkiraan, pin berkelompok, dan daftar keyboard membuka kartu", async ({ page }) => {
     await page.goto("/makan/peta");
     await petaSiap(page);
-    await expect(page.getByText("Lingkaran berongga: perkiraan area, bukan titik pasti.")).toBeVisible();
+    await expect(page.getByText("Lingkaran berongga menunjukkan perkiraan area.")).toBeVisible();
     await expect(page.locator(".mk-peta-halaman")).toHaveAttribute("data-jumlah-pin", "117");
     await expect(page.locator(".maplibregl-ctrl-attrib")).toContainText("Protomaps");
     await expect(page.locator("body")).toHaveClass(/bch-no-grain/);
@@ -198,17 +213,17 @@ test.describe("peta", () => {
     await expect(baris).toHaveAttribute("aria-pressed", "true");
     const kartu = page.locator(".mk-kartu-mini");
     await expect(kartu.getByRole("heading", { name: "Golden Prawn 933" })).toBeVisible();
-    await expect(kartu.locator(".mk-perkiraan")).toHaveText("Perkiraan area");
+    await expect(kartu.locator(".bch-badge")).toHaveCount(1);
     await kartu.getByRole("button", { name: "Tutup" }).click();
     await expect(kartu).toHaveCount(0);
   });
 
   test("tema berganti tanpa kehilangan pin", async ({ page }) => {
-    await page.addInitScript(() => localStorage.setItem("bch-theme", "day"));
+    await page.addInitScript(() => localStorage.setItem("bch-theme", "light"));
     await page.goto("/makan/peta");
     await petaSiap(page);
-    await page.getByRole("button", { name: "Ganti ke chart malam" }).click();
-    await expect(page.locator(".mk-peta")).toHaveAttribute("data-tema", "night");
+    await page.getByRole("button", { name: "Ganti ke tampilan gelap" }).click();
+    await expect(page.locator(".mk-peta")).toHaveAttribute("data-tema", "dark");
     await page.waitForTimeout(1500);
     // Filter sesudah ganti tema tetap memperbarui sumber pin yang sama, tanpa galat.
     const galat: string[] = [];
@@ -263,14 +278,14 @@ test.describe("tersimpan", () => {
     await context.clearCookies();
     await page.evaluate(() => localStorage.removeItem("bch-makan-tersimpan"));
     await page.goto(`${tautan},slug-asing`);
-    await expect(page.getByText("Tautan ini membawa 1 tempat. 1 tidak dikenal dan dilewati.")).toBeVisible();
+    await expect(page.getByText("Tautan ini berisi 1 tempat. Sebanyak 1 tempat tidak dikenal dan dilewati.")).toBeVisible();
     await page.getByRole("button", { name: "Tambahkan ke tersimpan" }).click();
     await expect(page.locator(".mk-kartu")).toHaveCount(1);
 
-    // Impor manual.
-    await page.getByLabel(/Impor/).fill("sei-enam-seafood, slug-asing");
-    await page.getByRole("button", { name: "Impor", exact: true }).click();
-    await expect(page.getByText(/1 tidak dikenal dan dilewati/).last()).toBeVisible();
+    // Tempel manual.
+    await page.getByLabel("Tautan dari perangkat lain").fill("sei-enam-seafood, slug-asing");
+    await page.getByRole("button", { name: "Tempel tautan", exact: true }).click();
+    await expect(page.getByText(/Sebanyak 1 tempat tidak dikenal dan dilewati/).last()).toBeVisible();
   });
 });
 
@@ -280,22 +295,28 @@ test.describe("bahasa", () => {
     await expect(page.locator(".mk-akar")).toHaveAttribute("lang", "id");
     await page.getByRole("button", { name: "English" }).click();
     await expect(page.locator(".mk-akar")).toHaveAttribute("lang", "en");
-    await expect(page.getByRole("link", { name: "Navigate" })).toBeVisible();
-    await expect(page.getByText(/legendary stilted seafood/)).toBeVisible();
+    await expect(page.getByRole("link", { name: "Directions" }).first()).toBeVisible();
+    await expect(page.getByText(/stilted seafood restaurant/)).toBeVisible();
+    await expect(page.locator(".mk-label")).toHaveText("Legendary");
     await page.getByRole("button", { name: "中文" }).click();
     await expect(page.locator(".mk-akar")).toHaveAttribute("lang", "zh-Hans");
-    await expect(page.getByRole("link", { name: "导航" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "导航" }).first()).toBeVisible();
     await page.reload();
     await expect(page.locator(".mk-akar")).toHaveAttribute("lang", "zh-Hans");
   });
 });
 
 test.describe("tentang", () => {
-  test("prinsip dan penafian halal tertulis", async ({ page }) => {
+  test("cara memilih, arti label, dan status halal tertulis, tanpa sebutan sumber", async ({ page }) => {
     await page.goto("/makan/tentang");
-    await expect(page.getByText(/Tanpa listing berbayar/)).toBeVisible();
-    await expect(page.getByText(/kurasi best-effort, verifikasi langsung bila ragu/)).toBeVisible();
-    await expect(page.getByText(/117 dari 117 tempat masih memakai perkiraan area/)).toBeVisible();
+    await expect(page.getByText(/Tidak ada tempat yang membayar untuk masuk daftar ini/)).toBeVisible();
+    await expect(page.getByText("sudah buka puluhan tahun dan tetap ramai.")).toBeVisible();
+    await expect(page.getByText("tempat yang paling kami sarankan.")).toBeVisible();
+    await expect(page.getByText("banyak dibicarakan belakangan ini.")).toBeVisible();
+    await expect(page.getByText("bagus, tetapi tidak mudah ditemukan.")).toBeVisible();
+    await expect(page.getByText(/Status halal adalah hasil kurasi, bukan sertifikasi/)).toBeVisible();
+    await expect(page.getByText(/Titik di peta menunjukkan perkiraan area/)).toBeVisible();
+    expect(await page.locator("main").innerText()).not.toMatch(/TripAdvisor|Google Maps|Sumber:/);
   });
 });
 
@@ -323,7 +344,7 @@ test.describe("gaya", () => {
 
 test.describe("aksesibilitas", () => {
   for (const path of ROUTE) {
-    for (const tema of ["day", "night"] as const) {
+    for (const tema of ["light", "dark"] as const) {
       test(`axe ${path} tema ${tema}`, async ({ page }) => {
         await page.addInitScript((t) => localStorage.setItem("bch-theme", t), tema);
         await page.goto(path);
@@ -338,9 +359,9 @@ test.describe("aksesibilitas", () => {
     }
   }
 
-  test("axe lembar filter terbuka", async ({ page }) => {
+  test("axe lembar saringan terbuka", async ({ page }) => {
     await page.goto("/makan/daftar");
-    await page.getByRole("button", { name: "Filter", exact: true }).click();
+    await page.getByRole("button", { name: "Saring", exact: true }).click();
     await expect(page.getByRole("dialog")).toBeVisible();
     const { violations } = await new AxeBuilder({ page }).exclude("nextjs-portal").analyze();
     expect(violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`)).toEqual([]);

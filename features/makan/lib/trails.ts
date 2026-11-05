@@ -16,13 +16,17 @@ export function trailStops(t: Trail): PlaceWithGeo[] {
 }
 
 export function trailTitle(lang: Lang, t: Trail): string {
-  return lang === "id" ? t.title_id : lang === "zh" ? t.title_zh : t.title_en;
+  return lang === "id" ? t.title_id : lang === "zh" ? t.title_zh : t.en.title;
 }
 
 export function trailSubtitle(lang: Lang, t: Trail): string {
-  return lang === "id" ? t.subtitle_id : lang === "zh" ? t.subtitle_zh : t.subtitle_en;
+  return lang === "id" ? t.subtitle_id : lang === "zh" ? t.subtitle_zh : t.en.subtitle;
 }
 
 export function trailDuration(lang: Lang, t: Trail): string {
-  return lang === "id" ? t.duration_id : lang === "zh" ? t.duration_zh : t.duration_en;
+  return lang === "id" ? t.duration_id : lang === "zh" ? t.duration_zh : t.en.duration;
+}
+
+export function trailArea(lang: Lang, t: Trail): string {
+  return lang === "id" ? t.area : lang === "zh" ? t.area_zh : t.en.area;
 }

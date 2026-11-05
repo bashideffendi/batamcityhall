@@ -1,102 +1,101 @@
-import { LEGEND, OFS_CATEGORIES, OFS_MAX_M, OFS_SWH_COLORS } from "@/features/langit-laut/lib/radar";
-import { fmtM } from "@/features/langit-laut/lib/status";
+import { OFS_MAX_M, OFS_SWH_COLORS } from "@/features/langit-laut/lib/radar";
 
-// Legend gelombang: HARD STOP per band (peta contourf memakai satu warna per band, bukan gradien).
+// Warna band mengikuti tile gelombang yang diredam di peta (PEDOMAN 5.2), jadi batangnya ikut diredam.
 const OFS_GRADIENT = `linear-gradient(to right, ${OFS_SWH_COLORS.map((s, i) => {
   const from = ((s.m / OFS_MAX_M) * 100).toFixed(1);
   const to = (((OFS_SWH_COLORS[i + 1]?.m ?? OFS_MAX_M) / OFS_MAX_M) * 100).toFixed(1);
   return `${s.c} ${from}% ${to}%`;
 }).join(", ")})`;
-const TICKS = Array.from({ length: OFS_MAX_M + 1 }, (_, i) => i);
+const TITIK_SKALA: { m: number; label: string }[] = [
+  { m: 0, label: "0" },
+  { m: 0.5, label: "0,5" },
+  { m: 1.25, label: "1,25" },
+  { m: 2.5, label: "2,5" },
+  { m: 4, label: "4" },
+  { m: 6, label: "6" },
+];
 
-// Tiga kelas hujan = pembagian palet ASLI PNG MSS yang sama dengan hitungan server
-// (lib/echo.ts): cyan–hijau = ringan, kuning–oranye = sedang, merah–magenta = lebat.
-const RAIN_CLASSES = [
-  { key: "ringan", label: "Ringan", colors: LEGEND.slice(0, 4) },
-  { key: "sedang", label: "Sedang", colors: LEGEND.slice(4, 6) },
-  { key: "lebat", label: "Lebat", colors: LEGEND.slice(6) },
-] as const;
-
-/**
- * Skala warna radar di panel (selalu terlihat): satu batang selebar kolom kontrol, dibagi
- * tiga kelas, nama kelas di bawah awal tiap bagian.
- */
-export function RainScale() {
+/** Legenda radar: tiga kelas sesuai warna di peta (PEDOMAN 3.3, 5.2). */
+export function LegendaHujan() {
   return (
-    <div className="ctl-row">
-      <span className="ctl-lab" aria-hidden>
-        Skala
-      </span>
-      <ul className="rain-scale" aria-label="Skala Warna Radar">
-        {RAIN_CLASSES.map((c) => (
-          <li key={c.key}>
-            <i style={{ background: `linear-gradient(to right, ${c.colors.join(", ")})` }} aria-hidden />
-            {c.label}
-          </li>
-        ))}
+    <section className="cu-legenda" aria-labelledby="cu-legenda-hujan">
+      <h2 id="cu-legenda-hujan" className="cu-sub">
+        Intensitas hujan
+      </h2>
+      <ul className="cu-legenda-hujan">
+        <li>
+          <i data-kelas="ringan" aria-hidden />
+          Ringan
+        </li>
+        <li>
+          <i data-kelas="sedang" aria-hidden />
+          Sedang
+        </li>
+        <li>
+          <i data-kelas="lebat" aria-hidden />
+          Lebat
+        </li>
       </ul>
-    </div>
-  );
-}
-
-/** Skala tinggi ombak di panel (selalu terlihat): band warna BMKG + meter. */
-export function OfsScale() {
-  return (
-    <div className="ctl-row">
-      <span className="ctl-lab" aria-hidden>
-        Skala
-      </span>
-      <div className="ofs-scale" role="img" aria-label="Skala Tinggi Ombak, 0 sampai 7 meter">
-        <div className="ofs-bar" style={{ background: OFS_GRADIENT }} />
-        <div className="ofs-ticks" aria-hidden>
-          {TICKS.map((m) => (
-            <span key={m}>{m === OFS_MAX_M ? `${m} m` : m}</span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/** Detail HUJAN: ketebalan warna radar. */
-export function RainOpacity({ opacity, onOpacity }: { opacity: number; onOpacity: (v: number) => void }) {
-  return (
-    <section className="d-sec">
-      <h3 className="d-title">Ketebalan Warna Radar</h3>
-      <label className="opacity">
-        <span>Tipis</span>
-        <input
-          className="rng"
-          type="range"
-          aria-label="Ketebalan Warna Radar"
-          aria-valuetext={`${Math.round(opacity * 100)}%`}
-          min={0.3}
-          max={1}
-          step={0.05}
-          value={opacity}
-          onChange={(e) => onOpacity(Number(e.target.value))}
-        />
-        <span>Tebal</span>
-      </label>
+      <p className="cu-catatan">
+        Radar berpusat di Singapura sehingga pulau-pulau di selatan Batam terpantau kurang akurat. Bercak yang diam di satu
+        tempat kadang bukan hujan.
+      </p>
     </section>
   );
 }
 
-/** Detail OMBAK: kategori resmi BMKG + definisi tinggi ombak di peta. */
-export function OfsCategories() {
+/** Legenda tinggi gelombang (m). */
+export function LegendaGelombang() {
   return (
-    <section className="d-sec">
-      <h3 className="d-title">Kategori Ombak BMKG (meter)</h3>
-      <ul className="ofs-cats">
-        {OFS_CATEGORIES.map((c, i) => (
-          <li key={c.label}>
-            <b>{c.label}</b> {i === OFS_CATEGORIES.length - 1 ? `>${fmtM(c.from)}` : `${fmtM(c.from)}–${fmtM(c.to)}`}
-          </li>
-        ))}
-      </ul>
-      <p className="d-note">
-        Tinggi ombak di peta adalah rerata sepertiga ombak tertinggi (gelombang signifikan) dari model BMKG.
-      </p>
+    <section className="cu-legenda" aria-labelledby="cu-legenda-gelombang">
+      <h2 id="cu-legenda-gelombang" className="cu-sub">
+        Tinggi gelombang (m)
+      </h2>
+      <div className="cu-skala" role="img" aria-label="Skala tinggi gelombang, 0 sampai 6 meter">
+        <div className="cu-skala-batang" style={{ background: OFS_GRADIENT }} />
+        <div className="cu-skala-titik" aria-hidden>
+          {TITIK_SKALA.map((t) => (
+            <span key={t.m} style={{ left: `${(t.m / OFS_MAX_M) * 100}%` }}>
+              {t.label}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const KATEGORI = [
+  ["Tenang", "0—0,5 m"],
+  ["Rendah", "0,5—1,25 m"],
+  ["Sedang", "1,25—2,5 m"],
+  ["Tinggi", "2,5—4 m"],
+  ["Sangat tinggi", "4—6 m"],
+  ["Ekstrem", "lebih dari 6 m"],
+];
+
+/** Tabel Kategori Gelombang (PEDOMAN 3.3). */
+export function KategoriGelombang() {
+  return (
+    <section aria-labelledby="cu-kategori">
+      <h2 id="cu-kategori">Kategori Gelombang</h2>
+      <table className="bch-table">
+        <thead>
+          <tr>
+            <th scope="col">Kategori</th>
+            <th scope="col">Tinggi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {KATEGORI.map(([k, t]) => (
+            <tr key={k}>
+              <td>{k}</td>
+              <td className="bch-data">{t}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p className="cu-catatan">Sebagai gambaran, gelombang di atas 1,25 m mulai berisiko bagi perahu kecil, dan di atas 2,5 m bagi kapal feri.</p>
     </section>
   );
 }

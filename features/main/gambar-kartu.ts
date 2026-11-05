@@ -4,8 +4,8 @@ import { PALET } from "@/features/peta/style";
 export const LATAR = { peta: "Peta laut", hujan: "Hujan", selat: "Selat" } as const;
 export type Latar = keyof typeof LATAR;
 
-const c = PALET.day;
-const SERIF = '"Source Serif 4", Georgia, serif';
+const c = PALET.light;
+const SERIF = '"Newsreader", Georgia, serif';
 const SANS = '"Plus Jakarta Sans", system-ui, sans-serif';
 
 /** Pecah teks per kata menurut lebar. Dipisah supaya bisa dites tanpa kanvas. */

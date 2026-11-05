@@ -152,7 +152,7 @@ export default function AlatGcp({
       pasangGlobalPeta();
       peta = new Peta({
         container: wadahPeta.current,
-        style: baseStyle("day", window.location.origin, { chart: false }),
+        style: baseStyle("light", window.location.origin, { chart: false }),
         center: [104.006, 1.152],
         zoom: 12.5,
         attributionControl: { compact: true },

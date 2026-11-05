@@ -1,54 +1,52 @@
 import type { Metadata } from "next";
+import { ROBOTS_TERSEMBUNYI } from "@/lib/site";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Warga baru",
-  description: "Baru pindah ke Batam? Titik mulai untuk urusan KTP, tempat tinggal, kesehatan, dan darurat.",
+  title: "Warga Baru",
+  robots: ROBOTS_TERSEMBUNYI,
+  description: "Titik awal bagi warga yang baru pindah ke Batam: KTP, tempat tinggal, kesehatan, dan nomor darurat.",
 };
 
-// Struktur saja (research/00 bagian 5): panduan langkah demi langkah belum diriset, jadi belum ditulis.
+// Disembunyikan sampai isinya lengkap (pedoman 3.8 dan bagian 6). Jangan ditautkan dari halaman mana pun.
 export default function WargaBaru() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">
-        <Link href="/info">Info Warga</Link>
-      </p>
-      <h1 className="mt-2">Warga baru</h1>
-      <p className="bch-lede">Baru pindah ke Batam? Halaman ini baru kerangka. Isinya kami tambah setelah dicek.</p>
+      <nav className="bch-remah" aria-label="Remah roti">
+        <Link href="/info">Informasi Warga</Link>
+      </nav>
+      <h1 className="mt-2">Warga Baru</h1>
+      <p className="bch-lede">Halaman ini memuat titik awal bagi warga yang baru pindah ke Batam.</p>
 
       <div className="bch-prose">
-        <h2>KTP dan surat pindah</h2>
+        <h2>KTP dan Surat Pindah</h2>
         <p>
-          Panduan langkahnya belum kami tulis. Untuk sekarang, tanyakan ke{" "}
-          <Link href="/info/tempat/mpp-disdukcapil">gerai Disdukcapil di MPP</Link> atau{" "}
-          <Link href={`/info/kecamatan/batam-kota`}>kantor kecamatan</Link> Anda.
+          Urusan ini dilayani di <Link href="/info/tempat/mpp-disdukcapil">gerai Disdukcapil di MPP</Link> atau di{" "}
+          <Link href="/info">kantor kecamatan</Link>.
         </p>
 
-        <h2>Tempat tinggal</h2>
+        <h2>Tempat Tinggal</h2>
         <p>
-          Daftar kos belum ada. Kalau mau membeli atau menyewa rumah, baca dulu{" "}
-          <Link href="/info/urusan-tanah">urusan tanah</Link>, karena sebagian besar tanah di Batam berstatus HPL BP
-          Batam.
+          Sebelum membeli atau menyewa rumah, baca <Link href="/info/urusan-tanah">Urusan Tanah dan Rumah</Link> karena
+          sebagian besar tanah di Batam berstatus HPL BP Batam.
         </p>
-
-        <h2>Kerja di kawasan industri</h2>
-        <p>Belum kami riset.</p>
 
         <h2>Kesehatan</h2>
         <p>
-          <Link href="/info/direktori/kesehatan">Puskesmas dan rumah sakit</Link>, juga{" "}
-          <Link href="/info/direktori/layanan-publik/bpjs-kes">BPJS Kesehatan</Link>.
+          Direktori memuat <Link href="/info/direktori/kesehatan">puskesmas dan rumah sakit</Link>, juga{" "}
+          <Link href="/info/direktori/pemerintahan/bpjs-kes">BPJS Kesehatan</Link>.
         </p>
 
-        <h2>Kalau darurat</h2>
+        <h2>Keadaan Darurat</h2>
         <p>
-          <Link href="/info/darurat">Nomor darurat</Link> dan <Link href="/info/bantuan-hukum">bantuan hukum</Link>.
+          Nomor penting ada di <Link href="/info/darurat">Nomor Darurat</Link>, dan bantuan hukum gratis ada di{" "}
+          <Link href="/info/bantuan-hukum">Bantuan Hukum</Link>.
         </p>
 
-        <h2>Keliling kota</h2>
+        <h2>Keliling Kota</h2>
         <p>
-          <Link href="/langit-laut">Cek hujan dan ombak</Link>, lalu <Link href="/makan">cari makan</Link>. Untuk
-          berpindah, ada <Link href="/jalan">Trans Batam dan feri</Link>.
+          Hujan dan gelombang ada di <Link href="/cuaca">Cuaca dan Laut</Link>, tempat makan ada di{" "}
+          <Link href="/makan">Makan</Link>, serta Trans Batam dan feri ada di <Link href="/jalan">Transportasi</Link>.
         </p>
       </div>
     </div>

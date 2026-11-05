@@ -21,9 +21,6 @@ export const SUMBER_BERITA: SumberBerita[] = [
   },
 ];
 
-/** Dicek 5 Nov 2026. Rincian alasannya di docs/SUMBER_BERITA.md. */
-export const BELUM_IKUT = "Tribun Batam, Batamnews, BatamToday, dan BP Batam";
-
 export type StatusFeed = "ok" | "kosong" | "gagal";
 
 export type StatusSumber = {

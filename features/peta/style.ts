@@ -1,10 +1,9 @@
-// Style peta laut: lapisan Protomaps dengan warna data/design/layer_peta_warna.json.
-// Tema "day" = kertas gading, "night" = chart malam. Tidak ada warna di luar token.
+// Peta kerja (PEDOMAN 5.2): lapisan Protomaps dengan warna token --bch-map-* di data/design/design_tokens.css.
+// Tanpa garis koordinat, mawar angin, atau ornamen peta laut.
 import { layers, type Flavor } from "@protomaps/basemaps";
 import type { ExpressionSpecification, LayerSpecification, StyleSpecification } from "maplibre-gl";
-import { garisSatuUtara, graticule, type Batas } from "./graticule";
 
-export type MapTheme = "day" | "night";
+export type MapTheme = "light" | "dark";
 
 /** Kunci peta (research/00 bagian 9.2): Batam, Rempang, Galang, pulau sekitar; Singapura & Bintan siluet. */
 export const MAP_BOUNDS: [[number, number], [number, number]] = [
@@ -20,66 +19,63 @@ export const MAP_CENTER: [number, number] = [104.03, 1.05];
 export const PMTILES_URL = process.env.NEXT_PUBLIC_PMTILES_URL || "/tiles/batam.pmtiles";
 export const SOURCE_ID = "protomaps";
 
-const BATAS: Batas = {
-  west: MAP_BOUNDS[0][0],
-  south: MAP_BOUNDS[0][1],
-  east: MAP_BOUNDS[1][0],
-  north: MAP_BOUNDS[1][1],
-};
-
 export const FONT = {
-  water: "Source Serif 4 Italic",
-  island: "Source Serif 4 Semibold",
-  place: "Source Serif 4 Regular",
+  water: "Newsreader Italic",
+  island: "Plus Jakarta Sans Bold",
+  place: "Plus Jakarta Sans Medium",
   poi: "Plus Jakarta Sans Medium",
 } as const;
 
 export const PALET = {
-  day: {
-    land: "#F4EFE4",
-    water: "#DCE3E1",
-    shallow: "#E6EBE7",
-    depthLine: "#8FA5B0",
-    waterline: "#4E6A7A",
-    mangrove: "#7C8C6E",
-    forest: "#9AA38A",
-    roadMajor: "#B9AE98",
-    roadMinor: "#D8CFBD",
-    building: "#E7DFCF",
-    buildingLine: "#BFB4A0",
-    ferry: "#A2482A",
-    graticule: "#8B8579",
-    line1n: "#A2482A",
-    labelWater: "#4E6A7A",
-    haloWater: "#DCE3E1",
-    labelLand: "#1C1B19",
-    haloLand: "#F4EFE4",
-    ink: "#1C1B19",
-    muted: "#5A564E",
-    accent: "#A2482A",
+  light: {
+    land: "#FFF5E0",
+    landOther: "#FBF7EF",
+    water: "#E4EFF7",
+    shallow: "#E4EFF7",
+    depthLine: "#7E9AAE",
+    waterline: "#7E9AAE",
+    mangrove: "#7E9AAE",
+    forest: "#7E9AAE",
+    roadMajor: "#FFE9BF",
+    roadMinor: "#FFFFFF",
+    roadCasing: "#E5DAC3",
+    building: "#F3EBD8",
+    buildingLine: "#E5DAC3",
+    ferry: "#F15060",
+    graticule: "#D8C9AC",
+    line1n: "#F15060",
+    labelWater: "#0067A5",
+    haloWater: "#E4EFF7",
+    labelLand: "#7A6A4F",
+    haloLand: "#FFF5E0",
+    ink: "#161616",
+    muted: "#5B5B5B",
+    accent: "#0078BF",
   },
-  night: {
-    land: "#16263A",
-    water: "#0F1B2A",
-    shallow: "#132235",
-    depthLine: "#EDE4CF",
-    waterline: "#EDE4CF",
-    mangrove: "#8FA597",
-    forest: "#6F8577",
-    roadMajor: "#3A4A5C",
-    roadMinor: "#26364A",
-    building: "#1B2C41",
-    buildingLine: "#33465C",
-    ferry: "#E08A63",
-    graticule: "#A5AAA8",
-    line1n: "#E08A63",
-    labelWater: "#7FA3B5",
-    haloWater: "#0F1B2A",
-    labelLand: "#EDE4CF",
-    haloLand: "#16263A",
-    ink: "#EDE4CF",
-    muted: "#A9A493",
-    accent: "#E08A63",
+  dark: {
+    land: "#22201B",
+    landOther: "#1B1A17",
+    water: "#16222C",
+    shallow: "#16222C",
+    depthLine: "#4F6676",
+    waterline: "#4F6676",
+    mangrove: "#4F6676",
+    forest: "#4F6676",
+    roadMajor: "#4A3F2A",
+    roadMinor: "#2E2B25",
+    roadCasing: "#3A362E",
+    building: "#2A2721",
+    buildingLine: "#3A362E",
+    ferry: "#F15060",
+    graticule: "#4A4335",
+    line1n: "#F15060",
+    labelWater: "#6CB8EA",
+    haloWater: "#16222C",
+    labelLand: "#B8A989",
+    haloLand: "#22201B",
+    ink: "#F2F0EB",
+    muted: "#B3B0A8",
+    accent: "#6CB8EA",
   },
 } as const;
 
@@ -93,7 +89,7 @@ function flavorFor(theme: MapTheme): Flavor {
     background: c.water,
     earth: c.land,
     water: c.water,
-    // Tutupan lahan dibuat rata: peta laut, bukan peta wisata.
+    // Tutupan lahan dibuat rata supaya penanda kategori mudah dibaca.
     park_a: c.land,
     park_b: c.land,
     hospital: c.land,
@@ -114,8 +110,8 @@ function flavorFor(theme: MapTheme): Flavor {
     pier: minor,
     buildings: c.building,
     tunnel_other_casing: minor,
-    tunnel_minor_casing: minor,
-    tunnel_link_casing: major,
+    tunnel_minor_casing: c.roadCasing,
+    tunnel_link_casing: c.roadCasing,
     tunnel_major_casing: major,
     tunnel_highway_casing: major,
     tunnel_other: minor,
@@ -123,19 +119,19 @@ function flavorFor(theme: MapTheme): Flavor {
     tunnel_link: major,
     tunnel_major: major,
     tunnel_highway: major,
-    minor_service_casing: minor,
+    minor_service_casing: c.roadCasing,
     minor_casing: minor,
     link_casing: major,
-    major_casing_late: major,
-    highway_casing_late: major,
+    major_casing_late: c.roadCasing,
+    highway_casing_late: c.roadCasing,
     other: minor,
     minor_service: minor,
     minor_a: minor,
     minor_b: minor,
     link: major,
-    major_casing_early: major,
+    major_casing_early: c.roadCasing,
     major,
-    highway_casing_early: major,
+    highway_casing_early: c.roadCasing,
     highway: major,
     railway: minor,
     boundaries: c.graticule,
@@ -169,70 +165,14 @@ function flavorFor(theme: MapTheme): Flavor {
   };
 }
 
-/** Waterlining: garis tipis menyusuri pantai ke arah laut, makin jauh makin pudar (laporan 05). */
-function waterlining(theme: MapTheme): LayerSpecification[] {
-  const c = PALET[theme];
-  const opacities = theme === "day" ? [0.35, 0.2, 0.1] : [0.3, 0.16, 0.08];
-  // Cincin luar poligon searah jarum jam di layar, jadi offset negatif mengarah ke laut.
-  const offsets = [-2, -5, -8];
-  return offsets.map((offset, i) => ({
-    id: `waterline-${i}`,
+/** Garis pantai tipis (PEDOMAN 5.2). */
+function garisPantai(theme: MapTheme): LayerSpecification {
+  return {
+    id: "garis-pantai",
     type: "line",
     source: SOURCE_ID,
     "source-layer": "earth",
-    minzoom: 8,
-    paint: {
-      "line-color": c.waterline,
-      "line-width": 0.5,
-      "line-opacity": opacities[i],
-      "line-offset": offset,
-    },
-  }));
-}
-
-/** Garis koordinat di bawah label: tiap 5′, dan tiap 1′ saat sudah dekat. Garis 1°N selalu tampak. */
-function graticuleLayers(theme: MapTheme): LayerSpecification[] {
-  const c = PALET[theme];
-  return [
-    {
-      id: "graticule-1",
-      type: "line",
-      source: "graticule-1",
-      minzoom: 12.5,
-      paint: { "line-color": c.graticule, "line-width": 0.5, "line-opacity": 0.2 },
-    },
-    {
-      id: "graticule-5",
-      type: "line",
-      source: "graticule-5",
-      minzoom: 9.5,
-      paint: { "line-color": c.graticule, "line-width": 0.5, "line-opacity": 0.35 },
-    },
-    {
-      id: "garis-1n",
-      type: "line",
-      source: "garis-1n",
-      paint: { "line-color": c.line1n, "line-width": 0.75, "line-dasharray": [6, 3] },
-    },
-  ];
-}
-
-function labelSatuUtara(theme: MapTheme): LayerSpecification {
-  const c = PALET[theme];
-  return {
-    id: "garis-1n-label",
-    type: "symbol",
-    source: "garis-1n",
-    layout: {
-      "symbol-placement": "line",
-      "symbol-spacing": 420,
-      "text-field": "1°00′ U",
-      "text-font": [FONT.island],
-      "text-size": 12,
-      "text-letter-spacing": 0.12,
-      "text-offset": [0, -0.7],
-    },
-    paint: { "text-color": c.line1n, "text-halo-color": c.haloWater, "text-halo-width": 1.5 },
+    paint: { "line-color": PALET[theme].waterline, "line-width": 0.9 },
   };
 }
 
@@ -301,7 +241,7 @@ const LAYER_DIBUANG = new Set([
 ]);
 
 export type OpsiGaya = {
-  /** Ornamen chart beranda: selubung siluet dan graticule. Langit & Laut mematikannya. */
+  /** Selubung pulau di luar Batam. Halaman cuaca mematikannya. */
   chart?: boolean;
 };
 
@@ -356,19 +296,17 @@ export function baseStyle(theme: MapTheme, origin: string, { chart = true }: Ops
       return l;
     });
 
-  // Urutan: darat, jalan dan bangunan, selubung, air, waterlining, jembatan, graticule, lalu label.
+  // Urutan: darat, jalan dan bangunan, selubung, air, garis pantai, jembatan, lalu label.
   const garis = tuned.filter((l) => l.type !== "symbol");
   const merged: LayerSpecification[] = [
     ...garis.filter((l) => !DI_ATAS_SELUBUNG(l.id)),
     ...(chart
-      ? [{ id: "selubung-luar-fokus", type: "fill", source: "luar-fokus", paint: { "fill-color": c.land } } as const]
+      ? [{ id: "selubung-luar-fokus", type: "fill", source: "luar-fokus", paint: { "fill-color": c.landOther } } as const]
       : []),
     ...garis.filter((l) => l.id.startsWith("water")),
-    ...waterlining(theme),
+    garisPantai(theme),
     ...garis.filter((l) => DI_ATAS_SELUBUNG(l.id) && !l.id.startsWith("water")),
-    ...(chart ? graticuleLayers(theme) : []),
     ...tuned.filter((l) => l.type === "symbol"),
-    ...(chart ? [labelSatuUtara(theme)] : []),
   ];
 
   // Protokol pmtiles dan glyph dimuat di luar konteks dokumen, jadi URL harus absolut.
@@ -382,7 +320,7 @@ export function baseStyle(theme: MapTheme, origin: string, { chart = true }: Ops
         type: "vector",
         url: `pmtiles://${pmtiles}`,
         attribution:
-          '<a href="https://openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a>, <a href="https://protomaps.com" target="_blank" rel="noopener">Protomaps</a>',
+          '<a href="https://openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a> · <a href="https://protomaps.com" target="_blank" rel="noopener">Protomaps</a>',
       },
       ...(chart
         ? {
@@ -394,9 +332,6 @@ export function baseStyle(theme: MapTheme, origin: string, { chart = true }: Ops
                 geometry: LUAR_FOKUS as unknown as GeoJSON.MultiPolygon,
               },
             },
-            "graticule-1": { type: "geojson" as const, data: graticule(BATAS, 1) },
-            "graticule-5": { type: "geojson" as const, data: graticule(BATAS, 5) },
-            "garis-1n": { type: "geojson" as const, data: garisSatuUtara(BATAS) },
           }
         : {}),
     },

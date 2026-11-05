@@ -54,5 +54,26 @@ export const ofsTilePath = (
 export const BMKG_FORECAST = "https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=21.71.10.1003";
 export const BMKG_FORECAST_PLACE = "Batam Kota";
 
+// BMKG gempa (dok: data.bmkg.go.id/gempabumi). Batas 60 permintaan per menit per IP, wajib atribusi.
+// Diuji 5 Nov 2026 dari PC pemilik dengan BMKG_HEADERS: ketiganya 200, CORS *, max-age=60.
+const BMKG_TEWS = "https://data.bmkg.go.id/DataMKG/TEWS";
+export const BMKG_GEMPA = {
+  terbaru: `${BMKG_TEWS}/autogempa.json`,
+  m5: `${BMKG_TEWS}/gempaterkini.json`,
+  dirasakan: `${BMKG_TEWS}/gempadirasakan.json`,
+} as const;
+export const BMKG_GEMPA_DOK = "https://data.bmkg.go.id/gempabumi/";
+/** Peta guncangan: nama berkas dari kolom Shakemap autogempa. */
+export const bmkgShakemapUrl = (berkas: string) => `https://static.bmkg.go.id/${berkas}`;
+
+// BMKG peringatan dini cuaca, format CAP (dok: data.bmkg.go.id/peringatan-dini-cuaca). Batas dan
+// kewajiban atribusi sama. RSS = daftar per provinsi; tiap butir punya satu XML CAP berisi poligon.
+// Diuji 5 Nov 2026 dari PC pemilik dengan BMKG_HEADERS: RSS dan XML Kep. Riau 200.
+export const BMKG_CAP_RSS = "https://www.bmkg.go.id/alerts/nowcast/id";
+export const BMKG_CAP_DOK = "https://data.bmkg.go.id/peringatan-dini-cuaca/";
+export const BMKG_CAP_ISTILAH =
+  "https://github.com/infoBMKG/data-cap/blob/main/urgency%2C%20severity%2C%20and%20certainty%20-%20(en-id).pdf";
+export const bmkgCapUrl = (kode: string) => `${BMKG_CAP_RSS}/${kode}_alert.xml`;
+
 // CCTV Pemko Batam (HLS publik). Hostname tetap kelihatan di tab Network — nggak bisa disembunyikan.
 export const CCTV_HOST = "https://matanya.batam.go.id";

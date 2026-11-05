@@ -56,7 +56,7 @@
   "pemadam_kebakaran": [
     {
       "tempat_id": "damkar-dinas",
-      "nama": "Dinas Pemadam Kebakaran & Penyelamatan Kota Batam",
+      "nama": "Dinas Pemadam Kebakaran dan Penyelamatan Kota Batam",
       "kecamatan": "Sekupang",
       "alamat": "Jl. Pramuka No. 2, Sekupang",
       "telepon": "(0778) 325622",
@@ -339,7 +339,7 @@
     }
   ],
   "polisi_info": "Data polsek berasal dari kompilasi tahun 2020 (S14). Nama kapolsek tidak dicantumkan karena cepat berganti. Polsek Sagulung, Belakang Padang, Galang, dan Kawasan Pelabuhan tidak punya nomor di laporan (telepon null).",
-  "peringatan": [
+  "catatan_internal": [
     "Situs \"damkarbatam.com\" dan \"bpbd.damkarbatam.com\" bukan situs resmi. Isinya janggal, misalnya alamat Prabumulih dan koordinat Jakarta. Jangan dipakai."
   ]
 }

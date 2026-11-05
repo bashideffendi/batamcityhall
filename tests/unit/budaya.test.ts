@@ -9,21 +9,21 @@ import tempat from "@/data/places.json";
 import { buatPencariKata, hurufDari } from "@/features/budaya/cari";
 import {
   adaCatatanPublik,
+  belumDiperiksaPenutur,
   daftarAcara,
   daftarKata,
   daftarKomunitas,
   daftarTempatAcara,
   daftarTradisi,
-  ikonJadiKata,
   ISTILAH_ETNIS_LAMA,
   adaKonteksKata,
   kanalKomunitas,
-  labelSumberKata,
   PENGANTAR_BUDAYA,
   statusAcara,
   tanggalTidakPasti,
 } from "@/features/budaya/data";
-import { BULAN, bulanWib, KELOMPOK_ACARA, KELOMPOK_KATA, STATUS_ACARA } from "@/features/budaya/label";
+import { BULAN, bulanWib, KELOMPOK_ACARA, KELOMPOK_KATA, LABEL_STATUS, STATUS_ACARA } from "@/features/budaya/label";
+import { rapiTeks } from "@/features/sejarah/rapi";
 
 const baca = (p: string) => readFileSync(join(process.cwd(), p), "utf8");
 
@@ -56,15 +56,15 @@ describe("kalender acara", () => {
     expect(urut.indexOf("ev-011")).toBeLessThan(urut.indexOf("ev-013"));
   });
 
-  it("tanggal per edisi disalin apa adanya dari data", () => {
+  it("tanggal per edisi sama dengan data, hanya penulisannya yang dirapikan", () => {
     for (const a of daftar) {
       const mentah = acara.find((x) => x.id === a.id);
-      expect(a.edisi.map((e) => e.tanggal)).toEqual(mentah?.tabel.map((t) => t.tanggal));
+      expect(a.edisi.map((e) => e.tanggal)).toEqual(mentah?.tabel.map((t) => rapiTeks(t.tanggal)));
     }
     const ksm = daftar.find((a) => a.id === "ev-011");
     expect(ksm?.edisi.map((e) => e.tanggal)).toEqual([
-      "16–18 Mei 2025",
-      "2–5 Jul 2026 (pembukaan 3 Jul, Didik Nini Thowok tampil)",
+      "16—18 Mei 2025",
+      "2—5 Juli 2026 (pembukaan 3 Juli, Didik Nini Thowok tampil)",
     ]);
   });
 
@@ -77,10 +77,17 @@ describe("kalender acara", () => {
     for (const a of daftar) expect(STATUS_ACARA).toContain(a.status);
     const status = (id: string) => statusAcara(acara.find((a) => a.id === id)!);
     expect(status("ev-t01")).toBe("pernah");
-    expect(status("ev-t02")).toBe("tidak pasti");
+    expect(status("ev-t02")).toBe("belum pasti");
     expect(status("ev-t03")).toBe("pernah");
-    expect(status("ev-t04")).toBe("tidak pasti");
+    expect(status("ev-t04")).toBe("belum pasti");
     expect(status("ev-025")).toBe("dibatalkan");
+    expect(status("ev-005")).toBe("belum pasti");
+    expect(STATUS_ACARA.map((s) => LABEL_STATUS[s].teks)).toEqual([
+      "Rutin",
+      "Pernah diadakan",
+      "Belum pasti",
+      "Dibatalkan",
+    ]);
   });
 
   it("acara batal dan tidak rutin tidak berlabel rutin atau tahunan", () => {
@@ -130,10 +137,9 @@ describe("kalender acara", () => {
     }
   });
 
-  it("sumber sekunder ditandai", () => {
-    const sekunder = daftar.filter((a) => a.sumber?.sekunder).map((a) => a.id);
-    expect(sekunder).toEqual(expect.arrayContaining(["ev-001", "ev-005", "ev-012", "ev-015", "ev-024"]));
-    expect(daftar.find((a) => a.id === "ev-t02")?.sumber).toBeNull();
+  it("sumber dan tautannya tidak sampai ke browser", () => {
+    expect(JSON.stringify(daftar)).not.toMatch(/https?:|\.go\.id|sumber sekunder/i);
+    for (const a of daftar) expect("sumber" in a, a.id).toBe(false);
   });
 
   it("tautan tempat menunjuk tempat yang benar-benar ada di direktori", () => {
@@ -150,13 +156,15 @@ describe("kalender acara", () => {
   });
 });
 
-describe("ikon jadi kata", () => {
-  it("menerjemahkan ikon status", () => {
-    expect(ikonJadiKata("✅ Rutin (tanggal ⚠️)")).toBe("Rutin (tanggal perlu dicek)");
-    expect(ikonJadiKata("✅ Upacara rutin / airshow ⚠️")).toBe("Upacara rutin / airshow perlu dicek");
-    expect(ikonJadiKata("⚠️ Sumber sekunder")).toBe("Sumber sekunder");
-    expect(ikonJadiKata("⚠️")).toBe("");
-    expect(ikonJadiKata("❌ Dibatalkan 2024")).toBe("Dibatalkan 2024");
+describe("data mentah", () => {
+  it("bebas emoji status", () => {
+    for (const isi of [
+      acara.map((a) => [a.nama, a.lokasi, a.penyelenggara, a.tabel.map((t) => [t.status, t.lokasi])]),
+      komunitas,
+      tradisi,
+    ]) {
+      expect(JSON.stringify(isi)).not.toMatch(IKON);
+    }
   });
 });
 
@@ -174,12 +182,20 @@ describe("kamus", () => {
     for (const k of daftar) expect(hurufDari(k.kata)).toMatch(/^[A-Z]$/);
   });
 
-  it("[S] dan [P] sesuai data, [P] tidak tampil sebagai pasti", () => {
-    expect(daftar.filter((k) => k.bersumber)).toHaveLength(kamus.filter((k) => k.catatan.startsWith("[S]")).length);
-    expect(daftar.filter((k) => !k.bersumber)).toHaveLength(kamus.filter((k) => k.catatan.startsWith("[P]")).length);
-    expect(labelSumberKata("[P] kasual").label).toBe("Pengamatan, belum divalidasi");
-    expect(labelSumberKata("[S] istilah; arti [P]").label).toBe("Istilah bersumber, arti pengamatan");
-    for (const k of daftar) if (!k.bersumber) expect(k.labelSumber).toMatch(/belum divalidasi/);
+  it("entri bertanda [P] diberi tanda bintang, termasuk yang artinya saja", () => {
+    expect(daftar.filter((k) => k.belumDiperiksa)).toHaveLength(kamus.filter((k) => k.catatan.includes("[P]")).length);
+    expect(belumDiperiksaPenutur("[P] kasual")).toBe(true);
+    expect(belumDiperiksaPenutur("[S] istilah; arti [P]")).toBe(true);
+    expect(belumDiperiksaPenutur("[S]")).toBe(false);
+    expect(belumDiperiksaPenutur("[S] istilah lama")).toBe(false);
+  });
+
+  it("arti ditulis tanpa garis miring, contoh tanpa tanda seru", () => {
+    for (const k of daftar) {
+      expect(k.arti, k.id).not.toMatch(/\//);
+      expect(k.contoh ?? "", k.id).not.toContain("!");
+    }
+    expect(daftar.find((k) => k.id === "k-001")?.arti).toBe("rumah liar");
   });
 
   it("enam kelompok terisi semua", () => {
@@ -242,14 +258,15 @@ describe("budaya Melayu", () => {
     expect(halaman).not.toMatch(/Rekomendasi konten/);
   });
 
-  it("tradisi tanpa sumber tetap tampil dengan label kata, yang bersumber punya tautan", () => {
+  it("tradisi tanpa sumber tetap tampil dengan label belum terverifikasi, tanpa tautan", () => {
     for (const t of daftar) {
       const mentah = tradisi.find((x) => x.id === t.id)!;
-      expect(t.sumber).toHaveLength(mentah.sumber_url.length);
-      expect(t.status.teks).toBeTruthy();
-      if (!mentah.sumber_url.length) expect(t.status.teks).toMatch(/[Pp]erlu sumber/);
+      expect(["Tercatat", "Belum terverifikasi"], t.id).toContain(t.status.teks);
+      if (!mentah.sumber_url.length) expect(t.status.teks).toBe("Belum terverifikasi");
     }
-    expect(daftar.filter((t) => !t.sumber.length)).toHaveLength(6);
+    expect(daftar.find((t) => t.id === "tr-007")?.status.teks).toBe("Belum terverifikasi");
+    expect(daftar.find((t) => t.id === "tr-001")?.status.teks).toBe("Tercatat");
+    expect(JSON.stringify(daftar)).not.toMatch(/https?:|\.go\.id/);
   });
 
   it("tidak mengklaim asli Batam", () => {
@@ -270,11 +287,13 @@ describe("komunitas", () => {
 
   it("kanal hanya tampil bila status persis terverifikasi", () => {
     const berkanal = daftar.filter((k) => k.kanal).map((k) => k.id);
-    expect(berkanal).toEqual(komunitas.filter((k) => k.status === "✅").map((k) => k.id));
+    expect(berkanal).toEqual(["kom-001", "kom-004", "kom-010"]);
+    for (const k of daftar) expect(k.kanal?.href ?? "", k.id).not.toMatch(/\.go\.id/);
     const akun = daftar.flatMap((k) => (k.kanal?.teks.startsWith("Instagram") ? [k.kanal.teks] : []));
     expect(akun).toEqual(["Instagram @sukalaribatam", "Instagram @batam_10k"]);
-    expect(kanalKomunitas({ kontak_publik: "IG @akun_belum_dicek", status: "⚠️" })).toBeNull();
-    expect(kanalKomunitas({ kontak_publik: "runningcrews.com", status: "⚠️" })).toBeNull();
+    expect(kanalKomunitas({ kontak_publik: "IG @akun_belum_dicek", status: "Belum terverifikasi" })).toBeNull();
+    expect(kanalKomunitas({ kontak_publik: "runningcrews.com", status: "Belum terverifikasi" })).toBeNull();
+    expect(kanalKomunitas({ kontak_publik: "kebudayaan.kemdikbud.go.id/bpnbkepri", status: "Tercatat" })).toBeNull();
   });
 
   it("tidak ada nomor HP, email, atau WhatsApp", () => {

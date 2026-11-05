@@ -49,7 +49,7 @@ export function buatRouteKiriman<S extends z.ZodType>({ skema, maksPerJendela, s
     if (adaHoneypot(badan)) return jawab(200, { ok: true });
 
     const hasil = skema.safeParse(badan);
-    if (!hasil.success) return tolak(400, "Ada isian yang perlu dibetulkan.", galatPerKolom(hasil.error));
+    if (!hasil.success) return tolak(400, "Ada isian yang perlu diperbaiki.", galatPerKolom(hasil.error));
 
     try {
       await simpan(store, hasil.data);

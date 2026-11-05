@@ -10,7 +10,11 @@ import type PetaJalan from "./PetaJalan";
 const Peta = dynamic(() => import("./PetaJalan"), {
   ssr: false,
   loading: () => (
-    <section className="peta jl-peta" aria-label="Peta hub Trans Batam dan terminal feri" data-status="memuat">
+    <section
+      className="peta jl-peta"
+      aria-label="Peta titik transit Trans Batam dan terminal feri"
+      data-status="memuat"
+    >
       <ItikBerbaris />
     </section>
   ),

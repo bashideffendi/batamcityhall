@@ -1,4 +1,4 @@
-// State awal app (client-only): URL (?mode=&view=&cam=) menang atas localStorage,
+// State awal halaman peta (client-only): URL (?view=&cam=) menang atas localStorage,
 // dan semuanya divalidasi ketat terhadap daftar yang sah.
 import { findCam, type Cam } from "./cctv";
 import { PREF, readPref } from "./prefs";
@@ -11,13 +11,10 @@ import {
 } from "./radar";
 
 export type InitialState = {
-  mode: Mode;
   view: ViewKey;
   /** kamera dari link ?cam= (dibuka dengan tombol putar dulu, tidak auto-narik) */
   cam: Cam | null;
   collapsed: boolean;
-  /** bagian Detail panel terbuka */
-  detail: boolean;
   recentCams: Cam[];
   /** petunjuk "Ketuk Pin atau Angka…" masih perlu ditampilkan */
   camHint: boolean;
@@ -35,14 +32,11 @@ function readRecentCams(): Cam[] {
   }
 }
 
-export function readInitialState(): InitialState {
-  let urlMode: Mode | null = null;
+export function readInitialState(mode: Mode): InitialState {
   let urlView: ViewKey | null = null;
   let cam: Cam | null = null;
   try {
     const p = new URLSearchParams(window.location.search);
-    const m = p.get("mode");
-    if (m === "hujan" || m === "ombak" || m === "cctv") urlMode = m;
     const v = p.get("view");
     if (v && v in VIEWS) urlView = v as ViewKey;
     cam = findCam(p.get("cam"));
@@ -50,16 +44,7 @@ export function readInitialState(): InitialState {
     /* abaikan */
   }
 
-  let mode: Mode = "hujan";
-  if (cam) mode = "cctv";
-  else if (urlMode) mode = urlMode;
-  else {
-    const s = readPref(PREF.mode);
-    if (s === "ombak" || s === "cctv") mode = s;
-  }
-
-  // View yang tidak sah untuk mode ini (mis. tautan lama ?mode=cctv&view=batam) jatuh ke
-  // bawaan mode — untuk CCTV itu kotak "kamera".
+  // View yang tidak sah untuk halaman ini jatuh ke bawaannya: untuk CCTV itu kotak "kamera".
   let view: ViewKey = defaultViewFor(mode);
   const sv = readPref(PREF.view);
   if (urlView && VIEW_KEYS[mode].includes(urlView)) view = urlView;
@@ -67,13 +52,12 @@ export function readInitialState(): InitialState {
 
   const recentCams = readRecentCams();
   return {
-    mode,
     view,
     cam,
-    collapsed: readPref(PREF.collapsed) === "1",
-    detail: readPref(PREF.detail) === "1",
+    // Di ponsel lembar bawah mulai tertutup: peta penuh, judul, ringkasan, dan tab (PEDOMAN 4.6).
+    collapsed: readPref(PREF.collapsed) !== "0",
     recentCams,
-    // pernah memilih kamera (tercatat di "Baru Kamu Buka") = sudah paham, petunjuk tak perlu
+    // pernah memilih kamera = sudah paham, petunjuk tak perlu
     camHint: readPref(PREF.camHint) !== "1" && recentCams.length === 0,
   };
 }

@@ -10,11 +10,13 @@ const namaKelompok = (slug: string) => KELOMPOK_KATA.find((k) => k.slug === slug
 function Entri({ k }: { k: KataPublik }) {
   return (
     <article id={k.id} data-kata={k.id} className="bud-entri">
-      <h3>{k.kata}</h3>
+      <h3>
+        {k.kata}
+        {k.belumDiperiksa && "*"}
+      </h3>
       <div>
         <p className="bud-arti">
-          <span className="bud-arti-label">{k.bersumber ? "Arti" : "Arti menurut pengamatan"}</span>
-          {k.arti}
+          <span className="bud-arti-label">Arti</span>‘{k.arti}’
         </p>
         {k.contoh && (
           <p className="bud-contoh">
@@ -27,9 +29,6 @@ function Entri({ k }: { k: KataPublik }) {
           <span className="bch-badge" data-tone="info">
             {k.labelRagam}
           </span>
-          <span className="bch-badge" data-tone={k.bersumber ? "ok" : "caution"}>
-            {k.labelSumber}
-          </span>
         </div>
         <p className="bch-card-meta mt-2 mb-0">
           {k.asal !== k.labelRagam && (
@@ -39,15 +38,6 @@ function Entri({ k }: { k: KataPublik }) {
             </>
           )}
           {namaKelompok(k.kelompok)}
-          {k.sumber && (
-            <>
-              <br />
-              Sumber:{" "}
-              <a href={k.sumber.href} target="_blank" rel="noopener noreferrer">
-                {k.sumber.label}
-              </a>
-            </>
-          )}
         </p>
       </div>
     </article>
@@ -80,7 +70,7 @@ export default function Kamus({ entri }: { entri: KataPublik[] }) {
   return (
     <>
       <noscript>
-        <p className="bch-note">Pencarian butuh JavaScript. Daftar lengkap tetap ada di bawah, urut per huruf.</p>
+        <p className="bch-note">Pencarian memerlukan JavaScript. Daftar lengkap ada di bawah, diurutkan per huruf.</p>
       </noscript>
       <div className="bud-kontrol" hidden={!siap}>
         <label className="bch-field bud-kontrol-lebar">
@@ -136,7 +126,11 @@ export default function Kamus({ entri }: { entri: KataPublik[] }) {
       </p>
 
       {hasil.length === 0 && (
-        <p className="bch-note">Kata itu belum ada di kamus. Kalau kamu sering mendengarnya, kabari kami.</p>
+        <p className="bch-note">
+          {q.trim()
+            ? `Tidak ada hasil untuk “${q.trim()}”. Coba kata lain atau hapus saringan.`
+            : "Tidak ada kata untuk saringan ini."}
+        </p>
       )}
 
       {[...perHuruf.entries()]

@@ -70,7 +70,7 @@
 }
 .peta-kartusis-judul {
   font-family: var(--bch-font-serif);
-  font-variant-caps: all-small-caps;
+  font-weight: 600;
   font-weight: 600;
   font-size: 1.0625rem;
   line-height: 1.2;
@@ -246,7 +246,7 @@ html[data-gerak="tenang"] .peta-itik svg {
   width: min(22rem, calc(100% - 2rem));
   overflow-y: auto;
   padding: var(--bch-space-4);
-  background: var(--bch-paper-2);
+  background: var(--bch-paper);
   color: var(--bch-ink);
   border: var(--bch-stroke-base) solid var(--bch-ink);
   border-radius: var(--bch-radius-1);
@@ -300,7 +300,7 @@ html[data-gerak="tenang"] .peta-itik svg {
   float: left;
   margin-right: var(--bch-space-3);
   padding: 0;
-  font-variant-caps: all-small-caps;
+  font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--bch-ink-muted);
 }
@@ -320,15 +320,12 @@ html[data-gerak="tenang"] .peta-itik svg {
   font-size: var(--bch-text-small);
   color: var(--bch-ink-muted);
 }
-.peta-lapisan-contoh {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid var(--bch-accent);
+.peta-lapisan-catatan > span[aria-hidden="true"] {
+  vertical-align: middle;
+  margin-inline: var(--bch-space-2) var(--bch-space-1);
 }
-.peta-lapisan-contoh[data-jenis="pasti"] {
-  background: var(--bch-accent);
+.peta-lapisan-catatan > span[aria-hidden="true"]:first-child {
+  margin-left: 0;
 }
 
 .peta-cari {

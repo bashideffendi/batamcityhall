@@ -24,19 +24,35 @@ export function tambahLayer(map: MapLibre, layer: LayerSpecification) {
 }
 
 const TEKS_PETA = {
-  "Map.Title": "Peta Langit dan Laut Batam. Geser dengan tombol panah, perbesar dengan tombol plus dan minus.",
+  "Map.Title": "Peta cuaca dan laut Batam. Geser dengan tombol panah, perbesar dengan tombol plus dan minus.",
   "AttributionControl.ToggleAttribution": "Buka atau tutup atribusi",
+  "CooperativeGesturesHandler.WindowsHelpText": "Tekan Ctrl sambil menggulir untuk memperbesar peta",
+  "CooperativeGesturesHandler.MacHelpText": "Tekan ⌘ sambil menggulir untuk memperbesar peta",
+  "CooperativeGesturesHandler.MobileHelpText": "Geser dengan dua jari untuk menggerakkan peta",
 };
 
-const temaPeta = (t: ThemeMode): MapTheme => (t === "dark" ? "night" : "day");
+const temaPeta = (t: ThemeMode): MapTheme => (t === "dark" ? "dark" : "light");
 
 // Pemilik satu peta MapLibre untuk tiga mode. Lapisan mode (radar, ombak, kecamatan, kamera) adalah
 // komponen anak yang baru dirender setelah gaya peta dasar selesai dimuat.
-export default function PetaLangit({ theme, children }: { theme: ThemeMode; children: ReactNode }) {
+export type OpsiPeta = {
+  bounds?: [[number, number], [number, number]];
+  maxBounds?: [[number, number], [number, number]];
+  /** Peta di atas halaman yang bisa digulir: satu jari tetap menggulir halaman. */
+  koperatif?: boolean;
+  /** Pulau di luar Batam memakai warna lain (PEDOMAN 5.2). */
+  selubung?: boolean;
+  /** Atribusi sudah ditulis di bawah peta. */
+  tanpaAtribusi?: boolean;
+};
+
+export default function PetaLangit({ theme, children, opsi }: { theme: ThemeMode; children: ReactNode; opsi?: OpsiPeta }) {
   const wadah = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<MapLibre | null>(null);
   const [gagal] = useState(() => !webglAda());
   const temaAwal = useRef(theme);
+  const opsiAwal = useRef(opsi);
+  const selubung = !!opsi?.selubung;
 
   useEffect(() => {
     const el = wadah.current;
@@ -44,9 +60,10 @@ export default function PetaLangit({ theme, children }: { theme: ThemeMode; chil
     pasangGlobalPeta();
     const m = new MapLibre({
       container: el,
-      style: baseStyle(temaPeta(temaAwal.current), window.location.origin, { chart: false }),
-      center: [104.0, 0.9],
-      zoom: 8,
+      style: baseStyle(temaPeta(temaAwal.current), window.location.origin, { chart: !!opsiAwal.current?.selubung }),
+      ...(opsiAwal.current?.bounds ? { bounds: opsiAwal.current.bounds, fitBoundsOptions: { padding: 24 } } : { center: [104.0, 0.9] as [number, number], zoom: 8 }),
+      ...(opsiAwal.current?.maxBounds ? { maxBounds: opsiAwal.current.maxBounds } : {}),
+      cooperativeGestures: !!opsiAwal.current?.koperatif,
       minZoom: MIN_ZOOM,
       maxZoom: MAX_ZOOM,
       maxPitch: 0,
@@ -54,28 +71,25 @@ export default function PetaLangit({ theme, children }: { theme: ThemeMode; chil
       pitchWithRotate: false,
       touchPitch: false,
       renderWorldCopies: false,
-      attributionControl: { compact: false },
+      attributionControl: opsiAwal.current?.tanpaAtribusi ? false : { compact: false },
       locale: TEKS_PETA,
     });
     m.touchZoomRotate.disableRotation();
     m.keyboard.disableRotation();
     m.once("load", () => setMap(m));
-    // Tekstur kertas tidak boleh menimpa kanvas peta (laporan 05).
-    document.body.classList.add("bch-no-grain");
     return () => {
-      document.body.classList.remove("bch-no-grain");
       m.remove();
     };
   }, []);
 
   useEffect(() => {
-    map?.setStyle(baseStyle(temaPeta(theme), window.location.origin, { chart: false }), { transformStyle: gabungGaya });
-  }, [map, theme]);
+    map?.setStyle(baseStyle(temaPeta(theme), window.location.origin, { chart: selubung }), { transformStyle: gabungGaya });
+  }, [map, theme, selubung]);
 
   return (
     <>
       <div ref={wadah} className="ll-peta" />
-      {gagal && <p className="ll-peta-gagal">Peta gagal dimuat. Laut masih ada, kami saja yang belum.</p>}
+      {gagal && <p className="ll-peta-gagal">Peta tidak dapat dimuat. Coba muat ulang dalam beberapa saat.</p>}
       {map && <KonteksPeta.Provider value={map}>{children}</KonteksPeta.Provider>}
     </>
   );

@@ -1,11 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
 import { categories, categoryCounts, ferries, places } from "../lib/data";
 import { useFilters, type FilterState, type SortKey } from "../lib/filters";
-import { useI18n, catName } from "../lib/i18n";
+import { useI18n, catName, miring, namaTerminal } from "../lib/i18n";
 import { RADIUS_FERI_KM } from "../lib/saring";
 import { trails } from "../lib/trails";
 import type { PlaceWithGeo, RecLabel } from "../lib/types";
@@ -13,12 +14,10 @@ import { HalalBadge, LabelBadge } from "./Badges";
 import FilterBar from "./FilterBar";
 import Ikon from "./Ikon";
 import PlaceCard from "./PlaceCard";
-import SearchBar from "./SearchBar";
+import SearchBar, { PesanKosong } from "./SearchBar";
 import TrailCard from "./TrailCard";
 
 const pilihan = places.filter((p) => p.featured);
-const legendaris = places.filter((p) => p.labels.includes("legendaris"));
-const hits = places.filter((p) => p.labels.includes("hits"));
 
 /** Buka daftar atau peta dengan filter tertentu, mulai dari filter kosong. */
 function usePergi() {
@@ -31,23 +30,15 @@ function usePergi() {
   };
 }
 
-function Baris({ judul, items, onSeeAll }: { judul: string; items: PlaceWithGeo[]; onSeeAll: () => void }) {
-  const { t } = useI18n();
-  if (items.length === 0) return null;
+function DaftarTempat({ items, Judul }: { items: PlaceWithGeo[]; Judul?: "h2" | "h3" }) {
   return (
-    <section className="mk-bagian">
-      <div className="mk-bagian-kepala">
-        <h2>{judul}</h2>
-        <button type="button" className="mk-tautan" onClick={onSeeAll}>
-          {t("see_all")}
-        </button>
-      </div>
-      <div className="bch-grid">
-        {items.slice(0, 6).map((p) => (
-          <PlaceCard key={p.id} place={p} />
-        ))}
-      </div>
-    </section>
+    <ul className="bch-daftar-baris" data-kolom="2">
+      {items.map((p) => (
+        <li key={p.id}>
+          <PlaceCard place={p} Judul={Judul} />
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -59,43 +50,21 @@ export function BerandaMakan() {
 
   return (
     <div className="bch-page">
-      <header className="bch-loket-head">
-        <span className="bch-loket-no" aria-hidden="true">
-          02
-        </span>
-        <p className="bch-kicker m-0">{t("loket")}</p>
-        <h1>{t("home_title")}</h1>
-        <p className="bch-lede m-0">{t("home_lede", { n: places.length })}</p>
-      </header>
-      <SearchBar />
-
-      {mencari ? (
-        <section className="mk-bagian">
-          <div className="mk-bagian-kepala">
-            <p className="bch-data m-0" role="status">
-              {results.length} {t("results")}
-            </p>
-            <Link href="/makan/daftar">{t("see_all")}</Link>
-          </div>
-          {results.length === 0 ? (
-            <p className="mk-kosong">{t("no_results")}</p>
-          ) : (
-            <div className="bch-grid">
-              {results.slice(0, 9).map((p) => (
-                <PlaceCard key={p.id} place={p} />
-              ))}
-            </div>
-          )}
-        </section>
-      ) : (
-        <>
+      <div className="bch-pembuka">
+        <div>
+          <p className="bch-kicker bch-penanda-biru m-0">{t("loket")}</p>
+          <span className="bch-nomor-besar" aria-hidden="true">
+            02
+          </span>
+          <h1>{t("home_title")}</h1>
+          <p className="bch-lede">{miring(t("home_lede", { n: places.length }))}</p>
+          <SearchBar />
           <div className="mk-chips mk-bagian-kecil">
             <button type="button" className="mk-chip" onClick={() => pergi({ halal: ["halal"] })}>
               Halal
             </button>
             {["seafood-gonggong", "sup-ikan", "mie-tarempa", "kopitiam", "oleh-oleh"].map((id) => (
               <button key={id} type="button" className="mk-chip" onClick={() => pergi({ cats: [id] })}>
-                <Ikon nama={id} ukuran={18} />
                 {catName(
                   lang,
                   categories.find((c) => c.id === id),
@@ -103,65 +72,55 @@ export function BerandaMakan() {
               </button>
             ))}
           </div>
+        </div>
+        <Image className="bch-grafis" src="/grafis/loket-makan.webp" alt="" width={720} height={720} priority unoptimized />
+      </div>
 
-          <section className="mk-bagian">
-            <div className="mk-bagian-kepala">
+      {mencari ? (
+        <section className="bch-seksi">
+          <div className="mk-bagian-kepala">
+            <p className="bch-data m-0" role="status">
+              {results.length} {t("results")}
+            </p>
+            <Link href="/makan/daftar">{t("see_all")}</Link>
+          </div>
+          {results.length === 0 ? <PesanKosong /> : <DaftarTempat items={results.slice(0, 10)} />}
+        </section>
+      ) : (
+        <>
+          <section className="bch-seksi">
+            <div className="bch-kepala-bagian">
               <h2>{t("near_ferry")}</h2>
+              <p>{t("near_ferry_note", { km: RADIUS_FERI_KM })}</p>
             </div>
-            <p className="mk-catatan">{t("near_ferry_note", { km: RADIUS_FERI_KM })}</p>
-            <div className="bch-grid">
+            <ul className="bch-daftar-baris bch-daftar-tanpa-atas" data-kolom="2">
               {ferries.map((f) => (
-                <button
-                  key={f.id}
-                  type="button"
-                  className="bch-card mk-kartu-tombol"
-                  onClick={() => pergi({ ferry: f.id, sort: "ferry" }, "/makan/peta")}
-                >
-                  <span className="bch-kicker mk-kicker-ikon">
-                    <Ikon nama="feri" ukuran={18} />
-                    {t("map_ferry_loc")}
-                  </span>
-                  <span className="mk-kartu-judul">{f.label}</span>
-                  <span className="bch-card-loc">{f.nama}</span>
-                </button>
+                <li key={f.id}>
+                  <button
+                    type="button"
+                    className="bch-baris mk-baris-tombol"
+                    onClick={() => pergi({ ferry: f.id, sort: "ferry" }, "/makan/peta")}
+                  >
+                    <span className="nama">{f.label}</span>
+                    <span className="mk-panah" aria-hidden="true">
+                      →
+                    </span>
+                    <span className="meta">{namaTerminal(lang, f.nama)}</span>
+                  </button>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
-          <Baris judul={t("featured")} items={pilihan} onSeeAll={() => pergi({ sort: "featured" })} />
-          <Baris judul={t("legendary")} items={legendaris} onSeeAll={() => pergi({ labels: ["legendaris"] })} />
-          <Baris judul={t("hits")} items={hits} onSeeAll={() => pergi({ labels: ["hits"] })} />
-
-          <section className="mk-bagian">
-            <div className="mk-bagian-kepala">
-              <h2>{t("trails")}</h2>
-              <Link href="/makan/jalur">{t("see_all")}</Link>
+          <section className="bch-seksi">
+            <div className="mk-bagian-kepala bch-kepala-garis">
+              <h2>{t("featured")}</h2>
+              <button type="button" className="mk-tautan" onClick={() => pergi({ sort: "featured" })}>
+                {t("see_all")}
+              </button>
             </div>
-            <div className="bch-grid">
-              {trails.map((tr) => (
-                <TrailCard key={tr.id} trail={tr} />
-              ))}
-            </div>
+            <DaftarTempat items={pilihan.slice(0, 10)} />
           </section>
-
-          <section className="mk-bagian">
-            <div className="mk-bagian-kepala">
-              <h2>{t("browse_cat")}</h2>
-              <Link href="/makan/kategori">{t("see_all")}</Link>
-            </div>
-            <div className="mk-chips">
-              {categories.slice(0, 8).map((c) => (
-                <button key={c.id} type="button" className="mk-chip" onClick={() => pergi({ cats: [c.id] })}>
-                  <Ikon nama={c.id} ukuran={18} />
-                  {catName(lang, c)}
-                </button>
-              ))}
-            </div>
-          </section>
-
-          <p className="bch-note mk-bagian">
-            {t("about_note", { n: places.length })} <Link href="/makan/tentang">{t("nav_about")}</Link>
-          </p>
         </>
       )}
     </div>
@@ -175,7 +134,7 @@ export function DaftarMakan() {
   return (
     <div className="bch-page">
       <p className="bch-kicker m-0">{t("loket")}</p>
-      <h1 className="mt-2">{t("all_places")}</h1>
+      <h1 className="mt-2">{t("all_places_title")}</h1>
       <SearchBar />
       <FilterBar />
 
@@ -192,21 +151,10 @@ export function DaftarMakan() {
             <option value="az">{t("sort_az")}</option>
           </select>
         </label>
-        <Link href="/makan/peta" className="mk-kicker-ikon">
-          <Ikon nama="peta" ukuran={18} />
-          {t("view_map")}
-        </Link>
+        <Link href="/makan/peta">{t("view_map")}</Link>
       </div>
 
-      {results.length === 0 ? (
-        <p className="mk-kosong">{t("no_results")}</p>
-      ) : (
-        <div className="bch-grid">
-          {results.map((p) => (
-            <PlaceCard key={p.id} place={p} Judul="h2" />
-          ))}
-        </div>
-      )}
+      {results.length === 0 ? <PesanKosong /> : <DaftarTempat items={results} Judul="h2" />}
     </div>
   );
 }
@@ -252,11 +200,13 @@ export function JalurMakan() {
       <p className="bch-kicker m-0">{t("loket")}</p>
       <h1 className="mt-2">{t("trails")}</h1>
       <p className="bch-lede">{t("trails_sub")}</p>
-      <div className="bch-grid mk-bagian-kecil">
+      <ul className="bch-daftar-baris mk-bagian-kecil" data-kolom="2">
         {trails.map((tr) => (
-          <TrailCard key={tr.id} trail={tr} Judul="h2" />
+          <li key={tr.id}>
+            <TrailCard trail={tr} Judul="h2" />
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
@@ -270,26 +220,24 @@ function BlokTentang({ judul, children }: { judul: string; children: ReactNode }
   );
 }
 
-const LABEL_ARTI: [RecLabel, "about_l_wajib" | "about_l_legend" | "about_l_hits" | "about_l_gem"][] = [
-  ["wajib-coba", "about_l_wajib"],
+const LABEL_ARTI: [RecLabel, "about_l_legend" | "about_l_kurator" | "about_l_populer" | "about_l_jarang"][] = [
   ["legendaris", "about_l_legend"],
-  ["hits", "about_l_hits"],
-  ["hidden-gem", "about_l_gem"],
+  ["wajib-coba", "about_l_kurator"],
+  ["hits", "about_l_populer"],
+  ["hidden-gem", "about_l_jarang"],
 ];
 
 export function TentangMakan() {
   const { t } = useI18n();
-  const perkiraan = places.filter((p) => p.coord_approx).length;
 
   return (
     <div className="bch-page">
       <p className="bch-kicker m-0">{t("loket")}</p>
       <h1 className="mt-2">{t("about_title")}</h1>
-      <p className="bch-lede">{t("about_lede", { n: places.length })}</p>
 
       <div className="bch-prose">
-        <BlokTentang judul={t("about_promise_t")}>
-          <p>{t("about_promise")}</p>
+        <BlokTentang judul={t("about_choose_t")}>
+          <p>{t("about_choose")}</p>
         </BlokTentang>
 
         <BlokTentang judul={t("about_labels_t")}>
@@ -297,7 +245,7 @@ export function TentangMakan() {
             {LABEL_ARTI.map(([l, teks]) => (
               <div key={l} className="mk-daftar-baris">
                 <dt>
-                  <LabelBadge label={l} />
+                  <LabelBadge label={l} />:
                 </dt>
                 <dd>{t(teks)}</dd>
               </div>
@@ -317,23 +265,11 @@ export function TentangMakan() {
         </BlokTentang>
 
         <BlokTentang judul={t("about_coord_t")}>
-          <p>{t("about_coord", { a: perkiraan, n: places.length })}</p>
+          <p>{t("about_coord")}</p>
         </BlokTentang>
 
         <BlokTentang judul={t("about_rating_t")}>
           <p>{t("about_rating")}</p>
-        </BlokTentang>
-
-        <BlokTentang judul={t("about_ferry_t")}>
-          <p>{t("about_ferry")}</p>
-          <ul>
-            {ferries.map((f) => (
-              <li key={f.id}>
-                {f.nama}
-                {f.status_koordinat !== "terverifikasi" && <span className="mk-catatan"> ({t("coord_unsure")})</span>}
-              </li>
-            ))}
-          </ul>
         </BlokTentang>
 
         <BlokTentang judul={t("about_qris_t")}>
@@ -347,8 +283,6 @@ export function TentangMakan() {
             <li>{t("about_tip3")}</li>
           </ul>
         </BlokTentang>
-
-        <p className="mk-catatan">{t("about_source")}</p>
       </div>
     </div>
   );

@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { EntriGaris, KunciStatus } from "./data";
-import { DaftarSumber, IkonStatus, LABEL_STATUS, LencanaStatus, TeksMiring } from "./Status";
+import { IkonStatus, LABEL_STATUS, LencanaStatus, TeksMiring } from "./Status";
 
-const URUTAN_STATUS: KunciStatus[] = ["terverifikasi", "perbedaan_versi", "belum_terverifikasi", "campuran"];
+const URUTAN_STATUS: KunciStatus[] = ["terverifikasi", "perbedaan_versi", "belum_terverifikasi"];
 
 export default function GarisWaktu({ entri, kategori }: { entri: EntriGaris[]; kategori: Record<string, string> }) {
   const [status, setStatus] = useState<KunciStatus | null>(null);
@@ -37,7 +37,7 @@ export default function GarisWaktu({ entri, kategori }: { entri: EntriGaris[]; k
               onClick={() => setStatus(status === s ? null : s)}
             >
               <IkonStatus status={s} />
-              {s === "campuran" ? "Campuran" : LABEL_STATUS[s]}
+              {LABEL_STATUS[s]}
               <span className="bch-data">{perStatus.get(s) ?? 0}</span>
             </button>
           ))}
@@ -68,11 +68,11 @@ export default function GarisWaktu({ entri, kategori }: { entri: EntriGaris[]; k
           )}
         </div>
         <p className="sj-kecil m-0" aria-live="polite" data-jumlah-garis={tampil.length}>
-          Menampilkan {tampil.length} dari {entri.length} entri.
+          Menampilkan {tampil.length} dari {entri.length} peristiwa.
         </p>
       </div>
 
-      {tampil.length === 0 && <p className="bch-note">Tidak ada entri untuk saringan ini.</p>}
+      {tampil.length === 0 && <p className="bch-note">Tidak ada peristiwa untuk saringan ini.</p>}
       <ol className="sj-garis">
         {tampil.map((e) => (
           <li key={e.id} id={e.id} data-gw={e.id} data-status={e.status} className="sj-garis-item">
@@ -86,9 +86,8 @@ export default function GarisWaktu({ entri, kategori }: { entri: EntriGaris[]; k
               </p>
               <div className="bch-badges">
                 <LencanaStatus status={e.status} />
-                <span className="bch-badge">{kategori[e.kategori]}</span>
               </div>
-              {e.rincian && <p className="sj-kecil mt-1 mb-0">Rincian status: {e.rincian}</p>}
+              <p className="sj-kecil mt-1 mb-0">{kategori[e.kategori]}</p>
               {e.tokoh.length > 0 && (
                 <p className="sj-kecil mt-1 mb-0">
                   Tokoh:{" "}
@@ -106,14 +105,6 @@ export default function GarisWaktu({ entri, kategori }: { entri: EntriGaris[]; k
                   ))}
                 </p>
               )}
-              {e.tautan && (
-                <p className="sj-kecil mt-1 mb-0">
-                  <Link href={e.tautan.href} prefetch={false}>
-                    {e.tautan.label}
-                  </Link>
-                </p>
-              )}
-              <DaftarSumber sumber={e.sumber} />
             </div>
           </li>
         ))}

@@ -92,17 +92,17 @@ Aturan:
 - [x] /, lib/site.ts LOKET, /langit-laut, /makan, /tukang, /mural; fitur yang belum ada tercatat di anak butir · 01 › Konsep Lengkap "Batam City Hall"
   - [x] lib/site.ts, /tentang · 01 › Visi & tone
     - [x] lib/site.ts, app/tentang · Visi "balai warga online" -- nada awal (santai, selipan Melayu, "Ape kabar, Batam?", maskot lucu) DIKOREKSI keputusan 00: premium/artsy/kalem, informasi dulu {F1}
-  - [x] lib/site.ts LOKET (01-07), /, /langit-laut, /info; gempa dan indikator Bisa nyebrang ditunda · 01 › Struktur menu ("Loket")
+  - [x] lib/site.ts LOKET (01-07), /, /langit-laut, /info; gempa di /langit-laut/gempa; indikator Bisa nyebrang ditunda · 01 › Struktur menu ("Loket")
     - [x] lib/site.ts LOKET · 8 loket versi 01 (Beranda, Langit & Laut, Perut, Tukang Langganan, Jalan-jalan, Cerita & Budaya, Info Warga, Main-main) diganti struktur 00 bagian 3 (Loket 01-07) {F1}
-    - [-] ditunda: feri terakhir fase 4; gempa belum dikerjakan · Beranda: peta + widget hari ini (hujan, ombak, feri terakhir, gempa terakhir) {F2}
-    - [-] ditunda: radar, prakiraan BMKG, dan peringatan dini maritim ada di /langit-laut; indikator Bisa nyebrang dan gempa belum dibangun; syarat: ambang gelombang yang disepakati beserta penafian syahbandar · Langit & Laut: radar, prakiraan BMKG, peringatan dini, "Bisa nyebrang ke pulau hari ini?" (+ pengingat bukan pengganti syahbandar), gempa {F2}
+    - [x] features/hari-ini/HariIni.tsx; gempa hanya tampil bila relevan (features/langit-laut/lib/gempa.ts) · Beranda: peta + widget hari ini (hujan, ombak, feri terakhir, gempa terakhir) {F2}
+    - [-] ditunda: radar, prakiraan BMKG, peringatan dini maritim dan cuaca ada di /langit-laut, gempa di /langit-laut/gempa; indikator Bisa nyebrang belum dibangun; syarat: ambang gelombang yang disepakati beserta penafian syahbandar · Langit & Laut: radar, prakiraan BMKG, peringatan dini, "Bisa nyebrang ke pulau hari ini?" (+ pengingat bukan pengganti syahbandar), gempa {F2}
     - [x] /info, /info/direktori/layanan-publik, /info/darurat, /cerita/kalender; harga pangan di baris E · Loket Info Warga: harga pangan Batam, layanan publik (Samsat, Disdukcapil, PLN, air), nomor darurat, kalender event {F3}
-  - [-] ditunda: sebagian fitur belum dibangun (peringatan dini CAP, gempa, harga pangan, panduan KTP pindahan, Barelang scrolly, Hujan Bingo); syaratnya di anak butir, fitur inti kelompok A sampai F lain sudah ada · 01 › Daftar fitur per kelompok
+  - [-] ditunda: sebagian fitur belum dibangun (harga pangan, panduan KTP pindahan, Barelang scrolly, Hujan Bingo); syaratnya di anak butir, fitur inti kelompok A sampai F lain sudah ada · 01 › Daftar fitur per kelompok
     - [x] /langit-laut (radar MSS di peta chart MapLibre); animasi doodle ditolak keputusan 00, diganti arsiran chart di /mural · A. Cuaca & Laut: radar di atas peta ilustrasi; animasi tetes hujan doodle (DITOLAK gaya doodle oleh 00; ganti gaya chart/riso) {F2}
     - [x] app/api/prakiraan · A. Prakiraan BMKG per kelurahan: 3 hari, per 3 jam, update 2x sehari, kode adm4 {F2}
-    - [-] ditunda: belum dibangun; syarat: format nowcast CAP BMKG diuji dari PC pemilik dengan header jujur (peringatan maritim sudah ada di /langit-laut) · A. Peringatan dini nowcast BMKG (CAP/XML sampai kecamatan) {F2}
+    - [x] app/api/peringatan-cuaca, /langit-laut/peringatan, kotak Hari Ini, poligon di radar (PeringatanLayer); diuji dengan header jujur 5 Nov 2026 · A. Peringatan dini nowcast BMKG (CAP/XML sampai kecamatan) {F2}
     - [-] ditunda: cuaca perairan ada (/api/perairan, mode Ombak); indikator Aman nyebrang belum dibangun, syaratnya ambang yang disepakati dan penafian syahbandar · A. Cuaca perairan BMKG + indikator "Aman nyebrang ke Pulau Abang/Galang?" dengan penafian syahbandar {F2}
-    - [-] ditunda: belum dibangun; syarat: autogempa.json diuji dari PC pemilik, lalu kotak Hari Ini memakai ambang jarak bila relevan · A. Gempa terkini autogempa.json (kotak Hari Ini "bila relevan") {F2}
+    - [x] app/api/gempa, /langit-laut/gempa, baris Gempa di kotak Hari Ini dengan ambang di DATA_DECISIONS; diuji dengan header jujur 5 Nov 2026 · A. Gempa terkini autogempa.json (kotak Hari Ini "bila relevan") {F2}
     - [x] app/makan/peta · B. Peta makan dengan filter (buka subuh, dekat pelabuhan, halal, kopi+roti, seafood Barelang) {F2}
     - [-] menunggu pemilik: editorial pendek butuh penulis dan opini pemilik · B. Editorial pendek gaya Manual Jakarta ("5 Mi Lendir yang Diperdebatkan Warga") {F9}
     - [-] ditunda: belum ada data lauk-pauk bersumber di data/budaya; syarat: riset lauk Melayu Kepri dan ilustrasi · B. Infografis "Lauk-Pauk Melayu Kepri" {F5}
@@ -147,7 +147,7 @@ Aturan:
     - [x] /admin, label di /tukang. Teruji di mode contoh; Supabase belum diuji nyata. · Moderasi manual awal + label "Rekomendasi warga, bukan endorsement. Selalu sepakati harga di awal." {F6}
     - [x] /api/tukang/laporkan menyembunyikan sampai ditinjau di /admin. Diuji e2e. · Jalur keluhan "laporkan masalah" menyembunyikan listing sementara {F6}
     - [-] menunggu pemilik: URL Saweria atau Trakteer di NEXT_PUBLIC_DONASI_URL (footer sudah menampilkan tombol bila diisi); sponsor dan listing unggulan ditolak keputusan 00 · Model keberlanjutan: donasi (Saweria/Trakteer/KaryaKarsa) -- ADA; sponsor lokal, listing "Unggulan" makan, merch, hibah: sponsor/listing DITOLAK 00; merch/hibah opsional {F9}
-  - [x] package.json, features/langit-laut/lib/sources.ts, features/peta/style.ts, scripts/extract-basemap.mjs; CAP, gempa, Bapanas, cron ditunda di baris terkait · 01 › Tech stack & sumber data
+  - [x] package.json, features/langit-laut/lib/sources.ts, features/peta/style.ts, scripts/extract-basemap.mjs; Bapanas dan cron ditunda di baris terkait · 01 › Tech stack & sumber data
     - [x] package.json · Frontend Next.js/Astro di Vercel (prompt: Next.js 16) {F1}
     - [x] features/peta/PetaLaut.tsx (R2 menunggu PLAN butir 5) · Peta MapLibre GL JS + Protomaps/PMTiles di R2/Vercel, style via Maputnik {F1}
     - [-] Esai memakai IntersectionObserver tanpa peta, supaya tanpa dependensi baru dan tanpa parallax berat · Scrollytelling Scrollama + MapLibre (templat digidem/maplibre-storymap, OroraTech/scrolly-maplibre) {F5}
@@ -155,9 +155,9 @@ Aturan:
     - [-] supabase/migrations dan store-supabase.ts ditulis, belum pernah dijalankan karena proyek Supabase belum ada; hanya klien tiruan. · Data & form: Sheets+Tally lalu Supabase (prompt: Supabase untuk kiriman warga; JSON statis untuk direktori) {F6}
     - [-] ditunda: belum dibangun; /api/* memakai cache s-maxage 30-60 detik sebagai pengganti; syarat: deploy Vercel berjalan dan beban BMKG terukur · Cron/ingest Vercel Cron atau GitHub Actions untuk tarik/cache BMKG (contoh QuakeLog 15 menit) {F2}
     - [x] features/langit-laut/lib/sources.ts · Sumber BMKG prakiraan: api.bmkg.go.id/publik/prakiraan-cuaca?adm4={kode}; wajib atribusi {F2}
-    - [-] ditunda: belum dibangun, sama dengan baris peringatan dini CAP; syarat: sumber data.bmkg.go.id diuji dengan header jujur · Sumber BMKG peringatan dini CAP: data.bmkg.go.id/peringatan-dini-cuaca/ {F2}
+    - [x] features/langit-laut/lib/sources.ts, app/api/peringatan-cuaca; RSS dan XML di www.bmkg.go.id/alerts/nowcast/id sesuai dok resmi · Sumber BMKG peringatan dini CAP: data.bmkg.go.id/peringatan-dini-cuaca/ {F2}
     - [x] features/langit-laut/lib/sources.ts, endpoint baru marine2026-data · Sumber BMKG maritim: peta-maritim.bmkg.go.id/public_api/perairan {F2}
-    - [-] ditunda: belum dibangun; syarat: autogempa.json diuji dan di-cache supaya di bawah 60 permintaan per menit · Sumber BMKG gempa: autogempa.json, gempaterkini.json, gempadirasakan.json; ~60 req/menit/IP -> wajib cache {F2}
+    - [x] features/langit-laut/lib/sources.ts, app/api/gempa; ditahan 60 detik per instance, paling sering 3 permintaan per menit · Sumber BMKG gempa: autogempa.json, gempaterkini.json, gempadirasakan.json; ~60 req/menit/IP -> wajib cache {F2}
     - [x] scripts/extract-basemap.mjs, features/peta/style.ts · OSM/Protomaps peta dasar {F1}
     - [-] ditunda: belum dibangun; belum ada API resmi; syarat: cek ketentuan Bapanas dan cutoff 13.00 WIB · Panel Harga Pangan Bapanas panelharga.badanpangan.go.id (cutoff 13.00 WIB; belum ada API resmi) {F3}
     - [x] /jalan/feri, jadwal statis bertanggal, tautan papan SCC dan penafian · Jadwal feri: papan SCC singaporecruise.com.sg/schedule/ferries/ + operator; mulai jadwal statis kurasi + penafian {F4}

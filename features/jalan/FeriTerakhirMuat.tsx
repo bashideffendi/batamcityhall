@@ -9,9 +9,9 @@ import "./jalan.css";
 const Widget = dynamic(() => import("./FeriTerakhir"), {
   ssr: false,
   loading: () => (
-    <section className="jl-feri" aria-label="Feri terakhir hari ini">
-      <h2>Feri terakhir hari ini</h2>
-      <p>Itik sedang berbaris…</p>
+    <section className="jl-feri" aria-label="Feri Terakhir Hari Ini">
+      <h2>Feri Terakhir Hari Ini</h2>
+      <p>Memuat data</p>
     </section>
   ),
 });

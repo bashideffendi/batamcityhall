@@ -27,7 +27,7 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 
 const HALAL_OPTS: HalalStatus[] = ["halal", "muslim-friendly", "non-halal"];
 const TIER_OPTS: PriceTier[] = ["$", "$$", "$$$"];
-const LABEL_OPTS: RecLabel[] = ["wajib-coba", "legendaris", "hits", "hidden-gem"];
+const LABEL_OPTS: RecLabel[] = ["legendaris", "wajib-coba", "hits", "hidden-gem"];
 
 export default function FilterBar() {
   const { state, set, toggle, reset, activeCount, results } = useFilters();
@@ -95,7 +95,7 @@ export default function FilterBar() {
       {/* Dialog asli: fokus terkunci di dalam dan Esc menutup tanpa kode tambahan. */}
       <dialog ref={lembar} className="mk-lembar" aria-labelledby="mk-lembar-judul">
         <div className="mk-lembar-kepala">
-          <h2 id="mk-lembar-judul">{t("filters")}</h2>
+          <h2 id="mk-lembar-judul">{t("filters_title")}</h2>
           <button
             type="button"
             className="bch-icon-btn"
@@ -124,7 +124,7 @@ export default function FilterBar() {
           <Section title={t("price")}>
             {TIER_OPTS.map((p) => (
               <Chip key={p} active={state.tiers.includes(p)} onClick={() => toggle("tiers", p)}>
-                {p} · {PRICE_HINT[p][lang]}
+                {PRICE_HINT[p][lang]}
               </Chip>
             ))}
           </Section>

@@ -1,38 +1,37 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import DaftarNomor from "@/components/site/DaftarNomor";
+import PembukaLoket from "@/components/site/PembukaLoket";
+
+const LEDE = "Loket ini memuat kartu pos digital dari Batam dan kalkulator ongkos belanja ke Singapura.";
 
 export const metadata: Metadata = {
-  title: "Main-main",
-  description: "Kartu pos, peta vibe, kalkulator feri, dan quest mural. Bagian yang tidak perlu diseriusi.",
+  title: "Ruang Main",
+  description: LEDE,
 };
 
 const PINTU = [
-  { href: "/main/kartu-pos", nama: "Kartu pos", lede: "Tulis salam dari Batam, unduh gambarnya." },
-  { href: "/main/vibe", nama: "Peta vibe", lede: "Ngopi dan macet. Itu saja kategorinya, dan sengaja begitu." },
+  {
+    href: "/main/kartu-pos",
+    nama: "Kartu Pos dari Batam",
+    ket: "Pilih gambar, tulis pesan, lalu unduh sebagai gambar untuk dikirim.",
+  },
   {
     href: "/main/singapura-atau-nagoya",
-    nama: "Ke Singapura atau ke Nagoya?",
-    lede: "Hitung dulu ongkosnya sebelum menyeberang.",
+    nama: "Belanja di Singapura atau di Nagoya?",
+    ket: "Hitung ongkos menyeberang ke Singapura sebelum memutuskan tempat belanja.",
   },
-  { href: "/mural", nama: "Quest mural", lede: "Telusuri jejak pusat niaga di mural." },
 ];
 
-export default function MainMain() {
+export default function RuangMain() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Loket 07</p>
-      <h1 className="mt-2">Main-main</h1>
-      <p className="bch-lede">Bagian yang tidak perlu diseriusi.</p>
-      <ul className="bch-grid mt-5">
-        {PINTU.map((p) => (
-          <li key={p.href}>
-            <Link href={p.href} className="bch-card h-full" prefetch={false}>
-              <h2>{p.nama}</h2>
-              <span>{p.lede}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <PembukaLoket nomor="07" lede={LEDE} />
+      <section className="bch-seksi" aria-labelledby="isi-loket">
+        <h2 id="isi-loket" className="bch-kicker bch-kepala-penanda">
+          Isi loket ini
+        </h2>
+        <DaftarNomor isi={PINTU} />
+      </section>
     </div>
   );
 }

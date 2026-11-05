@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import koridorData from "@/data/trans_batam/koridor.json";
-import { DAFTAR_KATEGORI, slugKategori, slugKecamatan, TEMPAT } from "@/features/direktori/data";
+import { DAFTAR_KATEGORI, punyaHalaman, slugKategori, slugKecamatan, TEMPAT } from "@/features/direktori/data";
 import { places } from "@/features/makan/lib/data";
 import { KECAMATAN } from "@/lib/data/schema";
 import { trails } from "@/features/makan/lib/trails";
@@ -15,6 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}${l.href}`,
       changeFrequency: "hourly" as const,
       priority: 0.8,
+    })),
+    ...["hujan", "gelombang", "cctv", "peringatan", "gempa"].map((h) => ({
+      url: `${SITE_URL}/cuaca/${h}`,
+      changeFrequency: "hourly" as const,
+      priority: 0.7,
     })),
     ...["daftar", "peta", "kategori", "jalur", "tentang"].map((h) => ({
       url: `${SITE_URL}/makan/${h}`,
@@ -31,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.5,
     })),
-    ...["direktori", "darurat", "urusan-tanah", "bantuan-hukum", "jasa-dokumen", "warga-baru"].map((h) => ({
+    ...["direktori", "darurat", "urusan-tanah", "bantuan-hukum", "jasa-dokumen"].map((h) => ({
       url: `${SITE_URL}/info/${h}`,
       changeFrequency: "weekly" as const,
       priority: 0.6,
@@ -46,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.5,
     })),
-    ...TEMPAT.map((p) => ({
+    ...TEMPAT.filter(punyaHalaman).map((p) => ({
       url: `${SITE_URL}/info/tempat/${p.id}`,
       changeFrequency: "monthly" as const,
       priority: 0.4,
@@ -61,20 +66,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "jalan/pompong",
       ...koridor.map((k) => `jalan/trans-batam/${k.id.toLowerCase()}`),
       "cerita/sejarah",
-      "cerita/dulu",
       "cerita/kampung-tua",
-      "cerita/kampung-tua/legalitas",
-      "cerita/rempang",
       "cerita/nama-jalan",
       "cerita/kalender",
       "cerita/kamus",
       "cerita/budaya",
       "cerita/komunitas",
       "cerita/angka",
-      "mural",
-      "mural/cara-dibuat",
       "main/kartu-pos",
-      "main/vibe",
       "main/singapura-atau-nagoya",
     ].map((h) => ({
       url: `${SITE_URL}/${h}`,

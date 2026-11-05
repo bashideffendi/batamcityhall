@@ -57,11 +57,11 @@ function slots(j: Raw): Slot[] {
 }
 
 // Rentang kategori peringatan BMKG (meter) untuk teks peringatan.
-const WARN_LEVELS: { key: string; label: string; range: string }[] = [
-  { key: "ekstrem", label: "Ekstrem", range: "≥6 m" },
-  { key: "sangat_tinggi", label: "Sangat Tinggi", range: "4–6 m" },
-  { key: "tinggi", label: "Tinggi", range: "2,5–4 m" },
-  { key: "sedang", label: "Sedang", range: "1,25–2,5 m" },
+const WARN_LEVELS: { key: string; label: string }[] = [
+  { key: "ekstrem", label: "ekstrem" },
+  { key: "sangat_tinggi", label: "sangat tinggi" },
+  { key: "tinggi", label: "tinggi" },
+  { key: "sedang", label: "sedang" },
 ];
 const norm = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
 
@@ -83,7 +83,7 @@ export function parseBulletin(w: Raw): PerairanWarn | null {
   for (const lv of WARN_LEVELS) {
     const names = Array.isArray(lists[lv.key]) ? (lists[lv.key] as unknown[]).map((x) => norm(str(x))) : [];
     if (names.includes(norm(PERAIRAN_NAME))) {
-      text = `Peringatan Gelombang ${lv.label} ${lv.range}`;
+      text = `Peringatan gelombang ${lv.label}`;
       break;
     }
   }
@@ -120,7 +120,7 @@ export function warnAt(
 function legacyWarning(warns: PerairanWarn[], now: number): string {
   const { current, next } = warnAt(warns, now);
   if (current.status === "ok") return current.text;
-  return next?.text || "Status Peringatan Belum Tersedia";
+  return next?.text || "Status peringatan belum dapat dimuat";
 }
 
 const EMPTY: PerairanResponse = { code: PERAIRAN_CODE, name: PERAIRAN_NAME, issued: "", current: null, upcoming: false };

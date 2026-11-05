@@ -21,6 +21,7 @@ import { GUGUS, H, LEBAR, W } from "@/features/nama-jalan/DiagramRelasi";
 // Kalimat yang ditujukan ke penyusun kartu. Tidak boleh sampai ke warga.
 const CATATAN_PENYUSUN =
   /untuk sementara|sebaiknya|tampilkan sebagai|perlu catatan di UI|dipisah dari baris|tabel menggabungkan|\bp1[0-9]\b|bisa merujuk/i;
+const CATATAN_KERJA = /perlu dicek|perlu konfirmasi|belum kami tulis/i;
 
 describe("tokoh", () => {
   it("semua 46 tokoh tampil", () => {
@@ -33,18 +34,20 @@ describe("tokoh", () => {
     for (const t of TOKOH) {
       const teks = [t.gelar, t.masaHidup, t.ringkasan, t.kisah, t.kaitan, t.tempatTeks, t.statusTeks, ...t.catatan];
       expect(teks.join(" "), t.id).not.toMatch(CATATAN_PENYUSUN);
+      const tampil = [t.gelar, t.masaHidup, t.ringkasan, t.kisah, t.kaitan, t.tempatTeks, ...t.catatan];
+      expect(tampil.join(" "), t.id).not.toMatch(CATATAN_KERJA);
     }
   });
 
-  it("status berupa kata dan hikayat tidak disamakan dengan sejarah", () => {
-    expect(statusTokoh("hikayat")).toMatchObject({ grup: "hikayat", hikayat: true });
-    expect(statusTokoh("hikayat").teks).toContain("kesejarahan diperdebatkan");
-    expect(statusTokoh("semi_historis")).toMatchObject({ teks: "Semi-historis", hikayat: true });
-    expect(statusTokoh("terverifikasi")).toMatchObject({ hikayat: false, nada: "ok" });
-    expect(statusTokoh(null).teks).toBe("Ringkas, tanpa verifikasi");
-    for (const t of tokohRaw) {
-      if (t.status_verifikasi) expect(statusTokoh(t.status_verifikasi).grup, t.id).not.toBe("ringkas");
-    }
+  it("satu label per kartu, hikayat tidak disamakan dengan sejarah", () => {
+    const sah = ["Tercatat", "Berbeda versi", "Belum terverifikasi", "Cerita rakyat"];
+    for (const t of TOKOH) expect(sah, t.id).toContain(t.status.teks);
+    expect(statusTokoh("hikayat")).toMatchObject({ grup: "hikayat", teks: "Cerita rakyat", hikayat: true });
+    expect(statusTokoh("semi_historis")).toMatchObject({ teks: "Belum terverifikasi", hikayat: true });
+    expect(statusTokoh("terverifikasi")).toMatchObject({ teks: "Tercatat", hikayat: false, nada: "ok" });
+    expect(statusTokoh("perlu_dicek").teks).toBe("Belum terverifikasi");
+    expect(statusTokoh(null).teks).toBe("Belum terverifikasi");
+    expect(tokohPerId.get("hang_nadim")?.catatan.join(" ")).toContain("Perlawanannya terhadap Portugis tercatat");
   });
 
   it("tokoh ringkas tidak diberi biografi karangan", () => {
@@ -142,6 +145,9 @@ describe("penamaan", () => {
     expect(PENAMAAN.find((p) => p.id === "pt01")?.catatan).toBeNull();
     expect(PENAMAAN.find((p) => p.id === "p24")?.catatan).toContain("I atau II, belum dipastikan");
     expect(PENAMAAN.find((p) => p.id === "p27")?.catatan).toContain("masih asumsi");
+    for (const p of PENAMAAN) {
+      expect(`${p.letak} ${p.catatan ?? ""}`, p.id).not.toMatch(CATATAN_KERJA);
+    }
   });
 
   it("sumber hanya tautan yang sah", () => {

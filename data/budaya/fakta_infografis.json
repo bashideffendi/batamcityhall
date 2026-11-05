@@ -10,7 +10,7 @@
       "satuan": "juta jiwa",
       "tahun": 2025,
       "periode": null,
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/08bd1b0506fb113/jumlah-penduduk-kota-batam-1-79-juta-jiwa-data-per-2025"
@@ -25,7 +25,7 @@
       "satuan": "persen",
       "tahun": 2025,
       "periode": "rata-rata 5 tahun terakhir",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/08bd1b0506fb113/jumlah-penduduk-kota-batam-1-79-juta-jiwa-data-per-2025"
@@ -40,7 +40,7 @@
       "satuan": "jiwa",
       "tahun": 2024,
       "periode": null,
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/08bd1b0506fb113/jumlah-penduduk-kota-batam-1-79-juta-jiwa-data-per-2025"
@@ -55,7 +55,7 @@
       "satuan": "persen",
       "tahun": 2024,
       "periode": null,
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/08bd1b0506fb113/jumlah-penduduk-kota-batam-1-79-juta-jiwa-data-per-2025"
@@ -70,7 +70,7 @@
       "satuan": "rentang usia (tahun)",
       "tahun": null,
       "periode": null,
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": "ciri kota pekerja; tahun data tidak disebut terpisah di laporan",
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/08bd1b0506fb113/jumlah-penduduk-kota-batam-1-79-juta-jiwa-data-per-2025"
@@ -85,7 +85,7 @@
       "satuan": "jiwa",
       "tahun": 2025,
       "periode": "DKB Semester II 2025",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
@@ -100,7 +100,7 @@
       "satuan": "jiwa",
       "tahun": 2025,
       "periode": "DKB Semester II 2025",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
@@ -115,7 +115,7 @@
       "satuan": "jiwa",
       "tahun": 2025,
       "periode": "DKB Semester II 2025",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
@@ -130,7 +130,7 @@
       "satuan": "jiwa",
       "tahun": 2025,
       "periode": "DKB Semester II 2025",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
@@ -146,7 +146,7 @@
       "satuan": "jiwa",
       "tahun": 2025,
       "periode": "DKB Semester II 2025",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
@@ -162,7 +162,7 @@
       "satuan": "jiwa",
       "tahun": 2025,
       "periode": "DKB Semester II 2025",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
@@ -178,7 +178,7 @@
       "satuan": "jiwa",
       "tahun": 2025,
       "periode": "DKB Semester II 2025",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
@@ -194,7 +194,7 @@
       "satuan": "jiwa",
       "tahun": 2025,
       "periode": "DKB Semester II 2025",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://batam.go.id/data-konsolidasi-bersih-kota-batam-semester-2-tahun-2025/"
@@ -223,7 +223,7 @@
       "satuan": "persen",
       "tahun": 2024,
       "periode": "31 Des 2024 (Dukcapil)",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
@@ -238,7 +238,7 @@
       "satuan": "persen",
       "tahun": 2024,
       "periode": "31 Des 2024 (Dukcapil)",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
@@ -253,7 +253,7 @@
       "satuan": "persen",
       "tahun": 2024,
       "periode": "31 Des 2024 (Dukcapil)",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
@@ -268,7 +268,7 @@
       "satuan": "persen",
       "tahun": 2024,
       "periode": "31 Des 2024 (Dukcapil)",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
@@ -283,7 +283,7 @@
       "satuan": "persen",
       "tahun": 2024,
       "periode": "31 Des 2024 (Dukcapil)",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
@@ -298,7 +298,7 @@
       "satuan": "persen",
       "tahun": 2024,
       "periode": "31 Des 2024 (Dukcapil)",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
@@ -313,7 +313,7 @@
       "satuan": "persen",
       "tahun": 2024,
       "periode": "31 Des 2024 (Dukcapil)",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
@@ -328,7 +328,7 @@
       "satuan": "orang",
       "tahun": 2024,
       "periode": "31 Des 2024 (Dukcapil)",
-      "status": "✅",
+      "status": "Tercatat",
       "catatan": null,
       "sumber_url": [
         "https://databoks.katadata.co.id/demografi/statistik/a136b6e7455da90/0-03-penduduk-di-kota-batam-beraliran-kepercayaan"
@@ -343,8 +343,8 @@
       "satuan": null,
       "tahun": null,
       "periode": null,
-      "status": "⚠️",
-      "catatan": "⚠️ Belum ada angka per suku khusus Kota Batam dari sumber yang bisa dicek. Sensus 2010 adalah sensus terakhir yang memuat data suku; tabel per kota perlu ditarik dari publikasi BPS 2010 \"Kewarganegaraan, Suku Bangsa, Agama dan Bahasa Sehari-hari Penduduk Indonesia\". Sementara itu, pakai narasi netral: \"Melayu sebagai tuan rumah, dengan komunitas besar dari Sumatra Utara, Sumatra Barat, Jawa, Tionghoa, NTT, Sulawesi, dan lain-lain.\"",
+      "status": "Berbeda versi",
+      "catatan": "Belum ada angka per suku khusus Kota Batam dari sumber yang bisa dicek. Sensus 2010 adalah sensus terakhir yang memuat data suku; tabel per kota perlu ditarik dari publikasi BPS 2010 \"Kewarganegaraan, Suku Bangsa, Agama dan Bahasa Sehari-hari Penduduk Indonesia\". Sementara itu, pakai narasi netral: \"Melayu sebagai tuan rumah, dengan komunitas besar dari Sumatra Utara, Sumatra Barat, Jawa, Tionghoa, NTT, Sulawesi, dan lain-lain.\"",
       "sumber_url": []
     },
     {
@@ -356,8 +356,8 @@
       "satuan": null,
       "tahun": null,
       "periode": null,
-      "status": "⚠️",
-      "catatan": "⚠️ Belum ditemukan. Sumber yang disarankan: BPS Kota Batam (Sakernas/\"Kota Batam Dalam Angka\") atau Disnaker Batam.",
+      "status": "Berbeda versi",
+      "catatan": "Belum ditemukan. Sumber yang disarankan: BPS Kota Batam (Sakernas/\"Kota Batam Dalam Angka\") atau Disnaker Batam.",
       "sumber_url": []
     },
     {
@@ -639,8 +639,8 @@
       "satuan": "juta kunjungan",
       "tahun": 2025,
       "periode": null,
-      "status": "⚠️",
-      "catatan": "Catatan target 2025: Batam Pos menulis target 1,5 juta. Tempo dan rilis Diskominfo Batam menulis 1,7 juta, dengan kutipan Sekda Jefridin: \"Di tahun 2025, Pemerintah Kota Batam menargetkan kunjungan wisatawan mancanegara sebesar 1,7 juta.\" Kalau patokannya 1,7 juta, realisasi 1.613.202 belum mencapai target. ⚠️",
+      "status": "Berbeda versi",
+      "catatan": "Catatan target 2025: Batam Pos menulis target 1,5 juta. Tempo dan rilis Diskominfo Batam menulis 1,7 juta, dengan kutipan Sekda Jefridin: \"Di tahun 2025, Pemerintah Kota Batam menargetkan kunjungan wisatawan mancanegara sebesar 1,7 juta.\" Kalau patokannya 1,7 juta, realisasi 1.613.202 belum mencapai target.",
       "sumber_url": [
         "https://metropolis.batampos.co.id/kunjungan-wisman-ke-batam-tembus-16-juta-sumbang-79-wisman-kepri/"
       ]
@@ -654,8 +654,8 @@
       "satuan": "juta kunjungan",
       "tahun": 2025,
       "periode": null,
-      "status": "⚠️",
-      "catatan": "Catatan target 2025: Batam Pos menulis target 1,5 juta. Tempo dan rilis Diskominfo Batam menulis 1,7 juta, dengan kutipan Sekda Jefridin: \"Di tahun 2025, Pemerintah Kota Batam menargetkan kunjungan wisatawan mancanegara sebesar 1,7 juta.\" Kalau patokannya 1,7 juta, realisasi 1.613.202 belum mencapai target. ⚠️ (URL sumber untuk angka 1,7 juta tidak dicantumkan di laporan)",
+      "status": "Berbeda versi",
+      "catatan": "Catatan target 2025: Batam Pos menulis target 1,5 juta. Tempo dan rilis Diskominfo Batam menulis 1,7 juta, dengan kutipan Sekda Jefridin: \"Di tahun 2025, Pemerintah Kota Batam menargetkan kunjungan wisatawan mancanegara sebesar 1,7 juta.\" Kalau patokannya 1,7 juta, realisasi 1.613.202 belum mencapai target. (URL sumber untuk angka 1,7 juta tidak dicantumkan di laporan)",
       "sumber_url": []
     },
     {
@@ -793,8 +793,8 @@
       "satuan": "pulau",
       "tahun": 2019,
       "periode": null,
-      "status": "⌛",
-      "catatan": "Baris \"Versi lain\" di laporan; tanda ⌛ (mungkin usang)",
+      "status": "Mungkin usang",
+      "catatan": "Baris \"Versi lain\" di laporan; tanda (mungkin usang)",
       "sumber_url": [
         "https://batam.go.id/icon_geografis/"
       ]
@@ -808,8 +808,8 @@
       "satuan": "pulau",
       "tahun": null,
       "periode": "RTRW 2004–2014",
-      "status": "⌛",
-      "catatan": "lebih dari 400 pulau; tanda ⌛ (mungkin usang)",
+      "status": "Mungkin usang",
+      "catatan": "lebih dari 400 pulau; tanda (mungkin usang)",
       "sumber_url": [
         "https://batam.go.id/icon_geografis/"
       ]
@@ -823,7 +823,7 @@
       "satuan": "pulau",
       "tahun": null,
       "periode": "RTRW 2004–2014",
-      "status": "⌛",
+      "status": "Mungkin usang",
       "catatan": null,
       "sumber_url": [
         "https://batam.go.id/icon_geografis/"
@@ -973,7 +973,7 @@
       "satuan": "kampung tua",
       "tahun": 2004,
       "periode": "Perda 2/2004",
-      "status": "⚠️",
+      "status": "Berbeda versi",
       "catatan": null,
       "sumber_url": [
         "https://journal.uib.ac.id/index.php/jad/article/download/5952/2166/9353"

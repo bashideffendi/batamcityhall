@@ -3,10 +3,12 @@ import categoriesRaw from "@/data/makan/categories.json";
 import areasRaw from "@/data/makan/areas.json";
 import ferriesRaw from "@/data/makan/ferries.json";
 import koordinatUser from "@/data/koordinat_user.json";
-import type { Place, Category, Area, Ferry, PlaceWithGeo } from "./types";
+import { adalahPonsel } from "./format";
+import type { Place, Category, Area, Ferry, PlaceWithGeo, RecLabel } from "./types";
 
 export const categories = categoriesRaw as Category[];
-export const areas = areasRaw as Area[];
+// Nama area tampil tanpa garis miring (pedoman 2.7). Berkasnya tetap, karena konversi membaca kecamatan dari sana.
+export const areas = (areasRaw as Area[]).map((a) => ({ ...a, name: a.name.replace(/\s*\/\s*/g, ", ") }));
 export const ferries = ferriesRaw as Ferry[];
 
 export const categoryMap: Record<string, Category> = Object.fromEntries(categories.map((c) => [c.id, c]));
@@ -41,6 +43,12 @@ function tanpaRating(p: Place): Omit<Place, "rating" | "reviews"> {
   return salinan as Omit<Place, "rating" | "reviews">;
 }
 
+/** Urutan label kurasi di pedoman 3.4. Data bisa menyimpan dua label; yang tampil dan disaring hanya satu. */
+const URUTAN_LABEL: RecLabel[] = ["legendaris", "wajib-coba", "hits", "hidden-gem"];
+
+export const satuLabel = (labels: readonly RecLabel[]): RecLabel[] =>
+  URUTAN_LABEL.filter((l) => labels.includes(l)).slice(0, 1);
+
 type KoordinatUser = Record<string, { lat: number; lng: number }>;
 
 /** Koordinat hasil tools/import_koordinat.py menimpa koordinat lama: tempatnya jadi bukan lagi perkiraan. */
@@ -55,7 +63,14 @@ export function terapkanKoordinat<T extends { id: string; lat: number; lng: numb
 export const places: PlaceWithGeo[] = (placesRaw as unknown as Place[]).map((mentah) => {
   const p = terapkanKoordinat(tanpaRating(mentah), koordinatUser as KoordinatUser);
   const nf = nearestFerry(p.lat, p.lng);
-  return { ...p, nearestFerryId: nf.id, nearestFerryKm: Math.round(nf.km * 10) / 10 };
+  return {
+    ...p,
+    labels: satuLabel(p.labels),
+    // Nomor ponsel disembunyikan sampai pemilik memastikan itu nomor usaha (pedoman 8.3).
+    phone: adalahPonsel(p.phone) ? "" : p.phone,
+    nearestFerryId: nf.id,
+    nearestFerryKm: Math.round(nf.km * 10) / 10,
+  };
 });
 
 export const placeMap: Record<string, PlaceWithGeo> = Object.fromEntries(places.map((p) => [p.id, p]));

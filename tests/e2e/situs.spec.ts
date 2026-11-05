@@ -36,6 +36,13 @@ test.beforeEach(async ({ page }) => {
   );
 });
 
+test.beforeEach(async ({ page }) => {
+  await page.route("**/api/gempa", (r) => r.fulfill({ json: { status: "ok", diambil: "", gempa: [] } }));
+  await page.route("**/api/peringatan-cuaca**", (r) =>
+    r.fulfill({ json: { status: "ok", diambil: "", peringatan: [] } }),
+  );
+});
+
 test.describe("teks wajib", () => {
   for (const path of ["/", "/tentang", "/kolofon", "/tidak-ada"]) {
     test(`disclaimer dan atribusi ada di ${path}`, async ({ page }) => {
@@ -83,15 +90,15 @@ test.describe("peta", () => {
     await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
     await page.goto("/");
     await petaSiap(page);
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "day");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
     await page.waitForTimeout(800);
     expect(await porsiWarna(page, "#DCE3E1"), "laut siang").toBeGreaterThan(0.1);
     expect(await porsiWarna(page, "#F4EFE4"), "darat siang").toBeGreaterThan(0.1);
     await page.locator(".peta").screenshot({ path: info.outputPath("peta-siang.png") });
 
     await page.getByRole("button", { name: "Ganti ke chart malam" }).click();
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "night");
-    await expect(page.locator(".peta")).toHaveAttribute("data-tema", "night");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await expect(page.locator(".peta")).toHaveAttribute("data-tema", "dark");
     await page.waitForTimeout(800);
     expect(await porsiWarna(page, "#0F1B2A"), "laut malam").toBeGreaterThan(0.1);
     expect(await porsiWarna(page, "#16263A"), "darat malam").toBeGreaterThan(0.1);
@@ -100,15 +107,15 @@ test.describe("peta", () => {
 
     // Pilihan tersimpan menang atas preferensi sistem setelah dimuat ulang.
     await page.reload();
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "night");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   });
 
   test("mengikuti prefers-color-scheme tanpa pilihan tersimpan", async ({ page }) => {
     await page.emulateMedia({ colorScheme: "dark" });
     await page.goto("/");
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "night");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await page.emulateMedia({ colorScheme: "light" });
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "day");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
   });
 
   test("ornamen chart lengkap dan koordinat berformat Indonesia", async ({ page }) => {
@@ -194,7 +201,7 @@ test.describe("peta gagal", () => {
 
 test.describe("aksesibilitas", () => {
   for (const path of ["/", "/tentang", "/kolofon", "/tidak-ada"]) {
-    for (const tema of ["day", "night"] as const) {
+    for (const tema of ["light", "dark"] as const) {
       test(`axe ${path} tema ${tema}`, async ({ page }) => {
         await page.addInitScript((t) => localStorage.setItem("bch-theme", t), tema);
         await page.goto(path);
@@ -213,4 +220,39 @@ test.describe("aksesibilitas", () => {
     await page.keyboard.press("Enter");
     await expect(page.locator("#isi")).toBeFocused();
   });
+});
+
+// PEDOMAN bagian 6: tetap ada di kode, tetapi noindex dan tidak ditautkan.
+test.describe("halaman tersembunyi", () => {
+  const TERSEMBUNYI = [
+    "/mural",
+    "/mural/cara-dibuat",
+    "/main/vibe",
+    "/cerita/dulu",
+    "/info/warga-baru",
+    "/cerita/rempang",
+    "/cerita/kampung-tua/legalitas",
+  ];
+
+  for (const h of TERSEMBUNYI) {
+    test(`${h} noindex`, async ({ page }) => {
+      await page.goto(h);
+      await expect(page.locator('meta[name="robots"]').first()).toHaveAttribute("content", /noindex/);
+    });
+  }
+
+  test("tidak ada di sitemap", async ({ request }) => {
+    const peta = await (await request.get("/sitemap.xml")).text();
+    for (const h of [...TERSEMBUNYI, "/mural/gcp", "/admin"]) expect(peta).not.toContain(`${h}<`);
+  });
+
+  for (const h of ["/", "/cerita", "/info", "/main", "/cerita/sejarah", "/cerita/kampung-tua"]) {
+    test(`${h} tidak menautkannya`, async ({ page }) => {
+      await page.goto(h);
+      const href = await page.locator("a[href]").evaluateAll((a) => a.map((x) => x.getAttribute("href") ?? ""));
+      for (const t of [...TERSEMBUNYI, "/mural/gcp", "/admin"]) {
+        expect(href.filter((x) => x === t || x.startsWith(`${t}#`) || x.startsWith(`${t}?`))).toEqual([]);
+      }
+    });
+  }
 });

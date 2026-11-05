@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import "./berita.css";
-import { useBerita, waktuWib } from "./klien";
+import { useBerita, waktuCuplikan } from "./klien";
 
-const JUMLAH = 5;
+const JUMLAH = 3;
 
 // Dimuat lewat klien supaya beranda tetap statis. Gagal cukup satu kalimat pendek.
 export default function BeritaWidget() {
@@ -13,8 +13,11 @@ export default function BeritaWidget() {
   return (
     <section className="bch-berita-widget" aria-labelledby="berita-terbaru" data-fase={keadaan.fase}>
       <h2 id="berita-terbaru">Berita Batam</h2>
-      {keadaan.fase === "memuat" && <p className="bch-berita-pesan">Memuat judul…</p>}
-      {keadaan.fase !== "memuat" && !item.length && <p className="bch-berita-pesan">Judul berita belum bisa dimuat.</p>}
+      {keadaan.fase === "memuat" && <p className="bch-berita-pesan">Memuat data</p>}
+      {keadaan.fase === "gagal" && <p className="bch-berita-pesan">Berita tidak dapat dimuat saat ini.</p>}
+      {keadaan.fase === "siap" && !item.length && (
+        <p className="bch-berita-pesan">Belum ada berita baru tentang Batam hari ini.</p>
+      )}
       {item.length > 0 && (
         <ol className="bch-berita-daftar">
           {item.map((b) => (
@@ -23,14 +26,15 @@ export default function BeritaWidget() {
                 {b.judul}
               </a>
               <span className="bch-berita-meta">
-                {b.sumber} · {b.waktu ? waktuWib(b.waktu) : "Waktu tidak terbaca"}
+                {b.sumber}
+                {b.waktu && ` · ${waktuCuplikan(b.waktu)}`}
               </span>
             </li>
           ))}
         </ol>
       )}
       <Link href="/info/berita" prefetch={false} className="bch-berita-semua">
-        Semua judul dan status sumber
+        Semua berita →
       </Link>
     </section>
   );

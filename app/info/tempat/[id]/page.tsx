@@ -1,26 +1,32 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { KATEGORI_DIREKTORI } from "@/components/map/icons";
+import { notFound, redirect } from "next/navigation";
 import {
   adalahProfesi,
+  alamatPublik,
   atributPublik,
+  barisDaftar,
   catatanPublik,
   jamPublik,
   kartuMinimal,
   kontakPublik,
-  LABEL_BETA,
+  kunciTampil,
   labelSub,
   lokasiTeks,
   namaKategori,
+  punyaHalaman,
+  punyaTitik,
   slugKategori,
   slugKecamatan,
-  tautanAman,
-  teksDicek,
+  tautanArah,
   TEMPAT,
   tempatPerId,
 } from "@/features/direktori/data";
 import HujanKecamatan from "@/features/direktori/HujanKecamatan";
 import { DaftarLencana } from "@/features/direktori/KartuTempat";
+import PetaKategori from "@/features/direktori/PetaKategori";
+import TombolBagikan from "@/features/direktori/TombolBagikan";
 import { idKartuKampung } from "@/features/kampung-tua/data";
 import { MAPPED_CAMS } from "@/features/langit-laut/lib/cctv";
 import { haversineKm } from "@/features/makan/lib/data";
@@ -36,7 +42,7 @@ type Props = { params: Promise<{ id: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = tempatPerId.get((await params).id);
   if (!p) return {};
-  const description = `${labelSub(p.subkategori)}, ${lokasiTeks(p)}.`;
+  const description = `${[labelSub(p.subkategori), lokasiTeks(p)].filter(Boolean).join(", ")}.`;
   return { title: p.nama, description, openGraph: { title: p.nama, description } };
 }
 
@@ -50,79 +56,111 @@ function kameraTerdekat(lat: number | null, lng: number | null) {
   return urut[0] && urut[0].km < BATAS_KAMERA_KM ? urut[0] : null;
 }
 
-const domain = (u: string) => {
-  try {
-    return new URL(u).hostname.replace(/^www\./, "");
-  } catch {
-    return u;
-  }
-};
-
 export default async function Tempat({ params }: Props) {
   const p = tempatPerId.get((await params).id);
   if (!p) notFound();
+  if (!punyaHalaman(p)) redirect(barisDaftar(p));
   const minimal = kartuMinimal(p);
+  const alamat = alamatPublik(p);
+  const jam = jamPublik(p);
   const atribut = atributPublik(p);
   const kontak = kontakPublik(p);
   const catatan = catatanPublik(p);
   const luarBatam = p.atribut.lokasi_luar_batam === true;
-  const dipeta = p.lat != null && !luarBatam;
+  const dipeta = punyaTitik(p);
   const kamera = !minimal && !luarBatam ? kameraTerdekat(p.lat, p.lng) : null;
-  const sumber = p.sumber_url.filter(tautanAman);
+  const telepon = kontak.filter((k) => k.label === "Telepon");
+  const kontakLain = kontak.filter((k) => k.label !== "Telepon");
+
+  const ikon = KATEGORI_DIREKTORI.find((x) => x.nama === namaKategori(p.kategori));
+  const penanda = [namaKategori(p.kategori), p.kecamatan].filter(Boolean).join(" · ");
 
   return (
-    <div className="bch-page">
-      <p className="bch-kicker m-0">
-        <Link href="/info/direktori">Direktori</Link> ·{" "}
-        <Link href={`/info/direktori/${slugKategori(p.kategori)}`}>{namaKategori(p.kategori)}</Link>
-      </p>
-
-      <article className="bch-card bch-kartu-museum mt-3">
-        <p className="bch-kicker-row bch-kicker m-0">
-          <span>{labelSub(p.subkategori)}</span>
-          <span className="bch-data">{p.id}</span>
+    <div className="bch-page bch-detail-tata">
+      <div className="bch-detail-kepala">
+        <nav className="bch-remah" aria-label="Remah roti">
+          <Link href="/info">Informasi Warga</Link> / <Link href="/info/direktori">Direktori</Link> /{" "}
+          <Link href={`/info/direktori/${slugKategori(kunciTampil(p.kategori))}`}>{namaKategori(p.kategori)}</Link>
+        </nav>
+        <p className="bch-kicker mt-4 mb-0">{penanda}</p>
+        <h1 className="mt-2">{p.nama}</h1>
+        <p className="bch-detail-bawah">
+          {labelSub(p.subkategori)}
+          {(p.kelurahan || p.kecamatan) && " · "}
+          {p.kelurahan && `${p.kelurahan}${p.kecamatan ? ", " : ""}`}
+          {p.kecamatan && <Link href={`/info/kecamatan/${slugKecamatan(p.kecamatan)}`}>{p.kecamatan}</Link>}
         </p>
-        <h1>{p.nama}</h1>
-        {p.nama_alternatif.length > 0 && <p className="m-0">Juga disebut: {p.nama_alternatif.join(", ")}</p>}
-        <p className="bch-card-loc">
-          {p.kecamatan ? (
-            <>
-              {p.kelurahan && `${p.kelurahan}, `}
-              <Link href={`/info/kecamatan/${slugKecamatan(p.kecamatan)}`}>{p.kecamatan}</Link>
-            </>
-          ) : (
-            lokasiTeks(p)
-          )}
-        </p>
-        <hr className="bch-card-rule" />
-        <div className="bch-rebung-mini" aria-hidden="true" />
+        {p.nama_alternatif.length > 0 && <p className="bch-detail-bawah">Juga disebut: {p.nama_alternatif.join(", ")}</p>}
         <DaftarLencana p={p} />
 
-        {adalahProfesi(p) && (
-          <p className="bch-note mt-3" data-tone="caution">
-            {LABEL_BETA}. Data ini belum dikonfirmasi pemilik kantor.{" "}
-            <Link href="/info/bantuan-hukum#cek-status">Cek status</Link> sebelum memakai jasanya.
-          </p>
-        )}
+        <div className="bch-detail-aksi" data-aksi-tempat>
+          {dipeta && (
+            <Link href={`/?tempat=${p.id}`} prefetch={false} className="bch-btn">
+              Lihat di peta
+            </Link>
+          )}
+          {!minimal && (
+            <a href={tautanArah(p)} target="_blank" rel="noopener noreferrer" className="bch-btn" data-variant={dipeta ? "ghost" : undefined}>
+              Petunjuk arah
+            </a>
+          )}
+          <TombolBagikan judul={p.nama} />
+        </div>
+      </div>
+
+      {dipeta && ikon && p.lat != null && p.lng != null && (
+        <aside className="bch-detail-samping">
+          <PetaKategori
+            pins={[{ id: p.id, nama: p.nama, lat: p.lat, lng: p.lng, perkiraan: p.status_koordinat !== "terverifikasi" }]}
+            glyph={ikon.glyph}
+            warna={ikon.warna}
+            pusat={[p.lng, p.lat]}
+          />
+          {p.status_koordinat !== "terverifikasi" && (
+            <p className="bch-catatan-halaman">
+              Titik di peta adalah perkiraan area.
+              {!minimal && (
+                <>
+                  {" "}
+                  Gunakan{" "}
+                  <a href={tautanArah(p)} target="_blank" rel="noopener noreferrer">
+                    Petunjuk arah
+                  </a>{" "}
+                  untuk lokasi persisnya.
+                </>
+              )}
+            </p>
+          )}
+        </aside>
+      )}
+
+      <div className="bch-detail-isi">
+        {adalahProfesi(p) && <p>Pastikan status praktiknya sebelum memakai jasanya.</p>}
 
         {minimal ? (
-          <p className="mt-3">
+          <p>
             Kartu ini hanya memuat nama dan letak umumnya. Batas, luas, dan status lahan tidak kami tampilkan.{" "}
             {idKartuKampung(p) ? (
-              <Link href={`/cerita/kampung-tua/${idKartuKampung(p)}`}>Baca ceritanya di Loket Cerita &amp; Budaya</Link>
+              <Link href={`/cerita/kampung-tua/${idKartuKampung(p)}`}>Baca ceritanya di Loket Cerita dan Budaya</Link>
             ) : (
-              "Ceritanya ada di Loket Cerita & Budaya."
+              "Ceritanya ada di Loket Cerita dan Budaya."
             )}
           </p>
         ) : (
-          <dl className="bch-kartu-fakta">
-            {p.alamat && (
+          <dl className="bch-tabel-info">
+            {alamat && (
               <div>
                 <dt>Alamat</dt>
-                <dd>{p.alamat}</dd>
+                <dd>{alamat}</dd>
               </div>
             )}
-            {kontak.map((k) => (
+            {jam && (
+              <div>
+                <dt>Jam buka</dt>
+                <dd>{jam}</dd>
+              </div>
+            )}
+            {telepon.map((k) => (
               <div key={k.label}>
                 <dt>{k.label}</dt>
                 <dd>{k.href ? <a href={k.href}>{k.teks}</a> : k.teks}</dd>
@@ -132,6 +170,12 @@ export default async function Tempat({ params }: Props) {
               <div key={a.label}>
                 <dt>{a.label}</dt>
                 <dd>{a.nilai}</dd>
+              </div>
+            ))}
+            {kontakLain.map((k) => (
+              <div key={k.label}>
+                <dt>{k.label}</dt>
+                <dd>{k.href ? <a href={k.href}>{k.teks}</a> : k.teks}</dd>
               </div>
             ))}
           </dl>
@@ -146,66 +190,20 @@ export default async function Tempat({ params }: Props) {
           </p>
         )}
 
-        <p className="bch-card-meta mt-3 mb-0" data-baris-museum>
-          {p.jam_layanan && !minimal && (
-            <>
-              BUKA {jamPublik(p)}
-              <br />
-            </>
-          )}
-          {teksDicek(p).toUpperCase()}
-          {dipeta && (
-            <>
-              <br />
-              {(p.lat as number).toFixed(5)}, {(p.lng as number).toFixed(5)}
-            </>
-          )}
-        </p>
-      </article>
-
-      <div className="bch-prose mt-5">
-        {luarBatam ? (
-          <p>Tempat ini ada di luar Batam, jadi tidak muncul di peta kami.</p>
-        ) : dipeta ? (
-          <p>
-            <Link href={`/?tempat=${p.id}`} prefetch={false}>
-              Lihat di peta
-            </Link>
-            {p.status_koordinat === "perlu_cek_ulang" && " Titiknya perkiraan, belum dicek ulang."}
-          </p>
-        ) : (
-          <p>Lokasi belum diisi, jadi tempat ini belum muncul di peta. Kami tidak menebak koordinat.</p>
-        )}
-
         {!minimal && p.kecamatan && <HujanKecamatan kecamatan={p.kecamatan} />}
 
         {kamera && (
           <p>
             Kamera lalu lintas terdekat:{" "}
-            <Link href={`/langit-laut?mode=cctv&cam=${kamera.c.slug}`} prefetch={false}>
+            <Link href={`/cuaca/cctv?cam=${kamera.c.slug}`} prefetch={false}>
               {kamera.c.name}
             </Link>{" "}
             <span className="bch-data">({Math.round(kamera.km * 1000)} m)</span>
           </p>
         )}
 
-        {sumber.length > 0 && (
-          <>
-            <h2>Sumber</h2>
-            <ul>
-              {sumber.map((u) => (
-                <li key={u}>
-                  <a href={u} rel="noopener noreferrer">
-                    {domain(u)}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-
-        <p>
-          Ada yang salah, atau ini kantor Anda? <Link href={`/koreksi?tempat=${p.id}`}>Kirim koreksi</Link>.
+        <p className="bch-catatan-halaman">
+          <Link href={`/koreksi?tempat=${p.id}`}>Laporkan data yang salah</Link>
         </p>
       </div>
     </div>

@@ -13,9 +13,16 @@ const BITES: [RegExp, string][] = [
   [/^\/about\/?$/, "/makan/tentang"],
 ];
 
-/** hujandibatam hanya punya satu halaman; parameter ?mode=&view=&cam= ikut terbawa. */
-export function alamatBaruHujan(path: string, query = ""): string {
-  return `${path === "/" ? "/langit-laut" : "/langit-laut"}${query}`;
+const MODE_CUACA: Record<string, string> = { hujan: "/cuaca/hujan", ombak: "/cuaca/gelombang", cctv: "/cuaca/cctv" };
+
+/** hujandibatam hanya punya satu halaman; ?mode= menentukan halaman barunya, ?view= dan ?cam= ikut terbawa. */
+export function alamatBaruHujan(_path: string, query = ""): string {
+  const p = new URLSearchParams(query);
+  const mode = p.get("mode") ?? "";
+  p.delete("mode");
+  const sisa = p.toString();
+  const dasar = p.get("cam") ? "/cuaca/cctv" : (MODE_CUACA[mode] ?? "/cuaca/hujan");
+  return sisa ? `${dasar}?${sisa}` : dasar;
 }
 
 export function alamatBaruBites(path: string, query = ""): string | null {

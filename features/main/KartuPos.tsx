@@ -12,7 +12,7 @@ export default function KartuPos() {
   const kanvas = useRef<HTMLCanvasElement>(null);
   const [latar, setLatar] = useState<Latar>("peta");
   const [tempat, setTempat] = useState("Batam");
-  const [pesan, setPesan] = useState("Hujan lagi. Sekupang kering.");
+  const [pesan, setPesan] = useState("Sampai jumpa di Batam.");
   const [dari, setDari] = useState("");
 
   useEffect(() => {
@@ -83,13 +83,13 @@ export default function KartuPos() {
           />
         </label>
         <label className="bch-field">
-          Dari (boleh kosong)
+          Dari (boleh dikosongkan)
           <input className="bch-input" maxLength={40} value={dari} onChange={(e) => setDari(e.target.value)} />
         </label>
         <button type="button" className="bch-btn" onClick={unduh}>
           Unduh kartu pos
         </button>
-        <p className="bch-card-meta m-0">Gambar sementara, sampai ada ilustrasi. Tidak ada yang dikirim ke server.</p>
+        <p className="bch-card-meta m-0">Kartu pos dibuat di perangkatmu dan tidak dikirim ke mana pun.</p>
       </div>
     </div>
   );

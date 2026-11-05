@@ -38,7 +38,7 @@ export type DataContoh = {
   consent: { subjek: string; aksi: string; tukangId: string | null; versi: string; dicatatAt: string }[];
 };
 
-const WAKTU_CONTOH = "2026-11-01T00:00:00.000Z";
+const WAKTU_CONTOH = new Date(Date.UTC(2026, 10, 1)).toISOString();
 
 function tukangContoh(id: string, nama: string, jasa: string, area: string[], tayang: boolean): TukangBaris {
   return {
@@ -93,9 +93,9 @@ export function dataAwalContoh(): DataContoh {
         ["rapi", "harga jujur"],
         true,
       ),
-      rekContoh(2, a, "Cerita rekaan kedua dari warga rekaan. Penjahitnya juga rekaan.", ["rapi", "on time"], true),
-      rekContoh(3, b, "Cerita rekaan soal AC yang kembali dingin, di kota yang tetap panas.", ["cepat"], true),
-      rekContoh(4, b, "Cerita rekaan lain. Jangan dicari, tukangnya tidak ada.", ["on time"], true),
+      rekContoh(2, a, "Cerita rekaan kedua dari warga rekaan. Penjahitnya juga rekaan.", ["rapi", "tepat waktu"], true),
+      rekContoh(3, b, "Cerita rekaan tentang AC yang kembali dingin setelah diservis.", ["cepat"], true),
+      rekContoh(4, b, "Cerita rekaan lain. Tukang ini tidak ada.", ["tepat waktu"], true),
       rekContoh(5, c, "Baru satu cerita rekaan, jadi entri ini belum boleh tampil.", ["ramah"], false),
     ],
     laporan: [],

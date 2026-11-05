@@ -1,0 +1,383 @@
+{
+ "catatan": "Glyph ikon garis 24x24 (stroke 2, ujung bulat). Warna putih di atas lingkaran kategori; kelompok kuning memakai tinta #161616.",
+ "kelompok_peta": {
+  "makan": {
+   "nama": "Makan",
+   "warna": "#E85A1F"
+  },
+  "menginap": {
+   "nama": "Menginap",
+   "warna": "#765BA7"
+  },
+  "ibadah": {
+   "nama": "Ibadah",
+   "warna": "#407060"
+  },
+  "kesehatan": {
+   "nama": "Kesehatan",
+   "warna": "#F15060"
+  },
+  "transportasi": {
+   "nama": "Transportasi",
+   "warna": "#0078BF"
+  },
+  "belanja": {
+   "nama": "Belanja",
+   "warna": "#FFB511"
+  },
+  "cerita": {
+   "nama": "Cerita dan sejarah",
+   "warna": "#914E72"
+  },
+  "alam": {
+   "nama": "Alam dan ruang publik",
+   "warna": "#00995A"
+  }
+ },
+ "jenis_peta": [
+  {
+   "id": "seafood",
+   "kelompok": "makan",
+   "nama": "Makanan laut dan gonggong",
+   "emoji_gaya_b": "🦀",
+   "glyph": "seafood"
+  },
+  {
+   "id": "kopi",
+   "kelompok": "makan",
+   "nama": "Kopitiam dan kafe",
+   "emoji_gaya_b": "☕",
+   "glyph": "kopi"
+  },
+  {
+   "id": "mi",
+   "kelompok": "makan",
+   "nama": "Mi, bakso, dan sup",
+   "emoji_gaya_b": "🍜",
+   "glyph": "mi"
+  },
+  {
+   "id": "dimsum",
+   "kelompok": "makan",
+   "nama": "Dim sum dan bubur",
+   "emoji_gaya_b": "🥟",
+   "glyph": "dimsum"
+  },
+  {
+   "id": "nasi",
+   "kelompok": "makan",
+   "nama": "Nasi dan lauk",
+   "emoji_gaya_b": "🍛",
+   "glyph": "nasi"
+  },
+  {
+   "id": "oleh",
+   "kelompok": "makan",
+   "nama": "Oleh-oleh",
+   "emoji_gaya_b": "🎁",
+   "glyph": "oleh"
+  },
+  {
+   "id": "hotel",
+   "kelompok": "menginap",
+   "nama": "Hotel",
+   "emoji_gaya_b": "🏨",
+   "glyph": "hotel"
+  },
+  {
+   "id": "masjid",
+   "kelompok": "ibadah",
+   "nama": "Masjid",
+   "emoji_gaya_b": "🕌",
+   "glyph": "masjid"
+  },
+  {
+   "id": "gereja",
+   "kelompok": "ibadah",
+   "nama": "Gereja",
+   "emoji_gaya_b": "⛪",
+   "glyph": "gereja"
+  },
+  {
+   "id": "wihara",
+   "kelompok": "ibadah",
+   "nama": "Wihara dan kelenteng",
+   "emoji_gaya_b": "🏮",
+   "glyph": "wihara"
+  },
+  {
+   "id": "pura",
+   "kelompok": "ibadah",
+   "nama": "Pura",
+   "emoji_gaya_b": "🛕",
+   "glyph": "pura"
+  },
+  {
+   "id": "rs",
+   "kelompok": "kesehatan",
+   "nama": "Rumah sakit",
+   "emoji_gaya_b": "🏥",
+   "glyph": "rs"
+  },
+  {
+   "id": "feri",
+   "kelompok": "transportasi",
+   "nama": "Pelabuhan feri",
+   "emoji_gaya_b": "⛴️",
+   "glyph": "feri"
+  },
+  {
+   "id": "bandara",
+   "kelompok": "transportasi",
+   "nama": "Bandara",
+   "emoji_gaya_b": "✈️",
+   "glyph": "bandara"
+  },
+  {
+   "id": "halte",
+   "kelompok": "transportasi",
+   "nama": "Halte Trans Batam",
+   "emoji_gaya_b": "🚏",
+   "glyph": "halte"
+  },
+  {
+   "id": "mal",
+   "kelompok": "belanja",
+   "nama": "Mal dan pusat belanja",
+   "emoji_gaya_b": "🏬",
+   "glyph": "mal"
+  },
+  {
+   "id": "bekas",
+   "kelompok": "belanja",
+   "nama": "Pasar barang bekas",
+   "emoji_gaya_b": "🏷️",
+   "glyph": "bekas"
+  },
+  {
+   "id": "kampung",
+   "kelompok": "cerita",
+   "nama": "Kampung tua",
+   "emoji_gaya_b": "🛖",
+   "glyph": "kampung"
+  },
+  {
+   "id": "jembatan",
+   "kelompok": "cerita",
+   "nama": "Jembatan Barelang",
+   "emoji_gaya_b": "🌉",
+   "glyph": "jembatan"
+  },
+  {
+   "id": "sejarah",
+   "kelompok": "cerita",
+   "nama": "Museum dan situs sejarah",
+   "emoji_gaya_b": "🏛️",
+   "glyph": "sejarah"
+  },
+  {
+   "id": "pantai",
+   "kelompok": "alam",
+   "nama": "Pantai",
+   "emoji_gaya_b": "🏖️",
+   "glyph": "pantai"
+  },
+  {
+   "id": "taman",
+   "kelompok": "alam",
+   "nama": "Taman dan alun-alun",
+   "emoji_gaya_b": "🌳",
+   "glyph": "taman"
+  },
+  {
+   "id": "olahraga",
+   "kelompok": "alam",
+   "nama": "Olahraga",
+   "emoji_gaya_b": "🏸",
+   "glyph": "olahraga"
+  }
+ ],
+ "kategori_direktori": [
+  {
+   "nama": "Darurat dan keamanan",
+   "keterangan": "Polisi, pemadam kebakaran, SAR, dan ambulans",
+   "jumlah_saat_ini": 29,
+   "glyph": "darurat",
+   "warna": "#161616"
+  },
+  {
+   "nama": "Kesehatan",
+   "keterangan": "Rumah sakit, puskesmas, dan donor darah",
+   "jumlah_saat_ini": 45,
+   "glyph": "rs",
+   "warna": "#F15060"
+  },
+  {
+   "nama": "Kantor dan layanan publik",
+   "keterangan": "Kantor camat dan lurah, kantor pos, listrik, air, dan KUA",
+   "jumlah_saat_ini": 135,
+   "glyph": "kantor",
+   "warna": "#70747C"
+  },
+  {
+   "nama": "Pendidikan",
+   "keterangan": "Sekolah, madrasah, dan perguruan tinggi",
+   "jumlah_saat_ini": 12,
+   "glyph": "pendidikan",
+   "warna": "#3D5588"
+  },
+  {
+   "nama": "Perpustakaan",
+   "keterangan": "Perpustakaan umum dan komunitas",
+   "jumlah_saat_ini": 4,
+   "glyph": "buku",
+   "warna": "#3D5588"
+  },
+  {
+   "nama": "Tempat ibadah",
+   "keterangan": "Masjid, gereja, pura, wihara, dan kelenteng",
+   "jumlah_saat_ini": 20,
+   "glyph": "masjid",
+   "warna": "#407060"
+  },
+  {
+   "nama": "Pemakaman",
+   "keterangan": "Taman pemakaman umum dan makam menurut agama",
+   "jumlah_saat_ini": 8,
+   "glyph": "makam",
+   "warna": "#70747C"
+  },
+  {
+   "nama": "Transportasi",
+   "keterangan": "Pelabuhan, pelantar pompong, bandara, dan halte",
+   "jumlah_saat_ini": 50,
+   "glyph": "feri",
+   "warna": "#0078BF"
+  },
+  {
+   "nama": "Belanja",
+   "keterangan": "Pasar, mal, pasar swalayan, dan toko bahan bangunan",
+   "jumlah_saat_ini": 33,
+   "glyph": "mal",
+   "warna": "#FFB511"
+  },
+  {
+   "nama": "Ruang publik",
+   "keterangan": "Taman, alun-alun, dan bumi perkemahan",
+   "jumlah_saat_ini": 8,
+   "glyph": "taman",
+   "warna": "#00995A"
+  },
+  {
+   "nama": "Wisata",
+   "keterangan": "Pantai, pulau, museum, dan taman hiburan",
+   "jumlah_saat_ini": 9,
+   "glyph": "pantai",
+   "warna": "#00995A"
+  },
+  {
+   "nama": "Olahraga",
+   "keterangan": "Lapangan bulu tangkis, futsal, pusat kebugaran, dan stadion",
+   "jumlah_saat_ini": 39,
+   "glyph": "olahraga",
+   "warna": "#00995A"
+  },
+  {
+   "nama": "Hotel dan penginapan",
+   "keterangan": "Hotel berbintang dan nonbintang",
+   "jumlah_saat_ini": 243,
+   "glyph": "hotel",
+   "warna": "#765BA7"
+  },
+  {
+   "nama": "Jasa",
+   "keterangan": "Penukaran valuta asing, pusat servis, dan ekspedisi",
+   "jumlah_saat_ini": 16,
+   "glyph": "jasa",
+   "warna": "#BB8B41"
+  },
+  {
+   "nama": "Pertanahan dan hukum",
+   "keterangan": "PPAT, notaris, bantuan hukum, dan pengadilan",
+   "jumlah_saat_ini": 28,
+   "glyph": "hukum",
+   "warna": "#70747C"
+  },
+  {
+   "nama": "Kuliner",
+   "keterangan": "Tempat makan dari Loket Makan",
+   "jumlah_saat_ini": 117,
+   "glyph": "mi",
+   "warna": "#E85A1F"
+  },
+  {
+   "nama": "Kampung tua",
+   "keterangan": "Permukiman lama sebelum Batam dibangun",
+   "jumlah_saat_ini": 59,
+   "glyph": "kampung",
+   "warna": "#914E72"
+  },
+  {
+   "nama": "Penanda kota",
+   "keterangan": "Jembatan, monumen, dan bangunan penanda",
+   "jumlah_saat_ini": 15,
+   "glyph": "jembatan",
+   "warna": "#914E72"
+  },
+  {
+   "nama": "Budaya",
+   "keterangan": "Museum, cagar budaya, dan lembaga adat",
+   "jumlah_saat_ini": 6,
+   "glyph": "sejarah",
+   "warna": "#914E72"
+  },
+  {
+   "nama": "Khas Batam",
+   "keterangan": "Hal yang hanya ada di Batam",
+   "jumlah_saat_ini": 3,
+   "glyph": "bintang",
+   "warna": "#E85A1F"
+  },
+  {
+   "nama": "Lain-lain",
+   "keterangan": "Waduk, kawasan, dan tempat lain",
+   "jumlah_saat_ini": 13,
+   "glyph": "lain",
+   "warna": "#70747C"
+  }
+ ],
+ "glyph": {
+  "seafood": "<path d=\"M3 12c3.5-4.5 9-5.5 13-2.5l4.5-3v11L16 14.5c-4 3-9.5 2-13-2.5Z\"/><path d=\"M8 11.5h.01\" stroke-width=\"3\"/>",
+  "kopi": "<path d=\"M5 10h11v4a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5v-4Z\"/><path d=\"M16 11h1.5a2.2 2.2 0 0 1 0 4.4H16\"/><path d=\"M9 4v3M12.5 4v3\"/>",
+  "mi": "<path d=\"M3.5 12h17a8.5 8.5 0 0 1-17 0Z\"/><path d=\"M13 3.5 10.5 12M19.5 4 13 12\"/>",
+  "dimsum": "<path d=\"M4 11h16v6.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V11Z\"/><path d=\"M4 14.5h16\"/><path d=\"M7.5 11a4.5 4.5 0 0 1 9 0\"/>",
+  "nasi": "<path d=\"M6 3v7a2 2 0 0 0 2 2v9M10 3v7a2 2 0 0 1-2 2M8 3v5\"/><path d=\"M16.5 21V3c2 1 3 4 3 7.5h-3\"/>",
+  "oleh": "<path d=\"M4.5 9.5h15V20h-15z\"/><path d=\"M12 9.5V20M3.5 6.5h17v3h-17z\"/><path d=\"M12 6.5c-1-3-5-3-5-1.2s4 1.2 5 1.2c1 0 5 .6 5-1.2s-4-1.8-5 1.2Z\"/>",
+  "hotel": "<path d=\"M3 18.5V6M3 14h18v4.5M21 14a3.5 3.5 0 0 0-3.5-3.5H11V14\"/><path d=\"M7 11.2h.01\" stroke-width=\"3.4\"/>",
+  "masjid": "<path d=\"M5 20v-5a7 7 0 0 1 14 0v5\"/><path d=\"M3 20h18M12 8V3.5\"/>",
+  "gereja": "<path d=\"M12 2.5v6M9.5 5h5\"/><path d=\"M5.5 21v-8l6.5-4.5 6.5 4.5v8M3.5 21h17\"/><path d=\"M10 21v-4h4v4\"/>",
+  "wihara": "<path d=\"M3 10c3.5 0 6.5-2 9-6 2.5 4 5.5 6 9 6\"/><path d=\"M6 10v10M18 10v10M3 20h18M5 14.5h14\"/>",
+  "pura": "<path d=\"M4 20V9.5L7 4l3 5.5V20M14 20V9.5L17 4l3 5.5V20M3 20h18M4 13.5h6M14 13.5h6\"/>",
+  "rs": "<path d=\"M9.5 4h5v5.5H20v5h-5.5V20h-5v-5.5H4v-5h5.5Z\"/>",
+  "feri": "<path d=\"M3 15h18l-2.5 5h-13Z\"/><path d=\"M6 15v-4h12v4M9 11V8h6v3\"/>",
+  "bandara": "<path d=\"M12 2.8c.8 0 1.4.7 1.4 1.5v5l7.6 4.4v2l-7.6-2.4v4.3l2 1.5v1.6l-3.4-1-3.4 1v-1.6l2-1.5v-4.3L3 15.7v-2l7.6-4.4v-5c0-.8.6-1.5 1.4-1.5Z\" fill=\"currentColor\" stroke=\"none\"/>",
+  "halte": "<path d=\"M6.5 4h11a2 2 0 0 1 2 2v11h-15V6a2 2 0 0 1 2-2Z\"/><path d=\"M4.5 11h15M7.5 20v-3M16.5 20v-3\"/>",
+  "mal": "<path d=\"M5 8h14l-1 12.5H6Z\"/><path d=\"M9 10V7a3 3 0 0 1 6 0v3\"/>",
+  "bekas": "<path d=\"M3.5 12V4h8l9 9-8 8Z\"/><path d=\"M8 8h.01\" stroke-width=\"3.2\"/>",
+  "kampung": "<path d=\"M3 11.5 12 5l9 6.5\"/><path d=\"M5.5 10.5V16h13v-5.5M7 16v4.5M12 16v4.5M17 16v4.5\"/>",
+  "jembatan": "<path d=\"M2 16h20M7 16V5.5M17 16V5.5M7 7 3 16M7 7l4 9M17 7l-4 9M17 7l4 9\"/>",
+  "sejarah": "<path d=\"M3 9 12 4l9 5\"/><path d=\"M5 9.5V18M9.7 9.5V18M14.3 9.5V18M19 9.5V18M3 20.5h18\"/>",
+  "pantai": "<path d=\"M12 3.5A8 8 0 0 0 4 11.5h16a8 8 0 0 0-8-8Z\"/><path d=\"M12 11.5v5.5\"/><path d=\"M3 20.5c2 0 2.2-1.5 4.5-1.5s2.5 1.5 4.5 1.5 2.2-1.5 4.5-1.5 2.5 1.5 4.5 1.5\"/>",
+  "taman": "<path d=\"M12 21v-6\"/><path d=\"M12 3a5 5 0 0 0-5 5 4.2 4.2 0 0 0 1 8h8a4.2 4.2 0 0 0 1-8 5 5 0 0 0-5-5Z\"/>",
+  "olahraga": "<path d=\"M6 18 15 9\"/><path d=\"M14 4.5a5 5 0 1 1 5.5 5.5L15 9Z\"/><path d=\"M3.5 20.5 6 18\"/>",
+  "darurat": "<path d=\"M7 18v-6a5 5 0 0 1 10 0v6\"/><path d=\"M5 18h14v2.5H5zM12 3v2M4.2 6.2l1.4 1.4M19.8 6.2l-1.4 1.4\"/>",
+  "kantor": "<path d=\"M4 20.5h16M5.5 20.5V9.5h13v11M3.5 9.5 12 4l8.5 5.5\"/><path d=\"M9 13v4M12 13v4M15 13v4\"/>",
+  "pendidikan": "<path d=\"M2.5 9.5 12 5l9.5 4.5L12 14Z\"/><path d=\"M6.5 11.5V16c3 2.2 8 2.2 11 0v-4.5M21.5 9.5v5\"/>",
+  "buku": "<path d=\"M4 5.5c3-1 5.5-1 8 1 2.5-2 5-2 8-1V19c-3-1-5.5-1-8 1-2.5-2-5-2-8-1Z\"/><path d=\"M12 6.5V20\"/>",
+  "makam": "<path d=\"M7 20.5V9a5 5 0 0 1 10 0v11.5M4.5 20.5h15\"/><path d=\"M12 9v5M10 11h4\"/>",
+  "jasa": "<path d=\"M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3Z\"/><path d=\"M14.5 6.5 17 4l3 3-2.5 2.5\"/>",
+  "hukum": "<path d=\"M12 4v16M7 20.5h10M5 7.5h14\"/><path d=\"M5 7.5 2.5 13a2.5 2.5 0 0 0 5 0L5 7.5ZM19 7.5 16.5 13a2.5 2.5 0 0 0 5 0L19 7.5Z\"/>",
+  "bintang": "<path d=\"m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8Z\"/>",
+  "lain": "<path d=\"M6 12h.01M12 12h.01M18 12h.01\" stroke-width=\"3.4\"/>"
+ }
+}

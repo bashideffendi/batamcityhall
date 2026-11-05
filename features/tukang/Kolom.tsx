@@ -13,7 +13,7 @@ export async function kirimJson(url: string, isi: unknown, method = "POST"): Pro
     });
     return (await r.json()) as JawabanKirim;
   } catch {
-    return { ok: false, pesan: "Jaringan bermasalah. Kiriman belum masuk, coba lagi." };
+    return { ok: false, pesan: "Kiriman belum masuk karena jaringan bermasalah. Coba lagi." };
   }
 }
 

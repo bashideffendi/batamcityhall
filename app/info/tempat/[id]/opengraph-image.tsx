@@ -1,8 +1,8 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { labelSub, lokasiTeks, namaKategori, TEMPAT, tempatPerId } from "@/features/direktori/data";
-import { SITE_NAME } from "@/lib/site";
+import { labelSub, lokasiTeks, namaKategori, punyaHalaman, TEMPAT, tempatPerId } from "@/features/direktori/data";
+import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 export const alt = "Kartu tempat Batam City Hall";
 export const size = { width: 1200, height: 630 };
@@ -10,7 +10,7 @@ export const contentType = "image/png";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return TEMPAT.map((p) => ({ id: p.id }));
+  return TEMPAT.filter(punyaHalaman).map((p) => ({ id: p.id }));
 }
 
 const huruf = (paket: string, berkas: string) =>
@@ -20,7 +20,7 @@ const huruf = (paket: string, berkas: string) =>
 export default async function Image({ params }: { params: Promise<{ id: string }> }) {
   const p = tempatPerId.get((await params).id);
   const [serif, sans] = await Promise.all([
-    huruf("source-serif-4", "source-serif-4-latin-600-normal.woff"),
+    huruf("newsreader", "newsreader-latin-600-normal.woff"),
     huruf("plus-jakarta-sans", "plus-jakarta-sans-latin-500-normal.woff"),
   ]);
   return new ImageResponse(
@@ -32,8 +32,8 @@ export default async function Image({ params }: { params: Promise<{ id: string }
         flexDirection: "column",
         justifyContent: "space-between",
         padding: 64,
-        background: "#F4EFE4",
-        color: "#1C1B19",
+        background: "#FFFFFF",
+        color: "#161616",
         fontFamily: "Plus Jakarta Sans",
       }}
     >
@@ -42,26 +42,26 @@ export default async function Image({ params }: { params: Promise<{ id: string }
         <span>{p ? labelSub(p.subkategori) : ""}</span>
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <div style={{ fontFamily: "Source Serif 4", fontSize: 76, lineHeight: 1.1 }}>{p?.nama ?? SITE_NAME}</div>
+        <div style={{ fontFamily: "Newsreader", fontSize: 76, lineHeight: 1.1 }}>{p?.nama ?? SITE_NAME}</div>
         <div style={{ marginTop: 20, fontSize: 32, color: "#4E6A7A" }}>{p ? lokasiTeks(p) : ""}</div>
       </div>
       <div
         style={{
           display: "flex",
-          borderTop: "1px solid #1C1B19",
+          borderTop: "1px solid #161616",
           paddingTop: 20,
           fontSize: 26,
           justifyContent: "space-between",
         }}
       >
         <span>{SITE_NAME}</span>
-        <span>Balai warga, bukan balai kota</span>
+        <span>{SITE_TAGLINE}</span>
       </div>
     </div>,
     {
       ...size,
       fonts: [
-        { name: "Source Serif 4", data: serif, weight: 600, style: "normal" },
+        { name: "Newsreader", data: serif, weight: 600, style: "normal" },
         { name: "Plus Jakarta Sans", data: sans, weight: 500, style: "normal" },
       ],
     },

@@ -11,17 +11,19 @@ import { LencanaStatus, TeksMiring } from "@/features/sejarah/Status";
 import type { KunciStatus } from "@/features/sejarah/data";
 import "@/features/sejarah/sejarah.css";
 
+const LEDE =
+  "Halaman ini menelusuri perjalanan Batam dari pulau di pesisir Selat Singapura menjadi kota berpenduduk lebih dari satu juta jiwa. Peristiwa yang versinya berbeda antarsumber diberi tanda.";
+
 export const metadata: Metadata = {
   title: "Sejarah Batam",
-  description:
-    "Garis waktu Batam dari Bulang, mandat Nong Isa 1829, sampai kota hari ini. Semua entri berlabel dan bersumber.",
+  description: LEDE,
 };
 
 const LEGENDA: KunciStatus[] = ["terverifikasi", "perbedaan_versi", "belum_terverifikasi", "cerita_rakyat"];
-const ARTI: Record<string, string> = {
-  terverifikasi: "ada sumber yang bisa dicek",
-  perbedaan_versi: "sumber berbeda atau dikutip sekunder",
-  belum_terverifikasi: "belum ada sumber primer",
+const ARTI: Record<KunciStatus, string> = {
+  terverifikasi: "ada catatan tertulisnya",
+  perbedaan_versi: "catatan yang ada saling berbeda",
+  belum_terverifikasi: "belum ada catatan asli yang mendukung",
   cerita_rakyat: "tradisi lisan, bukan catatan",
 };
 
@@ -43,14 +45,11 @@ export default function Sejarah() {
     <div className="bch-page">
       <p className="bch-kicker m-0">
         <Link href="/cerita" prefetch={false}>
-          Loket 05
+          LOKET 05
         </Link>
       </p>
       <h1 className="mt-2">Sejarah Batam</h1>
-      <p className="bch-lede">
-        Batam bukan pulau kosong yang tiba-tiba jadi kota. Ada dua poros: pemerintahan lokal sejak 1829, dan proyek
-        negara sejak 1969.
-      </p>
+      <p className="bch-lede">{LEDE}</p>
 
       <ul className="sj-legenda" aria-label="Arti label">
         {LEGENDA.map((s) => (
@@ -69,37 +68,27 @@ export default function Sejarah() {
 
       <section id="esai" className="sj-jangkar mt-7" aria-labelledby="judul-esai">
         <h2 id="judul-esai" className="mb-4">
-          Dua poros
+          Dua Poros
         </h2>
         <EsaiGulir langkah={ESAI} judul={Object.fromEntries(GARIS_WAKTU.map((e) => [e.id, e.judul]))} />
       </section>
 
       <section id="garis-waktu" className="sj-jangkar mt-8" aria-labelledby="judul-garis">
         <h2 id="judul-garis" className="mb-2">
-          Garis waktu
+          Garis Waktu
         </h2>
-        <p className="bch-measure mt-0">
-          {GARIS_WAKTU.length} entri, urut tahun. Banyak media lokal saling mengutip, jadi kesamaan bunyi tidak kami
-          hitung sebagai verifikasi.
-        </p>
+        <p className="bch-measure mt-0">Bagian ini memuat {GARIS_WAKTU.length} peristiwa, diurutkan menurut tahun.</p>
         <GarisWaktu entri={GARIS_WAKTU} kategori={LABEL_KATEGORI} />
       </section>
 
       <section id="asal-nama" className="sj-jangkar mt-8" aria-labelledby="judul-nama">
         <h2 id="judul-nama" className="mb-2">
-          Asal nama Batam
+          Asal Nama Batam
         </h2>
         <p className="bch-lede mt-0">Belum ada etimologi yang terbukti.</p>
         <p className="bch-measure">
-          BPNB Kepri menulis: “belum ada data yang valid yang jadi argumen pemberian nama Batam”. Jadi {versi.length}{" "}
-          versi di bawah ditaruh berdampingan.{" "}
-          <a
-            href="https://kebudayaan.kemdikbud.go.id/bpnbkepri/beragam-versi-asal-usul-nama-batam/"
-            rel="noopener noreferrer"
-          >
-            Baca sumbernya
-          </a>
-          .
+          BPNB Kepri menulis: “belum ada data yang valid yang jadi argumen pemberian nama Batam”. Karena itu,{" "}
+          {versi.length} versi di bawah ditulis berdampingan.
         </p>
         <ul className="sj-versi" data-versi-nama={versi.length}>
           {versi.map((v) => (
@@ -109,19 +98,16 @@ export default function Sejarah() {
                 <TeksMiring isi={v.isi} />
               </p>
               <div className="bch-badges">
-                {v.status.map((s) => (
-                  <LencanaStatus key={s} status={s} />
-                ))}
+                <LencanaStatus status={v.status} />
               </div>
               <p className="sj-sumber">
                 Asal: <TeksMiring isi={v.asal} />
-                {v.rincian && `. Rincian status: ${v.rincian}`}
               </p>
             </li>
           ))}
         </ul>
 
-        <h3 className="mt-6 mb-2">Nama tempat</h3>
+        <h3 className="mt-6 mb-2">Nama Tempat</h3>
         <ul className="sj-versi" data-nama-tempat={tempat.length}>
           {tempat.map((t) => (
             <li key={t.nama} className="bch-card">
@@ -130,9 +116,7 @@ export default function Sejarah() {
                 <TeksMiring isi={t.isi} />
               </p>
               <div className="bch-badges">
-                {t.status.map((s) => (
-                  <LencanaStatus key={s} status={s} />
-                ))}
+                <LencanaStatus status={t.status} />
               </div>
             </li>
           ))}
@@ -141,14 +125,10 @@ export default function Sejarah() {
 
       <section id="perubahan-fisik" className="sj-jangkar mt-8" aria-labelledby="judul-fisik">
         <h2 id="judul-fisik" className="mb-2">
-          Perubahan fisik kota
+          Perubahan Fisik Kota
         </h2>
         <p className="bch-measure mt-0">
-          {KARTU_DULU.length} lokasi. Isi lengkap, slider tahun, dan peta ada di{" "}
-          <Link href="/cerita/dulu" prefetch={false}>
-            Batam Dulu vs Sekarang
-          </Link>
-          .
+          Tabel ini memuat {KARTU_DULU.length} lokasi yang berubah sejak Batam dibangun.
         </p>
         <div className="bch-table-wrap">
           <table className="bch-table bch-tabel-tumpuk sj-tabel">
@@ -162,11 +142,7 @@ export default function Sejarah() {
             <tbody>
               {KARTU_DULU.map((k) => (
                 <tr key={k.id}>
-                  <td data-label="Lokasi">
-                    <Link href={`/cerita/dulu#${k.id}`} prefetch={false}>
-                      {k.lokasi}
-                    </Link>
-                  </td>
+                  <td data-label="Lokasi">{k.lokasi}</td>
                   <td data-label="Tahun">{k.tahunKunci}</td>
                   <td data-label="Status">
                     <LencanaStatus status={k.status} />
@@ -180,12 +156,9 @@ export default function Sejarah() {
 
       <section id="penduduk" className="sj-jangkar mt-8" aria-labelledby="judul-penduduk">
         <h2 id="judul-penduduk" className="mb-2">
-          Penduduk, dari sekitar 6.000 jiwa
+          Penduduk, dari Sekitar 6.000 Jiwa
         </h2>
-        <p className="bch-measure mt-0">
-          Setiap metode punya garisnya sendiri. Angka yang berbeda bukan berarti salah satunya bohong: yang dihitung
-          memang berbeda.
-        </p>
+        <p className="bch-measure mt-0">Setiap metode punya garis sendiri karena yang dihitung memang berbeda.</p>
         <GrafikPenduduk data={PENDUDUK} />
         <div className="bch-table-wrap mt-4">
           <table className="bch-table bch-tabel-tumpuk sj-tabel" data-tabel-penduduk>
@@ -195,7 +168,6 @@ export default function Sejarah() {
                 <th scope="col">Periode</th>
                 <th scope="col">Jiwa</th>
                 <th scope="col">Metode</th>
-                <th scope="col">Sumber</th>
               </tr>
             </thead>
             <tbody>
@@ -209,13 +181,6 @@ export default function Sejarah() {
                     {LABEL_METODE[p.metode]}
                     {p.catatan && <span className="bch-sel-kecil">{p.catatan}</span>}
                   </td>
-                  <td data-label="Sumber">
-                    {p.sumber.map((s) => (
-                      <a key={s.url} href={s.url} rel="noopener noreferrer">
-                        {s.nama}
-                      </a>
-                    ))}
-                  </td>
                 </tr>
               ))}
             </tbody>
@@ -225,12 +190,12 @@ export default function Sejarah() {
 
       <section id="wisman" className="sj-jangkar mt-8" aria-labelledby="judul-wisman">
         <h2 id="judul-wisman" className="mb-2">
-          Wisatawan mancanegara
+          Wisatawan Mancanegara
         </h2>
         <p className="bch-measure mt-0">
-          Data BPS Kota Batam yang dikutip media. Angka lain ada di{" "}
+          BPS Kota Batam mencatat kunjungan berikut. Angka lain ada di{" "}
           <Link href="/cerita/angka" prefetch={false}>
-            Angka Batam
+            Batam dalam Angka
           </Link>
           .
         </p>
@@ -242,7 +207,6 @@ export default function Sejarah() {
               <tr>
                 <th scope="col">Tahun</th>
                 <th scope="col">Kunjungan</th>
-                <th scope="col">Sumber</th>
               </tr>
             </thead>
             <tbody>
@@ -251,13 +215,6 @@ export default function Sejarah() {
                   <td data-label="Tahun">{w.tahun}</td>
                   <td data-label="Kunjungan" className="sj-sel-angka">
                     {w.teks}
-                  </td>
-                  <td data-label="Sumber">
-                    {w.sumber.map((s) => (
-                      <a key={s.url} href={s.url} rel="noopener noreferrer">
-                        {s.nama}
-                      </a>
-                    ))}
                   </td>
                 </tr>
               ))}
@@ -268,14 +225,12 @@ export default function Sejarah() {
 
       <section id="bacaan" className="sj-jangkar mt-8" aria-labelledby="judul-bacaan">
         <h2 id="judul-bacaan" className="mb-2">
-          Bacaan lanjutan
+          Bacaan Lanjutan
         </h2>
         <ul className="sj-linimasa" data-bacaan={bacaan.length}>
           {bacaan.map((b) => (
             <li key={b.url}>
-              <a href={b.url} rel="noopener noreferrer">
-                <TeksMiring isi={b.judul} />
-              </a>
+              <TeksMiring isi={b.judul} />
               <span className="bch-sel-kecil">
                 <TeksMiring isi={b.penulis} />
               </span>
@@ -283,14 +238,7 @@ export default function Sejarah() {
             </li>
           ))}
         </ul>
-        <p className="bch-measure sj-kecil mt-4">
-          Jurnal kampus lokal (UNRIKA, UMRAH, UIB) dan kajian STPN belum kami jaring. Coba cari di{" "}
-          <a href="https://garuda.kemdikbud.go.id" rel="noopener noreferrer">
-            Garuda
-          </a>{" "}
-          dengan kata kunci “sejarah Batam” dan “Otorita Batam”.
-        </p>
-        <p className="sj-kecil">Halaman ini terakhir diperbarui 5 November 2026.</p>
+        <p className="sj-kecil mt-4">Halaman ini terakhir diperbarui 5 November 2026.</p>
       </section>
     </div>
   );

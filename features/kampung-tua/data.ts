@@ -4,7 +4,9 @@
 import raw from "@/data/kampung_tua/kampung_tua.json";
 import jumlahRaw from "@/data/kampung_tua/sumber_jumlah.json";
 import legalitasRaw from "@/data/kampung_tua/kronologi_legalitas.json";
-import { cariTempat, tautanAman, teksDicek, type Nada, type Place } from "@/features/direktori/data";
+import { cariTempat, type Nada, type Place } from "@/features/direktori/data";
+import { rapiTeks } from "@/features/sejarah/rapi";
+import type { Pihak } from "./rempang";
 
 type EntriMentah = {
   id: string;
@@ -33,7 +35,7 @@ export const LAPISAN: { id: LapisanId; awalan: string; nama: string; kicker: str
     awalan: "kt-",
     nama: "Daratan Batam",
     kicker: "Kampung tua, daftar 37",
-    lede: "Daftar 37 versi Ranperda DPRD 2019 dan surat RKWB 2016. Ejaan dan sebagian nama masih perlu dicocokkan dengan lampiran SK.",
+    lede: "Daftar 37 versi Ranperda DPRD 2019 dan surat RKWB 2016.",
   },
   {
     id: "rempang",
@@ -64,7 +66,33 @@ const GANTI: Record<string, Partial<Pick<EntriMentah, "ringkasan" | "cerita_raky
     ringkasan: "Disebut dalam SK 105/2004 menurut Ombudsman.",
     sumber_url: ["https://www.tempo.co/ekonomi/soroti-sejarah-hukum-kampung-tua-di-rempang-ombudsman-ini-unik-138618"],
   },
+  // Catatan kerja di kolom ringkasan dan cerita rakyat. Faktanya tetap, kalimat untuk penyusun dibuang.
+  "rg-sijantung": { ringkasan: "Masuk daftar 16 versi Ombudsman RI." },
+  "kt-seranggong": { ringkasan: "Entri ke-37 di daftar Ranperda 2019, tanpa kelurahan dan kecamatan." },
+  "kt-tanjung-piayu-laut": { cerita_rakyat: "Jalur penyamaran Sultan Sulaiman" },
 };
+
+// Tanda "perlu dicek" di kolom data adalah catatan kerja (pedoman 2.9), jadi tidak ikut tampil.
+const tanpaCatatan = (s: string) =>
+  s
+    .replace(/\s*—\s*perlu dicek/gi, "")
+    .replace(/\s*\((?:perlu dicek|perlu cek lapangan)\)/gi, "")
+    .trim();
+
+/** Nilai satu kolom untuk pembaca. Yang isinya hanya catatan kerja menjadi kosong, lalu barisnya tidak tampil. */
+function nilaiTampil(s: string | null): string | null {
+  if (!s) return null;
+  const t = tanpaCatatan(s);
+  return !t || /^perlu dicek$/i.test(t) ? null : rapiTeks(t);
+}
+
+const MASA_BERDIRI: Record<string, string | null> = {
+  "Pra-1970": "Sebelum 1970",
+  "Pra-Otorita Batam": "Sebelum Otorita Batam",
+  "Tak pasti": null,
+};
+
+const masaBerdiri = (s: string | null) => (s !== null && s in MASA_BERDIRI ? MASA_BERDIRI[s] : nilaiTampil(s));
 
 export type Kampung = EntriMentah & { lapisan: LapisanId; tempat: Place | null };
 
@@ -72,8 +100,14 @@ export const KAMPUNG: Kampung[] = (raw as EntriMentah[]).map((k) => {
   const g = GANTI[k.id];
   return {
     ...k,
-    ringkasan: g?.ringkasan ?? k.ringkasan,
-    cerita_rakyat: g?.cerita_rakyat ?? k.cerita_rakyat,
+    kecamatan: nilaiTampil(k.kecamatan),
+    kelurahan: nilaiTampil(k.kelurahan),
+    asal_usul_nama: nilaiTampil(k.asal_usul_nama),
+    suku_awal: nilaiTampil(k.suku_awal),
+    masa_berdiri: masaBerdiri(k.masa_berdiri),
+    ringkasan: rapiTeks(g?.ringkasan ?? k.ringkasan),
+    cerita_rakyat: nilaiTampil(g?.cerita_rakyat ?? k.cerita_rakyat),
+    yang_bisa_dilihat: k.yang_bisa_dilihat.map((y) => rapiTeks(tanpaCatatan(y))),
     sumber_url: g?.sumber_url ?? k.sumber_url,
     lapisan: lapisanDari(k.id).id,
     tempat: cariTempat(k.id) ?? null,
@@ -94,10 +128,9 @@ export function titikKampung(k: Kampung): { lat: number; lng: number; perkiraan:
   return { lat: p.lat, lng: p.lng, perkiraan: p.status_koordinat !== "terverifikasi" };
 }
 
+/** Kelurahan dan kecamatan. Kosong bila data tidak menyebutnya: barisnya tidak tampil. */
 export const lokasiKampung = (k: Pick<Kampung, "kelurahan" | "kecamatan">) =>
-  [k.kelurahan, k.kecamatan].filter(Boolean).join(", ") || "Lokasi belum diisi";
-
-export const dicekKampung = (k: Kampung) => (k.tempat ? teksDicek(k.tempat) : "Belum dicek ulang sejak riset Nov 2026");
+  [k.kelurahan, k.kecamatan].filter(Boolean).join(", ");
 
 export type PenandaKampung = {
   id: string;
@@ -118,57 +151,27 @@ export function daftarPenanda(): PenandaKampung[] {
 
 export type LencanaKampung = { teks: string; nada: Nada; ceritaRakyat?: boolean };
 
-const kapital = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-
-/** "terverifikasi (sejarah); tahun wafat Nong Isa perlu_cek_ulang" menjadi dua lencana berkata-kata. */
-export function lencanaStatus(status: string): LencanaKampung[] {
-  return status.split(";").map((bagian) => {
-    const asli = bagian.trim();
-    const teks = kapital(
-      asli
-        .replace("cerita_rakyat sumber_tunggal", "cerita rakyat, sumber tunggal")
-        .replace("perlu_cek_ulang", "perlu dicek ulang")
-        .replace("sumber_tunggal", "sumber tunggal")
-        .replace("cerita_rakyat", "cerita rakyat")
-        // Yang terverifikasi adalah keberadaannya. Titik di peta tetap perkiraan dan punya lencana sendiri.
-        .replace(/^lokasi terverifikasi$/, "keberadaan kampung terverifikasi"),
-    );
-    if (asli.startsWith("cerita_rakyat")) return { teks, nada: "info", ceritaRakyat: true };
-    if (/terverifikasi/.test(asli) && !/belum/.test(asli)) return { teks, nada: "ok" };
-    return { teks, nada: "caution" };
-  });
+/**
+ * Satu label untuk satu kartu (pedoman 3.7). Status di data bisa bercabang, misalnya
+ * "terverifikasi (sejarah); tahun wafat Nong Isa perlu_cek_ulang": yang dipakai adalah bagian pertamanya.
+ */
+export function lencanaStatus(status: string): LencanaKampung {
+  const utama = status.split(";")[0].trim();
+  if (utama.startsWith("cerita_rakyat")) return { teks: "Cerita rakyat", nada: "info", ceritaRakyat: true };
+  if (utama.startsWith("terverifikasi")) return { teks: "Tercatat", nada: "ok" };
+  return { teks: "Belum terverifikasi", nada: "caution" };
 }
 
-export function lencanaLokasi(k: Kampung): LencanaKampung {
+/** Keterangan lokasi di daftar dan kartu. Tempat tanpa titik di peta tidak diberi teks (pedoman 3.1). */
+export function labelLokasi(k: Kampung): string | null {
   const t = titikKampung(k);
-  if (!t) return { teks: "Lokasi belum diisi", nada: "info" };
-  return t.perkiraan ? { teks: "Lokasi perkiraan", nada: "info" } : { teks: "Lokasi terverifikasi", nada: "ok" };
+  if (!t) return null;
+  return t.perkiraan ? "Lokasi perkiraan" : "Lokasi terverifikasi";
 }
-
-export const sumberKampung = (k: Pick<Kampung, "sumber_url">) => k.sumber_url.filter(tautanAman);
-
-export const domain = (u: string) => {
-  try {
-    return new URL(u).hostname.replace(/^www\./, "");
-  } catch {
-    return u;
-  }
-};
 
 /** Kalimat kartu Rempang dari research/04 bagian 4. Dipakai persis, jangan disunting tanpa pemilik proyek. */
 export const KALIMAT_REMPANG =
   "Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.";
-
-export const TAUTAN_REMPANG = [
-  {
-    label: "Ombudsman RI",
-    url: "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan",
-  },
-  {
-    label: "BP Batam, via Bisnis",
-    url: "https://sumatra.bisnis.com/read/20250721/533/1894791/update-proyek-rempang-eco-city-436-warga-tempati-tanjung-banon",
-  },
-];
 
 const STPN =
   "http://repository.stpn.ac.id/133/1/3%20menata%20tanah%20kota%20batam%20jalan%20penyelesaian%20penguasaan%20tanah%20kampung%20tua.pdf";
@@ -177,7 +180,7 @@ const URL_DI_TEKS = /https?:\/\/\S+/g;
 
 export type BarisJumlah = { angka: string; sumber: string; konteks: string; tautan: string[]; konflik: boolean };
 
-/** Sembilan baris "Kenapa angkanya beda?". Diktum SK soal Hak Pengelolaan adalah status lahan, jadi tidak tampil. */
+/** Sembilan baris jumlah kampung tua. Diktum SK soal Hak Pengelolaan adalah status lahan, jadi tidak tampil. */
 export const JUMLAH: BarisJumlah[] = jumlahRaw.map((b) => {
   const tautan = b.konteks.match(URL_DI_TEKS) ?? [];
   const merujukStpn = /\((sumber sama|STPN, link di atas)\)/.test(b.konteks);
@@ -187,20 +190,27 @@ export const JUMLAH: BarisJumlah[] = jumlahRaw.map((b) => {
     .replace(/Diktum kedua:[^.]*\./, "")
     .trim();
   return {
-    angka: b.angka.replace(/\*\*/g, ""),
-    sumber: b.sumber,
-    konteks,
+    angka: rapiTeks(b.angka.replace(/\*\*/g, "")),
+    sumber: rapiTeks(b.sumber),
+    konteks: rapiTeks(konteks),
     tautan: merujukStpn ? [STPN] : tautan,
     konflik: b.angka.includes("berdasarkan SK 105/2004"),
   };
 });
 
-export type ButirLegalitas = { tanggal: string; peristiwa: string; siapa: string; disaring: boolean };
+export type ButirLegalitas = {
+  /** Kunci dari data, sama dengan kolom `tanggal` di berkas JSON. */
+  tanggal: string;
+  /** Tanggal untuk pembaca: nama bulan lengkap. */
+  tanggalTeks: string;
+  peristiwa: string;
+  siapa: string;
+  pelaku: Pihak | null;
+  disaring: boolean;
+};
 
-export const TEKS_DISARING =
-  "Isi butir ini menyangkut status lahan, jadi tidak kami tampilkan. Rujukannya tetap kami sebut.";
-
-// Butir yang menyebut luas atau status lahan. null = seluruh isinya status lahan; teks = yang tersisa setelah disaring.
+// Butir yang menyebut luas atau status lahan tidak tampil sama sekali (pedoman 3.7). Teks di sini hanya sisa yang
+// aman dari butir yang tersaring sebagian, kalau kelak pemilik memutuskan butirnya tampil. null: seluruhnya status lahan.
 const SARING_LEGALITAS: Record<string, string | null> = {
   "1 Apr 2019":
     "Menteri ATR/BPN mendengar aspirasi. RKWB (Makmur Ismail): 37 titik. LAM (Nyat Kadir): istilah kampung tua lahir dari masalah 2004.",
@@ -211,15 +221,51 @@ const SARING_LEGALITAS: Record<string, string | null> = {
     'Dalam silaturahmi RT/RW/LPM Kecamatan Lubuk Baja di Hotel AP Premier, Amsakar menyebut penyusunan "peraturan daerah khusus tentang Kampung Tua".',
 };
 
+// Pihak yang bertindak dalam peristiwa, menurut isi butirnya. Maklumat 2010 tidak menyebut penerbitnya di riset,
+// jadi tidak diberi label. Pengelompokan ini perlu dibaca pemilik sebelum halamannya dibuka.
+const PELAKU_LEGALITAS: Record<string, Pihak> = {
+  "23 Mar 2004": "pemerintah",
+  "2004": "pemerintah",
+  "5 dan 25 Apr 2005": "pemerintah",
+  "29 Mar 2006": "pemerintah",
+  "2008": "warga",
+  "19 Agu 2011": "pemerintah",
+  "2012–2014": "bp_batam",
+  "21 Apr 2015": "warga",
+  "Nov 2016": "warga",
+  "2021": "pemerintah",
+  "25 Sep 2025": "bp_batam",
+  "30 Apr 2026": "pemerintah",
+  "15 Agu 2026": "pemerintah",
+  "16 dan 22 Sep 2026": "pemerintah",
+};
+
+const isiLegalitas = (teks: string) =>
+  rapiTeks(
+    teks
+      .replace(/\*\*/g, "")
+      .replace(/\s*\(isi pasal belum dicek\)/, "")
+      .replace("pada 16/9", "pada 16 September")
+      .replace("lanjutan 22/9", "lanjutan 22 September"),
+  );
+
 export const LEGALITAS: ButirLegalitas[] = legalitasRaw.map((b) => {
   const disaring = b.tanggal in SARING_LEGALITAS;
-  const isi = disaring ? (SARING_LEGALITAS[b.tanggal] ?? TEKS_DISARING) : b.peristiwa;
-  return { tanggal: b.tanggal, peristiwa: isi.replace(/\*\*/g, ""), siapa: b.siapa_bilang, disaring };
+  return {
+    tanggal: b.tanggal,
+    tanggalTeks: rapiTeks(b.tanggal),
+    peristiwa: isiLegalitas(disaring ? (SARING_LEGALITAS[b.tanggal] ?? "") : b.peristiwa),
+    siapa: rapiTeks(b.siapa_bilang),
+    pelaku: PELAKU_LEGALITAS[b.tanggal] ?? null,
+    disaring,
+  };
 });
+
+/** Yang tampil ke pembaca. Butir yang isinya disaring tidak ditampilkan sama sekali. */
+export const LEGALITAS_TAMPIL = LEGALITAS.filter((b) => !b.disaring);
 
 /** Tanggal halaman bertanggal ini terakhir disusun dari riset. Perbarui setiap isinya berubah. */
 export const TERAKHIR_DIPERBARUI = "5 November 2026";
-export const LABEL_DRAF = "Draf, menunggu tinjauan pemilik";
 
 // panduan_etika.md, enam butir "Etika berkunjung". Dijaga sama oleh tests/unit/kampung-tua.test.ts.
 export const ETIKA = [
@@ -231,73 +277,9 @@ export const ETIKA = [
   "Hormati jadwal kampung: Jumat siang dan bulan Ramadan punya ritme sendiri.",
 ];
 
-const ANTARA_TOPONIM = "https://kepri.antaranews.com/berita/60967/mengenal-kampung-tua-batam";
-
-/** "Kisah Nama Tempat": toponim lama yang bukan bagian daftar 37, jadi tidak diberi penanda di peta. */
-export const KISAH_NAMA: { nama: string; kisah: string; sumber: string }[] = [
-  { nama: "Jodoh", kisah: "Kisah Putri Mayang dan Pangeran Bugis.", sumber: ANTARA_TOPONIM },
-  { nama: "Kabil", kisah: 'Dari "ma\'bul" atau "Kabul", ucapan Cik Awang asal Siak (1909).', sumber: ANTARA_TOPONIM },
-  { nama: "Muka Kuning", kisah: "Dari ikan seriding kuning.", sumber: ANTARA_TOPONIM },
-  { nama: "Sekupang", kisah: "Kisah asal namanya ada di sumber, belum kami rangkum.", sumber: ANTARA_TOPONIM },
-  { nama: "Batu Aji", kisah: "Kisah asal namanya ada di sumber, belum kami rangkum.", sumber: ANTARA_TOPONIM },
-];
-
-// narasumber_arsip.md. Sengaja tanpa nama dan kontak narasumber: warga dihubungi lewat LAM atau RKWB.
-export const RUJUKAN: { judul: string; butir: { nama: string; ket?: string; url?: string }[] }[] = [
-  {
-    judul: "Lembaga",
-    butir: [
-      { nama: "LAM Kota Batam", ket: "Pintu masuk ke tokoh tiap kampung." },
-      { nama: "RKWB (Rumpun Khazanah Warisan Batam)", ket: "Pemegang daftar 37 titik, surat 047/RKWB/VIII/2016." },
-      {
-        nama: "Dinas Kebudayaan dan Pariwisata Kota Batam",
-        ket: "Mengelola cagar budaya dan menerbitkan buku Nong Isa.",
-        url: "https://disbudpar.batam.go.id",
-      },
-      { nama: "Tim Ahli Cagar Budaya Kota Batam" },
-      {
-        nama: "Balai Pelestarian Kebudayaan Wilayah IV",
-        ket: "Dulu BPNB Kepri. Artikel Batu Besar dan makam Nong Isa.",
-        url: "https://kebudayaan.kemdikbud.go.id/bpnbkepri/",
-      },
-      {
-        nama: "Dinas Kebudayaan Provinsi Kepri",
-        ket: 'Seri "asal-usul kampung tua".',
-        url: "https://disbud.kepriprov.go.id/category/ragam-budaya/",
-      },
-      { nama: "Dinas Pertanahan Pemko Batam", ket: "Salinan SK 105/2004 dan SK 89/2006 beserta lampiran nama." },
-      { nama: "Museum Raja Ali Haji Batam", ket: "Koleksi sketsa Nong Isa." },
-    ],
-  },
-  {
-    judul: "Arsip dan foto lama",
-    butir: [
-      {
-        nama: "KITLV / Leiden University Digital Collections",
-        ket: "Peta 1847 Kaart van de Noordkust van het Eiland Bantang dan foto kolonial. Punya ketentuan reproduksi sendiri.",
-      },
-      { nama: "ANRI (Arsip Riouw) dan Perpustakaan Nasional", ket: "Dokumen mandat Nong Isa dan catatan 1833." },
-      { nama: "Arsip foto Otorita/BP Batam era 1970–80-an", ket: "Humas BP Batam." },
-      { nama: "Repository STPN", ket: "Kajian 2013, 2015, 2016, berisi foto lapangan Bagan dan Tanjung Bemban." },
-    ],
-  },
-  {
-    judul: "Buku, jurnal, dan tulisan",
-    butir: [
-      {
-        nama: "Nong Isa: Tonggak Awal Pemerintahan Batam",
-        ket: "Ahmad Dahlan, Aswandi Syahri, Edi Sutrisno (Disbudpar Batam).",
-      },
-      { nama: "Eksistensi Kampung Tua Nongsa Pantai", ket: "Jurnal Kronologi UNP, 2025." },
-      { nama: "Journal Historia UNRIKA", ket: "Piayu Laut." },
-      { nama: "Journal of Architecture & Design UIB", ket: "Tanjung Riau, tipologi rumah Melayu." },
-      { nama: "Jurnal Potensi Universitas Batam", ket: "Tanjung Riau sebagai kampung budaya." },
-      { nama: "Jurnal SARGA Untag Semarang", ket: "Kampung Tua Tanjung Piayu." },
-      { nama: "Tulisan Aswandi Syahri", ket: "Sejarawan, Tanjungpinang." },
-      {
-        nama: "Tulisan Bintoro Suryo",
-        ket: "bintorosuryo.com, GoWest.id, Beplus: Nongsa, Batu Besar, Tanjung Bemban.",
-      },
-    ],
-  },
+/** Toponim lama yang bukan bagian daftar 37, jadi tidak diberi penanda di peta. Yang belum dirangkum tidak tampil. */
+export const KISAH_NAMA: { nama: string; kisah: string }[] = [
+  { nama: "Jodoh", kisah: "Kisah Putri Mayang dan Pangeran Bugis." },
+  { nama: "Kabil", kisah: "Dari “ma'bul” atau “Kabul”, ucapan Cik Awang asal Siak (1909)." },
+  { nama: "Muka Kuning", kisah: "Dari ikan seriding kuning." },
 ];

@@ -2,7 +2,7 @@
 
 import MiniSearch from "minisearch";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { isOpenNow } from "@/features/makan/lib/format";
 import { useSekarang } from "@/features/makan/lib/waktu";
 import { KECAMATAN } from "@/lib/data/schema";
@@ -10,34 +10,21 @@ import type { BarisIndeks } from "./data";
 
 const LANGKAH = 40;
 
-type Filter = { q: string; k: string; s: string; c: string; l: string; d: string; lokasi: string; buka: boolean };
-const KOSONG: Filter = { q: "", k: "", s: "", c: "", l: "", d: "", lokasi: "", buka: false };
+type Filter = { q: string; k: string; c: string; buka: boolean; igd: boolean };
+const KOSONG: Filter = { q: "", k: "", c: "", buka: false, igd: false };
 
-const STATUS_DATA: [string, string][] = [
-  ["terverifikasi", "Terverifikasi"],
-  ["perlu_cek_ulang", "Perlu cek ulang"],
-  ["usang", "Mungkin usang"],
-  ["sumber_tunggal", "Sumber tunggal"],
-  ["rencana", "Rencana"],
-  ["cerita_rakyat", "Cerita rakyat"],
-];
-const STATUS_LOKASI: [string, string][] = [
-  ["terverifikasi", "Lokasi terverifikasi"],
-  ["perlu_cek_ulang", "Lokasi perkiraan"],
-  ["perlu_diisi_user", "Lokasi belum diisi"],
-];
+// Kategori yang sudah digabung: tautan lama dengan ?kategori=layanan_publik tetap berfungsi.
+const KATEGORI_LAMA: Record<string, string> = { layanan_publik: "pemerintahan" };
 
 function filterDariUrl(): Filter {
   const p = new URLSearchParams(window.location.search);
+  const k = p.get("kategori") ?? "";
   return {
     q: p.get("q") ?? "",
-    k: p.get("kategori") ?? "",
-    s: p.get("sub") ?? "",
+    k: Object.hasOwn(KATEGORI_LAMA, k) ? KATEGORI_LAMA[k] : k,
     c: p.get("kecamatan") ?? "",
-    l: p.get("kelurahan") ?? "",
-    d: p.get("status") ?? "",
-    lokasi: p.get("lokasi") ?? "",
     buka: p.get("buka") === "1",
+    igd: p.get("igd") === "1",
   };
 }
 
@@ -45,25 +32,25 @@ function tulisUrl(f: Filter) {
   const p = new URLSearchParams();
   if (f.q) p.set("q", f.q);
   if (f.k) p.set("kategori", f.k);
-  if (f.s) p.set("sub", f.s);
   if (f.c) p.set("kecamatan", f.c);
-  if (f.l) p.set("kelurahan", f.l);
-  if (f.d) p.set("status", f.d);
-  if (f.lokasi) p.set("lokasi", f.lokasi);
   if (f.buka) p.set("buka", "1");
+  if (f.igd) p.set("igd", "1");
   const q = p.toString();
   window.history.replaceState(null, "", `${window.location.pathname}${q ? `?${q}` : ""}`);
 }
 
-const LABEL_LOKASI: Record<string, string> = {
-  perlu_diisi_user: "Lokasi belum diisi",
-  perlu_cek_ulang: "Lokasi perkiraan",
-};
+const bukaSekarang = (b: BarisIndeks, sekarang: number | null) =>
+  sekarang !== null && !!b.j && isOpenNow(b.j, new Date(sekarang)) === true;
 
-type Props = { kategori: { kategori: string; nama: string }[]; kelurahan: Record<string, string[]> };
+/** Status di kanan baris: Buka sekarang, IGD 24 jam, atau jam buka (PEDOMAN 3.8). */
+const statusIndeks = (b: BarisIndeks, sekarang: number | null) =>
+  bukaSekarang(b, sekarang) ? "Buka sekarang" : b.i ? "IGD 24 jam" : b.jt;
 
-// Pencarian dan filter seluruh direktori di browser. Indeks ringkas dimuat sekali dari route statis.
-export default function Penjelajah({ kategori, kelurahan }: Props) {
+type Props = { kategori: { kategori: string; nama: string }[]; kepala: ReactNode; ilustrasi: ReactNode; children?: ReactNode };
+
+// Pencarian dan saringan seluruh direktori di browser. Indeks ringkas dimuat sekali dari route statis. Kolom cari
+// ada di atas daftar kategori (children), dan daftar kategori disembunyikan selama hasil pencarian tampil.
+export default function Penjelajah({ kategori, kepala, ilustrasi, children }: Props) {
   const [baris, setBaris] = useState<BarisIndeks[] | null>(null);
   const [gagal, setGagal] = useState(false);
   const [f, setF] = useState<Filter>(KOSONG);
@@ -110,13 +97,6 @@ export default function Penjelajah({ kategori, kelurahan }: Props) {
     tulisUrl(baru);
   };
 
-  const subTersedia = useMemo(() => {
-    if (!baris || !f.k) return [];
-    const m = new Map<string, string>();
-    for (const b of baris) if (b.k === f.k && b.s) m.set(b.s, b.sl);
-    return [...m.entries()].sort((a, b) => a[1].localeCompare(b[1], "id"));
-  }, [baris, f.k]);
-
   const hasil = useMemo(() => {
     if (!baris) return [];
     let urut = baris;
@@ -127,155 +107,147 @@ export default function Penjelajah({ kategori, kelurahan }: Props) {
     return urut.filter(
       (b) =>
         (!f.k || b.k === f.k) &&
-        (!f.s || b.s === f.s) &&
         (!f.c || b.c === f.c) &&
-        (!f.l || b.l === f.l) &&
-        (!f.d || b.d === f.d) &&
-        (!f.lokasi || b.t === f.lokasi) &&
-        (!f.buka || (sekarang !== null && !!b.j && isOpenNow(b.j, new Date(sekarang)) === true)),
+        (!f.igd || b.i) &&
+        (!f.buka || bukaSekarang(b, sekarang)),
     );
   }, [baris, mesin, f, sekarang]);
 
-  if (gagal) return <p className="bch-note">Daftar gagal dimuat. Coba muat ulang halaman ini.</p>;
+  if (gagal) {
+    return (
+      <>
+        <div className="bch-pembuka-cari">
+          <div>{kepala}</div>
+          {ilustrasi}
+        </div>
+        <p className="bch-catatan-halaman">Terjadi masalah saat memuat data. Coba muat ulang dalam beberapa saat.</p>
+        {children}
+      </>
+    );
+  }
 
-  const ada = f.q || f.k || f.s || f.c || f.l || f.d || f.lokasi || f.buka;
+  const ada = f.q || f.k || f.c || f.buka || f.igd;
+  const kata = f.q.trim();
 
   return (
-    <div className="bch-penjelajah">
-      <div className="bch-penjelajah-filter">
-        <label className="bch-field bch-penjelajah-cari">
-          Cari tempat
-          <input
-            className="bch-input"
-            type="search"
-            value={f.q}
-            onChange={(e) => ubah({ q: e.target.value })}
-            placeholder="Nama, kelurahan, atau jenis tempat"
-          />
-        </label>
-        <label className="bch-field">
-          Kategori
-          <select className="bch-select" value={f.k} onChange={(e) => ubah({ k: e.target.value, s: "" })}>
-            <option value="">Semua kategori</option>
-            {kategori.map((k) => (
-              <option key={k.kategori} value={k.kategori}>
-                {k.nama}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="bch-field">
-          Subkategori
-          <select className="bch-select" value={f.s} disabled={!f.k} onChange={(e) => ubah({ s: e.target.value })}>
-            <option value="">{f.k ? "Semua subkategori" : "Pilih kategori dulu"}</option>
-            {subTersedia.map(([s, l]) => (
-              <option key={s} value={s}>
-                {l}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="bch-field">
-          Kecamatan
-          <select className="bch-select" value={f.c} onChange={(e) => ubah({ c: e.target.value, l: "" })}>
-            <option value="">Semua kecamatan</option>
-            {KECAMATAN.map((k) => (
-              <option key={k} value={k}>
-                {k}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="bch-field">
-          Kelurahan
-          <select className="bch-select" value={f.l} disabled={!f.c} onChange={(e) => ubah({ l: e.target.value })}>
-            <option value="">{f.c ? "Semua kelurahan" : "Pilih kecamatan dulu"}</option>
-            {(kelurahan[f.c] ?? []).map((k) => (
-              <option key={k} value={k}>
-                {k}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="bch-field">
-          Status data
-          <select className="bch-select" value={f.d} onChange={(e) => ubah({ d: e.target.value })}>
-            <option value="">Semua status</option>
-            {STATUS_DATA.map(([v, l]) => (
-              <option key={v} value={v}>
-                {l}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="bch-field">
-          Lokasi di peta
-          <select className="bch-select" value={f.lokasi} onChange={(e) => ubah({ lokasi: e.target.value })}>
-            <option value="">Semua</option>
-            {STATUS_LOKASI.map(([v, l]) => (
-              <option key={v} value={v}>
-                {l}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="bch-penjelajah-cek">
-          <input type="checkbox" checked={f.buka} onChange={(e) => ubah({ buka: e.target.checked })} />
-          Buka sekarang (hanya yang jamnya jelas)
-        </label>
+    <>
+      <div className="bch-pembuka-cari">
+        <div>
+          {kepala}
+          <div className="bch-cari-baris bch-penjelajah-cari" role="search">
+            <label className="sr-only" htmlFor="dir-cari">
+              Cari nama tempat, jenis, atau kecamatan
+            </label>
+            <input
+              id="dir-cari"
+              className="bch-input bch-cari-besar"
+              type="search"
+              placeholder="Cari nama tempat, jenis, atau kecamatan"
+              value={f.q}
+              onChange={(e) => ubah({ q: e.target.value })}
+            />
+            <button type="button" className="bch-btn" onClick={() => document.getElementById("dir-hasil")?.scrollIntoView()}>
+              Cari
+            </button>
+          </div>
+          <div className="bch-saring-baris">
+            <label className="bch-pilih-pil">
+              <span className="sr-only">Kategori</span>
+              <select value={f.k} onChange={(e) => ubah({ k: e.target.value, igd: false })}>
+                <option value="">Kategori</option>
+                {kategori.map((k) => (
+                  <option key={k.kategori} value={k.kategori}>
+                    {k.nama}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="bch-pilih-pil">
+              <span className="sr-only">Kecamatan</span>
+              <select value={f.c} onChange={(e) => ubah({ c: e.target.value })}>
+                <option value="">Kecamatan</option>
+                {KECAMATAN.map((k) => (
+                  <option key={k} value={k}>
+                    {k}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="bch-cek-pil">
+              <input type="checkbox" checked={f.buka} onChange={(e) => ubah({ buka: e.target.checked })} />
+              <span>Buka sekarang</span>
+            </label>
+            {f.k === "kesehatan" && (
+              <label className="bch-cek-pil">
+                <input type="checkbox" checked={f.igd} onChange={(e) => ubah({ igd: e.target.checked })} />
+                <span>IGD 24 jam</span>
+              </label>
+            )}
+            <p className="bch-data bch-saring-jumlah m-0" role="status" data-jumlah={baris ? hasil.length : undefined}>
+              {baris ? `${hasil.length.toLocaleString("id-ID")} tempat` : "Memuat data"}
+              {ada && (
+                <button
+                  type="button"
+                  className="bch-tautan-tombol"
+                  onClick={() => {
+                    setF(KOSONG);
+                    setTampil(LANGKAH);
+                    tulisUrl(KOSONG);
+                  }}
+                >
+                  Hapus saringan
+                </button>
+              )}
+            </p>
+          </div>
+        </div>
+        {ilustrasi}
       </div>
 
-      <div className="bch-penjelajah-hasil">
-        <p className="bch-data" role="status" data-jumlah={baris ? hasil.length : undefined}>
-          {baris ? `${hasil.length.toLocaleString("id-ID")} tempat` : "Itik sedang berbaris…"}
-          {ada && (
-            <button
-              type="button"
-              className="bch-tautan-tombol"
-              onClick={() => {
-                setF(KOSONG);
-                setTampil(LANGKAH);
-                tulisUrl(KOSONG);
-              }}
-            >
-              Hapus filter
+      {!ada && children}
+
+      {ada && (
+        <div id="dir-hasil" className="bch-seksi bch-penjelajah-hasil">
+          {baris && hasil.length === 0 && (
+            <p>
+              {kata ? (
+                `Tidak ada hasil untuk “${kata}”. Coba kata lain atau hapus saringan.`
+              ) : (
+                <>
+                  Belum ada tempat di kategori ini. Kalau kamu tahu tempatnya, <Link href="/koreksi">kirim usulan</Link>
+                </>
+              )}
+            </p>
+          )}
+          <ul className="bch-daftar-baris" data-kolom="2">
+            {hasil.slice(0, tampil).map((b) => {
+              const s = statusIndeks(b, sekarang);
+              return (
+                <li key={b.id} className="bch-baris">
+                  {b.h ? (
+                    <Link className="nama" href={`/info/tempat/${b.id}`} prefetch={false}>
+                      {b.nama}
+                    </Link>
+                  ) : (
+                    <span className="nama">{b.nama}</span>
+                  )}
+                  {s && (
+                    <span className="bch-status" data-tone={s === "Buka sekarang" || s === "IGD 24 jam" ? "ok" : undefined}>
+                      {s}
+                    </span>
+                  )}
+                  <span className="meta">{[b.sl, [b.l, b.c].filter(Boolean).join(", ")].filter(Boolean).join(" · ")}</span>
+                </li>
+              );
+            })}
+          </ul>
+          {hasil.length > tampil && (
+            <button type="button" className="bch-btn mt-4" data-variant="ghost" onClick={() => setTampil(tampil + LANGKAH)}>
+              Tampilkan {Math.min(LANGKAH, hasil.length - tampil)} tempat lagi
             </button>
           )}
-        </p>
-        {baris && hasil.length === 0 && (
-          <p>
-            Belum ada data yang cocok. Kenal tempatnya? <Link href="/koreksi">Kabari kami</Link>.
-          </p>
-        )}
-        <ul className="bch-penjelajah-daftar">
-          {hasil.slice(0, tampil).map((b) => (
-            <li key={b.id}>
-              <Link href={`/info/tempat/${b.id}`} prefetch={false}>
-                {b.nama}
-              </Link>
-              <span className="bch-card-loc">
-                {b.sl}
-                {b.c ? ` · ${b.c}` : " · Kecamatan belum diketahui"}
-              </span>
-              {LABEL_LOKASI[b.t] && (
-                <span className="bch-badge" data-tone="info">
-                  {LABEL_LOKASI[b.t]}
-                </span>
-              )}
-              {b.b && (
-                <span className="bch-badge" data-tone="caution">
-                  Beta
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-        {hasil.length > tampil && (
-          <button type="button" className="bch-btn" data-variant="ghost" onClick={() => setTampil(tampil + LANGKAH)}>
-            Tampilkan {Math.min(LANGKAH, hasil.length - tampil)} lagi
-          </button>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 }

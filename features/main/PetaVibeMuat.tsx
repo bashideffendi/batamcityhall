@@ -5,7 +5,7 @@ import type { TitikVibe } from "./PetaVibe";
 
 const PetaVibe = dynamic(() => import("./PetaVibe"), {
   ssr: false,
-  loading: () => <p>Itik sedang berbaris…</p>,
+  loading: () => <p>Memuat peta</p>,
 });
 
 export default function PetaVibeMuat({ titik }: { titik: TitikVibe[] }) {

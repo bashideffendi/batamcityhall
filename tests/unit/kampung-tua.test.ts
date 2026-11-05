@@ -11,21 +11,22 @@ import {
   KALIMAT_REMPANG,
   KAMPUNG,
   kampungPerId,
+  labelLokasi,
   LEGALITAS,
-  lencanaLokasi,
+  LEGALITAS_TAMPIL,
   lencanaStatus,
-  TAUTAN_REMPANG,
   titikKampung,
 } from "@/features/kampung-tua/data";
 import { PROFIL, profilUntuk } from "@/features/kampung-tua/profil";
-import { KRONOLOGI_REMPANG, TANPA_TANGGAL } from "@/features/kampung-tua/rempang";
+import { KRONOLOGI_REMPANG, LABEL_PIHAK, TANPA_TANGGAL } from "@/features/kampung-tua/rempang";
 import { tempatPerId } from "@/features/direktori/data";
 
 // Luas, status sertifikat, dan istilah hak atas tanah. Dites sebagai teks yang sampai ke warga.
 const LAHAN = /\d\s*ha\b|hektar|sertifikat|\bSHM\b|\bHPL\b|hak pengelolaan|hak milik|\bbidang\b|hutan lindung/i;
 // Kata yang hanya boleh muncul sebagai ucapan pihak yang disebut, bukan narasi redaksi.
 const NARASI_KERAS = /menggusur|merampas/i;
-const CATATAN_PENYUSUN = /gunakan parafrase|\bseed\b|laporan menyebut|jangan tampilkan/i;
+const CATATAN_PENYUSUN =
+  /gunakan parafrase|\bseed\b|laporan menyebut|jangan tampilkan|perlu dicek|perlu cek|belum dicek|sumber lemah/i;
 
 const teksKartu = (k: (typeof KAMPUNG)[number]) =>
   [k.nama, k.ringkasan, k.asal_usul_nama, k.suku_awal, k.masa_berdiri, k.cerita_rakyat, ...k.yang_bisa_dilihat].join(
@@ -72,20 +73,25 @@ describe("kartu kampung", () => {
     expect(nyata && idKartuKampung(nyata)).toBe("kt-tanjung-uma");
   });
 
-  it("lencana status berkata-kata, tanpa garis bawah", () => {
-    for (const k of KAMPUNG) {
-      for (const l of lencanaStatus(k.status_verifikasi)) expect(l.teks, k.id).not.toContain("_");
-    }
-    expect(lencanaStatus("terverifikasi (sejarah); tahun wafat Nong Isa perlu_cek_ulang")).toEqual([
-      { teks: "Terverifikasi (sejarah)", nada: "ok" },
-      { teks: "Tahun wafat Nong Isa perlu dicek ulang", nada: "caution" },
-    ]);
-    const cerita = lencanaStatus("cerita_rakyat (asal-usul); lokasi terverifikasi");
-    expect(cerita[0]).toMatchObject({ teks: "Cerita rakyat (asal-usul)", ceritaRakyat: true });
-    expect(cerita[1].teks).toBe("Keberadaan kampung terverifikasi");
-    expect(lencanaStatus("terverifikasi (situs); belum tentu tercatat sebagai 'kampung tua' resmi")[1].nada).toBe(
-      "caution",
-    );
+  it("satu label status per kartu, dari empat label pedoman", () => {
+    const sah = ["Tercatat", "Berbeda versi", "Belum terverifikasi", "Cerita rakyat"];
+    for (const k of KAMPUNG) expect(sah, k.id).toContain(lencanaStatus(k.status_verifikasi).teks);
+    expect(lencanaStatus("terverifikasi (sejarah); tahun wafat Nong Isa perlu_cek_ulang")).toEqual({
+      teks: "Tercatat",
+      nada: "ok",
+    });
+    expect(lencanaStatus("cerita_rakyat (asal-usul); lokasi terverifikasi")).toMatchObject({
+      teks: "Cerita rakyat",
+      ceritaRakyat: true,
+    });
+    expect(lencanaStatus("perlu_cek_ulang").teks).toBe("Belum terverifikasi");
+    expect(lencanaStatus("sumber_tunggal; status kampung tua perlu_cek_ulang").teks).toBe("Belum terverifikasi");
+  });
+
+  it("kolom yang hanya berisi catatan kerja menjadi kosong", () => {
+    expect(kampungPerId.get("rg-tebing-tinggi")?.kelurahan).toBeNull();
+    expect(kampungPerId.get("kt-tiban")?.kelurahan).toBe("Tiban Lama");
+    expect(kampungPerId.get("kt-teluk-mata-ikan")?.suku_awal).toBe("Melayu");
   });
 });
 
@@ -101,12 +107,12 @@ describe("penanda peta", () => {
       "rg-tanjung-pengapit",
     ]);
     expect(daftarPenanda()).toHaveLength(50);
-    expect(lencanaLokasi(kampungPerId.get("kt-air-raja")!).teks).toBe("Lokasi belum diisi");
+    expect(labelLokasi(kampungPerId.get("kt-air-raja")!)).toBeNull();
   });
 
   it("semua koordinat masih perkiraan dan tidak diaku terverifikasi", () => {
     for (const p of daftarPenanda()) expect(p.perkiraan, p.id).toBe(true);
-    expect(lencanaLokasi(kampungPerId.get("kt-jabi")!).teks).toBe("Lokasi perkiraan");
+    expect(labelLokasi(kampungPerId.get("kt-jabi")!)).toBe("Lokasi perkiraan");
   });
 
   it("titik memakai koordinat kanonik places.json, sama dengan peta beranda", () => {
@@ -149,7 +155,7 @@ describe("kronologi legalitas", () => {
     expect(LEGALITAS).toHaveLength(20);
   });
 
-  it("tidak ada luas atau status lahan, butirnya ditandai disaring", () => {
+  it("tidak ada luas atau status lahan, butir yang disaring tidak tampil sama sekali", () => {
     for (const b of LEGALITAS) expect(b.peristiwa, b.tanggal).not.toMatch(LAHAN);
     expect(LEGALITAS.filter((b) => b.disaring).map((b) => b.tanggal)).toEqual([
       "1 Apr 2019",
@@ -158,12 +164,37 @@ describe("kronologi legalitas", () => {
       "Jul 2026",
       "16 Okt 2026",
     ]);
+    expect(LEGALITAS_TAMPIL).toHaveLength(15);
+    for (const b of LEGALITAS_TAMPIL) expect(b.disaring, b.tanggal).toBe(false);
+    expect(JSON.stringify(LEGALITAS)).not.toMatch(/Isi butir ini menyangkut|isi pasal belum dicek/);
+  });
+
+  it("isi butir yang tampil sama dengan data, hanya tanda baca dan nama bulan yang dirapikan", () => {
+    const uwto = LEGALITAS_TAMPIL.find((b) => b.tanggal === "Nov 2016");
+    expect(uwto?.tanggalTeks).toBe("November 2016");
+    expect(uwto?.peristiwa).toBe(
+      legalitasRaw
+        .find((b) => b.tanggal === "Nov 2016")
+        ?.peristiwa.replace(/"/g, "\u201d")
+        .replace("\u201dGeram", "\u201cGeram"),
+    );
+    expect(LEGALITAS_TAMPIL.find((b) => b.tanggal === "2012–2014")?.tanggalTeks).toBe("2012—2014");
+  });
+
+  it("label pelaku dari daftar pedoman, nama situs pemerintah tidak tampil", () => {
+    const sah = Object.keys(LABEL_PIHAK);
+    for (const b of LEGALITAS_TAMPIL) {
+      if (b.pelaku) expect(sah, b.tanggal).toContain(b.pelaku);
+      expect(b.siapa, b.tanggal).not.toMatch(/\.go\.id/);
+    }
+    expect(LEGALITAS_TAMPIL.filter((b) => !b.pelaku).map((b) => b.tanggal)).toEqual(["22 Mar 2010"]);
+    expect(JSON.stringify(legalitasRaw)).not.toMatch(/\.go\.id/);
   });
 
   it("Tanjung Uma dan angka sertifikat keluar dari butir Oktober 2026", () => {
     const b = LEGALITAS.find((x) => x.tanggal === "16 Okt 2026");
     expect(b?.peristiwa).not.toMatch(/1\.450|Tanjung Uma/);
-    expect(b?.peristiwa).toContain("peraturan daerah khusus");
+    expect(LEGALITAS_TAMPIL.some((x) => x.tanggal === "16 Okt 2026")).toBe(false);
   });
 
   it("kolom siapa bilang selalu ada", () => {
@@ -174,10 +205,23 @@ describe("kronologi legalitas", () => {
 describe("kronologi Rempang", () => {
   const semua = [...KRONOLOGI_REMPANG, ...TANPA_TANGGAL];
 
+  it("label pelaku dipisah sesuai pedoman", () => {
+    expect(Object.values(LABEL_PIHAK)).toEqual(["Pemerintah", "BP Batam", "Ombudsman", "Media", "Warga", "Walhi"]);
+  });
+
   it("tiap pihak utama punya suara", () => {
-    for (const p of ["pemerintah", "ombudsman", "warga"]) {
+    for (const p of ["pemerintah", "bp_batam", "ombudsman", "media", "walhi"]) {
       expect(semua.filter((b) => b.pihak === p).length, p).toBeGreaterThan(0);
     }
+  });
+
+  it("jumlah butir dan kutipan kunci tidak berubah", () => {
+    expect(KRONOLOGI_REMPANG).toHaveLength(14);
+    expect(TANPA_TANGGAL).toHaveLength(3);
+    const teks = semua.map((b) => b.teks).join(" ");
+    expect(teks).toContain("belum mengakui keberadaan kampung tua di Rempang");
+    expect(teks).toContain("Tanggapan BP Batam soal ini belum kami peroleh.");
+    expect(teks).toContain("242 KK atau sebanyak 842 jiwa");
   });
 
   it("tiap butir bertanggal dan bersumber", () => {
@@ -196,11 +240,10 @@ describe("kronologi Rempang", () => {
     }
   });
 
-  it("kalimat kartu dipakai persis dan menaut ke dua pihak", () => {
+  it("kalimat kartu dipakai persis", () => {
     expect(KALIMAT_REMPANG).toBe(
       "Kampung-kampung di Pulau Rempang berada dalam kawasan yang direncanakan untuk Rempang Eco-City sejak 2023. Status dan pandangan para pihak masih berkembang; lihat sumber bertanggal.",
     );
-    expect(TAUTAN_REMPANG.map((t) => t.label).join(" ")).toMatch(/Ombudsman.*BP Batam/);
   });
 });
 

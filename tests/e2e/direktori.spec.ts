@@ -29,6 +29,10 @@ async function tiruApi(page: Page, hujanDi: string | null = null) {
   await page.route("**/api/radar-citra/**", (r) => r.fulfill({ status: 404, body: "" }));
   await page.route("**/api/ofs-frame", (r) => r.fulfill({ json: { frames: [], nowIndex: 0 } }));
   await page.route("**/api/perairan", (r) => r.fulfill({ json: { warns: [] } }));
+  await page.route("**/api/gempa", (r) => r.fulfill({ json: { status: "ok", diambil: "", gempa: [] } }));
+  await page.route("**/api/peringatan-cuaca**", (r) =>
+    r.fulfill({ json: { status: "ok", diambil: "", peringatan: [] } }),
+  );
   await page.route("**/api/conditions", (r) => r.fulfill({ json: {} }));
   await page.route("**/api/prakiraan", (r) => r.fulfill({ status: 503, json: {} }));
 }
@@ -38,9 +42,14 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("beranda dan menu", () => {
-  test("Loket 06 terbuka dan menuju Info Warga", async ({ page }) => {
+  test("Loket 06 terbuka dan menuju Informasi Warga", async ({ page }) => {
     await page.goto("/info");
-    await expect(page.getByRole("heading", { level: 1, name: "Info Warga" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "Informasi Warga" })).toBeVisible();
+    await expect(page.locator(".bch-lede")).toHaveText(
+      "Loket ini memuat direktori tempat, nomor darurat, panduan urusan tanah dan rumah, bantuan hukum, dan berita Batam.",
+    );
+    await expect(page.getByRole("heading", { level: 2, name: "Menurut Kecamatan" })).toBeVisible();
+    await expect(page.locator('a[href="/info/warga-baru"]')).toHaveCount(0);
     await page.getByRole("link", { name: /^Direktori/ }).click();
     await expect(page).toHaveURL(/\/info\/direktori$/);
   });
@@ -54,57 +63,117 @@ test.describe("beranda dan menu", () => {
 test.describe("direktori", () => {
   test("jumlah total dan per kategori cocok dengan statistik", async ({ page }) => {
     await page.goto("/info/direktori");
-    await expect(page.locator(".bch-lede")).toContainText(`${stats.total_tempat} tempat`);
-    for (const [k, n] of Object.entries(stats.per_kategori)) {
-      await expect(page.locator(`[data-kategori="${k}"]`)).toHaveText(`${n} tempat`);
-    }
+    await expect(page.locator(".bch-lede")).toContainText(
+      `Direktori ini memuat ${stats.total_tempat} tempat di Batam yang dikelompokkan menurut keperluan.`,
+    );
+    const per = stats.per_kategori as Record<string, number>;
+    await expect(page.locator("[data-kategori]")).toHaveCount(21);
+    await expect(page.locator('[data-kategori="kesehatan"]')).toHaveText(`${per.kesehatan} tempat`);
+    // Dua kategori data digabung menjadi satu kategori tampilan.
+    await expect(page.locator('[data-kategori="pemerintahan"]')).toHaveText(
+      `${per.pemerintahan + per.layanan_publik} tempat`,
+    );
+    await expect(page.locator('[data-kategori="layanan_publik"]')).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "Kantor dan layanan publik" })).toBeVisible();
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", String(stats.total_tempat));
   });
 
   test("pencarian menemukan tempat dan tersimpan di URL", async ({ page }) => {
     await page.goto("/info/direktori");
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", String(stats.total_tempat));
-    await page.getByLabel("Cari tempat").fill("mal pelayanan");
+    await page.getByLabel("Cari nama tempat, jenis, atau kecamatan").fill("mal pelayanan");
     await expect(page.getByRole("link", { name: "Mal Pelayanan Publik Kota Batam" })).toBeVisible();
     await expect(page).toHaveURL(/q=mal/);
     await page.reload();
-    await expect(page.getByLabel("Cari tempat")).toHaveValue("mal pelayanan");
+    await expect(page.getByLabel("Cari nama tempat, jenis, atau kecamatan")).toHaveValue("mal pelayanan");
     await expect(page.getByRole("link", { name: "Mal Pelayanan Publik Kota Batam" })).toBeVisible();
   });
 
-  test("filter kecamatan, kategori, lokasi, dan hapus filter", async ({ page }) => {
+  test("saringan: kategori, kecamatan, buka sekarang, dan hapus saringan", async ({ page }) => {
     await page.goto("/info/direktori?kategori=kesehatan");
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", String(stats.per_kategori.kesehatan));
-    await page.getByRole("button", { name: "Hapus filter" }).click();
+    // Daftar kategori disembunyikan selama saringan aktif.
+    await expect(page.locator("[data-kategori-grid]")).toHaveCount(0);
+    await page.getByRole("button", { name: "Hapus saringan" }).click();
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", String(stats.total_tempat));
-    await page.getByLabel("Lokasi di peta").selectOption("perlu_diisi_user");
-    await expect(page.locator("[data-jumlah]")).toHaveAttribute(
-      "data-jumlah",
-      String(stats.per_status_koordinat.perlu_diisi_user),
-    );
-    await page.getByLabel("Lokasi di peta").selectOption("");
+    await expect(page.locator("[data-kategori-grid]")).toBeVisible();
+    await expect(page.getByLabel("Buka sekarang")).toBeVisible();
+    for (const lama of ["Subkategori", "Kelurahan", "Status data", "Lokasi di peta"]) {
+      await expect(page.getByLabel(lama)).toHaveCount(0);
+    }
     await page.locator('label:has-text("Kecamatan") select').first().selectOption("Galang");
     await expect(page.locator("[data-jumlah]")).toHaveAttribute(
       "data-jumlah",
       String((stats.per_kecamatan as Record<string, number>).Galang),
     );
-    await expect(page.getByLabel("Kelurahan")).toBeEnabled();
   });
 
-  test("subkategori kosong jujur, bukan 404", async ({ page }) => {
+  test("pencarian kosong memakai kalimat pedoman", async ({ page }) => {
+    await page.goto("/info/direktori?q=zzzzzzzzzz");
+    await expect(page.getByText("Tidak ada hasil untuk “zzzzzzzzzz”. Coba kata lain atau hapus saringan.")).toBeVisible();
+  });
+
+  test("halaman kategori: remah roti, judul, lede, dan saringan", async ({ page }) => {
+    await page.goto("/info/direktori/keamanan-darurat");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Darurat dan Keamanan");
+    await expect(page.locator(".bch-kicker").first()).toHaveText("Informasi Warga / Direktori / Darurat dan keamanan");
+    await expect(page.locator(".bch-lede")).toHaveText(
+      `Polisi, pemadam kebakaran, dan SAR di Batam. Ada ${stats.per_kategori.keamanan_darurat} tempat di kategori ini.`,
+    );
+    await expect(page.locator(".bch-sub-nav a").first()).toContainText("Semua");
+    await expect(page.locator(".bch-sub-nav")).toContainText("Kecamatan");
+  });
+
+  test("daftar panjang dibuka bertahap", async ({ page }) => {
+    await page.goto("/info/direktori/kesehatan");
+    await expect(page.locator(".bch-grid .bch-card")).toHaveCount(12);
+    await page.getByRole("button", { name: /^Tampilkan 33 tempat lagi$/ }).click();
+    await expect(page.locator(".bch-grid .bch-card")).toHaveCount(stats.per_kategori.kesehatan);
+  });
+
+  test("kategori gabungan: slug lama dialihkan", async ({ page }) => {
+    await page.goto("/info/direktori/layanan-publik");
+    await expect(page).toHaveURL(/\/info\/direktori\/pemerintahan$/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Kantor dan Layanan Publik");
+    await page.goto("/info/direktori/layanan-publik/bpjs-kes");
+    await expect(page).toHaveURL(/\/info\/direktori\/pemerintahan\/bpjs-kes$/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("BPJS Kesehatan");
+  });
+
+  test("jenis tanpa data tidak ditautkan, halamannya memakai kalimat kategori kosong", async ({ page }) => {
+    await page.goto("/info/direktori/kesehatan");
+    await expect(page.getByRole("link", { name: /Dokter kandungan/ })).toHaveCount(0);
+    await page.goto("/info/direktori/kesehatan/dokter-kandungan");
+    await expect(page.locator(".bch-lede")).toContainText(
+      "Belum ada tempat di kategori ini. Kalau kamu tahu tempatnya, kirim usulan.",
+    );
+  });
+
+  test("angka pembanding tampil tanpa sumber", async ({ page }) => {
     await page.goto("/info/direktori/kesehatan");
     await expect(page.locator(".bch-kelengkapan")).toContainText("831");
-    await page.getByRole("link", { name: /Dokter gigi/ }).click();
-    await expect(page.locator(".bch-lede")).toContainText("Belum ada data. Kenal tempatnya?");
+    await expect(page.locator(".bch-kelengkapan")).not.toContainText("Sumber");
   });
 
-  test("subkategori kosong menampilkan daftar OSM terpisah dan berlabel", async ({ page }) => {
-    await page.goto("/info/direktori/kesehatan/apotek");
-    await expect(page.locator(".bch-lede")).toContainText("Belum ada data");
+  test("subkategori kosong menampilkan daftar OSM terpisah, tanpa tautan sumber", async ({ page }) => {
+    await page.goto("/info/direktori/kesehatan");
+    await page.getByRole("link", { name: /Apotek/ }).click();
+    await expect(page).toHaveURL(/\/kesehatan\/apotek$/);
+    await expect(page.locator(".bch-lede")).toContainText("Belum ada tempat di kategori ini");
     const osm = page.locator("[data-daftar-osm]");
     await expect(osm).toContainText("OpenStreetMap");
-    await expect(osm).toContainText("belum kami cek");
+    await expect(osm).toContainText("belum masuk hitungan direktori");
     expect(await osm.locator("li").count()).toBeGreaterThan(5);
+    await expect(osm.locator("a")).toHaveCount(0);
+  });
+
+  test("kartu dan daftar bebas catatan kerja", async ({ page }) => {
+    for (const h of ["/info/direktori/kesehatan", "/info/direktori/pertanahan-hukum", "/info/direktori/pemerintahan"]) {
+      await page.goto(h);
+      await expect(page.locator("main")).not.toContainText(
+        /Belum dicek ulang|Lokasi belum diisi|Perlu cek ulang|\bBeta\b|Sumber angka|Kecamatan belum diketahui/i,
+      );
+    }
   });
 
   test("kategori dan tempat yang tidak ada 404", async ({ page }) => {
@@ -124,21 +193,36 @@ test.describe("kartu tempat", () => {
     await page.goto("/info/tempat/mpp-batam");
     const kartu = page.locator(".bch-kartu-museum");
     await expect(kartu.getByRole("heading", { level: 1 })).toHaveText("Mal Pelayanan Publik Kota Batam");
-    await expect(kartu.locator("[data-baris-museum]")).toContainText("BELUM DICEK ULANG");
+    await expect(kartu).not.toContainText(/dicek|sumber/i);
+    await expect(page.locator("main")).not.toContainText("Sumber");
+    await expect(page.getByRole("link", { name: "Petunjuk arah" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Bagikan" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Laporkan data yang salah" })).toHaveAttribute(
+      "href",
+      "/koreksi?tempat=mpp-batam",
+    );
   });
 
-  test("tempat tanpa koordinat jujur soal peta", async ({ page }) => {
+  test("tempat tanpa koordinat: tanpa tombol peta dan tanpa teks pengganti", async ({ page }) => {
     await page.goto("/info/tempat/ppat-yulianti");
-    await expect(page.getByText("Kami tidak menebak koordinat.")).toBeVisible();
+    await expect(page.locator("main")).not.toContainText(/menebak|Lokasi belum diisi/);
     await expect(page.getByRole("link", { name: "Lihat di peta" })).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "Petunjuk arah" })).toBeVisible();
   });
 
-  test("PPAT berlabel Beta dan punya Cek status", async ({ page }) => {
+  test("PPAT tanpa label Beta, dengan satu kalimat pengingat", async ({ page }) => {
     await page.goto("/info/tempat/ppat-yulianti");
-    await expect(page.getByText("Beta, data komunitas, verifikasi sendiri").first()).toBeVisible();
-    await page.getByRole("link", { name: "Cek status" }).click();
-    await expect(page).toHaveURL(/bantuan-hukum#cek-status/);
-    await expect(page.getByRole("heading", { name: "Cek status" })).toBeVisible();
+    await expect(page.locator("main")).not.toContainText("Beta");
+    await expect(page.getByText("Pastikan status praktiknya sebelum memakai jasanya.")).toBeVisible();
+    await expect(page.getByRole("link", { name: "Cek status" })).toHaveCount(0);
+  });
+
+  test("tempat yang hanya punya nama tidak punya halaman, cukup baris di daftar", async ({ page }) => {
+    await page.goto("/info/tempat/pura-sekupang");
+    await expect(page).toHaveURL(/\/info\/direktori\?q=Pura/);
+    const baris = page.locator(".bch-penjelajah-daftar li").filter({ hasText: "Pura Sekupang" });
+    await expect(baris).toBeVisible();
+    await expect(baris.getByRole("link")).toHaveCount(0);
   });
 
   test("kampung tua hanya kartu minimal", async ({ page }) => {
@@ -164,36 +248,81 @@ test.describe("kartu tempat", () => {
     await page.unrouteAll();
     await tiruApi(page, "Batam Kota");
     await page.goto("/info/tempat/mpp-batam");
-    await expect(page.locator("[data-hujan-kecamatan]")).toContainText("Lagi hujan di Batam Kota");
-    await expect(page.locator("[data-hujan-kecamatan]")).toContainText("Perkiraan radar MSS");
+    await expect(page.locator("[data-hujan-kecamatan]")).toContainText("Hujan ringan di Kecamatan Batam Kota.");
+    await expect(page.locator("[data-hujan-kecamatan]")).toContainText("Perkiraan radar");
+    await expect(page.locator("[data-hujan-kecamatan]")).not.toContainText("MSS");
   });
 });
 
 test.describe("panduan", () => {
-  test("nomor darurat lengkap dengan peringatan situs palsu dan tanpa peta", async ({ page }) => {
+  test("nomor darurat sesuai pedoman, tanpa catatan dan tanpa peta", async ({ page }) => {
     await page.goto("/info/darurat");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Nomor Darurat");
+    await expect(page.locator(".bch-lede")).toHaveText("Dalam keadaan darurat, hubungi 112.");
     for (const n of ["112", "110", "113", "115", "119"]) {
       await expect(page.locator(".bch-nomor", { hasText: new RegExp(`^${n}$`) })).toHaveAttribute("href", `tel:${n}`);
     }
-    await expect(page.locator("[data-peringatan-situs]")).toContainText("bukan situs resmi");
-    await expect(page.locator('a[href*="damkarbatam"]')).toHaveCount(0);
+    await expect(page.locator(".bch-nomor-daftar h2")).toHaveText([
+      "Panggilan darurat",
+      "Polisi",
+      "Pemadam kebakaran",
+      "SAR",
+      "Ambulans",
+    ]);
+    await expect(page.getByRole("heading", { name: "Pos Pemadam Kebakaran" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Layanan Pengaduan" })).toBeVisible();
+    await expect(page.locator("[data-tabel-pengaduan] thead th")).toHaveText(["Layanan", "Telepon"]);
+    await expect(page.locator("main")).not.toContainText(/bukan situs resmi|BMKG|belum kami verifikasi|damkarbatam/);
+    await expect(page.locator('main a[href*=".go.id"]')).toHaveCount(0);
     await expect(page.locator(".peta")).toHaveCount(0);
   });
 
-  test("urusan tanah: delapan baris, lima langkah, bebas catatan kerja", async ({ page }) => {
+  test("urusan tanah: delapan baris, lima langkah, bebas catatan kerja dan tautan situs pemerintah", async ({ page }) => {
     await page.goto("/info/urusan-tanah");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Urusan Tanah dan Rumah");
+    await expect(page.getByRole("heading", { name: "Keperluan yang Paling Sering Diurus" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Urutan Jual Beli Rumah" })).toBeVisible();
     await expect(page.locator("[data-tabel-tanah] tbody tr")).toHaveCount(8);
+    await expect(page.locator("[data-tabel-tanah] thead th")).toHaveText(["Keperluan", "Tempat mengurus", "Catatan"]);
     await expect(page.locator("[data-langkah-jual-beli] li")).toHaveCount(5);
-    await expect(page.getByText("wajib dicek ke PPAT atau BP Batam")).toBeVisible();
-    await expect(page.locator("main")).not.toContainText("riset");
+    await expect(page.locator("[data-catatan-hukum]")).toHaveText("Halaman ini adalah panduan umum, bukan nasihat hukum.");
+    await expect(page.locator("main")).not.toContainText(/riset|Beta|go\.id|wajib dicek/);
+    await expect(page.locator('main a[href*=".go.id"]')).toHaveCount(0);
   });
 
-  test("bantuan hukum: Posbakum didahulukan, profesi Beta", async ({ page }) => {
+  test("bantuan hukum: urutan bagian sesuai pedoman, tanpa Beta", async ({ page }) => {
     await page.goto("/info/bantuan-hukum");
     const judul = await page.locator("main h2").allTextContents();
-    expect(judul[0]).toContain("Posbakum");
-    await expect(page.locator("[data-label-beta]")).toContainText("Beta, data komunitas, verifikasi sendiri");
-    await expect(page.locator("#profesi .bch-card").first()).toContainText("Cek status");
+    expect(judul.slice(0, 4)).toEqual([
+      "Pos Bantuan Hukum di Pengadilan",
+      "Lembaga Bantuan Hukum",
+      "Organisasi Advokat",
+      "PPAT dan Notaris",
+    ]);
+    await expect(page.locator("#profesi")).toContainText(
+      "Daftar ini belum lengkap. Pastikan status praktiknya sebelum memakai jasanya.",
+    );
+    await expect(page.locator("#profesi .bch-card").first()).toBeVisible();
+    await expect(page.locator("main")).not.toContainText(/Beta|Cek status|go\.id|belum kami cek/);
+    await expect(page.locator("[data-catatan-hukum]")).toHaveText("Halaman ini adalah panduan umum, bukan nasihat hukum.");
+  });
+
+  test("jasa dokumen: judul dan lede sesuai pedoman", async ({ page }) => {
+    await page.goto("/info/jasa-dokumen");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Jasa Dokumen dan Usaha");
+    await expect(page.locator(".bch-lede")).toHaveText(
+      "Halaman ini memuat konsultan pajak, penilai properti, dan layanan izin usaha di Batam.",
+    );
+    await expect(page.locator("main")).not.toContainText(/go\.id|riset|belum memverifikasi/);
+  });
+
+  test("halaman kecamatan: lede sesuai pedoman, bagian kosong disembunyikan", async ({ page }) => {
+    await page.goto("/info/kecamatan/batam-kota");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Kecamatan Batam Kota");
+    await expect(page.locator(".bch-lede")).toHaveText(
+      `Ada ${(stats.per_kecamatan as Record<string, number>)["Batam Kota"]} tempat yang tercatat di kecamatan ini.`,
+    );
+    await expect(page.locator("main")).not.toContainText("Belum ada data");
   });
 
   test("kecamatan pulau menjelaskan soal PPAT", async ({ page }) => {
@@ -288,12 +417,12 @@ test.describe("pin di peta beranda", () => {
 });
 
 test.describe("widget silang", () => {
-  test("berteduh di Langit & Laut hanya saat hujan di Batam", async ({ page }) => {
+  test("tempat berteduh di Cuaca dan Laut hanya saat hujan di Batam", async ({ page }) => {
     await page.unrouteAll();
     await tiruApi(page, "Lubuk Baja");
     await page.goto("/langit-laut?mode=hujan");
     if (test.info().project.name === "hp") await page.getByRole("button", { name: /^Detail/ }).click();
-    await expect(page.getByRole("heading", { name: "Buat berteduh" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Tempat Berteduh" })).toBeVisible();
   });
 
   test("Makan menampilkan hujan di kecamatannya", async ({ page }) => {
@@ -303,7 +432,7 @@ test.describe("widget silang", () => {
     await page.unrouteAll();
     await tiruApi(page, p?.kecamatan as string);
     await page.goto(`/makan/tempat/${p?.id}`);
-    await expect(page.locator("[data-hujan-kecamatan]")).toContainText(`Lagi hujan di ${p?.kecamatan}`);
+    await expect(page.locator("[data-hujan-kecamatan]")).toContainText(`di Kecamatan ${p?.kecamatan}`);
   });
 });
 

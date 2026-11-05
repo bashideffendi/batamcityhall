@@ -5,7 +5,7 @@ import { useSiteTheme } from "@/components/site/useSiteTheme";
 import { timeBasedTheme, type ThemeMode } from "@/features/langit-laut/lib/radar";
 import { applyTheme, storedTheme } from "@/lib/theme";
 
-const keSitus = (t: ThemeMode) => (t === "dark" ? "night" : "day");
+const keSitus = (t: ThemeMode) => (t === "dark" ? "dark" : "light");
 
 /**
  * Tema Langit & Laut: otomatis ikut jam WIB (06–18 terang) sampai pengguna memilih lewat tombol di
@@ -29,5 +29,5 @@ export function useThemeMode(isBusy: () => boolean): ThemeMode {
     return () => clearInterval(t);
   }, []);
 
-  return site === "night" ? "dark" : "light";
+  return site === "dark" ? "dark" : "light";
 }

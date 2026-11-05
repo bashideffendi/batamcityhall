@@ -417,7 +417,7 @@ html[data-gerak="tenang"] .sj-penanda {
 }
 .sj-dulu-sekarang dt {
   font-size: var(--bch-text-kicker);
-  font-variant-caps: all-small-caps;
+  font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--bch-ink-muted);
 }
@@ -506,5 +506,5 @@ html[data-gerak="tenang"] .sj-penanda {
 }
 
 .sj-form-tutup .bch-input:disabled {
-  background: var(--bch-paper-2);
+  background: var(--bch-paper);
 }

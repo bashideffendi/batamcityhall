@@ -1,5 +1,5 @@
 // Logika filter dan urutan Makan, tanpa React supaya bisa dites langsung.
-import { haversineKm } from "./data";
+import { categoryMap, haversineKm } from "./data";
 import { isOpenNow } from "./format";
 import type { HalalStatus, PriceTier, RecLabel, PlaceWithGeo } from "./types";
 
@@ -38,6 +38,16 @@ export const EMPTY: FilterState = {
 /** Radius "dekat terminal". Jarak dihitung dari koordinat perkiraan, jadi ini juga perkiraan. */
 export const RADIUS_FERI_KM = 6;
 
+/** Ejaan lama yang masih lazim diketik. Data memakai bentuk baku (pedoman 2.8), pencarian menerima keduanya. */
+const EJAAN_LAMA: [RegExp, string][] = [
+  [/\bmie\b/g, "mi"],
+  [/\bsop\b/g, "sup"],
+  [/\bseafood\b/g, "makanan laut"],
+  [/\bcafe\b/g, "kafe"],
+  [/\bferry\b/g, "feri"],
+];
+const bentukBaku = (q: string) => EJAAN_LAMA.reduce((s, [lama, baku]) => s.replace(lama, baku), q);
+
 /** `sekarang` null berarti waktu belum diketahui (render server): filter buka sekarang dilewati. */
 export function cocok(p: PlaceWithGeo, s: FilterState, sekarang: number | null): boolean {
   if (s.cats.length && !s.cats.includes(p.category)) return false;
@@ -60,11 +70,14 @@ export function cocok(p: PlaceWithGeo, s: FilterState, sekarang: number | null):
       ...p.subcategory,
       ...p.tags,
       p.category,
+      categoryMap[p.category]?.name_id ?? "",
+      categoryMap[p.category]?.name_en ?? "",
+      categoryMap[p.category]?.name_zh ?? "",
       p.area,
     ]
       .join(" ")
       .toLowerCase();
-    if (!hay.includes(q)) return false;
+    if (!hay.includes(q) && !hay.includes(bentukBaku(q))) return false;
   }
   return true;
 }

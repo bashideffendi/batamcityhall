@@ -1,0 +1,46 @@
+{
+  "catatan": "Frasa di sini dihapus dari teks sebelum diperiksa: nama usaha, nama resmi, dan istilah yang memang ditulis begitu. 'berkas' mematikan aturan tertentu untuk satu berkas, hanya untuk string kode yang bukan teks pembaca (skrip tema, URL tile, path SVG, peta entitas XML).",
+  "frasa": [
+    "Anchor Cafe & Roastery",
+    "Bakso & Bakmi Sri Ayu",
+    "Bakso & Mie Ayam Murah Rezeki",
+    "Bakso Tetelan & Mie Ayam Semeru",
+    "Batam Jazz & Fashion",
+    "Batam Khitong Fest & Budaya Nusantara",
+    "Batam Wonderfood & Art Ramadhan",
+    "Ferry Global Group",
+    "Gado-gado & Nasi Lemak Pelantar 3 (MB Kopitiam Pasir Putih)",
+    "Gerai Nelayan 2M & Kelong Arjam",
+    "Gulai & Sate Asih",
+    "Horizon Fast Ferry",
+    "Imperial Kitchen & Dimsum",
+    "Indomas Ferry",
+    "Indonesia Marine & Offshore Expo",
+    "LAPOR! (SP4N)",
+    "Majestic Fast Ferry",
+    "Nasi Lemak & Lontong Kampoeng Noodle",
+    "Radisson Golf & Convention Centre",
+    "Sindo Ferry",
+    "Sop Ikan & Asam Pedas Windsor"
+  ],
+  "berkas": {
+    "app/layout.tsx": [
+      "dan-simbol"
+    ],
+    "components/site/SiteNav.tsx": [
+      "satuan-menempel"
+    ],
+    "features/langit-laut/lib/sources.ts": [
+      "dan-simbol"
+    ],
+    "features/langit-laut/lib/peringatan-cuaca.ts": [
+      "dan-simbol"
+    ],
+    "features/berita/rss.ts": [
+      "dan-simbol"
+    ],
+    "features/makan/components/Ikon.tsx": [
+      "satuan-menempel"
+    ]
+  }
+}

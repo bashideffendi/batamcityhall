@@ -18,10 +18,9 @@ const ROOT = join(import.meta.dirname, "..");
 const RANGES = [0, 256, 8192];
 
 const FONTS = [
-  { stack: "Source Serif 4 Regular", family: "Source Serif 4", weight: 400, style: "normal", file: "@fontsource/source-serif-4/files/source-serif-4-latin-400-normal.woff2", ext: "@fontsource/source-serif-4/files/source-serif-4-latin-ext-400-normal.woff2" },
-  { stack: "Source Serif 4 Italic", family: "Source Serif 4", weight: 400, style: "italic", file: "@fontsource/source-serif-4/files/source-serif-4-latin-400-italic.woff2", ext: "@fontsource/source-serif-4/files/source-serif-4-latin-ext-400-italic.woff2" },
-  { stack: "Source Serif 4 Semibold", family: "Source Serif 4", weight: 600, style: "normal", file: "@fontsource/source-serif-4/files/source-serif-4-latin-600-normal.woff2", ext: "@fontsource/source-serif-4/files/source-serif-4-latin-ext-600-normal.woff2" },
+  { stack: "Newsreader Italic", family: "Newsreader", weight: 400, style: "italic", file: "@fontsource/newsreader/files/newsreader-latin-400-italic.woff2", ext: "@fontsource/newsreader/files/newsreader-latin-ext-400-italic.woff2" },
   { stack: "Plus Jakarta Sans Medium", family: "Plus Jakarta Sans", weight: 500, style: "normal", file: "@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-500-normal.woff2", ext: "@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-ext-500-normal.woff2" },
+  { stack: "Plus Jakarta Sans Bold", family: "Plus Jakarta Sans", weight: 700, style: "normal", file: "@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2", ext: "@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-ext-700-normal.woff2" },
 ];
 
 // ---- protobuf minimal ----

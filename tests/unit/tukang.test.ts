@@ -19,8 +19,10 @@ import {
   saringPublik,
   samarkanKontak,
   syaratTampil,
+  tautanTelepon,
   teksBulan,
   teksTerakhirDicek,
+  teksTerakhirDiperiksa,
   type RekomendasiBaris,
   type TukangBaris,
 } from "@/features/tukang/aturan";
@@ -28,7 +30,7 @@ import { buatBatasLaju, ipDari } from "@/features/tukang/batas-laju";
 import { alasanCekUlang, lewatEnamBulan } from "@/features/tukang/cek-ulang";
 import { GalatTidakAda } from "@/features/tukang/galat";
 import { hashKontak } from "@/features/tukang/hash";
-import { KATEGORI_JASA } from "@/features/tukang/kategori";
+import { KATEGORI_JASA, TAG_REKOMENDASI, teksTag } from "@/features/tukang/kategori";
 import {
   bacaTempelan,
   csvHalte,
@@ -307,19 +309,19 @@ describe("store contoh", () => {
     store = buatStoreContoh(data);
   });
 
-  it("semua isi awal berlabel CONTOH FIKTIF dan kontaknya domain .invalid", async () => {
-    for (const t of data.tukang) expect(t.nama).toMatch(/^CONTOH FIKTIF: /);
+  it("semua isi awal berlabel contoh fiktif dan kontaknya domain .invalid", async () => {
+    for (const t of data.tukang) expect(t.nama).toMatch(/^Contoh fiktif: /);
     for (const r of data.rekomendasi) {
-      expect(r.cerita).toMatch(/^CONTOH FIKTIF\. /);
+      expect(r.cerita).toMatch(/^Contoh fiktif\. /);
       expect(r.kontakPerekomendasi).toMatch(/@contoh\.invalid$/);
     }
-    for (const t of await store.daftarPublik()) expect(t.nama).toContain("CONTOH FIKTIF");
+    for (const t of await store.daftarPublik()) expect(t.nama).toContain("Contoh fiktif");
   });
 
   it("alur penuh: kirim, moderasi, tampil", async () => {
     const nama = () => store.daftarPublik().then((d) => d.map((t) => t.nama));
     await store.kirimRekomendasi(input());
-    expect(await nama()).not.toContain("CONTOH FIKTIF: Penjahit Uji Baru");
+    expect(await nama()).not.toContain("Contoh fiktif: Penjahit Uji Baru");
 
     await store.kirimRekomendasi(input({ kontak_perekomendasi: "warga-b@contoh.invalid" }));
     const t = data.tukang.find((x) => x.nama.endsWith("Penjahit Uji Baru"));
@@ -655,7 +657,7 @@ describe("route handler", () => {
     ])("%s menjawab 503 yang jujur", async (_, post) => {
       const r = await post(permintaan(KIRIMAN));
       expect(r.status).toBe(503);
-      expect((await r.json()).pesan).toMatch(/belum menerima kiriman/);
+      expect((await r.json()).pesan).toMatch(/belum aktif/);
     });
   });
 
@@ -675,7 +677,13 @@ describe("route handler", () => {
     it("isian salah dijawab per kolom", async () => {
       const r = await postRekomendasi(permintaan({ ...KIRIMAN, cerita: "pendek" }));
       expect(r.status).toBe(400);
-      expect((await r.json()).galat.cerita).toBeTruthy();
+      expect((await r.json()).galat.cerita).toBe("Ceritakan pengalamanmu secara singkat.");
+    });
+
+    it("cerita paling banyak 300 karakter", async () => {
+      const r = await postRekomendasi(permintaan({ ...KIRIMAN, cerita: "a".repeat(301) }));
+      expect(r.status).toBe(400);
+      expect((await r.json()).galat.cerita).toContain("300 karakter");
     });
 
     it("honeypot dijawab sukses tetapi tidak disimpan", async () => {
@@ -887,51 +895,53 @@ describe("keluaran koordinat", () => {
 });
 
 describe("kategori dan teks", () => {
-  it("memuat semua kategori wajib dari research/00 bagian 4", () => {
-    const nama = KATEGORI_JASA.map((k) => k.nama.toLowerCase()).join("|");
-    for (const kata of [
-      "jahit",
-      "permak",
-      "mebel",
-      "ac",
-      "bengkel",
-      "kunci",
-      "laundry",
-      "sol sepatu",
-      "hp",
-      "laptop",
-      "elektronik",
-      "mesin cuci",
-      "kulkas",
-      "bangunan",
-      "listrik",
-      "ledeng",
-      "pijat",
-      "refleksi",
-      "pijat panggilan",
-      "salon",
-      "barbershop",
-      "fotokopi",
-      "percetakan",
-      "dokter",
-      "kos",
-      "jastip singapura",
-    ]) {
-      expect(nama).toContain(kata);
-    }
+  it("memuat jenis jasa persis seperti PEDOMAN 3.5", () => {
+    expect(KATEGORI_JASA.map((k) => k.nama)).toEqual([
+      "Jahit dan permak",
+      "Mebel",
+      "Servis dan cuci AC",
+      "Bengkel motor dan mobil",
+      "Tukang kunci",
+      "Binatu",
+      "Sol sepatu",
+      "Servis ponsel, laptop, dan elektronik",
+      "Tukang bangunan, listrik, dan ledeng",
+      "Pijat dan refleksi",
+      "Pijat panggilan",
+      "Salon dan pangkas rambut",
+      "Fotokopi dan percetakan",
+      "Indekos",
+      "Jasa titip Singapura",
+      "Lainnya",
+    ]);
+  });
+
+  it("kata pilihan warga tampil berkapital di awal", () => {
+    expect(TAG_REKOMENDASI.map(teksTag)).toEqual(["Rapi", "Tepat waktu", "Harga jujur", "Ramah", "Cepat"]);
   });
 
   it("menunjuk baris Jasa yang benar di taksonomi, dan tidak memakai money changer", () => {
-    const baris = new Set(taksonomi.taksonomi.filter((t) => t.kategori === "Jasa").map((t) => t.subkategori));
+    const baris = new Set(
+      taksonomi.taksonomi.filter((t) => t.kategori === "Jasa").map((t) => t.subkategori.replaceAll("&", "dan")),
+    );
     for (const k of KATEGORI_JASA) if (k.taksonomi) expect(baris.has(k.taksonomi)).toBe(true);
     expect(KATEGORI_JASA.some((k) => /money changer|bank/i.test(k.nama))).toBe(false);
     expect(new Set(KATEGORI_JASA.map((k) => k.slug)).size).toBe(KATEGORI_JASA.length);
+  });
+
+  it("hanya nomor telepon yang menjadi tautan Hubungi", () => {
+    expect(tautanTelepon("0812-3456 7890")).toBe("tel:+6281234567890");
+    expect(tautanTelepon("+62 812 3456 7890")).toBe("tel:+6281234567890");
+    expect(tautanTelepon("Kios di Pasar Sekupang")).toBeNull();
+    expect(tautanTelepon("warga@contoh.invalid")).toBeNull();
   });
 
   it("menulis tanggal dan bulan", () => {
     expect(teksBulan("2026-10")).toBe("Oktober 2026");
     expect(teksTerakhirDicek("2026-11-05")).toBe("Terakhir dicek 5 November 2026");
     expect(teksTerakhirDicek(null)).toBe("Belum pernah dicek");
+    expect(teksTerakhirDiperiksa("2026-10-15")).toBe("Terakhir diperiksa Oktober 2026");
+    expect(teksTerakhirDiperiksa(null)).toBeNull();
     expect(hariIni(new Date("2026-11-05T20:00:00Z"))).toBe("2026-11-06");
   });
 });

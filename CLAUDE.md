@@ -1,3 +1,5 @@
+Baca `docs/PEDOMAN.md` sebelum mengubah teks, tampilan, atau peta. Jalankan pemeriksaan di bagian 7 sebelum menyatakan pekerjaan selesai.
+
 # Batam City Hall
 
 Website kota indie non-komersial untuk Batam. Komunikasi dengan pemilik proyek dalam Bahasa Indonesia.

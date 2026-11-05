@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PembukaLoket from "@/components/site/PembukaLoket";
 import { saringPublik, type TukangPublik } from "@/features/tukang/aturan";
 import CatatanMode from "@/features/tukang/CatatanMode";
 import { KATEGORI_JASA } from "@/features/tukang/kategori";
@@ -13,7 +14,8 @@ type Props = { searchParams: Promise<{ jasa?: string; kecamatan?: string }> };
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Tukang Langganan",
-    description: "Rekomendasi tukang dari warga Batam yang pernah pakai jasanya. Tidak ada yang bayar untuk masuk.",
+    description:
+      "Penjahit, tukang servis, dan penyedia jasa lain yang direkomendasikan warga Batam. Tidak ada yang membayar untuk masuk daftar ini.",
     // Data fiktif mode contoh tidak boleh terindeks.
     robots: modeKiriman() === "contoh" ? { index: false, follow: false } : undefined,
   };
@@ -40,37 +42,40 @@ export default async function Tukang({ searchParams }: Props) {
   for (const t of saringPublik(daftar, { kecamatan })) {
     jumlahPerJasa.set(t.jasa, (jumlahPerJasa.get(t.jasa) ?? 0) + 1);
   }
-  const akhiran = kecamatan ? `&kecamatan=${encodeURIComponent(kecamatan)}` : "";
+  const tautanJasa = (slug?: string) => {
+    const p = new URLSearchParams();
+    if (slug) p.set("jasa", slug);
+    if (kecamatan) p.set("kecamatan", kecamatan);
+    const kueri = p.toString();
+    return kueri ? `/tukang?${kueri}` : "/tukang";
+  };
 
   return (
     <div className="bch-page bch-tk-halaman" data-mode-tukang={mode}>
-      <p className="bch-kicker m-0">Loket 03</p>
-      <h1 className="mt-2">Tukang Langganan</h1>
-      <p className="bch-lede">
-        Tidak ada yang bayar untuk masuk daftar ini. Semua rekomendasi datang dari warga yang pernah pakai jasanya.
-      </p>
-      <CatatanMode mode={mode} />
-      <p className="bch-note">
-        Rekomendasi warga, bukan endorsement. Selalu sepakati harga di awal. Entri baru tampil setelah direkomendasikan
-        minimal dua warga berbeda, tukangnya mengizinkan, dan moderator menyetujui.
-      </p>
-      {mode !== "mati" && (
-        <p className="mt-4">
-          <Link href="/tukang/rekomendasi" className="bch-btn" prefetch={false}>
-            Kirim rekomendasi
-          </Link>
-        </p>
-      )}
+      <PembukaLoket
+        nomor="03"
+        lede="Loket ini memuat penjahit, tukang servis, dan penyedia jasa lain yang direkomendasikan warga Batam. Setiap nama tampil setelah direkomendasikan oleh sekurang-kurangnya dua orang."
+      >
+        <p className="bch-measure">Tidak ada yang membayar untuk masuk daftar ini.</p>
+        {mode === "contoh" && <CatatanMode mode={mode} />}
+        {mode !== "mati" && (
+          <p className="mt-4 mb-0">
+            <Link href="/tukang/rekomendasi" className="bch-btn" prefetch={false}>
+              Kirim rekomendasi
+            </Link>
+          </p>
+        )}
+      </PembukaLoket>
 
-      <h2 className="mt-6 mb-3">Jasa</h2>
+      <h2 className="mt-6 mb-3">Jenis jasa</h2>
       <nav aria-label="Jenis jasa" className="bch-sub-nav">
-        <Link href={kecamatan ? `/tukang?kecamatan=${encodeURIComponent(kecamatan)}` : "/tukang"} prefetch={false}>
+        <Link href={tautanJasa()} prefetch={false}>
           Semua
         </Link>
         {KATEGORI_JASA.map((k) => (
           <Link
             key={k.slug}
-            href={`/tukang?jasa=${k.slug}${akhiran}`}
+            href={tautanJasa(k.slug)}
             prefetch={false}
             aria-current={k.slug === jasa ? "page" : undefined}
             data-kosong={jumlahPerJasa.get(k.slug) ? undefined : ""}
@@ -100,14 +105,14 @@ export default async function Tukang({ searchParams }: Props) {
 
       {gagal ? (
         <p className="bch-note" data-tone="caution">
-          Daftarnya gagal dimuat. Laut masih ada, kami saja yang belum. Coba lagi nanti.
+          Daftar tukang tidak dapat dimuat. Coba muat ulang dalam beberapa saat.
         </p>
       ) : hasil.length ? (
         <>
           <p className="bch-data" data-jumlah={hasil.length}>
             {hasil.length} tukang
           </p>
-          <ul className="bch-grid mt-3">
+          <ul className="bch-daftar-baris mt-3" data-kolom="2">
             {hasil.map((t) => (
               <li key={t.id}>
                 <KartuTukang t={t} contoh={mode === "contoh"} />
@@ -119,14 +124,9 @@ export default async function Tukang({ searchParams }: Props) {
         <div className="bch-note" data-kosong-tukang>
           <p className="m-0">
             {daftar.length
-              ? "Belum ada tukang yang cocok dengan saringan ini."
-              : "Belum ada tukang di daftar ini. Kami tidak mengisinya sendiri: daftar ini menunggu rekomendasi warga."}
+              ? "Belum ada nama yang cocok dengan saringan ini. Coba hapus saringan."
+              : "Belum ada nama di daftar ini. Rekomendasi pertama akan tampil setelah diperiksa dan didukung oleh dua warga."}
           </p>
-          {mode !== "mati" && (
-            <p className="mt-2 mb-0">
-              Kenal yang bagus? <Link href="/tukang/rekomendasi">Kirim rekomendasi</Link>.
-            </p>
-          )}
         </div>
       )}
     </div>

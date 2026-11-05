@@ -1,6 +1,6 @@
 ## 2. Budaya Melayu Kepri untuk Warga Batam
 
-Batam memang kota pendatang, tapi "tuan rumah" budayanya Melayu. Pemko menjadikan festival Melayu (KSM, Kenduri WBTb, Mandi Safar) sebagai panggung utama kota.
+Batam memang kota pendatang, tetapi “tuan rumah” budayanya Melayu. Pemko menjadikan festival Melayu (KSM, Kenduri WBTb, Mandi Safar) sebagai panggung utama kota.
 
 | Tradisi/unsur | Penjelasan singkat | Status | Sumber |
 |---|---|---|---|

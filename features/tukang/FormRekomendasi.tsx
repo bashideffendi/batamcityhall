@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRef, useState, type FormEvent } from "react";
-import { KATEGORI_JASA, TAG_REKOMENDASI } from "./kategori";
+import { KATEGORI_JASA, TAG_REKOMENDASI, teksTag } from "./kategori";
 import { CekPersetujuan, kirimJson, Kolom, KolomMadu, type JawabanKirim } from "./Kolom";
 
 const pilihan = (data: FormData, nama: string) => data.getAll(nama).map(String);
@@ -41,10 +41,7 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
   if (hasil?.ok) {
     return (
       <div className="bch-note" role="status">
-        <p className="m-0">
-          Terima kasih. Rekomendasi Anda masuk antrean moderator. Entri baru tampil setelah ada dua warga berbeda,
-          tukangnya mengizinkan, dan moderator menyetujui.
-        </p>
+        <p className="m-0">Terima kasih. Rekomendasimu akan kami periksa sebelum tampil.</p>
         <p className="mt-2 mb-0">
           <Link href="/tukang">Kembali ke daftar</Link>
         </p>
@@ -59,15 +56,20 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
       </p>
       <KolomMadu />
 
-      <Kolom nama="nama_tukang" label="Nama tukang atau usahanya" galat={galat.nama_tukang}>
+      <Kolom
+        nama="nama_tukang"
+        label="Nama tukang atau usaha"
+        petunjuk="Contoh: Pak Amin Jahit"
+        galat={galat.nama_tukang}
+      >
         {(a) => <input {...a} className="bch-input" name="nama_tukang" maxLength={80} autoComplete="off" />}
       </Kolom>
 
-      <Kolom nama="jasa" label="Jasa" galat={galat.jasa}>
+      <Kolom nama="jasa" label="Jenis jasa" galat={galat.jasa}>
         {(a) => (
           <select {...a} className="bch-select" name="jasa" defaultValue="">
             <option value="" disabled>
-              Pilih jasa
+              Pilih jenis jasa
             </option>
             {KATEGORI_JASA.map((k) => (
               <option key={k.slug} value={k.slug}>
@@ -79,7 +81,7 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
       </Kolom>
 
       <fieldset className="bch-tk-pilihan">
-        <legend>Area, boleh lebih dari satu kecamatan</legend>
+        <legend>Kecamatan</legend>
         <div className="bch-tk-pilihan-isi">
           {kecamatan.map((k) => (
             <label key={k} className="bch-tk-cek">
@@ -93,8 +95,8 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
 
       <Kolom
         nama="area_catatan"
-        label="Kelurahan atau kawasan (boleh kosong)"
-        petunjuk="Cukup nama kawasannya. Jangan alamat rumah."
+        label="Kelurahan atau kawasan (boleh dikosongkan)"
+        petunjuk="Cukup nama kawasan, tanpa alamat rumah."
         galat={galat.area_catatan}
       >
         {(a) => <input {...a} className="bch-input" name="area_catatan" maxLength={120} autoComplete="off" />}
@@ -107,8 +109,8 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
 
       <Kolom
         nama="cara_hubungi"
-        label="Cara menghubungi tukangnya"
-        petunjuk="Tidak tampil sebelum tukangnya mengizinkan. Kami minta izinnya dulu lewat pesan singkat."
+        label="Cara menghubungi"
+        petunjuk="Nomor telepon atau alamat tempat usaha"
         galat={galat.cara_hubungi}
       >
         {(a) => <input {...a} className="bch-input" name="cara_hubungi" maxLength={120} autoComplete="off" />}
@@ -116,8 +118,8 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
 
       <Kolom
         nama="kapan_dipakai"
-        label="Kapan terakhir memakai jasanya"
-        petunjuk="Bulan dan tahun. Contoh penulisan: 2026-10."
+        label="Terakhir memakai jasa"
+        petunjuk="Bulan dan tahun"
         galat={galat.kapan_dipakai}
       >
         {(a) => <input {...a} className="bch-input" type="month" name="kapan_dipakai" max={bulanIni} />}
@@ -126,19 +128,19 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
       <Kolom
         nama="cerita"
         label="Cerita singkat"
-        petunjuk="Apa yang dikerjakan dan kenapa Anda balik lagi. Tanpa nomor HP."
+        petunjuk="Apa yang dikerjakan dan mengapa kamu merekomendasikannya. Paling banyak 300 karakter."
         galat={galat.cerita}
       >
-        {(a) => <textarea {...a} className="bch-textarea" name="cerita" rows={4} maxLength={600} />}
+        {(a) => <textarea {...a} className="bch-textarea" name="cerita" rows={4} maxLength={300} />}
       </Kolom>
 
       <fieldset className="bch-tk-pilihan">
-        <legend>Tag (boleh kosong)</legend>
+        <legend>Kata yang paling sesuai</legend>
         <div className="bch-tk-pilihan-isi">
           {TAG_REKOMENDASI.map((t) => (
             <label key={t} className="bch-tk-cek">
               <input type="checkbox" name="tag" value={t} />
-              <span>{t}</span>
+              <span>{teksTag(t)}</span>
             </label>
           ))}
         </div>
@@ -146,24 +148,25 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
 
       <Kolom
         nama="kontak_perekomendasi"
-        label="Nomor HP atau surel Anda"
-        petunjuk="Tidak pernah ditampilkan. Dipakai untuk memastikan rekomendasi datang dari warga yang berbeda."
+        label="Kontakmu"
+        petunjuk="Hanya untuk memeriksa rekomendasi. Tidak pernah ditampilkan."
         galat={galat.kontak_perekomendasi}
       >
         {(a) => <input {...a} className="bch-input" name="kontak_perekomendasi" maxLength={120} autoComplete="off" />}
       </Kolom>
 
       <CekPersetujuan nama="bukan_pemilik" galat={galat.bukan_pemilik}>
-        Saya pernah memakai jasanya, dan saya bukan pemilik, keluarga, atau rekan usahanya.
+        Saya pernah memakai jasa ini sendiri dan tidak memiliki hubungan usaha dengan tukang tersebut.
       </CekPersetujuan>
       <CekPersetujuan nama="setuju" galat={galat.setuju}>
-        Saya setuju kontak saya disimpan untuk keperluan di atas, dan saya bisa memintanya dihapus kapan saja lewat
-        halaman <Link href="/koreksi">koreksi data</Link>. Rincian ada di <Link href="/privasi">Privasi</Link>.
+        Saya setuju kontak saya disimpan untuk memeriksa rekomendasi ini. Penghapusannya dapat diminta kapan saja lewat
+        halaman <Link href="/koreksi">Kirim Koreksi</Link>. Rincian ada di{" "}
+        <Link href="/privasi">Kebijakan Privasi</Link>.
       </CekPersetujuan>
 
       <div>
         <button type="submit" className="bch-btn" disabled={mengirim}>
-          {mengirim ? "Mengirim…" : "Kirim rekomendasi"}
+          {mengirim ? "Mengirim" : "Kirim rekomendasi"}
         </button>
       </div>
     </form>

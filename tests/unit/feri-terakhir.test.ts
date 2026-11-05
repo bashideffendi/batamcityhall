@@ -7,6 +7,7 @@ import {
   hargaMulaiDari,
   KARTU_FERI,
   SEMUA_RUTE,
+  TAUTAN_OPERATOR,
   terminalDariMakan,
 } from "@/features/jalan/feri-data";
 import {
@@ -75,7 +76,7 @@ describe("zona waktu", () => {
     const tepat = cari("btc-hfc", /^Batam Centre.*BatamFast/, wib(KAMIS, "20:30"));
     expect(tepat.status).toBe("masih_ada");
     expect(tepat.menitLagi).toBe(0);
-    expect(teksStatus(tepat)).toBe("berangkat sekarang");
+    expect(teksStatus(tepat)).toBe("Berangkat sekarang");
     expect(cari("btc-hfc", /^Batam Centre.*BatamFast/, wib(KAMIS, "20:31")).status).toBe("sudah_lewat");
     // 20:40 WIB = 21:40 SGT tepat.
     expect(cari("btc-hfc", /^HarbourFront.*BatamFast/, wib(KAMIS, "20:40")).status).toBe("masih_ada");
@@ -211,8 +212,9 @@ describe("jebakan data", () => {
       expect(h.status).toBe("bukan_harian");
       expect(h.jam).toBeNull();
     }
-    expect(teksStatus(baris[0])).toContain("bukan jadwal harian");
-    expect(teksStatus(baris[0])).toContain("Rabu 5 Agu 2026");
+    expect(teksStatus(baris[0])).toContain("Bukan jadwal harian");
+    expect(teksStatus(baris[0])).toContain("Rabu, 5 Agustus 2026");
+    expect(teksStatus(baris[0])).toContain("pukul 16.00 WIB");
   });
 
   it("(f) tanda hari per trip: Sekupang dari HarbourFront dan Sekupang ke HarbourFront", () => {
@@ -237,7 +239,7 @@ describe("jebakan data", () => {
     const kamis = cari("wfc-hfc", /^Waterfront/, wib(KAMIS, "10:00"));
     expect(kamis.status).toBe("tidak_hari_ini");
     expect(kamis.jam).toBeNull();
-    expect(teksStatus(kamis)).toContain("Sab–Min");
+    expect(teksStatus(kamis)).toContain("Sabtu—Minggu");
     const sabtu = cari("wfc-hfc", /^Waterfront/, wib(SABTU, "10:00"));
     expect(sabtu.status).toBe("masih_ada");
     expect(sabtu.jam).toBe("14:50");
@@ -307,7 +309,7 @@ describe("rute tanpa jadwal", () => {
     for (const id of kosong) {
       const h = hasil.find((x) => x.ruteId === id);
       expect(h?.status, id).toBe("belum_tersedia");
-      expect(teksStatus(h!)).toBe("jadwal belum tersedia");
+      expect(teksStatus(h!)).toBe("Jadwal belum tersedia");
     }
   });
 
@@ -350,7 +352,7 @@ describe("usia data", () => {
   });
 
   it("tanggal ditulis untuk warga", () => {
-    expect(teksTanggal("2026-11-01")).toBe("1 Nov 2026");
+    expect(teksTanggal("2026-11-01")).toBe("1 November 2026");
     expect(teksTanggal("2026-05")).toBe("Mei 2026");
     expect(teksTanggal("2025")).toBe("2025");
     expect(teksTanggal(null)).toBe("tanggal tidak tercatat");
@@ -358,29 +360,45 @@ describe("usia data", () => {
 });
 
 describe("kalimat kotak Hari Ini", () => {
-  it("siang hari: terakhir 20:30 dari Batam Centre dan Harbour Bay, tanpa jam yang diragukan", () => {
+  it("siang hari: terakhir 20.30 dari Batam Centre dan Harbour Bay, tanpa jam yang diragukan", () => {
     const r = ringkasHariIni(hitungFeri(ENTRI_FERI, wib(KAMIS, "12:00")));
-    expect(r.judul).toBe("Ke Singapura terakhir 20:30 WIB dari Batam Centre dan Harbour Bay.");
-    expect(r.rincian).toContain("Nongsapura 20:00");
-    expect(r.rincian).toContain("Sekupang 17:40");
-    expect(r.rincian).toContain("Jadwal bisa berubah, cek operator.");
-    expect(r.judul).not.toContain("20:35");
+    expect(r.judul).toBe("Feri terakhir ke Singapura hari ini: pukul 20.30 WIB dari Batam Centre dan Harbour Bay.");
+    expect(r.rincian).toContain("Nongsapura 20.00 WIB");
+    expect(r.rincian).toContain("Sekupang 17.40 WIB");
+    expect(r.judul).not.toContain("20.35");
+    expect(`${r.judul} ${r.rincian}`).not.toMatch(/\d:\d{2}/);
   });
 
-  it("setelah 20:30 sudah habis, dan tidak mengarang jam", () => {
+  it("setelah 20.30 memakai bentuk sudah lewat dengan keberangkatan pertama besok dari data", () => {
     const r = ringkasHariIni(hitungFeri(ENTRI_FERI, wib(KAMIS, "21:00")));
-    expect(r.judul).toBe("Feri ke Singapura hari ini sudah habis. Terakhir 20:30 WIB.");
+    expect(r.judul).toBe("Tidak ada lagi keberangkatan ke Singapura hari ini.");
+    expect(r.rincian).toBe("Keberangkatan pertama besok pukul 06.00 WIB.");
+  });
+
+  it("keberangkatan pertama besok mengikuti hari besok, bukan hari ini", () => {
+    // Waterfront City hanya Sabtu dan Minggu: Jumat sudah punya keberangkatan besok, Minggu tidak.
+    const wfc = ENTRI_FERI.filter((e) => e.ruteId === "wfc-hfc" && e.asal.startsWith("Waterfront"));
+    expect(hitungFeri(wfc, wib(JUMAT, "12:00"))[0].pertamaBesok).toBe("13:20");
+    expect(hitungFeri(wfc, wib(MINGGU, "12:00"))[0].pertamaBesok).toBeNull();
   });
 
   it("sebagian terminal sudah tutup: acuan turun ke yang masih ada", () => {
     const entri: EntriFeri[] = ENTRI_FERI.filter((e) => e.ruteId === "skp-hfc" || e.ruteId === "nsp-tmft");
     const r = ringkasHariIni(hitungFeri(entri, wib(KAMIS, "18:00")));
-    expect(r.judul).toBe("Ke Singapura terakhir 20:00 WIB dari Nongsapura.");
-    expect(r.rincian).toContain("Sekupang 17:40");
+    expect(r.judul).toBe("Feri terakhir ke Singapura hari ini: pukul 20.00 WIB dari Nongsapura.");
+    expect(r.rincian).toContain("Sekupang 17.40 WIB");
   });
 
-  it("tanpa data: jujur", () => {
-    expect(ringkasHariIni([]).judul).toBe("Jadwal feri ke Singapura belum tersedia.");
+  it("tanpa data: jujur, dan tanpa ajakan cek langsung", () => {
+    const r = ringkasHariIni([]);
+    expect(r.judul).toBe("Jadwal feri ke Singapura belum tersedia.");
+    expect(r.rincian).toBe("Tanyakan jadwal kepada operator.");
+  });
+
+  it("jadwal lama ditulis satu kalimat dengan tanggalnya", () => {
+    const r = ringkasHariIni(hitungFeri(ENTRI_FERI, wib("2027-03-01", "12:00")));
+    expect(r.adaDataLama).toBe(true);
+    expect(r.rincian).toMatch(/Jadwal per \d+ November 2026\. Tanyakan kepada operator\./);
   });
 });
 
@@ -442,28 +460,59 @@ describe("terminal untuk detail Makan", () => {
 describe("kartu rute dan pompong", () => {
   it("harga tanpa kata mulai ganda", () => {
     const pelni = SEMUA_RUTE.find((r) => r.id === "b99-pelni")!;
-    expect(hargaMulaiDari(pelni)).toContain("ekonomi ±Rp267.000");
+    expect(hargaMulaiDari(pelni)).toContain("ekonomi sekitar Rp267.000");
     expect(hargaMulaiDari(pelni)).not.toMatch(/mulai/i);
-    expect(hargaMulaiDari(SEMUA_RUTE.find((r) => r.id === "tpg-senayang")!)).toBe("Rp212.000–252.000");
+    expect(hargaMulaiDari(SEMUA_RUTE.find((r) => r.id === "tpg-senayang")!)).toBe("Rp212.000—Rp252.000");
     expect(hargaMulaiDari(SEMUA_RUTE.find((r) => r.id === "hb-nirup")!)).toBeNull();
   });
 
   it("tidak ada catatan penyusun di kartu", () => {
     const teks = JSON.stringify([KARTU_FERI, BARIS_POMPONG]);
     expect(teks).not.toMatch(/Catatan migrasi|Claude|perlu_cek|perlu_diisi|laporan|R7W6|easybook/);
+    expect(teks).not.toMatch(
+      /perlu cek ulang|data lama|mungkin usang|data lemah|jam dari berita|sumber sekunder|Moovit/i,
+    );
+    expect(teks).not.toMatch(/\d{2}:\d{2}/);
+  });
+
+  it("tautan ke situs pemerintah tidak tampil", () => {
+    const tautan = [
+      ...KARTU_FERI.map((k) => k.link),
+      ...ENTRI_FERI.map((e) => e.link),
+      ...TAUTAN_OPERATOR.map((o) => o.url),
+    ];
+    expect(tautan.join(" ")).not.toMatch(/\.go\.id/);
+    // Kolom datanya tetap ada.
+    expect(SEMUA_RUTE.find((r) => r.id === "tpg-tpi")?.link_jadwal_resmi).toMatch(/\.go\.id/);
+  });
+
+  it("kolom kartu: rute dan operator terpisah, jadwal usang tanpa tanggal tidak tampil", () => {
+    const btc = KARTU_FERI.find((k) => k.id === "btc-hfc")!;
+    expect(btc.jadwal[0].rute).toBe("Batam Centre → HarbourFront");
+    expect(btc.jadwal[0].operator).toBe("BatamFast");
+    expect(btc.jadwal[0].jam[0].jam).toMatch(/^\d{2}\.\d{2}$/);
+    expect(KARTU_FERI.find((k) => k.id === "skp-tbk")?.jadwal).toHaveLength(1);
+    expect(KARTU_FERI.find((k) => k.id === "skp-dumai")?.jadwal).toHaveLength(0);
+  });
+
+  it("zona waktu ditulis menurut pedoman", () => {
+    const zona = KARTU_FERI.flatMap((k) => k.jadwal.map((j) => j.zona));
+    expect(zona).toContain("WIB");
+    expect(zona).toContain("waktu Singapura");
+    expect(zona).toContain("waktu Malaysia");
   });
 
   it("pompong: hanya Sekupang-Belakang Padang bernada tegas", () => {
     expect(BARIS_POMPONG.filter((b) => b.tegas).map((b) => b.id)).toEqual(["skp-blp"]);
     const skp = BARIS_POMPONG.find((b) => b.id === "skp-blp")!;
-    expect(skp.tarif).toContain("Rp20.000/orang");
-    expect(skp.status?.teks).toBe("perlu cek ulang");
-    expect(BARIS_POMPONG.find((b) => b.id === "sbd-abang")?.status?.teks).toBe("data lemah");
-    expect(BARIS_POMPONG.find((b) => b.id === "pr-jb2-panjang")?.status?.teks).toBe("mungkin usang");
+    expect(skp.tarif).toContain("Rp20.000 per orang");
+    // Tahun tarif lama tetap terbaca di kolom tarif, tanpa kolom status data.
+    expect(BARIS_POMPONG.find((b) => b.id === "pr-jb2-panjang")?.tarif).toBe("Rp60.000 pulang pergi (2014)");
+    expect(BARIS_POMPONG.find((b) => b.id === "sbd-abang")?.jam).toBe("tidak ada kapal rutin");
   });
 
   it("kartu Gold Coast membawa banner terganggu, RoRo menyebut hanya online", () => {
     expect(KARTU_FERI.find((k) => k.id === "gcb-hfc")?.terganggu).toContain("Terganggu");
-    expect(KARTU_FERI.find((k) => k.id === "tpg-tgu-roro")?.catatan).toContain("hanya online");
+    expect(KARTU_FERI.find((k) => k.id === "tpg-tgu-roro")?.catatan).toContain("hanya dijual daring");
   });
 });

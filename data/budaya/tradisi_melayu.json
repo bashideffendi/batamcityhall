@@ -3,7 +3,7 @@
     "id": "tr-001",
     "nama": "Tepuk tepung tawar",
     "penjelasan": "Prosesi adat untuk memberi berkah, keselamatan, dan \"menghapus sial, majal dan duka nestapa\". Bahannya antara lain beras kunyit, beras basuh, air tepung tawar, bertih, dan perenjis. WBTb Indonesia 2018 (Kepri).",
-    "status": "✅",
+    "status": "Tercatat",
     "sumber_url": [
       "https://repositori.kemendikdasmen.go.id/17250/1/WBTB%20final%20COVER.pdf"
     ]
@@ -11,8 +11,8 @@
   {
     "id": "tr-002",
     "nama": "Mandi Safar",
-    "penjelasan": "Tolak bala setiap Rabu terakhir bulan Safar di Kampung Tua Terih. Tahapannya: besapa (doa selamat), berbedak langi (tepung beras + kunyit + limau purut), mandi di laut, lalu mandi tolak bala. Diajukan ke tingkat nasional bersama Dzikir Bermata. Pengajuan 2024 ditolak di tingkat provinsi; status 2025 ⚠️ belum terkonfirmasi.",
-    "status": "✅ / ⚠️",
+    "penjelasan": "Tolak bala setiap Rabu terakhir bulan Safar di Kampung Tua Terih. Tahapannya: besapa (doa selamat), berbedak langi (tepung beras, kunyit, dan limau purut), mandi di laut, lalu mandi tolak bala. Diajukan ke tingkat nasional bersama Dzikir Bermata. Pengajuan 2024 ditolak di tingkat provinsi; status 2025 belum terkonfirmasi.",
+    "status": "Tercatat, sebagian belum terkonfirmasi",
     "sumber_url": [
       "https://gokepri.com/mandi-safar-dan-dzikir-bermata-di-batam-diajukan-sebagai-wbtb-nasional/"
     ]
@@ -21,7 +21,7 @@
     "id": "tr-003",
     "nama": "Pantun",
     "penjelasan": "Puisi Melayu berima a-b-a-b. Masuk daftar UNESCO 2020 lewat nominasi bersama Indonesia–Malaysia, lalu diperluas dengan Brunei Darussalam pada sidang ke-20 Komite UNESCO. Pantun Melayu juga WBTb nasional asal Kepri (2014).",
-    "status": "✅",
+    "status": "Tercatat",
     "sumber_url": [
       "https://ich.unesco.org/en/decisions/20.COM/7.B.49"
     ]
@@ -30,7 +30,7 @@
     "id": "tr-004",
     "nama": "Gurindam Dua Belas",
     "penjelasan": "Karya Raja Ali Haji di Pulau Penyengat, 12 pasal, digubah 23 Rajab 1263 H. WBTb 2013. Karya-karya Raja Ali Haji jadi IKON nasional Perpusnas pada Desember 2025. Namanya dipakai untuk Museum Batam Raja Ali Haji.",
-    "status": "✅",
+    "status": "Tercatat",
     "sumber_url": [
       "https://budaya-data.kemdikbud.go.id/wbtb/objek/AA000187"
     ]
@@ -39,7 +39,7 @@
     "id": "tr-005",
     "nama": "Makyong",
     "penjelasan": "Teater tradisional yang memadukan tari, musik, lakon, dan topeng. WBTb Kepri 2013; tampil di KSM 2025.",
-    "status": "✅",
+    "status": "Tercatat",
     "sumber_url": [
       "https://batam.go.id/kenduri-seni-melayu-2025-merayakan-identitas-budaya-melayu-di-batam-dengan-semarak/"
     ]
@@ -48,7 +48,7 @@
     "id": "tr-006",
     "nama": "Joget dangkong",
     "penjelasan": "Tari pergaulan Melayu pesisir dengan iringan biola, gendang, dan gong. Asalnya dikaitkan dengan Moro, Karimun. WBTb sejak 2015.",
-    "status": "✅",
+    "status": "Tercatat",
     "sumber_url": [
       "https://mediaindonesia.com/weekend/523347/joget-dangkong-dan-mak-dara"
     ]
@@ -57,7 +57,7 @@
     "id": "tr-007",
     "nama": "Tari Jogi",
     "penjelasan": "Disebut sebagai WBTb Kota Batam; tampil di KSM 2026.",
-    "status": "✅ (sejarah ⚠️)",
+    "status": "Tercatat, sejarahnya belum pasti",
     "sumber_url": [
       "https://m.antaranews.com/amp/berita/5635085/kenduri-seni-melayu-batam-libatkan-empat-negara-angkat-wisata-budaya"
     ]
@@ -66,7 +66,7 @@
     "id": "tr-008",
     "nama": "Makan Berhidang",
     "penjelasan": "Makan bersama ala Melayu, duduk bersila berkelompok. Digelar di Gedung LAM Kota Batam, 21 Okt 2025.",
-    "status": "✅",
+    "status": "Tercatat",
     "sumber_url": [
       "https://disbudpar.batam.go.id/2025/10/23/"
     ]
@@ -75,7 +75,7 @@
     "id": "tr-009",
     "nama": "Lampu colok / tujuh likur",
     "penjelasan": "Lampu dari sumbu, minyak tanah, dan kaleng bekas, dipasang pada malam-malam akhir Ramadan.",
-    "status": "✅",
+    "status": "Tercatat",
     "sumber_url": [
       "https://www.liputan6.com/islami/read/5267095/jelang-lebaran-idul-fitri-ada-festival-lampu-colok-di-batam"
     ]
@@ -84,42 +84,42 @@
     "id": "tr-010",
     "nama": "Zapin",
     "penjelasan": "Tari Melayu bernapas Islam dengan iringan gambus dan marwas; selalu ada di panggung KSM.",
-    "status": "⚠️ Perlu sumber resmi",
+    "status": "Belum terverifikasi",
     "sumber_url": []
   },
   {
     "id": "tr-011",
     "nama": "Berzanji",
     "penjelasan": "Pembacaan kitab maulid karya al-Barzanji saat Maulid, akikah, dan pernikahan.",
-    "status": "⚠️ Perlu sumber",
+    "status": "Belum terverifikasi",
     "sumber_url": []
   },
   {
     "id": "tr-012",
     "nama": "Ghazal",
-    "penjelasan": "Musik Melayu berpengaruh India/Arab (harmonium, gambus, tabla), populer di Johor–Riau.",
-    "status": "⚠️ Perlu sumber",
+    "penjelasan": "Musik Melayu berpengaruh India dan Arab (harmonium, gambus, tabla), populer di Johor–Riau.",
+    "status": "Belum terverifikasi",
     "sumber_url": []
   },
   {
     "id": "tr-013",
     "nama": "Baju kurung, teluk belanga, tanjak",
     "penjelasan": "Baju kurung adalah busana longgar perempuan. Teluk belanga adalah baju laki-laki berkerah bulat dengan kain samping. Tanjak adalah ikat kepala lipat laki-laki.",
-    "status": "⚠️ Perlu sumber LAM/Disbud",
+    "status": "Belum terverifikasi",
     "sumber_url": []
   },
   {
     "id": "tr-014",
     "nama": "Pernikahan Melayu",
     "penjelasan": "Urutan yang umum dikenal: merisik → meminang → antar belanja → berinai → akad nikah → bersanding → tepuk tepung tawar.",
-    "status": "⚠️ Perlu sumber LAM",
+    "status": "Belum terverifikasi",
     "sumber_url": []
   },
   {
     "id": "tr-015",
     "nama": "Kuliner tradisi terkait acara",
     "penjelasan": "Bubur lambuk dan takjil (Ramadan/BWR), kue Lebaran, hidangan makan berhidang, menu vegetarian Nusantara saat Waisak, dan bazar kuliner khas Melayu di KSM.",
-    "status": "⚠️ Daftar spesifik perlu sumber",
+    "status": "Belum terverifikasi",
     "sumber_url": []
   }
 ]

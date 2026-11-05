@@ -2,26 +2,13 @@ import acara from "@/data/budaya/acara.json";
 import kamus from "@/data/budaya/kamus.json";
 import komunitas from "@/data/budaya/komunitas.json";
 import tradisi from "@/data/budaya/tradisi_melayu.json";
-import type { AcaraPublik, KataPublik, KelompokAcara, KelompokKata, RagamKata, StatusAcara, Tautan } from "./label";
+import { rapiAtauKosong, rapiTeks } from "@/features/sejarah/rapi";
+import type { AcaraPublik, KataPublik, KelompokAcara, KelompokKata, RagamKata, StatusAcara } from "./label";
 
-// Pintu keluar data budaya. File JSON mentah memuat catatan penyusun (`catatan_laporan`, kolom `tabel`, ikon
-// status), jadi halaman hanya boleh memakai bentuk publik dari sini. Komponen klien hanya mengimpor tipenya.
+// Pintu keluar data budaya. File JSON mentah memuat catatan penyusun (`catatan_laporan`, kolom `tabel`), jadi halaman
+// hanya boleh memakai bentuk publik dari sini. Komponen klien hanya mengimpor tipenya.
 
-export const TERAKHIR_DICEK = "November 2026";
-
-export const hostDari = (url: string) => new URL(url).hostname.replace(/^(www|m)\./, "");
-
-const tautan = (url: unknown): Tautan | null =>
-  typeof url === "string" && /^https?:\/\//.test(url) ? { href: url, label: hostDari(url) } : null;
-
-/** Mengganti ikon status dari riset dengan kata. Status tidak boleh hanya berupa ikon. */
-export function ikonJadiKata(teks: string): string {
-  return teks
-    .replace(/(\S+) ⚠️?/g, "$1 perlu dicek")
-    .replace(/⚠️? */g, "")
-    .replace(/[✅❌⌛] */g, "")
-    .trim();
-}
+export const DATA_DIHIMPUN = "Data dihimpun pada November 2026.";
 
 // ---------- Kalender ----------
 
@@ -69,8 +56,9 @@ export function kelompokAcara(a: Pick<AcaraMentah, "id" | "kategori">): Kelompok
 export function statusAcara(a: Pick<AcaraMentah, "status" | "tabel">): StatusAcara {
   const teks = a.tabel.map((t) => t.status).join(" ");
   if (/Dibatalkan/.test(teks)) return "dibatalkan";
-  if (a.status) return a.status as StatusAcara;
-  return /pernah/i.test(teks) ? "pernah" : "tidak pasti";
+  if (a.status === "rutin" || a.status === "pernah") return a.status;
+  if (a.status) return "belum pasti";
+  return /pernah/i.test(teks) ? "pernah" : "belum pasti";
 }
 
 const BULAN_PENDEK = /\b\d{1,2}\s+(Jan|Feb|Mar|Apr|Mei|Jun|Jul|Agu|Sep|Okt|Nov|Des)/;
@@ -95,7 +83,7 @@ const POLA: Record<string, string> = {
 // disalin di sini per acara, tanpa instruksi. Tes memastikan setiap acara bercatatan punya entri.
 const CATATAN: Record<string, string[]> = {
   "ev-006": [
-    "Indonesia.travel menulis 18 Feb–8 Mar 2026. Tanggal di kartu ini versi Disbudpar, penyelenggaranya.",
+    "Indonesia.travel menulis 18 Februari—8 Maret 2026. Tanggal di kartu ini versi Disbudpar, penyelenggaranya.",
     "Edisi 2025 diikuti 75 UMKM lokal, dengan lomba busana muslim dan tahfidz.",
   ],
   "ev-008": [
@@ -107,17 +95,19 @@ const CATATAN: Record<string, string[]> = {
     "Festival lampu colok yang rutin dan besar di kawasan ini ada di Karimun (46 peserta, total hadiah Rp135 juta pada 2025) dan Bengkalis.",
   ],
   "ev-011": [
-    "Menurut Kadisbudpar Ardiwinata (ANTARA, 4 Jul 2026), edisi 2026 menampilkan sekitar 60 pertunjukan seni, termasuk Tari Jogi, silat Melayu, dan Joget Kenangan Manis. Pesertanya dari Johor, Sabah, Singapura, Brunei, dan Thailand.",
-    'Data tidak cocok: katalog Karisma Event Nusantara 2025 menulis 19–21 Juli 2025, realisasinya 16–18 Mei 2025. Edisi 2024 dan 2025 sama-sama disebut "ke-26", edisi 2026 disebut "ke-27".',
+    "Menurut Kadisbudpar Ardiwinata (ANTARA, 4 Juli 2026), edisi 2026 menampilkan sekitar 60 pertunjukan seni, termasuk Tari Jogi, silat Melayu, dan Joget Kenangan Manis. Pesertanya dari Johor, Sabah, Singapura, Brunei, dan Thailand.",
+    "Katalog Karisma Event Nusantara 2025 menulis 19—21 Juli 2025, realisasinya 16—18 Mei 2025. Edisi 2024 dan 2025 sama-sama disebut “ke-26”, edisi 2026 disebut “ke-27”.",
   ],
   "ev-014": [
-    "Tempo menulis Mandi Safar masuk agenda Juni 2025, padahal Safar 1447 H jatuh sekitar akhir Juli–Agustus 2025. Kartu ini mengikuti kalender Hijriah.",
+    "Tempo menulis Mandi Safar masuk agenda Juni 2025, padahal Safar 1447 H jatuh sekitar akhir Juli—Agustus 2025. Kartu ini mengikuti kalender Hijriah.",
   ],
   "ev-018": ["Pindah dari Juli (2025) ke September (2026), jadi bulannya belum tetap."],
   "ev-021": ["Edisi perdana. Belum terbukti rutin."],
   "ev-025": ["Bukan agenda rutin."],
   "ev-028": ["Upacaranya rutin. Airshow belum terbukti rutin."],
-  "ev-029": ["InfoPublik menulis 19 Des dengan ±5.000 peserta. Laporan penutupan menulis >8.000 peserta pada 20 Des."],
+  "ev-029": [
+    "InfoPublik menulis 19 Desember dengan ±5.000 peserta. Laporan penutupan menulis >8.000 peserta pada 20 Desember.",
+  ],
   "ev-t01": ["Belum terbukti rutin."],
 };
 
@@ -129,12 +119,10 @@ const PENYELENGGARA_GANTI: Record<string, string> = {
   "ev-t01": "Swasta (penyelenggara belum pasti)",
 };
 
+// Data tidak menyebut lokasinya: baris lokasi tidak tampil.
 const LOKASI_GANTI: Record<string, string> = {
-  "ev-017": "Lokasi belum jelas",
+  "ev-017": "",
 };
-
-/** Sumber sekunder hanya untuk acara tanpa sumber primer dan selalu ditandai (brief 13). */
-const SUMBER_SEKUNDER = /helloswag\.id|seniberjalan\.com|jadwallari\.id/;
 
 // Lokasi acara yang sudah ada di direktori, dicocokkan dengan nama dan alias di places.json. Tes memastikan id-nya ada.
 const TEMPAT_ACARA: Record<string, { id: string; nama: string }[]> = {
@@ -162,49 +150,50 @@ const TEMPAT_ACARA: Record<string, { id: string; nama: string }[]> = {
 export const daftarTempatAcara = () => Object.values(TEMPAT_ACARA).flat();
 
 function statusRinci(a: AcaraMentah, status: StatusAcara): string | null {
-  const isi = a.tabel.map((t) => ikonJadiKata(t.status)).filter(Boolean);
+  const isi = a.tabel.map((t) => t.status).filter(Boolean);
   const unik = [...new Set(isi)].filter((t) => t.toLowerCase() !== status && t.toLowerCase() !== "pernah");
-  return unik[0] ?? null;
+  return rapiAtauKosong(unik[0]);
 }
+
+/** Teks acara untuk pembaca: singkatan dipanjangkan, tanda "+" dari tabel riset menjadi kata. */
+const teksAcara = (t: string) => rapiTeks(panjangkanSingkatan(t)).replaceAll(" + ", " dan ");
 
 function bentukPublik(a: AcaraMentah): AcaraPublik {
   const status = statusAcara(a);
   const satuBaris = a.tabel.length === 1;
   // Baris tabel sering lebih rinci: "Pantai Senja, Batu Besar, Nongsa" lawan "Pantai Senja, Nongsa".
-  const lokasiTabel = satuBaris ? ikonJadiKata(a.tabel[0].lokasi) : "";
+  const lokasiTabel = satuBaris ? a.tabel[0].lokasi : "";
   const lokasi = LOKASI_GANTI[a.id] ?? (lokasiTabel.length > a.lokasi.length ? lokasiTabel : a.lokasi);
-  const url = tautan(a.sumber_url);
   return {
     id: a.id,
-    nama: panjangkanSingkatan(a.nama),
+    nama: teksAcara(a.nama),
     bulan: a.bulan,
-    lokasi,
-    penyelenggara: PENYELENGGARA_GANTI[a.id] ?? a.penyelenggara,
-    deskripsi: DESKRIPSI_GANTI[a.id] ?? (a.deskripsi && panjangkanSingkatan(a.deskripsi)),
+    lokasi: rapiTeks(lokasi),
+    penyelenggara: rapiTeks(PENYELENGGARA_GANTI[a.id] ?? a.penyelenggara),
+    deskripsi: DESKRIPSI_GANTI[a.id] ?? (a.deskripsi && teksAcara(a.deskripsi)),
     kelompok: kelompokAcara(a),
     status,
     statusRinci: statusRinci(a, status),
     pola: POLA[a.id] ?? null,
     tanggalTidakPasti: tanggalTidakPasti(a),
     edisi: a.tabel.map((t) => ({
-      judul: satuBaris ? null : panjangkanSingkatan(t.acara.replace(" (KSM)", "")),
-      tanggal: t.tanggal,
-      lokasi: satuBaris ? null : ikonJadiKata(t.lokasi),
+      judul: satuBaris ? null : teksAcara(t.acara.replace(" (KSM)", "")),
+      tanggal: rapiTeks(t.tanggal),
+      lokasi: satuBaris ? null : rapiAtauKosong(t.lokasi),
     })),
     catatan: CATATAN[a.id] ?? [],
-    sumber: url && { ...url, sekunder: SUMBER_SEKUNDER.test(url.href) },
     tempat: TEMPAT_ACARA[a.id] ?? [],
   };
 }
 
 const BULAN_SINGKAT = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
 
-/** Hari awal edisi yang jatuh di bulan kartu ini. Hanya untuk urutan dalam satu bulan. */
-const hariAwal = (a: AcaraPublik) => {
-  if (a.tanggalTidakPasti || !a.bulan) return 99;
+/** Hari awal edisi yang jatuh di bulan kartu ini, dibaca dari data mentah. Hanya untuk urutan dalam satu bulan. */
+const hariAwal = (a: AcaraMentah) => {
+  if (tanggalTidakPasti(a) || !a.bulan) return 99;
   const pola = new RegExp(`(\\d{1,2})(?:–\\d{1,2})?\\s+${BULAN_SINGKAT[a.bulan - 1]}`);
-  const m = a.edisi
-    .map((e) => e.tanggal)
+  const m = a.tabel
+    .map((t) => t.tanggal)
     .join("; ")
     .match(pola);
   return m ? Number(m[1]) : 99;
@@ -215,11 +204,14 @@ const hariAwal = (a: AcaraPublik) => {
  * (ev-011 bulan 7 ada sebelum ev-012 bulan 6). Acara tanpa bulan di paling akhir.
  */
 export function daftarAcara(): AcaraPublik[] {
-  return acara
-    .map(bentukPublik)
+  return [...acara]
     .sort(
-      (a, b) => (a.bulan ?? 13) - (b.bulan ?? 13) || hariAwal(a) - hariAwal(b) || a.nama.localeCompare(b.nama, "id"),
-    );
+      (a, b) =>
+        (a.bulan ?? 13) - (b.bulan ?? 13) ||
+        hariAwal(a) - hariAwal(b) ||
+        panjangkanSingkatan(a.nama).localeCompare(panjangkanSingkatan(b.nama), "id"),
+    )
+    .map(bentukPublik);
 }
 
 export const adaCatatanPublik = (id: string) => id in CATATAN;
@@ -283,11 +275,8 @@ export function kelompokKata(kata: string): KelompokKata {
 
 export const ragamKata = (asal: string): RagamKata => (asal.startsWith("Melayu") ? "Melayu" : "Bahasa Batam");
 
-export function labelSumberKata(catatan: string): { bersumber: boolean; label: string } {
-  if (catatan.includes("arti [P]")) return { bersumber: true, label: "Istilah bersumber, arti pengamatan" };
-  if (catatan.startsWith("[S]")) return { bersumber: true, label: "Bersumber" };
-  return { bersumber: false, label: "Pengamatan, belum divalidasi" };
-}
+/** Tanda [P] di data berarti pengamatan yang belum divalidasi: istilahnya, atau artinya saja. */
+export const belumDiperiksaPenutur = (catatan: string) => catatan.includes("[P]");
 
 // Konteks untuk kata yang bisa salah terbaca. Kamus saat ini tidak memuat istilah etnis lama yang merendahkan.
 // Kalau kelak ada, tes `ISTILAH_ETNIS_LAMA` gagal sampai entrinya diberi konteks di sini.
@@ -304,7 +293,6 @@ export const adaKonteksKata = (id: string) => id in KONTEKS_KATA;
 
 function kataPublik(k: KataMentah): KataPublik {
   const ragam = ragamKata(k.asal);
-  const { bersumber, label } = labelSumberKata(k.catatan);
   return {
     id: k.id,
     kata: k.kata,
@@ -314,10 +302,8 @@ function kataPublik(k: KataMentah): KataPublik {
     ragam,
     labelRagam: k.asal === "Melayu Kepri" ? "Melayu Kepri" : ragam,
     kelompok: kelompokKata(k.kata),
-    bersumber,
-    labelSumber: label,
+    belumDiperiksa: belumDiperiksaPenutur(k.catatan),
     konteks: KONTEKS_KATA[k.id] ?? null,
-    sumber: tautan(k.sumber_url),
   };
 }
 
@@ -330,7 +316,7 @@ export function daftarKata(): KataPublik[] {
 export const PENGANTAR_BUDAYA = {
   // Dua kalimat pertama diambil dari budaya_melayu.md, tes mencocokkannya. "Rekomendasi konten" di berkas itu
   // adalah instruksi penyusun dan tidak ikut tampil.
-  tuanRumah: 'Batam memang kota pendatang, tapi "tuan rumah" budayanya Melayu.',
+  tuanRumah: "Batam memang kota pendatang, tetapi “tuan rumah” budayanya Melayu.",
   panggung: "Pemko menjadikan festival Melayu (KSM, Kenduri WBTb, Mandi Safar) sebagai panggung utama kota.",
 };
 
@@ -343,11 +329,10 @@ const panjangkanSingkatan = (teks: string) =>
 
 export const pengantarPublik = (teks: string) => panjangkanSingkatan(teks);
 
+/** Satu label per kartu. Tari Jogi: keberadaannya tercatat, sejarahnya belum, jadi labelnya yang lebih hati-hati. */
 function labelStatusTradisi(status: string): { teks: string; nada: "ok" | "caution" } {
-  if (status === "✅") return { teks: "Bersumber", nada: "ok" };
-  if (status === "✅ / ⚠️") return { teks: "Bersumber, sebagian belum terkonfirmasi", nada: "caution" };
-  if (status === "✅ (sejarah ⚠️)") return { teks: "Bersumber, sejarahnya perlu dicek", nada: "caution" };
-  return { teks: ikonJadiKata(status), nada: "caution" };
+  if (status.startsWith("Tercatat") && !status.includes("sejarahnya")) return { teks: "Tercatat", nada: "ok" };
+  return { teks: "Belum terverifikasi", nada: "caution" };
 }
 
 const TRADISI_DI_KALENDER: Record<string, string> = {
@@ -361,7 +346,6 @@ export type TradisiPublik = {
   nama: string;
   penjelasan: string;
   status: { teks: string; nada: "ok" | "caution" };
-  sumber: Tautan[];
   kalender: string | null;
 };
 
@@ -369,31 +353,32 @@ export function daftarTradisi(): TradisiPublik[] {
   return tradisi.map((t) => ({
     id: t.id,
     nama: t.nama,
-    penjelasan: panjangkanSingkatan(t.penjelasan.replace(/⚠️? /g, "")),
+    penjelasan: rapiTeks(panjangkanSingkatan(t.penjelasan)),
     status: labelStatusTradisi(t.status),
-    sumber: t.sumber_url.flatMap((u) => tautan(u) ?? []),
     kalender: TRADISI_DI_KALENDER[t.id] ?? null,
   }));
 }
 
 // ---------- Komunitas ----------
 
-const LABEL_STATUS_KOMUNITAS: Record<string, { teks: string; nada: "ok" | "caution" | "info" }> = {
-  "✅": { teks: "Terverifikasi", nada: "ok" },
-  "✅ keberadaan": { teks: "Keberadaan terkonfirmasi", nada: "info" },
-  "⚠️": { teks: "Perlu dicek", nada: "caution" },
-  "⌛": { teks: "Mungkin usang", nada: "caution" },
-};
+/** Satu label per kartu. "Tercatat, keberadaan saja" tetap Tercatat; yang mungkin usang belum terverifikasi. */
+function labelStatusKomunitas(status: string): { teks: string; nada: "ok" | "caution" } {
+  return status.startsWith("Tercatat")
+    ? { teks: "Tercatat", nada: "ok" }
+    : { teks: "Belum terverifikasi", nada: "caution" };
+}
 
 /**
- * Kanal hanya tampil bila status entri persis ✅. Sisanya tanpa akun: riset belum mengecek akunnya langsung.
- * Nilai yang boleh tampil adalah akun atau kanal lembaga, bukan nomor pribadi.
+ * Kanal hanya tampil bila status entri persis Tercatat. Sisanya tanpa akun: riset belum mengecek akunnya langsung.
+ * Nilai yang boleh tampil adalah akun atau kanal lembaga, bukan nomor pribadi. Situs pemerintah tidak ditautkan
+ * (pedoman 2.9), termasuk rujukan ke kanal dinas.
  */
 export function kanalKomunitas(k: {
   kontak_publik: string;
   status: string;
 }): { teks: string; href: string | null } | null {
-  if (k.status !== "✅") return null;
+  if (k.status !== "Tercatat") return null;
+  if (/\.go\.id|Disbudpar/i.test(k.kontak_publik)) return null;
   const ig = k.kontak_publik.match(/^IG @([\w.]+)$/);
   if (ig) return { teks: `Instagram @${ig[1]}`, href: `https://www.instagram.com/${ig[1]}/` };
   if (/^[\w.-]+\.[a-z]{2,}(\/\S*)?$/i.test(k.kontak_publik)) {
@@ -408,8 +393,7 @@ export type KomunitasPublik = {
   bidang: string;
   anggota: string[];
   kanal: { teks: string; href: string | null } | null;
-  status: { teks: string; nada: "ok" | "caution" | "info" };
-  sumber: Tautan[];
+  status: { teks: string; nada: "ok" | "caution" };
 };
 
 export function daftarKomunitas(): KomunitasPublik[] {
@@ -417,16 +401,15 @@ export function daftarKomunitas(): KomunitasPublik[] {
     id: k.id,
     // Entri gabungan: nama anggotanya tampil sebagai daftar, jadi judulnya tidak mengulang.
     nama: k.anggota ? judulGabungan(k.id, k.nama) : k.nama,
-    bidang: panjangkanSingkatan(k.jenis),
+    bidang: rapiTeks(panjangkanSingkatan(k.jenis)),
     anggota: k.anggota ?? [],
     kanal: kanalKomunitas(k),
-    status: LABEL_STATUS_KOMUNITAS[k.status] ?? { teks: ikonJadiKata(k.status), nada: "caution" },
-    sumber: k.sumber_url.flatMap((u) => tautan(u) ?? []),
+    status: labelStatusKomunitas(k.status),
   }));
 }
 
 function judulGabungan(id: string, nama: string) {
   if (id === "kom-003") return "Empat klub lari";
-  if (id === "kom-012") return "Media lokal online";
+  if (id === "kom-012") return "Media lokal daring";
   return nama;
 }

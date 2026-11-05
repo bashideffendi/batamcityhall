@@ -13,7 +13,7 @@ export async function GET(_permintaan: Request, { params }: { params: Promise<{ 
   const k = KARTU.find((x) => x.id === spot);
   if (!k) return new Response("Tidak ditemukan", { status: 404 });
   const [serif, sans] = await Promise.all([
-    huruf("source-serif-4", "source-serif-4-latin-600-normal.woff"),
+    huruf("newsreader", "newsreader-latin-600-normal.woff"),
     huruf("plus-jakarta-sans", "plus-jakarta-sans-latin-500-normal.woff"),
   ]);
   return new ImageResponse(
@@ -25,8 +25,8 @@ export async function GET(_permintaan: Request, { params }: { params: Promise<{ 
         flexDirection: "column",
         justifyContent: "space-between",
         padding: 72,
-        background: "#F4EFE4",
-        color: "#1C1B19",
+        background: "#FFFFFF",
+        color: "#161616",
         fontFamily: "Jakarta",
       }}
     >

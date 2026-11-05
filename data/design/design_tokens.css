@@ -1,205 +1,86 @@
-/* Batam City Hall — design tokens v0.1 */
+/* Batam City Hall: token tampilan editorial (pedoman 4.2). Menggantikan isi lama data/design/design_tokens.css. */
 :root {
-  /* ---------- Warna: siang ---------- */
-  --bch-paper: #F4EFE4;
-  --bch-paper-2: #EBE4D5;
-  --bch-paper-3: #E2D9C6;
-  --bch-ink: #1C1B19;
-  --bch-ink-muted: #5A564E;
-  --bch-sea-ink: #4E6A7A;
-  --bch-accent: #A2482A;        /* teks aksen, AA */
-  --bch-accent-riso: #BD6439;   /* Riso Copper: dekor / teks ≥24px */
-  --bch-rule: #CFC6B4;
-  --bch-rule-strong: #8B8579;
-  --bch-focus: #A2482A;
+  /* kertas dan tinta */
+  --bch-paper: #FFFFFF;
+  --bch-paper-2: #F6F4EF;
+  --bch-ink: #161616;
+  --bch-ink-muted: #5B5B5B;
+  --bch-ink-faint: #767676;      /* hanya nomor kecil di menu dan indeks loket */
+  --bch-rule: #E8E6E1;
+  --bch-rule-strong: #161616;
+  --bch-link: #0067A5;
 
-  --bch-status-ok: #407060;      /* Riso Hunter Green */
-  --bch-status-caution: #7A5C0E;
-  --bch-status-danger: #9E2B25;
-  --bch-status-info: #4E6A7A;
-  --bch-status-ok-bg: #E3EAE2;
-  --bch-status-caution-bg: #F1E7CC;
-  --bch-status-danger-bg: #F3DCD6;
+  /* tinta Riso: grafis, nomor loket besar, garis menu aktif, rute feri, pita kaki halaman */
+  --bch-riso-blue: #0078BF;
+  --bch-riso-red: #F15060;
+  --bch-riso-yellow: #FFB511;
 
-  /* Layer peta */
-  --bch-map-land: #F4EFE4;
-  --bch-map-water: #DCE3E1;
-  --bch-map-shallow: #E6EBE7;
-  --bch-map-depth-line: #8FA5B0;
-  --bch-map-waterline: #4E6A7A;
-  --bch-map-mangrove: #7C8C6E;
-  --bch-map-forest: #9AA38A;
-  --bch-map-road-major: #B9AE98;
-  --bch-map-road-minor: #D8CFBD;
-  --bch-map-building: #E7DFCF;
-  --bch-map-building-line: #BFB4A0;
-  --bch-map-ferry: #A2482A;
-  --bch-map-graticule: #8B8579;
-  --bch-map-1n: #A2482A;
+  /* status (titik 7 px + teks) */
+  --bch-status-ok: #1E7A4F;
+  --bch-status-caution: #9A6400;
+  --bch-status-danger: #B42318;
 
-  /* Tinta Riso (mural) — perkiraan hex stencil.wiki */
-  --riso-federal-blue: #3D5588;
-  --riso-copper: #BD6439;
-  --riso-brick: #A75154;
-  --riso-lagoon: #2F6F65;
-  --riso-hunter-green: #407060;
-  --riso-flat-gold: #BB8B41;
-  --riso-charcoal: #70747C;
-  --riso-granite: #A5AAA8;
-  --riso-indigo: #484D7A;
-  --riso-bisque: #F2CDCF;
+  /* peta kerja */
+  --bch-map-sea: #E4EFF7;
+  --bch-map-land: #FFF5E0;
+  --bch-map-land-other: #FBF7EF;
+  --bch-map-coast: #7E9AAE;
+  --bch-map-boundary: #D8C9AC;
+  --bch-map-label: #7A6A4F;
+  --bch-map-road: #FFFFFF;
+  --bch-map-road-casing: #E5DAC3;
+  --bch-map-road-major: #FFE9BF;
+  --bch-map-building: #F3EBD8;
+  --bch-radar-light: #CFE4F2;
+  --bch-radar-mid: #3F8FCB;
+  --bch-radar-heavy: #2C4F88;
 
-  /* ---------- Tipografi ---------- */
-  --bch-font-serif: "Source Serif 4", "Source Serif Pro", Georgia, serif;
-  --bch-font-display: var(--bch-font-serif); /* alt: "Fraunces" */
-  --bch-font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --bch-font-mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
+  /* kategori tempat (ikon dan penanda peta, pedoman 5.4) */
+  --bch-kat-makan: #E85A1F;
+  --bch-kat-menginap: #765BA7;
+  --bch-kat-ibadah: #407060;
+  --bch-kat-kesehatan: #F15060;
+  --bch-kat-transportasi: #0078BF;
+  --bch-kat-belanja: #FFB511;   /* ikon memakai tinta, bukan putih */
+  --bch-kat-cerita: #914E72;
+  --bch-kat-alam: #00995A;
+  --bch-kat-darurat: #161616;
+  --bch-kat-layanan: #70747C;
+  --bch-kat-pendidikan: #3D5588;
+  --bch-kat-jasa: #BB8B41;
+  /* versi teks (kontras >= 4,5 : 1 di atas putih) */
+  --bch-kat-makan-teks: #B5461A;
+  --bch-kat-cerita-teks: #914E72;
 
-  --bch-text-display: clamp(2.5rem, 1.2rem + 5.2vw, 4.5rem);
-  --bch-text-h1: clamp(2rem, 1.1rem + 3.6vw, 3.25rem);
-  --bch-text-h2: clamp(1.625rem, 1.2rem + 1.7vw, 2.25rem);
-  --bch-text-h3: clamp(1.3125rem, 1.1rem + 0.8vw, 1.625rem);
-  --bch-text-lede: clamp(1.125rem, 1rem + 0.5vw, 1.3125rem);
-  --bch-text-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-  --bch-text-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
-  --bch-text-caption: 0.8125rem;
-  --bch-text-kicker: 0.8125rem;
-  --bch-text-data: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
-  --bch-text-data-lg: clamp(1.875rem, 1.4rem + 1.9vw, 2.5rem);
+  /* huruf */
+  --bch-font-display: 'Newsreader', Georgia, serif;
+  --bch-font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --bch-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  --bch-leading-tight: 1.05;
-  --bch-leading-heading: 1.15;
-  --bch-leading-body: 1.6;
-  --bch-leading-data: 1.4;
-
-  --bch-tracking-display: -0.02em;
-  --bch-tracking-heading: -0.01em;
-  --bch-tracking-kicker: 0.14em;
-  --bch-tracking-caption: 0.02em;
-
-  --bch-measure: 38rem;
-
-  /* ---------- Spasi (basis 4px) ---------- */
-  --bch-space-1: 0.25rem;
-  --bch-space-2: 0.5rem;
-  --bch-space-3: 0.75rem;
-  --bch-space-4: 1rem;
-  --bch-space-5: 1.5rem;
-  --bch-space-6: 2rem;
-  --bch-space-7: 3rem;
-  --bch-space-8: 4rem;
-  --bch-space-9: 6rem;
-  --bch-space-10: 8rem;
-  --bch-gutter: clamp(1rem, 0.5rem + 2vw, 2rem);
-
-  /* ---------- Garis, radius, bayangan ---------- */
-  --bch-stroke-hair: 0.5px;
-  --bch-stroke-fine: 0.75px;
-  --bch-stroke-base: 1px;
-  --bch-stroke-icon: 1.25px;
-  --bch-radius-0: 0;
-  --bch-radius-1: 2px;
-  --bch-radius-2: 4px;
-  --bch-radius-pill: 999px; /* hanya untuk chip status */
-  --bch-shadow-none: none;
-  --bch-shadow-paper: 0 1px 0 rgba(28, 27, 25, 0.06), 0 2px 6px -2px rgba(28, 27, 25, 0.08);
-  --bch-shadow-lift: 0 8px 24px -12px rgba(28, 27, 25, 0.18);
-
-  /* ---------- Gerak ---------- */
-  --bch-ease: cubic-bezier(0.2, 0, 0, 1);
-  --bch-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --bch-dur-instant: 120ms;
-  --bch-dur-fast: 240ms;
-  --bch-dur-base: 420ms;
-  --bch-dur-slow: 700ms;
-  --bch-dur-map: 1600ms;
-  --bch-shift: 8px;
-
-  /* ---------- Tekstur ---------- */
-  --bch-grain-url: url("/tex/grain-256.webp");
-  --bch-grain-opacity: 0.06;
-  --bch-grain-blend: multiply;
-  --bch-riso-offset-x: 0.6px;
-  --bch-riso-offset-y: -0.4px;
+  /* bentuk */
+  --bch-radius-pill: 999px;
+  --bch-radius-panel: 10px;
+  --bch-shadow-panel: 0 10px 30px rgba(0, 0, 0, .12); /* hanya panel yang melayang di atas peta */
+  --bch-wrap: 1248px;
 }
 
-/* ---------- Mode "chart malam" ---------- */
-:root[data-theme="night"] {
-  --bch-paper: #0F1B2A;
-  --bch-paper-2: #16263A;
-  --bch-paper-3: #1D3048;
-  --bch-ink: #EDE4CF;
-  --bch-ink-muted: #A9A493;
-  --bch-sea-ink: #7FA3B5;
-  --bch-accent: #E08A63;
-  --bch-accent-riso: #E08A63;
-  --bch-rule: #2C3E54;
-  --bch-rule-strong: #A5AAA8;
-  --bch-focus: #E08A63;
-
-  --bch-status-ok: #8FC1A0;
-  --bch-status-caution: #E3C26B;
-  --bch-status-danger: #F08C80;
-  --bch-status-info: #7FA3B5;
-  --bch-status-ok-bg: #18332C;
-  --bch-status-caution-bg: #3A3220;
-  --bch-status-danger-bg: #3E2226;
-
-  --bch-map-land: #16263A;
-  --bch-map-water: #0F1B2A;
-  --bch-map-shallow: #132235;
-  --bch-map-depth-line: rgba(237, 228, 207, 0.25);
-  --bch-map-waterline: rgba(237, 228, 207, 0.3);
-  --bch-map-mangrove: #8FA597;
-  --bch-map-forest: #6F8577;
-  --bch-map-road-major: #3A4A5C;
-  --bch-map-road-minor: #26364A;
-  --bch-map-building: #1B2C41;
-  --bch-map-building-line: #33465C;
-  --bch-map-ferry: #E08A63;
-  --bch-map-graticule: #A5AAA8;
-  --bch-map-1n: #E08A63;
-
-  --bch-shadow-paper: 0 1px 0 rgba(0, 0, 0, 0.3);
-  --bch-shadow-lift: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
-
-  --bch-grain-url: url("/tex/grain-256-light.webp");
-  --bch-grain-opacity: 0.05;
-  --bch-grain-blend: screen;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="day"]) { color-scheme: dark; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --bch-dur-fast: 0ms;
-    --bch-dur-base: 0ms;
-    --bch-dur-slow: 0ms;
-    --bch-dur-map: 0ms;
-    --bch-shift: 0px;
-  }
-}
-
-/* Utilitas tipografi */
-.bch-kicker {
-  font-family: var(--bch-font-serif);
-  font-variant-caps: all-small-caps; /* smcp + c2sc, Source Serif 4 */
-  letter-spacing: var(--bch-tracking-kicker);
-  font-size: var(--bch-text-kicker);
-}
-.bch-data {
-  font-family: var(--bch-font-mono);
-  font-variant-numeric: tabular-nums slashed-zero;
-  font-size: var(--bch-text-data);
-  line-height: var(--bch-leading-data);
-}
-.bch-display {
-  font-family: var(--bch-font-display);
-  font-optical-sizing: auto;
-  font-size: var(--bch-text-display);
-  line-height: var(--bch-leading-tight);
-  letter-spacing: var(--bch-tracking-display);
-  font-weight: 400; /* Fraunces default 900 — selalu set eksplisit */
+[data-theme="dark"] {
+  --bch-paper: #141414;
+  --bch-paper-2: #F6F4EF;        /* alas grafis Riso tetap terang */
+  --bch-ink: #F2F0EB;
+  --bch-ink-muted: #B3B0A8;
+  --bch-ink-faint: #8F8C85;
+  --bch-rule: #2E2D2A;
+  --bch-rule-strong: #F2F0EB;
+  --bch-link: #6CB8EA;
+  --bch-map-sea: #16222C;
+  --bch-map-land: #22201B;
+  --bch-map-land-other: #1B1A17;
+  --bch-map-coast: #4F6676;
+  --bch-map-boundary: #4A4335;
+  --bch-map-label: #B8A989;
+  --bch-map-road: #2E2B25;
+  --bch-map-road-casing: #3A362E;
+  --bch-map-road-major: #4A3F2A;
+  --bch-map-building: #2A2721;
 }

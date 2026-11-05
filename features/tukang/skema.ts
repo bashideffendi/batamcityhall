@@ -9,18 +9,19 @@ const teks = (min: number, max: number, pesan: string) =>
     .string({ error: pesan })
     .trim()
     .min(min, { error: pesan })
-    .max(max, { error: `Terlalu panjang. Paling banyak ${max} huruf.` });
+    .max(max, { error: `Terlalu panjang. Paling banyak ${max} karakter.` });
 
 const opsional = (max: number) =>
   z
     .string()
     .trim()
-    .max(max, { error: `Terlalu panjang. Paling banyak ${max} huruf.` })
+    .max(max, { error: `Terlalu panjang. Paling banyak ${max} karakter.` })
     .optional()
     .transform((v) => v || null);
 
 const adaKontakPribadi = (s: string) => /\+?\d[\d\s().-]{7,}\d/.test(s) || /[^\s@]+@[^\s@]+\.[^\s@]+/.test(s);
-const PESAN_TANPA_KONTAK = "Jangan menulis nomor HP atau surel di sini. Ada kolom sendiri untuk itu.";
+const PESAN_TANPA_KONTAK = "Jangan menulis nomor ponsel atau surel di sini. Ada kolom sendiri untuk itu.";
+const PESAN_PERSETUJUAN = "Centang persetujuan untuk mengirim.";
 
 const kontakWarga = (pesan: string) =>
   z.string({ error: pesan }).trim().max(120, { error: pesan }).refine(kontakSah, { error: pesan });
@@ -33,37 +34,37 @@ export const adaHoneypot = (badan: unknown) =>
 
 export const SkemaRekomendasi = z
   .object({
-    nama_tukang: teks(2, 80, "Tulis nama tukang atau nama usahanya.").refine((s) => !adaKontakPribadi(s), {
+    nama_tukang: teks(2, 80, "Isi nama tukang atau nama usahanya.").refine((s) => !adaKontakPribadi(s), {
       error: PESAN_TANPA_KONTAK,
     }),
-    jasa: z.enum(SLUG_JASA, { error: "Pilih jenis jasanya." }),
+    jasa: z.enum(SLUG_JASA, { error: "Pilih jenis jasa." }),
     area_kecamatan: z
-      .array(z.enum(KECAMATAN), { error: "Pilih minimal satu kecamatan." })
-      .min(1, { error: "Pilih minimal satu kecamatan." })
+      .array(z.enum(KECAMATAN), { error: "Pilih sekurang-kurangnya satu kecamatan." })
+      .min(1, { error: "Pilih sekurang-kurangnya satu kecamatan." })
       .max(KECAMATAN.length),
     area_catatan: opsional(120),
     panggilan: z.boolean().optional().default(false),
-    cara_hubungi: teks(3, 120, "Tulis cara menghubunginya: nomor WA, kios, atau akun usaha."),
+    cara_hubungi: teks(3, 120, "Isi nomor telepon atau alamat tempat usaha."),
     kapan_dipakai: z
-      .string({ error: "Isi kapan terakhir memakai jasanya." })
-      .regex(/^\d{4}-(0[1-9]|1[0-2])$/, { error: "Isi kapan terakhir memakai jasanya." })
+      .string({ error: "Isi bulan dan tahun terakhir memakai jasa." })
+      .regex(/^\d{4}-(0[1-9]|1[0-2])$/, { error: "Isi bulan dan tahun terakhir memakai jasa." })
       .refine((v) => v >= "1990-01" && v <= new Date(Date.now() + 864e5).toISOString().slice(0, 7), {
-        error: "Bulannya belum terjadi, atau terlalu lama.",
+        error: "Isi bulan yang sudah lewat, paling awal Januari 1990.",
       }),
-    cerita: teks(20, 600, "Ceritakan singkat, minimal satu kalimat.").refine((s) => !adaKontakPribadi(s), {
+    cerita: teks(20, 300, "Ceritakan pengalamanmu secara singkat.").refine((s) => !adaKontakPribadi(s), {
       error: PESAN_TANPA_KONTAK,
     }),
     tag: z.array(z.enum(TAG_REKOMENDASI)).max(TAG_REKOMENDASI.length).optional().default([]),
-    kontak_perekomendasi: kontakWarga("Tulis nomor HP atau surel Anda yang benar. Tidak akan ditampilkan."),
-    bukan_pemilik: benar("Centang ini. Tukang tidak bisa merekomendasikan dirinya sendiri."),
-    setuju: benar("Centang persetujuan dulu."),
+    kontak_perekomendasi: kontakWarga("Isi nomor ponsel atau surel yang benar. Kontak ini tidak pernah ditampilkan."),
+    bukan_pemilik: benar(PESAN_PERSETUJUAN),
+    setuju: benar(PESAN_PERSETUJUAN),
   })
   .superRefine((v, ctx) => {
     if (normalKontak(v.kontak_perekomendasi) === normalKontak(v.cara_hubungi)) {
       ctx.addIssue({
         code: "custom",
         path: ["kontak_perekomendasi"],
-        message: "Kontak Anda sama dengan kontak tukang. Tukang tidak bisa merekomendasikan dirinya sendiri.",
+        message: "Kontakmu sama dengan kontak tukang. Tukang tidak dapat merekomendasikan dirinya sendiri.",
       });
     }
   });
@@ -80,7 +81,7 @@ export const SkemaLaporan = z.object({
 
 export const SkemaKoreksi = z
   .object({
-    jenis: z.enum(JENIS_KOREKSI.map((j) => j.nilai) as [string, ...string[]], { error: "Pilih jenis koreksinya." }),
+    jenis: z.enum(JENIS_KOREKSI.map((j) => j.nilai) as [string, ...string[]], { error: "Pilih jenis koreksi." }),
     tempat_id: z
       .string()
       .trim()
@@ -91,7 +92,7 @@ export const SkemaKoreksi = z
       .optional()
       .nullable()
       .transform((v) => v ?? null),
-    isi: teks(10, 1500, "Tulis yang perlu dibetulkan, minimal satu kalimat."),
+    isi: teks(10, 1500, "Tulis yang perlu diperbaiki, sekurang-kurangnya satu kalimat."),
     kontak: z
       .string()
       .trim()
@@ -106,27 +107,27 @@ export const SkemaKoreksi = z
       ctx.addIssue({
         code: "custom",
         path: ["kontak"],
-        message: "Permintaan soal data pribadi butuh kontak, supaya kami bisa memastikan itu memang data Anda.",
+        message: "Permintaan tentang data pribadi memerlukan kontak supaya kami dapat memastikan data itu milikmu.",
       });
     }
     if (v.kontak && !kontakSah(v.kontak)) {
-      ctx.addIssue({ code: "custom", path: ["kontak"], message: "Tulis nomor HP atau surel yang benar." });
+      ctx.addIssue({ code: "custom", path: ["kontak"], message: "Isi nomor ponsel atau surel yang benar." });
     }
     if (v.kontak && !v.setuju) {
-      ctx.addIssue({ code: "custom", path: ["setuju"], message: "Centang persetujuan kalau meninggalkan kontak." });
+      ctx.addIssue({ code: "custom", path: ["setuju"], message: "Centang persetujuan bila meninggalkan kontak." });
     }
   });
 export type InputKoreksi = z.output<typeof SkemaKoreksi>;
 
 export const SkemaFoto = z.object({
-  judul: teks(3, 120, "Tulis judul atau isi fotonya."),
-  lokasi: teks(2, 120, "Tulis lokasi fotonya, kira-kira juga boleh."),
-  perkiraan_tahun: teks(2, 40, 'Tulis perkiraan tahunnya. Boleh "sekitar 1990-an".'),
+  judul: teks(3, 120, "Tulis judul atau isi foto."),
+  lokasi: teks(2, 120, "Tulis lokasi foto. Perkiraan juga boleh."),
+  perkiraan_tahun: teks(2, 40, "Tulis perkiraan tahun, misalnya “sekitar 1990-an”."),
   cerita: opsional(800),
   kredit: teks(2, 80, "Tulis nama untuk kredit foto."),
-  kontak: kontakWarga("Tulis nomor HP atau surel yang benar. Tidak akan ditampilkan."),
-  punya_hak: benar("Centang ini kalau foto ini milik Anda atau Anda berhak membagikannya."),
-  izin_tampil: benar("Centang izin tampil dulu."),
+  kontak: kontakWarga("Isi nomor ponsel atau surel yang benar. Kontak ini tidak pernah ditampilkan."),
+  punya_hak: benar("Centang bila foto ini milikmu atau kamu berhak membagikannya."),
+  izin_tampil: benar("Centang izin tampil untuk mengirim."),
 });
 export type InputFoto = z.output<typeof SkemaFoto>;
 

@@ -5,7 +5,7 @@
     "dulu": "Teluk Jodoh, tempat makan-minum pekerja Jepang; jalan belum diaspal",
     "sekarang": "Pusat dagang, mal (Nagoya Hill mulai 2007), hotel, Chinatown",
     "tahun_kunci": "1970-an–1980-an; 2007",
-    "status_tabel": "⚠️",
+    "status_tabel": "Berbeda versi",
     "status_verifikasi": "perbedaan_versi",
     "sumber_url": [
       "https://www.thejakartapost.com/travel/2019/12/17/nagoya-a-quarter-of-japanese-legacy-in-batam",
@@ -20,7 +20,7 @@
     "dulu": "Awal 1990-an hanya gedung Otorita dan kantor wali kota yang dirampungkan",
     "sekarang": "Pusat pemerintahan, permukiman padat, pelabuhan feri internasional",
     "tahun_kunci": "1990-an",
-    "status_tabel": "⚠️",
+    "status_tabel": "Berbeda versi",
     "status_verifikasi": "perbedaan_versi",
     "sumber_url": [
       "https://socreativemedia.com/properti-dan-wajah-baru-batam/"
@@ -30,11 +30,11 @@
   },
   {
     "id": "pf-03",
-    "lokasi": "Sekupang & Batu Ampar",
+    "lokasi": "Sekupang dan Batu Ampar",
     "dulu": "Basis logistik Pertamina; Pelabuhan Batu Ampar dibangun pekerja Jepang",
     "sekarang": "Pelabuhan internasional Sekupang, pelabuhan kargo Batu Ampar",
     "tahun_kunci": "1970-an",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "status_verifikasi": "terverifikasi",
     "sumber_url": [
       "https://www.terasbatam.id/sejarah-nagoya-di-batam/"
@@ -51,7 +51,7 @@
     "dulu": "Waduk sementara untuk Pertamina Sambu",
     "sekarang": "Waduk tertua; permanen beroperasi 1979 (210 l/detik)",
     "tahun_kunci": "1969 → 1979",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "status_verifikasi": "terverifikasi",
     "sumber_url": [
       "https://batampos.co.id/2020/10/21/sejarah-pembangunan-waduk-di-batam/"
@@ -67,7 +67,7 @@
     "dulu": "Sungai",
     "sekarang": "Waduk 0,7 juta m³, 60 l/detik",
     "tahun_kunci": "1975 atau 1978",
-    "status_tabel": "⚠️",
+    "status_tabel": "Berbeda versi",
     "status_verifikasi": "perbedaan_versi",
     "sumber_url": [
       "https://batam.tribunnews.com/2020/06/17/jadi-sumber-air-baku-inilah-profil-enam-waduk-di-kota-batam-paling-luas-duriangkang"
@@ -83,7 +83,7 @@
     "dulu": "Lembah sungai",
     "sekarang": "Waduk 8,8 juta m³",
     "tahun_kunci": "1981–1982 atau 1985–1986",
-    "status_tabel": "⚠️",
+    "status_tabel": "Berbeda versi",
     "status_verifikasi": "perbedaan_versi",
     "sumber_url": [
       "https://gowest.id/sejarah-pengelolaan-air-bersih-di-batam-1-waduk-waduk-di-batam-duriangkang-yang-fenomenal/"
@@ -99,7 +99,7 @@
     "dulu": "Sungai",
     "sekarang": "Waduk 13,4 juta m³, hulu Duriangkang",
     "tahun_kunci": "1989/1990 → 1991",
-    "status_tabel": "⚠️",
+    "status_tabel": "Berbeda versi",
     "status_verifikasi": "perbedaan_versi",
     "sumber_url": [
       "https://jurnalsda.pusair-pu.go.id/index.php/JSDA/article/download/690/529"
@@ -115,7 +115,7 @@
     "dulu": "Muara sungai berair asin dan kampung Duriangkang (warganya direlokasi ke Tanjung Piayu)",
     "sekarang": "Waduk terbesar (100,7 juta m³, sekitar 3.000 l/detik)",
     "tahun_kunci": "Versi BP Batam: dibangun 1990, operasi 2001 (versi lain 1986/1992; 1991/1995)",
-    "status_tabel": "⚠️",
+    "status_tabel": "Berbeda versi",
     "status_verifikasi": "perbedaan_versi",
     "sumber_url": [
       "https://pengling.bpbatam.go.id/en/portfolio/waduk-duriangkang/",
@@ -132,7 +132,7 @@
     "dulu": "Hutan pesisir Batu Besar; lokasi semula direncanakan di Tanjung Uncang",
     "sekarang": "Landasan 4.025 × 45 m, terpanjang di Indonesia; area 1.762 ha",
     "tahun_kunci": "1974–1995 (versi berbeda)",
-    "status_tabel": "⚠️",
+    "status_tabel": "Berbeda versi",
     "status_verifikasi": "perbedaan_versi",
     "sumber_url": [
       "https://www.batamnews.co.id/berita-64150-infografis-sejarah-pembangunan-bandara-hang-nadim.html"
@@ -148,7 +148,7 @@
     "dulu": "Batam terpisah dari Rempang–Galang (hanya perahu)",
     "sekarang": "Enam jembatan + jalan 54 km (52 km jalan, 2 km jembatan)",
     "tahun_kunci": "1992–1998",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "status_verifikasi": "terverifikasi",
     "sumber_url": [
       "https://batampos.co.id/2018/11/07/jembatan-barelang-destinasi-wisata-batam-paling-hits-di-instagram/"
@@ -164,7 +164,7 @@
     "dulu": "Kamp pengungsi Vietnam",
     "sekarang": "Wisata Sejarah Galang (sejak 2000)",
     "tahun_kunci": "1979–1996",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "status_verifikasi": "terverifikasi",
     "sumber_url": [
       "https://www.melayupedia.com/berita/42/tak-hanya-kota-industri-batam-juga-punya-3-wisata-heritage-yang-wajib-dikunjungi"
@@ -180,7 +180,7 @@
     "dulu": "Kebun karet yang diubah jadi kampung dan dermaga tawanan Jepang",
     "sekarang": "Kampung-kampung tua; monumen tentara Jepang",
     "tahun_kunci": "1945–1946",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "status_verifikasi": "terverifikasi",
     "sumber_url": [
       "https://isomer-user-content.by.gov.sg/339/11d54ac8-9e5b-46d4-b71d-0c9f60c96b3b/BA-Oct-Dec2026-Rempang.pdf"
@@ -194,9 +194,9 @@
     "id": "pf-13",
     "lokasi": "Nongsa Digital Park",
     "dulu": "Kawasan resor (Turi Beach, Nongsa Point Marina)",
-    "sekarang": "KEK digital & data center",
+    "sekarang": "KEK digital dan pusat data",
     "tahun_kunci": "2021",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "status_verifikasi": "terverifikasi",
     "sumber_url": [
       "https://www.ekon.go.id/publikasi/detail/3067/menko-airlangga-kek-batam-dapat-menjadi-contoh-dan-"
@@ -212,7 +212,7 @@
     "dulu": "Kampung pesisir seperti Teloek Tring dan Sungai Senimba di peta 1847",
     "sekarang": "Sebagian jadi kawasan industri, pelabuhan, dan kampung tua",
     "tahun_kunci": "1847 vs kini",
-    "status_tabel": "✅",
+    "status_tabel": "Tercatat",
     "status_verifikasi": "terverifikasi",
     "sumber_url": [
       "https://gowest.id/peta-pesisir-utara-pulau-bantang-i-e-batam/"

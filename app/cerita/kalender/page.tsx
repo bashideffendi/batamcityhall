@@ -1,39 +1,31 @@
 import type { Metadata } from "next";
-import { daftarAcara, TERAKHIR_DICEK } from "@/features/budaya/data";
+import { DATA_DIHIMPUN, daftarAcara } from "@/features/budaya/data";
 import Kalender from "@/features/budaya/Kalender";
 import { LABEL_STATUS } from "@/features/budaya/label";
 import NavBudaya, { KickerCerita } from "@/features/budaya/NavBudaya";
 import "@/features/budaya/budaya.css";
 
+const LEDE =
+  "Kalender ini memuat acara budaya dan komunitas di Batam sepanjang tahun. Tanggal dapat berubah. Tanyakan kepada penyelenggara sebelum datang.";
+
 export const metadata: Metadata = {
-  title: "Kalender acara",
-  description:
-    "Acara budaya, keagamaan, olahraga, dan kota di Batam, per bulan. Tanggal edisi terakhir yang tercatat, bukan janji tahun depan.",
+  title: "Kalender Acara",
+  description: LEDE,
 };
 
 const ARTI_STATUS = [
-  ["rutin", "Sudah beberapa kali digelar dan ada sumbernya."],
-  ["pernah", "Tercatat pernah digelar. Belum tentu berulang."],
-  ["perlu dicek", "Sumbernya sekunder atau datanya belum lengkap."],
-  ["tidak pasti", "Tanggal atau agendanya tidak terpusat."],
-  ["dibatalkan", "Dijadwalkan, lalu batal."],
+  ["rutin", "Sudah beberapa kali diadakan."],
+  ["pernah", "Tercatat pernah diadakan. Belum tentu berulang."],
+  ["belum pasti", "Tanggal atau agendanya belum pasti."],
+  ["dibatalkan", "Dijadwalkan, lalu dibatalkan."],
 ] as const;
 
 export default function HalamanKalender() {
   return (
     <div className="bch-page">
       <KickerCerita />
-      <h1 className="mt-2">Kalender acara</h1>
-      <p className="bch-lede">Tanggal di sini edisi terakhir yang tercatat, bukan janji tahun depan.</p>
-      <div className="bch-prose">
-        <p>
-          Semua waktu dalam WIB. Pemko Batam memperbarui kalender event tiap tiga bulan, jadi cek ulang ke{" "}
-          <a href="https://disbudpar.batam.go.id/" target="_blank" rel="noopener noreferrer">
-            disbudpar.batam.go.id
-          </a>{" "}
-          (menu Event, lalu Calendar of Event) sebelum berangkat.
-        </p>
-      </div>
+      <h1 className="mt-2">Kalender Acara</h1>
+      <p className="bch-lede">{LEDE}</p>
       <dl className="bud-legenda">
         {ARTI_STATUS.map(([s, arti]) => (
           <div key={s}>
@@ -46,7 +38,8 @@ export default function HalamanKalender() {
           </div>
         ))}
       </dl>
-      <Kalender acara={daftarAcara()} dicek={TERAKHIR_DICEK} />
+      <Kalender acara={daftarAcara()} />
+      <p className="bch-card-meta mt-5">{DATA_DIHIMPUN}</p>
       <NavBudaya kini="/cerita/kalender" />
     </div>
   );

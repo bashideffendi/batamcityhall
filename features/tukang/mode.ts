@@ -22,5 +22,5 @@ export function modeKiriman(env: Env = process.env): ModeKiriman {
   return env.NODE_ENV === "production" ? "mati" : "contoh";
 }
 
-export const PESAN_MATI =
-  "Kami belum menerima kiriman. Basis datanya belum tersambung, jadi kiriman Anda tidak akan tersimpan.";
+export const PESAN_MATI = "Formulir ini belum aktif.";
+export const PESAN_MATI_REKOMENDASI = `${PESAN_MATI} Rekomendasi dapat dikirim setelah sistemnya dibuka.`;

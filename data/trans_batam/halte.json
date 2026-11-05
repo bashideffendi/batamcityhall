@@ -7458,11 +7458,11 @@
     {
       "halte": "Transferpoint Batam Center",
       "koridor": "K1, K2, K5, K6, K7",
-      "fungsi": "Hub utama, dekat Pelabuhan Batam Centre dan Mega Mall"
+      "fungsi": "Titik transit utama, dekat Pelabuhan Batam Centre dan Mega Mall"
     },
     {
       "halte": "Mega Mall / Imigrasi / Engku Putri",
-      "koridor": "K1, K5 (+K2/K6 di sekitar)",
+      "koridor": "K1, K5 (K2 dan K6 di sekitar)",
       "fungsi": "Koridor pusat"
     },
     {
@@ -7483,32 +7483,32 @@
     {
       "halte": "Transferpoint Sekupang",
       "koridor": "K1, K3, K4",
-      "fungsi": "Hub barat"
+      "fungsi": "Titik transit barat"
     },
     {
-      "halte": "Kartini → UIB (± 11 halte)",
+      "halte": "Kartini → UIB (sekitar 11 halte)",
       "koridor": "K1, K3",
       "fungsi": "Ruas berimpit panjang"
     },
     {
       "halte": "Transferpoint Terminal Jodoh, Top 100 Jodoh, DC Mall SW",
       "koridor": "K3, K5, K8",
-      "fungsi": "Hub utara"
+      "fungsi": "Titik transit utara"
     },
     {
       "halte": "Transferpoint Punggur → Kabil Raya",
       "koridor": "K8, K9",
-      "fungsi": "Hub timur"
+      "fungsi": "Titik transit timur"
     },
     {
       "halte": "Kampung Mangga, Citra Mas, Bandoeng Resto, Polda Kepri",
       "koridor": "K7, K9",
-      "fungsi": "Transfer Nongsa"
+      "fungsi": "Transit ke Nongsa"
     },
     {
       "halte": "Fanindo, Basecamp, Hidayatullah",
       "koridor": "K2, K4",
-      "fungsi": "Transfer Sagulung/Batu Aji"
+      "fungsi": "Transit ke Sagulung dan Batu Aji"
     }
   ],
   "urutan_ringkas_seed": {

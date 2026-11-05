@@ -2,26 +2,29 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Cara berkontribusi",
-  description: "Cara warga ikut mengisi Batam City Hall.",
+  title: "Cara Berkontribusi",
+  description:
+    "Tiga cara membantu Batam City Hall: merekomendasikan tukang, mengirim koreksi data, dan mengirim foto lama Batam.",
 };
 
 export default function Kontribusi() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Cara berkontribusi</p>
-      <h1 className="mt-2">Balai warga diisi warga</h1>
-      <p className="bch-lede">Kanal kirimnya belum dibuka. Yang berikut ini rencananya.</p>
+      <h1>Cara Berkontribusi</h1>
+      <p className="bch-lede">
+        Tiga cara membantu Batam City Hall: merekomendasikan tukang, mengirim koreksi data, dan mengirim foto lama Batam.
+      </p>
       <div className="bch-prose">
         <ul>
-          <li>Rekomendasi Tukang Langganan dari warga yang pernah memakai jasanya.</li>
-          <li>Foto lama Batam, dengan izin pemiliknya.</li>
-          <li>Kata dan cerita untuk kamus dan kampung tua.</li>
           <li>
-            <Link href="/koreksi">Koreksi data</Link> tempat di direktori.
+            <Link href="/tukang/rekomendasi">Rekomendasikan tukang</Link> yang pernah kamu pakai sendiri.
           </li>
+          <li>
+            <Link href="/koreksi">Kirim koreksi</Link> untuk tempat di direktori.
+          </li>
+          <li>Kirim foto lama Batam, dengan izin pemiliknya. Formulirnya belum aktif.</li>
         </ul>
-        <p>Tidak ada yang bisa membayar supaya masuk daftar atau naik urutan.</p>
+        <p>Tidak ada yang dapat membayar untuk masuk daftar atau naik urutan.</p>
       </div>
     </div>
   );

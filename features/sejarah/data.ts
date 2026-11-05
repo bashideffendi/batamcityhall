@@ -3,8 +3,9 @@
 import garisWaktu from "@/data/sejarah/garis_waktu.json";
 import dataPenduduk from "@/data/sejarah/data_penduduk.json";
 import dataWisman from "@/data/sejarah/data_wisman.json";
+import { rapiTeks } from "./rapi";
 
-export type KunciStatus = "terverifikasi" | "perbedaan_versi" | "belum_terverifikasi" | "cerita_rakyat" | "campuran";
+export type KunciStatus = "terverifikasi" | "perbedaan_versi" | "belum_terverifikasi" | "cerita_rakyat";
 export type Sumber = { url: string; nama: string };
 
 export const namaSumber = (url: string) => {
@@ -16,16 +17,6 @@ export const namaSumber = (url: string) => {
 };
 export const keSumber = (urls: readonly string[] | null | undefined): Sumber[] =>
   (urls ?? []).map((url) => ({ url, nama: namaSumber(url) }));
-
-/** Tanda emoji laporan menjadi kata. Rincian hanya ada kalau statusnya bercabang atau punya catatan. */
-export function rincianStatus(s: string | null | undefined): string | null {
-  if (!s || !s.includes("(")) return null;
-  return s
-    .replaceAll("✅", "terverifikasi")
-    .replaceAll("⚠️", "beda versi")
-    .replaceAll("❓", "belum terverifikasi")
-    .trim();
-}
 
 export const LABEL_KATEGORI: Record<string, string> = {
   prasejarah: "Prasejarah",
@@ -72,10 +63,7 @@ export const TEKS_REMPANG =
   "Rempang Eco City ditetapkan sebagai proyek strategis nasional lewat Permenko Perekonomian 7/2023 pada 28 Agustus 2023. " +
   "Tempo mencatat Perpres 12/2025 (10 Februari 2025) tidak mencantumkannya di daftar 77 proyek strategis. " +
   "BP Batam (Maret 2025) menyatakan proyek itu masih ada di lampiran arah pembangunan kewilayahan. " +
-  "Keterangan warga, Walhi, dan Ombudsman ada di halaman Kronologi Rempang. " +
   `Terakhir diperbarui ${DIPERBARUI_REMPANG}.`;
-
-export const TAUTAN_REMPANG = { href: "/cerita/rempang", label: "Kronologi Rempang" };
 
 // Tokoh yang punya halaman di Siapa di Balik Nama Jalan. Yang lain tampil sebagai teks.
 export const HALAMAN_TOKOH: Record<string, string> = {
@@ -90,10 +78,7 @@ type Ubahan = {
   tahun?: string;
   tanggal?: string;
   status?: KunciStatus;
-  rincian?: string | null;
   teks?: string;
-  sumberTambahan?: string[];
-  tautan?: { href: string; label: string };
 };
 
 const UBAHAN: Record<string, Ubahan> = {
@@ -101,7 +86,6 @@ const UBAHAN: Record<string, Ubahan> = {
   "gw-008": {
     tahun: "1831 (diperdebatkan)",
     status: "perbedaan_versi",
-    rincian: "beda versi (tahun wafat) / belum terverifikasi (letak makam)",
     teks:
       "Tahun wafat masih diperdebatkan. Dinas Kebudayaan Kepri menulis 1831, sedangkan catatan Belanda 1833 yang dikutip " +
       'Aswandi Syahri menyebut ia "berusia sekitar 50 tahun" pada 1833. Administrasi Nongsa berkembang mencakup seluruh ' +
@@ -110,22 +94,20 @@ const UBAHAN: Record<string, Ubahan> = {
   // Laporan 15 (Perigi Batu Pulau Buluh, sekitar 1898) dan 16 (Batu Aji, sekitar 1896): tampil keduanya.
   "gw-011": {
     status: "perbedaan_versi",
-    rincian: "beda versi (tahun dan letak pabrik)",
     teks:
       'Pabrik bata pertama di Batam oleh Raja Ali Kelana dan pengusaha Singapura Ong Sam Leong; bata bertuliskan "Batam Brick ' +
       'works" masih ada di Perigi Batu Pulau Buluh (cagar budaya). Disbudpar Kota Batam (2021) menyebut pabriknya di Batu Aji, ' +
       '"sekitar tahun 1896"; sumber lain menyebut 1901.',
   },
-  "gw-t06": { status: "campuran", rincian: null },
+  // Status di data kosong: konteks umumnya tercatat, detail lokalnya belum. Satu label, jadi yang lebih hati-hati.
+  "gw-t06": { status: "belum_terverifikasi" },
+  "gw-t07": {
+    teks: "Kepulauan Riau menjadi garis depan konfrontasi. Peran spesifik Pulau Batam belum tercatat.",
+  },
   "gw-t16": {
     tahun: "28 Agustus 2023",
     tanggal: "2023-08-28",
-    rincian: null,
     teks: TEKS_REMPANG,
-    tautan: TAUTAN_REMPANG,
-    sumberTambahan: [
-      "https://www.tempo.co/ekonomi/dpr-buktikan-proyek-rempang-eco-city-tak-masuk-daftar-77-psn-prabowo-1284270",
-    ],
   },
 };
 
@@ -134,6 +116,8 @@ const saringPenyusun = (t: string) =>
   t
     .replace(/\s*Jangan tampilkan[^.]*\./g, "")
     .replace(/\s*Disebut singkat[^.]*\./g, "")
+    .replace(/\s*\(dikutip sekunder\)/g, "")
+    .replace(/ yang bisa dicek/g, "")
     .replaceAll(" — ", ", ")
     .trim();
 
@@ -154,28 +138,21 @@ export type EntriGaris = {
   tokoh: { nama: string; id: string | null }[];
   kategori: string;
   status: KunciStatus;
-  rincian: string | null;
-  sumber: Sumber[];
-  tautan: { href: string; label: string } | null;
 };
 
 type Mentah = (typeof garisWaktu)[number];
 
 function keEntri(e: Mentah): EntriGaris {
   const u = UBAHAN[e.id] ?? {};
-  const status = u.status ?? (e.status_verifikasi as KunciStatus | null) ?? "campuran";
   return {
     id: e.id,
-    tahun: u.tahun ?? e.tahun_tabel,
+    tahun: rapiTeks(u.tahun ?? e.tahun_tabel),
     tanggal: u.tanggal ?? e.tanggal,
-    judul: e.judul,
-    teks: u.teks ?? saringPenyusun(e.penjelasan),
+    judul: rapiTeks(e.judul),
+    teks: rapiTeks(u.teks ?? saringPenyusun(e.penjelasan)),
     tokoh: (e.tokoh ?? []).map((nama) => ({ nama, id: HALAMAN_TOKOH[nama] ?? null })),
     kategori: e.kategori ?? KATEGORI_TABEL[e.id] ?? "kota",
-    status,
-    rincian: u.rincian === undefined ? rincianStatus(e.status_tabel) : u.rincian,
-    sumber: keSumber([...(e.sumber_url ?? []), ...(u.sumberTambahan ?? [])]),
-    tautan: u.tautan ?? null,
+    status: u.status ?? (e.status_verifikasi as KunciStatus | null) ?? "belum_terverifikasi",
   };
 }
 
@@ -218,7 +195,6 @@ export type TitikPenduduk = {
   jumlahTeks: string;
   metode: MetodePenduduk;
   catatan: string | null;
-  sumber: Sumber[];
 };
 
 // Catatan yang hanya mengulang label metode tidak perlu ditulis dua kali.
@@ -232,7 +208,6 @@ export const PENDUDUK: TitikPenduduk[] = dataPenduduk.map((b) => ({
   jumlahTeks: b.jumlah_tabel,
   metode: metodePenduduk(b.catatan),
   catatan: CATATAN_ULANG.includes(b.catatan) ? null : b.catatan,
-  sumber: keSumber([b.sumber_url]),
 }));
 
 // ---------- Wisman ----------
@@ -242,16 +217,14 @@ export type TitikWisman = {
   jumlah: number | null;
   rentang: [number, number] | null;
   teks: string;
-  sumber: Sumber[];
 };
 
-// Tahun 2023 tidak punya satu angka di file ini: "sekitar 1,1–1,19 juta (beda sumber)".
+// Tahun 2023 tidak punya satu angka di file ini, hanya rentang antarsumber.
 const RENTANG_WISMAN: Record<number, [number, number]> = { 2023: [1_100_000, 1_190_000] };
 
 export const WISMAN: TitikWisman[] = dataWisman.map((b) => ({
   tahun: b.tahun,
   jumlah: b.jumlah,
   rentang: b.jumlah == null ? (RENTANG_WISMAN[b.tahun] ?? null) : null,
-  teks: b.kunjungan_tabel,
-  sumber: keSumber(b.sumber_url),
+  teks: rapiTeks(b.kunjungan_tabel).replace("beda sumber", "berbeda sumber"),
 }));

@@ -2,19 +2,13 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { placeSchema, statsSchema } from "@/lib/data/schema";
-import { ATTRIBUTION, FOOTER_DISCLAIMER, LOKET } from "@/lib/site";
+import { KAKI_KETERANGAN, LOKET } from "@/lib/site";
 
 const baca = (p: string): unknown => JSON.parse(readFileSync(join(process.cwd(), p), "utf8"));
 
 describe("teks wajib", () => {
-  it("disclaimer footer persis seperti keputusan pemilik", () => {
-    expect(FOOTER_DISCLAIMER).toBe(
-      "Proyek independen warga Batam, bukan situs resmi Pemerintah Kota Batam atau BP Batam. Untuk layanan resmi: batam.go.id.",
-    );
-  });
-
-  it("atribusi peta dasar tercantum", () => {
-    expect(ATTRIBUTION).toContain("Peta dasar © OpenStreetMap contributors, Protomaps");
+  it("kaki halaman persis seperti pedoman 3.1", () => {
+    expect(KAKI_KETERANGAN).toBe("Proyek independen warga Batam · Tanpa iklan");
   });
 });
 

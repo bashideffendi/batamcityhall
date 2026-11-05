@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { bungkus } from "@/features/main/gambar-kartu";
-import { hitungOngkos, TARIF } from "@/features/main/ongkos";
+import { hitungOngkos, TARIF, teksRupiahSekitar } from "@/features/main/ongkos";
 import { cariPin } from "@/features/peta/CariPeta";
 import type { PinPeta } from "@/features/peta/lapisan";
 
@@ -22,6 +22,19 @@ describe("ongkos", () => {
     expect(hitungOngkos(-1, 1)).toBeNull();
     expect(hitungOngkos(12_000, 0)).toBeNull();
     expect(hitungOngkos(12_000, 1.5)).toBeNull();
+  });
+});
+
+describe("teks rupiah sekitar", () => {
+  it("memakai juta dengan satu desimal, tanpa ,0", () => {
+    expect(teksRupiahSekitar(1_049_000)).toBe("Rp1 juta");
+    expect(teksRupiahSekitar(2_098_000)).toBe("Rp2,1 juta");
+    expect(teksRupiahSekitar(1_600_000)).toBe("Rp1,6 juta");
+  });
+
+  it("di bawah satu juta ditulis penuh, di atas seribu juta memakai miliar", () => {
+    expect(teksRupiahSekitar(850_000)).toBe("Rp850.000");
+    expect(teksRupiahSekitar(1_200_000_000)).toBe("Rp1,2 miliar");
   });
 });
 

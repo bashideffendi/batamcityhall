@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { daftarKomunitas, TERAKHIR_DICEK } from "@/features/budaya/data";
+import { DATA_DIHIMPUN, daftarKomunitas } from "@/features/budaya/data";
 import NavBudaya, { KickerCerita } from "@/features/budaya/NavBudaya";
 import "@/features/budaya/budaya.css";
 
+const LEDE = "Halaman ini memuat komunitas kreatif, olahraga, dan budaya di Batam.";
+
 export const metadata: Metadata = {
   title: "Komunitas",
-  description:
-    "Komunitas dan lembaga budaya, seni, lari, dan media di Batam yang punya jejak tertulis. Tanpa kontak pribadi.",
+  description: LEDE,
 };
 
 const LUAR = { target: "_blank", rel: "noopener noreferrer" } as const;
@@ -18,13 +19,13 @@ export default function HalamanKomunitas() {
     <div className="bch-page">
       <KickerCerita />
       <h1 className="mt-2">Komunitas</h1>
-      <p className="bch-lede">Yang punya jejak tertulis. Tentu lebih banyak lagi yang belum tercatat di sini.</p>
+      <p className="bch-lede">{LEDE}</p>
       <div className="bch-prose">
         <p>
-          Kanal hanya kami tulis kalau sudah dicek. Sisanya tertulis &ldquo;kanal belum dicek&rdquo;. Nomor HP dan
-          kontak pribadi pengurus tidak kami muat. Masuk daftar ini bukan berarti kami mendukung atau bekerja sama.
+          Nomor ponsel dan kontak pribadi pengurus tidak dimuat. Masuk daftar ini bukan berarti kami mendukung atau
+          bekerja sama.
         </p>
-        <p className="bch-card-meta">Terakhir dicek {TERAKHIR_DICEK}</p>
+        <p className="bch-card-meta">{DATA_DIHIMPUN}</p>
       </div>
 
       <ul className="bch-grid mt-5">
@@ -42,46 +43,33 @@ export default function HalamanKomunitas() {
                   ))}
                 </ul>
               )}
-              <p className="mt-2 mb-0" data-kanal={k.kanal ? "ada" : "belum"}>
-                {k.kanal ? (
-                  k.kanal.href ? (
+              {k.kanal && (
+                <p className="mt-2 mb-0" data-kanal="ada">
+                  {k.kanal.href ? (
                     <a href={k.kanal.href} {...LUAR}>
                       {k.kanal.teks}
                     </a>
                   ) : (
                     k.kanal.teks
-                  )
-                ) : (
-                  <span className="bud-kanal-kosong">Kanal belum dicek</span>
-                )}
-              </p>
+                  )}
+                </p>
+              )}
               <div className="bch-badges mt-3">
                 <span className="bch-badge" data-tone={k.status.nada}>
                   {k.status.teks}
                 </span>
               </div>
-              <p className="bch-card-meta mt-3 mb-0">
-                Sumber:{" "}
-                {k.sumber.map((s, i) => (
-                  <span key={s.href}>
-                    {i > 0 && ", "}
-                    <a href={s.href} {...LUAR}>
-                      {s.label}
-                    </a>
-                  </span>
-                ))}
-              </p>
             </article>
           </li>
         ))}
       </ul>
 
       <section>
-        <h2 className="mt-7 mb-3">Belum ketemu sumbernya</h2>
+        <h2 className="mt-7 mb-3">Belum Ada di Daftar</h2>
         <p className="bch-measure">
           Sanggar seni Melayu, komunitas fotografi, ilustrator dan desainer, kolektif seni atau galeri, taman baca, dan
-          komunitas sepeda. Pasti ada, kami saja yang belum menemukan sumber tertulisnya.{" "}
-          <Link href="/kontribusi">Kenal salah satunya?</Link>
+          komunitas sepeda belum tercatat di sini. Kalau kamu tahu komunitasnya,{" "}
+          <Link href="/kontribusi">kirim usulan</Link>.
         </p>
       </section>
 

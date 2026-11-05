@@ -4,37 +4,39 @@
     "task_id": "wf-45ea1918-1dd9-865f-844b-d2b422910e8a",
     "data_per": "2026-11-04",
     "keterangan_struktur": "\"rute\" = 23 entri verbatim dari blok JSON (b) (data/raw/14-feri-pompong__3.json), sumber_url diubah jadi array, ditambah \"dari_tabel\" (baris tabel laporan yang cocok, kolom asli; markup ** dibuang), \"status_data\" (dari kolom Status data / Tanggal data tabel), dan \"catatan\" (kalimat laporan). \"rute_tambahan\" = baris tabel yang tidak punya versi JSON; id dibuat saat migrasi (id_dibuat_migrasi=true). Baris pompong tanpa tujuan (Pelantar Batu Ampar / Tanjung Sengkuang, Setokok) disimpan di terminal.json.",
-    "biaya_tambahan": [
-      "**Sindo** memasang tarif dasar mulai SGD 28. Saat berangkat dari Singapura ada tambahan Singapore Passenger Departure Fee SGD 10, yang menurut pengumuman Sindo naik dari SGD 7 mulai 1 November 2022. Saat berangkat dari Batam ada Batam Terminal Fee Rp100.000, yang menurut Sindo dinaikkan BP Batam dari Rp65.000 mulai 1 September 2023.",
-      "**BatamFast** memasang SGD 43 sekali jalan / SGD 76 PP yang sudah termasuk fee.",
-      "**Fuel surcharge** dikenakan karena kenaikan harga BBM: SGD 6 (Singapura → Batam) dan Rp65.000 (Batam → Singapura). Menurut pengumuman resmi Sindo Ferry, \"Temporary Fuel Surcharge, effective from March 12, 2026\". Mothership (12 Maret 2026) juga menyebut 12 Maret untuk BatamFast, Horizon, dan Majestic. Satu-satunya yang berbeda adalah judul berita di situs BatamFast, \"Fuel Surcharge Implementation Effective 14th March 2026\". Penumpang Horizon yang beli tiket lewat pihak ketiga dilaporkan harus membayar surcharge di konter.",
-      "**Cara beli resmi:** situs atau aplikasi operator (batamfast.com, majesticfastferry.com.sg, sindoferry.com.sg, horizonfastferry.com.sg) atau konter di terminal. Klook/KKday/Traveloka hanya agregator. Untuk Jumat sore, Sabtu pagi, dan libur nasional Singapura, sebaiknya pesan 2–3 hari sebelumnya."
-    ],
-    "rekomendasi_laporan": [
-      "**Widget \"Feri terakhir hari ini\":** sumbernya file JSON statis hasil ketik ulang dari jadwal resmi (BatamFast PDF 1 Nov 2026, Majestic PDF Mei 2026, halaman Sindo, halaman Horizon). Tampilkan `tanggal_data`. Kalau `tanggal_data` sudah lebih dari 60 hari, munculkan banner \"jadwal mungkin sudah berubah\". Selalu sertakan tombol ke link resmi operator.",
-      "**Jangan menampilkan harga sebagai angka pasti.** Tulis sebagai \"mulai dari\" dan tambahkan catatan soal fee dan fuel surcharge.",
-      "**Untuk pompong, tampilkan sebagai \"rute rakyat, tarif nego\"** kecuali Sekupang–Belakang Padang. Siapkan tombol \"laporkan tarif terbaru\" untuk warga.",
-      "**Prioritas verifikasi koordinat** (lihat daftar di bagian paling akhir): Singapore Cruise Centre, Nongsapura, Gold Coast Bengkong, Bintang 99, dan semua pelantar rakyat."
-    ],
-    "caveats_laporan": [
-      "Banyak jadwal di laporan ini berasal dari situs operator yang bisa berubah kapan saja. Ada beberapa ketidakcocokan antarsumber: Sindo Sekupang 20:30, versi jadwal Sindo Batam Centre, dan tanggal mulai fuel surcharge (12 Maret 2026 menurut Sindo Ferry dan Mothership, sedangkan judul berita BatamFast menulis 14 Maret 2026).",
-      "Data pompong mayoritas dari berita atau blog 2014–2022. Tarifnya kemungkinan sudah naik.",
-      "Koordinat terminal belum dicek langsung di OpenStreetMap. Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok. Koordinat resmi di situs BatamPort untuk Batam Centre, Nongsapura, dan Telaga Punggur tampak salah ketik, jadi jangan dipakai.",
-      "Jadwal Pelni dan RoRo per hari bisa berbeda dari contoh. Gunakan aplikasi PELNI dan Ferizy sebagai rujukan final."
-    ],
-    "key_findings_laporan": [
-      "**Terminal HarbourFront sudah pindah.** BatamFast pindah ke Singapore Cruise Centre (HarbourFront), 5 HarbourFront Avenue, mulai 7 Juli 2026. Horizon, Majestic, Sindo, dan Indo Falcon menyusul 15 Juli 2026. Dalam pengumumannya pada 15 Juni 2026, Singapore Cruise Centre menyatakan \"There are no changes to ferry routes, destinations served and scheduling as a result of the move\", dan gedung barunya hanya sekitar 70 m dari terminal lama. HarbourFront Centre lama tutup 27 Juli 2026. Teks lama di situs yang masih menyebut \"HarbourFront Centre / 1 Maritime Square\" perlu diganti.",
-      "**Ada beda zona waktu.** Batam (WIB) satu jam di belakang Singapura. Semua jadwal keberangkatan dari Singapura ditulis dalam waktu Singapura, dan dari Batam dalam WIB. Di kode, simpan jam beserta zona waktunya (`Asia/Singapore` vs `Asia/Jakarta`), jangan disatukan.",
-      "**Gold Coast Bengkong sedang terganggu.** Di jadwal BatamFast yang berlaku 1 November 2026, sebagian besar trip HarbourFront–Gold Coast bertanda \"Suspended until further notice\". Yang tidak bertanda suspend tinggal HF→GC 09:35 (dioperasikan Sindo) dan 10:30, serta GC→HF 15:30 (Sindo) dan 19:00.",
-      "**Sekupang adalah terminal yang paling cepat \"tutup\".** Feri terakhir Sekupang → HarbourFront jatuh di 17:40 (BatamFast) atau 18:00 (Majestic). Situs Sindo mencantumkan 20:30, dan angka ini perlu dicek ulang.",
-      "**RoRo Punggur–Tanjung Uban tidak menjual tiket di loket.** Tiket hanya lewat trip.ferizy.com dan check-in minimal 2 jam sebelum berangkat. Ini penting untuk ditulis di panduan warga.",
-      "**Musim angin utara jatuh November–Februari, puncaknya Desember–Januari.** Suratman, Kasi Data dan Informasi BMKG Kelas I Hang Nadim (ANTARA, Januari 2023), menyebut gelombang akibat angin utara di Batam, Bintan, Lingga, dan Karimun \"tidak terlalu tinggi karena secara geografis masih terhalang oleh pulau-pulau di sekitarnya\". Menurutnya, yang paling terdampak adalah Anambas dan Natuna karena \"langsung menghadap langsung ke arah utara\", dengan kecepatan angin yang \"bisa mencapai 30 kilometer per jam, bahkan lebih\". Rute panjang seperti Dumai dan Lingga juga ikut merasakan dampaknya."
-    ],
-    "catatan_malaysia": "Satu catatan: Stulang Laut sekarang secara resmi bernama Berjaya Waterfront Ferry Terminal. Media dan warga masih memakai nama \"Stulang Laut\", jadi di UI sebaiknya tampilkan keduanya.",
-    "catatan_domestik": [
-      "Tiket Pelni bisa dibeli lewat aplikasi PELNI Mobile, pelni.co.id, atau loket cabang Pelni Batam. Kapal Pelni pindah sandar ke Pelabuhan Bintang 99 Persada (Batu Ampar) sejak Desember 2024. Natuna tidak punya rute reguler yang terverifikasi dari Batam dalam riset ini, jadi statusnya perlu_diisi_user.",
-      "Harga resmi Punggur ditetapkan BP Batam lewat pengelola BatamPort (batamport.bpbatam.go.id). Itu link rujukan terbaik untuk domestik."
-    ]
+    "catatan_laporan": {
+      "biaya_tambahan": [
+        "**Sindo** memasang tarif dasar mulai SGD 28. Saat berangkat dari Singapura ada tambahan Singapore Passenger Departure Fee SGD 10, yang menurut pengumuman Sindo naik dari SGD 7 mulai 1 November 2022. Saat berangkat dari Batam ada Batam Terminal Fee Rp100.000, yang menurut Sindo dinaikkan BP Batam dari Rp65.000 mulai 1 September 2023.",
+        "**BatamFast** memasang SGD 43 sekali jalan / SGD 76 PP yang sudah termasuk fee.",
+        "**Fuel surcharge** dikenakan karena kenaikan harga BBM: SGD 6 (Singapura → Batam) dan Rp65.000 (Batam → Singapura). Menurut pengumuman resmi Sindo Ferry, \"Temporary Fuel Surcharge, effective from March 12, 2026\". Mothership (12 Maret 2026) juga menyebut 12 Maret untuk BatamFast, Horizon, dan Majestic. Satu-satunya yang berbeda adalah judul berita di situs BatamFast, \"Fuel Surcharge Implementation Effective 14th March 2026\". Penumpang Horizon yang beli tiket lewat pihak ketiga dilaporkan harus membayar surcharge di konter.",
+        "**Cara beli resmi:** situs atau aplikasi operator (batamfast.com, majesticfastferry.com.sg, sindoferry.com.sg, horizonfastferry.com.sg) atau konter di terminal. Klook/KKday/Traveloka hanya agregator. Untuk Jumat sore, Sabtu pagi, dan libur nasional Singapura, sebaiknya pesan 2–3 hari sebelumnya."
+      ],
+      "rekomendasi_laporan": [
+        "**Widget \"Feri terakhir hari ini\":** sumbernya file JSON statis hasil ketik ulang dari jadwal resmi (BatamFast PDF 1 Nov 2026, Majestic PDF Mei 2026, halaman Sindo, halaman Horizon). Tampilkan `tanggal_data`. Kalau `tanggal_data` sudah lebih dari 60 hari, munculkan banner \"jadwal mungkin sudah berubah\". Selalu sertakan tombol ke link resmi operator.",
+        "**Jangan menampilkan harga sebagai angka pasti.** Tulis sebagai \"mulai dari\" dan tambahkan catatan soal fee dan fuel surcharge.",
+        "**Untuk pompong, tampilkan sebagai \"rute rakyat, tarif nego\"** kecuali Sekupang–Belakang Padang. Siapkan tombol \"laporkan tarif terbaru\" untuk warga.",
+        "**Prioritas verifikasi koordinat** (lihat daftar di bagian paling akhir): Singapore Cruise Centre, Nongsapura, Gold Coast Bengkong, Bintang 99, dan semua pelantar rakyat."
+      ],
+      "caveats_laporan": [
+        "Banyak jadwal di laporan ini berasal dari situs operator yang bisa berubah kapan saja. Ada beberapa ketidakcocokan antarsumber: Sindo Sekupang 20:30, versi jadwal Sindo Batam Centre, dan tanggal mulai fuel surcharge (12 Maret 2026 menurut Sindo Ferry dan Mothership, sedangkan judul berita BatamFast menulis 14 Maret 2026).",
+        "Data pompong mayoritas dari berita atau blog 2014–2022. Tarifnya kemungkinan sudah naik.",
+        "Koordinat terminal belum dicek langsung di OpenStreetMap. Label \"terverifikasi\" artinya minimal dua sumber independen (Wikidata + Waze/Wikimapia) cocok. Koordinat resmi di situs BatamPort untuk Batam Centre, Nongsapura, dan Telaga Punggur tampak salah ketik, jadi jangan dipakai.",
+        "Jadwal Pelni dan RoRo per hari bisa berbeda dari contoh. Gunakan aplikasi PELNI dan Ferizy sebagai rujukan final."
+      ],
+      "key_findings_laporan": [
+        "**Terminal HarbourFront sudah pindah.** BatamFast pindah ke Singapore Cruise Centre (HarbourFront), 5 HarbourFront Avenue, mulai 7 Juli 2026. Horizon, Majestic, Sindo, dan Indo Falcon menyusul 15 Juli 2026. Dalam pengumumannya pada 15 Juni 2026, Singapore Cruise Centre menyatakan \"There are no changes to ferry routes, destinations served and scheduling as a result of the move\", dan gedung barunya hanya sekitar 70 m dari terminal lama. HarbourFront Centre lama tutup 27 Juli 2026. Teks lama di situs yang masih menyebut \"HarbourFront Centre / 1 Maritime Square\" perlu diganti.",
+        "**Ada beda zona waktu.** Batam (WIB) satu jam di belakang Singapura. Semua jadwal keberangkatan dari Singapura ditulis dalam waktu Singapura, dan dari Batam dalam WIB. Di kode, simpan jam beserta zona waktunya (`Asia/Singapore` vs `Asia/Jakarta`), jangan disatukan.",
+        "**Gold Coast Bengkong sedang terganggu.** Di jadwal BatamFast yang berlaku 1 November 2026, sebagian besar trip HarbourFront–Gold Coast bertanda \"Suspended until further notice\". Yang tidak bertanda suspend tinggal HF→GC 09:35 (dioperasikan Sindo) dan 10:30, serta GC→HF 15:30 (Sindo) dan 19:00.",
+        "**Sekupang adalah terminal yang paling cepat \"tutup\".** Feri terakhir Sekupang → HarbourFront jatuh di 17:40 (BatamFast) atau 18:00 (Majestic). Situs Sindo mencantumkan 20:30, dan angka ini perlu dicek ulang.",
+        "**RoRo Punggur–Tanjung Uban tidak menjual tiket di loket.** Tiket hanya lewat trip.ferizy.com dan check-in minimal 2 jam sebelum berangkat. Ini penting untuk ditulis di panduan warga.",
+        "**Musim angin utara jatuh November–Februari, puncaknya Desember–Januari.** Suratman, Kasi Data dan Informasi BMKG Kelas I Hang Nadim (ANTARA, Januari 2023), menyebut gelombang akibat angin utara di Batam, Bintan, Lingga, dan Karimun \"tidak terlalu tinggi karena secara geografis masih terhalang oleh pulau-pulau di sekitarnya\". Menurutnya, yang paling terdampak adalah Anambas dan Natuna karena \"langsung menghadap langsung ke arah utara\", dengan kecepatan angin yang \"bisa mencapai 30 kilometer per jam, bahkan lebih\". Rute panjang seperti Dumai dan Lingga juga ikut merasakan dampaknya."
+      ],
+      "catatan_malaysia": "Satu catatan: Stulang Laut sekarang secara resmi bernama Berjaya Waterfront Ferry Terminal. Media dan warga masih memakai nama \"Stulang Laut\", jadi di UI sebaiknya tampilkan keduanya.",
+      "catatan_domestik": [
+        "Tiket Pelni bisa dibeli lewat aplikasi PELNI Mobile, pelni.co.id, atau loket cabang Pelni Batam. Kapal Pelni pindah sandar ke Pelabuhan Bintang 99 Persada (Batu Ampar) sejak Desember 2024. Natuna tidak punya rute reguler yang terverifikasi dari Batam dalam riset ini, jadi statusnya perlu_diisi_user.",
+        "Harga resmi Punggur ditetapkan BP Batam lewat pengelola BatamPort (batamport.bpbatam.go.id). Itu link rujukan terbaik untuk domestik."
+      ]
+    }
   },
   "rute": [
     {
@@ -47,7 +49,7 @@
         "Sindo"
       ],
       "durasi_menit": 70,
-      "harga_kisaran": "SGD 28 + fee s/d SGD 43 all-in; fuel surcharge Rp65.000 dari Batam",
+      "harga_kisaran": "SGD 28 ditambah biaya, sampai SGD 43 termasuk biaya; biaya bahan bakar Rp65.000 dari Batam",
       "jenis": "internasional",
       "link_jadwal_resmi": "https://www.batamfast.com/",
       "sumber_url": [
@@ -59,14 +61,14 @@
           "baris": 1,
           "Rute": "Batam Centre ⇄ HarbourFront",
           "Operator": "BatamFast, Majestic, Sindo",
-          "Durasi": "±60–70 mnt",
+          "Durasi": "sekitar 60—70 menit",
           "Harga (sekali jalan)": "BatamFast SGD 43 all-in; Sindo SGD 28 + fee; Majestic ±SGD 43",
           "Link jadwal resmi": "batamfast.com · majesticfastferry.com.sg · sindoferry.com.sg/schedules"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "btc-tmft",
@@ -78,7 +80,7 @@
         "Sindo"
       ],
       "durasi_menit": 60,
-      "harga_kisaran": "±SGD 43 all-in",
+      "harga_kisaran": "sekitar SGD 43 termasuk biaya",
       "jenis": "internasional",
       "link_jadwal_resmi": "https://www.majesticfastferry.com.sg/Assets/Schedule/webschedule12052026113353.pdf",
       "sumber_url": [
@@ -90,14 +92,14 @@
           "baris": 2,
           "Rute": "Batam Centre ⇄ Tanah Merah",
           "Operator": "BatamFast (sebagian trip interline Sindo), Majestic, Sindo",
-          "Durasi": "±60 mnt",
+          "Durasi": "sekitar 60 menit",
           "Harga (sekali jalan)": "±SGD 43 all-in",
           "Link jadwal resmi": "sama"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "skp-hfc",
@@ -109,7 +111,7 @@
         "Sindo"
       ],
       "durasi_menit": 50,
-      "harga_kisaran": "SGD 28 + fee s/d SGD 43 all-in",
+      "harga_kisaran": "SGD 28 ditambah biaya, sampai SGD 43 termasuk biaya",
       "jenis": "internasional",
       "link_jadwal_resmi": "https://www.sindoferry.com.sg/schedules",
       "sumber_url": [
@@ -121,14 +123,14 @@
           "baris": 3,
           "Rute": "Sekupang ⇄ HarbourFront",
           "Operator": "BatamFast, Majestic, Sindo",
-          "Durasi": "±50 mnt",
+          "Durasi": "sekitar 50 menit",
           "Harga (sekali jalan)": "±SGD 43 all-in / SGD 28 + fee",
           "Link jadwal resmi": "sama"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": "Feri terakhir Sekupang → HarbourFront jatuh di 17:40 (BatamFast) atau 18:00 (Majestic). Situs Sindo mencantumkan 20:30, dan angka ini perlu dicek ulang."
+      "catatan_laporan": "Feri terakhir Sekupang → HarbourFront jatuh di 17:40 (BatamFast) atau 18:00 (Majestic). Situs Sindo mencantumkan 20:30, dan angka ini perlu dicek ulang."
     },
     {
       "id": "hb-hfc",
@@ -138,7 +140,7 @@
         "Horizon"
       ],
       "durasi_menit": 50,
-      "harga_kisaran": "mulai SGD 43 + fuel surcharge",
+      "harga_kisaran": "mulai SGD 43 ditambah biaya bahan bakar",
       "jenis": "internasional",
       "link_jadwal_resmi": "https://horizonfastferry.com.sg/",
       "sumber_url": [
@@ -150,14 +152,14 @@
           "baris": 4,
           "Rute": "Harbour Bay ⇄ HarbourFront",
           "Operator": "Horizon",
-          "Durasi": "±50 mnt",
+          "Durasi": "sekitar 50 menit",
           "Harga (sekali jalan)": "mulai SGD 43 (Economy) + fuel surcharge",
           "Link jadwal resmi": "horizonfastferry.com.sg"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "nsp-tmft",
@@ -167,7 +169,7 @@
         "BatamFast"
       ],
       "durasi_menit": 50,
-      "harga_kisaran": "SGD 43 all-in",
+      "harga_kisaran": "SGD 43 termasuk biaya",
       "jenis": "internasional",
       "link_jadwal_resmi": "https://www.batamfast.com/",
       "sumber_url": [
@@ -179,14 +181,14 @@
           "baris": 5,
           "Rute": "Nongsapura ⇄ Tanah Merah",
           "Operator": "BatamFast",
-          "Durasi": "±50 mnt",
+          "Durasi": "sekitar 50 menit",
           "Harga (sekali jalan)": "SGD 43 all-in",
           "Link jadwal resmi": "batamfast.com"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "gcb-hfc",
@@ -197,7 +199,7 @@
         "Sindo"
       ],
       "durasi_menit": 60,
-      "harga_kisaran": "promo SGD 17,50 belum termasuk pajak & surcharge",
+      "harga_kisaran": "promo SGD 17,50 belum termasuk pajak dan biaya tambahan",
       "jenis": "internasional",
       "link_jadwal_resmi": "https://www.batamfast.com/",
       "sumber_url": [
@@ -209,14 +211,14 @@
           "baris": 6,
           "Rute": "Gold Coast Bengkong ⇄ HarbourFront",
           "Operator": "BatamFast / Sindo (interline)",
-          "Durasi": "±50–60 mnt",
-          "Harga (sekali jalan)": "promo SGD 17,50 (belum termasuk pajak & surcharge)",
+          "Durasi": "sekitar 50—60 menit",
+          "Harga (sekali jalan)": "promo SGD 17,50 (belum termasuk pajak dan surcharge)",
           "Link jadwal resmi": "batamfast.com"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": "Di jadwal BatamFast yang berlaku 1 November 2026, sebagian besar trip HarbourFront–Gold Coast bertanda \"Suspended until further notice\". Yang tidak bertanda suspend tinggal HF→GC 09:35 (dioperasikan Sindo) dan 10:30, serta GC→HF 15:30 (Sindo) dan 19:00."
+      "catatan_laporan": "Di jadwal BatamFast yang berlaku 1 November 2026, sebagian besar trip HarbourFront–Gold Coast bertanda \"Suspended until further notice\". Yang tidak bertanda suspend tinggal HF→GC 09:35 (dioperasikan Sindo) dan 10:30, serta GC→HF 15:30 (Sindo) dan 19:00."
     },
     {
       "id": "wfc-hfc",
@@ -226,7 +228,7 @@
         "Sindo"
       ],
       "durasi_menit": 60,
-      "harga_kisaran": "SGD 28 + fee",
+      "harga_kisaran": "SGD 28 ditambah biaya",
       "jenis": "internasional",
       "link_jadwal_resmi": "https://www.sindoferry.com.sg/schedules",
       "sumber_url": [
@@ -238,14 +240,14 @@
           "baris": 7,
           "Rute": "Waterfront City ⇄ HarbourFront",
           "Operator": "Sindo (akhir pekan saja)",
-          "Durasi": "±60 mnt",
+          "Durasi": "sekitar 60 menit",
           "Harga (sekali jalan)": "SGD 28 + fee",
           "Link jadwal resmi": "sindoferry.com.sg/schedules"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "btc-stl",
@@ -257,7 +259,7 @@
         "Pintas Fast Ferry"
       ],
       "durasi_menit": 150,
-      "harga_kisaran": "Rp430.000 sekali jalan / Rp650.000 PP (termasuk seaport tax)",
+      "harga_kisaran": "Rp430.000 sekali jalan, Rp650.000 pulang pergi (termasuk pajak pelabuhan)",
       "jenis": "internasional",
       "link_jadwal_resmi": "https://www.indomasferry.com/",
       "sumber_url": [
@@ -269,15 +271,15 @@
           "baris": 1,
           "Rute": "Batam Centre ⇄ Stulang Laut (Berjaya Waterfront, Johor Bahru)",
           "Operator": "Indomas Ferry; juga Dolphin Fast Ferry, Pintas Fast Ferry",
-          "Jadwal": "BC→Stulang (WIB): 06:00, 08:30, 11:40, 13:30. Stulang→BC (MYT): 09:30, 12:00, 15:15, 17:00",
-          "Durasi": "±2–2,5 jam",
+          "Jadwal": "BC→Stulang (WIB): 06.00, 08.30, 11.40, 13.30. Stulang→BC (MYT): 09.30, 12.00, 15.15, 17.00",
+          "Durasi": "sekitar 2—2,5 jam",
           "Harga": "Dari Batam: Rp430.000 sekali jalan / Rp650.000 PP dewasa (termasuk seaport tax Rp100.000). Dari Stulang: MYR 123 sekali jalan",
           "Tanggal data": "tarif berlaku mulai 1 Januari 2026 (indomasferry.com)"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "hb-ph",
@@ -287,7 +289,7 @@
         "Putri Anggreni (Ferry Global Group)"
       ],
       "durasi_menit": null,
-      "harga_kisaran": "RM 125-172",
+      "harga_kisaran": "MYR 125—MYR 172",
       "jenis": "internasional",
       "link_jadwal_resmi": "https://ferryglobalgroup.com/schedule",
       "sumber_url": [
@@ -299,15 +301,15 @@
           "baris": 2,
           "Rute": "Harbour Bay ⇄ Puteri Harbour (Iskandar Puteri)",
           "Operator": "Putri Anggreni (Ferry Global Group)",
-          "Jadwal": "HB→PH (WIB): 07:15 (data 3 Nov 2026). PH→HB (MYT): 07:30, 11:00, 13:00, 18:30 (data 4 Nov 2026)",
-          "Durasi": "±1,5–3 jam (sumber tidak konsisten)",
+          "Jadwal": "HB→PH (WIB): 07.15 (data 3 Nov 2026). PH→HB (MYT): 07.30, 11.00, 13.00, 18.30 (data 4 Nov 2026)",
+          "Durasi": "sekitar 1,5—3 jam",
           "Harga": "RM 125–172 (redBus, Economy/Business)",
           "Tanggal data": "3–4 Nov 2026 (ferryglobalgroup.com/schedule)"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "tpg-tpi",
@@ -333,20 +335,20 @@
           "Asal": "Telaga Punggur",
           "Tujuan": "Tanjungpinang (SBP)",
           "Operator / kapal": "MV Oceanna, Marina, Ocean Dragon, Putra Maju",
-          "Jadwal": "07:30–17:30, tiap ±30 menit (contoh Juli 2026: 07:30, 08:30, 08:45, 09:15, 09:30, 10:00 …)",
-          "Durasi": "45–60 mnt",
+          "Jadwal": "07.30–17.30, tiap ±30 menit (contoh Juli 2026: 07.30, 08.30, 08.45, 09.15, 09.30, 10.00 …)",
+          "Durasi": "45—60 menit",
           "Harga": "Rp80.500",
-          "Tanggal data": "Feb & Jul 2026"
+          "Tanggal data": "Feb dan Jul 2026"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "tpg-tgu",
       "asal_id": "tpg",
-      "tujuan": "Tanjung Uban (speedboat)",
+      "tujuan": "Tanjung Uban (kapal cepat)",
       "operator": [
         "Bayu Indah Group",
         "lainnya"
@@ -363,17 +365,17 @@
           "tabel": "Tabel feri dan kapal domestik",
           "baris": 2,
           "Asal": "Telaga Punggur",
-          "Tujuan": "Tanjung Uban (speedboat)",
+          "Tujuan": "Tanjung Uban (kapal cepat)",
           "Operator / kapal": "antara lain Bayu Indah Group",
-          "Jadwal": "07:00–18:00, tiap ±30 menit",
-          "Durasi": "±15 mnt",
+          "Jadwal": "07.00–18.00, tiap ±30 menit",
+          "Durasi": "sekitar 15 menit",
           "Harga": "Rp63.500",
           "Tanggal data": "Feb 2026"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "tpg-tgu-roro",
@@ -398,23 +400,23 @@
           "Asal": "Telaga Punggur (RoRo)",
           "Tujuan": "Tanjung Uban",
           "Operator / kapal": "ASDP: KMP Trisakti Adinda, KMP Tanjung Burang (KMP Barau sedang docking)",
-          "Jadwal": "Trisakti Adinda dari Punggur 06:00, 10:00, 14:00, 18:00; Tanjung Burang dari Punggur 08:00, 12:00, 16:00. Dari Tg. Uban: Trisakti Adinda 08:00, 12:00, 16:00; Tanjung Burang 06:00, 10:00, 14:00, 18:00",
-          "Durasi": "±1 jam (perlu_cek_ulang)",
+          "Jadwal": "Trisakti Adinda dari Punggur 06.00, 10.00, 14.00, 18.00; Tanjung Burang dari Punggur 08.00, 12.00, 16.00. Dari Tg. Uban: Trisakti Adinda 08.00, 12.00, 16.00; Tanjung Burang 06.00, 10.00, 14.00, 18.00",
+          "Durasi": "sekitar 1 jam",
           "Harga": "Dewasa Rp27.000; motor (Gol. II) Rp51.000; mobil (Gol. IVA) Rp309.000",
           "Tanggal data": "9 Okt 2026"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": "RoRo Punggur–Tanjung Uban tidak menjual tiket di loket. Tiket hanya lewat trip.ferizy.com dan check-in minimal 2 jam sebelum berangkat. Jadwal RoRo Punggur–Uban pernah dijarangkan menjadi tiap 1 jam 15 menit pada Januari 2026 karena cuaca."
+      "catatan_laporan": "RoRo Punggur–Tanjung Uban tidak menjual tiket di loket. Tiket hanya lewat trip.ferizy.com dan check-in minimal 2 jam sebelum berangkat. Jadwal RoRo Punggur–Uban pernah dijarangkan menjadi tiap 1 jam 15 menit pada Januari 2026 karena cuaca."
     },
     {
       "id": "tpg-dabo",
       "asal_id": "tpg",
-      "tujuan": "Seitenam - Dabo Singkep (Lingga)",
+      "tujuan": "Seitenam—Dabo Singkep (Lingga)",
       "operator": [],
       "durasi_menit": null,
-      "harga_kisaran": "Rp252.000-306.000",
+      "harga_kisaran": "Rp252.000—Rp306.000",
       "jenis": "domestik",
       "link_jadwal_resmi": "https://batamport.bpbatam.go.id/telaga-punggur/",
       "sumber_url": [
@@ -427,7 +429,7 @@
           "Asal": "Telaga Punggur",
           "Tujuan": "Seitenam – Dabo Singkep (Lingga)",
           "Operator / kapal": "–",
-          "Jadwal": "10:30 setiap hari",
+          "Jadwal": "10.30 setiap hari",
           "Durasi": "–",
           "Harga": "Rp306.000 (Seitenam Rp252.000)",
           "Tanggal data": "Feb 2026"
@@ -435,15 +437,15 @@
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "tpg-trp",
       "asal_id": "tpg",
-      "tujuan": "Letung - Tarempa (Anambas)",
+      "tujuan": "Letung—Tarempa (Anambas)",
       "operator": [],
       "durasi_menit": null,
-      "harga_kisaran": "Rp440.000-494.000",
+      "harga_kisaran": "Rp440.000—Rp494.000",
       "jenis": "domestik",
       "link_jadwal_resmi": "https://batamport.bpbatam.go.id/telaga-punggur/",
       "sumber_url": [
@@ -456,7 +458,7 @@
           "Asal": "Telaga Punggur",
           "Tujuan": "Letung – Tarempa (Anambas)",
           "Operator / kapal": "–",
-          "Jadwal": "08:30, 2x seminggu, tergantung cuaca",
+          "Jadwal": "08.30, 2x seminggu, tergantung cuaca",
           "Durasi": "–",
           "Harga": "Letung Rp440.000; Tarempa Rp494.000",
           "Tanggal data": "Feb 2026"
@@ -464,7 +466,7 @@
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "skp-tbk",
@@ -486,26 +488,26 @@
           "baris": 8,
           "Asal": "Sekupang Domestik",
           "Tujuan": "Tanjung Balai Karimun",
-          "Operator / kapal": "Dumai Line / Batam Jet 8 & 9",
-          "Jadwal": "07:20 setiap hari (Tribun, Jun–Agu 2026); jadwal lama Dumai Express 07:00, 07:30, 09:30, 13:00, 14:15, 16:15 (usang)",
-          "Durasi": "±1–1,5 jam (perlu_cek_ulang)",
+          "Operator / kapal": "Dumai Line / Batam Jet 8 dan 9",
+          "Jadwal": "07.20 setiap hari (Tribun, Jun–Agu 2026); jadwal lama Dumai Express 07.00, 07.30, 09.30, 13.00, 14.15, 16.15 (usang)",
+          "Durasi": "sekitar 1—1,5 jam",
           "Harga": "Rp132.000",
           "Tanggal data": "2026"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "skp-dumai",
       "asal_id": "skp",
-      "tujuan": "Selat Panjang - Bengkalis - Dumai / Kuala Enok / Kuala Tungkal",
+      "tujuan": "Selat Panjang—Bengkalis—Dumai, Kuala Enok, Kuala Tungkal",
       "operator": [
         "Dumai Line Group"
       ],
       "durasi_menit": null,
-      "harga_kisaran": "Rp282.000-600.000",
+      "harga_kisaran": "Rp282.000—Rp600.000",
       "jenis": "domestik",
       "link_jadwal_resmi": null,
       "sumber_url": [
@@ -518,7 +520,7 @@
           "Asal": "Sekupang Domestik",
           "Tujuan": "Tanjung Samak, Selat Panjang, Bengkalis, Buton, Dumai, Kuala Enok, Kuala Tungkal",
           "Operator / kapal": "Dumai Line Group",
-          "Jadwal": "Batam–Buton–Bengkalis–Dumai berangkat 07:30 (jadwal lama)",
+          "Jadwal": "Batam–Buton–Bengkalis–Dumai berangkat 07.30 (jadwal lama)",
           "Durasi": "–",
           "Harga": "Tg. Samak Rp222.000; Selat Panjang Rp282.000; Bengkalis Rp442.000; Buton Rp452.000; Dumai/Kuala Enok/Kuala Tungkal Rp600.000",
           "Tanggal data": "menjelang Lebaran 2026 (batampos)"
@@ -526,7 +528,7 @@
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "b99-pelni",
@@ -536,7 +538,7 @@
         "PELNI KM Kelud"
       ],
       "durasi_menit": 1920,
-      "harga_kisaran": "ekonomi mulai ±Rp267.000 (Belawan) / ±Rp382.000 (Jakarta); kelas 1A Rp1.283.000-1.308.000",
+      "harga_kisaran": "ekonomi sekitar Rp267.000 (Belawan) atau sekitar Rp382.000 (Jakarta); kelas 1A Rp1.283.000—Rp1.308.000",
       "jenis": "domestik",
       "link_jadwal_resmi": "https://www.pelni.co.id",
       "sumber_url": [
@@ -549,15 +551,15 @@
           "Asal": "Bintang 99, Batu Ampar (Pelni)",
           "Tujuan": "Tanjung Priok (Jakarta), Belawan (Medan), Tanjung Balai Karimun",
           "Operator / kapal": "PT Pelni, KM Kelud (Januari 2026 juga KM Nggapulu)",
-          "Jadwal": "sekitar mingguan; contoh Batam→Jakarta Rabu 5 Agu 2026 16:00, Batam→Belawan Minggu 2 Agu 2026 12:00",
-          "Durasi": "Jakarta ±32 jam; Belawan ±28 jam",
-          "Harga": "Kelas 1A ke Jakarta Rp1.283.000–1.308.000; ekonomi ke Jakarta mulai ±Rp382.000; ekonomi ke Belawan mulai ±Rp267.000",
+          "Jadwal": "sekitar mingguan; contoh Batam→Jakarta Rabu 5 Agu 2026 16.00, Batam→Belawan Minggu 2 Agu 2026 12.00",
+          "Durasi": "Jakarta sekitar 32 jam; Belawan sekitar 28 jam",
+          "Harga": "Kelas 1A ke Jakarta Rp1.283.000—Rp1.308.000; ekonomi ke Jakarta mulai ±Rp382.000; ekonomi ke Belawan mulai ±Rp267.000",
           "Tanggal data": "Feb–Agu 2026"
         }
       ],
       "status_data": null,
       "status_data_asli": null,
-      "catatan": "Tiket Pelni bisa dibeli lewat aplikasi PELNI Mobile, pelni.co.id, atau loket cabang Pelni Batam. Jadwal Pelni dan RoRo per hari bisa berbeda dari contoh. Gunakan aplikasi PELNI dan Ferizy sebagai rujukan final."
+      "catatan_laporan": "Tiket Pelni bisa dibeli lewat aplikasi PELNI Mobile, pelni.co.id, atau loket cabang Pelni Batam. Jadwal Pelni dan RoRo per hari bisa berbeda dari contoh. Gunakan aplikasi PELNI dan Ferizy sebagai rujukan final."
     },
     {
       "id": "skp-blp",
@@ -580,15 +582,15 @@
           "Pelantar": "Pelabuhan Rakyat Sekupang (PPMS / KPompong)",
           "Kecamatan": "Sekupang",
           "Tujuan": "Belakang Padang",
-          "Jam operasi": "24 jam (malam harus pesan); berangkat kalau sudah ±6 penumpang",
-          "Tarif": "Rp20.000/orang; carter 1–4 orang Rp160.000, 5–10 orang Rp200.000",
-          "Durasi": "±25 mnt (5,7 km)",
+          "Jam operasi": "24 jam (malam harus pesan dulu); berangkat bila sudah ada sekitar 6 penumpang",
+          "Tarif": "Rp20.000 per orang; carter 1—4 orang Rp160.000, 5—10 orang Rp200.000",
+          "Durasi": "sekitar 25 menit (5,7 km)",
           "Status data": "tarif sejak Sept 2022, perlu_cek_ulang"
         }
       ],
       "status_data": "perlu_cek_ulang",
       "status_data_asli": "tarif sejak Sept 2022, perlu_cek_ulang",
-      "catatan": "Data paling solid untuk pompong. Satu pompong PPMS standarnya 12 penumpang + 1 pengemudi."
+      "catatan_laporan": "Data paling solid untuk pompong. Satu pompong PPMS standarnya 12 penumpang + 1 pengemudi."
     },
     {
       "id": "sgl-buluh",
@@ -608,18 +610,18 @@
         {
           "tabel": "Tabel pompong dan pancung",
           "baris": 4,
-          "Pelantar": "Pelabuhan Rakyat Sagulung (dekat Tg. Uncang)",
+          "Pelantar": "Pelabuhan Rakyat Sagulung (dekat Tanjung Uncang)",
           "Kecamatan": "Sagulung",
           "Tujuan": "Pulau Buluh (Bulang); Pemping dan Pulau Bulan dengan carter",
           "Jam operasi": "–",
-          "Tarif": "Rp15.000 (2020–2021); Lebaran Rp20.000–25.000",
-          "Durasi": "<10 mnt ke Pulau Buluh",
+          "Tarif": "Rp15.000 (2020—2021); Lebaran Rp20.000—Rp25.000",
+          "Durasi": "kurang dari 10 menit ke Pulau Buluh",
           "Status data": "perlu_cek_ulang"
         }
       ],
       "status_data": "perlu_cek_ulang",
       "status_data_asli": "perlu_cek_ulang",
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "ktp-ngenang",
@@ -643,14 +645,14 @@
           "Kecamatan": "Nongsa",
           "Tujuan": "Pulau Ngenang",
           "Jam operasi": "–",
-          "Tarif": "carter Rp100.000 PP (kapasitas 10); tarif warga Rp20.000 PP",
-          "Durasi": "15–20 mnt",
+          "Tarif": "carter Rp100.000 pulang pergi (kapasitas 10 orang); tarif warga Rp20.000 pulang pergi",
+          "Durasi": "15—20 menit",
           "Status data": "perlu_cek_ulang"
         }
       ],
       "status_data": "perlu_cek_ulang",
       "status_data_asli": "perlu_cek_ulang",
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "smb-mubut",
@@ -674,14 +676,14 @@
           "Kecamatan": "Galang (Rempang)",
           "Tujuan": "Pulau Mubut Darat, Pulau Tunjuk",
           "Jam operasi": "–",
-          "Tarif": "Rp20.000–25.000 sekali jalan; Rp70.000 PP termasuk tiket masuk",
-          "Durasi": "10–15 mnt",
+          "Tarif": "Rp20.000—Rp25.000 sekali jalan; Rp70.000 pulang pergi termasuk tiket masuk",
+          "Durasi": "10—15 menit",
           "Status data": "perlu_cek_ulang"
         }
       ],
       "status_data": "perlu_cek_ulang",
       "status_data_asli": "perlu_cek_ulang",
-      "catatan": "Tabel pompong juga menyebut tujuan Pulau Tunjuk dari Pelabuhan Sembulang."
+      "catatan_laporan": "Tabel pompong juga menyebut tujuan Pulau Tunjuk dari Pelabuhan Sembulang."
     },
     {
       "id": "sbd-abang",
@@ -705,14 +707,14 @@
           "Kecamatan": "Galang",
           "Tujuan": "Pulau Abang",
           "Jam operasi": "tidak ada kapal rutin",
-          "Tarif": "±Rp20.000/orang; paket transport snorkeling Rp50.000–60.000",
-          "Durasi": "±30 mnt",
+          "Tarif": "sekitar Rp20.000 per orang; paket transportasi snorkeling Rp50.000—Rp60.000",
+          "Durasi": "sekitar 30 menit",
           "Status data": "lemah"
         }
       ],
       "status_data": "perlu_cek_ulang",
       "status_data_asli": "lemah",
-      "catatan": null
+      "catatan_laporan": null
     },
     {
       "id": "blp-kasu",
@@ -736,14 +738,14 @@
           "Kecamatan": "Sekupang",
           "Tujuan": "Pulau lain (Kasu, Pemping, Terong, Pecong)",
           "Jam operasi": "tidak terjadwal",
-          "Tarif": "nego dengan tekong; Kasu–Batam ±Rp180.000 PP (kemungkinan carter)",
-          "Durasi": "Kasu ±30 mnt, Terong ±45 mnt",
+          "Tarif": "tawar dengan pengemudi perahu; Kasu—Batam sekitar Rp180.000 pulang pergi (kemungkinan carter)",
+          "Durasi": "Kasu sekitar 30 menit, Terong sekitar 45 menit",
           "Status data": "lemah"
         }
       ],
       "status_data": "perlu_cek_ulang",
       "status_data_asli": "lemah",
-      "catatan": "Catatan migrasi: id \"blp-kasu\" berasal dari Sekupang (asal_id pr-skp) menurut JSON, tetapi harga_kisaran \"Kasu carter Rp150.000-200.000\" dan durasi 45 menit sama dengan baris tabel pompong \"Belakang Padang (pelantar pompong antarpulau)\". Baris tabel \"Pelabuhan Rakyat Sekupang → Pulau lain\" menyebut Kasu ±30 mnt, Terong ±45 mnt, Kasu–Batam ±Rp180.000 PP. Baris Belakang Padang disimpan terpisah sebagai rute_tambahan \"pr-blp-kasu-geranting\"."
+      "catatan_laporan": "Catatan migrasi: id \"blp-kasu\" berasal dari Sekupang (asal_id pr-skp) menurut JSON, tetapi harga_kisaran \"Kasu carter Rp150.000-200.000\" dan durasi 45 menit sama dengan baris tabel pompong \"Belakang Padang (pelantar pompong antarpulau)\". Baris tabel \"Pelabuhan Rakyat Sekupang → Pulau lain\" menyebut Kasu ±30 mnt, Terong ±45 mnt, Kasu–Batam ±Rp180.000 PP. Baris Belakang Padang disimpan terpisah sebagai rute_tambahan \"pr-blp-kasu-geranting\"."
     }
   ],
   "rute_tambahan": [
@@ -763,7 +765,7 @@
           "baris": 8,
           "Rute": "Harbour Bay ⇄ Nirup Island",
           "Operator": "Horizon",
-          "Durasi": "±45 mnt",
+          "Durasi": "sekitar 45 menit",
           "Harga (sekali jalan)": "–",
           "Link jadwal resmi": "horizonfastferry.com.sg"
         }
@@ -795,7 +797,7 @@
           "Rute": "Harbour Bay / Batam Centre / Nongsapura ⇄ Pasir Gudang",
           "Operator": "Dolphin Fast Ferry, Pasir Gudang Ferry, BatamFast (Nongsapura)",
           "Jadwal": "belum ada jadwal resmi yang terverifikasi",
-          "Durasi": "±1,5 jam",
+          "Durasi": "sekitar 1,5 jam",
           "Harga": "–",
           "Tanggal data": "perlu_cek_ulang"
         }
@@ -806,7 +808,7 @@
     {
       "id": "tpg-senayang",
       "asal_id": "tpg",
-      "tujuan": "Senayang – Pancur – Benan – Tajur Biru – Seitenam",
+      "tujuan": "Senayang—Pancur—Benan—Tajur Biru—Seitenam",
       "operator": [],
       "jenis": "domestik",
       "bagian_laporan": "3. Feri dan kapal domestik dari Batam",
@@ -818,9 +820,9 @@
           "Asal": "Telaga Punggur",
           "Tujuan": "Senayang – Pancur – Benan – Tajur Biru – Seitenam",
           "Operator / kapal": "–",
-          "Jadwal": "11:00, dua hari sekali",
+          "Jadwal": "11.00, dua hari sekali",
           "Durasi": "–",
-          "Harga": "Rp212.000–252.000",
+          "Harga": "Rp212.000—Rp252.000",
           "Tanggal data": "Feb 2026"
         }
       ],
@@ -868,7 +870,7 @@
           "Asal": "Sekupang Domestik",
           "Tujuan": "Tanjung Batu (Kundur), Penyalai",
           "Operator / kapal": "–",
-          "Jadwal": "07:45 (jadwal lama)",
+          "Jadwal": "07.45 (jadwal lama)",
           "Durasi": "–",
           "Harga": "–",
           "Tanggal data": "usang"
@@ -904,7 +906,7 @@
     {
       "id": "pr-blp-kasu-geranting",
       "asal_id": "pr-blp",
-      "tujuan": "Kasu (pompong reguler sekali sehari ±11:00, balik esok ±07:00); Pulau Geranting",
+      "tujuan": "Kasu (pompong reguler sekali sehari sekitar pukul 11.00 WIB, balik esok sekitar pukul 07.00 WIB); Pulau Geranting",
       "operator": [],
       "jenis": "pompong",
       "bagian_laporan": "4. Pompong dan pancung ke pulau hinterland",
@@ -915,15 +917,15 @@
           "baris": 3,
           "Pelantar": "Belakang Padang (pelantar pompong antarpulau)",
           "Kecamatan": "Belakang Padang",
-          "Tujuan": "Kasu (pompong reguler sekali sehari ±11:00, balik esok ±07:00); Pulau Geranting",
+          "Tujuan": "Kasu (pompong reguler sekali sehari sekitar pukul 11.00 WIB, balik esok sekitar pukul 07.00 WIB); Pulau Geranting",
           "Jam operasi": "–",
-          "Tarif": "carter ke Kasu Rp150.000–200.000; Geranting Rp140.000/orang",
-          "Durasi": "Kasu ±45 mnt; Geranting ±1 jam",
-          "Status data": "data lama"
+          "Tarif": "carter ke Kasu Rp150.000—Rp200.000; Geranting Rp140.000 per orang",
+          "Durasi": "Kasu sekitar 45 menit; Geranting sekitar 1 jam",
+          "Status data": "usang"
         }
       ],
       "status_data": "usang",
-      "status_data_asli": "data lama"
+      "status_data_asli": "usang"
     },
     {
       "id": "pr-tgr-riau",
@@ -965,7 +967,7 @@
           "Kecamatan": "Bulang/Galang",
           "Tujuan": "keliling jembatan, Pulau Panjang, Pulau Akar (wisata)",
           "Jam operasi": "ramai akhir pekan",
-          "Tarif": "Rp10.000/orang (2016)",
+          "Tarif": "Rp10.000 per orang (2016)",
           "Durasi": "–",
           "Status data": "usang"
         }
@@ -989,8 +991,8 @@
           "Kecamatan": "Galang",
           "Tujuan": "Pulau Panjang",
           "Jam operasi": "–",
-          "Tarif": "Rp60.000 PP (2014)",
-          "Durasi": "<15 mnt",
+          "Tarif": "Rp60.000 pulang pergi (2014)",
+          "Durasi": "kurang dari 15 menit",
           "Status data": "usang"
         }
       ],

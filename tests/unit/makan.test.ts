@@ -1,8 +1,18 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { categories, ferries, getPlace, places } from "@/features/makan/lib/data";
-import { convertPrice, formatKm, isOpenNow } from "@/features/makan/lib/format";
+import { areas as areaTampil, categories, ferries, getPlace, places, satuLabel } from "@/features/makan/lib/data";
+import {
+  adalahPonsel,
+  convertPrice,
+  formatBulan,
+  formatHarga,
+  formatJam,
+  formatKm,
+  formatKmDesimal,
+  isOpenNow,
+  statusJam,
+} from "@/features/makan/lib/format";
 import { fiturFeri, fiturTempat, gabungGayaMakan, koleksi, kotakTitik, lapisanPin } from "@/features/makan/lib/peta";
 import { EMPTY, jumlahAktif, RADIUS_FERI_KM, saring, urutkan, type FilterState } from "@/features/makan/lib/saring";
 import { bacaDaftarSlug, buatTautan, saringSlug } from "@/features/makan/lib/tautan-simpan";
@@ -111,6 +121,66 @@ describe("kejujuran data di UI", () => {
     expect(fiturFeri(hb).properties.perkiraan).toBe(false);
   });
 
+  it("satu label per tempat, menurut urutan pedoman", () => {
+    expect(satuLabel(["wajib-coba", "legendaris"])).toEqual(["legendaris"]);
+    expect(satuLabel(["hits", "wajib-coba"])).toEqual(["wajib-coba"]);
+    expect(satuLabel(["hidden-gem"])).toEqual(["hidden-gem"]);
+    expect(satuLabel([])).toEqual([]);
+    expect(places.every((p) => p.labels.length <= 1)).toBe(true);
+    expect(places.find((p) => p.id === "golden-prawn-933")?.labels).toEqual(["legendaris"]);
+    // Data mentah tetap menyimpan semua labelnya.
+    expect(mentah.find((p: { id: string }) => p.id === "golden-prawn-933").labels).toHaveLength(2);
+  });
+
+  it("nomor ponsel tidak sampai ke UI, nomor kantor tetap, data mentah tetap menyimpannya", () => {
+    expect(adalahPonsel("+62 812-3456-7890")).toBe(true);
+    expect(adalahPonsel("0812 3456 7890")).toBe(true);
+    expect(adalahPonsel("+62 778 411142")).toBe(false);
+    expect(adalahPonsel("")).toBe(false);
+    expect(places.some((p) => adalahPonsel(p.phone))).toBe(false);
+    expect(places.find((p) => p.id === "golden-prawn-933")?.phone).toBe("+62 778 411142");
+    expect(mentah.filter((p: { phone: string }) => adalahPonsel(p.phone))).toHaveLength(24);
+  });
+
+  it("kategori sesuai tabel pedoman 3.4", () => {
+    expect(Object.fromEntries(categories.map((c) => [c.id, c.name_id]))).toEqual({
+      "seafood-gonggong": "Makanan laut dan gonggong",
+      "sup-ikan": "Sup ikan",
+      "mie-tarempa": "Mi tarempa dan luti gendang",
+      "nasi-ayam-hainan": "Nasi ayam hainan",
+      kopitiam: "Kopitiam",
+      "martabak-prata": "Martabak dan prata",
+      "mie-bakmi": "Mi dan bakmi",
+      bubur: "Bubur",
+      "nasi-padang": "Nasi padang",
+      "sunda-jawa": "Masakan Sunda dan Jawa",
+      "sate-kambing": "Sate kambing",
+      bakso: "Bakso",
+      "dimsum-chinese": "Dim sum dan masakan Tionghoa",
+      "ayam-penyet": "Ayam penyet dan lalapan",
+      "pecel-gado": "Pecel dan gado-gado",
+      "oleh-oleh": "Oleh-oleh dan kue",
+      cafe: "Kafe dan kedai kopi",
+    });
+  });
+
+  it("teks tempat bebas kata promosi, nama usaha tetap persis", () => {
+    const LARANG_ID = /legendaris|melegenda|terbaik|terenak|hidden gem|wajib coba|instagramable|mantap|berating|ramah kantong/i;
+    const LARANG_EN = /legendary|\bbest\b|must-|hidden.gem|highly-rated|wallet-friendly|!/i;
+    for (const p of mentah as { id: string; name: string; desc_id: string; desc_en: string; signature: string }[]) {
+      expect(p.desc_id, p.id).not.toMatch(LARANG_ID);
+      expect(p.signature, p.id).not.toMatch(LARANG_ID);
+      expect(p.desc_en, p.id).not.toMatch(LARANG_EN);
+    }
+    expect(places.find((p) => p.id === "mie-terempak")?.name).toBe("Mie Terempa'K (Mie Tarempa Sungai Panas)");
+    expect(places.find((p) => p.id === "mie-ayam-gerobakan-legendaris")?.name).toBe("Mie Ayam Gerobakan Legendaris");
+  });
+
+  it("nama area tampil tanpa garis miring, berkas datanya tetap untuk konversi", () => {
+    expect(areaTampil.find((a) => a.id === "nagoya-lubuk-baja")?.name).toBe("Nagoya, Lubuk Baja");
+    expect(areas.find((a: { id: string }) => a.id === "nagoya-lubuk-baja").name).toBe("Nagoya / Lubuk Baja");
+  });
+
   it("kode Makan tidak memuat emoji dan warna hex lama", () => {
     const berkas = (d: string): string[] =>
       readdirSync(d).flatMap((n) => {
@@ -152,7 +222,7 @@ describe("filter", () => {
     expect(saring(places, s({ cats: ["sup-ikan"] }), null)).toHaveLength(5);
     expect(saring(places, s({ areas: ["bengkong"] }), null)).toHaveLength(12);
     expect(saring(places, s({ tiers: ["$$$"] }), null)).toHaveLength(10);
-    expect(saring(places, s({ labels: ["hits"] }), null)).toHaveLength(6);
+    expect(saring(places, s({ labels: ["hits"] }), null)).toHaveLength(3);
     // Antarkelompok AND, dalam satu kelompok OR.
     expect(saring(places, s({ cats: ["sup-ikan", "bakso"] }), null)).toHaveLength(12);
     const gabung = saring(places, s({ halal: ["halal"], cats: ["sup-ikan"] }), null);
@@ -170,6 +240,16 @@ describe("filter", () => {
     expect(saring(places, s({ query: "GOLDEN prawn" }), null).map((p) => p.id)).toContain("golden-prawn-933");
     expect(saring(places, s({ query: "gonggong" }), null).length).toBeGreaterThan(1);
     expect(saring(places, s({ query: "tidak-ada-yang-seperti-ini" }), null)).toHaveLength(0);
+  });
+
+  it("pencarian menerima ejaan lama dan nama kategori", () => {
+    const ids = (query: string) => saring(places, s({ query }), null).map((p) => p.id);
+    expect(ids("mie tarempa")).toContain("mie-terempak");
+    expect(ids("mi tarempa")).toContain("mie-terempak");
+    expect(ids("sop ikan")).toContain("yong-kee-istimewa");
+    expect(ids("seafood")).toContain("golden-prawn-933");
+    expect(ids("makanan laut")).toContain("golden-prawn-933");
+    expect(ids("Kafe dan kedai kopi")).toContain("anchor-cafe-roastery");
   });
 
   it("buka sekarang memakai waktu yang diberikan, jam tidak diketahui tidak dihitung buka", () => {
@@ -222,14 +302,59 @@ describe("format", () => {
 
   it("konversi harga jujur soal bentuk teks aslinya", () => {
     expect(convertPrice("Rp150.000–350.000", "IDR")).toBe("Rp150.000–350.000");
-    expect(convertPrice("Rp150.000–350.000", "SGD")).toBe("~S$13–29");
-    expect(convertPrice("Rp150.000–350.000", "MYR")).toBe("~RM42–99");
-    expect(convertPrice("mulai Rp70.000", "SGD")).toBe("~S$5.8+");
+    expect(convertPrice("Rp150.000–350.000", "SGD")).toBe("~S$13—S$29");
+    expect(convertPrice("Rp150.000–350.000", "MYR")).toBe("~RM42—RM99");
+    expect(convertPrice("mulai Rp70.000", "SGD")).toBe("~S$5,8+");
+    expect(convertPrice("mulai Rp70.000", "SGD", "en")).toBe("~S$5.8+");
     expect(convertPrice("Rp3.000/pc atau Rp80.000/25 pc", "SGD")).toBe("");
     expect(convertPrice("", "SGD")).toBe("");
   });
 
+  it("harga dari price_idr: kisaran bertanda pisah, tanpa menambah satuan", () => {
+    expect(formatHarga("Rp150.000–350.000")).toBe("Rp150.000—Rp350.000");
+    expect(formatHarga("Rp75.000")).toBe("Rp75.000");
+    expect(formatHarga("mulai Rp19.000")).toBe("Mulai Rp19.000");
+    expect(formatHarga("mulai Rp88.000 net", "en")).toBe("From Rp88.000 net");
+    expect(formatHarga("Rp60.000/kotak")).toBe("Rp60.000 per kotak");
+    expect(formatHarga("Rp120.000–350.000/box")).toBe("Rp120.000—Rp350.000 per kotak");
+    expect(formatHarga("Rp120.000–350.000/box", "en")).toBe("Rp120.000—Rp350.000 per box");
+    expect(formatHarga("Rp3.000/pc atau Rp80.000/25 pc")).toBe("Rp3.000 per buah atau Rp80.000 per 25 buah");
+    expect(formatHarga("Rp3.000/pc atau Rp80.000/25 pc", "en")).toBe("Rp3.000 per piece or Rp80.000 per 25 pieces");
+    expect(formatHarga("")).toBe("");
+    for (const p of places) expect(formatHarga(p.price_idr), p.id).not.toMatch(/[–/$]/);
+  });
+
+  it("jam untuk dibaca: tanda pisah dan zona waktu", () => {
+    expect(formatJam("09.30–23.00")).toBe("09.30—23.00 WIB");
+    expect(formatJam("24 jam")).toBe("24 jam");
+    expect(formatJam("24 jam", "en")).toBe("24 hours");
+    expect(formatJam("07.00")).toBe("07.00 WIB");
+    expect(formatJam("08.00–14.00 (Senin–Sabtu)")).toBe("08.00—14.00 WIB (Senin—Sabtu)");
+    expect(formatJam("06.15–13.00 (Senin tutup)", "en")).toBe("06.15—13.00 WIB (closed Monday)");
+    expect(formatJam("10.00–19.00 (Jumat–Minggu hingga 20.00)")).toBe("10.00—19.00 WIB (Jumat—Minggu sampai 20.00 WIB)");
+    expect(formatJam("")).toBe("");
+    for (const p of places) expect(formatJam(p.hours), p.id).not.toMatch(/[–:]/);
+  });
+
+  it("bahan kalimat jam buka", () => {
+    expect(statusJam("10.00–21.00", wib("2026-11-04T12:00:00"))).toEqual({ buka: true, jam: "21.00" });
+    expect(statusJam("10.00–21.00", wib("2026-11-04T22:00:00"))).toEqual({ buka: false, jam: "10.00" });
+    expect(statusJam("10.00–19.00 (Jumat–Minggu hingga 20.00)", wib("2026-11-06T12:00:00"))).toEqual({ buka: true, jam: "20.00" });
+    expect(statusJam("10.00–19.00 (Jumat–Minggu hingga 20.00)", wib("2026-11-04T12:00:00"))).toEqual({ buka: true, jam: "19.00" });
+    expect(statusJam("24 jam", wib("2026-11-04T03:00:00"))).toEqual({ buka: true, jam: null });
+    expect(statusJam("07.00", wib("2026-11-04T08:00:00"))).toBeNull();
+    expect(statusJam("", wib("2026-11-04T08:00:00"))).toBeNull();
+  });
+
+  it("bulan pemeriksaan data", () => {
+    expect(formatBulan("2026-06")).toBe("Juni 2026");
+    expect(formatBulan("2026-06", "en")).toBe("June 2026");
+    expect(formatBulan("bukan-tanggal")).toBe("bukan-tanggal");
+  });
+
   it("jarak", () => {
+    expect(formatKmDesimal(0.7)).toBe("0,7 km");
+    expect(formatKmDesimal(2.8, "en")).toBe("2.8 km");
     expect(formatKm(0.65)).toBe("650 m");
     expect(formatKm(2.1)).toBe("2,1 km");
     expect(formatKm(2.1, "en")).toBe("2.1 km");
@@ -269,18 +394,18 @@ describe("lapisan peta", () => {
         protomaps: { type: "vector", url: "pmtiles://lama" },
         "mk-pin": { type: "geojson", data: koleksi([fiturTempat(places[0])]), cluster: true },
       },
-      layers: [{ id: "background", type: "background" }, ...lapisanPin("day")],
+      layers: [{ id: "background", type: "background" }, ...lapisanPin("light")],
     };
-    const hasil = gabungGayaMakan(lama, baru, "night");
+    const hasil = gabungGayaMakan(lama, baru, "dark");
     expect(Object.keys(hasil.sources).sort()).toEqual(["mk-pin", "protomaps"]);
     expect((hasil.sources.protomaps as { url: string }).url).toBe("pmtiles://x");
-    expect(hasil.layers.map((l) => l.id)).toEqual(["background", ...lapisanPin("night").map((l) => l.id)]);
-    const pin = hasil.layers.find((l) => l.id === "mk-pin-titik") as { paint: Record<string, unknown> };
-    expect(pin.paint["circle-stroke-color"]).toBe(PALET.night.accent);
+    expect(hasil.layers.map((l) => l.id)).toEqual(["background", ...lapisanPin("dark").map((l) => l.id)]);
+    const pilih = hasil.layers.find((l) => l.id === "mk-pilih-titik") as { paint: Record<string, unknown> };
+    expect(pilih.paint["circle-stroke-color"]).toBe(PALET.dark.ink);
   });
 
   it("tanpa gaya lama, gaya baru dipakai apa adanya", () => {
-    expect(gabungGayaMakan(undefined, baru, "day")).toBe(baru);
+    expect(gabungGayaMakan(undefined, baru, "light")).toBe(baru);
   });
 
   it("kotak mencakup semua titik", () => {

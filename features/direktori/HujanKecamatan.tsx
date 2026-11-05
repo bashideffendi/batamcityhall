@@ -12,7 +12,7 @@ const TICK_MS = 30 * 1000;
 
 const samaNama = (a: string, b: string) => a.toLowerCase().replace(/\s+/g, "") === b.toLowerCase().replace(/\s+/g, "");
 
-// "Lagi hujan di sini". Hanya muncul kalau radar terbaru masih segar dan memang ada hujan: selain itu diam,
+// Templat hujan (3.11). Hanya muncul kalau radar terbaru masih segar dan memang ada hujan: selain itu diam,
 // karena tidak tahu bukan berarti cerah.
 export default function HujanKecamatan({ kecamatan }: { kecamatan: string }) {
   const offline = useOffline();
@@ -29,8 +29,9 @@ export default function HujanKecamatan({ kecamatan }: { kecamatan: string }) {
 
   return (
     <p className="bch-note" data-hujan-kecamatan>
-      Lagi hujan di {kecamatan}. <span className="bch-data">Perkiraan radar MSS, {umur} menit lalu.</span>{" "}
-      <Link href="/langit-laut?mode=hujan" prefetch={false}>
+      Hujan {baris.level} di Kecamatan {kecamatan}.{" "}
+      <span className="bch-data">Perkiraan radar {umur} menit lalu.</span>{" "}
+      <Link href="/cuaca/hujan" prefetch={false}>
         Lihat radar
       </Link>
     </p>

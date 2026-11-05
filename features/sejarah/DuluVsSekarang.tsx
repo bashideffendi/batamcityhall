@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import { keadaanPada, LABEL_KEADAAN, perhentian, type KartuDulu, type TitikDulu } from "./dulu-slider";
-import { DaftarSumber, LencanaStatus } from "./Status";
+import { LencanaStatus } from "./Status";
 
 const TAHUN_AWAL = 1992;
 
@@ -82,10 +82,9 @@ export default function DuluVsSekarang({
         </label>
       </div>
 
-      <h2 className="mt-7 mb-2">Di peta</h2>
+      <h2 className="mt-7 mb-2">Di Peta</h2>
       <p className="bch-measure mt-0">
-        {titik.length} titik, dari {punyaTitik.size} lokasi yang punya koordinat. {kartu.length - punyaTitik.size}{" "}
-        lokasi lain belum berkoordinat, jadi hanya ada di daftar.
+        Peta memuat {titik.length} titik dari {punyaTitik.size} lokasi. Semua lokasi ada di daftar.
       </p>
       <p className="sj-kecil sj-legenda-peta">
         <span>
@@ -100,7 +99,7 @@ export default function DuluVsSekarang({
       </p>
       <PetaDulu titik={titik} keadaan={keadaan} dipilih={dipilih} onPilih={pilihDariPeta} />
 
-      <h2 className="mt-7 mb-2">Pasangan dulu dan sekarang</h2>
+      <h2 className="mt-7 mb-2">Pasangan Dulu dan Sekarang</h2>
       <p className="sj-kecil mt-0" data-jumlah-dulu={tampil.length}>
         Menampilkan {tampil.length} dari {kartu.length} lokasi.
       </p>
@@ -123,10 +122,10 @@ export default function DuluVsSekarang({
               <h3>{k.lokasi}</h3>
               <div className="bch-badges mt-1">
                 <LencanaStatus status={k.status} />
-                <span className="bch-badge" data-sj-keadaan>
-                  {tahun}: {LABEL_KEADAAN[keadaan[k.id]]}
-                </span>
               </div>
+              <p className="sj-kecil mt-1 mb-0" data-sj-keadaan>
+                {tahun}: {LABEL_KEADAAN[keadaan[k.id]]}
+              </p>
               <hr className="bch-card-rule" />
               <dl className="sj-dulu-sekarang">
                 <div data-sisi="dulu">
@@ -140,13 +139,10 @@ export default function DuluVsSekarang({
               </dl>
               {k.versi && <p className="sj-kecil mt-2 mb-0">{k.versi}</p>}
               {k.catatan && <p className="sj-kecil mt-2 mb-0">{k.catatan}</p>}
-              <DaftarSumber sumber={k.sumber} />
-              {punyaTitik.has(k.id) ? (
+              {punyaTitik.has(k.id) && (
                 <button type="button" className="bch-btn sj-ke-peta" onClick={() => tunjukkanDiPeta(k.id)}>
                   Tunjukkan di peta
                 </button>
-              ) : (
-                <p className="sj-kecil mt-2 mb-0">Belum di peta: koordinatnya belum ada.</p>
               )}
             </article>
           </li>

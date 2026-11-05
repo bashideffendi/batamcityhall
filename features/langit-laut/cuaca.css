@@ -1,0 +1,513 @@
+/* Halaman Cuaca dan Laut (PEDOMAN 3.3, 4.6). Desktop: panel kiri, peta kanan setinggi 880 px, data dua kolom di
+   bawah. Ponsel: peta penuh dengan lembar bawah yang bisa ditarik. */
+.app-root.cu-halaman {
+  --cu-tepi: max(var(--bch-gutter), calc((100vw - var(--bch-wrap)) / 2 + var(--bch-gutter)));
+  --cu-panel: clamp(420px, calc(50vw - 160px), 720px);
+  position: relative;
+  overscroll-behavior: auto;
+}
+.app-root.cu-halaman h1,
+.cu-halaman-teks h1 {
+  font-family: var(--bch-font-display);
+  font-weight: 500;
+  letter-spacing: var(--bch-tracking-display);
+}
+.app-root.cu-halaman h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 1.6rem + 1.8vw, 3.25rem);
+  line-height: 1.05;
+}
+.app-root.cu-halaman h2 {
+  font: inherit;
+}
+.app-root.cu-halaman .bch-tab {
+  padding-inline: var(--cu-tepi);
+}
+.cu-halaman-teks .bch-tab {
+  margin-bottom: var(--bch-space-6);
+}
+.cu-kerja {
+  display: grid;
+  grid-template-columns: var(--cu-panel) minmax(0, 1fr);
+  height: 880px;
+  border-bottom: 1px solid var(--bch-rule);
+}
+.cu-panel {
+  overflow-y: auto;
+  padding: var(--bch-space-5) 36px var(--bch-space-5) var(--cu-tepi);
+  background: var(--bch-paper);
+  border-right: 1px solid var(--bch-rule);
+}
+.cu-peta {
+  position: relative;
+  min-width: 0;
+  background: var(--bch-map-sea);
+}
+.app-root .cu-peta .ll-peta {
+  position: absolute;
+  inset: 0;
+}
+.cu-penjelas {
+  margin: var(--bch-space-3) 0 0;
+  color: var(--bch-ink-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.cu-ringkasan {
+  margin-top: var(--bch-space-5);
+  padding-top: var(--bch-space-4);
+  border-top: 2px solid var(--bch-rule-strong);
+}
+.cu-ringkasan .answer {
+  margin: 0;
+  font-family: var(--bch-font-display);
+  font-size: 1.625rem;
+  line-height: 1.2;
+  font-weight: 400;
+}
+.cu-ringkasan .answer:focus {
+  outline: none;
+}
+.cu-baris-waktu {
+  margin: var(--bch-space-3) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-1) var(--bch-space-3);
+  color: var(--bch-ink-muted);
+}
+.cu-baris-waktu .bch-status {
+  font-weight: 400;
+  color: var(--bch-ink);
+}
+.cu-petunjuk {
+  margin: var(--bch-space-4) 0 0;
+  padding-top: var(--bch-space-4);
+  border-top: 2px solid var(--bch-rule-strong);
+  font-family: var(--bch-font-display);
+  font-size: 1.375rem;
+  line-height: 1.25;
+}
+.cu-isi {
+  display: grid;
+  gap: var(--bch-space-5);
+  margin-top: var(--bch-space-5);
+}
+.cu-peringatan {
+  margin: 0;
+}
+.cu-peringatan a {
+  color: inherit;
+}
+.cu-masalah {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--bch-status-caution);
+}
+.cu-sub {
+  margin: 0 0 var(--bch-space-2);
+  font-family: var(--bch-font-sans) !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+.cu-catatan {
+  margin: var(--bch-space-2) 0 0;
+  font-size: 0.84375rem;
+  line-height: 1.5;
+  color: var(--bch-ink-muted);
+}
+
+/* Legenda */
+.cu-legenda-hujan {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  font-size: 0.8125rem;
+}
+.cu-legenda-hujan i {
+  display: block;
+  height: 12px;
+  margin-bottom: 4px;
+}
+.cu-legenda-hujan i[data-kelas="ringan"] {
+  background-color: var(--bch-radar-light);
+  background-image: radial-gradient(var(--bch-radar-mid) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+}
+.cu-legenda-hujan i[data-kelas="sedang"] {
+  background: var(--bch-radar-mid);
+}
+.cu-legenda-hujan i[data-kelas="lebat"] {
+  background: var(--bch-radar-heavy);
+}
+.cu-skala-batang {
+  height: 12px;
+  opacity: 0.5;
+}
+.cu-skala-titik {
+  position: relative;
+  height: 1.3em;
+  margin-top: 4px;
+  font-family: var(--bch-font-mono);
+  font-size: 0.75rem;
+}
+.cu-skala-titik span {
+  position: absolute;
+  transform: translateX(-50%);
+}
+.cu-skala-titik span:first-child {
+  transform: none;
+}
+
+/* Sakelar dan daftar kecamatan */
+.cu-sakelar-grup .bch-sakelar {
+  min-height: 38px;
+}
+.cu-kec-baris li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--bch-space-3);
+  padding-block: var(--bch-space-2);
+  border-bottom: 1px solid var(--bch-rule);
+  font-size: 0.9375rem;
+}
+.cu-kec-baris b {
+  font-weight: 600;
+  color: var(--bch-ink-muted);
+}
+.cu-kec-baris li[data-hujan] b {
+  color: var(--bch-link);
+}
+.cu-aksi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-2);
+  margin: 0;
+}
+
+/* Kendali di atas peta */
+.cu-cakupan {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
+}
+.cu-cakupan-isi {
+  display: flex;
+  align-items: center;
+  gap: var(--bch-space-2);
+  flex-wrap: wrap;
+}
+.cu-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--bch-ink);
+}
+.cu-cakupan .cu-label {
+  background: var(--bch-paper);
+  padding: 4px 8px;
+}
+.cu-waktu {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 36px;
+  z-index: 5;
+  background: var(--bch-paper);
+  border: 1.5px solid var(--bch-ink);
+  border-radius: var(--bch-radius-panel);
+  box-shadow: var(--bch-shadow-panel);
+  padding: 12px 18px;
+}
+.cu-transport {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--bch-space-4);
+}
+.cu-putar svg {
+  width: 14px;
+  height: 14px;
+}
+.cu-rng {
+  width: 100%;
+  accent-color: var(--bch-riso-blue);
+}
+.cu-caps {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--bch-space-3);
+  font-family: var(--bch-font-mono);
+  font-size: 0.75rem;
+  color: var(--bch-ink-muted);
+}
+.cu-caps [data-warn] {
+  color: var(--bch-status-caution);
+}
+.cu-jam {
+  display: grid;
+  justify-items: end;
+  line-height: 1.15;
+  font-size: 0.75rem;
+  color: var(--bch-ink-muted);
+}
+.cu-jam b {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--bch-ink);
+}
+
+/* Data di bawah peta */
+.cu-data {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 64px;
+  max-width: var(--bch-wrap);
+  margin-inline: auto;
+  padding: var(--bch-space-8) var(--bch-gutter) var(--bch-space-6);
+  box-sizing: border-box;
+}
+.cu-data h2 {
+  font-family: var(--bch-font-display) !important;
+  font-size: var(--bch-text-h3) !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  margin: 0 0 var(--bch-space-4);
+}
+.cu-data .bch-table,
+.cu-tabel-rapat {
+  margin-top: 0;
+}
+.cu-tabel-rapat > div {
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+}
+.cu-kanan {
+  text-align: right !important;
+  padding-right: 0 !important;
+}
+
+/* Kamera di panel */
+.cu-panel .d-sec {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+.cu-panel .d-sec + .d-sec {
+  margin-top: var(--bch-space-5);
+}
+
+/* Label kecamatan di peta: kapital kecil, tanpa kotak (PEDOMAN 5.2) */
+.app-root .kec-label,
+.app-root .kec-pill {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  font-family: var(--bch-font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bch-map-label);
+  white-space: nowrap;
+  text-shadow:
+    0 0 3px var(--bch-paper),
+    0 0 3px var(--bch-paper);
+}
+.app-root .kec-pill {
+  color: var(--bch-ink);
+}
+.app-root .kec-pill b {
+  font-weight: 800;
+}
+.app-root .kec-pill span {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--bch-link);
+}
+.app-root .kec-dot {
+  display: none;
+}
+.app-root .place-label {
+  font-family: var(--bch-font-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--bch-ink);
+  text-shadow:
+    0 0 3px var(--bch-paper),
+    0 0 3px var(--bch-paper);
+}
+
+/* Blok SAAT INI dan isi loket */
+.cu-saat-ini {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--bch-space-5);
+  margin-top: var(--bch-space-6);
+  padding-top: var(--bch-space-4);
+  border-top: 2px solid var(--bch-rule-strong);
+}
+.cu-saat-ini-teks {
+  margin: 0;
+  font-family: var(--bch-font-display);
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+.cu-saat-ini-baris {
+  margin: var(--bch-space-2) 0 0;
+  color: var(--bch-ink-muted);
+}
+.cu-entri {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+.cu-entri a {
+  display: grid;
+  gap: var(--bch-space-1);
+  color: var(--bch-ink);
+  text-decoration: none;
+}
+.cu-entri .no {
+  margin-top: var(--bch-space-3);
+  font-family: var(--bch-font-mono);
+  font-size: 0.75rem;
+  color: var(--bch-ink-faint);
+}
+.cu-entri .judul {
+  font-family: var(--bch-font-display);
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 500;
+}
+.cu-entri a:hover .judul {
+  color: var(--bch-link);
+}
+.cu-entri .ket {
+  color: var(--bch-ink-muted);
+}
+.cu-entri-status {
+  margin: var(--bch-space-3) 0 0;
+  padding-top: var(--bch-space-3);
+  border-top: 1px solid var(--bch-rule);
+  min-height: 1.5em;
+}
+.cu-entri-status .bch-status {
+  font-weight: 400;
+}
+.cu-tambahan {
+  margin-top: var(--bch-space-7);
+}
+.cu-halaman-teks .bch-tab {
+  margin-top: calc(var(--bch-space-5) * -1);
+}
+
+@media (max-width: 899px) {
+  .cu-kerja {
+    position: relative;
+    display: block;
+    height: calc(100dvh - 72px);
+    min-height: 30rem;
+    border-bottom: 0;
+  }
+  .cu-peta {
+    position: absolute;
+    inset: 0;
+  }
+  .cu-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 6;
+    max-height: 82%;
+    padding: 0 var(--bch-gutter) var(--bch-space-4);
+    border-right: 0;
+    border-top: 1.5px solid var(--bch-ink);
+    border-radius: var(--bch-radius-panel) var(--bch-radius-panel) 0 0;
+    box-shadow: var(--bch-shadow-panel);
+  }
+  .cu-panel[data-tutup] .cu-isi,
+  .cu-panel[data-tutup] .cu-penjelas {
+    display: none;
+  }
+  .cu-pegangan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: grab;
+    touch-action: none;
+  }
+  .cu-pegangan i {
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--bch-garis-isian);
+  }
+  .app-root.cu-halaman h1 {
+    font-size: 1.75rem;
+  }
+  .cu-ringkasan {
+    margin-top: var(--bch-space-2);
+    padding-top: 0;
+    border-top: 0;
+  }
+  .cu-ringkasan .answer {
+    font-size: 1.1875rem;
+  }
+  .cu-baris-waktu {
+    margin-top: var(--bch-space-1);
+  }
+  .cu-petunjuk {
+    margin-top: var(--bch-space-2);
+    padding-top: 0;
+    border-top: 0;
+    font-size: 1.0625rem;
+  }
+  .cu-panel .bch-tab {
+    gap: var(--bch-space-4);
+    margin-top: var(--bch-space-1);
+  }
+  .cu-panel .bch-tab a {
+    font-size: 0.875rem;
+    padding-block: 10px 8px;
+  }
+  .cu-kendali-ponsel .cu-transport {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .cu-kendali-ponsel .cu-jam {
+    display: none;
+  }
+  .cu-data {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--bch-space-7);
+    padding-top: var(--bch-space-6);
+  }
+  .cu-saat-ini {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--bch-space-2);
+  }
+  .cu-saat-ini-teks {
+    font-size: 1.25rem;
+  }
+  .cu-entri {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--bch-space-6);
+  }
+  .cu-entri .judul {
+    font-size: 1.625rem;
+  }
+}

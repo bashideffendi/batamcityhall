@@ -7,7 +7,19 @@ import terminalRaw from "@/data/feri/terminal.json";
 import pompong09 from "@/data/panduan/09-rute_pompong.json";
 import indeksTempat from "@/data/places_id_index.json";
 import { tempatPerId } from "@/features/direktori/data";
-import { normalisasi, type JadwalMentah, type RuteMentah } from "./feri-terakhir";
+import {
+  hariPublik,
+  jamTitik,
+  normalisasi,
+  operatorEntri,
+  pecahArah,
+  singkatanZona,
+  tautanPublik,
+  teksInterval,
+  zonaSah,
+  type JadwalMentah,
+  type RuteMentah,
+} from "./feri-terakhir";
 
 type DariTabel = Record<string, string | number | undefined>;
 export type RuteData = RuteMentah & {
@@ -50,63 +62,50 @@ export const ENTRI_FERI = normalisasi(JADWAL, SEMUA_RUTE, NAMA_ASAL);
 
 // ---------- Teks publik ----------
 
-/** Istilah kerja menjadi kata biasa. Dipakai untuk kolom yang boleh tampil apa adanya. */
+/** Istilah kerja dibuang atau menjadi kata biasa. Dipakai untuk kolom yang boleh tampil apa adanya. */
 export const teksWarga = (t: string) =>
   t
     .replace(/\*\*/g, "")
-    .replace(/perlu_cek_ulang/g, "perlu cek ulang")
-    .replace(/perlu_diisi_user|perlu_diisi/g, "belum diketahui");
-
-/** Status data menjadi kata, untuk lencana. */
-export function kataStatus(s: string | null | undefined): { teks: string; nada?: "caution" | "danger" } | null {
-  if (!s) return null;
-  if (/perlu_cek_ulang/.test(s)) return { teks: "perlu cek ulang", nada: "caution" };
-  if (/usang|data lama/.test(s)) return { teks: "mungkin usang", nada: "caution" };
-  if (/lemah/.test(s)) return { teks: "data lemah", nada: "caution" };
-  if (/perlu_diisi/.test(s)) return { teks: "belum diketahui", nada: "caution" };
-  return null;
-}
+    .replace(/\s*\(?perlu_cek_ulang\)?/g, "")
+    .replace(/perlu_diisi_user|perlu_diisi/g, "belum tercatat");
 
 /** Catatan per rute, ditulis ulang dari research/14. Kolom catatan mentah memuat catatan migrasi dan tidak ditampilkan. */
 const CATATAN_RUTE: Record<string, string> = {
   "skp-hfc":
-    "Sekupang paling cepat tutup. Terakhir 17:40 (BatamFast) atau 18:00 (Majestic). Situs Sindo mencantumkan 20:30, angka ini perlu dicek ulang.",
+    "Keberangkatan terakhir dari Sekupang lebih awal daripada terminal lain: pukul 17.40 WIB (BatamFast) atau 18.00 WIB (Majestic). Jadwal Sindo mencantumkan pukul 20.30 WIB, jadi tanyakan kepada operator.",
   "btc-hfc":
-    "Dua halaman jadwal Sindo menampilkan versi yang berbeda. Sebagian trip Majestic hanya akhir pekan atau hari libur.",
-  "btc-stl": "Dari Stulang: mulai MYR 123 sekali jalan. Tarif berlaku mulai 1 Januari 2026 menurut Indomas.",
-  "hb-ph": "Jam dari satu contoh hari, bukan jadwal tetap.",
-  "wfc-hfc": "Akhir pekan saja.",
-  "tpg-tpi": "Beroperasi 07:30 sampai 17:30, tiap sekitar 30 menit. Jam di tabel hanya contoh akhir Juli 2026.",
-  "tpg-tgu": "Beroperasi 07:00 sampai 18:00, tiap sekitar 30 menit.",
+    "Jadwal Sindo tampil dalam dua versi. Sebagian keberangkatan Majestic hanya pada akhir pekan atau hari libur.",
+  "btc-stl": "Dari Stulang: mulai MYR 123 sekali jalan. Tarif berlaku mulai 1 Januari 2026.",
+  "hb-ph": "Jam di tabel berasal dari satu contoh hari.",
+  "wfc-hfc": "Hanya pada akhir pekan.",
   "tpg-tgu-roro":
-    "Tiket hanya online lewat Ferizy, tidak dijual di loket. Check-in minimal 2 jam sebelum berangkat. Motor Gol. II, mobil Gol. IVA. KMP Barau sedang docking. Jadwal pernah dijarangkan menjadi tiap 1 jam 15 menit pada Januari 2026 karena cuaca.",
-  "tpg-trp": "Tergantung cuaca.",
-  "skp-tbk": "Jadwal lama Dumai Express sudah tidak dipakai sebagai acuan.",
-  "skp-dumai": "Yang ada hanya jadwal lama. Tarif Kuala Enok dan Kuala Tungkal sampai Rp600.000.",
-  "skp-kundur-penyalai": "Yang ada hanya jadwal lama.",
+    "Tiket hanya dijual daring lewat Ferizy, tidak di loket. Lapor masuk minimal 2 jam sebelum berangkat. Motor golongan II, mobil golongan IVA. KMP Barau sedang naik dok. Jadwal pernah dijarangkan menjadi setiap 1 jam 15 menit pada Januari 2026 karena cuaca.",
+  "tpg-trp": "Bergantung pada cuaca.",
+  "skp-dumai": "Tarif ke Kuala Enok dan Kuala Tungkal sampai Rp600.000.",
   "b99-pelni":
-    "Bukan jadwal harian. Kapal Pelni sandar di Bintang 99 Persada, Batu Ampar, sejak Desember 2024. Tiket lewat PELNI Mobile, pelni.co.id, atau loket cabang Pelni Batam. Jadwal final ada di aplikasi PELNI.",
-  "batam-pasirgudang": "Belum ada jadwal resmi yang terverifikasi.",
-  "tpg-roro-mengkapan-kualatungkal": "Ada layanan, jamnya belum terverifikasi.",
-  "hb-domestik-tbk-moro": "Ada layanan, jamnya belum terverifikasi.",
-  "hb-nirup": "Sekitar 45 menit. Jenis rute belum jelas di sumber.",
+    "Bukan jadwal harian. Kapal Pelni sandar di Bintang 99 Persada, Batu Ampar, sejak Desember 2024. Tiket dijual lewat PELNI Mobile, pelni.co.id, atau loket cabang Pelni Batam. Jadwal terbaru ada di aplikasi PELNI.",
+  "tpg-roro-mengkapan-kualatungkal": "Layanan ini ada, tetapi jamnya belum tercatat.",
+  "hb-domestik-tbk-moro": "Layanan ini ada, tetapi jamnya belum tercatat.",
 };
 
+// Zona jam Gold Coast tidak tercatat di data, jadi ditulis "waktu setempat" tanpa menebak WIB atau waktu Singapura.
 export const BANNER_TERGANGGU: Record<string, string> = {
   "gcb-hfc":
-    "Terganggu. Di jadwal BatamFast per 1 Nov 2026 sebagian besar trip bertanda ditangguhkan sampai ada pemberitahuan. Yang tersisa: HarbourFront ke Gold Coast 09:35 (Sindo) dan 10:30, Gold Coast ke HarbourFront 15:30 (Sindo) dan 19:00.",
+    "Terganggu. Per 1 November 2026 sebagian besar keberangkatan BatamFast ditangguhkan sampai ada pemberitahuan. Yang tersisa, dalam waktu setempat: HarbourFront ke Gold Coast pukul 09.35 (Sindo) dan 10.30, Gold Coast ke HarbourFront pukul 15.30 (Sindo) dan 19.00.",
 };
 
 // ---------- Kartu rute ----------
 
 export type BarisJadwal = {
-  arah: string;
+  rute: string;
+  operator: string | null;
   jam: { jam: string; tanda: string | null }[];
   zona: string | null;
   hari: string | null;
   operasi: string | null;
   tanggal: string | null;
-  lencana: { teks: string; nada?: "caution" | "danger" }[];
+  /** Jadwal yang masih diragukan mendapat catatan yang sama dengan jadwal lama. */
+  perluCek: boolean;
 };
 
 export type KartuRute = {
@@ -119,14 +118,7 @@ export type KartuRute = {
   link: string | null;
   catatan: string | null;
   terganggu: string | null;
-  status: { teks: string; nada?: "caution" | "danger" } | null;
   jadwal: BarisJadwal[];
-};
-
-const ZONA_SINGKAT: Record<string, string> = {
-  "Asia/Jakarta": "WIB",
-  "Asia/Singapore": "SGT",
-  "Asia/Kuala_Lumpur": "MYT",
 };
 
 function tujuanPublik(t: string) {
@@ -148,10 +140,14 @@ function durasiPublik(r: RuteData): string | null {
   const dariTabel = r.dari_tabel?.[0]?.["Durasi"];
   if (typeof dariTabel === "string" && dariTabel !== "–") return teksWarga(dariTabel);
   if (!r.durasi_menit) return null;
-  return r.durasi_menit >= 120 ? `±${Math.round(r.durasi_menit / 60)} jam` : `±${r.durasi_menit} menit`;
+  return r.durasi_menit >= 120 ? `sekitar ${Math.round(r.durasi_menit / 60)} jam` : `sekitar ${r.durasi_menit} menit`;
 }
 
-function barisJadwal(j: JadwalMentah): BarisJadwal {
+/** Tanda per jam: hari ditulis penuh, penanda keraguan dibuang. Isinya bisa nama kapal atau operator. */
+const tandaPublik = (keterangan: string | null | undefined) =>
+  keterangan ? hariPublik(keterangan.replace(/^\d{2}:\d{2}\s*/, "")) : null;
+
+function barisJadwal(j: JadwalMentah, r: RuteData): BarisJadwal {
   const dasar: { jam: string; keterangan?: string | null }[] = j.trips?.length
     ? j.trips
     : j.per_kapal?.length
@@ -159,31 +155,21 @@ function barisJadwal(j: JadwalMentah): BarisJadwal {
           .flatMap((k) => k.jam_berangkat.map((jam) => ({ jam, keterangan: k.kapal })))
           .sort((a, b) => a.jam.localeCompare(b.jam))
       : j.jam_berangkat.map((jam) => ({ jam }));
-  const lencana: BarisJadwal["lencana"] = [];
-  const perluCek =
-    /majestic/i.test(j.arah) || /perlu_cek/.test(`${j.status_data ?? ""} ${j.hari ?? ""} ${j.catatan ?? ""}`);
-  if (j.status_data === "usang") lencana.push({ teks: "jadwal lama, usang", nada: "danger" });
-  else if (perluCek) lencana.push({ teks: "perlu cek ulang", nada: "caution" });
-  if (/contoh/i.test(j.hari ?? "")) lencana.push({ teks: "contoh" });
-  const hari = j.hari
-    ?.replace(/\s*\(tanda tidak terbaca[^)]*\)/i, "")
-    .replace(/\s*\(?perlu_cek_ulang\)?/gi, "")
-    .trim();
+  const zonaSahih = zonaSah(j.zona_waktu);
+  const zona = zonaSahih ? singkatanZona(zonaSahih) : null;
+  const { asal, tujuan } = pecahArah(j.arah);
+  const operasi = j.jam_operasi
+    ? `${jamTitik(j.jam_operasi).replace(/\s*[–-]\s*/, "—")}${zona ? ` ${zona}` : ""}${j.interval ? `, ${teksInterval(j.interval)}` : ""}`
+    : null;
   return {
-    arah: j.arah
-      .replace(/\s*->\s*/g, " → ")
-      .replace(/\s*<->\s*/g, " ⇄ ")
-      .replace(/,\s*(WIB|SGT|MYT)\)/, ")")
-      .replace(/\s*\((WIB|SGT|MYT)\)/, ""),
-    jam: dasar.map((t) => ({
-      jam: t.jam,
-      tanda: t.keterangan ? teksWarga(t.keterangan).replace(/^\d{2}:\d{2}\s*/, "") : null,
-    })),
-    zona: j.zona_waktu ? (ZONA_SINGKAT[j.zona_waktu] ?? null) : null,
-    hari: hari || null,
-    operasi: j.jam_operasi ? `${j.jam_operasi}${j.interval ? `, ${j.interval}` : ""}` : null,
+    rute: tujuan ? `${asal} → ${tujuan}` : asal,
+    operator: operatorEntri(j, r),
+    jam: dasar.map((t) => ({ jam: jamTitik(t.jam), tanda: tandaPublik(t.keterangan) })),
+    zona,
+    hari: hariPublik(j.hari, zonaSahih),
+    operasi,
     tanggal: j.tanggal_data ?? null,
-    lencana,
+    perluCek: /majestic/i.test(j.arah) || /perlu_cek/.test(`${j.status_data ?? ""} ${j.hari ?? ""} ${j.catatan ?? ""}`),
   };
 }
 
@@ -195,15 +181,17 @@ function kartu(r: RuteData): KartuRute {
   return {
     id: r.id,
     jenis: r.jenis === "internasional" || r.jenis === "domestik" ? r.jenis : "lainnya",
-    judul: `${asal} ⇄ ${tujuanPublik(r.tujuan)}`,
+    judul: `${asal}—${tujuanPublik(r.tujuan)}`,
     operator,
     durasi: durasiPublik(r),
     harga: hargaMulaiDari(r),
-    link: r.link_jadwal_resmi ?? null,
+    link: tautanPublik(r.link_jadwal_resmi),
     catatan: CATATAN_RUTE[r.id] ?? null,
     terganggu: BANNER_TERGANGGU[r.id] ?? null,
-    status: kataStatus(r.status_data),
-    jadwal: JADWAL.filter((j) => j.rute_id === r.id && (j.jam_berangkat.length > 0 || j.jam_operasi)).map(barisJadwal),
+    // Jadwal berstatus usang tanpa tanggal tidak ditampilkan: tidak ada yang bisa ditulis sebagai "Jadwal per".
+    jadwal: JADWAL.filter(
+      (j) => j.rute_id === r.id && j.status_data !== "usang" && (j.jam_berangkat.length > 0 || j.jam_operasi),
+    ).map((j) => barisJadwal(j, r)),
   };
 }
 
@@ -219,18 +207,17 @@ export type BarisPompong = {
   jam: string | null;
   tarif: string | null;
   durasi: string | null;
-  status: { teks: string; nada?: "caution" | "danger" } | null;
   catatan: string | null;
   tegas: boolean;
 };
 
 const nilai = (v: unknown) => (typeof v === "string" && v !== "–" ? teksWarga(v) : null);
 
-// Keterangan tambahan dari laporan 09, yang menyebut tahun dan sumber berbeda dari tabel laporan 14.
+// Keterangan tambahan dari riset 09, yang menyebut tahun berbeda dari tabel riset 14.
 const TAMBAHAN_09: Record<string, string> = {
-  "sgl-buluh": "Sumber lain mencatat Rp20.000 untuk pulau dekat sampai Rp25.000 untuk pulau jauh (data 2022).",
+  "sgl-buluh": "Tahun 2022 tercatat Rp20.000 untuk pulau dekat dan Rp25.000 untuk pulau jauh.",
   "skp-blp":
-    "Naik dari Rp18.000 pada September 2022 karena harga BBM. Satu pompong standarnya 12 penumpang dan 1 pengemudi.",
+    "Tarif naik dari Rp18.000 pada September 2022 karena harga BBM. Satu perahu memuat 12 penumpang dan satu pengemudi.",
 };
 
 export const BARIS_POMPONG: BarisPompong[] = SEMUA_RUTE.filter((r) => r.jenis === "pompong").map((r) => {
@@ -243,20 +230,19 @@ export const BARIS_POMPONG: BarisPompong[] = SEMUA_RUTE.filter((r) => r.jenis ==
     jam: nilai(t["Jam operasi"]),
     tarif: nilai(t["Tarif"]),
     durasi: nilai(t["Durasi"]),
-    status: kataStatus(r.status_data_asli) ?? kataStatus(r.status_data),
     catatan: TAMBAHAN_09[r.id] ?? null,
     tegas: r.id === "skp-blp",
   };
 });
 
-/** Rute di laporan 09 yang tidak ada di tabel laporan 14. Titik asalnya tidak disebut sumber. */
+/** Rute di riset 09 yang tidak ada di tabel riset 14. Titik asalnya tidak tercatat. */
 export const POMPONG_TANPA_ASAL = (
   pompong09.rute as unknown as { id: string; tujuan: unknown; keterangan_tabel?: string }[]
 )
   .filter((r) => r.id === "trp-rutepemping")
   .map((r) => ({
     tujuan: (Array.isArray(r.tujuan) ? r.tujuan : [String(r.tujuan)]).join(", "),
-    keterangan: "Pompong reguler sekali sehari, carter mahal. Data riset lama, titik asal tidak disebut.",
+    keterangan: "Carter mahal",
   }));
 
 /** Pelantar yang tercatat tetapi belum punya tujuan atau tarif. */
@@ -286,19 +272,14 @@ export const TAUTAN_OPERATOR: { nama: string; url: string; catatan?: string }[] 
   {
     nama: "Majestic Fast Ferry",
     url: "https://www.majesticfastferry.com.sg/",
-    catatan: "Jadwal PDF Mei 2026",
+    catatan: "Jadwal Mei 2026 dalam PDF",
   },
   { nama: "Sindo Ferry", url: "https://www.sindoferry.com.sg/schedules" },
   { nama: "Horizon Fast Ferry", url: "https://horizonfastferry.com.sg/" },
   { nama: "Indomas Ferry", url: "https://www.indomasferry.com/", catatan: "Johor Bahru" },
   { nama: "Ferry Global Group", url: "https://ferryglobalgroup.com/schedule", catatan: "Puteri Harbour" },
-  { nama: "Ferizy (ASDP)", url: "https://trip.ferizy.com", catatan: "tiket RoRo, hanya online" },
+  { nama: "Ferizy (ASDP)", url: "https://trip.ferizy.com", catatan: "tiket RoRo, hanya daring" },
   { nama: "PELNI", url: "https://www.pelni.co.id" },
-  {
-    nama: "BP Batam, Telaga Punggur",
-    url: "https://batamport.bpbatam.go.id/telaga-punggur/",
-    catatan: "harga resmi domestik",
-  },
   { nama: "KPompong", url: "https://kpompong.com/", catatan: "PPMS Sekupang" },
 ];
 
@@ -320,13 +301,9 @@ type TitikTerminal = {
 
 const TERMINAL_LUAR = (t: TerminalData) => t.jenis === "terminal_tujuan";
 
-const CATATAN_TERMINAL: Record<string, string> = {
-  skp: "Sumber memberi beberapa titik yang berbeda sampai sekitar 1,8 km. Tunggu cek lapangan.",
-};
-
 /**
  * Koordinat hanya dari places.json (prompt 4.5). Terverifikasi = pin penuh, perlu cek = berongga, kosong = daftar
- * "lokasi belum diisi". Terminal Singapura dan Malaysia hanya konteks rute, bukan pin direktori (brief 14).
+ * di bawah peta. Terminal Singapura dan Malaysia hanya konteks rute, bukan pin direktori (brief 14).
  */
 export function titikTerminalDiPeta(): TitikTerminal[] {
   return TERMINAL.flatMap((t) => {
@@ -343,9 +320,7 @@ export function titikTerminalDiPeta(): TitikTerminal[] {
         lat: p.lat,
         lng: p.lng,
         perkiraan,
-        catatan: perkiraan
-          ? (CATATAN_TERMINAL[t.id] ?? "Lokasi perkiraan, belum dicek di lapangan.")
-          : "Koordinat cocok di dua sumber independen, belum dicek langsung di lapangan.",
+        catatan: perkiraan ? "Titik di peta adalah perkiraan area." : "",
         rincian: rute ? `${rute} rute tercatat` : "Belum ada rute penumpang tercatat",
         href: `/info/tempat/${p.id}`,
       },

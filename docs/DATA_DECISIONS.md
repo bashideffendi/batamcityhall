@@ -19,6 +19,13 @@ Keputusan soal data, dengan alasan. Pemilik proyek bisa mengubah semuanya. Butir
 
 | Mask daratan Ombak | `earth` peta dasar, bukan CircleGeo | Menyimpang dari prompt 4.0 butir 4. CircleGeo terbaca satu tingkat lebih kasar di MapLibre; yang ini lebih tajam dan tanpa server luar |
 | Peringatan dini saat `Kep. Riau` tidak ada di `warnings.json` | Status "Belum Tersedia", tidak pernah "aman" | File itu tidak memuat semua provinsi |
+| Gempa di kotak Hari Ini | Hanya gempa 24 jam terakhir yang dirasakan di Kepri, berpusat dalam 300 km dari Batam, M 6 ke atas dalam 1.000 km, atau disebut BMKG berpotensi tsunami | Prompt hanya menulis "bila relevan". Ambang ini pilihan saya, bukan angka BMKG dan bukan penilaian bahaya: 300 km kira-kira mencakup Kepri, Riau, Johor, dan Singapura; 1.000 km mencakup hampir seluruh Sumatra. Bisa diubah di `features/langit-laut/lib/gempa.ts` |
+| Titik acuan jarak gempa | Titik label Kec. Batam Kota di `kecamatan-geo.json` (BIG) | Tidak menebak koordinat. Jarak ditulis dibulatkan 10 km dan diberi keterangan dihitung situs ini |
+| Tanpa peta di halaman gempa | Daftar dengan jarak dan arah, plus tautan peta guncangan BMKG | Peta dasar hanya mencakup area Batam, gempa tersebar se-Indonesia |
+| Kecamatan Batam pada peringatan cuaca | Disebut di teks BMKG, atau titik labelnya di dalam poligon | Nama kecamatan hanya ada di teks. Poligon ikut dicek supaya teks yang terpotong tidak menghilangkan Batam. Dua peringatan asli 5 Nov 2026 memberi hasil sama dari kedua cara |
+| Peringatan cuaca di kotak Hari Ini | Tampil bila mengenai Batam atau datanya gagal. Selain itu baris hilang, tidak pernah ditulis aman | Prompt 4.1 "bila ada". Peringatan di Kepri lain ada di `/langit-laut/peringatan` |
+| Label baris lama "Peringatan" di kotak Hari Ini | Jadi "Peringatan laut" | Sekarang ada dua jenis peringatan, baris lama hanya soal gelombang. "Gelombang" saja terbaca sama dengan baris Ombak |
+| Istilah CAP (severity, urgency, certainty) | Disalin apa adanya dalam bahasa Inggris, dengan tautan rujukan BMKG | Tidak menerjemahkan sendiri istilah resmi |
 | Kuliner di `koordinat_perlu_diisi.csv` | Prioritas 3 | Pilihan saat port, pemilik bisa mengubah |
 | Koordinat terminal feri di Makan | Dari `places.json` kanonik | Nongsapura bergeser ±6,8 km dari batam-bites, jadi hasil "dekat terminal" berubah |
 | Kecamatan kuliner | 30 dari 117 kosong, dicatat di `catatan` | Tidak tertulis di alamat atau nama area, tidak ditebak |
@@ -46,7 +53,7 @@ Keputusan soal data, dengan alasan. Pemilik proyek bisa mengubah semuanya. Butir
 | Enam kutipan Rempang | Berlabel "tautan belum tercatat" | Riset tidak menyimpan URL-nya |
 | `sumber_rekomendasi_warga.json` | Tidak ditampilkan | Catatan riset, bukan data untuk warga |
 | Status Tour de Batam | "Dibatalkan", mengikuti kolom tabel | `catatan_laporan` memuat salah tempel antar-acara |
-| Kanal komunitas | Hanya yang berstatus terverifikasi, 5 entri | Kontak lain belum pasti |
+| Kanal komunitas | Hanya yang berstatus terverifikasi dan bukan kanal pemerintah, 3 entri | Kontak lain belum pasti. PEDOMAN 2.9 melarang tautan ke situs pemerintah |
 | Izin tukang | Syarat tampil, kontak tampil hanya dengan izin | Prompt bagian 7 |
 | Layar admin | Kontak perekomendasi tersamar | Prompt bagian 7 |
 | Segmen mural pertama | Harbour Bay–Nagoya–Jodoh | Barelang tanpa jadwal feri, quest 6 jembatan tidak bisa tuntas di satu segmen |

@@ -1,6 +1,6 @@
 [
  {
-  "nama": "Panggilan darurat 112",
+  "nama": "Panggilan darurat",
   "kontak": "112",
   "catatan": "Nomor darurat nasional. Pengelola lokal di Batam belum diverifikasi",
   "jenis": "telepon",
@@ -24,7 +24,7 @@
   "sumber_riset": "09-direktori-celah"
  },
  {
-  "nama": "SAR/Basarnas",
+  "nama": "SAR",
   "kontak": "115",
   "catatan": "Diarahkan ke kantor SAR terdekat (Pos SAR Batam / KPP Tanjungpinang)",
   "jenis": "telepon",
@@ -48,7 +48,8 @@
  {
   "nama": "LAPOR! (SP4N)",
   "kontak": "lapor.go.id",
-  "catatan": "Kanal pengaduan nasional. BP Batam juga punya ditpam.laporsp4n@bpbatam.go.id",
+  "catatan": "Kanal pengaduan nasional",
+  "catatan_internal": "BP Batam juga punya ditpam.laporsp4n@bpbatam.go.id",
   "jenis": "kanal_online",
   "tempat_terkait": [],
   "sumber_riset": "09-direktori-celah"

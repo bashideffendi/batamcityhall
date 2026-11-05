@@ -112,7 +112,7 @@
   justify-content: center;
   min-height: 44px;
   padding: var(--bch-space-2) var(--bch-space-3);
-  background: var(--bch-paper-2);
+  background: var(--bch-paper);
   color: var(--bch-ink);
   border: var(--bch-stroke-base) solid var(--bch-rule);
   border-radius: var(--bch-radius-1);

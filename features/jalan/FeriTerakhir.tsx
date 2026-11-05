@@ -4,14 +4,16 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { useNow } from "@/features/langit-laut/hooks/useBrowser";
 import {
+  catatanJadwalLama,
   dariTerminal,
   hitungFeri,
+  jamTitik,
+  kapital,
   kelompokRute,
   keSingapura,
   singkatanZona,
+  teksInterval,
   teksStatus,
-  teksTanggal,
-  waktuDiZona,
   type HasilFeri,
   type KelompokRute,
 } from "./feri-terakhir";
@@ -20,78 +22,81 @@ import { useEntriFeri } from "./useFeri";
 const TICK_MS = 30 * 1000;
 const TANPA_JAM = new Set(["belum_tersedia"]);
 
-function jamKeTeks(n: number) {
-  return `${String(Math.floor(n / 60)).padStart(2, "0")}:${String(n % 60).padStart(2, "0")}`;
+/** "23:30 kemarin" menjadi "23.30 WIB kemarin". */
+const teksJamWib = (jamWib: string) =>
+  `${jamTitik(jamWib.replace(" kemarin", ""))} WIB${jamWib.endsWith("kemarin") ? " kemarin" : ""}`;
+
+/** Satu baris keterangan di bawah jam. Jadwal lama dan jadwal yang diragukan memakai kalimat yang sama (pedoman 3.6). */
+function metaBaris(h: HasilFeri): string {
+  if (TANPA_JAM.has(h.status)) return "";
+  const zona = h.zona ? ` ${singkatanZona(h.zona)}` : "";
+  const bagian: string[] = [];
+  if (h.dataLama || h.perluCek) bagian.push(catatanJadwalLama(h.tanggalData));
+  if (h.perkiraan && h.operasi) {
+    bagian.push(
+      h.operasi.interval
+        ? `Kapal berangkat ${teksInterval(h.operasi.interval)} sampai jam tutup operasi.`
+        : "Jam ini adalah jam tutup operasi.",
+    );
+  }
+  // Jam dari satu contoh hari tidak boleh terbaca sebagai jadwal tetap.
+  if (h.contoh && h.hariTeks && !h.perkiraan) bagian.push(`${kapital(h.hariTeks)}.`);
+  if (h.berikutnya) bagian.push(`Berikutnya pukul ${jamTitik(h.berikutnya)}${zona}.`);
+  if (h.catatanTrip) bagian.push(`${kapital(h.catatanTrip)}.`);
+  return bagian.join(" ");
 }
 
-function Baris({ h }: { h: HasilFeri }) {
+function Baris({ h, k }: { h: HasilFeri; k: KelompokRute }) {
   const adaJam = h.jam !== null;
+  // Satu label per baris: gangguan mengalahkan status jam.
+  const label = h.terganggu ? "Terganggu" : adaJam ? teksStatus(h) : null;
+  const meta = metaBaris(h);
   return (
-    <li className="jl-feri-baris" data-status={h.status} data-rute={h.ruteId}>
-      <span className="jl-feri-operator">{h.operator ?? "operator belum tercatat"}</span>
-      {adaJam ? (
-        <span className="jl-feri-jam bch-data">
-          {h.perkiraan ? "±" : ""}
-          {h.jam} {h.zona && singkatanZona(h.zona)}
-          {h.jamWib && <span className="jl-feri-wib"> = {h.jamWib} WIB</span>}
-        </span>
-      ) : (
-        <span className="jl-feri-teks">{teksStatus(h)}</span>
-      )}
-      <span className="bch-badges jl-feri-lencana">
-        {adaJam && (
-          <span className="bch-badge" data-tone={h.status === "masih_ada" ? "ok" : undefined}>
-            {teksStatus(h)}
+    <tr className="jl-feri-baris" data-status={h.status} data-rute={h.ruteId}>
+      <td data-label="Rute">
+        {k.asal}—{k.tujuan}
+      </td>
+      <td data-label="Operator">{h.operator ?? ""}</td>
+      <td data-label="Terakhir hari ini" className="jl-feri-sel">
+        {adaJam ? (
+          <span className="jl-feri-jam">
+            {h.perkiraan ? "sekitar " : ""}
+            {jamTitik(h.jam as string)} {h.zona && singkatanZona(h.zona)}
+            {h.jamWib && <span className="jl-feri-wib">{teksJamWib(h.jamWib)}</span>}
+          </span>
+        ) : (
+          <span className="jl-feri-teks">{teksStatus(h)}</span>
+        )}
+        {label && (
+          <span className="bch-status" data-tone={h.terganggu ? "danger" : h.status === "masih_ada" ? "ok" : undefined}>
+            {label}
           </span>
         )}
-        {h.perluCek && (
-          <span className="bch-badge" data-tone="caution">
-            perlu cek ulang
-          </span>
-        )}
-        {h.contoh && <span className="bch-badge">contoh</span>}
-        {h.terganggu && (
-          <span className="bch-badge" data-tone="danger">
-            terganggu
-          </span>
-        )}
-        {h.dataLama && !TANPA_JAM.has(h.status) && (
-          <span className="bch-badge" data-tone="caution">
-            data lama
-          </span>
-        )}
-      </span>
-      {!TANPA_JAM.has(h.status) && (
-        <span className="jl-feri-meta">
-          Data {teksTanggal(h.tanggalData)}
-          {h.perkiraan && h.operasi ? `. Jam tutup operasi, ${h.operasi.interval ?? "tanpa jam kapal"}` : ""}
-          {h.berikutnya ? `. Berikutnya ${h.berikutnya}` : ""}
-          {h.catatanTrip ? `. ${h.catatanTrip}` : ""}
-        </span>
-      )}
-    </li>
+        {meta && <span className="jl-feri-meta">{meta}</span>}
+      </td>
+    </tr>
   );
 }
 
-function Kelompok({ k }: { k: KelompokRute }) {
+/** Tabel: Rute · Operator · Terakhir hari ini (PEDOMAN 3.6). */
+function TabelFeri({ kelompok }: { kelompok: KelompokRute[] }) {
   return (
-    <section className="jl-feri-rute">
-      <h4>
-        {k.asal} → {k.tujuan}
-      </h4>
-      <ul>
-        {k.baris.map((h, i) => (
-          <Baris key={`${h.ruteId}-${h.operator}-${i}`} h={h} />
-        ))}
-      </ul>
-      {k.link ? (
-        <a href={k.link} target="_blank" rel="noopener" className="jl-tautan-resmi">
-          Jadwal resmi operator
-        </a>
-      ) : (
-        <p className="jl-feri-meta">Belum ada tautan jadwal resmi.</p>
-      )}
-    </section>
+    <div className="bch-table-wrap">
+      <table className="bch-table bch-tabel-tumpuk jl-feri-tabel">
+        <thead>
+          <tr>
+            <th scope="col">Rute</th>
+            <th scope="col">Operator</th>
+            <th scope="col">Terakhir hari ini</th>
+          </tr>
+        </thead>
+        <tbody>
+          {kelompok.flatMap((k) =>
+            k.baris.map((h, i) => <Baris key={`${k.ruteId}-${k.asal}-${k.tujuan}-${h.operator}-${i}`} h={h} k={k} />),
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -104,7 +109,6 @@ function BelumTersedia({ baris }: { baris: HasilFeri[] }) {
         {baris.map((h) => (
           <li key={`${h.ruteId}-${h.asal}`} data-rute={h.ruteId}>
             {h.asal} → {h.tujuan}: jadwal belum tersedia
-            {h.adaJadwalUsang ? " (yang ada hanya jadwal lama)" : ""}
           </li>
         ))}
       </ul>
@@ -125,16 +129,14 @@ export default function FeriTerakhir({ varian = "penuh", terminal, namaTerminal 
   const { data, gagal } = useEntriFeri();
   const hasil = useMemo(() => (data ? hitungFeri(data, new Date(nowMs)) : null), [data, nowMs]);
   const judul = terminal
-    ? `Feri terakhir dari ${namaTerminal ?? "terminal terdekat"} hari ini`
-    : "Feri terakhir hari ini";
+    ? `Feri Terakhir dari ${namaTerminal ?? "Terminal Terdekat"} Hari Ini`
+    : "Feri Terakhir Hari Ini";
 
   if (gagal) {
     return (
       <section className="jl-feri" aria-label={judul}>
         <h2>{judul}</h2>
-        <p className="bch-note" data-tone="caution">
-          Jadwal feri gagal dimuat. Cek langsung ke operator.
-        </p>
+        <p className="bch-note">Jadwal feri tidak dapat dimuat. Tanyakan kepada operator sebelum berangkat.</p>
       </section>
     );
   }
@@ -142,7 +144,7 @@ export default function FeriTerakhir({ varian = "penuh", terminal, namaTerminal 
     return (
       <section className="jl-feri" aria-label={judul}>
         <h2>{judul}</h2>
-        <p>Itik sedang berbaris…</p>
+        <p>Memuat data</p>
       </section>
     );
   }
@@ -156,42 +158,26 @@ export default function FeriTerakhir({ varian = "penuh", terminal, namaTerminal 
   const kosong = pilih.filter((h) => h.status === "belum_tersedia");
   const dariBatam = kelompokRute(adaJadwal.filter((h) => h.arah === "dari_batam"));
   const keBatam = kelompokRute(adaJadwal.filter((h) => h.arah === "ke_batam"));
-  const lama = adaJadwal.filter((h) => h.dataLama).length;
-  const kini = waktuDiZona(new Date(nowMs), "Asia/Jakarta");
 
   return (
     <section className="jl-feri" aria-label={judul} data-varian={terminal ? "terminal" : varian}>
       <h2>{judul}</h2>
-      <p className="jl-feri-kini bch-data">Sekarang {jamKeTeks(kini.menit)} WIB</p>
-      <p className="bch-note">
-        Jadwal bisa berubah, cek operator. Jam adalah waktu lokal pelabuhan asal. Status terakhir dihitung dari jadwal
-        statis, bukan posisi kapal.
-      </p>
-      {lama > 0 && (
-        <p className="bch-note" data-tone="caution" role="status">
-          Jadwal mungkin sudah berubah. {lama} baris di bawah datanya lebih dari 60 hari.
-        </p>
-      )}
       {dariBatam.length > 0 && (
         <>
-          <h3>Dari Batam</h3>
-          <div className="jl-feri-grid">
-            {dariBatam.map((k) => (
-              <Kelompok key={`${k.ruteId}-${k.asal}-${k.tujuan}`} k={k} />
-            ))}
-          </div>
+          {keBatam.length > 0 && <h3>Dari Batam</h3>}
+          <TabelFeri kelompok={dariBatam} />
         </>
       )}
       {keBatam.length > 0 && (
         <>
-          <h3>Dari luar Batam ke Batam</h3>
-          <div className="jl-feri-grid">
-            {keBatam.map((k) => (
-              <Kelompok key={`${k.ruteId}-${k.asal}-${k.tujuan}`} k={k} />
-            ))}
-          </div>
+          <h3>Dari Luar Batam ke Batam</h3>
+          <TabelFeri kelompok={keBatam} />
         </>
       )}
+      <p className="bch-catatan-halaman">
+        Jadwal dapat berubah. Tanyakan kepada operator sebelum berangkat. Jam mengikuti waktu setempat di pelabuhan asal,
+        dan statusnya dihitung dari jadwal, bukan dari posisi kapal.
+      </p>
       {!terminal && varian === "penuh" ? (
         <BelumTersedia baris={kosong} />
       ) : terminal && kosong.length > 0 ? (

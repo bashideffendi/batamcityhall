@@ -9,13 +9,8 @@ import type { EchoLevel } from "@/features/langit-laut/lib/status";
 import { tambahLayer, usePeta } from "./PetaLangit";
 import PetaMarker from "./PetaMarker";
 
-// Batas 52 kecamatan di Batam, Tanjungpinang, Bintan, Karimun, dan Lingga (Badan Informasi
-// Geospasial edisi Juni 2026, disederhanakan oleh scripts/build-kecamatan.mjs) di atas radar.
-// Kecamatan yang sedang hujan ditandai dengan DUA hal yang terbaca tanpa legenda: arsiran tipis warna
-// kelas hujannya (di BAWAH radar, jadi warna radar tetap asli) + label bertulisan "Galang · Hujan
-// Ringan". Garis batas semua kecamatan sama tipisnya. Nama kecamatan lain baru muncul di zoom tinggi
-// supaya HP tak penuh label; label yang saling tabrak disaring (lihat `layout`). Geometri (±390 KB)
-// dimuat terpisah, hanya saat mode Hujan dibuka.
+// Batas 52 kecamatan (PEDOMAN 5.2): garis putus-putus tipis, nama kapital. Kecamatan yang hujan ditandai dengan
+// label bertulisan kelasnya, supaya makna tidak hanya lewat warna. Geometri (±390 KB) dimuat terpisah.
 
 type KecFeature = {
   type: "Feature";
@@ -42,13 +37,8 @@ const LABELS_ALL_ZOOM = 10;
 /** di zoom kecil label hujan cukup nama (kelasnya ada di panel) supaya tak saling tumpuk */
 const FULL_PILL_ZOOM = 10;
 
-const LINE: Record<ThemeMode, string> = {
-  light: "rgba(28, 27, 25, 0.42)",
-  dark: "rgba(237, 228, 207, 0.36)",
-};
-// Arsiran kecamatan hujan = warna titik kelas (sama dengan --dot-* di langit-laut.css).
-const FILL: Record<EchoLevel, string> = { ringan: "#00babf", sedang: "#ffa500", lebat: "#e50000" };
-const LEVEL_WORD: Record<EchoLevel, string> = { ringan: "Hujan Ringan", sedang: "Hujan Sedang", lebat: "Hujan Lebat" };
+const LINE: Record<ThemeMode, string> = { light: "#D8C9AC", dark: "#4A4335" };
+const LEVEL_WORD: Record<EchoLevel, string> = { ringan: "hujan ringan", sedang: "hujan sedang", lebat: "hujan lebat" };
 
 // Ukuran label di layar untuk cek tabrakan (padanan CSS .kec-pill / .kec-label).
 let measureCtx: CanvasRenderingContext2D | null | undefined;
@@ -67,7 +57,6 @@ function labelSize(name: string, level: EchoLevel | undefined, full: boolean, fa
 }
 const LABEL_GAP = 4;
 
-const FILL_ID = "ll-kec-fill";
 const LINE_ID = "ll-kec-line";
 
 type Props = {
@@ -116,48 +105,29 @@ export default function KecamatanLayer({ rainy, showRain, theme }: Props) {
       map.addSource(SUMBER, {
         type: "geojson",
         data: geo as unknown as GeoJSON.FeatureCollection,
-        attribution: "Batas kecamatan: Badan Informasi Geospasial",
       });
     } else {
       (map.getSource(SUMBER) as GeoJSONSource).setData(geo as unknown as GeoJSON.FeatureCollection);
     }
-    tambahLayer(map, {
-      id: FILL_ID,
-      type: "fill",
-      source: SUMBER,
-      minzoom: RAIN_MIN_ZOOM,
-      filter: ["==", ["get", "code"], ""],
-    });
     tambahLayer(map, {
       id: LINE_ID,
       type: "line",
       source: SUMBER,
       minzoom: LINES_MIN_ZOOM,
       layout: { "line-join": "round" },
+      paint: { "line-dasharray": [2, 3] },
     });
     return () => {
-      if (map.getLayer(FILL_ID)) map.removeLayer(FILL_ID);
       if (map.getLayer(LINE_ID)) map.removeLayer(LINE_ID);
       if (map.getSource(SUMBER)) map.removeSource(SUMBER);
     };
   }, [map, geo]);
 
   useEffect(() => {
-    if (!map.getLayer(LINE_ID) || !map.getLayer(FILL_ID)) return;
+    if (!map.getLayer(LINE_ID)) return;
     map.setPaintProperty(LINE_ID, "line-color", LINE[theme]);
-    map.setPaintProperty(LINE_ID, "line-width", 1);
-    map.setPaintProperty(FILL_ID, "fill-opacity", theme === "dark" ? 0.26 : 0.2);
+    map.setPaintProperty(LINE_ID, "line-width", 0.9);
   }, [map, theme, geo]);
-
-  useEffect(() => {
-    if (!map.getLayer(FILL_ID)) return;
-    const codes = [...rainLevels.keys()];
-    map.setFilter(FILL_ID, ["in", ["get", "code"], ["literal", codes]]);
-    if (codes.length) {
-      const pasangan = [...rainLevels.entries()].flatMap(([c, lv]) => [c, FILL[lv]]);
-      map.setPaintProperty(FILL_ID, "fill-color", ["match", ["get", "code"], ...pasangan, FILL.ringan] as never);
-    }
-  }, [map, rainLevels, geo]);
 
   const full = zoom >= FULL_PILL_ZOOM;
   // Tata letak label: yang terderas (lalu Kota Batam, lalu yang terluas hujannya) dapat tempat

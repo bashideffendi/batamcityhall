@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
 import poi from "@/data/osm/lapisan/poi.json";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+import CatatanData from "@/features/direktori/CatatanData";
+import DaftarBertahap from "@/features/direktori/DaftarBertahap";
 import {
   DAFTAR_KATEGORI,
+  kaidahJudul,
   kategoriDariSlug,
   labelSub,
+  SLUG_KATEGORI_LAMA,
+  slugBaru,
   slugKategori,
   slugSub,
   SUB_KOSONG,
   subDiKategori,
+  tanggalIndonesia,
   tempatDiKategori,
 } from "@/features/direktori/data";
 import KartuTempat from "@/features/direktori/KartuTempat";
@@ -17,13 +23,18 @@ import KartuTempat from "@/features/direktori/KartuTempat";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return DAFTAR_KATEGORI.flatMap((k) => {
+  const baru = DAFTAR_KATEGORI.flatMap((k) => {
     const kategori = slugKategori(k.kategori);
     return [
       ...subDiKategori(k.kategori).map((s) => ({ kategori, sub: slugSub(s.sub) })),
       ...(SUB_KOSONG[k.kategori] ?? []).map((s) => ({ kategori, sub: s.slug })),
     ];
   });
+  // Alamat lama kategori yang sudah digabung dialihkan di bawah.
+  const lama = SLUG_KATEGORI_LAMA.flatMap((kategori) =>
+    subDiKategori(kategori.replace(/-/g, "_")).map((s) => ({ kategori, sub: slugSub(s.sub) })),
+  );
+  return [...baru, ...lama];
 }
 
 type Props = { params: Promise<{ kategori: string; sub: string }> };
@@ -45,55 +56,55 @@ function cari(kategori: string, sub: string) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { kategori, sub } = await params;
   const h = cari(kategori, sub);
-  return h ? { title: `${h.nama} · ${h.k.nama}` } : {};
+  return h ? { title: `${kaidahJudul(h.nama)} · ${kaidahJudul(h.k.nama)}` } : {};
 }
 
 export default async function Subkategori({ params }: Props) {
   const { kategori, sub } = await params;
+  const baru = slugBaru(kategori);
+  if (baru) permanentRedirect(`/info/direktori/${baru}/${sub}`);
   const h = cari(kategori, sub);
   if (!h) notFound();
   const osm = (poi.daftar as Record<string, { nama: string; osm: string }[]>)[`${kategori}/${sub}`] ?? [];
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">
-        <Link href="/info/direktori">Direktori</Link> · <Link href={`/info/direktori/${kategori}`}>{h.k.nama}</Link>
-      </p>
-      <h1 className="mt-2">{h.nama}</h1>
+      <nav className="bch-remah" aria-label="Remah roti">
+        <Link href="/info">Informasi Warga</Link> / <Link href="/info/direktori">Direktori</Link> /{" "}
+        <Link href={`/info/direktori/${kategori}`}>{h.k.nama}</Link>
+      </nav>
+      <h1 className="mt-2">{kaidahJudul(h.nama)}</h1>
       {h.tempat.length === 0 ? (
         <p className="bch-lede">
-          Belum ada data. Kenal tempatnya? <Link href="/koreksi">Kabari kami</Link>.
+          Belum ada tempat di kategori ini. Kalau kamu tahu tempatnya, <Link href="/koreksi">kirim usulan</Link>.
         </p>
       ) : (
         <>
-          <h2 className="mt-5 mb-1">Daftar tempat</h2>
+          <h2 className="mt-5 mb-1">Daftar Tempat</h2>
           <p className="bch-data m-0">{h.tempat.length} tempat</p>
-          <ul className="bch-grid mt-3">
+          <DaftarBertahap className="bch-daftar-baris mt-3" kolom={2}>
             {h.tempat.map((p) => (
               <li key={p.id}>
                 <KartuTempat p={p} />
               </li>
             ))}
-          </ul>
+          </DaftarBertahap>
         </>
       )}
       {osm.length > 0 && (
         <section data-daftar-osm>
           <h2 className="mt-7 mb-2">Menurut OpenStreetMap</h2>
           <p className="bch-note">
-            {osm.length} nama dari OpenStreetMap, ditarik {poi.ditarik}. Ini data relawan yang belum kami cek, jadi
-            tidak masuk hitungan direktori. Bisa sudah tutup atau pindah. © OpenStreetMap contributors, ODbL.
+            Daftar ini memuat {osm.length} nama dari OpenStreetMap per {tanggalIndonesia(poi.ditarik)}. Nama-nama ini belum
+            masuk hitungan direktori, dan sebagian mungkin sudah tutup atau pindah.
           </p>
           <ul className="bch-osm-daftar mt-3">
             {osm.map((t) => (
-              <li key={t.osm}>
-                <a href={`https://www.openstreetmap.org/${t.osm}`} rel="noopener noreferrer">
-                  {t.nama}
-                </a>
-              </li>
+              <li key={t.osm}>{t.nama}</li>
             ))}
           </ul>
         </section>
       )}
+      {h.tempat.length > 0 && <CatatanData />}
     </div>
   );
 }

@@ -1,32 +1,36 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BARIS_POMPONG, PELANTAR_KOSONG, POMPONG_TANPA_ASAL } from "@/features/jalan/feri-data";
+import { kapital } from "@/features/jalan/feri-terakhir";
 import JalanNav from "@/features/jalan/JalanNav";
 
 export const metadata: Metadata = {
   title: "Pompong",
-  description: "Rute pompong dan pancung ke pulau sekitar Batam. Tarif swadaya, bukan tarif resmi, dan mungkin usang.",
+  description:
+    "Perahu kayu bermesin untuk menyeberang ke pulau-pulau di sekitar Batam. Tarifnya ditentukan pemilik perahu dan dapat ditawar.",
 };
 
 const utama = BARIS_POMPONG.find((b) => b.tegas);
 const lain = BARIS_POMPONG.filter((b) => !b.tegas);
 
+const BELUM = "Belum tercatat";
+const isi = (t: string | null) => (t ? kapital(t) : BELUM);
+
 export default function Pompong() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Loket 04 · Jalan-jalan</p>
+      <p className="bch-kicker m-0">Loket 04 · Transportasi</p>
       <h1 className="mt-2">Pompong</h1>
-      <p className="bch-lede">Rute rakyat ke pulau. Bayarnya ke tekong, bukan ke loket.</p>
+      <p className="bch-lede">
+        Perahu kayu bermesin untuk menyeberang ke pulau-pulau di sekitar Batam. Tarifnya ditentukan pemilik perahu dan
+        dapat ditawar.
+      </p>
       <JalanNav aktif="/jalan/pompong" />
 
-      <p className="bch-note mt-5" data-tone="caution">
-        Tarif swadaya, bukan tarif resmi; mungkin usang. Dishub hanya mengetahui kesepakatan tarif. Data pompong
-        sebagian besar dari berita dan blog 2014 sampai 2022. Untuk pulau lain, tarif dinegosiasikan langsung dengan
-        tekong.
-      </p>
+      <p className="bch-note mt-5">Tarif dapat berubah. Tanyakan kepada pengemudi perahu sebelum berangkat.</p>
       <p className="mt-3">
         <Link href="/koreksi" prefetch={false} className="bch-btn" data-variant="ghost">
-          Laporkan tarif terbaru
+          Kirim koreksi
         </Link>
       </p>
 
@@ -36,32 +40,21 @@ export default function Pompong() {
           <dl className="bch-daftar" data-rute={utama.id}>
             <dt>Dari</dt>
             <dd>{utama.dari}</dd>
-            <dt>Jam</dt>
+            <dt>Jadwal</dt>
             <dd>{utama.jam}</dd>
             <dt>Tarif</dt>
             <dd>
-              <span className="bch-data">{utama.tarif}</span>{" "}
-              {utama.status && (
-                <span className="bch-badge" data-tone={utama.status.nada}>
-                  {utama.status.teks}
-                </span>
-              )}
+              <span className="bch-data">{utama.tarif}</span>
             </dd>
-            <dt>Durasi</dt>
+            <dt>Lama perjalanan</dt>
             <dd className="bch-data">{utama.durasi}</dd>
             <dt>Catatan</dt>
-            <dd>{utama.catatan} Tarif sejak September 2022.</dd>
-            <dt>Tautan</dt>
-            <dd>
-              <a href="https://kpompong.com/" target="_blank" rel="noopener" className="jl-tautan-resmi">
-                KPompong
-              </a>
-            </dd>
+            <dd>{utama.catatan}</dd>
           </dl>
         </>
       )}
 
-      <h2 className="mt-7 mb-3">Rute rakyat, tarif nego</h2>
+      <h2 className="mt-7 mb-3">Rute Lain</h2>
       <div className="bch-table-wrap">
         <table className="bch-table bch-tabel-tumpuk jl-tabel-pompong">
           <thead>
@@ -69,9 +62,8 @@ export default function Pompong() {
               <th scope="col">Dari</th>
               <th scope="col">Tujuan</th>
               <th scope="col">Jadwal</th>
-              <th scope="col">Tarif, tahun bila diketahui</th>
-              <th scope="col">Durasi</th>
-              <th scope="col">Status data</th>
+              <th scope="col">Tarif</th>
+              <th scope="col">Lama perjalanan</th>
             </tr>
           </thead>
           <tbody>
@@ -81,36 +73,22 @@ export default function Pompong() {
                   {b.dari}
                   {b.kecamatan && <span className="jl-catatan-kecil jl-blok">{b.kecamatan}</span>}
                 </td>
-                <td data-label="Tujuan">{b.tujuan}</td>
-                <td data-label="Jadwal">{b.jam ?? "jadwal belum tersedia"}</td>
+                <td data-label="Tujuan">{kapital(b.tujuan)}</td>
+                <td data-label="Jadwal">{isi(b.jam)}</td>
                 <td data-label="Tarif">
-                  {b.tarif ?? "belum diketahui"}
+                  {isi(b.tarif)}
                   {b.catatan && <span className="jl-catatan-kecil jl-blok">{b.catatan}</span>}
                 </td>
-                <td data-label="Durasi">{b.durasi ?? "belum diketahui"}</td>
-                <td data-label="Status data">
-                  {b.status ? (
-                    <span className="bch-badge" data-tone={b.status.nada}>
-                      {b.status.teks}
-                    </span>
-                  ) : (
-                    "belum dinilai"
-                  )}
-                </td>
+                <td data-label="Lama perjalanan">{isi(b.durasi)}</td>
               </tr>
             ))}
             {POMPONG_TANPA_ASAL.map((b) => (
               <tr key={b.tujuan}>
-                <td data-label="Dari">titik asal tidak disebut</td>
+                <td data-label="Dari">{BELUM}</td>
                 <td data-label="Tujuan">{b.tujuan}</td>
-                <td data-label="Jadwal">sekali sehari</td>
+                <td data-label="Jadwal">Sekali sehari</td>
                 <td data-label="Tarif">{b.keterangan}</td>
-                <td data-label="Durasi">belum diketahui</td>
-                <td data-label="Status data">
-                  <span className="bch-badge" data-tone="caution">
-                    mungkin usang
-                  </span>
-                </td>
+                <td data-label="Lama perjalanan">{BELUM}</td>
               </tr>
             ))}
           </tbody>
@@ -119,8 +97,8 @@ export default function Pompong() {
 
       {PELANTAR_KOSONG.length > 0 && (
         <>
-          <h2 className="mt-7 mb-3">Pelantar yang datanya masih kosong</h2>
-          <p>Tercatat ada, tetapi tujuan, jam, dan tarifnya belum diketahui.</p>
+          <h2 className="mt-7 mb-3">Pelantar Lain</h2>
+          <p>Pelantar berikut ada, tetapi tujuan, jadwal, dan tarifnya belum tercatat.</p>
           <ul className="jl-daftar-rapat">
             {PELANTAR_KOSONG.map((p) => (
               <li key={p.id}>
@@ -135,9 +113,9 @@ export default function Pompong() {
       <p className="mt-6">
         Sebelum naik, baca{" "}
         <Link href="/jalan/feri/panduan#pompong" prefetch={false}>
-          keselamatan di pompong
+          Keselamatan di Pompong
         </Link>
-        . Nomor tekong pribadi tidak kami tampilkan.
+        .
       </p>
     </div>
   );

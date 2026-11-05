@@ -1,63 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import stats from "@/data/places_stats.json";
-import { FOOTER_DISCLAIMER } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Tentang",
-  description: "Prinsip non-komersial dan cara kerja data Batam City Hall.",
+  title: "Tentang Batam City Hall",
+  description: "Batam City Hall adalah situs informasi kota yang dibuat secara independen oleh warga Batam.",
 };
 
-const angka = (n: number) => n.toLocaleString("id-ID");
-
 export default function Tentang() {
-  const k = stats.per_status_koordinat;
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Tentang</p>
-      <h1 className="mt-2">Balai warga, bukan balai kota</h1>
-      <p className="bch-lede">
-        Website kota indie untuk Batam, dibuat seorang warga Batam. Peta laut, hujan, feri, direktori, dan cerita, dalam
-        satu tempat.
-      </p>
-
+      <h1>Tentang Batam City Hall</h1>
       <div className="bch-prose">
-        <p className="bch-note">{FOOTER_DISCLAIMER}</p>
-
-        <h2>Prinsip</h2>
-        <ul>
-          <li>Tanpa iklan, tanpa listing berbayar, tanpa artikel sponsor.</li>
-          <li>Tidak ada yang bisa membayar supaya masuk daftar atau naik urutan.</li>
-          <li>Tanpa pelacak iklan.</li>
-          <li>Biaya rencananya dari donasi, dan mungkin merch kecil.</li>
-        </ul>
-
-        <h2>Cara kerja data</h2>
         <p>
-          Isi situs ini berasal dari riset sumber terbuka, data resmi yang dipublikasikan, OpenStreetMap, dan masukan
-          warga. Kami tidak mengarang data. Kalau belum tahu, kami tulis belum tahu.
+          Batam City Hall adalah situs informasi kota yang dibuat secara independen oleh warga Batam. Situs ini memuat
+          informasi cuaca dan laut, tempat makan, transportasi, cerita kota, dan direktori layanan.
+        </p>
+        <p>Situs ini tidak memasang iklan, tidak menerima bayaran untuk mencantumkan tempat, dan tidak memakai pelacak.</p>
+        <p>
+          Data dihimpun dari sumber terbuka dan pengamatan warga. Tempat yang lokasinya masih perkiraan diberi tanda di
+          peta. Seluruh data diperbarui secara berkala.
         </p>
         <p>
-          Direktori saat ini memuat {angka(stats.total_tempat)} tempat. Dari jumlah itu, koordinat{" "}
-          {angka(k.terverifikasi)} tempat sudah terverifikasi, {angka(k.perlu_cek_ulang)} tempat perlu dicek ulang, dan{" "}
-          {angka(k.perlu_diisi_user)} tempat belum punya koordinat.
-        </p>
-        <p>
-          Koordinat tidak pernah ditebak. Tempat tanpa koordinat tidak muncul di peta, hanya di daftar. Yang
-          koordinatnya belum pasti akan ditandai sebagai perkiraan.
-        </p>
-        <p>
-          Cerita rakyat diberi label sebagai cerita rakyat. Hal yang masih diperdebatkan ditulis bertanggal, dengan
-          sumber tiap pihak.
-        </p>
-
-        <h2>Keadaan sekarang</h2>
-        <p>
-          Situs ini masih muda. Semua loket sudah dibuka, tetapi isinya belum sama matang. Ilustrasi mural masih
-          sementara, dan Tukang Langganan menunggu rekomendasi warga.
-        </p>
-        <p>
-          Huruf, lisensi, dan atribusi ada di <Link href="/kolofon">Kolofon</Link>.
+          Ada data yang keliru? <Link href="/koreksi">Kirim koreksi</Link>.
         </p>
       </div>
     </div>

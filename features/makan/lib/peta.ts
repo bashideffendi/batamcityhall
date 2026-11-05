@@ -4,6 +4,8 @@
 // setStyle dengan diff, dan gabungGayaMakan menjaga lapisan "mk-" sekaligus mewarnainya ulang.
 // Warna hanya dari PALET peta (token), tidak ada warna sendiri.
 import type { ExpressionSpecification, LayerSpecification, StyleSpecification } from "maplibre-gl";
+import { namaGambar, WARNA } from "@/features/peta/gambar-penanda";
+import { jenisDari } from "@/features/peta/jenis-tempat";
 import { FONT, PALET, type MapTheme } from "@/features/peta/style";
 import type { Ferry, PlaceWithGeo } from "./types";
 
@@ -26,23 +28,22 @@ const BUKAN_KLUSTER: ExpressionSpecification = ["!", ["has", "point_count"]];
 const ADA_KLUSTER: ExpressionSpecification = ["has", "point_count"];
 const PERKIRAAN: ExpressionSpecification = ["==", ["get", "perkiraan"], true];
 
-/** Lingkaran berongga untuk koordinat perkiraan, terisi hanya kalau sudah pasti. */
-const isianPin = (c: (typeof PALET)[MapTheme]) => ({
-  "circle-color": c.accent,
-  "circle-opacity": ["case", PERKIRAAN, 0, 1] as ExpressionSpecification,
-  "circle-stroke-color": c.accent,
-  "circle-stroke-width": 1.75,
-});
+/** Penanda gaya A: gambar dipilih lewat properti "ikon" (PEDOMAN 5.4). */
+const ikonPin = {
+  "icon-image": ["get", "ikon"] as ExpressionSpecification,
+  "icon-allow-overlap": true,
+  "icon-ignore-placement": true,
+};
 
 export function lapisanPin(tema: MapTheme): LayerSpecification[] {
   const c = PALET[tema];
   return [
     {
       id: "mk-pin-titik",
-      type: "circle",
+      type: "symbol",
       source: SUMBER.pin,
       filter: BUKAN_KLUSTER,
-      paint: { ...isianPin(c), "circle-radius": 7 },
+      layout: ikonPin,
     },
     // Target sentuh tak terlihat: lingkaran 7 px terlalu kecil untuk jari.
     {
@@ -58,10 +59,10 @@ export function lapisanPin(tema: MapTheme): LayerSpecification[] {
       source: SUMBER.pin,
       filter: ADA_KLUSTER,
       paint: {
-        "circle-color": c.land,
-        "circle-stroke-color": c.ink,
-        "circle-stroke-width": 1.25,
-        "circle-radius": ["step", ["get", "point_count"], 14, 10, 18, 30, 22],
+        "circle-color": WARNA.putih,
+        "circle-stroke-color": WARNA.makan,
+        "circle-stroke-width": 2.5,
+        "circle-radius": ["step", ["get", "point_count"], 13, 10, 15, 30, 18],
       },
     },
     {
@@ -71,17 +72,23 @@ export function lapisanPin(tema: MapTheme): LayerSpecification[] {
       filter: ADA_KLUSTER,
       layout: {
         "text-field": ["get", "point_count_abbreviated"],
-        "text-font": [FONT.poi],
-        "text-size": 13,
+        "text-font": [FONT.island],
+        "text-size": 12,
         "text-allow-overlap": true,
       },
-      paint: { "text-color": c.ink },
+      paint: { "text-color": WARNA.tinta },
     },
     {
       id: "mk-pilih-titik",
       type: "circle",
       source: SUMBER.pilih,
-      paint: { ...isianPin(c), "circle-radius": 11, "circle-stroke-width": 3 },
+      paint: { "circle-color": "rgba(0,0,0,0)", "circle-radius": 19, "circle-stroke-color": c.ink, "circle-stroke-width": 2.5 },
+    },
+    {
+      id: "mk-pilih-ikon",
+      type: "symbol",
+      source: SUMBER.pilih,
+      layout: ikonPin,
     },
   ];
 }
@@ -91,15 +98,9 @@ export function lapisanFeri(tema: MapTheme): LayerSpecification[] {
   return [
     {
       id: "mk-feri-titik",
-      type: "circle",
+      type: "symbol",
       source: SUMBER.feri,
-      paint: {
-        "circle-radius": 4.5,
-        "circle-color": c.ink,
-        "circle-opacity": ["case", PERKIRAAN, 0, 1],
-        "circle-stroke-color": c.ink,
-        "circle-stroke-width": 1.25,
-      },
+      layout: ikonPin,
     },
     {
       id: "mk-feri-label",
@@ -107,13 +108,13 @@ export function lapisanFeri(tema: MapTheme): LayerSpecification[] {
       source: SUMBER.feri,
       layout: {
         "text-field": ["get", "label"],
-        "text-font": [FONT.poi],
-        "text-size": 12,
+        "text-font": [FONT.island],
+        "text-size": 12.5,
         "text-anchor": "left",
-        "text-offset": [0.8, 0],
+        "text-offset": [1.5, 0],
         "text-optional": true,
       },
-      paint: { "text-color": c.ink, "text-halo-color": c.land, "text-halo-width": 1.5 },
+      paint: { "text-color": WARNA.tinta, "text-halo-color": WARNA.putih, "text-halo-width": 1.5 },
     },
   ];
 }
@@ -171,14 +172,28 @@ export function lapisanJalur(tema: MapTheme): LayerSpecification[] {
   ];
 }
 
-export function lapisanMini(tema: MapTheme): LayerSpecification[] {
-  const c = PALET[tema];
+/** Peta kecil: penanda kategori dan terminal feri terdekat bila masuk bingkai (PEDOMAN 5.2). */
+export function lapisanMini(_tema: MapTheme): LayerSpecification[] {
   return [
     {
       id: "mk-mini-titik",
-      type: "circle",
+      type: "symbol",
       source: SUMBER.mini,
-      paint: { ...isianPin(c), "circle-radius": 12, "circle-stroke-width": 2 },
+      layout: ikonPin,
+    },
+    {
+      id: "mk-mini-label",
+      type: "symbol",
+      source: SUMBER.mini,
+      layout: {
+        "text-field": ["get", "label"],
+        "text-font": [FONT.island],
+        "text-size": 12.5,
+        "text-anchor": "left",
+        "text-offset": [1.5, 0],
+        "text-optional": true,
+      },
+      paint: { "text-color": WARNA.tinta, "text-halo-color": WARNA.putih, "text-halo-width": 1.5 },
     },
   ];
 }
@@ -217,12 +232,24 @@ const titik = (lng: number, lat: number, properties: Fitur["properties"]): Fitur
 export const koleksi = (features: Fitur[]): KoleksiTitik => ({ type: "FeatureCollection", features });
 
 /** Pin tempat. Properti `perkiraan` dari coord_approx: inilah yang membuat pinnya berongga. */
-export const fiturTempat = (p: Pick<PlaceWithGeo, "id" | "lat" | "lng" | "coord_approx">) =>
-  titik(p.lng, p.lat, { id: p.id, perkiraan: p.coord_approx });
+export const fiturTempat = (
+  p: Pick<PlaceWithGeo, "id" | "lat" | "lng" | "coord_approx"> & { category?: string; name?: string },
+) =>
+  titik(p.lng, p.lat, {
+    id: p.id,
+    perkiraan: p.coord_approx,
+    label: p.name ?? "",
+    ikon: namaGambar(jenisDari("kuliner", p.category) ?? "nasi", WARNA.makan, p.coord_approx),
+  });
 
 /** Terminal berongga kalau koordinatnya belum terverifikasi di data situs. */
 export const fiturFeri = (f: Ferry) =>
-  titik(f.lng, f.lat, { id: f.id, label: f.label, perkiraan: f.status_koordinat !== "terverifikasi" });
+  titik(f.lng, f.lat, {
+    id: f.id,
+    label: f.label,
+    ikon: namaGambar("feri", WARNA.transportasi, f.status_koordinat !== "terverifikasi"),
+    perkiraan: f.status_koordinat !== "terverifikasi",
+  });
 
 export const fiturPerhentian = (p: Pick<PlaceWithGeo, "id" | "lat" | "lng">, i: number) =>
   titik(p.lng, p.lat, { id: p.id, no: String(i + 1) });

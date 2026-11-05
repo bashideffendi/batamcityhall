@@ -1,32 +1,32 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DaftarSumber, NavKampungTua } from "@/features/kampung-tua/Bagian";
+import { NavKampungTua } from "@/features/kampung-tua/Bagian";
 import {
   daftarPenanda,
-  domain,
   ETIKA,
   JUMLAH,
   KAMPUNG,
   KISAH_NAMA,
   LAPISAN,
-  lencanaLokasi,
-  RUJUKAN,
-  titikKampung,
+  labelLokasi,
   type Kampung,
 } from "@/features/kampung-tua/data";
-import { IkonCeritaRakyat, IkonGapura, IkonPerkiraan } from "@/features/kampung-tua/Ikon";
+import { IkonCeritaRakyat } from "@/features/kampung-tua/Ikon";
 import PetaKampungTuaMuat from "@/features/kampung-tua/PetaKampungTuaMuat";
 import "@/features/kampung-tua/kampung-tua.css";
 
+const LEDE =
+  "Kampung tua adalah permukiman yang sudah ada sebelum Batam dibangun sebagai kawasan industri. Halaman ini memuat asal-usul, penduduk awal, dan etika berkunjung.";
+
 export const metadata: Metadata = {
   title: "Kampung Tua",
-  description: "Peta dan daftar kampung tua Batam: asal-usul, suku awal, yang bisa dilihat, dan etika berkunjung.",
+  description: LEDE,
 };
 
 function perKecamatan(isi: Kampung[]) {
   const grup = new Map<string, Kampung[]>();
   for (const k of isi) {
-    const nama = k.kecamatan?.replace(/\s*\(.*\)$/, "") ?? "Kecamatan belum diketahui";
+    const nama = k.kecamatan?.replace(/\s*\(.*\)$/, "") ?? "Tanpa Kecamatan";
     grup.set(nama, [...(grup.get(nama) ?? []), k]);
   }
   return [...grup.entries()];
@@ -36,7 +36,6 @@ const namaPendek = (k: Kampung) => k.nama.replace(/^Kampung Tua /, "");
 
 export default function KampungTua() {
   const penanda = daftarPenanda();
-  const tanpaTitik = KAMPUNG.filter((k) => !titikKampung(k)).length;
   const infoLapisan = LAPISAN.map((l) => ({
     id: l.id,
     nama: l.nama,
@@ -46,24 +45,19 @@ export default function KampungTua() {
 
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Loket 05 · Cerita &amp; Budaya</p>
+      <p className="bch-kicker m-0">LOKET 05 · Cerita dan Budaya</p>
       <h1 className="mt-2">Kampung Tua</h1>
-      <p className="bch-lede">
-        Permukiman yang sudah ada sebelum Batam dibangun. {KAMPUNG.length} entri, {penanda.length} di peta, {tanpaTitik}{" "}
-        hanya di daftar.
-      </p>
-      <p className="bch-note mt-3">
-        Halaman ini soal asal-usul, orang, dan cerita. Batas, luas, dan status lahan tidak kami tampilkan. Daftarnya
-        juga belum lengkap: lampiran SK 105/2004 dan SK 89/2006 belum kami dapat, jadi ejaan dan sebagian nama masih
-        perlu dicocokkan.
-      </p>
+      <p className="bch-lede">{LEDE}</p>
+      <p className="bch-note mt-3">Halaman ini tidak memuat batas wilayah, luas, atau status lahan.</p>
       <NavKampungTua aktif="daftar" />
 
       <PetaKampungTuaMuat penanda={penanda} lapisan={infoLapisan} />
 
       <section id="daftar" className="kt-bagian" aria-labelledby="judul-daftar">
-        <h2 id="judul-daftar">Semua kampung</h2>
-        <p className="bch-measure">Daftar ini memuat semua yang ada di peta, ditambah yang belum punya titik.</p>
+        <h2 id="judul-daftar">Semua Kampung</h2>
+        <p className="bch-measure">
+          Daftar ini memuat {KAMPUNG.length} kampung. Sebanyak {penanda.length} kampung ada di peta.
+        </p>
         {LAPISAN.map((l) => {
           const isi = KAMPUNG.filter((k) => k.lapisan === l.id);
           return (
@@ -72,34 +66,29 @@ export default function KampungTua() {
                 {l.nama} <span className="bch-data">{isi.length}</span>
               </h3>
               <p className="bch-measure">{l.lede}</p>
-              {l.id === "rempang" && (
-                <p className="bch-measure">
-                  Pandangan para pihak ada di <Link href="/cerita/rempang">kronologi Rempang</Link> yang bertanggal.
-                </p>
-              )}
               {perKecamatan(isi).map(([kec, anggota]) => (
                 <div key={kec}>
                   <h4 className="kt-kecamatan">{kec}</h4>
                   <ul className="kt-daftar">
-                    {anggota.map((k) => (
-                      <li key={k.id} data-kampung={k.id}>
-                        <Link href={`/cerita/kampung-tua/${k.id}`} prefetch={false}>
-                          <span className="kt-daftar-nama">
-                            {namaPendek(k)}
-                            {k.cerita_rakyat && (
-                              <span className="bch-badge" data-tone="info">
-                                <IkonCeritaRakyat ukuran={12} />
-                                Ada cerita rakyat
-                              </span>
-                            )}
-                          </span>
-                          <span className="kt-daftar-ket">
-                            {k.kelurahan ? `${k.kelurahan} · ` : ""}
-                            {lencanaLokasi(k).teks}
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
+                    {anggota.map((k) => {
+                      const ket = [k.kelurahan, labelLokasi(k)].filter(Boolean).join(" · ");
+                      return (
+                        <li key={k.id} data-kampung={k.id}>
+                          <Link href={`/cerita/kampung-tua/${k.id}`} prefetch={false}>
+                            <span className="kt-daftar-nama">
+                              {namaPendek(k)}
+                              {k.cerita_rakyat && (
+                                <span className="bch-badge" data-tone="info">
+                                  <IkonCeritaRakyat ukuran={12} />
+                                  Cerita rakyat
+                                </span>
+                              )}
+                            </span>
+                            {ket && <span className="kt-daftar-ket">{ket}</span>}
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ))}
@@ -109,7 +98,7 @@ export default function KampungTua() {
       </section>
 
       <section id="jumlah" className="kt-bagian" aria-labelledby="judul-jumlah">
-        <h2 id="judul-jumlah">Kenapa angkanya beda-beda?</h2>
+        <h2 id="judul-jumlah">Mengapa Jumlahnya Berbeda</h2>
         <p className="bch-measure">
           Jumlah kampung tua bergantung pada siapa yang menghitung, kapan, dan wilayah mana yang dihitung.
         </p>
@@ -120,7 +109,6 @@ export default function KampungTua() {
                 <th scope="col">Angka</th>
                 <th scope="col">Menurut</th>
                 <th scope="col">Konteks</th>
-                <th scope="col">Sumber</th>
               </tr>
             </thead>
             <tbody>
@@ -131,37 +119,24 @@ export default function KampungTua() {
                     {b.konflik && (
                       <span className="bch-sel-kecil">
                         <span className="bch-badge" data-tone="caution">
-                          Sumber bertentangan
+                          Berbeda versi
                         </span>
                       </span>
                     )}
                   </td>
                   <td data-label="Menurut">{b.sumber}</td>
                   <td data-label="Konteks">{b.konteks}</td>
-                  <td data-label="Sumber">
-                    {b.tautan.map((u) => (
-                      <a key={u} href={u} rel="noopener noreferrer">
-                        {domain(u)}
-                      </a>
-                    ))}
-                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
         <p className="bch-measure mt-3" data-satu-data>
-          Satu Data Batam (Pemko) mencatat 37 kampung tua untuk 2020–2022, dan data lain di sana menyebut 24 lokasi per
-          Juni 2024 (Dinas Pertanahan). Kami tidak memilih salah satunya.{" "}
-          <a
-            href="https://satudata.batam.go.id/satu/detail/statistik-jumlah-kampung-tua-4axedn"
-            rel="noopener noreferrer"
-          >
-            satudata.batam.go.id
-          </a>
+          Satu Data Batam (Pemko) mencatat 37 kampung tua untuk 2020—2022, dan data lain di sana menyebut 24 lokasi per
+          Juni 2024 (Dinas Pertanahan). Kami tidak memilih salah satunya.
         </p>
         <div className="bch-prose">
-          <h3>Pegangan kami</h3>
+          <h3>Pegangan Kami</h3>
           <ul data-pegangan>
             <li>
               Daratan Batam: daftar 37 versi Ranperda DPRD 2019 dan RKWB 2016, satu-satunya daftar terbuka yang memuat
@@ -173,12 +148,12 @@ export default function KampungTua() {
               budaya SK Wali Kota No. 483/2022.
             </li>
           </ul>
-          <h3>Apa itu kampung tua</h3>
+          <h3>Apa Itu Kampung Tua</h3>
           <p>
-            Perda No. 2/2004 (RTRW 2004–2014), menurut kajian STPN dan Batam Pos: &quot;kelompok rumah yang berfungsi
-            sebagai lingkungan tempat tinggal penduduk asli Kota Batam sebelum tahun 1970 saat Batam mulai dibangun,
-            yang mengandung nilai sejarah, budaya tempatan, dan atau agama&quot;. Perda No. 3/2021 (RTRW 2021–2041),
-            menurut Batam Pos, tidak memuat ketentuan spesifik soal perkampungan tua.
+            Perda No. 2/2004 (RTRW 2004—2014), menurut kajian STPN dan Batam Pos: “kelompok rumah yang berfungsi sebagai
+            lingkungan tempat tinggal penduduk asli Kota Batam sebelum tahun 1970 saat Batam mulai dibangun, yang
+            mengandung nilai sejarah, budaya tempatan, dan atau agama”. Perda No. 3/2021 (RTRW 2021—2041), menurut Batam
+            Pos, tidak memuat ketentuan spesifik soal perkampungan tua.
           </p>
           <p>Kriteria menurut surat Dinas Pertanahan Pemko, 25 April 2005, via STPN:</p>
           <ul>
@@ -193,7 +168,7 @@ export default function KampungTua() {
       </section>
 
       <section id="kisah-nama" className="kt-bagian bch-prose" aria-labelledby="judul-kisah">
-        <h2 id="judul-kisah">Kisah nama tempat</h2>
+        <h2 id="judul-kisah">Kisah Nama Tempat</h2>
         <p>
           Toponim lama ini sering disebut kampung tua, tetapi tidak ada di daftar 37. Karena itu tidak kami beri penanda
           di peta.
@@ -206,12 +181,7 @@ export default function KampungTua() {
             {KISAH_NAMA.map((n) => (
               <div key={n.nama}>
                 <dt>{n.nama}</dt>
-                <dd>
-                  {n.kisah}{" "}
-                  <a href={n.sumber} rel="noopener noreferrer">
-                    {domain(n.sumber)}
-                  </a>
-                </dd>
+                <dd>{n.kisah}</dd>
               </div>
             ))}
           </dl>
@@ -219,7 +189,7 @@ export default function KampungTua() {
       </section>
 
       <section id="etika" className="kt-bagian bch-prose" aria-labelledby="judul-etika">
-        <h2 id="judul-etika">Etika berkunjung</h2>
+        <h2 id="judul-etika">Etika Berkunjung</h2>
         <p>Kampung adalah rumah orang, bukan lokasi wisata.</p>
         <ul>
           {ETIKA.map((e) => (
@@ -228,45 +198,9 @@ export default function KampungTua() {
         </ul>
       </section>
 
-      <section id="rujukan" className="kt-bagian kt-rujukan bch-prose" aria-labelledby="judul-rujukan">
-        <h2 id="judul-rujukan">Rujukan</h2>
-        <p>
-          Lembaga dan arsip yang kami rujuk. Daftar ini bukan pernyataan kerja sama. Narasumber di kampung sebaiknya
-          dihubungi lewat LAM atau RKWB, jadi kontak pribadi tidak kami tampilkan.
-        </p>
-        {RUJUKAN.map((r) => (
-          <div key={r.judul}>
-            <h3>{r.judul}</h3>
-            <ul>
-              {r.butir.map((b) => (
-                <li key={b.nama}>
-                  {b.url ? (
-                    <a href={b.url} rel="noopener noreferrer">
-                      {b.nama}
-                    </a>
-                  ) : (
-                    b.nama
-                  )}
-                  {b.ket && `. ${b.ket}`}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-        <h3>Penanda di peta</h3>
-        <p>
-          <IkonGapura ukuran={18} /> untuk titik terverifikasi. <IkonPerkiraan /> untuk titik perkiraan. Saat ini semua
-          titik masih perkiraan, jadi semuanya lingkaran berongga. Punya koordinat yang lebih baik?{" "}
-          <Link href="/koreksi">Kabari kami</Link>.
-        </p>
-        <h3>Sumber daftar</h3>
-        <DaftarSumber
-          urls={[
-            "https://batam.tribunnews.com/2019/05/06/tribunwiki-daftar-37-kampung-tua-berdasar-renperda-dprd-kota-batam-status-dibahas-presiden-jokowi?page=all",
-            "https://ombudsman.go.id/news/r/-soal-rempang-eco-city-ombudsman-ri-tegaskan-pemerintah-harus-prioritaskan-kepentingan-masyarakat-dibanding-percepatan-pembangunan",
-          ]}
-        />
-      </section>
+      <p className="bch-measure mt-5" data-catatan-data>
+        Data dihimpun pada November 2026. Sebagian lokasi masih perkiraan. <Link href="/koreksi">Kirim koreksi</Link>
+      </p>
     </div>
   );
 }
