@@ -4,6 +4,14 @@ Versi 1.1, 5 November 2026. Acuan tunggal untuk bahasa, teks, tampilan, dan peta
 
 Versi 1.1 mengganti arah tampilan menjadi editorial dengan grafis Riso (bagian 4 dan 5), menambah panel Tempat di peta (5.3), dan menyesuaikan naskah beranda serta Loket 01 (3.2 dan 3.3).
 
+> **Koreksi pemilik, 5 November 2026. Menang atas isi di bawah bila bertentangan.**
+>
+> 1. Istilah "loket" tidak dipakai di teks yang tampil. Bagian situs disebut dengan namanya. "Loket ini memuat" menjadi "Bagian ini memuat", dan "ISI LOKET INI" menjadi "ISI BAGIAN INI". Loket sungguhan di kantor atau pelabuhan tetap ditulis loket.
+> 2. Nomor kecil 01—07 di menu dan di daftar bagian beranda tetap dipakai. Nomor besar di halaman pembuka dihapus.
+> 3. Penanda di atas judul halaman pembuka berisi isi bagiannya, misalnya RADAR HUJAN · GELOMBANG · CCTV (`lib/site.ts`, `penanda`). Halaman di dalam bagian memakai nama bagian sebagai penanda.
+> 4. Judul daftar bagian di beranda: "Jelajahi Batam", tanpa penanda.
+> 5. Route dan nama bagian tidak berubah. Nama `LOKET` di kode dan nama berkas `loket-*.webp` tidak tampil, jadi tetap.
+
 ## Cara Memakai Pedoman Ini
 
 **Untuk Claude Code:**

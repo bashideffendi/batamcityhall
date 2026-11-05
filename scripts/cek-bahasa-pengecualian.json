@@ -21,7 +21,14 @@
     "Nasi Lemak & Lontong Kampoeng Noodle",
     "Radisson Golf & Convention Centre",
     "Sindo Ferry",
-    "Sop Ikan & Asam Pedas Windsor"
+    "Sop Ikan & Asam Pedas Windsor",
+    "Banyak Loket",
+    "tidak di loket",
+    "Ada loket di MPP",
+    "loket cabang Pelni",
+    "loket **PTSP",
+    "loket BPN",
+    "loket pajak"
   ],
   "berkas": {
     "app/layout.tsx": [

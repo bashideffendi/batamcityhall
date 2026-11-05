@@ -8,6 +8,7 @@
 // Respons kasih `source`, `ageH`, `expired` — klien yang memutuskan label jujurnya.
 import type { OfsResponse } from "@/features/langit-laut/lib/api-types";
 import { BMKG_HEADERS, OFS_MODELRUN, ofsTilePath } from "@/features/langit-laut/lib/sources";
+import { cacheRespons } from "@/lib/cache-respons";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 20;
@@ -111,7 +112,7 @@ async function resolveBase(): Promise<{ base: Date; source: Source }> {
   return inflight;
 }
 
-export async function GET() {
+async function muatRespons(): Promise<Response> {
   const { base, source } = await resolveBase();
   const baserun = fmt(base);
   const now = Date.now();
@@ -144,4 +145,8 @@ export async function GET() {
   return Response.json(body, {
     headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120" },
   });
+}
+
+export function GET() {
+  return cacheRespons("ofs-frame", muatRespons);
 }

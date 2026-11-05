@@ -5,6 +5,7 @@
 // pengguna tidak terkirim ke BMKG, dan respons bisa ditahan CDN. Atribusi BMKG wajib.
 import type { ForecastResponse, ForecastSlot } from "@/features/langit-laut/lib/api-types";
 import { BMKG_FORECAST, BMKG_FORECAST_PLACE } from "@/features/langit-laut/lib/sources";
+import { cacheRespons } from "@/lib/cache-respons";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 10;
@@ -69,7 +70,7 @@ function shape(j: Raw): ForecastResponse {
   };
 }
 
-export async function GET() {
+async function muatRespons(): Promise<Response> {
   try {
     const res = await fetch(BMKG_FORECAST, {
       next: { revalidate: 1800 },
@@ -93,4 +94,8 @@ export async function GET() {
     const empty: ForecastResponse = { place: BMKG_FORECAST_PLACE, detail: "", analysis: null, slots: [] };
     return Response.json(empty, { status: 503, headers: { "Cache-Control": "no-store" } });
   }
+}
+
+export function GET() {
+  return cacheRespons("prakiraan", muatRespons);
 }

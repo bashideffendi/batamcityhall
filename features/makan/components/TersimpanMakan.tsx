@@ -133,7 +133,7 @@ export default function TersimpanMakan() {
 
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">{t("loket")}</p>
+      <p className="bch-kicker m-0">{t("home_title")}</p>
       <h1 className="mt-2">{t("saved_title")}</h1>
       <p className="bch-lede">{t("saved_local")}</p>
       <TawaranTautan />

@@ -18,6 +18,7 @@ import type {
   WindReading,
 } from "@/features/langit-laut/lib/api-types";
 import { NEA } from "@/features/langit-laut/lib/sources";
+import { cacheRespons } from "@/lib/cache-respons";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 10;
@@ -236,7 +237,7 @@ async function getNowcast(): Promise<NowcastReading | null> {
   return drift("two-hr-forecast", "area Southern Islands/Sentosa tidak ada");
 }
 
-export async function GET() {
+async function muatRespons(): Promise<Response> {
   const [aq, wind, rain, uv, nowcast] = await Promise.all([
     getAq(),
     getWind(),
@@ -248,4 +249,8 @@ export async function GET() {
   return Response.json(body, {
     headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120" },
   });
+}
+
+export function GET() {
+  return cacheRespons("conditions", muatRespons);
 }

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function NamaJalan() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">LOKET 05 · Cerita dan Budaya</p>
+      <p className="bch-kicker m-0">Cerita dan Budaya</p>
       <h1 className="mt-2">Siapa di Balik Nama Jalan</h1>
       <p className="bch-lede">{LEDE}</p>
       <p className="bch-note mt-3">

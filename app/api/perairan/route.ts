@@ -5,6 +5,7 @@
 import type { PerairanResponse, PerairanWarn } from "@/features/langit-laut/lib/api-types";
 import { emptyPerairan, parseBulletin, pickPerairan, warnAt } from "@/features/langit-laut/lib/perairan";
 import { BMKG_HEADERS, OFS_PERAIRAN, OFS_WARNINGS } from "@/features/langit-laut/lib/sources";
+import { cacheRespons } from "@/lib/cache-respons";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 10;
@@ -41,7 +42,7 @@ async function getJson(url: string, fresh = false): Promise<Raw> {
   return (await res.json()) as Raw;
 }
 
-export async function GET() {
+async function muatRespons(): Promise<Response> {
   const [p, w] = await Promise.allSettled([getJson(OFS_PERAIRAN), getJson(OFS_WARNINGS, true)]);
   const now = Date.now();
   // Peringatan: simpan buletin baru; gagal/skema berubah → tetap pakai yang masih berlaku.
@@ -73,4 +74,8 @@ export async function GET() {
     return Response.json(pickPerairan(lastGood.raw, known, now), { headers: { "Cache-Control": "public, s-maxage=120" } });
   }
   return Response.json(emptyPerairan(), { status: 503, headers: { "Cache-Control": "no-store" } });
+}
+
+export function GET() {
+  return cacheRespons("perairan", muatRespons);
 }

@@ -194,24 +194,12 @@ h4 {
   font-size: var(--bch-text-data);
   line-height: var(--bch-leading-data);
 }
-.bch-display {
-  font-family: var(--bch-font-display);
-  font-optical-sizing: auto;
-  font-size: var(--bch-text-display);
-  line-height: var(--bch-leading-tight);
-  letter-spacing: var(--bch-tracking-display);
-  font-weight: 500;
-}
 .bch-lede {
   font-size: var(--bch-text-lede);
   line-height: 1.55;
   color: var(--bch-ink-muted);
   max-width: var(--bch-measure);
   margin-top: var(--bch-space-4);
-}
-.bch-italic {
-  font-family: var(--bch-font-display);
-  font-style: italic;
 }
 .bch-measure {
   max-width: var(--bch-measure);
@@ -225,13 +213,6 @@ h4 {
 }
 .bch-main:focus {
   outline: none;
-}
-.bch-wrap {
-  width: 100%;
-  max-width: var(--bch-wrap);
-  margin-inline: auto;
-  padding-inline: var(--bch-gutter);
-  box-sizing: border-box;
 }
 .bch-page {
   width: 100%;
@@ -560,33 +541,7 @@ h4 {
   display: block;
   margin-bottom: var(--bch-space-3);
 }
-.bch-nomor-besar {
-  display: block;
-  font-family: var(--bch-font-display);
-  font-weight: 400;
-  font-size: clamp(6rem, 3rem + 7vw, 10.5rem);
-  line-height: 0.82;
-  color: var(--bch-riso-blue);
-  font-variant-numeric: lining-nums;
-  margin-block: var(--bch-space-4) var(--bch-space-5);
-}
 .bch-pembuka h1 {
-  margin: 0;
-}
-.bch-loket-head {
-  display: grid;
-  gap: var(--bch-space-2);
-  margin-bottom: var(--bch-space-7);
-}
-.bch-loket-no {
-  font-family: var(--bch-font-display);
-  font-weight: 400;
-  font-size: clamp(6rem, 3rem + 7vw, 10.5rem);
-  line-height: 0.82;
-  color: var(--bch-riso-blue);
-  font-variant-numeric: lining-nums;
-}
-.bch-loket-head h1 {
   margin: 0;
 }
 .bch-grafis {
@@ -1367,16 +1322,13 @@ a.bch-card:hover {
 }
 
 /* Saringan: pil 38 px, aktif berlatar tinta. Area sentuh tetap 44 px lewat jarak antarbaris. */
-.bch-sub-nav,
-.bch-saringan {
+.bch-sub-nav {
   display: flex;
   flex-wrap: wrap;
   gap: var(--bch-space-2);
   margin-top: var(--bch-space-5);
 }
-.bch-sub-nav a,
-.bch-saringan a,
-.bch-saringan button {
+.bch-sub-nav a {
   display: inline-flex;
   gap: var(--bch-space-2);
   align-items: center;
@@ -1392,15 +1344,11 @@ a.bch-card:hover {
   color: var(--bch-ink);
   cursor: pointer;
 }
-.bch-sub-nav a:hover,
-.bch-saringan a:hover,
-.bch-saringan button:hover {
+.bch-sub-nav a:hover {
   color: var(--bch-link);
   border-color: var(--bch-link);
 }
-.bch-sub-nav a[aria-current="page"],
-.bch-saringan a[aria-current="page"],
-.bch-saringan button[aria-pressed="true"] {
+.bch-sub-nav a[aria-current="page"] {
   background: var(--bch-ink);
   border-color: var(--bch-ink);
   color: var(--bch-paper);
@@ -1408,11 +1356,6 @@ a.bch-card:hover {
 .bch-sub-nav a[data-kosong] {
   border-color: var(--bch-garis-isian);
   color: var(--bch-ink-muted);
-}
-.bch-saringan .jumlah {
-  font-family: var(--bch-font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
 }
 
 /* Sakelar 38 x 22, selalu berlabel */
@@ -1590,7 +1533,6 @@ a.bch-card:hover {
 }
 
 /* Ornamen lama dibuang (PEDOMAN 4.1) */
-.bch-rebung,
 .bch-rebung-mini {
   display: none;
 }

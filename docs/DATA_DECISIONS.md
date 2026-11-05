@@ -23,7 +23,7 @@ Keputusan soal data, dengan alasan. Pemilik proyek bisa mengubah semuanya. Butir
 | Titik acuan jarak gempa | Titik label Kec. Batam Kota di `kecamatan-geo.json` (BIG) | Tidak menebak koordinat. Jarak ditulis dibulatkan 10 km dan diberi keterangan dihitung situs ini |
 | Tanpa peta di halaman gempa | Daftar dengan jarak dan arah, plus tautan peta guncangan BMKG | Peta dasar hanya mencakup area Batam, gempa tersebar se-Indonesia |
 | Kecamatan Batam pada peringatan cuaca | Disebut di teks BMKG, atau titik labelnya di dalam poligon | Nama kecamatan hanya ada di teks. Poligon ikut dicek supaya teks yang terpotong tidak menghilangkan Batam. Dua peringatan asli 5 Nov 2026 memberi hasil sama dari kedua cara |
-| Peringatan cuaca di kotak Hari Ini | Tampil bila mengenai Batam atau datanya gagal. Selain itu baris hilang, tidak pernah ditulis aman | Prompt 4.1 "bila ada". Peringatan di Kepri lain ada di `/langit-laut/peringatan` |
+| Peringatan cuaca di kotak Hari Ini | Tampil bila mengenai Batam atau datanya gagal. Selain itu baris hilang, tidak pernah ditulis aman | Prompt 4.1 "bila ada". Peringatan di Kepri lain ada di `/cuaca/peringatan` |
 | Label baris lama "Peringatan" di kotak Hari Ini | Jadi "Peringatan laut" | Sekarang ada dua jenis peringatan, baris lama hanya soal gelombang. "Gelombang" saja terbaca sama dengan baris Ombak |
 | Istilah CAP (severity, urgency, certainty) | Disalin apa adanya dalam bahasa Inggris, dengan tautan rujukan BMKG | Tidak menerjemahkan sendiri istilah resmi |
 | Kuliner di `koordinat_perlu_diisi.csv` | Prioritas 3 | Pilihan saat port, pemilik bisa mengubah |
@@ -104,3 +104,14 @@ Keputusan soal data, dengan alasan. Pemilik proyek bisa mengubah semuanya. Butir
 - **Id berubah:** 5 id landmark seed berubah di `places.json`. Selalu lewat `places_id_index.json`, kecuali id halte.
 - **Hotel:** dihitung dari `places.json` pada 4 Nov 2026: 33 dari 243 tanpa kecamatan (research/00 menulis 34). Tampilkan "kecamatan belum diketahui", jangan ditebak.
 - **Teks yang hanya ada di laporan:** narasi profil 12 kampung dan catatan Rempang bertanggal (04), blok luas/investasi (15), statistik pasar/KUPVA (12). Ambil dari `research/` saat menulis halamannya.
+
+## Penerapan pedoman (5 November 2026)
+
+Keputusan saat `docs/PEDOMAN.md` diterapkan. Yang perlu jawaban pemilik ada di `docs/TODO_PEMILIK.md`.
+
+- **Peta Tempat:** jenis tempat dihitung dari kategori dan subkategori di `features/peta/jenis-tempat.ts`. Hotel 243 tempat, 0 bertitik, jadi tidak tercentang dan diberi "Lokasi sedang dilengkapi".
+- **Jumlah bertitik di beranda** dihitung dari tempat yang bertitik dan punya jenis saat build. Tempat lain di titik yang sama ikut dihitung di panel.
+- **Baris tempat Makan:** status di kanan hanya buka atau tutup. Status halal dan satu label kurasi masuk metadata supaya tidak bertumpuk. Bila satu tempat punya beberapa label kurasi, yang tampil label pertama di data.
+- **Peta kategori** memakai ikon kategori direktori, karena kategori seperti pemerintahan tidak punya jenis di panel Tempat.
+- **Cache route realtime:** `lib/cache-respons.ts` memakai `s-maxage` tiap route sebagai lama simpan di memori server. Railway tidak punya CDN, jadi tanpa ini sumber radar dan gelombang bisa diminta pada setiap kunjungan. Jawaban gagal tidak disimpan.
+- **Sumber data dari server Railway:** MSS, NEA, dan BMKG menjawab 200 dari `batam.masbash.id` (dicek 5 Nov 2026).

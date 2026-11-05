@@ -54,7 +54,7 @@ export default async function Tukang({ searchParams }: Props) {
     <div className="bch-page bch-tk-halaman" data-mode-tukang={mode}>
       <PembukaLoket
         nomor="03"
-        lede="Loket ini memuat penjahit, tukang servis, dan penyedia jasa lain yang direkomendasikan warga Batam. Setiap nama tampil setelah direkomendasikan oleh sekurang-kurangnya dua orang."
+        lede="Bagian ini memuat penjahit, tukang servis, dan penyedia jasa lain yang direkomendasikan warga Batam. Setiap nama tampil setelah direkomendasikan oleh sekurang-kurangnya dua orang."
       >
         <p className="bch-measure">Tidak ada yang membayar untuk masuk daftar ini.</p>
         {mode === "contoh" && <CatatanMode mode={mode} />}

@@ -24,7 +24,7 @@ export function KickerCerita() {
   return (
     <p className="bch-kicker m-0">
       <Link href="/cerita" prefetch={false}>
-        LOKET 05 · Cerita dan Budaya
+        Cerita dan Budaya
       </Link>
     </p>
   );

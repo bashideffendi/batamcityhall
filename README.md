@@ -4,7 +4,7 @@ Balai warga, bukan balai kota. Website kota indie dan non-komersial untuk Batam:
 
 Proyek independen warga Batam, bukan situs resmi Pemerintah Kota Batam atau BP Batam. Untuk layanan resmi: batam.go.id.
 
-**Status:** fase 10 selesai di komputer pengembang, semua loket jalan, belum di-deploy. Konfigurasi pratinjau Railway sudah siap (bagian "Pratinjau di Railway"). Yang perlu pemilik lakukan: `docs/TODO_PEMILIK.md`.
+**Status:** semua loket jalan dan pedoman `docs/PEDOMAN.md` sudah diterapkan. Pratinjau tayang di https://batam.masbash.id (Railway), tertutup dari mesin pencari. Yang perlu pemilik lakukan: `docs/TODO_PEMILIK.md`.
 
 ## Menyiapkan
 
@@ -44,7 +44,7 @@ node scripts/extract-basemap.mjs
 | Build produksi | `npm run build` |
 | Tes unit | `npm test` |
 | Tes e2e + aksesibilitas (sesudah build) | `npm run test:e2e` |
-| Bangun ulang grain dan ikon | `node scripts/build-aset.mjs` |
+| Bangun ulang ikon situs | `node scripts/build-aset.mjs` |
 | Konversi data Makan ke skema tempat | `node scripts/konversi-makan.mjs`, lalu `python tools/merge_places.py` |
 | Ekstrak peta dasar (kurang dari 30 menit) | `node scripts/extract-basemap.mjs [YYYYMMDD] [maxzoom] [keluaran]` |
 
@@ -61,7 +61,7 @@ Tes e2e juga bisa diarahkan ke server yang sudah jalan: `E2E_URL=http://localhos
 
 Saat build, `scripts/siapkan-peta.mjs` mengunduh `batam.pmtiles` (46 MB) dari cabang `aset-peta` dan mencocokkan checksum di `deploy/peta-dasar.json`. Kalau peta sudah di R2, isi `NEXT_PUBLIC_PMTILES_URL` dan langkah itu dilewati. Memperbarui peta: jalankan `extract-basemap.mjs`, ganti file di cabang `aset-peta`, lalu perbarui `deploy/peta-dasar.json`.
 
-Tanpa variabel Supabase, formulir tertutup dengan jujur. Akses BMKG dari IP Railway belum teruji.
+Tanpa variabel Supabase, formulir tertutup dengan jujur. Sumber MSS, NEA, dan BMKG menjawab dari server Railway (dicek 5 Nov 2026). Railway tidak punya CDN bawaan, jadi route realtime menyimpan jawabannya di memori server (`lib/cache-respons.ts`).
 
 ## Formulir dan admin
 

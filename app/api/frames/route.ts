@@ -2,6 +2,7 @@ import { radarCitra, radarUrl, type Frame } from "@/features/langit-laut/lib/rad
 import type { EchoSummary, FramesResponse } from "@/features/langit-laut/lib/api-types";
 import { batamStats, type EchoStats } from "@/features/langit-laut/lib/echo";
 import { KOTA_UTAMA } from "@/features/langit-laut/lib/kecamatan";
+import { cacheRespons } from "@/lib/cache-respons";
 
 // Citra radar 240km MSS terbit tiap 5 MENIT dengan jeda terbit ~8 menit. Daripada nebak
 // jeda pakai angka tetap, server PROBE file paling baru yang BENERAN udah terbit, lalu
@@ -193,7 +194,7 @@ async function echoSummary(frames: Frame[]): Promise<EchoSummary | null> {
   };
 }
 
-export async function GET() {
+async function muatRespons(): Promise<Response> {
   const { ts: endTs, source } = await newestTs();
   const headers = { "Cache-Control": "public, s-maxage=30, stale-while-revalidate=30" };
   if (!endTs) {
@@ -210,4 +211,8 @@ export async function GET() {
   const echo = await echoSummary(frames);
   const body: FramesResponse = { frames, count: frames.length, stale, ageMinutes, source, echo };
   return Response.json(body, { headers });
+}
+
+export function GET() {
+  return cacheRespons("frames", muatRespons);
 }

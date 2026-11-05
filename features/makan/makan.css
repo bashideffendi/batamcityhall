@@ -332,9 +332,6 @@
 .mk-fav[data-aktif] .mk-ikon {
   fill: currentColor;
 }
-.mk-perkiraan {
-  border-style: dashed;
-}
 
 /* ---------- Tata letak bagian ---------- */
 .mk-bagian {

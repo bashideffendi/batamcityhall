@@ -10,7 +10,7 @@ const MENU = [
 
 export default function JalanNav({ aktif }: { aktif?: string }) {
   return (
-    <nav aria-label="Loket Transportasi" className="bch-sub-nav jl-nav">
+    <nav aria-label="Transportasi" className="bch-sub-nav jl-nav">
       {MENU.map((m) => (
         <Link key={m.href} href={m.href} prefetch={false} aria-current={m.href === aktif ? "page" : undefined}>
           {m.label}

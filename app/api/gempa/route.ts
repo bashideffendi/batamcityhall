@@ -2,6 +2,7 @@
 import type { GempaDaftar, GempaResponse } from "@/features/langit-laut/lib/api-types";
 import { gabungGempa, uraiGempa } from "@/features/langit-laut/lib/gempa";
 import { BMKG_GEMPA, BMKG_HEADERS } from "@/features/langit-laut/lib/sources";
+import { cacheRespons } from "@/lib/cache-respons";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 15;
@@ -59,7 +60,7 @@ async function perbarui() {
   };
 }
 
-export async function GET() {
+async function muatRespons(): Promise<Response> {
   const now = Date.now();
   const perluTarik = !(simpanan && now - simpanan.at < SEGAR_MS) && now - gagalPada >= JEDA_GAGAL_MS;
   if (perluTarik) await (berjalan ??= perbarui().finally(() => (berjalan = null)));
@@ -73,4 +74,8 @@ export async function GET() {
   }
   const gagal: GempaResponse = { status: "gagal", diambil: "", gempa: [] };
   return Response.json(gagal, { status: 503, headers: { "Cache-Control": "no-store" } });
+}
+
+export function GET() {
+  return cacheRespons("gempa", muatRespons);
 }

@@ -38,7 +38,7 @@ export default async function Mural({ searchParams }: Props) {
   return (
     <>
       <div className="bch-page mural-kepala">
-        <p className="bch-kicker m-0">Loket 07. Segmen 2 dari 8</p>
+        <p className="bch-kicker m-0">Segmen 2 dari 8</p>
         <h1 className="mt-2">Mode Mural: Harbour Bay, Nagoya, Jodoh</h1>
         <p className="bch-lede">
           Pesisir Batam sebagai satu gambar panjang. Hujan, ombak, feri, dan cahayanya mengikuti data. Tekan pin untuk

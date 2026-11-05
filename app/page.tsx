@@ -34,11 +34,8 @@ export default function Beranda() {
 
       <section className="br-seksi" aria-labelledby="br-loket">
         <div className="bch-kepala-bagian">
-          <div>
-            <p className="bch-kicker bch-penanda-biru m-0">Loket</p>
-            <h2 id="br-loket">Tujuh loket informasi kota</h2>
-          </div>
-          <p>Setiap loket mengumpulkan satu jenis informasi. Mulai dari yang paling sering dicari: cuaca, laut, dan tempat makan.</p>
+          <h2 id="br-loket">Jelajahi Batam</h2>
+          <p>Setiap bagian mengumpulkan satu jenis informasi. Mulai dari yang paling sering dicari: cuaca, laut, dan tempat makan.</p>
         </div>
         <ol className="br-indeks">
           {LOKET.map((l) => (

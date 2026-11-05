@@ -127,7 +127,7 @@ export default async function Kategori({ params }: Props) {
           )}
           {k.kategori === "kuliner" && (
             <p className="bch-catatan-halaman">
-              Saringan dan jalur kuliner ada di <Link href="/makan">Loket Makan</Link>.
+              Saringan dan jalur kuliner ada di <Link href="/makan">Makan</Link>.
             </p>
           )}
           {k.kategori === "kampung_tua" && (

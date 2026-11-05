@@ -170,10 +170,6 @@
 .kt-kronologi li[data-disaring="true"] .kt-kronologi-isi {
   color: var(--bch-ink-muted);
 }
-
-.kt-rujukan {
-  max-width: var(--bch-measure);
-}
 .bch-sub-nav a[aria-current="page"] {
   border-color: var(--bch-ink);
 }

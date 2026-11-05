@@ -46,7 +46,7 @@ export default function AngkaBatam() {
     <div className="bch-page">
       <p className="bch-kicker m-0">
         <Link href="/cerita" prefetch={false}>
-          LOKET 05
+          Cerita dan Budaya
         </Link>
       </p>
       <h1 className="mt-2">Batam dalam Angka</h1>

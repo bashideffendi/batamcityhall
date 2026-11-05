@@ -3,7 +3,7 @@ import DaftarNomor from "@/components/site/DaftarNomor";
 import PembukaLoket from "@/components/site/PembukaLoket";
 
 const LEDE =
-  "Loket ini memuat sejarah Batam, kampung tua, tokoh di balik nama jalan, budaya Melayu, dan kamus bahasa sehari-hari.";
+  "Bagian ini memuat sejarah Batam, kampung tua, tokoh di balik nama jalan, budaya Melayu, dan kamus bahasa sehari-hari.";
 
 export const metadata: Metadata = {
   title: "Cerita dan Budaya",
@@ -28,7 +28,7 @@ export default function CeritaBudaya() {
       <PembukaLoket nomor="05" lede={LEDE} />
       <section className="bch-seksi" aria-labelledby="isi-loket">
         <h2 id="isi-loket" className="bch-kicker bch-kepala-penanda">
-          Isi loket ini
+          Isi bagian ini
         </h2>
         <DaftarNomor isi={PINTU} />
       </section>

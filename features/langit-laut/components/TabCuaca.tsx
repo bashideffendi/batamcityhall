@@ -18,7 +18,7 @@ export default function TabCuaca({ aktif, tanpaRemah = false }: { aktif?: Mode; 
       ))}
       {!tanpaRemah && (
         <Link href="/cuaca" prefetch={false} className="remah">
-          Loket 01 · Cuaca dan Laut
+          Cuaca dan Laut
         </Link>
       )}
     </nav>

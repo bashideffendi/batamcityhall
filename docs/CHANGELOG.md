@@ -1,11 +1,27 @@
 # CHANGELOG
 
+## 2026-11-05 · Penerapan pedoman editorial
+
+Mengikuti urutan bagian 8 `docs/PEDOMAN.md`.
+
+- **Bahasa:** naskah semua loket mengikuti bagian 3. `scripts/cek-bahasa.mjs` jalan di `prebuild`.
+- **Disembunyikan (bagian 6):** Batam Dulu, Warga Baru, Mural, Vibe, Quest, dan formulir foto lama keluar dari menu, beranda, dan sitemap.
+- **Tampilan:** huruf Newsreader, Plus Jakarta Sans, dan IBM Plex Mono; token warna Riso; kepala, kaki halaman, dan menu ponsel baru. Tekstur kertas, ornamen peta laut, dan pucuk rebung dibuang.
+- **Loket 01** pindah ke `/cuaca`, `/cuaca/hujan`, `/cuaca/gelombang`, `/cuaca/cctv`, `/cuaca/peringatan`, dan `/cuaca/gempa`. Alamat lama dialihkan 308 dengan parameter `view` dan `cam`.
+- **Beranda:** Hari Ini dengan judul kalimat data, Peta Hari Ini dengan arsiran hujan langsung, Peta Tempat dengan panel Tempat, indeks loket, cerita pilihan, dan berita tiga kolom.
+- **Peta kerja:** penanda gaya A di beranda, kategori, kartu tempat, Makan, Kampung Tua, dan Transportasi (`features/peta/LapisanTempat.tsx`, `gambar-penanda.ts`).
+- **Halaman lain:** pembuka loket dengan daftar bernomor, direktori berikon, kategori dengan peta menempel, baris tempat, detail tempat dua kolom, tabel Feri Terakhir.
+- **Teknis:** cache memori route realtime (`lib/cache-respons.ts`), ikon situs warna baru, CSS tak terpakai dibuang.
+- **Bug:** `/makan/peta` bisa digulir ke ruang kosong sepanjang ribuan piksel; tautan kamera di kartu tempat salah alamat; balapan tema di `followSystemTheme`.
+- **Koreksi pemilik:** istilah "loket" keluar dari teks yang tampil, nomor besar pembuka dihapus, penanda berisi isi bagian, judul beranda menjadi "Jelajahi Batam". `cek-bahasa` menjaganya lewat aturan `istilah-loket`.
+- **Pratinjau:** tayang di https://batam.masbash.id. Sumber MSS, NEA, dan BMKG menjawab dari server Railway.
+
 ## 2026-11-05 · Gempa dan peringatan dini cuaca BMKG
 
 - `/api/gempa`: gabungan autogempa, gempaterkini, dan gempadirasakan. Ditahan 60 detik per instance, jadi paling sering 3 permintaan per menit per instance, jauh di bawah batas BMKG 60 per menit per IP.
 - `/api/peringatan-cuaca`: RSS nowcast sebagai daftar, XML CAP sebagai isi, hanya Kep. Riau. RSS ditarik paling sering sekali per menit, tiap XML cukup sekali. `?poligon=1` menyertakan poligon untuk peta.
 - Header jujur (`BMKG_HEADERS`) lolos ke semua sumber ini dari PC pemilik, 5 Nov 2026. Belum diuji dari IP server.
-- `/langit-laut/peringatan`, `/langit-laut/gempa`: halaman baru, teks BMKG disalin apa adanya, atribusi tampil, gagal ditulis gagal.
+- `/cuaca/peringatan`, `/cuaca/gempa`: halaman baru, teks BMKG disalin apa adanya, atribusi tampil, gagal ditulis gagal.
 - Kotak Hari Ini: baris Cuaca hanya bila peringatan mengenai Batam atau datanya gagal, baris Gempa hanya bila relevan (ambang di `DATA_DECISIONS.md`). Baris lama "Peringatan" jadi "Peringatan laut".
 - Radar: label peringatan di panel mengikuti wilayah yang dipilih, poligon BMKG di peta, bagian Detail, kredit sumber.
 - Kecamatan Batam ditentukan dari teks BMKG atau titik label di dalam poligon. Diuji ke dua peringatan asli, 5 Nov 2026: Batu Aji dan Sagulung untuk yang satu, tidak ada untuk yang lain, cocok dengan teksnya.
@@ -73,7 +89,7 @@ Sisa fase 3 dicatat di `PLAN.md`. Riset Overpass, harga pangan, dan formulir kor
 
 Kriteria PLAN belum penuh: satu butir paritas ◐ (tombol bahasa situs) dan pengalihan situs lama memang menunggu fase 9.
 
-- **Langit & Laut** di `/langit-laut`: `RadarMap`, `KecamatanLayer`, `CctvLayer`, `OfsField`, `LandMask`, `MapController` pindah dari Leaflet ke MapLibre. Baru: `PetaLangit`, `PetaMarker`, `RadarLayer`, `lib/peta-lapisan.ts`. Angka zoom dikurangi 1 karena tile 512 px.
+- **Langit & Laut** di `/cuaca`: `RadarMap`, `KecamatanLayer`, `CctvLayer`, `OfsField`, `LandMask`, `MapController` pindah dari Leaflet ke MapLibre. Baru: `PetaLangit`, `PetaMarker`, `RadarLayer`, `lib/peta-lapisan.ts`. Angka zoom dikurangi 1 karena tile 512 px.
 - **Header BMKG jujur:** `BMKG_HEADERS`, tanpa menyamar sebagai Chrome dan tanpa Referer. Diuji dari PC pemilik dan browser; belum dari IP Vercel.
 - **Radar lewat `/api/radar-citra/[ts]`** karena MSS tidak mengizinkan CORS. Citra 404 tetap 404.
 - **Mask daratan** memakai `earth` peta dasar sendiri, bukan CircleGeo. CARTO dan CircleGeo keluar sepenuhnya.

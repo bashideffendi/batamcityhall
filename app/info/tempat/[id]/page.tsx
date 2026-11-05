@@ -141,9 +141,9 @@ export default async function Tempat({ params }: Props) {
           <p>
             Kartu ini hanya memuat nama dan letak umumnya. Batas, luas, dan status lahan tidak kami tampilkan.{" "}
             {idKartuKampung(p) ? (
-              <Link href={`/cerita/kampung-tua/${idKartuKampung(p)}`}>Baca ceritanya di Loket Cerita dan Budaya</Link>
+              <Link href={`/cerita/kampung-tua/${idKartuKampung(p)}`}>Baca ceritanya di Cerita dan Budaya</Link>
             ) : (
-              "Ceritanya ada di Loket Cerita dan Budaya."
+              "Ceritanya ada di Cerita dan Budaya."
             )}
           </p>
         ) : (
@@ -185,7 +185,7 @@ export default async function Tempat({ params }: Props) {
         {p.kategori === "kuliner" && (
           <p>
             <Link href={`/makan/tempat/${p.id}`} prefetch={false}>
-              Lihat di Loket Makan
+              Lihat di Makan
             </Link>
           </p>
         )}

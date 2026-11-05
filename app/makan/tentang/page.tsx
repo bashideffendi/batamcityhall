@@ -3,7 +3,7 @@ import { TentangMakan } from "@/features/makan/components/HalamanMakan";
 
 export const metadata: Metadata = {
   title: "Tentang",
-  description: "Cara memilih tempat, arti label, dan status halal di Loket Makan.",
+  description: "Cara memilih tempat, arti label, dan status halal di bagian Makan.",
 };
 
 export default function Tentang() {

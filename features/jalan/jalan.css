@@ -23,9 +23,6 @@
 .jl-blok {
   display: block;
 }
-.jl-putus-kata {
-  overflow-wrap: anywhere;
-}
 .jl-daftar-rapat {
   margin: var(--bch-space-2) 0 0;
   padding-left: 1.2em;
@@ -186,8 +183,7 @@
   stroke-dasharray: 5 5;
   opacity: 0.55;
 }
-.jl-feri-garis path,
-.jl-feri-garis-contoh {
+.jl-feri-garis path {
   fill: none;
   stroke: var(--bch-sea-ink);
   stroke-width: 1px;
@@ -255,16 +251,6 @@
 }
 .jl-legenda-simbol {
   display: block;
-}
-.jl-legenda-garis {
-  fill: none;
-  stroke: var(--bch-ink);
-  stroke-width: 3.5px;
-}
-.jl-legenda-tick {
-  fill: none;
-  stroke: var(--bch-ink);
-  stroke-width: 1.5px;
 }
 
 /* ---------- Strip map ---------- */
@@ -371,11 +357,6 @@
   font-size: var(--bch-text-caption);
   color: var(--bch-ink-muted);
   white-space: nowrap;
-}
-.jl-strip-meta {
-  display: block;
-  font-size: var(--bch-text-caption);
-  color: var(--bch-ink-muted);
 }
 .jl-pindah {
   list-style: none;

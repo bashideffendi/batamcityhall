@@ -52,10 +52,7 @@ export function BerandaMakan() {
     <div className="bch-page">
       <div className="bch-pembuka">
         <div>
-          <p className="bch-kicker bch-penanda-biru m-0">{t("loket")}</p>
-          <span className="bch-nomor-besar" aria-hidden="true">
-            02
-          </span>
+          <p className="bch-kicker bch-penanda-biru m-0">{t("home_penanda")}</p>
           <h1>{t("home_title")}</h1>
           <p className="bch-lede">{miring(t("home_lede", { n: places.length }))}</p>
           <SearchBar />
@@ -133,7 +130,7 @@ export function DaftarMakan() {
 
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">{t("loket")}</p>
+      <p className="bch-kicker m-0">{t("home_title")}</p>
       <h1 className="mt-2">{t("all_places_title")}</h1>
       <SearchBar />
       <FilterBar />
@@ -165,7 +162,7 @@ export function KategoriMakan() {
 
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">{t("loket")}</p>
+      <p className="bch-kicker m-0">{t("home_title")}</p>
       <h1 className="mt-2">{t("browse_cat")}</h1>
       <p className="bch-lede">{t("browse_cat_sub", { n: categories.length })}</p>
       <div className="bch-grid mk-bagian-kecil">
@@ -197,7 +194,7 @@ export function JalurMakan() {
   const { t } = useI18n();
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">{t("loket")}</p>
+      <p className="bch-kicker m-0">{t("home_title")}</p>
       <h1 className="mt-2">{t("trails")}</h1>
       <p className="bch-lede">{t("trails_sub")}</p>
       <ul className="bch-daftar-baris mk-bagian-kecil" data-kolom="2">
@@ -232,7 +229,7 @@ export function TentangMakan() {
 
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">{t("loket")}</p>
+      <p className="bch-kicker m-0">{t("home_title")}</p>
       <h1 className="mt-2">{t("about_title")}</h1>
 
       <div className="bch-prose">

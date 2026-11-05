@@ -9,7 +9,7 @@ type Tri = { id: string; en: string; zh: string };
 // Naskah bahasa Indonesia mengikuti docs/PEDOMAN.md 3.4 persis, bahasa Inggris mengikuti 2.10.
 // `*kata*` berarti miring (lihat miring() di bawah).
 const DICT = {
-  loket: { id: "LOKET 02", en: "Counter 02", zh: "02 号窗口" },
+  home_penanda: { id: "Daftar · Peta · Jalur kuliner", en: "List · Map · Food trails", zh: "列表 · 地图 · 美食路线" },
   nav_label: { id: "Halaman Makan", en: "Food pages", zh: "美食页面" },
   nav_home: { id: "Beranda", en: "Home", zh: "首页" },
   nav_map: { id: "Peta", en: "Map", zh: "地图" },
@@ -23,9 +23,9 @@ const DICT = {
 
   home_title: { id: "Makan", en: "Food", zh: "美食" },
   home_lede: {
-    id: "Loket ini memuat {n} tempat makan pilihan di Batam: *kopitiam*, makanan laut, mi, dan warung lama. Tidak ada tempat yang membayar untuk masuk daftar ini.",
-    en: "This counter lists {n} selected places to eat in Batam: *kopitiam*, seafood, noodles, and old *warung*. No place pays to be on this list.",
-    zh: "本窗口收录巴淡岛 {n} 家精选餐饮：咖啡店、海鲜、面食和老店。没有任何店铺付费入选。",
+    id: "Bagian ini memuat {n} tempat makan pilihan di Batam: *kopitiam*, makanan laut, mi, dan warung lama. Tidak ada tempat yang membayar untuk masuk daftar ini.",
+    en: "This section lists {n} selected places to eat in Batam: *kopitiam*, seafood, noodles, and old *warung*. No place pays to be on this list.",
+    zh: "本栏目收录巴淡岛 {n} 家精选餐饮：咖啡店、海鲜、面食和老店。没有任何店铺付费入选。",
   },
   search_label: { id: "Cari tempat makan", en: "Search places to eat", zh: "搜索餐饮" },
   search_ph: { id: "Cari tempat, menu, atau kategori", en: "Search places, dishes, or categories", zh: "搜索店铺、菜品、分类" },
@@ -214,7 +214,7 @@ const DICT = {
   stops_list: { id: "Urutan Perhentian", en: "Order of stops", zh: "站点顺序" },
   duration: { id: "Durasi", en: "Duration", zh: "时长" },
 
-  about_title: { id: "Tentang Loket Makan", en: "About the food counter", zh: "关于美食窗口" },
+  about_title: { id: "Tentang Makan", en: "About Food", zh: "关于美食" },
   about_choose_t: { id: "Cara Memilih", en: "How places are chosen", zh: "挑选方式" },
   about_choose: {
     id: "Tempat dipilih dan dikunjungi oleh penyusun. Tidak ada tempat yang membayar untuk masuk daftar ini, dan urutan tidak dapat dibeli.",

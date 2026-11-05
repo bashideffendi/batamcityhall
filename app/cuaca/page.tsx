@@ -14,14 +14,14 @@ export default function CuacaDanLaut() {
     <div className="bch-page">
       <PembukaLoket
         nomor="01"
-        lede="Loket ini memuat radar hujan, tinggi gelombang, dan kamera lalu lintas untuk Batam dan perairan sekitarnya. Datanya diperbarui otomatis."
+        lede="Bagian ini memuat radar hujan, tinggi gelombang, dan kamera lalu lintas untuk Batam dan perairan sekitarnya. Datanya diperbarui otomatis."
       >
         <SaatIni />
       </PembukaLoket>
 
       <section className="bch-seksi" aria-labelledby="isi-loket">
         <h2 id="isi-loket" className="bch-kicker bch-kepala-penanda">
-          Isi loket ini
+          Isi bagian ini
         </h2>
         <IsiLoketCuaca />
         <ol className="bch-daftar-nomor cu-tambahan">

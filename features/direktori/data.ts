@@ -81,7 +81,7 @@ export const DAFTAR_KATEGORI: InfoKategori[] = [
   kat("akomodasi", "Hotel dan penginapan", "Hotel berbintang dan nonbintang"),
   kat("jasa", "Jasa", "Penukaran valuta asing, pusat servis, dan ekspedisi"),
   kat("pertanahan_hukum", "Pertanahan dan hukum", "PPAT, notaris, bantuan hukum, pengadilan, dan penilai properti"),
-  kat("kuliner", "Kuliner", "Tempat makan dari Loket Makan"),
+  kat("kuliner", "Kuliner", "Tempat makan dari bagian Makan"),
   kat("kampung_tua", "Kampung tua", "Permukiman lama sebelum Batam dibangun"),
   kat("landmark", "Penanda kota", "Jembatan, monumen, dan bangunan penanda"),
   kat("budaya", "Budaya", "Museum, cagar budaya, dan lembaga adat"),

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function TransBatam() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Loket 04 · Transportasi</p>
+      <p className="bch-kicker m-0">Transportasi</p>
       <h1 className="mt-2">Trans Batam</h1>
       <p className="bch-lede">
         Sembilan koridor beroperasi dan satu koridor direncanakan. Tarif Rp5.000 untuk umum dan Rp2.500 untuk pelajar,

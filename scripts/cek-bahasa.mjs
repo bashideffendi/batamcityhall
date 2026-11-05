@@ -91,6 +91,8 @@ export const ATURAN = [
   { id: "tanda-seru", re: /[A-Za-zÀ-ÿ0-9)]!(\s|$|["”])/, indonesia: true },
   { id: "emoji", re: /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}]/u },
   // Kata tidak baku
+  // Koreksi pemilik 5 Nov 2026: bagian situs disebut dengan namanya. Loket sungguhan di kantor ada di daftar pengecualian.
+  { id: "istilah-loket", re: /\bloket\b/i, indonesia: true },
   { id: "tidak-baku", re: new RegExp(`\\b(${TIDAK_BAKU.join("|")})\\b`, "i"), indonesia: true, nama: true },
   { id: "tidak-baku", re: /\bJum'at\b/, indonesia: true },
   { id: "tidak-baku", re: /\bnon[ -](halal|tunai)\b/i, indonesia: true },

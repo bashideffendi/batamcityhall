@@ -24,7 +24,7 @@ export default async function PetaJalanHalaman() {
   return (
     <>
       <div className="bch-page jl-page-atas">
-        <p className="bch-kicker m-0">Loket 04 · Transportasi</p>
+        <p className="bch-kicker m-0">Transportasi</p>
         <h1 className="mt-2">Peta Transportasi</h1>
         <p className="bch-lede">Peta ini memuat koridor bus, terminal feri, dan pelabuhan rakyat di Batam.</p>
         <JalanNav aktif="/jalan/peta" />

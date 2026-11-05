@@ -19,23 +19,6 @@
 }
 
 /* Bingkai koordinat */
-.peta-tepi {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-.peta-tepi-gelap {
-  fill: var(--bch-ink);
-}
-.peta-tepi-terang {
-  fill: var(--bch-paper);
-}
-.peta-tepi-garis {
-  fill: none;
-  stroke: var(--bch-ink);
-  stroke-width: 0.5;
-}
 .peta-tepi-label {
   font-family: var(--bch-font-mono);
   font-size: 11px;
@@ -68,23 +51,7 @@
 .peta-kartusis p {
   margin: 0;
 }
-.peta-kartusis-judul {
-  font-family: var(--bch-font-serif);
-  font-weight: 600;
-  font-weight: 600;
-  font-size: 1.0625rem;
-  line-height: 1.2;
-  letter-spacing: 0.1em;
-}
-.peta-kartusis-sub {
-  font-family: var(--bch-font-serif);
-  font-style: italic;
-  font-size: var(--bch-text-small);
-  line-height: 1.3;
-  color: var(--bch-sea-ink);
-}
-.peta-kartusis-skala,
-.peta-kartusis-catatan {
+.peta-kartusis-skala {
   font-family: var(--bch-font-mono);
   font-variant-numeric: tabular-nums slashed-zero;
   font-size: 0.75rem;
@@ -92,9 +59,6 @@
 }
 .peta-kartusis-skala {
   margin-top: var(--bch-space-1) !important;
-}
-.peta-kartusis-catatan {
-  color: var(--bch-ink-muted);
 }
 
 .peta-mawar {
@@ -121,19 +85,6 @@
   color: var(--bch-ink);
   border: var(--bch-stroke-hair) solid var(--bch-rule-strong);
   pointer-events: none;
-}
-.peta-skala-baris {
-  display: flex;
-  align-items: center;
-  gap: var(--bch-space-2);
-  font-family: var(--bch-font-mono);
-  font-variant-numeric: tabular-nums slashed-zero;
-  font-size: 0.6875rem;
-  line-height: 1.2;
-  white-space: nowrap;
-}
-.peta-skala-baris svg {
-  display: block;
 }
 
 .peta-zoom {
@@ -227,9 +178,6 @@ html[data-gerak="tenang"] .peta-itik svg {
   }
   .peta-kartusis {
     padding: var(--bch-space-2) var(--bch-space-3);
-  }
-  .peta-kartusis-sub {
-    display: none;
   }
   .peta-mawar {
     width: 3rem;
@@ -327,46 +275,11 @@ html[data-gerak="tenang"] .peta-itik svg {
 .peta-lapisan-catatan > span[aria-hidden="true"]:first-child {
   margin-left: 0;
 }
-
-.peta-cari {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--bch-space-2) var(--bch-space-3);
-  align-items: end;
-  padding: var(--bch-space-3) var(--bch-space-4) 0;
-  max-width: 44rem;
-}
-.peta-cari-pesan,
-.peta-cari-hasil {
+.peta-cari-pesan {
   grid-column: 1 / -1;
   margin: 0;
 }
 .peta-cari-pesan {
-  font-size: var(--bch-text-small);
-  color: var(--bch-ink-muted);
-}
-.peta-cari-hasil button {
-  display: block;
-  width: 100%;
-  min-height: 44px;
-  padding: var(--bch-space-2) 0;
-  background: none;
-  border: 0;
-  border-bottom: var(--bch-stroke-hair) solid var(--bch-rule-strong);
-  color: var(--bch-ink);
-  text-align: left;
-  cursor: pointer;
-}
-.peta-cari-hasil button:hover {
-  color: var(--bch-accent);
-}
-.peta-cari-hasil span {
-  color: var(--bch-ink-muted);
-  font-size: var(--bch-text-small);
-}
-.peta-cari-kosong {
-  padding-block: var(--bch-space-2);
   font-size: var(--bch-text-small);
   color: var(--bch-ink-muted);
 }

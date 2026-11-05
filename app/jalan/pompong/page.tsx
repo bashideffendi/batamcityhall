@@ -19,7 +19,7 @@ const isi = (t: string | null) => (t ? kapital(t) : BELUM);
 export default function Pompong() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Loket 04 · Transportasi</p>
+      <p className="bch-kicker m-0">Transportasi</p>
       <h1 className="mt-2">Pompong</h1>
       <p className="bch-lede">
         Perahu kayu bermesin untuk menyeberang ke pulau-pulau di sekitar Batam. Tarifnya ditentukan pemilik perahu dan

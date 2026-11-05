@@ -7,6 +7,7 @@
 import { muatBerita, type Ingatan } from "@/features/berita/muat";
 import { SUMBER_BERITA, type BeritaResponse } from "@/features/berita/sumber";
 import { SITE_URL } from "@/lib/site";
+import { cacheRespons } from "@/lib/cache-respons";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 20;
@@ -75,7 +76,7 @@ async function muat(): Promise<BeritaResponse> {
   return sedangJalan;
 }
 
-export async function GET() {
+async function muatRespons(): Promise<Response> {
   const isi = await muat();
   if (!isi.item.length && semuaGagal(isi)) {
     return Response.json(isi, { status: 503, headers: { "Cache-Control": "no-store" } });
@@ -84,4 +85,8 @@ export async function GET() {
   return Response.json(isi, {
     headers: { "Cache-Control": `public, s-maxage=${tahan}, stale-while-revalidate=${tahan}` },
   });
+}
+
+export function GET() {
+  return cacheRespons("berita", muatRespons);
 }

@@ -19,7 +19,7 @@ const lainnya = KARTU_FERI.filter((k) => k.jenis === "lainnya");
 export default function Feri() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Loket 04 · Transportasi</p>
+      <p className="bch-kicker m-0">Transportasi</p>
       <h1 className="mt-2">Feri</h1>
       <p className="bch-lede">
         Jadwal feri dari Batam ke Singapura, Johor, dan pulau sekitar. Jam keberangkatan mengikuti waktu setempat di

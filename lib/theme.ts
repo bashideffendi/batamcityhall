@@ -52,5 +52,7 @@ export function followSystemTheme(): () => void {
     if (!storedTheme()) applyTheme(mq.matches ? "dark" : "light");
   };
   mq.addEventListener("change", onChange);
+  // Preferensi bisa berubah antara skrip tema di <head> dan pemasangan pendengar ini, jadi samakan sekali di awal.
+  onChange();
   return () => mq.removeEventListener("change", onChange);
 }

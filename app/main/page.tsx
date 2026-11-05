@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import DaftarNomor from "@/components/site/DaftarNomor";
 import PembukaLoket from "@/components/site/PembukaLoket";
 
-const LEDE = "Loket ini memuat kartu pos digital dari Batam dan kalkulator ongkos belanja ke Singapura.";
+const LEDE = "Bagian ini memuat kartu pos digital dari Batam dan kalkulator ongkos belanja ke Singapura.";
 
 export const metadata: Metadata = {
   title: "Ruang Main",
@@ -28,7 +28,7 @@ export default function RuangMain() {
       <PembukaLoket nomor="07" lede={LEDE} />
       <section className="bch-seksi" aria-labelledby="isi-loket">
         <h2 id="isi-loket" className="bch-kicker bch-kepala-penanda">
-          Isi loket ini
+          Isi bagian ini
         </h2>
         <DaftarNomor isi={PINTU} />
       </section>

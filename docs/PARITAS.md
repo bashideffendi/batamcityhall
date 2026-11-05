@@ -8,7 +8,7 @@ Bukti: `e2e` = tests/e2e/langit-laut.spec.ts dan makan.spec.ts dengan build prod
 
 Asal kode: hujandibatam `45281a64de5fe068de9d95b9bbc73ba4eb5af4db`, batam-bites `85905410a7a1f1e42e0b43f19e72b144cf384249`.
 
-## hujandibatam → /langit-laut
+## hujandibatam → /cuaca
 
 ### Fitur
 - ✔ Tiga mode: hujan, ombak, CCTV; deep link `?mode=`, `?view=`, `?cam=`; URL mencerminkan state (`replaceState`), param lain dipertahankan — e2e, live
@@ -78,5 +78,5 @@ Asal kode: hujandibatam `45281a64de5fe068de9d95b9bbc73ba4eb5af4db`, batam-bites 
 
 Bukan syarat pengalihan, dicatat supaya perbandingan tidak salah baca.
 
-- Peringatan dini cuaca BMKG di panel Hujan (label, bagian Detail, poligon di peta) dan `/langit-laut/peringatan` — e2e, live 5 Nov 2026
-- Gempa BMKG di `/langit-laut/gempa` dan baris bila relevan di kotak Hari Ini — e2e, live 5 Nov 2026
+- Peringatan dini cuaca BMKG di panel Hujan (label, bagian Detail, poligon di peta) dan `/cuaca/peringatan` — e2e, live 5 Nov 2026
+- Gempa BMKG di `/cuaca/gempa` dan baris bila relevan di kotak Hari Ini — e2e, live 5 Nov 2026

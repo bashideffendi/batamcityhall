@@ -95,7 +95,7 @@ export default function SiteNav() {
             </button>
           </div>
         </div>
-        <nav className="bch-menu" aria-label="Loket">
+        <nav className="bch-menu" aria-label="Bagian situs">
           {LOKET.map((l) => (
             <Link key={l.nomor} href={l.href} aria-current={l.aktifDi.some((p) => path.startsWith(p)) ? "page" : undefined}>
               <span className="no">{l.nomor}</span>

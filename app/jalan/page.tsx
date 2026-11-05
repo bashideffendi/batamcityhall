@@ -5,7 +5,7 @@ import FeriTerakhirMuat from "@/features/jalan/FeriTerakhirMuat";
 
 export const metadata: Metadata = {
   title: "Transportasi",
-  description: "Loket ini memuat bus Trans Batam, feri ke Singapura dan Malaysia, dan pompong antarpulau.",
+  description: "Bagian ini memuat bus Trans Batam, feri ke Singapura dan Malaysia, dan pompong antarpulau.",
 };
 
 const PINTU = [
@@ -23,13 +23,13 @@ export default function Jalan() {
         nomor="04"
         lede={
           <>
-            Loket ini memuat bus Trans Batam, feri ke Singapura dan Malaysia, dan <em>pompong</em> antarpulau.
+            Bagian ini memuat bus Trans Batam, feri ke Singapura dan Malaysia, dan <em>pompong</em> antarpulau.
           </>
         }
       />
       <section className="bch-seksi" aria-labelledby="isi-loket">
         <h2 id="isi-loket" className="bch-kicker bch-kepala-penanda">
-          Isi loket ini
+          Isi bagian ini
         </h2>
         <DaftarNomor isi={PINTU} />
       </section>

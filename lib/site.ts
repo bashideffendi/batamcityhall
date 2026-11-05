@@ -32,6 +32,8 @@ export type Loket = {
   nama: string;
   href: string;
   lede: string;
+  /** Penanda kecil di atas judul halaman pembuka: isi bagian ini. */
+  penanda: string;
   /** Awalan alamat yang menandai loket ini aktif di menu. */
   aktifDi: string[];
   /** Ilustrasi di public/grafis (PEDOMAN 4.7). */
@@ -48,6 +50,7 @@ export const LOKET: Loket[] = [
     nama: "Cuaca dan Laut",
     href: "/cuaca",
     lede: "Radar hujan, tinggi gelombang, dan kamera lalu lintas",
+    penanda: "Radar hujan · Gelombang · CCTV",
     isi: [
       { label: "Radar hujan", href: "/cuaca/hujan" },
       { label: "Tinggi gelombang", href: "/cuaca/gelombang" },
@@ -63,6 +66,7 @@ export const LOKET: Loket[] = [
     nama: "Makan",
     href: "/makan",
     lede: "Tempat makan pilihan, dari kopitiam sampai gonggong",
+    penanda: "Daftar · Peta · Jalur kuliner",
     isi: [
       { label: "Daftar", href: "/makan/daftar" },
       { label: "Peta", href: "/makan/peta" },
@@ -76,6 +80,7 @@ export const LOKET: Loket[] = [
     nama: "Tukang Langganan",
     href: "/tukang",
     lede: "Jasa yang direkomendasikan warga",
+    penanda: "Daftar tukang · Kirim rekomendasi",
     isi: [
       { label: "Daftar tukang", href: "/tukang" },
       { label: "Kirim rekomendasi", href: "/tukang/rekomendasi" },
@@ -88,6 +93,7 @@ export const LOKET: Loket[] = [
     nama: "Transportasi",
     href: "/jalan",
     lede: "Trans Batam, feri, dan pompong",
+    penanda: "Trans Batam · Feri · Pompong",
     isi: [
       { label: "Trans Batam", href: "/jalan/trans-batam" },
       { label: "Peta transportasi", href: "/jalan/peta" },
@@ -103,6 +109,7 @@ export const LOKET: Loket[] = [
     nama: "Cerita dan Budaya",
     href: "/cerita",
     lede: "Sejarah, kampung tua, tokoh, dan kamus",
+    penanda: "Sejarah · Kampung tua · Kamus",
     isi: [
       { label: "Sejarah Batam", href: "/cerita/sejarah" },
       { label: "Kampung tua", href: "/cerita/kampung-tua" },
@@ -121,6 +128,7 @@ export const LOKET: Loket[] = [
     nama: "Informasi Warga",
     href: "/info",
     lede: "Direktori, nomor darurat, dan panduan",
+    penanda: "Direktori · Nomor darurat · Berita",
     isi: [
       { label: "Direktori", href: "/info/direktori" },
       { label: "Nomor darurat", href: "/info/darurat" },
@@ -137,6 +145,7 @@ export const LOKET: Loket[] = [
     nama: "Ruang Main",
     href: "/main",
     lede: "Kartu pos dan kalkulator belanja",
+    penanda: "Kartu pos · Kalkulator belanja",
     isi: [
       { label: "Kartu pos dari Batam", href: "/main/kartu-pos" },
       { label: "Belanja di Singapura atau di Nagoya?", href: "/main/singapura-atau-nagoya" },

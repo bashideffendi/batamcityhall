@@ -23,10 +23,10 @@ const JENIS = { ngopi: "Kopi", macet: "Macet" } as const;
 const KETERANGAN = {
   ngopi: (
     <>
-      Daftar <em>kopitiam</em> dan kafe dari Loket Makan. Titiknya merupakan perkiraan.
+      Daftar <em>kopitiam</em> dan kafe dari bagian Makan. Titiknya merupakan perkiraan.
     </>
   ),
-  macet: "Kamera lalu lintas dari Loket Cuaca dan Laut. Peta ini tidak menilai kepadatan jalan.",
+  macet: "Kamera lalu lintas dari bagian Cuaca dan Laut. Peta ini tidak menilai kepadatan jalan.",
 };
 
 function gaya(base: StyleSpecification, theme: MapTheme, titik: TitikVibe[]): StyleSpecification {

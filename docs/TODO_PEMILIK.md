@@ -1,25 +1,37 @@
 # Yang perlu pemilik lakukan
 
-Disusun 5 November 2026, akhir fase 10. Situs jalan di komputer ini, tetapi **belum di-deploy**. Kode sudah di repo publik `bashideffendi/batamcityhall`. Tidak ada satu pun yang menyentuh situs lama, DNS, atau Vercel.
+Diperbarui 5 November 2026 setelah pedoman diterapkan. Situs tayang sebagai pratinjau. Kode sudah di repo publik `bashideffendi/batamcityhall`. Tidak ada satu pun yang menyentuh situs lama, DNS, atau Vercel.
 
-## Pratinjau di Railway (sementara Vercel di-pause)
+## Pratinjau
 
-Konfigurasi sudah di repo. Yang perlu Anda lakukan, sekali saja:
+Tayang di https://batam.masbash.id (Railway, cabang `fase-1-fondasi`). Selama `SITE_PRATINJAU=1`, mesin pencari tidak mengindeks situs. Hapus variabel itu saat situs diumumkan.
 
-1. Buat akun di railway.com, masuk dengan GitHub.
-2. New Project → Deploy from GitHub repo → `batamcityhall`, cabang `fase-1-fondasi`.
-3. Settings → Region: Southeast Asia (Singapura).
-4. Variables: tambahkan `SITE_PRATINJAU` = `1`.
-5. Settings → Networking → Generate Domain. Alamat `….up.railway.app` itu bisa dibuka dari laptop dan HP.
+## Keputusan yang menunggu jawaban (penerapan pedoman, 5 Nov 2026)
 
-Railway berbayar setelah kredit percobaan habis; cek harga di railway.com. Langkah lengkap di README bagian "Pratinjau di Railway".
+1. **`KALIMAT_REMPANG`** masih berbunyi "lihat sumber bertanggal", padahal sumber tidak lagi tampil. Komentar kode melarang menyuntingnya tanpa pemilik. Perlu kalimat pengganti.
+2. **Media Center Pemko** masih jadi sumber berita dan menaut ke situs .go.id. Pedoman melarang tautan pemerintah, kecuali di Kolofon dan Berita, jadi saat ini lolos pemeriksaan. Diteruskan atau dibuang?
+3. **Tukang:** "Sedot WC" dan "Dokter per spesialis" hilang dari jenis jasa karena mengikuti naskah 3.5, padahal `research/00` mewajibkannya. Mana yang menang?
+4. **Makan:**
+   - Nomor ponsel yang disembunyikan 24, bukan 25 seperti ditulis pedoman.
+   - "Dikunjungi penyusun" dan "Data diperiksa" kurang didukung data: `verified` hanya 18 dari 117.
+   - "Per orang" tidak ada di data harga.
+   - Bagian QRIS dan kiat di Tentang Makan tidak ada di naskah, tetapi dipertahankan.
+5. **Transportasi:** contoh pedoman {07.30} berbeda dengan data 06.00, dan 8.2 menyebut enam kotak sedangkan 3.6 menyebut lima. Info Praktis Trans Batam dipertahankan walau di luar naskah.
+6. **Cerita:** label pelaku legalitas adalah penilaian saat menerapkan pedoman, mohon diperiksa. Rempang tidak punya butir berlabel Warga. Kanal komunitas berkurang dari 5 menjadi 3.
+7. **Gempa dan peringatan dini** tidak ada di naskah pedoman. Dipertahankan di `/cuaca/gempa`, `/cuaca/peringatan`, dan Hari Ini, tanpa tautan dan tanpa "Sumber:". Kredit BMKG ada di Kolofon. Kondisi Saat Ini memuat satu kalimat bahwa datanya diukur di Singapura.
+8. **Direktori:** "Baru N dari M terdata" masih tampil sebagai catatan di bawah daftar, walau tidak ada di naskah.
+
+## Uji yang hanya bisa pemilik lakukan
+
+- **Ponsel Android dan iPhone asli** (pedoman 8.5). Yang sudah diuji baru emulasi.
+- **Peta terasa lambat di ponsel?** Berkas peta 46 MB dilayani dari server aplikasi. Bila lambat, pindahkan ke penyimpanan dengan CDN dan isi `NEXT_PUBLIC_PMTILES_URL`.
 
 ## Supaya bisa tayang
 
 1. **Vercel.** Beri tahu nama proyek Vercel, atau izinkan membuatnya. Repo GitHub sudah ada.
 2. **Bucket aset** (Cloudflare R2 atau lain) untuk `public/tiles/batam.pmtiles` (46 MB, tidak ikut Git), lalu isi `NEXT_PUBLIC_PMTILES_URL`.
-3. **Domain**, lalu isi `NEXT_PUBLIC_SITE_URL`.
-4. **Uji sumber BMKG dari IP Vercel.** Header jujur sudah lolos dari PC ini, termasuk gempa dan peringatan dini cuaca (5 Nov 2026), belum dari server Vercel. Kalau ditolak, ambil dari browser (CORS terbuka).
+3. **Domain final**, lalu isi `NEXT_PUBLIC_SITE_URL`. Sekarang terisi `https://batam.masbash.id`.
+4. **Uji sumber BMKG dari IP Vercel** bila nanti pindah ke Vercel. Dari Railway sudah lolos (5 Nov 2026).
 5. **URL donasi** bila sudah ada (`NEXT_PUBLIC_DONASI_URL`).
 
 ## Supaya formulir jalan

@@ -17,7 +17,7 @@ export default async function KirimRekomendasi() {
   const mode = modeKiriman();
   return (
     <div className="bch-page bch-tk-halaman">
-      <p className="bch-kicker m-0">LOKET 03</p>
+      <p className="bch-kicker m-0">Tukang Langganan</p>
       <h1 className="mt-2">Kirim Rekomendasi</h1>
       <p className="bch-lede">
         Rekomendasikan tukang atau jasa yang pernah kamu pakai sendiri. Tukang tidak dapat mendaftarkan diri.
