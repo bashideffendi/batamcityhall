@@ -3,7 +3,9 @@ import koridorData from "@/data/trans_batam/koridor.json";
 import { DAFTAR_KATEGORI, punyaHalaman, slugKategori, slugKecamatan, TEMPAT } from "@/features/direktori/data";
 import { places } from "@/features/makan/lib/data";
 import { KECAMATAN } from "@/lib/data/schema";
-import { trails } from "@/features/makan/lib/trails";
+import { panduan } from "@/features/makan/lib/panduan";
+import { kawasanBerisi } from "@/features/makan/lib/data";
+import { semuaSlugHidangan } from "@/features/makan/lib/hidangan";
 import { LOKET, LOKET_DIBUKA, SITE_URL } from "@/lib/site";
 
 const koridor = koridorData.koridor;
@@ -21,18 +23,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "hourly" as const,
       priority: 0.7,
     })),
-    ...["daftar", "peta", "kategori", "jalur", "tentang"].map((h) => ({
+    ...["hidangan", "kawasan", "panduan", "dekat-feri", "peta", "cara-memilih"].map((h) => ({
       url: `${SITE_URL}/makan/${h}`,
       changeFrequency: "weekly" as const,
       priority: 0.6,
+    })),
+    ...semuaSlugHidangan.map((s) => ({
+      url: `${SITE_URL}/makan/hidangan/${s}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    })),
+    ...kawasanBerisi.map((a) => ({
+      url: `${SITE_URL}/makan/kawasan/${a.id}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
     })),
     ...places.map((p) => ({
       url: `${SITE_URL}/makan/tempat/${p.id}`,
       changeFrequency: "monthly" as const,
       priority: 0.5,
     })),
-    ...trails.map((t) => ({
-      url: `${SITE_URL}/makan/jalur/${t.id}`,
+    ...panduan.map((t) => ({
+      url: `${SITE_URL}/makan/panduan/${t.id}`,
       changeFrequency: "monthly" as const,
       priority: 0.5,
     })),

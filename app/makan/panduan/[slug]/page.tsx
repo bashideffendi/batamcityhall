@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import TrailDetail from "@/features/makan/components/TrailDetail";
-import { getTrail, trails } from "@/features/makan/lib/trails";
+import { PanduanHalaman } from "@/features/makan/components/HalamanMakan";
+import { getPanduan, panduan } from "@/features/makan/lib/panduan";
 
-// Hanya jalur yang ada di data: slug lain langsung 404.
+// Hanya panduan yang ada di data: slug lain langsung 404.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return trails.map((t) => ({ slug: t.id }));
+  return panduan.map((g) => ({ slug: g.id }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const tr = getTrail(slug);
-  if (!tr) return {};
-  return { title: tr.title_id, description: tr.subtitle_id };
+  const g = getPanduan(slug);
+  if (!g) return {};
+  return { title: g.judul("id"), description: g.dek("id") };
 }
 
 export default async function Halaman({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  if (!getTrail(slug)) notFound();
-  return <TrailDetail slug={slug} />;
+  if (!getPanduan(slug)) notFound();
+  return <PanduanHalaman id={slug} />;
 }

@@ -208,12 +208,12 @@ export function lencanaKoridor(k: Koridor): { teks: string; nada?: "ok" | "cauti
 
 /** Jeda Jumat: hanya dari jadwal Moovit lama, belum dikonfirmasi (koridor.json, jeda_jumat perlu_cek_ulang). */
 export const JEDA_JUMAT: Record<string, string> = {
-  K1: "Pada Jumat siang, keberangkatan dari Batam Centre melompat dari pukul 10.55 ke 13.20 WIB. Jadwal ini mungkin sudah berubah.",
-  K3: "Pada Jumat siang, keberangkatan dari Jodoh melompat dari pukul 11.10 ke 13.15 WIB. Jadwal ini mungkin sudah berubah.",
+  K1: "Dari Batam Centre, keberangkatan melompat dari pukul 10.55 ke 13.20 WIB. Jadwal ini mungkin sudah berubah.",
+  K3: "Dari Jodoh, keberangkatan melompat dari pukul 11.10 ke 13.15 WIB. Jadwal ini mungkin sudah berubah.",
 };
 
 export const CATATAN_KORIDOR: Record<string, string> = {
-  K7: "Mulai beroperasi lewat bandara pada 2 Juli 2026. Halte bandara ada di area pintu kedatangan. Perjalanan dari bandara ke Batam Centre sekitar 30 menit. Tidak ada tarif tambahan ke bandara. Armada lima bus dan satu cadangan. Posisi bus K7 dapat dilihat di aplikasi SIP TB dan Mitra Darat.",
+  K7: "Lewat bandara sejak 2 Juli 2026. Halte bandara ada di area pintu kedatangan. Bandara ke Batam Centre sekitar 30 menit. Armada lima bus dan satu cadangan. Posisi bus ada di aplikasi SIP TB dan Mitra Darat.",
   K9: "Keberangkatan pertama dari Nongsa pukul 06.00 WIB dan dari Punggur pukul 06.40 WIB.",
 };
 
@@ -221,11 +221,10 @@ export const CATATAN_KORIDOR: Record<string, string> = {
 const CATATAN_POLA: Record<string, string> = {
   K1_balik: "Arah balik lewat jalan berbeda: Green Land, Yos Sudarso, Cipta Puri, Sei Harapan.",
   K2_ke_tanjung_uncang: "Arah sebaliknya diawali Hidayatullah A.",
-  K3_balik:
-    "Arah balik berbeda dari arah pergi: lewat Top 100 Jodoh, DC Mall SW, Pasar Induk, Windsor, Vihara, Penuin.",
+  K3_balik: "Arah balik lewat jalan berbeda: Top 100 Jodoh, DC Mall SW, Pasar Induk, Windsor, Vihara, Penuin.",
   K4_ke_sekupang: "Daftar ini ringkas. Versi 2022 juga menyebut RSBP sebelum Sekupang.",
-  K5_ke_jodoh_moovit: "Daftar ini berasal dari jadwal lama dan mungkin sudah berubah.",
-  K5_ke_batam_center_moovit_ujung: "Daftar ini berasal dari jadwal lama dan hanya memuat ujung rute.",
+  K5_ke_jodoh_moovit: "Daftar dari jadwal lama, mungkin sudah berubah.",
+  K5_ke_batam_center_moovit_ujung: "Daftar dari jadwal lama, hanya ujung rute.",
   K7_pergi: "Polda Kepri, Bandoeng Resto, Citra Mas, dan Kampung Mangga juga dilayani K9.",
   K9_pergi: "Enam halte pertama sama dengan K8. Ujung di Nongsa belum tercatat.",
 };

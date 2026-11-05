@@ -282,7 +282,7 @@ export default function CctvLayer({ onPick, dead, getPadding, onCluster, selecte
               type="button"
               className="cam-hit"
               data-cam-key={g.key}
-              aria-label={`Kamera ${cam.name}${cam.approx ? ", posisi perkiraan" : ""}${failed ? ", gagal diputar tadi" : ""}`}
+              aria-label={`Kamera ${cam.name}${cam.approx ? ", lokasi perkiraan" : ""}${failed ? ", gagal diputar tadi" : ""}`}
               onClick={() => onPick(cam)}
               onKeyDown={(e) => onKey(e, () => onPick(cam))}
             >
@@ -301,8 +301,8 @@ export default function CctvLayer({ onPick, dead, getPadding, onCluster, selecte
               </span>
               <span className="cam-label">
                 {cam.name}
-                {cam.approx ? " · Posisi Perkiraan" : ""}
-                {failed ? " · Gagal Tadi" : ""}
+                {cam.approx ? " · Lokasi perkiraan" : ""}
+                {failed ? " · Gagal diputar tadi" : ""}
               </span>
             </button>
           </PetaMarker>

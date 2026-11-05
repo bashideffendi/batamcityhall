@@ -61,13 +61,13 @@ export default function DaftarPeringatan() {
       )}
       {lamaAda && (
         <p className="mt-5" data-status="basi">
-          Data terbaru belum dapat dimuat. Yang tampil adalah data terakhir
+          Data terbaru belum dapat dimuat. Ini data terakhir
           {data?.diambil ? ` pukul ${waktuWib(data.diambil, now)}` : ""}.
         </p>
       )}
       {data?.status === "sebagian" && !error && (
         <p className="mt-5" data-status="sebagian">
-          Sebagian peringatan belum dapat dimuat, jadi daftar ini mungkin belum lengkap.
+          Sebagian peringatan belum dapat dimuat, jadi daftar mungkin belum lengkap.
         </p>
       )}
 

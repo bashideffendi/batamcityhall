@@ -12,7 +12,7 @@ import "@/features/sejarah/sejarah.css";
 export const metadata: Metadata = {
   title: "Batam Dulu dan Sekarang",
   robots: ROBOTS_TERSEMBUNYI,
-  description: "Empat belas lokasi di Batam, dulu dan sekarang, dengan penggeser tahun dan daftar arsip.",
+  description: "Empat belas lokasi di Batam, dulu dan sekarang.",
 };
 
 export default function BatamDulu() {
@@ -30,7 +30,7 @@ export default function BatamDulu() {
         versinya ikut ditulis.
       </p>
       <p className="bch-note" data-catatan-foto>
-        Halaman ini belum memuat foto lama. Lembaga yang menyimpan arsipnya ada di bagian Arsip.
+        Belum ada foto lama; lembaga penyimpan arsipnya tercantum di bagian Arsip.
       </p>
 
       <div className="mt-5">
@@ -42,8 +42,7 @@ export default function BatamDulu() {
           Arsip
         </h2>
         <p className="bch-measure mt-0">
-          Bagian ini memuat {ARSIP.length} lembaga. Gambar hanya boleh dipakai ulang bila label itemnya terbuka, dan
-          selalu dikredit dengan format lembaganya.
+          Gambar hanya boleh dipakai ulang bila label itemnya terbuka, dan selalu dikredit dengan format lembaganya.
         </p>
         <ul className="sj-versi" data-arsip={ARSIP.length}>
           {ARSIP.map((a) => (
@@ -78,7 +77,7 @@ export default function BatamDulu() {
         {modeFoto === "mati" ? (
           <>
             <p className="bch-note" data-tone="caution" data-form-tutup>
-              Formulir ini belum dibuka. Belum ada yang bisa terkirim dari sini, dan tidak ada data yang disimpan.
+              Formulir ini belum dibuka, jadi tidak ada data yang terkirim atau disimpan.
             </p>
             <p className="bch-measure">
               Nanti warga bisa mengirim foto keluarga, dengan izin dan kredit nama, berlisensi CC BY. Sementara itu,

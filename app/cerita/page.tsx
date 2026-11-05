@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import DaftarNomor from "@/components/site/DaftarNomor";
 import PembukaLoket from "@/components/site/PembukaLoket";
 
-const LEDE =
-  "Bagian ini memuat sejarah Batam, kampung tua, tokoh di balik nama jalan, budaya Melayu, dan kamus bahasa sehari-hari.";
+const LEDE = "Kenali Batam lewat sejarah, kampung tua, nama jalan, budaya Melayu, dan kamus.";
 
 export const metadata: Metadata = {
   title: "Cerita dan Budaya",

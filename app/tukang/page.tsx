@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Tukang Langganan",
     description:
-      "Penjahit, tukang servis, dan penyedia jasa lain yang direkomendasikan warga Batam. Tidak ada yang membayar untuk masuk daftar ini.",
+      "Penjahit, tukang servis, dan jasa lain yang direkomendasikan warga Batam. Tidak ada yang membayar untuk masuk daftar ini.",
     // Data fiktif mode contoh tidak boleh terindeks.
     robots: modeKiriman() === "contoh" ? { index: false, follow: false } : undefined,
   };
@@ -54,7 +54,7 @@ export default async function Tukang({ searchParams }: Props) {
     <div className="bch-page bch-tk-halaman" data-mode-tukang={mode}>
       <PembukaLoket
         nomor="03"
-        lede="Bagian ini memuat penjahit, tukang servis, dan penyedia jasa lain yang direkomendasikan warga Batam. Setiap nama tampil setelah direkomendasikan oleh sekurang-kurangnya dua orang."
+        lede="Penjahit, tukang servis, dan jasa lain di sini direkomendasikan minimal dua warga Batam."
       >
         <p className="bch-measure">Tidak ada yang membayar untuk masuk daftar ini.</p>
         {mode === "contoh" && <CatatanMode mode={mode} />}
@@ -67,7 +67,7 @@ export default async function Tukang({ searchParams }: Props) {
         )}
       </PembukaLoket>
 
-      <h2 className="mt-6 mb-3">Jenis jasa</h2>
+      <h2 className="mt-6 mb-3">Jenis Jasa</h2>
       <nav aria-label="Jenis jasa" className="bch-sub-nav">
         <Link href={tautanJasa()} prefetch={false}>
           Semua
@@ -105,7 +105,7 @@ export default async function Tukang({ searchParams }: Props) {
 
       {gagal ? (
         <p className="bch-note" data-tone="caution">
-          Daftar tukang tidak dapat dimuat. Coba muat ulang dalam beberapa saat.
+          Daftar tukang tidak dapat dimuat. Coba muat ulang.
         </p>
       ) : hasil.length ? (
         <>
@@ -124,8 +124,8 @@ export default async function Tukang({ searchParams }: Props) {
         <div className="bch-note" data-kosong-tukang>
           <p className="m-0">
             {daftar.length
-              ? "Belum ada nama yang cocok dengan saringan ini. Coba hapus saringan."
-              : "Belum ada nama di daftar ini. Rekomendasi pertama akan tampil setelah diperiksa dan didukung oleh dua warga."}
+              ? "Belum ada nama yang cocok. Coba hapus saringan."
+              : "Belum ada nama di daftar ini. Rekomendasi pertama tampil setelah diperiksa dan didukung dua warga."}
           </p>
         </div>
       )}

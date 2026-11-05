@@ -25,7 +25,7 @@ export default async function Privasi() {
         <ul>
           <li>Situs ini tidak memasang iklan dan pelacak iklan.</li>
           <li>Warga tidak perlu memiliki akun. Akun hanya dipakai moderator.</li>
-          <li>Pilihan tampilan dan bahasa disimpan di peramban dan tidak disimpan di server kami.</li>
+          <li>Pilihan tampilan dan bahasa disimpan di peramban, tidak di server kami.</li>
           <li>
             Radar, cuaca, peringatan, dan data gempa diambil server kami dari sumber resminya. Peta gelombang dan video
             CCTV dimuat langsung dari server sumbernya sehingga server itu menerima alamat IP perangkatmu.
@@ -72,8 +72,8 @@ export default async function Privasi() {
         <p>
           Kirim permintaan lewat <Link href="/koreksi?jenis=hapus_data">halaman koreksi</Link> dan tulis kontak yang
           dulu kamu pakai supaya kami dapat memastikan data itu milikmu. Moderator mengerjakannya secara manual sehingga
-          permintaan tidak langsung selesai saat itu juga. Setelah data dihapus, yang tersisa hanya catatan bahwa pernah
-          ada persetujuan dan penghapusan, tanpa kontak.
+          permintaan tidak langsung selesai. Setelah data dihapus, yang tersisa hanya catatan bahwa pernah ada persetujuan
+          dan penghapusan, tanpa kontak.
         </p>
 
         <h2>Lama Penyimpanan</h2>

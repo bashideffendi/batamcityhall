@@ -1,3 +1,4 @@
+import { kaidahJudul } from "@/lib/judul";
 // Direktori Informasi Warga dari data/places.json. Fungsi di sini murni dan hanya dipakai di server, kecuali
 // lewat route indeks.json dan pin.json yang mengirim versi ringkasnya ke browser.
 //
@@ -16,30 +17,7 @@ export const cariTempat = (id: string) => tempatPerId.get(id) ?? perAlias.get(id
 
 const kapital = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-const KATA_TUGAS = new Set([
-  "di",
-  "ke",
-  "dari",
-  "dan",
-  "yang",
-  "untuk",
-  "pada",
-  "dengan",
-  "atau",
-  "bagi",
-  "tentang",
-  "oleh",
-  "sebagai",
-  "dalam",
-  "per",
-]);
-
-/** Label menjadi judul: "Darurat dan keamanan" menjadi "Darurat dan Keamanan" (pedoman 2.3). */
-export const kaidahJudul = (teks: string) =>
-  teks
-    .split(" ")
-    .map((kata, i) => (i > 0 && KATA_TUGAS.has(kata) ? kata : kata.split("-").map(kapital).join("-")))
-    .join(" ");
+export { kaidahJudul };
 
 export type InfoKategori = {
   /** Kunci kategori tampilan, sekaligus dasar slug URL. */
@@ -104,7 +82,7 @@ export const slugBaru = (s: string) => (Object.hasOwn(SLUG_LAMA, s) ? SLUG_LAMA[
 
 /** Lede halaman kategori. Keterangan yang sudah menyebut Batam tidak diberi "di Batam" lagi. */
 export const ledeKategori = (k: InfoKategori, jumlah: number) =>
-  `${k.keterangan}${k.keterangan.includes("Batam") ? "" : " di Batam"}. Ada ${jumlah.toLocaleString("id-ID")} tempat di kategori ini.`;
+  `${k.keterangan}${k.keterangan.includes("Batam") ? "" : " di Batam"}. Ada ${jumlah.toLocaleString("id-ID")} tempat.`;
 
 export const slugKecamatan = (k: string) => k.toLowerCase().replace(/\s+/g, "-");
 export const kecamatanDariSlug = (s: string) => KECAMATAN.find((k) => slugKecamatan(k) === s);

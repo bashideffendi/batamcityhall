@@ -36,7 +36,7 @@ function metaBaris(h: HasilFeri): string {
     bagian.push(
       h.operasi.interval
         ? `Kapal berangkat ${teksInterval(h.operasi.interval)} sampai jam tutup operasi.`
-        : "Jam ini adalah jam tutup operasi.",
+        : "Ini jam tutup operasi.",
     );
   }
   // Jam dari satu contoh hari tidak boleh terbaca sebagai jadwal tetap.
@@ -170,13 +170,13 @@ export default function FeriTerakhir({ varian = "penuh", terminal, namaTerminal 
       )}
       {keBatam.length > 0 && (
         <>
-          <h3>Dari Luar Batam ke Batam</h3>
+          <h3>Ke Batam</h3>
           <TabelFeri kelompok={keBatam} />
         </>
       )}
       <p className="bch-catatan-halaman">
-        Jadwal dapat berubah. Tanyakan kepada operator sebelum berangkat. Jam mengikuti waktu setempat di pelabuhan asal,
-        dan statusnya dihitung dari jadwal, bukan dari posisi kapal.
+        Jadwal dapat berubah. Tanyakan kepada operator sebelum berangkat. Jam memakai waktu setempat pelabuhan asal.
+        Status dihitung dari jadwal, bukan posisi kapal.
       </p>
       {!terminal && varian === "penuh" ? (
         <BelumTersedia baris={kosong} />

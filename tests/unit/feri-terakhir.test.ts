@@ -372,7 +372,7 @@ describe("kalimat kotak Hari Ini", () => {
   it("setelah 20.30 memakai bentuk sudah lewat dengan keberangkatan pertama besok dari data", () => {
     const r = ringkasHariIni(hitungFeri(ENTRI_FERI, wib(KAMIS, "21:00")));
     expect(r.judul).toBe("Tidak ada lagi keberangkatan ke Singapura hari ini.");
-    expect(r.rincian).toBe("Keberangkatan pertama besok pukul 06.00 WIB.");
+    expect(r.rincian).toBe("Besok mulai pukul 06.00 WIB.");
   });
 
   it("keberangkatan pertama besok mengikuti hari besok, bukan hari ini", () => {

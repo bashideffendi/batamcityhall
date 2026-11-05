@@ -1,3 +1,4 @@
+import { KATA_TUGAS_EN, kaidahJudul } from "@/lib/judul";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -43,5 +44,19 @@ describe("data tempat", () => {
   it("tidak ada kolom pajak di data hotel", () => {
     const kepala = readFileSync(join(process.cwd(), "data/akomodasi/hotel.csv"), "utf8").split("\n")[0].toLowerCase();
     expect(kepala).not.toMatch(/npwpd|\bnop\b|sspd|sptpd|pajak/);
+  });
+});
+
+describe("kaidah judul", () => {
+  it("Title Case, kata tugas tetap kecil, kapital yang ada tidak diubah", () => {
+    expect(kaidahJudul("Martabak dan prata")).toBe("Martabak dan Prata");
+    expect(kaidahJudul("Oleh-oleh dan kue")).toBe("Oleh-Oleh dan Kue");
+    expect(kaidahJudul("Dim sum dan masakan Tionghoa")).toBe("Dim Sum dan Masakan Tionghoa");
+    expect(kaidahJudul("Udang mentega/sereal")).toBe("Udang Mentega/Sereal");
+    expect(kaidahJudul("Telaga Punggur—Tanjung Uban (kapal cepat)")).toBe("Telaga Punggur—Tanjung Uban (Kapal Cepat)");
+    expect(kaidahJudul("Hari Jadi ke-196")).toBe("Hari Jadi ke-196");
+    expect(kaidahJudul("Tour de Batam (UCI)")).toBe("Tour de Batam (UCI)");
+    expect(kaidahJudul("di atas laut")).toBe("Di Atas Laut");
+    expect(kaidahJudul("Seafood and gonggong", KATA_TUGAS_EN)).toBe("Seafood and Gonggong");
   });
 });

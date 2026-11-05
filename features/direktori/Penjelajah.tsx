@@ -120,7 +120,7 @@ export default function Penjelajah({ kategori, kepala, ilustrasi, children }: Pr
           <div>{kepala}</div>
           {ilustrasi}
         </div>
-        <p className="bch-catatan-halaman">Terjadi masalah saat memuat data. Coba muat ulang dalam beberapa saat.</p>
+        <p className="bch-catatan-halaman">Data tidak dapat dimuat. Coba muat ulang.</p>
         {children}
       </>
     );
@@ -214,7 +214,7 @@ export default function Penjelajah({ kategori, kepala, ilustrasi, children }: Pr
                 `Tidak ada hasil untuk “${kata}”. Coba kata lain atau hapus saringan.`
               ) : (
                 <>
-                  Belum ada tempat di kategori ini. Kalau kamu tahu tempatnya, <Link href="/koreksi">kirim usulan</Link>
+                  Belum ada tempat di kategori ini. <Link href="/koreksi">Kirim usulan</Link>
                 </>
               )}
             </p>

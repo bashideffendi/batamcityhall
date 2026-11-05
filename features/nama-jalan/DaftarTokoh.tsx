@@ -1,5 +1,6 @@
 "use client";
 
+import { kaidahJudul } from "@/lib/judul";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { IkonCeritaRakyat } from "@/features/kampung-tua/Ikon";
@@ -70,7 +71,7 @@ export default function DaftarTokoh({ tokoh, kelompok, grupStatus, catatanHikaya
         return (
           <section key={g.id} aria-labelledby={`kelompok-${g.id}`} data-kelompok={g.id}>
             <h3 id={`kelompok-${g.id}`} className="mt-5">
-              {g.nama}
+              {kaidahJudul(g.nama)}
             </h3>
             {g.id === "b" && (
               <div className="kt-cerita" data-catatan-hikayat>

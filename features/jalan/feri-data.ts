@@ -72,26 +72,26 @@ export const teksWarga = (t: string) =>
 /** Catatan per rute, ditulis ulang dari research/14. Kolom catatan mentah memuat catatan migrasi dan tidak ditampilkan. */
 const CATATAN_RUTE: Record<string, string> = {
   "skp-hfc":
-    "Keberangkatan terakhir dari Sekupang lebih awal daripada terminal lain: pukul 17.40 WIB (BatamFast) atau 18.00 WIB (Majestic). Jadwal Sindo mencantumkan pukul 20.30 WIB, jadi tanyakan kepada operator.",
+    "Keberangkatan terakhir lebih awal daripada terminal lain: pukul 17.40 WIB (BatamFast) atau 18.00 WIB (Majestic). Jadwal Sindo mencantumkan pukul 20.30 WIB, jadi tanyakan kepada operator.",
   "btc-hfc":
     "Jadwal Sindo tampil dalam dua versi. Sebagian keberangkatan Majestic hanya pada akhir pekan atau hari libur.",
-  "btc-stl": "Dari Stulang: mulai MYR 123 sekali jalan. Tarif berlaku mulai 1 Januari 2026.",
-  "hb-ph": "Jam di tabel berasal dari satu contoh hari.",
+  "btc-stl": "Dari Stulang: mulai MYR 123 sekali jalan, berlaku sejak 1 Januari 2026.",
+  "hb-ph": "Jam di tabel dari satu contoh hari.",
   "wfc-hfc": "Hanya pada akhir pekan.",
   "tpg-tgu-roro":
-    "Tiket hanya dijual daring lewat Ferizy, tidak di loket. Lapor masuk minimal 2 jam sebelum berangkat. Motor golongan II, mobil golongan IVA. KMP Barau sedang naik dok. Jadwal pernah dijarangkan menjadi setiap 1 jam 15 menit pada Januari 2026 karena cuaca.",
+    "Tiket hanya dijual daring lewat Ferizy. Lapor masuk minimal 2 jam sebelum berangkat. Motor golongan II, mobil golongan IVA. KMP Barau sedang naik dok. Jadwal pernah dijarangkan menjadi setiap 1 jam 15 menit pada Januari 2026 karena cuaca.",
   "tpg-trp": "Bergantung pada cuaca.",
   "skp-dumai": "Tarif ke Kuala Enok dan Kuala Tungkal sampai Rp600.000.",
   "b99-pelni":
     "Bukan jadwal harian. Kapal Pelni sandar di Bintang 99 Persada, Batu Ampar, sejak Desember 2024. Tiket dijual lewat PELNI Mobile, pelni.co.id, atau loket cabang Pelni Batam. Jadwal terbaru ada di aplikasi PELNI.",
-  "tpg-roro-mengkapan-kualatungkal": "Layanan ini ada, tetapi jamnya belum tercatat.",
-  "hb-domestik-tbk-moro": "Layanan ini ada, tetapi jamnya belum tercatat.",
+  "tpg-roro-mengkapan-kualatungkal": "Layanan ada, jamnya belum tercatat.",
+  "hb-domestik-tbk-moro": "Layanan ada, jamnya belum tercatat.",
 };
 
 // Zona jam Gold Coast tidak tercatat di data, jadi ditulis "waktu setempat" tanpa menebak WIB atau waktu Singapura.
 export const BANNER_TERGANGGU: Record<string, string> = {
   "gcb-hfc":
-    "Terganggu. Per 1 November 2026 sebagian besar keberangkatan BatamFast ditangguhkan sampai ada pemberitahuan. Yang tersisa, dalam waktu setempat: HarbourFront ke Gold Coast pukul 09.35 (Sindo) dan 10.30, Gold Coast ke HarbourFront pukul 15.30 (Sindo) dan 19.00.",
+    "Terganggu. Per 1 November 2026 sebagian besar keberangkatan BatamFast ditangguhkan sampai ada pemberitahuan. Sisanya, waktu setempat: HarbourFront ke Gold Coast pukul 09.35 (Sindo) dan 10.30, Gold Coast ke HarbourFront pukul 15.30 (Sindo) dan 19.00.",
 };
 
 // ---------- Kartu rute ----------
@@ -320,7 +320,7 @@ export function titikTerminalDiPeta(): TitikTerminal[] {
         lat: p.lat,
         lng: p.lng,
         perkiraan,
-        catatan: perkiraan ? "Titik di peta adalah perkiraan area." : "",
+        catatan: perkiraan ? "Titik ini perkiraan area." : "",
         rincian: rute ? `${rute} rute tercatat` : "Belum ada rute penumpang tercatat",
         href: `/info/tempat/${p.id}`,
       },

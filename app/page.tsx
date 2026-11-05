@@ -22,12 +22,9 @@ export default function Beranda() {
         <div className="bch-kepala-bagian">
           <div>
             <p className="bch-kicker bch-penanda-biru m-0">Peta</p>
-            <h2 id="br-tempat">Cari tempat di Batam</h2>
+            <h2 id="br-tempat">Cari Tempat di Batam</h2>
           </div>
-          <p>
-            Pilih jenis tempat yang ingin ditampilkan. Setiap jenis punya ikon sendiri. Saat ini {JUMLAH_BERTITIK} tempat
-            sudah punya titik lokasi; sisanya sedang dilengkapi.
-          </p>
+          <p>Sebanyak {JUMLAH_BERTITIK} tempat sudah punya titik lokasi; sisanya sedang dilengkapi.</p>
         </div>
         <PetaMuat jumlahTanpaTitik={{ hotel: JUMLAH_HOTEL }} />
       </section>
@@ -35,7 +32,7 @@ export default function Beranda() {
       <section className="br-seksi" aria-labelledby="br-loket">
         <div className="bch-kepala-bagian">
           <h2 id="br-loket">Jelajahi Batam</h2>
-          <p>Setiap bagian mengumpulkan satu jenis informasi. Mulai dari yang paling sering dicari: cuaca, laut, dan tempat makan.</p>
+          <p>Mulai dari yang paling sering dicari: cuaca, laut, dan tempat makan.</p>
         </div>
         <ol className="br-indeks">
           {LOKET.map((l) => (
@@ -50,7 +47,7 @@ export default function Beranda() {
           ))}
           <li className="bch-ajakan">
             <h3>Ada yang keliru atau sudah berubah?</h3>
-            <p>Jam buka, alamat, atau nama tempat yang sudah tidak sesuai bisa kamu laporkan.</p>
+            <p>Laporkan jam buka, alamat, atau nama tempat yang sudah tidak sesuai.</p>
             <Link href="/koreksi" className="bch-aksi">
               Kirim koreksi →
             </Link>

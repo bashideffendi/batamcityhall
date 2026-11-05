@@ -22,10 +22,7 @@ const PINTU = [
 export default function InfoWarga() {
   return (
     <div className="bch-page">
-      <PembukaLoket
-        nomor="06"
-        lede="Bagian ini memuat direktori tempat, nomor darurat, panduan urusan tanah dan rumah, bantuan hukum, dan berita Batam."
-      />
+      <PembukaLoket nomor="06" lede="Cari tempat, nomor darurat, dan panduan urusan di Batam." />
       <section className="bch-seksi" aria-labelledby="isi-loket">
         <h2 id="isi-loket" className="bch-kicker bch-kepala-penanda">
           Isi bagian ini

@@ -12,10 +12,7 @@ export const metadata: Metadata = {
 export default function CuacaDanLaut() {
   return (
     <div className="bch-page">
-      <PembukaLoket
-        nomor="01"
-        lede="Bagian ini memuat radar hujan, tinggi gelombang, dan kamera lalu lintas untuk Batam dan perairan sekitarnya. Datanya diperbarui otomatis."
-      >
+      <PembukaLoket nomor="01" lede="Data untuk Batam dan perairan sekitarnya diperbarui otomatis.">
         <SaatIni />
       </PembukaLoket>
 
@@ -32,7 +29,7 @@ export default function CuacaDanLaut() {
               <span className="panah" aria-hidden="true">
                 →
               </span>
-              <span className="ket">Peringatan yang berlaku di Kepulauan Riau, dengan kecamatan di Batam yang disebut.</span>
+              <span className="ket">Yang berlaku di Kepulauan Riau, dengan kecamatan di Batam yang disebut.</span>
             </Link>
           </li>
           <li>

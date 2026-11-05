@@ -1,3 +1,4 @@
+import { kaidahJudul } from "@/lib/judul";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -10,7 +11,7 @@ import {
 import NavBudaya, { KickerCerita } from "@/features/budaya/NavBudaya";
 import "@/features/budaya/budaya.css";
 
-const LEDE = "Halaman ini merangkum tradisi Melayu yang masih dijalankan di Batam dan Kepulauan Riau.";
+const LEDE = "Tradisi Melayu ini masih dijalankan di Batam dan Kepulauan Riau.";
 
 export const metadata: Metadata = {
   title: "Budaya Melayu",
@@ -24,7 +25,7 @@ function Kartu({ t, nomor }: { t: TradisiPublik; nomor: number }) {
         <span>Tradisi</span>
         <span className="bud-nomor">{String(nomor).padStart(2, "0")}</span>
       </p>
-      <h3>{t.nama}</h3>
+      <h3>{kaidahJudul(t.nama)}</h3>
       <hr className="bch-card-rule" />
       <div className="bch-rebung-mini" aria-hidden="true" />
       <p className="m-0">{t.penjelasan}</p>

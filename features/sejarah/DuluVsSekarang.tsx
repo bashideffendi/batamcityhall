@@ -1,5 +1,6 @@
 "use client";
 
+import { kaidahJudul } from "@/lib/judul";
 import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import { keadaanPada, LABEL_KEADAAN, perhentian, type KartuDulu, type TitikDulu } from "./dulu-slider";
@@ -101,7 +102,7 @@ export default function DuluVsSekarang({
 
       <h2 className="mt-7 mb-2">Pasangan Dulu dan Sekarang</h2>
       <p className="sj-kecil mt-0" data-jumlah-dulu={tampil.length}>
-        Menampilkan {tampil.length} dari {kartu.length} lokasi.
+        {tampil.length} dari {kartu.length} lokasi
       </p>
       {tampil.length === 0 && (
         <p className="bch-note">Tidak ada perubahan yang tercatat berlangsung di tahun {tahun}.</p>
@@ -119,7 +120,7 @@ export default function DuluVsSekarang({
               <p className="bch-kicker-row bch-kicker m-0">
                 <span>{k.tahunKunci}</span>
               </p>
-              <h3>{k.lokasi}</h3>
+              <h3>{kaidahJudul(k.lokasi)}</h3>
               <div className="bch-badges mt-1">
                 <LencanaStatus status={k.status} />
               </div>

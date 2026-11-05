@@ -65,12 +65,12 @@ export const LOKET: Loket[] = [
     aktifDi: ["/makan"],
     nama: "Makan",
     href: "/makan",
-    lede: "Tempat makan pilihan, dari kopitiam sampai gonggong",
-    penanda: "Daftar · Peta · Jalur kuliner",
+    lede: "117 tempat makan, dari kopitiam sampai gonggong",
+    penanda: "Hidangan · Panduan · Peta",
     isi: [
-      { label: "Daftar", href: "/makan/daftar" },
+      { label: "Hidangan", href: "/makan/hidangan" },
       { label: "Peta", href: "/makan/peta" },
-      { label: "Jalur kuliner", href: "/makan/jalur" },
+      { label: "Panduan", href: "/makan/panduan" },
     ],
   },
   {

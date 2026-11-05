@@ -128,13 +128,11 @@ export default async function Kategori({ params }: Props) {
           )}
           {k.kategori === "kuliner" && (
             <p className="bch-catatan-halaman">
-              Saringan dan jalur kuliner ada di <Link href="/makan">Makan</Link>.
+              Saringan dan panduan kuliner ada di <Link href="/makan">Makan</Link>.
             </p>
           )}
           {k.kategori === "kampung_tua" && (
-            <p className="bch-catatan-halaman">
-              Direktori ini hanya memuat nama. Batas, luas, dan status lahan tidak ditampilkan.
-            </p>
+            <p className="bch-catatan-halaman">Direktori ini hanya memuat nama, tanpa batas, luas, dan status lahan.</p>
           )}
           {angka.map((a) => (
             <p key={a.label} className="bch-catatan-halaman bch-kelengkapan">
@@ -149,8 +147,7 @@ export default async function Kategori({ params }: Props) {
             <PetaKategori pins={pins} glyph={ikon.glyph} warna={ikon.warna} />
             {bertitik < tempat.length && (
               <p className="bch-catatan-halaman" data-baru-bertitik>
-                Baru {bertitik} dari {tempat.length} tempat di kategori ini yang punya titik di peta. Titik lainnya
-                menyusul setelah lokasinya diperiksa.
+                Baru {bertitik} dari {tempat.length} tempat punya titik di peta.
               </p>
             )}
           </aside>

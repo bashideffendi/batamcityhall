@@ -91,10 +91,8 @@ describe("kategori direktori", () => {
 
   it("lede kategori memakai rumus 3.8 dan tidak menulis Batam dua kali", () => {
     const k = (kunci: string) => kategoriTampil(kunci) as NonNullable<ReturnType<typeof kategoriTampil>>;
-    expect(ledeKategori(k("kesehatan"), 45)).toBe(
-      "Rumah sakit, puskesmas, dan donor darah di Batam. Ada 45 tempat di kategori ini.",
-    );
-    expect(ledeKategori(k("khas_batam"), 3)).toBe("Hal yang hanya ada di Batam. Ada 3 tempat di kategori ini.");
+    expect(ledeKategori(k("kesehatan"), 45)).toBe("Rumah sakit, puskesmas, dan donor darah di Batam. Ada 45 tempat.");
+    expect(ledeKategori(k("khas_batam"), 3)).toBe("Hal yang hanya ada di Batam. Ada 3 tempat.");
   });
 
   it("jumlah per subkategori sama dengan jumlah kategori", () => {

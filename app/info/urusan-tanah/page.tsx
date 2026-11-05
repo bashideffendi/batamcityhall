@@ -21,9 +21,7 @@ export default function UrusanTanah() {
         <Link href="/info">Informasi Warga</Link>
       </nav>
       <h1 className="mt-2">Urusan Tanah dan Rumah</h1>
-      <p className="bch-lede">
-        Halaman ini menjelaskan tempat mengurus tanah dan rumah di Batam: pembayaran UWT, sertifikat, dan jual beli.
-      </p>
+      <p className="bch-lede">Cari tempat mengurus pembayaran UWT, sertifikat, dan jual beli di Batam.</p>
       <p className="bch-measure">
         <Teks isi={panduan.pengantar} />
       </p>
@@ -75,7 +73,7 @@ export default function UrusanTanah() {
           <>
             <h2>MPP: Satu Gedung untuk Banyak Loket</h2>
             <p>
-              <Link href={`/info/tempat/${mpp.id}`}>{mpp.nama}</Link> menampung beberapa instansi dalam satu gedung
+              <Link href={`/info/tempat/${mpp.id}`}>{mpp.nama}</Link> menampung beberapa instansi
               {instansi.length > 0 && `: ${instansi.join(", ")}`}. Layanan pajak dari KPP tersedia bergiliran.
             </p>
             <ul>

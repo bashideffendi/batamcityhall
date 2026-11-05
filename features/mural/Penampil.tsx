@@ -349,7 +349,7 @@ export default function Penampil(props: Props) {
       )}
       {keadaan === "gagal" && (
         <p className="mural-pesan" role="alert">
-          Mural gagal dimuat. Laut masih ada, kami saja yang belum. Daftar tempat di bawah tetap bisa dibuka.
+          Mural gagal dimuat. Daftar tempat di bawah tetap bisa dibuka.
         </p>
       )}
     </div>

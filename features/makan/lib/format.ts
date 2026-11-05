@@ -1,14 +1,11 @@
+import kurs from "@/data/makan/kurs.json";
 import type { Lang } from "./types";
 
 export type Currency = "IDR" | "SGD" | "MYR" | "USD";
 
-/** Perkiraan rupiah per 1 unit mata uang (angka kasar pertengahan 2026, hanya panduan). */
-export const CURRENCY_RATES: Record<Currency, number> = {
-  IDR: 1,
-  SGD: 12000,
-  MYR: 3550,
-  USD: 16200,
-};
+/** Rupiah per 1 unit mata uang, dari data/makan/kurs.json. Tanggalnya tampil di Cara Memilih. */
+export const CURRENCY_RATES: Record<Currency, number> = { IDR: 1, ...kurs.rupiah_per };
+export const TANGGAL_KURS = kurs.tanggal;
 
 export const CURRENCY_SYMBOL: Record<Currency, string> = {
   IDR: "Rp",
@@ -27,31 +24,57 @@ function idrNumbers(priceIdr: string): number[] {
   return nums ? nums.map((n) => parseInt(n, 10)) : [];
 }
 
+/** Dibulatkan ke 0,5 di bawah 10 dan ke bilangan bulat di atasnya. Paling kecil 0,5. */
 function round(v: number, lang: Lang): string {
-  if (v < 10) return v.toLocaleString(LOCALE[lang], { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-  if (v < 100) return String(Math.round(v));
-  return String(Math.round(v / 5) * 5);
+  if (v < 10) {
+    const setengah = Math.max(Math.round(v * 2) / 2, 0.5);
+    return setengah.toLocaleString(LOCALE[lang], { maximumFractionDigits: 1 });
+  }
+  return String(Math.round(v));
 }
 
 /**
- * Teks harga rupiah ke mata uang tujuan. IDR dikembalikan apa adanya, lainnya mis. "~S$3—S$7".
- * "mulai Rp..." menjadi "~S$4,2+". Dua harga berbeda satuan ("Rp3.000/pc atau Rp80.000/25 pc") tidak
+ * Perkiraan harga dalam mata uang lain, mis. "≈ S$3—5". IDR berarti tanpa perkiraan: hasilnya kosong.
+ * "mulai Rp..." menjadi "≈ S$4+". Dua harga berbeda satuan ("Rp3.000/pc atau Rp80.000/25 pc") tidak
  * dikonversi, karena hasilnya akan terbaca sebagai rentang harga yang tidak pernah ada.
  */
 export function convertPrice(priceIdr: string, currency: Currency, lang: Lang = "id"): string {
-  if (!priceIdr) return "";
-  if (currency === "IDR") return priceIdr;
+  if (!priceIdr || currency === "IDR") return "";
   if (/\batau\b/i.test(priceIdr)) return "";
   const nums = idrNumbers(priceIdr);
   if (nums.length === 0) return "";
   const rate = CURRENCY_RATES[currency];
   const sym = CURRENCY_SYMBOL[currency];
-  const lo = Math.min(...nums) / rate;
-  const hi = Math.max(...nums) / rate;
-  if (/^\s*mulai/i.test(priceIdr)) return `~${sym}${round(lo, lang)}+`;
-  if (Math.abs(lo - hi) < 0.01 || nums.length === 1) return `~${sym}${round(hi, lang)}`;
-  return `~${sym}${round(lo, lang)}—${sym}${round(hi, lang)}`;
+  const lo = round(Math.min(...nums) / rate, lang);
+  const hi = round(Math.max(...nums) / rate, lang);
+  if (/^\s*mulai/i.test(priceIdr)) return `≈ ${sym}${lo}+`;
+  if (lo === hi || nums.length === 1) return `≈ ${sym}${hi}`;
+  return `≈ ${sym}${lo}—${hi}`;
 }
+
+/**
+ * Harga ringkas untuk baris dan tabel: "Rp150—350 ribu". Bentuk bersatuan ("/pc", "atau", "mulai") memakai
+ * formatHarga supaya maknanya tidak berubah. Angkanya tetap dari data.
+ */
+export function hargaRingkas(priceIdr: string, lang: Lang = "id"): string {
+  if (!priceIdr) return "";
+  if (/\batau\b|\/|mulai/i.test(priceIdr)) return formatHarga(priceIdr, lang);
+  const nums = idrNumbers(priceIdr);
+  if (nums.length === 0 || nums.some((n) => n % 1000 !== 0)) return formatHarga(priceIdr, lang);
+  const ribu = nums.map((n) => n / 1000);
+  const isi = ribu.length > 1 ? `${ribu[0]}—${ribu[ribu.length - 1]}` : `${ribu[0]}`;
+  return lang === "id" ? `Rp${isi} ribu` : `Rp${isi}k`;
+}
+
+/** Harga tertinggi di kisaran. Null kalau harga tidak ada atau berbeda satuan, jadi tidak ikut saringan harga. */
+export function hargaTertinggi(priceIdr: string): number | null {
+  if (!priceIdr || /\batau\b|\/|mulai/i.test(priceIdr)) return null;
+  const nums = idrNumbers(priceIdr);
+  return nums.length ? Math.max(...nums) : null;
+}
+
+/** Plus code di depan alamat tidak berguna bagi pembaca. */
+export const alamatBersih = (alamat: string) => alamat.replace(/^[23456789CFGHJMPQRVWX]{4,8}\+[23456789CFGHJMPQRVWX]{2,3},?\s*/, "");
 
 const KATA_HARGA: Record<Lang, { mulai: string; atau: string; perBuah: string; perN: (n: string) => string; perKotak: string }> = {
   id: { mulai: "Mulai", atau: "atau", perBuah: " per buah", perN: (n) => ` per ${n} buah`, perKotak: " per kotak" },
@@ -176,6 +199,44 @@ export function formatJam(hours: string, lang: Lang = "id"): string {
   if (/^senin[–-]sabtu$/i.test(ket)) return `${utama} (${k.seninSabtu})`;
   if (hingga) return `${utama} (${k.jumatMinggu(hingga[1].replace(":", "."))})`;
   return `${utama} (${ket})`;
+}
+
+const satuJam = (jam: string, menit: string) => `${dua(String((Number(jam) + 1) % 24))}.${menit}`;
+
+/** Jam buka menurut waktu Singapura, satu jam di depan WIB. Kosong kalau tidak ada rentang yang jelas. */
+export function jamSgt(hours: string): string {
+  const m = hours.match(RENTANG_JAM);
+  return m ? `${satuJam(m[1], m[2])}—${satuJam(m[3], m[4])} SGT` : "";
+}
+
+/** Jam WIB menjadi jam SGT, mis. "22.00" menjadi "23.00". */
+export function keSgt(jam: string): string {
+  const [j, m] = jam.split(".");
+  return satuJam(j, m);
+}
+
+const menitDari = (j: string, m: string) => Number(j) * 60 + Number(m);
+
+/** Buka paling lambat pukul 08.00 WIB. Jam yang tidak diketahui tidak dihitung. */
+export function bukaPagi(hours: string): boolean {
+  const m = hours.match(RENTANG_JAM) ?? hours.trim().match(/^(\d{1,2})[.:](\d{2})$/);
+  return m ? menitDari(m[1], m[2]) <= 8 * 60 : false;
+}
+
+/** Menit tutup dari tengah malam sebelumnya. Lewat tengah malam menjadi lebih dari 1440. Null kalau tidak diketahui. */
+export function menitTutup(hours: string): number | null {
+  if (/24 jam/i.test(hours)) return 48 * 60;
+  const m = hours.match(RENTANG_JAM);
+  if (!m) return null;
+  const buka = menitDari(m[1], m[2]);
+  const tutup = menitDari(m[3], m[4]);
+  return tutup <= buka ? tutup + 24 * 60 : tutup;
+}
+
+/** Masih buka sesudah pukul 22.00 WIB. */
+export function bukaLarut(hours: string): boolean {
+  const t = menitTutup(hours);
+  return t !== null && t > 22 * 60;
 }
 
 /** Jarak dengan satu angka desimal, mis. "2,8 km". */

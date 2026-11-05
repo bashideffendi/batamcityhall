@@ -44,9 +44,9 @@ export default async function Kecamatan({ params }: Props) {
         <Link href="/info">Informasi Warga</Link>
       </nav>
       <h1 className="mt-2">Kecamatan {nama}</h1>
-      <p className="bch-lede">Ada {tempat.length} tempat yang tercatat di kecamatan ini.</p>
+      <p className="bch-lede">Ada {tempat.length} tempat tercatat.</p>
       <p>
-        <Link href={`/info/direktori?kecamatan=${encodeURIComponent(nama)}`}>Lihat semua tempat di kecamatan ini</Link>
+        <Link href={`/info/direktori?kecamatan=${encodeURIComponent(nama)}`}>Lihat semua tempat</Link>
       </p>
 
       {PULAU.has(nama) && (

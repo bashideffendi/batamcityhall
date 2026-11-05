@@ -203,9 +203,7 @@ export default function PetaJalan({
         data-rute={rute.features.length}
       >
         <div ref={wadah} className="peta-kanvas" />
-        {status === "gagal" && (
-          <p className="peta-gagal">Peta tidak dapat dimuat. Coba muat ulang dalam beberapa saat.</p>
-        )}
+        {status === "gagal" && <p className="peta-gagal">Peta tidak dapat dimuat. Coba muat ulang.</p>}
         {status === "memuat" && <ItikBerbaris />}
         {status === "siap" && dipilih.length > 0 && <KartuTitik titik={dipilih} onTutup={() => setPilih([])} />}
         {status === "siap" && map && pandangan && (
@@ -272,8 +270,8 @@ export default function PetaJalan({
         </label>
         <p className="peta-lapisan-catatan">
           <IkonLingkaran glyph="halte" warna={WARNA.transportasi} ukuran={18} /> Lokasi pasti{" "}
-          <IkonLingkaran glyph="halte" warna={WARNA.transportasi} ukuran={18} garis /> Lokasi perkiraan. Titik transit Trans
-          Batam mengikuti penanda kota terdekat dan belum tentu posisi halte.
+          <IkonLingkaran glyph="halte" warna={WARNA.transportasi} ukuran={18} garis /> Lokasi perkiraan. Titik transit
+          Trans Batam mengikuti penanda kota terdekat, belum tentu posisi halte.
         </p>
       </fieldset>
     </>

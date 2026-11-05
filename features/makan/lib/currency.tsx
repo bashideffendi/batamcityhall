@@ -5,10 +5,12 @@ import { buatSimpanan } from "./simpanan";
 import { convertPrice, CURRENCIES, type Currency } from "./format";
 import type { Lang } from "./types";
 
+// Rupiah selalu tampil. Pilihan ini hanya menentukan perkiraan di sampingnya. Bawaan S$, karena banyak
+// pembaca Makan datang dari Singapura.
 const simpanan = buatSimpanan<Currency>(
   "bch-makan-mata-uang",
-  "IDR",
-  (m) => (m && (CURRENCIES as string[]).includes(m) ? (m as Currency) : "IDR"),
+  "SGD",
+  (m) => (m && (CURRENCIES as string[]).includes(m) ? (m as Currency) : "SGD"),
   (v) => v,
 );
 
@@ -17,7 +19,7 @@ export function useCurrency() {
   return {
     currency,
     setCurrency: simpanan.simpan,
-    /** Format teks harga rupiah ke mata uang aktif. */
+    /** Perkiraan harga dalam mata uang pilihan. Kosong kalau pilihannya rupiah saja. */
     fmt: (priceIdr: string, lang: Lang) => convertPrice(priceIdr, currency, lang),
   };
 }

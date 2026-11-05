@@ -8,8 +8,7 @@ import KartuRuteFeri from "@/features/jalan/KartuRuteFeri";
 
 export const metadata: Metadata = {
   title: "Feri",
-  description:
-    "Jadwal feri dari Batam ke Singapura, Johor, dan pulau sekitar. Jam keberangkatan mengikuti waktu setempat di pelabuhan asal.",
+  description: "Jadwal feri dari Batam ke Singapura, Johor, dan pulau sekitar, memakai waktu setempat pelabuhan asal.",
 };
 
 const internasional = KARTU_FERI.filter((k) => k.jenis === "internasional");
@@ -21,10 +20,7 @@ export default function Feri() {
     <div className="bch-page">
       <p className="bch-kicker m-0">Transportasi</p>
       <h1 className="mt-2">Feri</h1>
-      <p className="bch-lede">
-        Jadwal feri dari Batam ke Singapura, Johor, dan pulau sekitar. Jam keberangkatan mengikuti waktu setempat di
-        pelabuhan asal.
-      </p>
+      <p className="bch-lede">Jadwal ke Singapura, Johor, dan pulau sekitar memakai waktu setempat pelabuhan asal.</p>
       <JalanNav aktif="/jalan/feri" />
 
       <nav aria-label="Bagian halaman feri" className="bch-sub-nav jl-nav-halaman">
@@ -42,16 +38,15 @@ export default function Feri() {
         Internasional
       </h2>
       <p className="bch-note">
-        Sejak Juli 2026 semua feri HarbourFront memakai Singapore Cruise Centre, 5 HarbourFront Avenue. Rute dan jadwal
-        tidak berubah, dan gedung barunya sekitar 70 m dari gedung lama. Status setiap keberangkatan ada di{" "}
+        Sejak Juli 2026 semua feri HarbourFront memakai Singapore Cruise Centre, 5 HarbourFront Avenue, sekitar 70 m
+        dari gedung lama. Rute dan jadwal tidak berubah. Status keberangkatan ada di{" "}
         <a href={PAPAN_SCC} target="_blank" rel="noopener">
           papan Singapore Cruise Centre
         </a>
         .
       </p>
       <p className="mt-3">
-        Harga adalah harga terendah dan belum tentu termasuk biaya terminal dan biaya tambahan bahan bakar. Rinciannya
-        ada di{" "}
+        Harga belum tentu termasuk biaya terminal dan bahan bakar. Rinciannya ada di{" "}
         <Link href="/jalan/feri/panduan#biaya" prefetch={false}>
           Panduan Menyeberang
         </Link>
@@ -66,10 +61,7 @@ export default function Feri() {
       <h2 className="mt-7 mb-3" id="domestik">
         Domestik
       </h2>
-      <p className="bch-note">
-        Tiket RoRo Telaga Punggur ke Tanjung Uban hanya dijual daring lewat Ferizy, tidak di loket. Belum ada rute
-        reguler dari Batam ke Natuna yang tercatat.
-      </p>
+      <p className="bch-note">Rute reguler Batam—Natuna belum tercatat.</p>
       <div className="jl-daftar-rute">
         {domestik.map((r) => (
           <KartuRuteFeri key={r.id} r={r} />
@@ -93,7 +85,7 @@ export default function Feri() {
         Pompong
       </h2>
       <p>
-        Perahu ke pulau-pulau di sekitar Batam ada di halaman{" "}
+        Perahu ke pulau sekitar Batam ada di halaman{" "}
         <Link href="/jalan/pompong" prefetch={false}>
           Pompong
         </Link>

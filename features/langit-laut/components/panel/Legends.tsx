@@ -20,7 +20,7 @@ export function LegendaHujan() {
   return (
     <section className="cu-legenda" aria-labelledby="cu-legenda-hujan">
       <h2 id="cu-legenda-hujan" className="cu-sub">
-        Intensitas hujan
+        Intensitas Hujan
       </h2>
       <ul className="cu-legenda-hujan">
         <li>
@@ -37,8 +37,8 @@ export function LegendaHujan() {
         </li>
       </ul>
       <p className="cu-catatan">
-        Radar berpusat di Singapura sehingga pulau-pulau di selatan Batam terpantau kurang akurat. Bercak yang diam di satu
-        tempat kadang bukan hujan.
+        Radar berpusat di Singapura sehingga pulau di selatan Batam terpantau kurang akurat. Bercak yang diam kadang bukan
+        hujan.
       </p>
     </section>
   );
@@ -49,7 +49,7 @@ export function LegendaGelombang() {
   return (
     <section className="cu-legenda" aria-labelledby="cu-legenda-gelombang">
       <h2 id="cu-legenda-gelombang" className="cu-sub">
-        Tinggi gelombang (m)
+        Tinggi Gelombang (m)
       </h2>
       <div className="cu-skala" role="img" aria-label="Skala tinggi gelombang, 0 sampai 6 meter">
         <div className="cu-skala-batang" style={{ background: OFS_GRADIENT }} />

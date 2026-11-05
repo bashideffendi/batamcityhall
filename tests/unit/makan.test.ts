@@ -1,18 +1,30 @@
-import { readdirSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { areas as areaTampil, categories, ferries, getPlace, places, satuLabel } from "@/features/makan/lib/data";
+import { areas as areaTampil, categories, ferries, getPlace, places, satuLabel, tempatTerdekat } from "@/features/makan/lib/data";
 import {
   adalahPonsel,
+  alamatBersih,
+  bukaLarut,
+  bukaPagi,
   convertPrice,
   formatBulan,
   formatHarga,
   formatJam,
   formatKm,
   formatKmDesimal,
+  hargaRingkas,
+  hargaTertinggi,
   isOpenNow,
+  jamSgt,
+  keSgt,
   statusJam,
 } from "@/features/makan/lib/format";
+import { polaMosaik } from "@/features/makan/lib/foto";
+import { kategoriDariSlug, RUMPUN, semuaSlugHidangan, slugHidangan } from "@/features/makan/lib/hidangan";
+import { getPanduan, panduan, panduanUntuk } from "@/features/makan/lib/panduan";
+import { bacaAlamat, tautanPeta, tulisAlamat } from "@/features/makan/lib/saring";
+
 import { fiturFeri, fiturTempat, gabungGayaMakan, koleksi, kotakTitik, lapisanPin } from "@/features/makan/lib/peta";
 import { EMPTY, jumlahAktif, RADIUS_FERI_KM, saring, urutkan, type FilterState } from "@/features/makan/lib/saring";
 import { bacaDaftarSlug, buatTautan, saringSlug } from "@/features/makan/lib/tautan-simpan";
@@ -229,6 +241,51 @@ describe("filter", () => {
     expect(gabung.every((p) => p.halal === "halal" && p.category === "sup-ikan")).toBe(true);
   });
 
+  it("saringan baru: sarapan, larut, bayar, dan harga di bawah Rp50 ribu", () => {
+    expect(saring(places, s({ waktu: ["sarapan"] }), null).every((p) => bukaPagi(p.hours))).toBe(true);
+    expect(saring(places, s({ waktu: ["larut"] }), null).every((p) => bukaLarut(p.hours))).toBe(true);
+    expect(saring(places, s({ bayar: ["card"] }), null).every((p) => p.payments.includes("card"))).toBe(true);
+    const murah = saring(places, s({ murah: true }), null);
+    expect(murah.length).toBeGreaterThan(0);
+    expect(murah.every((p) => (hargaTertinggi(p.price_idr) ?? Infinity) <= 50000)).toBe(true);
+  });
+
+  it("urutan: buka paling larut dan harga terendah, data kosong di belakang", () => {
+    const larut = saring(places, s({ sort: "larut" }), null);
+    expect(larut.at(-1)?.hours).toBe("");
+    const harga = saring(places, s({ sort: "harga" }), null);
+    expect(hargaTertinggi(harga[0].price_idr)).not.toBeNull();
+    expect(hargaTertinggi(harga.at(-1)?.price_idr ?? "")).toBeNull();
+  });
+
+  it("saringan bolak-balik lewat alamat", () => {
+    const awal = s({
+      query: "gonggong",
+      cats: ["seafood-gonggong"],
+      areas: ["bengkong"],
+      halal: ["muslim-friendly"],
+      tiers: ["$$$"],
+      labels: ["wajib-coba"],
+      waktu: ["larut"],
+      bayar: ["card"],
+      murah: true,
+      ferry: "harbour-bay",
+      openNow: true,
+      sort: "larut",
+    });
+    expect(bacaAlamat(tulisAlamat(awal))).toEqual(awal);
+    expect(tulisAlamat(EMPTY)).toBe("");
+    expect(tautanPeta({ halal: ["halal"], openNow: true })).toBe("/makan/peta?halal=halal&buka=1");
+    // Kode lama tidak bocor ke alamat, dan lokasi pengguna tidak pernah ikut.
+    expect(tulisAlamat(s({ labels: ["hidden-gem", "hits"] }))).toBe("?label=jarang,populer");
+    expect(tulisAlamat(s({ userLoc: { lat: 1, lng: 104 }, sort: "nearby" }))).toBe("");
+  });
+
+  it("alamat asing tidak merusak saringan", () => {
+    const r = bacaAlamat("?halal=entah&hidangan=entah&urut=entah&waktu=entah&bayar=entah");
+    expect(r).toEqual(EMPTY);
+  });
+
   it("terminal: hanya yang terdekat ke terminal itu dan dalam radius", () => {
     const r = saring(places, s({ ferry: "harbour-bay", sort: "ferry" }), null);
     expect(r.length).toBeGreaterThan(0);
@@ -301,13 +358,54 @@ describe("format", () => {
   });
 
   it("konversi harga jujur soal bentuk teks aslinya", () => {
-    expect(convertPrice("Rp150.000–350.000", "IDR")).toBe("Rp150.000–350.000");
-    expect(convertPrice("Rp150.000–350.000", "SGD")).toBe("~S$13—S$29");
-    expect(convertPrice("Rp150.000–350.000", "MYR")).toBe("~RM42—RM99");
-    expect(convertPrice("mulai Rp70.000", "SGD")).toBe("~S$5,8+");
-    expect(convertPrice("mulai Rp70.000", "SGD", "en")).toBe("~S$5.8+");
+    // Kurs di data/makan/kurs.json: S$1 = Rp14.187, RM1 = Rp4.461.
+    expect(convertPrice("Rp150.000–350.000", "IDR")).toBe("");
+    expect(convertPrice("Rp150.000–350.000", "SGD")).toBe("≈ S$11—25");
+    expect(convertPrice("Rp150.000–350.000", "MYR")).toBe("≈ RM34—78");
+    expect(convertPrice("mulai Rp70.000", "SGD")).toBe("≈ S$5+");
+    expect(convertPrice("Rp20.000–50.000", "SGD", "id")).toBe("≈ S$1,5—3,5");
+    expect(convertPrice("Rp20.000–50.000", "SGD", "en")).toBe("≈ S$1.5—3.5");
     expect(convertPrice("Rp3.000/pc atau Rp80.000/25 pc", "SGD")).toBe("");
     expect(convertPrice("", "SGD")).toBe("");
+  });
+
+  it("harga ringkas tidak mengubah makna", () => {
+    expect(hargaRingkas("Rp150.000–350.000")).toBe("Rp150—350 ribu");
+    expect(hargaRingkas("Rp150.000–350.000", "en")).toBe("Rp150—350k");
+    expect(hargaRingkas("Rp75.000")).toBe("Rp75 ribu");
+    expect(hargaRingkas("Rp60.000/kotak")).toBe("Rp60.000 per kotak");
+    expect(hargaRingkas("mulai Rp19.000")).toBe("Mulai Rp19.000");
+    expect(hargaRingkas("Rp3.000/pc atau Rp80.000/25 pc")).toBe("Rp3.000 per buah atau Rp80.000 per 25 buah");
+    expect(hargaRingkas("")).toBe("");
+  });
+
+  it("harga tertinggi hanya dari kisaran bersatuan sama", () => {
+    expect(hargaTertinggi("Rp20.000–50.000")).toBe(50000);
+    expect(hargaTertinggi("Rp75.000")).toBe(75000);
+    expect(hargaTertinggi("Rp60.000/kotak")).toBeNull();
+    expect(hargaTertinggi("mulai Rp19.000")).toBeNull();
+    expect(hargaTertinggi("")).toBeNull();
+  });
+
+  it("jam: SGT satu jam di depan, sarapan, dan buka larut", () => {
+    expect(jamSgt("09.30–23.00")).toBe("10.30—00.00 SGT");
+    expect(jamSgt("24 jam")).toBe("");
+    expect(keSgt("23.30")).toBe("00.30");
+    expect(bukaPagi("07.00–21.00")).toBe(true);
+    expect(bukaPagi("08.00–14.00 (Senin–Sabtu)")).toBe(true);
+    expect(bukaPagi("07.00")).toBe(true);
+    expect(bukaPagi("10.00–21.00")).toBe(false);
+    expect(bukaPagi("")).toBe(false);
+    expect(bukaLarut("10.30–00.30")).toBe(true);
+    expect(bukaLarut("16.00–24.00")).toBe(true);
+    expect(bukaLarut("24 jam")).toBe(true);
+    expect(bukaLarut("10.00–22.00")).toBe(false);
+    expect(bukaLarut("")).toBe(false);
+  });
+
+  it("plus code dibuang dari alamat, sisanya tetap", () => {
+    expect(alamatBersih("525P+RX9, Jl. Golden City Jaya, Bengkong")).toBe("Jl. Golden City Jaya, Bengkong");
+    expect(alamatBersih("Jl. Imam Bonjol, Nagoya")).toBe("Jl. Imam Bonjol, Nagoya");
   });
 
   it("harga dari price_idr: kisaran bertanda pisah, tanpa menambah satuan", () => {
@@ -364,7 +462,7 @@ describe("format", () => {
 describe("tautan daftar tersimpan", () => {
   it("bolak-balik lewat tautan", () => {
     const url = buatTautan("https://contoh.test", ["a-b", "c"]);
-    expect(url).toBe("https://contoh.test/makan/tersimpan?simpan=a-b,c");
+    expect(url).toBe("https://contoh.test/makan/simpanan?simpan=a-b,c");
     expect(bacaDaftarSlug(url)).toEqual(["a-b", "c"]);
   });
 
@@ -419,5 +517,78 @@ describe("lapisan peta", () => {
       [103.9, 1],
       [104, 1.2],
     ]);
+  });
+});
+
+describe("hidangan dan rumpun", () => {
+  it("17 hidangan masuk tepat satu rumpun dan punya gambar", () => {
+    const dariRumpun = RUMPUN.flatMap((r) => r.kategori);
+    expect(new Set(dariRumpun).size).toBe(dariRumpun.length);
+    expect([...dariRumpun].sort()).toEqual(categories.map((c) => c.id).sort());
+    for (const c of categories) {
+      expect(existsSync(`public/grafis/hidangan/${c.id}.webp`), c.id).toBe(true);
+      expect(kategoriDariSlug(slugHidangan(c.id))).toBe(c.id);
+    }
+    expect(semuaSlugHidangan).toHaveLength(17);
+    expect(kategoriDariSlug("tidak-ada")).toBeUndefined();
+  });
+
+  it("rumpun membentuk baris enam ubin", () => {
+    // Laut 3 + Roti 2 + Kopi 1, Tionghoa 5 + Bawa 1, Nusantara 5 + ubin Semua.
+    expect(RUMPUN.map((r) => r.kategori.length)).toEqual([3, 2, 1, 5, 1, 5]);
+  });
+});
+
+describe("panduan", () => {
+  it("semua panduan punya isi, id unik, dan judul tiga bahasa", () => {
+    const ids = panduan.map((g) => g.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const g of panduan) {
+      expect(g.tempat.length, g.id).toBeGreaterThan(0);
+      for (const l of ["id", "en", "zh"] as const) {
+        expect(g.judul(l), g.id).not.toBe("");
+        expect(g.dek(l), g.id).not.toBe("");
+      }
+    }
+  });
+
+  it("jalur berurut dan punya gambar lebar, daftar hitungan mengikuti data", () => {
+    const jalur = panduan.filter((g) => g.berurut);
+    expect(jalur).toHaveLength(5);
+    for (const g of jalur) expect(existsSync(`public${g.grafis}`), g.id).toBe(true);
+    expect(getPanduan("sarapan")?.tempat.every((p) => bukaPagi(p.hours))).toBe(true);
+    expect(getPanduan("lewat-pukul-22")?.tempat.every((p) => bukaLarut(p.hours))).toBe(true);
+    expect(getPanduan("legendaris")?.tempat.every((p) => p.labels.includes("legendaris"))).toBe(true);
+    expect(getPanduan("tidak-ada")).toBeUndefined();
+    expect(panduanUntuk("golden-prawn-933").map((g) => g.id)).toContain("seafood-classics");
+  });
+
+  it("tempat terdekat tidak memuat tempat itu sendiri", () => {
+    const p = places[0];
+    const r = tempatTerdekat(p, 3);
+    expect(r).toHaveLength(3);
+    expect(r.map((x) => x.id)).not.toContain(p.id);
+  });
+});
+
+describe("galeri", () => {
+  it("mosaik paling banyak lima foto", () => {
+    expect(polaMosaik(0)).toBe(0);
+    expect(polaMosaik(3)).toBe(3);
+    expect(polaMosaik(5)).toBe(5);
+    expect(polaMosaik(12)).toBe(5);
+  });
+});
+
+describe("peta cetak", () => {
+  it("semua tempat dan terminal masuk potongan peta", async () => {
+    const { POTONGAN, titik } = await import("@/features/makan/components/PetaCetak");
+    for (const p of [...places, ...ferries]) {
+      const { x, y } = titik(p.lat, p.lng);
+      expect(x, p.id).toBeGreaterThan(POTONGAN.x);
+      expect(x, p.id).toBeLessThan(POTONGAN.x + POTONGAN.w);
+      expect(y, p.id).toBeGreaterThan(POTONGAN.y);
+      expect(y, p.id).toBeLessThan(POTONGAN.y + POTONGAN.h);
+    }
   });
 });

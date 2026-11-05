@@ -23,4 +23,4 @@ export function modeKiriman(env: Env = process.env): ModeKiriman {
 }
 
 export const PESAN_MATI = "Formulir ini belum aktif.";
-export const PESAN_MATI_REKOMENDASI = `${PESAN_MATI} Rekomendasi dapat dikirim setelah sistemnya dibuka.`;
+export const PESAN_MATI_REKOMENDASI = `${PESAN_MATI} Rekomendasi belum dapat dikirim.`;

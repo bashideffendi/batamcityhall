@@ -1,3 +1,4 @@
+import { kaidahJudul } from "@/lib/judul";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { NavKampungTua } from "@/features/kampung-tua/Bagian";
@@ -15,8 +16,7 @@ import { IkonCeritaRakyat } from "@/features/kampung-tua/Ikon";
 import PetaKampungTuaMuat from "@/features/kampung-tua/PetaKampungTuaMuat";
 import "@/features/kampung-tua/kampung-tua.css";
 
-const LEDE =
-  "Kampung tua adalah permukiman yang sudah ada sebelum Batam dibangun sebagai kawasan industri. Halaman ini memuat asal-usul, penduduk awal, dan etika berkunjung.";
+const LEDE = "Kampung tua adalah permukiman yang sudah ada sebelum Batam dibangun sebagai kawasan industri.";
 
 export const metadata: Metadata = {
   title: "Kampung Tua",
@@ -56,14 +56,14 @@ export default function KampungTua() {
       <section id="daftar" className="kt-bagian" aria-labelledby="judul-daftar">
         <h2 id="judul-daftar">Semua Kampung</h2>
         <p className="bch-measure">
-          Daftar ini memuat {KAMPUNG.length} kampung. Sebanyak {penanda.length} kampung ada di peta.
+          Daftar {KAMPUNG.length} kampung, {penanda.length} di antaranya ada di peta.
         </p>
         {LAPISAN.map((l) => {
           const isi = KAMPUNG.filter((k) => k.lapisan === l.id);
           return (
             <section key={l.id} data-lapisan-daftar={l.id} aria-labelledby={`lapisan-${l.id}`}>
               <h3 id={`lapisan-${l.id}`} className="mt-5">
-                {l.nama} <span className="bch-data">{isi.length}</span>
+                {kaidahJudul(l.nama)} <span className="bch-data">{isi.length}</span>
               </h3>
               <p className="bch-measure">{l.lede}</p>
               {perKecamatan(isi).map(([kec, anggota]) => (

@@ -23,7 +23,7 @@ const JENIS = { ngopi: "Kopi", macet: "Macet" } as const;
 const KETERANGAN = {
   ngopi: (
     <>
-      Daftar <em>kopitiam</em> dan kafe dari bagian Makan. Titiknya merupakan perkiraan.
+      <em>Kopitiam</em> dan kafe dari bagian Makan. Titiknya perkiraan.
     </>
   ),
   macet: "Kamera lalu lintas dari bagian Cuaca dan Laut. Peta ini tidak menilai kepadatan jalan.",

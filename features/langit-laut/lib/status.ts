@@ -249,7 +249,7 @@ export function rainAnswer(a: {
     live: [headline, context].filter(Boolean).join(" "),
     ...extra,
   });
-  const TIDAK_TERSAMBUNG = "Perangkat tidak tersambung ke internet. Data yang tampil adalah data terakhir yang tersimpan.";
+  const TIDAK_TERSAMBUNG = "Perangkat tidak tersambung ke internet. Ini data terakhir yang tersimpan.";
 
   if (!latest) {
     if (offline) return base(TIDAK_TERSAMBUNG, "", { mini: "Tidak tersambung" });
@@ -546,7 +546,7 @@ export function ofsAnswer(
 
   if (ov.failed && !ov.ready) {
     return offline
-      ? plain("Perangkat tidak tersambung ke internet. Data yang tampil adalah data terakhir yang tersimpan.", "", {
+      ? plain("Perangkat tidak tersambung ke internet. Ini data terakhir yang tersimpan.", "", {
           tone: "warn",
           mini: "Tidak tersambung",
         })
@@ -655,6 +655,6 @@ export function perairanDetail(p: PerairanResponse | null, now: number = Date.no
 export function cctvAnswer(total: number, failed: number): { headline: string; context: string } {
   return {
     headline: `${total} titik kamera`,
-    context: `Kamera lalu lintas di ${total} titik jalan utama Batam.${failed > 0 ? ` Ada ${failed} kamera yang gagal diputar.` : ""}`,
+    context: failed > 0 ? `Ada ${failed} kamera gagal diputar.` : "",
   };
 }

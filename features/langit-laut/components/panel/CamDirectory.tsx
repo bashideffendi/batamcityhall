@@ -96,7 +96,7 @@ export default function CamDirectory({ dead, onPick }: Props) {
           </li>
         </ul>
         <p className="d-note">
-          Siaran memakai sekitar {CCTV_MB_PER_MIN} MB per menit. Siaran berhenti saat tab ditutup atau disembunyikan.
+          Siaran memakai sekitar {CCTV_MB_PER_MIN} MB per menit dan berhenti saat tab ditutup atau disembunyikan.
         </p>
       </section>
     </>

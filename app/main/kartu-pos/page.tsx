@@ -4,7 +4,7 @@ import KartuPos from "@/features/main/KartuPos";
 
 export const metadata: Metadata = {
   title: "Kartu Pos dari Batam",
-  description: "Pilih gambar, tulis pesan, lalu unduh sebagai gambar untuk dikirim.",
+  description: "Pilih gambar, tulis pesan, lalu unduh.",
 };
 
 export default function HalamanKartuPos() {
@@ -14,7 +14,7 @@ export default function HalamanKartuPos() {
         <Link href="/main">Ruang Main</Link>
       </p>
       <h1 className="mt-2">Kartu Pos dari Batam</h1>
-      <p className="bch-lede">Pilih gambar, tulis pesan, lalu unduh sebagai gambar untuk dikirim.</p>
+      <p className="bch-lede">Pilih gambar, tulis pesan, lalu unduh.</p>
       <div className="mt-5">
         <KartuPos />
       </div>

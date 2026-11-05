@@ -70,7 +70,7 @@ export default function Kamus({ entri }: { entri: KataPublik[] }) {
   return (
     <>
       <noscript>
-        <p className="bch-note">Pencarian memerlukan JavaScript. Daftar lengkap ada di bawah, diurutkan per huruf.</p>
+        <p className="bch-note">Pencarian memerlukan JavaScript. Daftar lengkap ada di bawah.</p>
       </noscript>
       <div className="bud-kontrol" hidden={!siap}>
         <label className="bch-field bud-kontrol-lebar">

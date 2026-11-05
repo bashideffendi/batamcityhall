@@ -1,3 +1,4 @@
+import { kaidahJudul } from "@/lib/judul";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,8 +10,7 @@ import { KECAMATAN } from "@/lib/data/schema";
 
 export const metadata: Metadata = {
   title: "Direktori",
-  description:
-    "Direktori tempat di Batam yang dikelompokkan menurut keperluan. Tidak ada tempat yang membayar untuk masuk daftar ini.",
+  description: "Daftar tempat di Batam menurut keperluan, tanpa bayaran untuk masuk daftar.",
 };
 
 const ikonKategori = (nama: string) => KATEGORI_DIREKTORI.find((k) => k.nama === nama);
@@ -27,8 +27,8 @@ export default function Direktori() {
             </nav>
             <h1 className="mt-2">Direktori</h1>
             <p className="bch-lede">
-              Direktori ini memuat {TEMPAT.length.toLocaleString("id-ID")} tempat di Batam yang dikelompokkan menurut
-              keperluan. Tidak ada tempat yang membayar untuk masuk daftar ini.
+              Sebanyak {TEMPAT.length.toLocaleString("id-ID")} tempat di Batam tercatat, tanpa bayaran untuk masuk
+              daftar.
             </p>
           </>
         }
@@ -46,7 +46,7 @@ export default function Direktori() {
                   <Link href={`/info/direktori/${slugKategori(k.kategori)}`} prefetch={false}>
                     {ikon && <IkonLingkaran glyph={ikon.glyph} warna={ikon.warna} ukuran={40} />}
                     <span className="nama" data-kategori={k.kategori}>
-                      {k.nama}
+                      {kaidahJudul(k.nama)}
                     </span>
                     <span className="bch-data jumlah">{tempatDiKategori(k.kategori).length.toLocaleString("id-ID")}</span>
                     <span className="ket">{k.keterangan}</span>

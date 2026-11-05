@@ -9,7 +9,7 @@ import { CATATAN_DAFTAR_HALTE, KORIDOR, lencanaKoridor, slugKoridor, teksJam } f
 export const metadata: Metadata = {
   title: "Trans Batam",
   description:
-    "Sembilan koridor beroperasi dan satu koridor direncanakan. Diagram koridor, urutan halte, jam operasi, tarif, dan cara bayar Trans Batam.",
+    "Sembilan koridor beroperasi, satu direncanakan. Diagram, urutan halte, jam operasi, tarif, dan cara bayar Trans Batam.",
 };
 
 export default function TransBatam() {
@@ -18,8 +18,7 @@ export default function TransBatam() {
       <p className="bch-kicker m-0">Transportasi</p>
       <h1 className="mt-2">Trans Batam</h1>
       <p className="bch-lede">
-        Sembilan koridor beroperasi dan satu koridor direncanakan. Tarif Rp5.000 untuk umum dan Rp2.500 untuk pelajar,
-        mahasiswa, serta anak di bawah 12 tahun. Pembayaran nontunai.
+        Sembilan koridor beroperasi, satu direncanakan. Tarif Rp5.000, pelajar Rp2.500, nontunai.
       </p>
       <JalanNav aktif="/jalan/trans-batam" />
 
@@ -27,7 +26,7 @@ export default function TransBatam() {
       <DiagramSkematik />
 
       <h2 className="mt-7 mb-3">Posisi Bus</h2>
-      <p>Posisi bus dapat dilihat di aplikasi SIP TB. Situs ini tidak melacak bus.</p>
+      <p>Lihat di aplikasi SIP TB. Situs ini tidak melacak bus.</p>
 
       <h2 className="mt-7 mb-4">Semua Koridor</h2>
       <ul className="bch-grid jl-grid-koridor">

@@ -45,10 +45,11 @@ export default function HalamanVibe() {
       </p>
       <h1 className="mt-2">Peta Suasana</h1>
       <p className="bch-lede">
-        Peta ini memuat <em>kopitiam</em>, kafe, dan kamera lalu lintas di Batam. Informasi cuaca ada di{" "}
-        <Link href="/cuaca">Cuaca dan Laut</Link>. Peta ini tidak memuat kategori tentang kelompok orang.
+        Temukan <em>kopitiam</em>, kafe, dan kamera lalu lintas di Batam.
       </p>
-      <p className="bch-note">Isi peta ini berasal dari data yang sudah ada di situs.</p>
+      <p className="bch-note">
+        Cuaca ada di <Link href="/cuaca">Cuaca dan Laut</Link>. Peta ini tidak memuat kategori tentang kelompok orang.
+      </p>
       <div className="mt-4">
         <PetaVibeMuat titik={titik} />
       </div>

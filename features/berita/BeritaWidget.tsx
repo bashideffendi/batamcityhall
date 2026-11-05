@@ -14,9 +14,9 @@ export default function BeritaWidget() {
     <section className="bch-berita-widget" aria-labelledby="berita-terbaru" data-fase={keadaan.fase}>
       <h2 id="berita-terbaru">Berita Batam</h2>
       {keadaan.fase === "memuat" && <p className="bch-berita-pesan">Memuat data</p>}
-      {keadaan.fase === "gagal" && <p className="bch-berita-pesan">Berita tidak dapat dimuat saat ini.</p>}
+      {keadaan.fase === "gagal" && <p className="bch-berita-pesan">Berita tidak dapat dimuat.</p>}
       {keadaan.fase === "siap" && !item.length && (
-        <p className="bch-berita-pesan">Belum ada berita baru tentang Batam hari ini.</p>
+        <p className="bch-berita-pesan">Belum ada berita baru hari ini.</p>
       )}
       {item.length > 0 && (
         <ol className="bch-berita-daftar">

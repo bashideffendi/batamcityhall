@@ -283,17 +283,15 @@ export function LegendaSkema() {
 // 0/45/90). CSS memilih salah satu, jadi tanpa JavaScript pun tampil.
 export default function DiagramSkematik({ sorot, legenda = true }: { sorot?: string; legenda?: boolean }) {
   const judul = sorot
-    ? `Diagram koridor Trans Batam, ${sorot} ditebalkan. Diagram ini menyederhanakan rute. Jarak dan arah tidak sesuai peta.`
-    : "Diagram koridor Trans Batam: sembilan koridor beroperasi dan satu koridor direncanakan. Diagram ini menyederhanakan rute. Jarak dan arah tidak sesuai peta.";
+    ? `Diagram koridor Trans Batam, ${sorot} ditebalkan. Rute disederhanakan, jarak dan arah tidak sesuai peta.`
+    : "Diagram koridor Trans Batam: sembilan koridor beroperasi, satu direncanakan. Rute disederhanakan, jarak dan arah tidak sesuai peta.";
   return (
     <figure className="jl-skema" data-sorot={sorot}>
       <div className="jl-skema-kanvas">
         <Svg d={LEBAR} sorot={sorot} judul={judul} />
         <Svg d={HP} sorot={sorot} judul={judul} />
       </div>
-      <figcaption className="jl-catatan-kecil">
-        Diagram ini menyederhanakan rute. Jarak dan arah tidak sesuai peta.
-      </figcaption>
+      <figcaption className="jl-catatan-kecil">Rute disederhanakan, jarak dan arah tidak sesuai peta.</figcaption>
       {legenda && <LegendaSkema />}
     </figure>
   );

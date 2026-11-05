@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026-11-06 · Makan didesain ulang, teks diringkas
+
+Atas permintaan pemilik, mengikuti riset platform makanan.
+
+- **Menu baru:** Hidangan · Kawasan · Panduan · Dekat feri · Peta · Simpanan, ditambah Cara Kami Memilih. Alamat lama dialihkan 308.
+- **Beranda Makan:** cari, pintu cepat, panduan sampul, indeks 17 hidangan dalam enam rumpun, Sebelum Feri Pulang, panduan, peta cetak dengan kawasan, Legendaris, Jarang Diketahui.
+- **Daftar dan peta berdampingan** di setiap halaman daftar. Di ponsel daftar lebih dulu, peta baru dimuat saat dibuka.
+- **Saringan** tersimpan di alamat, jadi bisa dibagikan. Angka di tombol menunjukkan hasil bila dipakai, pilihan tanpa hasil dinonaktifkan. Baru: sarapan, lewat 22.00, di bawah Rp50 ribu, pembayaran, urut buka paling larut dan harga terendah.
+- **Baris tempat seragam:** gambar, nama, kawasan, menu andalan, status, harga, jarak ke terminal.
+- **Detail tempat:** galeri foto, fakta dengan jam WIB dan SGT, harga Rp dengan perkiraan S$, menu andalan, Di Dekat Sini, Juga di Panduan. Di ponsel fakta tampil lebih dulu.
+- **Galeri foto:** taruh foto di `public/foto/makan/<id>/`, lalu `scripts/foto-makan.mjs` menyusun datanya saat build. Selama belum ada foto, tampil ilustrasi hidangan dan empat bingkai. Mosaik mengikuti jumlah foto, lightbox dengan panah, geser, dan Esc.
+- **Panduan:** lima jalur dan empat daftar hitungan dari data (sarapan, lewat 22.00, legendaris, di bawah Rp50 ribu).
+- **Ilustrasi Riso baru:** 17 hidangan dan 6 panduan (`tools/grafis/hidangan.mjs`, memakai sharp, tanpa Python).
+- **Kurs:** `data/makan/kurs.json`, Bank Sentral Eropa 4 November 2026 (S$1 = Rp14.187). Angka lama pertengahan 2026 sudah meleset 15%.
+- **Teks seluruh situs diringkas**, sekitar 215 teks di 85 berkas. Fakta tidak berubah. Rempang, legalitas, teks BMKG, nomor darurat, dan makna hukum tidak disentuh.
+
 ## 2026-11-05 · Penerapan pedoman editorial
 
 Mengikuti urutan bagian 8 `docs/PEDOMAN.md`.

@@ -18,7 +18,7 @@ const BAGIAN = [
   },
   {
     judul: "Penilai Properti (KJPP)",
-    lede: "Penilai properti dibutuhkan untuk KPR, waris, lelang, dan sengketa rumah. Direktori MAPPI memuat daftar yang lebih lengkap.",
+    lede: "Dibutuhkan untuk KPR, waris, lelang, dan sengketa rumah. Daftar lebih lengkap ada di direktori MAPPI.",
     isi: disub("kjpp"),
   },
   {
@@ -35,7 +35,7 @@ export default function JasaDokumen() {
         <Link href="/info">Informasi Warga</Link>
       </nav>
       <h1 className="mt-2">Jasa Dokumen dan Usaha</h1>
-      <p className="bch-lede">Halaman ini memuat konsultan pajak, penilai properti, dan layanan izin usaha di Batam.</p>
+      <p className="bch-lede">Cari konsultan pajak, penilai properti, dan layanan izin usaha di Batam.</p>
 
       {BAGIAN.map((b) => (
         <section key={b.judul}>
@@ -60,8 +60,8 @@ export default function JasaDokumen() {
         </p>
         <h3>Legalisasi dan Apostille</h3>
         <p>
-          Untuk negara anggota Konvensi Apostille, urusannya diajukan secara daring lewat Ditjen AHU. Untuk negara lain,
-          jalurnya legalisasi Kemenkum, lalu Kemenlu, lalu kedutaan.
+          Negara anggota Konvensi Apostille: ajukan daring lewat Ditjen AHU. Negara lain: legalisasi Kemenkum, lalu Kemenlu,
+          lalu kedutaan.
         </p>
         <h3>Biro Jasa STNK dan Paspor</h3>
         <p>

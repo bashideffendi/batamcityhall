@@ -89,7 +89,7 @@ export default function KartuPos() {
         <button type="button" className="bch-btn" onClick={unduh}>
           Unduh kartu pos
         </button>
-        <p className="bch-card-meta m-0">Kartu pos dibuat di perangkatmu dan tidak dikirim ke mana pun.</p>
+        <p className="bch-card-meta m-0">Dibuat di perangkatmu dan tidak dikirim ke mana pun.</p>
       </div>
     </div>
   );

@@ -6,8 +6,8 @@ export default function CatatanMode({ mode, pesanMati = PESAN_MATI }: { mode: Mo
   if (mode === "contoh") {
     return (
       <p className="bch-note" data-tone="caution" data-mode-contoh>
-        <strong>{LABEL_CONTOH}.</strong> Situs ini sedang memakai data contoh dan semua entrinya rekaan. Kiriman hanya
-        disimpan sementara di memori server dan hilang saat server dimatikan.
+        <strong>{LABEL_CONTOH}.</strong> Semua entri rekaan. Kiriman hanya disimpan sementara dan hilang saat server
+        dimatikan.
       </p>
     );
   }

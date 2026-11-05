@@ -4,7 +4,7 @@ import { useFavorites } from "../lib/favorites";
 import { useI18n } from "../lib/i18n";
 import Ikon from "./Ikon";
 
-// `denganTeks`: tombol [Simpan] di detail tempat (pedoman 3.4). Di kartu cukup ikon.
+// `denganTeks`: tombol di detail tempat. Di baris cukup ikon.
 export default function FavButton({ id, nama, denganTeks = false }: { id: string; nama: string; denganTeks?: boolean }) {
   const { has, toggle } = useFavorites();
   const { t } = useI18n();
@@ -20,7 +20,7 @@ export default function FavButton({ id, nama, denganTeks = false }: { id: string
       data-aktif={active || undefined}
     >
       <Ikon nama="hati" />
-      {denganTeks && (active ? t("unsave") : t("save"))}
+      {denganTeks && (active ? t("saved_on") : t("save"))}
     </button>
   );
 }

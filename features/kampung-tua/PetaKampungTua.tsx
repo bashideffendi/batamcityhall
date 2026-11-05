@@ -24,7 +24,7 @@ type Status = "memuat" | "siap" | "gagal";
 type InfoLapisan = { id: LapisanId; nama: string; kicker: string; total: number };
 
 const TEKS_PETA = {
-  "Map.Title": "Peta kampung tua Batam. Semua kampung juga ada di daftar di bawah peta.",
+  "Map.Title": "Peta kampung tua Batam. Semua kampung juga ada di daftar.",
   "AttributionControl.ToggleAttribution": "Buka atau tutup atribusi",
   "CooperativeGesturesHandler.WindowsHelpText": "Tekan Ctrl sambil menggulir untuk memperbesar peta",
   "CooperativeGesturesHandler.MacHelpText": "Tekan ⌘ sambil menggulir untuk memperbesar peta",

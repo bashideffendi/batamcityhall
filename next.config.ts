@@ -17,6 +17,17 @@ const nextConfig: NextConfig = {
   experimental: {
     turbopackFileSystemCacheForBuild: false,
   },
+  // Nama menu Makan berganti atas keputusan pemilik (6 Nov 2026). Alamat lama tetap hidup.
+  async redirects() {
+    return [
+      { source: "/makan/daftar", destination: "/makan/peta", permanent: true },
+      { source: "/makan/kategori", destination: "/makan/hidangan", permanent: true },
+      { source: "/makan/jalur", destination: "/makan/panduan", permanent: true },
+      { source: "/makan/jalur/:slug", destination: "/makan/panduan/:slug", permanent: true },
+      { source: "/makan/tersimpan", destination: "/makan/simpanan", permanent: true },
+      { source: "/makan/tentang", destination: "/makan/cara-memilih", permanent: true },
+    ];
+  },
   async headers() {
     return [
       { source: "/(.*)", headers: SECURITY_HEADERS },

@@ -4,13 +4,13 @@
 const BITES: [RegExp, string][] = [
   [/^\/$/, "/makan"],
   [/^\/tempat\/([^/]+)\/?$/, "/makan/tempat/$1"],
-  [/^\/jalur\/?$/, "/makan/jalur"],
-  [/^\/jalur\/([^/]+)\/?$/, "/makan/jalur/$1"],
+  [/^\/jalur\/?$/, "/makan/panduan"],
+  [/^\/jalur\/([^/]+)\/?$/, "/makan/panduan/$1"],
   [/^\/peta\/?$/, "/makan/peta"],
-  [/^\/daftar\/?$/, "/makan/daftar"],
-  [/^\/kategori\/?$/, "/makan/kategori"],
-  [/^\/saved\/?$/, "/makan/tersimpan"],
-  [/^\/about\/?$/, "/makan/tentang"],
+  [/^\/daftar\/?$/, "/makan/peta"],
+  [/^\/kategori\/?$/, "/makan/hidangan"],
+  [/^\/saved\/?$/, "/makan/simpanan"],
+  [/^\/about\/?$/, "/makan/cara-memilih"],
 ];
 
 const MODE_CUACA: Record<string, string> = { hujan: "/cuaca/hujan", ombak: "/cuaca/gelombang", cctv: "/cuaca/cctv" };

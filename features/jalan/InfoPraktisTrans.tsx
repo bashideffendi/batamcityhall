@@ -19,14 +19,12 @@ export default function InfoPraktisTrans() {
         <dd>
           Nontunai sejak 1 Januari 2023: kartu BRIZZI (BRI), QRIS ({qris?.aplikasi?.join(", ")}), dan aplikasi bank.{" "}
           Kartu {kartuLain.slice(0, -1).join(", ")}, dan {kartuLain[kartuLain.length - 1]} mungkin diterima, tetapi
-          belum dapat dipastikan.
+          belum pasti.
         </dd>
         <dt>Pindah koridor</dt>
-        <dd>Belum ada aturan pindah koridor gratis yang tercatat. Anggap setiap kali naik bus membayar satu tarif.</dd>
+        <dd>Aturan pindah koridor gratis belum tercatat. Anggap setiap naik bus membayar satu tarif.</dd>
         <dt>Halte</dt>
-        <dd>
-          Ada dua tipe: halte bangunan dengan atap dan tempat duduk, serta perhentian yang hanya berupa tiang rambu.
-        </dd>
+        <dd>Ada dua tipe: bangunan dengan atap dan tempat duduk, atau perhentian yang hanya berupa tiang rambu.</dd>
         <dt>Aksesibilitas</dt>
         <dd>Belum ada informasi tentang lantai rendah, jalur landai, tarif lansia, dan layanan disabilitas.</dd>
         <dt>Kontak</dt>
@@ -43,7 +41,7 @@ export default function InfoPraktisTrans() {
         </dd>
         <dt>Rencana</dt>
         <dd>
-          Hal berikut masih rencana dan belum berjalan:
+          Belum berjalan:
           <ul className="jl-daftar-rapat">
             {rencana.item.map((r) => (
               <li key={r}>{r}</li>

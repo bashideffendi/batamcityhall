@@ -3,8 +3,7 @@ import Link from "next/link";
 import { ANGKA_RESMI, KELOMPOK_FAKTA, LINIMASA, LUAS_INVESTASI } from "@/features/sejarah/angka";
 import "@/features/sejarah/sejarah.css";
 
-const LEDE =
-  "Halaman ini memuat angka penting tentang Batam beserta tahunnya. Bila sumber berbeda, semua versi ditampilkan.";
+const LEDE = "Angka penting Batam ditulis beserta tahunnya; bila sumber berbeda, semua versi tampil.";
 
 export const metadata: Metadata = {
   title: "Batam dalam Angka",

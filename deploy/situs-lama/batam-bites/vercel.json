@@ -4,11 +4,11 @@
   "redirects": [
     { "source": "/", "destination": "https://DOMAIN-BARU/makan", "permanent": true },
     { "source": "/tempat/:slug", "destination": "https://DOMAIN-BARU/makan/tempat/:slug", "permanent": true },
-    { "source": "/jalur", "destination": "https://DOMAIN-BARU/makan/jalur", "permanent": true },
-    { "source": "/jalur/:slug", "destination": "https://DOMAIN-BARU/makan/jalur/:slug", "permanent": true },
+    { "source": "/jalur", "destination": "https://DOMAIN-BARU/makan/panduan", "permanent": true },
+    { "source": "/jalur/:slug", "destination": "https://DOMAIN-BARU/makan/panduan/:slug", "permanent": true },
     { "source": "/peta", "destination": "https://DOMAIN-BARU/makan/peta", "permanent": true },
-    { "source": "/daftar", "destination": "https://DOMAIN-BARU/makan/daftar", "permanent": true },
-    { "source": "/kategori", "destination": "https://DOMAIN-BARU/makan/kategori", "permanent": true },
-    { "source": "/about", "destination": "https://DOMAIN-BARU/makan/tentang", "permanent": true }
+    { "source": "/daftar", "destination": "https://DOMAIN-BARU/makan/peta", "permanent": true },
+    { "source": "/kategori", "destination": "https://DOMAIN-BARU/makan/hidangan", "permanent": true },
+    { "source": "/about", "destination": "https://DOMAIN-BARU/makan/cara-memilih", "permanent": true }
   ]
 }

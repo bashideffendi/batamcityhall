@@ -45,7 +45,7 @@ export function SaatIni() {
           <p className="bch-data cu-saat-ini-baris">
             {rv.latest && `Radar pukul ${rv.latest.time} WIB`}
             {rv.latest && slot && " · "}
-            {slot && `prakiraan berlaku sampai pukul ${WIB(slot.validTo)} WIB`}
+            {slot && `prakiraan sampai pukul ${WIB(slot.validTo)} WIB`}
           </p>
         )}
       </div>
@@ -72,7 +72,7 @@ const ENTRI = [
     no: "03",
     href: "/cuaca/cctv",
     judul: "CCTV Lalu Lintas",
-    ket: `Kamera lalu lintas di ${MAPPED_CAMS.length} titik jalan utama Batam.`,
+    ket: `Kamera di ${MAPPED_CAMS.length} titik jalan utama Batam.`,
     grafis: "/grafis/sub-cctv.webp",
   },
 ];
@@ -88,7 +88,7 @@ export function IsiLoketCuaca() {
         {stat} · citra pukul {rv.latest.time} WIB
       </span>
     ) : null,
-    "02": slot ? <span className="bch-data">Prakiraan berlaku sampai pukul {WIB(slot.validTo)} WIB</span> : null,
+    "02": slot ? <span className="bch-data">Berlaku sampai pukul {WIB(slot.validTo)} WIB</span> : null,
     "03": <span className="bch-data">{MAPPED_CAMS.length} titik kamera</span>,
   };
   return (

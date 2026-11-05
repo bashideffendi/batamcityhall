@@ -1,3 +1,4 @@
+import { kaidahJudul } from "@/lib/judul";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GARIS_WAKTU, LABEL_KATEGORI, LABEL_METODE, PENDUDUK, WISMAN } from "@/features/sejarah/data";
@@ -11,8 +12,7 @@ import { LencanaStatus, TeksMiring } from "@/features/sejarah/Status";
 import type { KunciStatus } from "@/features/sejarah/data";
 import "@/features/sejarah/sejarah.css";
 
-const LEDE =
-  "Halaman ini menelusuri perjalanan Batam dari pulau di pesisir Selat Singapura menjadi kota berpenduduk lebih dari satu juta jiwa. Peristiwa yang versinya berbeda antarsumber diberi tanda.";
+const LEDE = "Batam tumbuh dari pulau pesisir menjadi kota berpenduduk lebih dari sejuta jiwa.";
 
 export const metadata: Metadata = {
   title: "Sejarah Batam",
@@ -77,7 +77,7 @@ export default function Sejarah() {
         <h2 id="judul-garis" className="mb-2">
           Garis Waktu
         </h2>
-        <p className="bch-measure mt-0">Bagian ini memuat {GARIS_WAKTU.length} peristiwa, diurutkan menurut tahun.</p>
+        <p className="bch-measure mt-0">Diurutkan menurut tahun.</p>
         <GarisWaktu entri={GARIS_WAKTU} kategori={LABEL_KATEGORI} />
       </section>
 
@@ -88,12 +88,12 @@ export default function Sejarah() {
         <p className="bch-lede mt-0">Belum ada etimologi yang terbukti.</p>
         <p className="bch-measure">
           BPNB Kepri menulis: “belum ada data yang valid yang jadi argumen pemberian nama Batam”. Karena itu,{" "}
-          {versi.length} versi di bawah ditulis berdampingan.
+          {versi.length} versi ditulis berdampingan.
         </p>
         <ul className="sj-versi" data-versi-nama={versi.length}>
           {versi.map((v) => (
             <li key={v.versi} className="bch-card">
-              <h3>{v.versi}</h3>
+              <h3>{kaidahJudul(v.versi)}</h3>
               <p className="mt-1 mb-2">
                 <TeksMiring isi={v.isi} />
               </p>
@@ -111,7 +111,7 @@ export default function Sejarah() {
         <ul className="sj-versi" data-nama-tempat={tempat.length}>
           {tempat.map((t) => (
             <li key={t.nama} className="bch-card">
-              <h4>{t.nama}</h4>
+              <h4>{kaidahJudul(t.nama)}</h4>
               <p className="mt-1 mb-2">
                 <TeksMiring isi={t.isi} />
               </p>
@@ -127,9 +127,7 @@ export default function Sejarah() {
         <h2 id="judul-fisik" className="mb-2">
           Perubahan Fisik Kota
         </h2>
-        <p className="bch-measure mt-0">
-          Tabel ini memuat {KARTU_DULU.length} lokasi yang berubah sejak Batam dibangun.
-        </p>
+        <p className="bch-measure mt-0">Daftar {KARTU_DULU.length} lokasi yang berubah sejak Batam dibangun.</p>
         <div className="bch-table-wrap">
           <table className="bch-table bch-tabel-tumpuk sj-tabel">
             <thead>
@@ -158,7 +156,7 @@ export default function Sejarah() {
         <h2 id="judul-penduduk" className="mb-2">
           Penduduk, dari Sekitar 6.000 Jiwa
         </h2>
-        <p className="bch-measure mt-0">Setiap metode punya garis sendiri karena yang dihitung memang berbeda.</p>
+        <p className="bch-measure mt-0">Tiap metode punya garis sendiri karena yang dihitung berbeda.</p>
         <GrafikPenduduk data={PENDUDUK} />
         <div className="bch-table-wrap mt-4">
           <table className="bch-table bch-tabel-tumpuk sj-tabel" data-tabel-penduduk>
@@ -238,7 +236,7 @@ export default function Sejarah() {
             </li>
           ))}
         </ul>
-        <p className="sj-kecil mt-4">Halaman ini terakhir diperbarui 5 November 2026.</p>
+        <p className="sj-kecil mt-4">Terakhir diperbarui 5 November 2026.</p>
       </section>
     </div>
   );

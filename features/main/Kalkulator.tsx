@@ -41,13 +41,11 @@ export default function Kalkulator() {
             tambahan.
           </p>
         ) : (
-          <p className="m-0">Isi kurs dan jumlah orang untuk melihat perkiraan ongkos.</p>
+          <p className="m-0">Isi kurs dan jumlah orang.</p>
         )}
       </div>
 
-      <p className="bch-card-meta mt-4 mb-0">
-        Perhitungan memakai tarif feri per {TARIF_PER}. Ongkos sebenarnya dapat berbeda.
-      </p>
+      <p className="bch-card-meta mt-4 mb-0">Memakai tarif feri per {TARIF_PER}. Ongkos sebenarnya dapat berbeda.</p>
     </div>
   );
 }

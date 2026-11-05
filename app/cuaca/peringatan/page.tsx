@@ -13,10 +13,7 @@ export default function PeringatanCuacaHalaman() {
     <div className="bch-page cu-halaman-teks">
       <TabCuaca />
       <h1 className="mt-2">Peringatan Dini Cuaca</h1>
-      <p className="bch-lede">
-        Halaman ini memuat peringatan dini cuaca yang berlaku di Kepulauan Riau. Peringatan yang mengenai kecamatan di
-        Batam ditaruh paling atas.
-      </p>
+      <p className="bch-lede">Peringatan untuk Batam tampil paling atas, disusul Kepulauan Riau lainnya.</p>
       <DaftarPeringatan />
     </div>
   );

@@ -39,7 +39,7 @@ export default function FormKoreksi({
   if (hasil?.ok) {
     return (
       <p className="bch-note" role="status">
-        Terima kasih, koreksinya masuk. Moderator meninjaunya satu per satu, jadi perubahannya tidak langsung terlihat.
+        Terima kasih, koreksinya masuk. Moderator meninjau satu per satu, jadi perubahan tidak langsung terlihat.
       </p>
     );
   }
@@ -75,7 +75,7 @@ export default function FormKoreksi({
       <Kolom
         nama="kontak"
         label="Nomor ponsel atau surel (boleh dikosongkan)"
-        petunjuk="Tidak pernah ditampilkan. Wajib untuk permintaan tentang data pribadi supaya kami dapat memastikan data itu milikmu."
+        petunjuk="Tidak pernah ditampilkan. Wajib untuk permintaan data pribadi supaya kami dapat memastikan pemiliknya."
         galat={galat.kontak}
       >
         {(a) => <input {...a} className="bch-input" name="kontak" maxLength={120} autoComplete="off" />}

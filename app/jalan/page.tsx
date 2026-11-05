@@ -5,14 +5,14 @@ import FeriTerakhirMuat from "@/features/jalan/FeriTerakhirMuat";
 
 export const metadata: Metadata = {
   title: "Transportasi",
-  description: "Bagian ini memuat bus Trans Batam, feri ke Singapura dan Malaysia, dan pompong antarpulau.",
+  description: "Naik bus Trans Batam, feri ke Singapura dan Malaysia, atau pompong antarpulau.",
 };
 
 const PINTU = [
   { href: "/jalan/trans-batam", nama: "Trans Batam", ket: "sembilan koridor, tarif Rp5.000" },
   { href: "/jalan/peta", nama: "Peta Transportasi", ket: "koridor bus, terminal feri, dan pelabuhan rakyat" },
   { href: "/jalan/feri", nama: "Feri", ket: "jadwal ke Singapura, Johor, dan pulau sekitar" },
-  { href: "/jalan/pompong", nama: "Pompong", ket: "perahu ke pulau-pulau di sekitar Batam" },
+  { href: "/jalan/pompong", nama: "Pompong", ket: "perahu ke pulau sekitar Batam" },
   { href: "/jalan/feri/panduan", nama: "Panduan Menyeberang", ket: "paspor, lapor masuk, dan barang bawaan" },
 ];
 
@@ -23,7 +23,7 @@ export default function Jalan() {
         nomor="04"
         lede={
           <>
-            Bagian ini memuat bus Trans Batam, feri ke Singapura dan Malaysia, dan <em>pompong</em> antarpulau.
+            Naik bus Trans Batam, feri ke Singapura dan Malaysia, atau <em>pompong</em> antarpulau.
           </>
         }
       />

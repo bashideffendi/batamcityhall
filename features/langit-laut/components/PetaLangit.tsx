@@ -89,7 +89,7 @@ export default function PetaLangit({ theme, children, opsi }: { theme: ThemeMode
   return (
     <>
       <div ref={wadah} className="ll-peta" />
-      {gagal && <p className="ll-peta-gagal">Peta tidak dapat dimuat. Coba muat ulang dalam beberapa saat.</p>}
+      {gagal && <p className="ll-peta-gagal">Peta tidak dapat dimuat. Coba muat ulang sebentar lagi.</p>}
       {map && <KonteksPeta.Provider value={map}>{children}</KonteksPeta.Provider>}
     </>
   );

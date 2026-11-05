@@ -5,8 +5,7 @@ import { LABEL_STATUS } from "@/features/budaya/label";
 import NavBudaya, { KickerCerita } from "@/features/budaya/NavBudaya";
 import "@/features/budaya/budaya.css";
 
-const LEDE =
-  "Kalender ini memuat acara budaya dan komunitas di Batam sepanjang tahun. Tanggal dapat berubah. Tanyakan kepada penyelenggara sebelum datang.";
+const LEDE = "Tanggal acara di Batam dapat berubah; tanyakan penyelenggara sebelum datang.";
 
 export const metadata: Metadata = {
   title: "Kalender Acara",

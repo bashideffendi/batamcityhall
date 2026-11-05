@@ -1,3 +1,4 @@
+import { kaidahJudul } from "@/lib/judul";
 import type { Metadata } from "next";
 import Link from "next/link";
 import darurat from "@/data/darurat/nomor_darurat.json";
@@ -38,7 +39,7 @@ export default function Darurat() {
             <a className="bch-nomor" href={telHref(n.kontak)} aria-label={`${n.nama}, telepon ${n.kontak}`}>
               {n.kontak}
             </a>
-            <h2>{n.nama}</h2>
+            <h2>{kaidahJudul(n.nama)}</h2>
           </li>
         ))}
       </ul>

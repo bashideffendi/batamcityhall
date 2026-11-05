@@ -114,7 +114,7 @@ export default async function KartuKampung({ params }: Props) {
       <div className="bch-prose mt-5">
         {k.yang_bisa_dilihat.length > 0 && (
           <>
-            <h2>Yang bisa dilihat</h2>
+            <h2>Yang Bisa Dilihat</h2>
             <ul data-yang-dilihat>
               {k.yang_bisa_dilihat.map((y) => (
                 <li key={y}>{y}</li>
@@ -166,7 +166,7 @@ export default async function KartuKampung({ params }: Props) {
           </>
         )}
 
-        <h2>Etika berkunjung</h2>
+        <h2>Etika Berkunjung</h2>
         <ul data-etika>
           {ETIKA.map((e) => (
             <li key={e}>{e}</li>

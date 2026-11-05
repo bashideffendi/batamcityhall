@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import DaftarNomor from "@/components/site/DaftarNomor";
 import PembukaLoket from "@/components/site/PembukaLoket";
 
-const LEDE = "Bagian ini memuat kartu pos digital dari Batam dan kalkulator ongkos belanja ke Singapura.";
+const LEDE = "Buat kartu pos digital dan hitung ongkos belanja ke Singapura.";
 
 export const metadata: Metadata = {
   title: "Ruang Main",
@@ -13,12 +13,12 @@ const PINTU = [
   {
     href: "/main/kartu-pos",
     nama: "Kartu Pos dari Batam",
-    ket: "Pilih gambar, tulis pesan, lalu unduh sebagai gambar untuk dikirim.",
+    ket: "Pilih gambar, tulis pesan, lalu unduh.",
   },
   {
     href: "/main/singapura-atau-nagoya",
     nama: "Belanja di Singapura atau di Nagoya?",
-    ket: "Hitung ongkos menyeberang ke Singapura sebelum memutuskan tempat belanja.",
+    ket: "Hitung ongkos menyeberang ke Singapura.",
   },
 ];
 

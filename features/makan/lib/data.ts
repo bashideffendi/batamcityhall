@@ -79,6 +79,28 @@ export function getPlace(slug: string): PlaceWithGeo | undefined {
   return Object.hasOwn(placeMap, slug) ? placeMap[slug] : undefined;
 }
 
+/** Tempat terdekat dari satu tempat. Koordinat perkiraan, jadi ini hanya untuk saran. */
+export function tempatTerdekat(p: PlaceWithGeo, n: number): PlaceWithGeo[] {
+  return places
+    .filter((x) => x.id !== p.id)
+    .map((x) => ({ x, km: haversineKm(p.lat, p.lng, x.lat, x.lng) }))
+    .sort((a, b) => a.km - b.km)
+    .slice(0, n)
+    .map(({ x }) => x);
+}
+
+/** Jumlah tempat per id kawasan. Kawasan tanpa tempat tidak punya halaman. */
+export const areaCounts: Record<string, number> = places.reduce(
+  (acc, p) => {
+    acc[p.area] = (acc[p.area] ?? 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>,
+);
+export const kawasanBerisi = areas
+  .filter((a) => (areaCounts[a.id] ?? 0) > 0)
+  .sort((a, b) => areaCounts[b.id] - areaCounts[a.id]);
+
 /** Jumlah tempat per id kategori. */
 export const categoryCounts: Record<string, number> = places.reduce(
   (acc, p) => {

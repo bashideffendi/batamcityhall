@@ -118,15 +118,15 @@ export default async function Tempat({ params }: Props) {
           />
           {p.status_koordinat !== "terverifikasi" && (
             <p className="bch-catatan-halaman">
-              Titik di peta adalah perkiraan area.
+              Titik ini perkiraan area.
               {!minimal && (
                 <>
                   {" "}
-                  Gunakan{" "}
+                  Lokasi persisnya ada di{" "}
                   <a href={tautanArah(p)} target="_blank" rel="noopener noreferrer">
                     Petunjuk arah
-                  </a>{" "}
-                  untuk lokasi persisnya.
+                  </a>
+                  .
                 </>
               )}
             </p>
@@ -139,7 +139,7 @@ export default async function Tempat({ params }: Props) {
 
         {minimal ? (
           <p>
-            Kartu ini hanya memuat nama dan letak umumnya. Batas, luas, dan status lahan tidak kami tampilkan.{" "}
+            Kartu ini hanya memuat nama dan letak umum, tanpa batas, luas, dan status lahan.{" "}
             {idKartuKampung(p) ? (
               <Link href={`/cerita/kampung-tua/${idKartuKampung(p)}`}>Baca ceritanya di Cerita dan Budaya</Link>
             ) : (

@@ -12,6 +12,13 @@ Versi 1.1 mengganti arah tampilan menjadi editorial dengan grafis Riso (bagian 4
 > 4. Judul daftar bagian di beranda: "Jelajahi Batam", tanpa penanda.
 > 5. Route dan nama bagian tidak berubah. Nama `LOKET` di kode dan nama berkas `loket-*.webp` tidak tampil, jadi tetap.
 
+> **Koreksi pemilik, 6 November 2026. Menang atas semua isi di bawah dan atas koreksi di atas bila bertentangan.**
+>
+> 1. **Teks singkat, di seluruh situs.** Orang malas membaca. Setiap kalimat harus efektif: buang kata dan kalimat yang tidak menambah informasi. Kalimat panjang hanya boleh bila memang perlu untuk menjelaskan sesuatu. Naskah bagian 3 tidak lagi wajib dipakai persis; yang menang adalah teks yang lebih singkat dengan fakta yang sama. Aturan bahasa di bagian 2 tetap berlaku. Isi faktual tidak boleh berubah, terutama legalitas, Rempang, sejarah, kesehatan, darurat, dan hukum.
+> 2. **Makan didesain ulang** mengikuti riset platform makanan (November 2026). Menu baru: Hidangan · Kawasan · Panduan · Dekat feri · Peta · Simpanan, ditambah Cara Kami Memilih. Alamat `/makan/daftar`, `/makan/kategori`, `/makan/jalur`, `/makan/tersimpan`, dan `/makan/tentang` dialihkan ke alamat baru. Bagian 3.4 di bawah hanya berlaku untuk hal yang tidak diubah desain baru.
+> 3. **Nama hidangan, nama kategori, menu andalan, dan semua teks yang tampil sebagai judul memakai Title Case** (kaidah 2.3 untuk judul): Martabak dan Prata, bukan Martabak dan prata. Tabel kategori di 3.4 dan aturan "nama kategori kapital awal" di 2.3 tidak berlaku lagi. `lib/judul.ts` menyediakan `kaidahJudul`. Pengecualian: entri kamus mengikuti cara penulisan kamus. Tombol, saringan, dan label status tetap kapital awal.
+> 4. **Galeri foto di detail tempat.** Bingkai kosong boleh tampil sampai foto tersedia, atas permintaan pemilik. Prinsip 1.7 tidak berlaku untuk galeri ini. Foto ditaruh di `public/foto/makan/<id-tempat>/`.
+
 ## Cara Memakai Pedoman Ini
 
 **Untuk Claude Code:**

@@ -14,7 +14,7 @@ type Props = {
 
 /** Sub-baris kamera: kenapa perlu diperhatikan dulu, baru wilayahnya. */
 export const camSub = (cam: Cam, failed: boolean) =>
-  failed ? "Gagal Diputar Tadi" : cam.approx ? "Posisi Perkiraan" : cam.area;
+  failed ? "Gagal diputar tadi" : cam.approx ? "Lokasi perkiraan" : cam.area;
 
 // Daftar kamera satu kelompok (gelembung angka yang diketuk), menggantikan isi panel di
 // antara pegangan dan footer. Fokus pindah ke judul saat muncul; × atau Esc menutup
@@ -41,7 +41,7 @@ export default function CamList({ members, dead, onPick, onZoom, onClose }: Prop
         <h2 className="cam-list-title" id="cam-list-title" ref={headRef} tabIndex={-1}>
           {members.length} Kamera di Sini
         </h2>
-        <button className="x-btn" onClick={onClose} aria-label="Tutup Daftar Kamera">
+        <button className="x-btn" onClick={onClose} aria-label="Tutup daftar kamera">
           <IconClose />
         </button>
       </div>
@@ -62,7 +62,7 @@ export default function CamList({ members, dead, onPick, onZoom, onClose }: Prop
         })}
       </ul>
       <button className="link-btn cam-zoom" onClick={onZoom}>
-        Perbesar Peta ke Sini
+        Perbesar peta ke sini
       </button>
     </div>
   );

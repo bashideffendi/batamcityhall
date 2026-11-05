@@ -6,8 +6,7 @@ import JalanNav from "@/features/jalan/JalanNav";
 
 export const metadata: Metadata = {
   title: "Pompong",
-  description:
-    "Perahu kayu bermesin untuk menyeberang ke pulau-pulau di sekitar Batam. Tarifnya ditentukan pemilik perahu dan dapat ditawar.",
+  description: "Perahu kayu bermesin ke pulau sekitar Batam, tarifnya ditentukan pemilik dan dapat ditawar.",
 };
 
 const utama = BARIS_POMPONG.find((b) => b.tegas);
@@ -22,8 +21,7 @@ export default function Pompong() {
       <p className="bch-kicker m-0">Transportasi</p>
       <h1 className="mt-2">Pompong</h1>
       <p className="bch-lede">
-        Perahu kayu bermesin untuk menyeberang ke pulau-pulau di sekitar Batam. Tarifnya ditentukan pemilik perahu dan
-        dapat ditawar.
+        Perahu kayu bermesin ke pulau sekitar Batam, tarifnya ditentukan pemilik dan dapat ditawar.
       </p>
       <JalanNav aktif="/jalan/pompong" />
 
@@ -98,7 +96,7 @@ export default function Pompong() {
       {PELANTAR_KOSONG.length > 0 && (
         <>
           <h2 className="mt-7 mb-3">Pelantar Lain</h2>
-          <p>Pelantar berikut ada, tetapi tujuan, jadwal, dan tarifnya belum tercatat.</p>
+          <p>Tujuan, jadwal, dan tarifnya belum tercatat.</p>
           <ul className="jl-daftar-rapat">
             {PELANTAR_KOSONG.map((p) => (
               <li key={p.id}>

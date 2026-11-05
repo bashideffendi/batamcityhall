@@ -17,7 +17,7 @@ export const BULAN = [
 ] as const;
 
 /** Judul kelompok untuk acara yang kolom `bulan`-nya kosong di data. */
-export const BULAN_TIDAK_TETAP = "Bulan tidak tetap";
+export const BULAN_TIDAK_TETAP = "Bulan Tidak Tetap";
 
 // Label kalender (pedoman 3.7). "perlu dicek" dan "tidak pasti" di data sama-sama tampil sebagai Belum pasti.
 export const STATUS_ACARA = ["rutin", "pernah", "belum pasti", "dibatalkan"] as const;

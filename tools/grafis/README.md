@@ -23,6 +23,21 @@ python3 tools/grafis/riso2.py public/grafis data/wilayah/kecamatan-kepri.geojson
 
 `markers.py` hanya dipakai untuk contoh tampilan (posisi penanda dan klaster). Di situs, penanda dibuat MapLibre.
 
+## Ilustrasi Makan
+
+`hidangan.mjs` membuat 17 ilustrasi hidangan (`public/grafis/hidangan/`) dan 6 ilustrasi panduan (`public/grafis/panduan/`). Algoritmanya sama dengan `riso.py`, tetapi hanya perlu Node dan `sharp` dari `node_modules`, tanpa Python dan `rsvg-convert`. Hasilnya sama tiap dijalankan. Batas ukuran 200 KB per gambar.
+
+```bash
+# semua gambar
+node tools/grafis/hidangan.mjs
+
+# sebagian gambar, menurut id
+node tools/grafis/hidangan.mjs bakso cafe
+
+# lembar kontak dan versi 72 px per gambar
+node tools/grafis/hidangan.mjs --kontak <folder>
+```
+
 ## Cara Kerja
 
 1. Setiap tinta digambar sebagai lapisan SVG hitam di atas transparan.

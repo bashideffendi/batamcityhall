@@ -5,7 +5,7 @@ import "@/features/berita/berita.css";
 
 export const metadata: Metadata = {
   title: "Berita Batam",
-  description: "Judul berita terbaru tentang Batam dari media lokal. Setiap judul membuka artikel di situs medianya.",
+  description: "Judul berita terbaru tentang Batam dari media lokal.",
 };
 
 export default function HalamanBerita() {
@@ -15,9 +15,7 @@ export default function HalamanBerita() {
         <Link href="/info">Informasi Warga</Link>
       </nav>
       <h1 className="mt-2">Berita Batam</h1>
-      <p className="bch-lede">
-        Judul berita terbaru tentang Batam dari media lokal. Setiap judul membuka artikel di situs medianya.
-      </p>
+      <p className="bch-lede">Judul terbaru dari media lokal tertaut ke situs medianya.</p>
       <DaftarBerita />
     </div>
   );

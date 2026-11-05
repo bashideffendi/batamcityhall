@@ -16,7 +16,7 @@ import DiagramRelasi from "@/features/nama-jalan/DiagramRelasi";
 import "@/features/kampung-tua/kampung-tua.css";
 import "@/features/nama-jalan/nama-jalan.css";
 
-const LEDE = "Halaman ini mengenalkan tokoh yang namanya dipakai untuk jalan, jembatan, dan gedung di Batam.";
+const LEDE = "Nama tokoh-tokoh ini dipakai untuk jalan, jembatan, dan gedung di Batam.";
 
 export const metadata: Metadata = {
   title: "Siapa di Balik Nama Jalan",
@@ -30,8 +30,8 @@ export default function NamaJalan() {
       <h1 className="mt-2">Siapa di Balik Nama Jalan</h1>
       <p className="bch-lede">{LEDE}</p>
       <p className="bch-note mt-3">
-        Halaman ini memuat {TOKOH.length} tokoh dan {PENAMAAN.length} nama tempat. Kartu berbingkai putus-putus dan
-        bertanda bintang garis adalah tokoh hikayat.
+        Ada {TOKOH.length} tokoh dan {PENAMAAN.length} nama tempat. Kartu berbingkai putus-putus dan bertanda bintang
+        garis adalah tokoh hikayat.
       </p>
       <nav className="bch-sub-nav" aria-label="Bagian halaman">
         <a href="#tokoh">Tokoh</a>
@@ -104,7 +104,7 @@ export default function NamaJalan() {
         <DiagramRelasi />
         <div className="bch-prose">
           <h3>Garis Keluarga Lain</h3>
-          <p>Nama-nama ini belum punya kartu tokoh sendiri.</p>
+          <p>Nama-nama ini belum punya kartu tokoh.</p>
           <dl className="bch-kartu-fakta" data-garis-tanpa-kartu>
             {GARIS_TANPA_KARTU.map((g) => (
               <div key={g.judul}>
@@ -136,7 +136,7 @@ export default function NamaJalan() {
           ))}
         </ul>
         <p>
-          Ada yang keliru, atau tahu siapa di balik nama jalan di kampungmu? <Link href="/koreksi">Kirim koreksi</Link>
+          Ada yang keliru atau terlewat? <Link href="/koreksi">Kirim koreksi</Link>
         </p>
       </section>
     </div>

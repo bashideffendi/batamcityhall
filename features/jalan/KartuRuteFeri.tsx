@@ -1,3 +1,4 @@
+import { kaidahJudul } from "@/lib/judul";
 import { catatanJadwalLama, dataSudahLama, kapital } from "./feri-terakhir";
 import type { KartuRute } from "./feri-data";
 
@@ -15,7 +16,7 @@ export default function KartuRuteFeri({ r }: { r: KartuRute }) {
   return (
     <article className="bch-card jl-kartu-rute" data-rute={r.id}>
       <p className="bch-kicker m-0">{JENIS[r.jenis]}</p>
-      <h3>{r.judul}</h3>
+      <h3>{kaidahJudul(r.judul)}</h3>
       {r.terganggu && (
         <p className="bch-note" data-tone="danger">
           {r.terganggu}
@@ -49,7 +50,7 @@ export default function KartuRuteFeri({ r }: { r: KartuRute }) {
       {adaJadwal ? (
         <div className="bch-table-wrap">
           <table className="bch-table bch-tabel-tumpuk jl-tabel-jadwal">
-            <caption className="jl-caption">Jadwal keberangkatan, waktu setempat di pelabuhan asal</caption>
+            <caption className="jl-caption">Waktu setempat di pelabuhan asal</caption>
             <thead>
               <tr>
                 <th scope="col">Rute</th>

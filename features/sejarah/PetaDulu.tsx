@@ -14,7 +14,7 @@ const gerakTenang = () =>
   document.documentElement.dataset.gerak === "tenang" || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const TEKS_PETA = {
-  "Map.Title": "Peta titik Batam Dulu. Semua titik juga ada di daftar kartu di bawah peta.",
+  "Map.Title": "Peta titik Batam Dulu. Semua titik juga ada di daftar.",
   "AttributionControl.ToggleAttribution": "Buka atau tutup atribusi",
   "CooperativeGesturesHandler.WindowsHelpText": "Tekan Ctrl sambil menggulir untuk memperbesar peta",
   "CooperativeGesturesHandler.MacHelpText": "Tekan ⌘ sambil menggulir untuk memperbesar peta",

@@ -8,7 +8,7 @@ export default function NotFound() {
     <div className="bch-page">
       <p className="bch-kicker m-0">404</p>
       <h1 className="mt-2">Halaman Tidak Ditemukan</h1>
-      <p className="bch-lede">Alamatnya mungkin salah ketik atau halamannya sudah dipindahkan.</p>
+      <p className="bch-lede">Alamatnya mungkin salah ketik atau halamannya sudah pindah.</p>
       <div className="flex flex-wrap gap-3 mt-5">
         <Link href="/" className="bch-btn">
           Ke beranda

@@ -57,14 +57,14 @@ const fmtTime = (ms: number) =>
 
 const wibDay = (ms: number) => new Date(ms + 7 * 3600 * 1000).toISOString().slice(0, 10);
 
-/** Judul pesan kamera mati/beku/hilang (Title Case; tanggal disebut kalau bukan hari ini). */
+/** Judul pesan kamera mati/beku/hilang (tanggal disebut kalau bukan hari ini). */
 function deadTitle(verdict: Verdict, lastSeen: number | null): string {
   if (verdict === "beku") {
-    if (!lastSeen) return "Gambar Kamera Membeku";
-    return `Gambar Membeku sejak ${wibDay(lastSeen) === wibDay(Date.now()) ? fmtTime(lastSeen) : fmtLastSeen(lastSeen)}`;
+    if (!lastSeen) return "Gambar kamera membeku";
+    return `Gambar membeku sejak ${wibDay(lastSeen) === wibDay(Date.now()) ? `${fmtTime(lastSeen)} WIB` : fmtLastSeen(lastSeen)}`;
   }
-  if (verdict === "hilang") return "Kamera Sudah Tidak Ada";
-  return "Kamera Sedang Mati";
+  if (verdict === "hilang") return "Kamera sudah tidak ada";
+  return "Kamera tidak aktif";
 }
 
 export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: Props) {
@@ -219,9 +219,9 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
       // ditangkap canPlayType. Jadi kode 4 dini = gagal tersambung, bukan salah browser.
       const beforeMeta = video.readyState < 1 || !firstFrag;
       if (code === 4 && beforeMeta)
-        fail("Belum Bisa Tersambung ke Kamera", "Galat media kode 4 sebelum metadata termuat.");
-      else if (code === 3 || code === 4) fail("Browser Ini Belum Bisa Memutar Kamera Ini");
-      else fail(hasPlayed ? "Koneksi ke Kamera Terputus" : "Belum Bisa Tersambung ke Kamera");
+        fail("Belum bisa tersambung ke kamera", "Galat media kode 4 sebelum metadata termuat.");
+      else if (code === 3 || code === 4) fail("Peramban ini belum bisa memutar kamera ini");
+      else fail(hasPlayed ? "Koneksi ke kamera terputus" : "Belum bisa tersambung ke kamera");
     };
     video.addEventListener("playing", onPlaying);
     video.addEventListener("pause", onPause);
@@ -232,7 +232,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
     // Watchdog: 10 detik tanpa potongan pertama → kabari, jangan diam. Loading tetap jalan.
     later(() => {
       if (!firstFrag && !settled) {
-        setNote("Jaringan Sedang Berat, Masih Dicoba…");
+        setNote("Jaringan berat, masih dicoba");
         setShowRetry(true);
       }
     }, 10000);
@@ -296,7 +296,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
         return; // NOL byte video
       }
       if (v.verdict === "server") {
-        fail("Server Kamera Sedang Gangguan");
+        fail("Server kamera sedang gangguan");
         return;
       }
       // "diam" (timeout/offline) TIDAK memvonis kamera — tetap coba.
@@ -310,7 +310,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
       const appleNative = nativeOk && !("MediaSource" in window);
       if (appleNative || !HlsCtor || !HlsCtor.isSupported()) {
         if (!nativeOk) {
-          fail("Browser Ini Belum Bisa Memutar Kamera Ini", "Browser tidak mendukung siaran HLS.");
+          fail("Peramban ini belum bisa memutar kamera ini", "Peramban tidak mendukung siaran HLS.");
           return;
         }
         video.addEventListener(
@@ -381,7 +381,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
             setState("buffering");
             armStall();
           }
-          if (nonFatal.length >= 3) setNote("Sinyal Kamera Putus-Putus");
+          if (nonFatal.length >= 3) setNote("Sinyal kamera putus-putus");
           return;
         }
         const code = data.response?.code ?? 0;
@@ -390,11 +390,11 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
             // 4xx nggak di-retry hls.js — dan memang jangan. Hanya 404 yang pasti "tidak ada";
             // 4xx lain (403 dsb.) belum tentu kamera mati.
             if (code === 404) dead("hilang", null);
-            else fail("Kamera Belum Bisa Diakses");
+            else fail("Kamera belum bisa diakses");
             return;
           }
           if (code >= 500) {
-            fail("Server Kamera Sedang Gangguan");
+            fail("Server kamera sedang gangguan");
             return;
           }
           const timeout =
@@ -402,7 +402,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
             data.details === Hls.ErrorDetails.MANIFEST_LOAD_TIMEOUT ||
             data.details === Hls.ErrorDetails.LEVEL_LOAD_TIMEOUT;
           if (timeout && !firstFrag) {
-            fail("Sinyalmu Kurang Kuat untuk Video Ini", "Siaran ini butuh koneksi minimal 1,2 Mbit/s.");
+            fail("Sinyal kurang kuat untuk video ini", "Siaran ini butuh koneksi minimal 1,2 Mbit/s.");
             return;
           }
           if (netRetries < 2) {
@@ -410,7 +410,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
             const delay = netRetries === 0 ? 1000 : 3000;
             netRetries++;
             setState(hasPlayed ? "buffering" : "connecting");
-            setNote("Koneksi Sempat Putus, Menyambung Ulang…");
+            setNote("Koneksi sempat putus, menyambung ulang");
             const go = () => {
               if (cancelled) return;
               h.startLoad(-1);
@@ -420,7 +420,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
             else later(go, delay);
             return;
           }
-          fail(hasPlayed ? "Koneksi ke Kamera Terputus" : "Belum Bisa Tersambung ke Kamera");
+          fail(hasPlayed ? "Koneksi ke kamera terputus" : "Belum bisa tersambung ke kamera");
           return;
         }
         // Codec tidak didukung browser (sebagian kamera menyiarkan H.265): recover percuma,
@@ -431,9 +431,9 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
           data.details === Hls.ErrorDetails.BUFFER_INCOMPATIBLE_CODECS_ERROR;
         if (codecIssue) {
           fail(
-            "Format Video Belum Didukung Browser Ini",
-            "Kamera ini menyiarkan H.265 (HEVC). Dukungannya bergantung pada browser dan perangkat.",
-            "Coba browser lain atau kamera lain.",
+            "Format video belum didukung peramban ini",
+            "Kamera ini menyiarkan H.265 (HEVC). Dukungannya bergantung pada peramban dan perangkat.",
+            "Coba peramban atau kamera lain.",
           );
           return;
         }
@@ -444,10 +444,10 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
             tryPlay();
             return;
           }
-          fail("Browser Ini Belum Bisa Memutar Kamera Ini");
+          fail("Peramban ini belum bisa memutar kamera ini");
           return;
         }
-        fail("Siaran Belum Bisa Diputar");
+        fail("Siaran belum bisa diputar");
       });
       // Urutan: loadSource dulu, baru attachMedia.
       h.loadSource(url);
@@ -501,19 +501,19 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
 
   const statusText =
     state === "checking"
-      ? "Mengecek Kamera…"
+      ? "Memeriksa kamera"
       : state === "connecting"
-        ? "Menyambung…"
+        ? "Menyambung"
         : state === "fetching"
-          ? "Mengambil Siaran…"
+          ? "Mengambil siaran"
           : state === "playing"
-            ? `Siaran ${cam.name} Tayang`
+            ? `Siaran ${cam.name} tayang`
             : state === "buffering"
-              ? "Tersendat, Menunggu Data…"
+              ? "Tersendat, menunggu data"
               : state === "dead" && deadInfo
                 ? deadTitle(deadInfo.verdict, deadInfo.lastSeen)
                 : state === "error"
-                  ? (note ?? "Kamera Belum Bisa Diakses")
+                  ? (note ?? "Kamera belum bisa diakses")
                   : "";
 
   const showLoading = state === "checking" || state === "connecting" || state === "fetching";
@@ -535,10 +535,10 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
             </h2>
             <div className="cctv-sub">
               {cam.area}
-              {cam.approx && " · Posisi Perkiraan"}
+              {cam.approx && " · Lokasi perkiraan"}
             </div>
           </div>
-          <button ref={closeRef} className="cctv-close" onClick={onClose} aria-label="Tutup Kamera">
+          <button ref={closeRef} className="cctv-close" onClick={onClose} aria-label="Tutup kamera">
             <IconClose />
           </button>
         </div>
@@ -560,7 +560,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
 
           {state === "buffering" && (
             <div className="cctv-chip" aria-hidden>
-              Tersendat…
+              Tersendat
             </div>
           )}
 
@@ -609,7 +609,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
                 </details>
               )}
               <button className="cctv-retry" onClick={retry}>
-                Coba Lagi
+                Coba lagi
               </button>
             </div>
           )}

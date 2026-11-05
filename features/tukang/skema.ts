@@ -9,18 +9,18 @@ const teks = (min: number, max: number, pesan: string) =>
     .string({ error: pesan })
     .trim()
     .min(min, { error: pesan })
-    .max(max, { error: `Terlalu panjang. Paling banyak ${max} karakter.` });
+    .max(max, { error: `Paling banyak ${max} karakter.` });
 
 const opsional = (max: number) =>
   z
     .string()
     .trim()
-    .max(max, { error: `Terlalu panjang. Paling banyak ${max} karakter.` })
+    .max(max, { error: `Paling banyak ${max} karakter.` })
     .optional()
     .transform((v) => v || null);
 
 const adaKontakPribadi = (s: string) => /\+?\d[\d\s().-]{7,}\d/.test(s) || /[^\s@]+@[^\s@]+\.[^\s@]+/.test(s);
-const PESAN_TANPA_KONTAK = "Jangan menulis nomor ponsel atau surel di sini. Ada kolom sendiri untuk itu.";
+const PESAN_TANPA_KONTAK = "Tulis nomor ponsel atau surel di kolomnya sendiri.";
 const PESAN_PERSETUJUAN = "Centang persetujuan untuk mengirim.";
 
 const kontakWarga = (pesan: string) =>
@@ -39,8 +39,8 @@ export const SkemaRekomendasi = z
     }),
     jasa: z.enum(SLUG_JASA, { error: "Pilih jenis jasa." }),
     area_kecamatan: z
-      .array(z.enum(KECAMATAN), { error: "Pilih sekurang-kurangnya satu kecamatan." })
-      .min(1, { error: "Pilih sekurang-kurangnya satu kecamatan." })
+      .array(z.enum(KECAMATAN), { error: "Pilih minimal satu kecamatan." })
+      .min(1, { error: "Pilih minimal satu kecamatan." })
       .max(KECAMATAN.length),
     area_catatan: opsional(120),
     panggilan: z.boolean().optional().default(false),
@@ -92,7 +92,7 @@ export const SkemaKoreksi = z
       .optional()
       .nullable()
       .transform((v) => v ?? null),
-    isi: teks(10, 1500, "Tulis yang perlu diperbaiki, sekurang-kurangnya satu kalimat."),
+    isi: teks(10, 1500, "Tulis yang perlu diperbaiki, minimal satu kalimat."),
     kontak: z
       .string()
       .trim()

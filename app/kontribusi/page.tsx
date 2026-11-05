@@ -11,9 +11,7 @@ export default function Kontribusi() {
   return (
     <div className="bch-page">
       <h1>Cara Berkontribusi</h1>
-      <p className="bch-lede">
-        Tiga cara membantu Batam City Hall: merekomendasikan tukang, mengirim koreksi data, dan mengirim foto lama Batam.
-      </p>
+      <p className="bch-lede">Ada tiga cara membantu Batam City Hall.</p>
       <div className="bch-prose">
         <ul>
           <li>

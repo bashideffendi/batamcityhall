@@ -68,16 +68,15 @@ const SERET_PX = 36;
 const NASKAH: Record<Mode, { judul: string; penjelas: string }> = {
   hujan: {
     judul: "Radar Hujan",
-    penjelas: "Peta ini menunjukkan hujan dari radar cuaca dalam 2,5 jam terakhir. Citra diperbarui setiap 5 menit.",
+    penjelas: "Hujan dalam 2,5 jam terakhir, diperbarui setiap 5 menit.",
   },
   ombak: {
     judul: "Tinggi Gelombang",
-    penjelas:
-      "Peta ini menunjukkan prakiraan tinggi gelombang di perairan Batam dan sekitarnya. Prakiraan diperbarui setiap 3 jam.",
+    penjelas: "Prakiraan di perairan Batam dan sekitarnya, diperbarui setiap 3 jam.",
   },
   cctv: {
     judul: "CCTV Lalu Lintas",
-    penjelas: `Kamera lalu lintas di ${MAPPED_CAMS.length} titik jalan utama Batam. Pilih kamera di peta atau di daftar untuk melihat siaran langsung.`,
+    penjelas: `Siaran langsung dari ${MAPPED_CAMS.length} titik jalan utama Batam.`,
   },
 };
 
@@ -422,7 +421,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
           {mode === "ombak" && (
             <Ringkasan kalimat={ombak.headline} baris={ombak.context} onRetry={ombak.retry ? () => ofs.load(true) : undefined} />
           )}
-          {mode === "cctv" && <p className="cu-petunjuk">Ketuk titik di peta untuk memilih kamera.</p>}
+          {mode === "cctv" && <p className="cu-petunjuk">Ketuk titik di peta atau pilih dari daftar.</p>}
 
           {!wide && <TabCuaca aktif={mode} tanpaRemah />}
 
@@ -450,7 +449,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
 
             <section className="cu-sakelar-grup" aria-labelledby="cu-sakelar-judul">
               <h2 id="cu-sakelar-judul" className="cu-sub">
-                Tampilkan juga di peta
+                Tampilkan Juga di Peta
               </h2>
               {SAKELAR[mode].map((s) => (
                 <Sakelar

@@ -10,8 +10,7 @@ import "@/features/tukang/tukang.css";
 
 export const metadata: Metadata = {
   title: "Kirim Koreksi",
-  description:
-    "Bantu kami memperbaiki data: tempat yang sudah tutup, pindah, berganti nomor, atau titik yang keliru di peta.",
+  description: "Laporkan tempat yang tutup, pindah, berganti nomor, atau salah titik di peta.",
 };
 
 type Props = { searchParams: Promise<{ tempat?: string; tukang?: string; jenis?: string }> };
@@ -26,9 +25,7 @@ export default async function Koreksi({ searchParams }: Props) {
   return (
     <div className="bch-page bch-tk-halaman">
       <h1>Kirim Koreksi</h1>
-      <p className="bch-lede">
-        Bantu kami memperbaiki data: tempat yang sudah tutup, pindah, berganti nomor, atau titik yang keliru di peta.
-      </p>
+      <p className="bch-lede">Laporkan tempat yang tutup, pindah, berganti nomor, atau salah titik di peta.</p>
 
       {tempat && (
         <p className="bch-note" data-koreksi-tempat={tempat.id}>
@@ -37,7 +34,7 @@ export default async function Koreksi({ searchParams }: Props) {
       )}
       {q.tempat && !tempat && (
         <p className="bch-note" data-tone="caution">
-          Kode tempat di tautan ini tidak kami kenal. Tulis nama tempatnya di kolom di bawah.
+          Kode tempat tidak dikenal. Tulis nama tempatnya di kolom di bawah.
         </p>
       )}
       {tukangId && <p className="bch-note">Koreksi untuk satu entri Tukang Langganan.</p>}
@@ -48,7 +45,6 @@ export default async function Koreksi({ searchParams }: Props) {
       <div className="bch-prose mt-6">
         <h2>Yang Paling Membantu</h2>
         <ul>
-          <li>Tempat yang sudah tutup, pindah, atau berganti nomor.</li>
           <li>Titik lokasi tempat yang belum ada di peta.</li>
           <li>Permintaan pemilik kantor PPAT atau notaris untuk memperbaiki atau menghapus data kantornya.</li>
           <li>

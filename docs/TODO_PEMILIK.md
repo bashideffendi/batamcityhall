@@ -6,6 +6,16 @@ Diperbarui 5 November 2026 setelah pedoman diterapkan. Situs tayang sebagai prat
 
 Tayang di https://batam.masbash.id (Railway, cabang `fase-1-fondasi`). Selama `SITE_PRATINJAU=1`, mesin pencari tidak mengindeks situs. Hapus variabel itu saat situs diumumkan.
 
+## Keputusan baru (desain ulang Makan, 6 Nov 2026)
+
+1. **"Dikunjungi penyusun" dihapus** dari Cara Kami Memilih, karena `verified` hanya 18 dari 117. Bila memang semua dikunjungi, kalimatnya bisa dikembalikan.
+2. **Status halal:** riset menyarankan "Halal" berarti bersertifikat. Data tidak menyatakan itu, jadi tetap tertulis "hasil kurasi, bukan sertifikasi".
+3. **Waktu tempuh ke terminal** tidak ditampilkan karena tidak ada data jalan. Yang tampil jarak garis lurus dari titik perkiraan.
+4. **Tentang vs Privasi:** Tentang menulis "tidak memakai pelacak", Privasi menulis "tidak memasang iklan dan pelacak iklan". Pilih satu.
+5. **Kalimat hangat di Tentang** kini "...dibuat secara independen oleh warga Batam untuk kota yang kami tinggali." Mohon diperiksa.
+6. **Kurs** perlu diperbarui sesekali di `data/makan/kurs.json`.
+7. **Ilustrasi baru** (pedoman 4.7): lembar kontak ada di `docs/tampilan/sebelum-sesudah/makan-ulang/ilustrasi.png`.
+
 ## Keputusan yang menunggu jawaban (penerapan pedoman, 5 Nov 2026)
 
 1. **`KALIMAT_REMPANG`** masih berbunyi "lihat sumber bertanggal", padahal sumber tidak lagi tampil. Komentar kode melarang menyuntingnya tanpa pemilik. Perlu kalimat pengganti.

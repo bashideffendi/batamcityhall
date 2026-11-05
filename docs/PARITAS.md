@@ -59,7 +59,7 @@ Asal kode: hujandibatam `45281a64de5fe068de9d95b9bbc73ba4eb5af4db`, batam-bites 
 - ✔ `rating`/`reviews` tidak ditampilkan, data disimpan — e2e; tidak dipakai mengurutkan, data tetap ada di JSON
 - ✔ 117 koordinat `coord_approx` tampil "perkiraan area" dan masuk CSV koordinat — e2e, live; CSV +117 baris. Koordinat yang nanti diisi pemilik belum mengalir ke `data/makan/` (PLAN)
 - ✔ `ferries.json` diganti data feri situs; alias `batam-centre`, `sekupang`, `nongsapura` ditambahkan ke indeks (`harbour-bay` sudah ada) — alias lewat `tools/merge_aliases.json`. Nongsapura bergeser ±6,8 km, jadi hasil "dekat terminal" berubah dari situs lama
-- ✔ Route: `/makan`, `/makan/daftar`, `/makan/peta`, `/makan/kategori`, `/makan/tempat/[slug]`, `/makan/jalur`, `/makan/jalur/[slug]`, `/makan/tersimpan`, `/makan/tentang` — e2e, termasuk 404 slug
+- ✔ Route (sejak 6 Nov 2026, alamat lama dialihkan 308): `/makan`, `/makan/peta`, `/makan/hidangan`, `/makan/kawasan`, `/makan/dekat-feri`, `/makan/tempat/[slug]`, `/makan/panduan`, `/makan/panduan/[slug]`, `/makan/tersimpan`, `/makan/tentang` — e2e, termasuk 404 slug
 
 ## Pengalihan (hanya setelah semua ✔ dan izin pemilik)
 

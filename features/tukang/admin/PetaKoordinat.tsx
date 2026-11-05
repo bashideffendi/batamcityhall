@@ -104,7 +104,7 @@ export default function PetaKoordinat({
   if (!adaWebgl) {
     return (
       <p className="bch-note" data-tone="caution">
-        Peta tidak bisa dimuat di browser ini. Laut masih ada, kami saja yang belum. Koordinat tetap bisa ditempel di
+        Peta tidak bisa dimuat di browser ini. Koordinat tetap bisa ditempel di
         bawah.
       </p>
     );

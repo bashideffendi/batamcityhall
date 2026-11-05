@@ -13,9 +13,9 @@ describe("peta redirect", () => {
   it("batam-bites per path", () => {
     expect(alamatBaruBites("/")).toBe("/makan");
     expect(alamatBaruBites("/tempat/kopi-ameng")).toBe("/makan/tempat/kopi-ameng");
-    expect(alamatBaruBites("/jalur/nagoya")).toBe("/makan/jalur/nagoya");
-    expect(alamatBaruBites("/saved")).toBe("/makan/tersimpan");
-    expect(alamatBaruBites("/about")).toBe("/makan/tentang");
+    expect(alamatBaruBites("/jalur/nagoya")).toBe("/makan/panduan/nagoya");
+    expect(alamatBaruBites("/saved")).toBe("/makan/simpanan");
+    expect(alamatBaruBites("/about")).toBe("/makan/cara-memilih");
     expect(alamatBaruBites("/tidak-ada")).toBeNull();
   });
 

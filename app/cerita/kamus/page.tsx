@@ -5,8 +5,7 @@ import Kamus from "@/features/budaya/Kamus";
 import NavBudaya, { KickerCerita } from "@/features/budaya/NavBudaya";
 import "@/features/budaya/budaya.css";
 
-const judulLede = (jumlah: number) =>
-  `Kamus ini memuat ${jumlah} kata yang sering terdengar di Batam: kata Melayu Kepri, serapan dari Singapura dan Malaysia, dan istilah kawasan industri.`;
+const judulLede = (jumlah: number) => `Berisi ${jumlah} kata yang sering terdengar di Batam.`;
 
 export const metadata: Metadata = {
   title: "Kamus Melayu Kepri dan Bahasa Batam",

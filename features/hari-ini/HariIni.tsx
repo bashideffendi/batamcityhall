@@ -101,10 +101,10 @@ export default function HariIni() {
   const arahAngin = slot?.windFrom ? arahLengkap(slot.windFrom) : "";
   const paragrafLaut =
     tinggi && kecAngin !== null
-      ? `Gelombang di perairan Batam setinggi ${tinggi} meter dan angin bertiup ${kecAngin} km/jam${arahAngin ? ` dari ${arahAngin}` : ""}.`
+      ? `Gelombang ${tinggi} m di perairan Batam, angin ${kecAngin} km/jam${arahAngin ? ` dari ${arahAngin}` : ""}.`
       : "";
   const paragrafFeri = baris?.jam
-    ? `Feri terakhir ke Singapura berangkat pukul ${baris.jam} WIB.`
+    ? `Feri terakhir ke Singapura pukul ${baris.jam} WIB.`
     : ringkasFeri
       ? ringkasFeri.judul
       : "";
@@ -168,9 +168,9 @@ export default function HariIni() {
             <dd className="nilai">{tinggi ? `${tinggi} m` : perairan.error ? "Belum ada" : "Memuat"}</dd>
             <dd className="ket">
               {slot
-                ? `${kapital((slot.waveCat || "").trim())}, berlaku sampai pukul ${jamWib(slot.validTo)} WIB`
+                ? `${kapital((slot.waveCat || "").trim())}, sampai pukul ${jamWib(slot.validTo)} WIB`
                 : perairan.error
-                  ? "Data gelombang belum dapat dimuat"
+                  ? "Data belum dapat dimuat"
                   : "Memuat data"}
             </dd>
           </div>
@@ -184,11 +184,11 @@ export default function HariIni() {
             <dd className="nilai">{feri.gagal ? "Belum ada" : baris?.jam ? baris.jam : ringkasFeri ? "Habis" : "Memuat"}</dd>
             <dd className="ket">
               {feri.gagal
-                ? "Jadwal feri belum dapat dimuat"
+                ? "Jadwal belum dapat dimuat"
                 : baris?.jam
                   ? baris.terminal
                   : baris?.besok
-                    ? `Keberangkatan pertama besok pukul ${baris.besok} WIB`
+                    ? `Besok mulai pukul ${baris.besok} WIB`
                     : ringkasFeri
                       ? ringkasFeri.rincian
                       : "Memuat data"}
@@ -352,8 +352,8 @@ function PetaHariIni({ hujan, jam, jamFeri }: { hujan: Hujan | null; jam: string
         </div>
       </div>
       <figcaption>
-        <b className="bch-kicker">Peta</b> Arsiran biru menandai kecamatan yang sedang hujan menurut radar
-        {jam ? ` pukul ${jam} WIB` : ""}. Garis merah putus-putus adalah rute feri ke Singapura, digambar skematis.
+        <b className="bch-kicker">Peta</b> Arsiran biru: kecamatan yang hujan menurut radar
+        {jam ? ` pukul ${jam} WIB` : ""}. Garis merah putus-putus: rute feri ke Singapura, skematis.
       </figcaption>
     </figure>
   );

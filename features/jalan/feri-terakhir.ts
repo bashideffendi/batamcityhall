@@ -567,7 +567,7 @@ export function ringkasHariIni(hasil: HasilFeri[]): RingkasFeri {
       .sort((a, b) => keMenit(a) - keMenit(b))[0];
     return {
       judul: "Tidak ada lagi keberangkatan ke Singapura hari ini.",
-      rincian: [besok ? `Keberangkatan pertama besok pukul ${jamTitik(besok)} WIB.` : "", catatanLama]
+      rincian: [besok ? `Besok mulai pukul ${jamTitik(besok)} WIB.` : "", catatanLama]
         .filter(Boolean)
         .join(" "),
       adaDataLama: !!barisLama,

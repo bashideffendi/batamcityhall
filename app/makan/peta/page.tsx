@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import MapView from "@/features/makan/components/MapView";
+import { PetaSemua } from "@/features/makan/components/HalamanMakan";
 
 export const metadata: Metadata = {
   title: "Peta",
-  description: "Peta tempat makan di Batam. Titik di peta adalah perkiraan area.",
+  description: "Peta dan daftar 117 tempat makan di Batam. Saring menurut jam buka, halal, harga, dan terminal feri.",
 };
 
-export default function Peta() {
-  return <MapView />;
+export default function Halaman() {
+  return <PetaSemua />;
 }

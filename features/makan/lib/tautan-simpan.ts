@@ -3,7 +3,7 @@
 export const PARAM_TAUTAN = "simpan";
 
 export function buatTautan(origin: string, ids: readonly string[]): string {
-  return `${origin}/makan/tersimpan?${PARAM_TAUTAN}=${ids.join(",")}`;
+  return `${origin}/makan/simpanan?${PARAM_TAUTAN}=${ids.join(",")}`;
 }
 
 /** Terima tautan utuh, atau slug dipisah koma atau spasi. Urutan dipertahankan, ganda dibuang. */

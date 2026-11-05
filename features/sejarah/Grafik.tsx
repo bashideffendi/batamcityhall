@@ -29,7 +29,7 @@ function BidangPenduduk({ data, ringkas }: { data: TitikPenduduk[]; ringkas: boo
       viewBox={`0 0 ${lebar} ${tinggi}`}
       className={ringkas ? "sj-grafik sj-grafik-hp" : "sj-grafik sj-grafik-lebar"}
       role="img"
-      aria-label="Grafik jumlah penduduk Batam 1965 sampai 2025, dipisah menurut metode. Angka lengkapnya ada di tabel di bawah grafik."
+      aria-label="Grafik penduduk Batam 1965 sampai 2025 per metode. Angka lengkap ada di tabel."
     >
       {sumbuY.map((v) => (
         <g key={v}>
@@ -116,7 +116,7 @@ function BidangWisman({ data, lebar, kelas }: { data: TitikWisman[]; lebar: numb
       viewBox={`0 0 ${lebar} ${tinggi}`}
       className={`sj-grafik ${kelas}`}
       role="img"
-      aria-label="Grafik batang kunjungan wisatawan mancanegara ke Batam. Angka lengkapnya ada di tabel di bawah grafik."
+      aria-label="Grafik batang kunjungan wisatawan mancanegara ke Batam. Angka lengkap ada di tabel."
     >
       {data.map((d, i) => {
         const y = i * baris;

@@ -1,5 +1,6 @@
 "use client";
 
+import { kaidahJudul } from "@/lib/judul";
 import Link from "next/link";
 import { useMemo } from "react";
 import {
@@ -25,7 +26,7 @@ function KartuAcara({ a }: { a: AcaraPublik }) {
         <span>{namaKelompokAcara(a.kelompok)}</span>
         <span>{a.bulan ? BULAN[a.bulan - 1] : BULAN_TIDAK_TETAP}</span>
       </p>
-      <h3>{a.nama}</h3>
+      <h3>{kaidahJudul(a.nama)}</h3>
       {a.lokasi && <p className="bch-card-loc">{a.lokasi}</p>}
       <hr className="bch-card-rule" />
       <div className="bch-rebung-mini" aria-hidden="true" />
@@ -176,7 +177,7 @@ export default function Kalender({ acara }: { acara: AcaraPublik[] }) {
         {hasil.length} dari {acara.length} acara
       </p>
 
-      {hasil.length === 0 && <p className="bch-note">Tidak ada acara untuk saringan ini. Coba hapus saringan.</p>}
+      {hasil.length === 0 && <p className="bch-note">Tidak ada acara untuk saringan ini.</p>}
 
       {perBulan ? (
         <>

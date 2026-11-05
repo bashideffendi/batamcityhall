@@ -7,7 +7,7 @@ import { getPlace, placeMap } from "../lib/data";
 import { useFavorites } from "../lib/favorites";
 import { useI18n } from "../lib/i18n";
 import { bacaDaftarSlug, buatTautan, PARAM_TAUTAN, saringSlug } from "../lib/tautan-simpan";
-import PlaceCard from "./PlaceCard";
+import BarisTempat from "./BarisTempat";
 
 const dikenal = (slug: string) => getPlace(slug) !== undefined;
 
@@ -85,7 +85,6 @@ function EksporImpor() {
   return (
     <section className="mk-bagian mk-ekspor">
       <h2>{t("export_title")}</h2>
-      <p className="mk-catatan">{t("export_sub")}</p>
       {ids.length > 0 && (
         <div className="bch-field">
           <label htmlFor="mk-tautan-daftar">{t("export_label")}</label>
@@ -133,24 +132,30 @@ export default function TersimpanMakan() {
 
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">{t("home_title")}</p>
-      <h1 className="mt-2">{t("saved_title")}</h1>
+      <nav className="bch-remah" aria-label={t("breadcrumb")}>
+        <Link href="/makan">{t("nav_home")}</Link> / <span aria-current="page">{t("saved_title")}</span>
+      </nav>
+      <h1 className="mk-judul">{t("saved_title")}</h1>
       <p className="bch-lede">{t("saved_local")}</p>
       <TawaranTautan />
 
       {ready && saved.length === 0 && (
         <div className="mk-kosong">
           <p>{t("saved_empty")}</p>
-          <Link href="/makan/daftar" className="bch-btn">
-            {t("all_places")}
+          <Link href="/makan/peta" className="bch-btn">
+            {t("idx_all")}
           </Link>
         </div>
       )}
-      <div className="bch-grid">
-        {saved.map((p) => (
-          <PlaceCard key={p.id} place={p} Judul="h2" />
-        ))}
-      </div>
+      {saved.length > 0 && (
+        <ul className="mk-daftar mk-bagian">
+          {saved.map((p) => (
+            <li key={p.id}>
+              <BarisTempat place={p} Judul="h2" />
+            </li>
+          ))}
+        </ul>
+      )}
 
       {ready && <EksporImpor />}
     </div>

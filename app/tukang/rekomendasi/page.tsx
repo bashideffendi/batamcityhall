@@ -20,7 +20,7 @@ export default async function KirimRekomendasi() {
       <p className="bch-kicker m-0">Tukang Langganan</p>
       <h1 className="mt-2">Kirim Rekomendasi</h1>
       <p className="bch-lede">
-        Rekomendasikan tukang atau jasa yang pernah kamu pakai sendiri. Tukang tidak dapat mendaftarkan diri.
+        Rekomendasikan jasa yang pernah kamu pakai sendiri. Tukang tidak dapat mendaftarkan diri.
       </p>
       <CatatanMode mode={mode} pesanMati={PESAN_MATI_REKOMENDASI} />
       {mode !== "mati" && <FormRekomendasi bulanIni={hariIni().slice(0, 7)} kecamatan={KECAMATAN} />}

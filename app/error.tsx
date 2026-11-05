@@ -7,7 +7,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
   return (
     <div className="bch-page" role="alert">
       <h1 className="mt-2">Halaman Ini Tidak Dapat Dimuat</h1>
-      <p className="bch-lede">Terjadi masalah saat memuat halaman. Coba muat ulang dalam beberapa saat.</p>
+      <p className="bch-lede">Coba muat ulang dalam beberapa saat.</p>
       <div className="flex flex-wrap gap-3 mt-5">
         <button type="button" className="bch-btn" onClick={() => reset()}>
           Muat ulang

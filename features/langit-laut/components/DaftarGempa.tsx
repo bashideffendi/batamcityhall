@@ -126,13 +126,13 @@ export default function DaftarGempa() {
       )}
       {lamaAda && (
         <p className="mt-5" data-status="basi">
-          Data terbaru belum dapat dimuat. Yang tampil diambil
-          {data?.diambil ? ` pukul ${waktuWib(data.diambil, now)}` : " sebelumnya"}, jadi gempa yang lebih baru belum masuk.
+          Data terbaru belum dapat dimuat, jadi gempa
+          {data?.diambil ? ` sesudah pukul ${waktuWib(data.diambil, now)}` : " yang lebih baru"} belum masuk.
         </p>
       )}
       {data?.status === "sebagian" && !error && (
         <p className="mt-5" data-status="sebagian">
-          Sebagian data belum dapat dimuat, jadi daftar ini mungkin belum lengkap.
+          Sebagian data belum dapat dimuat, jadi daftar mungkin belum lengkap.
         </p>
       )}
 
@@ -155,11 +155,11 @@ export default function DaftarGempa() {
         </h2>
         <ul className="bch-prose">
           <li>
-            Daftar ini memuat gempa terbaru, 15 gempa bermagnitudo 5,0 ke atas, dan 15 gempa yang dirasakan. Gempa kecil
-            yang tidak dirasakan biasanya tidak masuk, kecuali sedang menjadi yang terbaru.
+            Daftar berisi gempa terbaru, 15 gempa bermagnitudo 5,0 ke atas, dan 15 gempa yang dirasakan. Gempa kecil yang
+            tidak dirasakan biasanya tidak masuk, kecuali yang terbaru.
           </li>
           <li>
-            Angka Romawi pada kolom Dirasakan adalah skala MMI, kekuatan guncangan yang dirasakan di tempat itu.
+            Angka Romawi pada kolom Dirasakan adalah skala MMI, kekuatan guncangan di tempat itu.
           </li>
           <li>
             Jarak dari Batam adalah garis lurus dari Batam Kota, dibulatkan ke 10 km.

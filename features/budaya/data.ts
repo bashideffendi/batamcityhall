@@ -409,7 +409,7 @@ export function daftarKomunitas(): KomunitasPublik[] {
 }
 
 function judulGabungan(id: string, nama: string) {
-  if (id === "kom-003") return "Empat klub lari";
-  if (id === "kom-012") return "Media lokal daring";
+  if (id === "kom-003") return "Empat Klub Lari";
+  if (id === "kom-012") return "Media Lokal Daring";
   return nama;
 }

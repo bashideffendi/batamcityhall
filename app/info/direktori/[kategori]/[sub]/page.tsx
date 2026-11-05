@@ -75,7 +75,7 @@ export default async function Subkategori({ params }: Props) {
       <h1 className="mt-2">{kaidahJudul(h.nama)}</h1>
       {h.tempat.length === 0 ? (
         <p className="bch-lede">
-          Belum ada tempat di kategori ini. Kalau kamu tahu tempatnya, <Link href="/koreksi">kirim usulan</Link>.
+          Belum ada tempat di kategori ini. <Link href="/koreksi">Kirim usulan</Link>
         </p>
       ) : (
         <>
@@ -94,8 +94,8 @@ export default async function Subkategori({ params }: Props) {
         <section data-daftar-osm>
           <h2 className="mt-7 mb-2">Menurut OpenStreetMap</h2>
           <p className="bch-note">
-            Daftar ini memuat {osm.length} nama dari OpenStreetMap per {tanggalIndonesia(poi.ditarik)}. Nama-nama ini belum
-            masuk hitungan direktori, dan sebagian mungkin sudah tutup atau pindah.
+            Ada {osm.length} nama per {tanggalIndonesia(poi.ditarik)}, di luar hitungan direktori. Sebagian mungkin sudah
+            tutup atau pindah.
           </p>
           <ul className="bch-osm-daftar mt-3">
             {osm.map((t) => (

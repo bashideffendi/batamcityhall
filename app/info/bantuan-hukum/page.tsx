@@ -31,13 +31,13 @@ export default function BantuanHukum() {
         <Link href="/info">Informasi Warga</Link>
       </nav>
       <h1 className="mt-2">Bantuan Hukum</h1>
-      <p className="bch-lede">Bantuan hukum gratis tersedia di pos bantuan hukum pengadilan dan di lembaga bantuan hukum.</p>
+      <p className="bch-lede">Bantuan hukum gratis ada di pos bantuan hukum pengadilan dan lembaga bantuan hukum.</p>
 
       <section>
         <h2 className="mt-7 mb-3">Pos Bantuan Hukum di Pengadilan</h2>
         <p className="bch-measure">
           Posbakum memberi informasi hukum, konsultasi, advis, dan bantuan membuat dokumen seperti surat gugatan (PERMA
-          1/2014). Posbakum umumnya tidak mendampingi di sidang.
+          1/2014). Umumnya tidak mendampingi di sidang.
         </p>
         <Daftar isi={disub("posbakum")} />
       </section>
@@ -56,9 +56,8 @@ export default function BantuanHukum() {
       <section>
         <h2 className="mt-7 mb-3">Organisasi Advokat</h2>
         <p className="bch-measure">
-          Daftar ini memuat organisasinya, tanpa advokat perorangan. Minta rujukan ke organisasinya, lalu pastikan advokatnya
-          punya nomor KTA dan sudah disumpah di Pengadilan Tinggi. Peradi di Batam terpecah sehingga keduanya ditampilkan
-          terpisah.
+          Daftar ini hanya memuat organisasi. Minta rujukan ke organisasinya, lalu pastikan advokatnya punya nomor KTA dan
+          sudah disumpah di Pengadilan Tinggi. Peradi di Batam terpecah sehingga keduanya ditampilkan terpisah.
         </p>
         <Daftar isi={disub("organisasi_advokat")} />
       </section>

@@ -11,7 +11,7 @@ export default function DaftarBerita() {
   if (keadaan.fase === "gagal") {
     return (
       <p className="bch-note" data-tone="caution" role="status">
-        Terjadi masalah saat memuat data. Coba muat ulang dalam beberapa saat.
+        Data tidak dapat dimuat. Coba muat ulang.
       </p>
     );
   }
@@ -40,7 +40,7 @@ export default function DaftarBerita() {
         </p>
       </div>
 
-      {!tampil.length && <p className="bch-note">Belum ada berita baru tentang Batam hari ini.</p>}
+      {!tampil.length && <p className="bch-note">Belum ada berita baru hari ini.</p>}
 
       {tampil.length > 0 && (
         <section className="bch-berita-hari" aria-label="Daftar berita">

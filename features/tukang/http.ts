@@ -32,7 +32,7 @@ export function buatRouteKiriman<S extends z.ZodType>({ skema, maksPerJendela, s
     if (mode === "mati" || !store) return tolak(503, PESAN_MATI);
 
     if (!(mode === "contoh" ? batasContoh : batas)(ipDari(req))) {
-      return tolak(429, "Terlalu banyak kiriman dari alamat ini. Coba lagi beberapa menit lagi.");
+      return tolak(429, "Terlalu banyak kiriman. Coba lagi beberapa menit lagi.");
     }
     if (Number(req.headers.get("content-length") ?? 0) > MAKS_BYTE) return tolak(413, "Kirimannya terlalu panjang.");
 

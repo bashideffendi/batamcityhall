@@ -1,5 +1,6 @@
 "use client";
 
+import { kaidahJudul } from "@/lib/judul";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { EntriGaris, KunciStatus } from "./data";
@@ -68,7 +69,7 @@ export default function GarisWaktu({ entri, kategori }: { entri: EntriGaris[]; k
           )}
         </div>
         <p className="sj-kecil m-0" aria-live="polite" data-jumlah-garis={tampil.length}>
-          Menampilkan {tampil.length} dari {entri.length} peristiwa.
+          {tampil.length} dari {entri.length} peristiwa
         </p>
       </div>
 
@@ -80,7 +81,7 @@ export default function GarisWaktu({ entri, kategori }: { entri: EntriGaris[]; k
               {e.tanggal ? <time dateTime={e.tanggal}>{e.tahun}</time> : e.tahun}
             </p>
             <div className="sj-garis-isi">
-              <h3>{e.judul}</h3>
+              <h3>{kaidahJudul(e.judul)}</h3>
               <p className="mt-1 mb-2 sj-garis-teks">
                 <TeksMiring isi={e.teks} />
               </p>

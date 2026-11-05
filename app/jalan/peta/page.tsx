@@ -26,7 +26,7 @@ export default async function PetaJalanHalaman() {
       <div className="bch-page jl-page-atas">
         <p className="bch-kicker m-0">Transportasi</p>
         <h1 className="mt-2">Peta Transportasi</h1>
-        <p className="bch-lede">Peta ini memuat koridor bus, terminal feri, dan pelabuhan rakyat di Batam.</p>
+        <p className="bch-lede">Lihat koridor bus, terminal feri, dan pelabuhan rakyat di Batam.</p>
         <JalanNav aktif="/jalan/peta" />
       </div>
       <PetaJalanMuat titik={titik} rute={rute} osm={osm} />
@@ -46,7 +46,6 @@ export default async function PetaJalanHalaman() {
           </p>
 
           <h2>Belum Ada di Peta</h2>
-          <p>Tempat berikut tercatat, tetapi belum memiliki titik di peta.</p>
           <ul className="jl-daftar-rapat" data-testid="lokasi-belum-diisi">
             {HUB_TANPA_TITIK.map((h) => (
               <li key={h.id}>
@@ -62,7 +61,7 @@ export default async function PetaJalanHalaman() {
           </ul>
 
           <h2>Terminal di Luar Batam</h2>
-          <p>Terminal berikut menjadi tujuan feri dan tidak ditandai di peta.</p>
+          <p>Tujuan feri ini tidak ditandai di peta.</p>
           <ul className="jl-daftar-rapat">
             {TERMINAL_LUAR_BATAM.map((t) => (
               <li key={t.id}>

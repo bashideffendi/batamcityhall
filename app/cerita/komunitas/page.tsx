@@ -4,7 +4,7 @@ import { DATA_DIHIMPUN, daftarKomunitas } from "@/features/budaya/data";
 import NavBudaya, { KickerCerita } from "@/features/budaya/NavBudaya";
 import "@/features/budaya/budaya.css";
 
-const LEDE = "Halaman ini memuat komunitas kreatif, olahraga, dan budaya di Batam.";
+const LEDE = "Berisi komunitas kreatif, olahraga, dan budaya di Batam.";
 
 export const metadata: Metadata = {
   title: "Komunitas",
@@ -68,8 +68,7 @@ export default function HalamanKomunitas() {
         <h2 className="mt-7 mb-3">Belum Ada di Daftar</h2>
         <p className="bch-measure">
           Sanggar seni Melayu, komunitas fotografi, ilustrator dan desainer, kolektif seni atau galeri, taman baca, dan
-          komunitas sepeda belum tercatat di sini. Kalau kamu tahu komunitasnya,{" "}
-          <Link href="/kontribusi">kirim usulan</Link>.
+          komunitas sepeda belum tercatat. Bila tahu komunitasnya, <Link href="/kontribusi">kirim usulan</Link>.
         </p>
       </section>
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { kaidahJudul } from "@/lib/judul";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { LangkahEsai } from "./esai";
@@ -62,7 +63,7 @@ export default function EsaiGulir({ langkah, judul }: { langkah: LangkahEsai[]; 
         {langkah.map((l, i) => (
           <section key={l.id} data-indeks={i} data-aktif={aktif === i || undefined} className="sj-langkah">
             <p className="bch-kicker m-0">{l.label}</p>
-            <h3 className="mt-1">{l.judul}</h3>
+            <h3 className="mt-1">{kaidahJudul(l.judul)}</h3>
             {l.paragraf.map((p) => (
               <p key={p}>{p}</p>
             ))}

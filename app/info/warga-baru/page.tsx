@@ -16,7 +16,7 @@ export default function WargaBaru() {
         <Link href="/info">Informasi Warga</Link>
       </nav>
       <h1 className="mt-2">Warga Baru</h1>
-      <p className="bch-lede">Halaman ini memuat titik awal bagi warga yang baru pindah ke Batam.</p>
+      <p className="bch-lede">Mulai dari sini kalau baru pindah ke Batam.</p>
 
       <div className="bch-prose">
         <h2>KTP dan Surat Pindah</h2>

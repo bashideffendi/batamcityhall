@@ -14,7 +14,7 @@ export default function GempaHalaman() {
       <TabCuaca />
       <h1 className="mt-2">Gempa Terkini</h1>
       <p className="bch-lede">
-        Halaman ini memuat gempa terkini di seluruh Indonesia. Batam relatif jarang terdampak, tetapi banyak warganya punya keluarga di daerah lain.
+        Daftar mencakup seluruh Indonesia: Batam relatif jarang terdampak, tetapi banyak warganya punya keluarga di daerah lain.
       </p>
       <DaftarGempa />
     </div>

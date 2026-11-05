@@ -88,12 +88,10 @@ export default async function HalamanKoridor({ params }: { params: Promise<{ kor
     return (
       <div className="bch-page">
         {Kepala}
-        <p className="bch-lede mt-5">
-          Koridor ini direncanakan dan belum beroperasi. Daftar halte, jam, dan tarifnya belum ada.
-        </p>
+        <p className="bch-lede mt-5">Daftar halte, jam, dan tarifnya belum ada.</p>
         <p className="bch-note">
-          Koridor Tembesi—Barelang dan Galang masih disiapkan. Bus pengumpan ditargetkan mulai pertengahan 2027 dan
-          masih menunggu pengesahan anggaran 2027.
+          Koridor Tembesi—Barelang dan Galang masih disiapkan. Bus pengumpan ditargetkan mulai pertengahan 2027,
+          menunggu pengesahan anggaran 2027.
         </p>
         <h2 className="mt-7 mb-4">Diagram Koridor</h2>
         <DiagramSkematik sorot={k.id} legenda={false} />
