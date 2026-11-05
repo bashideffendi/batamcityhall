@@ -1,10 +1,10 @@
 # Yang perlu pemilik lakukan
 
-Disusun 5 November 2026, akhir fase 10. Situs jalan di komputer ini, tetapi **belum di-deploy dan belum di-push**. Tidak ada satu pun yang menyentuh situs lama, DNS, atau Vercel.
+Disusun 5 November 2026, akhir fase 10. Situs jalan di komputer ini, tetapi **belum di-deploy**. Kode sudah di repo publik `bashideffendi/batamcityhall`. Tidak ada satu pun yang menyentuh situs lama, DNS, atau Vercel.
 
 ## Supaya bisa tayang
 
-1. **Remote Git dan Vercel.** Repo belum punya remote. Beri tahu nama repo dan proyek Vercel, atau izinkan membuatnya.
+1. **Vercel.** Beri tahu nama proyek Vercel, atau izinkan membuatnya. Repo GitHub sudah ada.
 2. **Bucket aset** (Cloudflare R2 atau lain) untuk `public/tiles/batam.pmtiles` (46 MB, tidak ikut Git), lalu isi `NEXT_PUBLIC_PMTILES_URL`.
 3. **Domain**, lalu isi `NEXT_PUBLIC_SITE_URL`.
 4. **Uji sumber BMKG dari IP Vercel.** Header jujur sudah lolos dari PC ini, belum dari server Vercel. Kalau ditolak, ambil dari browser (CORS terbuka).

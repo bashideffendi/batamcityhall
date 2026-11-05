@@ -16,7 +16,7 @@ Brief ditulis subagen yang membaca laporan sampai habis. Isinya ringkasan, bukan
 
 ## Keadaan repo
 
-Folder `Desktop\batam-city-hall`, cabang `fase-1-fondasi`, belum ada remote dan belum di-push. Git di PC ini belum punya identitas global; commit memakai `bashideffendi <bashide@gmail.com>` lewat `git -c`. Node.js 26.13, Git 2.56, Python 3.13, dan Chromium Playwright terpasang di PC pemilik.
+Folder `Desktop\batam-city-hall`, cabang `fase-1-fondasi`, remote `origin` = `github.com/bashideffendi/batamcityhall` (publik atas pilihan pemilik, 5 Nov 2026). Belum di-deploy. Git di PC ini belum punya identitas global; commit memakai `bashideffendi <bashide@gmail.com>` lewat `git -c`. Node.js 26.13, Git 2.56, Python 3.13, dan Chromium Playwright terpasang di PC pemilik.
 
 | Bagian | Keadaan |
 |---|---|
