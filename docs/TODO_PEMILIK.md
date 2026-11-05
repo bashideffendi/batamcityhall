@@ -2,6 +2,18 @@
 
 Disusun 5 November 2026, akhir fase 10. Situs jalan di komputer ini, tetapi **belum di-deploy**. Kode sudah di repo publik `bashideffendi/batamcityhall`. Tidak ada satu pun yang menyentuh situs lama, DNS, atau Vercel.
 
+## Pratinjau di Railway (sementara Vercel di-pause)
+
+Konfigurasi sudah di repo. Yang perlu Anda lakukan, sekali saja:
+
+1. Buat akun di railway.com, masuk dengan GitHub.
+2. New Project → Deploy from GitHub repo → `batamcityhall`, cabang `fase-1-fondasi`.
+3. Settings → Region: Southeast Asia (Singapura).
+4. Variables: tambahkan `SITE_PRATINJAU` = `1`.
+5. Settings → Networking → Generate Domain. Alamat `….up.railway.app` itu bisa dibuka dari laptop dan HP.
+
+Railway berbayar setelah kredit percobaan habis; cek harga di railway.com. Langkah lengkap di README bagian "Pratinjau di Railway".
+
 ## Supaya bisa tayang
 
 1. **Vercel.** Beri tahu nama proyek Vercel, atau izinkan membuatnya. Repo GitHub sudah ada.

@@ -24,7 +24,10 @@ Folder `Desktop\batam-city-hall`, cabang `fase-1-fondasi`, remote `origin` = `gi
 | Supabase | Migrasi dan store tertulis, belum pernah dijalankan sungguhan |
 | Mural | Satu segmen placeholder, sisanya "segera" |
 | Redirect situs lama | Siap di `deploy/situs-lama/`, belum dijalankan |
-| `public/tiles/batam.pmtiles` | Di-gitignore, 46 MB. Kalau hilang, jalankan `node scripts/extract-basemap.mjs` |
+| `public/tiles/batam.pmtiles` | Di-gitignore, 46 MB. Kalau hilang: `node scripts/siapkan-peta.mjs` (unduh dari cabang `aset-peta`, cepat) atau `node scripts/extract-basemap.mjs` (kurang dari 30 menit) |
+| Pratinjau | `railway.json` siap, belum dicoba di Railway sungguhan. Vercel pemilik sedang di-pause. Lihat README bagian "Pratinjau di Railway" |
+| Cabang lain | `paket-review` (bahan audit Claude Research), `aset-peta` (hanya `batam.pmtiles`). Keduanya orphan, jangan di-merge |
+| Sesi cloud | Node di cloud butuh `NODE_USE_ENV_PROXY=1 NODE_EXTRA_CA_CERTS=/root/.ccr/ca-bundle.crt` untuk menjangkau sumber data. Browser Playwright versi proyek tidak ada di cloud: pakai `executablePath: "/opt/pw-browsers/chromium"` lewat config lokal yang tidak di-commit |
 | Tes | `npm test`; `npm run build` lalu `npx playwright test --workers=3 --timeout=90000`. Matikan dulu `next start` lama di port 3100 |
 | `docs/COVERAGE.md` | Tanpa `[ ]`. Butir `[-] ditunda` menyimpan syaratnya |
 | `scripts/dev/build-coverage.mjs` | Jangan dijalankan lagi: akan menimpa centang |

@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-05 · Pratinjau Railway dan paket review
+
+- `railway.json`, `.node-version` (22), `scripts/siapkan-peta.mjs`, `deploy/peta-dasar.json`: build di Railway mengunduh `batam.pmtiles` dari cabang `aset-peta` dengan cek ukuran dan sha256. Vercel di-pause, jadi pratinjau pindah ke Railway. Diuji di sesi cloud: unduh dari cabang, build, `PORT` dihormati. Belum dicoba di Railway sungguhan.
+- `SITE_PRATINJAU=1`: `robots.txt` menolak semua dan halaman ber-`noindex`. Tanpa variabel ini tidak ada yang berubah.
+- Cabang `paket-review`: laporan kesesuaian dengan brief, galeri screenshot desktop dan HP dari build produksi dengan data langsung, untuk audit Claude Research.
+- Cek di sesi cloud: build, tsc, lint lulus; unit 535/535; e2e 666 lulus, 29 dilewati, 1 gagal (`mural.spec.ts:307` di profil HP). Pengukuran terpisah menunjukkan loop mural benar berhenti saat tombol tenang ditekan; kemungkinan tesnya mengklik saat animasi awal viewport masih berjalan. Tes belum dibetulkan.
+
 ## 2026-11-05 · Fase 10: audit
 
 - `COVERAGE.md` tanpa `[ ]`: tiap baris sudah `[x]` atau `[-]` dengan alasan. 99 butir berstatus ditunda dengan syaratnya. Baris sisa diklasifikasi tiga agen dengan memeriksa kode, belum dicek ulang satu per satu oleh pemimpin.

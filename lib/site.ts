@@ -4,6 +4,9 @@ export const SITE_NAME = "Batam City Hall";
 export const SITE_TAGLINE = "Balai warga, bukan balai kota";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
+/** SITE_PRATINJAU=1 saat build: situs pratinjau (mis. Railway) tidak diindeks mesin pencari. */
+export const SITE_PRATINJAU = process.env.SITE_PRATINJAU === "1";
+
 /** Wajib di semua halaman (research/00 bagian 1). Teks jangan diubah tanpa izin pemilik proyek. */
 export const FOOTER_DISCLAIMER =
   "Proyek independen warga Batam, bukan situs resmi Pemerintah Kota Batam atau BP Batam. Untuk layanan resmi: batam.go.id.";

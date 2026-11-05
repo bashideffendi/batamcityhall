@@ -4,7 +4,7 @@ import "./globals.css";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteNav from "@/components/site/SiteNav";
 import ServiceWorkerRegister from "@/features/langit-laut/components/ServiceWorkerRegister";
-import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_PRATINJAU, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 
 // Font di-self-host next/font: tidak ada request ke Google dari browser pengguna.
 const serif = Source_Serif_4({
@@ -39,6 +39,7 @@ export const metadata: Metadata = {
   description: DESC,
   openGraph: { type: "website", locale: "id_ID", siteName: SITE_NAME, description: DESC },
   appleWebApp: { capable: true, title: SITE_NAME, statusBarStyle: "default" },
+  ...(SITE_PRATINJAU ? { robots: { index: false, follow: false } } : {}),
 };
 
 export const viewport: Viewport = {

@@ -1,0 +1,7 @@
+{
+  "catatan": "File peta dasar untuk host tanpa R2 (mis. Railway). Disimpan di cabang aset-peta karena *.pmtiles di-gitignore. Dibuat oleh scripts/extract-basemap.mjs.",
+  "build": "20261103",
+  "bytes": 46393377,
+  "sha256": "dd87c0baef98b3c057dc22411fa8f3b969db11547d2b35483a11507bb99824dd",
+  "url": "https://raw.githubusercontent.com/bashideffendi/batamcityhall/aset-peta/batam.pmtiles"
+}
