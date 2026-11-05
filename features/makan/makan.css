@@ -7,14 +7,7 @@
   flex-direction: column;
   min-width: 0;
 }
-.mk-sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
+
 .mk-ikon {
   flex: none;
 }
@@ -26,129 +19,6 @@
 }
 .mk-judul {
   margin: var(--bch-space-3) 0 0;
-}
-
-/* ---------- Kepala bagian Makan ---------- */
-.mk-nav {
-  border-bottom: 1px solid var(--bch-rule);
-}
-.mk-nav-dalam {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--bch-space-4);
-  width: 100%;
-  max-width: var(--bch-wrap);
-  margin-inline: auto;
-  padding-inline: var(--bch-gutter);
-  box-sizing: border-box;
-}
-.mk-nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  min-width: 0;
-}
-.mk-nav-menu a {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 48px;
-  font: 600 0.9375rem/1 var(--bch-font-sans);
-  color: var(--bch-ink-muted);
-  text-decoration: none;
-  white-space: nowrap;
-}
-.mk-nav-menu a:hover {
-  color: var(--bch-ink);
-}
-.mk-nav-menu a[aria-current="page"] {
-  color: var(--bch-ink);
-}
-.mk-nav-menu a[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 3px;
-  background: var(--bch-riso-blue);
-}
-.mk-nav-menu .mk-nav-nama {
-  padding-right: 26px;
-  border-right: 1px solid var(--bch-rule);
-  font: 500 1.375rem/1 var(--bch-font-display);
-  color: var(--bch-ink);
-}
-.mk-nav-menu .mk-nav-nama[aria-current="page"]::after {
-  right: 26px;
-}
-.mk-nav-n {
-  font: 500 0.75rem/1 var(--bch-font-mono);
-  color: var(--bch-ink-muted);
-}
-.mk-nav-alat {
-  display: flex;
-  align-items: center;
-  gap: var(--bch-space-3);
-  flex: none;
-}
-.mk-mata-uang select,
-.mk-urut select {
-  min-height: 44px;
-  padding: 0 4px;
-  background: transparent;
-  border: 0;
-  color: var(--bch-ink);
-  font: 500 0.8125rem/1 var(--bch-font-mono);
-  cursor: pointer;
-}
-.mk-mata-uang option,
-.mk-urut option {
-  background: var(--bch-paper);
-  color: var(--bch-ink);
-}
-.mk-bahasa {
-  display: flex;
-}
-.mk-bahasa button {
-  min-width: 34px;
-  min-height: 44px;
-  background: none;
-  border: 0;
-  color: var(--bch-ink-muted);
-  font: 500 0.8125rem/1 var(--bch-font-mono);
-  cursor: pointer;
-}
-.mk-bahasa button:hover {
-  color: var(--bch-ink);
-}
-.mk-bahasa button[aria-pressed="true"] {
-  color: var(--bch-ink);
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-}
-@media (max-width: 860px) {
-  /* Ponsel: satu baris geser. Bahasa sudah mengikuti peramban, jadi alat boleh berada di ujung. */
-  .mk-nav-dalam {
-    overflow-x: auto;
-    scrollbar-width: none;
-    gap: 20px;
-  }
-  .mk-nav-menu {
-    flex: none;
-    overflow: visible;
-    gap: 20px;
-  }
-  .mk-nav-menu .mk-nav-nama {
-    padding-right: 20px;
-  }
-  .mk-nav-menu .mk-nav-nama[aria-current="page"]::after {
-    right: 20px;
-  }
 }
 
 /* ---------- Tipografi data ---------- */
@@ -367,6 +237,9 @@
   gap: var(--bch-space-2);
   font-size: 0.875rem;
   color: var(--bch-ink-muted);
+}
+.mk-urut .bch-select {
+  width: auto;
 }
 
 /* Lembar saringan: dialog asli */
@@ -619,15 +492,12 @@
 /* ---------- Beranda Makan ---------- */
 .mk-sampul {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
-  gap: 48px;
-  align-items: end;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 40px;
+  align-items: start;
 }
 .mk-sampul h1 {
-  margin: var(--bch-space-2) 0 0;
-  font-size: clamp(4rem, 2.4rem + 7vw, 7rem);
-  line-height: 0.98;
-  letter-spacing: -0.025em;
+  margin: var(--bch-space-1) 0 0;
 }
 .mk-sampul .bch-lede {
   margin-top: var(--bch-space-3);
@@ -690,8 +560,11 @@
   color: var(--bch-ink-muted);
 }
 .mk-entri[data-utama] .mk-entri-judul {
-  font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
-  line-height: 1.08;
+  font-size: clamp(1.5rem, 1.25rem + 0.8vw, 1.875rem);
+  line-height: 1.1;
+}
+.mk-entri[data-utama] .mk-entri-gambar {
+  aspect-ratio: 16 / 9;
 }
 .mk-entri-kisi {
   display: grid;
@@ -1060,7 +933,7 @@
 .mk-tata-peta-dalam {
   position: relative;
   height: calc(100dvh - 2 * var(--bch-space-3));
-  max-height: 880px;
+  max-height: 760px;
   min-height: 420px;
   border: 1.5px solid var(--bch-ink);
   border-radius: 10px;
@@ -1079,45 +952,28 @@
   color: var(--bch-ink-muted);
 }
 .mk-tata-penuh {
-  --mk-tepi: max(var(--bch-gutter), calc((100vw - var(--bch-wrap)) / 2 + var(--bch-gutter)));
-  grid-template-columns: calc(var(--mk-tepi) + 560px) minmax(0, 1fr);
-  grid-template-areas:
-    "kepala peta"
-    "alat peta"
-    "daftar peta";
-  grid-template-rows: auto auto 1fr;
-  column-gap: 0;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   width: 100%;
+  max-width: var(--bch-wrap);
+  margin-inline: auto;
+  padding: var(--bch-space-5) var(--bch-gutter) var(--bch-seksi);
+  box-sizing: border-box;
   flex: 1;
 }
-.mk-tata-penuh .mk-tata-kepala,
-.mk-tata-penuh .mk-tata-alat,
-.mk-tata-penuh .mk-tata-daftar {
-  padding-inline: var(--mk-tepi) 28px;
-}
 .mk-tata-penuh .mk-tata-kepala {
-  margin: var(--bch-space-5) 0 var(--bch-space-3);
+  margin-bottom: var(--bch-space-3);
 }
 .mk-tata-penuh h1 {
   margin: 0;
-}
-.mk-tata-penuh .mk-tata-daftar {
-  padding-bottom: var(--bch-seksi);
-}
-.mk-tata-penuh .mk-tata-peta {
-  top: 0;
-}
-.mk-tata-penuh .mk-tata-peta-dalam {
-  height: 100dvh;
-  max-height: none;
-  border: 0;
-  border-left: 1.5px solid var(--bch-ink);
-  border-radius: 0;
 }
 .mk-bilah {
   display: none;
 }
 @media (max-width: 999px) {
+  /* Tombol Saring sudah ada di bilah bawah. */
+  .mk-chip-saring {
+    display: none;
+  }
   .mk-tata,
   .mk-tata-penuh {
     grid-template-columns: minmax(0, 1fr);
@@ -1126,11 +982,6 @@
       "alat"
       "daftar";
     grid-template-rows: none;
-  }
-  .mk-tata-penuh .mk-tata-kepala,
-  .mk-tata-penuh .mk-tata-alat,
-  .mk-tata-penuh .mk-tata-daftar {
-    padding-inline: var(--bch-gutter);
   }
   .mk-tata-peta {
     display: none;
@@ -1175,7 +1026,8 @@
     background: var(--bch-ink);
     border-radius: 999px;
   }
-  .mk-bilah button {
+  .mk-bilah button,
+  .mk-bilah a {
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -1186,6 +1038,8 @@
     border-radius: 999px;
     color: var(--bch-paper);
     font: 600 0.875rem/1 var(--bch-font-sans);
+    text-decoration: none;
+    white-space: nowrap;
     cursor: pointer;
   }
   .mk-bilah button[aria-pressed="true"] {
@@ -1733,4 +1587,154 @@
   .mk-cara-isi {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+/* ---------- Food Court ---------- */
+.mk-fc-kepala {
+  display: flex;
+  align-items: center;
+  gap: var(--bch-space-3);
+  margin-top: var(--bch-space-2);
+}
+.mk-fc-peta {
+  margin-top: var(--bch-space-4);
+}
+.mk-fc-daftar {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mk-fc-baris {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 17rem);
+  gap: var(--bch-space-3) var(--bch-space-6);
+  padding-block: var(--bch-space-4);
+  border-bottom: 1px solid var(--bch-rule);
+  scroll-margin-top: var(--bch-space-4);
+}
+.mk-fc-baris h3 {
+  margin: 0;
+  font: 500 1.25rem/1.25 var(--bch-font-display);
+}
+.mk-fc-alamat {
+  margin: 2px 0 0;
+  color: var(--bch-ink-muted);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+.mk-fc-isi {
+  max-width: 62ch;
+  margin: var(--bch-space-2) 0 0;
+}
+.mk-fc-terkait {
+  margin: var(--bch-space-2) 0 0;
+  font-size: 0.9375rem;
+}
+.mk-fc-samping {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--bch-space-2);
+  font-size: 0.9375rem;
+}
+.mk-fc-samping p {
+  margin: 0;
+}
+.mk-fc-samping b {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.mk-fc-cek {
+  color: var(--bch-ink-muted);
+  font-size: 0.8125rem;
+}
+@media (max-width: 720px) {
+  .mk-fc-baris {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Target sentuh chip di ponsel. */
+@media (max-width: 640px) {
+  .mk-chip {
+    min-height: 44px;
+  }
+}
+
+/* Rumpun selebar halaman, ubin enam kolom. */
+.mk-indeks .mk-rumpun[data-n] {
+  grid-column: 1 / -1;
+  order: 0;
+}
+.mk-indeks .mk-rumpun ul {
+  grid-auto-flow: row;
+  grid-auto-columns: auto;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.mk-ubin[data-kosong] {
+  color: var(--bch-ink-muted);
+}
+.mk-ubin[data-kosong] img {
+  opacity: 0.45;
+}
+.mk-ubin-semua .mk-ubin-nama {
+  font-size: 1.25rem;
+}
+@media (max-width: 800px) {
+  .mk-indeks .mk-rumpun ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.mk-fc-terkait b {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.mk-ekspor > summary {
+  min-height: 44px;
+  font: 500 1.25rem/1.25 var(--bch-font-display);
+  cursor: pointer;
+}
+
+/* Peta di atas daftar pada halaman Peta, di ponsel. */
+@media (max-width: 999px) {
+  /* Tombol Saring sudah ada di bilah bawah. */
+  .mk-chip-saring {
+    display: none;
+  }
+  .mk-tata-penuh .mk-tata-peta[data-selalu] .mk-tata-peta-dalam {
+    height: 56dvh;
+    min-height: 320px;
+    max-height: none;
+    margin-bottom: var(--bch-space-4);
+    border-radius: 8px;
+  }
+}
+@media (max-width: 999px) {
+  /* Tombol Saring sudah ada di bilah bawah. */
+  .mk-chip-saring {
+    display: none;
+  }
+  .mk-tata-penuh:has(.mk-tata-peta[data-selalu]) {
+    grid-template-areas:
+      "kepala"
+      "peta"
+      "alat"
+      "daftar";
+  }
+}
+
+/* Teks di baris dan kartu tempat tetap rata kiri. */
+main .mk-baris p,
+main .mk-kartu-mini p,
+main .mk-rumpun-nama,
+main .mk-fc-alamat,
+main .mk-fc-samping p,
+main .mk-peta-catatan,
+main .mk-terminal p {
+  text-align: start;
+  hyphens: manual;
 }

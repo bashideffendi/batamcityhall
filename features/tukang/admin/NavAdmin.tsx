@@ -6,8 +6,12 @@ import { kirimJson } from "../Kolom";
 
 const MENU = [
   { href: "/admin", label: "Antrean" },
-  { href: "/admin/cek-ulang", label: "Perlu dicek ulang" },
-  { href: "/admin/koordinat", label: "Isi koordinat" },
+  { href: "/admin/jurnal", label: "Jurnal" },
+  { href: "/admin/makanan", label: "Makanan" },
+  { href: "/admin/agenda", label: "Agenda" },
+  { href: "/admin/loker", label: "Info Loker" },
+  { href: "/admin/cek-ulang", label: "Perlu Dicek Ulang" },
+  { href: "/admin/koordinat", label: "Isi Koordinat" },
 ];
 
 export default function NavAdmin() {

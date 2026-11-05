@@ -1,50 +1,32 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
+// Ruang Main dihapus pada rombak November 2026. Tersisa Kartu Pos di /kartu-pos (isi diuji di rombak.spec.ts).
+
 test.beforeEach(async ({ page }) => {
   await page.route("**/api/**", (r) => r.fulfill({ status: 503, json: {} }));
 });
 
-test("kalkulator menunggu kurs dari pengguna", async ({ page }) => {
-  await page.goto("/main/singapura-atau-nagoya");
-  await expect(page.getByRole("status")).toContainText("Isi kurs dan jumlah orang");
-  await page.getByLabel(/Kurs 1 dolar/).fill("12000");
-  await expect(page.getByRole("status")).toContainText(
-    "Ongkos pulang-pergi untuk 1 orang sekitar Rp1 juta, termasuk tiket feri dan biaya tambahan.",
-  );
-  await page.getByLabel("Jumlah orang").fill("2");
-  await expect(page.getByRole("status")).toContainText("untuk 2 orang sekitar Rp2,1 juta");
-  await expect(page.getByText("Perhitungan memakai tarif feri per 4 November 2026.")).toBeVisible();
+test("Kalkulator Singapura atau Nagoya dan Vibe tidak ada lagi", async ({ request }) => {
+  for (const h of ["/main/singapura-atau-nagoya", "/main/vibe"]) {
+    const r = await request.get(h);
+    // Dialihkan ke halaman yang ada, atau 404. Yang penting bukan halaman lama.
+    expect([200, 404], h).toContain(r.status());
+    const teks = await r.text();
+    expect(teks, h).not.toMatch(/Kurs 1 dolar|Peta Suasana|mm-vibe/);
+  }
 });
 
-test("kartu pos menggambar dan bisa diunduh", async ({ page }) => {
-  await page.goto("/main/kartu-pos");
-  const kanvas = page.locator("canvas");
-  await expect(kanvas).toBeVisible();
-  const terisi = await kanvas.evaluate((c: HTMLCanvasElement) => {
-    const d = c.getContext("2d")?.getImageData(600, 400, 1, 1).data;
-    return !!d && d[3] > 0;
-  });
-  expect(terisi).toBe(true);
+test("kartu pos memilih desain dan menulis pesan di pratinjau", async ({ page }) => {
+  await page.goto("/kartu-pos");
+  await expect(page.locator('input[name="desain"]')).toHaveCount(6);
   await page.getByRole("textbox", { name: "Pesan" }).fill("Ombak tenang, feri jalan.");
-  const [unduhan] = await Promise.all([
-    page.waitForEvent("download"),
-    page.getByRole("button", { name: "Unduh kartu pos" }).click(),
-  ]);
-  expect(unduhan.suggestedFilename()).toBe("kartu-pos-batam.png");
-});
-
-test("peta suasana punya daftar dan tanpa kategori kelompok", async ({ page }) => {
-  await page.goto("/main/vibe");
-  await expect(page.getByRole("heading", { name: "Kopi", level: 2 })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Macet", level: 2 })).toBeVisible();
-  const label = await page.locator(".mm-vibe-saring label").allTextContents();
-  expect(label.join(" ")).not.toMatch(/etnis|suku|agama|kelas/i);
-  expect(await page.locator(".mm-vibe-daftar li").count()).toBeGreaterThan(10);
+  await expect(page.locator(".kp-pratinjau")).toContainText("Ombak tenang, feri jalan.");
+  await expect(page.getByRole("button", { name: "Cetak" })).toBeVisible();
 });
 
 for (const tema of ["light", "dark"] as const) {
-  for (const h of ["/main", "/main/kartu-pos", "/main/singapura-atau-nagoya", "/main/vibe"]) {
+  for (const h of ["/kartu-pos", "/cari"]) {
     test(`${h} (${tema}) tanpa pelanggaran axe dan tanpa scroll horizontal`, async ({ page }) => {
       await page.emulateMedia({ colorScheme: tema });
       await page.goto(h);

@@ -18,7 +18,7 @@ export default function UrusanTanah() {
   return (
     <div className="bch-page">
       <nav className="bch-remah" aria-label="Remah roti">
-        <Link href="/info">Informasi Warga</Link>
+        <Link href="/info">Layanan Warga</Link>
       </nav>
       <h1 className="mt-2">Urusan Tanah dan Rumah</h1>
       <p className="bch-lede">Cari tempat mengurus pembayaran UWT, sertifikat, dan jual beli di Batam.</p>
@@ -32,7 +32,7 @@ export default function UrusanTanah() {
           <thead>
             <tr>
               <th scope="col">Keperluan</th>
-              <th scope="col">Tempat mengurus</th>
+              <th scope="col">Tempat Mengurus</th>
               <th scope="col">Catatan</th>
             </tr>
           </thead>
@@ -42,7 +42,7 @@ export default function UrusanTanah() {
                 <td role="cell" data-label="Keperluan">
                   {k.kebutuhan_warga}
                 </td>
-                <td role="cell" data-label="Tempat mengurus">
+                <td role="cell" data-label="Tempat Mengurus">
                   <Teks isi={k.ke_mana} />
                   {k.subkategori_terkait?.map((s) => (
                     <span key={s} className="bch-sel-kecil">

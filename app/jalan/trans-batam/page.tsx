@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import TautanKirim from "@/components/site/TautanKirim";
 import Link from "next/link";
 import DiagramSkematik, { gayaKoridor } from "@/features/jalan/DiagramSkematik";
 import { kapital } from "@/features/jalan/feri-terakhir";
 import InfoPraktisTrans from "@/features/jalan/InfoPraktisTrans";
-import JalanNav from "@/features/jalan/JalanNav";
 import { CATATAN_DAFTAR_HALTE, KORIDOR, lencanaKoridor, slugKoridor, teksJam } from "@/features/jalan/trans-data";
 
 export const metadata: Metadata = {
@@ -15,12 +15,10 @@ export const metadata: Metadata = {
 export default function TransBatam() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Transportasi</p>
-      <h1 className="mt-2">Trans Batam</h1>
+      <h1 className="m-0">Trans Batam</h1>
       <p className="bch-lede">
         Sembilan koridor beroperasi, satu direncanakan. Tarif Rp5.000, pelajar Rp2.500, nontunai.
       </p>
-      <JalanNav aktif="/jalan/trans-batam" />
 
       <h2 className="mt-7 mb-4">Diagram Koridor</h2>
       <DiagramSkematik />
@@ -70,9 +68,9 @@ export default function TransBatam() {
 
       <p className="jl-catatan-kecil mt-7">
         {CATATAN_DAFTAR_HALTE}{" "}
-        <Link href="/koreksi" prefetch={false}>
-          Kirim koreksi
-        </Link>
+        <TautanKirim href="/koreksi" prefetch={false}>
+          Kirim Koreksi
+        </TautanKirim>
       </p>
     </div>
   );

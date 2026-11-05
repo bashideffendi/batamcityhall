@@ -2,9 +2,9 @@
 // Kategori pemerintahan, layanan publik, pemakaman, pertanahan, jasa, dan lain-lain tidak tampil di panel ini;
 // semuanya tetap ada di Direktori.
 
-const MI = new Set(["mie-bakmi", "bakso", "mie-tarempa", "sup-ikan"]);
-const DIMSUM = new Set(["dimsum-chinese", "bubur"]);
-const KOPI = new Set(["kopitiam", "cafe", "kedai_kopi"]);
+const MI = new Set(["nasi-mie-goreng", "bakso-mie-ayam", "mie-tarempa", "sop-ikan", "soto"]);
+const DIMSUM = new Set(["dimsum", "chinese-food", "bubur"]);
+const KOPI = new Set(["kopitiam", "coffee-shop", "kedai_kopi"]);
 const TEMPAT_MAKAN_LAIN = "nasi";
 
 /** Jenis tempat untuk satu pin, atau null kalau tidak tampil di panel Tempat. */
@@ -12,11 +12,11 @@ export function jenisDari(kategori: string, sub: string | null | undefined): str
   const s = sub ?? "";
   switch (kategori) {
     case "kuliner":
-      if (s === "seafood-gonggong" || s === "kuliner_seafood") return "seafood";
+      if (s === "seafood" || s === "kuliner_seafood") return "seafood";
       if (KOPI.has(s)) return "kopi";
       if (MI.has(s)) return "mi";
       if (DIMSUM.has(s)) return "dimsum";
-      if (s === "oleh-oleh") return "oleh";
+      if (s === "kue-jajanan" || s === "bakery" || s === "ice-cream") return "oleh";
       return TEMPAT_MAKAN_LAIN;
     case "khas_batam":
       if (s === "kuliner_seafood") return "seafood";

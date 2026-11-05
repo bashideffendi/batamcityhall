@@ -1,4 +1,8 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { FOOD_COURT, foodCourtDari, kelompokFoodCourt, tautanFoodCourt } from "@/features/makan/lib/foodcourt";
+import { foodCourtSchema } from "@/lib/data/schema";
+import foodCourtRaw from "@/data/makan/foodcourt.json";
+import { catName } from "@/features/makan/lib/i18n";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { areas as areaTampil, categories, ferries, getPlace, places, satuLabel, tempatTerdekat } from "@/features/makan/lib/data";
@@ -72,7 +76,7 @@ describe("konversi data Makan ke skema tempat", () => {
       id: "golden-prawn-933",
       nama: "Golden Prawn 933",
       kategori: "kuliner",
-      subkategori: "seafood-gonggong",
+      subkategori: "seafood",
       kecamatan: "Bengkong",
       lat: asli.lat,
       lng: asli.lng,
@@ -154,26 +158,41 @@ describe("kejujuran data di UI", () => {
     expect(mentah.filter((p: { phone: string }) => adalahPonsel(p.phone))).toHaveLength(24);
   });
 
-  it("kategori sesuai tabel pedoman 3.4", () => {
-    expect(Object.fromEntries(categories.map((c) => [c.id, c.name_id]))).toEqual({
-      "seafood-gonggong": "Makanan laut dan gonggong",
-      "sup-ikan": "Sup ikan",
-      "mie-tarempa": "Mi tarempa dan luti gendang",
-      "nasi-ayam-hainan": "Nasi ayam hainan",
-      kopitiam: "Kopitiam",
-      "martabak-prata": "Martabak dan prata",
-      "mie-bakmi": "Mi dan bakmi",
-      bubur: "Bubur",
-      "nasi-padang": "Nasi padang",
-      "sunda-jawa": "Masakan Sunda dan Jawa",
-      "sate-kambing": "Sate kambing",
-      bakso: "Bakso",
-      "dimsum-chinese": "Dim sum dan masakan Tionghoa",
-      "ayam-penyet": "Ayam penyet dan lalapan",
-      "pecel-gado": "Pecel dan gado-gado",
-      "oleh-oleh": "Oleh-oleh dan kue",
-      cafe: "Kafe dan kedai kopi",
-    });
+  it("kategori persis daftar pemilik, urutannya juga", () => {
+    expect(categories.map((c) => catName("id", c))).toEqual([
+      "Seafood",
+      "Sop Ikan",
+      "Mie Tarempa dan Luti Gendang",
+      "Makanan Padang",
+      "Makanan Jawa",
+      "Makanan Sunda",
+      "Makanan Sulawesi",
+      "Lapo Batak",
+      "Pempek",
+      "Penyetan",
+      "Soto",
+      "Sate",
+      "Bakso dan Mie Ayam",
+      "Nasi Goreng, Mie Goreng, Bakmie, dan Kwetiau",
+      "Gado-Gado, Pecel, dan Ketoprak",
+      "Chinese Food",
+      "Dimsum",
+      "Nasi Ayam Hainan",
+      "Bubur",
+      "Kopitiam",
+      "Makanan Jepang",
+      "Makanan Korea",
+      "Makanan India",
+      "Martabak dan Prata",
+      "Western dan Steak",
+      "Coffee Shop",
+      "Bakery",
+      "Kue, Jajanan Pasar, dan Gorengan",
+      "Ice Cream",
+      "Sarapan Pagi",
+      "AYCE",
+      "Vegetarian",
+    ]);
   });
 
   it("teks tempat bebas kata promosi, nama usaha tetap persis", () => {
@@ -208,7 +227,7 @@ describe("kejujuran data di UI", () => {
 
   it("tiap kategori punya ikon garis sendiri", () => {
     const ikon = readFileSync("features/makan/components/Ikon.tsx", "utf8");
-    expect(categories).toHaveLength(17);
+    expect(categories).toHaveLength(32);
     for (const c of categories) expect(ikon, c.id).toMatch(new RegExp(`"?${c.id}"?:\\s*"M`));
   });
 
@@ -231,14 +250,22 @@ describe("filter", () => {
 
   it("halal, kategori, area, harga, label", () => {
     expect(saring(places, s({ halal: ["halal"] }), null)).toHaveLength(80);
-    expect(saring(places, s({ cats: ["sup-ikan"] }), null)).toHaveLength(5);
+    expect(saring(places, s({ cats: ["sop-ikan"] }), null)).toHaveLength(5);
     expect(saring(places, s({ areas: ["bengkong"] }), null)).toHaveLength(12);
     expect(saring(places, s({ tiers: ["$$$"] }), null)).toHaveLength(10);
     expect(saring(places, s({ labels: ["hits"] }), null)).toHaveLength(3);
     // Antarkelompok AND, dalam satu kelompok OR.
-    expect(saring(places, s({ cats: ["sup-ikan", "bakso"] }), null)).toHaveLength(12);
-    const gabung = saring(places, s({ halal: ["halal"], cats: ["sup-ikan"] }), null);
-    expect(gabung.every((p) => p.halal === "halal" && p.category === "sup-ikan")).toBe(true);
+    expect(saring(places, s({ cats: ["sop-ikan", "bakso-mie-ayam"] }), null)).toHaveLength(18);
+    const gabung = saring(places, s({ halal: ["halal"], cats: ["sop-ikan"] }), null);
+    expect(gabung.every((p) => p.halal === "halal" && p.category === "sop-ikan")).toBe(true);
+  });
+
+  it("tempat masuk kategori lewat kategori utama atau kategori lain", () => {
+    const ciao = places.find((p) => p.id === "ciao-dimsum-kopi");
+    expect(ciao?.category).toBe("dimsum");
+    expect(saring(places, s({ cats: ["ayce"] }), null).map((p) => p.id)).toEqual(["ciao-dimsum-kopi"]);
+    expect(saring(places, s({ cats: ["dimsum"] }), null).some((p) => p.id === "ciao-dimsum-kopi")).toBe(true);
+    for (const p of places) for (const k of p.kategori_lain ?? []) expect(categories.some((c) => c.id === k), k).toBe(true);
   });
 
   it("saringan baru: sarapan, larut, bayar, dan harga di bawah Rp50 ribu", () => {
@@ -261,7 +288,7 @@ describe("filter", () => {
   it("saringan bolak-balik lewat alamat", () => {
     const awal = s({
       query: "gonggong",
-      cats: ["seafood-gonggong"],
+      cats: ["seafood"],
       areas: ["bengkong"],
       halal: ["muslim-friendly"],
       tiers: ["$$$"],
@@ -306,7 +333,7 @@ describe("filter", () => {
     expect(ids("sop ikan")).toContain("yong-kee-istimewa");
     expect(ids("seafood")).toContain("golden-prawn-933");
     expect(ids("makanan laut")).toContain("golden-prawn-933");
-    expect(ids("Kafe dan kedai kopi")).toContain("anchor-cafe-roastery");
+    expect(ids("Coffee Shop")).toContain("anchor-cafe-roastery");
   });
 
   it("buka sekarang memakai waktu yang diberikan, jam tidak diketahui tidak dihitung buka", () => {
@@ -521,7 +548,7 @@ describe("lapisan peta", () => {
 });
 
 describe("hidangan dan rumpun", () => {
-  it("17 hidangan masuk tepat satu rumpun dan punya gambar", () => {
+  it("32 kategori masuk tepat satu rumpun dan punya gambar", () => {
     const dariRumpun = RUMPUN.flatMap((r) => r.kategori);
     expect(new Set(dariRumpun).size).toBe(dariRumpun.length);
     expect([...dariRumpun].sort()).toEqual(categories.map((c) => c.id).sort());
@@ -529,13 +556,13 @@ describe("hidangan dan rumpun", () => {
       expect(existsSync(`public/grafis/hidangan/${c.id}.webp`), c.id).toBe(true);
       expect(kategoriDariSlug(slugHidangan(c.id))).toBe(c.id);
     }
-    expect(semuaSlugHidangan).toHaveLength(17);
+    expect(semuaSlugHidangan).toHaveLength(32);
     expect(kategoriDariSlug("tidak-ada")).toBeUndefined();
   });
 
-  it("rumpun membentuk baris enam ubin", () => {
-    // Laut 3 + Roti 2 + Kopi 1, Tionghoa 5 + Bawa 1, Nusantara 5 + ubin Semua.
-    expect(RUMPUN.map((r) => r.kategori.length)).toEqual([3, 2, 1, 5, 1, 5]);
+  it("rumpun mengikuti urutan daftar pemilik", () => {
+    expect(RUMPUN.map((r) => r.id)).toEqual(["laut", "nusantara", "tionghoa", "mancanegara", "kudapan", "khusus"]);
+    expect(RUMPUN.flatMap((r) => r.kategori)).toEqual(categories.map((c) => c.id));
   });
 });
 
@@ -590,5 +617,38 @@ describe("peta cetak", () => {
       expect(y, p.id).toBeGreaterThan(POTONGAN.y);
       expect(y, p.id).toBeLessThan(POTONGAN.y + POTONGAN.h);
     }
+  });
+});
+
+describe("food court", () => {
+  it("data lolos skema, setiap tempat punya sumber dan id unik", () => {
+    expect(foodCourtSchema.safeParse(foodCourtRaw).success).toBe(true);
+    expect(new Set(FOOD_COURT.map((f) => f.id)).size).toBe(FOOD_COURT.length);
+  });
+
+  it("tidak ada koordinat tebakan: kosong sampai diisi pemilik, tanpa rating", () => {
+    for (const f of FOOD_COURT) {
+      expect(f.lat === null, f.id).toBe(f.lng === null);
+      expect(f).not.toHaveProperty("rating");
+    }
+  });
+
+  it("tempat menunjuk food court yang ada, dan bisa dicari dari keduanya", () => {
+    const tertaut = (mentah as { id: string; food_court?: string }[]).filter((p) => p.food_court);
+    expect(tertaut.length).toBeGreaterThan(0);
+    for (const p of tertaut) expect(foodCourtDari(p.food_court), p.id).toBeDefined();
+    expect(tertaut.find((p) => p.id === "nomnom-seafood")?.food_court).toBe("168-food-court");
+  });
+
+  it("dikelompokkan per kecamatan tanpa ada yang hilang", () => {
+    const k = kelompokFoodCourt();
+    expect(k.flatMap((x) => x.isi)).toHaveLength(FOOD_COURT.length);
+    expect(k[0].kecamatan).toBe("Lubuk Baja");
+  });
+
+  it("petunjuk arah memakai pencarian selama koordinat kosong", () => {
+    const f = FOOD_COURT[0];
+    expect(tautanFoodCourt({ ...f, lat: null, lng: null })).toContain("maps/search");
+    expect(tautanFoodCourt({ ...f, lat: 1.1, lng: 104 })).toContain("destination=1.1,104");
   });
 });

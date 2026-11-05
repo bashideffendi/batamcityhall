@@ -15,7 +15,7 @@ export default function DaftarBertahap({ className, kolom, children }: { classNa
       <ul className={className} data-kolom={kolom}>{isi.slice(0, tampil)}</ul>
       {sisa > 0 && (
         <button type="button" className="bch-btn mt-4" data-variant="ghost" onClick={() => setTampil(tampil + LANGKAH)}>
-          Tampilkan {Math.min(LANGKAH, sisa).toLocaleString("id-ID")} tempat lagi
+          Tampilkan {Math.min(LANGKAH, sisa).toLocaleString("id-ID")} Tempat Lagi
         </button>
       )}
     </>

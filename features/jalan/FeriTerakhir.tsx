@@ -31,7 +31,8 @@ function metaBaris(h: HasilFeri): string {
   if (TANPA_JAM.has(h.status)) return "";
   const zona = h.zona ? ` ${singkatanZona(h.zona)}` : "";
   const bagian: string[] = [];
-  if (h.dataLama || h.perluCek) bagian.push(catatanJadwalLama(h.tanggalData));
+  // Pesan "tanyakan kepada operator" sudah ada di bawah tabel, cukup sekali.
+  if (h.dataLama || h.perluCek) bagian.push(catatanJadwalLama(h.tanggalData).replace(/\s*Tanyakan kepada operator\.?/, ""));
   if (h.perkiraan && h.operasi) {
     bagian.push(
       h.operasi.interval
@@ -57,7 +58,7 @@ function Baris({ h, k }: { h: HasilFeri; k: KelompokRute }) {
         {k.asal}—{k.tujuan}
       </td>
       <td data-label="Operator">{h.operator ?? ""}</td>
-      <td data-label="Terakhir hari ini" className="jl-feri-sel">
+      <td data-label="Terakhir Hari Ini" className="jl-feri-sel">
         {adaJam ? (
           <span className="jl-feri-jam">
             {h.perkiraan ? "sekitar " : ""}
@@ -65,7 +66,13 @@ function Baris({ h, k }: { h: HasilFeri; k: KelompokRute }) {
             {h.jamWib && <span className="jl-feri-wib">{teksJamWib(h.jamWib)}</span>}
           </span>
         ) : (
+          h.status === "zona_belum_jelas" ? (
+          <Link href={`/jalan/feri#${h.ruteId}`} prefetch={false} className="jl-feri-teks">
+            {teksStatus(h)}
+          </Link>
+        ) : (
           <span className="jl-feri-teks">{teksStatus(h)}</span>
+        )
         )}
         {label && (
           <span className="bch-status" data-tone={h.terganggu ? "danger" : h.status === "masih_ada" ? "ok" : undefined}>
@@ -87,12 +94,13 @@ function TabelFeri({ kelompok }: { kelompok: KelompokRute[] }) {
           <tr>
             <th scope="col">Rute</th>
             <th scope="col">Operator</th>
-            <th scope="col">Terakhir hari ini</th>
+            <th scope="col">Terakhir Hari Ini</th>
           </tr>
         </thead>
         <tbody>
           {kelompok.flatMap((k) =>
-            k.baris.map((h, i) => <Baris key={`${k.ruteId}-${k.asal}-${k.tujuan}-${h.operator}-${i}`} h={h} k={k} />),
+            // Yang masih bisa dikejar tampil lebih dulu.
+            [...k.baris].sort((a, b) => Number(a.status === "sudah_lewat") - Number(b.status === "sudah_lewat")).map((h, i) => <Baris key={`${k.ruteId}-${k.asal}-${k.tujuan}-${h.operator}-${i}`} h={h} k={k} />),
           )}
         </tbody>
       </table>
@@ -180,8 +188,6 @@ export default function FeriTerakhir({ varian = "penuh", terminal, namaTerminal 
       </p>
       {!terminal && varian === "penuh" ? (
         <BelumTersedia baris={kosong} />
-      ) : terminal && kosong.length > 0 ? (
-        <p className="jl-feri-meta">{kosong.map((h) => h.tujuan).join(", ")}: jadwal belum tersedia.</p>
       ) : null}
       {(terminal || varian === "ringkas") && (
         <p className="m-0 mt-3">

@@ -6,7 +6,8 @@ Aturan:
 - Bagian yang murni konteks (misalnya metodologi atau daftar sumber) tetap ditandai `[-] konteks, tidak perlu fitur`.
 - Selesai = tidak ada `[ ]` tersisa, termasuk di bagian "File data" di bawah.
 - `docs/PEDOMAN.md` (5 Nov 2026) menang atas semua dokumen. Butir bertanda "dicabut PEDOMAN" dulu diterapkan, lalu dibuang atas keputusan itu: gaya peta laut, tekstur kertas, huruf Source Serif, dan pucuk rebung.
-- Sejak 6 Nov 2026 Makan didesain ulang. Alamat di bawah yang menyebut `/makan/daftar`, `/makan/kategori`, `/makan/jalur`, `/makan/tersimpan`, dan `/makan/tentang` kini berada di `/makan/peta`, `/makan/hidangan`, `/makan/panduan`, `/makan/simpanan`, dan `/makan/cara-memilih`.
+- Sejak 5 Nov 2026 Makan didesain ulang. Alamat di bawah yang menyebut `/makan/daftar`, `/makan/kategori`, `/makan/jalur`, `/makan/tersimpan`, dan `/makan/tentang` kini berada di `/makan/peta`, `/makan/hidangan`, `/makan/panduan`, `/makan/simpanan`, dan `/makan/cara-memilih`.
+- Sejak rombak menu November 2026, alamat di bawah dibaca sebagai alamat baru: `/cuaca/cctv` → `/cctv`, `/info/berita` → `/berita`, `/cerita/kalender` → `/things-to-do`, `/cerita/komunitas` → `/komunitas`, `/main/kartu-pos` → `/kartu-pos`. `/main`, `/main/vibe`, dan `/main/singapura-atau-nagoya` dihapus atas keputusan pemilik. Klaster peta dicabut: titik berdiri sendiri. Halaman baru: `/cari`, `/jurnal`, `/makan/food-court`, `/admin/jurnal`, `/admin/foto`, `/admin/makanan`, `/admin/agenda`.
 
 ## Peleburan situs lama (CLAUDE_CODE_PROMPT bagian 4.0; rinci di docs/PARITAS.md)
 

@@ -54,7 +54,7 @@ export const viewport: Viewport = {
 
 // Tema dipasang sebelum paint. Pilihan tersimpan menang. Tanpa pilihan: halaman peta cuaca ikut jam WIB
 // (paritas hujandibatam), halaman lain ikut prefers-color-scheme.
-const THEME_SCRIPT = `(function(){try{var s=localStorage.getItem("bch-theme"),d=document.documentElement,t;if(s==="light"||s==="dark")t=s;else if(location.pathname.match("^/cuaca/(hujan|gelombang|cctv)")){var h=(new Date().getUTCHours()+7)%24;t=h>=6&&h<18?"light":"dark"}else t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.dataset.theme=t;var g=localStorage.getItem("bch-gerak");if(g==="tenang")d.dataset.gerak="tenang"}catch(e){}})();`;
+const THEME_SCRIPT = `(function(){try{var s=localStorage.getItem("bch-theme"),d=document.documentElement,t;if(s==="light"||s==="dark")t=s;else if(location.pathname.match("^/(cuaca/(hujan|gelombang)|cctv)")){var h=(new Date().getUTCHours()+7)%24;t=h>=6&&h<18?"light":"dark"}else t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.dataset.theme=t;var g=localStorage.getItem("bch-gerak");if(g==="tenang")d.dataset.gerak="tenang"}catch(e){}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

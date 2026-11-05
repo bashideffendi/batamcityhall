@@ -21,7 +21,7 @@ Folder `C:\proyek\batamcityhall` (salinan lama `Desktop\batam-city-hall` terting
 
 | Bagian | Keadaan |
 |---|---|
-| Loket 01 sampai 07, halaman pendukung, admin | Semua jalan. Skor pemeriksaan bagian 7 per tahap ada di `docs/tampilan/skor/`, ringkasannya di `docs/KOREKSI.md` |
+| Loket 01 sampai 07, halaman pendukung, admin | Semua jalan. Skor per halaman dan galeri rombak ada di `docs/KOREKSI.md`. Skor pemeriksaan bagian 7 per tahap ada di `docs/tampilan/skor/`, ringkasannya di `docs/KOREKSI.md` |
 | Supabase | Migrasi dan store tertulis, belum pernah dijalankan sungguhan |
 | Mural | Satu segmen placeholder, sisanya "segera" |
 | Redirect situs lama | Siap di `deploy/situs-lama/`, belum dijalankan |
@@ -36,25 +36,19 @@ Folder `C:\proyek\batamcityhall` (salinan lama `Desktop\batam-city-hall` terting
 
 ## Langkah berikutnya
 
-Urutan mengikuti bagian 8 `docs/PEDOMAN.md`. Pemilik meminta skor bagian 7 per halaman dilaporkan setelah tiap tahap. Skor tercatat di `docs/tampilan/skor/`, terakhir `07-tahap7`: 53 halaman, 53 lolos.
+**Tayang vs lokal.** Situs tayang memakai commit `aa7026f`. Semua sesudahnya, termasuk rombak menu, hanya ada di lokal sampai pemilik meminta push. Push ke `fase-1-fondasi` langsung men-deploy.
 
-**Tayang vs lokal.** Situs tayang memakai commit `aa7026f` (koreksi "loket" dan Tahap 7), di-push atas izin pemilik pada 5 Nov 2026. Commit sesudahnya hanya ada di lokal sampai pemilik meminta push lagi. Izin deploy tidak berlaku untuk deploy berikutnya.
+Rencana dan statusnya: `docs/RENCANA-ROMBAK.md`. Temuan audit: `docs/AUDIT.md`. Yang menunggu pemilik: `docs/TODO_PEMILIK.md`.
 
-Sisa pekerjaan:
+Yang tersisa:
 
-1. **Tahap 7:** selesai. `lib/cache-respons.ts` di 8 route, ikon situs, dan CSS tak terpakai sudah tayang. Skor `07-tahap7` sudah dilaporkan. Butir 9 di `/` berasal dari kolom cari Peta Tempat yang memang di bawah Hari Ini sesuai 3.2.
-2. **Aksesibilitas:** selesai di lokal. Axe 56 halaman, dua tema, dua lebar: 0 temuan. Penyebab utamanya token status tanpa versi tema gelap.
-3. **Tes e2e:** banyak selektor dan teks tes masih milik tampilan lama. Putaran desktop yang dihentikan di tengah: 245 lulus, 94 gagal, dan itu sebelum koreksi "loket". Yang perlu ditulis ulang antara lain:
-   - `tests/e2e/jalan.spec.ts`: Feri Terakhir kini tabel; `.jl-feri-rute` dan "Sekarang" tidak ada lagi; kotak `.bch-hari-ini` tidak ada lagi.
-   - `tests/e2e/direktori.spec.ts`: `.bch-grid .bch-card` menjadi `.bch-baris`, `.bch-sub-nav` menjadi `.bch-saring-baris`, jumlah kategori kini hanya angka.
-   - `tests/e2e/makan.spec.ts`: `a.bch-card` untuk jalur dan beranda Makan.
-   - `tests/e2e/kampung-tua.spec.ts`, `berita.spec.ts`, `situs.spec.ts`, `langit-laut.spec.ts`: judul lama, ornamen peta, alamat `/langit-laut`, teks "Loket".
-   - Tes mural boleh dilewati (pedoman 8.5).
-   - Jalankan dengan `npx playwright test --workers=4 --timeout=60000`. Satu pekerja terlalu lambat.
-4. **Tahap 8:** galeri screenshot desktop dan ponsel, skor semua halaman, `docs/KOREKSI.md` (halaman, skor sebelum, skor sesudah, perubahan utama), lalu periksa syarat selesai 8.1.
-5. **Keputusan pemilik:** daftarnya di `docs/TODO_PEMILIK.md`.
+1. **Koordinat.** Pemilik mengisi `data/koordinat_perlu_diisi.xlsx`. Masukkan dengan `python tools/impor_lembar_koordinat.py <berkas>`, butuh `pip install openpyxl`. Coba dulu dengan `--coba`. Buat ulang lembarnya dengan `tools/buat_lembar_koordinat.py`, butuh `xlsxwriter`.
+2. **Dashboard.** Kode `/admin` teruji di mode contoh. Perlu proyek Supabase (menunggu izin pemilik), migrasi di `supabase/migrations/`, tiga variabel di Railway, dan satu akun dengan `app_metadata.peran = moderator`. Sesudah itu uji `features/konten/store-supabase.ts` melawan basis data sungguhan, karena belum pernah dijalankan.
+3. **Kategori Makanan kosong:** Makanan Sulawesi, Pempek, Makanan Jepang, Makanan Korea, Western dan Steak, Ice Cream, Vegetarian. Tempat ditambah lewat `/admin/makanan`, jangan dikarang.
+4. **Data ganda:** `rs-bpbatam` dan `kes-rs-bp-batam` tampaknya rumah sakit yang sama. Belum digabung, menunggu pemilik.
+5. **Mode uji lokal:** tes e2e butuh build dengan `NEXT_PUBLIC_MODE_CONTOH=1`, karena tautan formulir hanya tampil bila `KIRIMAN_AKTIF`.
 
-Catatan tentang skor: butir 9 di `/cuaca/gelombang` dan `/cuaca/cctv` salah deteksi. Judulnya terlihat di lembar bawah ponsel, tetapi panel sempat terbuka saat skrip mengukur.
+Jalankan e2e dengan `npx playwright test --workers=4 --timeout=60000`. Satu pekerja terlalu lambat.
 
 ## Yang perlu diingat
 

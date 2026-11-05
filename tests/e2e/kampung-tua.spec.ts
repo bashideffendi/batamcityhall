@@ -47,7 +47,7 @@ test.describe("Kampung Tua", () => {
 
     await page.getByRole("checkbox", { name: /Rempang dan Galang/ }).check();
     await expect(peta).toHaveAttribute("data-penanda-tampil", "47");
-    await page.getByRole("checkbox", { name: /Situs dan kampung lama/ }).check();
+    await page.getByRole("checkbox", { name: /Situs dan Kampung Lama/ }).check();
     await expect(peta).toHaveAttribute("data-penanda-tampil", "50");
     await page.getByRole("checkbox", { name: /Daratan Batam/ }).uncheck();
     await expect(peta).toHaveAttribute("data-penanda-tampil", "15");
@@ -70,7 +70,7 @@ test.describe("Kampung Tua", () => {
     const baris = page.locator("[data-tabel-jumlah] tbody tr");
     await expect(baris).toHaveCount(9);
     await expect(page.locator("[data-tabel-jumlah]")).toContainText("Surat RKWB ke Presiden");
-    await expect(page.locator("[data-tabel-jumlah]")).toContainText("Berbeda versi");
+    await expect(page.locator("[data-tabel-jumlah]")).toContainText("Berbeda Versi");
     await expect(page.locator("[data-satu-data]")).toContainText("24 lokasi");
     await expect(page.locator("[data-pegangan] li")).toHaveCount(3);
     await expect(page.locator("[data-kisah-nama] > div")).toHaveCount(3);
@@ -83,8 +83,8 @@ test.describe("Kampung Tua", () => {
   test("label kartu sesuai pedoman", async ({ page }) => {
     await page.goto("/cerita/kampung-tua/kt-nongsa-pantai");
     const kartu = page.locator(".bch-kartu-museum");
-    await expect(kartu).toContainText("Asal-usul nama");
-    await expect(kartu).toContainText("Berdiri sejak");
+    await expect(kartu).toContainText("Asal-Usul Nama");
+    await expect(kartu).toContainText("Berdiri Sejak");
     await expect(page.getByRole("heading", { level: 2, name: "Yang bisa dilihat" })).toBeVisible();
     await expect(page.getByRole("heading", { level: 2, name: "Etika berkunjung" })).toBeVisible();
   });
@@ -96,14 +96,14 @@ test.describe("Kampung Tua", () => {
     await expect(kartu).toContainText("Melayu");
     await expect(kartu).toContainText("Lokasi perkiraan");
     await expect(kartu.locator("[data-baris-museum]")).toContainText("Lokasi perkiraan");
-    await expect(kartu).toContainText("Penduduk awal");
+    await expect(kartu).toContainText("Penduduk Awal");
     await expect(page.locator("[data-yang-dilihat] li")).toHaveCount(2);
     const cerita = page.locator("[data-cerita-rakyat]");
     await expect(cerita).toContainText("Cerita rakyat, bukan catatan sejarah");
     await expect(cerita.locator('[data-ikon="cerita-rakyat"]')).toHaveCount(1);
     await expect(page.locator("[data-etika] li")).toHaveCount(6);
     await expect(page.locator("[data-profil]")).toContainText("bukan bukti arkeologis");
-    await expect(page.getByRole("link", { name: "Kirim koreksi" })).toHaveAttribute(
+    await expect(page.locator("#isi").getByRole("link", { name: "Kirim Koreksi" })).toHaveAttribute(
       "href",
       "/koreksi?tempat=kt-tanjung-bemban",
     );
@@ -115,7 +115,7 @@ test.describe("Kampung Tua", () => {
     await page.goto("/cerita/kampung-tua/kt-seranggong");
     await expect(page.locator(".bch-kartu-museum [data-baris-museum]")).toHaveCount(0);
     expect(await page.locator("main").innerText()).not.toMatch(/Lokasi belum diisi|tidak menebak/i);
-    await expect(page.getByRole("link", { name: "Lihat di peta" })).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "Lihat di Peta" })).toHaveCount(0);
   });
 
   test("istilah etnis lama tidak tampil di Panau", async ({ page }) => {
@@ -135,7 +135,7 @@ test.describe("Kampung Tua", () => {
 
   test("situs lama diberi label bukan kampung tua resmi", async ({ page }) => {
     await page.goto("/cerita/kampung-tua/hl-belakang-padang");
-    await expect(page.locator("main")).toContainText("bukan klaim kampung tua resmi");
+    await expect(page.locator("main")).toContainText("Belum tentu tercatat sebagai kampung tua resmi");
   });
 
   test("id yang tidak ada 404", async ({ page }) => {
@@ -221,8 +221,8 @@ test.describe("Siapa di Balik Nama Jalan", () => {
     await page.getByLabel("Status").selectOption("hikayat");
     await expect(jumlah).toHaveAttribute("data-jumlah-tokoh", "6");
     await expect(page.locator('[data-tokoh="hang_tuah"] .nj-kartu')).toHaveAttribute("data-hikayat", "true");
-    await expect(page.locator('[data-tokoh="hang_tuah"]')).toContainText("Cerita rakyat");
-    await page.getByRole("button", { name: "Hapus saringan" }).click();
+    await expect(page.locator('[data-tokoh="hang_tuah"]')).toContainText("Cerita Rakyat");
+    await page.getByRole("button", { name: "Hapus Saringan" }).click();
     await expect(jumlah).toHaveAttribute("data-jumlah-tokoh", String(tokoh.length));
     await expect(page.locator('[data-tokoh="nong_isa"] .nj-kartu')).toHaveAttribute("data-hikayat", "false");
   });
@@ -238,7 +238,7 @@ test.describe("Siapa di Balik Nama Jalan", () => {
   test("kartu tokoh lengkap dan menaut ke tempat", async ({ page }) => {
     await page.goto("/cerita/nama-jalan/hang_nadim");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Hang Nadim");
-    await expect(page.locator("[data-status-tokoh]")).toContainText("Belum terverifikasi");
+    await expect(page.locator("[data-status-tokoh]")).toContainText("Belum Terverifikasi");
     await expect(page.locator("[data-catatan-hikayat]")).toBeVisible();
     await expect(page.locator("main")).toContainText("3 Januari 1995");
     await expect(page.locator("[data-tempat-tokoh]").getByRole("link")).toHaveAttribute(
@@ -251,7 +251,7 @@ test.describe("Siapa di Balik Nama Jalan", () => {
 
   test("kartu ringkas tanpa biografi dan tanpa catatan kerja", async ({ page }) => {
     await page.goto("/cerita/nama-jalan/katamso");
-    await expect(page.locator("[data-status-tokoh]")).toContainText("Belum terverifikasi");
+    await expect(page.locator("[data-status-tokoh]")).toContainText("Belum Terverifikasi");
     await expect(page.getByText("Kami belum punya sumber biografi")).toHaveCount(0);
     await expect(page.getByText("Sumber belum tercatat.")).toHaveCount(0);
     await expect(page.locator('main a[href^="http"]')).toHaveCount(0);

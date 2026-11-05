@@ -1,4 +1,4 @@
-// Identitas situs, menu Loket, dan teks wajib. Keputusan pemilik proyek: research/00.
+// Identitas situs, menu, dan teks wajib. Struktur menu: koreksi pemilik 5 November 2026.
 
 export const SITE_NAME = "Batam City Hall";
 export const SITE_TAGLINE = "Informasi Kota Batam";
@@ -12,7 +12,6 @@ export const HALAMAN_TERSEMBUNYI = [
   "/mural",
   "/mural/cara-dibuat",
   "/mural/gcp",
-  "/main/vibe",
   "/cerita/dulu",
   "/info/warga-baru",
   "/admin",
@@ -24,142 +23,192 @@ export const ROBOTS_TERSEMBUNYI = { index: false, follow: false } as const;
 /** SITE_PRATINJAU=1 saat build: situs pratinjau (mis. Railway) tidak diindeks mesin pencari. */
 export const SITE_PRATINJAU = process.env.SITE_PRATINJAU === "1";
 
-/** Baris kaki halaman (PEDOMAN 3.1). Kredit data pindah ke Kolofon. */
-export const KAKI_KETERANGAN = "Proyek independen warga Batam · Tanpa iklan";
+/** Formulir warga butuh basis data. Selama belum tersambung, tautan ke formulirnya tidak tampil (PEDOMAN 1.7). */
+export const KIRIMAN_AKTIF =
+  Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL) || process.env.NEXT_PUBLIC_MODE_CONTOH === "1" || process.env.NODE_ENV !== "production";
 
-export type Loket = {
-  nomor: string;
+/** Baris kaki halaman. Kredit data ada di Kolofon. */
+export const KAKI_KETERANGAN = "Proyek independen warga Batam. Tanpa iklan.";
+
+export type Bagian = {
+  id: string;
   nama: string;
   href: string;
+  /** Keterangan singkat di menu ponsel dan halaman pembuka. */
   lede: string;
-  /** Penanda kecil di atas judul halaman pembuka: isi bagian ini. */
-  penanda: string;
-  /** Awalan alamat yang menandai loket ini aktif di menu. */
+  /** Awalan alamat yang menandai bagian ini aktif di menu. */
   aktifDi: string[];
-  /** Ilustrasi di public/grafis (PEDOMAN 4.7). */
+  /** Ilustrasi di public/grafis. */
   grafis: string;
-  isi: { label: string; href: string }[];
+  /** Submenu. Kosong bila bagian hanya satu halaman. */
+  isi: { label: string; href: string; /** Kata pencarian tambahan. */ kata?: string }[];
 };
 
-// Nama dan keterangan mengikuti PEDOMAN 3.1. Route lama tetap; hanya label yang berganti.
-export const LOKET: Loket[] = [
+/** Isinya dari dashboard, jadi menunya baru tampil setelah basis data tersambung. */
+const BAGIAN_LOKER: Bagian = {
+  id: "loker",
+  nama: "Info Loker",
+  href: "/loker",
+  lede: "Lowongan kerja di Batam",
+  aktifDi: ["/loker"],
+  grafis: "/grafis/bagian/loker.webp",
+  isi: [],
+};
+
+// Urutan mengikuti yang paling sering dicari setiap hari, lalu yang dibuka sesekali.
+export const BAGIAN: Bagian[] = [
   {
-    nomor: "01",
-    grafis: "/grafis/loket-cuaca.webp",
-    aktifDi: ["/cuaca"],
-    nama: "Cuaca dan Laut",
+    id: "cuaca",
+    nama: "Cuaca",
     href: "/cuaca",
-    lede: "Radar hujan, tinggi gelombang, dan kamera lalu lintas",
-    penanda: "Radar hujan · Gelombang · CCTV",
+    lede: "Radar hujan, gelombang, peringatan dini, dan gempa",
+    aktifDi: ["/cuaca"],
+    grafis: "/grafis/loket-cuaca.webp",
     isi: [
-      { label: "Radar hujan", href: "/cuaca/hujan" },
-      { label: "Tinggi gelombang", href: "/cuaca/gelombang" },
-      { label: "CCTV lalu lintas", href: "/cuaca/cctv" },
-      { label: "Peringatan dini cuaca", href: "/cuaca/peringatan" },
-      { label: "Gempa terkini", href: "/cuaca/gempa" },
+      { label: "Radar Hujan", href: "/cuaca/hujan" },
+      { label: "Tinggi Gelombang", href: "/cuaca/gelombang" },
+      { label: "Peringatan Dini", href: "/cuaca/peringatan" },
+      { label: "Gempa Terkini", href: "/cuaca/gempa" },
     ],
   },
   {
-    nomor: "02",
-    grafis: "/grafis/loket-makan.webp",
-    aktifDi: ["/makan"],
-    nama: "Makan",
-    href: "/makan",
-    lede: "117 tempat makan, dari kopitiam sampai gonggong",
-    penanda: "Hidangan · Panduan · Peta",
-    isi: [
-      { label: "Hidangan", href: "/makan/hidangan" },
-      { label: "Peta", href: "/makan/peta" },
-      { label: "Panduan", href: "/makan/panduan" },
-    ],
+    id: "cctv",
+    nama: "CCTV",
+    href: "/cctv",
+    lede: "Kamera lalu lintas di jalan utama Batam",
+    aktifDi: ["/cctv"],
+    grafis: "/grafis/bagian/cctv.webp",
+    isi: [],
   },
   {
-    nomor: "03",
-    grafis: "/grafis/loket-tukang.webp",
-    aktifDi: ["/tukang"],
-    nama: "Tukang Langganan",
-    href: "/tukang",
-    lede: "Jasa yang direkomendasikan warga",
-    penanda: "Daftar tukang · Kirim rekomendasi",
-    isi: [
-      { label: "Daftar tukang", href: "/tukang" },
-      { label: "Kirim rekomendasi", href: "/tukang/rekomendasi" },
-    ],
-  },
-  {
-    nomor: "04",
-    grafis: "/grafis/loket-transportasi.webp",
-    aktifDi: ["/jalan"],
+    id: "transportasi",
     nama: "Transportasi",
     href: "/jalan",
     lede: "Trans Batam, feri, dan pompong",
-    penanda: "Trans Batam · Feri · Pompong",
+    aktifDi: ["/jalan"],
+    grafis: "/grafis/loket-transportasi.webp",
     isi: [
       { label: "Trans Batam", href: "/jalan/trans-batam" },
-      { label: "Peta transportasi", href: "/jalan/peta" },
       { label: "Feri", href: "/jalan/feri" },
       { label: "Pompong", href: "/jalan/pompong" },
-      { label: "Panduan menyeberang", href: "/jalan/feri/panduan" },
+      { label: "Panduan Menyeberang", href: "/jalan/feri/panduan" },
+      { label: "Peta Transportasi", href: "/jalan/peta" },
     ],
   },
   {
-    nomor: "05",
-    grafis: "/grafis/loket-cerita.webp",
-    aktifDi: ["/cerita"],
-    nama: "Cerita dan Budaya",
+    id: "makanan",
+    nama: "Makanan",
+    href: "/makan",
+    lede: "117 tempat makan, dari kopitiam sampai gonggong",
+    aktifDi: ["/makan"],
+    grafis: "/grafis/loket-makan.webp",
+    isi: [
+      { label: "Hidangan", href: "/makan/hidangan" },
+      { label: "Kawasan", href: "/makan/kawasan" },
+      { label: "Food Court", href: "/makan/food-court", kata: "pujasera hawker kuliner malam" },
+      { label: "Panduan", href: "/makan/panduan" },
+      { label: "Dekat Feri", href: "/makan/dekat-feri" },
+      { label: "Peta", href: "/makan/peta" },
+      { label: "Simpanan", href: "/makan/simpanan" },
+    ],
+  },
+  {
+    id: "berita",
+    nama: "Berita",
+    href: "/berita",
+    lede: "Judul terbaru tentang Batam dari media lokal",
+    aktifDi: ["/berita"],
+    grafis: "/grafis/bagian/berita.webp",
+    isi: [],
+  },
+  {
+    id: "jurnal",
+    nama: "Jurnal",
+    href: "/jurnal",
+    lede: "Tulisan tentang Batam",
+    aktifDi: ["/jurnal"],
+    grafis: "/grafis/bagian/jurnal.webp",
+    isi: [],
+  },
+  {
+    id: "kegiatan",
+    nama: "Things to Do",
+    href: "/things-to-do",
+    lede: "Acara sepanjang tahun dan tempat untuk dikunjungi",
+    aktifDi: ["/things-to-do"],
+    grafis: "/grafis/bagian/agenda.webp",
+    isi: [],
+  },
+  {
+    id: "komunitas",
+    nama: "Komunitas",
+    href: "/komunitas",
+    lede: "Komunitas kreatif, olahraga, dan budaya di Batam",
+    aktifDi: ["/komunitas"],
+    grafis: "/grafis/bagian/komunitas.webp",
+    isi: [],
+  },
+  {
+    id: "tukang",
+    nama: "Tukang Langganan",
+    href: "/tukang",
+    lede: "Jasa yang direkomendasikan warga",
+    aktifDi: ["/tukang"],
+    grafis: "/grafis/loket-tukang.webp",
+    isi: [
+      { label: "Daftar Tukang", href: "/tukang" },
+      ...(KIRIMAN_AKTIF ? [{ label: "Kirim Rekomendasi", href: "/tukang/rekomendasi" }] : []),
+    ],
+  },
+  ...(KIRIMAN_AKTIF ? [BAGIAN_LOKER] : []),
+  {
+    id: "layanan",
+    nama: "Layanan Warga",
+    href: "/info",
+    lede: "Nomor darurat, direktori, dan panduan urusan",
+    aktifDi: ["/info"],
+    grafis: "/grafis/loket-informasi.webp",
+    isi: [
+      { label: "Nomor Darurat", href: "/info/darurat" },
+      { label: "Direktori", href: "/info/direktori" },
+      { label: "Urusan Tanah dan Rumah", href: "/info/urusan-tanah" },
+      { label: "Bantuan Hukum", href: "/info/bantuan-hukum" },
+      { label: "Jasa Dokumen dan Usaha", href: "/info/jasa-dokumen" },
+    ],
+  },
+  {
+    id: "budaya",
+    nama: "Sejarah dan Budaya",
     href: "/cerita",
-    lede: "Sejarah, kampung tua, tokoh, dan kamus",
-    penanda: "Sejarah · Kampung tua · Kamus",
+    lede: "Sejarah, kampung tua, nama jalan, kamus, dan kartu pos",
+    aktifDi: ["/cerita", "/kartu-pos"],
+    grafis: "/grafis/loket-cerita.webp",
     isi: [
       { label: "Sejarah Batam", href: "/cerita/sejarah" },
-      { label: "Kampung tua", href: "/cerita/kampung-tua" },
-      { label: "Siapa di balik nama jalan", href: "/cerita/nama-jalan" },
+      { label: "Kampung Tua", href: "/cerita/kampung-tua" },
+      { label: "Nama Jalan", href: "/cerita/nama-jalan" },
       { label: "Budaya Melayu", href: "/cerita/budaya" },
-      { label: "Kalender acara", href: "/cerita/kalender" },
       { label: "Kamus", href: "/cerita/kamus" },
-      { label: "Komunitas", href: "/cerita/komunitas" },
-      { label: "Batam dalam angka", href: "/cerita/angka" },
-    ],
-  },
-  {
-    nomor: "06",
-    grafis: "/grafis/loket-informasi.webp",
-    aktifDi: ["/info"],
-    nama: "Informasi Warga",
-    href: "/info",
-    lede: "Direktori, nomor darurat, dan panduan",
-    penanda: "Direktori · Nomor darurat · Berita",
-    isi: [
-      { label: "Direktori", href: "/info/direktori" },
-      { label: "Nomor darurat", href: "/info/darurat" },
-      { label: "Urusan tanah dan rumah", href: "/info/urusan-tanah" },
-      { label: "Bantuan hukum", href: "/info/bantuan-hukum" },
-      { label: "Jasa dokumen dan usaha", href: "/info/jasa-dokumen" },
-      { label: "Berita Batam", href: "/info/berita" },
-    ],
-  },
-  {
-    nomor: "07",
-    grafis: "/grafis/loket-main.webp",
-    aktifDi: ["/main"],
-    nama: "Ruang Main",
-    href: "/main",
-    lede: "Kartu pos dan kalkulator belanja",
-    penanda: "Kartu pos · Kalkulator belanja",
-    isi: [
-      { label: "Kartu pos dari Batam", href: "/main/kartu-pos" },
-      { label: "Belanja di Singapura atau di Nagoya?", href: "/main/singapura-atau-nagoya" },
+      { label: "Batam dalam Angka", href: "/cerita/angka" },
+      { label: "Kartu Pos", href: "/kartu-pos" },
     ],
   },
 ];
 
-/** Loket yang halamannya sudah jadi. Beranda hanya menautkan loket yang terdaftar di sini. */
-export const LOKET_DIBUKA: readonly string[] = ["01", "02", "03", "04", "05", "06", "07"];
+export const bagianDari = (id: string): Bagian => {
+  const b = [...BAGIAN, BAGIAN_LOKER].find((x) => x.id === id);
+  if (!b) throw new Error(`bagian tidak dikenal: ${id}`);
+  return b;
+};
+
+/** Bagian yang memuat alamat ini. */
+export const bagianDiAlamat = (path: string): Bagian | undefined =>
+  BAGIAN.find((b) => b.aktifDi.some((p) => path === p || path.startsWith(`${p}/`)));
 
 export const HALAMAN_PENDUKUNG = [
   { label: "Tentang", href: "/tentang" },
   { label: "Kolofon", href: "/kolofon" },
-  { label: "Kirim koreksi", href: "/koreksi" },
+  { label: "Kirim Koreksi", href: "/koreksi" },
   { label: "Privasi", href: "/privasi" },
-  { label: "Syarat penggunaan", href: "/syarat" },
+  { label: "Syarat Penggunaan", href: "/syarat" },
 ] as const;

@@ -79,13 +79,15 @@ export function FilterProvider({
 
   const set = useCallback(
     (patch: Partial<FilterState>) => {
-      const { userLoc: lokasiBaru, ...sisa } = { ...state, ...patch };
+      // Selama hidrasi `state` masih kosong. Bila alamat lebih baru, saringan di alamat tidak boleh hilang.
+      const terkini = window.location.search === search ? state : { ...state, ...bacaAlamat(window.location.search) };
+      const { userLoc: lokasiBaru, ...sisa } = { ...terkini, ...patch };
       if ("userLoc" in patch) setUserLoc(lokasiBaru ?? null);
       if ("sort" in patch) setUrutDekat(patch.sort === "nearby");
       window.history.replaceState(window.history.state, "", `${window.location.pathname}${tulisAlamat(sisa)}`);
       kabari();
     },
-    [state],
+    [state, search],
   );
 
   const toggle = useCallback(

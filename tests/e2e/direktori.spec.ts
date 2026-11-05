@@ -42,15 +42,14 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("beranda dan menu", () => {
-  test("Loket 06 terbuka dan menuju Informasi Warga", async ({ page }) => {
+  test("Layanan Warga terbuka dan menuju Direktori", async ({ page }) => {
     await page.goto("/info");
-    await expect(page.getByRole("heading", { level: 1, name: "Informasi Warga" })).toBeVisible();
-    await expect(page.locator(".bch-lede")).toHaveText(
-      "Loket ini memuat direktori tempat, nomor darurat, panduan urusan tanah dan rumah, bantuan hukum, dan berita Batam.",
-    );
+    await expect(page.getByRole("heading", { level: 1, name: "Layanan Warga" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 2, name: "Nomor Darurat" })).toBeVisible();
+    await expect(page.locator("main")).not.toContainText(/loket/i);
     await expect(page.getByRole("heading", { level: 2, name: "Menurut Kecamatan" })).toBeVisible();
     await expect(page.locator('a[href="/info/warga-baru"]')).toHaveCount(0);
-    await page.getByRole("link", { name: /^Direktori/ }).click();
+    await page.locator('#isi a[href="/info/direktori"]').first().click();
     await expect(page).toHaveURL(/\/info\/direktori$/);
   });
 
@@ -63,18 +62,16 @@ test.describe("beranda dan menu", () => {
 test.describe("direktori", () => {
   test("jumlah total dan per kategori cocok dengan statistik", async ({ page }) => {
     await page.goto("/info/direktori");
-    await expect(page.locator(".bch-lede")).toContainText(
-      `Direktori ini memuat ${stats.total_tempat} tempat di Batam yang dikelompokkan menurut keperluan.`,
-    );
+    await expect(page.locator(".bch-lede")).toContainText(`Sebanyak ${stats.total_tempat} tempat di Batam tercatat, tanpa bayaran untuk masuk daftar.`);
     const per = stats.per_kategori as Record<string, number>;
     await expect(page.locator("[data-kategori]")).toHaveCount(21);
-    await expect(page.locator('[data-kategori="kesehatan"]')).toHaveText(`${per.kesehatan} tempat`);
+    await expect(page.locator('[data-kategori="kesehatan"]').locator("xpath=following-sibling::*[contains(@class,'jumlah')]")).toHaveText(String(per.kesehatan));
     // Dua kategori data digabung menjadi satu kategori tampilan.
-    await expect(page.locator('[data-kategori="pemerintahan"]')).toHaveText(
-      `${per.pemerintahan + per.layanan_publik} tempat`,
+    await expect(page.locator('[data-kategori="pemerintahan"]').locator("xpath=following-sibling::*[contains(@class,'jumlah')]")).toHaveText(
+      String(per.pemerintahan + per.layanan_publik),
     );
     await expect(page.locator('[data-kategori="layanan_publik"]')).toHaveCount(0);
-    await expect(page.getByRole("heading", { name: "Kantor dan layanan publik" })).toBeVisible();
+    await expect(page.locator('[data-kategori="pemerintahan"]')).toHaveText("Kantor dan Layanan Publik");
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", String(stats.total_tempat));
   });
 
@@ -85,7 +82,7 @@ test.describe("direktori", () => {
     await expect(page.getByRole("link", { name: "Mal Pelayanan Publik Kota Batam" })).toBeVisible();
     await expect(page).toHaveURL(/q=mal/);
     await page.reload();
-    await expect(page.getByLabel("Cari nama tempat, jenis, atau kecamatan")).toHaveValue("mal pelayanan");
+    await expect(page.getByLabel("Cari Nama Tempat, Jenis, atau Kecamatan")).toHaveValue("mal pelayanan");
     await expect(page.getByRole("link", { name: "Mal Pelayanan Publik Kota Batam" })).toBeVisible();
   });
 
@@ -94,10 +91,10 @@ test.describe("direktori", () => {
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", String(stats.per_kategori.kesehatan));
     // Daftar kategori disembunyikan selama saringan aktif.
     await expect(page.locator("[data-kategori-grid]")).toHaveCount(0);
-    await page.getByRole("button", { name: "Hapus saringan" }).click();
+    await page.getByRole("button", { name: "Hapus Saringan" }).click();
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", String(stats.total_tempat));
     await expect(page.locator("[data-kategori-grid]")).toBeVisible();
-    await expect(page.getByLabel("Buka sekarang")).toBeVisible();
+    await expect(page.getByLabel("Buka Sekarang")).toBeVisible();
     for (const lama of ["Subkategori", "Kelurahan", "Status data", "Lokasi di peta"]) {
       await expect(page.getByLabel(lama)).toHaveCount(0);
     }
@@ -110,25 +107,28 @@ test.describe("direktori", () => {
 
   test("pencarian kosong memakai kalimat pedoman", async ({ page }) => {
     await page.goto("/info/direktori?q=zzzzzzzzzz");
-    await expect(page.getByText("Tidak ada hasil untuk “zzzzzzzzzz”. Coba kata lain atau hapus saringan.")).toBeVisible();
+    await expect(page.getByText(/Tidak ada hasil untuk .zzzzzzzzzz./)).toBeVisible();
   });
 
   test("halaman kategori: remah roti, judul, lede, dan saringan", async ({ page }) => {
     await page.goto("/info/direktori/keamanan-darurat");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Darurat dan Keamanan");
-    await expect(page.locator(".bch-kicker").first()).toHaveText("Informasi Warga / Direktori / Darurat dan keamanan");
+    await expect(page.locator(".bch-remah").first()).toHaveText("Layanan Warga / Direktori / Darurat dan Keamanan");
+    await expect(page.locator(".bch-kicker")).toHaveCount(0);
     await expect(page.locator(".bch-lede")).toHaveText(
-      `Polisi, pemadam kebakaran, dan SAR di Batam. Ada ${stats.per_kategori.keamanan_darurat} tempat di kategori ini.`,
+      `Polisi, pemadam kebakaran, dan SAR di Batam. Ada ${stats.per_kategori.keamanan_darurat} tempat.`,
     );
-    await expect(page.locator(".bch-sub-nav a").first()).toContainText("Semua");
-    await expect(page.locator(".bch-sub-nav")).toContainText("Kecamatan");
+    const saring = page.getByRole("navigation", { name: "Saringan" });
+    await expect(saring.getByRole("link").first()).toContainText("Semua");
+    await expect(page.locator("#isi")).toContainText("Kecamatan");
   });
 
   test("daftar panjang dibuka bertahap", async ({ page }) => {
     await page.goto("/info/direktori/kesehatan");
-    await expect(page.locator(".bch-grid .bch-card")).toHaveCount(12);
-    await page.getByRole("button", { name: /^Tampilkan 33 tempat lagi$/ }).click();
-    await expect(page.locator(".bch-grid .bch-card")).toHaveCount(stats.per_kategori.kesehatan);
+    const baris = page.locator("#isi article.bch-baris");
+    await expect(baris).toHaveCount(12);
+    await page.getByRole("button", { name: /^Tampilkan 33 Tempat Lagi$/ }).click();
+    await expect(baris).toHaveCount(stats.per_kategori.kesehatan);
   });
 
   test("kategori gabungan: slug lama dialihkan", async ({ page }) => {
@@ -145,8 +145,9 @@ test.describe("direktori", () => {
     await expect(page.getByRole("link", { name: /Dokter kandungan/ })).toHaveCount(0);
     await page.goto("/info/direktori/kesehatan/dokter-kandungan");
     await expect(page.locator(".bch-lede")).toContainText(
-      "Belum ada tempat di kategori ini. Kalau kamu tahu tempatnya, kirim usulan.",
+      "Belum ada tempat di kategori ini.",
     );
+    await expect(page.locator(".bch-lede").getByRole("link", { name: "Kirim Usulan" })).toHaveAttribute("href", "/koreksi");
   });
 
   test("angka pembanding tampil tanpa sumber", async ({ page }) => {
@@ -162,7 +163,7 @@ test.describe("direktori", () => {
     await expect(page.locator(".bch-lede")).toContainText("Belum ada tempat di kategori ini");
     const osm = page.locator("[data-daftar-osm]");
     await expect(osm).toContainText("OpenStreetMap");
-    await expect(osm).toContainText("belum masuk hitungan direktori");
+    await expect(osm).toContainText("di luar hitungan direktori");
     expect(await osm.locator("li").count()).toBeGreaterThan(5);
     await expect(osm.locator("a")).toHaveCount(0);
   });
@@ -191,11 +192,11 @@ test.describe("direktori", () => {
 test.describe("kartu tempat", () => {
   test("kartu lengkap dengan koordinat terverifikasi", async ({ page }) => {
     await page.goto("/info/tempat/mpp-batam");
-    const kartu = page.locator(".bch-kartu-museum");
+    const kartu = page.locator("#isi .bch-page");
     await expect(kartu.getByRole("heading", { level: 1 })).toHaveText("Mal Pelayanan Publik Kota Batam");
     await expect(kartu).not.toContainText(/dicek|sumber/i);
     await expect(page.locator("main")).not.toContainText("Sumber");
-    await expect(page.getByRole("link", { name: "Petunjuk arah" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Petunjuk Arah" })).toBeVisible();
     await expect(page.getByRole("button", { name: "Bagikan" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Laporkan data yang salah" })).toHaveAttribute(
       "href",
@@ -206,8 +207,8 @@ test.describe("kartu tempat", () => {
   test("tempat tanpa koordinat: tanpa tombol peta dan tanpa teks pengganti", async ({ page }) => {
     await page.goto("/info/tempat/ppat-yulianti");
     await expect(page.locator("main")).not.toContainText(/menebak|Lokasi belum diisi/);
-    await expect(page.getByRole("link", { name: "Lihat di peta" })).toHaveCount(0);
-    await expect(page.getByRole("link", { name: "Petunjuk arah" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Lihat di Peta" })).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "Petunjuk Arah" })).toBeVisible();
   });
 
   test("PPAT tanpa label Beta, dengan satu kalimat pengingat", async ({ page }) => {
@@ -220,17 +221,17 @@ test.describe("kartu tempat", () => {
   test("tempat yang hanya punya nama tidak punya halaman, cukup baris di daftar", async ({ page }) => {
     await page.goto("/info/tempat/pura-sekupang");
     await expect(page).toHaveURL(/\/info\/direktori\?q=Pura/);
-    const baris = page.locator(".bch-penjelajah-daftar li").filter({ hasText: "Pura Sekupang" });
+    const baris = page.locator("#isi li").filter({ hasText: "Pura Sekupang" });
     await expect(baris).toBeVisible();
     await expect(baris.getByRole("link")).toHaveCount(0);
   });
 
   test("kampung tua hanya kartu minimal", async ({ page }) => {
     await page.goto("/info/direktori/kampung-tua");
-    const href = await page.locator(".bch-card h3 a").first().getAttribute("href");
+    const href = await page.locator("#isi article.bch-baris a[href^='/info/tempat/']").first().getAttribute("href");
     await page.goto(href as string);
-    const teks = await page.locator(".bch-kartu-museum").innerText();
-    expect(teks).toContain("Batas, luas, dan status lahan tidak kami tampilkan");
+    const teks = await page.locator("#isi .bch-page").innerText();
+    expect(teks).toContain("tanpa batas, luas, dan status lahan");
     expect(page.url()).toContain("/info/tempat/");
   });
 
@@ -263,9 +264,9 @@ test.describe("panduan", () => {
       await expect(page.locator(".bch-nomor", { hasText: new RegExp(`^${n}$`) })).toHaveAttribute("href", `tel:${n}`);
     }
     await expect(page.locator(".bch-nomor-daftar h2")).toHaveText([
-      "Panggilan darurat",
+      "Panggilan Darurat",
       "Polisi",
-      "Pemadam kebakaran",
+      "Pemadam Kebakaran",
       "SAR",
       "Ambulans",
     ]);
@@ -283,7 +284,7 @@ test.describe("panduan", () => {
     await expect(page.getByRole("heading", { name: "Keperluan yang Paling Sering Diurus" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Urutan Jual Beli Rumah" })).toBeVisible();
     await expect(page.locator("[data-tabel-tanah] tbody tr")).toHaveCount(8);
-    await expect(page.locator("[data-tabel-tanah] thead th")).toHaveText(["Keperluan", "Tempat mengurus", "Catatan"]);
+    await expect(page.locator("[data-tabel-tanah] thead th")).toHaveText(["Keperluan", "Tempat Mengurus", "Catatan"]);
     await expect(page.locator("[data-langkah-jual-beli] li")).toHaveCount(5);
     await expect(page.locator("[data-catatan-hukum]")).toHaveText("Halaman ini adalah panduan umum, bukan nasihat hukum.");
     await expect(page.locator("main")).not.toContainText(/riset|Beta|go\.id|wajib dicek/);
@@ -302,7 +303,7 @@ test.describe("panduan", () => {
     await expect(page.locator("#profesi")).toContainText(
       "Daftar ini belum lengkap. Pastikan status praktiknya sebelum memakai jasanya.",
     );
-    await expect(page.locator("#profesi .bch-card").first()).toBeVisible();
+    await expect(page.locator("#profesi article.bch-baris").first()).toBeVisible();
     await expect(page.locator("main")).not.toContainText(/Beta|Cek status|go\.id|belum kami cek/);
     await expect(page.locator("[data-catatan-hukum]")).toHaveText("Halaman ini adalah panduan umum, bukan nasihat hukum.");
   });
@@ -311,7 +312,7 @@ test.describe("panduan", () => {
     await page.goto("/info/jasa-dokumen");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Jasa Dokumen dan Usaha");
     await expect(page.locator(".bch-lede")).toHaveText(
-      "Halaman ini memuat konsultan pajak, penilai properti, dan layanan izin usaha di Batam.",
+      "Cari konsultan pajak, penilai properti, dan layanan izin usaha di Batam.",
     );
     await expect(page.locator("main")).not.toContainText(/go\.id|riset|belum memverifikasi/);
   });
@@ -320,7 +321,7 @@ test.describe("panduan", () => {
     await page.goto("/info/kecamatan/batam-kota");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Kecamatan Batam Kota");
     await expect(page.locator(".bch-lede")).toHaveText(
-      `Ada ${(stats.per_kecamatan as Record<string, number>)["Batam Kota"]} tempat yang tercatat di kecamatan ini.`,
+      `Ada ${(stats.per_kecamatan as Record<string, number>)["Batam Kota"]} tempat tercatat.`,
     );
     await expect(page.locator("main")).not.toContainText("Belum ada data");
   });
@@ -332,48 +333,61 @@ test.describe("panduan", () => {
     await expect(page.getByText("PPAT terdekat")).toHaveCount(0);
   });
 
-  test("draf privasi dan syarat berlabel draf", async ({ page }) => {
+  test("privasi dan syarat tanpa label draf", async ({ page }) => {
+    // PEDOMAN: label "draf" tidak ditampilkan di halaman publik.
     for (const h of ["/privasi", "/syarat"]) {
       await page.goto(h);
-      await expect(page.getByText(/Draf, belum ditinjau ahli hukum/)).toBeVisible();
+      await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+      await expect(page.locator("main")).not.toContainText(/Draf, belum ditinjau/);
     }
   });
 });
 
 test.describe("pin di peta beranda", () => {
-  test("default hanya landmark, toggle menambah pin", async ({ page }) => {
+  const pinTampil = async (page: Page) => Number(await page.locator(".br-tempat").getAttribute("data-pin-tampil"));
+  const tungguPin = (page: Page) => expect(page.locator(".br-tempat")).toHaveAttribute("data-pin-tampil", /^\d+$/, { timeout: 30_000 });
+
+  test("panel Tempat tertutup, dibuka tombol, dan kelompok bisa dimatikan", async ({ page }) => {
     await page.goto("/");
-    const peta = page.locator(".peta");
-    await expect(peta).toHaveAttribute("data-status", "siap", { timeout: 30_000 });
-    await expect(peta).toHaveAttribute("data-pin-tampil", /^\d+$/);
-    const awal = Number(await peta.getAttribute("data-pin-tampil"));
+    await tungguPin(page);
+    const awal = await pinTampil(page);
     expect(awal).toBeGreaterThan(0);
-    await page.getByRole("checkbox", { name: /Kuliner/ }).check();
-    await expect.poll(async () => Number(await peta.getAttribute("data-pin-tampil"))).toBeGreaterThan(awal);
-    await page.getByRole("checkbox", { name: /Landmark/ }).uncheck();
-    await page.getByRole("checkbox", { name: /Kuliner/ }).uncheck();
-    await expect(peta).toHaveAttribute("data-pin-tampil", "0");
+    await expect(page.locator("[data-panel-tempat]")).toHaveCount(0);
+    await page.getByRole("button", { name: /^Tempat/ }).click();
+    const panel = page.locator("[data-panel-tempat]");
+    await expect(panel).toBeVisible();
+    // Mematikan kelompok yang menyala mengurangi pin di peta.
+    await panel.locator(".br-kelompok-kepala input:checked").first().uncheck();
+    await expect.poll(() => pinTampil(page)).toBeLessThan(awal);
+    await panel.getByRole("button", { name: "Pilih Semua" }).click();
+    await expect.poll(() => pinTampil(page)).toBeGreaterThanOrEqual(awal);
+    await page.getByRole("button", { name: "Tutup daftar tempat" }).click();
+    await expect(panel).toHaveCount(0);
   });
 
-  test("radar tampil dan bisa dimatikan", async ({ page }) => {
+  test("lapisan Cuaca dan Laut bisa dinyalakan dan dimatikan", async ({ page }) => {
     await page.goto("/");
-    const peta = page.locator(".peta");
-    await expect(peta).toHaveAttribute("data-status", "siap", { timeout: 30_000 });
-    await expect(peta).toHaveAttribute("data-radar", /^\d{12}$/);
-    await page.getByRole("checkbox", { name: /Hujan/ }).uncheck();
-    await expect(peta).not.toHaveAttribute("data-radar", /.+/);
+    await tungguPin(page);
+    await page.getByRole("button", { name: /^Cuaca dan Laut/ }).click();
+    const radar = page.getByRole("switch", { name: "Radar Hujan" });
+    await expect(radar).toBeVisible();
+    const awal = await radar.getAttribute("aria-checked");
+    await radar.click();
+    await expect(radar).not.toHaveAttribute("aria-checked", String(awal));
+    for (const nama of ["Tinggi Gelombang", "Kamera Lalu Lintas"]) {
+      await expect(page.getByRole("switch", { name: nama })).toBeVisible();
+    }
   });
 
   test("tautan ?tempat= membuka kartu, tutup menghapus parameter", async ({ page }) => {
     await page.goto("/?tempat=masjid-agung-raja-hamidah");
-    await expect(page.locator(".peta")).toHaveAttribute("data-status", "siap", { timeout: 30_000 });
+    await tungguPin(page);
     const kartu = page.getByRole("complementary", { name: /Kartu/ });
     await expect(kartu).toBeVisible();
-    await expect(kartu.getByRole("link", { name: "Buka kartu lengkap" })).toHaveAttribute(
+    await expect(kartu.getByRole("link", { name: "Buka Kartu Lengkap" })).toHaveAttribute(
       "href",
       "/info/tempat/masjid-agung-raja-hamidah",
     );
-    await expect(page.locator(".peta")).toHaveAttribute("data-pin-tampil", /^\d+$/);
     await page.getByRole("button", { name: "Tutup kartu" }).click();
     await expect(kartu).toHaveCount(0);
     expect(page.url()).not.toContain("tempat=");
@@ -381,38 +395,34 @@ test.describe("pin di peta beranda", () => {
 
   test("?tempat= tanpa koordinat tidak membuka apa pun", async ({ page }) => {
     await page.goto("/?tempat=ppat-yulianti");
-    await expect(page.locator(".peta")).toHaveAttribute("data-status", "siap", { timeout: 30_000 });
-    await expect(page.locator(".peta")).toHaveAttribute("data-pin-tampil", /^\d+$/);
+    await tungguPin(page);
     await expect(page.getByRole("complementary", { name: /Kartu/ })).toHaveCount(0);
   });
 
   test("cari tempat membuka kartunya", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator(".peta")).toHaveAttribute("data-status", "siap", { timeout: 30_000 });
-    await page.getByLabel("Cari tempat di peta").fill("masjid agung raja");
+    await tungguPin(page);
+    await page.getByLabel("Cari tempat atau kecamatan").fill("masjid agung raja");
     await page.getByRole("button", { name: /Masjid Agung Raja Hamidah/ }).click();
     await expect(page.getByRole("complementary", { name: /Kartu Masjid Agung Raja Hamidah/ })).toBeVisible();
     expect(page.url()).toContain("tempat=masjid-agung-raja-hamidah");
   });
 
-  test("di sekitarku: di luar Batam dikatakan terus terang", async ({ page, context }) => {
+  test("di sekitar saya: di luar Batam dikatakan terus terang", async ({ page, context }) => {
     await context.grantPermissions(["geolocation"]);
     await context.setGeolocation({ latitude: -6.2, longitude: 106.8 });
     await page.goto("/");
-    await expect(page.locator(".peta")).toHaveAttribute("data-status", "siap", { timeout: 30_000 });
-    await page.getByRole("button", { name: "Di sekitarku" }).click();
-    await expect(page.locator(".peta-cari-pesan")).toContainText("di luar peta Batam");
+    await tungguPin(page);
+    await page.getByRole("button", { name: "Di Sekitar Saya" }).click();
+    await expect(page.locator(".br-pesan")).toContainText("di luar peta Batam");
     await context.setGeolocation({ latitude: 1.13, longitude: 104.05 });
-    await page.getByRole("button", { name: "Di sekitarku" }).click();
-    await expect(page.locator(".peta-cari-pesan")).toContainText("tidak dikirim ke mana pun");
+    await page.getByRole("button", { name: "Di Sekitar Saya" }).click();
+    await expect(page.locator(".br-pesan")).toContainText("tidak dikirim ke mana pun");
   });
 
-  test("ada jalan keluar keyboard ke daftar", async ({ page }) => {
+  test("ada jalan ke daftar direktori lewat papan ketik", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("link", { name: "Lihat semua sebagai daftar" })).toHaveAttribute(
-      "href",
-      "/info/direktori",
-    );
+    await expect(page.locator('#isi a[href^="/info/direktori/"]').first()).toBeVisible();
   });
 });
 
@@ -420,8 +430,8 @@ test.describe("widget silang", () => {
   test("tempat berteduh di Cuaca dan Laut hanya saat hujan di Batam", async ({ page }) => {
     await page.unrouteAll();
     await tiruApi(page, "Lubuk Baja");
-    await page.goto("/langit-laut?mode=hujan");
-    if (test.info().project.name === "hp") await page.getByRole("button", { name: /^Detail/ }).click();
+    await page.goto("/cuaca/hujan");
+    if (test.info().project.name === "hp") await page.getByRole("button", { name: "Buka panel" }).click();
     await expect(page.getByRole("heading", { name: "Tempat Berteduh" })).toBeVisible();
   });
 

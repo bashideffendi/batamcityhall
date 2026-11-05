@@ -4,9 +4,9 @@ import type { KunciStatus } from "./data";
 // Label status sejarah, satu per butir (pedoman 3.7). Selalu kata dan ikon garis, tidak pernah warna saja atau emoji.
 export const LABEL_STATUS: Record<KunciStatus, string> = {
   terverifikasi: "Tercatat",
-  perbedaan_versi: "Berbeda versi",
-  belum_terverifikasi: "Belum terverifikasi",
-  cerita_rakyat: "Cerita rakyat",
+  perbedaan_versi: "Berbeda Versi",
+  belum_terverifikasi: "Belum Terverifikasi",
+  cerita_rakyat: "Cerita Rakyat",
 };
 
 const NADA: Record<KunciStatus, "ok" | "caution" | "info" | undefined> = {

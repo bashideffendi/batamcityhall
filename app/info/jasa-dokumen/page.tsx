@@ -32,7 +32,7 @@ export default function JasaDokumen() {
   return (
     <div className="bch-page">
       <nav className="bch-remah" aria-label="Remah roti">
-        <Link href="/info">Informasi Warga</Link>
+        <Link href="/info">Layanan Warga</Link>
       </nav>
       <h1 className="mt-2">Jasa Dokumen dan Usaha</h1>
       <p className="bch-lede">Cari konsultan pajak, penilai properti, dan layanan izin usaha di Batam.</p>
@@ -66,7 +66,7 @@ export default function JasaDokumen() {
         <h3>Biro Jasa STNK dan Paspor</h3>
         <p>
           Direktori ini tidak memuat biro jasa. Urusan STNK dan paspor dilayani di Samsat, Kantor Imigrasi Batam, atau MPP.
-          Alamatnya ada di <Link href="/info/direktori/pemerintahan">Kantor dan layanan publik</Link>.
+          Alamatnya ada di <Link href="/info/direktori/pemerintahan">Kantor dan Layanan Publik</Link>.
         </p>
       </section>
     </div>

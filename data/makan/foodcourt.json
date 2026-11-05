@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "dihimpun": "2026-11",
+    "catatan": "Dihimpun dari media dan panduan perjalanan, belum didatangi penyusun. tingkat dibaca: halaman sumbernya terbaca. tingkat daftar: hanya tercatat di daftar pihak ketiga atau cuplikan hasil pencarian, alamatnya perlu dicek. Koordinat kosong sampai diisi pemilik lewat data/koordinat_perlu_diisi.xlsx. Jangan menebak koordinat."
+  },
+  "tempat": [
+    {
+      "id": "nagoya-food-court",
+      "nama": "Nagoya Food Court",
+      "kecamatan": "Lubuk Baja",
+      "alamat": "Komplek Nagoya Newtown, Jl. Imam Bonjol, Lubuk Baja Kota",
+      "jam": "Area dalam dari pukul 06.00, area luar sore sampai pukul 01.00",
+      "isi": "Salah satu yang terbesar di Batam, lebih dari 30 penjual. Kwetiau, dim sum, sup ikan, dan prata. Kiosnya campuran, sebagian menjual babi panggang.",
+      "tingkat": "dibaca",
+      "sumber_url": [
+        "https://batamgems.com/id/place/nagoya-food-court",
+        "https://en.wikivoyage.org/wiki/Nagoya_(Indonesia)",
+        "https://sg.trip.com/moments/destination-batam-2005/"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "a2-food-court",
+      "nama": "A2 Food Court",
+      "kecamatan": "Lubuk Baja",
+      "alamat": "Jl. Bunga Mawar, Batu Selicin, Lubuk Baja",
+      "jam": "06.00–01.00, gerai luar mulai sore",
+      "isi": "Salah satu pujasera terbesar di Batam. Makanan laut, nasi ayam, mi, otak-otak, dan cendol. Sebagian sumber menulis letak yang berbeda, jadi pastikan di Google Maps.",
+      "tingkat": "dibaca",
+      "sumber_url": [
+        "https://eatbook.sg/a2-food-court-batam/"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "food-market-thamrin",
+      "nama": "Food Market Thamrin",
+      "kecamatan": "Lubuk Baja",
+      "alamat": "Komplek Nagoya Thamrin City, Jl. Imam Bonjol No. 1, Tower A, Lantai 1",
+      "jam": "Sore sampai lewat tengah malam",
+      "isi": "Pasar makanan tertutup bertingkat dan semi berpendingin. Puluhan kios, ada parkir.",
+      "tingkat": "dibaca",
+      "sumber_url": [
+        "https://sg.trip.com/moments/destination-batam-2005/"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "pujasera-a1",
+      "nama": "Pujasera A1",
+      "kecamatan": "Lubuk Baja",
+      "alamat": "Komp. Bukit Mas, Nagoya, dekat Lucky Plaza",
+      "jam": "",
+      "isi": "Beragam makanan Indonesia dan Tionghoa.",
+      "tingkat": "dibaca",
+      "sumber_url": [
+        "https://en.wikivoyage.org/wiki/Nagoya_(Indonesia)",
+        "https://id.foursquare.com/v/a1-food-court/4cfca25834c1a0936e334c0e"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "pujasera-sindo-happy",
+      "nama": "Pujasera Sindo Happy",
+      "kecamatan": "Lubuk Baja",
+      "alamat": "Simpang Jl. Imam Bonjol dan Jl. Windsor",
+      "jam": "",
+      "isi": "",
+      "tingkat": "dibaca",
+      "sumber_url": [
+        "https://en.wikivoyage.org/wiki/Nagoya_(Indonesia)"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "nagoya-hill-food-street",
+      "nama": "Nagoya Hill Food Street",
+      "kecamatan": "Lubuk Baja",
+      "alamat": "Di dalam Nagoya Hill Mall",
+      "jam": "",
+      "isi": "Area jajanan besar di dalam mal.",
+      "tingkat": "dibaca",
+      "sumber_url": [
+        "https://en.wikivoyage.org/wiki/Nagoya_(Indonesia)"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "windsor-foodcourt",
+      "nama": "Windsor Foodcourt",
+      "kecamatan": "Lubuk Baja",
+      "alamat": "Kompleks Windsor Central, Jl. Imam Bonjol, Lubuk Baja Kota",
+      "jam": "17.00–01.00",
+      "isi": "Dikenal dengan menu ikan laut.",
+      "tingkat": "daftar",
+      "sumber_url": [
+        "https://tribunbatamtravel.tribunnews.com/amp/2020/02/03/daftar-4-foodcourt-di-sekitar-nagoya-batam-untuk-kulineran-tampilkan-life-akustik"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "newton-food-court",
+      "nama": "Newton Food Court",
+      "kecamatan": "Lubuk Baja",
+      "alamat": "Komp. Nagoya Paradise Blok A No. 12-17, area Newton Hotel",
+      "jam": "",
+      "isi": "",
+      "tingkat": "daftar",
+      "sumber_url": [
+        "https://id.foursquare.com/v/newton-food-court/4cdcddc7d4ecb1f7ad258248"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "utama-98-foodcourt",
+      "nama": "Utama 98 Foodcourt",
+      "kecamatan": "Lubuk Baja",
+      "alamat": "Batu Selicin, Nagoya",
+      "jam": "",
+      "isi": "Food court terbuka berukuran besar. Sumber lain menulis letaknya di Bengkong Laut.",
+      "tingkat": "daftar",
+      "sumber_url": [
+        "https://eatbook.sg/a2-food-court-batam/",
+        "https://id.foursquare.com/santoflynn/list/coffee-shop--food-court-batam"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "168-food-court",
+      "nama": "168 Food Court",
+      "kecamatan": "Batu Ampar",
+      "alamat": "Seraya, Batu Ampar",
+      "jam": "Sore sampai lewat tengah malam",
+      "isi": "Food court terbuka yang berfokus pada makanan laut, ditandai gerbang neon besar.",
+      "tingkat": "dibaca",
+      "sumber_url": [
+        "https://sg.trip.com/moments/destination-batam-2005/"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "pujasera-28",
+      "nama": "Pujasera 28",
+      "kecamatan": "Batam Kota",
+      "alamat": "Kawasan Batam Centre, di samping Hotel Sedney",
+      "jam": "Sore sampai menjelang dini hari",
+      "isi": "Gerai makanan laut, ikan bakar, soto Medan, dan dim sum. Catatan terakhir 2021.",
+      "tingkat": "dibaca",
+      "sumber_url": [
+        "https://keprionline.co.id/pujasera-28-di-kawasan-batam-centre-tempat-santai-dan-nyaman-dengan-dekorasi-interior-modren/"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "botania-food-court",
+      "nama": "Botania Food Court",
+      "kecamatan": "Batam Kota",
+      "alamat": "Komplek Botania Garden, Batam Center",
+      "jam": "",
+      "isi": "",
+      "tingkat": "daftar",
+      "sumber_url": [
+        "https://id.foursquare.com/santoflynn/list/coffee-shop--food-court-batam"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "pujasera-tiban-center",
+      "nama": "Pujasera Tiban Center",
+      "kecamatan": "Sekupang",
+      "alamat": "Ruko Tiban Centre, Jl. Gajah Mada No. 1 Blok A, Tiban Indah",
+      "jam": "",
+      "isi": "Ayam penyet dan es cendol kampung.",
+      "tingkat": "dibaca",
+      "sumber_url": [
+        "https://wanderlog.com/place/details/11412969/pujasera"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "pujasera-town-centre-batamindo",
+      "nama": "Pujasera Town Centre Batamindo",
+      "kecamatan": "Sei Beduk",
+      "alamat": "Batamindo Industrial Park, Muka Kuning",
+      "jam": "08.00–18.00",
+      "isi": "Food court di kawasan industri. Nasi goreng dan nasi padang.",
+      "tingkat": "dibaca",
+      "sumber_url": [
+        "https://wanderlog.com/place/details/14529087/pujasera-town-centre-batamindo"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "sp-plaza-food-street",
+      "nama": "SP Plaza Food Street",
+      "kecamatan": "Batu Aji",
+      "alamat": "Sentosa Perdana Plaza, Jl. Soeprapto",
+      "jam": "",
+      "isi": "",
+      "tingkat": "daftar",
+      "sumber_url": [
+        "https://id.foursquare.com/santoflynn/list/coffee-shop--food-court-batam"
+      ],
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "golden-king-food-court",
+      "nama": "Golden King Food Court",
+      "kecamatan": "Bengkong",
+      "alamat": "Bengkong Laut",
+      "jam": "",
+      "isi": "",
+      "tingkat": "daftar",
+      "sumber_url": [
+        "https://id.foursquare.com/santoflynn/list/coffee-shop--food-court-batam"
+      ],
+      "lat": null,
+      "lng": null
+    }
+  ]
+}

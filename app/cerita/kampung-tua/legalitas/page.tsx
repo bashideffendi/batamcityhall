@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import TautanKirim from "@/components/site/TautanKirim";
 import { ROBOTS_TERSEMBUNYI } from "@/lib/site";
 import Link from "next/link";
 import { NavKampungTua, PitaBertanggal } from "@/features/kampung-tua/Bagian";
@@ -17,9 +18,9 @@ export const metadata: Metadata = {
 export default function Legalitas() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">
-        <Link href="/cerita/kampung-tua">Kampung Tua</Link> · Kronologi
-      </p>
+      <nav className="bch-remah" aria-label="Remah roti">
+        <Link href="/cerita/kampung-tua" prefetch={false}>Kampung Tua</Link> / Kronologi
+      </nav>
       <h1 className="mt-2">Kronologi Legalitas Kampung Tua</h1>
       <PitaBertanggal />
       <p className="bch-lede">{LEDE}</p>
@@ -47,7 +48,7 @@ export default function Legalitas() {
 
       <p className="bch-measure mt-5">
         Sejak 2025, Wali Kota Batam Amsakar Achmad juga merangkap Kepala BP Batam.{" "}
-        <Link href="/koreksi">Kirim koreksi</Link>
+        <TautanKirim href="/koreksi">Kirim Koreksi</TautanKirim>
       </p>
     </div>
   );

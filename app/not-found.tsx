@@ -11,10 +11,19 @@ export default function NotFound() {
       <p className="bch-lede">Alamatnya mungkin salah ketik atau halamannya sudah pindah.</p>
       <div className="flex flex-wrap gap-3 mt-5">
         <Link href="/" className="bch-btn">
-          Ke beranda
+          Ke Beranda
+        </Link>
+        <Link href="/cari" className="bch-btn" data-variant="ghost">
+          Cari
+        </Link>
+        <Link href="/info/darurat" className="bch-btn" data-variant="ghost">
+          Nomor Darurat
+        </Link>
+        <Link href="/makan" className="bch-btn" data-variant="ghost">
+          Makanan
         </Link>
         <Link href="/info/direktori" className="bch-btn" data-variant="ghost">
-          Cari tempat
+          Direktori
         </Link>
       </div>
     </div>

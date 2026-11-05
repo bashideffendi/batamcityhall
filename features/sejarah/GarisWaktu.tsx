@@ -47,7 +47,7 @@ export default function GarisWaktu({ entri, kategori }: { entri: EntriGaris[]; k
           <label className="bch-field">
             Kategori
             <select className="bch-select" value={kat} onChange={(e) => setKat(e.target.value)}>
-              <option value="">Semua kategori</option>
+              <option value="">Semua Kategori</option>
               {daftarKategori.map((k) => (
                 <option key={k} value={k}>
                   {kategori[k]}
@@ -64,7 +64,7 @@ export default function GarisWaktu({ entri, kategori }: { entri: EntriGaris[]; k
                 setKat("");
               }}
             >
-              Tampilkan semua
+              Tampilkan Semua
             </button>
           )}
         </div>

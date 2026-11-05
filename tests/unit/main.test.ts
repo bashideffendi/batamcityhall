@@ -1,69 +1,25 @@
+import { existsSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { bungkus } from "@/features/main/gambar-kartu";
-import { hitungOngkos, TARIF, teksRupiahSekitar } from "@/features/main/ongkos";
-import { cariPin } from "@/features/peta/CariPeta";
-import type { PinPeta } from "@/features/peta/lapisan";
+import { acaraTerdekat } from "@/features/hari-ini/ModulAcara";
+import { DESAIN, salamDari } from "@/features/kartu-pos/desain";
 
-describe("ongkos", () => {
-  it("menghitung dari tarif tercatat", () => {
-    const h = hitungOngkos(12_000, 1);
-    expect(h?.singapura).toBe((TARIF.feriPpSgd + TARIF.surchargeSgd) * 12_000 + TARIF.surchargeRp);
-    expect(h?.nagoya).toBe(2 * TARIF.busRp);
-    expect(h?.selisih).toBe((h?.singapura ?? 0) - (h?.nagoya ?? 0));
+describe("kartu pos", () => {
+  it("setiap desain punya gambar", () => {
+    expect(DESAIN.length).toBeGreaterThanOrEqual(6);
+    for (const d of DESAIN) expect(existsSync(`public${d.gambar}`), d.id).toBe(true);
   });
 
-  it("dikali jumlah orang", () => {
-    expect(hitungOngkos(12_000, 3)?.nagoya).toBe(6 * TARIF.busRp);
-  });
-
-  it("kurs kosong atau aneh tidak menghasilkan angka", () => {
-    expect(hitungOngkos(Number.NaN, 1)).toBeNull();
-    expect(hitungOngkos(0, 1)).toBeNull();
-    expect(hitungOngkos(-1, 1)).toBeNull();
-    expect(hitungOngkos(12_000, 0)).toBeNull();
-    expect(hitungOngkos(12_000, 1.5)).toBeNull();
+  it("salam tidak pernah kosong", () => {
+    expect(salamDari("Nongsa")).toBe("Nongsa");
+    expect(salamDari("  ")).toBe("Batam");
   });
 });
 
-describe("teks rupiah sekitar", () => {
-  it("memakai juta dengan satu desimal, tanpa ,0", () => {
-    expect(teksRupiahSekitar(1_049_000)).toBe("Rp1 juta");
-    expect(teksRupiahSekitar(2_098_000)).toBe("Rp2,1 juta");
-    expect(teksRupiahSekitar(1_600_000)).toBe("Rp1,6 juta");
-  });
+describe("acara terdekat", () => {
+  const acara = [{ bulan: 1 }, { bulan: 3 }, { bulan: 11 }, { bulan: 12 }, { bulan: null }];
 
-  it("di bawah satu juta ditulis penuh, di atas seribu juta memakai miliar", () => {
-    expect(teksRupiahSekitar(850_000)).toBe("Rp850.000");
-    expect(teksRupiahSekitar(1_200_000_000)).toBe("Rp1,2 miliar");
-  });
-});
-
-describe("bungkus teks", () => {
-  const lebar = (s: string) => s.length;
-
-  it("memecah per kata menurut lebar", () => {
-    expect(bungkus("hujan lagi sekupang kering", lebar, 10)).toEqual(["hujan lagi", "sekupang", "kering"]);
-  });
-
-  it("kata lebih panjang dari batas tetap satu baris", () => {
-    expect(bungkus("mahaberkepanjangan", lebar, 5)).toEqual(["mahaberkepanjangan"]);
-  });
-
-  it("kosong tidak menghasilkan baris", () => {
-    expect(bungkus("   ", lebar, 10)).toEqual([]);
-  });
-});
-
-describe("cari pin", () => {
-  const pin = (id: string, nama: string, lokasi = "Sekupang") => ({ id, nama, lokasi, lain: [] }) as unknown as PinPeta;
-  const pins = [pin("a", "Masjid Agung"), pin("b", "Agung Jaya", "Nongsa"), pin("c", "Pasar Baru")];
-
-  it("awalan nama didahulukan, lokasi juga dicari", () => {
-    expect(cariPin(pins, "agung").map((p) => p.id)).toEqual(["b", "a"]);
-    expect(cariPin(pins, "nongsa").map((p) => p.id)).toEqual(["b"]);
-  });
-
-  it("kata terlalu pendek tidak mencari", () => {
-    expect(cariPin(pins, "a")).toEqual([]);
+  it("mulai dari bulan ini, berputar ke tahun depan, tanpa acara yang tak berbulan", () => {
+    expect(acaraTerdekat(acara, 11, 5).map((a) => a.bulan)).toEqual([11, 12, 1, 3]);
+    expect(acaraTerdekat(acara, 2, 2).map((a) => a.bulan)).toEqual([3, 11]);
   });
 });

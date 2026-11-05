@@ -20,27 +20,29 @@ export default function PetaKategori({
   glyph,
   warna,
   pusat,
+  dasarTautan = "/info/tempat/",
 }: {
   pins: PinKategori[];
   glyph: string;
   warna: string;
   /** detail tempat: peta dipusatkan ke titik ini */
   pusat?: [number, number];
+  /** Awalan alamat saat pin diketuk. */
+  dasarTautan?: string;
 }) {
   const theme = useSiteTheme();
   const router = useRouter();
   const fitur = useMemo<FiturPin[]>(
-    () => pins.map((p) => ({ ...p, glyph, warna, idx: 0, penting: pins.length <= 3 })),
+    () => pins.map((p) => ({ ...p, glyph, warna, penting: pins.length <= 3 })),
     [pins, glyph, warna],
   );
   return (
     <Isi
       fitur={fitur}
-      warna={warna}
       pusat={pusat}
       theme={theme === "dark" ? "dark" : "light"}
       onPilih={(id) => {
-        if (id) router.push(`/info/tempat/${id}`);
+        if (id) router.push(`${dasarTautan}${id}`);
       }}
     />
   );

@@ -113,7 +113,13 @@
   font-size: var(--bch-text-small);
   color: var(--bch-ink-muted);
 }
-.nj-tabel-sel-tautan a {
-  display: inline-block;
-  overflow-wrap: anywhere;
+
+
+@media (max-width: 640px) {
+  .nj-ringkas {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
 }

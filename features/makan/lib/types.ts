@@ -8,6 +8,10 @@ export interface Place {
   id: string;
   name: string;
   category: string;
+  /** Id food court tempat ini berada, dari data/makan/foodcourt.json. */
+  food_court?: string | null;
+  /** Kategori lain yang juga cocok, menurut menu andalannya. */
+  kategori_lain?: string[];
   subcategory: string[];
   halal: HalalStatus;
   labels: RecLabel[];

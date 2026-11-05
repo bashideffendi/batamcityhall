@@ -25,8 +25,6 @@ import {
 import KartuTempat from "@/features/direktori/KartuTempat";
 import PetaKategori from "@/features/direktori/PetaKategori";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return [...DAFTAR_KATEGORI.map((k) => slugKategori(k.kategori)), ...SLUG_KATEGORI_LAMA].map((kategori) => ({
     kategori,
@@ -64,7 +62,7 @@ export default async function Kategori({ params }: Props) {
   return (
     <div className="bch-page">
       <nav className="bch-remah" aria-label="Remah roti">
-        <Link href="/info">Informasi Warga</Link> / <Link href="/info/direktori">Direktori</Link> /{" "}
+        <Link href="/info">Layanan Warga</Link> / <Link href="/info/direktori">Direktori</Link> /{" "}
         <span aria-current="page">{k.nama}</span>
       </nav>
       <div className="bch-judul-ikon">
@@ -99,7 +97,7 @@ export default async function Kategori({ params }: Props) {
           </Link>
           {k.kategori === "kesehatan" && (
             <Link href={`/info/direktori?kategori=${k.kategori}&igd=1`} prefetch={false} className="bch-pil">
-              IGD 24 jam
+              IGD 24 Jam
             </Link>
           )}
         </span>
@@ -128,7 +126,7 @@ export default async function Kategori({ params }: Props) {
           )}
           {k.kategori === "kuliner" && (
             <p className="bch-catatan-halaman">
-              Saringan dan panduan kuliner ada di <Link href="/makan">Makan</Link>.
+              Saringan dan panduan kuliner ada di <Link href="/makan">Makanan</Link>.
             </p>
           )}
           {k.kategori === "kampung_tua" && (

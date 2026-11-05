@@ -35,8 +35,7 @@ CATS = [
 ]
 CAT = {c[0]: c for c in CATS}
 
-MAKAN_MAP = {"seafood-gonggong": "seafood", "sup-ikan": "mi", "kopitiam": "kopi", "cafe": "kopi", "mie-bakmi": "mi",
-             "bakso": "mi", "mie-tarempa": "mi", "dimsum-chinese": "dimsum", "bubur": "dimsum", "oleh-oleh": "oleh"}
+MAKAN_MAP = {"seafood": "seafood", "sop-ikan": "mi", "soto": "mi", "kopitiam": "kopi", "coffee-shop": "kopi", "nasi-mie-goreng": "mi", "bakso-mie-ayam": "mi", "mie-tarempa": "mi", "dimsum": "dimsum", "chinese-food": "dimsum", "bubur": "dimsum", "kue-jajanan": "oleh", "bakery": "oleh", "ice-cream": "oleh"}
 SUB_MAP = {"masjid": "masjid", "gereja_katolik": "gereja", "vihara": "wihara", "pura": "pura", "rumah_sakit": "rs",
            "terminal_feri": "feri", "pelabuhan_domestik": "feri", "pelabuhan_internasional": "feri", "bandara": "bandara",
            "halte_bus": "halte", "halte_transfer_bus": "halte", "mal": "mal", "hypermarket": "mal", "pasar_barang_seken": "bekas",

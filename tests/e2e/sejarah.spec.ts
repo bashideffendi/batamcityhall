@@ -18,12 +18,17 @@ const tanpaGeserSamping = (page: Page) =>
   page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth);
 
 test.describe("landing", () => {
-  test("menaut ke delapan sub-halaman, Batam Dulu disembunyikan", async ({ page }) => {
+  test("menaut ke enam sub-halaman dan Kartu Pos, Batam Dulu disembunyikan", async ({ page }) => {
     await page.goto("/cerita");
-    await expect(page.locator("main .bch-kicker").first()).toContainText("LOKET 05");
-    await expect(page.getByRole("heading", { level: 1, name: "Cerita dan Budaya" })).toBeVisible();
-    for (const h of ["sejarah", "kampung-tua", "nama-jalan", "budaya", "kalender", "kamus", "komunitas", "angka"]) {
+    await expect(page.locator("main")).not.toContainText(/LOKET/i);
+    await expect(page.getByRole("heading", { level: 1, name: "Sejarah dan Budaya" })).toBeVisible();
+    for (const h of ["sejarah", "kampung-tua", "nama-jalan", "budaya", "kamus", "angka"]) {
       await expect(page.locator(`main a[href="/cerita/${h}"]`)).toHaveCount(1);
+    }
+    await expect(page.locator('main a[href="/kartu-pos"]')).toHaveCount(1);
+    // Kalender dan Komunitas pindah ke bagian sendiri.
+    for (const h of ["/cerita/kalender", "/cerita/komunitas"]) {
+      await expect(page.locator(`main a[href="${h}"]`)).toHaveCount(0);
     }
     await expect(page.locator('main a[href="/cerita/dulu"]')).toHaveCount(0);
   });
@@ -112,9 +117,10 @@ test.describe("Batam Dulu", () => {
   test("tidak ada foto, formulir tertutup jujur, arsip lengkap", async ({ page }) => {
     await page.goto("/cerita/dulu");
     await expect(page.locator("main img")).toHaveCount(0);
-    await expect(page.locator("[data-form-tutup]")).toContainText("belum dibuka");
-    await expect(page.locator("fieldset.sj-form-tutup input").first()).toBeDisabled();
-    await expect(page.locator("fieldset.sj-form-tutup button")).toBeDisabled();
+    await expect(page.locator("main")).toContainText("Belum ada foto lama");
+    // Formulir hanya menerima keterangan foto, bukan berkas foto.
+    await expect(page.getByRole("button", { name: "Kirim keterangan foto" })).toBeVisible();
+    await expect(page.locator('main input[type="file"]')).toHaveCount(0);
     await expect(page.locator("[data-sa]")).toHaveCount(arsip.length);
   });
 

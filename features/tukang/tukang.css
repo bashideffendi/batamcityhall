@@ -67,11 +67,6 @@
   accent-color: var(--bch-accent);
 }
 
-.bch-tk-jumlah {
-  font-family: var(--bch-font-serif);
-  font-size: var(--bch-text-h3);
-  line-height: var(--bch-leading-heading);
-}
 .bch-tk-cerita {
   list-style: none;
   margin: var(--bch-space-3) 0 0;
@@ -269,4 +264,114 @@
   border-style: solid;
   color: var(--bch-ink);
   font-weight: 600;
+}
+
+/* Admin konten */
+.bch-adm-lembar {
+  display: grid;
+  gap: var(--bch-space-3);
+  max-width: 48rem;
+}
+.bch-adm-lembar .bch-judul-seksi {
+  margin: 0;
+}
+.bch-adm-dua {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--bch-space-3);
+}
+@media (max-width: 640px) {
+  .bch-adm-dua {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.bch-adm-cek {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+.bch-adm-pesan {
+  margin: 0;
+  color: var(--bch-ink);
+  font-weight: 500;
+}
+.bch-adm-unggah {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bch-space-3);
+}
+.bch-adm-unggah label {
+  cursor: pointer;
+}
+.bch-adm-unggah label:focus-within {
+  outline: 2px solid var(--bch-ink);
+  outline-offset: 2px;
+}
+.bch-adm-pratinjau {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.bch-adm-baris {
+  margin: var(--bch-space-2) 0 var(--bch-space-3);
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--bch-rule-strong);
+}
+.bch-adm-baris li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bch-space-2) var(--bch-space-4);
+  padding-block: var(--bch-space-3);
+  border-bottom: 1px solid var(--bch-rule);
+}
+.bch-adm-baris li > div:first-child {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.bch-adm-baris .bch-adm-aksi {
+  margin: 0;
+}
+.bch-adm-kisi {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: var(--bch-space-3);
+  margin: var(--bch-space-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.bch-adm-kisi li {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  font-size: 0.875rem;
+}
+.bch-adm-kisi img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.bch-adm-unggah label {
+  position: relative;
+}
+.bch-adm-unggah input[type="file"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.bch-adm-centang {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 0 var(--bch-space-3);
 }

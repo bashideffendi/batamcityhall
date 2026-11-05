@@ -2,7 +2,7 @@
   {
     "id": "golden-prawn-933",
     "name": "Golden Prawn 933",
-    "category": "seafood-gonggong",
+    "category": "seafood",
     "subcategory": [
       "seafood",
       "gonggong",
@@ -50,7 +50,7 @@
   {
     "id": "rezeki-seafood",
     "name": "Rezeki Seafood Restaurant",
-    "category": "seafood-gonggong",
+    "category": "seafood",
     "subcategory": [
       "seafood",
       "kelong",
@@ -96,7 +96,7 @@
   {
     "id": "wey-wey-seafood",
     "name": "Wey Wey Live Seafood",
-    "category": "seafood-gonggong",
+    "category": "seafood",
     "subcategory": [
       "seafood",
       "kepiting",
@@ -144,7 +144,7 @@
   {
     "id": "sei-enam-seafood",
     "name": "Sei Enam Seafood",
-    "category": "seafood-gonggong",
+    "category": "seafood",
     "subcategory": [
       "seafood",
       "kepiting",
@@ -190,7 +190,7 @@
   {
     "id": "gerai-nelayan-2m-kelong-arjam",
     "name": "Gerai Nelayan 2M & Kelong Arjam",
-    "category": "seafood-gonggong",
+    "category": "seafood",
     "subcategory": [
       "seafood",
       "gonggong",
@@ -232,7 +232,7 @@
   {
     "id": "barelang-seafood",
     "name": "Barelang Seafood Restaurant",
-    "category": "seafood-gonggong",
+    "category": "seafood",
     "subcategory": [
       "seafood",
       "kelong",
@@ -278,7 +278,7 @@
   {
     "id": "kopak-jaya-007-kelong",
     "name": "Kopak Jaya 007 Kelong Seafood",
-    "category": "seafood-gonggong",
+    "category": "seafood",
     "subcategory": [
       "seafood",
       "kelong",
@@ -323,7 +323,7 @@
   {
     "id": "harbour-bay-seafood",
     "name": "Harbour Bay Seafood Restaurant",
-    "category": "seafood-gonggong",
+    "category": "seafood",
     "subcategory": [
       "seafood",
       "chinese",
@@ -361,12 +361,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "坐落Harbour Bay海滨，融合印尼与中式风味，可赏日落，周末还有现场音乐。"
+    "desc_zh": "坐落Harbour Bay海滨，融合印尼与中式风味，可赏日落，周末还有现场音乐。",
+    "kategori_lain": [
+      "chinese-food"
+    ]
   },
   {
     "id": "love-seafood",
     "name": "Love Seafood Batam Centre",
-    "category": "seafood-gonggong",
+    "category": "seafood",
     "subcategory": [
       "seafood",
       "family-style",
@@ -411,7 +414,7 @@
   {
     "id": "nomnom-seafood",
     "name": "Nomnom Seafood",
-    "category": "seafood-gonggong",
+    "category": "seafood",
     "subcategory": [
       "seafood",
       "gonggong",
@@ -447,12 +450,13 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "位于Seraya 168美食广场的海鲜摊，以香螺(gonggong)、各式鲜虾和臭豆(petai)闻名。"
+    "desc_zh": "位于Seraya 168美食广场的海鲜摊，以香螺(gonggong)、各式鲜虾和臭豆(petai)闻名。",
+    "food_court": "168-food-court"
   },
   {
     "id": "dsteam-seafood",
     "name": "D'Steam Seafood",
-    "category": "seafood-gonggong",
+    "category": "seafood",
     "subcategory": [
       "seafood",
       "steam"
@@ -490,7 +494,7 @@
   {
     "id": "yong-kee-istimewa",
     "name": "RM Yong Kee Istimewa",
-    "category": "sup-ikan",
+    "category": "sop-ikan",
     "subcategory": [
       "sup ikan",
       "otak-otak",
@@ -535,7 +539,7 @@
   {
     "id": "sop-ikan-aliang",
     "name": "Sop Ikan Aliang (Kedai Kopi Aliang)",
-    "category": "sup-ikan",
+    "category": "sop-ikan",
     "subcategory": [
       "sup ikan",
       "bihun"
@@ -575,7 +579,7 @@
   {
     "id": "sop-ikan-kok-heng",
     "name": "Sop Ikan Kok Heng",
-    "category": "sup-ikan",
+    "category": "sop-ikan",
     "subcategory": [
       "sup ikan"
     ],
@@ -614,7 +618,7 @@
   {
     "id": "hokkian-sop-ikan",
     "name": "Hokkian Sop Ikan (Kedai Kopi Sudi Mampir)",
-    "category": "sup-ikan",
+    "category": "sop-ikan",
     "subcategory": [
       "sup ikan",
       "laksa"
@@ -654,7 +658,7 @@
   {
     "id": "sop-ikan-windsor",
     "name": "Sop Ikan & Asam Pedas Windsor",
-    "category": "sup-ikan",
+    "category": "sop-ikan",
     "subcategory": [
       "sup ikan",
       "asam pedas"
@@ -737,7 +741,7 @@
   {
     "id": "kedai-kopi-harum-manis",
     "name": "Kedai Kopi Harum Manis",
-    "category": "mie-tarempa",
+    "category": "sarapan-pagi",
     "subcategory": [
       "mi lendir",
       "nasi kari",
@@ -777,7 +781,10 @@
     "featured": true,
     "verified": true,
     "last_verified": "2026-06",
-    "desc_zh": "巴淡岛早餐：黏面(mi lendir，黄面配浓花生酱汁加水煮蛋)、咖喱饭、印度煎饼(prata)和拉茶(kopi tarik)。招牌菜很快售罄，记得早到。"
+    "desc_zh": "巴淡岛早餐：黏面(mi lendir，黄面配浓花生酱汁加水煮蛋)、咖喱饭、印度煎饼(prata)和拉茶(kopi tarik)。招牌菜很快售罄，记得早到。",
+    "kategori_lain": [
+      "kopitiam"
+    ]
   },
   {
     "id": "pusat-luti-gendang",
@@ -820,7 +827,10 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "专卖廖内群岛特色鱼酥饼(luti gendang)的店——油炸面包夹金枪鱼/江鱼仔/虾肉松，以Belian为总店，Bengkong Laut分店24小时营业。"
+    "desc_zh": "专卖廖内群岛特色鱼酥饼(luti gendang)的店——油炸面包夹金枪鱼/江鱼仔/虾肉松，以Belian为总店，Bengkong Laut分店24小时营业。",
+    "kategori_lain": [
+      "kue-jajanan"
+    ]
   },
   {
     "id": "nasi-ayam-budi",
@@ -906,7 +916,10 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "传承新加坡食谱的海南鸡饭，自1986年扎根Bengkong Laut，清真。"
+    "desc_zh": "传承新加坡食谱的海南鸡饭，自1986年扎根Bengkong Laut，清真。",
+    "kategori_lain": [
+      "kopitiam"
+    ]
   },
   {
     "id": "nasi-ayam-ciang-hau",
@@ -1058,7 +1071,11 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Nagoya室内美食广场内的海南鸡饭与粥品，清真，从早营业到晚。"
+    "desc_zh": "Nagoya室内美食广场内的海南鸡饭与粥品，清真，从早营业到晚。",
+    "kategori_lain": [
+      "bubur"
+    ],
+    "food_court": "nagoya-food-court"
   },
   {
     "id": "kedai-kopi-ameng",
@@ -1102,7 +1119,10 @@
     "featured": true,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "源自Belakang Padang、始于1980年的咖啡店(kopitiam)，如今已有五六家分店。招牌是冰拉茶，另有黏面、椰浆菜饭(lontong sayur)、椰浆饭(nasi lemak)等马来式早餐。"
+    "desc_zh": "源自Belakang Padang、始于1980年的咖啡店(kopitiam)，如今已有五六家分店。招牌是冰拉茶，另有黏面、椰浆菜饭(lontong sayur)、椰浆饭(nasi lemak)等马来式早餐。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "mentari-kopitiam-pasir-putih",
@@ -1146,7 +1166,10 @@
     "featured": false,
     "verified": true,
     "last_verified": "2026-06",
-    "desc_zh": "Pasir Putih市场内的咖啡店，供应椰浆饭(nasi lemak)、叻沙和烤面包，空间宽敞明亮。"
+    "desc_zh": "Pasir Putih市场内的咖啡店，供应椰浆饭(nasi lemak)、叻沙和烤面包，空间宽敞明亮。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "atoks-coffee",
@@ -1191,7 +1214,10 @@
     "featured": false,
     "verified": true,
     "last_verified": "2026-06",
-    "desc_zh": "现代风咖啡店，适合家庭和酒店住客，供应本地马来料理、三花咖啡(kopi sanger)和牛油咖啡。提供WiFi。"
+    "desc_zh": "现代风咖啡店，适合家庭和酒店住客，供应本地马来料理、三花咖啡(kopi sanger)和牛油咖啡。提供WiFi。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "kedai-kopi-medan",
@@ -1231,7 +1257,11 @@
     "featured": false,
     "verified": true,
     "last_verified": "2026-06",
-    "desc_zh": "Nagoya的早餐店，主打lopis糯米糕、马来面汤(mee soto)、椰浆糕(lontong)、香饭(nasi uduk)和带镬气的炒粿条。"
+    "desc_zh": "Nagoya的早餐店，主打lopis糯米糕、马来面汤(mee soto)、椰浆糕(lontong)、香饭(nasi uduk)和带镬气的炒粿条。",
+    "kategori_lain": [
+      "sarapan-pagi",
+      "soto"
+    ]
   },
   {
     "id": "kopi-gembira",
@@ -1309,7 +1339,10 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Lubuk Baja的马来华人风味浓咖啡，配烤面包、咖椰(kaya)吐司、椰浆饭和煎饼(martabak)。"
+    "desc_zh": "Lubuk Baja的马来华人风味浓咖啡，配烤面包、咖椰(kaya)吐司、椰浆饭和煎饼(martabak)。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "cafe-lim-kok-tong",
@@ -1388,7 +1421,10 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "供应叉烧、烧肉(sio bak)和海南饭的咖啡店。非清真。"
+    "desc_zh": "供应叉烧、烧肉(sio bak)和海南饭的咖啡店。非清真。",
+    "kategori_lain": [
+      "chinese-food"
+    ]
   },
   {
     "id": "nagoya-thamrin-kopitiam",
@@ -1430,7 +1466,8 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Nagoya Thamrin City内全冷气的咖啡店兼美食广场，供应印尼群岛料理和中式菜。"
+    "desc_zh": "Nagoya Thamrin City内全冷气的咖啡店兼美食广场，供应印尼群岛料理和中式菜。",
+    "food_court": "food-market-thamrin"
   },
   {
     "id": "martabak-har",
@@ -1476,7 +1513,11 @@
     "featured": true,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "24小时营业的印度煎饼(martabak)与印度甩饼(prata)店；羊肉/牛肉/鸡肉煎饼、印度抛饼(roti canai)、印度香饭(briyani)和拉茶应有尽有。"
+    "desc_zh": "24小时营业的印度煎饼(martabak)与印度甩饼(prata)店；羊肉/牛肉/鸡肉煎饼、印度抛饼(roti canai)、印度香饭(briyani)和拉茶应有尽有。",
+    "kategori_lain": [
+      "makanan-india",
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "putri-prata",
@@ -1514,7 +1555,10 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "印度煎饼(prata)摊，有香蕉、牛油和鸡蛋等口味，在巴淡岛多处设点。"
+    "desc_zh": "印度煎饼(prata)摊，有香蕉、牛油和鸡蛋等口味，在巴淡岛多处设点。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "maharani-prata",
@@ -1552,12 +1596,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Sekupang的Tiban Indah Permai一带，供应印度煎饼(prata)和甜味煎饼(martabak)。"
+    "desc_zh": "Sekupang的Tiban Indah Permai一带，供应印度煎饼(prata)和甜味煎饼(martabak)。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "restaurant-habibis",
     "name": "Restaurant Habibi's",
-    "category": "martabak-prata",
+    "category": "makanan-india",
     "subcategory": [
       "prata",
       "india",
@@ -1592,12 +1639,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Batu Ampar的印度料理餐厅，供应印度香饭(briyani)、烤饼(naan)和煎饼(martabak)。"
+    "desc_zh": "Batu Ampar的印度料理餐厅，供应印度香饭(briyani)、烤饼(naan)和煎饼(martabak)。",
+    "kategori_lain": [
+      "martabak-prata"
+    ]
   },
   {
     "id": "mie-pangsit-harum",
     "name": "Mie Pangsit Harum",
-    "category": "mie-bakmi",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "mi ayam",
       "pangsit"
@@ -1635,7 +1685,7 @@
   {
     "id": "bakso-mie-ayam-murah-rezeki",
     "name": "Bakso & Mie Ayam Murah Rezeki",
-    "category": "mie-bakmi",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "mi ayam",
       "bakso"
@@ -1673,7 +1723,7 @@
   {
     "id": "mie-ayam-jakarta-bude",
     "name": "Mie Ayam Jakarta Bude",
-    "category": "mie-bakmi",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "mi ayam"
     ],
@@ -1712,7 +1762,7 @@
   {
     "id": "mie-ayam-bakso-semeru",
     "name": "Bakso Tetelan & Mie Ayam Semeru",
-    "category": "mie-bakmi",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "mi ayam",
       "bakso",
@@ -1751,7 +1801,7 @@
   {
     "id": "mie-ayam-gerobakan-legendaris",
     "name": "Mie Ayam Gerobakan Legendaris",
-    "category": "mie-bakmi",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "mi ayam",
       "gerobakan"
@@ -1790,7 +1840,7 @@
   {
     "id": "kwetiau-acek-sancheez",
     "name": "Kwetiau Acek Sancheez",
-    "category": "mie-bakmi",
+    "category": "nasi-mie-goreng",
     "subcategory": [
       "kwetiau"
     ],
@@ -1829,7 +1879,7 @@
   {
     "id": "bakmi-botak-cun",
     "name": "Bakmi Botak Cun",
-    "category": "mie-bakmi",
+    "category": "nasi-mie-goreng",
     "subcategory": [
       "bakmi medan"
     ],
@@ -1863,12 +1913,13 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Nagoya室内美食广场内的棉兰式拌面(bakmi)。非清真。"
+    "desc_zh": "Nagoya室内美食广场内的棉兰式拌面(bakmi)。非清真。",
+    "food_court": "nagoya-food-court"
   },
   {
     "id": "mi-ekonomi",
     "name": "Mi Ekonomi",
-    "category": "mie-bakmi",
+    "category": "nasi-mie-goreng",
     "subcategory": [
       "bakmi",
       "kwetiau"
@@ -1901,7 +1952,8 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "经济实惠的拌面和粿条，几乎每个巴淡岛美食广场都有。"
+    "desc_zh": "经济实惠的拌面和粿条，几乎每个巴淡岛美食广场都有。",
+    "food_court": "nagoya-food-court"
   },
   {
     "id": "bubur-ayam-teteh",
@@ -1939,7 +1991,10 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Mega Legenda的鸡肉粥配各式沙嗲(sate)小串，清晨开档。"
+    "desc_zh": "Mega Legenda的鸡肉粥配各式沙嗲(sate)小串，清晨开档。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "bubur-ayam-bogor-pak-djadja",
@@ -1978,7 +2033,10 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "巴淡中心居民熟知的茂物式鸡肉粥。"
+    "desc_zh": "巴淡中心居民熟知的茂物式鸡肉粥。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "bubur-ayam-dwi",
@@ -2016,7 +2074,10 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Botania Garden的鸡肉粥、马鲛鱼粥和榴莲糯米。"
+    "desc_zh": "Botania Garden的鸡肉粥、马鲛鱼粥和榴莲糯米。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "bubur-ayam-aini-88",
@@ -2054,7 +2115,10 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Kabil的鸡肉粥，配肝脏、肠子和鹌鹑蛋等各式沙嗲(sate)。"
+    "desc_zh": "Kabil的鸡肉粥，配肝脏、肠子和鹌鹑蛋等各式沙嗲(sate)。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "bubur-ayam-dago-09",
@@ -2093,7 +2157,10 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Tiban颇受欢迎的万隆式鸡肉粥，常常早上八九点就卖光。"
+    "desc_zh": "Tiban颇受欢迎的万隆式鸡肉粥，常常早上八九点就卖光。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "bubur-kodok-mee-hoon-kueh",
@@ -2175,7 +2242,7 @@
   {
     "id": "ranah-minang",
     "name": "Ranah Minang",
-    "category": "nasi-padang",
+    "category": "makanan-padang",
     "subcategory": [
       "nasi padang",
       "minang"
@@ -2213,7 +2280,7 @@
   {
     "id": "dendeng-baka",
     "name": "Dendeng Baka",
-    "category": "nasi-padang",
+    "category": "makanan-padang",
     "subcategory": [
       "nasi padang",
       "dendeng"
@@ -2251,7 +2318,7 @@
   {
     "id": "salero-basamo",
     "name": "Salero Basamo",
-    "category": "nasi-padang",
+    "category": "makanan-padang",
     "subcategory": [
       "nasi padang",
       "ayam pop"
@@ -2289,7 +2356,7 @@
   {
     "id": "rm-pauh-piaman",
     "name": "RM Pauh Piaman",
-    "category": "nasi-padang",
+    "category": "makanan-padang",
     "subcategory": [
       "nasi padang",
       "pariaman",
@@ -2328,7 +2395,7 @@
   {
     "id": "rm-pangek-ombilin",
     "name": "RM Pangek Ombilin",
-    "category": "nasi-padang",
+    "category": "makanan-padang",
     "subcategory": [
       "nasi padang",
       "pangek"
@@ -2366,7 +2433,7 @@
   {
     "id": "rm-padang-pondok-bunda",
     "name": "RM Padang Pondok Bunda",
-    "category": "nasi-padang",
+    "category": "makanan-padang",
     "subcategory": [
       "nasi padang"
     ],
@@ -2403,7 +2470,7 @@
   {
     "id": "rm-sederhana",
     "name": "RM Sederhana",
-    "category": "nasi-padang",
+    "category": "makanan-padang",
     "subcategory": [
       "nasi padang",
       "minang"
@@ -2444,7 +2511,7 @@
   {
     "id": "ampera-densiko",
     "name": "Ampera Densiko",
-    "category": "nasi-padang",
+    "category": "makanan-padang",
     "subcategory": [
       "nasi padang",
       "ampera"
@@ -2484,7 +2551,7 @@
   {
     "id": "nasi-kapau-pak-nin",
     "name": "Nasi Kapau Pak Nin",
-    "category": "nasi-padang",
+    "category": "makanan-padang",
     "subcategory": [
       "nasi kapau",
       "tambusu",
@@ -2523,7 +2590,7 @@
   {
     "id": "saung-sunda-sawargi",
     "name": "Saung Sunda Sawargi",
-    "category": "sunda-jawa",
+    "category": "makanan-sunda",
     "subcategory": [
       "sunda",
       "nasi liwet",
@@ -2565,7 +2632,7 @@
   {
     "id": "pondok-batam-kuring",
     "name": "Pondok Batam Kuring",
-    "category": "sunda-jawa",
+    "category": "makanan-sunda",
     "subcategory": [
       "sunda",
       "ikan bakar",
@@ -2605,12 +2672,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "始于1992年的巽他料理餐厅，坐落Bukit Senyum，可眺望新加坡方向的景色。"
+    "desc_zh": "始于1992年的巽他料理餐厅，坐落Bukit Senyum，可眺望新加坡方向的景色。",
+    "kategori_lain": [
+      "seafood"
+    ]
   },
   {
     "id": "ikan-bakar-cianjur",
     "name": "Ikan Bakar Cianjur Batam",
-    "category": "sunda-jawa",
+    "category": "makanan-sunda",
     "subcategory": [
       "sunda",
       "ikan bakar"
@@ -2646,12 +2716,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Jl. Engku Putri一带的巽他料理餐厅，主打烤鱼。"
+    "desc_zh": "Jl. Engku Putri一带的巽他料理餐厅，主打烤鱼。",
+    "kategori_lain": [
+      "seafood"
+    ]
   },
   {
     "id": "boboko-euis",
     "name": "Boboko Euis",
-    "category": "sunda-jawa",
+    "category": "makanan-sunda",
     "subcategory": [
       "sunda",
       "prasmanan",
@@ -2692,7 +2765,7 @@
   {
     "id": "waroeng-sunda-teh-sinta",
     "name": "Waroeng Sunda Teh Sinta",
-    "category": "sunda-jawa",
+    "category": "makanan-sunda",
     "subcategory": [
       "sunda",
       "prasmanan",
@@ -2733,7 +2806,7 @@
   {
     "id": "bebek-goreng-h-slamet",
     "name": "Bebek Goreng H. Slamet",
-    "category": "sunda-jawa",
+    "category": "makanan-jawa",
     "subcategory": [
       "jawa",
       "bebek goreng"
@@ -2766,12 +2839,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "香料腌制的酥脆炸鸭配辣椒酱(sambal korek)，位于Lubuk Baja，BCS Mall对面。"
+    "desc_zh": "香料腌制的酥脆炸鸭配辣椒酱(sambal korek)，位于Lubuk Baja，BCS Mall对面。",
+    "kategori_lain": [
+      "penyetan"
+    ]
   },
   {
     "id": "bebek-carok",
     "name": "Bebek Carok",
-    "category": "sunda-jawa",
+    "category": "makanan-jawa",
     "subcategory": [
       "jawa",
       "madura",
@@ -2805,12 +2881,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "巴淡岛招牌马都拉黑酱鸭和南姜鸭。"
+    "desc_zh": "巴淡岛招牌马都拉黑酱鸭和南姜鸭。",
+    "kategori_lain": [
+      "penyetan"
+    ]
   },
   {
     "id": "sate-kendal-dbyo",
     "name": "Sate Kendal D'Byo",
-    "category": "sate-kambing",
+    "category": "sate",
     "subcategory": [
       "sate kambing"
     ],
@@ -2847,7 +2926,7 @@
   {
     "id": "van-demang",
     "name": "Van Demang",
-    "category": "sate-kambing",
+    "category": "sate",
     "subcategory": [
       "sate merah",
       "kopitiam"
@@ -2885,7 +2964,7 @@
   {
     "id": "gulai-sate-asih",
     "name": "Gulai & Sate Asih",
-    "category": "sate-kambing",
+    "category": "sate",
     "subcategory": [
       "sate kambing",
       "gulai kambing"
@@ -2925,7 +3004,7 @@
   {
     "id": "baa-baa-kambing",
     "name": "Baa Baa Kambing",
-    "category": "sate-kambing",
+    "category": "sate",
     "subcategory": [
       "olahan kambing",
       "tengkleng",
@@ -2959,12 +3038,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Mega Legenda的羊肉料理全席：鲜嫩无膻味的羊肉沙嗲、咖喱、羊骨汤(tengkleng)和羊肉浓汤(tongseng)。"
+    "desc_zh": "Mega Legenda的羊肉料理全席：鲜嫩无膻味的羊肉沙嗲、咖喱、羊骨汤(tengkleng)和羊肉浓汤(tongseng)。",
+    "kategori_lain": [
+      "makanan-jawa"
+    ]
   },
   {
     "id": "sop-tulang-sapi-nunung",
     "name": "Sop Tulang Sapi Nunung",
-    "category": "sate-kambing",
+    "category": "soto",
     "subcategory": [
       "sup tulang",
       "iga bakar"
@@ -3002,7 +3084,7 @@
   {
     "id": "bakso-gres",
     "name": "Bakso Gres",
-    "category": "bakso",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "bakso",
       "tetelan"
@@ -3040,7 +3122,7 @@
   {
     "id": "bakso-putro-solo",
     "name": "Bakso Putra/Putro Solo",
-    "category": "bakso",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "bakso",
       "bakso kawah"
@@ -3078,7 +3160,7 @@
   {
     "id": "bakso-barcelona-pak-kumis",
     "name": "Bakso Barcelona Pak Kumis",
-    "category": "bakso",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "bakso"
     ],
@@ -3115,7 +3197,7 @@
   {
     "id": "bakso-bakmi-sri-ayu",
     "name": "Bakso & Bakmi Sri Ayu",
-    "category": "bakso",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "bakso",
       "bakmi"
@@ -3153,7 +3235,7 @@
   {
     "id": "bakso-arema-cakgik",
     "name": "Bakso Arema Cakgik",
-    "category": "bakso",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "bakso",
       "pangsit"
@@ -3191,7 +3273,7 @@
   {
     "id": "bakso-ujang-mak-inyong",
     "name": "Bakso Ujang Mak Inyong",
-    "category": "bakso",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "bakso"
     ],
@@ -3228,7 +3310,7 @@
   {
     "id": "bakso-psg",
     "name": "Bakso PSG",
-    "category": "bakso",
+    "category": "bakso-mie-ayam",
     "subcategory": [
       "bakso",
       "mi ayam"
@@ -3266,7 +3348,7 @@
   {
     "id": "tjap-nyonya-dimsum",
     "name": "Tjap Nyonya Dimsum",
-    "category": "dimsum-chinese",
+    "category": "dimsum",
     "subcategory": [
       "dimsum",
       "suimian"
@@ -3305,7 +3387,7 @@
   {
     "id": "imperial-kitchen-dimsum",
     "name": "Imperial Kitchen & Dimsum",
-    "category": "dimsum-chinese",
+    "category": "dimsum",
     "subcategory": [
       "dimsum",
       "chinese"
@@ -3341,12 +3423,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "巴淡市Jl. Ahmad Yani的点心和中式料理。"
+    "desc_zh": "巴淡市Jl. Ahmad Yani的点心和中式料理。",
+    "kategori_lain": [
+      "chinese-food"
+    ]
   },
   {
     "id": "shang-dimsum",
     "name": "Shang Dimsum",
-    "category": "dimsum-chinese",
+    "category": "dimsum",
     "subcategory": [
       "dimsum"
     ],
@@ -3385,7 +3470,7 @@
   {
     "id": "ciao-dimsum-kopi",
     "name": "Ciao Kedai Dimsum dan Kopi",
-    "category": "dimsum-chinese",
+    "category": "dimsum",
     "subcategory": [
       "dimsum",
       "ayce",
@@ -3422,12 +3507,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Teluk Tering的Business Centre,点心任食(自助)配咖啡。"
+    "desc_zh": "Teluk Tering的Business Centre,点心任食(自助)配咖啡。",
+    "kategori_lain": [
+      "ayce"
+    ]
   },
   {
     "id": "dimsum-makcik-kopitiam",
     "name": "Dimsum Makcik Kopitiam",
-    "category": "dimsum-chinese",
+    "category": "dimsum",
     "subcategory": [
       "dimsum",
       "kopitiam"
@@ -3460,12 +3548,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "巴淡岛的点心,配参巴酱(sambal)。"
+    "desc_zh": "巴淡岛的点心,配参巴酱(sambal)。",
+    "kategori_lain": [
+      "kopitiam"
+    ]
   },
   {
     "id": "shuang-hong-bak-kut-teh",
     "name": "Shuang Hong Bak Kut Teh",
-    "category": "dimsum-chinese",
+    "category": "chinese-food",
     "subcategory": [
       "bak kut teh"
     ],
@@ -3504,7 +3595,7 @@
   {
     "id": "bak-kut-teh-mickey-mouse-66",
     "name": "Bak Kut Teh Mickey Mouse 66",
-    "category": "dimsum-chinese",
+    "category": "chinese-food",
     "subcategory": [
       "bak kut teh",
       "teochew"
@@ -3544,7 +3635,7 @@
   {
     "id": "bpk-king-one",
     "name": "BPK King One",
-    "category": "dimsum-chinese",
+    "category": "lapo-batak",
     "subcategory": [
       "babi panggang karo"
     ],
@@ -3581,7 +3672,7 @@
   {
     "id": "ayam-penyet-minak-djinggo",
     "name": "Ayam Penyet Minak Djinggo",
-    "category": "ayam-penyet",
+    "category": "penyetan",
     "subcategory": [
       "ayam penyet",
       "pecel lele"
@@ -3619,7 +3710,7 @@
   {
     "id": "ayam-geprek-red-devil",
     "name": "Ayam Geprek Red Devil",
-    "category": "ayam-penyet",
+    "category": "penyetan",
     "subcategory": [
       "ayam geprek"
     ],
@@ -3656,7 +3747,7 @@
   {
     "id": "ayam-penyet-ngangeni",
     "name": "Ayam Penyet Ngangeni",
-    "category": "ayam-penyet",
+    "category": "penyetan",
     "subcategory": [
       "ayam penyet",
       "pecel lele",
@@ -3695,7 +3786,7 @@
   {
     "id": "kampoeng-penyet",
     "name": "Kampoeng Penyet",
-    "category": "ayam-penyet",
+    "category": "penyetan",
     "subcategory": [
       "ayam penyet",
       "mi ayam",
@@ -3731,12 +3822,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "巴淡中心的拍扁炸鸡、鸡肉面和肉丸。"
+    "desc_zh": "巴淡中心的拍扁炸鸡、鸡肉面和肉丸。",
+    "kategori_lain": [
+      "bakso-mie-ayam"
+    ]
   },
   {
     "id": "merah-putih-ayam-kampung",
     "name": "Merah Putih Ayam Kampung",
-    "category": "ayam-penyet",
+    "category": "penyetan",
     "subcategory": [
       "ayam kampung",
       "tongseng"
@@ -3769,12 +3863,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "巴淡岛的炸走地鸡(ayam kampung)和羊肉浓汤(tongseng)。"
+    "desc_zh": "巴淡岛的炸走地鸡(ayam kampung)和羊肉浓汤(tongseng)。",
+    "kategori_lain": [
+      "makanan-jawa"
+    ]
   },
   {
     "id": "pujasera-tiban-center",
     "name": "Pujasera Tiban Center",
-    "category": "ayam-penyet",
+    "category": "penyetan",
     "subcategory": [
       "lalapan",
       "ayam penyet",
@@ -3808,12 +3905,13 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Sekupang的Tiban Indah的美食广场,主打拍扁炸鸡和乡村风珍多冰(es cendol)。"
+    "desc_zh": "Sekupang的Tiban Indah的美食广场,主打拍扁炸鸡和乡村风珍多冰(es cendol)。",
+    "food_court": "pujasera-tiban-center"
   },
   {
     "id": "pecal-sabar-menanti",
     "name": "Pecal Sabar Menanti",
-    "category": "pecel-gado",
+    "category": "gado-pecel",
     "subcategory": [
       "pecel",
       "lontong",
@@ -3847,12 +3945,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Belian的Pasar Mustafa,花生酱拌饭团(lontong pecel)配炸物。"
+    "desc_zh": "Belian的Pasar Mustafa,花生酱拌饭团(lontong pecel)配炸物。",
+    "kategori_lain": [
+      "sarapan-pagi"
+    ]
   },
   {
     "id": "kampoeng-noodle-nasi-lemak",
     "name": "Nasi Lemak & Lontong Kampoeng Noodle",
-    "category": "pecel-gado",
+    "category": "sarapan-pagi",
     "subcategory": [
       "nasi lemak",
       "lontong sayur",
@@ -3893,7 +3994,7 @@
   {
     "id": "mb-kopitiam-pasir-putih",
     "name": "Gado-gado & Nasi Lemak Pelantar 3 (MB Kopitiam Pasir Putih)",
-    "category": "pecel-gado",
+    "category": "sarapan-pagi",
     "subcategory": [
       "nasi lemak",
       "gado-gado"
@@ -3928,12 +4029,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "源自丹戎槟榔、始于1998年的老店(已传至第二、三代),Pasir Putih市场内的椰浆饭和加多加多(gado-gado)。"
+    "desc_zh": "源自丹戎槟榔、始于1998年的老店(已传至第二、三代),Pasir Putih市场内的椰浆饭和加多加多(gado-gado)。",
+    "kategori_lain": [
+      "gado-pecel"
+    ]
   },
   {
     "id": "rm-amel-seafood-nongsa",
     "name": "RM Amel Seafood",
-    "category": "pecel-gado",
+    "category": "sarapan-pagi",
     "subcategory": [
       "sarapan melayu",
       "gado-gado",
@@ -3970,12 +4074,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "Nongsa海滩边经营超过20年的马来式早餐:加多加多(gado-gado)、黏面(mi lendir)、印度煎饼(prata)和椰浆饭(nasi lemak)。"
+    "desc_zh": "Nongsa海滩边经营超过20年的马来式早餐:加多加多(gado-gado)、黏面(mi lendir)、印度煎饼(prata)和椰浆饭(nasi lemak)。",
+    "kategori_lain": [
+      "gado-pecel"
+    ]
   },
   {
     "id": "nasi-lemak-wak-tige",
     "name": "Nasi Lemak Wak Tige",
-    "category": "pecel-gado",
+    "category": "sarapan-pagi",
     "subcategory": [
       "nasi lemak"
     ],
@@ -4012,7 +4119,7 @@
   {
     "id": "kek-pisang-villa",
     "name": "Kek Pisang Villa",
-    "category": "oleh-oleh",
+    "category": "bakery",
     "subcategory": [
       "oleh-oleh",
       "kue",
@@ -4057,7 +4164,7 @@
   {
     "id": "lapisa-nagoya-hill",
     "name": "Lapisa Nagoya Hill",
-    "category": "oleh-oleh",
+    "category": "bakery",
     "subcategory": [
       "oleh-oleh",
       "kue lapis",
@@ -4102,7 +4209,7 @@
   {
     "id": "bingka-bakar-nayadam",
     "name": "Bingka Bakar Nayadam",
-    "category": "oleh-oleh",
+    "category": "kue-jajanan",
     "subcategory": [
       "oleh-oleh",
       "bingka bakar",
@@ -4141,7 +4248,7 @@
   {
     "id": "lamoist-layers-cake",
     "name": "Lamoist Layers Cake",
-    "category": "oleh-oleh",
+    "category": "bakery",
     "subcategory": [
       "oleh-oleh",
       "kue lapis"
@@ -4180,7 +4287,7 @@
   {
     "id": "batam-ogura",
     "name": "Batam Ogura",
-    "category": "oleh-oleh",
+    "category": "bakery",
     "subcategory": [
       "oleh-oleh",
       "cake ogura"
@@ -4219,7 +4326,7 @@
   {
     "id": "mamma-otak-otak",
     "name": "Mamma Otak-otak",
-    "category": "oleh-oleh",
+    "category": "kue-jajanan",
     "subcategory": [
       "otak-otak"
     ],
@@ -4258,7 +4365,7 @@
   {
     "id": "acong-otak-otak",
     "name": "Acong Otak-otak",
-    "category": "oleh-oleh",
+    "category": "kue-jajanan",
     "subcategory": [
       "otak-otak"
     ],
@@ -4295,7 +4402,7 @@
   {
     "id": "epok-epok-ana",
     "name": "Epok-Epok Ana",
-    "category": "oleh-oleh",
+    "category": "kue-jajanan",
     "subcategory": [
       "epok-epok",
       "pastel"
@@ -4333,7 +4440,7 @@
   {
     "id": "anchor-cafe-roastery",
     "name": "Anchor Cafe & Roastery",
-    "category": "cafe",
+    "category": "coffee-shop",
     "subcategory": [
       "cafe",
       "specialty coffee",
@@ -4373,7 +4480,7 @@
   {
     "id": "the-smith",
     "name": "The Smith",
-    "category": "cafe",
+    "category": "coffee-shop",
     "subcategory": [
       "cafe",
       "dessert",
@@ -4410,12 +4517,15 @@
     "featured": false,
     "verified": false,
     "last_verified": "2026-06",
-    "desc_zh": "甜品咖啡馆,供应千层可丽饼(mille crepes)、红丝绒和马卡龙,设点于BCS、Mega Mall和Nagoya Hill。"
+    "desc_zh": "甜品咖啡馆,供应千层可丽饼(mille crepes)、红丝绒和马卡龙,设点于BCS、Mega Mall和Nagoya Hill。",
+    "kategori_lain": [
+      "bakery"
+    ]
   },
   {
     "id": "roemah-pohon",
     "name": "Roemah Pohon",
-    "category": "cafe",
+    "category": "coffee-shop",
     "subcategory": [
       "cafe",
       "semi-outdoor"
@@ -4455,7 +4565,7 @@
   {
     "id": "pantai-cafe",
     "name": "Pantai Cafe",
-    "category": "cafe",
+    "category": "coffee-shop",
     "subcategory": [
       "cafe",
       "live music",
@@ -4496,7 +4606,7 @@
   {
     "id": "chemistree-cafe",
     "name": "Chemistree",
-    "category": "cafe",
+    "category": "coffee-shop",
     "subcategory": [
       "cafe"
     ],
@@ -4536,7 +4646,7 @@
   {
     "id": "liminal-coffee-bites",
     "name": "Liminal Coffee + Bites",
-    "category": "cafe",
+    "category": "coffee-shop",
     "subcategory": [
       "cafe",
       "coffee"
@@ -4575,7 +4685,7 @@
   {
     "id": "cafe-bukit-cinta",
     "name": "Cafe Bukit Cinta (Cabuci)",
-    "category": "cafe",
+    "category": "coffee-shop",
     "subcategory": [
       "cafe",
       "view kota"
@@ -4615,7 +4725,7 @@
   {
     "id": "rubeka-coffee",
     "name": "Rubeka Rumah Pamer dan Kopi",
-    "category": "cafe",
+    "category": "coffee-shop",
     "subcategory": [
       "cafe",
       "vintage"
@@ -4653,7 +4763,7 @@
   {
     "id": "abun-cha-kue",
     "name": "Abun Cha Kue",
-    "category": "dimsum-chinese",
+    "category": "kue-jajanan",
     "subcategory": [
       "cha kue",
       "jajanan tionghoa",

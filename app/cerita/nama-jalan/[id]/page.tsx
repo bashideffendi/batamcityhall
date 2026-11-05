@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { KIRIMAN_AKTIF } from "@/lib/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { IkonCeritaRakyat } from "@/features/kampung-tua/Ikon";
@@ -13,8 +14,6 @@ import {
 } from "@/features/nama-jalan/data";
 import "@/features/kampung-tua/kampung-tua.css";
 import "@/features/nama-jalan/nama-jalan.css";
-
-export const dynamicParams = false;
 
 export function generateStaticParams() {
   return TOKOH.map((t) => ({ id: t.id }));
@@ -37,16 +36,15 @@ export default async function KartuTokoh({ params }: Props) {
   const kelompok = KELOMPOK.find((k) => k.id === t.kelompok)?.nama;
 
   return (
-    <div className="bch-page">
-      <p className="bch-kicker m-0">
-        <Link href="/cerita/nama-jalan">Siapa di Balik Nama Jalan</Link> · {kelompok}
-      </p>
+    <div className="bch-page bch-baca">
+      <nav className="bch-remah" aria-label="Remah roti">
+        <Link href="/cerita/nama-jalan" prefetch={false}>Nama Jalan</Link> / {kelompok}
+      </nav>
 
       <article className="bch-card bch-kartu-museum nj-kartu mt-3" data-hikayat={t.status.hikayat}>
         <h1>{t.nama}</h1>
         {t.gelar && <p className="bch-card-loc">{t.gelar}</p>}
         <hr className="bch-card-rule" />
-        <div className="bch-rebung-mini" aria-hidden="true" />
         <p className="m-0" data-status-tokoh={t.status.grup}>
           <span className="bch-badge" data-tone={t.status.nada}>
             {t.status.grup === "hikayat" && <IkonCeritaRakyat ukuran={12} />}
@@ -58,7 +56,7 @@ export default async function KartuTokoh({ params }: Props) {
           <dl className="bch-kartu-fakta">
             {t.masaHidup && (
               <div>
-                <dt>Masa hidup</dt>
+                <dt>Masa Hidup</dt>
                 <dd>{t.masaHidup}</dd>
               </div>
             )}
@@ -154,7 +152,7 @@ export default async function KartuTokoh({ params }: Props) {
                       <>
                         {" "}
                         <span className="bch-badge" data-tone="caution">
-                          Belum terverifikasi
+                          Belum Terverifikasi
                         </span>
                       </>
                     )}
@@ -167,9 +165,13 @@ export default async function KartuTokoh({ params }: Props) {
 
         <p>
           <Link href="/cerita/nama-jalan#relasi" prefetch={false}>
-            Lihat silsilah
+            Lihat Silsilah
           </Link>{" "}
-          · <Link href="/koreksi">Kirim koreksi</Link>
+          {KIRIMAN_AKTIF && (
+            <>
+              · <Link href="/koreksi">Kirim Koreksi</Link>
+            </>
+          )}
         </p>
       </div>
     </div>

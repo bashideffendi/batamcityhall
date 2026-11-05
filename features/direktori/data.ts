@@ -1,3 +1,4 @@
+import kategoriMakan from "@/data/makan/categories.json";
 import { kaidahJudul } from "@/lib/judul";
 // Direktori Informasi Warga dari data/places.json. Fungsi di sini murni dan hanya dipakai di server, kecuali
 // lewat route indeks.json dan pin.json yang mengirim versi ringkasnya ke browser.
@@ -39,29 +40,29 @@ const kat = (
 // futsal belum disebut. Tambahkan bila jenisnya sudah masuk. Slug URL = kategori dengan garis bawah menjadi
 // tanda hubung.
 export const DAFTAR_KATEGORI: InfoKategori[] = [
-  kat("keamanan_darurat", "Darurat dan keamanan", "Polisi, pemadam kebakaran, dan SAR"),
+  kat("keamanan_darurat", "Darurat dan Keamanan", "Polisi, pemadam kebakaran, dan SAR"),
   kat("kesehatan", "Kesehatan", "Rumah sakit, puskesmas, dan donor darah"),
   kat(
     "pemerintahan",
-    "Kantor dan layanan publik",
+    "Kantor dan Layanan Publik",
     "Kantor camat dan lurah, kantor pos, listrik, air, BPJS, dan KUA",
     ["pemerintahan", "layanan_publik"],
   ),
   kat("pendidikan", "Pendidikan", "Sekolah dan perguruan tinggi"),
   kat("perpustakaan", "Perpustakaan", "Perpustakaan umum dan komunitas"),
-  kat("ibadah", "Tempat ibadah", "Masjid, gereja, pura, dan wihara"),
+  kat("ibadah", "Tempat Ibadah", "Masjid, gereja, pura, dan wihara"),
   kat("pemakaman", "Pemakaman", "Taman pemakaman umum dan makam menurut agama"),
   kat("transportasi", "Transportasi", "Pelabuhan, pelantar pompong, bandara, halte, dan pengisian kendaraan listrik"),
   kat("belanja", "Belanja", "Pasar, mal, pasar swalayan, toko bahan bangunan, dan toko alat tulis"),
-  kat("ruang_publik", "Ruang publik", "Taman, alun-alun, dan bumi perkemahan"),
+  kat("ruang_publik", "Ruang Publik", "Taman, alun-alun, dan bumi perkemahan"),
   kat("wisata", "Wisata", "Pantai, pulau, museum, dan taman hiburan"),
   kat("olahraga", "Olahraga", "Lapangan padel, bulu tangkis, pusat kebugaran, dan stadion"),
-  kat("akomodasi", "Hotel dan penginapan", "Hotel berbintang dan nonbintang"),
+  kat("akomodasi", "Hotel dan Penginapan", "Hotel berbintang dan nonbintang"),
   kat("jasa", "Jasa", "Penukaran valuta asing, pusat servis, dan ekspedisi"),
-  kat("pertanahan_hukum", "Pertanahan dan hukum", "PPAT, notaris, bantuan hukum, pengadilan, dan penilai properti"),
-  kat("kuliner", "Kuliner", "Tempat makan dari bagian Makan"),
-  kat("kampung_tua", "Kampung tua", "Permukiman lama sebelum Batam dibangun"),
-  kat("landmark", "Penanda kota", "Jembatan, monumen, dan bangunan penanda"),
+  kat("pertanahan_hukum", "Pertanahan dan Hukum", "PPAT, notaris, bantuan hukum, pengadilan, dan penilai properti"),
+  kat("kuliner", "Kuliner", "Tempat makan dari bagian Makanan"),
+  kat("kampung_tua", "Kampung Tua", "Permukiman lama sebelum Batam dibangun"),
+  kat("landmark", "Penanda Kota", "Jembatan, monumen, dan bangunan penanda"),
   kat("budaya", "Budaya", "Museum, cagar budaya, dan lembaga adat"),
   kat("khas_batam", "Khas Batam", "Hal yang hanya ada di Batam"),
   kat("lainnya", "Lain-lain", "Waduk, kawasan, dan tempat lain"),
@@ -70,7 +71,7 @@ export const DAFTAR_KATEGORI: InfoKategori[] = [
 export const slugKategori = (k: string) => k.replace(/_/g, "-");
 export const kategoriDariSlug = (s: string) => DAFTAR_KATEGORI.find((k) => slugKategori(k.kategori) === s);
 
-/** Kategori data ke kategori tampilannya: "layanan_publik" masuk ke "Kantor dan layanan publik". */
+/** Kategori data ke kategori tampilannya: "layanan_publik" masuk ke "Kantor dan Layanan Publik". */
 export const kategoriTampil = (k: string) => DAFTAR_KATEGORI.find((d) => (d.sumber as string[]).includes(k));
 export const kunciTampil = (k: string) => kategoriTampil(k)?.kategori ?? k;
 export const namaKategori = (k: string) => kategoriTampil(k)?.nama ?? k;
@@ -92,10 +93,10 @@ const LABEL_SUB: Record<string, string> = {
   rs_tipe_b: "RS Tipe B",
   rs_tipe_c: "RS Tipe C",
   rs_tipe_d: "RS Tipe D",
-  rs_khusus: "RS khusus",
+  rs_khusus: "RS Khusus",
   rsia_tipe_b: "RSIA Tipe B",
   rsia_tipe_c: "RSIA Tipe C",
-  puskesmas_non_rawat_inap: "Puskesmas nonrawat inap",
+  puskesmas_non_rawat_inap: "Puskesmas Nonrawat Inap",
   // Kantor dan layanan publik
   kua: "KUA",
   bpjs_kes: "BPJS Kesehatan",
@@ -108,11 +109,11 @@ const LABEL_SUB: Record<string, string> = {
   disnaker: "Disnaker",
   kemenag: "Kemenag",
   kantor_pemkot: "Kantor Pemkot",
-  layanan_lahan_online: "Layanan lahan daring",
-  ptsp_lahan_perizinan: "PTSP lahan dan perizinan",
+  layanan_lahan_online: "Layanan Lahan Daring",
+  ptsp_lahan_perizinan: "PTSP Lahan dan Perizinan",
   umkm: "UMKM",
   // Darurat dan keamanan
-  damkar: "Pemadam kebakaran",
+  damkar: "Pemadam Kebakaran",
   polres: "Polres",
   polsek: "Polsek",
   sar: "SAR",
@@ -137,63 +138,50 @@ const LABEL_SUB: Record<string, string> = {
   pelabuhan_pelni: "Pelabuhan Pelni",
   // Belanja
   buku_atk: "Buku dan ATK",
-  supermarket: "Pasar swalayan",
+  supermarket: "Pasar Swalayan",
   hypermarket: "Hipermarket",
   pasar_pemko: "Pasar Pemko",
   // Olahraga
-  badminton: "Bulu tangkis",
+  badminton: "Bulu Tangkis",
   gor: "GOR",
   stadion_gor: "Stadion dan GOR",
-  gym_independen: "Pusat kebugaran independen",
-  gym_jaringan: "Pusat kebugaran jaringan",
+  gym_independen: "Pusat Kebugaran Independen",
+  gym_jaringan: "Pusat Kebugaran Jaringan",
   // Hotel
-  hotel_bintang: "Hotel berbintang",
-  hotel_non_bintang: "Hotel nonbintang",
+  hotel_bintang: "Hotel Berbintang",
+  hotel_non_bintang: "Hotel Nonbintang",
   // Jasa
-  money_changer: "Penukaran valuta asing",
-  service_center: "Pusat servis",
-  service_center_ac_tv: "Pusat servis AC dan TV",
+  money_changer: "Penukaran Valuta Asing",
+  service_center: "Pusat Servis",
+  service_center_ac_tv: "Pusat Servis AC dan TV",
   // Pertanahan dan hukum
   ppat: "PPAT",
   notaris_ppat: "Notaris dan PPAT",
-  pejabat_lelang_kelas_ii: "Pejabat lelang kelas II",
+  pejabat_lelang_kelas_ii: "Pejabat Lelang Kelas II",
   kjpp: "KJPP",
   lbh: "LBH",
   posbakum: "Posbakum",
   // Ruang publik, budaya, penanda kota, kampung tua
   alun_alun: "Alun-alun",
-  pulau_sejarah_melayu: "Pulau sejarah Melayu",
-  batam_yang_hilang: "Batam yang hilang",
-  landmark_viewpoint: "Titik pandang",
-  kampung_tua_mainland: "Kampung tua Pulau Batam",
-  kampung_tua_rempang_galang: "Kampung tua Rempang dan Galang",
-  kampung_tua_rujukan: "Kampung tua lainnya",
-  situs_kampung_lama_hinterland: "Situs kampung lama",
+  pulau_sejarah_melayu: "Pulau Sejarah Melayu",
+  batam_yang_hilang: "Batam yang Hilang",
+  landmark_viewpoint: "Titik Pandang",
+  kampung_tua_mainland: "Kampung Tua Pulau Batam",
+  kampung_tua_rempang_galang: "Kampung Tua Rempang dan Galang",
+  kampung_tua_rujukan: "Kampung Tua Lainnya",
+  situs_kampung_lama_hinterland: "Situs Kampung Lama",
   // Kuliner: mengikuti tabel kategori Loket Makan (3.4)
-  "seafood-gonggong": "Makanan laut dan gonggong",
-  "sup-ikan": "Sup ikan",
-  "mie-tarempa": "Mi tarempa dan luti gendang",
-  "nasi-ayam-hainan": "Nasi ayam hainan",
-  "martabak-prata": "Martabak dan prata",
-  "mie-bakmi": "Mi dan bakmi",
-  "nasi-padang": "Nasi padang",
-  "sunda-jawa": "Masakan Sunda dan Jawa",
-  "sate-kambing": "Sate kambing",
-  "dimsum-chinese": "Dim sum dan masakan Tionghoa",
-  "ayam-penyet": "Ayam penyet dan lalapan",
-  "pecel-gado": "Pecel dan gado-gado",
-  "oleh-oleh": "Oleh-oleh dan kue",
-  cafe: "Kafe dan kedai kopi",
-  kuliner_seafood: "Kuliner makanan laut",
+  ...Object.fromEntries(kategoriMakan.map((c) => [c.id, c.name_id])),
+  kuliner_seafood: "Kuliner Makanan Laut",
 };
 
 export const slugSub = (s: string) => s.replace(/_/g, "-");
 
-/** "kantor_pos_cabang" menjadi "Kantor pos cabang". Yang perlu ejaan khusus ada di LABEL_SUB. */
+/** "kantor_pos_cabang" menjadi "Kantor Pos Cabang". Yang perlu ejaan khusus ada di LABEL_SUB. */
 export function labelSub(sub: string | null): string {
   if (!sub) return "Lainnya";
-  if (Object.hasOwn(LABEL_SUB, sub)) return LABEL_SUB[sub];
-  return kapital(sub.replace(/[_-]+/g, " "));
+  if (Object.hasOwn(LABEL_SUB, sub)) return kaidahJudul(LABEL_SUB[sub]);
+  return kaidahJudul(sub.replace(/[_-]+/g, " "));
 }
 
 // Jenis yang diminta warga tetapi belum punya satu pun data (research/00 bagian 5, brief 06, 07, 12). Halamannya
@@ -203,8 +191,8 @@ export const SUB_KOSONG: Partial<Record<Place["kategori"], { slug: string; nama:
     { slug: "klinik", nama: "Klinik" },
     { slug: "apotek", nama: "Apotek" },
     { slug: "laboratorium", nama: "Laboratorium" },
-    { slug: "dokter-umum", nama: "Dokter umum" },
-    { slug: "dokter-gigi", nama: "Dokter gigi" },
+    { slug: "dokter-umum", nama: "Dokter Umum" },
+    { slug: "dokter-gigi", nama: "Dokter Gigi" },
     { slug: "dokter-kandungan", nama: "Dokter kandungan" },
     { slug: "dokter-anak", nama: "Dokter anak" },
     { slug: "dokter-kulit", nama: "Dokter kulit" },
@@ -214,7 +202,7 @@ export const SUB_KOSONG: Partial<Record<Place["kategori"], { slug: string; nama:
     { slug: "psikolog-psikiater", nama: "Psikolog dan psikiater" },
     { slug: "fisioterapi", nama: "Fisioterapi" },
     { slug: "bidan", nama: "Bidan" },
-    { slug: "dokter-hewan", nama: "Dokter hewan" },
+    { slug: "dokter-hewan", nama: "Dokter Hewan" },
   ],
   pendidikan: [
     { slug: "paud", nama: "PAUD" },
@@ -234,16 +222,16 @@ export const SUB_KOSONG: Partial<Record<Place["kategori"], { slug: string; nama:
   ibadah: [{ slug: "klenteng", nama: "Kelenteng" }],
   transportasi: [
     { slug: "spbu", nama: "SPBU" },
-    { slug: "terminal-bus", nama: "Terminal bus" },
+    { slug: "terminal-bus", nama: "Terminal Bus" },
   ],
   jasa: [
     { slug: "bengkel", nama: "Bengkel" },
     { slug: "laundry", nama: "Binatu" },
     { slug: "servis-elektronik", nama: "Servis elektronik" },
-    { slug: "pijat-refleksi", nama: "Pijat dan refleksi" },
-    { slug: "pijat-panggilan", nama: "Pijat panggilan" },
-    { slug: "salon-barbershop", nama: "Salon dan pangkas rambut" },
-    { slug: "percetakan", nama: "Fotokopi dan percetakan" },
+    { slug: "pijat-refleksi", nama: "Pijat dan Refleksi" },
+    { slug: "pijat-panggilan", nama: "Pijat Panggilan" },
+    { slug: "salon-barbershop", nama: "Salon dan Pangkas Rambut" },
+    { slug: "percetakan", nama: "Fotokopi dan Percetakan" },
   ],
   akomodasi: [{ slug: "kos", nama: "Kos" }],
 };
@@ -256,11 +244,27 @@ export function tempatDiKategori(k: string): Place[] {
   return TEMPAT.filter((p) => sumber.includes(p.kategori)).sort((a, b) => a.nama.localeCompare(b.nama, "id"));
 }
 
+/** Jenis yang sama bagi warga tampil sebagai satu saringan. Tipe rinci tetap ada di data dan di baris tempat. */
+export const subTampil = (sub: string | null): string => {
+  const s = sub ?? "lainnya";
+  if (/^(rs|rsia)_/.test(s)) return "rumah_sakit";
+  if (/^puskesmas_/.test(s)) return "puskesmas";
+  if (s === "dukcapil") return "disdukcapil";
+  return s;
+};
+
+/** Tempat sejenis yang punya halaman sendiri, yang sekecamatan lebih dulu. */
+export function tempatSejenis(p: Place, jumlah: number): Place[] {
+  return TEMPAT.filter((x) => x.id !== p.id && x.kategori === p.kategori && subTampil(x.subkategori) === subTampil(p.subkategori) && punyaHalaman(x))
+    .sort((a, b) => Number(b.kecamatan === p.kecamatan) - Number(a.kecamatan === p.kecamatan) || a.nama.localeCompare(b.nama, "id"))
+    .slice(0, jumlah);
+}
+
 export function subDiKategori(k: string): { sub: string; jumlah: number }[] {
   const sumber = sumberKategori(k);
   const hitung = new Map<string, number>();
   for (const p of TEMPAT) {
-    if (sumber.includes(p.kategori)) hitung.set(p.subkategori ?? "lainnya", (hitung.get(p.subkategori ?? "lainnya") ?? 0) + 1);
+    if (sumber.includes(p.kategori)) hitung.set(subTampil(p.subkategori), (hitung.get(subTampil(p.subkategori)) ?? 0) + 1);
   }
   return [...hitung.entries()].map(([sub, jumlah]) => ({ sub, jumlah })).sort((a, b) => b.jumlah - a.jumlah);
 }
@@ -381,7 +385,7 @@ function rapikanNilai(teks: string): string | null {
   return kapital(rapikanKata(rapikanRentang(isi)));
 }
 
-/** Jam layanan untuk pembaca. Jam mentah tetap dipakai untuk menghitung "Buka sekarang". */
+/** Jam layanan untuk pembaca. Jam mentah tetap dipakai untuk menghitung "Buka Sekarang". */
 export function jamPublik(p: Pick<Place, "jam_layanan">): string | null {
   const isi = p.jam_layanan ? bersihkanCatatan(p.jam_layanan) : null;
   if (!isi || /^tidak konsisten/i.test(isi)) return null;
@@ -426,11 +430,11 @@ export function catatanPublik(p: Place): string | null {
 const ATRIBUT: Record<string, string> = {
   rawat_inap: "Rawat inap",
   melayani_bpjs: "Melayani BPJS",
-  tipe: "Tipe rumah sakit",
+  tipe: "Tipe Rumah Sakit",
   npsn: "NPSN",
   kelas_asli: "Kelas",
-  tipe_museum: "Tipe museum",
-  igd_24jam: "IGD 24 jam",
+  tipe_museum: "Tipe Museum",
+  igd_24jam: "IGD 24 Jam",
   harga: "Harga",
   catatan_harga: "Catatan harga",
   booking: "Pemesanan",
@@ -442,10 +446,10 @@ const ATRIBUT: Record<string, string> = {
   pengelola: "Pengelola",
   operator: "Operator",
   layanan: "Layanan",
-  layanan_gratis: "Layanan gratis",
-  pendampingan_sidang: "Mendampingi di sidang",
+  layanan_gratis: "Layanan Gratis",
+  pendampingan_sidang: "Mendampingi di Sidang",
   afiliasi_dpn: "Afiliasi DPN",
-  wilayah_kerja: "Wilayah kerja",
+  wilayah_kerja: "Wilayah Kerja",
   aplikasi: "Aplikasi",
   fasilitas: "Fasilitas",
   kapasitas: "Kapasitas",
@@ -456,9 +460,9 @@ const ATRIBUT: Record<string, string> = {
   jemput_bola: "Jemput bola",
   antrean_online: "Antrean daring",
   layanan_sabtu: "Layanan Sabtu",
-  instansi: "Instansi di dalamnya",
+  instansi: "Instansi di Dalamnya",
   loket_mpp: "Ada loket di MPP",
-  ramah_anak: "Ramah anak",
+  ramah_anak: "Ramah Anak",
   parkir: "Parkir",
   waktu_terbaik: "Waktu terbaik",
   wahana: "Wahana",
@@ -468,7 +472,7 @@ const ATRIBUT: Record<string, string> = {
   pembayaran: "Pembayaran",
   agama_makam: "Agama",
   akses: "Akses",
-  call_center: "Call center",
+  call_center: "Call Center",
   nomor_darurat: "Nomor darurat",
   diresmikan: "Diresmikan",
   tahun_berdiri: "Berdiri",
@@ -523,7 +527,7 @@ export const adalahProfesi = (p: Pick<Place, "subkategori">) => SUB_PROFESI.has(
 
 const LABEL_STATUS: Record<string, Lencana> = {
   rencana: { teks: "Rencana, belum beroperasi", nada: "info" },
-  cerita_rakyat: { teks: "Cerita rakyat", nada: "info" },
+  cerita_rakyat: { teks: "Cerita Rakyat", nada: "info" },
 };
 
 /** Paling banyak satu label per tempat, dan hanya yang mengubah cara membaca kartunya. */
@@ -554,13 +558,13 @@ export const tautanAman = (u: unknown): u is string =>
 export const lokasiTeks = (p: Pick<Place, "kelurahan" | "kecamatan">) =>
   [p.kelurahan, p.kecamatan].filter(Boolean).join(", ");
 
-/** Punya titik yang boleh tampil di peta. Tanpa titik, tombol "Lihat di peta" tidak ada dan tidak ada teks pengganti. */
+/** Punya titik yang boleh tampil di peta. Tanpa titik, tombol "Lihat di Peta" tidak ada dan tidak ada teks pengganti. */
 export const punyaTitik = (p: Pick<Place, "lat" | "lng" | "status_koordinat" | "atribut">) =>
   p.lat != null && p.lng != null && p.status_koordinat !== "perlu_diisi_user" && p.atribut.lokasi_luar_batam !== true;
 
-/** Baris terakhir di daftar tempat. "Buka sekarang" dihitung di browser, jadi hanya ada di Penjelajah. */
+/** Baris terakhir di daftar tempat. "Buka Sekarang" dihitung di browser, jadi hanya ada di Penjelajah. */
 export const statusBaris = (p: Pick<Place, "atribut" | "jam_layanan">) =>
-  p.atribut.igd_24jam === true ? "IGD 24 jam" : jamPublik(p);
+  p.atribut.igd_24jam === true ? "IGD 24 Jam" : jamPublik(p);
 
 /**
  * Tempat yang hanya punya nama tidak mendapat halaman sendiri, cukup jadi baris di daftar (3.8). Alamat lamanya
@@ -588,6 +592,50 @@ export function tautanArah(p: Pick<Place, "nama" | "kecamatan" | "lat" | "lng" |
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(kata)}`;
 }
 
+// Kata yang dicari warga tetapi tidak selalu ada di nama tempat. Hanya sinonim, bukan klaim tentang tempatnya.
+const KATA_KATEGORI: Record<string, string> = {
+  kesehatan: "berobat dokter sakit",
+  keamanan_darurat: "darurat",
+  pertanahan_hukum: "hukum",
+  pemerintahan: "kantor pemerintah",
+  layanan_publik: "kantor layanan",
+  transportasi: "angkutan",
+  akomodasi: "penginapan menginap",
+  ibadah: "ibadah",
+  belanja: "belanja",
+  kuliner: "makan",
+};
+const KATA_SUB: [RegExp, string][] = [
+  [/^(rs|rsia)_|^rumah_sakit/, "rumah sakit rs"],
+  [/^puskesmas/, "puskesmas"],
+  [/^polres|^polsek/, "polisi kantor polisi"],
+  [/^damkar/, "pemadam kebakaran damkar"],
+  [/^sar$/, "sar basarnas pencarian"],
+  [/^kebencanaan/, "bencana bpbd"],
+  [/^pertanahan/, "sertifikat tanah bpn"],
+  [/^ppat|^notaris/, "sertifikat tanah akta jual beli notaris ppat"],
+  [/^lbh|^posbakum|^organisasi_advokat/, "bantuan hukum pengacara advokat"],
+  [/^dukcapil|^disdukcapil/, "ktp kk akta dukcapil"],
+  [/^imigrasi/, "paspor imigrasi"],
+  [/^samsat/, "stnk bpkb pajak kendaraan samsat"],
+  [/^kantor_pajak|^pajak_daerah/, "pajak npwp"],
+  [/^money_changer/, "tukar uang valas"],
+  [/^kantor_pos/, "pos surat paket"],
+  [/^kua$/, "nikah kua"],
+];
+
+function kataKunci(p: Place): string {
+  const sub = p.subkategori ?? "";
+  const dariSub = KATA_SUB.filter(([pola]) => pola.test(sub)).map(([, kata]) => kata);
+  return [
+    Object.hasOwn(KATA_KATEGORI, p.kategori) ? KATA_KATEGORI[p.kategori] : "",
+    ...dariSub,
+    p.atribut.igd_24jam === true ? "igd ugd ambulans gawat darurat" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
 /** Baris ringkas untuk pencarian di browser. Tidak memuat atribut, jadi rating tidak ikut terkirim. */
 export function barisIndeks(p: Place) {
   return {
@@ -600,7 +648,7 @@ export function barisIndeks(p: Place) {
     sl: labelSub(p.subkategori),
     c: p.kecamatan,
     l: p.kelurahan,
-    /** Jam mentah, untuk menghitung "Buka sekarang". */
+    /** Jam mentah, untuk menghitung "Buka Sekarang". */
     j: p.jam_layanan,
     /** Jam yang sudah dirapikan, untuk ditampilkan. */
     jt: jamPublik(p),
@@ -608,6 +656,8 @@ export function barisIndeks(p: Place) {
     i: p.atribut.igd_24jam === true,
     /** Punya halaman sendiri. */
     h: punyaHalaman(p),
+    /** Kata pencarian tambahan. */
+    kk: kataKunci(p),
   };
 }
 export type BarisIndeks = ReturnType<typeof barisIndeks>;

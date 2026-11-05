@@ -19,12 +19,7 @@ export default function BatamDulu() {
   const modeFoto = modeKiriman();
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">
-        <Link href="/cerita" prefetch={false}>
-          Cerita dan Budaya
-        </Link>
-      </p>
-      <h1 className="mt-2">Batam Dulu dan Sekarang</h1>
+      <h1 className="m-0">Batam Dulu dan Sekarang</h1>
       <p className="bch-lede">
         Geser tahun untuk melihat lokasi yang sedang berubah. Tahun pembangunan sering berbeda antarsumber, jadi
         versinya ikut ditulis.

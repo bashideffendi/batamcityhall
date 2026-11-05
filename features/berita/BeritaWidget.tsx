@@ -11,8 +11,8 @@ export default function BeritaWidget() {
   const keadaan = useBerita();
   const item = keadaan.fase === "siap" ? keadaan.data.item.slice(0, JUMLAH) : [];
   return (
-    <section className="bch-berita-widget" aria-labelledby="berita-terbaru" data-fase={keadaan.fase}>
-      <h2 id="berita-terbaru">Berita Batam</h2>
+    <section className="bch-berita-widget br-modul" aria-labelledby="berita-terbaru" data-fase={keadaan.fase}>
+      <h2 id="berita-terbaru">Berita</h2>
       {keadaan.fase === "memuat" && <p className="bch-berita-pesan">Memuat data</p>}
       {keadaan.fase === "gagal" && <p className="bch-berita-pesan">Berita tidak dapat dimuat.</p>}
       {keadaan.fase === "siap" && !item.length && (
@@ -33,8 +33,8 @@ export default function BeritaWidget() {
           ))}
         </ol>
       )}
-      <Link href="/info/berita" prefetch={false} className="bch-berita-semua">
-        Semua berita →
+      <Link href="/berita" prefetch={false} className="bch-aksi br-selengkapnya">
+        Selengkapnya →
       </Link>
     </section>
   );

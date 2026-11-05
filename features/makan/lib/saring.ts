@@ -1,5 +1,5 @@
 // Logika saringan dan urutan Makan, tanpa React supaya bisa dites langsung.
-import { categoryMap, haversineKm } from "./data";
+import { categoryMap, dalamKategori, haversineKm } from "./data";
 import { bukaLarut, bukaPagi, hargaTertinggi, isOpenNow, menitTutup } from "./format";
 import { kategoriDariSlug, slugHidangan } from "./hidangan";
 import type { HalalStatus, PriceTier, RecLabel, PlaceWithGeo } from "./types";
@@ -63,7 +63,7 @@ const bentukBaku = (q: string) => EJAAN_LAMA.reduce((s, [lama, baku]) => s.repla
 
 /** `sekarang` null berarti waktu belum diketahui (render server): saringan buka sekarang dilewati. */
 export function cocok(p: PlaceWithGeo, s: FilterState, sekarang: number | null): boolean {
-  if (s.cats.length && !s.cats.includes(p.category)) return false;
+  if (s.cats.length && !s.cats.some((c) => dalamKategori(p, c))) return false;
   if (s.areas.length && !s.areas.includes(p.area)) return false;
   if (s.halal.length && !s.halal.includes(p.halal)) return false;
   if (s.tiers.length && !s.tiers.includes(p.price_tier)) return false;
@@ -91,6 +91,7 @@ export function cocok(p: PlaceWithGeo, s: FilterState, sekarang: number | null):
       ...p.tags,
       p.category,
       categoryMap[p.category]?.name_id ?? "",
+      ...(p.kategori_lain ?? []).map((c) => categoryMap[c]?.name_id ?? ""),
       categoryMap[p.category]?.name_en ?? "",
       categoryMap[p.category]?.name_zh ?? "",
       p.area,

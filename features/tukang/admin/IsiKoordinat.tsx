@@ -126,7 +126,7 @@ export default function IsiKoordinat({ titik, tanggal }: { titik: TitikKoordinat
           <label className="bch-field">
             Status
             <select className="bch-select" value={status} onChange={(e) => setStatus(e.target.value)}>
-              <option value="">Semua status</option>
+              <option value="">Semua Status</option>
               <option value="perlu_diisi_user">Lokasi belum diisi</option>
               <option value="perlu_cek_ulang">Lokasi perkiraan</option>
             </select>

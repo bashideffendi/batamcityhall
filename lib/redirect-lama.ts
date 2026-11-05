@@ -13,7 +13,7 @@ const BITES: [RegExp, string][] = [
   [/^\/about\/?$/, "/makan/cara-memilih"],
 ];
 
-const MODE_CUACA: Record<string, string> = { hujan: "/cuaca/hujan", ombak: "/cuaca/gelombang", cctv: "/cuaca/cctv" };
+const MODE_CUACA: Record<string, string> = { hujan: "/cuaca/hujan", ombak: "/cuaca/gelombang", cctv: "/cctv" };
 
 /** hujandibatam hanya punya satu halaman; ?mode= menentukan halaman barunya, ?view= dan ?cam= ikut terbawa. */
 export function alamatBaruHujan(_path: string, query = ""): string {
@@ -21,7 +21,7 @@ export function alamatBaruHujan(_path: string, query = ""): string {
   const mode = p.get("mode") ?? "";
   p.delete("mode");
   const sisa = p.toString();
-  const dasar = p.get("cam") ? "/cuaca/cctv" : (MODE_CUACA[mode] ?? "/cuaca/hujan");
+  const dasar = p.get("cam") ? "/cctv" : (MODE_CUACA[mode] ?? "/cuaca/hujan");
   return sisa ? `${dasar}?${sisa}` : dasar;
 }
 

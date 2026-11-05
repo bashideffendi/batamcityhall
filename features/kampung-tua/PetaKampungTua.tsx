@@ -32,6 +32,8 @@ const TEKS_PETA = {
 };
 
 /** Tombol penanda gaya A: ikon kampung; garis putus-putus bila lokasinya perkiraan (PEDOMAN 5.4). */
+const ZOOM_TANDA_PENUH = 12;
+
 function buatPenanda(p: PenandaKampung, onPilih: (id: string) => void): HTMLButtonElement {
   const el = document.createElement("button");
   el.type = "button";
@@ -122,6 +124,17 @@ export default function PetaKampungTua({ penanda, lapisan }: { penanda: PenandaK
     };
   }, [map, tampil]);
 
+  // Saat peta jauh tanda mengecil, supaya sebaran terlihat dan tidak saling menutupi.
+  useEffect(() => {
+    if (!map) return;
+    const atur = () => map.getContainer().toggleAttribute("data-jauh", map.getZoom() < ZOOM_TANDA_PENUH);
+    atur();
+    map.on("zoomend", atur);
+    return () => {
+      map.off("zoomend", atur);
+    };
+  }, [map]);
+
   const pilih = tampil.find((p) => p.id === pilihId) ?? null;
   const infoPilih = pilih ? lapisan.find((l) => l.id === pilih.lapisan) : null;
 
@@ -196,7 +209,7 @@ export default function PetaKampungTua({ penanda, lapisan }: { penanda: PenandaK
             )}
             <p className="mt-3 mb-0">
               <Link href={`/cerita/kampung-tua/${pilih.id}`} prefetch={false}>
-                Buka kartu lengkap
+                Buka Kartu Lengkap
               </Link>
             </p>
           </aside>
@@ -237,7 +250,7 @@ export default function PetaKampungTua({ penanda, lapisan }: { penanda: PenandaK
         )}
       </section>
       <fieldset className="peta-lapisan">
-        <legend>Lapisan peta</legend>
+        <legend>Lapisan Peta</legend>
         {lapisan.map((l) => {
           const dipeta = penanda.filter((p) => p.lapisan === l.id).length;
           return (

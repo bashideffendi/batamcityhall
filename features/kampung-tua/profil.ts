@@ -316,8 +316,8 @@ export const profilUntuk = (id: string) => PROFIL.find((p) => p.kampung.includes
 // Label status satu per butir (pedoman 3.7). Sumber tunggal dan yang belum dipastikan sama-sama belum terverifikasi.
 export const LABEL_BUTIR: Record<LabelButir, { teks: string; nada: "ok" | "caution" | "info" }> = {
   terverifikasi: { teks: "Tercatat", nada: "ok" },
-  sumber_tunggal: { teks: "Belum terverifikasi", nada: "caution" },
-  cerita_rakyat: { teks: "Cerita rakyat", nada: "info" },
-  perlu_cek_ulang: { teks: "Belum terverifikasi", nada: "caution" },
-  beda_versi: { teks: "Berbeda versi", nada: "caution" },
+  sumber_tunggal: { teks: "Belum Terverifikasi", nada: "caution" },
+  cerita_rakyat: { teks: "Cerita Rakyat", nada: "info" },
+  perlu_cek_ulang: { teks: "Belum Terverifikasi", nada: "caution" },
+  beda_versi: { teks: "Berbeda Versi", nada: "caution" },
 };

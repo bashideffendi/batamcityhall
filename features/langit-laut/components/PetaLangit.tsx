@@ -1,10 +1,10 @@
 "use client";
 
-import { Map as MapLibre } from "maplibre-gl";
+import { Map as MapLibre, type ErrorEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { pasangGlobalPeta, webglAda } from "@/features/peta/global";
-import { baseStyle, type MapTheme } from "@/features/peta/style";
+import { baseStyle, SOURCE_ID, type MapTheme } from "@/features/peta/style";
 import { gabungGaya, sisipSebelum } from "@/features/langit-laut/lib/peta-lapisan";
 import { MAX_ZOOM, MIN_ZOOM, type ThemeMode } from "@/features/langit-laut/lib/radar";
 import type { LayerSpecification } from "maplibre-gl";
@@ -49,7 +49,7 @@ export type OpsiPeta = {
 export default function PetaLangit({ theme, children, opsi }: { theme: ThemeMode; children: ReactNode; opsi?: OpsiPeta }) {
   const wadah = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<MapLibre | null>(null);
-  const [gagal] = useState(() => !webglAda());
+  const [gagal, setGagal] = useState(() => !webglAda());
   const temaAwal = useRef(theme);
   const opsiAwal = useRef(opsi);
   const selubung = !!opsi?.selubung;
@@ -63,7 +63,7 @@ export default function PetaLangit({ theme, children, opsi }: { theme: ThemeMode
       style: baseStyle(temaPeta(temaAwal.current), window.location.origin, { chart: !!opsiAwal.current?.selubung }),
       ...(opsiAwal.current?.bounds ? { bounds: opsiAwal.current.bounds, fitBoundsOptions: { padding: 24 } } : { center: [104.0, 0.9] as [number, number], zoom: 8 }),
       ...(opsiAwal.current?.maxBounds ? { maxBounds: opsiAwal.current.maxBounds } : {}),
-      cooperativeGestures: !!opsiAwal.current?.koperatif,
+      cooperativeGestures: opsiAwal.current?.koperatif ?? false,
       minZoom: MIN_ZOOM,
       maxZoom: MAX_ZOOM,
       maxPitch: 0,
@@ -76,7 +76,15 @@ export default function PetaLangit({ theme, children, opsi }: { theme: ThemeMode
     });
     m.touchZoomRotate.disableRotation();
     m.keyboard.disableRotation();
-    m.once("load", () => setMap(m));
+    // Hanya sumber peta dasar, dan hanya sebelum peta siap: tile yang sesekali gagal tidak berarti seluruh peta gagal.
+    let siap = false;
+    m.on("error", (e: ErrorEvent & { sourceId?: string }) => {
+      if (!siap && e.sourceId === SOURCE_ID) setGagal(true);
+    });
+    m.once("load", () => {
+      siap = true;
+      setMap(m);
+    });
     return () => {
       m.remove();
     };

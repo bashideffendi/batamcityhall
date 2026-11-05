@@ -92,23 +92,6 @@ html[data-theme="dark"] .app-root {
   color: var(--text-muted, rgba(255, 255, 255, 0.64));
   font-size: 13px;
 }
-/* Tombol teks bergaya tautan. Area sentuh diperluas lewat ::before tanpa menggeser tata letak. */
-.link-btn {
-  position: relative;
-  appearance: none;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  font: inherit;
-  font-weight: 600;
-  color: var(--link);
-  cursor: pointer;
-}
-.link-btn::before {
-  content: "";
-  position: absolute;
-  inset: -13px -8px;
-}
 
 /* ===== Peta ===== */
 .app-root .ll-peta {
@@ -399,16 +382,7 @@ html[data-theme="dark"] .app-root {
   justify-content: center;
   gap: 2px;
 }
-/* Slider: kotak sentuh 24 px, track visual 4 px lewat pseudo-element. */
-.caps {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 8px;
-  font-size: 13px;
-  line-height: 18px;
-  color: var(--text-muted);
-}
+
 /* area sentuh 28 px: berhenti di bawah penggeser dan di atas footer, tidak menumpuk */
 
 /* ===== baris wilayah peta (.ctl-row) ===== */
@@ -416,18 +390,6 @@ html[data-theme="dark"] .app-root {
 /* ===== footer: mode + Detail/Daftar ===== */
 /* Tombol 44 px (area sentuh penuh); tampilan "terpilih" digambar ::before dengan jarak 3 px. */
 
-/* ===== Detail: lembar tingkat kedua, bergulir sendiri ===== */
-.panel:not([data-detail="true"]) .panel-detail {
-  display: none;
-}
-.panel-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 12px calc(-1 * var(--pad)) 0;
-  padding: 12px var(--pad) 2px;
-  border-top: 1px solid var(--panel-border);
-}
 /* HP: Detail/Daftar atau daftar kelompok kamera terbuka → panel boleh memanjang sampai
    tepat di bawah bilah atas dan SELURUH panel jadi satu area gulir besar (dulu Detail
    bergulir di kotak kecil ±36dvh di dalam panel 70dvh — terlalu sempit). */
@@ -557,45 +519,7 @@ html[data-theme="dark"] .app-root {
   line-height: 18px;
   color: var(--text-muted);
 }
-/* daftar kelompok (gelembung angka diketuk) — menggantikan isi panel */
-.cam-list {
-  display: flex;
-  flex-direction: column;
-}
-.cam-list-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 44px;
-}
-.cam-list-title {
-  font-size: 15px;
-  line-height: 20px;
-  font-weight: 600;
-  color: var(--text);
-}
-/* judul menerima fokus lewat skrip (untuk pembaca layar), bukan elemen yang bisa diklik */
-.cam-list-title:focus {
-  outline: none;
-}
-.x-btn {
-  position: relative;
-  z-index: 1; /* di atas perluasan area sentuh pegangan */
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  margin-right: -12px;
-  border: 0;
-  background: transparent;
-  color: var(--text-muted);
-  cursor: pointer;
-  border-radius: 999px;
-}
-.x-btn svg {
-  width: 18px;
-  height: 18px;
-}
+
 .cam-rows {
   list-style: none;
   margin: 0 calc(-1 * var(--pad));
@@ -645,20 +569,7 @@ html[data-theme="dark"] .app-root {
   flex: none;
   color: var(--text-muted);
 }
-.cam-zoom {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  margin: 0 calc(-1 * var(--pad));
-  padding: 0 var(--pad);
-  border-top: 1px solid var(--panel-border);
-  font-size: 13px;
-  line-height: 18px;
-  text-align: left;
-}
-.cam-zoom::before {
-  display: none;
-}
+
 /* Daftar semua kamera (Detail mode CCTV) */
 .dir-area + .dir-area {
   margin-top: 8px;
@@ -686,17 +597,13 @@ html[data-theme="dark"] .app-root {
   align-items: center;
   gap: 12px;
 }
-.pin-legend .cam-pin,
-.pin-legend .cam-cluster {
+.pin-legend .cam-pin {
   flex: none;
   margin: 0 4px;
 }
 
 /* ===== CCTV: pin kamera di peta ===== */
-/* Hit-box 44×44 (target sentuh), visual lebih kecil di tengah. */
-.cam-marker.is-top {
-  z-index: 2;
-}
+
 .cam-hit {
   position: relative;
   width: 44px;
@@ -740,8 +647,7 @@ html[data-theme="dark"] .app-root {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 /* gagal diputar di sesi ini: abu */
-.cam-pin.is-mati,
-.cam-cluster.is-mati {
+.cam-pin.is-mati {
   background: var(--cam-pin-dead);
   color: #fff;
   opacity: 0.85;
@@ -773,34 +679,29 @@ html[data-theme="dark"] .app-root {
   background: var(--cam-pin-bg);
   box-shadow: 0 0 0 1.5px var(--cam-pin-ring);
 }
-/* kelompok kamera berdekatan: lingkaran berangka */
-.cam-cluster {
-  display: grid;
-  place-items: center;
-  min-width: 32px;
-  height: 32px;
-  padding: 0 8px;
-  border-radius: 999px;
-  background: var(--cam-pin-bg);
-  color: var(--cam-pin-fg);
-  font-size: 13px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  box-shadow:
-    0 0 0 2px var(--cam-pin-ring),
-    0 2px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.14s ease, box-shadow 0.2s ease;
+
+/* Zoom jauh: titik kecil tanpa ikon, supaya sebaran kamera terlihat. */
+.cam-kecil .cam-hit {
+  width: 24px;
+  height: 24px;
 }
-.cam-hit:hover .cam-cluster,
-.cam-hit:focus-visible .cam-cluster {
-  transform: scale(1.1);
+.cam-kecil .cam-pin {
+  width: 11px;
+  height: 11px;
+  box-shadow: 0 0 0 1.5px var(--cam-pin-ring);
 }
-/* kelompok yang daftarnya sedang terbuka: cincin aksen luar */
-.cam-cluster.is-selected {
-  box-shadow:
-    0 0 0 2px var(--cam-pin-ring),
-    0 0 0 5px var(--accent),
-    0 4px 12px rgba(0, 0, 0, 0.3);
+.cam-kecil .cam-pin svg,
+.cam-kecil .cam-fan-line {
+  display: none;
+}
+.cam-kecil .cam-pin.is-approx {
+  outline-width: 1.5px;
+  outline-offset: 1.5px;
+  box-shadow: none;
+}
+.cam-kecil .cam-hit:hover .cam-pin,
+.cam-kecil .cam-hit:focus-visible .cam-pin {
+  transform: scale(1.5);
 }
 .cam-label {
   display: none;
@@ -1172,31 +1073,11 @@ html[data-theme="dark"] .app-root {
   .fc {
     display: none;
   }
-  /* blok kontrol = satu bagian sidebar bergaris atas, sama seperti bagian Detail di bawahnya */
-  .panel[data-detail] .panel-detail {
-    order: 3;
-    display: flex;
-    gap: 0;
-    max-height: none;
-    overflow: visible;
-    margin: 24px calc(-1 * var(--pad)) 0;
-    padding: 0;
-    border-top: 0;
-  }
-  .panel-detail .d-sec {
-    gap: 14px;
-    padding: 22px var(--pad);
-    border-top: 1px solid var(--panel-border);
-  }
+
   .cam-block {
     margin-top: 20px;
   }
-  .cam-list {
-    margin-top: 20px;
-  }
-  .cam-list .cam-rows {
-    max-height: none;
-  }
+
   .chip-row {
     flex-wrap: wrap;
     overflow: visible;
@@ -1224,13 +1105,7 @@ html[data-theme="dark"] .app-root {
   .panel[data-listing] {
     max-height: calc(var(--ll-h) - 74px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
   }
-  .panel-detail {
-    max-height: none;
-    overflow: visible;
-  }
-  .cam-list .cam-rows {
-    max-height: none;
-  }
+
   .app-root .maplibregl-ctrl-bottom-right {
     right: 364px;
     bottom: 0;

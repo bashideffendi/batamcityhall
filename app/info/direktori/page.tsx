@@ -23,7 +23,7 @@ export default function Direktori() {
         kepala={
           <>
             <nav className="bch-remah" aria-label="Remah roti">
-              <Link href="/info">Informasi Warga</Link> / <span aria-current="page">Direktori</span>
+              <Link href="/info">Layanan Warga</Link> / <span aria-current="page">Direktori</span>
             </nav>
             <h1 className="mt-2">Direktori</h1>
             <p className="bch-lede">
@@ -35,8 +35,8 @@ export default function Direktori() {
         ilustrasi={<Image className="bch-grafis" src="/grafis/loket-informasi.webp" alt="" width={480} height={480} priority unoptimized />}
       >
         <section className="bch-seksi" aria-labelledby="dir-keperluan">
-          <h2 id="dir-keperluan" className="bch-kicker bch-kepala-penanda">
-            Menurut keperluan
+          <h2 id="dir-keperluan" className="bch-judul-seksi">
+            Menurut Keperluan
           </h2>
           <ul className="bch-daftar-kategori" data-kategori-grid>
             {DAFTAR_KATEGORI.map((k) => {
@@ -57,8 +57,8 @@ export default function Direktori() {
           </ul>
         </section>
         <section className="bch-seksi" aria-labelledby="dir-kecamatan">
-          <h2 id="dir-kecamatan" className="bch-kicker bch-kepala-penanda">
-            Menurut kecamatan
+          <h2 id="dir-kecamatan" className="bch-judul-seksi">
+            Menurut Kecamatan
           </h2>
           <ul className="bch-daftar-kecamatan">
             {KECAMATAN.map((k) => (

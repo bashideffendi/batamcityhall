@@ -1,39 +1,29 @@
 import type { Metadata } from "next";
-import DaftarNomor from "@/components/site/DaftarNomor";
-import PembukaLoket from "@/components/site/PembukaLoket";
+import KisiPintu from "@/components/site/KisiPintu";
+import PembukaBagian from "@/components/site/PembukaBagian";
 import FeriTerakhirMuat from "@/features/jalan/FeriTerakhirMuat";
 
 export const metadata: Metadata = {
   title: "Transportasi",
-  description: "Naik bus Trans Batam, feri ke Singapura dan Malaysia, atau pompong antarpulau.",
+  description: "Bus Trans Batam, feri ke Singapura dan Malaysia, dan pompong antarpulau.",
 };
 
 const PINTU = [
-  { href: "/jalan/trans-batam", nama: "Trans Batam", ket: "sembilan koridor, tarif Rp5.000" },
-  { href: "/jalan/peta", nama: "Peta Transportasi", ket: "koridor bus, terminal feri, dan pelabuhan rakyat" },
-  { href: "/jalan/feri", nama: "Feri", ket: "jadwal ke Singapura, Johor, dan pulau sekitar" },
-  { href: "/jalan/pompong", nama: "Pompong", ket: "perahu ke pulau sekitar Batam" },
-  { href: "/jalan/feri/panduan", nama: "Panduan Menyeberang", ket: "paspor, lapor masuk, dan barang bawaan" },
+  { href: "/jalan/trans-batam", nama: "Trans Batam", ket: "Sembilan koridor, tarif Rp5.000, nontunai" },
+  { href: "/jalan/feri", nama: "Feri", ket: "Jadwal ke Singapura, Johor, dan pulau sekitar" },
+  { href: "/jalan/pompong", nama: "Pompong", ket: "Perahu ke pulau sekitar Batam" },
+  { href: "/jalan/feri/panduan", nama: "Panduan Menyeberang", ket: "Paspor, lapor masuk, dan barang bawaan" },
+  { href: "/jalan/peta", nama: "Peta Transportasi", ket: "Koridor bus, terminal feri, dan pelabuhan rakyat" },
 ];
 
-export default function Jalan() {
+export default function Transportasi() {
   return (
     <div className="bch-page">
-      <PembukaLoket
-        nomor="04"
-        lede={
-          <>
-            Naik bus Trans Batam, feri ke Singapura dan Malaysia, atau <em>pompong</em> antarpulau.
-          </>
-        }
-      />
-      <section className="bch-seksi" aria-labelledby="isi-loket">
-        <h2 id="isi-loket" className="bch-kicker bch-kepala-penanda">
-          Isi bagian ini
-        </h2>
-        <DaftarNomor isi={PINTU} />
-      </section>
-      <div className="bch-seksi">
+      <PembukaBagian id="transportasi" />
+      <div className="bch-seksi-rapat">
+        <KisiPintu isi={PINTU} />
+      </div>
+      <div className="bch-seksi-rapat">
         <FeriTerakhirMuat varian="ringkas" />
       </div>
     </div>

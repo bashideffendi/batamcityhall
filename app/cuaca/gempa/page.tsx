@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import DaftarGempa from "@/features/langit-laut/components/DaftarGempa";
-import TabCuaca from "@/features/langit-laut/components/TabCuaca";
 import "@/features/langit-laut/cuaca.css";
 
 export const metadata: Metadata = {
@@ -11,10 +10,9 @@ export const metadata: Metadata = {
 export default function GempaHalaman() {
   return (
     <div className="bch-page cu-halaman-teks">
-      <TabCuaca />
-      <h1 className="mt-2">Gempa Terkini</h1>
+      <h1 className="m-0">Gempa Terkini</h1>
       <p className="bch-lede">
-        Daftar mencakup seluruh Indonesia: Batam relatif jarang terdampak, tetapi banyak warganya punya keluarga di daerah lain.
+        Daftar mencakup seluruh Indonesia.
       </p>
       <DaftarGempa />
     </div>

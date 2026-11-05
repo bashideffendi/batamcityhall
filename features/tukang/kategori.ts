@@ -4,25 +4,25 @@
 export type KategoriJasa = { slug: string; nama: string; taksonomi: string | null };
 
 export const KATEGORI_JASA: KategoriJasa[] = [
-  { slug: "jahit-permak", nama: "Jahit dan permak", taksonomi: "Tukang kunci, jahit dan permak" },
+  { slug: "jahit-permak", nama: "Jahit dan Permak", taksonomi: "Tukang kunci, jahit dan permak" },
   { slug: "mebel", nama: "Mebel", taksonomi: null },
-  { slug: "servis-ac", nama: "Servis dan cuci AC", taksonomi: "Servis AC, elektronik, HP, laptop, mesin cuci, kulkas" },
-  { slug: "bengkel", nama: "Bengkel motor dan mobil", taksonomi: "Bengkel, ban, cuci kendaraan" },
-  { slug: "tukang-kunci", nama: "Tukang kunci", taksonomi: "Tukang kunci, jahit dan permak" },
+  { slug: "servis-ac", nama: "Servis dan Cuci AC", taksonomi: "Servis AC, elektronik, HP, laptop, mesin cuci, kulkas" },
+  { slug: "bengkel", nama: "Bengkel Motor dan Mobil", taksonomi: "Bengkel, ban, cuci kendaraan" },
+  { slug: "tukang-kunci", nama: "Tukang Kunci", taksonomi: "Tukang kunci, jahit dan permak" },
   { slug: "laundry", nama: "Binatu", taksonomi: "Laundry, salon, barbershop" },
-  { slug: "sol-sepatu", nama: "Sol sepatu", taksonomi: null },
+  { slug: "sol-sepatu", nama: "Sol Sepatu", taksonomi: null },
   {
     slug: "servis-elektronik",
-    nama: "Servis ponsel, laptop, dan elektronik",
+    nama: "Servis Ponsel, Laptop, dan Elektronik",
     taksonomi: "Servis AC, elektronik, HP, laptop, mesin cuci, kulkas",
   },
-  { slug: "bangunan", nama: "Tukang bangunan, listrik, dan ledeng", taksonomi: "Tukang bangunan, listrik, ledeng" },
-  { slug: "pijat-refleksi", nama: "Pijat dan refleksi", taksonomi: "Pijat, refleksi, pijat panggilan" },
-  { slug: "pijat-panggilan", nama: "Pijat panggilan", taksonomi: "Pijat, refleksi, pijat panggilan" },
-  { slug: "salon-barbershop", nama: "Salon dan pangkas rambut", taksonomi: "Laundry, salon, barbershop" },
-  { slug: "fotokopi-percetakan", nama: "Fotokopi dan percetakan", taksonomi: "Fotokopi, percetakan, ekspedisi" },
+  { slug: "bangunan", nama: "Tukang Bangunan, Listrik, dan Ledeng", taksonomi: "Tukang bangunan, listrik, ledeng" },
+  { slug: "pijat-refleksi", nama: "Pijat dan Refleksi", taksonomi: "Pijat, refleksi, pijat panggilan" },
+  { slug: "pijat-panggilan", nama: "Pijat Panggilan", taksonomi: "Pijat, refleksi, pijat panggilan" },
+  { slug: "salon-barbershop", nama: "Salon dan Pangkas Rambut", taksonomi: "Laundry, salon, barbershop" },
+  { slug: "fotokopi-percetakan", nama: "Fotokopi dan Percetakan", taksonomi: "Fotokopi, percetakan, ekspedisi" },
   { slug: "kos", nama: "Indekos", taksonomi: null },
-  { slug: "jastip-singapura", nama: "Jasa titip Singapura", taksonomi: null },
+  { slug: "jastip-singapura", nama: "Jasa Titip Singapura", taksonomi: null },
   { slug: "lainnya", nama: "Lainnya", taksonomi: null },
 ];
 
@@ -37,10 +37,10 @@ export const TAG_REKOMENDASI = ["rapi", "tepat waktu", "harga jujur", "ramah", "
 export const teksTag = (tag: string) => tag.charAt(0).toUpperCase() + tag.slice(1);
 
 export const JENIS_KOREKSI = [
-  { nilai: "data_salah", nama: "Datanya salah" },
-  { nilai: "tutup_pindah", nama: "Sudah tutup atau pindah" },
-  { nilai: "lokasi", nama: "Titik lokasinya salah atau belum ada" },
-  { nilai: "hapus_data", nama: "Minta data saya dihapus" },
-  { nilai: "koreksi_data_pribadi", nama: "Minta data saya dikoreksi" },
+  { nilai: "data_salah", nama: "Datanya Salah" },
+  { nilai: "tutup_pindah", nama: "Sudah Tutup atau Pindah" },
+  { nilai: "lokasi", nama: "Titik Lokasinya Salah atau Belum Ada" },
+  { nilai: "hapus_data", nama: "Minta Data Saya Dihapus" },
+  { nilai: "koreksi_data_pribadi", nama: "Minta Data Saya Dikoreksi" },
   { nilai: "lainnya", nama: "Lainnya" },
 ] as const;

@@ -173,3 +173,13 @@
 .bch-sub-nav a[aria-current="page"] {
   border-color: var(--bch-ink);
 }
+
+/* Peta jauh: tanda kecil, sebaran terlihat. */
+[data-jauh] .kt-penanda {
+  width: 24px;
+  height: 24px;
+}
+[data-jauh] .kt-penanda svg {
+  width: 22px;
+  height: 22px;
+}

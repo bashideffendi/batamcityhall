@@ -5,7 +5,7 @@ import kamus from "../../data/budaya/kamus.json" with { type: "json" };
 import komunitas from "../../data/budaya/komunitas.json" with { type: "json" };
 import tradisi from "../../data/budaya/tradisi_melayu.json" with { type: "json" };
 
-const HALAMAN = ["/cerita/kalender", "/cerita/kamus", "/cerita/budaya", "/cerita/komunitas"];
+const HALAMAN = ["/things-to-do", "/cerita/kamus", "/cerita/budaya", "/komunitas"];
 
 // Halaman ini tidak butuh API. Kalau ada komponen situs yang memanggil, jangan sampai ke sumber luar.
 async function tiruApi(page: Page) {
@@ -16,6 +16,14 @@ test.beforeEach(async ({ page }) => {
   await tiruApi(page);
 });
 
+/** Daftar hanya memuat tiga bulan pertama sampai tombol ditekan. Tunggu hidrasi, lalu buka semuanya. */
+async function bukaSemuaBulan(page: Page) {
+  await expect(page.locator(".bud-kontrol")).toBeVisible();
+  const tombol = page.locator("[data-semua-bulan]");
+  if (await tombol.count()) await tombol.click();
+  await expect(tombol).toHaveCount(0);
+}
+
 const idTampil = (page: Page, atribut: string) =>
   page.locator(`[${atribut}]`).evaluateAll((el, a) => el.map((e) => e.getAttribute(a) ?? ""), atribut);
 
@@ -24,7 +32,8 @@ const samaDengan = (tampil: string[], data: { id: string }[]) =>
 
 test.describe("semua item file data tampil", () => {
   test("kalender: jumlah kartu sama dengan acara.json", async ({ page }) => {
-    await page.goto("/cerita/kalender");
+    await page.goto("/things-to-do");
+    await bukaSemuaBulan(page);
     samaDengan(await idTampil(page, "data-acara"), acara);
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", String(acara.length));
   });
@@ -40,7 +49,7 @@ test.describe("semua item file data tampil", () => {
   });
 
   test("komunitas: jumlah kartu sama dengan komunitas.json, anggota ikut tampil", async ({ page }) => {
-    await page.goto("/cerita/komunitas");
+    await page.goto("/komunitas");
     samaDengan(await idTampil(page, "data-komunitas"), komunitas);
     for (const k of komunitas) {
       for (const a of k.anggota ?? []) await expect(page.getByText(a, { exact: true })).toBeVisible();
@@ -54,8 +63,8 @@ test.describe("tanpa JavaScript", () => {
   test("kamus dan kalender tetap menampilkan daftar penuh di HTML", async ({ page }) => {
     await page.goto("/cerita/kamus");
     await expect(page.locator("[data-kata]")).toHaveCount(kamus.length);
-    await expect(page.getByLabel("Cari kata, arti, atau contoh")).toBeHidden();
-    await page.goto("/cerita/kalender");
+    await expect(page.getByLabel("Cari Kata, Arti, atau Contoh")).toBeHidden();
+    await page.goto("/things-to-do");
     await expect(page.locator("[data-acara]")).toHaveCount(acara.length);
     await expect(page.getByLabel("Kategori")).toBeHidden();
   });
@@ -63,12 +72,14 @@ test.describe("tanpa JavaScript", () => {
 
 test.describe("kalender", () => {
   test("filter kategori dan status menyaring lalu bisa dihapus", async ({ page }) => {
-    await page.goto("/cerita/kalender");
+    await page.goto("/things-to-do");
     const pameran = acara.filter((a) => a.kategori === "MICE").length;
-    await page.getByLabel("Kategori").selectOption({ label: "Pameran dagang" });
+    await page.getByLabel("Kategori").selectOption({ label: "Pameran Dagang" });
     await expect(page.locator("[data-acara]")).toHaveCount(pameran);
     await expect(page).toHaveURL(/kategori=pameran/);
-    await page.getByRole("button", { name: "Hapus saringan" }).click();
+    await page.getByRole("button", { name: "Hapus Saringan" }).click();
+    await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", String(acara.length));
+    await bukaSemuaBulan(page);
     await expect(page.locator("[data-acara]")).toHaveCount(acara.length);
 
     await page.getByLabel("Status").selectOption({ label: "Dibatalkan" });
@@ -77,15 +88,15 @@ test.describe("kalender", () => {
   });
 
   test("tampilan per bulan menampilkan acara sesuai kolom bulan", async ({ page }) => {
-    await page.goto("/cerita/kalender");
-    await page.getByRole("button", { name: "Per bulan" }).click();
+    await page.goto("/things-to-do");
+    await page.getByRole("button", { name: "Per Bulan" }).click();
     const februari = acara.filter((a) => a.bulan === 2);
     await page.getByRole("button", { name: /^Februari/ }).click();
-    await expect(page.getByRole("heading", { level: 2, name: "Februari" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 3, name: "Februari" })).toBeVisible();
     samaDengan(await idTampil(page, "data-acara"), februari);
     await expect(page).toHaveURL(/tampilan=bulan/);
 
-    await page.getByRole("button", { name: /^Bulan tidak tetap/ }).click();
+    await page.getByRole("button", { name: /^Bulan Tidak Tetap/ }).click();
     samaDengan(
       await idTampil(page, "data-acara"),
       acara.filter((a) => a.bulan === null),
@@ -99,24 +110,25 @@ test.describe("kalender", () => {
 
   test("bulan ini mengikuti WIB dan tersorot saat tampilan per bulan dibuka", async ({ page }) => {
     await page.clock.setFixedTime(new Date("2026-10-31T17:30:00Z"));
-    await page.goto("/cerita/kalender?tampilan=bulan");
+    await page.goto("/things-to-do?tampilan=bulan");
     await expect(page.getByRole("button", { name: /^November/ })).toHaveAttribute("aria-pressed", "true");
     await expect(page.getByRole("button", { name: /^November/ })).toContainText("bulan ini");
   });
 
   test("tanggal tidak dikarang: acara tidak pasti tertulis tidak pasti", async ({ page }) => {
-    await page.goto("/cerita/kalender");
+    await page.goto("/things-to-do");
+    await bukaSemuaBulan(page);
     const safar = page.locator('[data-acara="ev-014"]');
     await expect(safar).toContainText("Tanggal belum pasti");
     await expect(safar).toContainText("Rabu terakhir bulan Safar");
     await expect(safar).toContainText("Mengikuti kalender Hijriah");
-    await expect(page.locator('[data-acara="ev-t02"]')).toContainText("Belum pasti");
+    await expect(page.locator('[data-acara="ev-t02"]')).toContainText("Belum Pasti");
     await expect(page.locator('[data-acara="ev-011"]')).toContainText("16—18 Mei 2025");
     await expect(page.locator('[data-acara="ev-011"]')).not.toContainText("belum pasti");
   });
 
   test("catatan penyusun dan ikon tidak sampai ke halaman", async ({ page }) => {
-    await page.goto("/cerita/kalender");
+    await page.goto("/things-to-do");
     const teks = await page.locator("main").innerText();
     expect(teks).not.toMatch(/[⚠✅❌⌛]/);
     expect(teks).not.toMatch(/jangan dimasukkan|jangan kunci|pakai versi disbudpar/i);
@@ -126,7 +138,8 @@ test.describe("kalender", () => {
   });
 
   test("kartu menaut ke tempat di direktori", async ({ page }) => {
-    await page.goto("/cerita/kalender");
+    await page.goto("/things-to-do");
+    await bukaSemuaBulan(page);
     const tautan = page.locator('[data-acara="ev-006"]').getByRole("link", { name: "Taman Dang Anom" });
     await expect(tautan).toHaveAttribute("href", "/info/tempat/pub-taman-dang-anom");
   });
@@ -135,7 +148,7 @@ test.describe("kalender", () => {
 test.describe("kamus", () => {
   test("pencarian menyaring, tersimpan di URL, dan punya keadaan kosong", async ({ page }) => {
     await page.goto("/cerita/kamus");
-    const kotak = page.getByLabel("Cari kata, arti, atau contoh");
+    const kotak = page.getByLabel("Cari Kata, Arti, atau Contoh");
     await kotak.fill("pompong");
     await expect(page.locator('[data-kata="k-003"]')).toBeVisible();
     await expect(page.locator('[data-kata="k-050"]')).toHaveCount(0);
@@ -151,7 +164,7 @@ test.describe("kamus", () => {
 
   test("filter kelompok menyaring", async ({ page }) => {
     await page.goto("/cerita/kamus");
-    await page.getByLabel("Kelompok").selectOption({ label: "Dunia kerja industri" });
+    await page.getByLabel("Kelompok").selectOption({ label: "Dunia Kerja Industri" });
     await expect(page.locator("[data-kata]")).toHaveCount(4);
     await expect(page.locator('[data-kata="k-055"]')).toBeVisible();
   });
@@ -185,7 +198,7 @@ test.describe("budaya", () => {
     expect(teks).not.toMatch(/Rekomendasi konten|Buat seri|[⚠✅❌⌛]/);
     expect(teks.replace("bukan asli Batam", "")).not.toMatch(/asli Batam/);
     await expect(page.locator('[data-tradisi="tr-001"]')).toContainText("Tercatat");
-    await expect(page.locator('[data-tradisi="tr-014"]')).toContainText("Belum terverifikasi");
+    await expect(page.locator('[data-tradisi="tr-014"]')).toContainText("Belum Terverifikasi");
     expect(teks).not.toMatch(/Sumber:|Belum ada sumber tertulis|Perlu sumber/);
     await expect(page.locator('main a[href^="http"]')).toHaveCount(0);
   });
@@ -193,7 +206,7 @@ test.describe("budaya", () => {
 
 test.describe("komunitas", () => {
   test("kanal hanya yang tercatat, tanpa catatan kerja dan tautan pemerintah", async ({ page }) => {
-    await page.goto("/cerita/komunitas");
+    await page.goto("/komunitas");
     await expect(page.getByRole("link", { name: "Instagram @sukalaribatam" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Instagram @batam_10k" })).toBeVisible();
     await expect(page.locator('[data-komunitas="kom-005"] [data-kanal]')).toHaveCount(0);
@@ -219,7 +232,7 @@ test.describe("aksesibilitas", () => {
   }
 
   test("tampilan per bulan tanpa pelanggaran axe", async ({ page }) => {
-    await page.goto("/cerita/kalender?tampilan=bulan");
+    await page.goto("/things-to-do?tampilan=bulan");
     await expect(page.locator(".bud-tahun")).toBeVisible();
     const hasil = await new AxeBuilder({ page }).analyze();
     expect(hasil.violations.map((v) => `${v.id}: ${v.nodes[0]?.target}`)).toEqual([]);
@@ -227,7 +240,7 @@ test.describe("aksesibilitas", () => {
 
   test("tidak ada scroll horizontal di 360 px", async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 760 });
-    for (const h of [...HALAMAN, "/cerita/kalender?tampilan=bulan"]) {
+    for (const h of [...HALAMAN, "/things-to-do?tampilan=bulan"]) {
       await page.goto(h);
       await expect(page.locator("main")).toBeVisible();
       const lebih = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
@@ -237,11 +250,65 @@ test.describe("aksesibilitas", () => {
 
   test("target sentuh kontrol minimal 44 px", async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 760 });
-    await page.goto("/cerita/kalender?tampilan=bulan");
+    await page.goto("/things-to-do?tampilan=bulan");
     await expect(page.locator(".bud-bulan").first()).toBeVisible();
     for (const b of await page.locator(".bud-bulan, .bud-tombol").all()) {
       const kotak = await b.boundingBox();
       expect(kotak?.height ?? 0).toBeGreaterThanOrEqual(44);
     }
+  });
+});
+
+test.describe("Things to Do: daftar bertahap", () => {
+  test("mulai dari bulan berjalan, tiga bulan pertama, lalu Tampilkan Semua Bulan", async ({ page }) => {
+    await page.clock.setFixedTime(new Date("2026-11-05T05:00:00Z"));
+    await page.goto("/things-to-do");
+    await expect(page.locator(".bud-kontrol")).toBeVisible();
+    const bulan = page.locator("section[id^='bulan-'] h3.bud-judul-bulan");
+    await expect(bulan).toHaveCount(3);
+    await expect(bulan.first()).toContainText("November");
+    await expect(bulan.first()).toContainText("Bulan Ini");
+    const awal = await page.locator("[data-acara]").count();
+    expect(awal).toBeGreaterThan(0);
+    expect(awal).toBeLessThan(acara.length);
+    await page.getByRole("button", { name: "Tampilkan Semua Bulan" }).click();
+    await expect(page.getByRole("button", { name: "Tampilkan Semua Bulan" })).toHaveCount(0);
+    await expect(page.locator("[data-acara]")).toHaveCount(acara.length);
+    expect(await bulan.count()).toBeGreaterThan(3);
+  });
+
+  test("acara berbaris (bud-baris), kartu lama tidak ada", async ({ page }) => {
+    await page.goto("/things-to-do");
+    await expect(page.locator(".bud-baris").first()).toBeVisible();
+    await expect(page.locator(".bud-kartu")).toHaveCount(0);
+  });
+
+  test("status memakai Title Case", async ({ page }) => {
+    await page.goto("/things-to-do");
+    await expect(page.locator(".bud-kontrol")).toBeVisible();
+    const pilihan = await page.getByLabel("Status").locator("option").allTextContents();
+    expect(pilihan).toEqual(["Semua Status", "Rutin", "Pernah Diadakan", "Belum Pasti", "Dibatalkan"]);
+  });
+});
+
+test.describe("Komunitas dan Budaya Melayu berbaris", () => {
+  test("komunitas berbaris dan status Tercatat tidak tampil", async ({ page }) => {
+    await page.goto("/komunitas");
+    expect(await page.locator(".bud-baris").count()).toBe(komunitas.length);
+    await expect(page.locator("main")).not.toContainText("Tercatat");
+  });
+
+  test("budaya Melayu berbaris", async ({ page }) => {
+    await page.goto("/cerita/budaya");
+    expect(await page.locator(".bud-baris").count()).toBe(tradisi.length);
+  });
+
+  test("kamus ringkas: tanpa label Arti dan Contoh", async ({ page }) => {
+    await page.goto("/cerita/kamus");
+    const entri = page.locator('[data-kata="k-003"]');
+    await expect(entri).toContainText("Pompong terakhir jam lima.");
+    const label = await entri.locator("dt, .bud-label, strong, b").allTextContents();
+    expect(label.map((t) => t.trim())).not.toContain("Arti");
+    expect(label.map((t) => t.trim())).not.toContain("Contoh");
   });
 });

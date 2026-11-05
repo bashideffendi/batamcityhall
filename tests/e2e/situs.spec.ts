@@ -2,25 +2,12 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
-import { PNG } from "pngjs";
 
-const DISCLAIMER =
-  "Proyek independen warga Batam, bukan situs resmi Pemerintah Kota Batam atau BP Batam. Untuk layanan resmi: batam.go.id.";
+// Rombak: slogan dan kalimat "bukan situs resmi" dihapus dari kaki halaman (PEDOMAN 2.9). Tersisa satu baris.
+const KAKI = "Proyek independen warga Batam. Tanpa iklan.";
 const ADA_TILE = existsSync(join(process.cwd(), "public", "tiles", "batam.pmtiles"));
 
-const petaSiap = (page: Page) =>
-  expect(page.locator(".peta")).toHaveAttribute("data-status", "siap", { timeout: 45_000 });
-
-/** Porsi piksel peta yang persis berwarna `hex`. Tidak bergantung pada titik tertentu di layar. */
-async function porsiWarna(page: Page, hex: string) {
-  const png = PNG.sync.read(await page.locator(".peta").screenshot());
-  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
-  let cocok = 0;
-  for (let i = 0; i < png.data.length; i += 4) {
-    if (png.data[i] === r && png.data[i + 1] === g && png.data[i + 2] === b) cocok++;
-  }
-  return cocok / (png.width * png.height);
-}
+const petaSiap = (page: Page) => expect(page.locator(".ll-peta .maplibregl-canvas")).toBeVisible({ timeout: 45_000 });
 
 // Kotak Hari Ini memanggil route yang menarik data MSS dan BMKG. Tes tidak boleh membebani server mereka.
 test.beforeEach(async ({ page }) => {
@@ -45,39 +32,54 @@ test.beforeEach(async ({ page }) => {
 
 test.describe("teks wajib", () => {
   for (const path of ["/", "/tentang", "/kolofon", "/tidak-ada"]) {
-    test(`disclaimer dan atribusi ada di ${path}`, async ({ page }) => {
+    test(`kaki halaman dan atribusi ada di ${path}`, async ({ page }) => {
       await page.goto(path);
       const footer = page.locator("footer");
-      await expect(footer).toContainText(DISCLAIMER);
-      await expect(footer).toContainText("Peta dasar © OpenStreetMap contributors, Protomaps");
+      await expect(footer).toContainText(KAKI);
+      await expect(footer.locator(".bch-footer-peta")).toBeVisible();
+      await expect(footer.locator(".bch-footer-bawah")).toBeVisible();
+      for (const t of ["Tentang", "Kolofon", "Kirim Koreksi", "Privasi", "Syarat Penggunaan"]) {
+        await expect(footer.getByRole("link", { name: t })).toBeVisible();
+      }
     });
   }
+
+  test("atribusi peta ada di peta beranda dan di Kolofon", async ({ page }) => {
+    await page.goto("/kolofon");
+    await expect(page.locator("main")).toContainText("OpenStreetMap");
+    await expect(page.locator("main")).toContainText("Protomaps");
+    await page.goto("/");
+    await expect(page.locator("#isi")).toContainText("OpenStreetMap");
+    await expect(page.locator("#isi")).toContainText("Protomaps");
+  });
 });
 
 test.describe("halaman", () => {
-  test("404 bernada kalem dan berstatus 404", async ({ page }) => {
+  test("404 bernada kalem, berstatus 404, dan memberi jalan keluar", async ({ page }) => {
     const res = await page.goto("/tidak-ada");
     expect(res?.status()).toBe(404);
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Halaman ini tenggelam.");
-    await expect(page.getByText("Kemungkinan di sekitar 1°N.")).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Halaman Tidak Ditemukan");
+    await expect(page.getByRole("link", { name: "Nomor Darurat" }).last()).toHaveAttribute("href", "/info/darurat");
+    await expect(page.locator("#isi").getByRole("link", { name: /Cari/ })).toHaveAttribute("href", "/cari");
   });
 
-  test("Tentang memuat angka dari statistik data", async ({ page }) => {
+  test("Tentang menyatakan tanpa iklan dan tanpa pelacak", async ({ page }) => {
     await page.goto("/tentang");
-    await expect(page.getByText("Direktori saat ini memuat 892 tempat")).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "Tentang Batam City Hall" })).toBeVisible();
+    await expect(page.locator("main")).toContainText("tidak memasang iklan, tidak memakai pelacak");
   });
 
   test("Kolofon mencatat ketiga huruf", async ({ page }) => {
     await page.goto("/kolofon");
-    for (const f of ["Source Serif 4", "Plus Jakarta Sans", "IBM Plex Mono"]) {
-      await expect(page.getByText(f, { exact: true })).toBeVisible();
+    for (const f of ["Newsreader", "Plus Jakarta Sans", "IBM Plex Mono"]) {
+      await expect(page.locator("main")).toContainText(f);
     }
   });
 
   test("font situs benar-benar terpasang, bukan fallback", async ({ page }) => {
     await page.goto("/tentang");
     const serif = await page.locator("h1").evaluate((el) => getComputedStyle(el).fontFamily);
-    expect(serif).toMatch(/Source_Serif_4|Source Serif 4/);
+    expect(serif).toMatch(/Newsreader/);
     const sans = await page.locator("body").evaluate((el) => getComputedStyle(el).fontFamily);
     expect(sans).toMatch(/Plus_Jakarta_Sans|Plus Jakarta Sans/);
   });
@@ -86,25 +88,14 @@ test.describe("halaman", () => {
 test.describe("peta", () => {
   test.skip(!ADA_TILE, "public/tiles/batam.pmtiles belum ada: jalankan scripts/extract-basemap.mjs");
 
-  test("tampil di dua tema dengan warna token", async ({ page }, info) => {
+  test("peta beranda tampil di dua tema", async ({ page }) => {
     await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
     await page.goto("/");
     await petaSiap(page);
     await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-    await page.waitForTimeout(800);
-    expect(await porsiWarna(page, "#DCE3E1"), "laut siang").toBeGreaterThan(0.1);
-    expect(await porsiWarna(page, "#F4EFE4"), "darat siang").toBeGreaterThan(0.1);
-    await page.locator(".peta").screenshot({ path: info.outputPath("peta-siang.png") });
-
-    await page.getByRole("button", { name: "Ganti ke chart malam" }).click();
+    await page.getByRole("button", { name: "Ganti ke tampilan gelap" }).click();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-    await expect(page.locator(".peta")).toHaveAttribute("data-tema", "dark");
-    await page.waitForTimeout(800);
-    expect(await porsiWarna(page, "#0F1B2A"), "laut malam").toBeGreaterThan(0.1);
-    expect(await porsiWarna(page, "#16263A"), "darat malam").toBeGreaterThan(0.1);
-    expect(await porsiWarna(page, "#DCE3E1"), "sisa warna siang").toBe(0);
-    await page.locator(".peta").screenshot({ path: info.outputPath("peta-malam.png") });
-
+    await expect(page.locator(".ll-peta .maplibregl-canvas")).toBeVisible();
     // Pilihan tersimpan menang atas preferensi sistem setelah dimuat ulang.
     await page.reload();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
@@ -118,39 +109,12 @@ test.describe("peta", () => {
     await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
   });
 
-  test("ornamen chart lengkap dan koordinat berformat Indonesia", async ({ page }) => {
+  test("atribusi dan tombol zoom ada", async ({ page }) => {
     await page.goto("/");
     await petaSiap(page);
-    await expect(page.locator(".peta-kartusis")).toContainText("Bukan untuk navigasi");
-    await expect(page.locator(".peta-kartusis")).toContainText(/Skala 1 : [\d.]+/);
-    await expect(page.locator(".peta-mawar")).toBeVisible();
-    await expect(page.locator(".peta-skala")).toContainText("km");
-    await expect(page.locator(".peta-skala")).toContainText("mil laut");
-    expect(await page.locator(".peta-tepi-label").count()).toBeGreaterThan(0);
-    await expect(
-      page
-        .locator(".peta-tepi-label")
-        .filter({ hasText: /°\d{2}′ T$/ })
-        .first(),
-    ).toBeAttached();
-    await expect(
-      page
-        .locator(".peta-tepi-label")
-        .filter({ hasText: /°\d{2}′ U$/ })
-        .first(),
-    ).toBeAttached();
-    await expect(page.locator(".maplibregl-ctrl-attrib")).toContainText("OpenStreetMap");
-    await expect(page.locator(".maplibregl-ctrl-attrib")).toContainText("Protomaps");
-  });
-
-  test("tombol zoom mengubah skala", async ({ page }) => {
-    await page.emulateMedia({ reducedMotion: "reduce" });
-    await page.goto("/");
-    await petaSiap(page);
-    const skala = page.locator(".peta-kartusis-skala");
-    const awal = await skala.textContent();
-    await page.getByRole("button", { name: "Perbesar peta" }).click();
-    await expect(skala).not.toHaveText(awal ?? "");
+    await expect(page.locator("#isi")).toContainText("OpenStreetMap");
+    await expect(page.getByRole("button", { name: "Perbesar peta" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Perkecil peta" })).toBeVisible();
   });
 
   test("tidak ada galat konsol dan tidak ada permintaan ke luar situs", async ({ page, baseURL }) => {
@@ -169,7 +133,9 @@ test.describe("peta", () => {
     });
     await page.goto("/");
     await petaSiap(page);
-    expect(galat).toEqual([]);
+    await page.waitForTimeout(1500);
+    // /api/* ditiru dengan 503 di beforeEach lain; yang dihitung galat hanya yang bukan tiruan.
+    expect(galat.filter((g) => !g.includes("/api/"))).toEqual([]);
     expect(luar).toEqual([]);
   });
 
@@ -178,24 +144,17 @@ test.describe("peta", () => {
     expect(res.status()).toBe(206);
     expect((await res.body()).subarray(0, 7).toString()).toBe("PMTiles");
   });
-
-  test("tekstur kertas mati di atas peta dan hidup di halaman lain", async ({ page }) => {
-    await page.goto("/");
-    await petaSiap(page);
-    await expect(page.locator("body")).toHaveClass(/bch-no-grain/);
-    await page.goto("/tentang");
-    await expect(page.locator("body")).not.toHaveClass(/bch-no-grain/);
-    const res = await page.request.get("/tex/grain-256.webp");
-    expect(res.status()).toBe(200);
-  });
 });
 
 test.describe("peta gagal", () => {
-  test("pesan jujur saat berkas tile tidak bisa dimuat", async ({ page }) => {
+  test("berkas tile yang tidak bisa dimuat tidak membuat halaman rusak", async ({ page }) => {
+    const galat: string[] = [];
+    page.on("pageerror", (e) => galat.push(e.message));
     await page.route("**/tiles/batam.pmtiles", (route) => route.fulfill({ status: 404, body: "" }));
     await page.goto("/");
-    await expect(page.locator(".peta")).toHaveAttribute("data-status", "gagal", { timeout: 45_000 });
-    await expect(page.getByText("Peta gagal dimuat. Laut masih ada, kami saja yang belum.")).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    await page.waitForTimeout(2000);
+    expect(galat).toEqual([]);
   });
 });
 
@@ -227,7 +186,6 @@ test.describe("halaman tersembunyi", () => {
   const TERSEMBUNYI = [
     "/mural",
     "/mural/cara-dibuat",
-    "/main/vibe",
     "/cerita/dulu",
     "/info/warga-baru",
     "/cerita/rempang",
@@ -246,7 +204,7 @@ test.describe("halaman tersembunyi", () => {
     for (const h of [...TERSEMBUNYI, "/mural/gcp", "/admin"]) expect(peta).not.toContain(`${h}<`);
   });
 
-  for (const h of ["/", "/cerita", "/info", "/main", "/cerita/sejarah", "/cerita/kampung-tua"]) {
+  for (const h of ["/", "/cerita", "/info", "/cerita/sejarah", "/cerita/kampung-tua", "/komunitas", "/kartu-pos"]) {
     test(`${h} tidak menautkannya`, async ({ page }) => {
       await page.goto(h);
       const href = await page.locator("a[href]").evaluateAll((a) => a.map((x) => x.getAttribute("href") ?? ""));

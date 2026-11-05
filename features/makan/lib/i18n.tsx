@@ -1,17 +1,16 @@
 "use client";
 
 import { KATA_TUGAS_EN, kaidahJudul } from "@/lib/judul";
-import { useCallback, useSyncExternalStore, type ReactNode } from "react";
-import { buatSimpanan } from "./simpanan";
+import { useCallback, type ReactNode } from "react";
 import type { Lang, HalalStatus, RecLabel, PriceTier } from "./types";
 
 type Tri = { id: string; en: string; zh: string };
 
-// Naskah singkat atas koreksi pemilik (PEDOMAN, koreksi 6 November 2026). Satu gagasan, kata seperlunya.
+// Naskah singkat atas koreksi pemilik (PEDOMAN, koreksi 5 November 2026). Satu gagasan, kata seperlunya.
 // `*kata*` berarti miring (lihat miring() di bawah). Bahasa Inggris mengikuti pedoman 2.10.
 const DICT = {
   nav_label: { id: "Halaman Makan", en: "Food pages", zh: "美食页面" },
-  nav_home: { id: "Makan", en: "Eat", zh: "美食" },
+  nav_home: { id: "Makanan", en: "Eat", zh: "美食" },
   nav_dish: { id: "Hidangan", en: "Dishes", zh: "菜品" },
   nav_area: { id: "Kawasan", en: "Areas", zh: "区域" },
   nav_guides: { id: "Panduan", en: "Guides", zh: "指南" },
@@ -20,9 +19,9 @@ const DICT = {
   nav_saved: { id: "Simpanan", en: "Saved", zh: "收藏" },
   language: { id: "Bahasa", en: "Language", zh: "语言" },
   currency: { id: "Perkiraan harga", en: "Price estimate", zh: "价格换算" },
-  rupiah_only: { id: "Rp saja", en: "Rp only", zh: "仅 Rp" },
+  rupiah_only: { id: "Rp Saja", en: "Rp only", zh: "仅 Rp" },
 
-  home_title: { id: "Makan", en: "Eat", zh: "美食" },
+  home_title: { id: "Makanan", en: "Eat", zh: "美食" },
   home_data: {
     id: "{n} tempat · {h} hidangan · {k} kawasan",
     en: "{n} places · {h} dishes · {k} areas",
@@ -33,7 +32,7 @@ const DICT = {
     en: "No one pays to be on this list.",
     zh: "没有任何店铺付费入选。",
   },
-  cover_kicker: { id: "Panduan pilihan", en: "Featured guide", zh: "精选指南" },
+  cover_kicker: { id: "Panduan Pilihan", en: "Featured guide", zh: "精选指南" },
   idx_title: { id: "Mau Makan Apa?", en: "What to Eat", zh: "想吃什么" },
   idx_all: { id: "Semua Tempat", en: "All Places", zh: "所有店铺" },
   near_title: { id: "Sebelum Feri Pulang", en: "Before the Ferry Home", zh: "回程前" },
@@ -43,46 +42,46 @@ const DICT = {
     zh: "距码头最近，{km} 公里内。",
   },
   near_terminal: { id: "Pilih terminal", en: "Choose a terminal", zh: "选择码头" },
-  near_all: { id: "Semua dekat {nama}", en: "All near {nama}", zh: "{nama} 附近全部" },
+  near_all: { id: "Semua Dekat {nama}", en: "All near {nama}", zh: "{nama} 附近全部" },
   guides_title: { id: "Panduan", en: "Guides", zh: "指南" },
-  guides_all: { id: "Semua panduan", en: "All guides", zh: "全部指南" },
+  guides_all: { id: "Semua Panduan", en: "All guides", zh: "全部指南" },
   areas_title: { id: "Kawasan", en: "Areas", zh: "区域" },
   map_title_home: { id: "Peta", en: "Map", zh: "地图" },
-  map_open: { id: "Buka peta", en: "Open the map", zh: "打开地图" },
+  map_open: { id: "Buka Peta", en: "Open the map", zh: "打开地图" },
   legend_title: { id: "Legendaris", en: "Legendary", zh: "老字号" },
   rare_title: { id: "Jarang Diketahui", en: "Little Known", zh: "鲜为人知" },
-  random: { id: "Satu tempat acak", en: "A random place", zh: "随机一家" },
+  random: { id: "Satu Tempat Acak", en: "A random place", zh: "随机一家" },
   trust: { id: "Tidak ada tempat yang membayar.", en: "No place pays.", zh: "没有店铺付费。" },
   how: { id: "Cara Kami Memilih", en: "How We Choose", zh: "我们如何挑选" },
-  fix: { id: "Kirim koreksi", en: "Suggest a correction", zh: "提交更正" },
+  fix: { id: "Kirim Koreksi", en: "Suggest a correction", zh: "提交更正" },
 
   search_label: { id: "Cari tempat makan", en: "Search places to eat", zh: "搜索餐饮" },
   search_ph: { id: "Cari tempat atau menu", en: "Search places or dishes", zh: "搜索店铺或菜品" },
   search_clear: { id: "Hapus pencarian", en: "Clear search", zh: "清除搜索" },
-  see_all: { id: "Lihat semua", en: "See all", zh: "查看全部" },
+  see_all: { id: "Lihat Semua", en: "See all", zh: "查看全部" },
   filters: { id: "Saring", en: "Filter", zh: "筛选" },
   filters_title: { id: "Saringan", en: "Filters", zh: "筛选" },
   filter_close: { id: "Tutup saringan", en: "Close filters", zh: "关闭筛选" },
-  reset: { id: "Hapus saringan", en: "Clear filters", zh: "清除筛选" },
-  apply: { id: "Tampilkan {n} tempat", en: "Show {n} places", zh: "显示 {n} 家" },
+  reset: { id: "Hapus Saringan", en: "Clear filters", zh: "清除筛选" },
+  apply: { id: "Tampilkan {n} Tempat", en: "Show {n} places", zh: "显示 {n} 家" },
   sort: { id: "Urutkan", en: "Sort", zh: "排序" },
   sort_featured: { id: "Pilihan", en: "Picks", zh: "精选" },
-  sort_nearest_ferry: { id: "Terdekat dari feri", en: "Nearest to the ferry", zh: "距码头最近" },
-  sort_nearby: { id: "Terdekat dari saya", en: "Nearest to me", zh: "离我最近" },
-  sort_late: { id: "Buka paling larut", en: "Open latest", zh: "营业最晚" },
-  sort_price: { id: "Harga terendah", en: "Lowest price", zh: "价格最低" },
+  sort_nearest_ferry: { id: "Terdekat dari Feri", en: "Nearest to the ferry", zh: "距码头最近" },
+  sort_nearby: { id: "Terdekat dari Saya", en: "Nearest to me", zh: "离我最近" },
+  sort_late: { id: "Buka Paling Larut", en: "Open latest", zh: "营业最晚" },
+  sort_price: { id: "Harga Terendah", en: "Lowest price", zh: "价格最低" },
   sort_az: { id: "Nama A—Z", en: "Name A—Z", zh: "名称 A—Z" },
   category: { id: "Hidangan", en: "Dish", zh: "菜品" },
   area: { id: "Kawasan", en: "Area", zh: "区域" },
   price: { id: "Harga", en: "Price", zh: "价格" },
-  halal_label: { id: "Status halal", en: "Halal status", zh: "清真状态" },
-  ferry: { id: "Terminal feri", en: "Ferry terminal", zh: "渡轮码头" },
+  halal_label: { id: "Status Halal", en: "Halal status", zh: "清真状态" },
+  ferry: { id: "Terminal Feri", en: "Ferry terminal", zh: "渡轮码头" },
   labels: { id: "Label", en: "Label", zh: "标签" },
   time: { id: "Waktu", en: "Time", zh: "时段" },
   breakfast: { id: "Sarapan", en: "Breakfast", zh: "早餐" },
   late: { id: "Lewat 22.00", en: "After 10 p.m.", zh: "晚上十点后" },
-  cheap: { id: "Di bawah Rp50 ribu", en: "Under Rp50k", zh: "五万盾以内" },
-  near_me: { id: "Dekat saya", en: "Near me", zh: "我附近" },
+  cheap: { id: "Di Bawah Rp50 Ribu", en: "Under Rp50k", zh: "五万盾以内" },
+  near_me: { id: "Dekat Saya", en: "Near me", zh: "我附近" },
   locating: { id: "Mencari lokasi", en: "Locating", zh: "定位中" },
   loc_denied: {
     id: "Lokasi tidak tersedia. Izinkan akses lokasi, lalu coba lagi.",
@@ -101,15 +100,15 @@ const DICT = {
     zh: "没有与“{kata}”相关的结果。试试其他关键词或取消筛选。",
   },
 
-  open_now: { id: "Buka sekarang", en: "Open now", zh: "营业中" },
-  closed_now: { id: "Tutup sekarang", en: "Closed now", zh: "已打烊" },
+  open_now: { id: "Buka Sekarang", en: "Open now", zh: "营业中" },
+  closed_now: { id: "Tutup Sekarang", en: "Closed now", zh: "已打烊" },
   open_until: { id: "Buka sampai {jam} WIB", en: "Open until {jam} WIB", zh: "营业至 {jam} WIB" },
   closed_until: { id: "Tutup, buka {jam} WIB", en: "Closed, opens {jam} WIB", zh: "已打烊，{jam} WIB 开门" },
   open_until_sgt: { id: "Buka sampai {jam} WIB ({sgt} SGT)", en: "Open until {jam} WIB ({sgt} SGT)", zh: "营业至 {jam} WIB（{sgt} SGT）" },
   closed_until_sgt: { id: "Tutup, buka {jam} WIB ({sgt} SGT)", en: "Closed, opens {jam} WIB ({sgt} SGT)", zh: "已打烊，{jam} WIB（{sgt} SGT）开门" },
-  hours: { id: "Jam buka", en: "Hours", zh: "营业时间" },
+  hours: { id: "Jam Buka", en: "Hours", zh: "营业时间" },
   hours_unknown: { id: "Tidak diketahui", en: "Unknown", zh: "未知" },
-  navigate: { id: "Petunjuk arah", en: "Directions", zh: "导航" },
+  navigate: { id: "Petunjuk Arah", en: "Directions", zh: "导航" },
   save: { id: "Simpan", en: "Save", zh: "收藏" },
   saved_on: { id: "Tersimpan", en: "Saved", zh: "已收藏" },
   unsave: { id: "Hapus dari simpanan", en: "Remove from saved", zh: "取消收藏" },
@@ -121,8 +120,8 @@ const DICT = {
   payment: { id: "Pembayaran", en: "Payment", zh: "支付方式" },
   pay_cash: { id: "Tunai", en: "Cash", zh: "现金" },
   pay_card: { id: "Kartu", en: "Card", zh: "刷卡" },
-  price_range: { id: "Kisaran harga", en: "Price range", zh: "价格区间" },
-  ferry_nearest: { id: "Feri terdekat", en: "Nearest ferry", zh: "最近码头" },
+  price_range: { id: "Kisaran Harga", en: "Price range", zh: "价格区间" },
+  ferry_nearest: { id: "Feri Terdekat", en: "Nearest ferry", zh: "最近码头" },
   ferry_distance: { id: "Sekitar {km} ke {nama}", en: "About {km} to {nama}", zh: "距 {nama} 约 {km}" },
   ferry_short: { id: "{km} ke {nama}", en: "{km} to {nama}", zh: "距 {nama} {km}" },
   from_you: { id: "{km} dari kamu", en: "{km} from you", zh: "距您 {km}" },
@@ -131,8 +130,8 @@ const DICT = {
   data_as_of: { id: "Data per {bulan}", en: "Data as of {bulan}", zh: "数据截至 {bulan}" },
   near_here: { id: "Di Dekat Sini", en: "Nearby", zh: "附近" },
   in_guides: { id: "Juga di Panduan", en: "Also in these guides", zh: "也收录于" },
-  show_on_map: { id: "Tampilkan di peta", en: "Show on map", zh: "在地图上显示" },
-  detail: { id: "Lihat detail", en: "View details", zh: "查看详情" },
+  show_on_map: { id: "Tampilkan di Peta", en: "Show on map", zh: "在地图上显示" },
+  detail: { id: "Lihat Detail", en: "View details", zh: "查看详情" },
   close: { id: "Tutup", en: "Close", zh: "关闭" },
   breadcrumb: { id: "Remah roti", en: "Breadcrumb", zh: "导航路径" },
   view_map: { id: "Peta", en: "Map", zh: "地图" },
@@ -141,7 +140,7 @@ const DICT = {
 
   gallery: { id: "Foto", en: "Photos", zh: "照片" },
   gallery_soon: { id: "Foto menyusul", en: "Photos coming", zh: "照片稍后补上" },
-  gallery_all: { id: "Semua foto", en: "All photos", zh: "全部照片" },
+  gallery_all: { id: "Semua Foto", en: "All photos", zh: "全部照片" },
   gallery_open: { id: "Buka foto {n}", en: "Open photo {n}", zh: "查看第 {n} 张" },
   gallery_prev: { id: "Foto sebelumnya", en: "Previous photo", zh: "上一张" },
   gallery_next: { id: "Foto berikutnya", en: "Next photo", zh: "下一张" },
@@ -182,14 +181,14 @@ const DICT = {
   saved_local: { id: "Tersimpan di peramban ini, tanpa akun.", en: "Kept in this browser, no account.", zh: "保存在此浏览器，无需账号。" },
   export_title: { id: "Pindah Perangkat", en: "Move to Another Device", zh: "转移到其他设备" },
   export_label: { id: "Tautan daftar", en: "List link", zh: "列表链接" },
-  copy_link: { id: "Salin tautan", en: "Copy link", zh: "复制链接" },
+  copy_link: { id: "Salin Tautan", en: "Copy link", zh: "复制链接" },
   import_label: { id: "Tempel tautan dari perangkat lain", en: "Paste a link from another device", zh: "粘贴其他设备的链接" },
   import_btn: { id: "Tambahkan", en: "Add", zh: "添加" },
   import_done: { id: "Ditambahkan {n} tempat.", en: "Added {n} places.", zh: "已添加 {n} 家。" },
   import_rejected: { id: "Sebanyak {n} tempat tidak dikenal.", en: "{n} places not recognised.", zh: "{n} 家无法识别。" },
   import_none: { id: "Tidak ada tempat yang dikenal di tautan itu.", en: "No known places in that link.", zh: "该链接中没有可识别的店铺。" },
   link_found: { id: "Tautan ini berisi {n} tempat.", en: "This link holds {n} places.", zh: "此链接包含 {n} 家店铺。" },
-  link_add: { id: "Tambahkan ke simpanan", en: "Add to saved", zh: "加入收藏" },
+  link_add: { id: "Tambahkan ke Simpanan", en: "Add to saved", zh: "加入收藏" },
 
   guide_line_note: {
     id: "Garis menunjukkan urutan, bukan rute jalan.",
@@ -251,50 +250,34 @@ export type KunciTeks = keyof typeof DICT;
 export const HALAL_LABEL: Record<HalalStatus, Tri> = {
   halal: { id: "Halal", en: "Halal", zh: "清真" },
   "non-halal": { id: "Nonhalal", en: "Non-halal", zh: "非清真" },
-  "muslim-friendly": { id: "Ramah muslim", en: "Muslim-friendly", zh: "穆斯林友好" },
+  "muslim-friendly": { id: "Ramah Muslim", en: "Muslim-friendly", zh: "穆斯林友好" },
 };
 
 // Kode data lama tetap dipakai sebagai kunci. Yang tampil hanya nama label di pedoman 3.4.
 export const LABEL_LABEL: Record<RecLabel, Tri> = {
   legendaris: { id: "Legendaris", en: "Legendary", zh: "老字号" },
-  "wajib-coba": { id: "Pilihan kurator", en: "Curator's pick", zh: "编者精选" },
-  hits: { id: "Sedang populer", en: "Popular now", zh: "近期热门" },
-  "hidden-gem": { id: "Jarang diketahui", en: "Little known", zh: "鲜为人知" },
+  "wajib-coba": { id: "Pilihan Kurator", en: "Curator's pick", zh: "编者精选" },
+  hits: { id: "Sedang Populer", en: "Popular now", zh: "近期热门" },
+  "hidden-gem": { id: "Jarang Diketahui", en: "Little known", zh: "鲜为人知" },
 };
 
 // Hanya untuk tombol saringan. Di baris dan detail, harga selalu berupa kisaran dari price_idr.
 export const PRICE_HINT: Record<PriceTier, Tri> = {
-  $: { id: "Harga rendah", en: "Lower price", zh: "较低价位" },
-  $$: { id: "Harga menengah", en: "Mid price", zh: "中等价位" },
-  $$$: { id: "Harga tinggi", en: "Higher price", zh: "较高价位" },
+  $: { id: "Harga Rendah", en: "Lower price", zh: "较低价位" },
+  $$: { id: "Harga Menengah", en: "Mid price", zh: "中等价位" },
+  $$$: { id: "Harga Tinggi", en: "Higher price", zh: "较高价位" },
 };
 
-export const LANGS: { code: Lang; label: string; nama: string }[] = [
-  { code: "id", label: "ID", nama: "Bahasa Indonesia" },
-  { code: "en", label: "EN", nama: "English" },
-  { code: "zh", label: "中", nama: "中文" },
-];
-
-const bacaBahasa = (m: string | null): Lang => {
-  if (m === "id" || m === "en" || m === "zh") return m;
-  // Sasaran Makan termasuk turis SG/MY: tanpa pilihan tersimpan, ikut bahasa browser.
-  const nl = navigator.language?.toLowerCase() ?? "id";
-  return nl.startsWith("id") ? "id" : nl.startsWith("zh") ? "zh" : "en";
-};
-
-const simpanan = buatSimpanan<Lang>("bch-makan-bahasa", "id", bacaBahasa, (v) => v);
+/** Situs satu bahasa. Teks Inggris dan Mandarin tetap tersimpan untuk dipakai bila seluruh situs diterjemahkan. */
+const BAHASA: Lang = "id";
 
 export function useI18n() {
-  const lang = useSyncExternalStore(simpanan.langgan, simpanan.ambil, simpanan.ambilServer);
-  const t = useCallback(
-    (key: KunciTeks, isi?: Record<string, string | number>) => {
-      let teks: string = DICT[key][lang];
-      for (const [k, v] of Object.entries(isi ?? {})) teks = teks.replace(`{${k}}`, () => String(v));
-      return teks;
-    },
-    [lang],
-  );
-  return { lang, setLang: simpanan.simpan, t };
+  const t = useCallback((key: KunciTeks, isi?: Record<string, string | number>) => {
+    let teks: string = DICT[key][BAHASA];
+    for (const [k, v] of Object.entries(isi ?? {})) teks = teks.replace(`{${k}}`, () => String(v));
+    return teks;
+  }, []);
+  return { lang: BAHASA, t };
 }
 
 /** Nilai atribut lang untuk konten Makan. */

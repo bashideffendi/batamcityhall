@@ -1,7 +1,7 @@
 "use client";
 
 import type { GeoJSONSource, MapLayerMouseEvent } from "maplibre-gl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ferries, placeMap } from "../lib/data";
 import { useFilters } from "../lib/filters";
 import {
@@ -10,7 +10,6 @@ import {
   koleksi,
   kotakTitik,
   LAYER_KLIK_PIN,
-  LAYER_KLUSTER,
   lapisanFeri,
   lapisanPin,
   lapisanSaya,
@@ -20,7 +19,7 @@ import PetaMakan, { gerakTenang, pasangLapisan, usePeta } from "./PetaMakan";
 
 const sumberKosong = () => ({ type: "geojson" as const, data: koleksi([]) });
 
-// Pin Makan: GeoJSON dengan clustering. Peta dan daftar membaca hasil filter yang sama.
+// Pin Makan: GeoJSON, setiap tempat berdiri sendiri. Peta dan daftar membaca hasil filter yang sama.
 function LapisanPin() {
   const { map, tema } = usePeta();
   const { results, selectedId, setSelectedId, state } = useFilters();
@@ -36,47 +35,27 @@ function LapisanPin() {
       map,
       {
         [SUMBER.feri]: { type: "geojson", data: koleksi(ferries.map(fiturFeri)) },
-        [SUMBER.pin]: {
-          ...sumberKosong(),
-          cluster: true,
-          clusterRadius: 40,
-          // Di atas ini pin berdiri sendiri, jadi tempat yang dipilih dari daftar selalu terlihat.
-          clusterMaxZoom: 14,
-        },
+        // Setiap tempat berdiri sendiri (koreksi pemilik, 5 November 2026).
+        [SUMBER.pin]: sumberKosong(),
         [SUMBER.pilih]: sumberKosong(),
         [SUMBER.saya]: sumberKosong(),
       },
-      [...lapisanFeri(temaAwal.current), ...lapisanPin(temaAwal.current), ...lapisanSaya(temaAwal.current)],
+      [...lapisanFeri(), ...lapisanPin(temaAwal.current), ...lapisanSaya(temaAwal.current)],
     );
 
     const klikPin = (e: MapLayerMouseEvent) => {
       const id = e.features?.[0]?.properties?.id;
       if (typeof id === "string") pilih.current(id);
     };
-    const klikKluster = (e: MapLayerMouseEvent) => {
-      const f = e.features?.[0];
-      const clusterId = f?.properties?.cluster_id;
-      if (!f || f.geometry.type !== "Point" || clusterId === undefined) return;
-      const [lng, lat] = f.geometry.coordinates;
-      (map.getSource(SUMBER.pin) as GeoJSONSource).getClusterExpansionZoom(clusterId).then((zoom) => {
-        map.easeTo({ center: [lng, lat], zoom, animate: !gerakTenang() });
-      });
-    };
     const tunjuk = () => (map.getCanvas().style.cursor = "pointer");
     const lepasTunjuk = () => (map.getCanvas().style.cursor = "");
     map.on("click", LAYER_KLIK_PIN, klikPin);
-    map.on("click", LAYER_KLUSTER, klikKluster);
-    for (const id of [LAYER_KLIK_PIN, LAYER_KLUSTER]) {
-      map.on("mouseenter", id, tunjuk);
-      map.on("mouseleave", id, lepasTunjuk);
-    }
+    map.on("mouseenter", LAYER_KLIK_PIN, tunjuk);
+    map.on("mouseleave", LAYER_KLIK_PIN, lepasTunjuk);
     return () => {
       map.off("click", LAYER_KLIK_PIN, klikPin);
-      map.off("click", LAYER_KLUSTER, klikKluster);
-      for (const id of [LAYER_KLIK_PIN, LAYER_KLUSTER]) {
-        map.off("mouseenter", id, tunjuk);
-        map.off("mouseleave", id, lepasTunjuk);
-      }
+      map.off("mouseenter", LAYER_KLIK_PIN, tunjuk);
+      map.off("mouseleave", LAYER_KLIK_PIN, lepasTunjuk);
       lepas();
     };
   }, [map]);
@@ -140,10 +119,8 @@ function LapisanPin() {
 }
 
 export default function MapCanvas() {
-  // Di HP satu jari harus tetap menggulir halaman menuju daftar dan footer.
-  const [sentuh] = useState(() => window.matchMedia("(pointer: coarse)").matches);
   return (
-    <PetaMakan judul="map_title" kooperatif={sentuh}>
+    <PetaMakan judul="map_title" kooperatif>
       <LapisanPin />
     </PetaMakan>
   );

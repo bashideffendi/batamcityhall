@@ -10,24 +10,24 @@ import { rapiAtauKosong, rapiTeks } from "@/features/sejarah/rapi";
 
 export const KELOMPOK: { id: string; nama: string }[] = [
   { id: "a", nama: "Melayu Riau-Lingga, Johor, Malaka, dan Riau daratan" },
-  { id: "b", nama: "Hikayat dan legenda" },
-  { id: "c", nama: "Tokoh nasional" },
+  { id: "b", nama: "Hikayat dan Legenda" },
+  { id: "c", nama: "Tokoh Nasional" },
   { id: "d", nama: "Pembangunan Batam" },
-  { id: "e", nama: "Tokoh lokal dan adat" },
+  { id: "e", nama: "Tokoh Lokal dan Adat" },
 ];
 
 export type GrupStatus = "terverifikasi" | "beda_versi" | "belum_terverifikasi" | "hikayat";
 
 export const GRUP_STATUS: { id: GrupStatus; nama: string }[] = [
   { id: "terverifikasi", nama: "Tercatat" },
-  { id: "beda_versi", nama: "Berbeda versi" },
-  { id: "belum_terverifikasi", nama: "Belum terverifikasi" },
-  { id: "hikayat", nama: "Cerita rakyat" },
+  { id: "beda_versi", nama: "Berbeda Versi" },
+  { id: "belum_terverifikasi", nama: "Belum Terverifikasi" },
+  { id: "hikayat", nama: "Cerita Rakyat" },
 ];
 
 export type StatusTokoh = { grup: GrupStatus; teks: string; nada: Nada; hikayat: boolean };
 
-const BEDA_VERSI: StatusTokoh = { grup: "beda_versi", teks: "Berbeda versi", nada: "caution", hikayat: false };
+const BEDA_VERSI: StatusTokoh = { grup: "beda_versi", teks: "Berbeda Versi", nada: "caution", hikayat: false };
 
 // Label status satu per kartu (pedoman 3.7). `hikayat` menentukan bingkai kartu, bukan labelnya: Hang Nadim tetap
 // berbingkai hikayat, tetapi perlawanannya tercatat, jadi labelnya bukan Cerita rakyat.
@@ -36,13 +36,13 @@ const STATUS: Record<string, StatusTokoh> = {
   terverifikasi_beda_versi: BEDA_VERSI,
   beda_versi: BEDA_VERSI,
   terverifikasi_asal_usul_hikayat: BEDA_VERSI,
-  hikayat: { grup: "hikayat", teks: "Cerita rakyat", nada: "info", hikayat: true },
-  semi_historis: { grup: "belum_terverifikasi", teks: "Belum terverifikasi", nada: "info", hikayat: true },
-  perlu_dicek: { grup: "belum_terverifikasi", teks: "Belum terverifikasi", nada: "caution", hikayat: false },
+  hikayat: { grup: "hikayat", teks: "Cerita Rakyat", nada: "info", hikayat: true },
+  semi_historis: { grup: "belum_terverifikasi", teks: "Belum Terverifikasi", nada: "info", hikayat: true },
+  perlu_dicek: { grup: "belum_terverifikasi", teks: "Belum Terverifikasi", nada: "caution", hikayat: false },
 };
 const STATUS_RINGKAS: StatusTokoh = {
   grup: "belum_terverifikasi",
-  teks: "Belum terverifikasi",
+  teks: "Belum Terverifikasi",
   nada: undefined,
   hikayat: false,
 };
@@ -315,7 +315,7 @@ const LABEL_JENIS: Record<string, string> = {
   jembatan: "Jembatan",
   museum: "Museum",
   masjid: "Masjid",
-  rumah_sakit: "Rumah sakit",
+  rumah_sakit: "Rumah Sakit",
   julukan: "Julukan",
 };
 
@@ -398,7 +398,7 @@ export const GARIS_TANPA_KARTU: { judul: string; isi: string; sumber?: string }[
     isi: "Daeng Celak (YDM II) adalah ayah Raja Haji Fisabilillah. Raja Haji juga ayah Raja Jaafar (YDM VI), yang bersama Sultan Abdul Rahman memberi mandat kepada Nong Isa pada 1829. Nong Isa putra Raja Ali, YDM V.",
   },
   {
-    judul: "Generasi akhir Riau-Lingga",
+    judul: "Generasi Akhir Riau-Lingga",
     isi: "Embung Fatimah istri YDM X Raja Muhammad Yusuf dan ibu Sultan Abdul Rahman Muazzam Syah II. Raja Ali Kelana putra Raja Muhammad Yusuf, jadi saudara seayah Abdul Rahman II. Batin Limat menyatakan kesetiaan kepada Abdul Rahman II saat pemakzulan 1911. Tengku Sulung panglima yang setia kepada Sultan Mahmud Muzaffar Syah, ayah Embung Fatimah, setelah sultan itu dimakzulkan pada 1857.",
   },
   {
@@ -415,7 +415,7 @@ export const GARIS_TANPA_KARTU: { judul: string; isi: string; sumber?: string }[
     isi: "Hang Mahmud dan Dang Merdu orang tua Hang Tuah. Hang Jebat dan Dang Wangi orang tua Hang Nadim (versi Sejarah Melayu). Hang Tuah dan Hang Nadim sama-sama bergelar Laksamana.",
   },
   {
-    judul: "Riau daratan",
+    judul: "Riau Daratan",
     isi: "Tuanku Tambusai dan Sultan Zainal Abidin sama-sama berasal dari Tambusai, Rokan Hulu. Narasinga II dari Indragiri melawan Portugis pada masa yang sama dengan perang Hang Nadim.",
   },
 ];

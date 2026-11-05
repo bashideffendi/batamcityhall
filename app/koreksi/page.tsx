@@ -23,7 +23,7 @@ export default async function Koreksi({ searchParams }: Props) {
   const jenisAwal = JENIS_KOREKSI.find((j) => j.nilai === q.jenis)?.nilai ?? "data_salah";
 
   return (
-    <div className="bch-page bch-tk-halaman">
+    <div className="bch-page bch-baca bch-tk-halaman">
       <h1>Kirim Koreksi</h1>
       <p className="bch-lede">Laporkan tempat yang tutup, pindah, berganti nomor, atau salah titik di peta.</p>
 

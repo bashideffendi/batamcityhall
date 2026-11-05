@@ -113,6 +113,7 @@ export function gayaJalan(
       source: SUMBER_TITIK,
       layout: {
         "icon-image": ["get", "ikon"],
+        "icon-size": ["interpolate", ["linear"], ["zoom"], 9, 0.45, 11, 0.6, 13, 1],
         "icon-allow-overlap": true,
         "icon-ignore-placement": true,
       },
@@ -121,7 +122,7 @@ export function gayaJalan(
       id: "jl-titik-nama",
       type: "symbol",
       source: SUMBER_TITIK,
-      minzoom: 9.5,
+      minzoom: 11.5,
       layout: {
         "text-field": ["get", "nama"],
         "text-font": [FONT.poi],

@@ -332,7 +332,7 @@ export const pengantarPublik = (teks: string) => panjangkanSingkatan(teks);
 /** Satu label per kartu. Tari Jogi: keberadaannya tercatat, sejarahnya belum, jadi labelnya yang lebih hati-hati. */
 function labelStatusTradisi(status: string): { teks: string; nada: "ok" | "caution" } {
   if (status.startsWith("Tercatat") && !status.includes("sejarahnya")) return { teks: "Tercatat", nada: "ok" };
-  return { teks: "Belum terverifikasi", nada: "caution" };
+  return { teks: "Belum Terverifikasi", nada: "caution" };
 }
 
 const TRADISI_DI_KALENDER: Record<string, string> = {
@@ -365,7 +365,7 @@ export function daftarTradisi(): TradisiPublik[] {
 function labelStatusKomunitas(status: string): { teks: string; nada: "ok" | "caution" } {
   return status.startsWith("Tercatat")
     ? { teks: "Tercatat", nada: "ok" }
-    : { teks: "Belum terverifikasi", nada: "caution" };
+    : { teks: "Belum Terverifikasi", nada: "caution" };
 }
 
 /**

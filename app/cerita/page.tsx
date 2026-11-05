@@ -1,36 +1,47 @@
 import type { Metadata } from "next";
-import DaftarNomor from "@/components/site/DaftarNomor";
-import PembukaLoket from "@/components/site/PembukaLoket";
-
-const LEDE = "Kenali Batam lewat sejarah, kampung tua, nama jalan, budaya Melayu, dan kamus.";
+import Image from "next/image";
+import Link from "next/link";
+import KisiPintu from "@/components/site/KisiPintu";
+import PembukaBagian from "@/components/site/PembukaBagian";
+import { TULISAN } from "@/features/jurnal/data";
 
 export const metadata: Metadata = {
-  title: "Cerita dan Budaya",
-  description: LEDE,
+  title: "Sejarah dan Budaya",
+  description: "Sejarah Batam, kampung tua, nama jalan, budaya Melayu, kamus, dan angka kota.",
 };
 
 // Batam Dulu dan Sekarang disembunyikan sampai ada foto berizin (pedoman bagian 6).
 const PINTU = [
-  { href: "/cerita/sejarah", nama: "Sejarah Batam" },
-  { href: "/cerita/kampung-tua", nama: "Kampung Tua" },
-  { href: "/cerita/nama-jalan", nama: "Siapa di Balik Nama Jalan" },
-  { href: "/cerita/budaya", nama: "Budaya Melayu" },
-  { href: "/cerita/kalender", nama: "Kalender Acara" },
-  { href: "/cerita/kamus", nama: "Kamus Melayu Kepri dan Bahasa Batam" },
-  { href: "/cerita/komunitas", nama: "Komunitas" },
-  { href: "/cerita/angka", nama: "Batam dalam Angka" },
+  { href: "/cerita/sejarah", nama: "Sejarah Batam", ket: "Dari pulau pesisir sampai kota sejuta jiwa" },
+  { href: "/cerita/kampung-tua", nama: "Kampung Tua", ket: "Asal-usul dan penduduk awal" },
+  { href: "/cerita/nama-jalan", nama: "Nama Jalan", ket: "Siapa di balik nama jalan di Batam" },
+  { href: "/cerita/budaya", nama: "Budaya Melayu", ket: "Tradisi, busana, dan kuliner acara" },
+  { href: "/cerita/kamus", nama: "Kamus", ket: "Melayu Kepri dan bahasa sehari-hari Batam" },
+  { href: "/cerita/angka", nama: "Batam dalam Angka", ket: "Penduduk, wisatawan, dan investasi" },
+  { href: "/kartu-pos", nama: "Kartu Pos", ket: "Pilih desain, tulis pesan, lalu cetak" },
 ];
 
-export default function CeritaBudaya() {
+export default function SejarahBudaya() {
+  const pilihan = TULISAN[0];
   return (
     <div className="bch-page">
-      <PembukaLoket nomor="05" lede={LEDE} />
-      <section className="bch-seksi" aria-labelledby="isi-loket">
-        <h2 id="isi-loket" className="bch-kicker bch-kepala-penanda">
-          Isi bagian ini
-        </h2>
-        <DaftarNomor isi={PINTU} />
-      </section>
+      <PembukaBagian id="budaya" />
+      <div className="bch-seksi-rapat">
+        <KisiPintu isi={PINTU} />
+      </div>
+      {pilihan && (
+        <section className="bch-seksi-rapat bch-sorotan" aria-labelledby="sb-pilihan">
+          <Image className="bch-grafis" src={pilihan.gambar} alt="" width={720} height={480} unoptimized loading="lazy" />
+          <div>
+            <p className="bch-kicker m-0">Dari Jurnal</p>
+            <h2 id="sb-pilihan">{pilihan.judul}</h2>
+            <p>{pilihan.ringkasan}</p>
+            <Link href={`/jurnal/${pilihan.slug}`} className="bch-aksi" prefetch={false}>
+              Selengkapnya →
+            </Link>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

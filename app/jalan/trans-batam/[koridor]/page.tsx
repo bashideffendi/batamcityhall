@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import TautanKirim from "@/components/site/TautanKirim";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import DiagramSkematik, { gayaKoridor } from "@/features/jalan/DiagramSkematik";
 import { kapital } from "@/features/jalan/feri-terakhir";
 import InfoPraktisTrans from "@/features/jalan/InfoPraktisTrans";
-import JalanNav from "@/features/jalan/JalanNav";
 import StripMap from "@/features/jalan/StripMap";
 import {
   arahStrip,
@@ -26,8 +26,6 @@ import {
   teksSelang,
   transitKoridor,
 } from "@/features/jalan/trans-data";
-
-export const dynamicParams = false;
 
 export function generateStaticParams() {
   return KORIDOR.map((k) => ({ koridor: slugKoridor(k.id) }));
@@ -55,12 +53,9 @@ export default async function HalamanKoridor({ params }: { params: Promise<{ kor
   const lencana = lencanaKoridor(k);
   const Kepala = (
     <>
-      <p className="bch-kicker m-0">
-        <Link href="/jalan/trans-batam" prefetch={false}>
-          Trans Batam
-        </Link>{" "}
-        · {k.id}
-      </p>
+      <nav className="bch-remah" aria-label="Remah roti">
+        <Link href="/jalan/trans-batam" prefetch={false}>Trans Batam</Link> / {k.id}
+      </nav>
       <h1
         className="mt-2 jl-k jl-judul-koridor"
         style={gayaKoridor(k)}
@@ -80,7 +75,6 @@ export default async function HalamanKoridor({ params }: { params: Promise<{ kor
           ))}
         </div>
       )}
-      <JalanNav aktif="/jalan/trans-batam" />
     </>
   );
 
@@ -116,13 +110,13 @@ export default async function HalamanKoridor({ params }: { params: Promise<{ kor
         <dd>{ruteKoridor(k)}</dd>
         <dt>Melewati</dt>
         <dd>{k.dari_tabel?.jalan_kawasan_utama}</dd>
-        <dt>Jam operasi</dt>
+        <dt>Jam Operasi</dt>
         <dd>
           <span className="bch-data">{jam}</span>, {k.hari}
         </dd>
         {selang && (
           <>
-            <dt>Selang keberangkatan</dt>
+            <dt>Selang Keberangkatan</dt>
             <dd>{selang}</dd>
           </>
         )}
@@ -137,11 +131,11 @@ export default async function HalamanKoridor({ params }: { params: Promise<{ kor
           <span className="bch-data">{INFO.tarif.umum}</span>, pelajar{" "}
           <span className="bch-data">{INFO.tarif.pelajar}</span>
         </dd>
-        <dt>Cara bayar</dt>
+        <dt>Cara Bayar</dt>
         <dd>nontunai (BRIZZI, QRIS, dan aplikasi bank)</dd>
         {jumlah && (
           <>
-            <dt>Jumlah halte</dt>
+            <dt>Jumlah Halte</dt>
             <dd>{jumlah}</dd>
           </>
         )}
@@ -209,15 +203,15 @@ export default async function HalamanKoridor({ params }: { params: Promise<{ kor
             <table className="bch-table bch-tabel-tumpuk">
               <thead>
                 <tr>
-                  <th scope="col">Tujuan penting</th>
-                  <th scope="col">Halte terdekat</th>
+                  <th scope="col">Tujuan Penting</th>
+                  <th scope="col">Halte Terdekat</th>
                 </tr>
               </thead>
               <tbody>
                 {konektivitas.map((c) => (
                   <tr key={c.titik_penting}>
-                    <td data-label="Tujuan penting">{c.titik_penting}</td>
-                    <td data-label="Halte terdekat">{c.halte_terdekat}</td>
+                    <td data-label="Tujuan Penting">{c.titik_penting}</td>
+                    <td data-label="Halte Terdekat">{c.halte_terdekat}</td>
                   </tr>
                 ))}
               </tbody>
@@ -235,9 +229,9 @@ export default async function HalamanKoridor({ params }: { params: Promise<{ kor
 
       <p className="jl-catatan-kecil mt-7">
         {CATATAN_DAFTAR_HALTE}{" "}
-        <Link href="/koreksi" prefetch={false}>
-          Kirim koreksi
-        </Link>
+        <TautanKirim href="/koreksi" prefetch={false}>
+          Kirim Koreksi
+        </TautanKirim>
       </p>
     </div>
   );

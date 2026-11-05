@@ -552,7 +552,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
               {note && <div className="cctv-note">{note}</div>}
               {showRetry && (
                 <button className="cctv-retry" onClick={retry}>
-                  Muat ulang
+                  Muat Ulang
                 </button>
               )}
             </div>

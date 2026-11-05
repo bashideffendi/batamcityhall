@@ -90,10 +90,6 @@ export default function CamDirectory({ dead, onPick }: Props) {
             </span>
             Abu-abu: kamera tidak aktif
           </li>
-          <li>
-            <span className="cam-cluster">3</span>
-            Angka: beberapa kamera berdekatan
-          </li>
         </ul>
         <p className="d-note">
           Siaran memakai sekitar {CCTV_MB_PER_MIN} MB per menit dan berhenti saat tab ditutup atau disembunyikan.

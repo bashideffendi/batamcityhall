@@ -44,7 +44,6 @@ import { places as tempatMakan, terapkanKoordinat } from "@/features/makan/lib/d
 import { JENIS_PETA } from "@/components/map/icons";
 import { jenisDari } from "@/features/peta/jenis-tempat";
 import { pinKeGeoJson, type PinPeta } from "@/features/peta/lapisan";
-import { baseStyle } from "@/features/peta/style";
 
 const contoh = (lain: Partial<Place>): Place => ({ ...TEMPAT[0], atribut: {}, kontak: {}, ...lain });
 
@@ -66,9 +65,9 @@ describe("kategori direktori", () => {
 
   it("pemerintahan dan layanan publik digabung tanpa mengubah data sumber", () => {
     const k = kategoriTampil("layanan_publik");
-    expect(k?.nama).toBe("Kantor dan layanan publik");
+    expect(k?.nama).toBe("Kantor dan Layanan Publik");
     expect(kategoriTampil("pemerintahan")).toBe(k);
-    expect(namaKategori("layanan_publik")).toBe("Kantor dan layanan publik");
+    expect(namaKategori("layanan_publik")).toBe("Kantor dan Layanan Publik");
     expect(TEMPAT.some((p) => p.kategori === "layanan_publik")).toBe(true);
     expect(barisIndeks(TEMPAT.find((p) => p.kategori === "layanan_publik") as Place).k).toBe("pemerintahan");
   });
@@ -83,8 +82,8 @@ describe("kategori direktori", () => {
   });
 
   it("nama label menjadi judul mengikuti kaidah judul", () => {
-    expect(kaidahJudul("Darurat dan keamanan")).toBe("Darurat dan Keamanan");
-    expect(kaidahJudul("Kantor dan layanan publik")).toBe("Kantor dan Layanan Publik");
+    expect(kaidahJudul("Darurat dan Keamanan")).toBe("Darurat dan Keamanan");
+    expect(kaidahJudul("Kantor dan Layanan Publik")).toBe("Kantor dan Layanan Publik");
     expect(kaidahJudul("Lain-lain")).toBe("Lain-Lain");
     expect(kaidahJudul("RS Tipe B")).toBe("RS Tipe B");
   });
@@ -104,9 +103,9 @@ describe("kategori direktori", () => {
 
   it("label subkategori manusiawi", () => {
     expect(labelSub("rs_tipe_b")).toBe("RS Tipe B");
-    expect(labelSub("hotel_non_bintang")).toBe("Hotel nonbintang");
-    expect(labelSub("mie-tarempa")).toBe("Mi tarempa dan luti gendang");
-    expect(labelSub("kantor_pos_cabang")).toBe("Kantor pos cabang");
+    expect(labelSub("hotel_non_bintang")).toBe("Hotel Nonbintang");
+    expect(labelSub("mie-tarempa")).toBe("Mie Tarempa dan Luti Gendang");
+    expect(labelSub("kantor_pos_cabang")).toBe("Kantor Pos Cabang");
     expect(labelSub("vihara")).toBe("Wihara");
     expect(labelSub(null)).toBe("Lainnya");
   });
@@ -236,7 +235,8 @@ describe("data sensitif tidak sampai ke warga", () => {
 
   it("tidak ada tanda dan atau kata tidak baku di label dan nilai atribut", () => {
     for (const p of TEMPAT) {
-      expect(labelSub(p.subkategori), p.id).not.toMatch(/&|\bmie\b|\bcafe\b|seafood|vihara/i);
+      // Kuliner memakai nama kategori pemilik, termasuk Mie dan Seafood (PEDOMAN, koreksi rombak butir 13).
+      if (p.kategori !== "kuliner") expect(labelSub(p.subkategori), p.id).not.toMatch(/&|\bmie\b|\bcafe\b|seafood|vihara/i);
       for (const a of atributPublik(p)) expect(`${a.label} ${a.nilai}`, p.id).not.toMatch(/&|\bcafe\b|seafood|booking/i);
     }
   });
@@ -265,7 +265,7 @@ describe("kontak", () => {
 
 describe("baris dan kartu tempat", () => {
   it("baris status: IGD didahulukan, lalu jam, lalu kosong", () => {
-    expect(statusBaris({ atribut: { igd_24jam: true }, jam_layanan: "08.00-14.00" })).toBe("IGD 24 jam");
+    expect(statusBaris({ atribut: { igd_24jam: true }, jam_layanan: "08.00-14.00" })).toBe("IGD 24 Jam");
     expect(statusBaris({ atribut: {}, jam_layanan: "08.00-14.00" })).toBe("08.00—14.00 WIB");
     expect(statusBaris({ atribut: {}, jam_layanan: null })).toBeNull();
   });
@@ -399,7 +399,7 @@ describe("pin peta", () => {
     expect(jenisDari("pemerintahan", "kantor_walikota")).toBeNull();
     expect(jenisDari("pemakaman", null)).toBeNull();
     expect(jenisDari("jasa", "bengkel")).toBeNull();
-    expect(jenisDari("kuliner", "seafood-gonggong")).toBe("seafood");
+    expect(jenisDari("kuliner", "seafood")).toBe("seafood");
     expect(jenisDari("akomodasi", null)).toBe("hotel");
     expect(jenisDari("transportasi", "pelabuhan_internasional")).toBe("feri");
   });

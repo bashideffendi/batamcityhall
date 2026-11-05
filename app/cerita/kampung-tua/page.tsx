@@ -1,4 +1,6 @@
 import { kaidahJudul } from "@/lib/judul";
+import PembukaHalaman from "@/components/site/PembukaHalaman";
+import TautanKirim from "@/components/site/TautanKirim";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { NavKampungTua } from "@/features/kampung-tua/Bagian";
@@ -9,7 +11,6 @@ import {
   KAMPUNG,
   KISAH_NAMA,
   LAPISAN,
-  labelLokasi,
   type Kampung,
 } from "@/features/kampung-tua/data";
 import { IkonCeritaRakyat } from "@/features/kampung-tua/Ikon";
@@ -45,18 +46,37 @@ export default function KampungTua() {
 
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Cerita dan Budaya</p>
-      <h1 className="mt-2">Kampung Tua</h1>
-      <p className="bch-lede">{LEDE}</p>
+      <PembukaHalaman judul="Kampung Tua" gambar="kampung-tua">
+        <p className="bch-lede">{LEDE}</p>
+      </PembukaHalaman>
       <p className="bch-note mt-3">Halaman ini tidak memuat batas wilayah, luas, atau status lahan.</p>
       <NavKampungTua aktif="daftar" />
 
       <PetaKampungTuaMuat penanda={penanda} lapisan={infoLapisan} />
 
+      <section id="apa-itu" className="kt-bagian bch-prose" aria-labelledby="judul-apa-itu">
+      <h2 id="judul-apa-itu">Apa Itu Kampung Tua</h2>
+      <p>
+        Perda No. 2/2004 (RTRW 2004—2014), menurut kajian STPN dan Batam Pos: “kelompok rumah yang berfungsi sebagai
+        lingkungan tempat tinggal penduduk asli Kota Batam sebelum tahun 1970 saat Batam mulai dibangun, yang
+        mengandung nilai sejarah, budaya tempatan, dan atau agama”. Perda No. 3/2021 (RTRW 2021—2041), menurut Batam
+        Pos, tidak memuat ketentuan spesifik soal perkampungan tua.
+      </p>
+      <p>Kriteria menurut surat Dinas Pertanahan Pemko, 25 April 2005, via STPN:</p>
+      <ul>
+        <li>sudah ada sebelum Otorita Batam berdiri;</li>
+        <li>belum pernah diganti rugi;</li>
+        <li>
+          punya bukti berupa surat lama, tapak kampung, situs purbakala, kuburan tua, tanaman budidaya berumur tua,
+          bangunan bernilai budaya, atau silsilah keluarga.
+        </li>
+      </ul>
+      </section>
+
       <section id="daftar" className="kt-bagian" aria-labelledby="judul-daftar">
         <h2 id="judul-daftar">Semua Kampung</h2>
         <p className="bch-measure">
-          Daftar {KAMPUNG.length} kampung, {penanda.length} di antaranya ada di peta.
+          Daftar {KAMPUNG.length} kampung, {penanda.length} di antaranya ada di peta. Sebagian besar titiknya masih perkiraan.
         </p>
         {LAPISAN.map((l) => {
           const isi = KAMPUNG.filter((k) => k.lapisan === l.id);
@@ -71,7 +91,7 @@ export default function KampungTua() {
                   <h4 className="kt-kecamatan">{kec}</h4>
                   <ul className="kt-daftar">
                     {anggota.map((k) => {
-                      const ket = [k.kelurahan, labelLokasi(k)].filter(Boolean).join(" · ");
+                      const ket = k.kelurahan;
                       return (
                         <li key={k.id} data-kampung={k.id}>
                           <Link href={`/cerita/kampung-tua/${k.id}`} prefetch={false}>
@@ -80,7 +100,7 @@ export default function KampungTua() {
                               {k.cerita_rakyat && (
                                 <span className="bch-badge" data-tone="info">
                                   <IkonCeritaRakyat ukuran={12} />
-                                  Cerita rakyat
+                                  Cerita Rakyat
                                 </span>
                               )}
                             </span>
@@ -119,7 +139,7 @@ export default function KampungTua() {
                     {b.konflik && (
                       <span className="bch-sel-kecil">
                         <span className="bch-badge" data-tone="caution">
-                          Berbeda versi
+                          Berbeda Versi
                         </span>
                       </span>
                     )}
@@ -146,22 +166,6 @@ export default function KampungTua() {
             <li>
               Pulau sekitar: belum ada daftar terbuka. Kami hanya menampilkan situs yang dasarnya jelas, misalnya cagar
               budaya SK Wali Kota No. 483/2022.
-            </li>
-          </ul>
-          <h3>Apa Itu Kampung Tua</h3>
-          <p>
-            Perda No. 2/2004 (RTRW 2004—2014), menurut kajian STPN dan Batam Pos: “kelompok rumah yang berfungsi sebagai
-            lingkungan tempat tinggal penduduk asli Kota Batam sebelum tahun 1970 saat Batam mulai dibangun, yang
-            mengandung nilai sejarah, budaya tempatan, dan atau agama”. Perda No. 3/2021 (RTRW 2021—2041), menurut Batam
-            Pos, tidak memuat ketentuan spesifik soal perkampungan tua.
-          </p>
-          <p>Kriteria menurut surat Dinas Pertanahan Pemko, 25 April 2005, via STPN:</p>
-          <ul>
-            <li>sudah ada sebelum Otorita Batam berdiri;</li>
-            <li>belum pernah diganti rugi;</li>
-            <li>
-              punya bukti berupa surat lama, tapak kampung, situs purbakala, kuburan tua, tanaman budidaya berumur tua,
-              bangunan bernilai budaya, atau silsilah keluarga.
             </li>
           </ul>
         </div>
@@ -199,7 +203,7 @@ export default function KampungTua() {
       </section>
 
       <p className="bch-measure mt-5" data-catatan-data>
-        Data dihimpun pada November 2026. Sebagian lokasi masih perkiraan. <Link href="/koreksi">Kirim koreksi</Link>
+        Data dihimpun pada November 2026. Sebagian lokasi masih perkiraan. <TautanKirim href="/koreksi">Kirim Koreksi</TautanKirim>
       </p>
     </div>
   );

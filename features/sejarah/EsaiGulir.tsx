@@ -39,7 +39,7 @@ function PanelPoros({ langkah }: { langkah: LangkahEsai }) {
   );
 }
 
-export default function EsaiGulir({ langkah, judul }: { langkah: LangkahEsai[]; judul: Record<string, string> }) {
+export default function EsaiGulir({ langkah }: { langkah: LangkahEsai[] }) {
   const [aktif, setAktif] = useState(0);
   const wadah = useRef<HTMLDivElement>(null);
 
@@ -74,15 +74,6 @@ export default function EsaiGulir({ langkah, judul }: { langkah: LangkahEsai[]; 
                 </Link>
               </p>
             )}
-            <p className="sj-kecil m-0">
-              Lihat di garis waktu:{" "}
-              {l.rujukan.map((id, j) => (
-                <span key={id}>
-                  {j > 0 && ", "}
-                  <a href={`#${id}`}>{judul[id]}</a>
-                </span>
-              ))}
-            </p>
           </section>
         ))}
       </div>

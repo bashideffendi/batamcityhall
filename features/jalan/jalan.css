@@ -6,11 +6,6 @@
   --warna: var(--k-malam);
 }
 
-.jl-nav a[aria-current="page"] {
-  border-color: var(--bch-ink);
-  font-weight: 600;
-}
-
 .jl-tautan-resmi {
   display: inline-flex;
   align-items: center;
@@ -544,4 +539,55 @@
   .jl-feri-tabel .jl-feri-sel {
     margin-top: 2px;
   }
+}
+
+/* jl-peta-wadah: peta dan pilihan lapisannya tidak melewati lebar halaman */
+.peta.jl-peta,
+.peta.jl-peta + .peta-lapisan,
+.peta.jl-peta ~ .peta-lapisan {
+  box-sizing: border-box;
+  width: calc(100% - 2 * var(--bch-gutter));
+  max-width: calc(var(--bch-wrap) - 2 * var(--bch-gutter));
+  margin-inline: auto;
+}
+.peta.jl-peta {
+  border: 1px solid var(--bch-rule);
+  border-radius: 10px;
+}
+.peta.jl-peta ~ .peta-lapisan {
+  padding-inline: 0;
+  border-bottom: 0;
+}
+@media (max-width: 640px) {
+  .peta.jl-peta {
+    width: 100%;
+    max-width: none;
+    border-inline: 0;
+    border-radius: 0;
+  }
+}
+
+.jl-jadwal-lipat {
+  margin-top: var(--bch-space-2);
+}
+.jl-jadwal-lipat > summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--bch-link);
+  font-weight: 600;
+  cursor: pointer;
+}
+.jl-kartu-rute {
+  scroll-margin-top: var(--bch-space-4);
+}
+.jl-caption {
+  display: block;
+  width: auto;
+  text-align: left;
+}
+.jl-tabel-lipat > summary {
+  min-height: 44px;
+  font: 500 1.25rem/1.25 var(--bch-font-display);
+  cursor: pointer;
 }

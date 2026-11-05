@@ -46,7 +46,7 @@ export default async function Mural({ searchParams }: Props) {
         </p>
       </div>
       <noscript>
-        <p className="bch-note">Mural butuh JavaScript. Semua tempatnya tetap ada di direktori Info Warga.</p>
+        <p className="bch-note">Mural butuh JavaScript. Semua tempatnya tetap ada di direktori Layanan Warga.</p>
       </noscript>
       <MuralHalaman
         dasar={DASAR_TILE}

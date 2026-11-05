@@ -1,0 +1,355 @@
+import { expect, test, type Page } from "@playwright/test";
+
+// Tes untuk rombak situs, November 2026: menu 11 bagian, pencarian, Food Court, Jurnal, Kartu Pos,
+// peta tanpa klaster, dan alur admin Jurnal. Semua /api/* ditiru supaya tidak memanggil MSS, BMKG, atau feed berita.
+
+const SANDI = process.env.ADMIN_MODE_CONTOH ?? "";
+
+test.beforeEach(async ({ page }) => {
+  await page.route("**/api/**", (r) => {
+    const url = r.request().url();
+    // Alur admin memakai API sendiri; selebihnya ditiru.
+    if (/\/api\/(admin|konten|tukang|unggah)/.test(url)) return r.fallback();
+    if (url.includes("/api/frames")) return r.fulfill({ json: { frames: [], stale: true, echo: null } });
+    if (url.includes("/api/ofs-frame"))
+      return r.fulfill({ json: { baserun: "", frames: [], nowIndex: 0, fallback: true, source: "blind", ageH: 0, expired: false } });
+    if (url.includes("/api/perairan")) return r.fulfill({ json: { warns: [] } });
+    if (url.includes("/api/gempa")) return r.fulfill({ json: { status: "ok", diambil: "", gempa: [] } });
+    if (url.includes("/api/peringatan-cuaca")) return r.fulfill({ json: { status: "ok", diambil: "", peringatan: [] } });
+    if (url.includes("/api/radar-citra")) return r.fulfill({ status: 404, body: "" });
+    if (url.includes("/api/berita")) return r.fulfill({ json: { item: [], sumber: [] } });
+    return r.fulfill({ status: 503, json: {} });
+  });
+});
+
+const BAGIAN_URUT = [
+  "Cuaca",
+  "CCTV",
+  "Transportasi",
+  "Makanan",
+  "Berita",
+  "Jurnal",
+  "Things to Do",
+  "Komunitas",
+  "Tukang Langganan",
+  "Layanan Warga",
+  "Sejarah dan Budaya",
+];
+
+test.describe("menu", () => {
+  test("bagian tampil berurutan, tanpa nomor", async ({ page }, info) => {
+    await page.goto("/");
+    // Menu lebar disembunyikan di ponsel; di sana daftar yang sama ada di menu geser.
+    if (info.project.name === "hp") await page.getByRole("button", { name: "Buka menu" }).click();
+    const nav = info.project.name === "hp" ? page.locator("#bch-toc .bch-toc-bagian") : page.locator('nav[aria-label="Bagian situs"] a');
+    await expect(nav.first()).toBeAttached();
+    // Info Loker hanya tampil bila basis data tersambung.
+    const label = (await nav.allTextContents()).map((t) => t.trim());
+    expect(label.filter((t) => t !== "Info Loker")).toEqual(BAGIAN_URUT);
+    expect(label.length).toBeLessThanOrEqual(BAGIAN_URUT.length + 1);
+  });
+
+  test("peta transportasi di ujung submenu, bukan di antara Trans Batam dan Feri", async ({ page }) => {
+    await page.goto("/jalan/trans-batam");
+    const sub = page.locator('nav.bch-submenu[aria-label="Transportasi"] a');
+    const label = (await sub.allTextContents()).map((t) => t.trim());
+    expect(label).toEqual(["Trans Batam", "Feri", "Pompong", "Panduan Menyeberang", "Peta Transportasi"]);
+    expect(label.at(-1)).toBe("Peta Transportasi");
+    expect(label.indexOf("Peta Transportasi")).not.toBe(label.indexOf("Trans Batam") + 1);
+    await expect(sub.last()).toHaveAttribute("href", "/jalan/peta");
+  });
+
+  test("tidak ada istilah loket, nomor menu, atau bch-tab di beranda dan bagian utama", async ({ page }) => {
+    for (const h of ["/", "/jalan", "/info", "/cerita", "/makan"]) {
+      await page.goto(h);
+      await expect(page.locator(".bch-tab")).toHaveCount(0);
+      const teks = await page.locator("body").innerText();
+      expect(teks, h).not.toMatch(/\bLoket 0\d\b|ISI LOKET|Loket ini memuat/i);
+    }
+  });
+
+  test("baris darurat 112 110 113 115 119 ada di puncak halaman", async ({ page }) => {
+    for (const h of ["/", "/tentang", "/jalan/peta"]) {
+      await page.goto(h);
+      const baris = page.locator(".bch-darurat");
+      await expect(baris).toBeVisible();
+      const nomor = (await baris.locator("li b").allTextContents()).map((t) => t.trim());
+      expect(nomor).toEqual(["112", "110", "113", "115", "119"]);
+    }
+  });
+
+  test("ikon cari di kepala menuju /cari", async ({ page }) => {
+    await page.goto("/tentang");
+    await page.getByRole("link", { name: "Cari", exact: true }).click();
+    await expect(page).toHaveURL(/\/cari$/);
+    await expect(page.getByRole("searchbox", { name: "Cari di Batam City Hall" })).toBeFocused();
+  });
+});
+
+test.describe("pencarian /cari", () => {
+  async function cari(page: Page, kata: string) {
+    await page.goto("/cari");
+    const kotak = page.getByRole("searchbox", { name: "Cari di Batam City Hall" });
+    // Indeks tempat dimuat setelah halaman terbuka; ketik ulang bila baru siap.
+    await expect(page.locator(".bch-cari")).toBeVisible();
+    await kotak.fill(kata);
+    return page.locator(".bch-cari-hasil");
+  }
+
+  test('"igd" menemukan rumah sakit', async ({ page }) => {
+    const hasil = await cari(page, "igd");
+    await expect(hasil).toContainText(/Rumah Sakit|RSUD|RS /i, { timeout: 15_000 });
+    await expect(hasil.locator("a").first()).toBeVisible();
+  });
+
+  test('"pujasera" menemukan Food Court', async ({ page }) => {
+    const hasil = await cari(page, "pujasera");
+    await expect(hasil.locator('a[href="/makan/food-court"]')).toBeVisible();
+  });
+
+  test('"food court" menemukan halamannya', async ({ page }) => {
+    const hasil = await cari(page, "food court");
+    await expect(hasil.locator('a[href="/makan/food-court"]')).toBeVisible();
+  });
+
+  test("kata yang tidak ada tidak menghasilkan tautan palsu", async ({ page }) => {
+    const hasil = await cari(page, "zzqxkvw");
+    await expect(hasil.locator("a")).toHaveCount(0);
+  });
+});
+
+test.describe("Food Court", () => {
+  test("16 baris, tiap baris punya Petunjuk Arah ke Google Maps, Lubuk Baja lebih dulu", async ({ page }) => {
+    await page.goto("/makan/food-court");
+    const baris = page.locator("[data-food-court]");
+    await expect(baris).toHaveCount(16);
+    for (const el of await baris.all()) {
+      const tautan = el.getByRole("link", { name: "Petunjuk Arah" });
+      await expect(tautan).toHaveCount(1);
+      await expect(tautan).toHaveAttribute("href", /^https:\/\/(www\.)?google\.com\/maps|^https:\/\/maps\.google\.com|^https:\/\/maps\.app\.goo\.gl/);
+      await expect(tautan).toHaveAttribute("rel", /noopener/);
+    }
+    const kelompok = await page.locator("h2.bch-judul-seksi").allTextContents();
+    expect(kelompok[0]).toContain("Lubuk Baja");
+  });
+
+  test("windsor-foodcourt berlabel Alamat Perlu Dicek, tanpa rating", async ({ page }) => {
+    await page.goto("/makan/food-court");
+    await expect(page.locator('[data-food-court="windsor-foodcourt"]')).toContainText("Alamat Perlu Dicek");
+    const teks = await page.locator("main").innerText();
+    expect(teks).not.toMatch(/★|bintang|rating|ulasan/i);
+    await expect(page.locator("main")).toContainText("Belum kami datangi satu per satu");
+  });
+});
+
+test.describe("Jurnal", () => {
+  test("tulisan punya judul, penulis, tanggal, dan paragraf rata kanan-kiri", async ({ page }) => {
+    await page.goto("/jurnal/nongsa-dan-mandat-1829");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Nongsa dan Mandat 18 Desember 1829");
+    await expect(page.locator(".bch-tulisan-byline")).toContainText("Redaksi Batam City Hall");
+    await expect(page.locator(".bch-tulisan-byline time")).toHaveAttribute("datetime", "2026-11-05");
+    await expect(page.locator(".bch-tulisan-byline time")).toContainText("5 November 2026");
+    const p = page.locator(".bch-tulisan-isi p");
+    expect(await p.count()).toBeGreaterThan(1);
+    expect(await p.first().evaluate((el) => getComputedStyle(el).textAlign)).toBe("justify");
+    // Narasi, bukan poin-poin.
+    await expect(page.locator(".bch-tulisan-isi li")).toHaveCount(0);
+  });
+});
+
+test.describe("Kartu Pos", () => {
+  test("enam desain dan tombol Cetak", async ({ page }) => {
+    await page.goto("/kartu-pos");
+    await expect(page.getByRole("heading", { level: 1, name: "Kartu Pos" })).toBeVisible();
+    await expect(page.locator('input[name="desain"]')).toHaveCount(6);
+    await expect(page.getByRole("button", { name: "Cetak" })).toBeVisible();
+  });
+
+  test("pesan tampil di pratinjau dan memilih desain berpindah pilihan", async ({ page }) => {
+    await page.goto("/kartu-pos");
+    await page.getByRole("textbox", { name: "Pesan" }).fill("Ombak tenang, feri jalan.");
+    await expect(page.locator(".kp-pratinjau")).toContainText("Ombak tenang, feri jalan.");
+    const kedua = page.locator('input[name="desain"]').nth(1);
+    await kedua.check();
+    await expect(kedua).toBeChecked();
+  });
+});
+
+test.describe("beranda dan peta", () => {
+  test("tidak ada klaster berangka, panel Tempat tertutup saat awal", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator(".peta, .maplibregl-map").first()).toBeAttached({ timeout: 45_000 });
+    await expect(page.locator('[class*="cluster"], [class*="klaster"]')).toHaveCount(0);
+    await expect(page.locator("[data-panel-tempat]")).toHaveCount(0);
+    const tombol = page.getByRole("button", { name: /^Tempat/ }).first();
+    await expect(tombol).toHaveAttribute("aria-expanded", "false");
+    await tombol.click();
+    await expect(tombol).toHaveAttribute("aria-expanded", "true");
+    await expect(page.locator("[data-panel-tempat]")).toBeVisible();
+  });
+
+  test("peta tidak memakai sumber atau lapisan klaster", async ({ page }) => {
+    await page.goto("/");
+    const berkas = await page.evaluate(() =>
+      performance.getEntriesByType("resource").map((e) => e.name),
+    );
+    expect(berkas.filter((n) => /cluster|klaster/i.test(n))).toEqual([]);
+  });
+});
+
+test.describe("tanpa luber horizontal", () => {
+  for (const h of ["/cuaca/hujan", "/jalan/peta", "/cctv", "/makan/peta"]) {
+    test(`${h} tidak meluber ke samping`, async ({ page }) => {
+      await page.goto(h);
+      await expect(page.locator("main")).toBeVisible();
+      await page.waitForTimeout(1500);
+      const { lebar, jendela } = await page.evaluate(() => ({
+        lebar: document.documentElement.scrollWidth,
+        jendela: window.innerWidth,
+      }));
+      expect(lebar, `scrollWidth ${lebar} > innerWidth ${jendela}`).toBeLessThanOrEqual(jendela);
+    });
+  }
+});
+
+test.describe("alamat lama dialihkan", () => {
+  const PETA: [string, RegExp][] = [
+    ["/cuaca/cctv", /\/cctv$/],
+    ["/info/berita", /\/berita$/],
+    ["/cerita/kalender", /\/things-to-do$/],
+    ["/cerita/komunitas", /\/komunitas$/],
+    ["/main/kartu-pos", /\/kartu-pos$/],
+  ];
+  for (const [dari, ke] of PETA) {
+    test(`${dari} dialihkan`, async ({ page }) => {
+      await page.goto(dari);
+      await expect(page).toHaveURL(ke);
+    });
+  }
+
+  test("/main, Vibe, dan Singapura atau Nagoya tidak ada lagi", async ({ request }) => {
+    for (const h of ["/main/vibe", "/main/singapura-atau-nagoya"]) {
+      const r = await request.get(h, { maxRedirects: 0 });
+      expect([404, 307, 308], h).toContain(r.status());
+      if (r.status() !== 404) {
+        const t = await request.get(h);
+        expect(t.url(), h).not.toMatch(/vibe|singapura/);
+      }
+    }
+  });
+});
+
+test.describe("admin Jurnal", () => {
+  test.skip(!SANDI, "Butuh ADMIN_MODE_CONTOH");
+
+  test("masuk, buat tulisan, terbitkan, tampil di /jurnal/<alamat>", async ({ page }, info) => {
+    const akhiran = `${Date.now().toString(36)}${Math.floor(Math.random() * 1e4)}${info.project.name}`;
+    const slug = `uji-e2e-${akhiran}`;
+    const judul = `Tulisan Uji ${akhiran}`;
+    const kalimat = `Paragraf pertama untuk ${akhiran}.`;
+
+    await page.goto("/admin/jurnal");
+    await page.getByLabel("Kata sandi").fill(SANDI);
+    await page.getByRole("button", { name: "Masuk" }).click();
+    await expect(page.locator("[data-admin-masuk]")).toBeVisible();
+
+    await page.getByLabel("Judul", { exact: true }).fill(judul);
+    await page.getByLabel("Alamat", { exact: true }).fill(slug);
+    await page.getByLabel("Rubrik").fill("Uji");
+    await page.getByLabel("Ringkasan").fill("Ringkasan uji otomatis.");
+    await page.getByLabel("Isi", { exact: true }).fill(`${kalimat}\n\nParagraf kedua.`);
+    await page.getByLabel("Terbitkan").check();
+    await page.getByRole("button", { name: "Simpan dan Terbitkan" }).click();
+    await expect(page.getByText("Tulisan terbit.")).toBeVisible({ timeout: 20_000 });
+
+    await page.goto(`/jurnal/${slug}`);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(judul);
+    await expect(page.locator(".bch-tulisan-isi")).toContainText(kalimat);
+    await page.goto("/jurnal");
+    await expect(page.getByText(judul)).toBeVisible();
+  });
+});
+
+test.describe("koreksi terakhir", () => {
+  test("paragraf rata kanan-kiri, label tetap rata kiri", async ({ page }) => {
+    await page.goto("/jurnal/nongsa-dan-mandat-1829");
+    const rata = (sel: string) => page.locator(sel).first().evaluate((e) => getComputedStyle(e).textAlign);
+    expect(await rata(".bch-tulisan-isi p")).toBe("justify");
+    expect(await rata(".bch-tulisan-byline")).not.toBe("justify");
+  });
+
+  test("judul peta Cuaca terlihat di layar pertama", async ({ page }) => {
+    for (const alamat of ["/cuaca/hujan", "/cuaca/gelombang", "/cctv"]) {
+      await page.goto(alamat);
+      const bawah = await page.locator("h1").first().evaluate((e) => e.getBoundingClientRect().bottom);
+      expect(bawah).toBeLessThanOrEqual(page.viewportSize()?.height ?? 0);
+    }
+  });
+
+  test("peta dasar gagal: ada pesan, bukan kosong", async ({ page }) => {
+    await page.route("**/tiles/batam.pmtiles", (r) => r.fulfill({ status: 404, body: "" }));
+    await page.goto("/cuaca/hujan");
+    await expect(page.locator(".ll-peta-gagal")).toBeVisible({ timeout: 20_000 });
+  });
+
+  test("alamat lama Cuaca dialihkan", async ({ page }) => {
+    for (const [lama, baru] of [
+      ["/langit-laut/gempa", "/cuaca/gempa"],
+      ["/langit-laut/peringatan", "/cuaca/peringatan"],
+    ]) {
+      await page.goto(lama);
+      await expect(page).toHaveURL(new RegExp(`${baru}$`));
+    }
+  });
+
+  test("satu tombol Saring di setiap lebar", async ({ page }) => {
+    await page.goto("/makan/peta");
+    await expect(page.getByRole("button", { name: /^Saring/ })).toHaveCount(1);
+  });
+
+  test("food court dan tempat makan saling tertaut", async ({ page }) => {
+    await page.goto("/makan/tempat/nomnom-seafood");
+    await expect(page.locator("[data-food-court-tautan]")).toHaveAttribute("href", "/makan/food-court#168-food-court");
+    await page.goto("/makan/food-court");
+    await expect(page.locator('[data-food-court="168-food-court"] a[href="/makan/tempat/nomnom-seafood"]')).toHaveCount(1);
+  });
+});
+
+test.describe("dashboard Info Loker dan Makanan", () => {
+  test.skip(!SANDI, "Butuh ADMIN_MODE_CONTOH");
+
+  test("lowongan dari dashboard tampil di Info Loker", async ({ page }, info) => {
+    const posisi = `Operator Uji ${Date.now().toString(36)}${info.project.name}`;
+    await page.goto("/admin/loker");
+    await page.getByLabel("Kata sandi").fill(SANDI);
+    await page.getByRole("button", { name: "Masuk" }).click();
+    await page.getByLabel("Posisi").fill(posisi);
+    await page.getByLabel("Perusahaan").fill("PT Contoh Uji");
+    await page.getByLabel("Lokasi").fill("Muka Kuning");
+    await page.getByLabel("Cara Melamar").fill("Kirim surat lamaran.");
+    await page.getByRole("button", { name: "Simpan Lowongan" }).click();
+    await expect(page.getByText("Lowongan tampil di Info Loker.")).toBeVisible({ timeout: 20_000 });
+    // Halaman publik memakai ISR: muat pertama sesudah revalidasi boleh masih basi.
+    await expect(async () => {
+      await page.goto("/loker");
+      await expect(page.locator("[data-loker]").filter({ hasText: posisi })).toHaveCount(1, { timeout: 2_000 });
+    }).toPass({ timeout: 20_000 });
+  });
+
+  test("ubah tempat makan: kategori dan food court tersimpan, Terbitkan jujur saat belum tersambung", async ({ page }) => {
+    await page.goto("/admin/makanan");
+    await page.getByLabel("Kata sandi").fill(SANDI);
+    await page.getByRole("button", { name: "Masuk" }).click();
+    await page.getByLabel("Tempat", { exact: true }).selectOption("golden-prawn-933");
+    await expect(page.getByLabel("Nama")).toHaveValue("Golden Prawn 933");
+    await page.getByLabel("Food Court").selectOption("a2-food-court");
+    await page.getByLabel("AYCE").check();
+    await page.getByRole("button", { name: "Simpan Data" }).click();
+    await expect(page.getByText("Tersimpan. Tayang setelah Terbitkan Perubahan.")).toBeVisible({ timeout: 20_000 });
+    await page.getByRole("button", { name: "Terbitkan Perubahan" }).click();
+    await expect(page.getByText(/belum tersambung ke Railway/)).toBeVisible({ timeout: 20_000 });
+    await page.getByLabel("Tempat", { exact: true }).selectOption("golden-prawn-933");
+    await expect(page.getByLabel("Food Court")).toHaveValue("a2-food-court");
+    await expect(page.getByLabel("AYCE")).toBeChecked();
+  });
+});

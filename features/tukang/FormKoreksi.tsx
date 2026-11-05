@@ -51,7 +51,7 @@ export default function FormKoreksi({
       </p>
       <KolomMadu />
 
-      <Kolom nama="jenis" label="Jenis koreksi" galat={galat.jenis}>
+      <Kolom nama="jenis" label="Jenis Koreksi" galat={galat.jenis}>
         {(a) => (
           <select {...a} className="bch-select" name="jenis" defaultValue={jenisAwal}>
             {JENIS_KOREKSI.map((j) => (
@@ -65,7 +65,7 @@ export default function FormKoreksi({
 
       <Kolom
         nama="isi"
-        label="Yang perlu diperbaiki"
+        label="Yang Perlu Diperbaiki"
         petunjuk="Sebutkan nama tempatnya bila belum tertulis di atas, juga asal informasinya bila ada."
         galat={galat.isi}
       >
@@ -87,7 +87,7 @@ export default function FormKoreksi({
 
       <div>
         <button type="submit" className="bch-btn" disabled={mengirim}>
-          {mengirim ? "Mengirim" : "Kirim koreksi"}
+          {mengirim ? "Mengirim" : "Kirim Koreksi"}
         </button>
       </div>
     </form>

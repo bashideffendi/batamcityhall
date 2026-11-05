@@ -14,7 +14,7 @@ export default function KartuRuteFeri({ r }: { r: KartuRute }) {
   const operatorDiDaftar = !adaJadwal && r.operator;
   const durasiDiDaftar = !adaJadwal && r.durasi;
   return (
-    <article className="bch-card jl-kartu-rute" data-rute={r.id}>
+    <article id={r.id} className="bch-card jl-kartu-rute" data-rute={r.id}>
       <p className="bch-kicker m-0">{JENIS[r.jenis]}</p>
       <h3>{kaidahJudul(r.judul)}</h3>
       {r.terganggu && (
@@ -32,13 +32,13 @@ export default function KartuRuteFeri({ r }: { r: KartuRute }) {
           )}
           {durasiDiDaftar && (
             <>
-              <dt>Lama perjalanan</dt>
+              <dt>Lama Perjalanan</dt>
               <dd className="bch-data">{r.durasi}</dd>
             </>
           )}
           {r.harga && (
             <>
-              <dt>Harga mulai dari</dt>
+              <dt>Harga Mulai dari</dt>
               <dd>
                 <span className="bch-data">{r.harga}</span>
               </dd>
@@ -48,6 +48,8 @@ export default function KartuRuteFeri({ r }: { r: KartuRute }) {
       )}
       {r.catatan && <p className="jl-kartu-catatan">{r.catatan}</p>}
       {adaJadwal ? (
+        <details className="jl-jadwal-lipat">
+          <summary>Lihat Jadwal</summary>
         <div className="bch-table-wrap">
           <table className="bch-table bch-tabel-tumpuk jl-tabel-jadwal">
             <caption className="jl-caption">Waktu setempat di pelabuhan asal</caption>
@@ -55,8 +57,8 @@ export default function KartuRuteFeri({ r }: { r: KartuRute }) {
               <tr>
                 <th scope="col">Rute</th>
                 <th scope="col">Operator</th>
-                <th scope="col">Jam berangkat</th>
-                <th scope="col">Lama perjalanan</th>
+                <th scope="col">Jam Berangkat</th>
+                <th scope="col">Lama Perjalanan</th>
               </tr>
             </thead>
             <tbody>
@@ -69,7 +71,7 @@ export default function KartuRuteFeri({ r }: { r: KartuRute }) {
                     )}
                   </td>
                   <td data-label="Operator">{j.operator ?? r.operator ?? BELUM}</td>
-                  <td data-label="Jam berangkat">
+                  <td data-label="Jam Berangkat">
                     {j.operasi && <span className="bch-data">{j.operasi}</span>}
                     <span className="jl-jam-daftar bch-data">
                       {j.jam.map((t) => (
@@ -82,7 +84,7 @@ export default function KartuRuteFeri({ r }: { r: KartuRute }) {
                     {j.jam.length > 0 && <span className="jl-zona"> {j.zona ?? "waktu setempat"}</span>}
                     {j.hari && <span className="jl-catatan-kecil jl-blok">{kapital(j.hari)}</span>}
                   </td>
-                  <td data-label="Lama perjalanan" className="bch-data">
+                  <td data-label="Lama Perjalanan" className="bch-data">
                     {r.durasi ?? BELUM}
                   </td>
                 </tr>
@@ -90,13 +92,14 @@ export default function KartuRuteFeri({ r }: { r: KartuRute }) {
             </tbody>
           </table>
         </div>
+        </details>
       ) : (
         <p className="jl-jadwal-kosong">Jadwal belum tersedia.</p>
       )}
       {r.link && (
         <p className="m-0 mt-3">
           <a href={r.link} target="_blank" rel="noopener" className="bch-btn" data-variant="ghost">
-            Jadwal operator
+            Jadwal Operator
           </a>
         </p>
       )}

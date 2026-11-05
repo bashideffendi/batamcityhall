@@ -1,6 +1,34 @@
 # CHANGELOG
 
-## 2026-11-06 · Makan didesain ulang, teks diringkas
+## 2026-11-05 · Rombak menu dan audit menyeluruh
+
+Atas permintaan pemilik. Semua masih di lokal sampai pemilik meminta deploy.
+
+- **Menu baru:** Cuaca, CCTV, Transportasi, Makanan, Berita, Jurnal, Things to Do, Komunitas, Tukang Langganan, Info Loker, Layanan Warga, Sejarah dan Budaya. Submenu otomatis per bagian. Alamat lama dialihkan.
+- **Beranda dasbor** dengan tautan Selengkapnya di setiap modul. Baris darurat di puncak setiap halaman, slogan dihapus.
+- **Halaman baru:** `/cari` (halaman dan seluruh direktori, termasuk sinonim seperti igd, polisi, sertifikat), `/jurnal`, `/things-to-do`, `/kartu-pos` dengan enam desain cetak A6.
+- **Ruang Main dihapus:** kalkulator Singapura atau Nagoya dan Vibe.
+- **Peta tanpa klaster:** titik berdiri sendiri, kecil saat jauh, ikon mulai zoom 13. Semua peta di dalam wadah halaman.
+- **Title Case** untuk semua label pendek, termasuk Jenis Jasa.
+- **Sejarah dan Budaya:** Budaya Melayu, Komunitas, dan Acara berbaris, bukan kartu. Kamus diringkas. Tabel angka tidak patah dan ringkas di ponsel. Pengertian Kampung Tua pindah ke atas.
+- **Direktori:** saringan rumah sakit dan puskesmas digabung, nomor telepon tampil di baris, Rumah Sakit Lainnya di sisi detail tempat.
+- **Things to Do:** daftar mulai dari bulan berjalan, tiga bulan pertama dulu.
+- **Kategori Makanan:** 32 kategori pemilik, persis dan seurut daftarnya. Tempat boleh masuk lebih dari satu kategori (`kategori_lain`). 15 ilustrasi baru. Alamat lama dialihkan. Tujuh kategori masih kosong dan tampil Belum Ada: Makanan Sulawesi, Pempek, Makanan Jepang, Makanan Korea, Western dan Steak, Ice Cream, Vegetarian.
+- **Food Court:** `/makan/food-court`, 16 tempat bersumber. Tempat makan menunjuk food court lewat `food_court`, dan kedua halaman saling tertaut.
+- **Info Loker:** `/loker`, diisi dari dashboard. Lowongan lewat batas tidak tampil. Menu tampil setelah basis data tersambung.
+- **Dashboard Makanan:** satu halaman untuk tambah dan ubah tempat, kategori, food court, dan foto.
+- **Feri:** jadwal per rute dilipat, yang masih bisa dikejar tampil lebih dulu. **Beranda:** baris Hujan, Gelombang, Angin, dan Feri bisa diklik. **Gempa:** sepuluh terbaru dulu. **Detail tempat:** tombol utama sebelum galeri.
+- **Paragraf rata kanan-kiri** di desktop dan ponsel, di seluruh situs.
+- **Peta Cuaca ponsel:** tingginya mengikuti kepala situs baru, judul panel terlihat di layar pertama. **Makanan:** pilihan urutan setinggi 44 px. **Paragraf** di kolom sempit samping ilustrasi tetap rata kiri supaya jarak kata tidak renggang.
+- **Peta dasar gagal dimuat:** kini ada pesan, tidak lagi kosong diam-diam. **Alamat lama:** `/langit-laut/peringatan` dan `/langit-laut/gempa` dialihkan. **Tulisan Jurnal:** remah seperti halaman detail lain. **Baris darurat** berada di dalam landmark untuk pembaca layar.
+- **Makanan ponsel:** satu tombol Saring di bilah bawah, jumlah saringan aktif ikut di sana. Saringan di alamat tidak lagi hilang bila pengunjung mengetik tepat saat halaman selesai dimuat.
+- **Formulir warga** dan tautannya tidak tampil selama basis data belum tersambung (`KIRIMAN_AKTIF`).
+- **Dashboard `/admin`:** Jurnal, Makanan, agenda, Info Loker. Skema di `supabase/migrations/20261105120000_konten_admin.sql`. Baru teruji di mode contoh.
+- **Koordinat:** `data/koordinat_perlu_diisi.xlsx` dan `tools/impor_lembar_koordinat.py`.
+- **Aksesibilitas dan sentuh:** target 44 px di ponsel, gulir kembali ke atas saat pindah halaman, gulir terkunci saat menu terbuka.
+- **Dibersihkan:** 32 kelas CSS yatim, komponen lama, stempel Kolofon.
+
+## 2026-11-05 · Makan didesain ulang, teks diringkas
 
 Atas permintaan pemilik, mengikuti riset platform makanan.
 

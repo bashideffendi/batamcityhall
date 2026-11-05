@@ -1,7 +1,7 @@
 import { permanentRedirect } from "next/navigation";
 
 // Alamat lama (PEDOMAN 8.1 butir 4): ?mode= dialihkan ke halaman barunya, view dan cam dipertahankan.
-const TUJUAN: Record<string, string> = { hujan: "/cuaca/hujan", ombak: "/cuaca/gelombang", cctv: "/cuaca/cctv" };
+const TUJUAN: Record<string, string> = { hujan: "/cuaca/hujan", ombak: "/cuaca/gelombang", cctv: "/cctv" };
 
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
@@ -15,6 +15,6 @@ export default async function LangitLautLama({ searchParams }: Props) {
   if (view) sisa.set("view", view);
   if (cam) sisa.set("cam", cam);
   const q = sisa.toString();
-  const dasar = cam ? "/cuaca/cctv" : mode && TUJUAN[mode] ? TUJUAN[mode] : q ? "/cuaca/hujan" : "/cuaca";
+  const dasar = cam ? "/cctv" : mode && TUJUAN[mode] ? TUJUAN[mode] : q ? "/cuaca/hujan" : "/cuaca";
   permanentRedirect(q ? `${dasar}?${q}` : dasar);
 }

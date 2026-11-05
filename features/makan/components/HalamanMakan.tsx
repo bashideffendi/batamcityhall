@@ -1,13 +1,14 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { KIRIMAN_AKTIF } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState, type ReactNode } from "react";
 import { terminalDariMakan } from "@/features/jalan/feri-data";
 import FeriTerakhirMuat from "@/features/jalan/FeriTerakhirMuat";
-import { areaCounts, areaMap, categories, categoryCounts, categoryMap, ferries, kawasanBerisi, places } from "../lib/data";
+import { areaCounts, areaMap, categories, categoryCounts, categoryMap, dalamKategori, ferries, kawasanBerisi, places } from "../lib/data";
 import { FilterProvider, useAlamat, useFilters } from "../lib/filters";
 import { CURRENCY_RATES, TANGGAL_KURS } from "../lib/format";
 import { DEK_HIDANGAN, grafisHidangan, kategoriDariSlug, RUMPUN, slugHidangan } from "../lib/hidangan";
@@ -71,11 +72,19 @@ export function IndeksHidangan({ tanpaSemua = false }: { tanpaSemua?: boolean })
           <ul>
             {r.kategori.map((id) => (
               <li key={id}>
-                <Link href={`/makan/hidangan/${slugHidangan(id)}`} className="mk-ubin">
-                  <Image src={grafisHidangan(id)} alt="" width={480} height={480} loading="lazy" unoptimized />
-                  <span className="mk-ubin-nama">{catName(lang, categoryMap[id])}</span>
-                  <span className="mk-ubin-n">{categoryCounts[id] ?? 0}</span>
-                </Link>
+                {categoryCounts[id] ? (
+                  <Link href={`/makan/hidangan/${slugHidangan(id)}`} className="mk-ubin">
+                    <Image src={grafisHidangan(id)} alt="" width={480} height={480} loading="lazy" unoptimized />
+                    <span className="mk-ubin-nama">{catName(lang, categoryMap[id])}</span>
+                    <span className="mk-ubin-n">{categoryCounts[id]}</span>
+                  </Link>
+                ) : (
+                  <span className="mk-ubin" data-kosong>
+                    <Image src={grafisHidangan(id)} alt="" width={480} height={480} loading="lazy" unoptimized />
+                    <span className="mk-ubin-nama">{catName(lang, categoryMap[id])}</span>
+                    <span className="mk-ubin-n">Belum Ada</span>
+                  </span>
+                )}
               </li>
             ))}
           </ul>
@@ -224,7 +233,6 @@ function BerandaIsi() {
             {t("home_data", { n: places.length, h: categories.length, k: kawasanBerisi.length })}
           </p>
           <h1>{t("home_title")}</h1>
-          <p className="bch-lede">{t("home_dek")}</p>
           <SearchBar besar />
           <div className="mk-chips">
             {chips.map((c) => (
@@ -284,6 +292,7 @@ function BerandaIsi() {
             <div>
               <KepalaBagian judul={t("areas_title")} />
               <DaftarKawasan />
+              <TautanAksi href="/makan/food-court">Food Court dan Pujasera</TautanAksi>
             </div>
           </section>
 
@@ -296,7 +305,7 @@ function BerandaIsi() {
             <p>{t("trust")}</p>
             <div className="mk-pita-tautan">
               <TautanAksi href="/makan/cara-memilih">{t("how")}</TautanAksi>
-              <TautanAksi href="/koreksi">{t("fix")}</TautanAksi>
+              {KIRIMAN_AKTIF && <TautanAksi href="/koreksi">{t("fix")}</TautanAksi>}
               <TombolAcak />
             </div>
           </aside>
@@ -368,7 +377,7 @@ function KepalaHidangan({ kategori }: { kategori: string }) {
 
 export function HidanganHalaman({ slug }: { slug: string }) {
   const kategori = kategoriDariSlug(slug) ?? "";
-  const dasar = useCallback((p: PlaceWithGeo) => p.category === kategori, [kategori]);
+  const dasar = useCallback((p: PlaceWithGeo) => dalamKategori(p, kategori), [kategori]);
   return (
     <FilterProvider dasar={dasar}>
       <HalamanDaftar kepala={<KepalaHidangan kategori={kategori} />} tanpa={["hidangan"]} />
@@ -433,7 +442,7 @@ function KepalaFeri({ aktif }: { aktif: string }) {
     <div className="mk-kepala-gambar" data-lebar>
       <div>
         <Remah isi={[{ teks: t("nav_home"), href: "/makan" }, { teks: t("nav_ferry") }]} />
-        <h1 className="mk-judul">{t("near_title")}</h1>
+        <h1 className="mk-judul">{t("nav_ferry")}</h1>
         <p className="bch-lede">{t("near_dek", { km: RADIUS_FERI_KM })}</p>
         <div className="mk-terminal mk-terminal-datar" role="group" aria-label={t("near_terminal")}>
           {ferries.map((f) => (

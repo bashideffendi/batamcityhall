@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
   experimental: {
     turbopackFileSystemCacheForBuild: false,
   },
-  // Nama menu Makan berganti atas keputusan pemilik (6 Nov 2026). Alamat lama tetap hidup.
+  // Nama menu Makan berganti atas keputusan pemilik (5 Nov 2026). Alamat lama tetap hidup.
   async redirects() {
     return [
       { source: "/makan/daftar", destination: "/makan/peta", permanent: true },
@@ -26,6 +26,40 @@ const nextConfig: NextConfig = {
       { source: "/makan/jalur/:slug", destination: "/makan/panduan/:slug", permanent: true },
       { source: "/makan/tersimpan", destination: "/makan/simpanan", permanent: true },
       { source: "/makan/tentang", destination: "/makan/cara-memilih", permanent: true },
+      { source: "/admin/foto", destination: "/admin/makanan", permanent: false },
+      // Kategori Makanan diganti pemilik.
+      ...[
+        ["makanan-laut", "seafood"],
+        ["sup-ikan", "sop-ikan"],
+        ["mi-tarempa", "mie-tarempa"],
+        ["nasi-ayam", "nasi-ayam-hainan"],
+        ["mi-bakmi", "nasi-mie-goreng"],
+        ["nasi-padang", "makanan-padang"],
+        ["sunda-jawa", "makanan-sunda"],
+        ["sate-kambing", "sate"],
+        ["bakso", "bakso-mie-ayam"],
+        ["dim-sum", "dimsum"],
+        ["ayam-penyet", "penyetan"],
+        ["pecel-gado", "gado-pecel"],
+        ["oleh-oleh", "kue-jajanan"],
+        ["kafe", "coffee-shop"],
+      ].map(([lama, baru]) => ({ source: `/makan/hidangan/${lama}`, destination: `/makan/hidangan/${baru}`, permanent: true })),
+      // Saringan direktori yang digabung.
+      { source: "/info/direktori/kesehatan/rs-:tipe", destination: "/info/direktori/kesehatan/rumah-sakit", permanent: true },
+      { source: "/info/direktori/kesehatan/rsia-:tipe", destination: "/info/direktori/kesehatan/rumah-sakit", permanent: true },
+      { source: "/info/direktori/kesehatan/puskesmas-:tipe", destination: "/info/direktori/kesehatan/puskesmas", permanent: true },
+      { source: "/info/direktori/pemerintahan/dukcapil", destination: "/info/direktori/pemerintahan/disdukcapil", permanent: true },
+      // Rombak menu situs (5 Nov 2026).
+      { source: "/cuaca/cctv", destination: "/cctv", permanent: true },
+      { source: "/langit-laut/peringatan", destination: "/cuaca/peringatan", permanent: true },
+      { source: "/langit-laut/gempa", destination: "/cuaca/gempa", permanent: true },
+      { source: "/cerita/kalender", destination: "/things-to-do", permanent: true },
+      { source: "/cerita/komunitas", destination: "/komunitas", permanent: true },
+      { source: "/info/berita", destination: "/berita", permanent: true },
+      { source: "/main", destination: "/kartu-pos", permanent: true },
+      { source: "/main/kartu-pos", destination: "/kartu-pos", permanent: true },
+      { source: "/main/singapura-atau-nagoya", destination: "/jalan/feri", permanent: true },
+      { source: "/main/vibe", destination: "/cctv", permanent: true },
     ];
   },
   async headers() {

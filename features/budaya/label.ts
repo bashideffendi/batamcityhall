@@ -25,19 +25,19 @@ export type StatusAcara = (typeof STATUS_ACARA)[number];
 
 export const LABEL_STATUS: Record<StatusAcara, { teks: string; nada: "ok" | "info" | "caution" | "danger" }> = {
   rutin: { teks: "Rutin", nada: "ok" },
-  pernah: { teks: "Pernah diadakan", nada: "info" },
-  "belum pasti": { teks: "Belum pasti", nada: "caution" },
+  pernah: { teks: "Pernah Diadakan", nada: "info" },
+  "belum pasti": { teks: "Belum Pasti", nada: "caution" },
   dibatalkan: { teks: "Dibatalkan", nada: "danger" },
 };
 
 export const KELOMPOK_ACARA = [
   { slug: "keagamaan", nama: "Keagamaan" },
-  { slug: "melayu", nama: "Tradisi dan seni Melayu" },
-  { slug: "komunitas", nama: "Budaya komunitas" },
-  { slug: "kota", nama: "Agenda kota" },
-  { slug: "olahraga", nama: "Olahraga dan laut" },
-  { slug: "seni", nama: "Musik, kreatif, dan hiburan" },
-  { slug: "pameran", nama: "Pameran dagang" },
+  { slug: "melayu", nama: "Tradisi dan Seni Melayu" },
+  { slug: "komunitas", nama: "Budaya Komunitas" },
+  { slug: "kota", nama: "Agenda Kota" },
+  { slug: "olahraga", nama: "Olahraga dan Laut" },
+  { slug: "seni", nama: "Musik, Kreatif, dan Hiburan" },
+  { slug: "pameran", nama: "Pameran Dagang" },
 ] as const;
 export type KelompokAcara = (typeof KELOMPOK_ACARA)[number]["slug"];
 
@@ -63,12 +63,12 @@ export type AcaraPublik = {
 };
 
 export const KELOMPOK_KATA = [
-  { slug: "kota", nama: "Istilah kota dan administrasi" },
-  { slug: "laut", nama: "Laut dan pesisir" },
+  { slug: "kota", nama: "Istilah Kota dan Administrasi" },
+  { slug: "laut", nama: "Laut dan Pesisir" },
   { slug: "dialek", nama: "Dialek Melayu" },
   { slug: "serapan", nama: "Serapan Singapura, Malaysia, dan Hokkien" },
-  { slug: "kerja", nama: "Dunia kerja industri" },
-  { slug: "budaya", nama: "Budaya dan acara" },
+  { slug: "kerja", nama: "Dunia Kerja Industri" },
+  { slug: "budaya", nama: "Budaya dan Acara" },
 ] as const;
 export type KelompokKata = (typeof KELOMPOK_KATA)[number]["slug"];
 

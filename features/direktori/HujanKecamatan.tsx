@@ -32,7 +32,7 @@ export default function HujanKecamatan({ kecamatan }: { kecamatan: string }) {
       Hujan {baris.level} di Kecamatan {kecamatan}.{" "}
       <span className="bch-data">Perkiraan radar {umur} menit lalu.</span>{" "}
       <Link href="/cuaca/hujan" prefetch={false}>
-        Lihat radar
+        Lihat Radar
       </Link>
     </p>
   );

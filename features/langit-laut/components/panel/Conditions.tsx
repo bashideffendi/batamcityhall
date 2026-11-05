@@ -20,7 +20,7 @@ export default function KondisiSaatIni({
   const terdekat = echo?.kec ? rainyKec(echo.kec)[0] : undefined;
   const baris: [string, string][] = [];
   if (nowcast) baris.push(["Prakiraan 2 jam", `${titleCase(nowcast.text)}, ${nowcast.area}`]);
-  if (echo) baris.push(["Hujan terdekat", terdekat ? `Kecamatan ${terdekat.name}` : "Tidak ada di Batam"]);
+  if (echo) baris.push(["Hujan Terdekat", terdekat ? `Kecamatan ${terdekat.name}` : "Tidak ada di Batam"]);
   if (aq) baris.push(["Kualitas udara (PSI)", `${aq.psi}, ${kecil(aq.label)}`]);
   if (uv) baris.push(["Indeks UV", `${uv.value}, ${kecil(uv.label)}`]);
   if (wind) baris.push(["Angin", `${wind.speed} km/jam dari ${arahLengkap(wind.label)}`]);

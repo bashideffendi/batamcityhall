@@ -83,8 +83,8 @@ function EksporImpor() {
   };
 
   return (
-    <section className="mk-bagian mk-ekspor">
-      <h2>{t("export_title")}</h2>
+    <details className="mk-bagian mk-ekspor">
+      <summary>{t("export_title")}</summary>
       {ids.length > 0 && (
         <div className="bch-field">
           <label htmlFor="mk-tautan-daftar">{t("export_label")}</label>
@@ -121,7 +121,7 @@ function EksporImpor() {
           </p>
         )}
       </div>
-    </section>
+    </details>
   );
 }
 

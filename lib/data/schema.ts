@@ -228,6 +228,25 @@ export const makanFerrySchema = z.array(
   }),
 );
 
+/** Food court: alamat dan sumber wajib, koordinat kosong sampai diisi pemilik. Tidak ada kolom rating. */
+export const foodCourtSchema = z.object({
+  meta: z.object({ dihimpun: z.string(), catatan: z.string() }),
+  tempat: z
+    .strictObject({
+      id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
+      nama: z.string().min(1),
+      kecamatan: z.enum(KECAMATAN),
+      alamat: z.string().min(1),
+      jam: z.string(),
+      isi: z.string(),
+      tingkat: z.enum(["dibaca", "daftar"]),
+      sumber_url: z.url().array().min(1),
+      lat: z.number().min(0.3).max(1.6).nullable(),
+      lng: z.number().min(103.4).max(104.9).nullable(),
+    })
+    .array(),
+});
+
 /** Skema data makan asli batam-bites (features/makan/lib/types.ts). */
 export const makanPlaceSchema = z.looseObject({
   id: z.string(),

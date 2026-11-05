@@ -58,18 +58,18 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
 
       <Kolom
         nama="nama_tukang"
-        label="Nama tukang atau usaha"
+        label="Nama Tukang atau Usaha"
         petunjuk="Contoh: Pak Amin Jahit"
         galat={galat.nama_tukang}
       >
         {(a) => <input {...a} className="bch-input" name="nama_tukang" maxLength={80} autoComplete="off" />}
       </Kolom>
 
-      <Kolom nama="jasa" label="Jenis jasa" galat={galat.jasa}>
+      <Kolom nama="jasa" label="Jenis Jasa" galat={galat.jasa}>
         {(a) => (
           <select {...a} className="bch-select" name="jasa" defaultValue="">
             <option value="" disabled>
-              Pilih jenis jasa
+              Pilih Jenis Jasa
             </option>
             {KATEGORI_JASA.map((k) => (
               <option key={k.slug} value={k.slug}>
@@ -109,7 +109,7 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
 
       <Kolom
         nama="cara_hubungi"
-        label="Cara menghubungi"
+        label="Cara Menghubungi"
         petunjuk="Nomor telepon atau alamat tempat usaha"
         galat={galat.cara_hubungi}
       >
@@ -118,7 +118,7 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
 
       <Kolom
         nama="kapan_dipakai"
-        label="Terakhir memakai jasa"
+        label="Terakhir Memakai Jasa"
         petunjuk="Bulan dan tahun"
         galat={galat.kapan_dipakai}
       >
@@ -127,7 +127,7 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
 
       <Kolom
         nama="cerita"
-        label="Cerita singkat"
+        label="Cerita Singkat"
         petunjuk="Apa yang dikerjakan dan mengapa kamu merekomendasikannya. Paling banyak 300 karakter."
         galat={galat.cerita}
       >
@@ -135,7 +135,7 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
       </Kolom>
 
       <fieldset className="bch-tk-pilihan">
-        <legend>Kata yang paling sesuai</legend>
+        <legend>Kata yang Paling Sesuai</legend>
         <div className="bch-tk-pilihan-isi">
           {TAG_REKOMENDASI.map((t) => (
             <label key={t} className="bch-tk-cek">
@@ -166,7 +166,7 @@ export default function FormRekomendasi({ bulanIni, kecamatan }: { bulanIni: str
 
       <div>
         <button type="submit" className="bch-btn" disabled={mengirim}>
-          {mengirim ? "Mengirim" : "Kirim rekomendasi"}
+          {mengirim ? "Mengirim" : "Kirim Rekomendasi"}
         </button>
       </div>
     </form>

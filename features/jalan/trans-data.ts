@@ -232,8 +232,8 @@ const CATATAN_POLA: Record<string, string> = {
 const LABEL_ARAH: Record<string, string> = {
   K1_balik: "Batam Centre → Sekupang (sebagian)",
   K5_ke_batam_center: "Jodoh → Batam Centre",
-  K5_ke_jodoh_moovit: "Batam Centre → Jodoh (jadwal lama)",
-  K5_ke_batam_center_moovit_ujung: "Ujung arah Batam Centre (jadwal lama)",
+  K5_ke_jodoh_moovit: "Batam Centre → Jodoh (Jadwal Lama)",
+  K5_ke_batam_center_moovit_ujung: "Ujung Arah Batam Centre (Jadwal Lama)",
 };
 
 // ---------- Strip map ----------

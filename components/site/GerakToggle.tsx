@@ -40,7 +40,7 @@ export default function GerakToggle() {
         font: "inherit",
       }}
     >
-      Animasi: {tenang ? "nonaktif" : "aktif"}
+      Animasi: {tenang ? "Nonaktif" : "Aktif"}
     </button>
   );
 }

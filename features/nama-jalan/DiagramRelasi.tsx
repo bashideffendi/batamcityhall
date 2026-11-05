@@ -70,7 +70,7 @@ export const GUGUS: Gugus[] = [
   },
   {
     id: "riau-lingga-akhir",
-    judul: "Generasi akhir Riau-Lingga",
+    judul: "Generasi Akhir Riau-Lingga",
     tinggi: 260,
     simpul: [
       { id: "batin_limat", nama: "Batin Limat", x: TENGAH, y: 30 },
@@ -94,7 +94,7 @@ export const GUGUS: Gugus[] = [
   },
   {
     id: "rokan",
-    judul: "Riau daratan",
+    judul: "Riau Daratan",
     tinggi: 60,
     simpul: [
       { id: "tuanku_tambusai", nama: "Tuanku Tambusai", x: KIRI, y: 30 },
@@ -227,7 +227,7 @@ export default function DiagramRelasi() {
               <>
                 {" "}
                 <span className="bch-badge" data-tone="caution">
-                  Belum terverifikasi
+                  Belum Terverifikasi
                 </span>
               </>
             )}

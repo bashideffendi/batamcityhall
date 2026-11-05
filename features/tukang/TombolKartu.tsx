@@ -62,7 +62,7 @@ export default function TombolKartu({ id, nama }: { id: string; nama: string }) 
           disabled={sinyalTerkirim}
           onClick={() => sinyal("sudah_pindah")}
         >
-          Sudah pindah atau tutup
+          Sudah Pindah atau Tutup
         </button>
         {!lapor && (
           <>

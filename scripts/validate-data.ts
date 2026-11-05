@@ -31,6 +31,7 @@ const CHECKS: [string, ZodType][] = [
   ["data/taksonomi/taksonomi.json", s.taksonomiSchema],
   ["data/makan/places.json", s.makanPlaceSchema.array()],
   ["data/makan/ferries.json", s.makanFerrySchema],
+  ["data/makan/foodcourt.json", s.foodCourtSchema],
 ];
 
 let failed = 0;

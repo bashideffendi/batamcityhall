@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Kontribusi() {
   return (
-    <div className="bch-page">
+    <div className="bch-page bch-baca">
       <h1>Cara Berkontribusi</h1>
       <p className="bch-lede">Ada tiga cara membantu Batam City Hall.</p>
       <div className="bch-prose">
@@ -18,7 +18,7 @@ export default function Kontribusi() {
             <Link href="/tukang/rekomendasi">Rekomendasikan tukang</Link> yang pernah kamu pakai sendiri.
           </li>
           <li>
-            <Link href="/koreksi">Kirim koreksi</Link> untuk tempat di direktori.
+            <Link href="/koreksi">Kirim Koreksi</Link> untuk tempat di direktori.
           </li>
           <li>Kirim foto lama Batam, dengan izin pemiliknya. Formulirnya belum aktif.</li>
         </ul>

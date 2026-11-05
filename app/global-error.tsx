@@ -27,7 +27,7 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
                 cursor: "pointer",
               }}
             >
-              Muat ulang
+              Muat Ulang
             </button>
             {error.digest && <p style={{ fontSize: 12, marginTop: 12 }}>Kode: {error.digest}</p>}
           </div>

@@ -270,7 +270,7 @@ export function rainAnswer(a: {
     return base(h, barisWaktu("Terputus"), { retry: status === "error", mini: mini("Radar terputus"), share, live: h });
   }
 
-  const singkat = echo ? (rainyKec(kecList(echo, scope))[0] ? LEVEL_TEXT[rainyKec(kecList(echo, scope))[0].level] : "Tidak hujan") : "Radar hujan";
+  const singkat = echo ? (rainyKec(kecList(echo, scope))[0] ? LEVEL_TEXT[rainyKec(kecList(echo, scope))[0].level] : "Tidak hujan") : "Radar Hujan";
   const stat = statusRadar(age);
   const answer: Answer = {
     headline: kalimat ?? "Deteksi hujan otomatis sedang gangguan. Lihat warna di peta.",
@@ -627,8 +627,8 @@ export function perairanDetail(p: PerairanResponse | null, now: number = Date.no
   if (!p || !e) return [];
   const rows: { k: string; v: string }[] = [];
   const wave = waveText(e);
-  rows.push({ k: "Tinggi gelombang", v: `${titleCase(e.waveCat)}${wave ? `, ${wave}` : ""}` });
-  if (e.next12) rows.push({ k: "12 jam ke depan", v: rangeM(e.next12.minM, e.next12.maxM) });
+  rows.push({ k: "Tinggi Gelombang", v: `${titleCase(e.waveCat)}${wave ? `, ${wave}` : ""}` });
+  if (e.next12) rows.push({ k: "12 Jam ke Depan", v: rangeM(e.next12.minM, e.next12.maxM) });
   const from = e.windFrom ? ` dari ${arahLengkap(e.windFrom)}` : "";
   if (e.windKt != null) {
     rows.push({ k: "Angin", v: `${fmtM(e.windKt)} knot (${ktToKmh(e.windKt)} km/jam)${from}` });

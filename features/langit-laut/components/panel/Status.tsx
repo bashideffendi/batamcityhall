@@ -26,7 +26,7 @@ export function Ringkasan({
           )}
           {onRetry && (
             <button type="button" className="bch-tautan-tombol" onClick={onRetry}>
-              Muat ulang
+              Muat Ulang
             </button>
           )}
         </p>

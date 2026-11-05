@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useSiteTheme } from "@/components/site/useSiteTheme";
-import { LOKET, SITE_NAME } from "@/lib/site";
 import { bacaDiperbarui, subscribeDiperbarui } from "@/lib/diperbarui";
+import { BAGIAN, bagianDiAlamat, SITE_NAME } from "@/lib/site";
 import { followSystemTheme, toggleTheme } from "@/lib/theme";
 
 const Icon = ({ d }: { d: string }) => (
@@ -30,6 +30,41 @@ const MENU = "M4 7h16M4 12h16M4 17h16";
 const CLOSE = "M6 6l12 12M18 6 6 18";
 const CARI = "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm9 16-4-4";
 
+// Nomor nasional dari data/darurat. Ditulis di sini supaya tetap tampil walau data lain gagal dimuat.
+const DARURAT = [
+  { nomor: "112", nama: "Darurat" },
+  { nomor: "110", nama: "Polisi" },
+  { nomor: "113", nama: "Damkar" },
+  { nomor: "115", nama: "SAR" },
+  { nomor: "119", nama: "Ambulans" },
+];
+
+/** Baris darurat di puncak setiap halaman. */
+function BarisDarurat() {
+  return (
+    <nav className="bch-darurat" aria-label="Nomor Darurat">
+      <div className="bch-darurat-dalam">
+        <Link href="/info/darurat" prefetch={false} className="bch-darurat-tanda">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.5 1.5 21h21L12 2.5Zm-1.2 7h2.4l-.3 6h-1.8l-.3-6Zm1.2 7.6a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8Z" />
+          </svg>
+          Darurat
+        </Link>
+        <ul>
+          {DARURAT.map((d) => (
+            <li key={d.nomor}>
+              <a href={`tel:${d.nomor}`} aria-label={`${d.nomor} ${d.nama}, telepon`}>
+                <b>{d.nomor}</b>{" "}
+                <span>{d.nama}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
 const tanggalHariIni = () =>
   new Intl.DateTimeFormat("id-ID", {
     weekday: "long",
@@ -40,15 +75,35 @@ const tanggalHariIni = () =>
   }).format(Date.now());
 const tanpaLangganan = () => () => {};
 
-/** Baris paling atas beranda. Hanya dirender di klien: halaman statis tidak boleh membawa tanggal saat build. */
-function BarisTanggal() {
+/** Tanggal di kepala beranda. Hanya dirender di klien: halaman statis tidak boleh membawa tanggal saat build. */
+function Tanggal() {
   const tanggal = useSyncExternalStore(tanpaLangganan, tanggalHariIni, () => "");
   const jam = useSyncExternalStore(subscribeDiperbarui, bacaDiperbarui, () => "");
   return (
     <div className="bch-kepala-tanggal">
       <span>{tanggal}</span>
-      {jam && <span className="bch-data">Diperbarui pukul {jam} WIB</span>}
+      {jam && <span className="bch-data">Diperbarui {jam} WIB</span>}
     </div>
+  );
+}
+
+/** Submenu bagian yang sedang dibuka. Yang dipilih adalah alamat terpanjang yang cocok. */
+function Submenu({ path }: { path: string }) {
+  const bagian = bagianDiAlamat(path);
+  if (!bagian?.isi.length) return null;
+  const aktif = bagian.isi
+    .filter((s) => path === s.href || path.startsWith(`${s.href}/`))
+    .sort((a, b) => b.href.length - a.href.length)[0]?.href;
+  return (
+    <nav className="bch-submenu" aria-label={bagian.nama}>
+      <div className="bch-submenu-dalam">
+        {bagian.isi.map((s) => (
+          <Link key={s.href} href={s.href} prefetch={false} aria-current={s.href === aktif ? "page" : undefined}>
+            {s.label}
+          </Link>
+        ))}
+      </div>
+    </nav>
   );
 }
 
@@ -59,20 +114,58 @@ export default function SiteNav() {
   const [openedAt, setOpenedAt] = useState<string | null>(null);
   const open = openedAt === path;
   const beranda = path === "/";
+  const aktif = bagianDiAlamat(path)?.id;
 
   useEffect(() => followSystemTheme(), []);
 
+  // Next.js hanya menggulir sampai segmen yang berubah, jadi kepala halaman bisa terpotong saat pindah di dalam
+  // satu bagian. Tombol kembali dan tautan ke tanda pagar tetap memakai posisi masing-masing.
+  const lewatRiwayat = useRef(false);
+  const pertama = useRef(true);
+  useEffect(() => {
+    const tandai = () => {
+      lewatRiwayat.current = true;
+    };
+    window.addEventListener("popstate", tandai);
+    return () => window.removeEventListener("popstate", tandai);
+  }, []);
+  useEffect(() => {
+    if (pertama.current) {
+      pertama.current = false;
+    } else if (lewatRiwayat.current) {
+      lewatRiwayat.current = false;
+    } else if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [path]);
+
+  // Saat menu ponsel terbuka, halaman di belakangnya tidak ikut tergulir.
+  useEffect(() => {
+    if (!open) return;
+    const akar = document.documentElement;
+    const lama = akar.style.overflow;
+    akar.style.overflow = "hidden";
+    const tekan = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenedAt(null);
+    };
+    window.addEventListener("keydown", tekan);
+    return () => {
+      akar.style.overflow = lama;
+      window.removeEventListener("keydown", tekan);
+    };
+  }, [open]);
+
   return (
     <>
+      <BarisDarurat />
       <header className="bch-kepala" data-beranda={beranda ? "" : undefined}>
-        {beranda && <BarisTanggal />}
         <div className="bch-kepala-utama">
-          {beranda && <p className="bch-kepala-slogan">Panduan harian Kota Batam, disusun oleh warga.</p>}
+          {beranda && <Tanggal />}
           <Link href="/" className="bch-wordmark">
             {SITE_NAME}
           </Link>
           <div className="bch-nav-tools">
-            <Link href="/info/direktori" prefetch={false} className="bch-icon-btn" aria-label="Cari">
+            <Link href="/cari" prefetch={false} className="bch-icon-btn" aria-label="Cari">
               <Icon d={CARI} />
             </Link>
             <button
@@ -96,32 +189,37 @@ export default function SiteNav() {
           </div>
         </div>
         <nav className="bch-menu" aria-label="Bagian situs">
-          {LOKET.map((l) => (
-            <Link key={l.nomor} href={l.href} aria-current={l.aktifDi.some((p) => path.startsWith(p)) ? "page" : undefined}>
-              <span className="no">{l.nomor}</span>
-              {l.nama}
+          {BAGIAN.map((b) => (
+            <Link key={b.id} href={b.href} aria-current={b.id === aktif ? "page" : undefined}>
+              {b.nama}
             </Link>
           ))}
         </nav>
       </header>
+      <Submenu path={path} />
       {open && (
         <nav id="bch-toc" className="bch-toc" aria-label="Menu">
           <button type="button" className="bch-icon-btn bch-toc-tutup" onClick={() => setOpenedAt(null)} aria-label="Tutup menu">
             <Icon d={CLOSE} />
           </button>
-          <ol>
-            {LOKET.map((l) => (
-              <li key={l.nomor}>
-                <Link href={l.href}>
-                  <span className="no">{l.nomor}</span>
-                  <span>
-                    {l.nama}
-                    <span className="bch-menu-lede">{l.lede}</span>
-                  </span>
+          <ul>
+            {BAGIAN.map((b) => (
+              <li key={b.id}>
+                <Link href={b.href} className="bch-toc-bagian">
+                  {b.nama}
                 </Link>
+                {b.isi.length > 0 && (
+                  <div className="bch-toc-isi">
+                    {b.isi.map((s) => (
+                      <Link key={s.href} href={s.href} prefetch={false}>
+                        {s.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </li>
             ))}
-          </ol>
+          </ul>
         </nav>
       )}
     </>

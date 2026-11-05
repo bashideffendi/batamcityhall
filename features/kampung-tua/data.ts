@@ -47,7 +47,7 @@ export const LAPISAN: { id: LapisanId; awalan: string; nama: string; kicker: str
   {
     id: "hinterland",
     awalan: "hl-",
-    nama: "Situs dan kampung lama",
+    nama: "Situs dan Kampung Lama",
     kicker: "Situs dan kampung lama, bukan klaim kampung tua resmi",
     lede: "Tiga tempat di pulau sekitar. Belum ada daftar terbuka untuk wilayah ini, jadi kami tidak menyebutnya kampung tua resmi.",
   },
@@ -157,9 +157,9 @@ export type LencanaKampung = { teks: string; nada: Nada; ceritaRakyat?: boolean 
  */
 export function lencanaStatus(status: string): LencanaKampung {
   const utama = status.split(";")[0].trim();
-  if (utama.startsWith("cerita_rakyat")) return { teks: "Cerita rakyat", nada: "info", ceritaRakyat: true };
+  if (utama.startsWith("cerita_rakyat")) return { teks: "Cerita Rakyat", nada: "info", ceritaRakyat: true };
   if (utama.startsWith("terverifikasi")) return { teks: "Tercatat", nada: "ok" };
-  return { teks: "Belum terverifikasi", nada: "caution" };
+  return { teks: "Belum Terverifikasi", nada: "caution" };
 }
 
 /** Keterangan lokasi di daftar dan kartu. Tempat tanpa titik di peta tidak diberi teks (pedoman 3.1). */

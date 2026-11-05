@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { ferryMap } from "../lib/data";
 import { fiturFeri, fiturTempat, koleksi, lapisanMini, SUMBER } from "../lib/peta";
 import type { PlaceWithGeo } from "../lib/types";
 import PetaMakan, { pasangLapisan, usePeta } from "./PetaMakan";
 
 function PinMini({ place }: { place: PlaceWithGeo }) {
-  const { map, tema } = usePeta();
-  const temaAwal = useRef(tema);
+  const { map } = usePeta();
   useEffect(
     () =>
       pasangLapisan(
@@ -19,7 +18,7 @@ function PinMini({ place }: { place: PlaceWithGeo }) {
             data: koleksi(ferryMap[place.nearestFerryId] ? [fiturFeri(ferryMap[place.nearestFerryId]), fiturTempat(place)] : [fiturTempat(place)]),
           },
         },
-        lapisanMini(temaAwal.current),
+        lapisanMini(),
       ),
     [map, place],
   );

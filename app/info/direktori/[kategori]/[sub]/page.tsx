@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import TautanKirim from "@/components/site/TautanKirim";
 import poi from "@/data/osm/lapisan/poi.json";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
@@ -15,12 +16,11 @@ import {
   slugSub,
   SUB_KOSONG,
   subDiKategori,
+  subTampil,
   tanggalIndonesia,
   tempatDiKategori,
 } from "@/features/direktori/data";
 import KartuTempat from "@/features/direktori/KartuTempat";
-
-export const dynamicParams = false;
 
 export function generateStaticParams() {
   const baru = DAFTAR_KATEGORI.flatMap((k) => {
@@ -47,7 +47,7 @@ function cari(kategori: string, sub: string) {
     return {
       k,
       nama: labelSub(ada.sub),
-      tempat: tempatDiKategori(k.kategori).filter((p) => (p.subkategori ?? "lainnya") === ada.sub),
+      tempat: tempatDiKategori(k.kategori).filter((p) => subTampil(p.subkategori) === ada.sub),
     };
   const kosong = SUB_KOSONG[k.kategori]?.find((s) => s.slug === sub);
   return kosong ? { k, nama: kosong.nama, tempat: [] } : null;
@@ -69,13 +69,13 @@ export default async function Subkategori({ params }: Props) {
   return (
     <div className="bch-page">
       <nav className="bch-remah" aria-label="Remah roti">
-        <Link href="/info">Informasi Warga</Link> / <Link href="/info/direktori">Direktori</Link> /{" "}
+        <Link href="/info">Layanan Warga</Link> / <Link href="/info/direktori">Direktori</Link> /{" "}
         <Link href={`/info/direktori/${kategori}`}>{h.k.nama}</Link>
       </nav>
       <h1 className="mt-2">{kaidahJudul(h.nama)}</h1>
       {h.tempat.length === 0 ? (
         <p className="bch-lede">
-          Belum ada tempat di kategori ini. <Link href="/koreksi">Kirim usulan</Link>
+          Belum ada tempat di kategori ini. <TautanKirim href="/koreksi">Kirim Usulan</TautanKirim>
         </p>
       ) : (
         <>

@@ -92,8 +92,8 @@ const tiruIsi = (page: Page, isi: BeritaResponse = ISI) => tiruApi(page, (r) => 
 test.describe("halaman berita", () => {
   test("daftar terbaru dulu, tiap baris memuat media, tanggal, dan jam WIB", async ({ page }) => {
     await tiruIsi(page);
-    await page.goto("/info/berita");
-    await expect(page.getByRole("heading", { level: 1, name: "Berita Batam" })).toBeVisible();
+    await page.goto("/berita");
+    await expect(page.getByRole("heading", { level: 1, name: "Berita" })).toBeVisible();
     await expect(page.locator(".bch-berita-daftar a")).toHaveText([
       "Judul pertama dari A",
       "Judul lintas tengah malam dari B",
@@ -113,10 +113,9 @@ test.describe("halaman berita", () => {
 
   test("hanya tautan ke artikel asli, dengan rel yang benar", async ({ page }) => {
     await tiruIsi(page);
-    await page.goto("/info/berita");
-    await expect(page.locator(".bch-lede")).toHaveText(
-      "Judul berita terbaru tentang Batam dari media lokal. Setiap judul membuka artikel di situs medianya.",
-    );
+    await page.goto("/berita");
+    // Halaman berita tanpa keterangan panjang; setiap judul membuka artikel di situs medianya.
+    await expect(page.locator(".bch-berita-daftar a").first()).toBeVisible();
     const tautan = page.getByRole("link", { name: "Judul pertama dari A" });
     await expect(tautan).toHaveAttribute("href", "https://media-a.example/1");
     await expect(tautan).toHaveAttribute("rel", "noopener noreferrer");
@@ -128,10 +127,10 @@ test.describe("halaman berita", () => {
 
   test("saringan media: Semua media dan media yang ada judulnya", async ({ page }) => {
     await tiruIsi(page);
-    await page.goto("/info/berita");
+    await page.goto("/berita");
     const pilih = page.getByLabel("Media");
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", "4");
-    await expect(pilih.locator("option")).toHaveText(["Semua media", "Media A", "Media B"]);
+    await expect(pilih.locator("option")).toHaveText(["Semua Media", "Media A", "Media B"]);
     await pilih.selectOption("b");
     await expect(page.locator("[data-jumlah]")).toHaveAttribute("data-jumlah", "1");
     await expect(page.locator(".bch-berita-daftar a")).toHaveText(["Judul lintas tengah malam dari B"]);
@@ -141,7 +140,7 @@ test.describe("halaman berita", () => {
 
   test("status sumber dan tautan situs media tidak tampil", async ({ page }) => {
     await tiruIsi(page);
-    await page.goto("/info/berita");
+    await page.goto("/berita");
     await expect(page.locator(".bch-berita-daftar a").first()).toBeVisible();
     await expect(page.locator("main")).not.toContainText("Status sumber");
     await expect(page.locator("main")).not.toContainText("Terakhir berhasil");
@@ -156,21 +155,21 @@ test.describe("halaman berita", () => {
       sumber: ISI.sumber.map((s) => ({ ...s, status: "gagal", jumlah: 0, terakhirBerhasil: null })),
     };
     await tiruApi(page, (r) => r.fulfill({ status: 503, json: gagal }));
-    await page.goto("/info/berita");
-    await expect(page.getByText("Belum ada berita baru tentang Batam hari ini.")).toBeVisible();
+    await page.goto("/berita");
+    await expect(page.getByText("Belum ada berita baru hari ini.")).toBeVisible();
   });
 
   test("route tidak terjangkau: pesan gagal, halaman tetap berdiri", async ({ page }) => {
     await tiruApi(page, (r) => r.abort());
-    await page.goto("/info/berita");
-    await expect(page.getByText("Terjadi masalah saat memuat data.")).toBeVisible();
-    await expect(page.getByRole("heading", { level: 1, name: "Berita Batam" })).toBeVisible();
+    await page.goto("/berita");
+    await expect(page.getByText("Data tidak dapat dimuat. Coba muat ulang.")).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "Berita" })).toBeVisible();
   });
 
   test("balasan bukan bentuk yang dikenal tidak dianggap berhasil", async ({ page }) => {
     await tiruApi(page, (r) => r.fulfill({ json: { apa: "ini" } }));
-    await page.goto("/info/berita");
-    await expect(page.getByText("Terjadi masalah saat memuat data.")).toBeVisible();
+    await page.goto("/berita");
+    await expect(page.getByText("Data tidak dapat dimuat. Coba muat ulang.")).toBeVisible();
   });
 
   test("judul sangat panjang tidak membuat scroll horizontal di 360 px", async ({ page }) => {
@@ -180,7 +179,7 @@ test.describe("halaman berita", () => {
     };
     await tiruIsi(page, panjang);
     await page.setViewportSize({ width: 360, height: 740 });
-    await page.goto("/info/berita");
+    await page.goto("/berita");
     await expect(page.locator(".bch-berita-daftar a").first()).toBeVisible();
     const lebih = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(lebih).toBeLessThanOrEqual(0);
@@ -188,7 +187,7 @@ test.describe("halaman berita", () => {
 
   test("target sentuh tautan judul minimal 44 px", async ({ page }) => {
     await tiruIsi(page);
-    await page.goto("/info/berita");
+    await page.goto("/berita");
     const kotak = await page.locator(".bch-berita-daftar a").first().boundingBox();
     expect(kotak?.height).toBeGreaterThanOrEqual(44);
   });
@@ -197,7 +196,7 @@ test.describe("halaman berita", () => {
     test(`axe bersih, tema ${tema}`, async ({ page }) => {
       await tiruIsi(page);
       await page.emulateMedia({ colorScheme: tema });
-      await page.goto("/info/berita");
+      await page.goto("/berita");
       await expect(page.locator(".bch-berita-daftar a").first()).toBeVisible();
       const hasil = await new AxeBuilder({ page }).analyze();
       expect(hasil.violations.map((v) => `${v.id}: ${v.nodes[0]?.target}`)).toEqual([]);
@@ -228,8 +227,8 @@ test.describe("widget beranda", () => {
     await expect(widget(page).locator(".bch-berita-meta").first()).toHaveText(
       /^Media A · (pukul 08\.00 WIB|5 November 2026)$/,
     );
-    await widget(page).getByRole("link", { name: "Semua berita" }).click();
-    await expect(page).toHaveURL(/\/info\/berita$/);
+    await widget(page).getByRole("link", { name: "Selengkapnya →" }).click();
+    await expect(page).toHaveURL(/\/berita$/);
   });
 
   test("HTML beranda tidak memuat judul: widget murni dari klien", async ({ page }) => {
@@ -243,15 +242,15 @@ test.describe("widget beranda", () => {
   test("gagal berarti satu kalimat pendek, beranda tetap utuh", async ({ page }) => {
     await tiruApi(page, (r) => r.abort());
     await page.goto("/");
-    await expect(widget(page)).toContainText("Berita tidak dapat dimuat saat ini.");
-    await expect(page.getByRole("heading", { name: "Daftar loket" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Hari ini" })).toBeVisible();
+    await expect(widget(page)).toContainText("Berita tidak dapat dimuat.");
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    await expect(page.locator(".br-pertama")).toBeVisible();
   });
 
   test("tidak ada berita tentang Batam: kalimat kosong dari pedoman", async ({ page }) => {
     await tiruIsi(page, { ...ISI, item: [] });
     await page.goto("/");
-    await expect(widget(page)).toContainText("Belum ada berita baru tentang Batam hari ini.");
+    await expect(widget(page)).toContainText("Belum ada berita baru hari ini.");
   });
 
   test("tidak ada scroll horizontal di 360 px", async ({ page }) => {

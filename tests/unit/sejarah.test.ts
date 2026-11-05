@@ -83,7 +83,7 @@ describe("garis waktu", () => {
   });
 
   it("satu label per butir, dari empat label pedoman", () => {
-    expect(Object.values(LABEL_STATUS)).toEqual(["Tercatat", "Berbeda versi", "Belum terverifikasi", "Cerita rakyat"]);
+    expect(Object.values(LABEL_STATUS)).toEqual(["Tercatat", "Berbeda Versi", "Belum Terverifikasi", "Cerita Rakyat"]);
     for (const e of GARIS_WAKTU) expect(Object.keys(LABEL_STATUS), e.id).toContain(e.status);
   });
 
@@ -281,16 +281,16 @@ describe("Angka Batam", () => {
 
   it("status angka satu label atau kosong", () => {
     for (const b of SEMUA_FAKTA) {
-      expect([null, "Tercatat", "Berbeda versi", "Belum terverifikasi"], b.id).toContain(b.status);
+      expect([null, "Tercatat", "Berbeda Versi", "Belum Terverifikasi"], b.id).toContain(b.status);
     }
-    expect(SEMUA_FAKTA.find((x) => x.id === "fi-053")!.status).toBe("Berbeda versi");
+    expect(SEMUA_FAKTA.find((x) => x.id === "fi-053")!.status).toBe("Berbeda Versi");
     expect(SEMUA_FAKTA.find((x) => x.id === "fi-045")!.status).toBeNull();
     expect(JSON.stringify(fakta.angka)).not.toMatch(/✅|⚠|⌛/);
   });
 
   it("1,79 juta tampil berlabel berbeda versi dan dinyatakan tidak dipakai", () => {
     const b = SEMUA_FAKTA.find((x) => x.id === "fi-001")!;
-    expect(b.status).toBe("Berbeda versi");
+    expect(b.status).toBe("Berbeda Versi");
     expect(b.catatan).toContain("Tidak kami pakai");
   });
 

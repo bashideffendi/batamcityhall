@@ -6,7 +6,7 @@ import { areaMap, categoryMap, ferryMap, haversineKm } from "../lib/data";
 import { useCurrency } from "../lib/currency";
 import { useFiltersOpsional } from "../lib/filters";
 import { formatKmDesimal, hargaRingkas } from "../lib/format";
-import { fotoTempat } from "../lib/foto";
+import { useFotoTempat } from "@/features/konten/useFotoTempat";
 import { grafisHidangan } from "../lib/hidangan";
 import { catName, HALAL_LABEL, LABEL_LABEL, useI18n } from "../lib/i18n";
 import type { PlaceWithGeo } from "../lib/types";
@@ -37,7 +37,7 @@ export default function BarisTempat({ place, Judul = "h3", nomor, ringkas = fals
   const label = place.labels[0];
   const harga = hargaRingkas(place.price_idr, lang);
   const perkiraan = fmt(place.price_idr, lang);
-  const foto = fotoTempat(place.id)[0];
+  const foto = useFotoTempat(place.id)[0];
   const terpilih = saringan?.selectedId === place.id;
 
   return (

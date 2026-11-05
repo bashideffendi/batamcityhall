@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { KIRIMAN_AKTIF } from "@/lib/site";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Tentang() {
   return (
-    <div className="bch-page">
+    <div className="bch-page bch-baca">
       <h1>Tentang Batam City Hall</h1>
       <div className="bch-prose">
         <p>
@@ -20,9 +21,11 @@ export default function Tentang() {
           Data dihimpun dari sumber terbuka dan pengamatan warga, lalu diperbarui secara berkala. Lokasi yang masih
           perkiraan diberi tanda di peta.
         </p>
-        <p>
-          Ada data yang keliru? <Link href="/koreksi">Kirim koreksi</Link>.
-        </p>
+        {KIRIMAN_AKTIF && (
+          <p>
+            Ada data yang keliru? <Link href="/koreksi">Kirim Koreksi</Link>.
+          </p>
+        )}
       </div>
     </div>
   );

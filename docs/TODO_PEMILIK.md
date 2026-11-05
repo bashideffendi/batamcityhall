@@ -6,7 +6,17 @@ Diperbarui 5 November 2026 setelah pedoman diterapkan. Situs tayang sebagai prat
 
 Tayang di https://batam.masbash.id (Railway, cabang `fase-1-fondasi`). Selama `SITE_PRATINJAU=1`, mesin pencari tidak mengindeks situs. Hapus variabel itu saat situs diumumkan.
 
-## Keputusan baru (desain ulang Makan, 6 Nov 2026)
+## Rombak menu: yang perlu Anda lakukan
+
+1. **Isi koordinat.** File: `data/koordinat_perlu_diisi.xlsx`, 1.101 lokasi urut prioritas, termasuk 16 food court. Isi kolom kuning saja, boleh bertahap, lalu kirim kembali. Saya masukkan dengan `tools/impor_lembar_koordinat.py`.
+2. **Sambungkan dashboard.** Kode `/admin` untuk Jurnal, foto, data makanan, dan agenda sudah ada, tetapi baru teruji di mode contoh. Yang dibutuhkan: izin membuat proyek Supabase (paket gratis cukup), lalu tiga variabel di Railway, satu akun admin, dan migrasi di `supabase/migrations/`. Tukang Langganan ikut aktif dengan proyek yang sama.
+3. **Tombol Terbitkan Perubahan** di Data Makanan butuh `RAILWAY_API_TOKEN` di Railway. Foto, Jurnal, dan agenda tidak butuh tombol ini: langsung tampil. Tombol ini belum pernah diuji melawan Railway.
+4. **Food Court:** 16 tempat dihimpun dari media dan panduan perjalanan, belum didatangi. Enam di antaranya bertanda Alamat Perlu Dicek karena hanya tercatat di daftar pihak ketiga. Tambahkan atau koreksi kalau ada yang Anda tahu.
+5. **Data ganda:** `RS BP Batam (RS Otorita)` dan `RS Badan Pengusahaan Batam` tampaknya rumah sakit yang sama. Belum saya gabung, karena alamat keduanya berbeda tingkat kepastian. Mohon konfirmasi.
+6. **Info Loker:** menu dan halamannya sudah ada, diisi dari dashboard. Menunya muncul setelah Supabase tersambung, supaya pengunjung tidak mendarat di halaman kosong.
+7. **Konser dan event bertanggal** belum ada datanya. Seksi Agenda Mendatang muncul otomatis setelah Anda mengisi acara pertama. Saya tidak mengarang acara.
+
+## Keputusan baru (desain ulang Makan, November 2026)
 
 1. **"Dikunjungi penyusun" dihapus** dari Cara Kami Memilih, karena `verified` hanya 18 dari 117. Bila memang semua dikunjungi, kalimatnya bisa dikembalikan.
 2. **Status halal:** riset menyarankan "Halal" berarti bersertifikat. Data tidak menyatakan itu, jadi tetap tertulis "hasil kurasi, bukan sertifikasi".

@@ -7,8 +7,6 @@ import { kecamatanDariSlug, punyaHalaman, slugKecamatan, TEMPAT } from "@/featur
 import KartuTempat from "@/features/direktori/KartuTempat";
 import { KECAMATAN } from "@/lib/data/schema";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return KECAMATAN.map((k) => ({ slug: slugKecamatan(k) }));
 }
@@ -41,7 +39,7 @@ export default async function Kecamatan({ params }: Props) {
   return (
     <div className="bch-page">
       <nav className="bch-remah" aria-label="Remah roti">
-        <Link href="/info">Informasi Warga</Link>
+        <Link href="/info">Layanan Warga</Link>
       </nav>
       <h1 className="mt-2">Kecamatan {nama}</h1>
       <p className="bch-lede">Ada {tempat.length} tempat tercatat.</p>

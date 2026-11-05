@@ -1,103 +1,39 @@
 import type { MetadataRoute } from "next";
 import koridorData from "@/data/trans_batam/koridor.json";
 import { DAFTAR_KATEGORI, punyaHalaman, slugKategori, slugKecamatan, TEMPAT } from "@/features/direktori/data";
-import { places } from "@/features/makan/lib/data";
-import { KECAMATAN } from "@/lib/data/schema";
-import { panduan } from "@/features/makan/lib/panduan";
-import { kawasanBerisi } from "@/features/makan/lib/data";
+import { TULISAN } from "@/features/jurnal/data";
+import { categoryCounts, kawasanBerisi, places } from "@/features/makan/lib/data";
 import { semuaSlugHidangan } from "@/features/makan/lib/hidangan";
-import { LOKET, LOKET_DIBUKA, SITE_URL } from "@/lib/site";
+import { panduan } from "@/features/makan/lib/panduan";
+import { KECAMATAN } from "@/lib/data/schema";
+import { BAGIAN, KIRIMAN_AKTIF, SITE_URL } from "@/lib/site";
 
-const koridor = koridorData.koridor;
+type Ubah = "hourly" | "weekly" | "monthly";
 
+/** Menu dan submenu sumber utamanya, jadi alamat baru tidak perlu ditulis dua kali. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    { url: SITE_URL, changeFrequency: "hourly", priority: 1 },
-    ...LOKET.filter((l) => LOKET_DIBUKA.includes(l.nomor)).map((l) => ({
-      url: `${SITE_URL}${l.href}`,
-      changeFrequency: "hourly" as const,
-      priority: 0.8,
-    })),
-    ...["hujan", "gelombang", "cctv", "peringatan", "gempa"].map((h) => ({
-      url: `${SITE_URL}/cuaca/${h}`,
-      changeFrequency: "hourly" as const,
-      priority: 0.7,
-    })),
-    ...["hidangan", "kawasan", "panduan", "dekat-feri", "peta", "cara-memilih"].map((h) => ({
-      url: `${SITE_URL}/makan/${h}`,
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
-    })),
-    ...semuaSlugHidangan.map((s) => ({
-      url: `${SITE_URL}/makan/hidangan/${s}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    })),
-    ...kawasanBerisi.map((a) => ({
-      url: `${SITE_URL}/makan/kawasan/${a.id}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    })),
-    ...places.map((p) => ({
-      url: `${SITE_URL}/makan/tempat/${p.id}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    })),
-    ...panduan.map((t) => ({
-      url: `${SITE_URL}/makan/panduan/${t.id}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    })),
-    ...["direktori", "darurat", "urusan-tanah", "bantuan-hukum", "jasa-dokumen"].map((h) => ({
-      url: `${SITE_URL}/info/${h}`,
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
-    })),
-    ...DAFTAR_KATEGORI.map((k) => ({
-      url: `${SITE_URL}/info/direktori/${slugKategori(k.kategori)}`,
-      changeFrequency: "weekly" as const,
-      priority: 0.5,
-    })),
-    ...KECAMATAN.map((k) => ({
-      url: `${SITE_URL}/info/kecamatan/${slugKecamatan(k)}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    })),
-    ...TEMPAT.filter(punyaHalaman).map((p) => ({
-      url: `${SITE_URL}/info/tempat/${p.id}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.4,
-    })),
-    ...[
-      "info/berita",
-      "tukang/rekomendasi",
-      "jalan/trans-batam",
-      "jalan/peta",
-      "jalan/feri",
-      "jalan/feri/panduan",
-      "jalan/pompong",
-      ...koridor.map((k) => `jalan/trans-batam/${k.id.toLowerCase()}`),
-      "cerita/sejarah",
-      "cerita/kampung-tua",
-      "cerita/nama-jalan",
-      "cerita/kalender",
-      "cerita/kamus",
-      "cerita/budaya",
-      "cerita/komunitas",
-      "cerita/angka",
-      "main/kartu-pos",
-      "main/singapura-atau-nagoya",
-    ].map((h) => ({
-      url: `${SITE_URL}/${h}`,
-      changeFrequency: "weekly" as const,
-      priority: 0.5,
-    })),
-    ...["kontribusi", "koreksi", "privasi", "syarat"].map((h) => ({
-      url: `${SITE_URL}/${h}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.3,
-    })),
-    { url: `${SITE_URL}/tentang`, changeFrequency: "monthly", priority: 0.4 },
-    { url: `${SITE_URL}/kolofon`, changeFrequency: "monthly", priority: 0.3 },
+  const baris = (daftar: string[], changeFrequency: Ubah, priority: number) =>
+    daftar.map((alamat) => ({ url: `${SITE_URL}${alamat}`, changeFrequency, priority }));
+
+  const semua = [
+    ...baris(["/"], "hourly", 1),
+    ...baris(BAGIAN.map((b) => b.href), "hourly", 0.8),
+    ...baris(BAGIAN.flatMap((b) => b.isi.map((s) => s.href)), "weekly", 0.7),
+    ...baris(["/makan/cara-memilih", "/jalan/feri/panduan"], "weekly", 0.6),
+    // Kategori yang belum punya tempat belum perlu diindeks.
+    ...baris(semuaSlugHidangan.filter((s) => categoryCounts[s]).map((s) => `/makan/hidangan/${s}`), "monthly", 0.5),
+    ...baris(kawasanBerisi.map((a) => `/makan/kawasan/${a.id}`), "monthly", 0.5),
+    ...baris(places.map((p) => `/makan/tempat/${p.id}`), "monthly", 0.5),
+    ...baris(panduan.map((t) => `/makan/panduan/${t.id}`), "monthly", 0.5),
+    ...baris(DAFTAR_KATEGORI.map((k) => `/info/direktori/${slugKategori(k.kategori)}`), "weekly", 0.5),
+    ...baris(KECAMATAN.map((k) => `/info/kecamatan/${slugKecamatan(k)}`), "monthly", 0.5),
+    ...baris(TEMPAT.filter(punyaHalaman).map((p) => `/info/tempat/${p.id}`), "monthly", 0.4),
+    ...baris(koridorData.koridor.map((k) => `/jalan/trans-batam/${k.id.toLowerCase()}`), "weekly", 0.5),
+    ...baris(TULISAN.map((t) => `/jurnal/${t.slug}`), "monthly", 0.6),
+    ...baris(["/tentang", "/kolofon", "/privasi", "/syarat"], "monthly", 0.3),
+    // Formulir warga hanya didaftarkan bila sudah aktif.
+    ...baris(KIRIMAN_AKTIF ? ["/kontribusi", "/koreksi", "/tukang/rekomendasi"] : [], "monthly", 0.3),
   ];
+  // Alamat ganda, misalnya submenu yang sama dengan bagiannya, cukup sekali.
+  return [...new Map(semua.map((b) => [b.url, b])).values()];
 }

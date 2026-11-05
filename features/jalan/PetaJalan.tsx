@@ -23,7 +23,7 @@ const TANPA_RUTE: KoleksiRute = { type: "FeatureCollection", features: [] };
 const gerakTenang = () =>
   document.documentElement.dataset.gerak === "tenang" || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const NAMA_JENIS = { hub: "Titik transit Trans Batam", halte: "Halte Trans Batam", terminal: "Terminal feri" };
+const NAMA_JENIS = { hub: "Titik transit Trans Batam", halte: "Halte Trans Batam", terminal: "Terminal Feri" };
 
 function KartuTitik({ titik, onTutup }: { titik: TitikJalan[]; onTutup: () => void }) {
   const tutup = useRef<HTMLButtonElement>(null);
@@ -68,7 +68,7 @@ function KartuTitik({ titik, onTutup }: { titik: TitikJalan[]; onTutup: () => vo
           {t.catatan && <p className="mt-2 mb-0">{t.catatan}</p>}
           <p className="mt-2 mb-0">
             <Link href={t.href} prefetch={false}>
-              Buka kartu lengkap
+              Buka Kartu Lengkap
             </Link>
           </p>
         </div>
@@ -252,7 +252,7 @@ export default function PetaJalan({
         )}
       </section>
       <fieldset className="peta-lapisan">
-        <legend>Lapisan peta</legend>
+        <legend>Lapisan Peta</legend>
         <label>
           <input type="checkbox" checked={hub} onChange={(e) => setHub(e.target.checked)} />
           Trans Batam
@@ -265,7 +265,7 @@ export default function PetaJalan({
         </label>
         <label>
           <input type="checkbox" checked={osmNyala} onChange={(e) => setOsmNyala(e.target.checked)} />
-          Jalur dan halte dari OpenStreetMap
+          Jalur dan Halte dari OpenStreetMap
           <span className="bch-data">{osm.halte.features.length} halte</span>
         </label>
         <p className="peta-lapisan-catatan">

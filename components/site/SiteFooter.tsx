@@ -1,6 +1,6 @@
 import Link from "next/link";
 import GerakToggle from "@/components/site/GerakToggle";
-import { HALAMAN_PENDUKUNG, KAKI_KETERANGAN, SITE_NAME } from "@/lib/site";
+import { BAGIAN, HALAMAN_PENDUKUNG, KAKI_KETERANGAN, KIRIMAN_AKTIF, SITE_NAME } from "@/lib/site";
 
 export default function SiteFooter() {
   const donasi = process.env.NEXT_PUBLIC_DONASI_URL;
@@ -11,20 +11,36 @@ export default function SiteFooter() {
         <path d="M0,22 C140,30 260,10 400,20 S660,30 800,20 1060,10 1200,20 1380,30 1440,22 V30 H0Z" fill="#0078BF" fillOpacity=".5" />
       </svg>
       <div className="bch-footer-inner">
-        <div>
-          <p className="bch-footer-merek">{SITE_NAME}</p>
-          <p>{KAKI_KETERANGAN}</p>
-        </div>
-        <nav aria-label="Halaman pendukung">
-          {HALAMAN_PENDUKUNG.map((h) => (
-            <Link key={h.href} href={h.href} prefetch={false}>
-              {h.label}
-            </Link>
+        <nav className="bch-footer-peta" aria-label="Semua bagian">
+          {BAGIAN.map((b) => (
+            <div key={b.id}>
+              <Link href={b.href} prefetch={false} className="bch-footer-bagian">
+                {b.nama}
+              </Link>
+              {b.isi.map((s) => (
+                <Link key={s.href} href={s.href} prefetch={false}>
+                  {s.label}
+                </Link>
+              ))}
+            </div>
           ))}
-          {donasi && <a href={donasi}>Donasi</a>}
         </nav>
-        <div className="bch-footer-animasi">
-          <GerakToggle />
+        <div className="bch-footer-bawah">
+          <div>
+            <p className="bch-footer-merek">{SITE_NAME}</p>
+            <p>{KAKI_KETERANGAN}</p>
+          </div>
+          <nav aria-label="Halaman pendukung">
+            {HALAMAN_PENDUKUNG.filter((h) => KIRIMAN_AKTIF || h.href !== "/koreksi").map((h) => (
+              <Link key={h.href} href={h.href} prefetch={false}>
+                {h.label}
+              </Link>
+            ))}
+            {donasi && <a href={donasi}>Donasi</a>}
+          </nav>
+          <div className="bch-footer-animasi">
+            <GerakToggle />
+          </div>
         </div>
       </div>
     </footer>

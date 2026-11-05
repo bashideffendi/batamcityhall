@@ -15,13 +15,13 @@ export default function InfoPraktisTrans() {
           <span className="bch-data">{tarif.umum}</span> umum, <span className="bch-data">{tarif.pelajar}</span> untuk{" "}
           {tarif.berlaku_tarif_pelajar_untuk}. Tidak ada tarif tambahan ke bandara.
         </dd>
-        <dt>Cara bayar</dt>
+        <dt>Cara Bayar</dt>
         <dd>
           Nontunai sejak 1 Januari 2023: kartu BRIZZI (BRI), QRIS ({qris?.aplikasi?.join(", ")}), dan aplikasi bank.{" "}
           Kartu {kartuLain.slice(0, -1).join(", ")}, dan {kartuLain[kartuLain.length - 1]} mungkin diterima, tetapi
           belum pasti.
         </dd>
-        <dt>Pindah koridor</dt>
+        <dt>Pindah Koridor</dt>
         <dd>Aturan pindah koridor gratis belum tercatat. Anggap setiap naik bus membayar satu tarif.</dd>
         <dt>Halte</dt>
         <dd>Ada dua tipe: bangunan dengan atap dan tempat duduk, atau perhentian yang hanya berupa tiang rambu.</dd>

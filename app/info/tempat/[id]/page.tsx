@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { kaidahJudul } from "@/lib/judul";
+import TautanKirim from "@/components/site/TautanKirim";
 import Link from "next/link";
 import { KATEGORI_DIREKTORI } from "@/components/map/icons";
 import { notFound, redirect } from "next/navigation";
@@ -19,6 +21,8 @@ import {
   punyaTitik,
   slugKategori,
   slugKecamatan,
+  subTampil,
+  tempatSejenis,
   tautanArah,
   TEMPAT,
   tempatPerId,
@@ -30,8 +34,6 @@ import TombolBagikan from "@/features/direktori/TombolBagikan";
 import { idKartuKampung } from "@/features/kampung-tua/data";
 import { MAPPED_CAMS } from "@/features/langit-laut/lib/cctv";
 import { haversineKm } from "@/features/makan/lib/data";
-
-export const dynamicParams = false;
 
 export function generateStaticParams() {
   return TEMPAT.map((p) => ({ id: p.id }));
@@ -74,12 +76,14 @@ export default async function Tempat({ params }: Props) {
 
   const ikon = KATEGORI_DIREKTORI.find((x) => x.nama === namaKategori(p.kategori));
   const penanda = [namaKategori(p.kategori), p.kecamatan].filter(Boolean).join(" · ");
+  const sejenis = minimal ? [] : tempatSejenis(p, 6);
+  const adaPeta = dipeta && ikon && p.lat != null && p.lng != null;
 
   return (
     <div className="bch-page bch-detail-tata">
       <div className="bch-detail-kepala">
         <nav className="bch-remah" aria-label="Remah roti">
-          <Link href="/info">Informasi Warga</Link> / <Link href="/info/direktori">Direktori</Link> /{" "}
+          <Link href="/info">Layanan Warga</Link> / <Link href="/info/direktori">Direktori</Link> /{" "}
           <Link href={`/info/direktori/${slugKategori(kunciTampil(p.kategori))}`}>{namaKategori(p.kategori)}</Link>
         </nav>
         <p className="bch-kicker mt-4 mb-0">{penanda}</p>
@@ -96,20 +100,22 @@ export default async function Tempat({ params }: Props) {
         <div className="bch-detail-aksi" data-aksi-tempat>
           {dipeta && (
             <Link href={`/?tempat=${p.id}`} prefetch={false} className="bch-btn">
-              Lihat di peta
+              Lihat di Peta
             </Link>
           )}
           {!minimal && (
             <a href={tautanArah(p)} target="_blank" rel="noopener noreferrer" className="bch-btn" data-variant={dipeta ? "ghost" : undefined}>
-              Petunjuk arah
+              Petunjuk Arah
             </a>
           )}
           <TombolBagikan judul={p.nama} />
         </div>
       </div>
 
-      {dipeta && ikon && p.lat != null && p.lng != null && (
+      {(adaPeta || sejenis.length > 0) && (
         <aside className="bch-detail-samping">
+          {adaPeta && ikon && p.lat != null && p.lng != null && (
+            <>
           <PetaKategori
             pins={[{ id: p.id, nama: p.nama, lat: p.lat, lng: p.lng, perkiraan: p.status_koordinat !== "terverifikasi" }]}
             glyph={ikon.glyph}
@@ -124,12 +130,31 @@ export default async function Tempat({ params }: Props) {
                   {" "}
                   Lokasi persisnya ada di{" "}
                   <a href={tautanArah(p)} target="_blank" rel="noopener noreferrer">
-                    Petunjuk arah
+                    Petunjuk Arah
                   </a>
                   .
                 </>
               )}
             </p>
+          )}
+            </>
+          )}
+          {sejenis.length > 0 && (
+            <section className="bch-sejenis" aria-labelledby="judul-sejenis">
+              <h2 id="judul-sejenis" className="bch-judul-seksi">
+                {kaidahJudul(labelSub(subTampil(p.subkategori)))} Lainnya
+              </h2>
+              <ul>
+                {sejenis.map((x) => (
+                  <li key={x.id}>
+                    <Link href={`/info/tempat/${x.id}`} prefetch={false}>
+                      <span>{x.nama}</span>
+                      {x.kecamatan && <span className="ket">{x.kecamatan}</span>}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
           )}
         </aside>
       )}
@@ -141,9 +166,9 @@ export default async function Tempat({ params }: Props) {
           <p>
             Kartu ini hanya memuat nama dan letak umum, tanpa batas, luas, dan status lahan.{" "}
             {idKartuKampung(p) ? (
-              <Link href={`/cerita/kampung-tua/${idKartuKampung(p)}`}>Baca ceritanya di Cerita dan Budaya</Link>
+              <Link href={`/cerita/kampung-tua/${idKartuKampung(p)}`}>Baca ceritanya di Sejarah dan Budaya</Link>
             ) : (
-              "Ceritanya ada di Cerita dan Budaya."
+              "Ceritanya ada di Sejarah dan Budaya."
             )}
           </p>
         ) : (
@@ -156,7 +181,7 @@ export default async function Tempat({ params }: Props) {
             )}
             {jam && (
               <div>
-                <dt>Jam buka</dt>
+                <dt>Jam Buka</dt>
                 <dd>{jam}</dd>
               </div>
             )}
@@ -185,7 +210,7 @@ export default async function Tempat({ params }: Props) {
         {p.kategori === "kuliner" && (
           <p>
             <Link href={`/makan/tempat/${p.id}`} prefetch={false}>
-              Lihat di Makan
+              Lihat di Makanan
             </Link>
           </p>
         )}
@@ -195,7 +220,7 @@ export default async function Tempat({ params }: Props) {
         {kamera && (
           <p>
             Kamera lalu lintas terdekat:{" "}
-            <Link href={`/cuaca/cctv?cam=${kamera.c.slug}`} prefetch={false}>
+            <Link href={`/cctv?cam=${kamera.c.slug}`} prefetch={false}>
               {kamera.c.name}
             </Link>{" "}
             <span className="bch-data">({Math.round(kamera.km * 1000)} m)</span>
@@ -203,7 +228,7 @@ export default async function Tempat({ params }: Props) {
         )}
 
         <p className="bch-catatan-halaman">
-          <Link href={`/koreksi?tempat=${p.id}`}>Laporkan data yang salah</Link>
+          <TautanKirim href={`/koreksi?tempat=${p.id}`}>Laporkan data yang salah</TautanKirim>
         </p>
       </div>
     </div>

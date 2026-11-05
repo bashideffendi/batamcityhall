@@ -508,3 +508,47 @@ html[data-gerak="tenang"] .sj-penanda {
 .sj-form-tutup .bch-input:disabled {
   background: var(--bch-paper);
 }
+
+/* Tabel angka ringkas: nama di kiri, angka di kanan, keterangan di bawah nama. */
+.sj-tabel td:nth-child(2) {
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+.sj-tabel .bch-sel-kecil {
+  white-space: normal;
+}
+@media (max-width: 640px) {
+  .sj-tabel tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--bch-space-3);
+  }
+  .sj-tabel td {
+    grid-column: 1;
+    padding-block: 1px;
+    color: var(--bch-ink-muted);
+    font-size: 0.8125rem;
+  }
+  .sj-tabel td:first-child {
+    grid-row: 1;
+    color: var(--bch-ink);
+    font-size: 0.9375rem;
+  }
+  .sj-tabel td:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    color: var(--bch-ink);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-align: right;
+    white-space: normal;
+    max-width: 9rem;
+  }
+  .sj-tabel td::before {
+    display: none;
+  }
+}
+/* Jarak antarparagraf esai. */
+.sj-langkah p + p {
+  margin-top: 0.75em;
+}

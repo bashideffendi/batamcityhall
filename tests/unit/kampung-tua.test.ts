@@ -74,18 +74,18 @@ describe("kartu kampung", () => {
   });
 
   it("satu label status per kartu, dari empat label pedoman", () => {
-    const sah = ["Tercatat", "Berbeda versi", "Belum terverifikasi", "Cerita rakyat"];
+    const sah = ["Tercatat", "Berbeda Versi", "Belum Terverifikasi", "Cerita Rakyat"];
     for (const k of KAMPUNG) expect(sah, k.id).toContain(lencanaStatus(k.status_verifikasi).teks);
     expect(lencanaStatus("terverifikasi (sejarah); tahun wafat Nong Isa perlu_cek_ulang")).toEqual({
       teks: "Tercatat",
       nada: "ok",
     });
     expect(lencanaStatus("cerita_rakyat (asal-usul); lokasi terverifikasi")).toMatchObject({
-      teks: "Cerita rakyat",
+      teks: "Cerita Rakyat",
       ceritaRakyat: true,
     });
-    expect(lencanaStatus("perlu_cek_ulang").teks).toBe("Belum terverifikasi");
-    expect(lencanaStatus("sumber_tunggal; status kampung tua perlu_cek_ulang").teks).toBe("Belum terverifikasi");
+    expect(lencanaStatus("perlu_cek_ulang").teks).toBe("Belum Terverifikasi");
+    expect(lencanaStatus("sumber_tunggal; status kampung tua perlu_cek_ulang").teks).toBe("Belum Terverifikasi");
   });
 
   it("kolom yang hanya berisi catatan kerja menjadi kosong", () => {

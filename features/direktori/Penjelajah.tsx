@@ -1,6 +1,7 @@
 "use client";
 
 import MiniSearch from "minisearch";
+import TautanKirim from "@/components/site/TautanKirim";
 import Link from "next/link";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { isOpenNow } from "@/features/makan/lib/format";
@@ -44,7 +45,7 @@ const bukaSekarang = (b: BarisIndeks, sekarang: number | null) =>
 
 /** Status di kanan baris: Buka sekarang, IGD 24 jam, atau jam buka (PEDOMAN 3.8). */
 const statusIndeks = (b: BarisIndeks, sekarang: number | null) =>
-  bukaSekarang(b, sekarang) ? "Buka sekarang" : b.i ? "IGD 24 jam" : b.jt;
+  bukaSekarang(b, sekarang) ? "Buka Sekarang" : b.i ? "IGD 24 Jam" : b.jt;
 
 type Props = { kategori: { kategori: string; nama: string }[]; kepala: ReactNode; ilustrasi: ReactNode; children?: ReactNode };
 
@@ -78,9 +79,9 @@ export default function Penjelajah({ kategori, kepala, ilustrasi, children }: Pr
   const mesin = useMemo(() => {
     if (!baris) return null;
     const m = new MiniSearch<BarisIndeks>({
-      fields: ["nama", "alt", "sl", "c", "l"],
+      fields: ["nama", "alt", "sl", "c", "l", "kk"],
       storeFields: [],
-      searchOptions: { prefix: true, fuzzy: 0.15, combineWith: "AND" },
+      searchOptions: { prefix: true, fuzzy: 0.15, combineWith: "AND", boost: { nama: 3, alt: 2 } },
       extractField: (doc, field) => {
         const v = doc[field as keyof BarisIndeks];
         return Array.isArray(v) ? v.join(" ") : String(v ?? "");
@@ -175,12 +176,12 @@ export default function Penjelajah({ kategori, kepala, ilustrasi, children }: Pr
             </label>
             <label className="bch-cek-pil">
               <input type="checkbox" checked={f.buka} onChange={(e) => ubah({ buka: e.target.checked })} />
-              <span>Buka sekarang</span>
+              <span>Buka Sekarang</span>
             </label>
             {f.k === "kesehatan" && (
               <label className="bch-cek-pil">
                 <input type="checkbox" checked={f.igd} onChange={(e) => ubah({ igd: e.target.checked })} />
-                <span>IGD 24 jam</span>
+                <span>IGD 24 Jam</span>
               </label>
             )}
             <p className="bch-data bch-saring-jumlah m-0" role="status" data-jumlah={baris ? hasil.length : undefined}>
@@ -195,7 +196,7 @@ export default function Penjelajah({ kategori, kepala, ilustrasi, children }: Pr
                     tulisUrl(KOSONG);
                   }}
                 >
-                  Hapus saringan
+                  Hapus Saringan
                 </button>
               )}
             </p>
@@ -211,10 +212,13 @@ export default function Penjelajah({ kategori, kepala, ilustrasi, children }: Pr
           {baris && hasil.length === 0 && (
             <p>
               {kata ? (
-                `Tidak ada hasil untuk “${kata}”. Coba kata lain atau hapus saringan.`
+                <>
+                  Tidak ada hasil untuk “{kata}”. Coba kata lain, <Link href={`/cari?q=${encodeURIComponent(kata)}`}>cari di seluruh situs</Link>, atau buka{" "}
+                  <Link href="/info/darurat">Nomor Darurat</Link>.
+                </>
               ) : (
                 <>
-                  Belum ada tempat di kategori ini. <Link href="/koreksi">Kirim usulan</Link>
+                  Belum ada tempat di kategori ini. <TautanKirim href="/koreksi">Kirim Usulan</TautanKirim>
                 </>
               )}
             </p>
@@ -232,7 +236,7 @@ export default function Penjelajah({ kategori, kepala, ilustrasi, children }: Pr
                     <span className="nama">{b.nama}</span>
                   )}
                   {s && (
-                    <span className="bch-status" data-tone={s === "Buka sekarang" || s === "IGD 24 jam" ? "ok" : undefined}>
+                    <span className="bch-status" data-tone={s === "Buka Sekarang" || s === "IGD 24 Jam" ? "ok" : undefined}>
                       {s}
                     </span>
                   )}
@@ -243,7 +247,7 @@ export default function Penjelajah({ kategori, kepala, ilustrasi, children }: Pr
           </ul>
           {hasil.length > tampil && (
             <button type="button" className="bch-btn mt-4" data-variant="ghost" onClick={() => setTampil(tampil + LANGKAH)}>
-              Tampilkan {Math.min(LANGKAH, hasil.length - tampil)} tempat lagi
+              Tampilkan {Math.min(LANGKAH, hasil.length - tampil)} Tempat Lagi
             </button>
           )}
         </div>

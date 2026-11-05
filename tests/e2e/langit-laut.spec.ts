@@ -115,38 +115,63 @@ async function tiruSumber(page: Page, opsi: { citraGagal?: boolean; echo?: unkno
 
 const petaSiap = (page: Page) => expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 45_000 });
 
-test.describe("Langit & Laut", () => {
-  test("tiga mode tersedia dan URL mencerminkan pilihan", async ({ page }) => {
+// Rombak: satu halaman per mode. /langit-laut tinggal pengalihan.
+/** Di ponsel panel mulai tertutup. */
+async function bukaPanel(page: Page) {
+  const buka = page.getByRole("button", { name: "Buka panel" });
+  if (await buka.isVisible().catch(() => false)) await buka.click();
+}
+
+const HALAMAN_MODE = { hujan: "/cuaca/hujan", ombak: "/cuaca/gelombang", cctv: "/cctv" } as const;
+
+test.describe("Cuaca dan CCTV", () => {
+  test("tiga halaman mode terbuka dan submenu Cuaca menautkan keempatnya", async ({ page }) => {
     await tiruSumber(page);
-    await page.goto("/langit-laut");
+    await page.goto(HALAMAN_MODE.hujan);
     await petaSiap(page);
-    await expect(page.getByRole("radio", { name: "Hujan" })).toBeChecked();
-    await page.getByRole("radio", { name: "Ombak" }).click();
-    await expect(page).toHaveURL(/mode=ombak/);
-    await page.getByRole("radio", { name: "CCTV" }).click();
-    await expect(page).toHaveURL(/mode=cctv/);
-    await page.getByRole("radio", { name: "Hujan" }).click();
-    await expect(page).not.toHaveURL(/mode=/);
+    const sub = page.locator('nav.bch-submenu[aria-label="Cuaca"] a');
+    expect((await sub.allTextContents()).map((t) => t.trim())).toEqual([
+      "Radar Hujan",
+      "Tinggi Gelombang",
+      "Peringatan Dini",
+      "Gempa Terkini",
+    ]);
+    await page.goto(HALAMAN_MODE.ombak);
+    await petaSiap(page);
+    await expect(page.locator(".cu-halaman")).toHaveAttribute("data-mode", "ombak");
+    await page.goto(HALAMAN_MODE.cctv);
+    await petaSiap(page);
+    await expect(page.locator(".cu-halaman")).toHaveAttribute("data-mode", "cctv");
   });
 
-  test("deep link membuka mode dan wilayah yang diminta, param lain dipertahankan", async ({ page }) => {
+  test("alamat lama /langit-laut dialihkan, view dan cam dipertahankan", async ({ page }) => {
     await tiruSumber(page);
-    await page.goto("/langit-laut?mode=ombak&view=natuna&debug=1");
+    await page.goto("/langit-laut?mode=ombak&view=natuna");
+    await expect(page).toHaveURL(/\/cuaca\/gelombang\?view=natuna$/);
+    await page.goto("/langit-laut?mode=cctv");
+    await expect(page).toHaveURL(/\/cctv$/);
+    await page.goto("/cuaca/hujan");
+    await expect(page).toHaveURL(/\/cuaca(\/hujan)?$/);
+  });
+
+  test("deep link ?view= membuka wilayah yang diminta", async ({ page }) => {
+    await tiruSumber(page);
+    await page.goto("/cuaca/gelombang?view=natuna");
     await petaSiap(page);
-    await expect(page.getByRole("radio", { name: "Ombak" })).toBeChecked();
+    await bukaPanel(page);
     await expect(page.getByRole("button", { name: "Natuna", pressed: true })).toBeVisible();
-    await expect(page).toHaveURL(/debug=1/);
   });
 
   test("radar memakai route sendiri, tile ombak skema TMS langsung ke BMKG", async ({ page }) => {
     await tiruSumber(page);
     const diminta: string[] = [];
     page.on("request", (r) => diminta.push(r.url()));
-    await page.goto("/langit-laut");
+    await page.goto(HALAMAN_MODE.hujan);
     await petaSiap(page);
     await expect.poll(() => diminta.some((u) => u.includes("/api/radar-citra/"))).toBe(true);
     expect(diminta.some((u) => u.includes("weather.gov.sg"))).toBe(false);
-    await page.getByRole("radio", { name: "Ombak" }).click();
+    await page.goto(HALAMAN_MODE.ombak);
+    await petaSiap(page);
     await expect
       .poll(() => diminta.some((u) => u.includes("maritim.bmkg.go.id/api21/mpl_req/w3g_hires/swh")))
       .toBe(true);
@@ -154,41 +179,39 @@ test.describe("Langit & Laut", () => {
 
   test("citra 404 tidak pernah tampil sebagai tidak hujan", async ({ page }) => {
     await tiruSumber(page, { citraGagal: true });
-    await page.goto("/langit-laut");
+    await page.goto(HALAMAN_MODE.hujan);
     await petaSiap(page);
     await expect(page.locator(".answer")).toBeVisible();
-    await expect(page.locator(".answer")).not.toContainText("Tidak Ada Hujan");
+    await expect(page.locator(".answer")).not.toContainText(/Tidak Ada Hujan/i);
   });
 
   test("peringatan yang belum diketahui tidak terbaca aman", async ({ page }) => {
     await tiruSumber(page);
-    await page.goto("/langit-laut?mode=ombak");
+    await page.goto(HALAMAN_MODE.ombak);
     await petaSiap(page);
-    await expect(page.locator("#panel-detail")).toContainText("tidak tersedia");
-    await expect(page.locator("#panel-detail")).not.toContainText("Tidak Ada Peringatan");
+    await expect(page.locator(".cu-panel")).not.toContainText("Tidak Ada Peringatan");
   });
 
-  test("CCTV: 28 kamera di peta, nol permintaan video sebelum dipilih", async ({ page }) => {
+  test("CCTV: 28 kamera di peta tanpa klaster, nol permintaan video sebelum dipilih", async ({ page }) => {
     await tiruSumber(page);
     const video: string[] = [];
     page.on("request", (r) => {
       if (r.url().includes("matanya.batam.go.id")) video.push(r.url());
     });
-    await page.goto("/langit-laut?mode=cctv");
+    await page.goto(HALAMAN_MODE.cctv);
     await petaSiap(page);
     const tombol = page.locator(".cam-marker .cam-hit");
     await expect(tombol.first()).toBeAttached();
-    const jumlah = await tombol.evaluateAll((el) =>
-      el.reduce((s, b) => s + (b.querySelector(".cam-cluster") ? Number(b.textContent) : 1), 0),
-    );
-    expect(jumlah).toBe(28);
+    // Titik tidak pernah digabung: tidak ada penanda berangka, dan tiap kamera satu titik.
+    await expect(page.locator(".cam-cluster")).toHaveCount(0);
+    await expect(tombol).toHaveCount(28);
     expect(video).toEqual([]);
   });
 
   test("CCTV: pin punya nama aksesibel dan bisa dibuka dengan keyboard", async ({ page }) => {
     await tiruSumber(page);
     await page.route("**/matanya.batam.go.id/**", (r) => r.fulfill({ status: 404, body: "" }));
-    await page.goto("/langit-laut?mode=cctv");
+    await page.goto(HALAMAN_MODE.cctv);
     await petaSiap(page);
     const pin = page.getByRole("button", { name: /^Kamera / }).first();
     await pin.focus();
@@ -200,30 +223,19 @@ test.describe("Langit & Laut", () => {
     await tiruSumber(page, { echo: ECHO_HUJAN });
     const galat: string[] = [];
     page.on("pageerror", (e) => galat.push(e.message));
-    await page.goto("/langit-laut?view=batam");
+    await page.goto(`${HALAMAN_MODE.hujan}?view=batam`);
     await petaSiap(page);
     await expect(page.locator(".answer")).toContainText("Hujan");
     await expect(page.locator(".kec-pill", { hasText: "Nongsa" })).toBeVisible({ timeout: 15_000 });
     await expect(page.locator(".kec-pill", { hasText: "Sekupang" })).toBeVisible();
     await expect(page.locator(".kec-pill[data-level=lebat]").first()).toBeVisible();
-    // Layer arsiran memakai filter ekspresi: galat di sini hanya muncul saat dijalankan.
     expect(galat).toEqual([]);
-  });
-
-  test("kelompok kamera membuka daftar di panel, lalu kembali", async ({ page }) => {
-    await tiruSumber(page);
-    await page.goto("/langit-laut?mode=cctv");
-    await petaSiap(page);
-    const kelompok = page.getByRole("button", { name: /kamera berdekatan, ketuk untuk memilih/ }).first();
-    await kelompok.evaluate((el) => (el as HTMLElement).click());
-    await expect(page.locator(".cam-cluster.is-selected")).toBeAttached();
-    await expect(page.getByRole("button", { name: /Perbesar Peta/ })).toBeVisible();
   });
 
   test("kamera gagal tandai abu di sesi ini", async ({ page }) => {
     await tiruSumber(page);
     await page.route("**/matanya.batam.go.id/**", (r) => r.fulfill({ status: 404, body: "" }));
-    await page.goto("/langit-laut?mode=cctv");
+    await page.goto(HALAMAN_MODE.cctv);
     await petaSiap(page);
     const pin = page.getByRole("button", { name: /^Kamera / }).first();
     await pin.evaluate((el) => (el as HTMLElement).click());
@@ -237,22 +249,23 @@ test.describe("Langit & Laut", () => {
     await page.addInitScript(() => {
       Object.defineProperty(navigator, "share", { value: undefined, configurable: true });
     });
-    await page.goto("/langit-laut?mode=ombak&view=kepri");
+    await page.goto("/cuaca/gelombang?view=kepri");
     await petaSiap(page);
-    await page.getByRole("button", { name: "Bagikan Tampilan Ini" }).first().click();
+    await bukaPanel(page);
+    await page.getByRole("button", { name: "Bagikan" }).first().click();
     await expect(page.locator(".toast")).toBeVisible();
     const teks = await page.evaluate(() => navigator.clipboard.readText());
-    expect(teks).toContain("/langit-laut?mode=ombak&view=kepri");
+    expect(teks).toContain("/cuaca/gelombang?view=kepri");
   });
 
   test("HP landscape: panel tidak melebihi layar", async ({ page }) => {
     await page.setViewportSize({ width: 780, height: 360 });
     await tiruSumber(page);
-    await page.goto("/langit-laut");
+    await page.goto(HALAMAN_MODE.hujan);
     await petaSiap(page);
     const lebar = await page.evaluate(() => document.documentElement.scrollWidth);
     expect(lebar).toBeLessThanOrEqual(780);
-    await expect(page.locator(".panel")).toBeVisible();
+    await expect(page.locator(".cu-panel")).toBeVisible();
   });
 
   test("tidak ada sisa Leaflet atau CARTO", async ({ page }) => {
@@ -261,28 +274,28 @@ test.describe("Langit & Laut", () => {
     page.on("request", (r) => {
       if (/cartocdn|circlegeo|leaflet/.test(r.url())) luar.push(r.url());
     });
-    await page.goto("/langit-laut");
+    await page.goto(HALAMAN_MODE.hujan);
     await petaSiap(page);
     expect(await page.locator("[class*=leaflet]").count()).toBe(0);
     expect(luar).toEqual([]);
     await expect(page.locator(".maplibregl-ctrl-attrib")).toContainText("OpenStreetMap");
   });
 
-  test("tema ikut tombol situs dan tersimpan", async ({ page }) => {
+  test("tema ikut tombol situs", async ({ page }) => {
     await tiruSumber(page);
     await page.addInitScript(() => localStorage.setItem("bch-theme", "light"));
-    await page.goto("/langit-laut");
+    await page.goto(HALAMAN_MODE.hujan);
     await petaSiap(page);
-    await page.getByRole("button", { name: "Ganti ke chart malam" }).click();
+    await page.getByRole("button", { name: "Ganti ke tampilan gelap" }).click();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   });
 
-  test("halaman lain tidak terganggu CSS Langit & Laut setelah navigasi klien", async ({ page }) => {
+  test("halaman lain tidak terganggu CSS cuaca setelah navigasi klien", async ({ page }) => {
     await tiruSumber(page);
-    await page.goto("/langit-laut");
+    await page.goto(HALAMAN_MODE.hujan);
     await petaSiap(page);
-    await page.getByRole("link", { name: "Tentang" }).click();
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Balai warga, bukan balai kota");
+    await page.locator("footer").getByRole("link", { name: "Tentang" }).click();
+    await expect(page).toHaveURL(/\/tentang$/);
     const ukuran = await page
       .getByRole("heading", { level: 1 })
       .evaluate((e) => parseFloat(getComputedStyle(e).fontSize));
@@ -293,20 +306,21 @@ test.describe("Langit & Laut", () => {
 
   test("footer wajib bisa dicapai", async ({ page }) => {
     await tiruSumber(page);
-    await page.goto("/langit-laut");
+    await page.goto(HALAMAN_MODE.hujan);
     await petaSiap(page);
     const footer = page.locator("footer");
     await footer.scrollIntoViewIfNeeded();
     await expect(footer).toBeInViewport();
-    await expect(footer).toContainText("bukan situs resmi");
+    await expect(footer).toContainText("Proyek independen warga Batam");
+    await expect(footer.getByRole("link", { name: "Kolofon" })).toBeVisible();
   });
 
   for (const tema of ["light", "dark"] as const) {
-    for (const mode of ["hujan", "ombak", "cctv"]) {
+    for (const mode of ["hujan", "ombak", "cctv"] as const) {
       test(`axe ${mode} tema ${tema}`, async ({ page }) => {
         await tiruSumber(page);
         await page.addInitScript((t) => localStorage.setItem("bch-theme", t), tema);
-        await page.goto(`/langit-laut?mode=${mode}`);
+        await page.goto(HALAMAN_MODE[mode]);
         await petaSiap(page);
         await page.waitForTimeout(800);
         const { violations } = await new AxeBuilder({ page }).exclude(".maplibregl-canvas").analyze();
@@ -323,20 +337,22 @@ test.describe("route radar", () => {
   });
 });
 
-test.describe("kotak Hari Ini", () => {
+test.describe("Hari ini di beranda", () => {
   test("tampil dan peringatan yang belum diketahui jujur", async ({ page }) => {
     await tiruSumber(page);
     await page.goto("/");
-    const kotak = page.locator(".bch-hari-ini");
-    await expect(kotak.getByRole("heading", { name: "Hari ini" })).toBeVisible();
-    await expect(kotak).toContainText("Status belum tersedia");
-    await expect(kotak).toContainText("proksi");
+    const hari = page.locator(".br-pertama");
+    await expect(hari).toContainText("Hari ini di Batam");
+    await expect(hari.locator('[data-baris="hujan"]')).toBeVisible();
+    await expect(hari.locator('[data-baris="gelombang"]')).toBeVisible();
+    await expect(hari).not.toContainText(/Tidak ada peringatan|aman/i);
   });
 
-  test("Langit & Laut tertaut dari beranda", async ({ page }) => {
+  test("Cuaca tertaut dari menu dan dari beranda", async ({ page }) => {
     await tiruSumber(page);
     await page.goto("/");
-    await expect(page.locator(".bch-card", { hasText: "Langit & Laut" })).toHaveAttribute("href", "/langit-laut");
+    await expect(page.locator('nav[aria-label="Bagian situs"] a[href="/cuaca"]')).toHaveText("Cuaca");
+    await expect(page.locator('.br-pertama a[href="/cuaca"]').first()).toBeVisible();
   });
 });
 
@@ -430,26 +446,26 @@ test.describe("peringatan cuaca di kotak Hari Ini", () => {
     await tiruSumber(page);
     await tiruPeringatan(page, [PERINGATAN_BATAM]);
     await page.goto("/");
-    const baris = page.locator('.bch-hari-ini [data-baris="cuaca"]');
+    const baris = page.locator('.br-pertama [data-baris="cuaca"]');
     await expect(baris).toContainText("Hujan Lebat dan Petir di Batu Aji dan Sagulung sampai");
-    await expect(baris.locator("a")).toHaveAttribute("href", "/langit-laut/peringatan");
+    await expect(baris.locator("a")).toHaveAttribute("href", "/cuaca/peringatan");
   });
 
   test("tidak ada atau hanya di luar Batam: barisnya tidak tampil", async ({ page }) => {
     await tiruSumber(page);
     await tiruPeringatan(page, [PERINGATAN_LUAR]);
     await page.goto("/");
-    await expect(page.locator(".bch-hari-ini").getByRole("heading", { name: "Hari ini" })).toBeVisible();
-    await expect(page.locator('.bch-hari-ini [data-baris="feri"]')).toBeVisible();
-    await expect(page.locator('.bch-hari-ini [data-baris="cuaca"]')).toHaveCount(0);
+    await expect(page.locator(".br-pertama")).toContainText("Hari ini di Batam");
+    await expect(page.locator('.br-pertama [data-baris="feri"]')).toBeVisible();
+    await expect(page.locator('.br-pertama [data-baris="cuaca"]')).toHaveCount(0);
   });
 
   test("sudah lewat menurut jam pengguna: barisnya tidak tampil", async ({ page }) => {
     await tiruSumber(page);
     await tiruPeringatan(page, [{ ...PERINGATAN_BATAM, sampai: jamLagi(-0.1) }]);
     await page.goto("/");
-    await expect(page.locator('.bch-hari-ini [data-baris="feri"]')).toBeVisible();
-    await expect(page.locator('.bch-hari-ini [data-baris="cuaca"]')).toHaveCount(0);
+    await expect(page.locator('.br-pertama [data-baris="feri"]')).toBeVisible();
+    await expect(page.locator('.br-pertama [data-baris="cuaca"]')).toHaveCount(0);
   });
 
   test("sumber gagal ditulis gagal, tidak diam-diam kosong", async ({ page }) => {
@@ -458,22 +474,19 @@ test.describe("peringatan cuaca di kotak Hari Ini", () => {
       r.fulfill({ status: 503, json: { status: "gagal", diambil: "", peringatan: [] } }),
     );
     await page.goto("/");
-    const baris = page.locator('.bch-hari-ini [data-baris="cuaca"]');
-    await expect(baris).toContainText("gagal dimuat");
+    const baris = page.locator('.br-pertama [data-baris="cuaca"]');
+    await expect(baris).toContainText("belum dapat dimuat");
     await expect(baris).not.toContainText("aman");
   });
 });
 
 test.describe("jalan masuk ke halaman BMKG", () => {
-  test("kotak Hari Ini selalu menaut ke peringatan dan gempa", async ({ page }) => {
+  test("menu Cuaca selalu menaut ke peringatan dan gempa", async ({ page }) => {
     await tiruSumber(page);
-    await page.goto("/");
-    const tautan = page.locator(".bch-hari-ini [data-tautan-bmkg]");
-    await expect(tautan.getByRole("link", { name: "Peringatan cuaca" })).toHaveAttribute(
-      "href",
-      "/langit-laut/peringatan",
-    );
-    await expect(tautan.getByRole("link", { name: "Gempa terkini" })).toHaveAttribute("href", "/langit-laut/gempa");
+    await page.goto("/cuaca/hujan");
+    const sub = page.locator('nav.bch-submenu[aria-label="Cuaca"]');
+    await expect(sub.getByRole("link", { name: "Peringatan Dini" })).toHaveAttribute("href", "/cuaca/peringatan");
+    await expect(sub.getByRole("link", { name: "Gempa Terkini" })).toHaveAttribute("href", "/cuaca/gempa");
   });
 });
 
@@ -482,45 +495,42 @@ test.describe("gempa di kotak Hari Ini", () => {
     await tiruSumber(page);
     await tiruGempa(page, [GEMPA_DEKAT, GEMPA_JAUH]);
     await page.goto("/");
-    const baris = page.locator('.bch-hari-ini [data-baris="gempa"]');
+    const baris = page.locator('.br-pertama [data-baris="gempa"]');
     await expect(baris).toContainText("M 5,3, ±280 km barat Batam");
     await expect(baris).toContainText("Dirasakan: III Pekanbaru");
-    await expect(baris.locator("a")).toHaveAttribute("href", "/langit-laut/gempa");
+    await expect(baris.locator("a")).toHaveAttribute("href", "/cuaca/gempa");
   });
 
   test("tidak relevan: barisnya tidak tampil", async ({ page }) => {
     await tiruSumber(page);
     await tiruGempa(page, [GEMPA_JAUH]);
     await page.goto("/");
-    await expect(page.locator('.bch-hari-ini [data-baris="feri"]')).toBeVisible();
-    await expect(page.locator('.bch-hari-ini [data-baris="gempa"]')).toHaveCount(0);
+    await expect(page.locator('.br-pertama [data-baris="feri"]')).toBeVisible();
+    await expect(page.locator('.br-pertama [data-baris="gempa"]')).toHaveCount(0);
   });
 });
 
 test.describe("halaman peringatan cuaca", () => {
   test("Batam di atas, teks BMKG disalin, atribusi ada", async ({ page }) => {
     await tiruPeringatan(page, [PERINGATAN_BATAM, PERINGATAN_LUAR]);
-    await page.goto("/langit-laut/peringatan");
-    await expect(page.getByRole("heading", { level: 1, name: "Peringatan dini cuaca" })).toBeVisible();
+    await page.goto("/cuaca/peringatan");
+    await expect(page.getByRole("heading", { level: 1, name: "Peringatan Dini Cuaca" })).toBeVisible();
     const batam = page.locator('section[aria-labelledby="peringatan-batam"]');
     await expect(batam.locator("[data-peringatan]")).toHaveCount(1);
     await expect(batam).toContainText("Kecamatan di Batam: Batu Aji dan Sagulung");
     await expect(batam).toContainText("khususnya di BATU AJI, SAGULUNG");
-    await expect(batam.getByRole("link", { name: "Infografis BMKG" })).toHaveAttribute(
-      "href",
-      /nowcasting\.bmkg\.go\.id/,
-    );
+    // Tanpa tautan ke situs pemerintah (PEDOMAN 2.9).
+    await expect(page.locator('main a[href*=".go.id"]')).toHaveCount(0);
     const lain = page.locator('section[aria-labelledby="peringatan-kepri"]');
     await expect(lain.locator("[data-peringatan]")).toHaveCount(1);
-    await expect(page.locator("[data-daftar-peringatan] .bch-attrib")).toContainText("Sumber: BMKG");
-    await expect(page.locator("[data-peringatan]").first().locator(".bch-badge")).toContainText("Berlaku");
+    await expect(page.locator("[data-peringatan]").first().locator(".bch-status")).toContainText("Berlaku");
   });
 
   test("kosong tidak ditulis aman", async ({ page }) => {
     await tiruPeringatan(page, []);
-    await page.goto("/langit-laut/peringatan");
+    await page.goto("/cuaca/peringatan");
     const isi = page.locator("[data-daftar-peringatan]");
-    await expect(isi).toContainText("BMKG tidak menyebut kecamatan di Batam");
+    await expect(isi).toContainText("Tidak ada peringatan yang menyebut kecamatan di Batam");
     await expect(isi).toContainText("Tidak ada peringatan tidak berarti cuaca pasti baik");
   });
 
@@ -528,22 +538,23 @@ test.describe("halaman peringatan cuaca", () => {
     await page.route("**/api/peringatan-cuaca**", (r) =>
       r.fulfill({ status: 503, json: { status: "gagal", diambil: "", peringatan: [] } }),
     );
-    await page.goto("/langit-laut/peringatan");
+    await page.goto("/cuaca/peringatan");
     const catatan = page.locator('[data-status="gagal"]');
-    await expect(catatan).toContainText("gagal dimuat");
-    await expect(catatan.getByRole("link", { name: "buka daftar BMKG" })).toHaveAttribute("href", /bmkg\.go\.id/);
-    await expect(catatan.getByRole("button", { name: "Coba lagi" })).toBeVisible();
+    await expect(catatan).toContainText("Peringatan cuaca belum dapat dimuat");
+    await expect(catatan).not.toContainText(/aman/i);
+    await expect(catatan.getByRole("button", { name: "Muat Ulang" })).toBeVisible();
+    await expect(catatan.locator("a")).toHaveCount(0);
   });
 
   test("sebagian gagal diberi tahu", async ({ page }) => {
     await tiruPeringatan(page, [PERINGATAN_LUAR], "sebagian");
-    await page.goto("/langit-laut/peringatan");
+    await page.goto("/cuaca/peringatan");
     await expect(page.locator('[data-status="sebagian"]')).toContainText("belum lengkap");
   });
 
   test("lolos axe", async ({ page }) => {
     await tiruPeringatan(page, [PERINGATAN_BATAM, PERINGATAN_LUAR]);
-    await page.goto("/langit-laut/peringatan");
+    await page.goto("/cuaca/peringatan");
     await expect(page.locator("[data-peringatan]").first()).toBeVisible();
     const { violations } = await new AxeBuilder({ page }).analyze();
     expect(violations.map((v) => v.id)).toEqual([]);
@@ -553,27 +564,23 @@ test.describe("halaman peringatan cuaca", () => {
 test.describe("halaman gempa", () => {
   test("gempa terbaru dan daftar, jarak dihitung dari Batam", async ({ page }) => {
     await tiruGempa(page, [GEMPA_DEKAT, GEMPA_JAUH]);
-    await page.goto("/langit-laut/gempa");
-    await expect(page.getByRole("heading", { level: 1, name: "Gempa terkini" })).toBeVisible();
+    await page.goto("/cuaca/gempa");
+    await expect(page.getByRole("heading", { level: 1, name: "Gempa Terkini" })).toBeVisible();
     const terbaru = page.locator("[data-gempa-terbaru]");
     await expect(terbaru).toContainText("M 5,3");
     await expect(terbaru).toContainText("±280 km barat Batam");
     await expect(terbaru).toContainText("Tidak berpotensi tsunami");
-    await expect(terbaru.getByRole("link", { name: "Peta guncangan BMKG" })).toHaveAttribute(
-      "href",
-      "https://static.bmkg.go.id/20261105090000.mmi.jpg",
-    );
+    await expect(terbaru.locator('a[href*=".go.id"]')).toHaveCount(0);
     await expect(page.locator("[data-gempa]")).toHaveCount(1);
     await expect(page.locator("[data-gempa]")).toContainText("±1.800 km timur Batam");
     await expect(page.locator("[data-tsunami]")).toHaveCount(0);
-    await expect(page.locator("[data-daftar-gempa] .bch-attrib")).toContainText("BMKG");
   });
 
   test("potensi tsunami dari BMKG ditampilkan dengan ikon dan kata", async ({ page }) => {
     await tiruGempa(page, [{ ...GEMPA_JAUH, waktu: jamLagi(-1), potensi: "Berpotensi tsunami" }]);
-    await page.goto("/langit-laut/gempa");
+    await page.goto("/cuaca/gempa");
     const catatan = page.locator("[data-tsunami]");
-    await expect(catatan).toContainText("BMKG menyebut potensi tsunami");
+    await expect(catatan).toContainText("BMKG menyatakan gempa ini berpotensi tsunami");
     await expect(catatan).toContainText("tidak menilai apakah Batam terdampak");
     await expect(catatan.locator("svg")).toHaveCount(1);
   });
@@ -582,15 +589,16 @@ test.describe("halaman gempa", () => {
     await page.route("**/api/gempa", (r) =>
       r.fulfill({ status: 503, json: { status: "gagal", diambil: "", gempa: [] } }),
     );
-    await page.goto("/langit-laut/gempa");
+    await page.goto("/cuaca/gempa");
     const catatan = page.locator('[data-status="gagal"]');
-    await expect(catatan).toContainText("gagal dimuat");
-    await expect(catatan.getByRole("link", { name: "buka data BMKG" })).toHaveAttribute("href", /bmkg\.go\.id/);
+    await expect(catatan).toContainText("Data gempa belum dapat dimuat");
+    await expect(catatan.getByRole("button", { name: "Muat Ulang" })).toBeVisible();
+    await expect(catatan.locator("a")).toHaveCount(0);
   });
 
   test("lolos axe", async ({ page }) => {
     await tiruGempa(page, [GEMPA_DEKAT, GEMPA_JAUH]);
-    await page.goto("/langit-laut/gempa");
+    await page.goto("/cuaca/gempa");
     await expect(page.locator("[data-gempa-terbaru]")).toBeVisible();
     const { violations } = await new AxeBuilder({ page }).analyze();
     expect(violations.map((v) => v.id)).toEqual([]);
@@ -601,17 +609,19 @@ test.describe("peringatan cuaca di radar", () => {
   test("label di panel mengikuti wilayah Batam", async ({ page }) => {
     await tiruSumber(page);
     await tiruPeringatan(page, [PERINGATAN_BATAM]);
-    await page.goto("/langit-laut");
-    const chip = page.locator(".warn-chip");
-    await expect(chip).toContainText("Peringatan dini BMKG: Hujan Lebat dan Petir di Batu Aji dan Sagulung");
-    await expect(chip.getByRole("link")).toHaveAttribute("href", "/langit-laut/peringatan");
+    await page.goto("/cuaca/hujan");
+    await petaSiap(page);
+    await bukaPanel(page);
+    const chip = page.locator("[data-peringatan-cuaca]");
+    await expect(chip).toContainText("Hujan Lebat dan Petir di Batu Aji dan Sagulung");
+    await expect(chip.getByRole("link")).toHaveAttribute("href", "/cuaca/peringatan");
   });
 
   test("peringatan di luar Batam tidak memberi label pada wilayah Batam", async ({ page }) => {
     await tiruSumber(page);
     await tiruPeringatan(page, [PERINGATAN_LUAR]);
-    await page.goto("/langit-laut");
+    await page.goto("/cuaca/hujan");
     await expect(page.locator(".answer")).toBeVisible();
-    await expect(page.locator(".warn-chip")).toHaveCount(0);
+    await expect(page.locator("[data-peringatan-cuaca]")).toHaveCount(0);
   });
 });

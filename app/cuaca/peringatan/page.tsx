@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import DaftarPeringatan from "@/features/langit-laut/components/DaftarPeringatan";
-import TabCuaca from "@/features/langit-laut/components/TabCuaca";
 import "@/features/langit-laut/cuaca.css";
 
 export const metadata: Metadata = {
@@ -11,9 +10,7 @@ export const metadata: Metadata = {
 export default function PeringatanCuacaHalaman() {
   return (
     <div className="bch-page cu-halaman-teks">
-      <TabCuaca />
-      <h1 className="mt-2">Peringatan Dini Cuaca</h1>
-      <p className="bch-lede">Peringatan untuk Batam tampil paling atas, disusul Kepulauan Riau lainnya.</p>
+      <h1 className="m-0">Peringatan Dini Cuaca</h1>
       <DaftarPeringatan />
     </div>
   );

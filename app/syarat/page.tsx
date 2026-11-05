@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Syarat() {
   return (
-    <div className="bch-page">
+    <div className="bch-page bch-baca">
       <h1>Syarat Penggunaan</h1>
       <div className="bch-prose">
         <p>Batam City Hall adalah proyek independen warga Batam.</p>

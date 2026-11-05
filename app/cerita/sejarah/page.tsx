@@ -1,4 +1,5 @@
 import { kaidahJudul } from "@/lib/judul";
+import PembukaHalaman from "@/components/site/PembukaHalaman";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GARIS_WAKTU, LABEL_KATEGORI, LABEL_METODE, PENDUDUK, WISMAN } from "@/features/sejarah/data";
@@ -28,10 +29,10 @@ const ARTI: Record<KunciStatus, string> = {
 };
 
 const BAGIAN = [
-  { href: "#esai", label: "Dua poros" },
-  { href: "#garis-waktu", label: "Garis waktu" },
-  { href: "#asal-nama", label: "Asal nama" },
-  { href: "#perubahan-fisik", label: "Perubahan fisik" },
+  { href: "#esai", label: "Dua Poros" },
+  { href: "#garis-waktu", label: "Garis Waktu" },
+  { href: "#asal-nama", label: "Asal Nama" },
+  { href: "#perubahan-fisik", label: "Perubahan Fisik" },
   { href: "#penduduk", label: "Penduduk" },
   { href: "#wisman", label: "Wisman" },
   { href: "#bacaan", label: "Bacaan" },
@@ -43,13 +44,9 @@ export default function Sejarah() {
   const bacaan = bacaanLanjutan();
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">
-        <Link href="/cerita" prefetch={false}>
-          Cerita dan Budaya
-        </Link>
-      </p>
-      <h1 className="mt-2">Sejarah Batam</h1>
-      <p className="bch-lede">{LEDE}</p>
+      <PembukaHalaman judul="Sejarah Batam" gambar="sejarah">
+        <p className="bch-lede">{LEDE}</p>
+      </PembukaHalaman>
 
       <ul className="sj-legenda" aria-label="Arti label">
         {LEGENDA.map((s) => (
@@ -70,7 +67,7 @@ export default function Sejarah() {
         <h2 id="judul-esai" className="mb-4">
           Dua Poros
         </h2>
-        <EsaiGulir langkah={ESAI} judul={Object.fromEntries(GARIS_WAKTU.map((e) => [e.id, e.judul]))} />
+        <EsaiGulir langkah={ESAI} />
       </section>
 
       <section id="garis-waktu" className="sj-jangkar mt-8" aria-labelledby="judul-garis">

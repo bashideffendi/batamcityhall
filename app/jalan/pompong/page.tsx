@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import TautanKirim from "@/components/site/TautanKirim";
 import Link from "next/link";
 import { BARIS_POMPONG, PELANTAR_KOSONG, POMPONG_TANPA_ASAL } from "@/features/jalan/feri-data";
 import { kapital } from "@/features/jalan/feri-terakhir";
-import JalanNav from "@/features/jalan/JalanNav";
 
 export const metadata: Metadata = {
   title: "Pompong",
@@ -12,25 +12,18 @@ export const metadata: Metadata = {
 const utama = BARIS_POMPONG.find((b) => b.tegas);
 const lain = BARIS_POMPONG.filter((b) => !b.tegas);
 
-const BELUM = "Belum tercatat";
+const BELUM = "—";
 const isi = (t: string | null) => (t ? kapital(t) : BELUM);
 
 export default function Pompong() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Transportasi</p>
-      <h1 className="mt-2">Pompong</h1>
+      <h1 className="m-0">Pompong</h1>
       <p className="bch-lede">
         Perahu kayu bermesin ke pulau sekitar Batam, tarifnya ditentukan pemilik dan dapat ditawar.
       </p>
-      <JalanNav aktif="/jalan/pompong" />
 
       <p className="bch-note mt-5">Tarif dapat berubah. Tanyakan kepada pengemudi perahu sebelum berangkat.</p>
-      <p className="mt-3">
-        <Link href="/koreksi" prefetch={false} className="bch-btn" data-variant="ghost">
-          Kirim koreksi
-        </Link>
-      </p>
 
       {utama && (
         <>
@@ -44,7 +37,7 @@ export default function Pompong() {
             <dd>
               <span className="bch-data">{utama.tarif}</span>
             </dd>
-            <dt>Lama perjalanan</dt>
+            <dt>Lama Perjalanan</dt>
             <dd className="bch-data">{utama.durasi}</dd>
             <dt>Catatan</dt>
             <dd>{utama.catatan}</dd>
@@ -54,14 +47,14 @@ export default function Pompong() {
 
       <h2 className="mt-7 mb-3">Rute Lain</h2>
       <div className="bch-table-wrap">
-        <table className="bch-table bch-tabel-tumpuk jl-tabel-pompong">
+        <table className="bch-table bch-tabel-tumpuk bch-tabel-padat jl-tabel-pompong">
           <thead>
             <tr>
               <th scope="col">Dari</th>
               <th scope="col">Tujuan</th>
               <th scope="col">Jadwal</th>
               <th scope="col">Tarif</th>
-              <th scope="col">Lama perjalanan</th>
+              <th scope="col">Lama Perjalanan</th>
             </tr>
           </thead>
           <tbody>
@@ -77,7 +70,7 @@ export default function Pompong() {
                   {isi(b.tarif)}
                   {b.catatan && <span className="jl-catatan-kecil jl-blok">{b.catatan}</span>}
                 </td>
-                <td data-label="Lama perjalanan">{isi(b.durasi)}</td>
+                <td data-label="Lama Perjalanan">{isi(b.durasi)}</td>
               </tr>
             ))}
             {POMPONG_TANPA_ASAL.map((b) => (
@@ -86,7 +79,7 @@ export default function Pompong() {
                 <td data-label="Tujuan">{b.tujuan}</td>
                 <td data-label="Jadwal">Sekali sehari</td>
                 <td data-label="Tarif">{b.keterangan}</td>
-                <td data-label="Lama perjalanan">{BELUM}</td>
+                <td data-label="Lama Perjalanan">{BELUM}</td>
               </tr>
             ))}
           </tbody>
@@ -114,6 +107,11 @@ export default function Pompong() {
           Keselamatan di Pompong
         </Link>
         .
+      </p>
+      <p className="mt-3">
+        <TautanKirim href="/koreksi" prefetch={false} className="bch-btn" data-variant="ghost">
+          Kirim Koreksi
+        </TautanKirim>
       </p>
     </div>
   );

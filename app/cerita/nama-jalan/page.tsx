@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import PembukaHalaman from "@/components/site/PembukaHalaman";
+import { KIRIMAN_AKTIF } from "@/lib/site";
 import Link from "next/link";
 import DaftarTokoh from "@/features/nama-jalan/DaftarTokoh";
 import {
@@ -26,18 +28,17 @@ export const metadata: Metadata = {
 export default function NamaJalan() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Cerita dan Budaya</p>
-      <h1 className="mt-2">Siapa di Balik Nama Jalan</h1>
-      <p className="bch-lede">{LEDE}</p>
+      <PembukaHalaman judul="Siapa di Balik Nama Jalan" gambar="nama-jalan">
+        <p className="bch-lede">{LEDE}</p>
+      </PembukaHalaman>
       <p className="bch-note mt-3">
-        Ada {TOKOH.length} tokoh dan {PENAMAAN.length} nama tempat. Kartu berbingkai putus-putus dan bertanda bintang
-        garis adalah tokoh hikayat.
+        Ada {TOKOH.length} tokoh dan {PENAMAAN.length} nama tempat. Bertanda bintang garis berarti tokoh hikayat.
       </p>
       <nav className="bch-sub-nav" aria-label="Bagian halaman">
         <a href="#tokoh">Tokoh</a>
-        <a href="#penamaan">Daftar nama tempat</a>
+        <a href="#penamaan">Daftar Nama Tempat</a>
         <a href="#relasi">Silsilah</a>
-        <a href="#penetapan">Penamaan resmi</a>
+        <a href="#penetapan">Penamaan Resmi</a>
         <a href="#bacaan">Bacaan</a>
       </nav>
 
@@ -57,13 +58,13 @@ export default function NamaJalan() {
           Daftar ruas jalan berasal dari rilis Dishub 2011. Sebagian nama mungkin sudah berganti.
         </p>
         <div className="bch-table-wrap mt-3">
-          <table className="bch-table bch-tabel-tumpuk" data-tabel-penamaan>
+          <table className="bch-table bch-tabel-tumpuk bch-tabel-padat" data-tabel-penamaan>
             <thead>
               <tr>
                 <th scope="col">Nama</th>
                 <th scope="col">Jenis</th>
                 <th scope="col">Letak</th>
-                <th scope="col">Dinamai menurut</th>
+                <th scope="col">Dinamai Menurut</th>
               </tr>
             </thead>
             <tbody>
@@ -83,7 +84,7 @@ export default function NamaJalan() {
                   </td>
                   <td data-label="Jenis">{p.jenis}</td>
                   <td data-label="Letak">{p.letak}</td>
-                  <td data-label="Dinamai menurut">
+                  <td data-label="Dinamai Menurut">
                     <Link href={`/cerita/nama-jalan/${p.tokohId}`} prefetch={false}>
                       {p.tokohNama}
                     </Link>
@@ -135,9 +136,11 @@ export default function NamaJalan() {
             <li key={b}>{b}</li>
           ))}
         </ul>
-        <p>
-          Ada yang keliru atau terlewat? <Link href="/koreksi">Kirim koreksi</Link>
-        </p>
+        {KIRIMAN_AKTIF && (
+          <p>
+            Ada yang keliru atau terlewat? <Link href="/koreksi">Kirim Koreksi</Link>
+          </p>
+        )}
       </section>
     </div>
   );

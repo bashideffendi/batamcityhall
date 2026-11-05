@@ -39,7 +39,7 @@ export function HujanPerKecamatan({ echo, scope }: { echo: EchoSummary | null; s
         <p className="cu-catatan">
           Tidak hujan di {kering.length} kecamatan {hujan.length ? "lain" : ""}.{" "}
           <button type="button" className="bch-tautan-tombol" onClick={() => setSemua(true)}>
-            Lihat semua
+            Lihat Semua
           </button>
         </p>
       )}

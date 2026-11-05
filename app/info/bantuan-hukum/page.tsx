@@ -28,7 +28,7 @@ export default function BantuanHukum() {
   return (
     <div className="bch-page">
       <nav className="bch-remah" aria-label="Remah roti">
-        <Link href="/info">Informasi Warga</Link>
+        <Link href="/info">Layanan Warga</Link>
       </nav>
       <h1 className="mt-2">Bantuan Hukum</h1>
       <p className="bch-lede">Bantuan hukum gratis ada di pos bantuan hukum pengadilan dan lembaga bantuan hukum.</p>

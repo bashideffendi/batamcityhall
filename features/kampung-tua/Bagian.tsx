@@ -26,8 +26,8 @@ export function NavKampungTua({ aktif }: { aktif: "daftar" | "legalitas" | "remp
   // Kronologi disembunyikan sampai pemilik selesai membaca (PEDOMAN bagian 6): halaman publik tidak menautkannya.
   if (aktif === "daftar") return null;
   const isi = [
-    { id: "daftar", href: "/cerita/kampung-tua", nama: "Peta dan daftar" },
-    { id: "legalitas", href: "/cerita/kampung-tua/legalitas", nama: "Kronologi legalitas" },
+    { id: "daftar", href: "/cerita/kampung-tua", nama: "Peta dan Daftar" },
+    { id: "legalitas", href: "/cerita/kampung-tua/legalitas", nama: "Kronologi Legalitas" },
     { id: "rempang", href: "/cerita/rempang", nama: "Kronologi Rempang" },
   ];
   return (

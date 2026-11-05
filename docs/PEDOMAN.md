@@ -12,12 +12,30 @@ Versi 1.1 mengganti arah tampilan menjadi editorial dengan grafis Riso (bagian 4
 > 4. Judul daftar bagian di beranda: "Jelajahi Batam", tanpa penanda.
 > 5. Route dan nama bagian tidak berubah. Nama `LOKET` di kode dan nama berkas `loket-*.webp` tidak tampil, jadi tetap.
 
-> **Koreksi pemilik, 6 November 2026. Menang atas semua isi di bawah dan atas koreksi di atas bila bertentangan.**
+> **Koreksi pemilik, 5 November 2026. Menang atas semua isi di bawah dan atas koreksi di atas bila bertentangan.**
 >
 > 1. **Teks singkat, di seluruh situs.** Orang malas membaca. Setiap kalimat harus efektif: buang kata dan kalimat yang tidak menambah informasi. Kalimat panjang hanya boleh bila memang perlu untuk menjelaskan sesuatu. Naskah bagian 3 tidak lagi wajib dipakai persis; yang menang adalah teks yang lebih singkat dengan fakta yang sama. Aturan bahasa di bagian 2 tetap berlaku. Isi faktual tidak boleh berubah, terutama legalitas, Rempang, sejarah, kesehatan, darurat, dan hukum.
 > 2. **Makan didesain ulang** mengikuti riset platform makanan (November 2026). Menu baru: Hidangan · Kawasan · Panduan · Dekat feri · Peta · Simpanan, ditambah Cara Kami Memilih. Alamat `/makan/daftar`, `/makan/kategori`, `/makan/jalur`, `/makan/tersimpan`, dan `/makan/tentang` dialihkan ke alamat baru. Bagian 3.4 di bawah hanya berlaku untuk hal yang tidak diubah desain baru.
 > 3. **Nama hidangan, nama kategori, menu andalan, dan semua teks yang tampil sebagai judul memakai Title Case** (kaidah 2.3 untuk judul): Martabak dan Prata, bukan Martabak dan prata. Tabel kategori di 3.4 dan aturan "nama kategori kapital awal" di 2.3 tidak berlaku lagi. `lib/judul.ts` menyediakan `kaidahJudul`. Pengecualian: entri kamus mengikuti cara penulisan kamus. Tombol, saringan, dan label status tetap kapital awal.
 > 4. **Galeri foto di detail tempat.** Bingkai kosong boleh tampil sampai foto tersedia, atas permintaan pemilik. Prinsip 1.7 tidak berlaku untuk galeri ini. Foto ditaruh di `public/foto/makan/<id-tempat>/`.
+
+> **Koreksi pemilik, rombak menu, November 2026. Menang atas semua isi di bawah dan atas dua koreksi di atas bila bertentangan.**
+>
+> 1. **Menu baru, 11 bagian tanpa nomor** (`BAGIAN` di `lib/site.ts`): Cuaca · CCTV · Transportasi · Makanan · Berita · Jurnal · Things to Do · Komunitas · Tukang Langganan · Layanan Warga · Sejarah dan Budaya. Tujuh loket di bagian 3 dibaca sebagai bagian-bagian ini. Nomor kecil dan penanda di atas judul dihapus. Alamat lama dialihkan di `next.config.ts`.
+> 2. **Ruang Main dihapus.** Kartu Pos pindah ke `/kartu-pos` dengan enam desain siap cetak. Kalkulator Singapura atau Nagoya dan Vibe dihapus karena tidak fungsional.
+> 3. **Hanya Bahasa Indonesia yang tampil.** Tombol ID, EN, dan 中 dihapus. Terjemahan tetap di kode untuk nanti. Bagian 2.10 tidak berlaku selama itu.
+> 4. **Title Case untuk semua label pendek:** menu, submenu, tab, saringan, tombol, judul kolom, label status, jenis jasa. Kalimat tetap kapital awal. Entri kamus mengikuti kamus. Ini menggantikan kalimat terakhir butir 3 koreksi sebelumnya.
+> 5. **Teks tidak penting dihapus.** Slogan di kepala dan kaki halaman hilang. Baris darurat (112, 110, 113, 115, 119) tampil di puncak setiap halaman.
+> 6. **Beranda adalah dasbor:** cuaca dan laut hari ini, berita, Things to Do, transportasi, peta, makanan, CCTV, layanan warga, Jurnal, kartu pos. Setiap modul punya tautan Selengkapnya.
+> 7. **Halaman bagian rapat:** judul, keterangan bila perlu, lalu isi. Tidak ada ruang kosong besar.
+> 8. **Peta tanpa klaster.** Titik tidak pernah digabung dan tidak ada angka gabungan. Saat jauh tampil titik kecil supaya sebarannya terlihat, ikon mulai zoom 13. Kamera di koordinat yang sama dikipas di layar, datanya tidak berubah. Ini menggantikan aturan klaster di bagian 5. Peta selalu di dalam wadah halaman, kecuali di ponsel.
+> 9. **Jurnal terpisah dari Berita.** Tulisan memakai judul, nama penulis, tanggal, dan narasi rata kanan-kiri, bukan poin-poin.
+> 10. **Things to Do** menggantikan Kalender: tempat untuk dikunjungi, agenda bertanggal (konser, festival, pameran), dan acara sepanjang tahun. Agenda hanya tampil bila ada datanya, tidak dikarang.
+> 11. **Dashboard `/admin`** untuk Jurnal, foto makanan, data makanan, dan agenda. Foto tetap boleh ditaruh di `public/foto/makan/<id-tempat>/`.
+> 15. **Paragraf rata kanan-kiri** di desktop dan ponsel, di seluruh situs. Label, alamat, dan teks di kolom sempit tetap rata kiri.
+> 14. **Info Loker** (`/loker`) adalah bagian baru, diisi lewat dashboard. Menunya tampil setelah basis data tersambung. Lowongan yang lewat batas lamaran tidak tampil.
+> 13. **Kategori Makanan** diganti dengan 32 kategori pemilik, persis dan seurut daftarnya, di `data/makan/categories.json`. Ejaan pemilik yang dipakai: Mie, Sop, Seafood, Dimsum, Chinese Food, Coffee Shop, Bakery, Ice Cream, AYCE. Tempat boleh masuk lebih dari satu kategori lewat `kategori_lain`. Tabel kategori di 3.4 tidak berlaku lagi.
+> 12. **Food Court** adalah halaman baru di Makanan (`/makan/food-court`), per kecamatan. Datanya di `data/makan/foodcourt.json`, wajib bersumber, tanpa rating. Peta muncul otomatis setelah koordinatnya diisi.
 
 ## Cara Memakai Pedoman Ini
 

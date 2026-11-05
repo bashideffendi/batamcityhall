@@ -897,21 +897,21 @@ describe("keluaran koordinat", () => {
 describe("kategori dan teks", () => {
   it("memuat jenis jasa persis seperti PEDOMAN 3.5", () => {
     expect(KATEGORI_JASA.map((k) => k.nama)).toEqual([
-      "Jahit dan permak",
+      "Jahit dan Permak",
       "Mebel",
-      "Servis dan cuci AC",
-      "Bengkel motor dan mobil",
-      "Tukang kunci",
+      "Servis dan Cuci AC",
+      "Bengkel Motor dan Mobil",
+      "Tukang Kunci",
       "Binatu",
-      "Sol sepatu",
-      "Servis ponsel, laptop, dan elektronik",
-      "Tukang bangunan, listrik, dan ledeng",
-      "Pijat dan refleksi",
-      "Pijat panggilan",
-      "Salon dan pangkas rambut",
-      "Fotokopi dan percetakan",
+      "Sol Sepatu",
+      "Servis Ponsel, Laptop, dan Elektronik",
+      "Tukang Bangunan, Listrik, dan Ledeng",
+      "Pijat dan Refleksi",
+      "Pijat Panggilan",
+      "Salon dan Pangkas Rambut",
+      "Fotokopi dan Percetakan",
       "Indekos",
-      "Jasa titip Singapura",
+      "Jasa Titip Singapura",
       "Lainnya",
     ]);
   });

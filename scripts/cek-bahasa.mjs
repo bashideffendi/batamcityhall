@@ -221,7 +221,6 @@ const DATA_TAMPIL = [
   "data/kampung_tua/kampung_tua.json",
   "data/kampung_tua/kronologi_legalitas.json",
   "data/makan/areas.json",
-  "data/makan/categories.json",
   "data/makan/places.json",
   "data/makan/trails.json",
   "data/panduan/09-rute_pompong.json",

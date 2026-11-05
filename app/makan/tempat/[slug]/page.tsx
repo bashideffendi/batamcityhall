@@ -8,8 +8,6 @@ import DetailView from "@/features/makan/components/DetailView";
 import { ferryMap, getPlace, places } from "@/features/makan/lib/data";
 
 // Hanya tempat yang ada di data: slug lain langsung 404.
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return places.map((p) => ({ slug: p.id }));
 }

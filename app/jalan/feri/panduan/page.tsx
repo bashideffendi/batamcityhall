@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import JalanNav from "@/features/jalan/JalanNav";
 
 export const metadata: Metadata = {
   title: "Panduan Menyeberang",
@@ -11,15 +10,11 @@ export const metadata: Metadata = {
 export default function Panduan() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">
-        <Link href="/jalan/feri" prefetch={false}>
-          Feri
-        </Link>{" "}
-        · Panduan
-      </p>
+      <nav className="bch-remah" aria-label="Remah roti">
+        <Link href="/jalan/feri" prefetch={false}>Feri</Link> / Panduan
+      </nav>
       <h1 className="mt-2">Panduan Menyeberang</h1>
       <p className="bch-lede">Siapkan hal berikut sebelum naik feri ke Singapura atau Malaysia.</p>
-      <JalanNav aktif="/jalan/feri/panduan" />
 
       <div className="bch-prose mt-5">
         <h2 id="paspor">Paspor dan Imigrasi</h2>
@@ -121,7 +116,7 @@ export default function Panduan() {
           Siapkan obat antimabuk, pilih kursi di tengah atau belakang kapal, sediakan waktu cadangan, dan pantau
           pengumuman pembatalan. Kondisi ombak sekarang ada di{" "}
           <Link href="/cuaca/gelombang" prefetch={false}>
-            Cuaca dan Laut
+            Cuaca
           </Link>
           .
         </p>

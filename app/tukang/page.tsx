@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PembukaLoket from "@/components/site/PembukaLoket";
+import KisiPintu from "@/components/site/KisiPintu";
+import PembukaBagian from "@/components/site/PembukaBagian";
 import { saringPublik, type TukangPublik } from "@/features/tukang/aturan";
 import CatatanMode from "@/features/tukang/CatatanMode";
 import { KATEGORI_JASA } from "@/features/tukang/kategori";
@@ -8,6 +9,7 @@ import KartuTukang from "@/features/tukang/KartuTukang";
 import { modeKiriman } from "@/features/tukang/mode";
 import { ambilStore } from "@/features/tukang/store";
 import { KECAMATAN } from "@/lib/data/schema";
+import { kaidahJudul } from "@/lib/judul";
 
 type Props = { searchParams: Promise<{ jasa?: string; kecamatan?: string }> };
 
@@ -52,24 +54,27 @@ export default async function Tukang({ searchParams }: Props) {
 
   return (
     <div className="bch-page bch-tk-halaman" data-mode-tukang={mode}>
-      <PembukaLoket
-        nomor="03"
-        lede="Penjahit, tukang servis, dan jasa lain di sini direkomendasikan minimal dua warga Batam."
-      >
-        <p className="bch-measure">Tidak ada yang membayar untuk masuk daftar ini.</p>
+      <PembukaBagian id="tukang" lede="Direkomendasikan minimal dua warga. Tidak ada yang membayar.">
         {mode === "contoh" && <CatatanMode mode={mode} />}
-        {mode !== "mati" && (
-          <p className="mt-4 mb-0">
-            <Link href="/tukang/rekomendasi" className="bch-btn" prefetch={false}>
-              Kirim rekomendasi
-            </Link>
-          </p>
-        )}
-      </PembukaLoket>
+      </PembukaBagian>
 
-      <h2 className="mt-6 mb-3">Jenis Jasa</h2>
-      <nav aria-label="Jenis jasa" className="bch-sub-nav">
-        <Link href={tautanJasa()} prefetch={false}>
+      {!gagal && daftar.length === 0 ? (
+        <section className="bch-seksi-rapat" data-kosong-tukang>
+          <p className="bch-measure m-0 mb-5">Daftar sedang dikumpulkan. Nama tampil setelah diperiksa dan didukung dua warga.</p>
+          <h2 className="bch-judul-seksi">Sementara Ini</h2>
+          <KisiPintu
+            kolom={2}
+            isi={[
+              { href: "/info/direktori/jasa", nama: "Jasa di Direktori", ket: "Pusat servis, ekspedisi, dan penukaran uang" },
+              { href: "/info/direktori/belanja", nama: "Toko dan Pasar", ket: "Bahan bangunan, pasar, dan pusat belanja" },
+            ]}
+          />
+        </section>
+      ) : (
+        <>
+      <h2 className="bch-judul-seksi bch-seksi-rapat">Jenis Jasa</h2>
+      <nav aria-label="Jenis Jasa" className="bch-saring-baris">
+        <Link href={tautanJasa()} prefetch={false} className="bch-pil" aria-current={jasa ? undefined : "page"}>
           Semua
         </Link>
         {KATEGORI_JASA.map((k) => (
@@ -79,8 +84,9 @@ export default async function Tukang({ searchParams }: Props) {
             prefetch={false}
             aria-current={k.slug === jasa ? "page" : undefined}
             data-kosong={jumlahPerJasa.get(k.slug) ? undefined : ""}
+            className="bch-pil"
           >
-            {k.nama}
+            {kaidahJudul(k.nama)}
           </Link>
         ))}
       </nav>
@@ -90,7 +96,7 @@ export default async function Tukang({ searchParams }: Props) {
         <label className="bch-field">
           Kecamatan
           <select className="bch-select" name="kecamatan" defaultValue={kecamatan ?? ""}>
-            <option value="">Semua kecamatan</option>
+            <option value="">Semua Kecamatan</option>
             {KECAMATAN.map((k) => (
               <option key={k} value={k}>
                 {k}
@@ -122,12 +128,10 @@ export default async function Tukang({ searchParams }: Props) {
         </>
       ) : (
         <div className="bch-note" data-kosong-tukang>
-          <p className="m-0">
-            {daftar.length
-              ? "Belum ada nama yang cocok. Coba hapus saringan."
-              : "Belum ada nama di daftar ini. Rekomendasi pertama tampil setelah diperiksa dan didukung dua warga."}
-          </p>
+          <p className="m-0">Belum ada nama yang cocok. Coba hapus saringan.</p>
         </div>
+      )}
+        </>
       )}
     </div>
   );

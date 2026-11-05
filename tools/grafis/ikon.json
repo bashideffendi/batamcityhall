@@ -2,7 +2,7 @@
  "catatan": "Glyph ikon garis 24x24 (stroke 2, ujung bulat). Warna putih di atas lingkaran kategori; kelompok kuning memakai tinta #161616.",
  "kelompok_peta": {
   "makan": {
-   "nama": "Makan",
+   "nama": "Makanan",
    "warna": "#E85A1F"
   },
   "menginap": {
@@ -38,28 +38,28 @@
   {
    "id": "seafood",
    "kelompok": "makan",
-   "nama": "Makanan laut dan gonggong",
+   "nama": "Seafood",
    "emoji_gaya_b": "🦀",
    "glyph": "seafood"
   },
   {
    "id": "kopi",
    "kelompok": "makan",
-   "nama": "Kopitiam dan kafe",
+   "nama": "Kopitiam dan Coffee Shop",
    "emoji_gaya_b": "☕",
    "glyph": "kopi"
   },
   {
    "id": "mi",
    "kelompok": "makan",
-   "nama": "Mi, bakso, dan sup",
+   "nama": "Mie, Bakso, dan Sop",
    "emoji_gaya_b": "🍜",
    "glyph": "mi"
   },
   {
    "id": "dimsum",
    "kelompok": "makan",
-   "nama": "Dim sum dan bubur",
+   "nama": "Dimsum dan Bubur",
    "emoji_gaya_b": "🥟",
    "glyph": "dimsum"
   },
@@ -73,7 +73,7 @@
   {
    "id": "oleh",
    "kelompok": "makan",
-   "nama": "Oleh-oleh",
+   "nama": "Kue dan Jajanan",
    "emoji_gaya_b": "🎁",
    "glyph": "oleh"
   },

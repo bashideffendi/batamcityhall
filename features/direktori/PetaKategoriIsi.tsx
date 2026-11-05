@@ -13,13 +13,11 @@ const TAMPILAN: [[number, number], [number, number]] = [
 
 export default function PetaKategoriIsi({
   fitur,
-  warna,
   theme,
   pusat,
   onPilih,
 }: {
   fitur: FiturPin[];
-  warna: string;
   theme: "light" | "dark";
   pusat?: [number, number];
   onPilih: (id: string | null) => void;
@@ -33,7 +31,7 @@ export default function PetaKategoriIsi({
   return (
     <div className="bch-kategori-peta">
       <PetaLangit theme={theme} opsi={{ bounds, maxBounds: MAP_BOUNDS, koperatif: true, selubung: true }}>
-        <LapisanTempat fitur={fitur} warnaUrut={[warna]} onPilih={onPilih} />
+        <LapisanTempat fitur={fitur} onPilih={onPilih} />
       </PetaLangit>
     </div>
   );

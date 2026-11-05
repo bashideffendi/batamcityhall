@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import TautanKirim from "@/components/site/TautanKirim";
 import Link from "next/link";
 import { DATA_PER, KARTU_FERI, PAPAN_SCC, TAUTAN_OPERATOR } from "@/features/jalan/feri-data";
 import FeriTerakhirMuat from "@/features/jalan/FeriTerakhirMuat";
 import { teksTanggal } from "@/features/jalan/feri-terakhir";
-import JalanNav from "@/features/jalan/JalanNav";
 import KartuRuteFeri from "@/features/jalan/KartuRuteFeri";
 
 export const metadata: Metadata = {
@@ -18,16 +18,14 @@ const lainnya = KARTU_FERI.filter((k) => k.jenis === "lainnya");
 export default function Feri() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">Transportasi</p>
-      <h1 className="mt-2">Feri</h1>
+      <h1 className="m-0">Feri</h1>
       <p className="bch-lede">Jadwal ke Singapura, Johor, dan pulau sekitar memakai waktu setempat pelabuhan asal.</p>
-      <JalanNav aktif="/jalan/feri" />
 
       <nav aria-label="Bagian halaman feri" className="bch-sub-nav jl-nav-halaman">
-        <a href="#terakhir">Feri terakhir</a>
+        <a href="#terakhir">Feri Terakhir</a>
         <a href="#internasional">Internasional</a>
         <a href="#domestik">Domestik</a>
-        <a href="#operator">Jadwal operator</a>
+        <a href="#operator">Jadwal Operator</a>
       </nav>
 
       <div className="mt-6" id="terakhir">
@@ -109,9 +107,9 @@ export default function Feri() {
 
       <p className="jl-catatan-kecil mt-7">
         Data dihimpun pada {teksTanggal(DATA_PER.slice(0, 7))}.{" "}
-        <Link href="/koreksi" prefetch={false}>
-          Kirim koreksi
-        </Link>
+        <TautanKirim href="/koreksi" prefetch={false}>
+          Kirim Koreksi
+        </TautanKirim>
       </p>
     </div>
   );

@@ -25,7 +25,7 @@ export default function DaftarBerita() {
         <label className="bch-field">
           Media
           <select className="bch-select" value={pilihan} onChange={(e) => setPilihan(e.target.value)}>
-            <option value="">Semua media</option>
+            <option value="">Semua Media</option>
             {sumber
               .filter((s) => s.jumlah > 0)
               .map((s) => (

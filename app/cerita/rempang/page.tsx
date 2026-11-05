@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import TautanKirim from "@/components/site/TautanKirim";
 import { ROBOTS_TERSEMBUNYI } from "@/lib/site";
 import Link from "next/link";
 import { NavKampungTua, PitaBertanggal } from "@/features/kampung-tua/Bagian";
@@ -33,9 +34,9 @@ export default function Rempang() {
   const kampung = KAMPUNG.filter((k) => k.lapisan === "rempang");
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">
-        <Link href="/cerita/kampung-tua">Kampung Tua</Link> · Rempang
-      </p>
+      <nav className="bch-remah" aria-label="Remah roti">
+        <Link href="/cerita/kampung-tua" prefetch={false}>Kampung Tua</Link> / Rempang
+      </nav>
       <h1 className="mt-2">Kronologi Rempang</h1>
       <PitaBertanggal />
       <p className="bch-lede">{LEDE}</p>
@@ -78,7 +79,7 @@ export default function Rempang() {
           ))}
         </ul>
         <p>
-          <Link href="/koreksi">Kirim koreksi</Link>
+          <TautanKirim href="/koreksi">Kirim Koreksi</TautanKirim>
         </p>
       </section>
     </div>

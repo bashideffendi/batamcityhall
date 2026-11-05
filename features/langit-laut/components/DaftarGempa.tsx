@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useNow } from "@/features/langit-laut/hooks/useBrowser";
 import { useResource } from "@/features/langit-laut/hooks/useResource";
 import type { Gempa, GempaResponse } from "@/features/langit-laut/lib/api-types";
@@ -69,7 +70,7 @@ function Tabel({ daftar, now }: { daftar: Gempa[]; now: number }) {
             <th scope="col">Waktu</th>
             <th scope="col">Magnitudo</th>
             <th scope="col">Kedalaman</th>
-            <th scope="col">Pusat gempa</th>
+            <th scope="col">Pusat Gempa</th>
             <th scope="col">Dari Batam</th>
             <th scope="col">Keterangan</th>
           </tr>
@@ -87,7 +88,7 @@ function Tabel({ daftar, now }: { daftar: Gempa[]; now: number }) {
               <td role="cell" data-label="Kedalaman" className="bch-data">
                 {kedalaman(g)}
               </td>
-              <td role="cell" data-label="Pusat gempa">
+              <td role="cell" data-label="Pusat Gempa">
                 {g.wilayah || "Belum tercatat"}
               </td>
               <td role="cell" data-label="Dari Batam">
@@ -112,6 +113,7 @@ export default function DaftarGempa() {
   const { data, error, load } = useResource<GempaResponse>("/api/gempa", POLL_MS, true, false);
   const daftar = data?.gempa ?? [];
   const lamaAda = data?.status === "basi" || (error && !!data);
+  const [semua, setSemua] = useState(false);
 
   return (
     <div data-daftar-gempa>
@@ -120,7 +122,7 @@ export default function DaftarGempa() {
         <p className="mt-5" data-status="gagal">
           Data gempa belum dapat dimuat.{" "}
           <button type="button" className="bch-tautan-tombol" onClick={() => void load()}>
-            Muat ulang
+            Muat Ulang
           </button>
         </p>
       )}
@@ -142,7 +144,14 @@ export default function DaftarGempa() {
           <h2 id="gempa-daftar" className="mt-7 mb-3">
             Gempa Sebelumnya
           </h2>
-          <Tabel daftar={daftar.slice(1)} now={now} />
+          <Tabel daftar={semua ? daftar.slice(1) : daftar.slice(1, 11)} now={now} />
+          {!semua && daftar.length > 11 && (
+            <p className="mt-3">
+              <button type="button" className="bch-btn" data-variant="ghost" onClick={() => setSemua(true)}>
+                Tampilkan Semua
+              </button>
+            </p>
+          )}
         </section>
       )}
       {data && !daftar.length && !error && data.status !== "gagal" && (

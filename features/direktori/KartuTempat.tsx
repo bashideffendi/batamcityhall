@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { labelSub, labelTempat, lokasiTeks, punyaHalaman, punyaTitik, statusBaris, type Place } from "./data";
+import { kontakPublik, labelSub, labelTempat, lokasiTeks, punyaHalaman, punyaTitik, statusBaris, type Place } from "./data";
 
 /** Paling banyak satu label, dan hanya untuk keadaan yang mengubah cara membaca barisnya. */
 export function DaftarLencana({ p }: { p: Parameters<typeof labelTempat>[0] }) {
@@ -23,6 +23,7 @@ export default function KartuTempat({ p }: { p: Place }) {
   const status = statusBaris(p);
   const catatan = labelTempat(p).map((l) => l.teks);
   const meta = [labelSub(p.subkategori), lokasi, ...catatan].filter(Boolean).join(" · ");
+  const telepon = kontakPublik(p).find((k) => k.label === "Telepon" && k.href);
   return (
     <article className="bch-baris">
       <h3 className="nama">
@@ -48,6 +49,11 @@ export default function KartuTempat({ p }: { p: Place }) {
           </>
         )}
       </p>
+      {telepon && (
+        <a className="bch-baris-tel" href={telepon.href ?? undefined} aria-label={`Telepon ${p.nama}, ${telepon.teks}`}>
+          {telepon.teks}
+        </a>
+      )}
     </article>
   );
 }

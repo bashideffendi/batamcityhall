@@ -60,7 +60,7 @@ export const panduan: Panduan[] = [
     "lewat-pukul-22",
     { id: "Lewat Pukul 22.00", en: "After 10 p.m.", zh: "晚上十点以后" },
     { id: "Masih buka sesudah pukul 22.00 WIB.", en: "Still open after 10 p.m. WIB.", zh: "晚上 10 点（WIB）后仍营业。" },
-    "sate-kambing",
+    "sate",
     (p) => bukaLarut(p.hours),
   ),
   hitungan(
@@ -74,7 +74,7 @@ export const panduan: Panduan[] = [
     "di-bawah-50-ribu",
     { id: "Di Bawah Rp50 Ribu", en: "Under Rp50k", zh: "五万盾以内" },
     { id: "Kisaran harga sampai Rp50.000.", en: "Price range up to Rp50,000.", zh: "价格区间不超过 5 万印尼盾。" },
-    "bakso",
+    "bakso-mie-ayam",
     (p) => {
       const maks = hargaTertinggi(p.price_idr);
       return maks !== null && maks <= BATAS_MURAH;

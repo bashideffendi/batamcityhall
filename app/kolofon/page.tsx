@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Emblem from "@/components/site/Emblem";
 
 export const metadata: Metadata = {
   title: "Kolofon",
@@ -14,14 +13,14 @@ const DATA = [
   "Peringatan dini cuaca dan gempa: BMKG.",
   "Batas kecamatan: Badan Informasi Geospasial.",
   "Kamera lalu lintas: Pemerintah Kota Batam.",
+  "Food court: BatamGems, Wikivoyage, Eatbook, Trip.com, Wanderlog, KepriOnline, Foursquare, dan TribunBatam.",
   "Data OpenStreetMap berlisensi ODbL.",
 ];
 
 export default function Kolofon() {
   return (
-    <div className="bch-page">
+    <div className="bch-page bch-baca">
       <h1>Kolofon</h1>
-      <Emblem />
 
       <div className="bch-prose">
         <h2>Huruf</h2>

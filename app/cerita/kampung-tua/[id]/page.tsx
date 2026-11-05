@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import TautanKirim from "@/components/site/TautanKirim";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Lencana } from "@/features/kampung-tua/Bagian";
@@ -16,8 +17,6 @@ import { IkonCeritaRakyat } from "@/features/kampung-tua/Ikon";
 import { LABEL_BUTIR, profilUntuk } from "@/features/kampung-tua/profil";
 import { rapiTeks } from "@/features/sejarah/rapi";
 import "@/features/kampung-tua/kampung-tua.css";
-
-export const dynamicParams = false;
 
 export function generateStaticParams() {
   return KAMPUNG.map((k) => ({ id: k.id }));
@@ -52,18 +51,15 @@ export default async function KartuKampung({ params }: Props) {
   const lokasi = lokasiKampung(k);
 
   return (
-    <div className="bch-page">
-      <p className="bch-kicker m-0">
-        <Link href="/cerita/kampung-tua">Kampung Tua</Link> · {lapisan.nama}
-      </p>
+    <div className="bch-page bch-baca">
+      <nav className="bch-remah" aria-label="Remah roti">
+        <Link href="/cerita/kampung-tua" prefetch={false}>Kampung Tua</Link> / {lapisan.nama}
+      </nav>
 
       <article className="bch-card bch-kartu-museum mt-3">
-        <p className="bch-kicker m-0">{lapisan.kicker}</p>
         <h1>{k.nama}</h1>
         {k.nama_populer && <p className="m-0">Juga disebut: {k.nama_populer}</p>}
         {lokasi && <p className="bch-card-loc">{lokasi}</p>}
-        <hr className="bch-card-rule" />
-        <div className="bch-rebung-mini" aria-hidden="true" />
         <Lencana isi={lencanaStatus(k.status_verifikasi)} />
 
         <p className="mt-3">{k.ringkasan}</p>
@@ -72,19 +68,19 @@ export default async function KartuKampung({ params }: Props) {
           <dl className="bch-kartu-fakta">
             {k.asal_usul_nama && (
               <div>
-                <dt>Asal-usul nama</dt>
+                <dt>Asal-Usul Nama</dt>
                 <dd>{k.asal_usul_nama}</dd>
               </div>
             )}
             {k.suku_awal && (
               <div>
-                <dt>Penduduk awal</dt>
+                <dt>Penduduk Awal</dt>
                 <dd>{k.suku_awal}</dd>
               </div>
             )}
             {k.masa_berdiri && (
               <div>
-                <dt>Berdiri sejak</dt>
+                <dt>Berdiri Sejak</dt>
                 <dd>{k.masa_berdiri}</dd>
               </div>
             )}
@@ -93,7 +89,7 @@ export default async function KartuKampung({ params }: Props) {
 
         {titik && (
           <p className="bch-card-meta mt-3 mb-0" data-baris-museum>
-            {`${titik.lat.toFixed(3)}, ${titik.lng.toFixed(3)}${titik.perkiraan ? " · Lokasi perkiraan, meleset 1—3 km" : ""}`}
+            {titik.perkiraan ? "Lokasi perkiraan, meleset 1—3 km" : "Lokasi terverifikasi"}
           </p>
         )}
       </article>
@@ -176,13 +172,13 @@ export default async function KartuKampung({ params }: Props) {
         {titik && k.tempat && (
           <p>
             <Link href={`/?tempat=${k.tempat.id}`} prefetch={false}>
-              Lihat di peta
+              Lihat di Peta
             </Link>
           </p>
         )}
 
         <p>
-          <Link href={`/koreksi?tempat=${k.tempat?.id ?? k.id}`}>Kirim koreksi</Link>
+          <TautanKirim href={`/koreksi?tempat=${k.tempat?.id ?? k.id}`}>Kirim Koreksi</TautanKirim>
         </p>
       </div>
     </div>

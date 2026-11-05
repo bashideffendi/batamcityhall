@@ -53,11 +53,7 @@
   font-size: 0.8125rem;
   color: var(--bch-ink-muted);
 }
-.bch-berita-semua {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-}
+
 .bch-berita-saring {
   display: grid;
   gap: var(--bch-space-2);
@@ -70,4 +66,19 @@
 .bch-berita-hari h2 {
   margin: 0;
   font-size: var(--bch-text-h3);
+}
+
+.bch-berita-widget.br-modul {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+.bch-berita-widget.br-modul[data-fase="memuat"] {
+  min-height: 0;
+}
+.bch-berita-widget.br-modul h2 {
+  font-size: 1.5rem;
 }

@@ -2,20 +2,73 @@ import { KATA_TUGAS_EN, kaidahJudul } from "@/lib/judul";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { cariDi, halamanSitus } from "@/features/cari/cocok";
 import { placeSchema, statsSchema } from "@/lib/data/schema";
-import { KAKI_KETERANGAN, LOKET } from "@/lib/site";
+import { BAGIAN, bagianDiAlamat, KAKI_KETERANGAN } from "@/lib/site";
 
 const baca = (p: string): unknown => JSON.parse(readFileSync(join(process.cwd(), p), "utf8"));
 
 describe("teks wajib", () => {
-  it("kaki halaman persis seperti pedoman 3.1", () => {
-    expect(KAKI_KETERANGAN).toBe("Proyek independen warga Batam · Tanpa iklan");
+  it("kaki halaman singkat", () => {
+    expect(KAKI_KETERANGAN).toBe("Proyek independen warga Batam. Tanpa iklan.");
   });
 });
 
-describe("menu loket", () => {
-  it("tujuh loket bernomor urut", () => {
-    expect(LOKET.map((l) => l.nomor)).toEqual(["01", "02", "03", "04", "05", "06", "07"]);
+describe("menu", () => {
+  it("urutan bagian sesuai keputusan pemilik", () => {
+    expect(BAGIAN.map((b) => b.nama)).toEqual([
+      "Cuaca",
+      "CCTV",
+      "Transportasi",
+      "Makanan",
+      "Berita",
+      "Jurnal",
+      "Things to Do",
+      "Komunitas",
+      "Tukang Langganan",
+      "Info Loker",
+      "Layanan Warga",
+      "Sejarah dan Budaya",
+    ]);
+  });
+
+  it("setiap nama menu dan submenu memakai Title Case", () => {
+    for (const b of BAGIAN) {
+      expect(kaidahJudul(b.nama, b.id === "kegiatan" ? KATA_TUGAS_EN : undefined), b.nama).toBe(b.nama);
+      for (const s of b.isi) expect(kaidahJudul(s.label), s.label).toBe(s.label);
+    }
+  });
+
+  it("peta transportasi di ujung submenu, tidak di antara Trans Batam dan Feri", () => {
+    const isi = BAGIAN.find((b) => b.id === "transportasi")?.isi.map((s) => s.label) ?? [];
+    expect(isi.slice(0, 3)).toEqual(expect.arrayContaining(["Trans Batam", "Feri"]));
+    expect(isi.indexOf("Feri") - isi.indexOf("Trans Batam")).toBe(1);
+    expect(isi.at(-1)).toBe("Peta Transportasi");
+  });
+
+  it("alamat menunjuk bagian yang benar", () => {
+    expect(bagianDiAlamat("/cuaca/hujan")?.id).toBe("cuaca");
+    expect(bagianDiAlamat("/cctv")?.id).toBe("cctv");
+    expect(bagianDiAlamat("/kartu-pos")?.id).toBe("budaya");
+    expect(bagianDiAlamat("/jalan/feri/panduan")?.id).toBe("transportasi");
+    expect(bagianDiAlamat("/makanan-lain")).toBeUndefined();
+    expect(bagianDiAlamat("/")).toBeUndefined();
+  });
+});
+
+describe("pencarian situs", () => {
+  const halaman = halamanSitus(BAGIAN);
+
+  it("menemukan halaman dan tidak peka huruf besar", () => {
+    expect(cariDi(halaman, "TRANS BATAM", (h) => [h.nama, h.bagian])[0].href).toBe("/jalan/trans-batam");
+    expect(cariDi(halaman, "nomor darurat", (h) => [h.nama, h.bagian])[0].href).toBe("/info/darurat");
+  });
+
+  it("semua kata harus ada, dan nama yang diawali kata itu lebih dulu", () => {
+    const d = [{ n: "Masjid Raya" }, { n: "Raya Bakso" }, { n: "Bakso" }];
+    expect(cariDi(d, "raya", (x) => [x.n]).map((x) => x.n)).toEqual(["Raya Bakso", "Masjid Raya"]);
+    expect(cariDi(d, "bakso raya", (x) => [x.n]).map((x) => x.n)).toEqual(["Raya Bakso"]);
+    expect(cariDi(d, "   ", (x) => [x.n])).toEqual([]);
   });
 });
 
@@ -49,9 +102,9 @@ describe("data tempat", () => {
 
 describe("kaidah judul", () => {
   it("Title Case, kata tugas tetap kecil, kapital yang ada tidak diubah", () => {
-    expect(kaidahJudul("Martabak dan prata")).toBe("Martabak dan Prata");
-    expect(kaidahJudul("Oleh-oleh dan kue")).toBe("Oleh-Oleh dan Kue");
-    expect(kaidahJudul("Dim sum dan masakan Tionghoa")).toBe("Dim Sum dan Masakan Tionghoa");
+    expect(kaidahJudul("Martabak dan Prata")).toBe("Martabak dan Prata");
+    expect(kaidahJudul("Oleh-Oleh dan Kue")).toBe("Oleh-Oleh dan Kue");
+    expect(kaidahJudul("Dim Sum dan Masakan Tionghoa")).toBe("Dim Sum dan Masakan Tionghoa");
     expect(kaidahJudul("Udang mentega/sereal")).toBe("Udang Mentega/Sereal");
     expect(kaidahJudul("Telaga Punggur—Tanjung Uban (kapal cepat)")).toBe("Telaga Punggur—Tanjung Uban (Kapal Cepat)");
     expect(kaidahJudul("Hari Jadi ke-196")).toBe("Hari Jadi ke-196");

@@ -4,8 +4,6 @@ import { PanduanHalaman } from "@/features/makan/components/HalamanMakan";
 import { getPanduan, panduan } from "@/features/makan/lib/panduan";
 
 // Hanya panduan yang ada di data: slug lain langsung 404.
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return panduan.map((g) => ({ slug: g.id }));
 }

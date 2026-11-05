@@ -40,13 +40,13 @@ describe("tokoh", () => {
   });
 
   it("satu label per kartu, hikayat tidak disamakan dengan sejarah", () => {
-    const sah = ["Tercatat", "Berbeda versi", "Belum terverifikasi", "Cerita rakyat"];
+    const sah = ["Tercatat", "Berbeda Versi", "Belum Terverifikasi", "Cerita Rakyat"];
     for (const t of TOKOH) expect(sah, t.id).toContain(t.status.teks);
-    expect(statusTokoh("hikayat")).toMatchObject({ grup: "hikayat", teks: "Cerita rakyat", hikayat: true });
-    expect(statusTokoh("semi_historis")).toMatchObject({ teks: "Belum terverifikasi", hikayat: true });
+    expect(statusTokoh("hikayat")).toMatchObject({ grup: "hikayat", teks: "Cerita Rakyat", hikayat: true });
+    expect(statusTokoh("semi_historis")).toMatchObject({ teks: "Belum Terverifikasi", hikayat: true });
     expect(statusTokoh("terverifikasi")).toMatchObject({ teks: "Tercatat", hikayat: false, nada: "ok" });
-    expect(statusTokoh("perlu_dicek").teks).toBe("Belum terverifikasi");
-    expect(statusTokoh(null).teks).toBe("Belum terverifikasi");
+    expect(statusTokoh("perlu_dicek").teks).toBe("Belum Terverifikasi");
+    expect(statusTokoh(null).teks).toBe("Belum Terverifikasi");
     expect(tokohPerId.get("hang_nadim")?.catatan.join(" ")).toContain("Perlawanannya terhadap Portugis tercatat");
   });
 

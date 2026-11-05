@@ -17,7 +17,7 @@ const KEADAAN = {
 export default async function Privasi() {
   await connection();
   return (
-    <div className="bch-page">
+    <div className="bch-page bch-baca">
       <h1>Kebijakan Privasi</h1>
       <p className="bch-note">{KEADAAN[modeKiriman()]}</p>
       <div className="bch-prose">
@@ -25,7 +25,7 @@ export default async function Privasi() {
         <ul>
           <li>Situs ini tidak memasang iklan dan pelacak iklan.</li>
           <li>Warga tidak perlu memiliki akun. Akun hanya dipakai moderator.</li>
-          <li>Pilihan tampilan dan bahasa disimpan di peramban, tidak di server kami.</li>
+          <li>Pilihan tampilan disimpan di peramban, tidak di server kami.</li>
           <li>
             Radar, cuaca, peringatan, dan data gempa diambil server kami dari sumber resminya. Peta gelombang dan video
             CCTV dimuat langsung dari server sumbernya sehingga server itu menerima alamat IP perangkatmu.

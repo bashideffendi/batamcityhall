@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import KisiPintu from "@/components/site/KisiPintu";
 import type { FramesResponse, OfsResponse, PerairanResponse } from "@/features/langit-laut/lib/api-types";
-import { MAPPED_CAMS } from "@/features/langit-laut/lib/cctv";
 import { currentSlot } from "@/features/langit-laut/lib/perairan";
 import { kalimatGelombang, kalimatHujan, radarView, statusRadar } from "@/features/langit-laut/lib/status";
 import { useNow } from "@/features/langit-laut/hooks/useBrowser";
@@ -31,7 +31,7 @@ function useCuacaSekarang() {
   return { rv, echo: frames.data?.echo ?? null, slot, ada: !!frames.data || !!perairan.data };
 }
 
-/** Blok SAAT INI di pembuka Loket 01 (PEDOMAN 3.3). */
+/** Keadaan sekarang di kepala halaman Cuaca. */
 export function SaatIni() {
   const { rv, echo, slot, ada } = useCuacaSekarang();
   const hujan = kalimatHujan(echo);
@@ -55,55 +55,55 @@ export function SaatIni() {
 
 const ENTRI = [
   {
-    no: "01",
     href: "/cuaca/hujan",
     judul: "Radar Hujan",
-    ket: "Hujan dalam 2,5 jam terakhir, diperbarui setiap 5 menit.",
+    ket: "Hujan 2,5 jam terakhir, diperbarui setiap 5 menit.",
     grafis: "/grafis/sub-radar.webp",
   },
   {
-    no: "02",
     href: "/cuaca/gelombang",
     judul: "Tinggi Gelombang",
     ket: "Prakiraan gelombang dan angin di perairan Batam.",
     grafis: "/grafis/sub-gelombang.webp",
   },
-  {
-    no: "03",
-    href: "/cuaca/cctv",
-    judul: "CCTV Lalu Lintas",
-    ket: `Kamera di ${MAPPED_CAMS.length} titik jalan utama Batam.`,
-    grafis: "/grafis/sub-cctv.webp",
-  },
 ];
 
-/** ISI LOKET INI: tiga entri berilustrasi dengan baris status. */
-export function IsiLoketCuaca() {
+/** Isi halaman Cuaca: dua peta dengan status langsung, lalu peringatan dan gempa. */
+export function IsiCuaca() {
   const { rv, slot } = useCuacaSekarang();
   const stat = statusRadar(rv.latestAge);
   const nada = stat === "Langsung" ? "ok" : stat === "Tertunda" ? "caution" : "danger";
   const baris: Record<string, React.ReactNode> = {
-    "01": rv.latest ? (
+    "/cuaca/hujan": rv.latest ? (
       <span className="bch-status bch-data" data-tone={nada}>
         {stat} · citra pukul {rv.latest.time} WIB
       </span>
     ) : null,
-    "02": slot ? <span className="bch-data">Berlaku sampai pukul {WIB(slot.validTo)} WIB</span> : null,
-    "03": <span className="bch-data">{MAPPED_CAMS.length} titik kamera</span>,
+    "/cuaca/gelombang": slot ? <span className="bch-data">Berlaku sampai pukul {WIB(slot.validTo)} WIB</span> : null,
   };
   return (
-    <ul className="bch-daftar-polos cu-entri">
-      {ENTRI.map((e) => (
-        <li key={e.no}>
-          <Link href={e.href} prefetch={false}>
-            <Image className="bch-grafis" src={e.grafis} alt="" width={746} height={466} unoptimized loading="lazy" />
-            <span className="no">{e.no}</span>
-            <span className="judul">{e.judul}</span>
-            <span className="ket">{e.ket}</span>
-          </Link>
-          <p className="cu-entri-status">{baris[e.no]}</p>
+    <>
+      <ul className="bch-daftar-polos cu-entri">
+        {ENTRI.map((e) => (
+          <li key={e.href}>
+            <Link href={e.href} prefetch={false}>
+              <Image className="bch-grafis" src={e.grafis} alt="" width={746} height={466} unoptimized loading="lazy" />
+              <span className="judul">{e.judul}</span>
+              <span className="ket">{e.ket}</span>
+            </Link>
+            <p className="cu-entri-status">{baris[e.href]}</p>
+          </li>
+        ))}
+        <li className="cu-entri-pintu">
+          <KisiPintu
+            kolom={1}
+            isi={[
+          { href: "/cuaca/peringatan", nama: "Peringatan Dini", ket: "Yang berlaku di Kepulauan Riau, kecamatan di Batam disebut." },
+          { href: "/cuaca/gempa", nama: "Gempa Terkini", ket: "Gempa di seluruh Indonesia, dengan jarak dari Batam." },
+            ]}
+          />
         </li>
-      ))}
-    </ul>
+      </ul>
+    </>
   );
 }

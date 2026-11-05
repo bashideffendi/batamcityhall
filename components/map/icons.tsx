@@ -1,14 +1,17 @@
 // Ikon tempat dari tools/grafis/ikon.json (PEDOMAN 5.4). Gaya A: lingkaran warna kelompok dengan ikon garis putih;
 // kelompok kuning memakai ikon tinta.
+import { kaidahJudul } from "@/lib/judul";
 import ikon from "@/tools/grafis/ikon.json";
 
 export type KelompokId = keyof typeof ikon.kelompok_peta;
 export type JenisPeta = { id: string; kelompok: KelompokId; nama: string; glyph: string };
 
-export const KELOMPOK_PETA = ikon.kelompok_peta as Record<KelompokId, { nama: string; warna: string }>;
+export const KELOMPOK_PETA = Object.fromEntries(
+  Object.entries(ikon.kelompok_peta).map(([k, v]) => [k, { ...v, nama: kaidahJudul(v.nama) }]),
+) as Record<KelompokId, { nama: string; warna: string }>;
 export const KELOMPOK_URUT = Object.keys(ikon.kelompok_peta) as KelompokId[];
-export const JENIS_PETA = ikon.jenis_peta.map(({ id, kelompok, nama, glyph }) => ({ id, kelompok, nama, glyph })) as JenisPeta[];
-export const KATEGORI_DIREKTORI = ikon.kategori_direktori as { nama: string; keterangan: string; glyph: string; warna: string }[];
+export const JENIS_PETA = ikon.jenis_peta.map(({ id, kelompok, nama: namaAsli, glyph }) => ({ id, kelompok, nama: kaidahJudul(namaAsli), glyph })) as JenisPeta[];
+export const KATEGORI_DIREKTORI = ikon.kategori_direktori.map((k) => ({ ...k, nama: kaidahJudul(k.nama) })) as { nama: string; keterangan: string; glyph: string; warna: string }[];
 const GLYPH = ikon.glyph as Record<string, string>;
 
 /** Warna ikon di atas lingkaran: kelompok kuning memakai tinta supaya kontrasnya cukup. */

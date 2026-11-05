@@ -101,10 +101,14 @@ export const kawasanBerisi = areas
   .filter((a) => (areaCounts[a.id] ?? 0) > 0)
   .sort((a, b) => areaCounts[b.id] - areaCounts[a.id]);
 
+/** Tempat masuk kategori lewat kategori utama atau kategori lainnya. */
+export const dalamKategori = (p: Pick<Place, "category" | "kategori_lain">, kategori: string) =>
+  p.category === kategori || (p.kategori_lain?.includes(kategori) ?? false);
+
 /** Jumlah tempat per id kategori. */
 export const categoryCounts: Record<string, number> = places.reduce(
   (acc, p) => {
-    acc[p.category] = (acc[p.category] ?? 0) + 1;
+    for (const k of [p.category, ...(p.kategori_lain ?? [])]) acc[k] = (acc[k] ?? 0) + 1;
     return acc;
   },
   {} as Record<string, number>,

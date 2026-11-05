@@ -68,7 +68,7 @@ export default function KartuPin({ pin, onTutup }: { pin: PinPeta; onTutup: () =
       )}
       <p className="mt-3 mb-0">
         <Link href={`/info/tempat/${pin.id}`} prefetch={false}>
-          Buka kartu lengkap
+          Buka Kartu Lengkap
         </Link>
       </p>
     </aside>

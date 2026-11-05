@@ -16,9 +16,8 @@ export default async function KirimRekomendasi() {
   await connection();
   const mode = modeKiriman();
   return (
-    <div className="bch-page bch-tk-halaman">
-      <p className="bch-kicker m-0">Tukang Langganan</p>
-      <h1 className="mt-2">Kirim Rekomendasi</h1>
+    <div className="bch-page bch-baca bch-tk-halaman">
+      <h1 className="m-0">Kirim Rekomendasi</h1>
       <p className="bch-lede">
         Rekomendasikan jasa yang pernah kamu pakai sendiri. Tukang tidak dapat mendaftarkan diri.
       </p>

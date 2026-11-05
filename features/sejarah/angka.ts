@@ -22,8 +22,8 @@ export type BarisFakta = {
 // catatannya sudah menulis cara menghitungnya.
 const STATUS_KATA: Record<string, string> = {
   Tercatat: "Tercatat",
-  "Berbeda versi": "Berbeda versi",
-  "Mungkin usang": "Berbeda versi",
+  "Berbeda versi": "Berbeda Versi",
+  "Mungkin usang": "Berbeda Versi",
 };
 
 const ANGKA_KOSONG = "Belum ada angka";
@@ -34,21 +34,21 @@ const CATATAN_DATABOKS =
 // Laporan 15 melarang 1,79 juta sebagai patokan, laporan 13 mencatatnya, dan prompt meminta semua item tampil.
 // Jalan tengah yang aman: tetap tampil, berlabel, dan tidak dipakai di grafik atau judul infografis.
 const UBAHAN_FAKTA: Record<string, Partial<BarisFakta>> = {
-  "fi-001": { status: "Berbeda versi", catatan: CATATAN_DATABOKS },
-  "fi-002": { status: "Berbeda versi", catatan: "Dari artikel Databoks yang sama. Tidak kami pakai di grafik." },
+  "fi-001": { status: "Berbeda Versi", catatan: CATATAN_DATABOKS },
+  "fi-002": { status: "Berbeda Versi", catatan: "Dari artikel Databoks yang sama. Tidak kami pakai di grafik." },
   "fi-003": {
-    status: "Berbeda versi",
+    status: "Berbeda Versi",
     catatan: CATATAN_DATABOKS.replace(
       "Jauh di atas proyeksi BPS 1.296.960 (pertengahan 2025) dan registrasi Disdukcapil 1.394.459 (Semester II 2025)",
       "Jauh di atas proyeksi BPS 1.276.930 (Juni 2024) dan registrasi Disdukcapil 1.294.548 (Semester I 2024)",
     ),
   },
-  "fi-004": { status: "Berbeda versi", catatan: "Dari artikel Databoks yang sama. Tidak kami pakai di grafik." },
+  "fi-004": { status: "Berbeda Versi", catatan: "Dari artikel Databoks yang sama. Tidak kami pakai di grafik." },
   "fi-005": { catatan: "Ciri kota pekerja." },
   "fi-009": { indikator: "Penduduk per kecamatan: Sagulung (terbanyak)" },
   "fi-012": { indikator: "Penduduk per kecamatan: Galang (paling sedikit)" },
   "fi-014": {
-    status: "Belum terverifikasi",
+    status: "Belum Terverifikasi",
     catatan:
       "Dihitung dari angka Databoks. BPS menghitung penduduk yang benar-benar tinggal, sedangkan Dukcapil hanya yang ber-KTP/KK Batam. Ini interpretasi, bukan klaim resmi. Angka BPS pertengahan 2025 lewat Wikipedia (1.296.960) justru di bawah Dukcapil, jadi selisih ini belum tentu berlaku.",
   },
@@ -81,7 +81,7 @@ const UBAHAN_FAKTA: Record<string, Partial<BarisFakta>> = {
   "fi-068": { catatan: "“115% luas Singapura”." },
 };
 
-const TANPA_TAHUN = "Tahun tidak disebut";
+const TANPA_TAHUN = "—";
 
 const tahunFakta = (f: Fakta) => {
   const p = f.periode;

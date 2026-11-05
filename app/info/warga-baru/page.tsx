@@ -13,7 +13,7 @@ export default function WargaBaru() {
   return (
     <div className="bch-page">
       <nav className="bch-remah" aria-label="Remah roti">
-        <Link href="/info">Informasi Warga</Link>
+        <Link href="/info">Layanan Warga</Link>
       </nav>
       <h1 className="mt-2">Warga Baru</h1>
       <p className="bch-lede">Mulai dari sini kalau baru pindah ke Batam.</p>
@@ -45,8 +45,8 @@ export default function WargaBaru() {
 
         <h2>Keliling Kota</h2>
         <p>
-          Hujan dan gelombang ada di <Link href="/cuaca">Cuaca dan Laut</Link>, tempat makan ada di{" "}
-          <Link href="/makan">Makan</Link>, serta Trans Batam dan feri ada di <Link href="/jalan">Transportasi</Link>.
+          Hujan dan gelombang ada di <Link href="/cuaca">Cuaca</Link>, tempat makan ada di{" "}
+          <Link href="/makan">Makanan</Link>, serta Trans Batam dan feri ada di <Link href="/jalan">Transportasi</Link>.
         </p>
       </div>
     </div>

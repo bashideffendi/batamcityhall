@@ -22,11 +22,9 @@ export const SUMBER = {
 } as const;
 
 export const LAYER_KLIK_PIN = "mk-pin-hit";
-export const LAYER_KLUSTER = "mk-pin-kluster";
 
-const BUKAN_KLUSTER: ExpressionSpecification = ["!", ["has", "point_count"]];
-const ADA_KLUSTER: ExpressionSpecification = ["has", "point_count"];
-const PERKIRAAN: ExpressionSpecification = ["==", ["get", "perkiraan"], true];
+/** Di bawah zoom ini tempat tampil sebagai titik kecil, supaya sebarannya terlihat. */
+export const ZOOM_IKON = 13;
 
 /** Penanda gaya A: gambar dipilih lewat properti "ikon" (PEDOMAN 5.4). */
 const ikonPin = {
@@ -39,44 +37,33 @@ export function lapisanPin(tema: MapTheme): LayerSpecification[] {
   const c = PALET[tema];
   return [
     {
+      id: "mk-pin-bulat",
+      type: "circle",
+      source: SUMBER.pin,
+      maxzoom: ZOOM_IKON,
+      paint: {
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 9, 3, 11, 4, ZOOM_IKON, 5.5],
+        "circle-color": WARNA.makan,
+        "circle-stroke-color": WARNA.putih,
+        "circle-stroke-width": 0.75,
+      },
+    },
+    {
       id: "mk-pin-titik",
       type: "symbol",
       source: SUMBER.pin,
-      filter: BUKAN_KLUSTER,
-      layout: ikonPin,
+      minzoom: ZOOM_IKON,
+      layout: {
+        ...ikonPin,
+        "icon-size": ["interpolate", ["linear"], ["zoom"], ZOOM_IKON, 0.7, 15, 1],
+      },
     },
-    // Target sentuh tak terlihat: lingkaran 7 px terlalu kecil untuk jari.
+    // Target sentuh tak terlihat: titik kecil terlalu sempit untuk jari.
     {
       id: LAYER_KLIK_PIN,
       type: "circle",
       source: SUMBER.pin,
-      filter: BUKAN_KLUSTER,
-      paint: { "circle-radius": 18, "circle-opacity": 0, "circle-stroke-width": 0 },
-    },
-    {
-      id: LAYER_KLUSTER,
-      type: "circle",
-      source: SUMBER.pin,
-      filter: ADA_KLUSTER,
-      paint: {
-        "circle-color": WARNA.putih,
-        "circle-stroke-color": WARNA.makan,
-        "circle-stroke-width": 2.5,
-        "circle-radius": ["step", ["get", "point_count"], 13, 10, 15, 30, 18],
-      },
-    },
-    {
-      id: "mk-pin-kluster-n",
-      type: "symbol",
-      source: SUMBER.pin,
-      filter: ADA_KLUSTER,
-      layout: {
-        "text-field": ["get", "point_count_abbreviated"],
-        "text-font": [FONT.island],
-        "text-size": 12,
-        "text-allow-overlap": true,
-      },
-      paint: { "text-color": WARNA.tinta },
+      paint: { "circle-radius": 14, "circle-opacity": 0, "circle-stroke-width": 0 },
     },
     {
       id: "mk-pilih-titik",
@@ -93,8 +80,7 @@ export function lapisanPin(tema: MapTheme): LayerSpecification[] {
   ];
 }
 
-export function lapisanFeri(tema: MapTheme): LayerSpecification[] {
-  const c = PALET[tema];
+export function lapisanFeri(): LayerSpecification[] {
   return [
     {
       id: "mk-feri-titik",
@@ -173,7 +159,7 @@ export function lapisanJalur(tema: MapTheme): LayerSpecification[] {
 }
 
 /** Peta kecil: penanda kategori dan terminal feri terdekat bila masuk bingkai (PEDOMAN 5.2). */
-export function lapisanMini(_tema: MapTheme): LayerSpecification[] {
+export function lapisanMini(): LayerSpecification[] {
   return [
     {
       id: "mk-mini-titik",
@@ -200,10 +186,10 @@ export function lapisanMini(_tema: MapTheme): LayerSpecification[] {
 
 const semuaLapisan = (tema: MapTheme) => [
   ...lapisanPin(tema),
-  ...lapisanFeri(tema),
+  ...lapisanFeri(),
   ...lapisanSaya(tema),
   ...lapisanJalur(tema),
-  ...lapisanMini(tema),
+  ...lapisanMini(),
 ];
 
 /** transformStyle untuk setStyle: bawa sumber dan layer "mk-" ke gaya baru dengan warna tema baru. */

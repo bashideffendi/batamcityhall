@@ -1,12 +1,15 @@
 "use client";
 
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { areas, categories, ferries } from "../lib/data";
 import { useFilters, type FilterState } from "../lib/filters";
 import { catName, HALAL_LABEL, LABEL_LABEL, PRICE_HINT, useI18n } from "../lib/i18n";
 import type { Bayar, Waktu } from "../lib/saring";
 import type { HalalStatus, PriceTier, RecLabel } from "../lib/types";
 import Ikon from "./Ikon";
+
+/** Tombol Saring di bilah bawah ponsel membuka lembar yang sama. */
+export const ACARA_BUKA_SARING = "mk-buka-saring";
 
 function Chip({
   active,
@@ -57,6 +60,11 @@ export default function FilterBar({ tanpa = [] }: { tanpa?: ("hidangan" | "kawas
   const { state, set, toggle, reset, activeCount, results, hitung, sekarang } = useFilters();
   const { t, lang } = useI18n();
   const lembar = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const buka = () => lembar.current?.showModal();
+    window.addEventListener(ACARA_BUKA_SARING, buka);
+    return () => window.removeEventListener(ACARA_BUKA_SARING, buka);
+  }, []);
   const [locating, setLocating] = useState(false);
   const [pesanLokasi, setPesanLokasi] = useState("");
 

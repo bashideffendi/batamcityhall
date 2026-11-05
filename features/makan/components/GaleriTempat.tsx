@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState, type PointerEvent as PE } from "react";
-import { BINGKAI_KOSONG, fotoTempat, polaMosaik, type Foto } from "../lib/foto";
+import { useFotoTempat } from "@/features/konten/useFotoTempat";
+import { BINGKAI_KOSONG, polaMosaik, type Foto } from "../lib/foto";
 import { grafisHidangan } from "../lib/hidangan";
 import { useI18n } from "../lib/i18n";
 import Ikon from "./Ikon";
@@ -156,6 +157,6 @@ function GaleriIsi({ foto, nama }: { foto: Foto[]; nama: string }) {
  * Selama belum ada foto, tampil ilustrasi hidangan dan bingkai kosong.
  */
 export default function GaleriTempat({ id, nama, kategori }: { id: string; nama: string; kategori: string }) {
-  const foto = fotoTempat(id);
+  const foto = useFotoTempat(id);
   return foto.length ? <GaleriIsi foto={foto} nama={nama} /> : <GaleriKosong kategori={kategori} />;
 }

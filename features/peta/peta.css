@@ -18,75 +18,6 @@
   outline-offset: -2px;
 }
 
-/* Bingkai koordinat */
-.peta-tepi-label {
-  font-family: var(--bch-font-mono);
-  font-size: 11px;
-  font-variant-numeric: tabular-nums slashed-zero;
-  fill: var(--bch-ink);
-  stroke: var(--bch-map-water);
-  stroke-width: 3px;
-  paint-order: stroke;
-}
-
-/* Kartusis: garis luar 1 px, garis dalam 0,5 px, jarak 3 px. Tanpa ornamen keriting. */
-.peta-kartusis {
-  position: absolute;
-  z-index: 3;
-  top: calc(var(--peta-tepi) + var(--bch-space-5));
-  left: calc(var(--peta-tepi) + var(--bch-space-3));
-  max-width: min(19rem, calc(100% - 7rem));
-  padding: var(--bch-space-3) var(--bch-space-4);
-  background: var(--bch-paper);
-  color: var(--bch-ink);
-  border: var(--bch-stroke-base) solid var(--bch-ink);
-}
-.peta-kartusis::after {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border: var(--bch-stroke-hair) solid var(--bch-ink);
-  pointer-events: none;
-}
-.peta-kartusis p {
-  margin: 0;
-}
-.peta-kartusis-skala {
-  font-family: var(--bch-font-mono);
-  font-variant-numeric: tabular-nums slashed-zero;
-  font-size: 0.75rem;
-  line-height: 1.4;
-}
-.peta-kartusis-skala {
-  margin-top: var(--bch-space-1) !important;
-}
-
-.peta-mawar {
-  position: absolute;
-  z-index: 3;
-  top: calc(var(--peta-tepi) + var(--bch-space-5));
-  right: calc(var(--peta-tepi) + var(--bch-space-3));
-  width: 4rem;
-  height: auto;
-  color: var(--bch-ink);
-  pointer-events: none;
-  overflow: visible;
-}
-
-.peta-skala {
-  position: absolute;
-  z-index: 3;
-  left: calc(var(--peta-tepi) + var(--bch-space-3));
-  bottom: calc(var(--peta-tepi) + var(--bch-space-3));
-  display: grid;
-  gap: var(--bch-space-1);
-  padding: var(--bch-space-2);
-  background: var(--bch-paper);
-  color: var(--bch-ink);
-  border: var(--bch-stroke-hair) solid var(--bch-rule-strong);
-  pointer-events: none;
-}
-
 .peta-zoom {
   position: absolute;
   z-index: 3;
@@ -171,18 +102,6 @@
 }
 html[data-gerak="tenang"] .peta-itik svg {
   animation: none;
-}
-
-@media (max-width: 480px) {
-  .peta-tepi-label {
-    font-size: 10px;
-  }
-  .peta-kartusis {
-    padding: var(--bch-space-2) var(--bch-space-3);
-  }
-  .peta-mawar {
-    width: 3rem;
-  }
 }
 
 /* Kartu pin: panel samping di layar lebar, bottom sheet di HP */
@@ -276,11 +195,16 @@ html[data-gerak="tenang"] .peta-itik svg {
 .peta-lapisan-catatan > span[aria-hidden="true"]:first-child {
   margin-left: 0;
 }
-.peta-cari-pesan {
-  grid-column: 1 / -1;
-  margin: 0;
+
+
+/* Kotak centang lapisan cukup besar untuk jari. */
+.peta-lapisan input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
 }
-.peta-cari-pesan {
-  font-size: var(--bch-text-small);
-  color: var(--bch-ink-muted);
+.peta-lapisan label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
 }

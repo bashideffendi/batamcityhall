@@ -20,13 +20,13 @@ export const keSumber = (urls: readonly string[] | null | undefined): Sumber[] =
 
 export const LABEL_KATEGORI: Record<string, string> = {
   prasejarah: "Prasejarah",
-  kartografi: "Peta lama",
+  kartografi: "Peta Lama",
   kesultanan: "Kesultanan",
   kolonial: "Kolonial",
   pendudukan_jepang: "Masa Jepang",
-  kemerdekaan: "Awal kemerdekaan",
+  kemerdekaan: "Awal Kemerdekaan",
   otorita: "Otorita",
-  kota: "Kehidupan kota",
+  kota: "Kehidupan Kota",
   kemanusiaan: "Kemanusiaan",
   pemerintahan: "Pemerintahan",
   infrastruktur: "Infrastruktur",

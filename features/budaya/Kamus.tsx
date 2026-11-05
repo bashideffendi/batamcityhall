@@ -8,6 +8,7 @@ import { useParamUrl } from "./useParamUrl";
 const namaKelompok = (slug: string) => KELOMPOK_KATA.find((k) => k.slug === slug)?.nama ?? slug;
 
 function Entri({ k }: { k: KataPublik }) {
+  const asal = k.asal !== k.labelRagam ? `Asal: ${k.asal}` : null;
   return (
     <article id={k.id} data-kata={k.id} className="bud-entri">
       <h3>
@@ -15,30 +16,10 @@ function Entri({ k }: { k: KataPublik }) {
         {k.belumDiperiksa && "*"}
       </h3>
       <div>
-        <p className="bud-arti">
-          <span className="bud-arti-label">Arti</span>‘{k.arti}’
-        </p>
-        {k.contoh && (
-          <p className="bud-contoh">
-            <span className="bud-arti-label">Contoh</span>
-            {k.contoh}
-          </p>
-        )}
+        <p className="bud-arti">‘{k.arti}’</p>
+        {k.contoh && <p className="bud-contoh">{k.contoh}</p>}
         {k.konteks && <p className="bud-rinci">{k.konteks}</p>}
-        <div className="bch-badges mt-2">
-          <span className="bch-badge" data-tone="info">
-            {k.labelRagam}
-          </span>
-        </div>
-        <p className="bch-card-meta mt-2 mb-0">
-          {k.asal !== k.labelRagam && (
-            <>
-              Asal: {k.asal}
-              <br />
-            </>
-          )}
-          {namaKelompok(k.kelompok)}
-        </p>
+        <p className="bch-card-meta mt-1 mb-0">{[k.labelRagam, asal, namaKelompok(k.kelompok)].filter(Boolean).join(" · ")}</p>
       </div>
     </article>
   );
@@ -86,7 +67,7 @@ export default function Kamus({ entri }: { entri: KataPublik[] }) {
         <label className="bch-field">
           Kelompok
           <select className="bch-select" value={kelompok} onChange={(e) => tulis({ kelompok: e.target.value || null })}>
-            <option value="">Semua kelompok</option>
+            <option value="">Semua Kelompok</option>
             {KELOMPOK_KATA.map((k) => (
               <option key={k.slug} value={k.slug}>
                 {k.nama}
@@ -97,7 +78,7 @@ export default function Kamus({ entri }: { entri: KataPublik[] }) {
         <label className="bch-field">
           Asal
           <select className="bch-select" value={ragam} onChange={(e) => tulis({ ragam: e.target.value || null })}>
-            <option value="">Semua asal</option>
+            <option value="">Semua Asal</option>
             {RAGAM_KATA.map((r) => (
               <option key={r} value={r}>
                 {r}

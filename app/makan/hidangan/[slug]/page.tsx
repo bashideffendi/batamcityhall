@@ -4,8 +4,6 @@ import { HidanganHalaman } from "@/features/makan/components/HalamanMakan";
 import { categoryCounts, categoryMap } from "@/features/makan/lib/data";
 import { DEK_HIDANGAN, kategoriDariSlug, semuaSlugHidangan } from "@/features/makan/lib/hidangan";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return semuaSlugHidangan.map((slug) => ({ slug }));
 }

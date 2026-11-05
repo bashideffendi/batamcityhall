@@ -28,7 +28,7 @@ export default function DaftarTokoh({ tokoh, kelompok, grupStatus, catatanHikaya
         <label className="bch-field">
           <span>Kelompok</span>
           <select className="bch-select" value={k} onChange={(e) => setK(e.target.value)}>
-            <option value="">Semua kelompok</option>
+            <option value="">Semua Kelompok</option>
             {kelompok.map((o) => (
               <option key={o.id} value={o.id}>
                 {o.nama}
@@ -39,7 +39,7 @@ export default function DaftarTokoh({ tokoh, kelompok, grupStatus, catatanHikaya
         <label className="bch-field">
           <span>Status</span>
           <select className="bch-select" value={s} onChange={(e) => setS(e.target.value)}>
-            <option value="">Semua status</option>
+            <option value="">Semua Status</option>
             {grupStatus.map((o) => (
               <option key={o.id} value={o.id}>
                 {o.nama}
@@ -57,7 +57,7 @@ export default function DaftarTokoh({ tokoh, kelompok, grupStatus, catatanHikaya
               setS("");
             }}
           >
-            Hapus saringan
+            Hapus Saringan
           </button>
         )}
       </div>
@@ -96,7 +96,7 @@ export default function DaftarTokoh({ tokoh, kelompok, grupStatus, catatanHikaya
                     </h4>
                     {t.gelar && <p className="bch-card-loc">{t.gelar}</p>}
                     {t.masaHidup && <p className="bch-card-meta m-0">{t.masaHidup}</p>}
-                    <p className="mt-2 mb-2">{t.ringkasan}</p>
+                    <p className="mt-2 mb-2 nj-ringkas">{t.ringkasan}</p>
                     <span className="bch-badge" data-tone={t.status.nada}>
                       {t.status.grup === "hikayat" && <IkonCeritaRakyat ukuran={12} />}
                       {t.status.teks}

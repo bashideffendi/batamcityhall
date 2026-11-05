@@ -36,7 +36,7 @@ test.describe("Trans Batam", () => {
     await expect(k10).toHaveAttribute("data-rencana", "");
     await expect(page.locator(".bch-page")).toContainText("Daftar halte dihimpun pada November 2026");
     await expect(page.locator(".bch-page")).toContainText(
-      "Posisi bus dapat dilihat di aplikasi SIP TB. Situs ini tidak melacak bus.",
+      "Lihat di aplikasi SIP TB. Situs ini tidak melacak bus.",
     );
     await expect(page.locator('.jl-kartu-koridor[data-koridor="K1"]')).toContainText("05.45—19.00 WIB");
     const teks = await page.locator(".bch-page").innerText();
@@ -111,13 +111,13 @@ test.describe("Trans Batam", () => {
 
   test("K10 halaman minimal tanpa halte dan jam", async ({ page }) => {
     await page.goto("/jalan/trans-batam/k10");
-    await expect(page.locator(".bch-lede")).toContainText("Koridor ini direncanakan dan belum beroperasi.");
+    await expect(page.locator(".bch-lede")).toContainText("Daftar halte, jam, dan tarifnya belum ada.");
     await expect(page.getByRole("tab")).toHaveCount(0);
     await expect(page.locator(".jl-strip")).toHaveCount(0);
   });
 });
 
-test.describe("peta Loket 04", () => {
+test.describe("peta transportasi", () => {
   test("hanya titik, tanpa garis rute; yang kosong masuk daftar", async ({ page }) => {
     await page.goto("/jalan/peta");
     const peta = page.locator(".jl-peta");
@@ -139,21 +139,27 @@ test.describe("feri terakhir", () => {
     await bekukan(page, "12:00");
     await page.goto("/jalan/feri");
     const w = page.locator(".jl-feri");
-    await expect(w).toContainText("Sekarang 12.00 WIB");
-    const btc = w.locator(".jl-feri-rute", { hasText: "Batam Centre → HarbourFront" });
-    const batamFast = btc.locator(".jl-feri-baris", { hasText: "BatamFast" });
+    await expect(w.getByRole("heading", { level: 2, name: "Feri Terakhir Hari Ini" })).toBeVisible();
+    await expect(w.getByRole("heading", { level: 3, name: "Dari Batam" })).toBeVisible();
+    await expect(w.getByRole("heading", { level: 3, name: "Ke Batam" })).toBeVisible();
+    for (const kolom of ["Rute", "Operator", "Terakhir Hari Ini"]) {
+      await expect(w.getByRole("columnheader", { name: kolom }).first()).toBeVisible();
+    }
+    const btc = w.locator(".jl-feri-baris", { hasText: "Batam Centre—HarbourFront" });
+    const batamFast = btc.filter({ hasText: "BatamFast" });
     await expect(batamFast).toContainText("20.30 WIB");
     await expect(batamFast).toContainText("Masih ada");
-    const majestic = btc.locator(".jl-feri-baris", { hasText: "Majestic" });
+    const majestic = btc.filter({ hasText: "Majestic" });
     await expect(majestic).toContainText("20.35 WIB");
-    await expect(majestic).toContainText("Jadwal per Mei 2026. Tanyakan kepada operator.");
+    await expect(majestic).toContainText("Jadwal per Mei 2026.");
+    await expect(w).toContainText("Jadwal dapat berubah. Tanyakan kepada operator sebelum berangkat.");
     await expect(majestic).not.toContainText("perlu cek ulang");
     await expect(majestic).not.toContainText("data lama");
-    await expect(majestic.locator(".bch-badge")).toHaveCount(1);
+    await expect(majestic.locator(".bch-status")).toHaveCount(1);
 
-    const dariSg = w.locator(".jl-feri-rute", { hasText: "HarbourFront → Batam Centre" });
-    await expect(dariSg.locator(".jl-feri-baris", { hasText: "BatamFast" })).toContainText("21.40 waktu Singapura");
-    await expect(dariSg.locator(".jl-feri-baris", { hasText: "BatamFast" })).toContainText("20.40 WIB");
+    const dariSg = w.locator(".jl-feri-baris", { hasText: "HarbourFront—Batam Centre" }).filter({ hasText: "BatamFast" });
+    await expect(dariSg).toContainText("21.40 waktu Singapura");
+    await expect(dariSg).toContainText("20.40 WIB");
 
     await expect(w.locator('[data-rute="tpg-tpi"]')).toContainText("sekitar 17.30");
     await expect(w.locator('[data-rute="skp-tbk"]')).toContainText("07.20");
@@ -169,29 +175,28 @@ test.describe("feri terakhir", () => {
   test("batas zona waktu: 20:45 WIB, Singapura sudah 21:45", async ({ page }) => {
     await bekukan(page, "20:45");
     await page.goto("/jalan/feri");
-    const dariSg = page.locator(".jl-feri-rute", { hasText: "HarbourFront → Batam Centre" });
-    await expect(dariSg.locator(".jl-feri-baris", { hasText: "BatamFast" })).toContainText("Sudah lewat");
-    await expect(dariSg.locator(".jl-feri-baris", { hasText: "Sindo" })).toContainText("Masih ada");
+    const dariSg = page.locator(".jl-feri-baris", { hasText: "HarbourFront—Batam Centre" });
+    await expect(dariSg.filter({ hasText: "BatamFast" })).toContainText("Sudah lewat");
+    await expect(dariSg.filter({ hasText: "Sindo" })).toContainText("Masih ada");
   });
 
   test("kotak Hari Ini memuat feri, dengan catatan jadwal", async ({ page }) => {
     await bekukan(page, "12:00");
     await page.goto("/");
-    const baris = page.locator('.bch-hari-ini [data-baris="feri"]');
-    await expect(baris).toContainText(
-      "Feri terakhir ke Singapura hari ini: pukul 20.30 WIB dari Batam Centre dan Harbour Bay.",
-    );
-    await expect(baris).toContainText("Sekupang 17.40 WIB");
-    await expect(page.locator(".bch-hari-ini")).toContainText("Tanyakan kepada operator");
-    await expect(baris.getByRole("link")).toHaveAttribute("href", "/jalan/feri");
+    const baris = page.locator('.br-pertama [data-baris="feri"]');
+    await expect(baris).toContainText("Feri Terakhir ke Singapura");
+    await expect(baris).toContainText("20.30");
+    await expect(baris).toContainText("Batam Centre dan Harbour Bay");
+    await expect(page.locator(".br-pembuka")).toContainText("Feri terakhir ke Singapura pukul 20.30 WIB.");
   });
 
   test("malam: tidak ada lagi keberangkatan ke Singapura", async ({ page }) => {
     await bekukan(page, "21:00");
     await page.goto("/");
-    const baris = page.locator('.bch-hari-ini [data-baris="feri"]');
-    await expect(baris).toContainText("Tidak ada lagi keberangkatan ke Singapura hari ini.");
-    await expect(baris).toContainText("Keberangkatan pertama besok pukul 06.00 WIB.");
+    const baris = page.locator('.br-pertama [data-baris="feri"]');
+    await expect(baris).toContainText("Habis");
+    await expect(baris).toContainText("Besok mulai pukul 06.00 WIB");
+    await expect(page.locator(".br-pembuka")).toContainText("Tidak ada lagi keberangkatan ke Singapura hari ini.");
   });
 
   test("detail Makan menampilkan feri terakhir dari terminal terdekat", async ({ page }) => {
@@ -208,13 +213,15 @@ test.describe("halaman feri dan pompong", () => {
   test("kartu rute: kolom naskah, jadwal lama satu baris, tautan operator, banner Gold Coast", async ({ page }) => {
     await page.goto("/jalan/feri");
     const btc = page.locator('.jl-kartu-rute[data-rute="btc-hfc"]');
-    await expect(btc).toContainText("Harga mulai dari");
-    for (const kolom of ["Rute", "Operator", "Jam berangkat", "Lama perjalanan"]) {
+    await expect(btc).toContainText("Harga Mulai dari");
+    // Jadwal per rute dilipat: dibuka dulu.
+    await btc.getByText("Lihat Jadwal").click();
+    for (const kolom of ["Rute", "Operator", "Jam Berangkat", "Lama Perjalanan"]) {
       await expect(btc.getByRole("columnheader", { name: kolom })).toBeVisible();
     }
     await expect(btc).toContainText("Jadwal per Mei 2026. Tanyakan kepada operator.");
     await expect(btc).not.toContainText("data lama");
-    await expect(btc.getByRole("link", { name: "Jadwal operator" })).toHaveAttribute("href", /batamfast\.com/);
+    await expect(btc.getByRole("link", { name: "Jadwal Operator" })).toHaveAttribute("href", /batamfast\.com/);
     await expect(page.locator('.jl-kartu-rute[data-rute="gcb-hfc"]')).toContainText("Terganggu");
     await expect(page.locator('.jl-kartu-rute[data-rute="tpg-tgu-roro"]')).toContainText("hanya dijual daring");
     await expect(page.locator('.jl-kartu-rute[data-rute="btc-stl"]')).toContainText("Berjaya Waterfront");
@@ -237,7 +244,7 @@ test.describe("halaman feri dan pompong", () => {
       "pelampung",
       "Biaya tambahan bahan bakar",
       "Rp100 juta",
-      "Aturan imigrasi dan bea cukai dapat berubah. Pastikan aturannya sebelum berangkat.",
+      "Aturan imigrasi dan bea cukai dapat berubah. Pastikan sebelum berangkat.",
     ]) {
       await expect(isi).toContainText(kata);
     }
@@ -252,10 +259,10 @@ test.describe("halaman feri dan pompong", () => {
     );
     await expect(page.locator('[data-rute="skp-blp"]')).toContainText("Rp20.000 per orang");
     await expect(page.locator('tr[data-rute="sbd-abang"]')).toContainText("Tidak ada kapal rutin");
-    for (const kolom of ["Dari", "Tujuan", "Jadwal", "Tarif", "Lama perjalanan"]) {
+    for (const kolom of ["Dari", "Tujuan", "Jadwal", "Tarif", "Lama Perjalanan"]) {
       await expect(page.getByRole("columnheader", { name: kolom })).toBeVisible();
     }
-    await expect(page.getByRole("link", { name: "Kirim koreksi" })).toHaveAttribute("href", "/koreksi");
+    await expect(page.locator("#isi").getByRole("link", { name: "Kirim Koreksi" })).toHaveAttribute("href", "/koreksi");
     await expect(page.locator(".bch-page")).not.toContainText(/R7W6|perlu_diisi|Status data|data lemah|mungkin usang/);
   });
 });
@@ -264,7 +271,7 @@ test.describe("halaman pembuka", () => {
   test("label Transportasi, daftar naskah, feri terakhir", async ({ page }) => {
     await page.goto("/jalan");
     await expect(page.getByRole("heading", { level: 1, name: "Transportasi" })).toBeVisible();
-    await expect(page.locator(".bch-grid > li")).toHaveCount(5);
+    await expect(page.locator("#isi .bch-pintu > li")).toHaveCount(5);
     await expect(page.locator(".bch-page")).toContainText("Panduan Menyeberang");
     await expect(page.getByRole("heading", { level: 2, name: "Feri Terakhir Hari Ini" })).toBeVisible();
     await expect(page.locator(".bch-page")).not.toContainText("Jalan-jalan");

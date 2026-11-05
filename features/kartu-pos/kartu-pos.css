@@ -1,0 +1,203 @@
+/* Kartu pos A6. Warna kartu tetap terang di kedua tema, karena dicetak di kertas putih. */
+.kp-judul {
+  margin: var(--bch-space-2) 0 0;
+}
+.kp-tata {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 48px;
+  align-items: start;
+  margin-top: var(--bch-space-5);
+}
+.kp-pratinjau {
+  display: grid;
+  gap: var(--bch-space-3);
+}
+.kp-depan,
+.kp-belakang {
+  position: relative;
+  aspect-ratio: 148 / 105;
+  overflow: hidden;
+  background: white;
+  color: black;
+  border: 1px solid var(--bch-garis-isian);
+  container-type: inline-size;
+}
+.kp-depan img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.kp-salam {
+  position: absolute;
+  left: 6cqw;
+  top: 6cqw;
+  margin: 0;
+  font: 500 9cqw/1 var(--bch-font-display);
+  letter-spacing: -0.02em;
+}
+.kp-salam span {
+  display: block;
+  margin-bottom: 1cqw;
+  font: 700 1.9cqw/1 var(--bch-font-sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.kp-belakang {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.kp-pesan {
+  padding: 6cqw 4cqw 6cqw 6cqw;
+  border-right: 1px solid black;
+  margin-block: 5cqw;
+  padding-block: 1cqw;
+  font: 400 2.9cqw/1.5 var(--bch-font-display);
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+.kp-pesan p {
+  margin: 0;
+}
+.kp-dari {
+  margin-top: 2cqw !important;
+  font-style: italic;
+}
+.kp-alamat {
+  position: relative;
+  padding: 26cqw 6cqw 0 4cqw;
+  font: 400 2.5cqw/1 var(--bch-font-sans);
+}
+.kp-alamat p {
+  min-height: 6.4cqw;
+  margin: 0;
+  padding-top: 2.6cqw;
+  border-bottom: 1px solid black;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.kp-perangko {
+  position: absolute;
+  top: 5cqw;
+  right: 6cqw;
+  width: 13cqw;
+  height: 16cqw;
+  border: 1px dashed black;
+}
+.kp-merek {
+  position: absolute;
+  left: 6cqw;
+  bottom: 3cqw;
+  margin: 0;
+  font: 600 1.8cqw/1 var(--bch-font-display);
+}
+.kp-isian {
+  display: grid;
+  gap: var(--bch-space-3);
+}
+.kp-isian .bch-btn {
+  justify-self: start;
+}
+.kp-catatan {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--bch-ink-muted);
+}
+.kp-desain {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.kp-desain legend {
+  padding: 0;
+  margin-bottom: var(--bch-space-2);
+  font-weight: 600;
+}
+.kp-desain > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.kp-desain label {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.kp-desain input {
+  position: absolute;
+  opacity: 0;
+}
+.kp-desain img {
+  display: block;
+  width: 100%;
+  height: auto;
+  outline: 1px solid var(--bch-garis-isian);
+  outline-offset: 0;
+}
+.kp-desain label[data-pilih] img {
+  outline: 3px solid var(--bch-riso-blue);
+  outline-offset: -3px;
+}
+.kp-desain input:focus-visible + img {
+  outline: 3px solid var(--bch-ink);
+  outline-offset: 2px;
+}
+.kp-cetak {
+  display: none;
+}
+@media (max-width: 800px) {
+  .kp-tata {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--bch-space-5);
+  }
+}
+
+/* Cetak: hanya kartu, satu sisi per halaman A6 mendatar. */
+@media print {
+  @page {
+    size: 148mm 105mm;
+    margin: 0;
+  }
+  /* Yang disembunyikan harus lepas dari alur halaman, kalau tidak muncul lembar kosong. */
+  html,
+  body,
+  main,
+  .bch-page {
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    background: none;
+  }
+  body > *:not(main) {
+    display: none !important;
+  }
+  .bch-page > *:not(.kp-cetak) {
+    display: none !important;
+  }
+  .kp-cetak {
+    display: block;
+    width: 148mm;
+  }
+  .kp-cetak section {
+    width: 148mm;
+    height: 105mm;
+    break-after: page;
+    overflow: hidden;
+  }
+  .kp-cetak section:last-child {
+    break-after: auto;
+  }
+  .kp-cetak .kp-depan,
+  .kp-cetak .kp-belakang {
+    width: 148mm;
+    height: 105mm;
+    border: 0;
+    aspect-ratio: auto;
+  }
+}

@@ -135,7 +135,7 @@ export default async function Admin() {
                 {l.jenis === "masalah" && (
                   <TombolAksi
                     aksi={{ aksi: "tinjau_laporan", id: l.id, tampilkan_lagi: true }}
-                    label="Tampilkan lagi"
+                    label="Tampilkan Lagi"
                   />
                 )}
                 <TombolAksi

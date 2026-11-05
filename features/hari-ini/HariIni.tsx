@@ -149,7 +149,11 @@ export default function HariIni() {
       <div className="br-angka">
         <dl>
           <div data-baris="hujan">
-            <dt>Hujan</dt>
+            <dt>
+              <Link href="/cuaca/hujan" prefetch={false}>
+                Hujan
+              </Link>
+            </dt>
             <dd className="nilai">{terputus ? "Terputus" : hujan ? kapital(hujan.level) : echo ? "Tidak ada" : "Memuat"}</dd>
             <dd className="ket">
               {terputus && jam
@@ -164,7 +168,11 @@ export default function HariIni() {
             </dd>
           </div>
           <div data-baris="gelombang">
-            <dt>Gelombang</dt>
+            <dt>
+              <Link href="/cuaca/gelombang" prefetch={false}>
+                Gelombang
+              </Link>
+            </dt>
             <dd className="nilai">{tinggi ? `${tinggi} m` : perairan.error ? "Belum ada" : "Memuat"}</dd>
             <dd className="ket">
               {slot
@@ -175,12 +183,20 @@ export default function HariIni() {
             </dd>
           </div>
           <div data-baris="angin">
-            <dt>Angin</dt>
+            <dt>
+              <Link href="/cuaca/gelombang" prefetch={false}>
+                Angin
+              </Link>
+            </dt>
             <dd className="nilai">{kecAngin !== null ? `${kecAngin} km/jam` : perairan.error ? "Belum ada" : "Memuat"}</dd>
             <dd className="ket">{arahAngin ? `Dari ${arahAngin}` : "Perairan Batam"}</dd>
           </div>
           <div data-baris="feri">
-            <dt>Feri terakhir ke Singapura</dt>
+            <dt>
+              <Link href="/jalan/feri#terakhir" prefetch={false}>
+                Feri Terakhir ke Singapura
+              </Link>
+            </dt>
             <dd className="nilai">{feri.gagal ? "Belum ada" : baris?.jam ? baris.jam : ringkasFeri ? "Habis" : "Memuat"}</dd>
             <dd className="ket">
               {feri.gagal
@@ -211,7 +227,7 @@ export default function HariIni() {
         {barisPeringatan && <p className="br-catatan">{barisPeringatan}</p>}
         <p className="m-0">
           <Link href="/cuaca" className="bch-aksi">
-            Buka Cuaca dan Laut →
+            Selengkapnya →
           </Link>
         </p>
       </div>
@@ -352,7 +368,7 @@ function PetaHariIni({ hujan, jam, jamFeri }: { hujan: Hujan | null; jam: string
         </div>
       </div>
       <figcaption>
-        <b className="bch-kicker">Peta</b> Arsiran biru: kecamatan yang hujan menurut radar
+        <b className="bch-kicker">Peta</b> Arsiran biru di darat: kecamatan yang hujan menurut radar
         {jam ? ` pukul ${jam} WIB` : ""}. Garis merah putus-putus: rute feri ke Singapura, skematis.
       </figcaption>
     </figure>

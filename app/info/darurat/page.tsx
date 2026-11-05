@@ -28,7 +28,7 @@ export default function Darurat() {
   return (
     <div className="bch-page">
       <nav className="bch-remah" aria-label="Remah roti">
-        <Link href="/info">Informasi Warga</Link>
+        <Link href="/info">Layanan Warga</Link>
       </nav>
       <h1 className="mt-2">Nomor Darurat</h1>
       <p className="bch-lede">Dalam keadaan darurat, hubungi 112.</p>
@@ -47,13 +47,13 @@ export default function Darurat() {
       <section>
         <h2 className="mt-7 mb-4">Pos Pemadam Kebakaran</h2>
         <div className="bch-table-wrap">
-          <table className="bch-table bch-tabel-tumpuk" role="table">
+          <table className="bch-table bch-tabel-tumpuk bch-tabel-ringkas" role="table">
             <thead>
               <tr>
                 <th scope="col">Pos</th>
                 <th scope="col">Kecamatan</th>
                 <th scope="col">Telepon</th>
-                <th scope="col">Jam layanan</th>
+                <th scope="col">Jam Layanan</th>
               </tr>
             </thead>
             <tbody>
@@ -68,7 +68,7 @@ export default function Darurat() {
                   <td role="cell" data-label="Telepon" className="bch-data">
                     <a href={telHref(k.telepon)}>{k.telepon}</a>
                   </td>
-                  <td role="cell" data-label="Jam layanan">
+                  <td role="cell" data-label="Jam Layanan">
                     {k.jam_layanan}
                   </td>
                 </tr>
@@ -81,7 +81,7 @@ export default function Darurat() {
       <section>
         <h2 className="mt-7 mb-4">Layanan Pengaduan</h2>
         <div className="bch-table-wrap">
-          <table className="bch-table bch-tabel-tumpuk" role="table" data-tabel-pengaduan>
+          <table className="bch-table bch-tabel-tumpuk bch-tabel-ringkas" role="table" data-tabel-pengaduan>
             <thead>
               <tr>
                 <th scope="col">Layanan</th>

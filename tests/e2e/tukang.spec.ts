@@ -20,17 +20,17 @@ const unik = (dasar: string) => `${dasar} ${Date.now().toString(36)}${(nomor += 
 /** Isi lewat formulir sungguhan. */
 async function kirimLewatForm(page: Page, nama: string, kontak: string) {
   await page.goto("/tukang/rekomendasi");
-  await page.getByLabel("Nama tukang atau usaha").fill(nama);
-  await page.getByLabel("Jenis jasa", { exact: true }).selectOption("laundry");
+  await page.getByLabel("Nama Tukang atau Usaha").fill(nama);
+  await page.getByLabel("Jenis Jasa", { exact: true }).selectOption("laundry");
   await page.getByRole("checkbox", { name: "Sekupang" }).check();
-  await page.getByLabel("Cara menghubungi").fill(`Kios ${nama}`);
-  await page.getByLabel("Terakhir memakai jasa").fill("2026-10");
-  await page.getByLabel("Cerita singkat").fill(`Cerita rekaan untuk menguji alur ${nama}.`);
+  await page.getByLabel("Cara Menghubungi").fill(`Kios ${nama}`);
+  await page.getByLabel("Terakhir Memakai Jasa").fill("2026-10");
+  await page.getByLabel("Cerita Singkat").fill(`Cerita rekaan untuk menguji alur ${nama}.`);
   await page.getByRole("checkbox", { name: "Rapi", exact: true }).check();
   await page.getByLabel("Kontakmu").fill(kontak);
   await page.getByRole("checkbox", { name: /tidak memiliki hubungan usaha/ }).check();
   await page.getByRole("checkbox", { name: /setuju kontak saya disimpan/ }).check();
-  await page.getByRole("button", { name: "Kirim rekomendasi" }).click();
+  await page.getByRole("button", { name: "Kirim Rekomendasi" }).click();
   await expect(page.getByRole("status")).toContainText("Rekomendasimu akan kami periksa sebelum tampil");
 }
 
@@ -193,11 +193,11 @@ test.describe("mode contoh", () => {
 
   test("formulir menunjukkan galat per kolom, dan honeypot tidak tersimpan", async ({ page, request }) => {
     await page.goto("/tukang/rekomendasi");
-    await page.getByRole("button", { name: "Kirim rekomendasi" }).click();
+    await page.getByRole("button", { name: "Kirim Rekomendasi" }).click();
     await expect(page.getByRole("alert").first()).toContainText("perlu diperbaiki");
     await expect(page.getByText("Isi nama tukang atau nama usahanya.")).toBeVisible();
     await expect(page.getByText("Centang persetujuan untuk mengirim.").first()).toBeVisible();
-    await expect(page.getByLabel("Nama tukang atau usaha")).toHaveAttribute("aria-invalid", "true");
+    await expect(page.getByLabel("Nama Tukang atau Usaha")).toHaveAttribute("aria-invalid", "true");
 
     const nama = unik("Robot Madu");
     const r = await request.post("/api/tukang/rekomendasi", {
@@ -212,8 +212,8 @@ test.describe("mode contoh", () => {
     const isi = unik("Kantor ini sudah pindah, kata rekaan");
     await page.goto("/koreksi?tempat=pub-bpbd");
     await expect(page.locator("[data-koreksi-tempat]")).toContainText("BPBD");
-    await page.getByLabel("Yang perlu diperbaiki").fill(isi);
-    await page.getByRole("button", { name: "Kirim koreksi" }).click();
+    await page.getByLabel("Yang Perlu Diperbaiki").fill(isi);
+    await page.getByRole("button", { name: "Kirim Koreksi" }).click();
     await expect(page.getByRole("status")).toContainText("koreksinya masuk");
 
     await masukAdmin(page);
@@ -229,13 +229,13 @@ test.describe("mode contoh", () => {
     await kirimLewatApi(request, nama, kontak);
 
     await page.goto("/koreksi?jenis=hapus_data");
-    await expect(page.getByLabel("Jenis koreksi")).toHaveValue("hapus_data");
-    await page.getByLabel("Yang perlu diperbaiki").fill("Tolong hapus semua rekomendasi saya, rekaan.");
-    await page.getByRole("button", { name: "Kirim koreksi" }).click();
+    await expect(page.getByLabel("Jenis Koreksi")).toHaveValue("hapus_data");
+    await page.getByLabel("Yang Perlu Diperbaiki").fill("Tolong hapus semua rekomendasi saya, rekaan.");
+    await page.getByRole("button", { name: "Kirim Koreksi" }).click();
     await expect(page.getByText("Permintaan tentang data pribadi memerlukan kontak")).toBeVisible();
     await page.getByLabel("Nomor ponsel atau surel (boleh dikosongkan)").fill(kontak);
     await page.getByRole("checkbox", { name: /Kalau saya meninggalkan kontak/ }).check();
-    await page.getByRole("button", { name: "Kirim koreksi" }).click();
+    await page.getByRole("button", { name: "Kirim Koreksi" }).click();
     await expect(page.getByRole("status")).toContainText("koreksinya masuk");
 
     await masukAdmin(page);
@@ -419,7 +419,7 @@ test.describe("mode contoh", () => {
     await page.goto("/tukang?jasa=jastip-singapura");
     await expect(page.locator("[data-kosong-tukang]")).toContainText("Belum ada nama yang cocok");
     await page.goto("/tukang");
-    await expect(page.getByRole("link", { name: "Pijat panggilan" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Pijat Panggilan" })).toBeVisible();
     await page.getByLabel("Kecamatan").selectOption("Bulang");
     await page.getByRole("button", { name: "Saring" }).click();
     await expect(page).toHaveURL(/kecamatan=Bulang/);

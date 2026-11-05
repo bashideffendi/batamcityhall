@@ -3,8 +3,6 @@ import { notFound } from "next/navigation";
 import { KawasanHalaman } from "@/features/makan/components/HalamanMakan";
 import { areaCounts, areaMap, kawasanBerisi } from "@/features/makan/lib/data";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return kawasanBerisi.map((a) => ({ id: a.id }));
 }

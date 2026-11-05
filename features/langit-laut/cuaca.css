@@ -2,7 +2,7 @@
    bawah. Ponsel: peta penuh dengan lembar bawah yang bisa ditarik. */
 .app-root.cu-halaman {
   --cu-tepi: max(var(--bch-gutter), calc((100vw - var(--bch-wrap)) / 2 + var(--bch-gutter)));
-  --cu-panel: clamp(420px, calc(50vw - 160px), 720px);
+  --cu-panel: 400px;
   position: relative;
   overscroll-behavior: auto;
 }
@@ -20,28 +20,31 @@
 .app-root.cu-halaman h2 {
   font: inherit;
 }
-.app-root.cu-halaman .bch-tab {
-  padding-inline: var(--cu-tepi);
-}
-.cu-halaman-teks .bch-tab {
-  margin-bottom: var(--bch-space-6);
-}
+
 .cu-kerja {
   display: grid;
   grid-template-columns: var(--cu-panel) minmax(0, 1fr);
-  height: 880px;
-  border-bottom: 1px solid var(--bch-rule);
+  gap: 28px;
+  width: 100%;
+  max-width: var(--bch-wrap);
+  height: clamp(480px, calc(100dvh - 210px), 760px);
+  margin: var(--bch-space-4) auto var(--bch-space-5);
+  padding-inline: var(--bch-gutter);
+  box-sizing: border-box;
 }
 .cu-panel {
   overflow-y: auto;
-  padding: var(--bch-space-5) 36px var(--bch-space-5) var(--cu-tepi);
+  padding: 0 14px 0 0;
   background: var(--bch-paper);
-  border-right: 1px solid var(--bch-rule);
+  scrollbar-width: thin;
 }
 .cu-peta {
   position: relative;
   min-width: 0;
+  overflow: hidden;
   background: var(--bch-map-sea);
+  border: 1.5px solid var(--bch-rule-strong);
+  border-radius: 10px;
 }
 .app-root .cu-peta .ll-peta {
   position: absolute;
@@ -403,24 +406,23 @@
 .cu-entri-status .bch-status {
   font-weight: 400;
 }
-.cu-tambahan {
-  margin-top: var(--bch-space-7);
-}
-.cu-halaman-teks .bch-tab {
-  margin-top: calc(var(--bch-space-5) * -1);
-}
 
 @media (max-width: 899px) {
   .cu-kerja {
     position: relative;
     display: block;
-    height: calc(100dvh - 72px);
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    height: calc(100dvh - 151px);
     min-height: 30rem;
     border-bottom: 0;
   }
   .cu-peta {
     position: absolute;
     inset: 0;
+    border: 0;
+    border-radius: 0;
   }
   .cu-panel {
     position: absolute;
@@ -444,7 +446,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 28px;
+    height: 44px;
     padding: 0;
     border: 0;
     background: none;
@@ -477,14 +479,7 @@
     border-top: 0;
     font-size: 1.0625rem;
   }
-  .cu-panel .bch-tab {
-    gap: var(--bch-space-4);
-    margin-top: var(--bch-space-1);
-  }
-  .cu-panel .bch-tab a {
-    font-size: 0.875rem;
-    padding-block: 10px 8px;
-  }
+
   .cu-kendali-ponsel .cu-transport {
     grid-template-columns: auto minmax(0, 1fr);
   }
@@ -500,6 +495,11 @@
     grid-template-columns: minmax(0, 1fr);
     gap: var(--bch-space-2);
   }
+  /* Kolomnya sempit di samping ilustrasi: rata kanan-kiri membuat jarak kata renggang. */
+  main .cu-saat-ini-teks {
+    text-align: start;
+    hyphens: manual;
+  }
   .cu-saat-ini-teks {
     font-size: 1.25rem;
   }
@@ -510,4 +510,20 @@
   .cu-entri .judul {
     font-size: 1.625rem;
   }
+}
+
+.cu-entri {
+  margin-top: var(--bch-space-5);
+}
+.cu-entri-pintu .bch-pintu {
+  border-top: 2px solid var(--bch-rule-strong);
+}
+.cu-entri .judul {
+  font-size: 1.625rem;
+}
+
+/* Panel peta sempit: tetap rata kiri. */
+main .cu-panel p {
+  text-align: start;
+  hyphens: manual;
 }

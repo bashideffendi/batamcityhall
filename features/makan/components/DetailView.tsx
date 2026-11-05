@@ -1,6 +1,7 @@
 "use client";
 
 import { kaidahJudul } from "@/lib/judul";
+import TautanKirim from "@/components/site/TautanKirim";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
@@ -13,6 +14,7 @@ import { panduanUntuk } from "../lib/panduan";
 import { HalalBadge, LabelBadge, StatusBuka } from "./Badges";
 import BarisTempat from "./BarisTempat";
 import FavButton from "./FavButton";
+import { foodCourtDari } from "../lib/foodcourt";
 import GaleriTempat from "./GaleriTempat";
 
 const MiniMap = dynamic(() => import("./MiniMap"), { ssr: false });
@@ -25,6 +27,7 @@ export default function DetailView({ slug, cuaca, feri }: { slug: string; cuaca?
   if (!p) return null;
 
   const kategori = catName(lang, categoryMap[p.category]);
+  const foodCourt = foodCourtDari(p.food_court);
   const area = areaMap[p.area]?.name ?? "";
   const terminal = ferryMap[p.nearestFerryId];
   const desc = placeDesc(lang, p);
@@ -69,15 +72,6 @@ export default function DetailView({ slug, cuaca, feri }: { slug: string; cuaca?
           {label && <LabelBadge label={label} />}
           <StatusBuka hours={p.hours} sgt />
         </div>
-      </header>
-
-      <div className="mk-detail-galeri">
-        <GaleriTempat id={p.id} nama={p.name} kategori={p.category} />
-      </div>
-
-      <div className="mk-detail-utama">
-        {desc && <p className="mk-detail-dek">{miring(desc)}</p>}
-
         <div className="mk-aksi">
           <a href={p.gmaps} target="_blank" rel="noopener noreferrer" className="bch-btn">
             {t("navigate")}
@@ -92,6 +86,15 @@ export default function DetailView({ slug, cuaca, feri }: { slug: string; cuaca?
             </span>
           )}
         </div>
+      </header>
+
+      <div className="mk-detail-galeri">
+        <GaleriTempat id={p.id} nama={p.name} kategori={p.category} />
+      </div>
+
+      <div className="mk-detail-utama">
+        {desc && <p className="mk-detail-dek">{miring(desc)}</p>}
+
 
         {menu.length > 0 && (
           <section className="mk-detail-menu">
@@ -150,6 +153,16 @@ export default function DetailView({ slug, cuaca, feri }: { slug: string; cuaca?
               </dd>
             </div>
           )}
+          {foodCourt && (
+            <div>
+              <dt>Food Court</dt>
+              <dd>
+                <Link href={`/makan/food-court#${foodCourt.id}`} data-food-court-tautan>
+                  {foodCourt.nama}
+                </Link>
+              </dd>
+            </div>
+          )}
           <div>
             <dt>{t("address")}</dt>
             <dd>{alamatBersih(p.address) || area}</dd>
@@ -183,9 +196,9 @@ export default function DetailView({ slug, cuaca, feri }: { slug: string; cuaca?
 
         <p className="mk-catatan mk-detail-catatan">
           {p.last_verified && <>{t("data_as_of", { bulan: formatBulan(p.last_verified, lang) })} · </>}
-          <Link href={`/koreksi?tempat=${p.id}`} prefetch={false}>
+          <TautanKirim href={`/koreksi?tempat=${p.id}`} prefetch={false}>
             {t("fix")}
-          </Link>
+          </TautanKirim>
         </p>
       </aside>
 

@@ -30,7 +30,7 @@ import { useRadar } from "@/features/langit-laut/hooks/useRadar";
 import { useResource } from "@/features/langit-laut/hooks/useResource";
 import { useThemeMode } from "@/features/langit-laut/hooks/useThemeMode";
 import Berteduh from "@/features/direktori/Berteduh";
-import CctvLayer, { type CamGroup, type CctvApi } from "./CctvLayer";
+import CctvLayer from "./CctvLayer";
 import CctvPlayer from "./CctvPlayer";
 import IosInstallHint from "./IosInstallHint";
 import KecamatanLayer, { TempatLayer } from "./KecamatanLayer";
@@ -40,9 +40,7 @@ import OfsField from "./OfsField";
 import PeringatanLayer from "./PeringatanLayer";
 import PetaLangit from "./PetaLangit";
 import RadarLayer from "./RadarLayer";
-import TabCuaca from "./TabCuaca";
 import CamDirectory from "./panel/CamDirectory";
-import CamList from "./panel/CamList";
 import CctvBlock from "./panel/CctvBlock";
 import KondisiSaatIni from "./panel/Conditions";
 import { Cakupan, Sakelar, Transport } from "./panel/Controls";
@@ -60,7 +58,6 @@ const CONDITIONS_MS = 2 * 60 * 1000;
 const FORECAST_MS = 30 * 60 * 1000; // prakiraan 3-jaman; server menahan 15–30 menit
 const PERINGATAN_MS = 2 * 60 * 1000; // server menahan 1 menit
 /** "Perbesar peta ke sini" dari daftar kelompok: cukup dekat untuk memisahkan pin. */
-const GROUP_ZOOM = 15;
 /** Warna gelombang diredam (PEDOMAN 5.2): laut tidak boleh biru pekat. */
 const REDAM_GELOMBANG = 0.4;
 const SERET_PX = 36;
@@ -89,18 +86,18 @@ const LAPISAN_AWAL: Record<Mode, Lapisan> = {
 /** Sakelar "Tampilkan juga di peta" per halaman, urutan persis PEDOMAN 3.3. */
 const SAKELAR: Record<Mode, { kunci: keyof Lapisan; label: string }[]> = {
   hujan: [
-    { kunci: "batas", label: "Batas kecamatan" },
-    { kunci: "gelombang", label: "Tinggi gelombang" },
-    { kunci: "kamera", label: "Kamera lalu lintas" },
+    { kunci: "batas", label: "Batas Kecamatan" },
+    { kunci: "gelombang", label: "Tinggi Gelombang" },
+    { kunci: "kamera", label: "Kamera Lalu Lintas" },
   ],
   ombak: [
-    { kunci: "radar", label: "Radar hujan" },
-    { kunci: "kamera", label: "Kamera lalu lintas" },
-    { kunci: "batas", label: "Batas kecamatan" },
+    { kunci: "radar", label: "Radar Hujan" },
+    { kunci: "kamera", label: "Kamera Lalu Lintas" },
+    { kunci: "batas", label: "Batas Kecamatan" },
   ],
   cctv: [
-    { kunci: "radar", label: "Radar hujan" },
-    { kunci: "gelombang", label: "Tinggi gelombang" },
+    { kunci: "radar", label: "Radar Hujan" },
+    { kunci: "gelombang", label: "Tinggi Gelombang" },
   ],
 };
 
@@ -128,8 +125,6 @@ export default function RadarMap({ mode }: { mode: Mode }) {
   const [camAutoStart, setCamAutoStart] = useState(!init.cam); // dari link: tombol putar dulu
   const [deadCams, setDeadCams] = useState<Map<string, number | null>>(() => new Map());
   const [recentCams, setRecentCams] = useState<Cam[]>(init.recentCams);
-  const [camGroup, setCamGroup] = useState<CamGroup | null>(null);
-  const cctvApi = useRef<CctvApi | null>(null);
 
   const panelRef = useRef<HTMLElement>(null);
   const seret = useRef<number | null>(null);
@@ -174,9 +169,6 @@ export default function RadarMap({ mode }: { mode: Mode }) {
     const tinggi = panelRef.current?.offsetHeight ?? 160;
     return { paddingTopLeft: [14, 14], paddingBottomRight: [14, Math.min(tinggi, window.innerHeight * 0.5) + 14] };
   }, [mode]);
-  const focusPanel = useCallback(() => {
-    panelRef.current?.querySelector<HTMLElement>(".answer")?.focus();
-  }, []);
 
   useEffect(() => {
     writePref(PREF.view, view);
@@ -247,24 +239,6 @@ export default function RadarMap({ mode }: { mode: Mode }) {
       return n;
     });
   }, []);
-  const onCluster = useCallback((g: CamGroup | null) => {
-    setCamGroup(g);
-    if (g) setCollapsed(false);
-  }, []);
-  // Tutup daftar kelompok: fokus kembali ke gelembungnya (tunggu panel merender ulang).
-  const closeGroup = () => {
-    const key = camGroup?.key;
-    setCamGroup(null);
-    if (key) window.setTimeout(() => cctvApi.current?.focusGroup(key), 30);
-  };
-  const zoomGroup = () => {
-    const cams = camGroup?.cams ?? [];
-    setCamGroup(null);
-    window.setTimeout(() => {
-      cctvApi.current?.zoomToCams(cams, GROUP_ZOOM);
-      focusPanel();
-    }, 30);
-  };
   const toggleBuka = () => {
     setCollapsed((c) => {
       const tutup = !c;
@@ -341,7 +315,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
           : activeCam
             ? `CCTV ${activeCam.name}, Batam`
             : "Kamera lalu lintas Batam";
-    share({ title: "Cuaca dan Laut · Batam City Hall", text, url });
+    share({ title: "Cuaca · Batam City Hall", text, url });
   };
 
   const modalOpen = !!activeCam;
@@ -385,7 +359,6 @@ export default function RadarMap({ mode }: { mode: Mode }) {
 
   return (
     <div className="app-root cu-halaman" data-mode={mode}>
-      {wide && <TabCuaca aktif={mode} />}
 
       <div className="cu-kerja" inert={modalOpen}>
         <section
@@ -423,7 +396,6 @@ export default function RadarMap({ mode }: { mode: Mode }) {
           )}
           {mode === "cctv" && <p className="cu-petunjuk">Ketuk titik di peta atau pilih dari daftar.</p>}
 
-          {!wide && <TabCuaca aktif={mode} tanpaRemah />}
 
           <div id="cu-isi" className="cu-isi">
             {mode === "hujan" && cuacaKalimat && (
@@ -464,22 +436,12 @@ export default function RadarMap({ mode }: { mode: Mode }) {
             {mode === "hujan" && radar.frames.length > 0 && <HujanPerKecamatan echo={radar.echo} scope={scope} />}
             {mode === "hujan" && <Berteduh echo={radar.echo} segar={rv.fresh} />}
 
-            {mode === "cctv" &&
-              (camGroup ? (
-                <CamList
-                  key={camGroup.key}
-                  members={camGroup.cams}
-                  dead={deadCams}
-                  onPick={pickCam}
-                  onZoom={zoomGroup}
-                  onClose={closeGroup}
-                />
-              ) : (
-                <>
-                  <CctvBlock recent={recentCams} dead={deadCams} onPick={pickCam} showHint={false} />
-                  <CamDirectory dead={deadCams} onPick={pickCam} />
-                </>
-              ))}
+            {mode === "cctv" && (
+              <>
+                <CctvBlock recent={recentCams} dead={deadCams} onPick={pickCam} showHint={false} />
+                <CamDirectory dead={deadCams} onPick={pickCam} />
+              </>
+            )}
 
             <p className="cu-aksi">
               <button type="button" className="bch-btn" data-variant="ghost" onClick={onShare}>
@@ -498,7 +460,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
         </section>
 
         <div className="cu-peta">
-          <PetaLangit theme={theme}>
+          <PetaLangit theme={theme} opsi={{ koperatif: typeof window !== "undefined" && window.matchMedia("(min-width: 900px)").matches }}>
             {tampilRadar && (
               <RadarLayer
                 url={rv.current && !rv.currentBroken && !radarTerputus ? rv.current.url : null}
@@ -520,15 +482,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
             {/* Mask daratan di atas field: warna gelombang hanya di laut. */}
             {tampilGelombang && <LandMask theme={theme} onStatus={ofs.setMaskOk} />}
             {tampilKamera && (
-              <CctvLayer
-                onPick={pickCam}
-                dead={deadCams}
-                getPadding={getPadding}
-                onCluster={onCluster}
-                focusPanel={focusPanel}
-                selectedKey={camGroup?.key ?? null}
-                apiRef={cctvApi}
-              />
+              <CctvLayer onPick={pickCam} dead={deadCams} />
             )}
             <MapController view={view} mode={mode} getPadding={getPadding} collapsed={collapsed} />
           </PetaLangit>

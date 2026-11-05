@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PembukaHalaman from "@/components/site/PembukaHalaman";
 import Link from "next/link";
 import { ANGKA_RESMI, KELOMPOK_FAKTA, LINIMASA, LUAS_INVESTASI } from "@/features/sejarah/angka";
 import "@/features/sejarah/sejarah.css";
@@ -43,13 +44,9 @@ const IDE = [
 export default function AngkaBatam() {
   return (
     <div className="bch-page">
-      <p className="bch-kicker m-0">
-        <Link href="/cerita" prefetch={false}>
-          Cerita dan Budaya
-        </Link>
-      </p>
-      <h1 className="mt-2">Batam dalam Angka</h1>
-      <p className="bch-lede">{LEDE}</p>
+      <PembukaHalaman judul="Batam dalam Angka" gambar="angka">
+        <p className="bch-lede">{LEDE}</p>
+      </PembukaHalaman>
 
       <ul className="sj-ide" data-ide={IDE.length}>
         {IDE.map((i) => (
@@ -74,7 +71,7 @@ export default function AngkaBatam() {
         ))}
       </ul>
 
-      {KELOMPOK_FAKTA.map((k) => (
+      {KELOMPOK_FAKTA.filter((k) => k.baris.length > 0).map((k) => (
         <section key={k.topik} className="mt-7" aria-labelledby={`fakta-${k.topik}`}>
           <h2 id={`fakta-${k.topik}`} className="mb-2">
             {k.judul}
@@ -119,7 +116,7 @@ export default function AngkaBatam() {
               <tr>
                 <th scope="col">Indikator</th>
                 <th scope="col">Angka</th>
-                <th scope="col">Tahun atau dasar</th>
+                <th scope="col">Tahun atau Dasar</th>
               </tr>
             </thead>
             <tbody>
@@ -132,7 +129,7 @@ export default function AngkaBatam() {
                   <td data-label="Angka" className="sj-sel-angka">
                     {b.angka}
                   </td>
-                  <td data-label="Tahun atau dasar">{b.tahun}</td>
+                  <td data-label="Tahun atau Dasar">{b.tahun}</td>
                 </tr>
               ))}
             </tbody>

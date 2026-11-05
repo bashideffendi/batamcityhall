@@ -55,7 +55,7 @@ export default function DaftarPeringatan() {
         <p className="mt-5" data-status="gagal">
           Peringatan cuaca belum dapat dimuat, jadi keadaannya belum diketahui.{" "}
           <button type="button" className="bch-tautan-tombol" onClick={() => void load()}>
-            Muat ulang
+            Muat Ulang
           </button>
         </p>
       )}

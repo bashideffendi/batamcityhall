@@ -7,7 +7,7 @@ import { useSiteTheme } from "@/components/site/useSiteTheme";
 import { useMedia, useNow } from "@/features/langit-laut/hooks/useBrowser";
 import { useOfs } from "@/features/langit-laut/hooks/useOfs";
 import { useResource } from "@/features/langit-laut/hooks/useResource";
-import CctvLayer, { type CamGroup, type CctvApi } from "@/features/langit-laut/components/CctvLayer";
+import CctvLayer from "@/features/langit-laut/components/CctvLayer";
 import CctvPlayer from "@/features/langit-laut/components/CctvPlayer";
 import LandMask from "@/features/langit-laut/components/LandMask";
 import OfsField from "@/features/langit-laut/components/OfsField";
@@ -45,7 +45,6 @@ function Panah() {
 
 const JENIS = new Map(JENIS_PETA.map((j) => [j.id, j]));
 const ID_JENIS = JENIS_PETA.map((j) => j.id);
-const WARNA_URUT = KELOMPOK_URUT.map((k) => KELOMPOK_PETA[k].warna);
 
 type PinBerjenis = PinPeta & { jenis: string };
 
@@ -63,7 +62,6 @@ function keFitur(p: PinBerjenis): FiturPin {
     glyph: j?.glyph ?? "",
     warna: KELOMPOK_PETA[k].warna,
     perkiraan: p.perkiraan,
-    idx: KELOMPOK_URUT.indexOf(k),
     penting: jenisPenting(p.jenis),
   };
 }
@@ -109,7 +107,7 @@ function PanelTempat({
       <div className="br-panel-kepala">
         <b>Tempat</b>
         <button type="button" className="bch-tautan-tombol" onClick={() => ubah(ID_JENIS.filter(adaTitik), true)}>
-          Pilih semua
+          Pilih Semua
         </button>
         <button type="button" className="br-panel-tutup" onClick={onTutup} aria-label="Tutup daftar tempat">
           ×
@@ -216,7 +214,6 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
   const [pesan, setPesan] = useState<PesanLokasi>(null);
   const [kamera, setKamera] = useState<Cam | null>(null);
   const [mati, setMati] = useState<Map<string, number | null>>(() => new Map());
-  const cctvApi = useRef<CctvApi | null>(null);
   const now = useNow(30_000);
 
   const frames = useResource<FramesResponse>("/api/frames", SEGAR_MS, lapisan.radar, false);
@@ -311,15 +308,10 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
     );
   };
 
-  // Panel terbuka di desktop, tertutup di ponsel, sampai pengguna memilih sendiri.
-  const buka = panelBuka ?? lebar;
+  // Panel tertutup sampai pengguna membukanya, supaya sebaran titik langsung terlihat.
+  const buka = panelBuka ?? false;
   const kelompokAktif = KELOMPOK_URUT.filter((k) => JENIS_PETA.some((j) => j.kelompok === k && pilihan?.has(j.id)));
 
-  const onCluster = useCallback((g: CamGroup | null) => {
-    if (g) cctvApi.current?.zoomToCams(g.cams, 15);
-  }, []);
-  const padding = useCallback(() => ({ paddingTopLeft: [24, 24] as [number, number], paddingBottomRight: [24, 24] as [number, number] }), []);
-  const fokus = useCallback(() => {}, []);
   const onMati = useCallback((slug: string, lastSeen: number | null) => {
     setMati((m) => new Map(m).set(slug, lastSeen));
   }, []);
@@ -338,13 +330,13 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
             aria-expanded={cuacaBuka}
             onClick={() => setCuacaBuka((v) => !v)}
           >
-            Cuaca dan laut <Panah />
+            Cuaca dan Laut <Panah />
           </button>
           {cuacaBuka && (
             <div className="br-cuaca-isi">
-              <Sakelar label="Radar hujan" nyala={lapisan.radar} onUbah={(v) => setLapisan((l) => ({ ...l, radar: v }))} />
-              <Sakelar label="Tinggi gelombang" nyala={lapisan.gelombang} onUbah={(v) => setLapisan((l) => ({ ...l, gelombang: v }))} />
-              <Sakelar label="Kamera lalu lintas" nyala={lapisan.kamera} onUbah={(v) => setLapisan((l) => ({ ...l, kamera: v }))} />
+              <Sakelar label="Radar Hujan" nyala={lapisan.radar} onUbah={(v) => setLapisan((l) => ({ ...l, radar: v }))} />
+              <Sakelar label="Tinggi Gelombang" nyala={lapisan.gelombang} onUbah={(v) => setLapisan((l) => ({ ...l, gelombang: v }))} />
+              <Sakelar label="Kamera Lalu Lintas" nyala={lapisan.kamera} onUbah={(v) => setLapisan((l) => ({ ...l, kamera: v }))} />
             </div>
           )}
         </div>
@@ -352,13 +344,13 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
           ubahPilih(p.id);
           map?.easeTo({ center: [p.lng, p.lat], zoom: Math.max(map.getZoom(), 14), animate: !gerakTenang() });
         }} />}
-        <button type="button" className="bch-btn br-sekitar" data-variant="ghost" aria-label="Di sekitar saya" onClick={keSekitar}>
+        <button type="button" className="bch-btn br-sekitar" data-variant="ghost" aria-label="Di Sekitar Saya" onClick={keSekitar}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
             <circle cx="12" cy="12" r="7" />
             <circle cx="12" cy="12" r="2.2" fill="currentColor" />
             <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
           </svg>
-          <span className="br-sekitar-teks">Di sekitar saya</span>
+          <span className="br-sekitar-teks">Di Sekitar Saya</span>
         </button>
       </div>
       {pesan && (
@@ -370,14 +362,14 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
       <div className="app-root br-peta">
         <PetaLangit theme={theme === "dark" ? "dark" : "light"} opsi={{ bounds: TAMPILAN_TEMPAT, maxBounds: MAP_BOUNDS, koperatif: true, selubung: true, tanpaAtribusi: true }}>
           <KendaliPeta onMap={setMap} />
-          {semuaPin && <LapisanTempat fitur={fitur} warnaUrut={WARNA_URUT} pilihId={pilihId} onPilih={ubahPilih} />}
+          {semuaPin && <LapisanTempat fitur={fitur} pilihId={pilihId} onPilih={ubahPilih} />}
           {lapisan.radar && <RadarLayer url={urlRadar} opacity={0.85} onBroken={tanpaAksi} />}
           {lapisan.gelombang && ofs.ofs?.baserun && validOfs && (
             <OfsField baserun={ofs.ofs.baserun} valid={validOfs} opacity={0.4} onTilesDown={ofs.setTilesDown} />
           )}
           {lapisan.gelombang && <LandMask theme={theme === "dark" ? "dark" : "light"} onStatus={ofs.setMaskOk} />}
           {lapisan.kamera && (
-            <CctvLayer onPick={setKamera} dead={mati} getPadding={padding} onCluster={onCluster} focusPanel={fokus} selectedKey={null} apiRef={cctvApi} />
+            <CctvLayer onPick={setKamera} dead={mati} />
           )}
           {saya && (
             <PetaMarker posisi={saya} className="br-saya-penanda">
@@ -410,9 +402,6 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
         </span>
         <span>
           <IkonLingkaran glyph="seafood" warna={KELOMPOK_PETA.makan.warna} ukuran={18} garis /> Lokasi perkiraan
-        </span>
-        <span>
-          <i className="br-legenda-klaster">12</i> Beberapa tempat berdekatan; perbesar peta untuk melihatnya
         </span>
         <span className="br-legenda-osm">© OpenStreetMap · Protomaps</span>
       </div>

@@ -68,7 +68,7 @@ const ISI: Record<string, IsiKartu> = {
     sumberTeks: "Batam Pos; jadwal Horizon per 4 November 2026",
   },
   "kawasan-nagoya": {
-    kicker: "Kawasan ruko",
+    kicker: "Kawasan Ruko",
     judul: "Nagoya yang bukan di Jepang",
     isi: [
       "Nama Nagoya mulai dipakai sekitar 1978, berasal dari pekerja Jepang perusahaan infrastruktur.",
@@ -94,7 +94,7 @@ const ISI: Record<string, IsiKartu> = {
     sumberTeks: "Tribun Batam; jurnal Historia UNRIKA",
   },
   "pelantar-sungai-jodoh-hilang": {
-    kicker: "Batam yang hilang",
+    kicker: "Batam yang Hilang",
     judul: "Perkampungan pelantar Sungai Jodoh",
     isi: [
       "Sebelum 1980 kawasan ini perkampungan pelantar di sungai. Pedagang dari Indragiri Hilir dan Rengat berdagang di sini.",
@@ -105,7 +105,7 @@ const ISI: Record<string, IsiKartu> = {
     sumberTeks: "Tribun Batam",
   },
   "kopi-harum-manis": {
-    kicker: "Kedai kopi",
+    kicker: "Kedai Kopi",
     judul: "Kopitiam sejak 1985",
     isi: ["Kedai Kopi Harum Manis berdiri 1985 di Lubuk Baja."],
     fakta: [{ label: "Sejak", nilai: "1985" }],
@@ -122,7 +122,7 @@ const ISI: Record<string, IsiKartu> = {
     rujukan: { href: "/cerita/kampung-tua", teks: "Baca di modul Kampung Tua" },
   },
   "pelabuhan-batu-ampar": {
-    kicker: "Pelabuhan kargo",
+    kicker: "Pelabuhan Kargo",
     judul: "Pelabuhan Batu Ampar",
     isi: [
       "Pelabuhan kargo utama yang mendorong industri manufaktur.",

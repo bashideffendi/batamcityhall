@@ -84,8 +84,8 @@ describe("kalender acara", () => {
     expect(status("ev-005")).toBe("belum pasti");
     expect(STATUS_ACARA.map((s) => LABEL_STATUS[s].teks)).toEqual([
       "Rutin",
-      "Pernah diadakan",
-      "Belum pasti",
+      "Pernah Diadakan",
+      "Belum Pasti",
       "Dibatalkan",
     ]);
   });
@@ -261,10 +261,10 @@ describe("budaya Melayu", () => {
   it("tradisi tanpa sumber tetap tampil dengan label belum terverifikasi, tanpa tautan", () => {
     for (const t of daftar) {
       const mentah = tradisi.find((x) => x.id === t.id)!;
-      expect(["Tercatat", "Belum terverifikasi"], t.id).toContain(t.status.teks);
-      if (!mentah.sumber_url.length) expect(t.status.teks).toBe("Belum terverifikasi");
+      expect(["Tercatat", "Belum Terverifikasi"], t.id).toContain(t.status.teks);
+      if (!mentah.sumber_url.length) expect(t.status.teks).toBe("Belum Terverifikasi");
     }
-    expect(daftar.find((t) => t.id === "tr-007")?.status.teks).toBe("Belum terverifikasi");
+    expect(daftar.find((t) => t.id === "tr-007")?.status.teks).toBe("Belum Terverifikasi");
     expect(daftar.find((t) => t.id === "tr-001")?.status.teks).toBe("Tercatat");
     expect(JSON.stringify(daftar)).not.toMatch(/https?:|\.go\.id/);
   });
@@ -291,8 +291,8 @@ describe("komunitas", () => {
     for (const k of daftar) expect(k.kanal?.href ?? "", k.id).not.toMatch(/\.go\.id/);
     const akun = daftar.flatMap((k) => (k.kanal?.teks.startsWith("Instagram") ? [k.kanal.teks] : []));
     expect(akun).toEqual(["Instagram @sukalaribatam", "Instagram @batam_10k"]);
-    expect(kanalKomunitas({ kontak_publik: "IG @akun_belum_dicek", status: "Belum terverifikasi" })).toBeNull();
-    expect(kanalKomunitas({ kontak_publik: "runningcrews.com", status: "Belum terverifikasi" })).toBeNull();
+    expect(kanalKomunitas({ kontak_publik: "IG @akun_belum_dicek", status: "Belum Terverifikasi" })).toBeNull();
+    expect(kanalKomunitas({ kontak_publik: "runningcrews.com", status: "Belum Terverifikasi" })).toBeNull();
     expect(kanalKomunitas({ kontak_publik: "kebudayaan.kemdikbud.go.id/bpnbkepri", status: "Tercatat" })).toBeNull();
   });
 
@@ -310,8 +310,8 @@ describe("komunitas", () => {
   it("sumber_rekomendasi_warga.json tidak dipakai halaman mana pun", () => {
     for (const berkas of [
       "features/budaya/data.ts",
-      "app/cerita/komunitas/page.tsx",
-      "app/cerita/kalender/page.tsx",
+      "app/komunitas/page.tsx",
+      "app/things-to-do/page.tsx",
       "app/cerita/kamus/page.tsx",
       "app/cerita/budaya/page.tsx",
     ]) {

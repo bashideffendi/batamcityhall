@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import TautanKirim from "@/components/site/TautanKirim";
 import Link from "next/link";
 import osmFeri from "@/data/osm/lapisan/feri.geojson.json";
 import osmHalte from "@/data/osm/lapisan/halte.geojson.json";
 import { TERMINAL_LUAR_BATAM, TERMINAL_TANPA_TITIK, titikTerminalDiPeta } from "@/features/jalan/feri-data";
-import JalanNav from "@/features/jalan/JalanNav";
 import PetaJalanMuat from "@/features/jalan/PetaJalanMuat";
 import { muatRuteGeo } from "@/features/jalan/rute-geo";
 import { HUB_TANPA_TITIK, titikTransDiPeta } from "@/features/jalan/trans-data";
@@ -24,10 +24,8 @@ export default async function PetaJalanHalaman() {
   return (
     <>
       <div className="bch-page jl-page-atas">
-        <p className="bch-kicker m-0">Transportasi</p>
-        <h1 className="mt-2">Peta Transportasi</h1>
+        <h1 className="m-0">Peta Transportasi</h1>
         <p className="bch-lede">Lihat koridor bus, terminal feri, dan pelabuhan rakyat di Batam.</p>
-        <JalanNav aktif="/jalan/peta" />
       </div>
       <PetaJalanMuat titik={titik} rute={rute} osm={osm} />
       <div className="bch-page jl-page-bawah">
@@ -45,8 +43,9 @@ export default async function PetaJalanHalaman() {
             .
           </p>
 
-          <h2>Belum Ada di Peta</h2>
-          <ul className="jl-daftar-rapat" data-testid="lokasi-belum-diisi">
+          <details className="jl-tabel-lipat">
+            <summary>Belum Ada di Peta ({HUB_TANPA_TITIK.length})</summary>
+            <ul className="jl-daftar-rapat" data-testid="lokasi-belum-diisi">
             {HUB_TANPA_TITIK.map((h) => (
               <li key={h.id}>
                 {h.nama} (Trans Batam {h.koridor.join(", ")})
@@ -59,6 +58,7 @@ export default async function PetaJalanHalaman() {
               </li>
             ))}
           </ul>
+          </details>
 
           <h2>Terminal di Luar Batam</h2>
           <p>Tujuan feri ini tidak ditandai di peta.</p>
@@ -73,9 +73,9 @@ export default async function PetaJalanHalaman() {
 
           <p className="jl-catatan-kecil">
             Data dihimpun pada November 2026. Sebagian lokasi masih perkiraan.{" "}
-            <Link href="/koreksi" prefetch={false}>
-              Kirim koreksi
-            </Link>
+            <TautanKirim href="/koreksi" prefetch={false}>
+              Kirim Koreksi
+            </TautanKirim>
           </p>
         </div>
       </div>
