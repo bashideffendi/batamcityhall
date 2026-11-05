@@ -15,6 +15,7 @@ Mengikuti urutan bagian 8 `docs/PEDOMAN.md`.
 - **Bug:** `/makan/peta` bisa digulir ke ruang kosong sepanjang ribuan piksel; tautan kamera di kartu tempat salah alamat; balapan tema di `followSystemTheme`.
 - **Koreksi pemilik:** istilah "loket" keluar dari teks yang tampil, nomor besar pembuka dihapus, penanda berisi isi bagian, judul beranda menjadi "Jelajahi Batam". `cek-bahasa` menjaganya lewat aturan `istilah-loket`.
 - **Pratinjau:** tayang di https://batam.masbash.id. Sumber MSS, NEA, dan BMKG menjawab dari server Railway.
+- **Tahap 7:** skor `07-tahap7` 53 halaman, 53 lolos. Commit `aa7026f` di-push atas izin pemilik, dan tayang sekitar dua menit kemudian. Kata "loket" hilang dari 10 dari 11 halaman yang diperiksa di situs tayang; satu sisanya, `/jalan/feri`, menyebut loket sungguhan di pelabuhan.
 
 ## 2026-11-05 · Gempa dan peringatan dini cuaca BMKG
 

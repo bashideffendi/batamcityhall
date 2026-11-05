@@ -17,7 +17,7 @@ Brief ditulis subagen yang membaca laporan sampai habis. Isinya ringkasan, bukan
 
 ## Keadaan repo
 
-Folder `Desktop\batam-city-hall`, cabang `fase-1-fondasi`, remote `origin` = `github.com/bashideffendi/batamcityhall` (publik atas pilihan pemilik, 5 Nov 2026). Tayang di Railway. Git di PC ini belum punya identitas global; commit memakai `bashideffendi <bashide@gmail.com>` lewat `git -c`. Node.js 26.13, Git 2.56, Python 3.13, dan Chromium Playwright terpasang di PC pemilik.
+Folder `C:\proyek\batamcityhall` (salinan lama `Desktop\batam-city-hall` tertinggal di `e30ba62`, jangan dipakai), cabang `fase-1-fondasi`, remote `origin` = `github.com/bashideffendi/batamcityhall` (publik atas pilihan pemilik, 5 Nov 2026). Tayang di Railway. Git di PC ini belum punya identitas global; commit memakai `bashideffendi <bashide@gmail.com>` lewat `git -c`. Node.js 26.13, Git 2.56, Python 3.13, dan Chromium Playwright terpasang di PC pemilik.
 
 | Bagian | Keadaan |
 |---|---|
@@ -36,13 +36,13 @@ Folder `Desktop\batam-city-hall`, cabang `fase-1-fondasi`, remote `origin` = `gi
 
 ## Langkah berikutnya
 
-Urutan mengikuti bagian 8 `docs/PEDOMAN.md`. Pemilik meminta skor bagian 7 per halaman dilaporkan setelah tiap tahap. Skor tercatat di `docs/tampilan/skor/`, terakhir `06-tahap6`: 53 halaman, 53 lolos.
+Urutan mengikuti bagian 8 `docs/PEDOMAN.md`. Pemilik meminta skor bagian 7 per halaman dilaporkan setelah tiap tahap. Skor tercatat di `docs/tampilan/skor/`, terakhir `07-tahap7`: 53 halaman, 53 lolos.
 
-**Tayang vs lokal.** Situs tayang memakai commit `b8f72cf` (sampai Tahap 6), jadi masih menampilkan "LOKET 01" dan nomor besar. Koreksi "loket" dan kode Tahap 7 ada di commit sesudahnya dan **belum di-push**. Push ke `fase-1-fondasi` langsung men-deploy, jadi perlu izin pemilik. Pemilik sudah melihat tulisan lama itu di situs dan tidak suka: tanyakan ini lebih dulu.
+**Tayang vs lokal.** Situs tayang memakai commit `aa7026f` (koreksi "loket" dan Tahap 7), di-push atas izin pemilik pada 5 Nov 2026. Commit sesudahnya hanya ada di lokal sampai pemilik meminta push lagi. Izin deploy tidak berlaku untuk deploy berikutnya.
 
 Sisa pekerjaan:
 
-1. **Tahap 7:** kode selesai (`lib/cache-respons.ts` di 8 route, ikon situs, CSS tak terpakai dibuang). Skor `07-tahap7` belum dijalankan dan belum dilaporkan.
+1. **Tahap 7:** selesai. `lib/cache-respons.ts` di 8 route, ikon situs, dan CSS tak terpakai sudah tayang. Skor `07-tahap7` sudah dilaporkan. Butir 9 di `/` berasal dari kolom cari Peta Tempat yang memang di bawah Hari Ini sesuai 3.2.
 2. **Aksesibilitas:** axe gagal di tema gelap untuk `/cerita/kalender`, `/cerita/budaya`, dan `/cerita/komunitas` (dilihat lewat `budaya.spec.ts`, penyebabnya belum diperiksa). Periksa juga semua halaman di dua tema dan dua lebar.
 3. **Tes e2e:** banyak selektor dan teks tes masih milik tampilan lama. Putaran desktop yang dihentikan di tengah: 245 lulus, 94 gagal, dan itu sebelum koreksi "loket". Yang perlu ditulis ulang antara lain:
    - `tests/e2e/jalan.spec.ts`: Feri Terakhir kini tabel; `.jl-feri-rute` dan "Sekarang" tidak ada lagi; kotak `.bch-hari-ini` tidak ada lagi.
