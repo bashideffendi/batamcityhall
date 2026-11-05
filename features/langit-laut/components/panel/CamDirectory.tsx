@@ -56,7 +56,7 @@ export default function CamDirectory({ dead, onPick }: Props) {
         <h2 className="cu-sub">Semua Kamera</h2>
         {BY_AREA.map(([area, cams]) => (
           <div key={area} className="dir-area">
-            <h4 className="dir-area-title">{area}</h4>
+            <h3 className="dir-area-title">{area}</h3>
             <ul className="cam-rows">
               {cams.map((c) => (
                 <Row key={c.slug} cam={c} failed={dead.has(c.slug)} onPick={onPick} />

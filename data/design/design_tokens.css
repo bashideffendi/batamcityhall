@@ -73,6 +73,9 @@
   --bch-rule: #2E2D2A;
   --bch-rule-strong: #F2F0EB;
   --bch-link: #6CB8EA;
+  --bch-status-ok: #46B886;      /* versi gelap: kontras 4,5 : 1 ke atas di atas #141414 */
+  --bch-status-caution: #E0A93F;
+  --bch-status-danger: #F28B82;
   --bch-map-sea: #16222C;
   --bch-map-land: #22201B;
   --bch-map-land-other: #1B1A17;

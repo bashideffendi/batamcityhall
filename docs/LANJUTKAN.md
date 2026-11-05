@@ -43,7 +43,7 @@ Urutan mengikuti bagian 8 `docs/PEDOMAN.md`. Pemilik meminta skor bagian 7 per h
 Sisa pekerjaan:
 
 1. **Tahap 7:** selesai. `lib/cache-respons.ts` di 8 route, ikon situs, dan CSS tak terpakai sudah tayang. Skor `07-tahap7` sudah dilaporkan. Butir 9 di `/` berasal dari kolom cari Peta Tempat yang memang di bawah Hari Ini sesuai 3.2.
-2. **Aksesibilitas:** axe gagal di tema gelap untuk `/cerita/kalender`, `/cerita/budaya`, dan `/cerita/komunitas` (dilihat lewat `budaya.spec.ts`, penyebabnya belum diperiksa). Periksa juga semua halaman di dua tema dan dua lebar.
+2. **Aksesibilitas:** selesai di lokal. Axe 56 halaman, dua tema, dua lebar: 0 temuan. Penyebab utamanya token status tanpa versi tema gelap.
 3. **Tes e2e:** banyak selektor dan teks tes masih milik tampilan lama. Putaran desktop yang dihentikan di tengah: 245 lulus, 94 gagal, dan itu sebelum koreksi "loket". Yang perlu ditulis ulang antara lain:
    - `tests/e2e/jalan.spec.ts`: Feri Terakhir kini tabel; `.jl-feri-rute` dan "Sekarang" tidak ada lagi; kotak `.bch-hari-ini` tidak ada lagi.
    - `tests/e2e/direktori.spec.ts`: `.bch-grid .bch-card` menjadi `.bch-baris`, `.bch-sub-nav` menjadi `.bch-saring-baris`, jumlah kategori kini hanya angka.

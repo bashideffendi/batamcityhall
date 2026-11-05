@@ -47,6 +47,7 @@ Tanpa Supabase, semua formulir (rekomendasi tukang, koreksi, foto lama) jujur me
 
 | Hal | Sementara | Tempat mengubah |
 |---|---|---|
+| Warna status di tampilan gelap | Pedoman 4.2 hanya memberi warna untuk tampilan terang, dan warna itu tidak terbaca di latar gelap. Sementara hijau `#46B886`, kuning `#E0A93F`, merah `#F28B82` | `data/design/design_tokens.css` |
 | Tanggal "terakhir dicek" | "Belum dicek ulang sejak riset Nov 2026". Tidak ada tanggal yang dikarang | `teksDicek`, `features/direktori/data.ts` |
 | Nama notaris dan PPAT | Tampil dalam kartu berlabel Beta | `features/direktori/KartuTempat.tsx` |
 | Rating Google | Tidak tampil | `DATA_DECISIONS.md` |

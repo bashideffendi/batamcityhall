@@ -130,6 +130,7 @@
 }
 .peta .maplibregl-ctrl-attrib a {
   color: var(--bch-ink);
+  text-decoration: underline;
 }
 
 .peta-muat,

@@ -1,7 +1,28 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { kontras } from "@/features/jalan/trans-data";
 import { baseStyle, LUAR_FOKUS, MAP_BOUNDS, PALET, SOURCE_ID, type MapTheme } from "@/features/peta/style";
+
+// Teks status harus terbaca di kedua tema (PEDOMAN 4.2): token gelap tidak boleh mewarisi warna terang.
+describe("kontras teks di design_tokens.css", () => {
+  const css = readFileSync(join(process.cwd(), "data", "design", "design_tokens.css"), "utf8");
+  const blok = {
+    terang: css.slice(css.indexOf(":root"), css.indexOf('[data-theme="dark"]')),
+    gelap: css.slice(css.indexOf('[data-theme="dark"]')),
+  };
+  const token = (isi: string, nama: string) => {
+    const nilai = isi.match(new RegExp(`--bch-${nama}:\\s*(#[0-9A-Fa-f]{6})`))?.[1];
+    if (!nilai) throw new Error(`token ${nama} tidak ada`);
+    return nilai;
+  };
+
+  describe.each(["terang", "gelap"] as const)("tema %s", (tema) => {
+    it.each(["ink", "ink-muted", "link", "status-ok", "status-caution", "status-danger"])("%s minimal 4,5 : 1", (nama) => {
+      expect(kontras(token(blok[tema], nama), token(blok[tema], "paper"))).toBeGreaterThanOrEqual(4.5);
+    });
+  });
+});
 
 const ORIGIN = "http://localhost:3000";
 const TEMA: MapTheme[] = ["light", "dark"];

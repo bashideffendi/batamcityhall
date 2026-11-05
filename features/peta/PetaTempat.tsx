@@ -173,7 +173,7 @@ function CariTempat({ pins, onPilih }: { pins: PinPeta[]; onPilih: (p: PinPeta) 
         placeholder="Cari tempat atau kecamatan"
         value={q}
         onChange={(e) => setQ(e.target.value)}
-        aria-controls={idHasil}
+        aria-controls={ketik ? idHasil : undefined}
       />
       {ketik && (
         <ul id={idHasil} className="br-cari-hasil">
@@ -393,7 +393,8 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
       </div>
 
       {!lebar && pilihan && (
-        <ul className="bch-daftar-polos br-chip">
+        // Baris ini digulir mendatar di ponsel, jadi harus bisa dicapai papan ketik.
+        <ul className="bch-daftar-polos br-chip" tabIndex={0} aria-label="Jenis tempat yang ditampilkan">
           {kelompokAktif.map((k) => (
             <li key={k}>
               <IkonLingkaran glyph={JENIS_PETA.find((j) => j.kelompok === k)?.glyph ?? ""} warna={KELOMPOK_PETA[k].warna} ukuran={24} />

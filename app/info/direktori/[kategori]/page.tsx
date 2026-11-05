@@ -110,6 +110,7 @@ export default async function Kategori({ params }: Props) {
           <p className="sr-only" data-jumlah-kategori={tempat.length}>
             {tempat.length.toLocaleString("id-ID")} tempat
           </p>
+          <h2 className="sr-only">Daftar Tempat</h2>
           <DaftarBertahap className="bch-daftar-baris bch-daftar-tanpa-atas">
             {[...tempat]
               .sort((a, b) => Number(b.atribut.igd_24jam === true) - Number(a.atribut.igd_24jam === true))
