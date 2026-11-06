@@ -1730,3 +1730,15 @@ Aturan:
 - [-] dipakai sebagai referensi: 18 berkas per laporan (00 sampai 17) digabung tools/merge_places.py menjadi data/places.json yang dibaca UI · `data/places/*.json` (17 file per laporan; sumber `places.json`, dipakai lewat `places.json`)
 - [-] dipakai sebagai referensi: blok JSON verbatim dari laporan, tidak dibaca UI; belum ada pembanding otomatis dengan file domain · `data/raw/*.json` (blok JSON verbatim; cek tidak ada isi yang hilang dibanding file domain)
 - [-] konteks, tidak perlu fitur: log penyusun; hal yang tidak bisa dipetakan ke JSON dilacak lewat butir COVERAGE per laporan research/NN · `data/logs/*.md` (baca bagian "tidak bisa dipetakan" di setiap log dan tangani)
+
+## Rombak November 2026
+
+Permintaan pemilik di luar spesifikasi awal. Statusnya di `docs/RENCANA-ROMBAK.md`.
+
+- [x] /makan/hidangan, data/makan/categories.json, features/makan/lib/hidangan.ts · 32 kategori Makanan pemilik, tempat boleh masuk banyak kategori (`kategori_lain`). Tujuh kategori belum punya tempat dan tampil Belum Ada
+- [x] /makan/food-court, data/makan/foodcourt.json, features/makan/lib/foodcourt.ts · 16 food court bersumber, tempat makan menunjuk food court lewat `food_court`. Titik peta menunggu koordinat
+- [x] /loker, /admin/loker, features/konten/admin/AdminLoker.tsx · Info Loker dari dashboard. Menu tampil setelah basis data tersambung
+- [x] /admin/makanan, /admin/jurnal, /admin/agenda, features/konten/ · Dashboard tambah dan ubah tempat, foto, kategori, food court, Jurnal, agenda. Teruji di mode contoh
+- [ ] features/konten/store-supabase.ts, /api/admin/terbitkan · Belum pernah dijalankan melawan Supabase dan Railway sungguhan, menunggu izin pemilik
+- [x] /jurnal, /jurnal/[slug], /things-to-do, /cari, /kartu-pos · Halaman baru rombak, tertutup tes di tests/e2e/rombak.spec.ts
+- [x] data/koordinat_perlu_diisi.xlsx, tools/buat_lembar_koordinat.py, tools/impor_lembar_koordinat.py · Lembar 1.101 lokasi yang butuh koordinat. Rumus kolom Cek belum dibuka di Excel sungguhan

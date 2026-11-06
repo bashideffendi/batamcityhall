@@ -82,3 +82,12 @@ Bukan syarat pengalihan, dicatat supaya perbandingan tidak salah baca.
 
 - Peringatan dini cuaca BMKG di panel Hujan (label, bagian Detail, poligon di peta) dan `/cuaca/peringatan` — e2e, live 5 Nov 2026
 - Gempa BMKG di `/cuaca/gempa` dan baris bila relevan di kotak Hari Ini — e2e, live 5 Nov 2026
+
+## Tambahan Rombak November 2026
+
+Bukan syarat pengalihan situs lama, dicatat supaya perbandingan tidak salah baca.
+
+- Kategori Makanan: 32 kategori pemilik menggantikan 17 hidangan. Alamat kategori lama dialihkan ke alamat barunya — e2e, belum tayang
+- Food Court di `/makan/food-court` dan tautan dua arah dengan tempat makan — e2e, belum tayang
+- Info Loker di `/loker`: menu tampil setelah basis data tersambung — e2e mode contoh, belum tayang
+- Dashboard Makanan, Jurnal, agenda, dan Info Loker di `/admin` — e2e mode contoh, belum diuji dengan Supabase sungguhan
