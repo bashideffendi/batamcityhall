@@ -184,8 +184,12 @@ def main():
         for pid, k in json.load(open(user_path, encoding="utf-8")).items():
             m = look.get(pid)
             if not m: problems.append(f"koordinat_user.json: id '{pid}' tidak ditemukan"); continue
-            m.update(lat=k["lat"], lng=k["lng"], status_koordinat="terverifikasi",
-                     catatan_koordinat=f"diisi/dicek pemilik proyek {k.get('tanggal', '')}".strip())
+            tanda = f"diisi/dicek pemilik proyek {k.get('tanggal', '')}".strip()
+            # Titik wakil pulau, kampung, atau kawasan tetap perkiraan (lihat tools/impor_lembar_koordinat.py).
+            if k.get("wakil_wilayah"):
+                m.update(lat=k["lat"], lng=k["lng"], status_koordinat="perlu_cek_ulang", catatan_koordinat=f"titik wakil wilayah, {tanda}")
+            else:
+                m.update(lat=k["lat"], lng=k["lng"], status_koordinat="terverifikasi", catatan_koordinat=tanda)
     ids = Counter(m["id"] for m in merged)
     for m in merged:
         if ids[m["id"]] > 1:

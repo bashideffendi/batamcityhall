@@ -49,7 +49,7 @@ const URUTAN_LABEL: RecLabel[] = ["legendaris", "wajib-coba", "hits", "hidden-ge
 export const satuLabel = (labels: readonly RecLabel[]): RecLabel[] =>
   URUTAN_LABEL.filter((l) => labels.includes(l)).slice(0, 1);
 
-type KoordinatUser = Record<string, { lat: number; lng: number }>;
+type KoordinatUser = Record<string, { lat: number; lng: number; wakil_wilayah?: boolean }>;
 
 /** Koordinat hasil tools/import_koordinat.py menimpa koordinat lama: tempatnya jadi bukan lagi perkiraan. */
 export function terapkanKoordinat<T extends { id: string; lat: number; lng: number; coord_approx: boolean }>(
@@ -57,7 +57,8 @@ export function terapkanKoordinat<T extends { id: string; lat: number; lng: numb
   koordinat: KoordinatUser,
 ): T {
   const k = Object.hasOwn(koordinat, p.id) ? koordinat[p.id] : undefined;
-  return k ? { ...p, lat: k.lat, lng: k.lng, coord_approx: false } : p;
+  // Titik wakil wilayah (pemilik menulis area) tetap perkiraan.
+  return k ? { ...p, lat: k.lat, lng: k.lng, coord_approx: k.wakil_wilayah === true } : p;
 }
 
 export const places: PlaceWithGeo[] = (placesRaw as unknown as Place[]).map((mentah) => {

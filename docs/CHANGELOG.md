@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-07 · Titik wakil pulau, kampung, dan kawasan
+
+Atas pertanyaan pemilik. Masih di lokal sampai pemilik meminta push.
+
+- **Lembar koordinat:** petunjuk baru untuk pulau, kampung tua, kawasan, pantai, dan halte bernama kampung. Satu titik di tempat orang datang, bukan di tengah wilayah.
+- **Catatan area:** bila pemilik menulis area di Catatan Anda, titiknya disimpan sebagai titik wakil wilayah. Di peta tampil sebagai Lokasi Perkiraan, arah jalan dicari menurut nama, dan tempat itu tidak ditanyakan lagi di lembar berikutnya. Berlaku di pengimpor, penggabung tempat, dan data Makanan.
+
 ## 2026-11-07 · Perbaikan Infografik
 
 Atas koreksi pemilik. Tayang sejak `2221dbb` (7 November 2026).

@@ -456,6 +456,8 @@ describe("impor koordinat ke Makan", () => {
 
   it("id lain tidak berubah", () => {
     expect(terapkanKoordinat(dasar, { b: { lat: 2, lng: 105 } })).toBe(dasar);
+    // Titik wakil pulau, kampung, atau kawasan tetap perkiraan.
+    expect(terapkanKoordinat(dasar, { a: { lat: 1.5, lng: 104.5, wakil_wilayah: true } }).coord_approx).toBe(true);
     expect(terapkanKoordinat({ ...dasar, id: "constructor" }, {}).lat).toBe(1);
   });
 

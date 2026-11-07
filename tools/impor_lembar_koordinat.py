@@ -2,6 +2,8 @@
 """Masukkan kembali data/koordinat_perlu_diisi.xlsx yang sudah diisi pemilik proyek.
 
 Isi kolom kuning: "1.1234, 104.0567", atau "benar" untuk menyatakan titik yang ada sudah tepat.
+"area" di Catatan Anda: titik hanya mewakili pulau, kampung, atau kawasan. Tempat itu tampil sebagai
+Lokasi Perkiraan dan tidak ditanyakan lagi di lembar berikutnya.
 Baris kosong dilewati. Baris yang salah dilaporkan dan tidak diubah.
 
 Yang diperbarui:
@@ -27,6 +29,8 @@ from openpyxl import load_workbook
 
 ROOT = os.environ.get("AKAR_REPO") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KOLOM_ISI = "Koordinat (Tempel di Sini)"
+KOLOM_CATATAN = "Catatan Anda"
+POLA_AREA = re.compile(r"\barea\b", re.I)
 LEMBAR_TEMPAT = ("Belum Ada Koordinat", "Perlu Dicek", "Makanan", "Kampung Tua")
 BATAS_LAT = (0.3, 1.6)
 BATAS_LNG = (103.4, 104.9)
@@ -75,9 +79,11 @@ def baris_terisi(ws):
     if KOLOM_ISI not in kepala or "ID" not in kepala:
         raise SystemExit(f"Lembar {ws.title}: kolom {KOLOM_ISI} atau ID hilang.")
     ci, cid = kepala.index(KOLOM_ISI), kepala.index("ID")
+    cc = kepala.index(KOLOM_CATATAN) if KOLOM_CATATAN in kepala else None
     for nomor, r in enumerate(ws.iter_rows(min_row=2, values_only=True), start=2):
         if r[ci] is not None and str(r[ci]).strip():
-            yield nomor, r[cid], r[ci]
+            catatan = str(r[cc]) if cc is not None and r[cc] is not None else ""
+            yield nomor, r[cid], r[ci], bool(POLA_AREA.search(catatan))
 
 
 def main():
@@ -113,6 +119,7 @@ def main():
         cctv = f.read()
 
     hitung = {}
+    wakil = 0
     masalah = []
 
     def terapkan(obj, nilai, lembar, nomor, ident):
@@ -126,7 +133,7 @@ def main():
     for ws in wb.worksheets:
         if ws.title == "Petunjuk":
             continue
-        for nomor, ident, isi in baris_terisi(ws):
+        for nomor, ident, isi, area in baris_terisi(ws):
             try:
                 nilai = uraikan(isi)
             except ValueError as e:
@@ -141,14 +148,19 @@ def main():
                 if not titik:
                     continue
                 la, lo = titik
-                p.update(lat=la, lng=lo, status_koordinat="terverifikasi", catatan_koordinat=tanda)
-                pengguna[p["id"]] = {"lat": la, "lng": lo, "tanggal": hari_ini}
+                # Titik wakil wilayah tetap perkiraan: arah jalan dicari menurut nama, bukan titiknya.
+                ket = f"titik wakil wilayah, {tanda}" if area else tanda
+                status = "perlu_cek_ulang" if area else "terverifikasi"
+                p.update(lat=la, lng=lo, status_koordinat=status, catatan_koordinat=ket)
+                pengguna[p["id"]] = {"lat": la, "lng": lo, "tanggal": hari_ini, **({"wakil_wilayah": True} if area else {})}
+                if area:
+                    wakil += 1
                 if p["id"] in id_makan:
-                    id_makan[p["id"]].update(lat=la, lng=lo, coord_approx=False)
+                    id_makan[p["id"]].update(lat=la, lng=lo, coord_approx=area)
                 if p["id"] in id_kampung:
-                    id_kampung[p["id"]].update(lat=la, lng=lo, akurasi_koordinat=tanda)
+                    id_kampung[p["id"]].update(lat=la, lng=lo, akurasi_koordinat=ket)
                 if p["id"] in id_mural:
-                    id_mural[p["id"]].update(lat=la, lng=lo, akurasi_koordinat=tanda)
+                    id_mural[p["id"]].update(lat=la, lng=lo, akurasi_koordinat=ket)
             elif ws.title == "Food Court":
                 f = id_fc.get(ident)
                 if not f:
@@ -193,7 +205,7 @@ def main():
 
     for lembar, n in hitung.items():
         print(f"{lembar}: {n} baris")
-    print(f"Total diterapkan: {sum(hitung.values())}. Bermasalah: {len(masalah)}.")
+    print(f"Total diterapkan: {sum(hitung.values())}, termasuk {wakil} titik wakil wilayah. Bermasalah: {len(masalah)}.")
     for m in masalah:
         print(" -", m)
     if coba:

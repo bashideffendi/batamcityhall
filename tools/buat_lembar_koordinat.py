@@ -118,7 +118,13 @@ def kumpulkan():
     mk = {m["id"]: m for m in baca("data", "makan", "places.json")}
     kawasan = {a["id"]: a["name"] for a in baca("data", "makan", "areas.json")}
 
-    perlu = [p for p in places if p["status_koordinat"] in ("perlu_diisi_user", "perlu_cek_ulang")]
+    # Titik wakil wilayah yang sudah diisi pemilik tidak ditanyakan lagi, walau di peta tetap Lokasi Perkiraan.
+    perlu = [
+        p
+        for p in places
+        if p["status_koordinat"] in ("perlu_diisi_user", "perlu_cek_ulang")
+        and not str(p.get("catatan_koordinat") or "").startswith("titik wakil")
+    ]
     kosong, cek, makan, kampung = [], [], [], []
     for p in perlu:
         if p["kategori"] == "kuliner":
@@ -331,13 +337,35 @@ def tulis(lembar):
         ws.set_row(r, 15 if len(t) < 100 else 28)
         r += 1
     r += 1
+    ws.write(r, 0, "Pulau, Kampung, dan Kawasan", fmt["h2"])
+    r += 1
+    wakil = [
+        "Satu titik saja, di tempat orang datang. Bukan di tengah pulau atau kawasan.",
+        "Gedung di pulau (rumah sakit, puskesmas, sekolah): titik gedungnya. Ini titik tepat, bukan area.",
+        "Pulau tujuan wisata: dermaga atau pelabuhan tempat orang turun dari perahu.",
+        "Kampung tua: pusat kampung, misalnya masjid atau surau tua, balai kampung, atau dermaganya.",
+        "Kawasan (Nagoya, kawasan olahraga, kawasan industri): pintu masuk utama atau tempat paling ramai.",
+        "Pantai: pintu masuk atau tempat parkirnya.",
+        "Halte bernama kampung atau kawasan: titik halte di tepi jalan, bukan kampungnya.",
+        "Bila titiknya hanya mewakili sebuah wilayah, tulis area di Catatan Anda. Di peta titik itu tampil sebagai Lokasi Perkiraan, dan arah jalan dicari menurut nama.",
+    ]
+    for t in wakil:
+        ws.merge_range(r, 0, r, 4, t, fmt["polos"])
+        ws.set_row(r, 15 if len(t) < 100 else 28)
+        r += 1
+    r += 1
     ws.write(r, 0, "Contoh", fmt["h2"])
     r += 1
     ws.write(r, 0, "Nama", fmt["kepala"])
     ws.write(r, 1, KOLOM_ISI, fmt["kepala_isi"])
+    ws.write(r, 2, "Catatan Anda", fmt["kepala"])
     r += 1
     ws.write(r, 0, "Pura Amertabhuana", fmt["teks"])
     ws.write_string(r, 1, "1.112828, 104.002754", fmt["contoh_isi"])
+    r += 1
+    ws.write(r, 0, "Pulau Belakang Padang", fmt["teks"])
+    ws.write_string(r, 1, "(titik dermaga utamanya)", fmt["contoh_isi"])
+    ws.write_string(r, 2, "area", fmt["teks"])
     r += 2
 
     ws.write(r, 0, "Daftar Lembar", fmt["h2"])
