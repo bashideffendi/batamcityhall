@@ -17,6 +17,9 @@ const BY_AREA: [string, Cam[]][] = (() => {
   return [...m.entries()].map(([area, cams]) => [area, [...cams].sort((a, b) => a.name.localeCompare(b.name, "id"))]);
 })();
 
+// Tanda perkiraan hanya dijelaskan bila ada kamera yang lokasinya perkiraan (sejak 8 Nov 2026 semua bertitik pemilik).
+const ADA_PERKIRAAN = [...MAPPED_CAMS, ...UNMAPPED_CAMS].some((c) => c.approx);
+
 const PinSvg = () => (
   <svg
     viewBox="0 0 24 24"
@@ -78,12 +81,14 @@ export default function CamDirectory({ dead, onPick }: Props) {
       <section className="d-sec">
         <h2 className="cu-sub">Arti Tanda di Peta</h2>
         <ul className="pin-legend">
-          <li>
-            <span className="cam-pin is-approx">
-              <PinSvg />
-            </span>
-            Garis putus-putus: lokasi perkiraan
-          </li>
+          {ADA_PERKIRAAN && (
+            <li>
+              <span className="cam-pin is-approx">
+                <PinSvg />
+              </span>
+              Garis putus-putus: lokasi perkiraan
+            </li>
+          )}
           <li>
             <span className="cam-pin is-mati">
               <PinSvg />
