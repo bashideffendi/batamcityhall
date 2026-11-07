@@ -3,6 +3,7 @@ import { z } from "zod";
 import kawasanMakan from "@/data/makan/areas.json";
 import kategoriMakan from "@/data/makan/categories.json";
 import foodCourtMakan from "@/data/makan/foodcourt.json";
+import { KECAMATAN } from "@/lib/data/schema";
 
 const TANGGAL = /^\d{4}-\d{2}-\d{2}$/;
 const POLA_SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -121,7 +122,8 @@ export type InputAgenda = z.output<typeof SkemaAgenda>;
 
 const ID_KATEGORI = new Set((kategoriMakan as { id: string }[]).map((c) => c.id));
 const ID_KAWASAN = new Set((kawasanMakan as { id: string }[]).map((a) => a.id));
-const ID_FOOD_COURT = new Set(foodCourtMakan.tempat.map((f) => f.id));
+/** Food court di berkas repo. Food court baru dari dashboard diperiksa di API, karena tersimpan di basis data. */
+export const ID_FOOD_COURT = new Set(foodCourtMakan.tempat.map((f) => f.id));
 
 export const JENIS_LOKER = [
   { slug: "penuh-waktu", nama: "Penuh Waktu" },
@@ -170,7 +172,7 @@ const kolomMakan = {
   food_court: z
     .string()
     .nullish()
-    .refine((k) => !k || ID_FOOD_COURT.has(k), { error: "Food court tidak dikenal." })
+    .refine((k) => !k || POLA_SLUG.test(k), { error: "Food court tidak dikenal." })
     .transform((k) => k || null),
   area: wajib(40, "Pilih kawasan.").refine((k) => ID_KAWASAN.has(k), { error: "Pilih kawasan." }),
   halal: z.enum(HALAL, { error: "Pilih status halal." }),
@@ -197,6 +199,52 @@ export const SkemaUbahanMakan = z.discriminatedUnion("baru", [
 ]);
 export type InputUbahanMakan = z.output<typeof SkemaUbahanMakan>;
 
+const tautanSumber = z
+  .string()
+  .trim()
+  .refine(
+    (s) => {
+      try {
+        return new URL(s).protocol === "https:";
+      } catch {
+        return false;
+      }
+    },
+    { error: "Tautan harus diawali https://" },
+  );
+
+/** Kolom food court yang boleh diubah lewat admin. Koordinat diisi lewat lembar koordinat. */
+const kolomFoodCourt = {
+  nama: wajib(120, "Nama wajib diisi."),
+  kecamatan: z.enum(KECAMATAN, { error: "Pilih kecamatan." }),
+  alamat: wajib(240, "Alamat wajib diisi."),
+  jam: opsional(160).transform((v) => v ?? ""),
+  isi: wajib(600, "Keterangan wajib diisi."),
+  tingkat: z.enum(["dibaca", "daftar"], { error: "Pilih status alamat." }),
+  sumber_url: tautanSumber
+    .array()
+    .min(1, { error: "Isi paling sedikit satu tautan sumber." })
+    .max(6, { error: "Paling banyak 6 tautan." }),
+};
+
+export const SkemaUbahanFoodCourt = z.discriminatedUnion("baru", [
+  z.object({
+    baru: z.literal(false),
+    foodcourt_id: z.string().refine((k) => ID_FOOD_COURT.has(k), { error: "Pilih food court." }),
+    ...kolomFoodCourt,
+  }),
+  z.object({
+    baru: z.literal(true),
+    foodcourt_id: z
+      .string({ error: "Nama wajib diisi." })
+      .regex(POLA_SLUG, { error: "Nama wajib diisi." })
+      .max(80)
+      .refine((k) => !ID_FOOD_COURT.has(k), { error: "Nama ini sudah dipakai food court lain." }),
+    ...kolomFoodCourt,
+  }),
+]);
+export type InputUbahanFoodCourt = z.output<typeof SkemaUbahanFoodCourt>;
+
 const id = z.uuid({ error: "Entri tidak dikenal." });
 
 export const SkemaAksiKonten = z.discriminatedUnion("aksi", [
@@ -210,5 +258,7 @@ export const SkemaAksiKonten = z.discriminatedUnion("aksi", [
   z.object({ aksi: z.literal("hapus_loker"), id }),
   z.object({ aksi: z.literal("simpan_makan"), data: SkemaUbahanMakan }),
   z.object({ aksi: z.literal("hapus_makan"), tempat_id: z.string().min(1) }),
+  z.object({ aksi: z.literal("simpan_foodcourt"), data: SkemaUbahanFoodCourt }),
+  z.object({ aksi: z.literal("hapus_foodcourt"), foodcourt_id: z.string().min(1) }),
 ]);
 export type AksiKonten = z.output<typeof SkemaAksiKonten>;

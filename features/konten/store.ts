@@ -2,8 +2,8 @@
 // supabase = basis data sungguhan, contoh = memori (dev dan e2e), mati = tidak ada (situs memakai berkas repo saja).
 import { randomUUID } from "node:crypto";
 import { modeKiriman, type Env } from "@/features/tukang/mode";
-import type { InputAgenda, InputFoto, InputJurnal, InputLoker, InputUbahanMakan } from "./skema";
-import type { BarisUbahan } from "./ubahan";
+import type { InputAgenda, InputFoto, InputJurnal, InputLoker, InputUbahanFoodCourt, InputUbahanMakan } from "./skema";
+import type { BarisUbahan, BarisUbahanFoodCourt } from "./ubahan";
 
 export type BarisJurnal = InputJurnal & { id: string };
 export type BarisFoto = InputFoto & { id: string };
@@ -26,15 +26,27 @@ export interface KontenStore {
   ubahanMakan(): Promise<BarisUbahan[]>;
   simpanUbahanMakan(d: InputUbahanMakan): Promise<void>;
   hapusUbahanMakan(tempatId: string): Promise<void>;
+  ubahanFoodCourt(): Promise<BarisUbahanFoodCourt[]>;
+  simpanUbahanFoodCourt(d: InputUbahanFoodCourt): Promise<void>;
+  hapusUbahanFoodCourt(foodCourtId: string): Promise<void>;
   /** Mengembalikan alamat publik berkas. */
   unggah(nama: string, isi: Buffer, tipe: string): Promise<string>;
 }
 
-type Memori = { jurnal: BarisJurnal[]; foto: BarisFoto[]; agenda: BarisAgenda[]; loker: BarisLoker[]; makan: BarisUbahan[] };
+type Memori = {
+  jurnal: BarisJurnal[];
+  foto: BarisFoto[];
+  agenda: BarisAgenda[];
+  loker: BarisLoker[];
+  makan: BarisUbahan[];
+  foodcourt: BarisUbahanFoodCourt[];
+};
 
 function memori(): Memori {
   const g = globalThis as unknown as { __bchKonten?: Memori };
-  g.__bchKonten ??= { jurnal: [], foto: [], agenda: [], loker: [], makan: [] };
+  g.__bchKonten ??= { jurnal: [], foto: [], agenda: [], loker: [], makan: [], foodcourt: [] };
+  // Memori dari versi sebelumnya saat dev belum punya kolom ini.
+  g.__bchKonten.foodcourt ??= [];
   return g.__bchKonten;
 }
 
@@ -67,6 +79,12 @@ export function storeContoh(m: Memori = memori()): KontenStore {
       m.makan = [...m.makan.filter((u) => u.tempat_id !== tempat_id), { tempat_id, baru, data }];
     },
     hapusUbahanMakan: async (tempatId) => void (m.makan = m.makan.filter((u) => u.tempat_id !== tempatId)),
+    ubahanFoodCourt: async () => [...m.foodcourt],
+    simpanUbahanFoodCourt: async (d) => {
+      const { foodcourt_id, baru, ...data } = d;
+      m.foodcourt = [...m.foodcourt.filter((u) => u.foodcourt_id !== foodcourt_id), { foodcourt_id, baru, data }];
+    },
+    hapusUbahanFoodCourt: async (id) => void (m.foodcourt = m.foodcourt.filter((u) => u.foodcourt_id !== id)),
     // Tidak ada penyimpanan berkas di mode contoh: gambar dibawa langsung di alamatnya.
     unggah: async (_nama, isi, tipe) => `data:${tipe};base64,${isi.toString("base64")}`,
   };

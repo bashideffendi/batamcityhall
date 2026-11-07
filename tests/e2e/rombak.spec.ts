@@ -341,15 +341,46 @@ test.describe("dashboard Info Loker dan Makanan", () => {
     await page.getByLabel("Kata sandi").fill(SANDI);
     await page.getByRole("button", { name: "Masuk" }).click();
     await page.getByLabel("Tempat", { exact: true }).selectOption("golden-prawn-933");
-    await expect(page.getByLabel("Nama")).toHaveValue("Golden Prawn 933");
-    await page.getByLabel("Food Court").selectOption("a2-food-court");
+    await expect(page.getByLabel("Nama", { exact: true })).toHaveValue("Golden Prawn 933");
+    await page.getByLabel("Food Court", { exact: true }).selectOption("a2-food-court");
     await page.getByLabel("AYCE").check();
     await page.getByRole("button", { name: "Simpan Data" }).click();
     await expect(page.getByText("Tersimpan. Tayang setelah Terbitkan Perubahan.")).toBeVisible({ timeout: 20_000 });
     await page.getByRole("button", { name: "Terbitkan Perubahan" }).click();
     await expect(page.getByText(/belum tersambung ke Railway/)).toBeVisible({ timeout: 20_000 });
     await page.getByLabel("Tempat", { exact: true }).selectOption("golden-prawn-933");
-    await expect(page.getByLabel("Food Court")).toHaveValue("a2-food-court");
+    await expect(page.getByLabel("Food Court", { exact: true })).toHaveValue("a2-food-court");
     await expect(page.getByLabel("AYCE")).toBeChecked();
+  });
+
+  test("food court baru dari dashboard bisa langsung dipilih tempat makan", async ({ page }, info) => {
+    const nama = `Pujasera Uji ${Date.now().toString(36)} ${info.project.name}`;
+    await page.goto("/admin/makanan");
+    await page.getByLabel("Kata sandi").fill(SANDI);
+    await page.getByRole("button", { name: "Masuk" }).click();
+
+    const fc = page.getByRole("form", { name: "Tambah atau Ubah Food Court" });
+    await fc.getByLabel("Daftar Food Court").selectOption("nagoya-food-court");
+    await expect(fc.getByLabel("Nama", { exact: true })).toHaveValue("Nagoya Food Court");
+    await expect(fc.getByLabel("Tautan Sumber")).toHaveValue(/batamgems\.com/);
+
+    await fc.getByLabel("Daftar Food Court").selectOption("__baru");
+    await fc.getByLabel("Nama", { exact: true }).fill(nama);
+    await fc.getByLabel("Kecamatan", { exact: true }).selectOption("Sekupang");
+    await fc.getByLabel("Alamat", { exact: true }).fill("Jl. Uji Coba");
+    await fc.getByLabel("Keterangan", { exact: true }).fill("Food court uji otomatis.");
+    // Tanpa tautan sumber ditolak: data tanpa asal tidak boleh masuk.
+    await fc.getByRole("button", { name: "Simpan Food Court" }).click();
+    await expect(fc.getByLabel("Tautan Sumber")).toHaveJSProperty("validity.valueMissing", true);
+    await fc.getByLabel("Tautan Sumber").fill("https://example.com/pujasera-uji");
+    await fc.getByRole("button", { name: "Simpan Food Court" }).click();
+    await expect(fc.getByText("Tersimpan. Tayang setelah Terbitkan Perubahan.")).toBeVisible({ timeout: 20_000 });
+    await expect(page.getByRole("region", { name: "Perubahan Food Court" })).toContainText(nama);
+    await expect(page.getByRole("button", { name: "Terbitkan Perubahan" })).toBeVisible();
+
+    await page.getByLabel("Tempat", { exact: true }).selectOption("golden-prawn-933");
+    await page.getByLabel("Food Court", { exact: true }).selectOption({ label: `${nama} (Baru)` });
+    await page.getByRole("button", { name: "Simpan Data" }).click();
+    await expect(page.getByText("Tersimpan. Tayang setelah Terbitkan Perubahan.").first()).toBeVisible({ timeout: 20_000 });
   });
 });

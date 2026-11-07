@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { agendaBelumLewat, gabungTulisan, lokerBelumLewat, tulisanDariBaris } from "@/features/konten/baca";
-import { buatSlug, pecahParagraf, SkemaAgenda, SkemaAksiKonten, SkemaJurnal, SkemaLoker, SkemaUbahanMakan } from "@/features/konten/skema";
+import { buatSlug, pecahParagraf, SkemaAgenda, SkemaAksiKonten, SkemaJurnal, SkemaLoker, SkemaUbahanFoodCourt, SkemaUbahanMakan } from "@/features/konten/skema";
 import { GalatSlugGanda, storeContoh, type BarisAgenda, type BarisLoker } from "@/features/konten/store";
-import { terapkanUbahan } from "@/features/konten/ubahan";
+import { terapkanUbahan, terapkanUbahanFoodCourt } from "@/features/konten/ubahan";
+import type { FoodCourt } from "@/features/makan/lib/foodcourt";
 import { modeKiriman } from "@/features/tukang/mode";
 import type { Place } from "@/features/makan/lib/types";
 import { TULISAN } from "@/features/jurnal/data";
@@ -18,7 +19,7 @@ const jurnal = {
   isi: "Paragraf satu.\n\nParagraf dua.",
   terbit: true,
 };
-const memoriKosong = () => ({ jurnal: [], foto: [], agenda: [], loker: [], makan: [] });
+const memoriKosong = () => ({ jurnal: [], foto: [], agenda: [], loker: [], makan: [], foodcourt: [] });
 
 describe("isian Jurnal", () => {
   it("alamat dibuat dari judul", () => {
@@ -115,7 +116,8 @@ describe("data makanan", () => {
   it("kategori, kawasan, dan food court harus dikenal", () => {
     expect(SkemaUbahanMakan.safeParse({ baru: false, tempat_id: "a", ...kolom, category: "rahasia" }).success).toBe(false);
     expect(SkemaUbahanMakan.safeParse({ baru: false, tempat_id: "a", ...kolom, area: "rahasia" }).success).toBe(false);
-    expect(SkemaUbahanMakan.safeParse({ baru: false, tempat_id: "a", ...kolom, food_court: "rahasia" }).success).toBe(false);
+    // Food court baru tersimpan di basis data, jadi keberadaannya diperiksa API. Skema menolak bentuk yang salah.
+    expect(SkemaUbahanMakan.safeParse({ baru: false, tempat_id: "a", ...kolom, food_court: "Bukan Alamat!" }).success).toBe(false);
     expect(SkemaUbahanMakan.safeParse({ baru: false, tempat_id: "a", ...kolom, kategori_lain: ["rahasia"] }).success).toBe(false);
     const hasil = SkemaUbahanMakan.parse({ baru: false, tempat_id: "a", ...kolom, food_court: "", kategori_lain: ["ayce"] });
     expect(hasil).toMatchObject({ food_court: null, kategori_lain: ["ayce"] });
@@ -172,5 +174,65 @@ describe("penyimpanan contoh", () => {
 
   it("tanpa basis data, situs tidak mencoba menyimpan apa pun di produksi", () => {
     expect(modeKiriman({ NODE_ENV: "production" })).toBe("mati");
+  });
+});
+
+describe("food court dari dashboard", () => {
+  const isian = {
+    nama: "Pujasera Uji",
+    kecamatan: "Sekupang",
+    alamat: "Jl. Uji",
+    jam: "",
+    isi: "Keterangan.",
+    tingkat: "dibaca",
+    sumber_url: ["https://example.com/uji"],
+  };
+  const lama: FoodCourt = {
+    id: "lama",
+    nama: "Lama",
+    kecamatan: "Batam Kota",
+    alamat: "Jl. Lama",
+    jam: "",
+    isi: "Isi lama.",
+    tingkat: "daftar",
+    sumber_url: ["https://example.com/lama"],
+    lat: 1.1,
+    lng: 104,
+  };
+
+  it("butuh kecamatan Batam, tautan sumber https, dan nama yang belum dipakai", () => {
+    expect(SkemaUbahanFoodCourt.safeParse({ baru: true, foodcourt_id: "pujasera-uji", ...isian }).success).toBe(true);
+    expect(SkemaUbahanFoodCourt.safeParse({ baru: true, foodcourt_id: "pujasera-uji", ...isian, sumber_url: [] }).success).toBe(false);
+    expect(SkemaUbahanFoodCourt.safeParse({ baru: true, foodcourt_id: "pujasera-uji", ...isian, sumber_url: ["http://example.com"] }).success).toBe(false);
+    expect(SkemaUbahanFoodCourt.safeParse({ baru: true, foodcourt_id: "pujasera-uji", ...isian, kecamatan: "Tanjungpinang" }).success).toBe(false);
+    expect(SkemaUbahanFoodCourt.safeParse({ baru: true, foodcourt_id: "a2-food-court", ...isian }).success).toBe(false);
+    expect(SkemaUbahanFoodCourt.safeParse({ baru: false, foodcourt_id: "a2-food-court", ...isian }).success).toBe(true);
+    expect(SkemaUbahanFoodCourt.safeParse({ baru: false, foodcourt_id: "tidak-ada", ...isian }).success).toBe(false);
+  });
+
+  it("ubahan menjaga koordinat, food court baru masuk tanpa koordinat, data asli tidak berubah", () => {
+    const { daftar, dilewati } = terapkanUbahanFoodCourt(
+      [lama],
+      [
+        { foodcourt_id: "lama", baru: false, data: { ...isian, nama: "Lama Diubah" } as FoodCourt },
+        { foodcourt_id: "pujasera-uji", baru: true, data: isian as FoodCourt },
+        { foodcourt_id: "hilang", baru: false, data: isian as FoodCourt },
+      ],
+    );
+    expect(daftar[0]).toMatchObject({ id: "lama", nama: "Lama Diubah", lat: 1.1, lng: 104 });
+    expect(daftar[1]).toMatchObject({ id: "pujasera-uji", nama: "Pujasera Uji", lat: null, lng: null });
+    expect(dilewati).toEqual(["hilang"]);
+    expect(lama.nama).toBe("Lama");
+  });
+
+  it("tersimpan, bisa diganti, dan bisa dibuang", async () => {
+    const s = storeContoh(memoriKosong());
+    const d = SkemaUbahanFoodCourt.parse({ baru: true, foodcourt_id: "pujasera-uji", ...isian });
+    await s.simpanUbahanFoodCourt(d);
+    await s.simpanUbahanFoodCourt({ ...d, nama: "Pujasera Uji Dua" });
+    expect(await s.ubahanFoodCourt()).toEqual([{ foodcourt_id: "pujasera-uji", baru: true, data: expect.objectContaining({ nama: "Pujasera Uji Dua" }) }]);
+    await s.hapusUbahanFoodCourt("pujasera-uji");
+    expect(await s.ubahanFoodCourt()).toEqual([]);
+    expect(SkemaAksiKonten.safeParse({ aksi: "simpan_foodcourt", data: d }).success).toBe(true);
   });
 });

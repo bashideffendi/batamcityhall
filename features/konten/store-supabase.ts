@@ -3,7 +3,7 @@
 import { createClient } from "@supabase/supabase-js";
 import type { Env } from "@/features/tukang/mode";
 import { GalatSlugGanda, type BarisAgenda, type BarisFoto, type BarisJurnal, type BarisLoker, type KontenStore } from "./store";
-import type { BarisUbahan } from "./ubahan";
+import type { BarisUbahan, BarisUbahanFoodCourt } from "./ubahan";
 
 type Hasil = { data: unknown; error: { message: string; code?: string } | null };
 
@@ -76,6 +76,17 @@ export function storeSupabase(env: Env): KontenStore {
     },
     async hapusUbahanMakan(tempatId) {
       pastikan(await db.from("makan_ubahan").delete().eq("tempat_id", tempatId));
+    },
+    async ubahanFoodCourt() {
+      return pastikan<BarisUbahanFoodCourt[]>(
+        await db.from("foodcourt_ubahan").select("foodcourt_id, baru, data").order("diubah", { ascending: false }),
+      );
+    },
+    async simpanUbahanFoodCourt({ foodcourt_id, baru, ...data }) {
+      pastikan(await db.from("foodcourt_ubahan").upsert({ foodcourt_id, baru, data, diubah: sekarang() }));
+    },
+    async hapusUbahanFoodCourt(foodCourtId) {
+      pastikan(await db.from("foodcourt_ubahan").delete().eq("foodcourt_id", foodCourtId));
     },
     async unggah(nama, isi, tipe) {
       const { error } = await db.storage.from("konten").upload(nama, isi, { contentType: tipe, upsert: false });

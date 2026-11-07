@@ -87,7 +87,8 @@ Bukan syarat pengalihan, dicatat supaya perbandingan tidak salah baca.
 
 Bukan syarat pengalihan situs lama, dicatat supaya perbandingan tidak salah baca.
 
-- Kategori Makanan: 32 kategori pemilik menggantikan 17 hidangan. Alamat kategori lama dialihkan ke alamat barunya — e2e, belum tayang
-- Food Court di `/makan/food-court` dan tautan dua arah dengan tempat makan — e2e, belum tayang
-- Info Loker di `/loker`: menu tampil setelah basis data tersambung — e2e mode contoh, belum tayang
+- Kategori Makanan: 32 kategori pemilik menggantikan 17 hidangan. Alamat kategori lama dialihkan ke alamat barunya — e2e, tayang 6 Nov 2026
+- Food Court di `/makan/food-court` dan tautan dua arah dengan tempat makan — e2e, tayang 6 Nov 2026
+- Info Loker di `/loker`: menu tampil setelah basis data tersambung — e2e mode contoh, halaman tayang 6 Nov 2026 tanpa menu
 - Dashboard Makanan, Jurnal, agenda, dan Info Loker di `/admin` — e2e mode contoh, belum diuji dengan Supabase sungguhan
+- Tambah dan ubah food court di `/admin/makanan` — e2e mode contoh, belum tayang

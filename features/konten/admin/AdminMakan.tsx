@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useTransition } from "react";
-import { kirimJson, Kolom } from "@/features/tukang/Kolom";
+import { useState } from "react";
+import { Kolom } from "@/features/tukang/Kolom";
 import { buatSlug } from "../skema";
 import type { BarisFoto } from "../store";
 import type { BarisUbahan } from "../ubahan";
@@ -71,8 +71,6 @@ export default function AdminMakan({
   const [pilih, setPilih] = useState("");
   const [f, setF] = useState<Isian>(KOSONG);
   const { galat, pesan, sibuk, kirim } = useKirim();
-  const [statusTerbit, setStatusTerbit] = useState<{ teks: string; nada: "ok" | "gagal" } | null>(null);
-  const [menerbitkan, mulaiTerbit] = useTransition();
   const atur = (k: Partial<Isian>) => setF((x) => ({ ...x, ...k }));
   const baru = pilih === BARU;
 
@@ -213,27 +211,6 @@ export default function AdminMakan({
             </li>
           ))}
         </ul>
-        {ubahan.length > 0 && (
-          <div className="bch-adm-aksi">
-            <button
-              type="button"
-              className="bch-btn"
-              disabled={menerbitkan}
-              onClick={() =>
-                mulaiTerbit(async () => {
-                  const j = await kirimJson("/api/admin/terbitkan", {});
-                  setStatusTerbit(
-                    j.ok ? { teks: "Situs sedang dibangun ulang. Tayang dalam beberapa menit.", nada: "ok" } : { teks: j.pesan ?? "Gagal menerbitkan.", nada: "gagal" },
-                  );
-                })
-              }
-            >
-              Terbitkan Perubahan
-            </button>
-            <Pesan pesan={statusTerbit} />
-          </div>
-        )}
-        <p className="bch-catatan-halaman">Foto langsung tampil. Data tempat tampil setelah Terbitkan Perubahan.</p>
       </section>
     </>
   );

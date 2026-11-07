@@ -1,8 +1,11 @@
 import { connection } from "next/server";
+import AdminFoodCourt from "@/features/konten/admin/AdminFoodCourt";
 import AdminMakan from "@/features/konten/admin/AdminMakan";
+import { TerbitkanPerubahan } from "@/features/konten/admin/Bersama";
 import { ambilKonten } from "@/features/konten/store";
 import { areas, categories, places } from "@/features/makan/lib/data";
 import { FOOD_COURT } from "@/features/makan/lib/foodcourt";
+import { KECAMATAN } from "@/lib/data/schema";
 import { kaidahJudul } from "@/lib/judul";
 import { aksesAdmin } from "@/features/tukang/admin-auth";
 import GerbangAdmin from "@/features/tukang/admin/GerbangAdmin";
@@ -13,7 +16,7 @@ export default async function MakananAdmin() {
   const akses = await aksesAdmin();
   if (akses !== "masuk") return <GerbangAdmin akses={akses} />;
   const store = await ambilKonten();
-  const [ubahan, foto] = await Promise.all([store?.ubahanMakan() ?? [], store?.foto() ?? []]);
+  const [ubahan, foto, ubahanFc] = await Promise.all([store?.ubahanMakan() ?? [], store?.foto() ?? [], store?.ubahanFoodCourt() ?? []]);
   const tempat = [...places]
     .sort((a, b) => a.name.localeCompare(b.name, "id"))
     .map((p) => ({
@@ -43,10 +46,19 @@ export default async function MakananAdmin() {
         tempat={tempat}
         hidangan={categories.map((c) => ({ nilai: c.id, nama: kaidahJudul(c.name_id) }))}
         kawasan={areas.map((a) => ({ nilai: a.id, nama: a.name }))}
-        foodCourt={FOOD_COURT.map((f) => ({ nilai: f.id, nama: f.nama }))}
+        foodCourt={[
+          ...ubahanFc.filter((u) => u.baru).map((u) => ({ nilai: u.foodcourt_id, nama: `${u.data.nama} (Baru)` })),
+          ...FOOD_COURT.map((f) => ({ nilai: f.id, nama: f.nama })),
+        ]}
         ubahan={ubahan}
         foto={foto}
       />
+      <AdminFoodCourt
+        foodCourt={FOOD_COURT.map(({ id, nama, kecamatan, alamat, jam, isi, tingkat, sumber_url }) => ({ id, nama, kecamatan, alamat, jam, isi, tingkat, sumber_url }))}
+        kecamatan={KECAMATAN}
+        ubahan={ubahanFc}
+      />
+      {(ubahan.length > 0 || ubahanFc.length > 0) && <TerbitkanPerubahan />}
     </div>
   );
 }

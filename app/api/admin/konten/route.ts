@@ -1,5 +1,5 @@
 import { revalidatePath } from "next/cache";
-import { SkemaAksiKonten, type AksiKonten } from "@/features/konten/skema";
+import { ID_FOOD_COURT, SkemaAksiKonten, type AksiKonten } from "@/features/konten/skema";
 import { ambilKonten, GalatSlugGanda, type KontenStore } from "@/features/konten/store";
 import { aksesAdmin, asalSama } from "@/features/tukang/admin-auth";
 import { jawab, tolak } from "@/features/tukang/http";
@@ -38,6 +38,12 @@ async function jalankan(store: KontenStore, a: AksiKonten) {
     case "hapus_makan":
       await store.hapusUbahanMakan(a.tempat_id);
       return [];
+    case "simpan_foodcourt":
+      await store.simpanUbahanFoodCourt(a.data);
+      return [];
+    case "hapus_foodcourt":
+      await store.hapusUbahanFoodCourt(a.foodcourt_id);
+      return [];
   }
 }
 
@@ -59,8 +65,16 @@ export async function POST(req: Request) {
   if (!hasil.success) {
     // Kolom bersarang di bawah "data", jadi yang dipakai bagian terakhir jalurnya, sama dengan nama kolom formulir.
     const galat: Record<string, string> = {};
-    for (const g of hasil.error.issues) galat[String(g.path.at(-1) ?? "_")] ??= g.message;
+    // Galat di dalam daftar (misalnya tautan ke-2) dipetakan ke nama daftarnya.
+    for (const g of hasil.error.issues) galat[String(g.path.findLast((p) => typeof p === "string") ?? "_")] ??= g.message;
     return tolak(400, "Ada isian yang perlu diperbaiki.", galat);
+  }
+
+  // Food court baru tersimpan di basis data, jadi rujukannya diperiksa di sini, bukan di skema.
+  const fc = hasil.data.aksi === "simpan_makan" ? hasil.data.data.food_court : null;
+  if (fc && !ID_FOOD_COURT.has(fc)) {
+    const baru = await store.ubahanFoodCourt().catch(() => []);
+    if (!baru.some((u) => u.baru && u.foodcourt_id === fc)) return tolak(400, "Ada isian yang perlu diperbaiki.", { food_court: "Food court tidak dikenal." });
   }
 
   try {

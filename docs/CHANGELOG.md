@@ -1,8 +1,18 @@
 # CHANGELOG
 
+## 2026-11-07 · Food court lewat dashboard
+
+Atas permintaan pemilik. Masih di lokal sampai pemilik meminta push.
+
+- **Dashboard Makanan:** food court bisa ditambah dan diubah: nama, kecamatan, alamat, jam buka, keterangan, status alamat, dan tautan sumber. Tautan sumber wajib, supaya tidak ada data tanpa asal. Koordinat tidak diubah di sini, tetap lewat lembar koordinat.
+- **Food court baru langsung bisa dipilih** di formulir tempat makan sebelum terbit. API memeriksa rujukannya karena food court baru tersimpan di basis data.
+- **Terbitkan Perubahan** kini satu tombol untuk tempat makan dan food court. Saat build di Railway, food court digabung lebih dulu, diperiksa skema data, lalu tempat makan. Tautan ke food court yang sudah dibuang dilepas.
+- Migrasi baru `20261107090000_foodcourt_ubahan.sql`, belum pernah dijalankan di Supabase sungguhan.
+- Tes: unit 696 lulus, e2e 902 lulus dan 14 dilewati (khusus mode mati).
+
 ## 2026-11-05 · Rombak menu dan audit menyeluruh
 
-Atas permintaan pemilik. Semua masih di lokal sampai pemilik meminta deploy.
+Atas permintaan pemilik. Tayang sejak `db11315` (6 November 2026).
 
 - **Menu baru:** Cuaca, CCTV, Transportasi, Makanan, Berita, Jurnal, Things to Do, Komunitas, Tukang Langganan, Info Loker, Layanan Warga, Sejarah dan Budaya. Submenu otomatis per bagian. Alamat lama dialihkan.
 - **Beranda dasbor** dengan tautan Selengkapnya di setiap modul. Baris darurat di puncak setiap halaman, slogan dihapus.

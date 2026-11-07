@@ -1,4 +1,5 @@
 // Menerapkan ubahan data makanan dari admin ke daftar tempat. Dipakai saat build, lewat scripts/ubahan-makan.ts.
+import type { FoodCourt } from "@/features/makan/lib/foodcourt";
 import type { Place } from "@/features/makan/lib/types";
 
 export type BarisUbahan = {
@@ -84,4 +85,27 @@ export function terapkanUbahan(tempat: Place[], ubahan: BarisUbahan[], tanggal: 
     }
   }
   return { tempat: hasil, dilewati };
+}
+
+export type DataFoodCourt = Pick<FoodCourt, "nama" | "kecamatan" | "alamat" | "jam" | "isi" | "tingkat" | "sumber_url">;
+export type BarisUbahanFoodCourt = { foodcourt_id: string; baru: boolean; data: DataFoodCourt };
+
+const KOLOM_FOOD_COURT = ["nama", "kecamatan", "alamat", "jam", "isi", "tingkat", "sumber_url"] as const;
+
+/** Food court lama berubah di kolom teks saja, koordinatnya tetap. Food court baru masuk tanpa koordinat. */
+export function terapkanUbahanFoodCourt(daftar: FoodCourt[], ubahan: BarisUbahanFoodCourt[]) {
+  const hasil = daftar.map((f) => ({ ...f, sumber_url: [...f.sumber_url] }));
+  const per = new Map(hasil.map((f) => [f.id, f]));
+  const dilewati: string[] = [];
+  for (const u of ubahan) {
+    const isi = Object.fromEntries(KOLOM_FOOD_COURT.filter((k) => u.data[k] !== undefined).map((k) => [k, u.data[k]])) as Partial<DataFoodCourt>;
+    const lama = per.get(u.foodcourt_id);
+    if (lama) Object.assign(lama, isi);
+    else if (u.baru) {
+      const baru = { id: u.foodcourt_id, ...(isi as DataFoodCourt), lat: null, lng: null };
+      hasil.push(baru);
+      per.set(baru.id, baru);
+    } else dilewati.push(u.foodcourt_id);
+  }
+  return { daftar: hasil, dilewati };
 }

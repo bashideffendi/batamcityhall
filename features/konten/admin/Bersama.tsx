@@ -187,3 +187,33 @@ export function TombolUnggah({
     </div>
   );
 }
+
+/** Data tempat makan dan food court masuk ke halaman saat build, jadi perlu bangun ulang situs. */
+export function TerbitkanPerubahan() {
+  const [status, setStatus] = useState<{ teks: string; nada: "ok" | "gagal" } | null>(null);
+  const [sibuk, mulai] = useTransition();
+  return (
+    <section className="bch-seksi-rapat" aria-labelledby="adm-terbit">
+      <h2 id="adm-terbit" className="bch-judul-seksi">
+        Terbitkan
+      </h2>
+      <p>Foto langsung tampil. Data tempat dan food court tampil setelah Terbitkan Perubahan.</p>
+      <div className="bch-adm-aksi">
+        <button
+          type="button"
+          className="bch-btn"
+          disabled={sibuk}
+          onClick={() =>
+            mulai(async () => {
+              const j = await kirimJson("/api/admin/terbitkan", {});
+              setStatus(j.ok ? { teks: "Situs sedang dibangun ulang. Tayang dalam beberapa menit.", nada: "ok" } : { teks: j.pesan ?? "Gagal menerbitkan.", nada: "gagal" });
+            })
+          }
+        >
+          Terbitkan Perubahan
+        </button>
+        <Pesan pesan={status} />
+      </div>
+    </section>
+  );
+}

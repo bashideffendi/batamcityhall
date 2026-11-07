@@ -1,6 +1,6 @@
 # Rencana Rombak Batam City Hall
 
-Daftar lengkap semua permintaan pemilik. Tanda: ✔ selesai di kode, ◐ sebagian, ☐ belum. Semua masih di lokal, kecuali yang ditulis tayang.
+Daftar lengkap semua permintaan pemilik. Tanda: ✔ selesai di kode, ◐ sebagian, ☐ belum. Rombak tayang sejak `db11315` (6 November 2026). Yang sesudahnya ditulis lokal.
 
 ## A. Dari berkas pindahan
 
@@ -71,6 +71,7 @@ Daftar lengkap semua permintaan pemilik. Tanda: ✔ selesai di kode, ◐ sebagia
 | F6 | Kategori Makanan diganti 32 kategori pemilik | ✔ tujuh kategori belum punya tempat, tampil Belum Ada |
 | F7 | Dashboard: tambah dan ubah tempat, foto, data, tautan ke food court | ✔ kode dan alur teruji di mode contoh |
 | F8 | Menu Info Loker | ✔ diisi dari dashboard, menu tampil setelah basis data tersambung |
+| F9 | Tambah dan ubah food court lewat dashboard | ✔ lokal, teruji di mode contoh |
 
 ## G. Yang perlu persetujuan Anda
 
