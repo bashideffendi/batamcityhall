@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IkonLingkaran, KATEGORI_DIREKTORI } from "@/components/map/icons";
 import KisiPintu from "@/components/site/KisiPintu";
 import PembukaBagian from "@/components/site/PembukaBagian";
 import nasional from "@/data/darurat/nomor_darurat_09.json";
@@ -56,14 +57,18 @@ export default function LayananWarga() {
           </Link>
         </div>
         <ul className="bch-kategori-ringkas">
-          {DAFTAR_KATEGORI.map((k) => (
+          {DAFTAR_KATEGORI.map((k) => {
+            const ikon = KATEGORI_DIREKTORI.find((x) => x.nama === kaidahJudul(k.nama));
+            return (
             <li key={k.kategori}>
               <Link href={`/info/direktori/${slugKategori(k.kategori)}`} prefetch={false}>
+                {ikon ? <IkonLingkaran glyph={ikon.glyph} warna={ikon.warna} ukuran={28} /> : <span aria-hidden="true" />}
                 <span>{kaidahJudul(k.nama)}</span>
                 <span className="bch-data">{tempatDiKategori(k.kategori).length.toLocaleString("id-ID")}</span>
               </Link>
             </li>
-          ))}
+            );
+          })}
         </ul>
       </section>
 

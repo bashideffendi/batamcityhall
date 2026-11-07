@@ -36,7 +36,7 @@ Folder `C:\proyek\batamcityhall` (salinan lama `Desktop\batam-city-hall` terting
 
 ## Langkah berikutnya
 
-**Tayang vs lokal.** Situs tayang memakai commit `db11315`: rombak menu sudah tayang. Food court lewat dashboard (7 November 2026) masih di lokal sampai pemilik meminta push. Push ke `fase-1-fondasi` langsung men-deploy.
+**Tayang vs lokal.** Situs tayang memakai commit `49446af`: rombak menu dan food court lewat dashboard sudah tayang. Masukan 7 November (spasi, gelombang, kaki situs, Instagram, Infografik) masih di lokal sampai pemilik meminta push. Push ke `fase-1-fondasi` langsung men-deploy.
 
 Rencana dan statusnya: `docs/RENCANA-ROMBAK.md`. Temuan audit: `docs/AUDIT.md`. Yang menunggu pemilik: `docs/TODO_PEMILIK.md`.
 

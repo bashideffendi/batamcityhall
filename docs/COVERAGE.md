@@ -1740,6 +1740,8 @@ Permintaan pemilik di luar spesifikasi awal. Statusnya di `docs/RENCANA-ROMBAK.m
 - [x] /loker, /admin/loker, features/konten/admin/AdminLoker.tsx · Info Loker dari dashboard. Menu tampil setelah basis data tersambung
 - [x] /admin/makanan, /admin/jurnal, /admin/agenda, features/konten/ · Dashboard tambah dan ubah tempat, foto, kategori, food court, Jurnal, agenda. Teruji di mode contoh
 - [x] /admin/makanan, features/konten/admin/AdminFoodCourt.tsx, scripts/ubahan-makan.ts · Tambah dan ubah food court lewat dashboard, tautan sumber wajib, koordinat tetap lewat lembar koordinat. Teruji di mode contoh
+- [x] /infografik, /infografik/[slug], features/infografik/, /admin/infografik · Infografik: lima poster bawaan dari data terverifikasi dan unggahan dashboard
+- [x] components/site/SiteFooter.tsx, components/site/FormNewsletter.tsx, /api/newsletter, /admin/newsletter · Kaki situs dan newsletter, dibuka setelah basis data tersambung
 - [ ] features/konten/store-supabase.ts, /api/admin/terbitkan · Belum pernah dijalankan melawan Supabase dan Railway sungguhan, menunggu izin pemilik
 - [x] /jurnal, /jurnal/[slug], /things-to-do, /cari, /kartu-pos · Halaman baru rombak, tertutup tes di tests/e2e/rombak.spec.ts
 - [x] data/koordinat_perlu_diisi.xlsx, tools/buat_lembar_koordinat.py, tools/impor_lembar_koordinat.py · Lembar 1.101 lokasi yang butuh koordinat. Rumus kolom Cek belum dibuka di Excel sungguhan

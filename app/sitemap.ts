@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import koridorData from "@/data/trans_batam/koridor.json";
 import { DAFTAR_KATEGORI, punyaHalaman, slugKategori, slugKecamatan, TEMPAT } from "@/features/direktori/data";
+import { INFOGRAFIK_REPO } from "@/features/infografik/data";
 import { TULISAN } from "@/features/jurnal/data";
 import { categoryCounts, kawasanBerisi, places } from "@/features/makan/lib/data";
 import { semuaSlugHidangan } from "@/features/makan/lib/hidangan";
@@ -30,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...baris(TEMPAT.filter(punyaHalaman).map((p) => `/info/tempat/${p.id}`), "monthly", 0.4),
     ...baris(koridorData.koridor.map((k) => `/jalan/trans-batam/${k.id.toLowerCase()}`), "weekly", 0.5),
     ...baris(TULISAN.map((t) => `/jurnal/${t.slug}`), "monthly", 0.6),
+    ...baris(INFOGRAFIK_REPO.map((i) => `/infografik/${i.slug}`), "monthly", 0.6),
     ...baris(["/tentang", "/kolofon", "/privasi", "/syarat"], "monthly", 0.3),
     // Formulir warga hanya didaftarkan bila sudah aktif.
     ...baris(KIRIMAN_AKTIF ? ["/kontribusi", "/koreksi", "/tukang/rekomendasi"] : [], "monthly", 0.3),

@@ -143,7 +143,7 @@ export function TombolUnggah({
   hasil,
   children,
 }: {
-  folder: "jurnal" | "makan";
+  folder: "jurnal" | "makan" | "infografik";
   label: string;
   hasil: (h: HasilUnggah) => void;
   children?: ReactNode;

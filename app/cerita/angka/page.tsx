@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PembukaHalaman from "@/components/site/PembukaHalaman";
 import Link from "next/link";
-import { ANGKA_RESMI, KELOMPOK_FAKTA, LINIMASA, LUAS_INVESTASI } from "@/features/sejarah/angka";
+import { ANGKA_RESMI, IDE_ANGKA as IDE, KELOMPOK_FAKTA, LINIMASA, LUAS_INVESTASI } from "@/features/sejarah/angka";
 import "@/features/sejarah/sejarah.css";
 
 const LEDE = "Angka penting Batam ditulis beserta tahunnya; bila sumber berbeda, semua versi tampil.";
@@ -10,36 +10,6 @@ export const metadata: Metadata = {
   title: "Batam dalam Angka",
   description: LEDE,
 };
-
-const IDE = [
-  {
-    angka: "6.000 → 1.394.459",
-    judul: "Dari Sekitar 6.000 Jiwa pada 1965",
-    isi: "1965 versi BP Batam. Semester II 2025 versi registrasi Disdukcapil. Metodenya berbeda, jadi ini gambaran besar, bukan satu garis.",
-    tautan: { href: "/cerita/sejarah#penduduk", teks: "Lihat grafik per metode" },
-  },
-  {
-    angka: "±73%",
-    judul: "Hampir 3 dari 4 Bagian Batam Adalah Laut",
-    isi: "Perairan 2.791,09 km², daratan 1.038,84 km².",
-    bilah: true,
-  },
-  {
-    angka: "±4.400",
-    judul: "Wisman Datang Setiap Hari, Rata-Rata 2025",
-    isi: "Dihitung dari 1.613.202 ÷ 365. Angka turunan.",
-  },
-  {
-    angka: "789.674",
-    judul: "Hampir 1 dari 2 Kunjungan Wisman 2025 dari Singapura",
-    isi: "Sekitar 49% dari 1.613.202 kunjungan.",
-  },
-  {
-    angka: "3 angka, 1 kota",
-    judul: "Penduduk 2025 Tergantung Siapa yang Menghitung",
-    isi: "1.394.459 (Disdukcapil, Semester II). 1.296.960 (BPS, dikutip Wikipedia). 1,79 juta (Databoks, tidak kami pakai). Metodenya berbeda, dan selisihnya belum bisa dijelaskan dengan pasti.",
-  },
-];
 
 export default function AngkaBatam() {
   return (

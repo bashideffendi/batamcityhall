@@ -1,8 +1,21 @@
 # CHANGELOG
 
-## 2026-11-07 · Food court lewat dashboard
+## 2026-11-07 · Masukan pemilik: spasi, gelombang, kaki situs, Instagram, Infografik
 
 Atas permintaan pemilik. Masih di lokal sampai pemilik meminta push.
+
+- **Spasi:** isi tidak lagi menempel di garis judul seksi (Cari Tempat di beranda, Things to Do, Komunitas, Layanan Warga), garis tidak lagi terpisah dari judulnya, dan judul kecil diberi jarak ke paragraf. Diukur otomatis di 63 halaman dan dua lebar.
+- **Peta gelombang:** kepekatan warna naik dari 0,4 ke 0,65.
+- **Layanan Warga:** daftar Direktori kembali memakai logo kategori.
+- **Instagram:** Komunitas dan detail tempat makan memakai logo Instagram dan nama akun.
+- **Kaki situs:** Tentang Situs, Kebijakan, dan Newsletter. Menu tidak diulang. Newsletter tersimpan lewat jalur kiriman warga (jebakan robot, batas laju), dan ada halaman admin Newsletter untuk unduh CSV dan hapus. Privasi menjelaskan penyimpanan email.
+- **Infografik:** menu baru dengan lima poster bawaan dari data terverifikasi (penduduk, laut, wisman, nomor darurat, Makanan) dan unggahan dari dashboard. Ilustrasi pembuka baru.
+- Migrasi baru `newsletter` dan `infografik`, belum pernah dijalankan di Supabase sungguhan.
+- Tes: unit 701 lulus, e2e 914 lulus dan 14 dilewati (khusus mode mati), skor 62 dari 62 halaman lolos.
+
+## 2026-11-07 · Food court lewat dashboard
+
+Atas permintaan pemilik. Tayang sejak `49446af` (7 November 2026).
 
 - **Dashboard Makanan:** food court bisa ditambah dan diubah: nama, kecamatan, alamat, jam buka, keterangan, status alamat, dan tautan sumber. Tautan sumber wajib, supaya tidak ada data tanpa asal. Koordinat tidak diubah di sini, tetap lewat lembar koordinat.
 - **Food court baru langsung bisa dipilih** di formulir tempat makan sebelum terbit. API memeriksa rujukannya karena food court baru tersimpan di basis data.

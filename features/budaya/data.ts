@@ -376,11 +376,11 @@ function labelStatusKomunitas(status: string): { teks: string; nada: "ok" | "cau
 export function kanalKomunitas(k: {
   kontak_publik: string;
   status: string;
-}): { teks: string; href: string | null } | null {
+}): { teks: string; href: string | null; instagram?: string } | null {
   if (k.status !== "Tercatat") return null;
   if (/\.go\.id|Disbudpar/i.test(k.kontak_publik)) return null;
   const ig = k.kontak_publik.match(/^IG @([\w.]+)$/);
-  if (ig) return { teks: `Instagram @${ig[1]}`, href: `https://www.instagram.com/${ig[1]}/` };
+  if (ig) return { teks: `@${ig[1]}`, href: `https://www.instagram.com/${ig[1]}/`, instagram: ig[1] };
   if (/^[\w.-]+\.[a-z]{2,}(\/\S*)?$/i.test(k.kontak_publik)) {
     return { teks: k.kontak_publik, href: `https://${k.kontak_publik}` };
   }
@@ -392,7 +392,7 @@ export type KomunitasPublik = {
   nama: string;
   bidang: string;
   anggota: string[];
-  kanal: { teks: string; href: string | null } | null;
+  kanal: { teks: string; href: string | null; instagram?: string } | null;
   status: { teks: string; nada: "ok" | "caution" };
 };
 

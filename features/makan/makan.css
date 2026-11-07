@@ -1738,3 +1738,8 @@ main .mk-terminal p {
   text-align: start;
   hyphens: manual;
 }
+
+/* Judul halaman Hidangan tidak menempel ke label rumpun pertama. */
+.mk-judul + .mk-indeks {
+  margin-top: var(--bch-space-4);
+}

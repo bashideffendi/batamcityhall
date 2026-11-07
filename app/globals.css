@@ -541,37 +541,54 @@ h4 {
   padding: var(--bch-space-6) var(--bch-gutter) var(--bch-space-5);
   box-sizing: border-box;
 }
-.bch-footer-peta {
+.bch-footer-atas {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: var(--bch-space-5) 24px;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 1.6fr);
+  gap: var(--bch-space-5) 40px;
   padding-bottom: var(--bch-space-5);
   border-bottom: 1px solid var(--bch-rule);
 }
-.bch-footer-peta > div {
-  display: grid;
-  align-content: start;
-  gap: 1px;
-}
-.bch-footer-peta a {
-  color: var(--bch-ink-muted);
-  font-size: 0.8125rem;
-  line-height: 1.5;
-  text-decoration: none;
-  padding-block: 2px;
-}
-.bch-footer-peta a:hover {
-  color: var(--bch-ink);
-}
-.bch-footer-peta a.bch-footer-bagian {
-  margin-bottom: 3px;
+.bch-footer-judul {
+  margin: 0 0 var(--bch-space-2);
   color: var(--bch-ink);
   font-size: 0.875rem;
   font-weight: 700;
 }
-.bch-footer-bawah {
+.bch-footer-tautan {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  align-content: start;
+}
+.bch-footer-tautan a {
+  color: var(--bch-ink-muted);
+  text-decoration: none;
+  padding-block: 4px;
+}
+.bch-footer-tautan a:hover {
+  color: var(--bch-ink);
+}
+.bch-footer-newsletter {
+  display: grid;
+  align-content: start;
+  gap: var(--bch-space-2);
+}
+.bch-footer-isian {
+  display: flex;
+  gap: var(--bch-space-2);
+}
+.bch-footer-isian .bch-input {
+  flex: 1;
+  min-width: 0;
+}
+.bch-footer-isian .bch-btn {
+  flex: none;
+}
+.bch-footer-kecil {
+  font-size: 0.8125rem;
+}
+.bch-footer-bawah {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: var(--bch-space-3) 28px;
   align-items: center;
   padding-top: var(--bch-space-4);
@@ -603,19 +620,17 @@ h4 {
   color: var(--bch-ink);
 }
 @media (max-width: 1000px) {
-  .bch-footer-peta {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .bch-footer-atas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .bch-footer-bawah {
-    grid-template-columns: 1fr;
+  .bch-footer-identitas,
+  .bch-footer-newsletter {
+    grid-column: 1 / -1;
   }
 }
 @media (max-width: 560px) {
-  .bch-footer-peta {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .bch-footer-peta a {
-    padding-block: 7px;
+  .bch-footer-tautan a {
+    padding-block: 11px;
   }
 }
 
@@ -1687,6 +1702,27 @@ a.bch-card:hover {
 .bch-judul-seksi + *,
 .bch-judul-baris + * {
   border-top: 2px solid var(--bch-rule-strong);
+  padding-top: var(--bch-space-3);
+}
+/* Garis menempel pada judulnya: jarak hanya ada di bawah garis. */
+main :is(.bch-judul-seksi, .bch-judul-baris) + * {
+  margin-top: 0;
+}
+/* Daftar memberi jarak di tiap barisnya sendiri. */
+:is(.bch-judul-seksi, .bch-judul-baris) + :is(ul, ol, dl, table) {
+  padding-top: 0;
+}
+/* Tautan di samping judul berada di dalam baris judul: bukan isi, jadi tanpa garis sendiri. */
+.bch-judul-baris > .bch-judul-seksi + * {
+  border-top: 0;
+  padding-top: 0;
+}
+/* Judul ke isinya diberi napas. Pasangan nama dan keterangan singkat tetap rapat. */
+main :is(h2, h3):not(.bch-judul-seksi, .bud-nama) + :is(p, ul, ol, .bch-note):not(.mk-fc-alamat, .bud-bidang, .mk-baris-meta) {
+  margin-top: var(--bch-space-2);
+}
+main h1 + .bch-note {
+  margin-top: var(--bch-space-2);
 }
 .bch-pintu {
   display: grid;
@@ -1781,11 +1817,12 @@ a.bch-card:hover {
   list-style: none;
 }
 .bch-kategori-ringkas a {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: var(--bch-space-3);
-  min-height: 42px;
+  min-height: 48px;
+  padding-block: var(--bch-space-2);
   border-bottom: 1px solid var(--bch-rule);
   color: var(--bch-ink);
   font-size: 0.9375rem;
@@ -2210,4 +2247,30 @@ main .bch-adm-baris p,
 main .bch-tulisan-byline {
   text-align: start;
   hyphens: manual;
+}
+
+/* ---------- Tautan Instagram: logo dan nama akun ---------- */
+.bch-ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.bch-ig-ikon {
+  flex: none;
+}
+
+/* Kolom jebakan robot di semua formulir, termasuk newsletter di kaki situs. */
+.bch-tk-madu {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Tombol nonaktif terlihat nonaktif, misalnya newsletter sebelum dibuka. */
+.bch-btn:disabled,
+.bch-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

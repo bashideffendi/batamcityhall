@@ -35,6 +35,12 @@ Versi 1.1 mengganti arah tampilan menjadi editorial dengan grafis Riso (bagian 4
 > 15. **Paragraf rata kanan-kiri** di desktop dan ponsel, di seluruh situs. Label, alamat, dan teks di kolom sempit tetap rata kiri.
 > 14. **Info Loker** (`/loker`) adalah bagian baru, diisi lewat dashboard. Menunya tampil setelah basis data tersambung. Lowongan yang lewat batas lamaran tidak tampil.
 > 13. **Kategori Makanan** diganti dengan 32 kategori pemilik, persis dan seurut daftarnya, di `data/makan/categories.json`. Ejaan pemilik yang dipakai: Mie, Sop, Seafood, Dimsum, Chinese Food, Coffee Shop, Bakery, Ice Cream, AYCE. Tempat boleh masuk lebih dari satu kategori lewat `kategori_lain`. Tabel kategori di 3.4 tidak berlaku lagi.
+> 16. **Garis judul seksi menempel pada judulnya, isi diberi jarak di bawah garis** (7 Nov 2026). Tidak ada tombol, kolom, atau teks yang menempel di garis. Judul kecil ke paragraf juga diberi napas.
+> 17. **Warna gelombang lebih tegas** (7 Nov 2026): kepekatan 0,65, menggantikan peredaman 0,4 di 5.2. Laut tetap tidak boleh biru pekat.
+> 18. **Kaki situs berisi Tentang Situs, Kebijakan, dan Newsletter**, bukan menu (7 Nov 2026). Newsletter hanya menyimpan email dan tanggal, belum dibuka sampai basis data tersambung.
+> 19. **Akun Instagram tampil sebagai logo dan nama akun**, tanpa kata "Instagram" (7 Nov 2026). Pembaca layar tetap mendengar "Instagram".
+> 20. **Infografik** (`/infografik`) adalah bagian baru sesudah Jurnal, berupa kisi poster tegak seperti majalah (7 Nov 2026). Poster bawaan digambar dari data situs yang sudah terverifikasi, tidak ada angka baru. Infografik unggahan dashboard wajib menyertakan isinya dalam teks.
+> 21. **Terjemahan Inggris untuk seluruh situs** menyusul setelah semua bagian selesai (7 Nov 2026). Sampai itu, butir 3 tetap berlaku.
 > 12. **Food Court** adalah halaman baru di Makanan (`/makan/food-court`), per kecamatan. Datanya di `data/makan/foodcourt.json`, wajib bersumber, tanpa rating. Peta muncul otomatis setelah koordinatnya diisi.
 
 ## Cara Memakai Pedoman Ini

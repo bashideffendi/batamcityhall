@@ -1,6 +1,7 @@
 // Angka Batam dari data/budaya/fakta_infografis.json dan data/statistik/angka_resmi.json. Catatan untuk penyusun
 // disaring di sini. Yang berubah dari data mentah: lihat UBAHAN_FAKTA dan docs/DATA_DECISIONS.md.
 import fakta from "@/data/budaya/fakta_infografis.json";
+import penduduk from "@/data/sejarah/data_penduduk.json";
 import resmi from "@/data/statistik/angka_resmi.json";
 import { keSumber, type Sumber } from "./data";
 import { rapiTeks } from "./rapi";
@@ -345,3 +346,61 @@ export const ANGKA_RESMI: { judul: string; lede?: string; baris: BarisResmi[] }[
     ],
   },
 ];
+
+/** Ide infografis yang sudah dipilah (laporan 15). Tampil di Batam dalam Angka. */
+export const IDE_ANGKA = [
+  {
+    angka: "6.000 → 1.394.459",
+    judul: "Dari Sekitar 6.000 Jiwa pada 1965",
+    isi: "1965 versi BP Batam. Semester II 2025 versi registrasi Disdukcapil. Metodenya berbeda, jadi ini gambaran besar, bukan satu garis.",
+    tautan: { href: "/cerita/sejarah#penduduk", teks: "Lihat grafik per metode" },
+  },
+  {
+    angka: "±73%",
+    judul: "Hampir 3 dari 4 Bagian Batam Adalah Laut",
+    isi: "Perairan 2.791,09 km², daratan 1.038,84 km².",
+    bilah: true,
+  },
+  {
+    angka: "±4.400",
+    judul: "Wisman Datang Setiap Hari, Rata-Rata 2025",
+    isi: "Dihitung dari 1.613.202 ÷ 365. Angka turunan.",
+  },
+  {
+    angka: "789.674",
+    judul: "Hampir 1 dari 2 Kunjungan Wisman 2025 dari Singapura",
+    isi: "Sekitar 49% dari 1.613.202 kunjungan.",
+  },
+  {
+    angka: "3 angka, 1 kota",
+    judul: "Penduduk 2025 Tergantung Siapa yang Menghitung",
+    isi: "1.394.459 (Disdukcapil, Semester II). 1.296.960 (BPS, dikutip Wikipedia). 1,79 juta (Databoks, tidak kami pakai). Metodenya berbeda, dan selisihnya belum bisa dijelaskan dengan pasti.",
+  },
+];
+
+type BarisPenduduk = { tahun: number; jumlah: number; jumlah_tabel?: string; catatan?: string };
+
+/** Angka poster Infografik, dari baris data yang sama dengan halaman ini. Gagal keras bila barisnya hilang. */
+export function faktaInfografik() {
+  const fakta = (id: string) => {
+    const f = SEMUA_FAKTA.find((x) => x.id === id);
+    if (!f) throw new Error(`Fakta ${id} tidak ada`);
+    return f.angka;
+  };
+  const daftar = (Array.isArray(penduduk) ? penduduk : Object.values(penduduk).find(Array.isArray)) as BarisPenduduk[];
+  const versi = (kata: RegExp) => {
+    const b = daftar.find((x) => x.tahun === 2025 && kata.test(x.catatan ?? ""));
+    if (!b) throw new Error(`Penduduk 2025 ${kata} tidak ada`);
+    return b.jumlah.toLocaleString("id-ID");
+  };
+  return {
+    dukcapil: versi(/Disdukcapil/),
+    bps: versi(/BPS/),
+    daratan: fakta("fi-056"),
+    perairan: fakta("fi-057"),
+    wisman: fakta("fi-025"),
+    singapura: fakta("fi-026"),
+    malaysia: fakta("fi-027"),
+    perHari: fakta("fi-045"),
+  };
+}

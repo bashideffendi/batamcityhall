@@ -40,6 +40,8 @@ export const HALAMAN = [
   ["/cari", "Cari"],
   ["/loker", "Info Loker"],
   ["/jurnal/nongsa-dan-mandat-1829", "Satu tulisan Jurnal"],
+  ["/infografik", "Infografik"],
+  ["/infografik/batam-sebagian-besar-laut", "Satu infografik"],
   ["/tukang", "Tukang Langganan"],
   ["/tukang/rekomendasi", "Kirim Rekomendasi"],
   ["/jalan", "Transportasi"],
@@ -103,7 +105,7 @@ async function periksaDesktop(page) {
       const adaLatar = bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent" && bg !== latarDasar;
       return sisi >= 3 || adaLatar || s.boxShadow !== "none";
     };
-    const lewati = "button, [role=button], select, input, textarea, nav, .maplibregl-map, svg, script, style";
+    const lewati = "button, [role=button], select, input, textarea, nav, .maplibregl-map, svg, script, style, .ig-poster";
 
     // 1. Porsi teks di dalam kotak
     let semua = 0;

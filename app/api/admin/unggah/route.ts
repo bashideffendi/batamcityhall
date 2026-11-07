@@ -5,7 +5,9 @@ import { jawab, tolak } from "@/features/tukang/http";
 
 const MAKS_BYTE = 12 * 1024 * 1024;
 const LEBAR_MAKS = 1600;
-const MAP_FOLDER = new Set(["jurnal", "makan"]);
+const MAP_FOLDER = new Set(["jurnal", "makan", "infografik"]);
+// Infografik biasanya tegak dan panjang: hanya lebarnya yang dibatasi.
+const TINGGI_MAKS: Record<string, number> = { infografik: 12000 };
 const TIPE_GAMBAR = new Set(["image/jpeg", "image/png", "image/webp", "image/avif"]);
 
 /** Foto diperkecil dan diubah ke WebP di server, supaya halaman tetap ringan apa pun yang diunggah. */
@@ -25,7 +27,7 @@ export async function POST(req: Request) {
     const { default: sharp } = await import("sharp");
     const { data, info } = await sharp(Buffer.from(await berkas.arrayBuffer()))
       .rotate()
-      .resize({ width: LEBAR_MAKS, height: LEBAR_MAKS, fit: "inside", withoutEnlargement: true })
+      .resize({ width: LEBAR_MAKS, height: TINGGI_MAKS[folder] ?? LEBAR_MAKS, fit: "inside", withoutEnlargement: true })
       .webp({ quality: 80 })
       .toBuffer({ resolveWithObject: true });
     const src = await store.unggah(`${folder}/${randomUUID()}.webp`, data, "image/webp");

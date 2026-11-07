@@ -5,7 +5,7 @@ Hasil Tahap 8 pedoman (bagian 8.1): skor bagian 7.2 untuk setiap halaman, sebelu
 **Sebelum:** `docs/tampilan/skor/07-tahap7.json`, situs yang tayang di `aa7026f`.
 **Sesudah:** `docs/tampilan/skor/08-rombak.json`, build produksi lokal 5 November 2026.
 
-**Ringkasan:** 60 halaman diberi skor. Skor tertinggi 1, 1 halaman di atas nol, semua lolos.
+**Ringkasan:** 62 halaman diberi skor. Skor tertinggi 1, 1 halaman di atas nol, semua lolos.
 
 ## Galeri
 
@@ -44,6 +44,8 @@ Gambar di `docs/tampilan/sebelum-sesudah/rombak/`:
 | `/cari` | baru | 0 | Baru. Halaman dan seluruh direktori, termasuk sinonim seperti igd, polisi, sertifikat. |
 | `/loker` | baru | 0 | Baru. Diisi dari dashboard, menu tampil setelah basis data tersambung. |
 | `/jurnal/nongsa-dan-mandat-1829` | baru | 0 | Baru. Tulisan naratif dengan penulis dan tanggal. |
+| `/infografik` | baru | 0 | Baru. Kisi poster tegak, poster bawaan dari data terverifikasi. |
+| `/infografik/batam-sebagian-besar-laut` | baru | 0 | Baru. Poster laut dan daratan dalam seratus kotak. |
 | `/tukang` | 0 | 0 | Saringan tidak tampil selama daftar kosong, jarak judul dibetulkan. |
 | `/tukang/rekomendasi` | 0 | 0 | Tautan tampil setelah basis data tersambung. |
 | `/jalan` | 0 | 0 | Pintu bagian dirapatkan, Feri Terakhir Hari Ini tetap di halaman ini. |
@@ -97,9 +99,9 @@ Semua dialihkan permanen, jadi tautan lama tetap sampai.
 | Syarat | Hasil |
 |---|---|
 | `cek-bahasa` lulus | Lulus |
-| Semua halaman mendapat skor 0 sampai 2 | 60 dari 60 halaman |
+| Semua halaman mendapat skor 0 sampai 2 | 62 dari 62 halaman |
 | Judul dan angka Hari Ini terlihat tanpa menggulir di desktop 1440 px | Terlihat: judul berakhir di 309 px, baris Feri Terakhir di 629 px, tinggi layar 900 px |
-| Judul dan paragraf pembuka terlihat tanpa menggulir di ponsel 390 px | Judul terlihat di 60 dari 60 halaman. Paragraf pembuka Cuaca, Gelombang, dan CCTV berada di panel peta yang tertutup saat dibuka, jadi tampil setelah panel digeser |
+| Judul dan paragraf pembuka terlihat tanpa menggulir di ponsel 390 px | Judul terlihat di 62 dari 62 halaman. Paragraf pembuka Cuaca, Gelombang, dan CCTV berada di panel peta yang tertutup saat dibuka, jadi tampil setelah panel digeser |
 | Tampilan cocok dengan contoh tampilan (4.1) | Mengikuti token, huruf, dan templat pedoman. Menu dan beranda berubah atas koreksi rombak pemilik (butir 1 sampai 15 di pedoman) |
 | Halaman bagian 6 tidak muncul di menu, beranda, dan sitemap | Delapan halaman tetap ada dengan `noindex`, tidak ada di ketiganya. `/main/vibe` dialihkan ke `/cctv` |
-| Build dan semua tes lulus | Build lulus. Unit 693 lulus. E2E di mode contoh: 900 lulus, 14 dilewati (khusus mode mati), termasuk axe di dua lebar. `tsc`, lint, dan `validate-data` lulus |
+| Build dan semua tes lulus | Build lulus. Unit 701 lulus. E2E di mode contoh: 914 lulus, 14 dilewati (khusus mode mati), termasuk axe di dua lebar. `tsc`, lint, dan `validate-data` lulus |

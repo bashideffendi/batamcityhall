@@ -208,6 +208,9 @@ test.describe("komunitas", () => {
   test("kanal hanya yang tercatat, tanpa catatan kerja dan tautan pemerintah", async ({ page }) => {
     await page.goto("/komunitas");
     await expect(page.getByRole("link", { name: "Instagram @sukalaribatam" })).toBeVisible();
+    // Logo, bukan kata "Instagram".
+    await expect(page.getByRole("link", { name: "Instagram @sukalaribatam" })).toHaveText("@sukalaribatam");
+    await expect(page.getByRole("link", { name: "Instagram @sukalaribatam" }).locator("svg")).toHaveCount(1);
     await expect(page.getByRole("link", { name: "Instagram @batam_10k" })).toBeVisible();
     await expect(page.locator('[data-komunitas="kom-005"] [data-kanal]')).toHaveCount(0);
     await expect(page.locator('[data-komunitas="kom-002"] [data-kanal]')).toHaveCount(0);

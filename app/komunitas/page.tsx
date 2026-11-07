@@ -5,6 +5,7 @@ import PembukaBagian from "@/components/site/PembukaBagian";
 import { DATA_DIHIMPUN, daftarKomunitas } from "@/features/budaya/data";
 import { bagianDari } from "@/lib/site";
 import "@/features/budaya/budaya.css";
+import TautanInstagram from "@/components/site/TautanInstagram";
 
 export const metadata: Metadata = {
   title: "Komunitas",
@@ -36,7 +37,9 @@ export default function HalamanKomunitas() {
             <div className="bud-samping">
               {k.kanal && (
                 <p className="m-0" data-kanal="ada">
-                  {k.kanal.href ? (
+                  {k.kanal.instagram ? (
+                    <TautanInstagram akun={k.kanal.instagram} href={k.kanal.href ?? undefined} />
+                  ) : k.kanal.href ? (
                     <a href={k.kanal.href} {...LUAR}>
                       {k.kanal.teks}
                     </a>

@@ -2,7 +2,7 @@
 // teruji hanya mode contoh. Memakai service role, jadi hanya boleh dipanggil dari server.
 import { createClient } from "@supabase/supabase-js";
 import type { Env } from "@/features/tukang/mode";
-import { GalatSlugGanda, type BarisAgenda, type BarisFoto, type BarisJurnal, type BarisLoker, type KontenStore } from "./store";
+import { GalatSlugGanda, type BarisAgenda, type BarisFoto, type BarisInfografik, type BarisJurnal, type BarisLoker, type KontenStore } from "./store";
 import type { BarisUbahan, BarisUbahanFoodCourt } from "./ubahan";
 
 type Hasil = { data: unknown; error: { message: string; code?: string } | null };
@@ -87,6 +87,18 @@ export function storeSupabase(env: Env): KontenStore {
     },
     async hapusUbahanFoodCourt(foodCourtId) {
       pastikan(await db.from("foodcourt_ubahan").delete().eq("foodcourt_id", foodCourtId));
+    },
+    async infografik(semua) {
+      let q = db.from("infografik").select("*").order("tanggal", { ascending: false });
+      if (!semua) q = q.eq("terbit", true);
+      return pastikan<BarisInfografik[]>(await q);
+    },
+    async simpanInfografik({ id, ...d }) {
+      const isi = { ...d, diubah: sekarang() };
+      pastikan(id ? await db.from("infografik").update(isi).eq("id", id) : await db.from("infografik").insert(isi));
+    },
+    async hapusInfografik(id) {
+      pastikan(await db.from("infografik").delete().eq("id", id));
     },
     async unggah(nama, isi, tipe) {
       const { error } = await db.storage.from("konten").upload(nama, isi, { contentType: tipe, upsert: false });

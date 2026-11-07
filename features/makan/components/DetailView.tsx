@@ -16,6 +16,7 @@ import BarisTempat from "./BarisTempat";
 import FavButton from "./FavButton";
 import { foodCourtDari } from "../lib/foodcourt";
 import GaleriTempat from "./GaleriTempat";
+import TautanInstagram, { IkonInstagram } from "@/components/site/TautanInstagram";
 
 const MiniMap = dynamic(() => import("./MiniMap"), { ssr: false });
 
@@ -177,11 +178,12 @@ export default function DetailView({ slug, cuaca, feri }: { slug: string; cuaca?
           )}
           {p.instagram && (
             <div>
-              <dt>Instagram</dt>
+              <dt>
+                <IkonInstagram ukuran={16} />
+                <span className="sr-only">Instagram</span>
+              </dt>
               <dd>
-                <a href={p.instagram} target="_blank" rel="noopener noreferrer">
-                  {p.instagram.replace(/^https?:\/\/(www\.)?instagram\.com\//, "@").replace(/\/$/, "")}
-                </a>
+                <TautanInstagram akun={p.instagram.replace(/^https?:\/\/(www\.)?instagram\.com\//, "").replace(/\/$/, "")} href={p.instagram} />
               </dd>
             </div>
           )}

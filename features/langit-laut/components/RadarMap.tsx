@@ -58,8 +58,8 @@ const CONDITIONS_MS = 2 * 60 * 1000;
 const FORECAST_MS = 30 * 60 * 1000; // prakiraan 3-jaman; server menahan 15–30 menit
 const PERINGATAN_MS = 2 * 60 * 1000; // server menahan 1 menit
 /** "Perbesar peta ke sini" dari daftar kelompok: cukup dekat untuk memisahkan pin. */
-/** Warna gelombang diredam (PEDOMAN 5.2): laut tidak boleh biru pekat. */
-const REDAM_GELOMBANG = 0.4;
+/** Batas kepekatan warna gelombang. Dulu 0,4 (PEDOMAN 5.2), dinaikkan atas koreksi pemilik 7 Nov 2026: terlalu pudar. 0,8 terlalu pekat dan menutupi peta. */
+const REDAM_GELOMBANG = 0.65;
 const SERET_PX = 36;
 
 const NASKAH: Record<Mode, { judul: string; penjelas: string }> = {

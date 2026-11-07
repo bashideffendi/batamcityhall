@@ -44,6 +44,12 @@ async function jalankan(store: KontenStore, a: AksiKonten) {
     case "hapus_foodcourt":
       await store.hapusUbahanFoodCourt(a.foodcourt_id);
       return [];
+    case "simpan_infografik":
+      await store.simpanInfografik(a.data);
+      return ["/infografik", `/infografik/${a.data.slug}`];
+    case "hapus_infografik":
+      await store.hapusInfografik(a.id);
+      return ["/infografik"];
   }
 }
 

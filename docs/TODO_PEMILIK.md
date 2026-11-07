@@ -13,8 +13,9 @@ Tayang di https://batam.masbash.id (Railway, cabang `fase-1-fondasi`). Selama `S
 3. **Tombol Terbitkan Perubahan** di Data Makanan butuh `RAILWAY_API_TOKEN` di Railway. Foto, Jurnal, dan agenda tidak butuh tombol ini: langsung tampil. Tombol ini belum pernah diuji melawan Railway.
 4. **Food Court:** 16 tempat dihimpun dari media dan panduan perjalanan, belum didatangi. Enam di antaranya bertanda Alamat Perlu Dicek karena hanya tercatat di daftar pihak ketiga. Tambahkan atau koreksi kalau ada yang Anda tahu.
 5. **Data ganda:** `RS BP Batam (RS Otorita)` dan `RS Badan Pengusahaan Batam` tampaknya rumah sakit yang sama. Belum saya gabung, karena alamat keduanya berbeda tingkat kepastian. Mohon konfirmasi.
-6. **Info Loker:** menu dan halamannya sudah ada, diisi dari dashboard. Menunya muncul setelah Supabase tersambung, supaya pengunjung tidak mendarat di halaman kosong.
-7. **Konser dan event bertanggal** belum ada datanya. Seksi Agenda Mendatang muncul otomatis setelah Anda mengisi acara pertama. Saya tidak mengarang acara.
+6. **Newsletter:** formulir di kaki situs sudah ada dan menyimpan email setelah Supabase tersambung. Pengiriman newsletter butuh layanan email terpisah (misalnya Buttondown atau Resend), lalu unggah CSV dari dashboard Newsletter. Mohon baca paragraf Pelanggan Newsletter di Privasi sebelum dibuka.
+7. **Info Loker:** menu dan halamannya sudah ada, diisi dari dashboard. Menunya muncul setelah Supabase tersambung, supaya pengunjung tidak mendarat di halaman kosong.
+8. **Konser dan event bertanggal** belum ada datanya. Seksi Agenda Mendatang muncul otomatis setelah Anda mengisi acara pertama. Saya tidak mengarang acara.
 
 ## Keputusan baru (desain ulang Makan, November 2026)
 
@@ -36,10 +37,10 @@ Tayang di https://batam.masbash.id (Railway, cabang `fase-1-fondasi`). Selama `S
    - "Dikunjungi penyusun" dan "Data diperiksa" kurang didukung data: `verified` hanya 18 dari 117.
    - "Per orang" tidak ada di data harga.
    - Bagian QRIS dan kiat di Tentang Makan tidak ada di naskah, tetapi dipertahankan.
-5. **Transportasi:** contoh pedoman {07.30} berbeda dengan data 06.00, dan 8.2 menyebut enam kotak sedangkan 3.6 menyebut lima. Info Praktis Trans Batam dipertahankan walau di luar naskah.
-6. **Cerita:** label pelaku legalitas adalah penilaian saat menerapkan pedoman, mohon diperiksa. Rempang tidak punya butir berlabel Warga. Kanal komunitas berkurang dari 5 menjadi 3.
-7. **Gempa dan peringatan dini** tidak ada di naskah pedoman. Dipertahankan di `/cuaca/gempa`, `/cuaca/peringatan`, dan Hari Ini, tanpa tautan dan tanpa "Sumber:". Kredit BMKG ada di Kolofon. Kondisi Saat Ini memuat satu kalimat bahwa datanya diukur di Singapura.
-8. **Direktori:** "Baru N dari M terdata" masih tampil sebagai catatan di bawah daftar, walau tidak ada di naskah.
+1. **Transportasi:** contoh pedoman {07.30} berbeda dengan data 06.00, dan 8.2 menyebut enam kotak sedangkan 3.6 menyebut lima. Info Praktis Trans Batam dipertahankan walau di luar naskah.
+2. **Cerita:** label pelaku legalitas adalah penilaian saat menerapkan pedoman, mohon diperiksa. Rempang tidak punya butir berlabel Warga. Kanal komunitas berkurang dari 5 menjadi 3.
+3. **Gempa dan peringatan dini** tidak ada di naskah pedoman. Dipertahankan di `/cuaca/gempa`, `/cuaca/peringatan`, dan Hari Ini, tanpa tautan dan tanpa "Sumber:". Kredit BMKG ada di Kolofon. Kondisi Saat Ini memuat satu kalimat bahwa datanya diukur di Singapura.
+4. **Direktori:** "Baru N dari M terdata" masih tampil sebagai catatan di bawah daftar, walau tidak ada di naskah.
 
 ## Uji yang hanya bisa pemilik lakukan
 

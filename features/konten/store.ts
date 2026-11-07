@@ -2,13 +2,14 @@
 // supabase = basis data sungguhan, contoh = memori (dev dan e2e), mati = tidak ada (situs memakai berkas repo saja).
 import { randomUUID } from "node:crypto";
 import { modeKiriman, type Env } from "@/features/tukang/mode";
-import type { InputAgenda, InputFoto, InputJurnal, InputLoker, InputUbahanFoodCourt, InputUbahanMakan } from "./skema";
+import type { InputAgenda, InputFoto, InputInfografik, InputJurnal, InputLoker, InputUbahanFoodCourt, InputUbahanMakan } from "./skema";
 import type { BarisUbahan, BarisUbahanFoodCourt } from "./ubahan";
 
 export type BarisJurnal = InputJurnal & { id: string };
 export type BarisFoto = InputFoto & { id: string };
 export type BarisAgenda = InputAgenda & { id: string };
 export type BarisLoker = InputLoker & { id: string };
+export type BarisInfografik = InputInfografik & { id: string };
 
 export interface KontenStore {
   jurnal(semua: boolean): Promise<BarisJurnal[]>;
@@ -29,6 +30,9 @@ export interface KontenStore {
   ubahanFoodCourt(): Promise<BarisUbahanFoodCourt[]>;
   simpanUbahanFoodCourt(d: InputUbahanFoodCourt): Promise<void>;
   hapusUbahanFoodCourt(foodCourtId: string): Promise<void>;
+  infografik(semua: boolean): Promise<BarisInfografik[]>;
+  simpanInfografik(d: InputInfografik): Promise<void>;
+  hapusInfografik(id: string): Promise<void>;
   /** Mengembalikan alamat publik berkas. */
   unggah(nama: string, isi: Buffer, tipe: string): Promise<string>;
 }
@@ -40,13 +44,15 @@ type Memori = {
   loker: BarisLoker[];
   makan: BarisUbahan[];
   foodcourt: BarisUbahanFoodCourt[];
+  infografik: BarisInfografik[];
 };
 
 function memori(): Memori {
   const g = globalThis as unknown as { __bchKonten?: Memori };
-  g.__bchKonten ??= { jurnal: [], foto: [], agenda: [], loker: [], makan: [], foodcourt: [] };
+  g.__bchKonten ??= { jurnal: [], foto: [], agenda: [], loker: [], makan: [], foodcourt: [], infografik: [] };
   // Memori dari versi sebelumnya saat dev belum punya kolom ini.
   g.__bchKonten.foodcourt ??= [];
+  g.__bchKonten.infografik ??= [];
   return g.__bchKonten;
 }
 
@@ -85,6 +91,12 @@ export function storeContoh(m: Memori = memori()): KontenStore {
       m.foodcourt = [...m.foodcourt.filter((u) => u.foodcourt_id !== foodcourt_id), { foodcourt_id, baru, data }];
     },
     hapusUbahanFoodCourt: async (id) => void (m.foodcourt = m.foodcourt.filter((u) => u.foodcourt_id !== id)),
+    infografik: async (semua) => m.infografik.filter((i) => semua || i.terbit).sort((a, b) => b.tanggal.localeCompare(a.tanggal)),
+    simpanInfografik: async (d) => {
+      if (m.infografik.some((i) => i.slug === d.slug && i.id !== d.id)) throw new GalatSlugGanda();
+      pasang(m.infografik, { ...d, id: d.id ?? randomUUID() });
+    },
+    hapusInfografik: async (id) => void (m.infografik = m.infografik.filter((i) => i.id !== id)),
     // Tidak ada penyimpanan berkas di mode contoh: gambar dibawa langsung di alamatnya.
     unggah: async (_nama, isi, tipe) => `data:${tipe};base64,${isi.toString("base64")}`,
   };

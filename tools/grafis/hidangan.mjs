@@ -1629,6 +1629,28 @@ BAGIAN["loker"] = () => {
   };
 };
 
+BAGIAN["infografik"] = () => {
+  // Poster tegak berisi diagram batang dan lingkaran, sedikit miring di atas lembar kedua.
+  const tata = (...s) => putar(-6, 240, 230, ...s);
+  const belakang = putar(5, 252, 236, rect(132, 66, 230, 324, 4));
+  const kertas = tata(rect(118, 56, 230, 324, 4));
+  const tepi = tata(rect(118, 56, 230, 324, 4, 'fill="none" stroke="#000" stroke-width="3.2"'));
+  const judul = tata(rect(138, 78, 118, 16, 2)) + tata(rect(138, 102, 78, 9, 2));
+  const pai = tata(circ(302, 116, 30));
+  const irisan = tata(bidang("M302,116 L302,86 A30,30 0 0 1 331,124 Z"));
+  const sumbu = tata(garis("M138,318 L330,318", 3.2));
+  const batang = (x, t) => tata(rect(x, 318 - t, 30, t, 2));
+  const teks = tata(garis("M138,340 L282,340", 4)) + tata(garis("M138,356 L236,356", 4));
+  return {
+    siluet: [belakang, kertas],
+    kuning: kurang(belakang, kertas) + batang(266, 112),
+    merah: batang(146, 92) + batang(226, 168) + irisan,
+    biru: batang(186, 138) + kurang(pai, irisan),
+    hitam: judul + sumbu + tepi + teks,
+    dasar: alas(240, 430, 160, 8),
+  };
+};
+
 BAGIAN["komunitas"] = () => {
   // Bendera kecil pada dua utas tali di antara dua tiang, kursi melingkar di bawahnya.
   const lengkung = (x, y0, sag, x0 = 60, x1 = 420) => y0 + sag * (1 - ((2 * (x - x0)) / (x1 - x0) - 1) ** 2);

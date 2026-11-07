@@ -68,6 +68,16 @@ export default async function Privasi() {
           </li>
         </ul>
 
+        <h2>Pelanggan Newsletter</h2>
+        <ul>
+          <li>Yang disimpan hanya alamat email dan tanggal berlangganan.</li>
+          <li>Email hanya dipakai untuk mengirim newsletter Batam City Hall. Tidak dijual dan tidak dibagikan.</li>
+          <li>
+            Untuk berhenti, balas newsletternya atau kirim permintaan lewat{" "}
+            <Link href="/koreksi?jenis=hapus_data">halaman koreksi</Link>, dan alamatmu dihapus.
+          </li>
+        </ul>
+
         <h2>Menghapus atau Mengoreksi Data</h2>
         <p>
           Kirim permintaan lewat <Link href="/koreksi?jenis=hapus_data">halaman koreksi</Link> dan tulis kontak yang

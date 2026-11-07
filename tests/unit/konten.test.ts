@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { agendaBelumLewat, gabungTulisan, lokerBelumLewat, tulisanDariBaris } from "@/features/konten/baca";
-import { buatSlug, pecahParagraf, SkemaAgenda, SkemaAksiKonten, SkemaJurnal, SkemaLoker, SkemaUbahanFoodCourt, SkemaUbahanMakan } from "@/features/konten/skema";
+import { agendaBelumLewat, gabungInfografik, gabungTulisan, infografikDariBaris, lokerBelumLewat, tulisanDariBaris } from "@/features/konten/baca";
+import { INFOGRAFIK_REPO } from "@/features/infografik/data";
+import { faktaInfografik } from "@/features/sejarah/angka";
+import { SkemaNewsletter } from "@/features/tukang/skema";
+import { buatSlug, pecahParagraf, SkemaAgenda, SkemaAksiKonten, SkemaInfografik, SkemaJurnal, SkemaLoker, SkemaUbahanFoodCourt, SkemaUbahanMakan } from "@/features/konten/skema";
 import { GalatSlugGanda, storeContoh, type BarisAgenda, type BarisLoker } from "@/features/konten/store";
 import { terapkanUbahan, terapkanUbahanFoodCourt } from "@/features/konten/ubahan";
 import type { FoodCourt } from "@/features/makan/lib/foodcourt";
@@ -19,7 +22,7 @@ const jurnal = {
   isi: "Paragraf satu.\n\nParagraf dua.",
   terbit: true,
 };
-const memoriKosong = () => ({ jurnal: [], foto: [], agenda: [], loker: [], makan: [], foodcourt: [] });
+const memoriKosong = () => ({ jurnal: [], foto: [], agenda: [], loker: [], makan: [], foodcourt: [], infografik: [] });
 
 describe("isian Jurnal", () => {
   it("alamat dibuat dari judul", () => {
@@ -234,5 +237,59 @@ describe("food court dari dashboard", () => {
     await s.hapusUbahanFoodCourt("pujasera-uji");
     expect(await s.ubahanFoodCourt()).toEqual([]);
     expect(SkemaAksiKonten.safeParse({ aksi: "simpan_foodcourt", data: d }).success).toBe(true);
+  });
+});
+
+describe("infografik", () => {
+  const isian = {
+    slug: "uji",
+    judul: "Uji",
+    ringkasan: "Ringkas.",
+    rubrik: "Uji",
+    tanggal: "2026-11-07",
+    gambar: "https://example.com/uji.webp",
+    lebar: 1080,
+    tinggi: 1350,
+    deskripsi: "Isi dalam teks.",
+    terbit: true,
+  };
+
+  it("butuh gambar dan isinya dalam teks", () => {
+    expect(SkemaInfografik.safeParse(isian).success).toBe(true);
+    expect(SkemaInfografik.safeParse({ ...isian, gambar: "" }).success).toBe(false);
+    expect(SkemaInfografik.safeParse({ ...isian, deskripsi: " " }).success).toBe(false);
+    expect(SkemaInfografik.safeParse({ ...isian, gambar: "http://example.com/a.webp" }).success).toBe(false);
+  });
+
+  it("unggahan menang atas bawaan beralamat sama, terbaru lebih dulu", () => {
+    const db = infografikDariBaris({ ...SkemaInfografik.parse({ ...isian, slug: INFOGRAFIK_REPO[0].slug, tanggal: "2026-12-01" }), id: "x" });
+    const gabung = gabungInfografik(INFOGRAFIK_REPO, [db]);
+    expect(gabung).toHaveLength(INFOGRAFIK_REPO.length);
+    expect(gabung[0]).toMatchObject({ slug: INFOGRAFIK_REPO[0].slug, gambar: { deskripsi: "Isi dalam teks." } });
+    expect(gabung[0].poster).toBeUndefined();
+  });
+
+  it("angka poster sama dengan data Batam dalam Angka", () => {
+    expect(faktaInfografik()).toMatchObject({
+      dukcapil: "1.394.459",
+      bps: "1.296.960",
+      perairan: "2.791,09 km²",
+      daratan: "1.038,84 km²",
+      wisman: "1.613.202",
+      singapura: "789.674",
+      malaysia: "418.330",
+    });
+  });
+
+  it("alamat infografik bawaan unik", () => {
+    expect(new Set(INFOGRAFIK_REPO.map((i) => i.slug)).size).toBe(INFOGRAFIK_REPO.length);
+  });
+});
+
+describe("newsletter", () => {
+  it("email dirapikan dan bentuk yang salah ditolak", () => {
+    expect(SkemaNewsletter.parse({ email: "  Warga@Contoh.ID " }).email).toBe("warga@contoh.id");
+    expect(SkemaNewsletter.safeParse({ email: "bukan email" }).success).toBe(false);
+    expect(SkemaNewsletter.safeParse({ email: `${"a".repeat(250)}@contoh.id` }).success).toBe(false);
   });
 });

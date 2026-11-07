@@ -227,6 +227,21 @@ const kolomFoodCourt = {
     .max(6, { error: "Paling banyak 6 tautan." }),
 };
 
+export const SkemaInfografik = z.object({
+  id: z.uuid().nullish(),
+  slug: z.string({ error: "Alamat wajib diisi." }).regex(POLA_SLUG, { error: "Hanya huruf kecil, angka, dan tanda hubung." }).max(80),
+  judul: wajib(160, "Judul wajib diisi."),
+  ringkasan: wajib(300, "Ringkasan wajib diisi."),
+  rubrik: wajib(40, "Rubrik wajib diisi."),
+  tanggal: tanggal("Tanggal wajib diisi."),
+  gambar: gambar.refine((v) => !!v, { error: "Unggah gambar infografiknya." }).transform((v) => v as string),
+  lebar: z.number({ error: "Unggah gambar infografiknya." }).int().positive(),
+  tinggi: z.number({ error: "Unggah gambar infografiknya." }).int().positive(),
+  deskripsi: wajib(6000, "Tulis isi infografik dalam teks, untuk pembaca layar."),
+  terbit: z.boolean(),
+});
+export type InputInfografik = z.output<typeof SkemaInfografik>;
+
 export const SkemaUbahanFoodCourt = z.discriminatedUnion("baru", [
   z.object({
     baru: z.literal(false),
@@ -260,5 +275,7 @@ export const SkemaAksiKonten = z.discriminatedUnion("aksi", [
   z.object({ aksi: z.literal("hapus_makan"), tempat_id: z.string().min(1) }),
   z.object({ aksi: z.literal("simpan_foodcourt"), data: SkemaUbahanFoodCourt }),
   z.object({ aksi: z.literal("hapus_foodcourt"), foodcourt_id: z.string().min(1) }),
+  z.object({ aksi: z.literal("simpan_infografik"), data: SkemaInfografik }),
+  z.object({ aksi: z.literal("hapus_infografik"), id }),
 ]);
 export type AksiKonten = z.output<typeof SkemaAksiKonten>;

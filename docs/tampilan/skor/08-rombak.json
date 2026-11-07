@@ -1,6 +1,6 @@
 {
  "label": "08-rombak",
- "waktu": "2026-11-05T17:31:55.585Z",
+ "waktu": "2026-11-07T12:41:28.829Z",
  "hasil": [
   {
    "alamat": "/",
@@ -10,7 +10,7 @@
     "9": "kolom cari di bawah layar pertama"
    },
    "rincian": {
-    "porsiKotak": 4,
+    "porsiKotak": 2,
     "labelGanda": 0,
     "kotakCatatan": 0,
     "catatanKerja": [],
@@ -19,7 +19,7 @@
     "tautanGo": 0,
     "sebutan": [],
     "mati": 0,
-    "judul": "Hujan ringan di Galang. Gelombang rendah.",
+    "judul": "Memuat data",
     "utamaTerlihat": true,
     "adaCari": true,
     "cariTerlihat": false,
@@ -54,7 +54,7 @@
    "skor": 0,
    "butir": {},
    "rincian": {
-    "porsiKotak": 5,
+    "porsiKotak": 1,
     "labelGanda": 0,
     "kotakCatatan": 0,
     "catatanKerja": [],
@@ -526,6 +526,50 @@
     "sebutan": [],
     "mati": 0,
     "judul": "Nongsa dan Mandat 18 Desember 1829",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/infografik",
+   "nama": "Infografik",
+   "skor": 0,
+   "butir": {},
+   "rincian": {
+    "porsiKotak": 0,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [],
+    "mati": 0,
+    "judul": "Infografik",
+    "utamaTerlihat": true,
+    "adaCari": false,
+    "cariTerlihat": true,
+    "lebarLuber": false
+   }
+  },
+  {
+   "alamat": "/infografik/batam-sebagian-besar-laut",
+   "nama": "Satu infografik",
+   "skor": 0,
+   "butir": {},
+   "rincian": {
+    "porsiKotak": 0,
+    "labelGanda": 0,
+    "kotakCatatan": 0,
+    "catatanKerja": [],
+    "satuKata": [],
+    "jenaka": [],
+    "tautanGo": 0,
+    "sebutan": [],
+    "mati": 0,
+    "judul": "Hampir 3 dari 4 Bagian Batam Adalah Laut",
     "utamaTerlihat": true,
     "adaCari": false,
     "cariTerlihat": true,

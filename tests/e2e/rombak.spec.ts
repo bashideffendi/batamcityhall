@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
   await page.route("**/api/**", (r) => {
     const url = r.request().url();
     // Alur admin memakai API sendiri; selebihnya ditiru.
-    if (/\/api\/(admin|konten|tukang|unggah)/.test(url)) return r.fallback();
+    if (/\/api\/(admin|konten|tukang|unggah|newsletter)/.test(url)) return r.fallback();
     if (url.includes("/api/frames")) return r.fulfill({ json: { frames: [], stale: true, echo: null } });
     if (url.includes("/api/ofs-frame"))
       return r.fulfill({ json: { baserun: "", frames: [], nowIndex: 0, fallback: true, source: "blind", ageH: 0, expired: false } });
@@ -29,6 +29,7 @@ const BAGIAN_URUT = [
   "Makanan",
   "Berita",
   "Jurnal",
+  "Infografik",
   "Things to Do",
   "Komunitas",
   "Tukang Langganan",
@@ -382,5 +383,101 @@ test.describe("dashboard Info Loker dan Makanan", () => {
     await page.getByLabel("Food Court", { exact: true }).selectOption({ label: `${nama} (Baru)` });
     await page.getByRole("button", { name: "Simpan Data" }).click();
     await expect(page.getByText("Tersimpan. Tayang setelah Terbitkan Perubahan.").first()).toBeVisible({ timeout: 20_000 });
+  });
+});
+
+test.describe("masukan 7 November", () => {
+  test("isi tidak menempel di garis judul seksi", async ({ page }) => {
+    for (const alamat of ["/", "/things-to-do", "/komunitas"]) {
+      await page.goto(alamat);
+      const jarak = await page.evaluate(() =>
+        [...document.querySelectorAll("main .bch-judul-seksi + *, main .bch-judul-baris + *")]
+          .filter((e) => e.getClientRects().length && getComputedStyle(e).borderTopWidth !== "0px")
+          .map((e) => {
+            const garis = e.getBoundingClientRect().top + parseFloat(getComputedStyle(e).borderTopWidth);
+            // Isi pertama yang terlihat: teks atau kontrol, bukan kotak baris yang punya jarak di dalamnya.
+            let atas = Infinity;
+            const w = document.createTreeWalker(e, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
+            for (let n = w.nextNode(); n; n = w.nextNode()) {
+              if (n.nodeType === 3 && n.textContent?.trim()) {
+                const rg = document.createRange();
+                rg.selectNodeContents(n);
+                for (const q of rg.getClientRects()) if (q.height) atas = Math.min(atas, q.top);
+              } else if (n.nodeType === 1 && /^(INPUT|SELECT|BUTTON|IMG|svg)$/.test((n as Element).tagName) && (n as Element).getClientRects().length) {
+                atas = Math.min(atas, (n as Element).getBoundingClientRect().top);
+              }
+            }
+            return Number.isFinite(atas) ? atas - garis : 99;
+          }),
+      );
+      expect(Math.min(...jarak), alamat).toBeGreaterThanOrEqual(6);
+    }
+  });
+
+  test("Layanan Warga: tiap kategori Direktori punya logo", async ({ page }) => {
+    await page.goto("/info");
+    const baris = page.locator(".bch-kategori-ringkas li");
+    const n = await baris.count();
+    expect(n).toBeGreaterThan(5);
+    await expect(page.locator(".bch-kategori-ringkas li a > span[aria-hidden='true'] svg")).toHaveCount(n);
+  });
+
+  test("newsletter di kaki situs mencatat email", async ({ page }) => {
+    await page.goto("/tentang");
+    const form = page.getByRole("form", { name: "Newsletter" });
+    await form.getByLabel("Email").fill(`warga.${Date.now()}@contoh.id`);
+    await form.getByRole("button", { name: "Langganan" }).click();
+    await expect(form.getByText("Terima kasih. Alamat email tercatat.")).toBeVisible({ timeout: 20_000 });
+  });
+
+  test("Infografik: kisi poster dan halaman detail", async ({ page }) => {
+    await page.goto("/infografik");
+    await expect(page.getByRole("heading", { level: 1, name: "Infografik" })).toBeVisible();
+    expect(await page.locator(".ig-kartu").count()).toBeGreaterThanOrEqual(5);
+    await page.getByRole("link", { name: /Dari Sekitar 6\.000 Jiwa pada 1965/ }).click();
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Dari Sekitar 6.000 Jiwa pada 1965");
+    await expect(page.locator(".ig-figur")).toContainText("1.394.459");
+    await expect(page.locator(".ig-figur")).toContainText("1.296.960");
+    await expect(page.getByRole("link", { name: /Batam dalam Angka/ })).toHaveAttribute("href", "/cerita/angka");
+  });
+});
+
+test.describe("dashboard Infografik dan Newsletter", () => {
+  test.skip(!SANDI, "Butuh ADMIN_MODE_CONTOH");
+
+  test("infografik unggahan tampil di kisi dan punya teks alternatif", async ({ page }, info) => {
+    const judul = `Infografik Uji ${Date.now().toString(36)} ${info.project.name}`;
+    await page.goto("/admin/infografik");
+    await page.getByLabel("Kata sandi").fill(SANDI);
+    await page.getByRole("button", { name: "Masuk" }).click();
+    const form = page.getByRole("form", { name: "Infografik Baru" });
+    await form.getByLabel("Judul", { exact: true }).fill(judul);
+    await form.getByLabel("Rubrik", { exact: true }).fill("Uji");
+    await form.getByLabel("Ringkasan", { exact: true }).fill("Ringkasan uji otomatis.");
+    await form.locator(".bch-adm-unggah input[type=file]").setInputFiles("public/grafis/bagian/infografik.webp");
+    await expect(form.locator(".bch-adm-pratinjau")).toBeVisible({ timeout: 20_000 });
+    await form.getByLabel("Isi dalam Teks", { exact: true }).fill("Teks alternatif uji: tiga batang dan satu lingkaran.");
+    await form.getByLabel("Terbitkan").check();
+    await form.getByRole("button", { name: "Simpan dan Terbitkan" }).click();
+    await expect(page.getByText("Infografik terbit.")).toBeVisible({ timeout: 20_000 });
+    // Halaman detail dibangun dari data terbaru. Daftar memakai cache 5 menit, dan dua simpanan bersamaan dari
+    // proyek desktop dan ponsel bisa saling mendahului, jadi tes membuka halamannya langsung.
+    await page.goto(`/infografik/${judul.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(judul);
+    await expect(page.locator(".ig-figur img")).toHaveAttribute("alt", "Teks alternatif uji: tiga batang dan satu lingkaran.");
+  });
+
+  test("pelanggan newsletter tampil di dashboard", async ({ page }, info) => {
+    const email = `uji.${Date.now()}.${info.project.name}@contoh.id`;
+    await page.goto("/kolofon");
+    const form = page.getByRole("form", { name: "Newsletter" });
+    await form.getByLabel("Email").fill(email);
+    await form.getByRole("button", { name: "Langganan" }).click();
+    await expect(form.getByText("Terima kasih. Alamat email tercatat.")).toBeVisible({ timeout: 20_000 });
+    await page.goto("/admin/newsletter");
+    await page.getByLabel("Kata sandi").fill(SANDI);
+    await page.getByRole("button", { name: "Masuk" }).click();
+    await expect(page.getByText(email)).toBeVisible();
+    await expect(page.getByRole("button", { name: "Unduh CSV" })).toBeVisible();
   });
 });

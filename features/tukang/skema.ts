@@ -171,3 +171,12 @@ export function galatPerKolom(galat: z.ZodError): Record<string, string> {
   }
   return hasil;
 }
+
+export const SkemaNewsletter = z.object({
+  email: z
+    .string({ error: "Tulis alamat email." })
+    .trim()
+    .toLowerCase()
+    .max(254, { error: "Alamat email terlalu panjang." })
+    .pipe(z.email({ error: "Tulis alamat email yang benar." })),
+});

@@ -85,7 +85,13 @@ export interface TukangStore {
   kirimFoto(input: InputFoto): Promise<void>;
   antrean(): Promise<Antrean>;
   moderasi(aksi: AksiModerasi): Promise<void>;
+  /** Alamat yang sudah tercatat diterima diam-diam: tidak membocorkan siapa yang berlangganan. */
+  langganan(email: string): Promise<void>;
+  pelanggan(): Promise<Pelanggan[]>;
+  hapusPelanggan(email: string): Promise<void>;
 }
+
+export type Pelanggan = { email: string; dibuatAt: string };
 
 /** null = mode mati, yang berarti belum menerima kiriman. */
 export function ambilStore(env: Env = process.env): TukangStore | null {

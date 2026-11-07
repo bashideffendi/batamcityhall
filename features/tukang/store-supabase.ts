@@ -226,6 +226,21 @@ export function buatStoreSupabase(publik: SupabaseClient, layanan: SupabaseClien
       await ubahTukang(tukangId, { disembunyikan: true });
     },
 
+    async langganan(email: string) {
+      pastikan(await layanan.from("newsletter").upsert({ email }, { onConflict: "email", ignoreDuplicates: true }));
+    },
+
+    async pelanggan() {
+      const baris = pastikan<{ email: string; dibuat: string }[]>(
+        await layanan.from("newsletter").select("email, dibuat").order("dibuat", { ascending: false }),
+      );
+      return baris.map((b) => ({ email: b.email, dibuatAt: b.dibuat }));
+    },
+
+    async hapusPelanggan(email: string) {
+      pastikan(await layanan.from("newsletter").delete().eq("email", email));
+    },
+
     async kirimKoreksi(i: InputKoreksi) {
       pastikan(
         await layanan.from("koreksi_data").insert({

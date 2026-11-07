@@ -131,6 +131,15 @@ export const BAGIAN: Bagian[] = [
     isi: [],
   },
   {
+    id: "infografik",
+    nama: "Infografik",
+    href: "/infografik",
+    lede: "Data Batam dalam satu gambar",
+    aktifDi: ["/infografik"],
+    grafis: "/grafis/bagian/infografik.webp",
+    isi: [],
+  },
+  {
     id: "kegiatan",
     nama: "Things to Do",
     href: "/things-to-do",

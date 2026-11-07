@@ -36,7 +36,10 @@ test.describe("teks wajib", () => {
       await page.goto(path);
       const footer = page.locator("footer");
       await expect(footer).toContainText(KAKI);
-      await expect(footer.locator(".bch-footer-peta")).toBeVisible();
+      await expect(footer.locator(".bch-footer-atas")).toBeVisible();
+      // Kaki situs berisi tentang situs, kebijakan, dan newsletter, bukan menu.
+      await expect(footer.getByRole("link", { name: "Radar Hujan" })).toHaveCount(0);
+      await expect(footer.getByText("Newsletter", { exact: true })).toBeVisible();
       await expect(footer.locator(".bch-footer-bawah")).toBeVisible();
       for (const t of ["Tentang", "Kolofon", "Kirim Koreksi", "Privasi", "Syarat Penggunaan"]) {
         await expect(footer.getByRole("link", { name: t })).toBeVisible();

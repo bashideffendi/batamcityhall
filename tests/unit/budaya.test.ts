@@ -289,8 +289,9 @@ describe("komunitas", () => {
     const berkanal = daftar.filter((k) => k.kanal).map((k) => k.id);
     expect(berkanal).toEqual(["kom-001", "kom-004", "kom-010"]);
     for (const k of daftar) expect(k.kanal?.href ?? "", k.id).not.toMatch(/\.go\.id/);
-    const akun = daftar.flatMap((k) => (k.kanal?.teks.startsWith("Instagram") ? [k.kanal.teks] : []));
-    expect(akun).toEqual(["Instagram @sukalaribatam", "Instagram @batam_10k"]);
+    // Akun Instagram tampil sebagai logo dan nama akun, tanpa kata "Instagram".
+    const akun = daftar.flatMap((k) => (k.kanal?.instagram ? [k.kanal.teks] : []));
+    expect(akun).toEqual(["@sukalaribatam", "@batam_10k"]);
     expect(kanalKomunitas({ kontak_publik: "IG @akun_belum_dicek", status: "Belum Terverifikasi" })).toBeNull();
     expect(kanalKomunitas({ kontak_publik: "runningcrews.com", status: "Belum Terverifikasi" })).toBeNull();
     expect(kanalKomunitas({ kontak_publik: "kebudayaan.kemdikbud.go.id/bpnbkepri", status: "Tercatat" })).toBeNull();

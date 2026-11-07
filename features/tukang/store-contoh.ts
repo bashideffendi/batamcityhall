@@ -36,6 +36,7 @@ export type DataContoh = {
   foto: Foto[];
   /** Log persetujuan, tanpa kontak. */
   consent: { subjek: string; aksi: string; tukangId: string | null; versi: string; dicatatAt: string }[];
+  newsletter: { email: string; dibuatAt: string }[];
 };
 
 const WAKTU_CONTOH = new Date(Date.UTC(2026, 10, 1)).toISOString();
@@ -102,6 +103,7 @@ export function dataAwalContoh(): DataContoh {
     koreksi: [],
     foto: [],
     consent: [],
+    newsletter: [],
   };
 }
 
@@ -205,6 +207,19 @@ export function buatStoreContoh(data: DataContoh = dataAwalContoh()): TukangStor
         dibuatAt: new Date().toISOString(),
       });
       if (i.kontak) catat("pengirim_koreksi", "setuju", i.tukang_id);
+    },
+
+    async langganan(email: string) {
+      data.newsletter ??= [];
+      if (!data.newsletter.some((p) => p.email === email)) data.newsletter.push({ email, dibuatAt: new Date().toISOString() });
+    },
+
+    async pelanggan() {
+      return [...(data.newsletter ?? [])].sort((a, b) => b.dibuatAt.localeCompare(a.dibuatAt));
+    },
+
+    async hapusPelanggan(email: string) {
+      data.newsletter = (data.newsletter ?? []).filter((p) => p.email !== email);
     },
 
     async kirimFoto(i: InputFoto) {

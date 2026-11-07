@@ -71,7 +71,14 @@ Daftar lengkap semua permintaan pemilik. Tanda: ✔ selesai di kode, ◐ sebagia
 | F6 | Kategori Makanan diganti 32 kategori pemilik | ✔ tujuh kategori belum punya tempat, tampil Belum Ada |
 | F7 | Dashboard: tambah dan ubah tempat, foto, data, tautan ke food court | ✔ kode dan alur teruji di mode contoh |
 | F8 | Menu Info Loker | ✔ diisi dari dashboard, menu tampil setelah basis data tersambung |
-| F9 | Tambah dan ubah food court lewat dashboard | ✔ lokal, teruji di mode contoh |
+| F9 | Tambah dan ubah food court lewat dashboard | ✔ tayang `49446af` |
+| F10 | Spasi yang dempet di seluruh situs | ✔ lokal, diukur otomatis di 63 halaman |
+| F11 | Warna peta gelombang terlalu pudar | ✔ lokal, kepekatan 0,65 |
+| F12 | Menu Infografik ala Tirto | ✔ lokal, lima poster bawaan dan unggahan dashboard |
+| F13 | Kaki situs berisi newsletter, syarat, privasi, bukan menu | ✔ lokal, newsletter dibuka setelah basis data tersambung |
+| F14 | Terjemahan Inggris untuk seluruh situs | ☐ menyusul setelah semua bagian selesai |
+| F15 | Logo di Direktori hilang | ✔ lokal, daftar Direktori di Layanan Warga memakai logo kategori |
+| F16 | Instagram tampil sebagai logo | ✔ lokal |
 
 ## G. Yang perlu persetujuan Anda
 

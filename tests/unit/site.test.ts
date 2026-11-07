@@ -23,6 +23,7 @@ describe("menu", () => {
       "Makanan",
       "Berita",
       "Jurnal",
+      "Infografik",
       "Things to Do",
       "Komunitas",
       "Tukang Langganan",

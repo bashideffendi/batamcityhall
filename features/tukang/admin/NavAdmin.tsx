@@ -7,9 +7,11 @@ import { kirimJson } from "../Kolom";
 const MENU = [
   { href: "/admin", label: "Antrean" },
   { href: "/admin/jurnal", label: "Jurnal" },
+  { href: "/admin/infografik", label: "Infografik" },
   { href: "/admin/makanan", label: "Makanan" },
   { href: "/admin/agenda", label: "Agenda" },
   { href: "/admin/loker", label: "Info Loker" },
+  { href: "/admin/newsletter", label: "Newsletter" },
   { href: "/admin/cek-ulang", label: "Perlu Dicek Ulang" },
   { href: "/admin/koordinat", label: "Isi Koordinat" },
 ];
