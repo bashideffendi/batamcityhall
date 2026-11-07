@@ -17,8 +17,8 @@
         "https://en.wikivoyage.org/wiki/Nagoya_(Indonesia)",
         "https://sg.trip.com/moments/destination-batam-2005/"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.141688,
+      "lng": 104.006931
     },
     {
       "id": "a2-food-court",
@@ -31,8 +31,8 @@
       "sumber_url": [
         "https://eatbook.sg/a2-food-court-batam/"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.134405,
+      "lng": 104.009352
     },
     {
       "id": "food-market-thamrin",
@@ -45,8 +45,8 @@
       "sumber_url": [
         "https://sg.trip.com/moments/destination-batam-2005/"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.144083,
+      "lng": 104.015575
     },
     {
       "id": "pujasera-a1",
@@ -88,8 +88,8 @@
       "sumber_url": [
         "https://en.wikivoyage.org/wiki/Nagoya_(Indonesia)"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.146707,
+      "lng": 104.012903
     },
     {
       "id": "windsor-foodcourt",
@@ -102,8 +102,8 @@
       "sumber_url": [
         "https://tribunbatamtravel.tribunnews.com/amp/2020/02/03/daftar-4-foodcourt-di-sekitar-nagoya-batam-untuk-kulineran-tampilkan-life-akustik"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.140882,
+      "lng": 104.01327
     },
     {
       "id": "newton-food-court",
@@ -131,8 +131,8 @@
         "https://eatbook.sg/a2-food-court-batam/",
         "https://id.foursquare.com/santoflynn/list/coffee-shop--food-court-batam"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.138298,
+      "lng": 104.001926
     },
     {
       "id": "168-food-court",
@@ -145,8 +145,8 @@
       "sumber_url": [
         "https://sg.trip.com/moments/destination-batam-2005/"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.149091,
+      "lng": 104.013738
     },
     {
       "id": "pujasera-28",
@@ -173,8 +173,8 @@
       "sumber_url": [
         "https://id.foursquare.com/santoflynn/list/coffee-shop--food-court-batam"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.126512,
+      "lng": 104.098808
     },
     {
       "id": "pujasera-tiban-center",
@@ -187,8 +187,8 @@
       "sumber_url": [
         "https://wanderlog.com/place/details/11412969/pujasera"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.112906,
+      "lng": 103.979541
     },
     {
       "id": "pujasera-town-centre-batamindo",
@@ -201,8 +201,8 @@
       "sumber_url": [
         "https://wanderlog.com/place/details/14529087/pujasera-town-centre-batamindo"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.067381,
+      "lng": 104.025442
     },
     {
       "id": "sp-plaza-food-street",
@@ -215,8 +215,8 @@
       "sumber_url": [
         "https://id.foursquare.com/santoflynn/list/coffee-shop--food-court-batam"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.04265,
+      "lng": 103.979969
     },
     {
       "id": "golden-king-food-court",
@@ -229,8 +229,8 @@
       "sumber_url": [
         "https://id.foursquare.com/santoflynn/list/coffee-shop--food-court-batam"
       ],
-      "lat": null,
-      "lng": null
+      "lat": 1.161763,
+      "lng": 104.042671
     }
   ]
 }

@@ -114,54 +114,54 @@ export function loadHls() {
 
 export const CAMS: Cam[] = [
   // — Batam Kota / pusat pemerintahan —
-  { slug: "atap", name: "Atap Kantor Wali Kota", area: "Batam Kota", lat: 1.127943, lng: 104.055197 },
-  { slug: "dprd", name: "Depan Kantor DPRD", area: "Batam Kota", lat: 1.126903, lng: 104.055462 },
-  { slug: "kejaksaanbi", name: "Simpang BI", area: "Batam Kota", lat: 1.128026, lng: 104.056966 },
-  { slug: "southgate", name: "Gerbang Selatan Engku Putri", area: "Batam Kota", lat: 1.126500, lng: 104.054085, approx: true },
-  { slug: "gerutara", name: "Gerbang Utara Engku Putri", area: "Batam Kota", lat: 1.129500, lng: 104.054085, approx: true },
-  { slug: "madanipancuran", name: "Bundaran Madani Pancuran", area: "Batam Kota", lat: 1.133783, lng: 104.042511 },
-  { slug: "madaniseipanas", name: "Bundaran Madani Arah Sei Panas", area: "Batam Kota", lat: 1.133783, lng: 104.042511, approx: true },
-  { slug: "simpkuda1", name: "Simpang Kuda", area: "Batam Kota", lat: 1.136283, lng: 104.027114 },
-  { slug: "sukajadi2", name: "Depan Perumahan Sukajadi", area: "Batam Kota", lat: 1.104559, lng: 104.026126, approx: true },
-  { slug: "casablanca2", name: "Simpang Casablanca", area: "Batam Kota", lat: 1.121195, lng: 104.016326, approx: true },
+  { slug: "atap", name: "Atap Kantor Wali Kota", area: "Batam Kota", lat: 1.128007, lng: 104.055145 },
+  { slug: "dprd", name: "Depan Kantor DPRD", area: "Batam Kota", lat: 1.127229, lng: 104.055723 },
+  { slug: "kejaksaanbi", name: "Simpang BI", area: "Batam Kota", lat: 1.127472, lng: 104.057287 },
+  { slug: "southgate", name: "Gerbang Selatan Engku Putri", area: "Batam Kota", lat: 1.12707, lng: 104.054529 },
+  { slug: "gerutara", name: "Gerbang Utara Engku Putri", area: "Batam Kota", lat: 1.129769, lng: 104.054524 },
+  { slug: "madanipancuran", name: "Bundaran Madani Pancuran", area: "Batam Kota", lat: 1.134103, lng: 104.043194 },
+  { slug: "madaniseipanas", name: "Bundaran Madani Arah Sei Panas", area: "Batam Kota", lat: 1.134087, lng: 104.043188 },
+  { slug: "simpkuda1", name: "Simpang Kuda", area: "Batam Kota", lat: 1.136241, lng: 104.027101 },
+  { slug: "sukajadi2", name: "Depan Perumahan Sukajadi", area: "Batam Kota", lat: 1.112357, lng: 104.024184 },
+  { slug: "casablanca2", name: "Simpang Casablanca", area: "Batam Kota", lat: 1.122342, lng: 104.015657 },
 
   // — Lubuk Baja / Jodoh–Nagoya —
-  { slug: "cobaan", name: "Nagoya Plaza", area: "Lubuk Baja", lat: 1.146140, lng: 104.010987 },
-  { slug: "pasarjodoh2", name: "Depan Pasar Jodoh", area: "Batu Ampar", lat: 1.151230, lng: 104.005230 },
+  { slug: "cobaan", name: "Nagoya Plaza", area: "Lubuk Baja", lat: 1.14511, lng: 104.011262 },
+  { slug: "pasarjodoh2", name: "Depan Pasar Jodoh", area: "Batu Ampar", lat: 1.147778, lng: 104.003369 },
 
   // — Sekupang / Tiban —
-  { slug: "sekupang", name: "Pelabuhan Sekupang", area: "Sekupang", lat: 1.126240, lng: 103.928415 },
-  { slug: "seiladi2", name: "Simpang Sei Ladi", area: "Sekupang", lat: 1.108161, lng: 104.011206, approx: true },
-  { slug: "pura1", name: "Depan Pura Sei Ladi", area: "Sekupang", lat: 1.108161, lng: 104.011206, approx: true },
-  { slug: "matakucing1", name: "Mata Kucing", area: "Batu Aji", lat: 1.085136, lng: 103.971603, approx: true },
+  { slug: "sekupang", name: "Pelabuhan Sekupang", area: "Sekupang", lat: 1.126367, lng: 103.927583 },
+  { slug: "seiladi2", name: "Simpang Sei Ladi", area: "Sekupang", lat: 1.10806, lng: 104.004697 },
+  { slug: "pura1", name: "Depan Pura Sei Ladi", area: "Sekupang", lat: 1.112788, lng: 104.003391 },
+  { slug: "matakucing1", name: "Mata Kucing", area: "Batu Aji", lat: 1.08345, lng: 103.972032 },
   // Titik = centroid perumahan Delta Villa (reverse-geocode), ±240 m dari jalan yang
   // difilmkan (Jl. Pangeran Diponegoro) → ditandai perkiraan (audit 2026-09).
-  { slug: "delta2", name: "Depan Delta Villa Arah Mata Kucing", area: "Sekupang", lat: 1.102452, lng: 103.960683, approx: true },
-  { slug: "southlink1", name: "Tanjakan Southlink", area: "Sekupang", lat: 1.113720, lng: 103.996030, approx: true },
-  { slug: "ptzsouthlink", name: "Tanjakan Southlink (PTZ)", area: "Sekupang", lat: 1.114200, lng: 103.996030, approx: true },
+  { slug: "delta2", name: "Depan Delta Villa Arah Mata Kucing", area: "Sekupang", lat: 1.100563, lng: 103.959355 },
+  { slug: "southlink1", name: "Tanjakan Southlink", area: "Sekupang", lat: 1.110245, lng: 103.99629 },
+  { slug: "ptzsouthlink", name: "Tanjakan Southlink (PTZ)", area: "Sekupang", lat: 1.110245, lng: 103.99629 },
 
   // — Batu Aji / Sagulung —
-  { slug: "batuaji", name: "Depan SP Plaza Batu Aji", area: "Batu Aji", lat: 1.042239, lng: 103.982872 },
+  { slug: "batuaji", name: "Depan SP Plaza Batu Aji", area: "Batu Aji", lat: 1.042745, lng: 103.981783 },
 
   // — Nongsa —
   // Titik dipastikan manual (2026-09-07). Dulu pakai centroid kelurahan Sambau
   // (1.154257, 104.100716) — meleset ~1,9 km. Dua kamera ini satu pertigaan.
-  { slug: "sambau1", name: "Pertigaan Sambau 1", area: "Nongsa", lat: 1.166793, lng: 104.112627 },
-  { slug: "sambau2", name: "Pertigaan Sambau 2", area: "Nongsa", lat: 1.166793, lng: 104.112627 },
-  { slug: "punggur1", name: "Pelabuhan Punggur", area: "Nongsa", lat: 1.034618, lng: 104.132155 },
+  { slug: "sambau1", name: "Pertigaan Sambau 1", area: "Nongsa", lat: 1.166642, lng: 104.112874 },
+  { slug: "sambau2", name: "Pertigaan Sambau 2", area: "Nongsa", lat: 1.166642, lng: 104.112874 },
+  { slug: "punggur1", name: "Pelabuhan Punggur", area: "Nongsa", lat: 1.036658, lng: 104.132615 },
 
   // — Titik dipastikan manual lewat Google Maps (2026-09-07) —
   // Ketiganya nggak ketemu di Nominatim/Overpass, jadi diverifikasi di lapangan-peta.
-  { slug: "engkuhamidah1", name: "Engku Hamidah", area: "Batam Kota", lat: 1.125114, lng: 104.026894 },
-  { slug: "danganom1", name: "Taman Dang Anom", area: "Batam Kota", lat: 1.121378, lng: 104.019885 },
-  { slug: "danganom3", name: "Taman Dang Anom Arah Jalan", area: "Batam Kota", lat: 1.121378, lng: 104.019885 },
+  { slug: "engkuhamidah1", name: "Engku Hamidah", area: "Batam Kota", lat: 1.125152, lng: 104.026701 },
+  { slug: "danganom1", name: "Taman Dang Anom", area: "Batam Kota", lat: 1.121339, lng: 104.020082 },
+  { slug: "danganom3", name: "Taman Dang Anom Arah Jalan", area: "Batam Kota", lat: 1.121339, lng: 104.020082 },
   // CATATAN: slug bilang "batuaji" tapi lokasinya BUKAN Kec. Batu Aji. "damkar" =
   // pemadam kebakaran, di sebelah Stadion Temenggung. Menurut batas kecamatan BIG edisi Juni
   // 2026 (dicek 2026-09-28) titik ini masuk Kec. Batam Kota (batas Satu Data Batam menaruhnya
   // di Sei Beduk — dua sumber resmi berbeda di sini; app memakai BIG).
   // "Arah Batu Aji" di nama = arah hadap.
-  { slug: "batuajidamkar1", name: "Depan Stadion Temenggung", area: "Batam Kota", lat: 1.088491, lng: 104.033566 },
-  { slug: "batuajidamkar3", name: "Depan Stadion Temenggung Arah Batu Aji", area: "Batam Kota", lat: 1.088491, lng: 104.033566 },
+  { slug: "batuajidamkar1", name: "Depan Stadion Temenggung", area: "Batam Kota", lat: 1.087781, lng: 104.033646 },
+  { slug: "batuajidamkar3", name: "Depan Stadion Temenggung Arah Batu Aji", area: "Batam Kota", lat: 1.087781, lng: 104.033646 },
 ];
 
 /** Kamera yang punya koordinat → dipasang sebagai pin di peta. */

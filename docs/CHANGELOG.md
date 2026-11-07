@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-08 · Koordinat CCTV dan Food Court dari pemilik
+
+Dari Google Sheet isian pemilik. Masih di lokal sampai pemilik meminta push.
+
+- **CCTV:** 28 kamera kini bertitik pasti, tidak ada lagi yang berstatus perkiraan.
+- **Food Court:** 12 dari 16 bertitik, jadi peta di `/makan/food-court` tampil dan Petunjuk Arah memakai titiknya. Pujasera 28 ditandai Tutup oleh pemilik; Pujasera A1, Pujasera Sindo Happy, dan Newton Food Court tidak ditemukan di Google Maps. Keempatnya belum diubah, menunggu keputusan pemilik.
+- Setiap titik diperiksa sebelum masuk: format, wilayah Batam, kecamatan menurut batas resmi, dan jarak dari titik lama. Selisih kecamatan hanya terjadi di dekat garis batas.
+- 69 baris direktori, 3 terminal luar Batam, dan Batamindo yang juga terisi di Google Sheet belum dimasukkan, atas permintaan pemilik.
+- Pengimpor tidak lagi menulis ulang berkas yang isinya tidak berubah.
+
 ## 2026-11-07 · Titik wakil pulau, kampung, dan kawasan
 
 Atas pertanyaan pemilik. Masih di lokal sampai pemilik meminta push.

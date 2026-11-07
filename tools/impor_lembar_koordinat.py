@@ -48,6 +48,9 @@ def tulis_json(doc, *p):
     akhir = ""
     with open(path, encoding="utf-8", newline="") as f:
         asli = f.read()
+    # Isi sama: jangan tulis ulang, supaya berkas yang tidak tersentuh tidak ikut berubah format.
+    if json.loads(asli) == doc:
+        return
     m = re.search(r"\n( +)\S", asli)
     if m:
         lekuk = len(m.group(1))
