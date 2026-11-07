@@ -201,6 +201,10 @@
   align-items: start;
   gap: 3cqi;
 }
+/* Dua angka sebaris harus muat di dalam jarak tepi poster. */
+.ig-dua .ig-angka {
+  font-size: 8cqi;
+}
 .ig-panah {
   font: 400 8cqi/1 var(--bch-font-sans);
 }
@@ -305,4 +309,9 @@
 }
 .ig-tiga .ig-angka {
   font-size: 12cqi;
+}
+
+/* Kisi di bawah judul seksi (Infografik Lain): sampul tidak menempel di garis. */
+.bch-judul-seksi + .ig-kisi {
+  padding-top: var(--bch-space-4);
 }

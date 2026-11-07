@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-07 · Perbaikan Infografik
+
+Atas koreksi pemilik. Masih di lokal sampai pemilik meminta push.
+
+- **Infografik Lain** di halaman detail tidak lagi menempel di garis judul seksi. Kisi kartu di bawah judul seksi kini diberi jarak.
+- **Poster Penduduk:** angka 1.394.459 sempat melewati jarak tepi kanan poster. Kini muat di semua ukuran, diukur di kisi dan halaman detail, desktop dan ponsel.
+
 ## 2026-11-07 · Masukan pemilik: spasi, gelombang, kaki situs, Instagram, Infografik
 
 Atas permintaan pemilik. Tayang sejak `9282022` (7 November 2026).
