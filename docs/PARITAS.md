@@ -92,4 +92,4 @@ Bukan syarat pengalihan situs lama, dicatat supaya perbandingan tidak salah baca
 - Info Loker di `/loker`: menu tampil setelah basis data tersambung — e2e mode contoh, halaman tayang 6 Nov 2026 tanpa menu
 - Dashboard Makanan, Jurnal, agenda, dan Info Loker di `/admin` — e2e mode contoh, belum diuji dengan Supabase sungguhan
 - Tambah dan ubah food court di `/admin/makanan` — e2e mode contoh, tayang 7 Nov 2026
-- Infografik di `/infografik` dan kaki situs dengan newsletter — e2e, belum tayang
+- Infografik di `/infografik` dan kaki situs dengan newsletter — e2e, tayang 7 Nov 2026

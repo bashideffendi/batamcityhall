@@ -2,7 +2,7 @@
 
 ## 2026-11-07 · Masukan pemilik: spasi, gelombang, kaki situs, Instagram, Infografik
 
-Atas permintaan pemilik. Masih di lokal sampai pemilik meminta push.
+Atas permintaan pemilik. Tayang sejak `9282022` (7 November 2026).
 
 - **Spasi:** isi tidak lagi menempel di garis judul seksi (Cari Tempat di beranda, Things to Do, Komunitas, Layanan Warga), garis tidak lagi terpisah dari judulnya, dan judul kecil diberi jarak ke paragraf. Diukur otomatis di 63 halaman dan dua lebar.
 - **Peta gelombang:** kepekatan warna naik dari 0,4 ke 0,65.
