@@ -463,7 +463,9 @@ def kolom_lembar(l):
 
 
 if __name__ == "__main__":
-    lembar = kumpulkan()
+    # Lembar yang sudah habis diisi (misalnya CCTV sejak 8 Nov 2026) tidak ditulis:
+    # rumus COUNTA pada rentang kosong akan ikut menghitung baris judul.
+    lembar = [l for l in kumpulkan() if l["baris"]]
     tulis(lembar)
     for l in lembar:
         print(f"{l['nama']}: {len(l['baris'])}")

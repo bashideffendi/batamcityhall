@@ -120,10 +120,10 @@ test.describe("pencarian /cari", () => {
 });
 
 test.describe("Food Court", () => {
-  test("16 baris, tiap baris punya Petunjuk Arah ke Google Maps, Lubuk Baja lebih dulu", async ({ page }) => {
+  test("15 baris (Pujasera 28 tutup), tiap baris punya Petunjuk Arah ke Google Maps, Lubuk Baja lebih dulu", async ({ page }) => {
     await page.goto("/makan/food-court");
     const baris = page.locator("[data-food-court]");
-    await expect(baris).toHaveCount(16);
+    await expect(baris).toHaveCount(15);
     for (const el of await baris.all()) {
       const tautan = el.getByRole("link", { name: "Petunjuk Arah" });
       await expect(tautan).toHaveCount(1);

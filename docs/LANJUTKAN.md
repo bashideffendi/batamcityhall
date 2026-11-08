@@ -46,7 +46,7 @@ Yang tersisa:
 2. **Dashboard.** Kode `/admin` teruji di mode contoh. Perlu proyek Supabase (menunggu izin pemilik), migrasi di `supabase/migrations/`, tiga variabel di Railway, dan satu akun dengan `app_metadata.peran = moderator`. Sesudah itu uji `features/konten/store-supabase.ts` melawan basis data sungguhan, karena belum pernah dijalankan.
 3. **Kategori Makanan kosong:** Makanan Sulawesi, Pempek, Makanan Jepang, Makanan Korea, Western dan Steak, Ice Cream, Vegetarian. Tempat ditambah lewat `/admin/makanan`, jangan dikarang.
 4. **Data ganda:** `rs-bpbatam` dan `kes-rs-bp-batam` tampaknya rumah sakit yang sama. Belum digabung, menunggu pemilik.
-5. **Mode uji lokal:** tes e2e butuh build dengan `NEXT_PUBLIC_MODE_CONTOH=1`, karena tautan formulir hanya tampil bila `KIRIMAN_AKTIF`.
+5. **Mode uji lokal:** tes e2e butuh build dengan `NEXT_PUBLIC_MODE_CONTOH=1`, karena tautan formulir hanya tampil bila `KIRIMAN_AKTIF`. Server juga dijalankan dengan `NEXT_PUBLIC_MODE_CONTOH=1 ADMIN_MODE_CONTOH=uji-e2e`, karena mode kiriman dibaca saat jalan. Arahkan tes ke server itu dengan `E2E_URL=http://localhost:<port> ADMIN_MODE_CONTOH=uji-e2e npx playwright test`. Variabel `PORT` tidak dibaca: tanpa `E2E_URL`, Playwright menyalakan server sendiri di 3100 tanpa mode contoh, dan tes Newsletter gagal dengan Formulir ini belum aktif.
 
 Jalankan e2e dengan `npx playwright test --workers=4 --timeout=60000`. Satu pekerja terlalu lambat.
 

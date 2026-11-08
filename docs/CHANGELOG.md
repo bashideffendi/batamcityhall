@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-08 · Pujasera 28 dihapus
+
+Atas keputusan pemilik. Masih di lokal sampai pemilik meminta push.
+
+- **Food Court:** Pujasera 28 sudah tutup menurut pemilik, jadi dihapus dari daftar. Kini 15 food court, 12 bertitik. Pujasera A1, Pujasera Sindo Happy, dan Newton Food Court tetap ada sambil menunggu keputusan pemilik.
+- **Lembar koordinat** dibuat ulang: 1.077 lokasi, tanpa titik yang sudah diisi pemilik. Lembar yang sudah habis diisi (CCTV) tidak ditulis lagi, karena rumus hitungnya akan ikut menghitung baris judul.
+- Tes Food Court kini mengharapkan 15 baris.
+
 ## 2026-11-08 · Koordinat CCTV dan Food Court dari pemilik
 
 Dari Google Sheet isian pemilik. Tayang sejak `55becfc` (8 November 2026), diperiksa di situs: peta Food Court dan 28 titik CCTV tampil.
