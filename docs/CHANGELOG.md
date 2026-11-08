@@ -2,7 +2,7 @@
 
 ## 2026-11-08 · Koordinat terminal luar Batam dan Batamindo
 
-Dari Google Sheet isian pemilik. Masih di lokal sampai pemilik meminta push.
+Dari Google Sheet isian pemilik. Tayang sejak `bab9765` (8 November 2026), diperiksa di situs: Petunjuk Arah Batamindo memakai titik pemilik.
 
 - **Terminal luar Batam:** Singapore Cruise Centre (HarbourFront), Tanah Merah Ferry Terminal, dan Stulang Laut kini bertitik dari pemilik. Halaman Peta sengaja tidak menandai terminal di luar Batam, jadi titik ini baru tersimpan di data.
 - **Batamindo Industrial Park:** titik pemilik menggantikan perkiraan Wikimapia (bergeser 894 m) dan kini tampil sebagai titik pasti. Catatan Anda kosong, jadi tidak dianggap titik wakil kawasan. Titiknya jatuh di Sei Beduk, sesuai kecamatannya.
