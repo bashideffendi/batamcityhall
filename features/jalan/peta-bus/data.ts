@@ -1,10 +1,10 @@
 // Peta Bus Trans Batam yang sudah disusun, satu kali saat build. Dipakai komponen server dan tes.
 import { KORIDOR, namaKelompok, warnaMalam } from "../trans-data";
-import { FERI, HALTE_TAMBAHAN, JALUR, KANVAS, PECAH, RENCANA, RUAS, SIMPUL, URUTAN } from "./jaringan";
+import { FERI, JALUR, KANVAS, PECAH, RENCANA, RUAS, SIMPUL, URUTAN } from "./jaringan";
 import { susunPeta, type Jaringan, type PetaBus } from "./susun";
 
-/** Nama halte untuk teks: dari halte.json bila ada, selain itu dari Peta Bus Batam 2024. */
-export const namaHalte = (id: string) => HALTE_TAMBAHAN[id] ?? namaKelompok(id);
+/** Nama halte untuk teks, dari halte.json (sisi A/B digabung). */
+export const namaHalte = (id: string) => namaKelompok(id);
 
 export const JARINGAN: Jaringan = {
   simpul: SIMPUL,

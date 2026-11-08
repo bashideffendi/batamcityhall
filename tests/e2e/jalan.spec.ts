@@ -89,7 +89,7 @@ test.describe("Trans Batam", () => {
     const tab = page.getByRole("tab");
     await expect(tab).toHaveCount(2);
     const panel = page.getByRole("tabpanel");
-    await expect(panel).toContainText("31 dari 56 halte tercatat.");
+    await expect(panel).toContainText("34 dari 56 halte tercatat.");
     await expect(panel).toContainText("Tiban Center");
     await expect(panel.locator(".jl-strip-gap")).toHaveCount(0);
     await expect(panel).not.toContainText("lokasi belum diisi");
@@ -99,8 +99,9 @@ test.describe("Trans Batam", () => {
     await page.keyboard.press("ArrowRight");
     await expect(tab.nth(1)).toHaveAttribute("aria-selected", "true");
     await expect(panel).toContainText("Green Land");
-    await expect(panel.locator(".jl-strip-gap")).toHaveCount(2);
-    await expect(panel.locator(".jl-strip-gap").first()).toHaveText("Beberapa halte di antaranya belum tercatat.");
+    // Arah balik kini lengkap dari Peta Bus Batam: tanpa celah.
+    await expect(panel).toContainText("Casablanca");
+    await expect(panel.locator(".jl-strip-gap")).toHaveCount(0);
     await expect(panel).not.toContainText("halte ke-");
 
     const fakta = page.locator(".bch-daftar").first();
@@ -113,14 +114,23 @@ test.describe("Trans Batam", () => {
     await expect(page.locator(".bch-page")).not.toContainText(/butuh line-offset|patterns per arah|Status data/);
   });
 
-  test("K8: gap berangka bisa dihitung, halte di kedua sisi tidak tersambung", async ({ page }) => {
+  test("K8: urutan lengkap dari Punggur sampai Jodoh, tanpa celah", async ({ page }) => {
     await page.goto("/jalan/trans-batam/k8");
     const daftar = page.locator('.jl-strip-daftar[data-arah="K8_ke_jodoh"] > li');
-    await expect(daftar.nth(5)).toContainText("Kabil Raya");
-    await expect(daftar.nth(6)).toHaveText("Beberapa halte di antaranya belum tercatat.");
-    await expect(daftar.nth(6)).toHaveAttribute("data-gap", "");
-    await expect(daftar.nth(7)).toContainText("Pasar Angkasa");
+    await expect(daftar).toHaveCount(45);
+    await expect(daftar.first()).toContainText("Transferpoint Punggur");
+    await expect(daftar.nth(13)).toContainText("Kabil Raya");
+    await expect(daftar.last()).toContainText("Transferpoint Terminal Jodoh");
+    await expect(page.locator(".jl-strip-gap")).toHaveCount(0);
     await expect(page.locator(".bch-page")).toContainText("Pelabuhan Telaga Punggur");
+  });
+
+  test("K5: celah di daftar jadwal lama tetap ditandai", async ({ page }) => {
+    await page.goto("/jalan/trans-batam/k5");
+    await page.getByRole("tab", { name: /Batam Centre → Jodoh/ }).click();
+    const gap = page.getByRole("tabpanel").locator(".jl-strip-gap");
+    await expect(gap).toHaveCount(1);
+    await expect(gap).toHaveText("Beberapa halte di antaranya belum tercatat.");
   });
 
   test("K10 halaman minimal tanpa halte dan jam", async ({ page }) => {

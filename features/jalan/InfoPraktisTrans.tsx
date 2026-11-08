@@ -12,8 +12,8 @@ export default function InfoPraktisTrans() {
       <dl className="bch-daftar">
         <dt>Tarif</dt>
         <dd>
-          <span className="bch-data">{tarif.umum}</span> umum, <span className="bch-data">{tarif.pelajar}</span> untuk{" "}
-          {tarif.berlaku_tarif_pelajar_untuk}. Tidak ada tarif tambahan ke bandara.
+          {tarif.umum} umum, {tarif.pelajar} untuk {tarif.berlaku_tarif_pelajar_untuk}. Tidak ada tarif tambahan ke
+          bandara.
         </dd>
         <dt>Cara Bayar</dt>
         <dd>
@@ -32,7 +32,7 @@ export default function InfoPraktisTrans() {
           {kontak.map((k) => (
             <span key={k.telepon} className="jl-kontak">
               {k.nama}:{" "}
-              <a href={`tel:${k.telepon.replace(/-/g, "")}`} className="bch-data jl-tautan-resmi">
+              <a href={`tel:${k.telepon.replace(/-/g, "")}`}>
                 {k.telepon}
               </a>{" "}
               (nomor per Desember 2022)
@@ -42,7 +42,7 @@ export default function InfoPraktisTrans() {
         <dt>Rencana</dt>
         <dd>
           Belum berjalan:
-          <ul className="jl-daftar-rapat">
+          <ul className="jl-info-daftar">
             {rencana.item.map((r) => (
               <li key={r}>{r}</li>
             ))}

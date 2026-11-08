@@ -4,8 +4,9 @@ import { describe, expect, it } from "vitest";
 import { TERMINAL_LUAR_BATAM, TERMINAL_TANPA_TITIK, titikTerminalDiPeta } from "@/features/jalan/feri-data";
 import { gayaJalan, LAYER_KLIK, titikKeGeoJson } from "@/features/jalan/peta-lapisan";
 import { bacaRuteGeo, muatRuteGeo, RUTE_KOSONG } from "@/features/jalan/rute-geo";
+import halteJson from "@/data/trans_batam/halte.json";
 import { halteDiPeta, JARINGAN, namaHalte, PETA } from "@/features/jalan/peta-bus/data";
-import { HALTE_TAMBAHAN, JALUR, SIMPUL } from "@/features/jalan/peta-bus/jaringan";
+import { JALUR, SIMPUL } from "@/features/jalan/peta-bus/jaringan";
 import { LEBAR_KANVAS, TINGGI_KANVAS } from "@/features/jalan/peta-bus/siluet";
 import { koridorPerRuas, polilinRuas, tabrakanLabel } from "@/features/jalan/peta-bus/susun";
 import {
@@ -29,8 +30,11 @@ import {
   transitKoridor,
   warnaMalam,
   type Halte,
+  type Pola,
 } from "@/features/jalan/trans-data";
 import type { StyleSpecification } from "maplibre-gl";
+
+const halteMentah = halteJson.halte as { id: string; status_koordinat: string; sumber_url?: string[] }[];
 
 // Halte di data yang sengaja tidak masuk peta: daftar jadwal lama Moovit untuk K5 dan RSBP versi 2022.
 const BUKAN_DI_PETA = new Set(["melchem-2", "tg-sengkuang", "lurah-sengkuang", "tvs-2", "sindo-2", "batu-ampar", "rsbp"]);
@@ -59,12 +63,23 @@ describe("peta bus", () => {
     expect([...hilang]).toEqual([]);
   });
 
-  it("tiap halte di peta tercatat di data atau di daftar tambahan Peta Bus Batam", () => {
+  it("tiap halte di peta tercatat di data, yang dari Peta Bus Batam bersumber jelas", () => {
     const kelompok = new Set(HALTE.map((h) => h.kelompok));
-    const asing = [...halteDiPeta()].filter((h) => !kelompok.has(h) && !(h in HALTE_TAMBAHAN));
-    expect(asing).toEqual([]);
-    // Tambahan tidak menggandakan halte yang sudah ada di data.
-    expect(Object.keys(HALTE_TAMBAHAN).filter((h) => kelompok.has(h))).toEqual([]);
+    expect([...halteDiPeta()].filter((h) => !kelompok.has(h))).toEqual([]);
+    const dariPdf = halteMentah.filter((h) => h.sumber_url?.includes("https://s.id/TransitMapBTM"));
+    expect(dariPdf.length).toBe(75);
+    for (const h of dariPdf) expect(h.status_koordinat, h.id).toBe("perlu_diisi_user");
+  });
+
+  it("urutan halte per arah sejalan dengan peta: tanpa celah kecuali jadwal lama", () => {
+    const bercelah = POLA.filter((p) => p.halte.some((h) => h.jenis === "gap")).map((p) => p.id);
+    expect(bercelah.sort()).toEqual(["K5_ke_batam_center_moovit_ujung", "K5_ke_jodoh_moovit"]);
+    const diPeta = halteDiPeta();
+    for (const p of POLA.filter((x) => !x.id.includes("moovit"))) {
+      for (const h of p.halte) {
+        if (h.jenis === "halte") expect(diPeta.has(kelompokDariHalte(h.halte_id)), `${p.id} ${h.halte_id}`).toBe(true);
+      }
+    }
   });
 
   it("tidak ada nama halte yang bertumpuk", () => {
@@ -133,21 +148,21 @@ describe("strip map per arah", () => {
     expect(polaKoridor("K10")).toHaveLength(0);
   });
 
-  it("gap tetap ada sebagai baris sendiri: 10 gap di 8 pola", () => {
+  it("gap tetap ada sebagai baris sendiri: tinggal di dua daftar jadwal lama", () => {
     const semua = POLA.map(arahStrip);
     const gap = semua.flatMap((a) => a.baris.filter((b) => b.jenis === "gap"));
-    expect(gap).toHaveLength(10);
-    expect(semua.filter((a) => a.baris.some((b) => b.jenis === "gap"))).toHaveLength(8);
+    expect(gap).toHaveLength(2);
+    expect(semua.filter((a) => a.baris.some((b) => b.jenis === "gap"))).toHaveLength(2);
   });
 
   it("label angka hanya bila bisa dihitung", () => {
     const pola = (id: string) => POLA.find((p) => p.id === id)!;
-    expect(hitungGap(pola("K8_ke_jodoh"))).toBe(70);
-    expect(hitungGap(pola("K9_pergi"))).toBe(41);
-    expect(hitungGap(pola("K3_pergi"))).toBe(40);
-    // Dua gap: tidak bisa dibagi. Tanpa total: tidak bisa dihitung. Total bertentangan: tidak bisa dihitung.
-    expect(hitungGap(pola("K2_ke_tanjung_uncang"))).toBeNull();
-    expect(hitungGap(pola("K1_balik"))).toBeNull();
+    const contoh = (halte: Pola["halte"], total: number | null) => ({ ...pola("K8_ke_jodoh"), halte, jumlah_halte_sumber: total });
+    const h = (id: string) => ({ jenis: "halte" as const, nama_di_sumber: id, urut_di_daftar: 1, halte_id: id });
+    expect(hitungGap(contoh([h("a"), { jenis: "gap" }, h("b")], 10))).toBe(8);
+    // Tanpa gap, dua gap, tanpa total: tidak bisa dihitung.
+    expect(hitungGap(pola("K8_ke_jodoh"))).toBeNull();
+    expect(hitungGap(contoh([h("a"), { jenis: "gap" }, h("b"), { jenis: "gap" }], 10))).toBeNull();
     expect(hitungGap(pola("K5_ke_batam_center_moovit_ujung"))).toBeNull();
     expect(labelGap(null)).toBe("halte tidak tercantum di sumber");
     expect(labelGap(70)).toBe("±70 halte tidak tercantum di sumber");
@@ -159,7 +174,7 @@ describe("strip map per arah", () => {
     const halte = k1.baris.filter((b) => b.jenis === "halte");
     expect(halte[0]).toMatchObject({ nama: "Transferpoint Sekupang", lokasi: "perkiraan", ujung: true });
     expect(halte[1]).toMatchObject({ nama: "Taman Palapa", lokasi: "belum", ujung: false });
-    expect(k1.tercantum).toBe("31 dari 56 halte tercantum di sumber.");
+    expect(k1.tercantum).toBe("34 dari 56 halte tercantum di sumber.");
   });
 
   it("catatan arah tanpa instruksi penyusun", () => {

@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-08 · Urutan halte koridor dilengkapi, Info Praktis dirapikan
+
+Atas permintaan pemilik. Masih di lokal sampai pemilik meminta push.
+
+- **Urutan halte per arah** di halaman koridor kini sejalan dengan Peta Bus: halte yang dilewati koridor di peta disisipkan di antara halte yang sudah tercatat, dan celah "belum tercatat" terisi. Contoh: K8 kini 45 halte berurutan dari Punggur sampai Jodoh, K4 dari Sagulung lewat pantai Marina sampai Sekupang, K9 berakhir di Kampung Sambau.
+- Halte yang berpasangan di seberang jalan dipilih menurut lajur kiri arah bus. Cara ini cocok dengan pasangan yang sudah tercatat, misalnya Harmoni Suites (arah Jodoh) dan Windsor (arah Sekupang).
+- 75 halte dari Peta Bus Batam masuk `data/trans_batam/halte.json` dengan koordinat kosong dan `sumber_url` s.id/TransitMapBTM. Lembar koordinat kini 1.145 lokasi (266 halte).
+- Dua daftar jadwal lama Moovit untuk K5 tidak diubah; celahnya tetap.
+- **Info Praktis Trans Batam:** angka dan nomor telepon tidak lagi memakai huruf mono di tengah kalimat, baris dipisah garis tipis, daftar Rencana bertanda poin dan sejajar.
+
 ## 2026-11-08 · Peta Bus Trans Batam baru
 
 Atas permintaan pemilik: peta seperti Peta Bus Batam (PDF karya Farhan S. Fadhillah, CC BY 4.0), lebih rapi. Tayang sejak `003eecb` (8 November 2026), diperiksa di situs: sembilan garis, sorot K7 di halaman koridor, kredit di Kolofon.

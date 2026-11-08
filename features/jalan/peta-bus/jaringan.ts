@@ -1,92 +1,13 @@
 // Jaringan Peta Bus Trans Batam: simpul, ruas dengan halte, dan rantai simpul tiap koridor.
 //
-// Halte dan urutannya dari data/trans_batam/halte.json (November 2026). Halte yang tidak tercatat di sana
-// dilengkapi dari Peta Bus Batam karya Farhan S. Fadhillah, akurat per 24 Oktober 2024, lisensi CC BY 4.0
-// (HALTE_TAMBAHAN). Bila keduanya berbeda, data November 2026 yang dipakai, misalnya K7 yang lewat bandara.
+// Halte dari data/trans_batam/halte.json: daftar November 2026, dilengkapi Peta Bus Batam karya Farhan S.
+// Fadhillah (akurat per 24 Oktober 2024, lisensi CC BY 4.0; halte itu bersumber_url s.id/TransitMapBTM). Bila
+// keduanya berbeda, data November 2026 yang dipakai, misalnya K7 yang lewat bandara.
 //
 // Tata letak dan bentuk pulau mengikuti Peta Bus Batam yang sama, atas permintaan pemilik. Posisi x,y adalah
 // posisi diagram, bukan koordinat halte.
 
 import type { DefFeri, DefRuas, DefSimpul, Titik } from "./susun";
-
-/** Halte dari Peta Bus Batam (Oktober 2024) yang belum ada di halte.json. */
-export const HALTE_TAMBAHAN: Record<string, string> = {
-  "tiban-mas": "Tiban Mas",
-  "mekar-sari": "Mekar Sari",
-  casablanca: "Casablanca",
-  "hotel-harmoni": "Hotel Harmoni",
-  "rusun-lancang-kuning": "Rusun Lancang Kuning",
-  "oto-medika": "Oto Medika",
-  "baloi-centre": "Baloi Centre",
-  "bcs-sdn-007": "BCS SDN 007",
-  "baloi-persero": "Baloi Persero",
-  "polsek-lubuk-baja": "Polsek Lubuk Baja",
-  indomobil: "Indomobil",
-  "lapas-perempuan": "Lapas Perempuan",
-  osella: "Osella",
-  imperium: "Imperium",
-  sukajadi: "Sukajadi",
-  "anggrek-mas": "Anggrek Mas",
-  "kepri-mall-pintu-2": "Kepri Mall Pintu 2",
-  "simpang-kepri": "Simpang Kepri",
-  dutamas: "Dutamas",
-  "legenda-malaka": "Legenda Malaka",
-  "legenda-bali": "Legenda Bali",
-  "mega-legenda": "Mega Legenda",
-  "pasar-legenda": "Pasar Legenda",
-  "mediterania-baru": "Mediterania Baru",
-  "mediterania-lama": "Mediterania Lama",
-  "simpang-kda": "Simpang KDA",
-  cendana: "Cendana",
-  "simpang-raya": "Simpang Raya",
-  "kantor-camat-kabil": "Kantor Camat",
-  "purna-yudha-indah": "Purna Yudha Indah",
-  "simpang-ptk": "Simpang PTK",
-  kaliban: "Kaliban",
-  "bumi-perkemahan": "Bumi Perkemahan",
-  "taman-jasinta": "Taman Jasinta",
-  "tunas-kabil": "Tunas Kabil",
-  "smpn-17": "SMPN 17",
-  labroy: "Labroy",
-  "teluk-nipah": "Teluk Nipah",
-  "simpang-taiwan": "Simpang Taiwan",
-  "rusun-kabil": "Rusun Kabil",
-  "kawasan-kabil": "Kawasan Kabil",
-  "rs-soedarsono": "RS Soedarsono",
-  "sdn-010-nongsa": "SDN 010 Nongsa",
-  "kua-nongsa": "KUA Nongsa",
-  "miftahul-hasanah": "Miftahul Hasanah",
-  "pasar-tuah": "Pasar Tuah",
-  "simpang-besar": "Simpang Besar",
-  "permata-bandara": "Permata Bandara",
-  "hawai-garden": "Hawai Garden",
-  "tunas-kda": "Tunas",
-  "bpk-pgn": "BPK/PGN",
-  "sekolah-global": "Sekolah Global",
-  amtek: "Amtek",
-  "damkar-temenggung": "Damkar",
-  batamindo: "Batamindo",
-  "rusun-muka-kuning": "Rusun Muka Kuning",
-  "cipta-buana": "Cipta Buana",
-  "tembesi-sayur": "Tembesi Sayur",
-  "sei-kasam": "Sei Kasam",
-  stm: "STM",
-  "planet-futsal": "Planet Futsal",
-  "tp-tanjung-uncang": "TP Tanjung Uncang",
-  "tunas-b": "Tunas B",
-  "smpn-47": "SMPN 47",
-  "d-merlion-hotel": "D Merlion Hotel",
-  "prima-garden": "Prima Garden",
-  "permata-laguna": "Permata Laguna",
-  "mitra-marina-mas": "Mitra Marina Mas",
-  "pratama-residence": "Pratama Residence",
-  "jambu-marina": "Jambu Marina",
-  "subdit-agribisnis": "Subdit Agribisnis",
-  "sman-24": "SMAN 24",
-  "baitul-hikmah": "Baitul Hikmah",
-  "sdn-008": "SDN 008",
-  "masjid-jami": "Masjid Jami",
-};
 
 /** Koordinat di bawah dalam satuan PDF Peta Bus Batam (pt); kanvas = (x + 50, y - 95) x 1,5. */
 export const KANVAS = { skala: 1.5, gx: 50, gy: -95 };
@@ -94,14 +15,14 @@ export const KANVAS = { skala: 1.5, gx: 50, gy: -95 };
 /** Pemecah baris label yang panjang ("|" = baris baru). Nama halte tidak diubah. */
 export const PECAH: Record<string, string> = {
   "masjid-agung-sultan-riayat-syah": "Masjid|Agung|Sultan|Riayat|Syah",
-  "tp-tanjung-uncang": "TP|Tanjung|Uncang",
+  "tanjung-uncang-tp": "TP|Tanjung|Uncang",
   "kantor-camat-batam-kota": "Kantor Camat|Batam Kota",
 };
 
 export const SIMPUL: Record<string, DefSimpul> = {
   // Sekupang, Tiban, Batu Aji
   SKP: { x: 105, y: 600, halte: "tp-sekupang", pos: "nw", teks: "Sekupang", ikon: "pelabuhan", utama: true },
-  JK4: { x: 185, y: 680 },
+  JK4: { x: 185, y: 680, halte: "sei-harapan", pos: "sw" },
   JKT: { x: 200, y: 695 },
   UIBC: { x: 460, y: 695 },
   UIB: { x: 460, y: 650, halte: "uib", pos: "w" },
@@ -183,7 +104,6 @@ export const RUAS: DefRuas[] = [
       [283, 954],
     ],
     halte: [
-      "sei-harapan",
       "sunbread",
       "sdn-008",
       "sman-24",
@@ -202,8 +122,8 @@ export const RUAS: DefRuas[] = [
       "d-merlion-hotel",
       "smpn-47",
     ],
-    perPotongan: [2, 3, 2, 0, 1, 3, 6, 1],
-    label: ["w", "e", "n", "s", "n", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "e"],
+    perPotongan: [1, 3, 2, 0, 1, 3, 6, 1],
+    label: ["e", "n", "s", "n", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "e"],
   },
   {
     dari: "BSC",
@@ -214,7 +134,7 @@ export const RUAS: DefRuas[] = [
       "jpo-pjb",
       "mts",
       "fanindo+top-100-regency",
-      "tp-tanjung-uncang+tunas-b",
+      "tanjung-uncang-tp+tunas-b",
       "masjid-agung-sultan-riayat-syah+tunas",
     ],
     rentang: [0, 0.95],

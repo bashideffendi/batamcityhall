@@ -28,7 +28,7 @@ export type ItemPola =
   | {
       jenis: "halte";
       nama_di_sumber: string;
-      urut_di_daftar: number;
+      urut_di_daftar?: number;
       halte_id: string;
     }
   | { jenis: "gap"; catatan?: string };
@@ -227,15 +227,15 @@ const CATATAN_POLA: Record<string, string> = {
   K1_balik: "Arah balik lewat jalan berbeda: Green Land, Yos Sudarso, Cipta Puri, Sei Harapan.",
   K2_ke_tanjung_uncang: "Arah sebaliknya diawali Hidayatullah A.",
   K3_balik: "Arah balik lewat jalan berbeda: Top 100 Jodoh, DC Mall SW, Pasar Induk, Windsor, Vihara, Penuin.",
-  K4_ke_sekupang: "Daftar ini ringkas. Versi 2022 juga menyebut RSBP sebelum Sekupang.",
+  K4_ke_sekupang: "Versi 2022 juga menyebut RSBP sebelum Sekupang.",
   K5_ke_jodoh_moovit: "Daftar dari jadwal lama, mungkin sudah berubah.",
   K5_ke_batam_center_moovit_ujung: "Daftar dari jadwal lama, hanya ujung rute.",
   K7_pergi: "Polda Kepri, Bandoeng Resto, Citra Mas, dan Kampung Mangga juga dilayani K9.",
-  K9_pergi: "Enam halte pertama sama dengan K8. Ujung di Nongsa belum tercatat.",
+  K9_pergi: "Halte dari Punggur sampai Kabil Raya sama dengan K8. Berakhir di Kampung Sambau.",
 };
 
 const LABEL_ARAH: Record<string, string> = {
-  K1_balik: "Batam Centre → Sekupang (sebagian)",
+  K1_balik: "Batam Centre → Sekupang",
   K5_ke_batam_center: "Jodoh → Batam Centre",
   K5_ke_jodoh_moovit: "Batam Centre → Jodoh (Jadwal Lama)",
   K5_ke_batam_center_moovit_ujung: "Ujung Arah Batam Centre (Jadwal Lama)",

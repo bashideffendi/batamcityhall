@@ -31,7 +31,8 @@ export default function Kolofon() {
         <p>
           Peta Bus Trans Batam mengikuti tata letak, bentuk pulau, dan sebagian nama halte dari Peta Bus Batam karya
           Farhan S. Fadhillah dengan kontribusi informasi Hazakura, akurat per 24 Oktober 2024, lisensi CC BY 4.0.
-          Gaya, warna, dan daftar halte November 2026 diubah untuk situs ini.
+          Peta itu juga melengkapi urutan halte di halaman koridor. Gaya, warna, dan daftar halte November 2026 diubah
+          untuk situs ini.
         </p>
 
         <h2>Grafis</h2>

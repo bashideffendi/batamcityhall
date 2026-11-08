@@ -395,7 +395,8 @@
         "K5": "perlu_cek_ulang"
       },
       "urutan_pola": {
-        "K5_ke_jodoh_moovit": 19
+        "K5_ke_jodoh_moovit": 19,
+        "K5_ke_batam_center": 8
       },
       "kecamatan": "Batu Ampar",
       "kecamatan_sumber": "seed_json",
@@ -422,7 +423,8 @@
       "kelompok": "kepri-mall",
       "koridor": [
         "K2",
-        "K6"
+        "K6",
+        "K8"
       ],
       "urutan_seed": {
         "K2": 13,
@@ -430,7 +432,8 @@
       },
       "urutan_pola": {
         "K2_ke_tanjung_uncang": 13,
-        "K6_pergi": 24
+        "K6_pergi": 24,
+        "K8_ke_jodoh": 26
       },
       "kecamatan": "Batam Kota",
       "kecamatan_sumber": "seed_json",
@@ -531,7 +534,9 @@
       "kelompok": "mega-mall",
       "koridor": [
         "K1",
-        "K5"
+        "K5",
+        "K6",
+        "K7"
       ],
       "urutan_seed": {
         "K1": 30
@@ -539,7 +544,9 @@
       "urutan_pola": {
         "K1_pergi": 30,
         "K5_ke_batam_center": 16,
-        "K5_ke_batam_center_moovit_ujung": 12
+        "K5_ke_batam_center_moovit_ujung": 12,
+        "K6_pergi": 37,
+        "K7_pergi": 34
       },
       "kecamatan": "Batam Kota",
       "kecamatan_sumber": "seed_json",
@@ -614,7 +621,8 @@
       "urutan_pola": {
         "K1_pergi": 16,
         "K3_pergi": 16,
-        "K3_balik": 18
+        "K3_balik": 18,
+        "K1_balik": 13
       },
       "kecamatan": null,
       "kecamatan_sumber": "seed_json",
@@ -710,12 +718,16 @@
       "kelompok": "taman-palapa",
       "koridor": [
         "K1",
-        "K3"
+        "K3",
+        "K4"
       ],
       "urutan_seed": null,
       "urutan_pola": {
         "K1_pergi": 2,
-        "K3_pergi": 2
+        "K3_pergi": 2,
+        "K1_balik": 28,
+        "K3_balik": 37,
+        "K4_ke_sekupang": 35
       },
       "kecamatan": "Sekupang",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -739,12 +751,16 @@
       "kelompok": "telkom-sekupang",
       "koridor": [
         "K1",
-        "K3"
+        "K3",
+        "K4"
       ],
       "urutan_seed": null,
       "urutan_pola": {
         "K1_pergi": 3,
-        "K3_pergi": 3
+        "K3_pergi": 3,
+        "K1_balik": 27,
+        "K3_balik": 36,
+        "K4_ke_sekupang": 34
       },
       "kecamatan": "Sekupang",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -768,12 +784,16 @@
       "kelompok": "shangrila",
       "koridor": [
         "K1",
-        "K3"
+        "K3",
+        "K4"
       ],
       "urutan_seed": null,
       "urutan_pola": {
         "K1_pergi": 4,
-        "K3_pergi": 4
+        "K3_pergi": 4,
+        "K1_balik": 26,
+        "K3_balik": 35,
+        "K4_ke_sekupang": 33
       },
       "kecamatan": "Sekupang",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -797,12 +817,16 @@
       "kelompok": "lampu-merah-patam-lestari",
       "koridor": [
         "K1",
-        "K3"
+        "K3",
+        "K4"
       ],
       "urutan_seed": null,
       "urutan_pola": {
         "K1_pergi": 5,
-        "K3_pergi": 5
+        "K3_pergi": 5,
+        "K1_balik": 25,
+        "K3_balik": 34,
+        "K4_ke_sekupang": 32
       },
       "kecamatan": "Sekupang",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -826,13 +850,16 @@
       "kelompok": "kartini",
       "koridor": [
         "K1",
-        "K3"
+        "K3",
+        "K4"
       ],
       "urutan_seed": null,
       "urutan_pola": {
         "K1_pergi": 6,
         "K1_balik": 13,
-        "K3_pergi": 6
+        "K3_pergi": 6,
+        "K3_balik": 32,
+        "K4_ke_sekupang": 30
       },
       "kecamatan": "Sekupang",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -863,7 +890,9 @@
       "urutan_seed": null,
       "urutan_pola": {
         "K1_pergi": 7,
-        "K3_pergi": 7
+        "K3_pergi": 7,
+        "K1_balik": 21,
+        "K3_balik": 30
       },
       "kecamatan": "Sekupang",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -894,7 +923,8 @@
       "urutan_seed": null,
       "urutan_pola": {
         "K1_pergi": 8,
-        "K3_pergi": 8
+        "K3_pergi": 8,
+        "K3_balik": 29
       },
       "kecamatan": "Sekupang",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -989,7 +1019,8 @@
       "urutan_pola": {
         "K1_pergi": 11,
         "K1_balik": 8,
-        "K3_pergi": 11
+        "K3_pergi": 11,
+        "K3_balik": 27
       },
       "kecamatan": "Sekupang",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -1113,7 +1144,8 @@
       "urutan_seed": null,
       "urutan_pola": {
         "K1_pergi": 15,
-        "K3_pergi": 15
+        "K3_pergi": 15,
+        "K1_balik": 14
       },
       "kecamatan": "Sekupang",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -1142,7 +1174,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K1_pergi": 17
+        "K1_pergi": 17,
+        "K1_balik": 12
       },
       "kecamatan": null,
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -1169,7 +1202,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K1_pergi": 18
+        "K1_pergi": 18,
+        "K1_balik": 10
       },
       "kecamatan": "Batam Kota",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -1198,7 +1232,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K1_pergi": 19
+        "K1_pergi": 19,
+        "K1_balik": 9
       },
       "kecamatan": null,
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -1225,7 +1260,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K1_pergi": 20
+        "K1_pergi": 20,
+        "K1_balik": 8
       },
       "kecamatan": null,
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -1254,7 +1290,8 @@
       "urutan_seed": null,
       "urutan_pola": {
         "K1_pergi": 21,
-        "K5_ke_batam_center_moovit_ujung": 3
+        "K5_ke_batam_center_moovit_ujung": 3,
+        "K1_balik": 7
       },
       "kecamatan": "Batam Kota",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -1386,7 +1423,8 @@
       "urutan_pola": {
         "K1_pergi": 26,
         "K2_ke_tanjung_uncang": 4,
-        "K5_ke_batam_center_moovit_ujung": 8
+        "K5_ke_batam_center_moovit_ujung": 8,
+        "K5_ke_batam_center": 19
       },
       "kecamatan": "Batam Kota",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -1420,7 +1458,8 @@
       "urutan_pola": {
         "K1_pergi": 27,
         "K2_ke_tanjung_uncang": 5,
-        "K5_ke_batam_center_moovit_ujung": 9
+        "K5_ke_batam_center_moovit_ujung": 9,
+        "K5_ke_batam_center": 20
       },
       "kecamatan": "Batam Kota",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -1446,12 +1485,15 @@
       "kelompok": "engku-putri",
       "koridor": [
         "K1",
-        "K5"
+        "K5",
+        "K6"
       ],
       "urutan_seed": null,
       "urutan_pola": {
         "K1_pergi": 28,
-        "K5_ke_batam_center_moovit_ujung": 10
+        "K5_ke_batam_center_moovit_ujung": 10,
+        "K5_ke_batam_center": 21,
+        "K6_pergi": 35
       },
       "kecamatan": "Batam Kota",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -1477,12 +1519,15 @@
       "kelompok": "imigrasi",
       "koridor": [
         "K1",
-        "K5"
+        "K5",
+        "K6"
       ],
       "urutan_seed": null,
       "urutan_pola": {
         "K1_pergi": 29,
-        "K5_ke_batam_center_moovit_ujung": 11
+        "K5_ke_batam_center_moovit_ujung": 11,
+        "K5_ke_batam_center": 22,
+        "K6_pergi": 36
       },
       "kecamatan": "Batam Kota",
       "kecamatan_sumber": "tabel_K1 (perkiraan)",
@@ -1679,11 +1724,13 @@
       ],
       "kelompok": "cipta-puri",
       "koridor": [
-        "K1"
+        "K1",
+        "K3"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K1_balik": 9
+        "K1_balik": 9,
+        "K3_balik": 28
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -1734,12 +1781,16 @@
       "kelompok": "sei-harapan",
       "koridor": [
         "K1",
+        "K3",
         "K4"
       ],
       "urutan_seed": null,
       "urutan_pola": {
         "K1_balik": 12,
-        "K4_ke_sekupang": 13
+        "K4_ke_sekupang": 13,
+        "K1_pergi": 8,
+        "K3_pergi": 8,
+        "K3_balik": 31
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -1762,11 +1813,17 @@
       ],
       "kelompok": "pci",
       "koridor": [
-        "K1"
+        "K1",
+        "K3",
+        "K4"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K1_balik": 14
+        "K1_balik": 14,
+        "K1_pergi": 6,
+        "K3_pergi": 6,
+        "K3_balik": 33,
+        "K4_ke_sekupang": 31
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -1874,11 +1931,13 @@
       ],
       "kelompok": "anggrek-sari",
       "koridor": [
-        "K2"
+        "K2",
+        "K6"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K2_ke_tanjung_uncang": 10
+        "K2_ke_tanjung_uncang": 10,
+        "K6_pergi": 30
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -1901,11 +1960,13 @@
       ],
       "kelompok": "simpang-kara",
       "koridor": [
-        "K2"
+        "K2",
+        "K6"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K2_ke_tanjung_uncang": 11
+        "K2_ke_tanjung_uncang": 11,
+        "K6_pergi": 29
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -1928,11 +1989,13 @@
       ],
       "kelompok": "plamo",
       "koridor": [
-        "K2"
+        "K2",
+        "K6"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K2_ke_tanjung_uncang": 12
+        "K2_ke_tanjung_uncang": 12,
+        "K6_pergi": 28
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -1955,11 +2018,13 @@
       ],
       "kelompok": "taman-niaga",
       "koridor": [
-        "K2"
+        "K2",
+        "K6"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K2_ke_tanjung_uncang": 14
+        "K2_ke_tanjung_uncang": 14,
+        "K6_pergi": 26
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2387,11 +2452,13 @@
       ],
       "kelompok": "smpn-9-batam",
       "koridor": [
-        "K2"
+        "K2",
+        "K4"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K2_ke_tanjung_uncang": 31
+        "K2_ke_tanjung_uncang": 31,
+        "K4_ke_sekupang": 10
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2414,11 +2481,13 @@
       ],
       "kelompok": "taman-carina",
       "koridor": [
-        "K2"
+        "K2",
+        "K4"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K2_ke_tanjung_uncang": 32
+        "K2_ke_tanjung_uncang": 32,
+        "K4_ke_sekupang": 9
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2441,11 +2510,13 @@
       ],
       "kelompok": "jpo-pjb",
       "koridor": [
-        "K2"
+        "K2",
+        "K4"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K2_ke_tanjung_uncang": 33
+        "K2_ke_tanjung_uncang": 33,
+        "K4_ke_sekupang": 8
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2468,11 +2539,13 @@
       ],
       "kelompok": "mts",
       "koridor": [
-        "K2"
+        "K2",
+        "K4"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K2_ke_tanjung_uncang": 34
+        "K2_ke_tanjung_uncang": 34,
+        "K4_ke_sekupang": 7
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2553,7 +2626,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K3_pergi": 17
+        "K3_pergi": 17,
+        "K3_balik": 22
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2580,7 +2654,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K3_pergi": 18
+        "K3_pergi": 18,
+        "K3_balik": 21
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2607,7 +2682,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K3_pergi": 19
+        "K3_pergi": 19,
+        "K3_balik": 20
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2743,7 +2819,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K3_pergi": 24
+        "K3_pergi": 24,
+        "K3_balik": 15
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2799,7 +2876,8 @@
       "kelompok": "dc-mall-sw",
       "koridor": [
         "K3",
-        "K5"
+        "K5",
+        "K8"
       ],
       "koridor_tambahan_tabel_transit": [
         "K8"
@@ -2807,7 +2885,8 @@
       "urutan_seed": null,
       "urutan_pola": {
         "K3_balik": 3,
-        "K5_ke_batam_center": 4
+        "K5_ke_batam_center": 4,
+        "K8_ke_jodoh": 41
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2830,11 +2909,13 @@
       ],
       "kelompok": "tanjunguma",
       "koridor": [
-        "K3"
+        "K3",
+        "K8"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K3_balik": 4
+        "K3_balik": 4,
+        "K8_ke_jodoh": 40
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2911,11 +2992,15 @@
       ],
       "kelompok": "pasar-induk",
       "koridor": [
-        "K3"
+        "K3",
+        "K5",
+        "K8"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K3_balik": 7
+        "K3_balik": 7,
+        "K5_ke_batam_center": 5,
+        "K8_ke_jodoh": 43
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2939,12 +3024,14 @@
       "kelompok": "pacific-hotel",
       "koridor": [
         "K3",
-        "K5"
+        "K5",
+        "K8"
       ],
       "urutan_seed": null,
       "urutan_pola": {
         "K3_balik": 8,
-        "K5_ke_batam_center": 5
+        "K5_ke_batam_center": 5,
+        "K8_ke_jodoh": 44
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -2998,7 +3085,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K3_balik": 10
+        "K3_balik": 10,
+        "K3_pergi": 31
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -3025,7 +3113,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K3_balik": 11
+        "K3_balik": 11,
+        "K3_pergi": 29
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -3052,7 +3141,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K3_balik": 12
+        "K3_balik": 12,
+        "K3_pergi": 28
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -3079,7 +3169,8 @@
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K3_balik": 13
+        "K3_balik": 13,
+        "K3_pergi": 27
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -4574,11 +4665,13 @@
       ],
       "kelompok": "best-western-panbil",
       "koridor": [
+        "K2",
         "K6"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K6_pergi": 22
+        "K6_pergi": 22,
+        "K2_ke_tanjung_uncang": 17
       },
       "kecamatan": "Sei Beduk",
       "kecamatan_sumber": "tabel_K6 (perkiraan)",
@@ -4744,11 +4837,13 @@
       ],
       "kelompok": "kampung-tengah",
       "koridor": [
-        "K7"
+        "K7",
+        "K9"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K7_pergi": 8
+        "K7_pergi": 8,
+        "K9_pergi": 26
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -5373,11 +5468,13 @@
       ],
       "kelompok": "al-munawaroh",
       "koridor": [
+        "K7",
         "K9"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K9_pergi": 7
+        "K9_pergi": 7,
+        "K7_pergi": 10
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -5400,11 +5497,13 @@
       ],
       "kelompok": "bri-batu-besar",
       "koridor": [
+        "K7",
         "K9"
       ],
       "urutan_seed": null,
       "urutan_pola": {
-        "K9_pergi": 8
+        "K9_pergi": 8,
+        "K7_pergi": 9
       },
       "kecamatan": null,
       "kecamatan_sumber": null,
@@ -5493,6 +5592,2199 @@
       "catatan_urutan": null,
       "catatan": "Hanya disebut di tabel konektivitas: \"Mega Mall; Masjid Raya A (±108 m dari One Batam Mall menurut Moovit)\". Koridor untuk halte ini tidak dirinci laporan.",
       "sumber_url": []
+    },
+    {
+      "id": "tiban-mas",
+      "nama": "Tiban Mas",
+      "nama_di_sumber": [
+        "Tiban Mas"
+      ],
+      "kelompok": "tiban-mas",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_balik": 26
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "mekar-sari",
+      "nama": "Mekar Sari",
+      "nama_di_sumber": [
+        "Mekar Sari"
+      ],
+      "kelompok": "mekar-sari",
+      "koridor": [
+        "K1",
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_balik": 15,
+        "K3_balik": 25
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "casablanca",
+      "nama": "Casablanca",
+      "nama_di_sumber": [
+        "Casablanca"
+      ],
+      "kelompok": "casablanca",
+      "koridor": [
+        "K1",
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K1_pergi": 20,
+        "K1_balik": 11,
+        "K8_ke_jodoh": 33
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "hotel-harmoni",
+      "nama": "Hotel Harmoni",
+      "nama_di_sumber": [
+        "Hotel Harmoni"
+      ],
+      "kelompok": "hotel-harmoni",
+      "koridor": [
+        "K3"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K3_pergi": 30,
+        "K3_balik": 11
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "rusun-lancang-kuning",
+      "nama": "Rusun Lancang Kuning",
+      "nama_di_sumber": [
+        "Rusun Lancang Kuning"
+      ],
+      "kelompok": "rusun-lancang-kuning",
+      "koridor": [
+        "K5"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K5_ke_batam_center": 7
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "oto-medika",
+      "nama": "Oto Medika",
+      "nama_di_sumber": [
+        "Oto Medika"
+      ],
+      "kelompok": "oto-medika",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 39
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "baloi-centre",
+      "nama": "Baloi Centre",
+      "nama_di_sumber": [
+        "Baloi Centre"
+      ],
+      "kelompok": "baloi-centre",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 38
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "bcs-sdn-007",
+      "nama": "BCS SDN 007",
+      "nama_di_sumber": [
+        "BCS SDN 007"
+      ],
+      "kelompok": "bcs-sdn-007",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 37
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "baloi-persero",
+      "nama": "Baloi Persero",
+      "nama_di_sumber": [
+        "Baloi Persero"
+      ],
+      "kelompok": "baloi-persero",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 36
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "polsek-lubuk-baja",
+      "nama": "Polsek Lubuk Baja",
+      "nama_di_sumber": [
+        "Polsek Lubuk Baja"
+      ],
+      "kelompok": "polsek-lubuk-baja",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 35
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "indomobil",
+      "nama": "Indomobil",
+      "nama_di_sumber": [
+        "Indomobil"
+      ],
+      "kelompok": "indomobil",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 34
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "lapas-perempuan",
+      "nama": "Lapas Perempuan",
+      "nama_di_sumber": [
+        "Lapas Perempuan"
+      ],
+      "kelompok": "lapas-perempuan",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 32
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "osella",
+      "nama": "Osella",
+      "nama_di_sumber": [
+        "Osella"
+      ],
+      "kelompok": "osella",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 31
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "imperium",
+      "nama": "Imperium",
+      "nama_di_sumber": [
+        "Imperium"
+      ],
+      "kelompok": "imperium",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 30
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "sukajadi",
+      "nama": "Sukajadi",
+      "nama_di_sumber": [
+        "Sukajadi"
+      ],
+      "kelompok": "sukajadi",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 29
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "anggrek-mas",
+      "nama": "Anggrek Mas",
+      "nama_di_sumber": [
+        "Anggrek Mas"
+      ],
+      "kelompok": "anggrek-mas",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 28
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "kepri-mall-pintu-2",
+      "nama": "Kepri Mall Pintu 2",
+      "nama_di_sumber": [
+        "Kepri Mall Pintu 2"
+      ],
+      "kelompok": "kepri-mall-pintu-2",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 27
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "simpang-kepri",
+      "nama": "Simpang Kepri",
+      "nama_di_sumber": [
+        "Simpang Kepri"
+      ],
+      "kelompok": "simpang-kepri",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 25
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "dutamas",
+      "nama": "Dutamas",
+      "nama_di_sumber": [
+        "Dutamas"
+      ],
+      "kelompok": "dutamas",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 24
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "legenda-malaka",
+      "nama": "Legenda Malaka",
+      "nama_di_sumber": [
+        "Legenda Malaka"
+      ],
+      "kelompok": "legenda-malaka",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 23
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "legenda-bali",
+      "nama": "Legenda Bali",
+      "nama_di_sumber": [
+        "Legenda Bali"
+      ],
+      "kelompok": "legenda-bali",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 22
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "mega-legenda",
+      "nama": "Mega Legenda",
+      "nama_di_sumber": [
+        "Mega Legenda"
+      ],
+      "kelompok": "mega-legenda",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 21
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "pasar-legenda",
+      "nama": "Pasar Legenda",
+      "nama_di_sumber": [
+        "Pasar Legenda"
+      ],
+      "kelompok": "pasar-legenda",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 20
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "mediterania-baru",
+      "nama": "Mediterania Baru",
+      "nama_di_sumber": [
+        "Mediterania Baru"
+      ],
+      "kelompok": "mediterania-baru",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 19
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "mediterania-lama",
+      "nama": "Mediterania Lama",
+      "nama_di_sumber": [
+        "Mediterania Lama"
+      ],
+      "kelompok": "mediterania-lama",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 18
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "simpang-kda",
+      "nama": "Simpang KDA",
+      "nama_di_sumber": [
+        "Simpang KDA"
+      ],
+      "kelompok": "simpang-kda",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 17
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "cendana",
+      "nama": "Cendana",
+      "nama_di_sumber": [
+        "Cendana"
+      ],
+      "kelompok": "cendana",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 16
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "simpang-raya",
+      "nama": "Simpang Raya",
+      "nama_di_sumber": [
+        "Simpang Raya"
+      ],
+      "kelompok": "simpang-raya",
+      "koridor": [
+        "K8"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 15
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "kantor-camat-kabil",
+      "nama": "Kantor Camat",
+      "nama_di_sumber": [
+        "Kantor Camat"
+      ],
+      "kelompok": "kantor-camat-kabil",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {},
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0). Hanya tercatat di peta: dilayani arah yang belum punya daftar urutan.",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "purna-yudha-indah",
+      "nama": "Purna Yudha Indah",
+      "nama_di_sumber": [
+        "Purna Yudha Indah"
+      ],
+      "kelompok": "purna-yudha-indah",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 13,
+        "K9_pergi": 13
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "simpang-ptk",
+      "nama": "Simpang PTK",
+      "nama_di_sumber": [
+        "Simpang PTK"
+      ],
+      "kelompok": "simpang-ptk",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 12,
+        "K9_pergi": 12
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "kaliban",
+      "nama": "Kaliban",
+      "nama_di_sumber": [
+        "Kaliban"
+      ],
+      "kelompok": "kaliban",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 11,
+        "K9_pergi": 11
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "bumi-perkemahan",
+      "nama": "Bumi Perkemahan",
+      "nama_di_sumber": [
+        "Bumi Perkemahan"
+      ],
+      "kelompok": "bumi-perkemahan",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 10,
+        "K9_pergi": 10
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "taman-jasinta",
+      "nama": "Taman Jasinta",
+      "nama_di_sumber": [
+        "Taman Jasinta"
+      ],
+      "kelompok": "taman-jasinta",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {},
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0). Hanya tercatat di peta: dilayani arah yang belum punya daftar urutan.",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "tunas-kabil",
+      "nama": "Tunas Kabil",
+      "nama_di_sumber": [
+        "Tunas Kabil"
+      ],
+      "kelompok": "tunas-kabil",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 7,
+        "K9_pergi": 7
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "smpn-17",
+      "nama": "SMPN 17",
+      "nama_di_sumber": [
+        "SMPN 17"
+      ],
+      "kelompok": "smpn-17",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 4,
+        "K9_pergi": 4
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "labroy",
+      "nama": "Labroy",
+      "nama_di_sumber": [
+        "Labroy"
+      ],
+      "kelompok": "labroy",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 3,
+        "K9_pergi": 3
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "teluk-nipah",
+      "nama": "Teluk Nipah",
+      "nama_di_sumber": [
+        "Teluk Nipah"
+      ],
+      "kelompok": "teluk-nipah",
+      "koridor": [
+        "K8",
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K8_ke_jodoh": 2,
+        "K9_pergi": 2
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "simpang-taiwan",
+      "nama": "Simpang Taiwan",
+      "nama_di_sumber": [
+        "Simpang Taiwan"
+      ],
+      "kelompok": "simpang-taiwan",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 15
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "rusun-kabil",
+      "nama": "Rusun Kabil",
+      "nama_di_sumber": [
+        "Rusun Kabil"
+      ],
+      "kelompok": "rusun-kabil",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 16
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "kawasan-kabil",
+      "nama": "Kawasan Kabil",
+      "nama_di_sumber": [
+        "Kawasan Kabil"
+      ],
+      "kelompok": "kawasan-kabil",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 17
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "rs-soedarsono",
+      "nama": "RS Soedarsono",
+      "nama_di_sumber": [
+        "RS Soedarsono"
+      ],
+      "kelompok": "rs-soedarsono",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 18
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "sdn-010-nongsa",
+      "nama": "SDN 010 Nongsa",
+      "nama_di_sumber": [
+        "SDN 010 Nongsa"
+      ],
+      "kelompok": "sdn-010-nongsa",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 19
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "kua-nongsa",
+      "nama": "KUA Nongsa",
+      "nama_di_sumber": [
+        "KUA Nongsa"
+      ],
+      "kelompok": "kua-nongsa",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 20
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "miftahul-hasanah",
+      "nama": "Miftahul Hasanah",
+      "nama_di_sumber": [
+        "Miftahul Hasanah"
+      ],
+      "kelompok": "miftahul-hasanah",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 21
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "pasar-tuah",
+      "nama": "Pasar Tuah",
+      "nama_di_sumber": [
+        "Pasar Tuah"
+      ],
+      "kelompok": "pasar-tuah",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 22
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "simpang-besar",
+      "nama": "Simpang Besar",
+      "nama_di_sumber": [
+        "Simpang Besar"
+      ],
+      "kelompok": "simpang-besar",
+      "koridor": [
+        "K9"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K9_pergi": 23
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "permata-bandara",
+      "nama": "Permata Bandara",
+      "nama_di_sumber": [
+        "Permata Bandara"
+      ],
+      "kelompok": "permata-bandara",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 15
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "hawai-garden",
+      "nama": "Hawai Garden",
+      "nama_di_sumber": [
+        "Hawai Garden"
+      ],
+      "kelompok": "hawai-garden",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 20
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "tunas-kda",
+      "nama": "Tunas",
+      "nama_di_sumber": [
+        "Tunas"
+      ],
+      "kelompok": "tunas-kda",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 28
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "bpk-pgn",
+      "nama": "BPK/PGN",
+      "nama_di_sumber": [
+        "BPK/PGN"
+      ],
+      "kelompok": "bpk-pgn",
+      "koridor": [
+        "K7"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K7_pergi": 33
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "sekolah-global",
+      "nama": "Sekolah Global",
+      "nama_di_sumber": [
+        "Sekolah Global"
+      ],
+      "kelompok": "sekolah-global",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 33
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "amtek",
+      "nama": "Amtek",
+      "nama_di_sumber": [
+        "Amtek"
+      ],
+      "kelompok": "amtek",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 31
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "damkar-temenggung",
+      "nama": "Damkar",
+      "nama_di_sumber": [
+        "Damkar"
+      ],
+      "kelompok": "damkar-temenggung",
+      "koridor": [
+        "K2",
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 15,
+        "K6_pergi": 25
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "batamindo",
+      "nama": "Batamindo",
+      "nama_di_sumber": [
+        "Batamindo"
+      ],
+      "kelompok": "batamindo",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 19
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "rusun-muka-kuning",
+      "nama": "Rusun Muka Kuning",
+      "nama_di_sumber": [
+        "Rusun Muka Kuning"
+      ],
+      "kelompok": "rusun-muka-kuning",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 20
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "cipta-buana",
+      "nama": "Cipta Buana",
+      "nama_di_sumber": [
+        "Cipta Buana"
+      ],
+      "kelompok": "cipta-buana",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 21
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "tembesi-sayur",
+      "nama": "Tembesi Sayur",
+      "nama_di_sumber": [
+        "Tembesi Sayur"
+      ],
+      "kelompok": "tembesi-sayur",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 22
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "sei-kasam",
+      "nama": "Sei Kasam",
+      "nama_di_sumber": [
+        "Sei Kasam"
+      ],
+      "kelompok": "sei-kasam",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 24
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "stm",
+      "nama": "STM",
+      "nama_di_sumber": [
+        "STM"
+      ],
+      "kelompok": "stm",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {},
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0). Hanya tercatat di peta: dilayani arah yang belum punya daftar urutan.",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "planet-futsal",
+      "nama": "Planet Futsal",
+      "nama_di_sumber": [
+        "Planet Futsal"
+      ],
+      "kelompok": "planet-futsal",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {},
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0). Hanya tercatat di peta: dilayani arah yang belum punya daftar urutan.",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "tanjung-uncang-tp",
+      "nama": "TP Tanjung Uncang",
+      "nama_di_sumber": [
+        "TP Tanjung Uncang"
+      ],
+      "kelompok": "tanjung-uncang-tp",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 5
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "tunas-b",
+      "nama": "Tunas B",
+      "nama_di_sumber": [
+        "Tunas B"
+      ],
+      "kelompok": "tunas-b",
+      "koridor": [
+        "K2"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K2_ke_tanjung_uncang": 43
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "smpn-47",
+      "nama": "SMPN 47",
+      "nama_di_sumber": [
+        "SMPN 47"
+      ],
+      "kelompok": "smpn-47",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 12
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "d-merlion-hotel",
+      "nama": "D Merlion Hotel",
+      "nama_di_sumber": [
+        "D Merlion Hotel"
+      ],
+      "kelompok": "d-merlion-hotel",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 13
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "prima-garden",
+      "nama": "Prima Garden",
+      "nama_di_sumber": [
+        "Prima Garden"
+      ],
+      "kelompok": "prima-garden",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 14
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "permata-laguna",
+      "nama": "Permata Laguna",
+      "nama_di_sumber": [
+        "Permata Laguna"
+      ],
+      "kelompok": "permata-laguna",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 15
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "mitra-marina-mas",
+      "nama": "Mitra Marina Mas",
+      "nama_di_sumber": [
+        "Mitra Marina Mas"
+      ],
+      "kelompok": "mitra-marina-mas",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 17
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "pratama-residence",
+      "nama": "Pratama Residence",
+      "nama_di_sumber": [
+        "Pratama Residence"
+      ],
+      "kelompok": "pratama-residence",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 18
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "jambu-marina",
+      "nama": "Jambu Marina",
+      "nama_di_sumber": [
+        "Jambu Marina"
+      ],
+      "kelompok": "jambu-marina",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 22
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "subdit-agribisnis",
+      "nama": "Subdit Agribisnis",
+      "nama_di_sumber": [
+        "Subdit Agribisnis"
+      ],
+      "kelompok": "subdit-agribisnis",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 23
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "sman-24",
+      "nama": "SMAN 24",
+      "nama_di_sumber": [
+        "SMAN 24"
+      ],
+      "kelompok": "sman-24",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 26
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "baitul-hikmah",
+      "nama": "Baitul Hikmah",
+      "nama_di_sumber": [
+        "Baitul Hikmah"
+      ],
+      "kelompok": "baitul-hikmah",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 25
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "sdn-008",
+      "nama": "SDN 008",
+      "nama_di_sumber": [
+        "SDN 008"
+      ],
+      "kelompok": "sdn-008",
+      "koridor": [
+        "K4"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K4_ke_sekupang": 27
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
+    },
+    {
+      "id": "masjid-jami",
+      "nama": "Masjid Jami",
+      "nama_di_sumber": [
+        "Masjid Jami"
+      ],
+      "kelompok": "masjid-jami",
+      "koridor": [
+        "K6"
+      ],
+      "urutan_seed": null,
+      "urutan_pola": {
+        "K6_pergi": 7
+      },
+      "kecamatan": null,
+      "kecamatan_sumber": null,
+      "alamat": null,
+      "lat": null,
+      "lng": null,
+      "status_koordinat": "perlu_diisi_user",
+      "catatan_koordinat": null,
+      "status_data": null,
+      "catatan_tabel": null,
+      "catatan_urutan": null,
+      "catatan": "Dari Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0).",
+      "sumber_url": [
+        "https://s.id/TransitMapBTM"
+      ]
     }
   ],
   "pola": [
@@ -5500,7 +7792,7 @@
       "id": "K1_pergi",
       "koridor": "K1",
       "arah": "Sekupang → Batam Centre",
-      "sumber": "Kepri Post Mei/Juli 2025; 31 dari 56 halte",
+      "sumber": "Kepri Post Mei/Juli 2025; 31 dari 56 halte; dilengkapi Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)",
       "jumlah_halte_sumber": 56,
       "lengkap": false,
       "sumber_url": [
@@ -5546,11 +7838,23 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "pci",
+          "nama_di_sumber": "PCI",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Kartini",
           "kecamatan_perkiraan": "Sekupang",
           "catatan_tabel": "Juga K3",
           "urut_di_daftar": 6,
           "halte_id": "kartini"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "sei-harapan",
+          "nama_di_sumber": "Sei Harapan",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -5638,6 +7942,12 @@
           "kecamatan_perkiraan": null,
           "urut_di_daftar": 17,
           "halte_id": "baloi-view"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "casablanca",
+          "nama_di_sumber": "Casablanca",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -5757,7 +8067,7 @@
       "id": "K1_balik",
       "koridor": "K1",
       "arah": "Batam Center → Sekupang (sebagian)",
-      "sumber": "Kepri Post Mei/Juli 2025 (arah balik, sebagian)",
+      "sumber": "Kepri Post Mei/Juli 2025 (arah balik, sebagian); dilengkapi Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)",
       "jumlah_halte_sumber": null,
       "lengkap": false,
       "sumber_url": [],
@@ -5799,8 +8109,58 @@
           "halte_id": "kawasaki-b"
         },
         {
-          "jenis": "gap",
-          "catatan": "halte tidak tercantum di sumber"
+          "jenis": "halte",
+          "halte_id": "raflesia-a",
+          "nama_di_sumber": "Raflesia A",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "gelael-a",
+          "nama_di_sumber": "Gelael A",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "orchid-a",
+          "nama_di_sumber": "Orchid A",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "rs-awal-bros",
+          "nama_di_sumber": "RS Awal Bros",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "casablanca",
+          "nama_di_sumber": "Casablanca",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "baloi-view",
+          "nama_di_sumber": "Baloi View",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "uib",
+          "nama_di_sumber": "UIB (A/B)",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "tiban-kampung-a",
+          "nama_di_sumber": "Tiban Kampung A",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "mekar-sari",
+          "nama_di_sumber": "Mekar Sari",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -5834,6 +8194,12 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "stc",
+          "nama_di_sumber": "STC",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Sei Harapan",
           "urut_di_daftar": 12,
           "halte_id": "sei-harapan"
@@ -5851,8 +8217,28 @@
           "halte_id": "pci"
         },
         {
-          "jenis": "gap",
-          "catatan": "halte tidak tercantum di sumber"
+          "jenis": "halte",
+          "halte_id": "lampu-merah-patam-lestari",
+          "nama_di_sumber": "Lampu Merah Patam Lestari",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "shangrila-a",
+          "nama_di_sumber": "Shangrila A",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "telkom-sekupang",
+          "nama_di_sumber": "Telkom Sekupang",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "taman-palapa",
+          "nama_di_sumber": "Taman Palapa",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -5868,7 +8254,7 @@
       "id": "K2_ke_tanjung_uncang",
       "koridor": "K2",
       "arah": "Batam Centre → Tanjung Uncang",
-      "sumber": "Kepri Post Juli 2025; daftar ada gap; total 78",
+      "sumber": "Kepri Post Juli 2025; daftar ada gap; total 78; dilengkapi Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)",
       "jumlah_halte_sumber": 78,
       "lengkap": false,
       "sumber_url": [
@@ -5961,9 +8347,21 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "damkar-temenggung",
+          "nama_di_sumber": "Damkar",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Stadion Temenggung B",
           "urut_di_daftar": 15,
           "halte_id": "stadion-temenggung-b"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "best-western-panbil",
+          "nama_di_sumber": "Best Western Panbil",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -5973,13 +8371,39 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "batamindo",
+          "nama_di_sumber": "Batamindo",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "rusun-muka-kuning",
+          "nama_di_sumber": "Rusun Muka Kuning",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "cipta-buana",
+          "nama_di_sumber": "Cipta Buana",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "tembesi-sayur",
+          "nama_di_sumber": "Tembesi Sayur",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Top 100 Batuaji B",
           "urut_di_daftar": 17,
           "halte_id": "top-100-batuaji-b"
         },
         {
-          "jenis": "gap",
-          "catatan": "halte tidak tercantum di sumber"
+          "jenis": "halte",
+          "halte_id": "sei-kasam",
+          "nama_di_sumber": "Sei Kasam",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -6060,10 +8484,6 @@
           "halte_id": "base-camp-b"
         },
         {
-          "jenis": "gap",
-          "catatan": "halte tidak tercantum di sumber"
-        },
-        {
           "jenis": "halte",
           "nama_di_sumber": "SMPN 9 Batam B",
           "urut_di_daftar": 31,
@@ -6095,6 +8515,12 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "tunas-b",
+          "nama_di_sumber": "Tunas B",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Tunas",
           "urut_di_daftar": 36,
           "halte_id": "tunas"
@@ -6113,7 +8539,7 @@
       "id": "K3_pergi",
       "koridor": "K3",
       "arah": "Sekupang → Jodoh",
-      "sumber": "Warta Jaya Vision, Desember 2025; total 65",
+      "sumber": "Warta Jaya Vision, Desember 2025; total 65; dilengkapi Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)",
       "jumlah_halte_sumber": 65,
       "lengkap": false,
       "sumber_url": [
@@ -6152,9 +8578,21 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "pci",
+          "nama_di_sumber": "PCI",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Kartini",
           "urut_di_daftar": 6,
           "halte_id": "kartini"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "sei-harapan",
+          "nama_di_sumber": "Sei Harapan",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -6265,8 +8703,34 @@
           "halte_id": "bri-nagoya"
         },
         {
-          "jenis": "gap",
-          "catatan": "halte tidak tercantum di sumber"
+          "jenis": "halte",
+          "halte_id": "bank-mandiri",
+          "nama_di_sumber": "Bank Mandiri",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "dana-graha",
+          "nama_di_sumber": "Dana Graha",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "bpjs-ketenagakerjaan",
+          "nama_di_sumber": "BPJS Ketenagakerjaan",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "hotel-harmoni",
+          "nama_di_sumber": "Hotel Harmoni",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "bca-jodoh-b",
+          "nama_di_sumber": "BCA Jodoh B",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -6282,7 +8746,7 @@
       "id": "K3_balik",
       "koridor": "K3",
       "arah": "Jodoh → Sekupang",
-      "sumber": "Warta Jaya Vision, Desember 2025; total 65",
+      "sumber": "Warta Jaya Vision, Desember 2025; total 65; dilengkapi Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)",
       "jumlah_halte_sumber": 65,
       "lengkap": false,
       "sumber_url": [
@@ -6351,6 +8815,12 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "hotel-harmoni",
+          "nama_di_sumber": "Hotel Harmoni",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "BPJS Ketenagakerjaan",
           "urut_di_daftar": 11,
           "halte_id": "bpjs-ketenagakerjaan"
@@ -6366,6 +8836,12 @@
           "nama_di_sumber": "Bank Mandiri",
           "urut_di_daftar": 13,
           "halte_id": "bank-mandiri"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "bri-nagoya",
+          "nama_di_sumber": "BRI Nagoya",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -6393,6 +8869,24 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "baloi-mas",
+          "nama_di_sumber": "Baloi Mas",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "pantai-permata",
+          "nama_di_sumber": "Pantai Permata",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "taman-kota",
+          "nama_di_sumber": "Taman Kota",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "UIB B",
           "urut_di_daftar": 18,
           "halte_id": "uib"
@@ -6404,8 +8898,82 @@
           "halte_id": "tiban-kampung"
         },
         {
-          "jenis": "gap",
-          "catatan": "halte tidak tercantum di sumber"
+          "jenis": "halte",
+          "halte_id": "mekar-sari",
+          "nama_di_sumber": "Mekar Sari",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "tiban-mas",
+          "nama_di_sumber": "Tiban Mas",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "tiban-raya",
+          "nama_di_sumber": "Tiban Raya",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "cipta-puri",
+          "nama_di_sumber": "Cipta Puri",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "gor-sekupang-a",
+          "nama_di_sumber": "GOR Sekupang A",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "stc",
+          "nama_di_sumber": "STC",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "sei-harapan",
+          "nama_di_sumber": "Sei Harapan",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "kartini",
+          "nama_di_sumber": "Kartini",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "pci",
+          "nama_di_sumber": "PCI",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "lampu-merah-patam-lestari",
+          "nama_di_sumber": "Lampu Merah Patam Lestari",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "shangrila-a",
+          "nama_di_sumber": "Shangrila A",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "telkom-sekupang",
+          "nama_di_sumber": "Telkom Sekupang",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "taman-palapa",
+          "nama_di_sumber": "Taman Palapa",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -6421,7 +8989,7 @@
       "id": "K4_ke_sekupang",
       "koridor": "K4",
       "arah": "Sagulung → Sekupang",
-      "sumber": "Kepri Post Februari 2026; daftar ringkas, total 69",
+      "sumber": "Kepri Post Februari 2026; daftar ringkas, total 69; dilengkapi Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)",
       "jumlah_halte_sumber": 69,
       "lengkap": false,
       "sumber_url": [
@@ -6454,9 +9022,39 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "tanjung-uncang-tp",
+          "nama_di_sumber": "TP Tanjung Uncang",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Fanindo",
           "urut_di_daftar": 5,
           "halte_id": "fanindo"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "mts",
+          "nama_di_sumber": "MTs",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "jpo-pjb-b",
+          "nama_di_sumber": "JPO PJB B",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "taman-carina-b",
+          "nama_di_sumber": "Taman Carina B",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "smpn-9-batam-b",
+          "nama_di_sumber": "SMPN 9 Batam B",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -6466,9 +9064,45 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "smpn-47",
+          "nama_di_sumber": "SMPN 47",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "d-merlion-hotel",
+          "nama_di_sumber": "D Merlion Hotel",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "prima-garden",
+          "nama_di_sumber": "Prima Garden",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "permata-laguna",
+          "nama_di_sumber": "Permata Laguna",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Jupiter",
           "urut_di_daftar": 7,
           "halte_id": "jupiter"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "mitra-marina-mas",
+          "nama_di_sumber": "Mitra Marina Mas",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "pratama-residence",
+          "nama_di_sumber": "Pratama Residence",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -6490,9 +9124,39 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "jambu-marina",
+          "nama_di_sumber": "Jambu Marina",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "subdit-agribisnis",
+          "nama_di_sumber": "Subdit Agribisnis",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Tanjung Riau",
           "urut_di_daftar": 11,
           "halte_id": "tanjung-riau"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "baitul-hikmah",
+          "nama_di_sumber": "Baitul Hikmah",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "sman-24",
+          "nama_di_sumber": "SMAN 24",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "sdn-008",
+          "nama_di_sumber": "SDN 008",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -6508,6 +9172,42 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "kartini",
+          "nama_di_sumber": "Kartini",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "pci",
+          "nama_di_sumber": "PCI",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "lampu-merah-patam-lestari",
+          "nama_di_sumber": "Lampu Merah Patam Lestari",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "shangrila-a",
+          "nama_di_sumber": "Shangrila A",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "telkom-sekupang",
+          "nama_di_sumber": "Telkom Sekupang",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "taman-palapa",
+          "nama_di_sumber": "Taman Palapa",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Transferpoint Sekupang",
           "urut_di_daftar": 14,
           "halte_id": "tp-sekupang"
@@ -6520,7 +9220,7 @@
       "id": "K5_ke_batam_center",
       "koridor": "K5",
       "arah": "Jodoh → BC (Kepri Post)",
-      "sumber": "Kepri Post Agustus 2025/2026",
+      "sumber": "Kepri Post Agustus 2025/2026; dilengkapi Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)",
       "jumlah_halte_sumber": {
         "nilai": [
           41,
@@ -6561,9 +9261,27 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "pasar-induk",
+          "nama_di_sumber": "Pasar Induk",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Pacific Hotel",
           "urut_di_daftar": 5,
           "halte_id": "pacific-hotel"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "rusun-lancang-kuning",
+          "nama_di_sumber": "Rusun Lancang Kuning",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "harbourbay",
+          "nama_di_sumber": "Harbourbay",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -6626,6 +9344,30 @@
           "catatan": "ditulis dalam kurung di sumber",
           "urut_di_daftar": 15,
           "halte_id": "kadin"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "ikan-daun",
+          "nama_di_sumber": "Ikan Daun",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "inko",
+          "nama_di_sumber": "INKO",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "engku-putri",
+          "nama_di_sumber": "Engku Putri",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "imigrasi",
+          "nama_di_sumber": "Imigrasi",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -6885,7 +9627,7 @@
       "id": "K6_pergi",
       "koridor": "K6",
       "arah": "Tanjung Piayu → Batam Centre",
-      "sumber": "InspirasiToday Mei 2026; 27 nama",
+      "sumber": "InspirasiToday Mei 2026; 27 nama; dilengkapi Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)",
       "jumlah_halte_sumber": {
         "nilai": [
           41,
@@ -6940,6 +9682,12 @@
           "kecamatan_perkiraan": "Sei Beduk",
           "urut_di_daftar": 6,
           "halte_id": "rhabayu-asri-a"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "masjid-jami",
+          "nama_di_sumber": "Masjid Jami",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -7064,11 +9812,47 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "damkar-temenggung",
+          "nama_di_sumber": "Damkar",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "taman-niaga-b",
+          "nama_di_sumber": "Taman Niaga B",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Kepri Mall",
           "kecamatan_perkiraan": "Batam Kota",
           "catatan_tabel": "Juga K2",
           "urut_di_daftar": 24,
           "halte_id": "kepri-mall"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "plamo",
+          "nama_di_sumber": "Plamo",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "simpang-kara-b",
+          "nama_di_sumber": "Simpang Kara B",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "anggrek-sari",
+          "nama_di_sumber": "Anggrek Sari",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "amtek",
+          "nama_di_sumber": "Amtek",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -7080,11 +9864,35 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "sekolah-global",
+          "nama_di_sumber": "Sekolah Global",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Masjid Agung",
           "kecamatan_perkiraan": "Batam Kota",
           "catatan_tabel": "Juga K2",
           "urut_di_daftar": 26,
           "halte_id": "masjid-agung"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "engku-putri",
+          "nama_di_sumber": "Engku Putri",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "imigrasi",
+          "nama_di_sumber": "Imigrasi",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "mega-mall",
+          "nama_di_sumber": "Mega Mall",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -7102,7 +9910,7 @@
       "id": "K7_pergi",
       "koridor": "K7",
       "arah": "Nongsa → Bandara Hang Nadim → Batam Centre",
-      "sumber": "InspirasiToday Mei 2026 + berita Juli 2026",
+      "sumber": "InspirasiToday Mei 2026 + berita Juli 2026; dilengkapi Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)",
       "jumlah_halte_sumber": {
         "nilai": 76,
         "catatan": "sebelum rute bandara"
@@ -7164,6 +9972,18 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "bri-batu-besar",
+          "nama_di_sumber": "BRI Batu Besar",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "al-munawaroh",
+          "nama_di_sumber": "Al Munawaroh",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Simpang Ojek",
           "urut_di_daftar": 9,
           "halte_id": "simpang-ojek"
@@ -7185,6 +10005,12 @@
           "nama_di_sumber": "Family Garden",
           "urut_di_daftar": 12,
           "halte_id": "family-garden"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "permata-bandara",
+          "nama_di_sumber": "Permata Bandara",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -7210,6 +10036,12 @@
           "nama_di_sumber": "Dotamana",
           "urut_di_daftar": 16,
           "halte_id": "dotamana"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "hawai-garden",
+          "nama_di_sumber": "Hawai Garden",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -7255,6 +10087,12 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "tunas-kda",
+          "nama_di_sumber": "Tunas",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Puri Legenda",
           "urut_di_daftar": 24,
           "halte_id": "puri-legenda"
@@ -7279,6 +10117,18 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "bpk-pgn",
+          "nama_di_sumber": "BPK/PGN",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "mega-mall",
+          "nama_di_sumber": "Mega Mall",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Transferpoint Batam Center",
           "urut_di_daftar": 28,
           "halte_id": "tp-batam-center"
@@ -7291,7 +10141,7 @@
       "id": "K8_ke_jodoh",
       "koridor": "K8",
       "arah": "Punggur → Jodoh",
-      "sumber": "Kepri Post Maret–April 2026; daftar sangat ringkas, total 78",
+      "sumber": "Kepri Post Maret–April 2026; daftar sangat ringkas, total 78; dilengkapi Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)",
       "jumlah_halte_sumber": 78,
       "lengkap": false,
       "sumber_url": [
@@ -7307,6 +10157,24 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "teluk-nipah",
+          "nama_di_sumber": "Teluk Nipah",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "labroy",
+          "nama_di_sumber": "Labroy",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "smpn-17",
+          "nama_di_sumber": "SMPN 17",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "PLTU Tanjung Kasam",
           "urut_di_daftar": 2,
           "halte_id": "pltu-tanjung-kasam"
@@ -7316,6 +10184,12 @@
           "nama_di_sumber": "TPA",
           "urut_di_daftar": 3,
           "halte_id": "tpa"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "tunas-kabil",
+          "nama_di_sumber": "Tunas Kabil",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -7331,19 +10205,213 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "bumi-perkemahan",
+          "nama_di_sumber": "Bumi Perkemahan",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "kaliban",
+          "nama_di_sumber": "Kaliban",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "simpang-ptk",
+          "nama_di_sumber": "Simpang PTK",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "purna-yudha-indah",
+          "nama_di_sumber": "Purna Yudha Indah",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Kabil Raya",
           "urut_di_daftar": 6,
           "halte_id": "kabil-raya"
         },
         {
-          "jenis": "gap",
-          "catatan": "via Simpang Kepri Mall, Simpang Jam, Baloi/BCS Mall, DC Mall, Pasar Induk menurut Batamnews 2022"
+          "jenis": "halte",
+          "halte_id": "simpang-raya",
+          "nama_di_sumber": "Simpang Raya",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "cendana",
+          "nama_di_sumber": "Cendana",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "simpang-kda",
+          "nama_di_sumber": "Simpang KDA",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "mediterania-lama",
+          "nama_di_sumber": "Mediterania Lama",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "mediterania-baru",
+          "nama_di_sumber": "Mediterania Baru",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "pasar-legenda",
+          "nama_di_sumber": "Pasar Legenda",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "mega-legenda",
+          "nama_di_sumber": "Mega Legenda",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "legenda-bali",
+          "nama_di_sumber": "Legenda Bali",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "legenda-malaka",
+          "nama_di_sumber": "Legenda Malaka",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "dutamas",
+          "nama_di_sumber": "Dutamas",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "simpang-kepri",
+          "nama_di_sumber": "Simpang Kepri",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "kepri-mall",
+          "nama_di_sumber": "Kepri Mall (A/B)",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "kepri-mall-pintu-2",
+          "nama_di_sumber": "Kepri Mall Pintu 2",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "anggrek-mas",
+          "nama_di_sumber": "Anggrek Mas",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "sukajadi",
+          "nama_di_sumber": "Sukajadi",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "imperium",
+          "nama_di_sumber": "Imperium",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "osella",
+          "nama_di_sumber": "Osella",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "lapas-perempuan",
+          "nama_di_sumber": "Lapas Perempuan",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "casablanca",
+          "nama_di_sumber": "Casablanca",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "indomobil",
+          "nama_di_sumber": "Indomobil",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "polsek-lubuk-baja",
+          "nama_di_sumber": "Polsek Lubuk Baja",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "baloi-persero",
+          "nama_di_sumber": "Baloi Persero",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "bcs-sdn-007",
+          "nama_di_sumber": "BCS SDN 007",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "baloi-centre",
+          "nama_di_sumber": "Baloi Centre",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "oto-medika",
+          "nama_di_sumber": "Oto Medika",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "tanjunguma",
+          "nama_di_sumber": "Tanjunguma",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "dc-mall-sw",
+          "nama_di_sumber": "DC Mall SW",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
           "nama_di_sumber": "Pasar Angkasa",
           "urut_di_daftar": 7,
           "halte_id": "pasar-angkasa"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "pasar-induk",
+          "nama_di_sumber": "Pasar Induk",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "pacific-hotel",
+          "nama_di_sumber": "Pacific Hotel",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -7359,7 +10427,7 @@
       "id": "K9_pergi",
       "koridor": "K9",
       "arah": "Punggur → Nongsa",
-      "sumber": "1news.id Oktober 2025, Kepri Post Maret 2026; total 54",
+      "sumber": "1news.id Oktober 2025, Kepri Post Maret 2026; total 54; dilengkapi Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)",
       "jumlah_halte_sumber": 54,
       "lengkap": false,
       "sumber_url": [
@@ -7375,6 +10443,24 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "teluk-nipah",
+          "nama_di_sumber": "Teluk Nipah",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "labroy",
+          "nama_di_sumber": "Labroy",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "smpn-17",
+          "nama_di_sumber": "SMPN 17",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "PLTU Tanjung Kasam",
           "urut_di_daftar": 2,
           "halte_id": "pltu-tanjung-kasam"
@@ -7384,6 +10470,12 @@
           "nama_di_sumber": "TPA",
           "urut_di_daftar": 3,
           "halte_id": "tpa"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "tunas-kabil",
+          "nama_di_sumber": "Tunas Kabil",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -7399,9 +10491,87 @@
         },
         {
           "jenis": "halte",
+          "halte_id": "bumi-perkemahan",
+          "nama_di_sumber": "Bumi Perkemahan",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "kaliban",
+          "nama_di_sumber": "Kaliban",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "simpang-ptk",
+          "nama_di_sumber": "Simpang PTK",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "purna-yudha-indah",
+          "nama_di_sumber": "Purna Yudha Indah",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
           "nama_di_sumber": "Kabil Raya",
           "urut_di_daftar": 6,
           "halte_id": "kabil-raya"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "simpang-taiwan",
+          "nama_di_sumber": "Simpang Taiwan",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "rusun-kabil",
+          "nama_di_sumber": "Rusun Kabil",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "kawasan-kabil",
+          "nama_di_sumber": "Kawasan Kabil",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "rs-soedarsono",
+          "nama_di_sumber": "RS Soedarsono",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "sdn-010-nongsa",
+          "nama_di_sumber": "SDN 010 Nongsa",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "kua-nongsa",
+          "nama_di_sumber": "KUA Nongsa",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "miftahul-hasanah",
+          "nama_di_sumber": "Miftahul Hasanah",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "pasar-tuah",
+          "nama_di_sumber": "Pasar Tuah",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "simpang-besar",
+          "nama_di_sumber": "Simpang Besar",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -7414,6 +10584,12 @@
           "nama_di_sumber": "BRI Batu Besar",
           "urut_di_daftar": 8,
           "halte_id": "bri-batu-besar"
+        },
+        {
+          "jenis": "halte",
+          "halte_id": "kampung-tengah",
+          "nama_di_sumber": "Kampung Tengah",
+          "sumber": "Peta Bus Batam (Farhan S. Fadhillah, Oktober 2024, CC BY 4.0)"
         },
         {
           "jenis": "halte",
@@ -7444,10 +10620,6 @@
           "nama_di_sumber": "Kampung Sambau",
           "urut_di_daftar": 13,
           "halte_id": "kampung-sambau"
-        },
-        {
-          "jenis": "gap",
-          "catatan": "ujung Nongsa"
         }
       ],
       "catatan": "Enam halte pertama sama dengan K8 (koridor berimpit Punggur–Kabil).",

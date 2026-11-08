@@ -1,6 +1,6 @@
 {
  "label": "08-rombak",
- "waktu": "2026-11-08T04:17:53.590Z",
+ "waktu": "2026-11-08T04:59:24.501Z",
  "hasil": [
   {
    "alamat": "/",
@@ -10,7 +10,7 @@
     "9": "kolom cari di bawah layar pertama"
    },
    "rincian": {
-    "porsiKotak": 2,
+    "porsiKotak": 3,
     "labelGanda": 0,
     "kotakCatatan": 0,
     "catatanKerja": [],
@@ -19,7 +19,7 @@
     "tautanGo": 0,
     "sebutan": [],
     "mati": 0,
-    "judul": "Gelombang rendah.",
+    "judul": "Memuat data",
     "utamaTerlihat": true,
     "adaCari": true,
     "cariTerlihat": false,
@@ -76,7 +76,7 @@
    "skor": 0,
    "butir": {},
    "rincian": {
-    "porsiKotak": 5,
+    "porsiKotak": 2,
     "labelGanda": 0,
     "kotakCatatan": 0,
     "catatanKerja": [],

@@ -1744,4 +1744,4 @@ Permintaan pemilik di luar spesifikasi awal. Statusnya di `docs/RENCANA-ROMBAK.m
 - [x] components/site/SiteFooter.tsx, components/site/FormNewsletter.tsx, /api/newsletter, /admin/newsletter · Kaki situs dan newsletter, dibuka setelah basis data tersambung
 - [ ] features/konten/store-supabase.ts, /api/admin/terbitkan · Belum pernah dijalankan melawan Supabase dan Railway sungguhan, menunggu izin pemilik
 - [x] /jurnal, /jurnal/[slug], /things-to-do, /cari, /kartu-pos · Halaman baru rombak, tertutup tes di tests/e2e/rombak.spec.ts
-- [x] data/koordinat_perlu_diisi.xlsx, tools/buat_lembar_koordinat.py, tools/impor_lembar_koordinat.py · Lembar 1.070 lokasi yang butuh koordinat (dibuat ulang 8 Nov; lembar yang habis diisi tidak ditulis). Rumus kolom Cek belum dibuka di Excel sungguhan
+- [x] data/koordinat_perlu_diisi.xlsx, tools/buat_lembar_koordinat.py, tools/impor_lembar_koordinat.py · Lembar 1.145 lokasi yang butuh koordinat (dibuat ulang 8 Nov; lembar yang habis diisi tidak ditulis). Rumus kolom Cek belum dibuka di Excel sungguhan
