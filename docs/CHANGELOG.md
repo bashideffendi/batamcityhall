@@ -9,7 +9,7 @@ Dari Google Sheet isian pemilik. Tayang sejak `55becfc` (8 November 2026), diper
 - Setiap titik diperiksa sebelum masuk: format, wilayah Batam, kecamatan menurut batas resmi, dan jarak dari titik lama. Selisih kecamatan hanya terjadi di dekat garis batas.
 - 69 baris direktori, 3 terminal luar Batam, dan Batamindo yang juga terisi di Google Sheet belum dimasukkan, atas permintaan pemilik.
 - Pengimpor tidak lagi menulis ulang berkas yang isinya tidak berubah.
-- **Legenda CCTV:** tanda Garis putus-putus hanya dijelaskan bila ada kamera yang lokasinya perkiraan. Sejak semua kamera bertitik, legenda itu tidak tampil. Masih di lokal sampai pemilik meminta push.
+- **Legenda CCTV:** tanda Garis putus-putus hanya dijelaskan bila ada kamera yang lokasinya perkiraan. Sejak semua kamera bertitik, legenda itu tidak tampil. Tayang sejak `a265786` (8 November 2026).
 
 ## 2026-11-07 · Titik wakil pulau, kampung, dan kawasan
 
