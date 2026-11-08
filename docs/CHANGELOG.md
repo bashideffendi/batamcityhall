@@ -2,7 +2,7 @@
 
 ## 2026-11-08 · Urutan halte koridor dilengkapi, Info Praktis dirapikan
 
-Atas permintaan pemilik. Masih di lokal sampai pemilik meminta push.
+Atas permintaan pemilik. Tayang sejak `8e2b117` (8 November 2026), diperiksa di situs: K8 45 halte tanpa celah, Info Praktis bergaris dan tanpa huruf mono.
 
 - **Urutan halte per arah** di halaman koridor kini sejalan dengan Peta Bus: halte yang dilewati koridor di peta disisipkan di antara halte yang sudah tercatat, dan celah "belum tercatat" terisi. Contoh: K8 kini 45 halte berurutan dari Punggur sampai Jodoh, K4 dari Sagulung lewat pantai Marina sampai Sekupang, K9 berakhir di Kampung Sambau.
 - Halte yang berpasangan di seberang jalan dipilih menurut lajur kiri arah bus. Cara ini cocok dengan pasangan yang sudah tercatat, misalnya Harmoni Suites (arah Jodoh) dan Windsor (arah Sekupang).
