@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
 import TautanKirim from "@/components/site/TautanKirim";
 import Link from "next/link";
-import DiagramSkematik, { gayaKoridor } from "@/features/jalan/DiagramSkematik";
+import PetaBus from "@/features/jalan/peta-bus/PetaBus";
 import { kapital } from "@/features/jalan/feri-terakhir";
 import InfoPraktisTrans from "@/features/jalan/InfoPraktisTrans";
-import { CATATAN_DAFTAR_HALTE, KORIDOR, lencanaKoridor, slugKoridor, teksJam } from "@/features/jalan/trans-data";
+import {
+  CATATAN_DAFTAR_HALTE,
+  gayaKoridor,
+  KORIDOR,
+  lencanaKoridor,
+  slugKoridor,
+  teksJam,
+} from "@/features/jalan/trans-data";
 
 export const metadata: Metadata = {
   title: "Trans Batam",
   description:
-    "Sembilan koridor beroperasi, satu direncanakan. Diagram, urutan halte, jam operasi, tarif, dan cara bayar Trans Batam.",
+    "Sembilan koridor beroperasi, satu direncanakan. Peta bus, urutan halte, jam operasi, tarif, dan cara bayar Trans Batam.",
 };
 
 export default function TransBatam() {
@@ -20,8 +27,15 @@ export default function TransBatam() {
         Sembilan koridor beroperasi, satu direncanakan. Tarif Rp5.000, pelajar Rp2.500, nontunai.
       </p>
 
-      <h2 className="mt-7 mb-4">Diagram Koridor</h2>
-      <DiagramSkematik />
+      <h2 className="mt-7 mb-4">Peta Bus</h2>
+      <PetaBus />
+      <p className="jl-catatan-kecil pb-kredit">
+        Garis disederhanakan; letak halte tidak sesuai peta. Tata letak dan sebagian nama halte mengikuti{" "}
+        <Link href="/kolofon" prefetch={false}>
+          Peta Bus Batam karya Farhan S. Fadhillah
+        </Link>
+        .
+      </p>
 
       <h2 className="mt-7 mb-3">Posisi Bus</h2>
       <p>Lihat di aplikasi SIP TB. Situs ini tidak melacak bus.</p>

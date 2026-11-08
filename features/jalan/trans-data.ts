@@ -3,6 +3,7 @@
 import halteRaw from "@/data/trans_batam/halte.json";
 import infoRaw from "@/data/trans_batam/info_praktis.json";
 import koridorRaw from "@/data/trans_batam/koridor.json";
+import type { CSSProperties } from "react";
 
 export type JumlahHalte = number | { nilai: number | number[]; status?: string; catatan?: string };
 
@@ -111,6 +112,10 @@ export function warnaMalam(hex: string): string {
   }
   return "#ffffff";
 }
+
+/** Variabel warna koridor untuk kelas .jl-k (terang dan malam). */
+export const gayaKoridor = (k: Pick<Koridor, "warna">) =>
+  ({ "--k": k.warna, "--k-malam": warnaMalam(k.warna) }) as CSSProperties;
 
 // ---------- Nama halte ----------
 

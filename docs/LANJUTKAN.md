@@ -36,7 +36,7 @@ Folder `C:\proyek\batamcityhall` (salinan lama `Desktop\batam-city-hall` terting
 
 ## Langkah berikutnya
 
-**Tayang vs lokal.** Situs tayang memakai commit `bab9765`: rombak menu, food court lewat dashboard, masukan 7 November (spasi, gelombang, kaki situs, Instagram, Infografik), titik wakil wilayah, koordinat 28 CCTV dan 12 food court dari pemilik, perbaikan legenda CCTV, penghapusan empat food court (kini 12, semuanya bertitik), serta titik tiga terminal luar Batam dan Batamindo sudah tayang. Yang menyusul: terjemahan Inggris dan penyambungan Supabase. Push ke `fase-1-fondasi` langsung men-deploy.
+**Tayang vs lokal.** Situs tayang memakai commit `bab9765`: rombak menu, food court lewat dashboard, masukan 7 November (spasi, gelombang, kaki situs, Instagram, Infografik), titik wakil wilayah, koordinat 28 CCTV dan 12 food court dari pemilik, perbaikan legenda CCTV, penghapusan empat food court (kini 12, semuanya bertitik), serta titik tiga terminal luar Batam dan Batamindo sudah tayang. Peta Bus Trans Batam baru (`features/jalan/peta-bus`, mengikuti Peta Bus Batam CC BY 4.0) masih lokal; siluetnya dibuat ulang dengan `tools/grafis/siluet-peta-bus.py` dari PDF yang tidak disimpan di repo. Yang menyusul: terjemahan Inggris dan penyambungan Supabase. Push ke `fase-1-fondasi` langsung men-deploy.
 
 Rencana dan statusnya: `docs/RENCANA-ROMBAK.md`. Temuan audit: `docs/AUDIT.md`. Yang menunggu pemilik: `docs/TODO_PEMILIK.md`.
 

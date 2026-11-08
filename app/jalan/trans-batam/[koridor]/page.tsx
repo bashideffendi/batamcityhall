@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TautanKirim from "@/components/site/TautanKirim";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import DiagramSkematik, { gayaKoridor } from "@/features/jalan/DiagramSkematik";
+import PetaBus from "@/features/jalan/peta-bus/PetaBus";
 import { kapital } from "@/features/jalan/feri-terakhir";
 import InfoPraktisTrans from "@/features/jalan/InfoPraktisTrans";
 import StripMap from "@/features/jalan/StripMap";
@@ -10,6 +10,7 @@ import {
   arahStrip,
   CATATAN_DAFTAR_HALTE,
   CATATAN_KORIDOR,
+  gayaKoridor,
   INFO,
   JEDA_JUMAT,
   konektivitasKoridor,
@@ -87,8 +88,8 @@ export default async function HalamanKoridor({ params }: { params: Promise<{ kor
           Koridor Tembesi—Barelang dan Galang masih disiapkan. Bus pengumpan ditargetkan mulai pertengahan 2027,
           menunggu pengesahan anggaran 2027.
         </p>
-        <h2 className="mt-7 mb-4">Diagram Koridor</h2>
-        <DiagramSkematik sorot={k.id} legenda={false} />
+        <h2 className="mt-7 mb-4">Peta Bus</h2>
+        <PetaBus sorot={k.id} />
       </div>
     );
   }
@@ -220,8 +221,8 @@ export default async function HalamanKoridor({ params }: { params: Promise<{ kor
         </>
       )}
 
-      <h2 className="mt-7 mb-4">Diagram Koridor</h2>
-      <DiagramSkematik sorot={k.id} legenda={false} />
+      <h2 className="mt-7 mb-4">Peta Bus</h2>
+      <PetaBus sorot={k.id} />
 
       <div className="mt-7">
         <InfoPraktisTrans />

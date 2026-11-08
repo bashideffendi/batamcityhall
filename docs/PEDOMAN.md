@@ -694,9 +694,13 @@ Peringatan gelombang: tidak ada untuk perairan Batam.
 **Trans Batam (/jalan/trans-batam)**
 - Judul: Trans Batam
 - Lede: Sembilan koridor beroperasi dan satu koridor direncanakan. Tarif Rp5.000 untuk umum dan Rp2.500 untuk pelajar, mahasiswa, serta anak di bawah 12 tahun. Pembayaran nontunai.
-- Bagian: **Diagram Koridor**
-  - Keterangan: Diagram ini menyederhanakan rute. Jarak dan arah tidak sesuai peta.
-  - Legenda: Halte transit · Ujung koridor · Pelabuhan · Bandara · Koridor rencana
+- Bagian: **Peta Bus**
+  - Peta skematik di atas bentuk pulau Batam. Tata letak dan bentuk pulau mengikuti Peta Bus Batam karya Farhan S. Fadhillah (CC BY 4.0), atas permintaan pemilik pada 8 November 2026, dengan gaya situs ini.
+  - Garis 0, 45, dan 90 derajat. Garis sejajar membelok dengan lengkung sepusat. Halte satu koridor bertanda garis pendek, halte beberapa koridor bertanda batang putih bergaris tinta, terminal dan transit bertanda kapsul. Terminal diberi deret nomor koridor.
+  - Bisa digeser, diperbesar (tombol, Ctrl dan gulir, cubit dua jari), dan dibuka layar penuh. Nama halte biasa disembunyikan saat peta diperkecil.
+  - Sorot: tombol di legenda atau ketuk garis. Koridor lain diredam, peta memuat koridor itu. Di halaman koridor, koridornya langsung disorot.
+  - Keterangan: Garis disederhanakan; letak halte tidak sesuai peta. Tata letak dan sebagian nama halte mengikuti [Peta Bus Batam karya Farhan S. Fadhillah] (tautan ke Kolofon).
+  - Legenda: Sorot Koridor (sepuluh tombol) · Halte · Halte Beberapa Koridor · Halte Transit atau Ujung · Pelabuhan · Koridor Rencana
 - Bagian: **Posisi Bus**. Isi: Posisi bus dapat dilihat di aplikasi SIP TB. Situs ini tidak melacak bus.
 - Bagian: **Semua Koridor**
   - Isi tiap baris: {K1} {Sekupang—Batam Centre} · {05.45—19.00 WIB}

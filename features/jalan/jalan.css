@@ -69,183 +69,374 @@
   margin-top: var(--bch-space-1);
 }
 
-/* ---------- Diagram skematik ---------- */
-.jl-skema {
+/* ---------- Peta Bus Trans Batam (features/jalan/peta-bus) ---------- */
+.pb {
   margin: 0;
 }
-.jl-skema-kanvas {
-  background: var(--bch-paper);
-  border: var(--bch-stroke-hair) solid var(--bch-rule);
-  border-radius: var(--bch-radius-1);
+.pb-bingkai {
+  position: relative;
+  border: 1.5px solid var(--bch-ink);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bch-map-sea);
 }
-.jl-skema-svg {
+.pb-svg {
   display: block;
   width: 100%;
-  height: auto;
+  height: clamp(420px, 72vh, 780px);
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
 }
-.jl-skema-svg[data-orientasi="hp"] {
-  display: none;
+.pb-svg:active {
+  cursor: grabbing;
 }
-@media (max-width: 720px) {
-  .jl-skema-svg[data-orientasi="lebar"] {
-    display: none;
-  }
-  .jl-skema-svg[data-orientasi="hp"] {
-    display: block;
-  }
+.pb-svg:focus-visible {
+  outline: 3px solid var(--bch-focus);
+  outline-offset: -3px;
 }
-.jl-skema figcaption {
-  margin-top: var(--bch-space-2);
-  max-width: var(--bch-measure);
+.pb[data-penuh] .pb-bingkai {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  border: 0;
+  border-radius: 0;
 }
-.jl-skema-svg a {
-  text-decoration: none;
+.pb[data-penuh] .pb-svg {
+  height: 100dvh;
+  touch-action: none;
 }
-.jl-skema-svg text {
-  fill: var(--bch-ink);
-  stroke: var(--bch-paper);
-  stroke-width: 3px;
-  paint-order: stroke;
+
+/* Dasar */
+.pb-pantai {
+  fill: none;
+  stroke: color-mix(in srgb, var(--bch-map-coast) 30%, var(--bch-map-sea));
+  stroke-width: 18px;
   stroke-linejoin: round;
 }
-.jl-garis path,
-.jl-rencana path,
-.jl-feri-garis path {
+.pb-darat {
+  fill: var(--bch-map-land);
+  stroke: color-mix(in srgb, var(--bch-map-coast) 70%, var(--bch-map-land));
+  stroke-width: 1.2px;
+}
+.pb-bandara {
+  fill: color-mix(in srgb, var(--bch-map-land) 82%, #7b8f55);
+}
+.pb-landasan {
+  fill: color-mix(in srgb, var(--bch-map-land) 70%, var(--bch-ink));
+}
+
+/* Garis */
+.pb-garis path {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.jl-garis-sentuh {
+.pb-sentuh {
   stroke: transparent;
-  stroke-width: 20px;
+  stroke-width: 18px;
+  cursor: pointer;
 }
-.jl-garis-casing {
-  stroke: var(--bch-paper);
+.pb-selubung {
+  stroke: var(--bch-map-land);
 }
-.jl-garis-warna {
+.pb-warna {
   stroke: var(--warna);
 }
-.jl-garis-warna[data-putus] {
-  stroke-dasharray: 2 7;
+.pb-garis g:hover > .pb-warna {
+  stroke-width: 6px;
 }
-.jl-tick {
-  stroke: var(--warna);
-  stroke-width: 1.5px;
-  stroke-linecap: butt !important;
-}
-.jl-lencana rect {
-  fill: var(--bch-paper);
-  stroke: var(--warna);
-  stroke-width: 1.5px;
-}
-.jl-lencana text {
-  font-family: var(--bch-font-mono);
-  font-weight: 600;
-  stroke: none;
-}
-.jl-garis:hover .jl-garis-warna:not([data-putus]) {
-  stroke-width: 6.5px;
-}
-.jl-garis:focus-visible {
-  outline: none;
-}
-.jl-garis:focus-visible .jl-lencana rect {
-  stroke: var(--bch-focus);
+.pb-rencana path {
+  fill: none;
+  stroke: var(--bch-ink);
   stroke-width: 3px;
+  stroke-dasharray: 0.1 8;
+  stroke-linecap: round;
+  opacity: 0.55;
 }
-.jl-kapsul-luar,
-.jl-kapsul-dalam {
+.pb-feri path {
+  fill: none;
+  stroke: var(--bch-map-coast);
+  stroke-width: 1.4px;
+  stroke-dasharray: 5 4;
+}
+
+/* Halte dan simpul */
+.pb-tick {
+  stroke: var(--warna);
+  stroke-width: 3.2px;
+  stroke-linecap: butt;
+}
+.pb-batang-luar,
+.pb-batang-dalam,
+.pb-simpul-luar,
+.pb-simpul-dalam {
   fill: none;
   stroke-linecap: round;
 }
-.jl-kapsul-luar {
+.pb-batang-luar {
   stroke: var(--bch-ink);
+  stroke-width: 5.6px;
 }
-.jl-kapsul-dalam {
+.pb-batang-dalam {
   stroke: var(--bch-paper);
+  stroke-width: 2.8px;
 }
-.jl-ikon path {
+.pb-simpul-luar {
+  stroke: var(--bch-ink);
+  stroke-width: 10.5px;
+}
+.pb-simpul-dalam {
+  stroke: var(--bch-paper);
+  stroke-width: 6.3px;
+}
+[data-utama] > .pb-simpul-luar {
+  stroke-width: 12.5px;
+}
+[data-utama] > .pb-simpul-dalam {
+  stroke-width: 7.8px;
+}
+.pb-ikon path {
   fill: none;
-  stroke: var(--bch-sea-ink);
+  stroke: var(--bch-ink);
   stroke-width: 1.3;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.jl-rencana-garis {
-  fill: none;
-  stroke: var(--bch-ink);
-  stroke-width: 1.5px;
-  stroke-dasharray: 5 5;
-  opacity: 0.55;
+
+/* Label */
+.pb-svg text {
+  fill: var(--bch-ink);
+  stroke: var(--bch-map-land);
+  stroke-width: 3px;
+  paint-order: stroke;
+  stroke-linejoin: round;
 }
-.jl-feri-garis path {
-  fill: none;
-  stroke: var(--bch-sea-ink);
-  stroke-width: 1px;
+.pb-l-utama {
+  letter-spacing: -0.01em;
 }
-.jl-feri-garis text {
-  fill: var(--bch-sea-ink);
-  font-style: italic;
-}
-.jl-label-gap {
+.pb-l-feri {
   fill: var(--bch-ink-muted) !important;
+  stroke: var(--bch-map-sea) !important;
   font-style: italic;
 }
-[data-redup] {
-  opacity: 0.22;
+.pb-lencana rect {
+  fill: var(--bch-paper);
+  stroke: var(--warna);
+  stroke-width: 2.2px;
 }
-.jl-skema-svg a:focus-visible .jl-rencana-garis {
-  opacity: 1;
-  stroke-width: 2.5px;
+.pb-lencana text {
+  fill: var(--bch-ink);
+  stroke: none;
+  font-family: var(--bch-font-mono);
+}
+.pb-svg[data-jauh] .pb-l-halte,
+.pb-svg[data-jauh] .pb-l-feri {
+  display: none;
+}
+
+/* Sorot: koridor lain diredam. */
+.pb-sorotan {
+  transition: opacity 0.15s;
+}
+.pb-svg[data-sorot="K1"] .pb-sorotan:not([data-k~="K1"]),
+.pb-svg[data-sorot="K2"] .pb-sorotan:not([data-k~="K2"]),
+.pb-svg[data-sorot="K3"] .pb-sorotan:not([data-k~="K3"]),
+.pb-svg[data-sorot="K4"] .pb-sorotan:not([data-k~="K4"]),
+.pb-svg[data-sorot="K5"] .pb-sorotan:not([data-k~="K5"]),
+.pb-svg[data-sorot="K6"] .pb-sorotan:not([data-k~="K6"]),
+.pb-svg[data-sorot="K7"] .pb-sorotan:not([data-k~="K7"]),
+.pb-svg[data-sorot="K8"] .pb-sorotan:not([data-k~="K8"]),
+.pb-svg[data-sorot="K9"] .pb-sorotan:not([data-k~="K9"]),
+.pb-svg[data-sorot="K10"] .pb-sorotan:not([data-k~="K10"]) {
+  opacity: 0.13;
+}
+/* Nama halte koridor lain disembunyikan, bukan diredam: teks pudar tidak terbaca. */
+.pb-svg[data-sorot="K1"] .pb-label .pb-sorotan:not([data-k~="K1"]),
+.pb-svg[data-sorot="K2"] .pb-label .pb-sorotan:not([data-k~="K2"]),
+.pb-svg[data-sorot="K3"] .pb-label .pb-sorotan:not([data-k~="K3"]),
+.pb-svg[data-sorot="K4"] .pb-label .pb-sorotan:not([data-k~="K4"]),
+.pb-svg[data-sorot="K5"] .pb-label .pb-sorotan:not([data-k~="K5"]),
+.pb-svg[data-sorot="K6"] .pb-label .pb-sorotan:not([data-k~="K6"]),
+.pb-svg[data-sorot="K7"] .pb-label .pb-sorotan:not([data-k~="K7"]),
+.pb-svg[data-sorot="K8"] .pb-label .pb-sorotan:not([data-k~="K8"]),
+.pb-svg[data-sorot="K9"] .pb-label .pb-sorotan:not([data-k~="K9"]),
+.pb-svg[data-sorot="K10"] .pb-label .pb-sorotan:not([data-k~="K10"]) {
+  display: none;
+}
+.pb-svg[data-sorot]:not([data-sorot="K10"]) .pb-rencana text {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pb-sorotan {
+    transition: none;
+  }
+}
+
+/* Kendali di atas peta */
+.pb-kendali {
+  position: absolute;
+  top: var(--bch-space-2);
+  right: var(--bch-space-2);
+  display: grid;
+  gap: 6px;
+}
+.pb-tombol {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1.5px solid var(--bch-ink);
+  border-radius: 8px;
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  font: 600 1.375rem/1 var(--bch-font-sans);
+  cursor: pointer;
+}
+.pb-tombol:hover {
+  background: color-mix(in srgb, var(--bch-paper) 88%, var(--bch-ink));
+}
+.pb-tombol svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pb-petunjuk {
+  position: absolute;
+  left: 50%;
+  bottom: var(--bch-space-3);
+  transform: translateX(-50%);
+  margin: 0;
+  padding: var(--bch-space-1) var(--bch-space-3);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--bch-ink) 86%, transparent);
+  color: var(--bch-paper);
+  font-size: var(--bch-text-small);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.pb-sorot-label {
+  position: absolute;
+  left: var(--bch-space-2);
+  top: var(--bch-space-2);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  max-width: calc(100% - 72px);
+  min-height: 44px;
+  padding: var(--bch-space-1) var(--bch-space-3);
+  border: 1.5px solid var(--bch-ink);
+  border-radius: 10px;
+  background: var(--bch-paper);
+  box-shadow: var(--bch-shadow-panel);
+  color: var(--bch-ink);
+  font: inherit;
+  font-size: var(--bch-text-small);
+  text-align: left;
+  cursor: pointer;
+}
+.pb-sorot-tutup {
+  margin-left: var(--bch-space-2);
+  color: var(--bch-link);
+  text-decoration: underline;
+  white-space: nowrap;
 }
 
 /* Legenda */
-.jl-legenda {
+.pb-legenda {
   margin-top: var(--bch-space-4);
 }
-.jl-legenda h3 {
+.pb-legenda h3 {
   margin: 0 0 var(--bch-space-2);
   font-size: var(--bch-text-kicker);
 }
-.jl-legenda-koridor {
+.pb-legenda-koridor {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
-  column-gap: var(--bch-space-4);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: var(--bch-space-1) var(--bch-space-3);
 }
-.jl-chip-tautan {
+.pb-chip {
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.55em;
+  width: 100%;
   min-height: 44px;
+  padding: var(--bch-space-1) var(--bch-space-2);
+  border: 1.5px solid transparent;
+  border-radius: 8px;
+  background: none;
   color: var(--bch-ink);
-  text-decoration: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
-.jl-chip-tautan:hover {
-  text-decoration: underline;
+.pb-chip:hover {
+  border-color: var(--bch-rule);
 }
-.jl-chip-tautan .jl-chip-warna {
-  height: 0.6em;
+.pb-chip[aria-pressed="true"] {
+  border-color: var(--warna);
+  background: color-mix(in srgb, var(--warna) 10%, var(--bch-paper));
 }
-.jl-legenda-simbol-daftar {
+.pb-chip .jl-chip-warna {
+  width: 1.6em;
+  height: 0.55em;
+}
+.pb-chip-nama {
+  min-width: 0;
+}
+.pb-legenda-simbol {
   list-style: none;
   margin: var(--bch-space-3) 0 0;
   padding: 0;
-  display: grid;
-  gap: var(--bch-space-2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-2) var(--bch-space-4);
   font-size: var(--bch-text-small);
+}
+.pb-legenda-simbol li {
+  display: flex;
+  align-items: center;
+  gap: var(--bch-space-2);
+}
+.pb-legenda-simbol svg {
+  width: 30px;
+  height: 16px;
+  flex: none;
+}
+.pb-contoh-garis {
+  fill: none;
+  stroke: var(--bch-ink-muted);
+  stroke-width: 4px;
+}
+.pb-contoh-tick {
+  fill: none;
+  stroke: var(--bch-ink-muted);
+  stroke-width: 3px;
+}
+.pb-contoh-rencana {
+  fill: none;
+  stroke: var(--bch-ink);
+  stroke-width: 3px;
+  stroke-dasharray: 0.1 6;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+.pb-cara {
+  margin-top: var(--bch-space-3);
   max-width: var(--bch-measure);
 }
-.jl-legenda-simbol-daftar li {
-  display: grid;
-  grid-template-columns: 2.75rem minmax(0, 1fr);
-  align-items: start;
-  gap: var(--bch-space-2);
-}
-.jl-legenda-simbol {
-  display: block;
+.pb-kredit {
+  margin-top: var(--bch-space-2);
+  max-width: var(--bch-measure);
 }
 
 /* ---------- Strip map ---------- */

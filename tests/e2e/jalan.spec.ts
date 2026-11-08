@@ -44,21 +44,35 @@ test.describe("Trans Batam", () => {
     expect(teks).not.toMatch(/sumber sekunder|media sekunder|jam dari berita|perlu cek ulang|Headway/i);
   });
 
-  test("diagram menggambar sembilan koridor dan legenda lengkap", async ({ page }) => {
+  test("peta bus menggambar sembilan koridor, bisa disorot dan diperbesar", async ({ page }) => {
     await page.goto("/jalan/trans-batam");
-    const svg = page.locator(".jl-skema-svg:visible");
+    await expect(page.getByRole("heading", { level: 2, name: "Peta Bus" })).toBeVisible();
+    const svg = page.locator(".pb-svg");
     await expect(svg).toHaveCount(1);
     for (const id of ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8", "K9"]) {
-      await expect(svg.locator(`.jl-garis[data-koridor="${id}"]`)).toHaveCount(1);
+      await expect(svg.locator(`[data-garis="${id}"]`)).toHaveCount(1);
     }
-    await expect(svg.locator(".jl-rencana-garis")).toHaveCount(1);
-    // K2 dua ruas, K3, K8, dan ujung K9.
-    await expect(svg.locator(".jl-garis-warna[data-putus]")).toHaveCount(5);
-    const legenda = page.locator(".jl-legenda");
-    for (const kata of ["Halte transit", "Ujung koridor", "Pelabuhan", "Bandara", "Koridor rencana"]) {
+    await expect(svg.locator('.pb-rencana[data-k="K10"]')).toHaveCount(1);
+    const legenda = page.locator(".pb-legenda");
+    for (const kata of ["Halte", "Halte Beberapa Koridor", "Halte Transit atau Ujung", "Pelabuhan", "Koridor Rencana"]) {
       await expect(legenda).toContainText(kata);
     }
-    await expect(legenda.locator(".jl-chip-tautan")).toHaveCount(10);
+    await expect(legenda.locator(".pb-chip")).toHaveCount(10);
+    const k3 = legenda.getByRole("button", { name: /K3/ });
+    await k3.click();
+    await expect(svg).toHaveAttribute("data-sorot", "K3");
+    await expect(k3).toHaveAttribute("aria-pressed", "true");
+    await page.getByRole("button", { name: /Tampilkan Semua/ }).click();
+    await expect(svg).not.toHaveAttribute("data-sorot", /.+/);
+    const awal = await svg.getAttribute("viewBox");
+    await page.getByRole("button", { name: "Perbesar peta" }).click();
+    await expect(svg).not.toHaveAttribute("viewBox", awal ?? "");
+    await expect(page.locator(".bch-page")).toContainText("Peta Bus Batam karya Farhan S. Fadhillah");
+  });
+
+  test("halaman koridor membuka peta dengan koridornya disorot", async ({ page }) => {
+    await page.goto("/jalan/trans-batam/k7");
+    await expect(page.locator(".pb-svg")).toHaveAttribute("data-sorot", "K7");
   });
 
   test("tiap koridor punya halaman", async ({ page }) => {

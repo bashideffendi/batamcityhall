@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-11-08 · Peta Bus Trans Batam baru
+
+Atas permintaan pemilik: peta seperti Peta Bus Batam (PDF karya Farhan S. Fadhillah, CC BY 4.0), lebih rapi. Masih di lokal sampai pemilik meminta push.
+
+- **Peta Bus** menggantikan Diagram Koridor di `/jalan/trans-batam` dan halaman koridor. Bentuk pulau, bandara, dan tata letak garis mengikuti PDF itu; warna, huruf, penanda halte, dan mode gelap mengikuti situs.
+- **Rapi di simpul padat:** garis sejajar membelok dengan lengkung sepusat, percabangan Batam Centre lewat simpang Kadin, halte berseberangan jalan berbagi satu tanda. Tidak ada nama halte yang bertumpuk (dites).
+- **Interaktif:** geser, perbesar (tombol, Ctrl dan gulir, cubit dua jari), layar penuh, dan sorot koridor dari legenda atau dengan mengetuk garis. Halaman koridor membuka peta dengan koridornya disorot.
+- **Halte:** 242 halte: 167 dari data November 2026 dan 75 dari PDF yang belum tercatat (misalnya K8 Baloi sampai Legenda, K9 Kabil sampai Batu Besar, K4 Marina sampai Tanjung Riau). Bila berbeda, data November 2026 yang dipakai, misalnya K7 lewat bandara. Jadwal lama Moovit K5 dan RSBP versi 2022 tidak digambar.
+- Kredit di bawah peta dan di Kolofon, termasuk lisensi dan perubahan.
+- Diagram lama (`DiagramSkematik.tsx`, `skema.ts`) dihapus. Siluet dibuat ulang dengan `tools/grafis/siluet-peta-bus.py` dari PDF pemilik.
+
 ## 2026-11-08 · Koordinat terminal luar Batam dan Batamindo
 
 Dari Google Sheet isian pemilik. Tayang sejak `bab9765` (8 November 2026), diperiksa di situs: Petunjuk Arah Batamindo memakai titik pemilik.
