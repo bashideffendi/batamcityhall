@@ -3,12 +3,16 @@
 import { useEffect, useId, useRef, useState } from "react";
 import type { ErrorData } from "hls.js";
 import {
-  CCTV_MB_PER_MIN,
+  angkaMb,
   checkCam,
   loadHls,
+  mbPerMenit as hitungMb,
   streamUrl,
+  teksMbPerMenit,
+  urutanJalur,
   type Cam,
   type CamCheck,
+  type Jalur,
 } from "@/features/langit-laut/lib/cctv";
 import { IconClose } from "./icons";
 
@@ -23,8 +27,12 @@ import { IconClose } from "./icons";
 // saat tab disembunyikan.
 //
 // Alur: checking (playlist + chunk hls.js paralel) → connecting (manifest) →
-// fetching (segmen pertama ±3 MB) → playing. Gagal punya sebab & pesan sendiri-sendiri,
+// fetching (segmen pertama, 0,2 sampai 9 MB) → playing. Gagal punya sebab & pesan sendiri-sendiri,
 // plus tangga pemulihan (retry startLoad / recoverMediaError) sebelum menyerah.
+//
+// Dua jalur pemutar (lib/cctv.ts urutanJalur): hls.js dulu, termasuk di iPhone lewat ManagedMediaSource,
+// lalu pemutar bawaan peramban. Gagal karena format atau media SEBELUM siaran tayang → coba jalur berikutnya.
+// Gagal karena jaringan atau server tidak pindah jalur: jalur lain akan gagal juga dan menarik data dua kali.
 // ---------------------------------------------------------------------------
 
 type Props = {
@@ -34,6 +42,8 @@ type Props = {
   onDead?: (slug: string, lastSeen: number | null) => void;
   /** false = tampilkan tombol putar dulu, jangan tarik apa pun (mis. dibuka dari link ?cam=). */
   autoStart?: boolean;
+  /** Perkiraan dari pemeriksaan server (app/api/cctv-status). null = belum diketahui. */
+  mbPerMenit?: number | null;
 };
 
 type State =
@@ -67,7 +77,7 @@ function deadTitle(verdict: Verdict, lastSeen: number | null): string {
   return "Kamera tidak aktif";
 }
 
-export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: Props) {
+export default function CctvPlayer({ cam, onClose, onDead, autoStart = true, mbPerMenit = null }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -89,6 +99,9 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
   const [hint, setHint] = useState<string | null>(null);
   const [showRetry, setShowRetry] = useState(false);
   const [deadInfo, setDeadInfo] = useState<{ verdict: Verdict; lastSeen: number | null } | null>(null);
+  /** Pemakaian data dari potongan yang benar-benar diunduh. Menggantikan perkiraan server. */
+  const [mbTerukur, setMbTerukur] = useState<number | null>(null);
+  const mb = mbTerukur ?? mbPerMenit;
 
   // Fokus: simpan elemen sebelumnya, fokus ke Tutup, kembalikan saat modal ditutup. Sekali saja.
   useEffect(() => {
@@ -131,8 +144,15 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
     const video = videoRef.current;
     if (!video || !started) return;
     const url = streamUrl(cam.slug);
-    type HlsInstance = InstanceType<Awaited<ReturnType<typeof loadHls>>["default"]>;
+    type HlsCtorT = Awaited<ReturnType<typeof loadHls>>["default"];
+    type HlsInstance = InstanceType<HlsCtorT>;
     let hls: HlsInstance | null = null;
+    let jalur: Jalur | null = null;
+    let cadangan: Jalur[] = [];
+    /** Kegagalan jalur sebelumnya, untuk keterangan teknis. */
+    const riwayat: string[] = [];
+    // iPhone: tanpa MediaSource penuh, hls.js memakai ManagedMediaSource.
+    const lewatMms = !("MediaSource" in window) && "ManagedMediaSource" in window;
     let cancelled = false;
     const ctrl = new AbortController();
     const timers: number[] = [];
@@ -169,13 +189,29 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
         // play() yang ditolak SESUDAH vonis gagal (sumber error) bukan soal autoplay
         if (!cancelled && !hasPlayed && !settled) setState("blocked");
       });
-    const fail = (msg: string, techNote?: string, hintText?: string) => {
-      if (cancelled) return;
+    const namaJalur = () =>
+      jalur === null
+        ? "pemeriksaan kamera"
+        : jalur === "bawaan"
+          ? "pemutar bawaan peramban"
+          : `hls.js${lewatMms ? " lewat ManagedMediaSource" : ""}`;
+    // Dideklarasikan di bawah (butuh HlsCtor); dipanggil fail() untuk pindah jalur.
+    let jalankan: (j: Jalur) => void = () => {};
+    /** bisaPindah: kegagalan karena format atau media, jadi jalur lain mungkin berhasil. */
+    const fail = (msg: string, techNote?: string, hintText?: string, bisaPindah = false) => {
+      if (cancelled || settled) return;
+      const catatan = `${namaJalur()}: ${techNote ?? msg}`;
+      if (bisaPindah && !hasPlayed && cadangan.length) {
+        riwayat.push(catatan);
+        mark(`pindah jalur: ${catatan}`);
+        jalankan(cadangan.shift() as Jalur);
+        return;
+      }
       settled = true;
       // hls.js hanya stopLoad() pada galat fatal; sisa buffer jangan diputar di balik pesan
       if (hasPlayed) video.pause();
       setNote(msg);
-      setTech(techNote ?? null);
+      setTech([...riwayat, catatan].join(" · "));
       setHint(hintText ?? null);
       setShowRetry(true);
       setState("error");
@@ -212,16 +248,31 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
       }, 1500);
     };
     const onVideoError = () => {
-      if (hls || cancelled) return; // jalur hls.js punya handler sendiri
+      if (jalur !== "bawaan" || cancelled) return; // jalur hls.js punya handler sendiri
       const code = video.error?.code;
-      // Kode 4 SEBELUM metadata = gagal mengambil sumber (jaringan/403/5xx) — Blink & WebKit
-      // memetakannya ke MEDIA_ERR_SRC_NOT_SUPPORTED. Format yang benar-benar tak didukung sudah
-      // ditangkap canPlayType. Jadi kode 4 dini = gagal tersambung, bukan salah browser.
+      const pesan = video.error?.message ? ` (${video.error.message})` : "";
+      // Kode 4 SEBELUM metadata bisa berarti gagal mengambil sumber atau format yang ditolak (H.265 dalam .ts,
+      // playlist terlalu pendek). Blink & WebKit sama-sama memetakannya ke MEDIA_ERR_SRC_NOT_SUPPORTED.
       const beforeMeta = video.readyState < 1 || !firstFrag;
       if (code === 4 && beforeMeta)
-        fail("Belum bisa tersambung ke kamera", "Galat media kode 4 sebelum metadata termuat.");
-      else if (code === 3 || code === 4) fail("Peramban ini belum bisa memutar kamera ini");
-      else fail(hasPlayed ? "Koneksi ke kamera terputus" : "Belum bisa tersambung ke kamera");
+        fail(
+          "Belum bisa tersambung ke kamera",
+          `Galat media kode 4 sebelum metadata termuat${pesan}.`,
+          undefined,
+          true,
+        );
+      else if (code === 3 || code === 4)
+        fail(
+          "Peramban ini belum bisa memutar kamera ini",
+          `Galat media kode ${code}${pesan}.`,
+          "Coba kamera lain.",
+          true,
+        );
+      else
+        fail(
+          hasPlayed ? "Koneksi ke kamera terputus" : "Belum bisa tersambung ke kamera",
+          `Galat media kode ${code ?? "?"}${pesan}.`,
+        );
     };
     video.addEventListener("playing", onPlaying);
     video.addEventListener("pause", onPause);
@@ -300,19 +351,36 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
         return;
       }
       // "diam" (timeout/offline) TIDAK memvonis kamera — tetap coba.
-      setState("connecting");
 
-      const HlsCtor = hlsMod.status === "fulfilled" ? hlsMod.value.default : null;
+      const HlsCtor: HlsCtorT | null = hlsMod.status === "fulfilled" ? hlsMod.value.default : null;
       const nativeOk = video.canPlayType("application/vnd.apple.mpegurl") !== "";
-      // iPhone (iOS ≥17.1) punya ManagedMediaSource tapi bukan MediaSource penuh: jalur
-      // NATIVE Apple lebih andal di sana. Chromium menjawab "maybe" untuk canPlayType
-      // padahal HLS native-nya nyangkut → di Chromium tetap hls.js dulu.
-      const appleNative = nativeOk && !("MediaSource" in window);
-      if (appleNative || !HlsCtor || !HlsCtor.isSupported()) {
-        if (!nativeOk) {
-          fail("Peramban ini belum bisa memutar kamera ini", "Peramban tidak mendukung siaran HLS.");
-          return;
+      const urutan = urutanJalur(!!HlsCtor && HlsCtor.isSupported(), nativeOk);
+      if (!urutan.length) {
+        fail(
+          "Peramban ini belum bisa memutar kamera ini",
+          `Peramban tidak mendukung siaran HLS${hlsMod.status === "rejected" ? " dan pemutar hls.js gagal dimuat" : ""}.`,
+          "Coba peramban lain.",
+        );
+        return;
+      }
+
+      // Bongkar jalur yang sedang jalan sebelum mencoba jalur lain.
+      const lepas = () => {
+        if (hls) {
+          try {
+            hls.destroy();
+          } catch {
+            /* abaikan */
+          }
+          hls = null;
         }
+        if (video.hasAttribute("src")) {
+          video.removeAttribute("src");
+          video.load();
+        }
+      };
+
+      const mulaiBawaan = () => {
         video.addEventListener(
           "loadedmetadata",
           () => {
@@ -329,129 +397,153 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
         );
         video.src = url;
         tryPlay();
-        return;
-      }
+      };
 
-      const Hls = HlsCtor;
-      // Semua field policy WAJIB lengkap: mergeConfig hls.js cuma spread dangkal —
-      // kalau timeoutRetry/errorRetry kosong, retry mati diam-diam.
-      const pol = (ttfb: number, load: number, tRetry: number, eRetry: number) => ({
-        default: {
-          maxTimeToFirstByteMs: ttfb,
-          maxLoadTimeMs: load,
-          timeoutRetry: { maxNumRetry: tRetry, retryDelayMs: 0, maxRetryDelayMs: 0 },
-          errorRetry: { maxNumRetry: eRetry, retryDelayMs: 1000, maxRetryDelayMs: 4000 },
-        },
-      });
-      const h = new Hls({
-        lowLatencyMode: false,
-        backBufferLength: 10,
-        maxBufferLength: 15, // jangan antre 30 dtk (≈9 MB) buat orang yang nutup setelah 5 dtk
-        maxMaxBufferLength: 30,
-        startFragPrefetch: true, // potongan pertama mulai turun begitu manifest ke-parse
-        liveSyncDurationCount: 2,
-        liveMaxLatencyDurationCount: 4, // wajib > liveSyncDurationCount
-        liveMaxUnchangedPlaylistRefresh: 4,
-        manifestLoadPolicy: pol(6000, 10000, 1, 1),
-        playlistLoadPolicy: pol(6000, 10000, 2, 2),
-        // 20 dtk per potongan 3 MB = butuh ≥1,2 Mbit/s; di bawah itu stream 2,4 Mbit/s memang mustahil real-time
-        fragLoadPolicy: pol(8000, 20000, 1, 2),
-      });
-      hls = h;
-      h.on(Hls.Events.MANIFEST_PARSED, () => {
-        mark("manifest");
-        setState((s) => (s === "connecting" ? "fetching" : s));
-        tryPlay();
-      });
-      h.on(Hls.Events.FRAG_LOADED, () => {
-        if (!firstFrag) {
-          firstFrag = true;
-          mark("frag1");
-          setNote(null);
-          setShowRetry(false);
-        }
-      });
-      h.on(Hls.Events.ERROR, (_e, data: ErrorData) => {
-        if (cancelled) return;
-        if (!data.fatal) {
-          const now = Date.now();
-          nonFatal = nonFatal.filter((t) => now - t < 30000);
-          nonFatal.push(now);
-          if (data.details === Hls.ErrorDetails.BUFFER_STALLED_ERROR && hasPlayed && !settled) {
-            setState("buffering");
-            armStall();
+      const mulaiHls = (Hls: HlsCtorT) => {
+        // Semua field policy WAJIB lengkap: mergeConfig hls.js cuma spread dangkal —
+        // kalau timeoutRetry/errorRetry kosong, retry mati diam-diam.
+        const pol = (ttfb: number, load: number, tRetry: number, eRetry: number) => ({
+          default: {
+            maxTimeToFirstByteMs: ttfb,
+            maxLoadTimeMs: load,
+            timeoutRetry: { maxNumRetry: tRetry, retryDelayMs: 0, maxRetryDelayMs: 0 },
+            errorRetry: { maxNumRetry: eRetry, retryDelayMs: 1000, maxRetryDelayMs: 4000 },
+          },
+        });
+        const h = new Hls({
+          lowLatencyMode: false,
+          backBufferLength: 10,
+          maxBufferLength: 15, // jangan antre 30 dtk (≈9 MB) buat orang yang nutup setelah 5 dtk
+          maxMaxBufferLength: 30,
+          startFragPrefetch: true, // potongan pertama mulai turun begitu manifest ke-parse
+          liveSyncDurationCount: 2,
+          liveMaxLatencyDurationCount: 4, // wajib > liveSyncDurationCount
+          liveMaxUnchangedPlaylistRefresh: 4,
+          manifestLoadPolicy: pol(6000, 10000, 1, 1),
+          playlistLoadPolicy: pol(6000, 10000, 2, 2),
+          // 20 dtk per potongan 3 MB = butuh ≥1,2 Mbit/s; di bawah itu stream 2,4 Mbit/s memang mustahil real-time
+          fragLoadPolicy: pol(8000, 20000, 1, 2),
+        });
+        hls = h;
+        h.on(Hls.Events.MANIFEST_PARSED, () => {
+          mark("manifest");
+          setState((s) => (s === "connecting" ? "fetching" : s));
+          tryPlay();
+        });
+        h.on(Hls.Events.FRAG_LOADED, (_e, d) => {
+          // Pemakaian data dari potongan sungguhan. Perkiraan server bisa meleset untuk kamera ini.
+          const terukur = hitungMb(d.frag.stats.loaded, d.frag.duration);
+          if (terukur !== null) setMbTerukur(terukur);
+          if (!firstFrag) {
+            firstFrag = true;
+            mark("frag1");
+            setNote(null);
+            setShowRetry(false);
           }
-          if (nonFatal.length >= 3) setNote("Sinyal kamera putus-putus");
-          return;
-        }
-        const code = data.response?.code ?? 0;
-        if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
-          if (code >= 400 && code < 500) {
-            // 4xx nggak di-retry hls.js — dan memang jangan. Hanya 404 yang pasti "tidak ada";
-            // 4xx lain (403 dsb.) belum tentu kamera mati.
-            if (code === 404) dead("hilang", null);
-            else fail("Kamera belum bisa diakses");
+        });
+        h.on(Hls.Events.ERROR, (_e, data: ErrorData) => {
+          if (cancelled) return;
+          if (!data.fatal) {
+            const now = Date.now();
+            nonFatal = nonFatal.filter((t) => now - t < 30000);
+            nonFatal.push(now);
+            if (data.details === Hls.ErrorDetails.BUFFER_STALLED_ERROR && hasPlayed && !settled) {
+              setState("buffering");
+              armStall();
+            }
+            if (nonFatal.length >= 3) setNote("Sinyal kamera putus-putus");
             return;
           }
-          if (code >= 500) {
-            fail("Server kamera sedang gangguan");
+          const code = data.response?.code ?? 0;
+          if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
+            if (code >= 400 && code < 500) {
+              // 4xx nggak di-retry hls.js — dan memang jangan. Hanya 404 yang pasti "tidak ada";
+              // 4xx lain (403 dsb.) belum tentu kamera mati.
+              if (code === 404) dead("hilang", null);
+              else fail("Kamera belum bisa diakses", `${data.details}, HTTP ${code}.`);
+              return;
+            }
+            if (code >= 500) {
+              fail("Server kamera sedang gangguan", `${data.details}, HTTP ${code}.`);
+              return;
+            }
+            const timeout =
+              data.details === Hls.ErrorDetails.FRAG_LOAD_TIMEOUT ||
+              data.details === Hls.ErrorDetails.MANIFEST_LOAD_TIMEOUT ||
+              data.details === Hls.ErrorDetails.LEVEL_LOAD_TIMEOUT;
+            if (timeout && !firstFrag) {
+              fail(
+                "Sinyal kurang kuat untuk video ini",
+                `${data.details}. Potongan pertama tidak selesai diunduh dalam 20 detik.`,
+                "Coba lagi di jaringan yang lebih kuat, atau pilih kamera yang lebih hemat data.",
+              );
+              return;
+            }
+            if (netRetries < 2) {
+              // kedip jaringan di tengah tontonan → nyambung ulang, tanpa buka-tutup modal
+              const delay = netRetries === 0 ? 1000 : 3000;
+              netRetries++;
+              setState(hasPlayed ? "buffering" : "connecting");
+              setNote("Koneksi sempat putus, menyambung ulang");
+              const go = () => {
+                if (cancelled) return;
+                h.startLoad(-1);
+                tryPlay();
+              };
+              if (navigator.onLine === false) window.addEventListener("online", () => later(go, 200), { once: true });
+              else later(go, delay);
+              return;
+            }
+            fail(hasPlayed ? "Koneksi ke kamera terputus" : "Belum bisa tersambung ke kamera", `${data.details}.`);
             return;
           }
-          const timeout =
-            data.details === Hls.ErrorDetails.FRAG_LOAD_TIMEOUT ||
-            data.details === Hls.ErrorDetails.MANIFEST_LOAD_TIMEOUT ||
-            data.details === Hls.ErrorDetails.LEVEL_LOAD_TIMEOUT;
-          if (timeout && !firstFrag) {
-            fail("Sinyal kurang kuat untuk video ini", "Siaran ini butuh koneksi minimal 1,2 Mbit/s.");
+          // Codec tidak didukung browser (sebagian kamera menyiarkan H.265): recover percuma,
+          // dan ini BUKAN salah perangkat/jaringan — bilang apa adanya.
+          const codecIssue =
+            data.details === Hls.ErrorDetails.MANIFEST_INCOMPATIBLE_CODECS_ERROR ||
+            data.details === Hls.ErrorDetails.BUFFER_ADD_CODEC_ERROR ||
+            data.details === Hls.ErrorDetails.BUFFER_INCOMPATIBLE_CODECS_ERROR;
+          if (codecIssue) {
+            fail(
+              "Format video belum didukung peramban ini",
+              `${data.details}. Kamera ini menyiarkan H.265 (HEVC). Dukungannya bergantung pada peramban dan perangkat.`,
+              "Coba peramban atau kamera lain.",
+              true,
+            );
             return;
           }
-          if (netRetries < 2) {
-            // kedip jaringan di tengah tontonan → nyambung ulang, tanpa buka-tutup modal
-            const delay = netRetries === 0 ? 1000 : 3000;
-            netRetries++;
-            setState(hasPlayed ? "buffering" : "connecting");
-            setNote("Koneksi sempat putus, menyambung ulang");
-            const go = () => {
-              if (cancelled) return;
-              h.startLoad(-1);
+          if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
+            if (!mediaRecovered) {
+              mediaRecovered = true;
+              h.recoverMediaError();
               tryPlay();
-            };
-            if (navigator.onLine === false) window.addEventListener("online", () => later(go, 200), { once: true });
-            else later(go, delay);
+              return;
+            }
+            fail("Peramban ini belum bisa memutar kamera ini", `${data.details}.`, "Coba kamera lain.", true);
             return;
           }
-          fail(hasPlayed ? "Koneksi ke kamera terputus" : "Belum bisa tersambung ke kamera");
-          return;
-        }
-        // Codec tidak didukung browser (sebagian kamera menyiarkan H.265): recover percuma,
-        // dan ini BUKAN salah perangkat/jaringan — bilang apa adanya.
-        const codecIssue =
-          data.details === Hls.ErrorDetails.MANIFEST_INCOMPATIBLE_CODECS_ERROR ||
-          data.details === Hls.ErrorDetails.BUFFER_ADD_CODEC_ERROR ||
-          data.details === Hls.ErrorDetails.BUFFER_INCOMPATIBLE_CODECS_ERROR;
-        if (codecIssue) {
-          fail(
-            "Format video belum didukung peramban ini",
-            "Kamera ini menyiarkan H.265 (HEVC). Dukungannya bergantung pada peramban dan perangkat.",
-            "Coba peramban atau kamera lain.",
-          );
-          return;
-        }
-        if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
-          if (!mediaRecovered) {
-            mediaRecovered = true;
-            h.recoverMediaError();
-            tryPlay();
-            return;
-          }
-          fail("Peramban ini belum bisa memutar kamera ini");
-          return;
-        }
-        fail("Siaran belum bisa diputar");
-      });
-      // Urutan: loadSource dulu, baru attachMedia.
-      h.loadSource(url);
-      h.attachMedia(video);
+          fail("Siaran belum bisa diputar", `${data.type}/${data.details}.`, undefined, true);
+        });
+        // Urutan: loadSource dulu, baru attachMedia.
+        h.loadSource(url);
+        h.attachMedia(video);
+      };
+
+      jalankan = (j: Jalur) => {
+        if (cancelled) return;
+        lepas();
+        jalur = j;
+        firstFrag = false;
+        netRetries = 0;
+        mediaRecovered = false;
+        nonFatal = [];
+        setState("connecting");
+        mark(`jalur ${namaJalur()}`);
+        if (j === "hls.js" && HlsCtor) mulaiHls(HlsCtor);
+        else mulaiBawaan();
+      };
+      cadangan = urutan.slice(1);
+      jalankan(urutan[0]);
     })();
 
     // Bongkar total pas ditutup/ganti kamera — ini yang bikin tarikan ke server sumber berhenti.
@@ -494,7 +586,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
           : state === "dead"
             ? { text: "Kamera tidak aktif", cls: "is-off" }
             : state === "error"
-              ? { text: "Kamera tidak aktif", cls: "is-off" }
+              ? { text: "Gagal diputar", cls: "is-off" }
               : state === "idle" || state === "blocked"
                 ? { text: "Siap diputar", cls: "is-muted" }
                 : { text: "Menyambung", cls: "is-muted" };
@@ -513,7 +605,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
               : state === "dead" && deadInfo
                 ? deadTitle(deadInfo.verdict, deadInfo.lastSeen)
                 : state === "error"
-                  ? (note ?? "Kamera belum bisa diakses")
+                  ? (note ?? "Siaran belum bisa diputar")
                   : "";
 
   const showLoading = state === "checking" || state === "connecting" || state === "fetching";
@@ -579,7 +671,13 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
                 <path d="M8 5v14l11-7z" />
               </svg>
               Ketuk untuk memutar
-              {!started && <span className="cctv-note">Siaran memakai sekitar {CCTV_MB_PER_MIN} MB per menit.</span>}
+              {!started && (
+                <span className="cctv-note">
+                  {mb !== null
+                    ? `Siaran ini memakai sekitar ${angkaMb(mb)} MB per menit.`
+                    : "Siaran video memakai kuota data."}
+                </span>
+              )}
             </button>
           )}
 
@@ -600,7 +698,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
 
           {state === "error" && (
             <div className="cctv-overlay">
-              <div className="cctv-stage-text">{note ?? "Kamera tidak aktif"}</div>
+              <div className="cctv-stage-text">{note ?? "Siaran belum bisa diputar"}</div>
               {hint && <div className="cctv-note">{hint}</div>}
               {tech && (
                 <details className="cctv-tech">
@@ -619,7 +717,7 @@ export default function CctvPlayer({ cam, onClose, onDead, autoStart = true }: P
           <span className={`cctv-live ${badge.cls}`}>
             <span className="dot" /> {badge.text}
           </span>
-          <span className="cctv-credit">Sekitar {CCTV_MB_PER_MIN} MB per menit</span>
+          {mb !== null && <span className="cctv-credit">{teksMbPerMenit(mb)}</span>}
         </div>
         <div className="sr-only" role="status" aria-live="polite">
           {statusText}

@@ -10,7 +10,7 @@ import PetaMarker from "./PetaMarker";
 //
 // Setiap kamera berdiri sendiri (koreksi pemilik, 5 November 2026): tidak ada pengelompokan berangka.
 // Varian visual: biasa · perkiraan (ring putus-putus; koordinatnya bisa meleset ratusan meter) ·
-// gagal diputar tadi (abu; dari sesi ini, bukan hardcode). Area sentuh 44×44 walau visualnya lebih kecil.
+// tidak aktif (abu; dari pemeriksaan server atau sesi ini, bukan hardcode). Area sentuh 44×44 walau visualnya lebih kecil.
 
 // Beberapa kamera duduk di satu titik yang sama (dua kamera satu simpang, beda arah hadap). Dikipas di
 // RUANG LAYAR saat render (bukan mengarang koordinat di data): tiap anggota digeser mengelilingi titik
@@ -62,7 +62,7 @@ const PinIkon = () => (
 
 type Props = {
   onPick: (cam: Cam) => void;
-  /** slug → lastSeen (ms) kamera yang gagal diputar di sesi ini. */
+  /** slug → lastSeen (ms) kamera yang tidak aktif. */
   dead: ReadonlyMap<string, number | null>;
 };
 
@@ -100,7 +100,7 @@ export default function CctvLayer({ onPick, dead }: Props) {
               type="button"
               className="cam-hit"
               data-cam-key={cam.slug}
-              aria-label={`Kamera ${cam.name}${cam.approx ? ", lokasi perkiraan" : ""}${failed ? ", gagal diputar tadi" : ""}`}
+              aria-label={`Kamera ${cam.name}${cam.approx ? ", lokasi perkiraan" : ""}${failed ? ", tidak aktif" : ""}`}
               onClick={() => onPick(cam)}
               onKeyDown={(e) => onKey(e, () => onPick(cam))}
             >
@@ -120,7 +120,7 @@ export default function CctvLayer({ onPick, dead }: Props) {
               <span className="cam-label">
                 {cam.name}
                 {cam.approx ? " · Lokasi perkiraan" : ""}
-                {failed ? " · Gagal diputar tadi" : ""}
+                {failed ? " · Tidak aktif" : ""}
               </span>
             </button>
           </PetaMarker>

@@ -3,7 +3,15 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as PE } from "react";
 import type { ConditionsResponse, ForecastResponse, PeringatanResponse } from "@/features/langit-laut/lib/api-types";
-import { CCTV_HOST, MAPPED_CAMS, loadHls, type Cam } from "@/features/langit-laut/lib/cctv";
+import {
+  CCTV_HOST,
+  MAPPED_CAMS,
+  kameraTidakAktif,
+  loadHls,
+  type Cam,
+  type JawabanStatusKamera,
+  type StatusKamera,
+} from "@/features/langit-laut/lib/cctv";
 import { reduceMotion, saveData } from "@/features/langit-laut/lib/client";
 import { readInitialState } from "@/features/langit-laut/lib/initial-state";
 import { aktifPada, kalimatPeringatan } from "@/features/langit-laut/lib/peringatan-cuaca";
@@ -124,6 +132,8 @@ export default function RadarMap({ mode }: { mode: Mode }) {
   const [activeCam, setActiveCam] = useState<Cam | null>(init.cam);
   const [camAutoStart, setCamAutoStart] = useState(!init.cam); // dari link: tombol putar dulu
   const [deadCams, setDeadCams] = useState<Map<string, number | null>>(() => new Map());
+  // Status semua kamera dari server (app/api/cctv-status): kamera mati ditandai sebelum diketuk.
+  const [statusCams, setStatusCams] = useState<Record<string, StatusKamera>>({});
   const [recentCams, setRecentCams] = useState<Cam[]>(init.recentCams);
 
   const panelRef = useRef<HTMLElement>(null);
@@ -202,6 +212,29 @@ export default function RadarMap({ mode }: { mode: Mode }) {
       link.remove();
     };
   }, [tampilKamera]);
+
+  // Satu permintaan kecil ke server kita sendiri, bukan ke server kamera. Gagal = tanpa tanda, tidak apa-apa.
+  const adaStatus = Object.keys(statusCams).length > 0;
+  useEffect(() => {
+    if (!tampilKamera || adaStatus) return;
+    const ctrl = new AbortController();
+    fetch("/api/cctv-status", { signal: ctrl.signal })
+      .then((r) => (r.ok ? (r.json() as Promise<JawabanStatusKamera>) : null))
+      .then((j) => {
+        if (j?.kamera) setStatusCams(j.kamera);
+      })
+      .catch(() => {});
+    return () => ctrl.abort();
+  }, [tampilKamera, adaStatus]);
+
+  // Kamera tidak aktif: menurut pemeriksaan server, atau terbukti mati saat dibuka di sesi ini.
+  const kameraMati = useMemo(() => {
+    const m = new Map(deadCams);
+    for (const [slug, s] of Object.entries(statusCams)) {
+      if (kameraTidakAktif(s.verdict) && !m.has(slug)) m.set(slug, s.lastSeen);
+    }
+    return m;
+  }, [deadCams, statusCams]);
 
   // ---- aksi ----
   const togglePlay = () => {
@@ -290,7 +323,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
   });
   const ombak = ofsAnswer(ofs.perairan, ofs.perairanError, ov, offline, now);
   const ombakCap = ofsCaption(ov);
-  const cctv = cctvAnswer(MAPPED_CAMS.length, deadCams.size);
+  const cctv = cctvAnswer(MAPPED_CAMS.length, kameraMati.size);
   // Peringatan dini: poligon selalu digambar; kalimat di panel mengikuti cakupan yang dipilih.
   const cuacaAktif = useMemo(() => aktifPada(cuaca.data?.peringatan, now), [cuaca.data, now]);
   const cuacaSorot = scope === "batam" ? cuacaAktif.find((p) => p.batam.length > 0) : cuacaAktif[0];
@@ -411,7 +444,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
               </p>
             )}
             {mode === "ombak" && ov.problem && <p className="cu-masalah">{ov.problem}</p>}
-            {mode === "cctv" && deadCams.size > 0 && <p className="cu-masalah">{cctv.context}</p>}
+            {mode === "cctv" && kameraMati.size > 0 && <p className="cu-masalah">{cctv.context}</p>}
 
             {!wide && cakupan && <div className="cu-kendali-ponsel">{cakupan}</div>}
             {!wide && waktu && <div className="cu-kendali-ponsel">{waktu}</div>}
@@ -438,8 +471,8 @@ export default function RadarMap({ mode }: { mode: Mode }) {
 
             {mode === "cctv" && (
               <>
-                <CctvBlock recent={recentCams} dead={deadCams} onPick={pickCam} showHint={false} />
-                <CamDirectory dead={deadCams} onPick={pickCam} />
+                <CctvBlock recent={recentCams} dead={kameraMati} onPick={pickCam} showHint={false} />
+                <CamDirectory dead={kameraMati} status={statusCams} onPick={pickCam} />
               </>
             )}
 
@@ -482,7 +515,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
             {/* Mask daratan di atas field: warna gelombang hanya di laut. */}
             {tampilGelombang && <LandMask theme={theme} onStatus={ofs.setMaskOk} />}
             {tampilKamera && (
-              <CctvLayer onPick={pickCam} dead={deadCams} />
+              <CctvLayer onPick={pickCam} dead={kameraMati} />
             )}
             <MapController view={view} mode={mode} getPadding={getPadding} collapsed={collapsed} />
           </PetaLangit>
@@ -505,7 +538,14 @@ export default function RadarMap({ mode }: { mode: Mode }) {
       )}
 
       {activeCam && (
-        <CctvPlayer key={activeCam.slug} cam={activeCam} onClose={closeCam} onDead={onDead} autoStart={camAutoStart} />
+        <CctvPlayer
+          key={activeCam.slug}
+          cam={activeCam}
+          onClose={closeCam}
+          onDead={onDead}
+          autoStart={camAutoStart}
+          mbPerMenit={statusCams[activeCam.slug]?.mbPerMenit ?? null}
+        />
       )}
       {toast && (
         <div className="toast" role="status">

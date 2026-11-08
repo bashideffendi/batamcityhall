@@ -19,9 +19,15 @@
 // Kalau nanti mau bikin mode "tembok kamera", jangan — itu bakal mukul server
 // instansi yang nggak pernah setuju jadi CDN kita.
 //
-// ARMADA SERING MATI (dicek 2026-09-26: 13 hidup, 14 mati ENDLIST, 1 beku sejak Jun)
+// ARMADA SERING MATI (dicek 2026-11-08: 19 hidup, 8 mati ENDLIST, 1 beku sejak Jun)
 // Statusnya berubah-ubah (sambau1 mati 19 Sep, hidup lagi 26 Sep), jadi JANGAN
-// di-hardcode — dicek saat kamera dibuka. Audit ulang: scripts/cctv-audit.sh.
+// di-hardcode. Server memeriksa semua playlist paling sering tiap 5 menit
+// (app/api/cctv-status), dan pemutar memeriksa lagi saat kamera dibuka.
+// Audit ulang dari laptop: scripts/cctv-audit.sh.
+//
+// PLAYLIST PEMKO HANYA 2 POTONGAN (dicek 2026-11-08), nama potongan berputar stream0..9.
+// Aturan HLS meminta pemain mulai minimal 3 potongan dari ujung siaran, jadi pemutar bawaan
+// Safari di iPhone sering gagal. Lihat urutanJalur.
 //
 // CATATAN KOORDINAT
 // Sumbernya NGGAK menyediakan lat/lng sama sekali. Titik di bawah hasil
@@ -55,8 +61,28 @@ export const CCTV_CREDIT = "CCTV Pemerintah Kota Batam";
 export { CCTV_HOST };
 export const streamUrl = (slug: string) => `${CCTV_HOST}/cctv/${slug}/stream.m3u8`;
 
-/** Perkiraan konsumsi data siaran (3 MB / 10 dtk) — ditampilkan jujur ke pengguna. */
-export const CCTV_MB_PER_MIN = 20;
+/**
+ * Pemakaian data berbeda jauh antarkamera: 0,2 sampai 9 MB per potongan 10 detik (dicek 2026-11-08), jadi
+ * sekitar 1 sampai 56 MB per menit. Angka per kamera dihitung server dari ukuran potongan terakhir
+ * (app/api/cctv-status) dan pemutar dari potongan yang benar-benar diunduh.
+ */
+export const mbPerMenit = (byte: number, detik: number): number | null =>
+  byte > 0 && detik > 0 ? (byte / 1e6) * (60 / detik) : null;
+/** Dibulatkan, paling kecil 1 MB supaya tidak terbaca gratis. */
+export const angkaMb = (mb: number) => Math.max(1, Math.round(mb));
+/** "Sekitar 24 MB per menit". */
+export const teksMbPerMenit = (mb: number) => `Sekitar ${angkaMb(mb)} MB per menit`;
+
+/** Potongan terakhir di playlist beserta durasinya. */
+export function potonganTerakhir(teks: string): { nama: string; detik: number } | null {
+  const baris = teks.split(/\r?\n/).map((b) => b.trim());
+  for (let i = baris.length - 1; i > 0; i--) {
+    if (!baris[i] || baris[i].startsWith("#")) continue;
+    const m = /^#EXTINF:([\d.]+)/.exec(baris[i - 1]);
+    return m ? { nama: baris[i], detik: Number(m[1]) } : null;
+  }
+  return null;
+}
 
 export type CamCheck = {
   /**
@@ -74,6 +100,40 @@ export type CamCheck = {
 
 const FROZEN_MS = 10 * 60 * 1000;
 
+/** Status satu kamera dari server: vonis playlist dan perkiraan pemakaian data. */
+export type StatusKamera = CamCheck & { mbPerMenit: number | null };
+export type JawabanStatusKamera = { diperiksa: string; kamera: Record<string, StatusKamera> };
+
+/** Vonis yang berarti kamera memang tidak menyiarkan, bukan sekadar gagal dihubungi. */
+export const kameraTidakAktif = (v: CamCheck["verdict"]) => v === "mati" || v === "beku" || v === "hilang";
+
+/** Vonis dari jawaban playlist. Dipakai pemutar (checkCam) dan pemeriksa status di server. */
+export function vonisPlaylist(status: number, teks: string, lastModified: string | null, sekarang = Date.now()): CamCheck {
+  if (status === 404) return { verdict: "hilang", lastSeen: null };
+  if (status >= 500) return { verdict: "server", lastSeen: null };
+  if (status < 200 || status >= 300) return { verdict: "diam", lastSeen: null };
+  const parsed = lastModified ? Date.parse(lastModified) : NaN;
+  const lastSeen = Number.isNaN(parsed) ? null : parsed;
+  if (teks.includes("#EXT-X-ENDLIST")) return { verdict: "mati", lastSeen };
+  if (lastSeen !== null && sekarang - lastSeen > FROZEN_MS) return { verdict: "beku", lastSeen };
+  return { verdict: "ok", lastSeen };
+}
+
+export type Jalur = "hls.js" | "bawaan";
+
+/**
+ * Urutan pemutar yang dicoba. hls.js lebih dulu bila didukung, termasuk iPhone iOS 17.1 ke atas lewat
+ * ManagedMediaSource: pemutar bawaan Safari tidak bisa memutar H.265 dalam .ts (Apple mewajibkan fMP4) dan
+ * rawan gagal pada playlist Pemko yang hanya 2 potongan. Pemutar bawaan menjadi cadangan bila hls.js gagal
+ * sebelum siaran tayang, dan jalur satu-satunya di iPhone lama.
+ */
+export function urutanJalur(hlsOk: boolean, bawaanOk: boolean): Jalur[] {
+  const urutan: Jalur[] = [];
+  if (hlsOk) urutan.push("hls.js");
+  if (bawaanOk) urutan.push("bawaan");
+  return urutan;
+}
+
 /**
  * Cek kesehatan kamera dari playlist-nya SEBELUM player menarik video: satu GET
  * ~250 B. Semua vonis di sini pasti (ENDLIST) atau pakai toleransi longgar
@@ -83,25 +143,16 @@ const FROZEN_MS = 10 * 60 * 1000;
 export async function checkCam(slug: string, signal?: AbortSignal): Promise<CamCheck> {
   try {
     const res = await fetch(streamUrl(slug), { cache: "no-store", signal });
-    if (res.status === 404) return { verdict: "hilang", lastSeen: null };
-    if (res.status >= 500) return { verdict: "server", lastSeen: null };
-    if (!res.ok) return { verdict: "diam", lastSeen: null };
-    const text = await res.text();
-    const lm = res.headers.get("last-modified");
-    const parsed = lm ? Date.parse(lm) : NaN;
-    const lastSeen = Number.isNaN(parsed) ? null : parsed;
-    if (text.includes("#EXT-X-ENDLIST")) return { verdict: "mati", lastSeen };
-    if (lastSeen !== null && Date.now() - lastSeen > FROZEN_MS) return { verdict: "beku", lastSeen };
-    return { verdict: "ok", lastSeen };
+    return vonisPlaylist(res.status, res.ok ? await res.text() : "", res.headers.get("last-modified"));
   } catch {
     return { verdict: "diam", lastSeen: null };
   }
 }
 
 // hls.js build PENUH — JANGAN ganti ke "hls.js/light": build light membuang parser
-// HEVC-dalam-MPEG-TS, padahal sebagian kamera Pemko menyiarkan H.265 (dicek 2026-09-27:
-// dprd, southgate, madanipancuran, sukajadi2). Dengan build light, 4 kamera itu gagal
-// total walau browsernya mendukung HEVC. Dimuat sekali, dibagi RadarMap (pemanasan
+// HEVC-dalam-MPEG-TS, padahal sebagian kamera Pemko menyiarkan H.265 (dicek 2026-11-08:
+// dprd, southgate, madanipancuran, sukajadi2, sambau1, danganom1, danganom3). Dengan build
+// light, kamera itu gagal total walau browsernya mendukung HEVC. Dimuat sekali, dibagi RadarMap (pemanasan
 // saat masuk mode CCTV) dan CctvPlayer.
 let hlsPromise: Promise<typeof import("hls.js")> | null = null;
 export function loadHls() {

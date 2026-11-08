@@ -68,8 +68,14 @@ const ECHO_HUJAN = {
   lookbackMin: 60,
 };
 
-async function tiruSumber(page: Page, opsi: { citraGagal?: boolean; echo?: unknown } = {}) {
+async function tiruSumber(
+  page: Page,
+  opsi: { citraGagal?: boolean; echo?: unknown; statusKamera?: Record<string, unknown> } = {},
+) {
   await page.route("**/api/berita", (r) => r.fulfill({ status: 503, json: {} }));
+  await page.route("**/api/cctv-status", (r) =>
+    r.fulfill({ json: { diperiksa: new Date().toISOString(), kamera: opsi.statusKamera ?? {} } }),
+  );
   await page.route("**/api/frames", (r) =>
     r.fulfill({ json: { frames: frames(), stale: false, echo: opsi.echo ?? null } }),
   );
@@ -205,6 +211,28 @@ test.describe("Cuaca dan CCTV", () => {
     // Titik tidak pernah digabung: tidak ada penanda berangka, dan tiap kamera satu titik.
     await expect(page.locator(".cam-cluster")).toHaveCount(0);
     await expect(tombol).toHaveCount(28);
+    expect(video).toEqual([]);
+  });
+
+  test("CCTV: kamera mati menurut server ditandai sebelum diketuk, tanpa menyentuh server kamera", async ({ page }) => {
+    await tiruSumber(page, {
+      statusKamera: {
+        pura1: { verdict: "mati", lastSeen: null, mbPerMenit: null },
+        danganom1: { verdict: "ok", lastSeen: Date.now(), mbPerMenit: 55.8 },
+      },
+    });
+    const video: string[] = [];
+    page.on("request", (r) => {
+      if (r.url().includes("matanya.batam.go.id")) video.push(r.url());
+    });
+    await page.goto(HALAMAN_MODE.cctv);
+    await petaSiap(page);
+    await expect(page.getByRole("button", { name: "Kamera Depan Pura Sei Ladi, tidak aktif" })).toBeAttached();
+    await expect(page.getByRole("button", { name: "Kamera Taman Dang Anom", exact: true })).toBeAttached();
+    await expect(page.locator(".cu-masalah")).toContainText("Ada 1 kamera tidak aktif.");
+    const baris = page.locator(".cam-row", { hasText: "Taman Dang Anom" }).first();
+    await expect(baris).toContainText("Sekitar 56 MB per menit");
+    await expect(page.locator(".cam-row", { hasText: "Depan Pura Sei Ladi" })).toContainText("Kamera tidak aktif");
     expect(video).toEqual([]);
   });
 

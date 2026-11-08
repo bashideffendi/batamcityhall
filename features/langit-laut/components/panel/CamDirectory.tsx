@@ -1,8 +1,16 @@
-import { CCTV_MB_PER_MIN, MAPPED_CAMS, UNMAPPED_CAMS, type Cam } from "@/features/langit-laut/lib/cctv";
+import {
+  MAPPED_CAMS,
+  UNMAPPED_CAMS,
+  teksMbPerMenit,
+  type Cam,
+  type StatusKamera,
+} from "@/features/langit-laut/lib/cctv";
 import { CAM_PATH_A, CAM_PATH_B, IconChevronRight } from "../icons";
 
 type Props = {
   dead: ReadonlyMap<string, number | null>;
+  /** Status dari server, untuk perkiraan pemakaian data per kamera. Kosong = belum ada. */
+  status: Readonly<Record<string, StatusKamera>>;
   onPick: (cam: Cam) => void;
 };
 
@@ -36,8 +44,11 @@ const PinSvg = () => (
 );
 
 // Wilayah sudah jadi subjudul kelompok → sub-baris hanya untuk hal yang perlu diperhatikan.
-function Row({ cam, failed, onPick }: { cam: Cam; failed: boolean; onPick: (c: Cam) => void }) {
-  const sub = failed ? "Kamera tidak aktif" : cam.approx ? "Lokasi perkiraan" : null;
+function Row({ cam, failed, mb, onPick }: { cam: Cam; failed: boolean; mb: number | null; onPick: (c: Cam) => void }) {
+  const sub = failed
+    ? "Kamera tidak aktif"
+    : [cam.approx ? "Lokasi perkiraan" : null, mb !== null ? teksMbPerMenit(mb) : null].filter(Boolean).join(" · ") ||
+      null;
   return (
     <li>
       <button className="cam-row" data-failed={failed || undefined} onClick={() => onPick(cam)}>
@@ -52,7 +63,7 @@ function Row({ cam, failed, onPick }: { cam: Cam; failed: boolean; onPick: (c: C
 }
 
 /** Isi "Daftar" mode CCTV: semua kamera per wilayah, yang belum dipetakan, legenda pin, kredit. */
-export default function CamDirectory({ dead, onPick }: Props) {
+export default function CamDirectory({ dead, status, onPick }: Props) {
   return (
     <>
       <section className="d-sec">
@@ -62,7 +73,13 @@ export default function CamDirectory({ dead, onPick }: Props) {
             <h3 className="dir-area-title">{area}</h3>
             <ul className="cam-rows">
               {cams.map((c) => (
-                <Row key={c.slug} cam={c} failed={dead.has(c.slug)} onPick={onPick} />
+                <Row
+                  key={c.slug}
+                  cam={c}
+                  failed={dead.has(c.slug)}
+                  mb={status[c.slug]?.mbPerMenit ?? null}
+                  onPick={onPick}
+                />
               ))}
             </ul>
           </div>
@@ -73,7 +90,13 @@ export default function CamDirectory({ dead, onPick }: Props) {
           <h2 className="cu-sub">Belum Ada di Peta</h2>
           <ul className="cam-rows">
             {UNMAPPED_CAMS.map((c) => (
-              <Row key={c.slug} cam={c} failed={dead.has(c.slug)} onPick={onPick} />
+              <Row
+                key={c.slug}
+                cam={c}
+                failed={dead.has(c.slug)}
+                mb={status[c.slug]?.mbPerMenit ?? null}
+                onPick={onPick}
+              />
             ))}
           </ul>
         </section>
@@ -97,7 +120,8 @@ export default function CamDirectory({ dead, onPick }: Props) {
           </li>
         </ul>
         <p className="d-note">
-          Siaran memakai sekitar {CCTV_MB_PER_MIN} MB per menit dan berhenti saat tab ditutup atau disembunyikan.
+          Pemakaian data berbeda per kamera, dari sekitar 1 sampai 56 MB per menit. Siaran berhenti saat tab ditutup
+          atau disembunyikan.
         </p>
       </section>
     </>

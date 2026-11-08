@@ -655,6 +655,6 @@ export function perairanDetail(p: PerairanResponse | null, now: number = Date.no
 export function cctvAnswer(total: number, failed: number): { headline: string; context: string } {
   return {
     headline: `${total} titik kamera`,
-    context: failed > 0 ? `Ada ${failed} kamera gagal diputar.` : "",
+    context: failed > 0 ? `Ada ${failed} kamera tidak aktif.` : "",
   };
 }

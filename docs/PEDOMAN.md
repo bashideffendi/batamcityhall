@@ -1531,3 +1531,4 @@ Nomor merujuk galeri screenshot 5 November 2026.
 7. **Data mentah hanya di server.** Modul yang membaca `data/places.json` atau data feri mentah diawali `import "server-only"`. Komponen klien menerima hasil olahannya lewat props.
 8. **Badan permintaan dibaca berbatas.** Route baru memakai `bacaTeksTerbatas` atau `bacaJsonTerbatas` dari `features/tukang/http.ts`, bukan `req.text()` atau `req.json()`.
 9. **Service worker** (`public/sw.js`) tidak menyimpan `/admin`, `/api`, `/tiles`, dan respons `no-store`. Naikkan nama cache bila aturannya diubah supaya simpanan lama terhapus.
+10. **CCTV:** jangan kembalikan pemaksaan pemutar bawaan Safari di iPhone. Kamera Pemko menyiarkan H.265 dalam .ts dan playlist 2 potongan, dua hal yang ditolak pemutar bawaan. Audit armada: `bash scripts/cctv-audit.sh`.

@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2026-11-08 · CCTV lebih andal di ponsel, terutama iPhone
+
+Atas keluhan pemilik: CCTV sering gagal di peramban ponsel (tangkapan layar Safari iPhone, kamera Bundaran Madani Arah Sei Panas). Masih di lokal sampai pemilik meminta push.
+
+**Hasil audit server Pemko (8 Nov, dari laptop):** 19 kamera hidup, 8 ditutup (`#EXT-X-ENDLIST`), 1 beku sejak sekitar Juni (delta2). Tujuh kamera hidup menyiarkan H.265 (dprd, southgate, madanipancuran, sukajadi2, sambau1, danganom1, danganom3), sisanya H.264. Playlist hampir semua kamera hanya berisi 2 potongan 10 detik, padahal aturan HLS meminta pemain mulai minimal 3 potongan dari ujung siaran. Pemakaian data 1 sampai 56 MB per menit, tergantung kamera. Sertifikat HTTPS, CORS, dan kecepatan server baik.
+
+- **iPhone kini memakai hls.js** lewat ManagedMediaSource (iOS 17.1 ke atas), sama dengan Android dan laptop. Sebelumnya iPhone dipaksa memakai pemutar bawaan Safari, yang tidak bisa memutar H.265 dalam .ts (Apple mewajibkan fMP4) dan rawan gagal pada playlist 2 potongan. Pemutar bawaan tetap menjadi cadangan.
+- **Cadangan otomatis:** bila satu pemutar gagal karena format atau media sebelum siaran tayang, pemutar lain dicoba tanpa perlu menekan Coba Lagi. Gagal karena jaringan atau server tidak berpindah, supaya data tidak ditarik dua kali.
+- **Kamera mati ditandai sebelum diketuk.** Server memeriksa playlist 28 kamera paling sering tiap 5 menit untuk semua pengunjung (`/api/cctv-status`: satu GET playlist dan satu HEAD potongan terakhir per kamera, paling banyak 4 bersamaan). Pin dan daftar kamera mati tampil abu-abu, dan panel menulis jumlahnya.
+- **Pemakaian data per kamera** di daftar dan pemutar, dari ukuran potongan terakhir lalu dari potongan yang benar-benar diunduh. Angka tetap 20 MB per menit dihapus karena meleset jauh untuk sebagian kamera.
+- **Label jujur:** kegagalan memutar kini bertuliskan "Gagal diputar", bukan "Kamera tidak aktif". "Kamera tidak aktif" hanya untuk kamera yang memang mati, beku, atau hilang. Keterangan teknis menyebut pemutar yang dipakai dan kode galatnya, jadi tangkapan layar cukup untuk melacak.
+- `scripts/cctv-audit.sh` jalan lagi (jalurnya basi sejak berkas dipindah) dan kini menulis jumlah potongan serta MB per menit.
+
+**Pemeriksaan:** unit 711 lulus, lint dan tipe bersih, cek bahasa lulus, build berhasil, e2e 922 lulus (termasuk tes status kamera), skor tampilan `docs/tampilan/skor/10-cctv.json` 62 dari 62. Uji pemutar di Chrome dengan emulasi Android: tiga kamera, termasuk H.265, tayang dalam 0,5 sampai 1,6 detik. **Belum diuji di iPhone asli.**
+
 ## 2026-11-08 · Perbaikan hasil audit: bug, keamanan, kecepatan, kode mati
 
 Atas permintaan pemilik ("perbaiki semua"). Masih di lokal sampai pemilik meminta push.
