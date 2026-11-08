@@ -96,4 +96,4 @@ Bukan syarat pengalihan situs lama, dicatat supaya perbandingan tidak salah baca
 - Tambah dan ubah food court di `/admin/makanan` — e2e mode contoh, tayang 7 Nov 2026
 - Infografik di `/infografik` dan kaki situs dengan newsletter — e2e, tayang 7 Nov 2026
 - Perbaikan audit 8 Nov 2026 (keamanan route, service worker, peta beranda dimuat lambat, versi kecil gambar): tidak mengubah fitur yang dibandingkan dengan situs lama — unit dan e2e, tayang 8 Nov 2026
-- Standar Redaksi, Log Koreksi, Aksesibilitas, JSON-LD, dan RSS (8 Nov 2026): tambahan, tidak ada di situs lama — unit dan e2e, belum tayang
+- Standar Redaksi, Log Koreksi, Aksesibilitas, JSON-LD, dan RSS (8 Nov 2026): tambahan, tidak ada di situs lama — unit dan e2e, tayang 8 Nov 2026

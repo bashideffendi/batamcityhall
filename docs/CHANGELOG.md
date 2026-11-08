@@ -2,7 +2,7 @@
 
 ## 2026-11-08 · Lapisan kepercayaan: Standar Redaksi, Log Koreksi, Aksesibilitas, data terstruktur, RSS
 
-Dari dokumen pemilik "Batam Almanac" (status per butir di `docs/ALMANAC.md`). Nama tetap Batam City Hall dan pemerintah tidak disebut, atas keputusan pemilik. Masih di lokal sampai pemilik meminta push; isi Standar Redaksi menunggu persetujuan pemilik.
+Dari dokumen pemilik "Batam Almanac" (status per butir di `docs/ALMANAC.md`). Nama tetap Batam City Hall dan pemerintah tidak disebut, atas keputusan pemilik. Tayang sejak `7818d9f` (8 November 2026) atas persetujuan pemilik, diperiksa di situs: ketiga halaman dan `/rss.xml` menjawab 200 (RSS berisi 6 tulisan), JSON-LD Organization tampil di beranda, Tentang menaut ke Log Koreksi.
 
 - **Standar Redaksi** (`/standar-redaksi`): independensi, cara data dihimpun, jenis isi, koreksi, dan penggunaan AI. Hanya menyebut praktik yang benar-benar berjalan.
 - **Log Koreksi** (`/log-koreksi`): lima perbaikan fakta 8 November (pemakaian data CCTV, empat food court, titik Batamindo, titik CCTV), bertanggal dan menaut ke halamannya. Data di `data/redaksi/log-koreksi.json`, divalidasi saat prebuild.
