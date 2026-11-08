@@ -11,3 +11,6 @@ playwright-report/
 test-results/
 /tmp/
 *.pmtiles
+
+# Arsip dataset kota dari portal data pihak lain (scripts/dataset). Lisensinya belum jelas, jadi tidak ikut repo publik.
+/dataset-arsip/

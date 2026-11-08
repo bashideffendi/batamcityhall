@@ -3,6 +3,12 @@
 
 # Batam City Hall: Audit Data Geoportal HANG JEBAT, BP Batam, dan Ina-Geoportal (BIG)
 
+> **Pembaruan 9 November 2026** (riset ulang, rinci di `research/17-portal-data/`):
+> - HANG JEBAT memuat data dari berkas GeoJSON statis di `/assets/geojson/` (WGS84), tanpa WMS atau WFS. Tautan Syarat & Ketentuan hanya `javascript:void(0)`. Beberapa berkas publiknya memuat data pribadi warga (NIK, KK, nama); berkas itu tidak diambil dan tidak boleh dipakai.
+> - `web-gis.bpbatam.go.id` tidak memiliki `robots.txt` (404). Pernyataan bahwa server itu menolak crawler di bawah tidak berlaku lagi.
+> - Layanan kelurahan `WEBGIS_TEMATIK/WEBGIS_TEMATIK_MOBILE_BASEMAP/MapServer/27` sudah tidak ada (galat 500). `PETA_ADMINISTRASI_BATAM` masih hidup.
+> - Arsip lokal hasil unduhan dan statusnya: `docs/DATASET.md`.
+
 Langsung ke intinya: harta karun sebenarnya bukan di halaman-halaman geoportal yang dirender JavaScript, tapi di **server ArcGIS REST di belakangnya**. BP Batam (`web-gis.bpbatam.go.id`) dan BIG (`geoservices.big.go.id`) sama-sama membuka layer batas kecamatan/kelurahan yang bisa di-query langsung ke GeoJSON. HANG JEBAT tidak punya API publik yang terdokumentasi. Masalahnya ada di lisensi: tidak satu pun dari tiga portal ini mencantumkan lisensi terbuka yang eksplisit. Jadi sikap yang aman: **tampilkan sebagai layer terpisah dengan atribusi, jangan dicampur ke data OSM, dan jangan diimpor ke OpenStreetMap.**
 
 ## TL;DR

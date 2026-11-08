@@ -1631,6 +1631,12 @@ Aturan:
   - [-] Belum dijalankan oleh F5b; pencocokan nama jalan butuh cek manual · Query Overpass contoh: area Batam admin_level 5, way highway name ~ Hang|Raja|Engku|Temenggung|Batin|Sultan|Laksamana|Dang|Tengku|Ibnu -> isi osm_name_bila_ada {F5}
   - [-] Baru satu arah: /cerita/nama-jalan/[id] menaut ke /info/tempat/<id>. Dinamai menurut di kartu tempat belum ada karena features/direktori di luar batas tugas · Tautan nama jalan/tempat di peta ke kartu tokoh (hanya untuk tempat ber-koordinat; jalan lewat pencocokan OSM) {F5}
 
+## 17-portal-data (riset 9 Nov 2026)
+
+- [x] research/17-portal-data/, docs/DATASET.md, scripts/dataset/ · Riset enam portal data Batam dan arsip lokal dataset-arsip/ (345 berkas, tidak ikut repo). Ringkasan, aturan, dan keputusan pemilik di docs/DATASET.md
+- [-] menunggu pemilik: menu Dataset, izin pakai ulang dari penyedia, kunci WebAPI BPS, dan pemberitahuan temuan privasi HANG JEBAT (docs/DATASET.md bagian Keputusan) · Menu Dataset dan fitur dari data portal
+- [-] menunggu portal: isi per dataset Satu Data Batam (503 pemeliharaan sejak 9 Nov); jalankan scripts/dataset/satudata-batam.mjs saat pulih · Arsip Satu Data Batam
+
 ## File data (setiap file wajib dipakai atau dijelaskan)
 
 - [-] dipakai sebagai referensi: salinan CSV dari data/places/00-data-hotel-user.json; 243 hotel tampil lewat data/places.json di /info/direktori/akomodasi; dijaga scripts/validate-data.ts dan tests/unit/site.test.ts agar tanpa kolom pajak · `data/akomodasi/hotel.csv`

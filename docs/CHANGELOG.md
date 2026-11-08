@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-09 · Riset enam portal data dan arsip dataset lokal
+
+Atas permintaan pemilik. Ringkasan dan keputusan yang menunggu pemilik di `docs/DATASET.md`, laporan lengkap di `research/17-portal-data/`. Belum ada perubahan tampilan situs.
+
+- **Arsip lokal** `dataset-arsip/` (di-gitignore karena tidak ada portal yang menyatakan lisensi): 345 berkas, sekitar 153 MB. 181 tabel Satu Data Kepri (107 memuat Batam), 123 berkas Portal Satu Data BP Batam, 23 layer Geoportal BP Batam, 18 layer HANG JEBAT, ditambah katalog, titik fasilitas, dan poligon kecamatan Satu Data Batam. Satu katalog gabungan `KATALOG.csv`.
+- **Skrip** `scripts/dataset/`: patuh robots.txt dan Crawl-Delay, bisa dilanjutkan, mencatat asal-usul setiap berkas, membuang data pajak dan kolom data pribadi.
+- **Satu Data Batam** masuk pemeliharaan (503) sejak 9 Nov dini hari; isi per dataset diambil saat portal pulih.
+- **Tidak diambil:** berkas HANG JEBAT yang memuat data pribadi warga (NIK, KK, nama), kepemilikan tanah dan layer tertutup BP Batam, jalur Kepri yang dilarang robots.txt.
+- `research/11-geoportal.md` diberi catatan pembaruan: HANG JEBAT memakai GeoJSON statis, server ArcGIS BP Batam tanpa robots.txt, layanan kelurahan BP Batam sudah hilang.
+
 ## 2026-11-09 · Urutan menu menurut keperluan pembaca
 
 Atas permintaan pemilik ("aku ikut rekom mu"). Masih di lokal sampai pemilik meminta push.
