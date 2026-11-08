@@ -38,6 +38,7 @@ export const metadata: Metadata = {
   title: { default: `${SITE_NAME}: ${SITE_TAGLINE}`, template: `%s · ${SITE_NAME}` },
   description: DESC,
   openGraph: { type: "website", locale: "id_ID", siteName: SITE_NAME, description: DESC },
+  alternates: { types: { "application/rss+xml": [{ url: "/rss.xml", title: `${SITE_NAME}: Jurnal dan Infografik` }] } },
   appleWebApp: { capable: true, title: SITE_NAME, statusBarStyle: "default" },
   ...(SITE_PRATINJAU ? { robots: { index: false, follow: false } } : {}),
 };

@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import JsonLd from "@/components/site/JsonLd";
 import { INFOGRAFIK_REPO } from "@/features/infografik/data";
 import Poster from "@/features/infografik/Poster";
 import "@/features/infografik/infografik.css";
 import { tanggalTulisan } from "@/features/jurnal/data";
 import { semuaInfografik } from "@/features/konten/baca";
+import { artikel, grafLd, organisasi } from "@/lib/data-terstruktur";
 
 export const revalidate = 300;
 
@@ -30,6 +32,19 @@ export default async function HalamanInfografik({ params }: { params: Promise<{ 
 
   return (
     <article className="bch-page ig-detail">
+      <JsonLd
+        data={grafLd(
+          artikel({
+            judul: i.judul,
+            ringkasan: i.ringkasan,
+            tanggal: i.tanggal,
+            gambar: i.gambar?.src ?? null,
+            alamat: `/infografik/${i.slug}`,
+            penulis: i.penulis,
+          }),
+          organisasi(),
+        )}
+      />
       <nav className="bch-remah" aria-label="Lokasi Halaman">
         <Link href="/infografik">Infografik</Link> / {i.rubrik}
       </nav>

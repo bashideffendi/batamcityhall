@@ -49,6 +49,15 @@ export default function SiteFooter() {
             <Link href="/syarat" prefetch={false}>
               Syarat Penggunaan
             </Link>
+            <Link href="/standar-redaksi" prefetch={false}>
+              Standar Redaksi
+            </Link>
+            <Link href="/log-koreksi" prefetch={false}>
+              Log Koreksi
+            </Link>
+            <Link href="/aksesibilitas" prefetch={false}>
+              Aksesibilitas
+            </Link>
           </nav>
           <FormNewsletter aktif={KIRIMAN_AKTIF} />
         </div>

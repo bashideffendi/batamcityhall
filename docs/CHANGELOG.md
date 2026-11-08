@@ -1,8 +1,23 @@
 # CHANGELOG
 
+## 2026-11-08 · Lapisan kepercayaan: Standar Redaksi, Log Koreksi, Aksesibilitas, data terstruktur, RSS
+
+Dari dokumen pemilik "Batam Almanac" (status per butir di `docs/ALMANAC.md`). Nama tetap Batam City Hall dan pemerintah tidak disebut, atas keputusan pemilik. Masih di lokal sampai pemilik meminta push; isi Standar Redaksi menunggu persetujuan pemilik.
+
+- **Standar Redaksi** (`/standar-redaksi`): independensi, cara data dihimpun, jenis isi, koreksi, dan penggunaan AI. Hanya menyebut praktik yang benar-benar berjalan.
+- **Log Koreksi** (`/log-koreksi`): lima perbaikan fakta 8 November (pemakaian data CCTV, empat food court, titik Batamindo, titik CCTV), bertanggal dan menaut ke halamannya. Data di `data/redaksi/log-koreksi.json`, divalidasi saat prebuild.
+- **Aksesibilitas** (`/aksesibilitas`): target WCAG 2.2 AA, cara memeriksa, keterbatasan yang diketahui.
+- Ketiganya ditautkan di kaki situs dan sitemap; Tentang menaut ke Standar Redaksi dan Log Koreksi.
+- **Data terstruktur JSON-LD** (`lib/data-terstruktur.ts`): Organization dengan properti kebijakan redaksi dan WebSite di beranda, Article di Jurnal dan Infografik, FoodEstablishment di 117 halaman tempat makan. Nomor telepon, rating, dan titik perkiraan tidak ikut.
+- **RSS** di `/rss.xml` untuk Jurnal dan Infografik, diumumkan di `<head>`.
+- **`npm run check:rules`** (`scripts/cek-keluaran.mjs`, juga berjalan sebagai `postbuild`): build gagal bila kunci data pajak hotel ada di HTML, payload RSC, sitemap, RSS, atau bundel JavaScript, atau bila JSON-LD memuat nomor telepon atau rating. Diuji dengan kunci palsu.
+- Skrip skor tampilan kini memeriksa 65 halaman.
+
+**Pemeriksaan:** unit 718 lulus, lint dan tipe bersih, cek bahasa lulus, build berhasil (125 blok JSON-LD lolos pemeriksaan), e2e 948 lulus, skor tampilan `docs/tampilan/skor/11-redaksi.json` 65 dari 65.
+
 ## 2026-11-08 · CCTV lebih andal di ponsel, terutama iPhone
 
-Atas keluhan pemilik: CCTV sering gagal di peramban ponsel (tangkapan layar Safari iPhone, kamera Bundaran Madani Arah Sei Panas). Masih di lokal sampai pemilik meminta push.
+Atas keluhan pemilik: CCTV sering gagal di peramban ponsel (tangkapan layar Safari iPhone, kamera Bundaran Madani Arah Sei Panas). Tayang sejak `61b4f7d` (8 November 2026), diperiksa di situs: `/api/cctv-status` menjawab 19 hidup, 8 mati, 1 beku.
 
 **Hasil audit server Pemko (8 Nov, dari laptop):** 19 kamera hidup, 8 ditutup (`#EXT-X-ENDLIST`), 1 beku sejak sekitar Juni (delta2). Tujuh kamera hidup menyiarkan H.265 (dprd, southgate, madanipancuran, sukajadi2, sambau1, danganom1, danganom3), sisanya H.264. Playlist hampir semua kamera hanya berisi 2 potongan 10 detik, padahal aturan HLS meminta pemain mulai minimal 3 potongan dari ujung siaran. Pemakaian data 1 sampai 56 MB per menit, tergantung kamera. Sertifikat HTTPS, CORS, dan kecepatan server baik.
 
@@ -17,7 +32,7 @@ Atas keluhan pemilik: CCTV sering gagal di peramban ponsel (tangkapan layar Safa
 
 ## 2026-11-08 · Perbaikan hasil audit: bug, keamanan, kecepatan, kode mati
 
-Atas permintaan pemilik ("perbaiki semua"). Masih di lokal sampai pemilik meminta push.
+Atas permintaan pemilik ("perbaiki semua"). Tayang sejak `61b4f7d` (8 November 2026), diperiksa di situs: CSP memuat `object-src 'none'`, `X-Powered-By` tidak dikirim.
 
 **Bug**
 - Peta Bus: mengetuk garis koridor sesudah menggeser peta tidak lagi menyorot koridor secara tidak sengaja. K10 (rencana) kini ikut terbingkai saat disorot.

@@ -32,7 +32,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...baris(koridorData.koridor.map((k) => `/jalan/trans-batam/${k.id.toLowerCase()}`), "weekly", 0.5),
     ...baris(TULISAN.map((t) => `/jurnal/${t.slug}`), "monthly", 0.6),
     ...baris(INFOGRAFIK_REPO.map((i) => `/infografik/${i.slug}`), "monthly", 0.6),
-    ...baris(["/tentang", "/kolofon", "/privasi", "/syarat"], "monthly", 0.3),
+    ...baris(["/tentang", "/kolofon", "/privasi", "/syarat", "/standar-redaksi", "/aksesibilitas"], "monthly", 0.3),
+    ...baris(["/log-koreksi"], "weekly", 0.3),
     // Formulir warga hanya didaftarkan bila sudah aktif.
     ...baris(KIRIMAN_AKTIF ? ["/kontribusi", "/koreksi", "/tukang/rekomendasi"] : [], "monthly", 0.3),
   ];

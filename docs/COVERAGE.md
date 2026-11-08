@@ -1744,6 +1744,7 @@ Permintaan pemilik di luar spesifikasi awal. Statusnya di `docs/RENCANA-ROMBAK.m
 - [x] components/site/SiteFooter.tsx, components/site/FormNewsletter.tsx, /api/newsletter, /admin/newsletter · Kaki situs dan newsletter, dibuka setelah basis data tersambung
 - [ ] features/konten/store-supabase.ts, /api/admin/terbitkan · Belum pernah dijalankan melawan Supabase dan Railway sungguhan, menunggu izin pemilik
 - [x] /jurnal, /jurnal/[slug], /things-to-do, /cari, /kartu-pos · Halaman baru rombak, tertutup tes di tests/e2e/rombak.spec.ts
+- [x] /standar-redaksi, /log-koreksi, /aksesibilitas, /rss.xml, lib/data-terstruktur.ts, scripts/cek-keluaran.mjs · Lapisan kepercayaan dari dokumen Batam Almanac (8 Nov); status per butir di docs/ALMANAC.md. Masthead dan kontak redaksi menunggu pemilik
 - [x] /api/cctv-status, features/langit-laut/components/CctvPlayer.tsx · CCTV di ponsel: hls.js di iPhone dengan cadangan pemutar bawaan, status kamera dari server, pemakaian data per kamera (8 Nov). Belum diuji di iPhone asli
 - [x] public/grafis/hidangan/kecil, public/kartu-pos/layar, scripts/buat-varian-gambar.mjs · Versi kecil gambar hidangan dan kartu pos (8 Nov), dijaga tests/unit/varian-gambar.test.ts
 - [x] data/koordinat_perlu_diisi.xlsx, tools/buat_lembar_koordinat.py, tools/impor_lembar_koordinat.py · Lembar 1.145 lokasi yang butuh koordinat (dibuat ulang 8 Nov; lembar yang habis diisi tidak ditulis). Rumus kolom Cek belum dibuka di Excel sungguhan

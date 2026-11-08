@@ -245,6 +245,35 @@ h4 {
   margin-top: var(--bch-space-6);
 }
 
+/* ---------- Log Koreksi: entri bertanggal dipisah garis tipis ---------- */
+.bch-log-koreksi {
+  max-width: var(--bch-measure);
+  margin-block: var(--bch-space-5);
+}
+.bch-log-koreksi li {
+  padding-block: var(--bch-space-3);
+  border-top: 1px solid var(--bch-rule);
+}
+.bch-log-koreksi li:last-child {
+  border-bottom: 1px solid var(--bch-rule);
+}
+.bch-log-koreksi p {
+  margin: 0;
+}
+.bch-log-kepala {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bch-space-1) var(--bch-space-3);
+  align-items: baseline;
+  margin-bottom: var(--bch-space-1) !important;
+  font-weight: 600;
+}
+.bch-log-kepala time {
+  font-weight: 400;
+  color: var(--bch-ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ---------- Kepala halaman (PEDOMAN 3.1, 4.5) ---------- */
 /* ---------- Baris darurat di puncak setiap halaman ---------- */
 .bch-darurat {

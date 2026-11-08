@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import JsonLd from "@/components/site/JsonLd";
 import { tempatPerId } from "@/features/direktori/data";
 import HujanKecamatan from "@/features/direktori/HujanKecamatan";
 import { terminalDariMakan } from "@/features/jalan/feri-data";
 import FeriTerakhirMuat from "@/features/jalan/FeriTerakhirMuat";
 import DetailView from "@/features/makan/components/DetailView";
-import { ferryMap, getPlace, places } from "@/features/makan/lib/data";
+import { categoryMap, ferryMap, getPlace, places } from "@/features/makan/lib/data";
+import { grafLd, tempatMakan } from "@/lib/data-terstruktur";
 
 // Hanya tempat yang ada di data: slug lain langsung 404.
 export function generateStaticParams() {
@@ -26,12 +28,17 @@ export default async function Halaman({ params }: { params: Promise<{ slug: stri
   const kecamatan = tempatPerId.get(slug)?.kecamatan;
   const terminal = terminalDariMakan(tempat.nearestFerryId);
   return (
-    <DetailView
-      slug={slug}
-      cuaca={kecamatan ? <HujanKecamatan kecamatan={kecamatan} /> : null}
-      feri={
-        terminal ? <FeriTerakhirMuat terminal={terminal} namaTerminal={ferryMap[tempat.nearestFerryId]?.label} /> : null
-      }
-    />
+    <>
+      <JsonLd data={grafLd(tempatMakan(tempat, categoryMap[tempat.category]?.name_id))} />
+      <DetailView
+        slug={slug}
+        cuaca={kecamatan ? <HujanKecamatan kecamatan={kecamatan} /> : null}
+        feri={
+          terminal ? (
+            <FeriTerakhirMuat terminal={terminal} namaTerminal={ferryMap[tempat.nearestFerryId]?.label} />
+          ) : null
+        }
+      />
+    </>
   );
 }

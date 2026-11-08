@@ -7,6 +7,8 @@
     "dev": "next dev",
     "prebuild": "node scripts/foto-makan.mjs && tsx scripts/validate-data.ts && node scripts/cek-bahasa.mjs && tsx scripts/ubahan-makan.ts",
     "build": "next build",
+    "postbuild": "node scripts/cek-keluaran.mjs",
+    "check:rules": "node scripts/cek-keluaran.mjs",
     "start": "next start",
     "lint": "eslint .",
     "format": "prettier --write .",

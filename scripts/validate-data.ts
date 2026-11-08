@@ -28,6 +28,7 @@ const CHECKS: [string, ZodType][] = [
   ["data/feri/jadwal.json", s.jadwalSchema],
   ["data/mural/segmen.json", s.segmenSchema],
   ["data/mural/landmarks.json", s.landmarkSchema],
+  ["data/redaksi/log-koreksi.json", s.logKoreksiSchema],
   ["data/taksonomi/taksonomi.json", s.taksonomiSchema],
   ["data/makan/places.json", s.makanPlaceSchema.array()],
   ["data/makan/ferries.json", s.makanFerrySchema],

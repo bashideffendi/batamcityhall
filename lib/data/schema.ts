@@ -208,6 +208,18 @@ export const foodCourtSchema = z.object({
 });
 
 /** Skema data makan asli batam-bites (features/makan/lib/types.ts). */
+/** Log Koreksi publik (/log-koreksi). Hanya alamat internal, terbaru di atas. */
+export const logKoreksiSchema = z
+  .array(
+    z.object({
+      tanggal: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+      halaman: z.string().regex(/^\/(?![/\\])/),
+      judul: z.string().min(3),
+      uraian: z.string().min(10),
+    }),
+  )
+  .refine((d) => d.every((e, i) => i === 0 || d[i - 1].tanggal >= e.tanggal), { error: "Urutkan dari yang terbaru." });
+
 export const makanPlaceSchema = z.looseObject({
   id: z.string(),
   name: z.string(),

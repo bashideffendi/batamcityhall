@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import JsonLd from "@/components/site/JsonLd";
 import { tanggalTulisan, TULISAN } from "@/features/jurnal/data";
 import { semuaTulisan } from "@/features/konten/baca";
+import { artikel, grafLd, organisasi } from "@/lib/data-terstruktur";
 
 export const revalidate = 300;
 
@@ -25,6 +27,12 @@ export default async function HalamanTulisan({ params }: { params: Promise<{ slu
   if (!t) notFound();
   return (
     <article className="bch-page bch-tulisan">
+      <JsonLd
+        data={grafLd(
+          artikel({ judul: t.judul, ringkasan: t.ringkasan, tanggal: t.tanggal, gambar: t.gambar, alamat: `/jurnal/${t.slug}`, penulis: t.penulis }),
+          organisasi(),
+        )}
+      />
       <header>
         <nav className="bch-remah" aria-label="Lokasi Halaman">
           <Link href="/jurnal">Jurnal</Link> / {t.rubrik}

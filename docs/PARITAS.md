@@ -39,7 +39,7 @@ Sejak rombak menu November 2026: CCTV pindah ke `/cctv`, klaster kamera diganti 
 - ✔ CCTV: playlist dicek dulu (`#EXT-X-ENDLIST` = mati, `Last-Modified` tua = beku), nol byte video sebelum dipilih — live: 0 permintaan ke server kamera sebelum pin dipilih, e2e juga
 - ✔ Satu stream saja, tanpa grid dan autoplay massal, berhenti saat tab disembunyikan, perkiraan konsumsi data tampil — live: tampil "Sekitar 20 MB per Menit"; berhenti saat tab disembunyikan kode
 - ✔ hls.js build penuh, bukan `light` (ada kamera H.265) — `lib/cctv.ts`
-- ✔ Sejak 8 Nov 2026 iPhone juga memakai hls.js (ManagedMediaSource) dengan pemutar bawaan sebagai cadangan, status kamera diperiksa server tiap 5 menit, dan pemakaian data ditulis per kamera — unit dan e2e, belum diuji di iPhone asli, belum tayang
+- ✔ Sejak 8 Nov 2026 iPhone juga memakai hls.js (ManagedMediaSource) dengan pemutar bawaan sebagai cadangan, status kamera diperiksa server tiap 5 menit, dan pemakaian data ditulis per kamera — unit dan e2e, belum diuji di iPhone asli, tayang 8 Nov 2026
 - ✔ Route realtime `force-dynamic` + `s-maxage` 30–60 detik, tanpa ISR/prerender — tambahan `/api/radar-citra/[ts]` cache panjang karena PNG per timestamp tidak berubah
 - ✔ Function region `sin1`, header keamanan, semua URL eksternal di `lib/sources.ts`, tanpa pelacak — e2e beranda: nol permintaan ke luar situs
 - ✔ Kalimat "ditarik langsung ke perangkat pengguna" disesuaikan bila radar lewat route sendiri — kalimat itu tidak ada di kode yang dipindah
@@ -95,4 +95,5 @@ Bukan syarat pengalihan situs lama, dicatat supaya perbandingan tidak salah baca
 - Dashboard Makanan, Jurnal, agenda, dan Info Loker di `/admin` — e2e mode contoh, belum diuji dengan Supabase sungguhan
 - Tambah dan ubah food court di `/admin/makanan` — e2e mode contoh, tayang 7 Nov 2026
 - Infografik di `/infografik` dan kaki situs dengan newsletter — e2e, tayang 7 Nov 2026
-- Perbaikan audit 8 Nov 2026 (keamanan route, service worker, peta beranda dimuat lambat, versi kecil gambar): tidak mengubah fitur yang dibandingkan dengan situs lama — unit dan e2e, belum tayang
+- Perbaikan audit 8 Nov 2026 (keamanan route, service worker, peta beranda dimuat lambat, versi kecil gambar): tidak mengubah fitur yang dibandingkan dengan situs lama — unit dan e2e, tayang 8 Nov 2026
+- Standar Redaksi, Log Koreksi, Aksesibilitas, JSON-LD, dan RSS (8 Nov 2026): tambahan, tidak ada di situs lama — unit dan e2e, belum tayang

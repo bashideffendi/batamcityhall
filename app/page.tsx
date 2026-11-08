@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { preload } from "react-dom";
+import JsonLd from "@/components/site/JsonLd";
 import BeritaWidget from "@/features/berita/BeritaWidget";
 import { daftarAcara } from "@/features/budaya/data";
 import { DAFTAR_KATEGORI, slugKategori, tempatDiKategori } from "@/features/direktori/data";
@@ -13,6 +14,7 @@ import { MAPPED_CAMS } from "@/features/langit-laut/lib/cctv";
 import { categoryCounts, categoryMap, places } from "@/features/makan/lib/data";
 import { grafisHidanganKecil, slugHidangan } from "@/features/makan/lib/hidangan";
 import PetaMuat from "@/features/peta/PetaMuat";
+import { grafLd, organisasi, situsWeb } from "@/lib/data-terstruktur";
 import { kaidahJudul } from "@/lib/judul";
 import "@/features/hari-ini/beranda.css";
 
@@ -53,6 +55,7 @@ export default async function Beranda() {
 
   return (
     <div className="br-halaman">
+      <JsonLd data={grafLd(organisasi(), situsWeb())} />
       <HariIniMuat />
 
       <div className="br-dasbor">

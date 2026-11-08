@@ -77,6 +77,9 @@ export const HALAMAN = [
   ["/kontribusi", "Cara Berkontribusi"],
   ["/privasi", "Kebijakan Privasi"],
   ["/syarat", "Syarat Penggunaan"],
+  ["/standar-redaksi", "Standar Redaksi"],
+  ["/log-koreksi", "Log Koreksi"],
+  ["/aksesibilitas", "Aksesibilitas"],
   ["/tidak-ada-halaman-ini", "404"],
 ];
 

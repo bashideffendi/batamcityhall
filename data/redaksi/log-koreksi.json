@@ -1,0 +1,32 @@
+[
+  {
+    "tanggal": "2026-11-08",
+    "halaman": "/cctv",
+    "judul": "CCTV Lalu Lintas",
+    "uraian": "Pemakaian data kini ditulis per kamera, sesuai ukuran siarannya: sekitar 1 sampai 56 MB per menit. Sebelumnya semua kamera ditulis memakai sekitar 20 MB per menit. Kamera yang sudah tidak menyiarkan kini ditandai sebelum dibuka."
+  },
+  {
+    "tanggal": "2026-11-08",
+    "halaman": "/makan/food-court",
+    "judul": "Food Court",
+    "uraian": "Pujasera A1, Pujasera Sindo Happy, dan Newton Food Court dihapus dari daftar karena tidak ditemukan saat diperiksa."
+  },
+  {
+    "tanggal": "2026-11-08",
+    "halaman": "/makan/food-court",
+    "judul": "Food Court",
+    "uraian": "Pujasera 28 dihapus dari daftar karena sudah tutup."
+  },
+  {
+    "tanggal": "2026-11-08",
+    "halaman": "/info/tempat/batamindo",
+    "judul": "Batamindo Industrial Park",
+    "uraian": "Titik di peta dipindah sekitar 900 meter ke lokasi yang benar."
+  },
+  {
+    "tanggal": "2026-11-08",
+    "halaman": "/cctv",
+    "judul": "CCTV Lalu Lintas",
+    "uraian": "Titik 28 kamera diperbaiki. Sebelumnya sebagian kamera hanya bertitik perkiraan."
+  }
+]

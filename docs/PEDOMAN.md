@@ -1532,3 +1532,5 @@ Nomor merujuk galeri screenshot 5 November 2026.
 8. **Badan permintaan dibaca berbatas.** Route baru memakai `bacaTeksTerbatas` atau `bacaJsonTerbatas` dari `features/tukang/http.ts`, bukan `req.text()` atau `req.json()`.
 9. **Service worker** (`public/sw.js`) tidak menyimpan `/admin`, `/api`, `/tiles`, dan respons `no-store`. Naikkan nama cache bila aturannya diubah supaya simpanan lama terhapus.
 10. **CCTV:** jangan kembalikan pemaksaan pemutar bawaan Safari di iPhone. Kamera Pemko menyiarkan H.265 dalam .ts dan playlist 2 potongan, dua hal yang ditolak pemutar bawaan. Audit armada: `bash scripts/cctv-audit.sh`.
+11. **Log Koreksi:** setiap perbaikan atas fakta yang sudah tayang (tempat dihapus karena tutup, titik dipindah, angka salah) dicatat di `data/redaksi/log-koreksi.json`, terbaru di atas, dengan alamat internal halaman yang diperbaiki. Perbaikan tampilan dan bahasa tidak perlu dicatat.
+12. **Data terstruktur:** JSON-LD hanya dibentuk lewat `lib/data-terstruktur.ts`. Jangan memasukkan nomor telepon, rating pihak lain, atau titik perkiraan. `npm run check:rules` (juga `postbuild`) memeriksa keluaran build.
