@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-08 · Tiga food court tak ditemukan dihapus
+
+Atas keputusan pemilik. Masih di lokal sampai pemilik meminta push.
+
+- **Food Court:** Pujasera A1, Pujasera Sindo Happy, dan Newton Food Court dihapus karena tidak ditemukan di Google Maps. Kini 12 food court, semuanya bertitik dari pemilik. Lima masih berlabel Alamat Perlu Dicek.
+- **Lembar koordinat** dibuat ulang: 1.074 lokasi. Lembar Food Court tidak ada lagi karena semua food court sudah bertitik.
+- Tes Food Court kini mengharapkan 12 baris.
+
 ## 2026-11-08 · Pujasera 28 dihapus
 
 Atas keputusan pemilik. Tayang sejak `8aad2e0` (8 November 2026), diperiksa di situs: 15 food court, Pujasera 28 tidak ada.

@@ -49,35 +49,6 @@
       "lng": 104.015575
     },
     {
-      "id": "pujasera-a1",
-      "nama": "Pujasera A1",
-      "kecamatan": "Lubuk Baja",
-      "alamat": "Komp. Bukit Mas, Nagoya, dekat Lucky Plaza",
-      "jam": "",
-      "isi": "Beragam makanan Indonesia dan Tionghoa.",
-      "tingkat": "dibaca",
-      "sumber_url": [
-        "https://en.wikivoyage.org/wiki/Nagoya_(Indonesia)",
-        "https://id.foursquare.com/v/a1-food-court/4cfca25834c1a0936e334c0e"
-      ],
-      "lat": null,
-      "lng": null
-    },
-    {
-      "id": "pujasera-sindo-happy",
-      "nama": "Pujasera Sindo Happy",
-      "kecamatan": "Lubuk Baja",
-      "alamat": "Simpang Jl. Imam Bonjol dan Jl. Windsor",
-      "jam": "",
-      "isi": "",
-      "tingkat": "dibaca",
-      "sumber_url": [
-        "https://en.wikivoyage.org/wiki/Nagoya_(Indonesia)"
-      ],
-      "lat": null,
-      "lng": null
-    },
-    {
       "id": "nagoya-hill-food-street",
       "nama": "Nagoya Hill Food Street",
       "kecamatan": "Lubuk Baja",
@@ -104,20 +75,6 @@
       ],
       "lat": 1.140882,
       "lng": 104.01327
-    },
-    {
-      "id": "newton-food-court",
-      "nama": "Newton Food Court",
-      "kecamatan": "Lubuk Baja",
-      "alamat": "Komp. Nagoya Paradise Blok A No. 12-17, area Newton Hotel",
-      "jam": "",
-      "isi": "",
-      "tingkat": "daftar",
-      "sumber_url": [
-        "https://id.foursquare.com/v/newton-food-court/4cdcddc7d4ecb1f7ad258248"
-      ],
-      "lat": null,
-      "lng": null
     },
     {
       "id": "utama-98-foodcourt",
