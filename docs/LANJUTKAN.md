@@ -36,7 +36,7 @@ Folder `C:\proyek\batamcityhall` (salinan lama `Desktop\batam-city-hall` terting
 
 ## Langkah berikutnya
 
-**Tayang vs lokal.** Situs tayang memakai commit `8aad2e0`: rombak menu, food court lewat dashboard, masukan 7 November (spasi, gelombang, kaki situs, Instagram, Infografik), titik wakil wilayah, koordinat 28 CCTV dan 12 food court dari pemilik, perbaikan legenda CCTV, dan penghapusan Pujasera 28 sudah tayang. Yang menyusul: terjemahan Inggris dan penyambungan Supabase. Push ke `fase-1-fondasi` langsung men-deploy.
+**Tayang vs lokal.** Situs tayang memakai commit `4da6d13`: rombak menu, food court lewat dashboard, masukan 7 November (spasi, gelombang, kaki situs, Instagram, Infografik), titik wakil wilayah, koordinat 28 CCTV dan 12 food court dari pemilik, perbaikan legenda CCTV, dan penghapusan empat food court (kini 12, semuanya bertitik) sudah tayang. Yang menyusul: terjemahan Inggris dan penyambungan Supabase. Push ke `fase-1-fondasi` langsung men-deploy.
 
 Rencana dan statusnya: `docs/RENCANA-ROMBAK.md`. Temuan audit: `docs/AUDIT.md`. Yang menunggu pemilik: `docs/TODO_PEMILIK.md`.
 
