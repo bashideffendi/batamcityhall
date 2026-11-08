@@ -89,7 +89,7 @@ Bukan syarat pengalihan situs lama, dicatat supaya perbandingan tidak salah baca
 
 - Kategori Makanan: 32 kategori pemilik menggantikan 17 hidangan. Alamat kategori lama dialihkan ke alamat barunya — e2e, tayang 6 Nov 2026
 - Food Court di `/makan/food-court` dan tautan dua arah dengan tempat makan — e2e, tayang 6 Nov 2026
-- Peta Bus Trans Batam di `/jalan/trans-batam` dan halaman koridor: geser, perbesar, layar penuh, sorot koridor — e2e dan unit, belum tayang
+- Peta Bus Trans Batam di `/jalan/trans-batam` dan halaman koridor: geser, perbesar, layar penuh, sorot koridor — e2e dan unit, tayang 8 Nov 2026
 - Info Loker di `/loker`: menu tampil setelah basis data tersambung — e2e mode contoh, halaman tayang 6 Nov 2026 tanpa menu
 - Dashboard Makanan, Jurnal, agenda, dan Info Loker di `/admin` — e2e mode contoh, belum diuji dengan Supabase sungguhan
 - Tambah dan ubah food court di `/admin/makanan` — e2e mode contoh, tayang 7 Nov 2026

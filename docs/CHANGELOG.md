@@ -2,7 +2,7 @@
 
 ## 2026-11-08 · Peta Bus Trans Batam baru
 
-Atas permintaan pemilik: peta seperti Peta Bus Batam (PDF karya Farhan S. Fadhillah, CC BY 4.0), lebih rapi. Masih di lokal sampai pemilik meminta push.
+Atas permintaan pemilik: peta seperti Peta Bus Batam (PDF karya Farhan S. Fadhillah, CC BY 4.0), lebih rapi. Tayang sejak `003eecb` (8 November 2026), diperiksa di situs: sembilan garis, sorot K7 di halaman koridor, kredit di Kolofon.
 
 - **Peta Bus** menggantikan Diagram Koridor di `/jalan/trans-batam` dan halaman koridor. Bentuk pulau, bandara, dan tata letak garis mengikuti PDF itu; warna, huruf, penanda halte, dan mode gelap mengikuti situs.
 - **Rapi di simpul padat:** garis sejajar membelok dengan lengkung sepusat, percabangan Batam Centre lewat simpang Kadin, halte berseberangan jalan berbagi satu tanda. Tidak ada nama halte yang bertumpuk (dites).
