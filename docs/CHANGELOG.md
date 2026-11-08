@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-09 · Urutan menu menurut keperluan pembaca
+
+Atas permintaan pemilik ("aku ikut rekom mu"). Masih di lokal sampai pemilik meminta push.
+
+- Urutan baru: Cuaca · CCTV · Transportasi · Layanan Warga · Makanan · Things to Do · Berita · Jurnal · Infografik · Sejarah dan Budaya · Komunitas · Tukang Langganan (Info Loker di ujung bila aktif).
+- Dasarnya: kebutuhan saat ini lebih dulu (cuaca, jalan, transportasi), lalu layanan yang dicari warga saat perlu (nomor darurat, direktori), lalu jalan-jalan (makan, kegiatan), bacaan (berita, Jurnal, Infografik, sejarah), dan terakhir bagian warga (komunitas, tukang). Menu yang sejenis kini berdampingan, misalnya Jurnal, Infografik, dan Sejarah dan Budaya.
+- Isi tiap bagian tidak berubah. PEDOMAN dan tes urutan menu disesuaikan.
+- **Pemeriksaan:** unit lulus, cek bahasa lulus, build berhasil, e2e 947 lulus. Satu tes Tukang (kiriman lewat API) sempat gagal sekali, lalu lulus pada tiga ulangan seluruh berkas tesnya (84 lulus).
+
 ## 2026-11-08 · Lapisan kepercayaan: Standar Redaksi, Log Koreksi, Aksesibilitas, data terstruktur, RSS
 
 Dari dokumen pemilik "Batam Almanac" (status per butir di `docs/ALMANAC.md`). Nama tetap Batam City Hall dan pemerintah tidak disebut, atas keputusan pemilik. Tayang sejak `7818d9f` (8 November 2026) atas persetujuan pemilik, diperiksa di situs: ketiga halaman dan `/rss.xml` menjawab 200 (RSS berisi 6 tulisan), JSON-LD Organization tampil di beranda, Tentang menaut ke Log Koreksi.

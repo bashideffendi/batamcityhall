@@ -21,7 +21,7 @@ Versi 1.1 mengganti arah tampilan menjadi editorial dengan grafis Riso (bagian 4
 
 > **Koreksi pemilik, rombak menu, November 2026. Menang atas semua isi di bawah dan atas dua koreksi di atas bila bertentangan.**
 >
-> 1. **Menu baru, 11 bagian tanpa nomor** (`BAGIAN` di `lib/site.ts`): Cuaca · CCTV · Transportasi · Makanan · Berita · Jurnal · Things to Do · Komunitas · Tukang Langganan · Layanan Warga · Sejarah dan Budaya. Tujuh loket di bagian 3 dibaca sebagai bagian-bagian ini. Nomor kecil dan penanda di atas judul dihapus. Alamat lama dialihkan di `next.config.ts`.
+> 1. **Menu tanpa nomor** (`BAGIAN` di `lib/site.ts`), urutan sejak 9 Nov 2026 menurut keperluan pembaca: kebutuhan saat ini (Cuaca · CCTV · Transportasi), layanan (Layanan Warga), jalan-jalan (Makanan · Things to Do), bacaan (Berita · Jurnal · Infografik · Sejarah dan Budaya), lalu warga (Komunitas · Tukang Langganan · Info Loker bila aktif). Tujuh loket di bagian 3 dibaca sebagai bagian-bagian ini. Nomor kecil dan penanda di atas judul dihapus. Alamat lama dialihkan di `next.config.ts`.
 > 2. **Ruang Main dihapus.** Kartu Pos pindah ke `/kartu-pos` dengan enam desain siap cetak. Kalkulator Singapura atau Nagoya dan Vibe dihapus karena tidak fungsional.
 > 3. **Hanya Bahasa Indonesia yang tampil.** Tombol ID, EN, dan 中 dihapus. Terjemahan tetap di kode untuk nanti. Bagian 2.10 tidak berlaku selama itu.
 > 4. **Title Case untuk semua label pendek:** menu, submenu, tab, saringan, tombol, judul kolom, label status, jenis jasa. Kalimat tetap kapital awal. Entri kamus mengikuti kamus. Ini menggantikan kalimat terakhir butir 3 koreksi sebelumnya.

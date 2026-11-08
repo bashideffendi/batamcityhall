@@ -22,19 +22,21 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
+// Urutan menurut keperluan pembaca (keputusan pemilik 9 Nov 2026): kebutuhan saat ini, layanan, jalan-jalan,
+// bacaan, lalu warga.
 const BAGIAN_URUT = [
   "Cuaca",
   "CCTV",
   "Transportasi",
+  "Layanan Warga",
   "Makanan",
+  "Things to Do",
   "Berita",
   "Jurnal",
   "Infografik",
-  "Things to Do",
+  "Sejarah dan Budaya",
   "Komunitas",
   "Tukang Langganan",
-  "Layanan Warga",
-  "Sejarah dan Budaya",
 ];
 
 test.describe("menu", () => {
