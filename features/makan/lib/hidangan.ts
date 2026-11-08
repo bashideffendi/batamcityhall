@@ -14,6 +14,8 @@ export const kategoriDariSlug = (slug: string): string | undefined => (ADA.has(s
 export const semuaSlugHidangan = KATEGORI.map((c) => c.id);
 
 export const grafisHidangan = (kategori: string) => `/grafis/hidangan/${kategori}.webp`;
+/** Versi 352 px (scripts/buat-varian-gambar.mjs) untuk gambar yang tampil 180 px ke bawah. */
+export const grafisHidanganKecil = (kategori: string) => `/grafis/hidangan/kecil/${kategori}.webp`;
 
 export interface Rumpun {
   id: string;

@@ -1,3 +1,4 @@
+import "server-only";
 import kategoriMakan from "@/data/makan/categories.json";
 import { kaidahJudul } from "@/lib/judul";
 // Direktori Informasi Warga dari data/places.json. Fungsi di sini murni dan hanya dipakai di server, kecuali

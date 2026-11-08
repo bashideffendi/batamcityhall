@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState, type ReactNode } from "react";
-import { terminalDariMakan } from "@/features/jalan/feri-data";
 import FeriTerakhirMuat from "@/features/jalan/FeriTerakhirMuat";
 import { areaCounts, areaMap, categories, categoryCounts, categoryMap, dalamKategori, ferries, kawasanBerisi, places } from "../lib/data";
 import { FilterProvider, useAlamat, useFilters } from "../lib/filters";
@@ -457,7 +456,8 @@ function KepalaFeri({ aktif }: { aktif: string }) {
   );
 }
 
-export function DekatFeri() {
+/** `terminalPerMakan` dihitung di server (app/makan/dekat-feri) supaya data feri tidak ikut ke peramban. */
+export function DekatFeri({ terminalPerMakan }: { terminalPerMakan: Record<string, string> }) {
   const search = useAlamat();
   const minta = new URLSearchParams(search).get("terminal");
   const aktif = ferries.some((f) => f.id === minta) ? (minta as string) : ferries[0].id;
@@ -465,7 +465,7 @@ export function DekatFeri() {
     (p: PlaceWithGeo) => p.nearestFerryId === aktif && p.nearestFerryKm <= RADIUS_FERI_KM,
     [aktif],
   );
-  const terminal = terminalDariMakan(aktif);
+  const terminal = terminalPerMakan[aktif] ?? null;
   const nama = ferries.find((f) => f.id === aktif)?.label;
   return (
     <FilterProvider dasar={dasar} urutAwal="ferry">

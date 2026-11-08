@@ -111,6 +111,21 @@ export function tsToInstant(ts: string): number | null {
   if (!m) return null;
   return Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]) - 8 * 3600 * 1000;
 }
+// Daftar frame paling tua kira-kira 5,5 jam (citra terakhir yang baik 3 jam + 30 frame), jadi 12 jam ke belakang
+// sudah longgar. Ke depan 15 menit untuk selisih jam server.
+const JENDELA_LALU_MS = 12 * 3600 * 1000;
+const JENDELA_DEPAN_MS = 15 * 60 * 1000;
+
+/** Timestamp yang mungkin terbit: tanggal dan jam sah, kelipatan 5 menit, dan dalam jendela waktu di atas. */
+export function tsRadarWajar(ts: string, now = Date.now()): boolean {
+  const t = tsToInstant(ts);
+  if (t === null) return false;
+  const d = new Date(t + 8 * 3600 * 1000);
+  const ulang =
+    `${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, "0")}${String(d.getUTCDate()).padStart(2, "0")}` +
+    `${String(d.getUTCHours()).padStart(2, "0")}${String(d.getUTCMinutes()).padStart(2, "0")}`;
+  return ulang === ts && d.getUTCMinutes() % 5 === 0 && t >= now - JENDELA_LALU_MS && t <= now + JENDELA_DEPAN_MS;
+}
 /** Umur frame (menit) dihitung di klien — tetap benar walau respons API ke-cache sebentar. */
 export function ageMinutesOf(ts: string, now = Date.now()): number | null {
   const t = tsToInstant(ts);

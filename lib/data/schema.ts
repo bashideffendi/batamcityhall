@@ -2,49 +2,9 @@
 // data tidak valid. Skema dibuat longgar pada field naratif dan ketat pada aturan yang tidak
 // boleh dilanggar (enum, koordinat, larangan data pajak, larangan menebak koordinat).
 import { z } from "zod";
+import { KATEGORI, KECAMATAN, STATUS_DATA, STATUS_KOORDINAT } from "./konstanta";
 
-export const KECAMATAN = [
-  "Batam Kota",
-  "Batu Aji",
-  "Batu Ampar",
-  "Belakang Padang",
-  "Bengkong",
-  "Bulang",
-  "Galang",
-  "Lubuk Baja",
-  "Nongsa",
-  "Sagulung",
-  "Sei Beduk",
-  "Sekupang",
-] as const;
-
-export const KATEGORI = [
-  "pemerintahan",
-  "layanan_publik",
-  "keamanan_darurat",
-  "kesehatan",
-  "pendidikan",
-  "perpustakaan",
-  "ibadah",
-  "pemakaman",
-  "transportasi",
-  "belanja",
-  "ruang_publik",
-  "wisata",
-  "olahraga",
-  "akomodasi",
-  "jasa",
-  "pertanahan_hukum",
-  "landmark",
-  "kampung_tua",
-  "budaya",
-  "khas_batam",
-  "kuliner",
-  "lainnya",
-] as const;
-
-export const STATUS_KOORDINAT = ["terverifikasi", "perlu_cek_ulang", "perlu_diisi_user"] as const;
-export const STATUS_DATA = ["terverifikasi", "perlu_cek_ulang", "sumber_tunggal", "cerita_rakyat", "usang", "rencana"] as const;
+export { KATEGORI, KECAMATAN, STATUS_DATA, STATUS_KOORDINAT };
 
 /** Kolom yang sengaja tidak ada di paket dan tidak boleh muncul (research/00 bagian 6). */
 const KUNCI_PAJAK = /^(npwpd|nop|nilai_pajak|sspd|sptpd|no_sspd|no_sptpd|nomor_sspd|nomor_sptpd|pajak)$/i;

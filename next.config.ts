@@ -6,12 +6,20 @@ const SECURITY_HEADERS = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "X-Frame-Options", value: "DENY" },
-  { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
+  // Bagian CSP yang tidak mengganggu skrip inline Next: tanpa plugin, base dan tujuan formulir hanya situs ini.
+  { key: "Content-Security-Policy", value: "frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(self), payment=(), usb=()" },
   { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
 ];
 
+// Berkas di public/ tidak bernama-hash, jadi Next memasang max-age=0. Gambar boleh dipakai sejam lalu disegarkan di
+// latar, supaya foto yang diganti tetap muncul paling lambat sehari kemudian. Glyph peta tidak pernah berubah.
+// /tiles sengaja tidak disentuh: ETag-nya lemah, jadi PMTiles tidak bisa mendeteksi arsip lama di cache peramban.
+const CACHE_GAMBAR = [{ key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" }];
+const CACHE_GLYPH = [{ key: "Cache-Control", value: "public, max-age=604800" }];
+
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   // Dari hujandibatam: cache build Turbopack pernah menghasilkan CSS basi di produksi
   // (deploy 006ab42, 29 Sep 2026). Build bersih sedikit lebih lama, hasilnya selalu sesuai kode.
   experimental: {
@@ -65,6 +73,8 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       { source: "/(.*)", headers: SECURITY_HEADERS },
+      ...["grafis", "kartu-pos", "foto", "mural", "logo"].map((d) => ({ source: `/${d}/:path*`, headers: CACHE_GAMBAR })),
+      { source: "/glyphs/:path*", headers: CACHE_GLYPH },
       {
         source: "/sw.js",
         headers: [{ key: "Cache-Control", value: "no-cache, max-age=0, must-revalidate" }],

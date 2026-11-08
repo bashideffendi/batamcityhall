@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import type { BarisIndeks } from "@/features/direktori/data";
 import { BAGIAN } from "@/lib/site";
 import { cariDi, HASIL_MAKS, halamanSitus } from "./cocok";
@@ -9,14 +9,20 @@ import { cariDi, HASIL_MAKS, halamanSitus } from "./cocok";
 const HALAMAN = halamanSitus(BAGIAN);
 
 // Pencarian di peramban: halaman situs dan seluruh direktori. Indeksnya berkas statis, jadi tidak ada yang dikirim ke server.
+const tanpaLangganan = () => () => {};
+const kataDariUrl = () => new URLSearchParams(window.location.search).get("q") ?? "";
+
 export default function Cari() {
-  const [kata, setKata] = useState("");
+  // Kata awal dari ?q= dibaca lewat useSyncExternalStore: kosong saat render server, langsung terisi di klien
+  // tanpa menunggu indeks tempat. Setelah pengunjung mengetik, ketikannya yang dipakai.
+  const awal = useSyncExternalStore(tanpaLangganan, kataDariUrl, () => "");
+  const [ketik, setKata] = useState<string | null>(null);
+  const kata = ketik ?? awal;
   const [baris, setBaris] = useState<BarisIndeks[] | null>(null);
   const [gagal, setGagal] = useState(false);
 
   useEffect(() => {
     let hidup = true;
-    const awal = new URLSearchParams(window.location.search).get("q") ?? "";
     fetch("/info/direktori/indeks.json")
       .then((r) => {
         if (!r.ok) throw new Error(String(r.status));
@@ -25,7 +31,6 @@ export default function Cari() {
       .then((d) => {
         if (!hidup) return;
         setBaris(d);
-        if (awal) setKata(awal);
       })
       .catch(() => hidup && setGagal(true));
     return () => {

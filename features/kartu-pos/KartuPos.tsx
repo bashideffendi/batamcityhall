@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { KECAMATAN } from "@/lib/data/schema";
-import { DESAIN, salamDari } from "./desain";
+import { KECAMATAN } from "@/lib/data/konstanta";
+import { DESAIN, gambarLayar, salamDari } from "./desain";
 
 // Kartu pos A6 dua sisi. Semua terjadi di peramban: tidak ada yang dikirim ke server.
 function Depan({ gambar, tempat }: { gambar: string; tempat: string }) {
@@ -63,7 +63,7 @@ export default function KartuPos() {
               {DESAIN.map((d) => (
                 <label key={d.id} data-pilih={d.id === desain || undefined}>
                   <input type="radio" name="desain" value={d.id} checked={d.id === desain} onChange={() => setDesain(d.id)} />
-                  <Image src={d.gambar} alt="" width={437} height={310} unoptimized loading="lazy" />
+                  <Image src={gambarLayar(d.gambar)} alt="" width={437} height={310} unoptimized loading="lazy" />
                   <span>{d.nama}</span>
                 </label>
               ))}

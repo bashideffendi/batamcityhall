@@ -1527,3 +1527,7 @@ Nomor merujuk galeri screenshot 5 November 2026.
 3. **Cache data realtime.** Railway tidak memiliki CDN bawaan seperti Vercel. Pastikan route data realtime memakai cache memori di server supaya sumber radar dan gelombang tidak diminta pada setiap kunjungan.
 4. **Tes mural yang gagal** boleh dilewati selama mural disembunyikan.
 5. **Uji di ponsel Android dan iPhone asli.**
+6. **Gambar yang tampil kecil memakai versi kecil.** Gambar hidangan baru atau desain kartu pos baru butuh `node scripts/buat-varian-gambar.mjs`; tes unit gagal bila versi kecilnya tidak ada.
+7. **Data mentah hanya di server.** Modul yang membaca `data/places.json` atau data feri mentah diawali `import "server-only"`. Komponen klien menerima hasil olahannya lewat props.
+8. **Badan permintaan dibaca berbatas.** Route baru memakai `bacaTeksTerbatas` atau `bacaJsonTerbatas` dari `features/tukang/http.ts`, bukan `req.text()` atau `req.json()`.
+9. **Service worker** (`public/sw.js`) tidak menyimpan `/admin`, `/api`, `/tiles`, dan respons `no-store`. Naikkan nama cache bila aturannya diubah supaya simpanan lama terhapus.

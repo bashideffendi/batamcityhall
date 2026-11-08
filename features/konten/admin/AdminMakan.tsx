@@ -72,7 +72,9 @@ export default function AdminMakan({
   const [f, setF] = useState<Isian>(KOSONG);
   const { galat, pesan, sibuk, kirim } = useKirim();
   const atur = (k: Partial<Isian>) => setF((x) => ({ ...x, ...k }));
-  const baru = pilih === BARU;
+  // Tempat baru yang sudah tersimpan tetap tempat baru: id dan koordinatnya dipertahankan saat disimpan ulang.
+  const tertunda = ubahan.find((u) => u.tempat_id === pilih);
+  const baru = pilih === BARU || !!tertunda?.baru;
 
   // Tempat baru yang sudah disimpan ikut bisa dipilih, supaya fotonya bisa langsung ditambahkan.
   const tempatBaru: Pilihan[] = ubahan.filter((u) => u.baru).map((u) => ({ nilai: u.tempat_id, nama: `${u.data.name} (Baru)` }));
@@ -82,7 +84,15 @@ export default function AdminMakan({
     setPilih(v);
     const t = tempat.find((x) => x.id === v);
     const ubah = ubahan.find((u) => u.tempat_id === v);
-    setF({ ...KOSONG, ...t, ...(ubah?.data as Partial<Isian>), food_court: ubah?.data.food_court ?? t?.food_court ?? "", lat: "", lng: "" });
+    const titik = ubah?.data as { lat?: number; lng?: number } | undefined;
+    setF({
+      ...KOSONG,
+      ...t,
+      ...(ubah?.data as Partial<Isian>),
+      food_court: ubah?.data.food_court ?? t?.food_court ?? "",
+      lat: titik?.lat != null ? String(titik.lat) : "",
+      lng: titik?.lng != null ? String(titik.lng) : "",
+    });
   }
 
   return (
@@ -93,7 +103,7 @@ export default function AdminMakan({
           e.preventDefault();
           const { lat, lng, ...kolom } = f;
           const data = baru
-            ? { baru: true, tempat_id: buatSlug(f.name), ...kolom, lat: Number(lat), lng: Number(lng) }
+            ? { baru: true, tempat_id: pilih === BARU ? buatSlug(f.name) : pilih, ...kolom, lat: Number(lat), lng: Number(lng) }
             : { baru: false, tempat_id: pilih, ...kolom };
           kirim({ aksi: "simpan_makan", data }, "Tersimpan. Tayang setelah Terbitkan Perubahan.", () => {
             setPilih("");
@@ -179,7 +189,7 @@ export default function AdminMakan({
         <Pesan pesan={pesan} />
       </form>
 
-      {pilih && !baru && (
+      {pilih && pilih !== BARU && (
         <section className="bch-seksi-rapat" aria-label="Foto tempat ini">
           <AdminFoto tempat={daftarTempat.slice(1).map((t) => ({ id: t.nilai, nama: t.nama }))} baris={foto} tempatTetap={pilih} />
         </section>

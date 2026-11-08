@@ -213,11 +213,3 @@ export const bagianDari = (id: string): Bagian => {
 /** Bagian yang memuat alamat ini. */
 export const bagianDiAlamat = (path: string): Bagian | undefined =>
   BAGIAN.find((b) => b.aktifDi.some((p) => path === p || path.startsWith(`${p}/`)));
-
-export const HALAMAN_PENDUKUNG = [
-  { label: "Tentang", href: "/tentang" },
-  { label: "Kolofon", href: "/kolofon" },
-  { label: "Kirim Koreksi", href: "/koreksi" },
-  { label: "Privasi", href: "/privasi" },
-  { label: "Syarat Penggunaan", href: "/syarat" },
-] as const;

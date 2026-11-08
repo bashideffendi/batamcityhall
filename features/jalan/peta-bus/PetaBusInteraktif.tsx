@@ -191,9 +191,17 @@ export default function PetaBusInteraktif({
   // Penunjuk: tetikus menggeser dengan satu jari/tombol, sentuh butuh dua jari kecuali di layar penuh.
   const penunjuk = useRef(new Map<number, { x: number; y: number }>());
   const geserTadi = useRef(false);
+  // Garis yang ditekan dan titik awal tekan. Dicatat di pointerdown karena setelah pointer capture, klik
+  // mendarat di <svg>, bukan di garis.
+  const garisTekan = useRef<string | null>(null);
+  const awalTekan = useRef<{ x: number; y: number } | null>(null);
   const onPointerDown = (e: React.PointerEvent<SVGSVGElement>) => {
     penunjuk.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
     geserTadi.current = false;
+    if (penunjuk.current.size === 1) {
+      garisTekan.current = (e.target as Element).closest?.("[data-garis]")?.getAttribute("data-garis") ?? null;
+      awalTekan.current = { x: e.clientX, y: e.clientY };
+    }
     if (e.pointerType === "mouse" || penuh || penunjuk.current.size >= 2) {
       (e.currentTarget as Element).setPointerCapture?.(e.pointerId);
     }
@@ -207,7 +215,9 @@ export default function PetaBusInteraktif({
       if (e.pointerType === "mouse" && e.buttons !== 1) return;
       const dx = e.clientX - lama.x;
       const dy = e.clientY - lama.y;
-      if (Math.abs(dx) + Math.abs(dy) > 2) geserTadi.current = true;
+      // Ambang dari titik awal, bukan per gerakan: geser pelan tetap terhitung geser, bukan klik.
+      const awal = awalTekan.current;
+      if (awal && Math.hypot(e.clientX - awal.x, e.clientY - awal.y) > 5) geserTadi.current = true;
       geser(dx, dy);
       penunjuk.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
       return;
@@ -233,11 +243,10 @@ export default function PetaBusInteraktif({
   };
 
   // Ketuk garis: sorot koridornya. Ketuk lagi atau Esc: kembali semua.
-  const onClick = (e: React.MouseEvent<SVGSVGElement>) => {
-    if (geserTadi.current) return;
-    const garis = (e.target as Element).closest?.("[data-garis]");
-    if (!garis) return;
-    const id = garis.getAttribute("data-garis");
+  const onClick = () => {
+    const id = garisTekan.current;
+    garisTekan.current = null;
+    if (geserTadi.current || !id) return;
     setSorot((s) => (s === id ? null : id));
   };
 

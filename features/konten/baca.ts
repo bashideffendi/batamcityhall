@@ -61,6 +61,9 @@ export async function lokerAktif(): Promise<BarisLoker[]> {
 }
 
 /** Foto per tempat, untuk ditambahkan ke foto yang ada di repo. */
+/** Kunci cacheRespons untuk /api/konten/foto. Dilupakan saat admin menambah atau menghapus foto. */
+export const KUNCI_CACHE_FOTO = "konten-foto";
+
 export async function petaFoto(): Promise<Record<string, Foto[]>> {
   const semua = await aman(async () => (await (await ambilKonten())?.foto()) ?? [], []);
   const peta: Record<string, Foto[]> = {};

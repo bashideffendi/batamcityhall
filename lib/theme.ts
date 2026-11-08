@@ -48,7 +48,8 @@ export function followSystemTheme(): () => void {
   const mq = window.matchMedia("(prefers-color-scheme: dark)");
   const onChange = () => {
     // Langit & Laut ikut jam WIB, bukan preferensi sistem (useThemeMode).
-    if (/^\/cuaca\/(hujan|gelombang|cctv)/.test(window.location.pathname)) return;
+    // Pola harus sama dengan THEME_SCRIPT di app/layout.tsx (CCTV pindah ke /cctv).
+    if (/^\/(cuaca\/(hujan|gelombang)|cctv)/.test(window.location.pathname)) return;
     if (!storedTheme()) applyTheme(mq.matches ? "dark" : "light");
   };
   mq.addEventListener("change", onChange);

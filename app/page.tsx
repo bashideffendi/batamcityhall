@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
+import { preload } from "react-dom";
 import BeritaWidget from "@/features/berita/BeritaWidget";
 import { daftarAcara } from "@/features/budaya/data";
 import { DAFTAR_KATEGORI, slugKategori, tempatDiKategori } from "@/features/direktori/data";
 import HariIniMuat from "@/features/hari-ini/HariIniMuat";
 import ModulAcara from "@/features/hari-ini/ModulAcara";
+import { BATAS_PONSEL, GAMBAR_DESKTOP, GAMBAR_PONSEL } from "@/features/hari-ini/peta-dasar";
 import { tanggalTulisan } from "@/features/jurnal/data";
 import { semuaTulisan } from "@/features/konten/baca";
 import { MAPPED_CAMS } from "@/features/langit-laut/lib/cctv";
 import { categoryCounts, categoryMap, places } from "@/features/makan/lib/data";
-import { grafisHidangan, slugHidangan } from "@/features/makan/lib/hidangan";
+import { grafisHidanganKecil, slugHidangan } from "@/features/makan/lib/hidangan";
 import PetaMuat from "@/features/peta/PetaMuat";
 import { kaidahJudul } from "@/lib/judul";
 import "@/features/hari-ini/beranda.css";
@@ -42,6 +44,9 @@ function Selengkapnya({ href }: { href: string }) {
 export const revalidate = 300;
 
 export default async function Beranda() {
+  // Peta Hari Ini adalah gambar terbesar di layar pertama. Hanya satu yang diunduh, sesuai lebar layar.
+  preload(GAMBAR_DESKTOP, { as: "image", fetchPriority: "high", media: `not all and ${BATAS_PONSEL}` });
+  preload(GAMBAR_PONSEL, { as: "image", fetchPriority: "high", media: BATAS_PONSEL });
   const [jurnal] = await semuaTulisan();
   const acara = daftarAcara().map((a) => ({ id: a.id, nama: kaidahJudul(a.nama), bulan: a.bulan, lokasi: a.lokasi }));
   const layanan = DAFTAR_KATEGORI.filter((k) => KATEGORI_LAYANAN.includes(k.kategori));
@@ -89,7 +94,7 @@ export default async function Beranda() {
             {HIDANGAN_BERANDA.map((id) => (
               <li key={id}>
                 <Link href={`/makan/hidangan/${slugHidangan(id)}`} prefetch={false}>
-                  <Image src={grafisHidangan(id)} alt="" width={160} height={160} unoptimized loading="lazy" />
+                  <Image src={grafisHidanganKecil(id)} alt="" width={160} height={160} unoptimized loading="lazy" />
                   <span>{kaidahJudul(categoryMap[id]?.name_id ?? "")}</span>
                   <span className="bch-data">{categoryCounts[id] ?? 0}</span>
                 </Link>
@@ -154,7 +159,7 @@ export default async function Beranda() {
         )}
         <section className="br-kartu-pos" aria-labelledby="br-kartu-pos">
           <Link href="/kartu-pos" prefetch={false}>
-            <Image className="bch-grafis" src="/kartu-pos/selat.webp" alt="" width={874} height={620} unoptimized loading="lazy" />
+            <Image className="bch-grafis" src="/kartu-pos/layar/selat.webp" alt="" width={874} height={620} unoptimized loading="lazy" />
             <span className="judul" id="br-kartu-pos">
               Kartu Pos dari Batam
             </span>

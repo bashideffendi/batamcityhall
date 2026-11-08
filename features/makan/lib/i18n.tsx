@@ -281,8 +281,6 @@ export function useI18n() {
 }
 
 /** Nilai atribut lang untuk konten Makan. */
-export const htmlLang = (lang: Lang) => (lang === "zh" ? "zh-Hans" : lang);
-
 /** Nama kategori sesuai bahasa. */
 export function catName(lang: Lang, c?: { name_id: string; name_en: string; name_zh: string }): string {
   if (!c) return "";

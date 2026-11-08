@@ -43,6 +43,11 @@ export async function cacheRespons(kunci: string, muat: () => Promise<Response>)
   return keRespons(await janji);
 }
 
+/** Buang satu simpanan, misalnya setelah admin mengubah datanya. Permintaan berikutnya memuat ulang. */
+export function lupakanCacheRespons(kunci: string) {
+  simpanan.delete(kunci);
+}
+
 /** Hanya untuk tes. */
 export function kosongkanCacheRespons() {
   simpanan.clear();

@@ -1,5 +1,44 @@
 # CHANGELOG
 
+## 2026-11-08 · Perbaikan hasil audit: bug, keamanan, kecepatan, kode mati
+
+Atas permintaan pemilik ("perbaiki semua"). Masih di lokal sampai pemilik meminta push.
+
+**Bug**
+- Peta Bus: mengetuk garis koridor sesudah menggeser peta tidak lagi menyorot koridor secara tidak sengaja. K10 (rencana) kini ikut terbingkai saat disorot.
+- Tema di `/cuaca/hujan`, `/cuaca/gelombang`, dan `/cctv` tetap mengikuti jam WIB walau preferensi sistem berubah. Polanya kini sama dengan skrip tema di `app/layout.tsx`.
+- Permintaan data yang melewati batas waktu dibatalkan dengan galat "Waktu habis", bukan galat batal biasa.
+- Kotak Hari Ini menulis "Memuat" selama jadwal feri belum tiba, bukan "Habis".
+- Pencarian `/cari?q=` membaca kata dari alamat tanpa render ganda.
+- Dashboard Makanan: tempat baru yang disimpan lalu disunting lagi tetap tercatat sebagai tempat baru, dan namanya tidak boleh sama dengan tempat lama (409).
+
+**Keamanan**
+- Semua badan permintaan dibaca dengan batas ukuran (`bacaTeksTerbatas`, `bacaJsonTerbatas` di `features/tukang/http.ts`), termasuk kiriman tanpa `content-length`.
+- Route citra radar hanya meneruskan waktu yang mungkin terbit (kelipatan 5 menit, 12 jam ke belakang sampai 15 menit ke depan), menyimpan jawaban 404 semenit, menggabungkan permintaan yang sama, dan membatasi 120 permintaan baru per alamat per 10 menit.
+- Batas laju membuang alamat tertua saja saat penuh, bukan mengosongkan semuanya. Alamat IPv6 dihitung per blok /64.
+- Unggah foto admin: ukuran diperiksa sebelum dibaca, isi berkas diperiksa (bukan hanya labelnya), dan gambar di atas 60 juta piksel ditolak.
+- Sesi admin berakhir 8 jam di kedua mode. Kuki mode contoh kini membawa waktu kedaluwarsa bertanda tangan. Kuki Supabase admin httpOnly dan sameSite strict.
+- Di Railway, mode contoh menolak sandi kurang dari 16 karakter dan memakai batas masuk yang ketat.
+- Service worker tidak menyimpan halaman `/admin` dan respons `no-store`, dan simpanan halaman dipangkas ke 40. Nama cache naik ke v2 sehingga simpanan lama terhapus. Keluar dari admin menghapus cache peramban (`Clear-Site-Data`).
+- Header: `X-Powered-By` tidak dikirim lagi; CSP ditambah `object-src 'none'; base-uri 'self'; form-action 'self'`.
+- Tautan internal di isian dashboard tidak boleh berbentuk `//host` atau `/\host`.
+
+**Kecepatan**
+- Halaman Makan tidak lagi mengirim data feri dan direktori ke peramban. `features/direktori/data.ts` dan `features/jalan/feri-data.ts` memakai `import "server-only"`, jadi kebocoran berikutnya menggagalkan build.
+- Daftar kecamatan dipindah ke `lib/data/konstanta.ts`, jadi Direktori dan Kartu Pos tidak ikut memuat zod.
+- Peta beranda baru diunduh saat hampir terlihat, kecuali dibuka lewat `?tempat=`. Penampungnya setinggi peta, jadi halaman tidak bergeser.
+- Gambar peta Hari Ini dimuat dini dari beranda, satu sesuai lebar layar.
+- Versi kecil gambar: hidangan 352 px (rata-rata 20 KB, dulu 135 KB) untuk daftar tempat dan beranda, kartu pos 874 px (sekitar 67 KB, dulu 400 KB) untuk pilihan desain dan beranda. Dibuat `scripts/buat-varian-gambar.mjs`, dijaga tes unit.
+- Gambar di `/grafis`, `/kartu-pos`, `/foto`, `/mural`, dan `/logo` boleh dipakai ulang peramban sejam, glyph peta seminggu. `/tiles` sengaja tidak diubah.
+- Gambar pratinjau Mural dibuat sekali saat build. Daftar foto tempat makan disimpan 5 menit di server dan dilupakan saat admin menambah atau menghapus foto.
+
+**Kode mati**
+- Dihapus: `components/site/MawarAngin.tsx`, 16 ikon cuaca dan peta yang tidak dipakai, `IkonGapura`, `IkonPerkiraan`, `isSmallLandscape`, `isWide`, `cariHalte`, `getTrail`, `trailArea`, `trailMap`, `htmlLang`, `CURRENCIES`, `HALAMAN_PENDUKUNG`. Konstanta sumber BMKG, MSS, dan radar yang belum dipakai dibiarkan karena memuat isi faktual.
+
+**Pemeriksaan**: unit 705 lulus, lint dan tipe bersih, cek bahasa lulus, build mode contoh berhasil, e2e 919 lulus. Satu tes baru (peta beranda) semula rapuh karena Hari Ini kosong di tes; diperbaiki dengan menahan IntersectionObserver, lalu 32 tes peta beranda lulus di desktop dan ponsel. Skor tampilan `docs/tampilan/skor/09-audit.json`: 62 dari 62 lolos. Skrip skor kini memblokir `/api/*` supaya tidak memanggil MSS atau BMKG lewat server.
+
+**Tidak dikerjakan**: double opt-in newsletter (butuh layanan email), aturan satu laporan menyembunyikan entri Tukang (keputusan pemilik), pemangkasan PMTiles, SVG Peta Bus ganda (supaya peta tetap tampil tanpa JavaScript), cakupan token Railway (pengaturan pemilik), `max-age` untuk API data realtime (data harus segar saat dimuat ulang), dan JSON statis ke `public/` (sudah dibuat saat build).
+
 ## 2026-11-08 · Urutan halte koridor dilengkapi, Info Praktis dirapikan
 
 Atas permintaan pemilik. Tayang sejak `8e2b117` (8 November 2026), diperiksa di situs: K8 45 halte tanpa celah, Info Praktis bergaris dan tanpa huruf mono.

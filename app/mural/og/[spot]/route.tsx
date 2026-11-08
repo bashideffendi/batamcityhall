@@ -7,6 +7,11 @@ import { SITE_NAME } from "@/lib/site";
 const huruf = (paket: string, berkas: string) =>
   readFile(join(process.cwd(), "node_modules/@fontsource", paket, "files", berkas));
 
+// Dibuat sekali saat build untuk tiap kartu. Spot lain 404 tanpa merender apa pun.
+export const dynamic = "force-static";
+export const dynamicParams = false;
+export const generateStaticParams = () => KARTU.map((k) => ({ spot: k.id }));
+
 // Kartu yang muncul saat tautan ?spot= dibagikan ke WhatsApp. Warna dari token siang.
 export async function GET(_permintaan: Request, { params }: { params: Promise<{ spot: string }> }) {
   const { spot } = await params;

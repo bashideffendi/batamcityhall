@@ -242,6 +242,10 @@ let berikut = 0;
 async function pekerja() {
   const desktop = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: "id-ID" });
   const ponsel = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, locale: "id-ID" });
+  // Skrip tidak boleh membuat server memanggil MSS atau BMKG. Tampilan diuji dengan data kosong.
+  for (const k of [desktop, ponsel]) {
+    await k.route("**/api/**", (r) => r.fulfill({ status: 503, contentType: "application/json", body: "{}" }));
+  }
   const pd = await desktop.newPage();
   const pp = await ponsel.newPage();
   while (berikut < HALAMAN.length) {

@@ -291,6 +291,12 @@
   font-size: 0.875rem;
   color: var(--bch-ink-muted);
 }
+/* Penampung sebelum peta dimuat, setinggi peta yang sudah jadi (diukur 8 Nov 2026), supaya halaman tidak bergeser. */
+.br-peta-muat {
+  display: grid;
+  place-items: center;
+  height: 824px;
+}
 .app-root.br-peta {
   position: relative;
   height: 720px;
@@ -588,6 +594,9 @@
   }
   .app-root.br-peta {
     height: 480px;
+  }
+  .br-peta-muat {
+    height: 711px;
   }
   .br-panel {
     top: auto;

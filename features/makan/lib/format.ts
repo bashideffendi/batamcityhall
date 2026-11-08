@@ -14,8 +14,6 @@ export const CURRENCY_SYMBOL: Record<Currency, string> = {
   USD: "$",
 };
 
-export const CURRENCIES: Currency[] = ["IDR", "SGD", "MYR", "USD"];
-
 const LOCALE: Record<Lang, string> = { id: "id-ID", en: "en-GB", zh: "zh-CN" };
 
 /** Ambil angka rupiah (>= 1000) dari teks seperti "Rp 15.000–35.000". */

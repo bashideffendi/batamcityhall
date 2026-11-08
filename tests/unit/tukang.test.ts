@@ -757,6 +757,25 @@ describe("batas laju", () => {
     expect(ipDari(req({ "x-forwarded-for": "6.6.6.6, 198.51.100.2" }))).toBe("198.51.100.2");
     expect(ipDari(req({}))).toBe("tanpa-ip");
   });
+
+  it("alamat IPv6 di blok /64 yang sama dihitung satu", () => {
+    const req = (ip: string) => new Request("http://x/", { headers: { "x-real-ip": ip } });
+    expect(ipDari(req("2001:db8:aa:1::5"))).toBe("2001:db8:aa:1::/64");
+    expect(ipDari(req("2001:0db8:00aa:0001:ffff:1:2:3"))).toBe("2001:db8:aa:1::/64");
+    expect(ipDari(req("2001:db8::1"))).toBe("2001:db8:0:0::/64");
+    expect(ipDari(req("::ffff:198.51.100.3"))).toBe("198.51.100.3");
+  });
+
+  it("saat penuh hanya entri tertua yang dibuang, alamat yang sedang dibatasi tetap dibatasi", () => {
+    const b = buatBatasLaju(1, 1000);
+    for (let i = 0; i < 4999; i++) b(`isi-${i}`, 0);
+    b("nakal", 1);
+    expect(b("nakal", 2)).toBe(false);
+    for (let i = 0; i < 50; i++) b(`baru-${i}`, 3);
+    // Dulu peta dikosongkan semua dan "nakal" bebas lagi.
+    expect(b("nakal", 4)).toBe(false);
+    expect(b("isi-0", 4)).toBe(true);
+  });
 });
 
 describe("gerbang admin", () => {
@@ -775,6 +794,22 @@ describe("gerbang admin", () => {
     expect(kukiContohBenar("1", env)).toBe(false);
     expect(kukiContohBenar(undefined, env)).toBe(false);
     expect(kukiContohBenar(nilai, {})).toBe(false);
+  });
+
+  it("kuki contoh kedaluwarsa setelah 8 jam dan tandanya tidak bisa dipindah ke waktu lain", () => {
+    const t = Date.UTC(2026, 10, 8, 12);
+    const nilai = nilaiKukiContoh(env, t);
+    expect(kukiContohBenar(nilai, env, t + 7 * 3600 * 1000)).toBe(true);
+    expect(kukiContohBenar(nilai, env, t + 8 * 3600 * 1000)).toBe(false);
+    const [sampai, tanda] = nilai.split(".");
+    expect(kukiContohBenar(`${Number(sampai) + 3600}.${tanda}`, env, t)).toBe(false);
+  });
+
+  it("di Railway sandi contoh yang pendek menutup admin", () => {
+    const railway = { ...env, RAILWAY_ENVIRONMENT_ID: "x" };
+    expect(sandiContohBenar("sandi-uji", railway)).toBe(false);
+    const panjang = { ADMIN_MODE_CONTOH: "sandi-uji-yang-cukup-panjang", RAILWAY_ENVIRONMENT_ID: "x" };
+    expect(sandiContohBenar("sandi-uji-yang-cukup-panjang", panjang)).toBe(true);
   });
 
   it("pengguna Supabase biasa bukan moderator", () => {

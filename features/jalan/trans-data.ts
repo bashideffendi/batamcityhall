@@ -70,7 +70,6 @@ export const slugKoridor = (id: string) => id.toLowerCase();
 export const koridorDariSlug = (slug: string) => KORIDOR.find((k) => slugKoridor(k.id) === slug);
 
 const halteId = new Map(HALTE.map((h) => [h.id, h]));
-export const cariHalte = (id: string) => halteId.get(id);
 
 // ---------- Warna ----------
 

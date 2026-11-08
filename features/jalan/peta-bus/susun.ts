@@ -594,7 +594,12 @@ export function susunPeta(sumber: Jaringan): PetaBus {
     const v = ARAH_VEKTOR[r.pos];
     const ujung = r.titik[r.titik.length - 1];
     const sisi: Titik = Math.abs(v[0]) > 0.2 && Math.abs(v[1]) > 0.2 ? [Math.sign(v[0]), 0] : v;
-    return { id: r.id, d: keJalur(r.titik), label: buatLabel(`rencana-${r.id}`, r.teks, ujung, sisi, 6, UKURAN.font - 1, false, [r.id], 18) };
+    const label = buatLabel(`rencana-${r.id}`, r.teks, ujung, sisi, 6, UKURAN.font - 1, false, [r.id], 18);
+    // Batas koridor rencana: garis dan labelnya, supaya sorotan memuat koridor ini juga.
+    const xs = [...r.titik.map((t) => t[0]), label.kotak[0], label.kotak[2]];
+    const ys = [...r.titik.map((t) => t[1]), label.kotak[1], label.kotak[3]];
+    batas[r.id] = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
+    return { id: r.id, d: keJalur(r.titik), label };
   });
 
   return { garis, halte, simpul, label, feri, rencana, batas };

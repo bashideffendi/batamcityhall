@@ -1,5 +1,6 @@
 // Data feri untuk halaman Loket 04. Hanya dipakai di server: berkas mentah memuat catatan penyusun, jadi yang
 // keluar dari sini sudah disaring. Teks untuk warga ditulis di sini, bukan disalin dari kolom catatan.
+import "server-only";
 import ferriesMakan from "@/data/makan/ferries.json";
 import ruteRaw from "@/data/feri/rute.json";
 import jadwalRaw from "@/data/feri/jadwal.json";

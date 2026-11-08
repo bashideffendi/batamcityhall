@@ -7,7 +7,7 @@ import { useCurrency } from "../lib/currency";
 import { useFiltersOpsional } from "../lib/filters";
 import { formatKmDesimal, hargaRingkas } from "../lib/format";
 import { useFotoTempat } from "@/features/konten/useFotoTempat";
-import { grafisHidangan } from "../lib/hidangan";
+import { grafisHidanganKecil } from "../lib/hidangan";
 import { catName, HALAL_LABEL, LABEL_LABEL, useI18n } from "../lib/i18n";
 import type { PlaceWithGeo } from "../lib/types";
 import { StatusBuka } from "./Badges";
@@ -50,7 +50,7 @@ export default function BarisTempat({ place, Judul = "h3", nomor, ringkas = fals
       {!ringkas && (
         <span className="mk-baris-gambar" aria-hidden="true">
           <Image
-            src={foto?.src ?? grafisHidangan(place.category)}
+            src={foto?.src ?? grafisHidanganKecil(place.category)}
             alt=""
             width={176}
             height={176}

@@ -345,7 +345,54 @@ test.describe("panduan", () => {
 
 test.describe("pin di peta beranda", () => {
   const pinTampil = async (page: Page) => Number(await page.locator(".br-tempat").getAttribute("data-pin-tampil"));
-  const tungguPin = (page: Page) => expect(page.locator(".br-tempat")).toHaveAttribute("data-pin-tampil", /^\d+$/, { timeout: 30_000 });
+  // Peta beranda baru dimuat saat hampir terlihat, jadi digulir dulu ke sana.
+  const tungguPin = async (page: Page) => {
+    await page.locator("#br-tempat").scrollIntoViewIfNeeded();
+    await expect(page.locator(".br-tempat")).toHaveAttribute("data-pin-tampil", /^\d+$/, { timeout: 30_000 });
+  };
+
+  test("peta beranda belum diunduh sebelum hampir terlihat, dan penampungnya setinggi peta", async ({ page }) => {
+    // Di tes Hari Ini kosong, jadi peta sudah dekat layar pertama. IntersectionObserver ditahan dulu supaya
+    // keadaan "belum terlihat" bisa diperiksa, lalu dilepas seolah pembaca menggulir sampai ke peta.
+    await page.addInitScript(() => {
+      const w = window as unknown as { IntersectionObserver: unknown; __ioAsli: unknown; __ioTahan: unknown[] };
+      w.__ioAsli = w.IntersectionObserver;
+      w.__ioTahan = [];
+      w.IntersectionObserver = class {
+        cb: IntersectionObserverCallback;
+        el: Element | null = null;
+        constructor(cb: IntersectionObserverCallback) {
+          this.cb = cb;
+          w.__ioTahan.push(this);
+        }
+        observe(el: Element) {
+          this.el = el;
+        }
+        unobserve() {}
+        disconnect() {}
+        takeRecords() {
+          return [];
+        }
+      };
+    });
+    const pin: string[] = [];
+    page.on("request", (r) => {
+      if (r.url().includes("/info/direktori/pin.json")) pin.push(r.url());
+    });
+    await page.goto("/");
+    await expect(page.locator(".br-peta-muat")).toBeVisible();
+    await page.waitForTimeout(1000);
+    expect(pin).toEqual([]);
+    const tinggiMuat = await page.locator(".br-peta-muat").evaluate((e) => e.getBoundingClientRect().height);
+    await page.evaluate(() => {
+      const w = window as unknown as { IntersectionObserver: unknown; __ioAsli: unknown; __ioTahan: { cb: IntersectionObserverCallback; el: Element }[] };
+      w.IntersectionObserver = w.__ioAsli;
+      for (const o of w.__ioTahan) o.cb([{ isIntersecting: true, target: o.el } as IntersectionObserverEntry], o as unknown as IntersectionObserver);
+    });
+    await tungguPin(page);
+    const tinggiPeta = await page.locator(".br-tempat").evaluate((e) => e.getBoundingClientRect().height);
+    expect(Math.abs(tinggiPeta - tinggiMuat)).toBeLessThan(60);
+  });
 
   test("panel Tempat tertutup, dibuka tombol, dan kelompok bisa dimatikan", async ({ page }) => {
     await page.goto("/");

@@ -14,7 +14,7 @@ import {
   sudutCitra,
 } from "@/features/langit-laut/lib/peta-lapisan";
 import { parseBulletin, warnAt } from "@/features/langit-laut/lib/perairan";
-import { MAX_ZOOM, RADAR_BOUNDS, radarCitra, radarUrl } from "@/features/langit-laut/lib/radar";
+import { MAX_ZOOM, RADAR_BOUNDS, radarCitra, radarUrl, tsRadarWajar } from "@/features/langit-laut/lib/radar";
 import { BMKG_HEADERS } from "@/features/langit-laut/lib/sources";
 
 const baca = (p: string) => readFileSync(join(process.cwd(), p), "utf8");
@@ -82,6 +82,18 @@ describe("citra radar", () => {
   it("browser memakai route sendiri, server memakai URL asli MSS", () => {
     expect(radarCitra("202611050015")).toBe("/api/radar-citra/202611050015");
     expect(radarUrl("202611050015")).toMatch(/^https:\/\/www\.weather\.gov\.sg\/.*202611050015.*\.png$/);
+  });
+
+  it("route citra hanya meneruskan timestamp yang mungkin terbit", () => {
+    // 5 Nov 2026 00.15 SGT = 4 Nov 16.15 UTC.
+    const kini = Date.UTC(2026, 10, 4, 16, 30);
+    expect(tsRadarWajar("202611050015", kini)).toBe(true);
+    expect(tsRadarWajar("202611050013", kini)).toBe(false); // bukan kelipatan 5 menit
+    expect(tsRadarWajar("202611310015", kini)).toBe(false); // 31 November
+    expect(tsRadarWajar("202611052515", kini)).toBe(false); // jam 25
+    expect(tsRadarWajar("202611050100", kini)).toBe(false); // 30 menit ke depan
+    expect(tsRadarWajar("202611041200", kini)).toBe(false); // lebih dari 12 jam lalu
+    expect(tsRadarWajar("abc", kini)).toBe(false);
   });
 
   it("zoom maksimum setara z12 Leaflet situs lama", () => {

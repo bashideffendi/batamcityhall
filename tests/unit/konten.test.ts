@@ -80,6 +80,10 @@ describe("info loker", () => {
     expect(SkemaLoker.safeParse({ ...dasar, jenis: "rahasia" }).success).toBe(false);
     expect(SkemaLoker.safeParse({ ...dasar, batas: "2026-10-01" }).success).toBe(false);
     expect(SkemaLoker.safeParse({ ...dasar, tautan: "javascript:alert(1)" }).success).toBe(false);
+    // Tautan internal boleh, tapi "//host" dan "/\host" membuka situs lain.
+    expect(SkemaLoker.safeParse({ ...dasar, tautan: "/info/loker" }).success).toBe(true);
+    expect(SkemaLoker.safeParse({ ...dasar, tautan: "//jahat.test" }).success).toBe(false);
+    expect(SkemaLoker.safeParse({ ...dasar, tautan: "/\\jahat.test" }).success).toBe(false);
   });
 
   it("lowongan yang lewat batas tidak tampil, tanpa batas tetap tampil, terbaru lebih dulu", () => {

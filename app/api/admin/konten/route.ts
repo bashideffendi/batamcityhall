@@ -1,8 +1,14 @@
 import { revalidatePath } from "next/cache";
+import tempatMakan from "@/data/makan/places.json";
+import { KUNCI_CACHE_FOTO } from "@/features/konten/baca";
 import { ID_FOOD_COURT, SkemaAksiKonten, type AksiKonten } from "@/features/konten/skema";
 import { ambilKonten, GalatSlugGanda, type KontenStore } from "@/features/konten/store";
 import { aksesAdmin, asalSama } from "@/features/tukang/admin-auth";
-import { jawab, tolak } from "@/features/tukang/http";
+import { bacaTeksTerbatas, jawab, tolak } from "@/features/tukang/http";
+import { lupakanCacheRespons } from "@/lib/cache-respons";
+
+/** Tempat makan di berkas repo. Tempat baru tidak boleh memakai id yang sama, supaya tidak menimpanya. */
+const ID_TEMPAT_MAKAN = new Set((tempatMakan as { id: string }[]).map((t) => t.id));
 
 const MAKS_BYTE = 2_000_000;
 
@@ -16,9 +22,11 @@ async function jalankan(store: KontenStore, a: AksiKonten) {
       return ["/", "/jurnal"];
     case "tambah_foto":
       await store.tambahFoto(a.data);
+      lupakanCacheRespons(KUNCI_CACHE_FOTO);
       return [];
     case "hapus_foto":
       await store.hapusFoto(a.id);
+      lupakanCacheRespons(KUNCI_CACHE_FOTO);
       return [];
     case "simpan_agenda":
       await store.simpanAgenda(a.data);
@@ -58,10 +66,10 @@ export async function POST(req: Request) {
   const store = await ambilKonten();
   if (!store) return tolak(503, "Basis data belum tersambung.");
 
-  const teks = await req.text();
-  if (teks.length > MAKS_BYTE) return tolak(413, "Isiannya terlalu panjang.");
   let badan: unknown;
   try {
+    const teks = await bacaTeksTerbatas(req, MAKS_BYTE);
+    if (teks === null) return tolak(413, "Isiannya terlalu panjang.");
     badan = JSON.parse(teks);
   } catch {
     return tolak(400, "Isian tidak terbaca.");
@@ -74,6 +82,13 @@ export async function POST(req: Request) {
     // Galat di dalam daftar (misalnya tautan ke-2) dipetakan ke nama daftarnya.
     for (const g of hasil.error.issues) galat[String(g.path.findLast((p) => typeof p === "string") ?? "_")] ??= g.message;
     return tolak(400, "Ada isian yang perlu diperbaiki.", galat);
+  }
+
+  // Tempat baru dengan id tempat lama akan menimpanya saat build (ubahan.ts), jadi ditolak di sini.
+  if (hasil.data.aksi === "simpan_makan" && hasil.data.data.baru && ID_TEMPAT_MAKAN.has(hasil.data.data.tempat_id)) {
+    return tolak(409, "Nama ini sudah dipakai tempat lain.", {
+      name: "Nama ini sudah dipakai tempat lain. Tambahkan pembeda, misalnya nama kawasan.",
+    });
   }
 
   // Food court baru tersimpan di basis data, jadi rujukannya diperiksa di sini, bukan di skema.

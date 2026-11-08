@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { aksesAdmin, asalSama } from "@/features/tukang/admin-auth";
-import { jawab, tolak } from "@/features/tukang/http";
+import { bacaJsonTerbatas, jawab, tolak } from "@/features/tukang/http";
 import { ambilStore } from "@/features/tukang/store";
 
 const Skema = z.object({ aksi: z.literal("hapus"), email: z.string().min(3).max(254) });
@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   if (!asalSama(req) || (await aksesAdmin()) !== "masuk") return tolak(403, "Harus masuk sebagai admin.");
   const store = ambilStore();
   if (!store) return tolak(503, "Basis data belum tersambung.");
-  const hasil = Skema.safeParse(await req.json().catch(() => null));
+  const hasil = Skema.safeParse(await bacaJsonTerbatas(req, 4096));
   if (!hasil.success) return tolak(400, "Permintaan tidak terbaca.");
   try {
     await store.hapusPelanggan(hasil.data.email);

@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { barisFeriSingapura, hitungFeri, ringkasHariIni } from "@/features/jalan/feri-terakhir";
 import { useEntriFeri } from "@/features/jalan/useFeri";
 import { useMedia, useNow, useOffline } from "@/features/langit-laut/hooks/useBrowser";
+import { BATAS_PONSEL, GAMBAR_DESKTOP, GAMBAR_PONSEL } from "./peta-dasar";
 import { useResource } from "@/features/langit-laut/hooks/useResource";
 import { IconWarn } from "@/features/langit-laut/components/icons";
 import type {
@@ -197,7 +198,9 @@ export default function HariIni() {
                 Feri Terakhir ke Singapura
               </Link>
             </dt>
-            <dd className="nilai">{feri.gagal ? "Belum ada" : baris?.jam ? baris.jam : ringkasFeri ? "Habis" : "Memuat"}</dd>
+            <dd className="nilai">
+              {feri.gagal ? "Belum ada" : !hasilFeri ? "Memuat" : !baris ? "Belum ada" : baris.jam ? baris.jam : "Habis"}
+            </dd>
             <dd className="ket">
               {feri.gagal
                 ? "Jadwal belum dapat dimuat"
@@ -237,8 +240,8 @@ export default function HariIni() {
 
 // ---- Peta Hari Ini (PEDOMAN 5.1) ----
 type Bingkai = { w: number; h: number; lon: [number, number]; lat: [number, number]; gambar: string; skala: number };
-const DESKTOP: Bingkai = { w: 760, h: 780, lon: [103.8, 104.26], lat: [0.7703, 1.2424], gambar: "/grafis/peta-hari-ini-dasar.webp", skala: 9.77 };
-const PONSEL: Bingkai = { w: 358, h: 400, lon: [103.84, 104.16], lat: [0.895, 1.2525], gambar: "/grafis/peta-hari-ini-ponsel-dasar.webp", skala: 14.04 };
+const DESKTOP: Bingkai = { w: 760, h: 780, lon: [103.8, 104.26], lat: [0.7703, 1.2424], gambar: GAMBAR_DESKTOP, skala: 9.77 };
+const PONSEL: Bingkai = { w: 358, h: 400, lon: [103.84, 104.16], lat: [0.895, 1.2525], gambar: GAMBAR_PONSEL, skala: 14.04 };
 
 const proyeksi = (b: Bingkai, lat: number, lon: number) => ({
   x: ((lon - b.lon[0]) / (b.lon[1] - b.lon[0])) * b.w,
@@ -279,7 +282,7 @@ const SLOT: Record<"desktop" | "ponsel", { x: number; y: number }[]> = {
 type DataPeta = Record<string, { d: string; label: [number, number] }>;
 
 function PetaHariIni({ hujan, jam, jamFeri }: { hujan: Hujan | null; jam: string; jamFeri: string | null }) {
-  const ponsel = useMedia("(max-width: 700px)");
+  const ponsel = useMedia(BATAS_PONSEL);
   const b = ponsel ? PONSEL : DESKTOP;
   // Geometri kecamatan hanya dimuat kalau memang ada yang hujan.
   const [geo, setGeo] = useState<{ desktop: DataPeta; ponsel: DataPeta } | null>(null);
@@ -303,7 +306,7 @@ function PetaHariIni({ hujan, jam, jamFeri }: { hujan: Hujan | null; jam: string
   return (
     <figure className="br-peta-hari" data-peta-hari-ini data-hujan={nama.length}>
       <div className="br-bingkai" style={{ aspectRatio: `${b.w} / ${b.h}` }}>
-        <Image src={b.gambar} alt="" width={b.w} height={b.h} priority unoptimized className="bch-grafis" />
+        <Image src={b.gambar} alt="" width={b.w} height={b.h} loading="eager" fetchPriority="high" unoptimized className="bch-grafis" />
         <svg viewBox={`0 0 ${b.w} ${b.h}`} aria-hidden="true">
           <defs>
             <pattern id="br-arsir" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">

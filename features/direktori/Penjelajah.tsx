@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { isOpenNow } from "@/features/makan/lib/format";
 import { useSekarang } from "@/features/makan/lib/waktu";
-import { KECAMATAN } from "@/lib/data/schema";
+import { KECAMATAN } from "@/lib/data/konstanta";
 import type { BarisIndeks } from "./data";
 
 const LANGKAH = 40;

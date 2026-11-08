@@ -29,7 +29,8 @@ const tautan = z
   .string()
   .trim()
   .max(1000)
-  .refine((s) => !s || /^https:\/\//.test(s) || s.startsWith("/"), {
+  // "//host" dan "/\host" dibaca peramban sebagai situs lain, jadi bukan tautan internal.
+  .refine((s) => !s || /^https:\/\//.test(s) || /^\/(?![/\\])/.test(s), {
     error: "Tautan harus diawali https://",
   })
   .nullish()
