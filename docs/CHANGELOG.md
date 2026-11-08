@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-08 · Koordinat terminal luar Batam dan Batamindo
+
+Dari Google Sheet isian pemilik. Masih di lokal sampai pemilik meminta push.
+
+- **Terminal luar Batam:** Singapore Cruise Centre (HarbourFront), Tanah Merah Ferry Terminal, dan Stulang Laut kini bertitik dari pemilik. Halaman Peta sengaja tidak menandai terminal di luar Batam, jadi titik ini baru tersimpan di data.
+- **Batamindo Industrial Park:** titik pemilik menggantikan perkiraan Wikimapia (bergeser 894 m) dan kini tampil sebagai titik pasti. Catatan Anda kosong, jadi tidak dianggap titik wakil kawasan. Titiknya jatuh di Sei Beduk, sesuai kecamatannya.
+- **Pengimpor koordinat:** berkas satu objek per baris (`data/mural/landmarks.json`) kini ditulis dengan format yang sama. Hanya baris yang berubah yang ikut berubah.
+- **Lembar koordinat** dibuat ulang: 1.070 lokasi. Lembar Terminal Luar Batam tidak ada lagi.
+
 ## 2026-11-08 · Tiga food court tak ditemukan dihapus
 
 Atas keputusan pemilik. Tayang sejak `4da6d13` (8 November 2026), diperiksa di situs: 12 food court, ketiganya tidak ada.

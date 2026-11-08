@@ -1,8 +1,8 @@
 {
-  "pura-amertabhuana": {
-    "lat": 1.112828,
-    "lng": 104.002754,
-    "tanggal": "2026-11-05"
+  "batamindo": {
+    "lat": 1.067707,
+    "lng": 104.023294,
+    "tanggal": "2026-11-08"
   },
   "bl-005": {
     "lat": 1.13329,
@@ -12,6 +12,11 @@
   "kes-rsud-embung-fatimah": {
     "lat": 1.0503185,
     "lng": 103.9675684,
+    "tanggal": "2026-11-05"
+  },
+  "pura-amertabhuana": {
+    "lat": 1.112828,
+    "lng": 104.002754,
     "tanggal": "2026-11-05"
   }
 }

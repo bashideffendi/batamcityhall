@@ -404,9 +404,9 @@
       "jenis": "terminal_tujuan",
       "kecamatan": null,
       "alamat": "5 HarbourFront Avenue, Singapore 099549",
-      "lat": null,
-      "lng": null,
-      "status_koordinat": "perlu_diisi_user",
+      "lat": 1.263884,
+      "lng": 103.818963,
+      "status_koordinat": "terverifikasi",
       "sumber_url": [
         "https://sg.news.yahoo.com/batam-fast-run-harbourfront-terminal-100000719.html"
       ],
@@ -422,9 +422,9 @@
       "jenis": "terminal_tujuan",
       "kecamatan": null,
       "alamat": "Tanah Merah, Singapura",
-      "lat": null,
-      "lng": null,
-      "status_koordinat": "perlu_diisi_user",
+      "lat": 1.314473,
+      "lng": 103.98859,
+      "status_koordinat": "terverifikasi",
       "sumber_url": [
         "https://singaporecruise.com.sg/schedule/ferries/"
       ],
@@ -438,9 +438,9 @@
       "jenis": "terminal_tujuan",
       "kecamatan": null,
       "alamat": "Stulang, Johor Bahru",
-      "lat": 1.471028,
-      "lng": 103.783083,
-      "status_koordinat": "perlu_cek_ulang",
+      "lat": 1.47123,
+      "lng": 103.784987,
+      "status_koordinat": "terverifikasi",
       "sumber_url": [
         "https://en.wikipedia.org/wiki/Stulang_Laut_Ferry_Terminal"
       ],

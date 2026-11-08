@@ -51,6 +51,21 @@ def tulis_json(doc, *p):
     # Isi sama: jangan tulis ulang, supaya berkas yang tidak tersentuh tidak ikut berubah format.
     if json.loads(asli) == doc:
         return
+    # Larik satu objek per baris (data/mural/landmarks.json): baris yang tidak berubah disalin apa adanya,
+    # supaya angka seperti 0.98200 tidak ikut berganti tulisan dan diff tetap satu baris per tempat.
+    polos = asli.replace("\r\n", "\n")
+    if isinstance(doc, list) and re.fullmatch(r"\[\n( +\{.*\},?\n)+\]\n?", polos):
+        baris = [b.rstrip(",") for b in polos.split("\n")[1:-2 if polos.endswith("\n") else -1]]
+        lekuk_baris = re.match(r" +", baris[0]).group(0)
+        keluar = []
+        for i, o in enumerate(doc):
+            if i < len(baris) and json.loads(baris[i]) == o:
+                keluar.append(baris[i])
+            else:
+                keluar.append(lekuk_baris + json.dumps(o, ensure_ascii=False, separators=(",", ":")))
+        with open(path, "w", encoding="utf-8", newline="\n") as f:
+            f.write("[\n" + ",\n".join(keluar) + "\n]" + ("\n" if polos.endswith("\n") else ""))
+        return
     m = re.search(r"\n( +)\S", asli)
     if m:
         lekuk = len(m.group(1))
