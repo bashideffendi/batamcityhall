@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-11-09 · Direktori diperbesar dari data terbuka Overture
+
+Atas keputusan pemilik ("Ya, pakai Overture"), setelah perbandingan dengan batam.co.id. Bukan menyalin Google Maps: syarat Google melarang data Places dipakai bersama peta non-Google (Service Specific Terms pasal 14) dan melarang penyalinan. Masih di lokal sampai pemilik meminta push.
+
+- **3.423 tempat baru** dari Overture Maps (rilis 2026-10-21.0, CDLA-Permissive-2.0): kuliner 1.132, ibadah 551, pendidikan 474, belanja 296, hotel dan penginapan 290, jasa 275 (bank, ATM, bengkel, ekspedisi), kesehatan 222 (klinik, klinik gigi, apotek, rumah sakit, laboratorium), wisata 70, olahraga 69, transportasi 27 (SPBU), dan lainnya. Direktori kini 4.315 tempat.
+- **Saringan** di `tools/overture/impor.py`: hanya jenis tempat umum, keyakinan sumber 0,7 ke atas, titik di dalam 12 kecamatan Batam; jenis rawan ditentukan dari nama (gereja yang tercatat sebagai pura, perumahan yang tercatat sebagai penginapan atau taman); tanpa nomor ponsel (sama dengan keputusan 8.3), tanpa media sosial dan situs pihak ketiga, tanpa kantor pemerintah dan darurat, tanpa nama perorangan dan spam; 111 tempat yang sudah ada di data kurasi tidak ditambahkan.
+- Semua titiknya perkiraan (pin berongga, "Titik ini perkiraan area"). Halamannya dibuat saat pertama dibuka, tidak saat build. Tempat makan dari data terbuka tidak menaut ke bagian Makanan. Daftar cek ulang admin hanya memuat data kurasi.
+- Jenis baru di saringan direktori dan pencarian (Restoran, Kafe, Klinik, Apotek, Bank, ATM, Bengkel, SPBU, Musala, Kelenteng, Kursus, dan lainnya); kafe ikut jenis Kopi dan musala ikut jenis Masjid di panel Tempat peta. Keterangan kategori disesuaikan.
+- **Perbaikan:** `/info/direktori/pin.json` dan `indeks.json` tidak pernah dimampatkan (route handler tidak dimampatkan `next start` maupun Railway, dan header Content-Encoding buatan sendiri dibuang Next.js 16). Kini keduanya berkas statis di `public/info/direktori/` yang dibuat `scripts/data-direktori.ts` saat prebuild dan predev (tidak ikut repo), dengan alamat yang sama, dan dimampatkan gzip oleh Next: pin 900 KB menjadi sekitar 164 KB, indeks 882 KB menjadi sekitar 101 KB.
+- Jenis kosong Klinik, Apotek, Laboratorium, TK, PAUD, dan Kelompok Bermain di direktori dihapus karena kini berisi data.
+- Kredit di Kolofon dan PEDOMAN, Standar Redaksi menyebut bahwa sebagian tempat berasal dari data terbuka dan belum didatangi, PEDOMAN 8.5 butir 13.
+- **Pemeriksaan:** unit 751 lulus (8 baru), lint dan tipe bersih, cek bahasa lulus, data valid, build berhasil, e2e 1.000 lulus (7 baru untuk halaman tempat data terbuka, kartu bagikan, 404, axe, jenis baru, kredit; tes direktori kini menghitung data kurasi ditambah data terbuka), skor tampilan `docs/tampilan/skor/17-tempat-terbuka.json` 69 dari 69. Pin peta dikirim gzip; halaman Kuliner 93 KB setelah dimampatkan.
+
 ## 2026-11-09 · Kualitas Udara
 
 Atas permintaan pemilik ("kualitas udara dulu"), fitur pertama dari perbandingan dengan batam.co.id (`research/18-batam-co-id.md`). Tayang sejak `312d271` (9 November 2026) atas persetujuan pemilik. Diperiksa di situs: `/cuaca/udara` menjawab 200, `/api/kualitas-udara` di Railway mengambil data asli (AQI 57 pukul 20.00 WIB, delapan baris ke depan), kredit tampil di Kolofon, dan sitemap memuat `/cuaca/udara`.

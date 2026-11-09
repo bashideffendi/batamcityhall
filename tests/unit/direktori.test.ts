@@ -6,6 +6,7 @@ import stats from "@/data/places_stats.json";
 import { kelengkapan } from "@/features/direktori/angka";
 import { pilihBerteduh } from "@/features/direktori/Berteduh";
 import {
+  adalahTerbuka,
   alamatPublik,
   atributPublik,
   barisIndeks,
@@ -51,8 +52,12 @@ describe("kategori direktori", () => {
   it("21 kategori tampilan dan jumlahnya cocok dengan statistik", () => {
     expect(DAFTAR_KATEGORI).toHaveLength(21);
     const perKategori = stats.per_kategori as Record<string, number>;
+    // Statistik hanya menghitung data kurasi; tempat dari data terbuka Overture ditambahkan terpisah.
+    const terbuka = TEMPAT.filter(adalahTerbuka);
     for (const k of DAFTAR_KATEGORI) {
-      const jumlah = k.sumber.reduce((n, s) => n + perKategori[s], 0);
+      const jumlah =
+        k.sumber.reduce((n, s) => n + perKategori[s], 0) +
+        terbuka.filter((p) => (k.sumber as string[]).includes(p.kategori)).length;
       expect(tempatDiKategori(k.kategori).length, k.nama).toBe(jumlah);
     }
   });
@@ -90,7 +95,9 @@ describe("kategori direktori", () => {
 
   it("lede kategori memakai rumus 3.8 dan tidak menulis Batam dua kali", () => {
     const k = (kunci: string) => kategoriTampil(kunci) as NonNullable<ReturnType<typeof kategoriTampil>>;
-    expect(ledeKategori(k("kesehatan"), 45)).toBe("Rumah sakit, puskesmas, dan donor darah di Batam. Ada 45 tempat.");
+    expect(ledeKategori(k("kesehatan"), 45)).toBe(
+      "Rumah sakit, puskesmas, klinik, apotek, dan donor darah di Batam. Ada 45 tempat.",
+    );
     expect(ledeKategori(k("khas_batam"), 3)).toBe("Hal yang hanya ada di Batam. Ada 3 tempat.");
   });
 
@@ -227,8 +234,8 @@ describe("data sensitif tidak sampai ke warga", () => {
         ...kontakPublik(p).flatMap((k) => [k.label, k.teks]),
       ];
       for (const x of teks) {
-        // "Sumber" dalam nama jalan (Kavling Baru Sumber Jaya) adalah alamat, bukan sebutan sumber.
-        if (x && !/Sumber Jaya/.test(x)) expect(x, p.id).not.toMatch(terlarang);
+        // "Sumber" dalam nama jalan dan kompleks (Sumber Jaya, Sumber Agung) adalah alamat, bukan sebutan sumber.
+        if (x && !/Sumber (Jaya|Agung)/.test(x)) expect(x, p.id).not.toMatch(terlarang);
       }
     }
   });

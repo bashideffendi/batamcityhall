@@ -101,3 +101,4 @@ Bukan syarat pengalihan situs lama, dicatat supaya perbandingan tidak salah baca
 - Menu Beranda (9 Nov 2026): tautan ke beranda di depan menu, tambahan — e2e, tayang 9 Nov 2026
 - Modul beranda Feri ke Singapura, Batam dalam Angka, Kata Hari Ini (9 Nov 2026): tambahan; feri terakhir sudah ada di situs lama, keberangkatan berikutnya belum — unit dan e2e, tayang 9 Nov 2026
 - Kualitas Udara di `/cuaca/udara` dan baris Hari Ini (9 Nov 2026): tambahan, tidak ada di situs lama — unit dan e2e, tayang 9 Nov 2026
+- Direktori diperbesar dengan 3.423 tempat dari data terbuka Overture (9 Nov 2026): tambahan — unit dan e2e, belum tayang

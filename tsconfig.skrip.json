@@ -1,0 +1,10 @@
+{
+  "//": "Untuk skrip tsx yang memuat modul server (mis. scripts/data-direktori.ts). Next menyediakan server-only sendiri saat build; di skrip cukup modul kosong, sama seperti vitest.config.ts.",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"],
+      "server-only": ["./node_modules/next/dist/compiled/server-only/empty.js"]
+    }
+  }
+}

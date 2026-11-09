@@ -1,16 +1,26 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { labelSub, lokasiTeks, namaKategori, punyaHalaman, TEMPAT, tempatPerId } from "@/features/direktori/data";
+import {
+  adalahTerbuka,
+  labelSub,
+  lokasiTeks,
+  namaKategori,
+  punyaHalaman,
+  TEMPAT,
+  tempatPerId,
+} from "@/features/direktori/data";
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 export const alt = "Kartu tempat Batam City Hall";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const dynamicParams = false;
+// Kartu tempat dari data terbuka dibuat saat pertama dibagikan, bukan saat build. Id yang tidak dikenal mendapat
+// kartu bernama situs (lihat p?.nama di bawah).
+export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return TEMPAT.filter(punyaHalaman).map((p) => ({ id: p.id }));
+  return TEMPAT.filter((p) => punyaHalaman(p) && !adalahTerbuka(p)).map((p) => ({ id: p.id }));
 }
 
 const huruf = (paket: string, berkas: string) =>

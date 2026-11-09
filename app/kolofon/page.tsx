@@ -15,6 +15,7 @@ const DATA = [
   "Batas kecamatan: Badan Informasi Geospasial.",
   "Kamera lalu lintas: Pemerintah Kota Batam.",
   "Food court: BatamGems, Wikivoyage, Eatbook, Trip.com, Wanderlog, KepriOnline, Foursquare, dan TribunBatam.",
+  "Sebagian tempat di Direktori: Overture Maps Foundation (CDLA-Permissive-2.0), yang menghimpun data Meta, Microsoft, Foursquare, dan AllThePlaces.",
   "Data OpenStreetMap berlisensi ODbL.",
 ];
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { connection } from "next/server";
-import { namaKategori, TEMPAT, tautanAman } from "@/features/direktori/data";
+import { namaKategori, TEMPAT_KURASI, tautanAman } from "@/features/direktori/data";
 import { aksesAdmin } from "@/features/tukang/admin-auth";
 import GerbangAdmin from "@/features/tukang/admin/GerbangAdmin";
 import NavAdmin from "@/features/tukang/admin/NavAdmin";
@@ -19,7 +19,8 @@ export default async function CekUlang({ searchParams }: Props) {
 
   const { alasan } = await searchParams;
   const sekarang = new Date();
-  const baris = TEMPAT.flatMap((p) => {
+  // Hanya data kurasi: ribuan tempat dari data terbuka belum didatangi, jadi semuanya akan tercantum di sini.
+  const baris = TEMPAT_KURASI.flatMap((p) => {
     const a = alasanCekUlang(p, sekarang);
     return a.length ? [{ p, alasan: a }] : [];
   });

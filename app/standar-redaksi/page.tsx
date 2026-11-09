@@ -42,6 +42,10 @@ export default function StandarRedaksi() {
           </li>
           <li>Halaman tempat makan mencantumkan kapan datanya terakhir diperiksa.</li>
           <li>
+            Sebagian tempat di Direktori berasal dari data terbuka Overture Maps dan belum didatangi. Titiknya ditandai
+            sebagai perkiraan, dan nomor ponselnya tidak ditampilkan.
+          </li>
+          <li>
             Radar hujan, gelombang, gempa, peringatan dini, kualitas udara, dan CCTV diambil otomatis dari penyedianya. Bila datanya
             terlambat atau terputus, halaman menuliskannya apa adanya.
           </li>

@@ -8,9 +8,13 @@ import { kaidahJudul } from "@/lib/judul";
 // fungsi *Publik membersihkannya saat tampil supaya catatan kerja tidak sampai ke pembaca (pedoman 2.9).
 import raw from "@/data/places.json";
 import { KECAMATAN, type Place } from "@/lib/data/schema";
+import { adalahTerbuka, TEMPAT_TERBUKA } from "./terbuka";
 
 export type { Place };
-export const TEMPAT = raw as unknown as Place[];
+export { adalahTerbuka };
+/** Data kurasi lebih dulu, lalu tempat dari data terbuka Overture (features/direktori/terbuka.ts). */
+export const TEMPAT_KURASI = raw as unknown as Place[];
+export const TEMPAT: Place[] = [...TEMPAT_KURASI, ...TEMPAT_TERBUKA];
 export const tempatPerId = new Map(TEMPAT.map((p) => [p.id, p]));
 
 // Panduan dan nomor darurat merujuk id sumber lama; id_alias memetakannya ke entri gabungan.
@@ -42,26 +46,30 @@ const kat = (
 // tanda hubung.
 export const DAFTAR_KATEGORI: InfoKategori[] = [
   kat("keamanan_darurat", "Darurat dan Keamanan", "Polisi, pemadam kebakaran, dan SAR"),
-  kat("kesehatan", "Kesehatan", "Rumah sakit, puskesmas, dan donor darah"),
+  kat("kesehatan", "Kesehatan", "Rumah sakit, puskesmas, klinik, apotek, dan donor darah"),
   kat(
     "pemerintahan",
     "Kantor dan Layanan Publik",
     "Kantor camat dan lurah, kantor pos, listrik, air, BPJS, dan KUA",
     ["pemerintahan", "layanan_publik"],
   ),
-  kat("pendidikan", "Pendidikan", "Sekolah dan perguruan tinggi"),
+  kat("pendidikan", "Pendidikan", "Sekolah, pesantren, perguruan tinggi, dan kursus"),
   kat("perpustakaan", "Perpustakaan", "Perpustakaan umum dan komunitas"),
-  kat("ibadah", "Tempat Ibadah", "Masjid, gereja, pura, dan wihara"),
+  kat("ibadah", "Tempat Ibadah", "Masjid, musala, gereja, pura, wihara, dan kelenteng"),
   kat("pemakaman", "Pemakaman", "Taman pemakaman umum dan makam menurut agama"),
-  kat("transportasi", "Transportasi", "Pelabuhan, pelantar pompong, bandara, halte, dan pengisian kendaraan listrik"),
-  kat("belanja", "Belanja", "Pasar, mal, pasar swalayan, toko bahan bangunan, dan toko alat tulis"),
+  kat(
+    "transportasi",
+    "Transportasi",
+    "Pelabuhan, pelantar pompong, bandara, halte, SPBU, dan pengisian kendaraan listrik",
+  ),
+  kat("belanja", "Belanja", "Pasar, mal, minimarket, toko bahan bangunan, toko elektronik, dan toko alat tulis"),
   kat("ruang_publik", "Ruang Publik", "Taman, alun-alun, dan bumi perkemahan"),
-  kat("wisata", "Wisata", "Pantai, pulau, museum, dan taman hiburan"),
-  kat("olahraga", "Olahraga", "Lapangan padel, bulu tangkis, pusat kebugaran, dan stadion"),
-  kat("akomodasi", "Hotel dan Penginapan", "Hotel berbintang dan nonbintang"),
-  kat("jasa", "Jasa", "Penukaran valuta asing, pusat servis, dan ekspedisi"),
+  kat("wisata", "Wisata", "Pantai, pulau, museum, taman hiburan, dan bioskop"),
+  kat("olahraga", "Olahraga", "Lapangan, kolam renang, pusat kebugaran, lapangan golf, dan stadion"),
+  kat("akomodasi", "Hotel dan Penginapan", "Hotel, resor, dan penginapan"),
+  kat("jasa", "Jasa", "Bank, ATM, bengkel, penukaran valuta asing, pusat servis, dan ekspedisi"),
   kat("pertanahan_hukum", "Pertanahan dan Hukum", "PPAT, notaris, bantuan hukum, pengadilan, dan penilai properti"),
-  kat("kuliner", "Kuliner", "Tempat makan dari bagian Makanan"),
+  kat("kuliner", "Kuliner", "Restoran, rumah makan, kafe, dan kedai"),
   kat("kampung_tua", "Kampung Tua", "Permukiman lama sebelum Batam dibangun"),
   kat("landmark", "Penanda Kota", "Jembatan, monumen, dan bangunan penanda"),
   kat("budaya", "Budaya", "Museum, cagar budaya, dan lembaga adat"),
@@ -174,6 +182,44 @@ const LABEL_SUB: Record<string, string> = {
   // Kuliner: mengikuti tabel kategori Loket Makan (3.4)
   ...Object.fromEntries(kategoriMakan.map((c) => [c.id, c.name_id])),
   kuliner_seafood: "Kuliner Makanan Laut",
+  // Jenis dari data terbuka Overture (features/direktori/terbuka.ts)
+  restoran: "Restoran",
+  rumah_makan: "Rumah Makan",
+  kafe: "Kafe",
+  cepat_saji: "Cepat Saji",
+  kedai_kaki_lima: "Kedai Kaki Lima",
+  kedai_minuman: "Kedai Minuman",
+  penginapan: "Penginapan",
+  resor: "Resor",
+  tk_paud: "TK dan PAUD",
+  slb: "SLB",
+  sekolah: "Sekolah Lain",
+  kursus: "Kursus dan Bimbingan Belajar",
+  pesantren: "Pesantren",
+  musala: "Musala",
+  kelenteng: "Kelenteng",
+  klinik: "Klinik",
+  klinik_gigi: "Klinik Gigi",
+  laboratorium: "Laboratorium Klinik",
+  apotek: "Apotek",
+  toserba: "Toserba",
+  minimarket: "Minimarket",
+  perabot_bangunan: "Perabot dan Bahan Bangunan",
+  toko_elektronik: "Toko Elektronik",
+  toko_olahraga: "Toko Olahraga",
+  bank: "Bank",
+  atm: "ATM",
+  bengkel: "Bengkel dan Perawatan Kendaraan",
+  spbu: "SPBU",
+  taman_bermain: "Taman Bermain",
+  kebun_binatang: "Kebun Binatang",
+  akuarium: "Akuarium",
+  cagar_alam: "Cagar Alam",
+  bioskop: "Bioskop",
+  galeri_seni: "Galeri Seni",
+  pusat_kebugaran: "Pusat Kebugaran",
+  kolam_renang: "Kolam Renang",
+  lapangan: "Lapangan dan Gedung Olahraga",
 };
 
 export const slugSub = (s: string) => s.replace(/_/g, "-");
@@ -188,10 +234,8 @@ export function labelSub(sub: string | null): string {
 // Jenis yang diminta warga tetapi belum punya satu pun data (research/00 bagian 5, brief 06, 07, 12). Halamannya
 // tetap ada, tetapi tidak ditautkan dari saringan kecuali ada daftar nama dari OpenStreetMap.
 export const SUB_KOSONG: Partial<Record<Place["kategori"], { slug: string; nama: string }[]>> = {
+  // Klinik, apotek, laboratorium, dan TK/PAUD sudah berisi data terbuka Overture (9 Nov 2026), jadi tidak di sini lagi.
   kesehatan: [
-    { slug: "klinik", nama: "Klinik" },
-    { slug: "apotek", nama: "Apotek" },
-    { slug: "laboratorium", nama: "Laboratorium" },
     { slug: "dokter-umum", nama: "Dokter Umum" },
     { slug: "dokter-gigi", nama: "Dokter Gigi" },
     { slug: "dokter-kandungan", nama: "Dokter kandungan" },
@@ -206,9 +250,6 @@ export const SUB_KOSONG: Partial<Record<Place["kategori"], { slug: string; nama:
     { slug: "dokter-hewan", nama: "Dokter Hewan" },
   ],
   pendidikan: [
-    { slug: "paud", nama: "PAUD" },
-    { slug: "playgroup", nama: "Kelompok bermain" },
-    { slug: "tk", nama: "TK" },
     { slug: "daycare", nama: "Penitipan anak" },
     { slug: "mi-mts-ma", nama: "MI, MTs, dan MA" },
   ],
@@ -623,6 +664,18 @@ const KATA_SUB: [RegExp, string][] = [
   [/^money_changer/, "tukar uang valas"],
   [/^kantor_pos/, "pos surat paket"],
   [/^kua$/, "nikah kua"],
+  [/^apotek$/, "apotek obat"],
+  [/^klinik/, "klinik dokter berobat"],
+  [/^spbu$/, "spbu pom bensin bbm pertalite"],
+  [/^bengkel$/, "bengkel servis motor mobil tambal ban"],
+  [/^(bank|atm)$/, "bank atm tarik tunai"],
+  [/^minimarket$/, "minimarket indomaret alfamart"],
+  [/^kafe$/, "kafe kopi ngopi"],
+  [/^(restoran|rumah_makan|cepat_saji|kedai_kaki_lima)$/, "makan resto warung"],
+  [/^(penginapan|resor)$/, "penginapan homestay menginap"],
+  [/^(tk_paud|sekolah|kursus|pesantren|slb)$/, "sekolah belajar"],
+  [/^musala$/, "musala salat"],
+  [/^bioskop$/, "bioskop nonton film xxi"],
 ];
 
 function kataKunci(p: Place): string {

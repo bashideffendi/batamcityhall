@@ -4,7 +4,7 @@
 
 const MI = new Set(["nasi-mie-goreng", "bakso-mie-ayam", "mie-tarempa", "sop-ikan", "soto"]);
 const DIMSUM = new Set(["dimsum", "chinese-food", "bubur"]);
-const KOPI = new Set(["kopitiam", "coffee-shop", "kedai_kopi"]);
+const KOPI = new Set(["kopitiam", "coffee-shop", "kedai_kopi", "kafe"]);
 const TEMPAT_MAKAN_LAIN = "nasi";
 
 /** Jenis tempat untuk satu pin, atau null kalau tidak tampil di panel Tempat. */
@@ -25,7 +25,7 @@ export function jenisDari(kategori: string, sub: string | null | undefined): str
     case "akomodasi":
       return "hotel";
     case "ibadah":
-      if (s.startsWith("masjid")) return "masjid";
+      if (s.startsWith("masjid") || s === "musala") return "masjid";
       if (s.startsWith("gereja")) return "gereja";
       if (s === "vihara" || s === "wihara" || s === "klenteng" || s === "kelenteng") return "wihara";
       if (s === "pura") return "pura";

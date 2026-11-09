@@ -14,3 +14,7 @@ test-results/
 
 # Arsip dataset kota dari portal data pihak lain (scripts/dataset). Lisensinya belum jelas, jadi tidak ikut repo publik.
 /dataset-arsip/
+
+# Dibuat scripts/data-direktori.ts saat prebuild dan predev
+/public/info/direktori/pin.json
+/public/info/direktori/indeks.json

@@ -6,6 +6,7 @@ import { KATEGORI_DIREKTORI } from "@/components/map/icons";
 import { notFound, redirect } from "next/navigation";
 import {
   adalahProfesi,
+  adalahTerbuka,
   alamatPublik,
   atributPublik,
   barisDaftar,
@@ -35,8 +36,9 @@ import { idKartuKampung } from "@/features/kampung-tua/data";
 import { MAPPED_CAMS } from "@/features/langit-laut/lib/cctv";
 import { haversineKm } from "@/features/makan/lib/data";
 
+// Tempat dari data terbuka (ribuan) tidak dibangun saat build: halamannya dibuat saat pertama dibuka lalu disimpan.
 export function generateStaticParams() {
-  return TEMPAT.map((p) => ({ id: p.id }));
+  return TEMPAT.filter((p) => !adalahTerbuka(p)).map((p) => ({ id: p.id }));
 }
 
 type Props = { params: Promise<{ id: string }> };
@@ -207,7 +209,7 @@ export default async function Tempat({ params }: Props) {
         )}
 
         {catatan && <p>{catatan}</p>}
-        {p.kategori === "kuliner" && (
+        {p.kategori === "kuliner" && !adalahTerbuka(p) && (
           <p>
             <Link href={`/makan/tempat/${p.id}`} prefetch={false}>
               Lihat di Makanan

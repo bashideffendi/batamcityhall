@@ -5,7 +5,8 @@
   "description": "Batam City Hall: balai warga, bukan balai kota. Website kota indie non-komersial untuk Batam.",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/foto-makan.mjs && tsx scripts/validate-data.ts && node scripts/cek-bahasa.mjs && tsx scripts/ubahan-makan.ts",
+    "predev": "tsx --tsconfig tsconfig.skrip.json scripts/data-direktori.ts",
+    "prebuild": "node scripts/foto-makan.mjs && tsx scripts/validate-data.ts && node scripts/cek-bahasa.mjs && tsx scripts/ubahan-makan.ts && tsx --tsconfig tsconfig.skrip.json scripts/data-direktori.ts",
     "build": "next build",
     "postbuild": "node scripts/cek-keluaran.mjs",
     "check:rules": "node scripts/cek-keluaran.mjs",
