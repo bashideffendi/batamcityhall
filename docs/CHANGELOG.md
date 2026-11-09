@@ -2,7 +2,7 @@
 
 ## 2026-11-09 · Beranda: Feri ke Singapura, Batam dalam Angka, Kata Hari Ini
 
-Atas pilihan pemilik ("Ya, bangun 1–3"). Masih di lokal sampai pemilik meminta push.
+Atas pilihan pemilik ("Ya, bangun 1–3"). Tayang sejak `8143b2c` (9 November 2026) atas persetujuan pemilik. Diperiksa di situs: beranda menjawab 200 dan memuat ikon Beranda (aktif hanya di beranda), ketiga modul, serta angka penduduk, laut, dan wisman; `/jalan/feri/terakhir.json` tayang menghasilkan lima baris pelabuhan dengan fungsi yang sama.
 
 - **Feri ke Singapura** di baris pertama beranda, di samping Transportasi: tiga keberangkatan berikutnya per pelabuhan (Batam Centre ke HarbourFront dan Tanah Merah, Sekupang, Harbour Bay, Nongsapura; Waterfront hanya akhir pekan). Bila sudah habis: "Habis, besok {jam}". Dihitung di peramban dengan jam pengguna dari `/jalan/feri/terakhir.json` (`keberangkatanBerikutnya` di `features/jalan/feri-terakhir.ts`). Seperti kotak Hari Ini, jadwal yang ditandai perlu dicek ulang (Majestic, Sindo Batam Centre–HarbourFront), contoh, dan berzona lain tidak dipakai. Catatan di bawahnya: jam WIB, tanggal data, tanyakan kepada operator.
 - **Batam dalam Angka**: penduduk 2025 (1,30—1,39 juta, tergantung siapa yang menghitung), ±73% wilayah berupa laut, 1.613.202 kunjungan wisman 2025, dan 12 kecamatan/64 kelurahan. Dihitung dari baris data yang sama dengan Infografik dan halaman Batam dalam Angka (`features/hari-ini/angka-beranda.ts`), menaut ke infografiknya, ditambah tautan ke Dataset.
@@ -12,7 +12,7 @@ Atas pilihan pemilik ("Ya, bangun 1–3"). Masih di lokal sampai pemilik meminta
 
 ## 2026-11-09 · Menu Beranda
 
-Atas permintaan pemilik ("tambahkan menu home"). Masih di lokal sampai pemilik meminta push.
+Atas permintaan pemilik ("tambahkan menu home"). Tayang sejak `8143b2c` (9 November 2026) bersama modul beranda.
 
 - **Beranda** di depan menu. Di menu lebar tampil sebagai ikon rumah dengan nama "Beranda" untuk pembaca layar dan keterangan saat kursor diarahkan; di menu ponsel tertulis Beranda. Tanda halaman aktif hanya di beranda. Beranda tidak dimasukkan ke `BAGIAN` karena alamat "/" adalah awalan semua halaman.
 - **Perbaikan:** menu lebar meluap sejak Dataset ditambahkan bila Info Loker tampil (butuh 1.198 px, tersedia 1.178 px di layar 1.241 px; di situs tayang belum terlihat karena Info Loker belum aktif). Huruf menu kini 14 px (sebelumnya 14,5) dan jarak minimum 10 px (sebelumnya 12), sehingga Beranda dan 14 bagian muat satu baris. Tes e2e kini gagal bila menu lebar meluap.
