@@ -98,6 +98,7 @@ Aturan:
   - [x] lib/site.ts LOKET (01-07), /, /cuaca, /info; gempa di /cuaca/gempa; indikator Bisa nyebrang ditunda · 01 › Struktur menu ("Loket")
     - [x] lib/site.ts LOKET · 8 loket versi 01 (Beranda, Langit & Laut, Perut, Tukang Langganan, Jalan-jalan, Cerita & Budaya, Info Warga, Main-main) diganti struktur 00 bagian 3 (Loket 01-07) {F1}
     - [x] features/hari-ini/HariIni.tsx; gempa hanya tampil bila relevan (features/langit-laut/lib/gempa.ts) · Beranda: peta + widget hari ini (hujan, ombak, feri terakhir, gempa terakhir) {F2}
+    - [x] features/hari-ini/ModulFeri.tsx, angka-beranda.ts, ModulKata.tsx · Beranda: Feri ke Singapura (tiga keberangkatan berikutnya per pelabuhan), Batam dalam Angka, Kata Hari Ini (9 Nov 2026)
     - [-] ditunda: radar, prakiraan BMKG, peringatan dini maritim dan cuaca ada di /cuaca, gempa di /cuaca/gempa; indikator Bisa nyebrang belum dibangun; syarat: ambang gelombang yang disepakati beserta penafian syahbandar · Langit & Laut: radar, prakiraan BMKG, peringatan dini, "Bisa nyebrang ke pulau hari ini?" (+ pengingat bukan pengganti syahbandar), gempa {F2}
     - [x] /info, /info/direktori/layanan-publik, /info/darurat, /cerita/kalender; harga pangan di baris E · Loket Info Warga: harga pangan Batam, layanan publik (Samsat, Disdukcapil, PLN, air), nomor darurat, kalender event {F3}
   - [-] ditunda: sebagian fitur belum dibangun (harga pangan, panduan KTP pindahan, Barelang scrolly, Hujan Bingo); syaratnya di anak butir, fitur inti kelompok A sampai F lain sudah ada · 01 › Daftar fitur per kelompok

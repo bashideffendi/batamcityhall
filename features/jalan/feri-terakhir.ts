@@ -532,6 +532,66 @@ export function kelompokRute(hasil: HasilFeri[]): KelompokRute[] {
 /** Rute utama ke Singapura: dipakai widget ringkas dan kotak Hari Ini. */
 export const keSingapura = (h: HasilFeri) => h.arah === "dari_batam" && /HarbourFront|Tanah Merah/i.test(h.tujuan);
 
+export type BarisBerikutnya = {
+  /** Rute pertama kelompok ini, untuk tautan ke tabel lengkap. */
+  ruteId: string;
+  asal: string;
+  tujuan: string;
+  operator: string[];
+  /** Keberangkatan berikutnya hari ini, WIB, paling banyak n. Kosong bila sudah habis. */
+  jam: string[];
+  /** Keberangkatan pertama besok, WIB, hanya bila hari ini sudah habis. */
+  besok: string | null;
+  tanggalData: string | null;
+};
+
+const tanggalTertua = (daftar: (string | null)[]) =>
+  daftar.reduce<string | null>((a, b) => (!b ? a : !a || b < a ? b : a), null);
+
+/**
+ * Keberangkatan berikutnya ke Singapura per pelabuhan asal dan tujuan, untuk beranda. Sama seperti kotak Hari Ini, hanya
+ * jam yang tidak diragukan: jadwal perlu_cek, contoh, dan terganggu tidak dipakai. Jam dari Batam selalu WIB; baris
+ * berzona lain tidak dipakai supaya jam tidak pernah salah zona. Kelompok yang tidak berlayar hari ini tidak tampil.
+ */
+export function keberangkatanBerikutnya(entri: EntriFeri[], now: Date, n = 3): BarisBerikutnya[] {
+  const kini = waktuDiZona(now, "Asia/Jakarta");
+  const besok = (kini.hari + 1) % 7;
+  const kelompok = new Map<string, { baris: BarisBerikutnya; hariIni: string[]; jamBesok: string[] }>();
+  for (const e of entri) {
+    if (e.arah !== "dari_batam" || !/HarbourFront|Tanah Merah/i.test(e.tujuan)) continue;
+    if (e.jenisJadwal !== "jam" || e.zona !== "Asia/Jakarta" || e.perluCek || e.contoh || e.terganggu) continue;
+    const kunci = `${e.asal}|${e.tujuan}`;
+    let k = kelompok.get(kunci);
+    if (!k) {
+      k = {
+        baris: { ruteId: e.ruteId, asal: e.asal, tujuan: e.tujuan, operator: [], jam: [], besok: null, tanggalData: null },
+        hariIni: [],
+        jamBesok: [],
+      };
+      kelompok.set(kunci, k);
+    }
+    if (e.operator && !k.baris.operator.includes(e.operator)) k.baris.operator.push(e.operator);
+    k.baris.tanggalData = tanggalTertua([k.baris.tanggalData, e.tanggalData]);
+    for (const t of e.trips) {
+      if (t.perluCek) continue;
+      if (!t.hari || t.hari.includes(kini.hari)) k.hariIni.push(t.jam);
+      if (!t.hari || t.hari.includes(besok)) k.jamBesok.push(t.jam);
+    }
+  }
+  const urut = (jam: string[]) => [...new Set(jam)].sort((a, b) => keMenit(a) - keMenit(b));
+  const hasil: BarisBerikutnya[] = [];
+  for (const { baris, hariIni, jamBesok } of kelompok.values()) {
+    if (!hariIni.length) continue;
+    const sisa = urut(hariIni).filter((j) => keMenit(j) >= kini.menit);
+    hasil.push({ ...baris, jam: sisa.slice(0, n), besok: sisa.length ? null : (urut(jamBesok)[0] ?? null) });
+  }
+  return hasil;
+}
+
+/** Tanggal data tertua di antara baris, untuk satu catatan di bawah modul. */
+export const tanggalDataTertua = (baris: { tanggalData: string | null }[]) =>
+  tanggalTertua(baris.map((b) => b.tanggalData));
+
 export type RingkasFeri = { judul: string; rincian: string; adaDataLama: boolean };
 
 const gabungDan = (daftar: string[]) =>

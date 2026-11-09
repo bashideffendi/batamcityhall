@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-09 · Beranda: Feri ke Singapura, Batam dalam Angka, Kata Hari Ini
+
+Atas pilihan pemilik ("Ya, bangun 1–3"). Masih di lokal sampai pemilik meminta push.
+
+- **Feri ke Singapura** di baris pertama beranda, di samping Transportasi: tiga keberangkatan berikutnya per pelabuhan (Batam Centre ke HarbourFront dan Tanah Merah, Sekupang, Harbour Bay, Nongsapura; Waterfront hanya akhir pekan). Bila sudah habis: "Habis, besok {jam}". Dihitung di peramban dengan jam pengguna dari `/jalan/feri/terakhir.json` (`keberangkatanBerikutnya` di `features/jalan/feri-terakhir.ts`). Seperti kotak Hari Ini, jadwal yang ditandai perlu dicek ulang (Majestic, Sindo Batam Centre–HarbourFront), contoh, dan berzona lain tidak dipakai. Catatan di bawahnya: jam WIB, tanggal data, tanyakan kepada operator.
+- **Batam dalam Angka**: penduduk 2025 (1,30—1,39 juta, tergantung siapa yang menghitung), ±73% wilayah berupa laut, 1.613.202 kunjungan wisman 2025, dan 12 kecamatan/64 kelurahan. Dihitung dari baris data yang sama dengan Infografik dan halaman Batam dalam Angka (`features/hari-ini/angka-beranda.ts`), menaut ke infografiknya, ditambah tautan ke Dataset.
+- **Kata Hari Ini**: satu kata dari kamus per tanggal WIB, berganti tengah malam, dengan arti, contoh, ragam, konteks, dan tanda belum diperiksa penutur. Dipilih di peramban karena beranda dibangun ulang berkala. Menaut ke entrinya di Kamus.
+- Things to Do pindah ke baris ketiga bersama dua modul baru.
+- **Pemeriksaan:** unit 735 lulus (12 baru), lint dan tipe bersih, cek bahasa lulus, build berhasil, e2e 972 lulus (14 baru, termasuk jam feri pada Senin 14.00 dan 21.30, rute Waterfront di hari Sabtu, pergantian kata, dan axe dua tema), skor tampilan `docs/tampilan/skor/15-beranda-modul.json` 68 dari 68. Diperiksa di peramban pada desktop 1.280 px dan ponsel 375 px.
+
 ## 2026-11-09 · Menu Beranda
 
 Atas permintaan pemilik ("tambahkan menu home"). Masih di lokal sampai pemilik meminta push.

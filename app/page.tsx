@@ -3,10 +3,15 @@ import Link from "next/link";
 import { preload } from "react-dom";
 import JsonLd from "@/components/site/JsonLd";
 import BeritaWidget from "@/features/berita/BeritaWidget";
-import { daftarAcara } from "@/features/budaya/data";
+import { daftarAcara, daftarKata } from "@/features/budaya/data";
+import { DATASET } from "@/features/dataset/data";
 import { DAFTAR_KATEGORI, slugKategori, tempatDiKategori } from "@/features/direktori/data";
+import { angkaBeranda } from "@/features/hari-ini/angka-beranda";
 import HariIniMuat from "@/features/hari-ini/HariIniMuat";
+import { ringkasKata } from "@/features/hari-ini/kata-hari-ini";
 import ModulAcara from "@/features/hari-ini/ModulAcara";
+import ModulFeri from "@/features/hari-ini/ModulFeri";
+import ModulKata from "@/features/hari-ini/ModulKata";
 import { BATAS_PONSEL, GAMBAR_DESKTOP, GAMBAR_PONSEL } from "@/features/hari-ini/peta-dasar";
 import { tanggalTulisan } from "@/features/jurnal/data";
 import { semuaTulisan } from "@/features/konten/baca";
@@ -35,6 +40,10 @@ const KATEGORI_LAYANAN = ["kesehatan", "keamanan_darurat", "akomodasi", "ibadah"
 // Satu kamera per kecamatan, supaya contohnya tersebar.
 const KAMERA = [...new Map(MAPPED_CAMS.map((c) => [c.area, c])).values()].slice(0, 5);
 
+// Dihitung saat build dari data yang sama dengan Infografik dan Kamus.
+const ANGKA = angkaBeranda();
+const KATA = daftarKata().map(ringkasKata);
+
 function Selengkapnya({ href }: { href: string }) {
   return (
     <Link href={href} className="bch-aksi br-selengkapnya" prefetch={false}>
@@ -61,11 +70,7 @@ export default async function Beranda() {
       <div className="br-dasbor">
         <BeritaWidget />
 
-        <section className="br-modul" aria-labelledby="br-acara">
-          <h2 id="br-acara">Things to Do</h2>
-          <ModulAcara acara={acara} />
-          <Selengkapnya href="/things-to-do" />
-        </section>
+        <ModulFeri />
 
         <section className="br-modul" aria-labelledby="br-transportasi">
           <h2 id="br-transportasi">Transportasi</h2>
@@ -140,6 +145,39 @@ export default async function Beranda() {
           </ul>
           <Selengkapnya href="/info" />
         </section>
+      </div>
+
+      <div className="br-dasbor">
+        <section className="br-modul" aria-labelledby="br-acara">
+          <h2 id="br-acara">Things to Do</h2>
+          <ModulAcara acara={acara} />
+          <Selengkapnya href="/things-to-do" />
+        </section>
+
+        <section className="br-modul" aria-labelledby="br-bilangan">
+          <h2 id="br-bilangan">Batam dalam Angka</h2>
+          <ul className="br-bilangan">
+            {ANGKA.map((a) => (
+              <li key={a.label}>
+                <Link href={a.href} prefetch={false}>
+                  <span className="nilai">{a.nilai}</span>
+                  <span className="label">{a.label}</span>
+                  <span className="ket">{a.ket}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="br-aksi-ganda">
+            <Link href="/cerita/angka" className="bch-aksi br-selengkapnya" prefetch={false}>
+              Selengkapnya →
+            </Link>
+            <Link href="/dataset" className="bch-aksi br-selengkapnya" prefetch={false}>
+              {DATASET.length.toLocaleString("id-ID")} Dataset →
+            </Link>
+          </div>
+        </section>
+
+        <ModulKata daftar={KATA} />
       </div>
 
       <div className="br-penutup">
