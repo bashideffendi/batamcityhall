@@ -237,7 +237,11 @@ export default function PetaSampul() {
       />
       {jelajah && (
         <div className="bch-peta-jelajah-atas">
-          <p className="bch-peta-jelajah-judul">Harbour Bay · Nagoya · Jodoh</p>
+          {/* Atribusi ikut alur di bawah judul supaya tidak menabrak peta kecil atau tombol, selebar apa pun layarnya. */}
+          <div className="bch-peta-jelajah-kiri">
+            <p className="bch-peta-jelajah-judul">Harbour Bay · Nagoya · Jodoh</p>
+            <p className="bch-peta-atribusi">Ilustrasi dibuat dengan AI dari data peta © kontributor OpenStreetMap</p>
+          </div>
           <button ref={tombolTutup} type="button" className="bch-btn" onClick={tutup}>
             Tutup
           </button>
@@ -271,9 +275,6 @@ export default function PetaSampul() {
         )}
       </div>
       {jelajah && keadaan === "gagal" && <p className="bch-peta-gagal">Peta belum dapat dimuat.</p>}
-      {jelajah && (
-        <p className="bch-peta-atribusi">Ilustrasi dibuat dengan AI dari data peta © kontributor OpenStreetMap</p>
-      )}
     </div>
   );
 }

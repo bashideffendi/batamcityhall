@@ -118,6 +118,17 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
+  /* Ruang kosong di antara judul dan Tutup tetap bisa dipakai menggeser peta. */
+  pointer-events: none;
+}
+.bch-peta-jelajah-atas > * {
+  pointer-events: auto;
+}
+.bch-peta-jelajah-kiri {
+  display: grid;
+  justify-items: start;
+  gap: 6px;
+  min-width: 0;
 }
 main .bch-peta-jelajah-judul,
 main .bch-peta-atribusi,
@@ -135,11 +146,6 @@ main .bch-peta-gagal {
   line-height: 1.2;
 }
 .bch-peta-atribusi {
-  position: absolute;
-  right: var(--bch-gutter);
-  bottom: 16px;
-  z-index: 1;
-  max-width: calc(100% - 2 * var(--bch-gutter));
   margin: 0;
   padding: 2px 8px;
   box-sizing: border-box;
@@ -321,6 +327,9 @@ main .bch-sampul-atribusi {
   }
 }
 @media (max-width: 700px) {
+  .bch-peta-atribusi {
+    font-size: 10px;
+  }
   .bch-sampul {
     min-height: 520px;
   }

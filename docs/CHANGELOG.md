@@ -9,6 +9,7 @@ Atas permintaan pemilik ("nanti petanya itu interaktif ya kayak yadongxie.com/la
 - **Ponsel**: sampul tetap gambar supaya hemat kuota; peta baru dimuat setelah Jelajahi Peta ditekan, dan di sana satu jari menggeser peta.
 - Pixel art tajam saat diperbesar dan halus saat diperkecil. Gerak dimatikan bila pengguna memilih gerak tenang.
 - Ubin Deep Zoom dummy Harbour Bay (12.288 × 6.144 px, 396 ubin, 16 MB) di `public/grafis/sampul/harbourbay-zoom/`. Peta final perlu penyimpanan terpisah.
+- Atribusi AI dan OpenStreetMap di Jelajahi kini ikut alur di bawah judul, tidak lagi menempel di kanan bawah: di ponsel 320–390 px teks itu sempat menabrak peta kecil. Diperiksa dengan tangkapan iPhone SE, iPhone 13, dan desktop; uji sampul dan rombak 100 lulus.
 - **Pemeriksaan:** lint dan tipe bersih, cek bahasa lulus, build berhasil, e2e 1.013 lulus dan 1 gagal sekali (`rombak.spec.ts` jarak isi di bawah judul seksi beranda, terukur pada kotak peta Cari Tempat saat server sibuk; lulus 3 kali sendirian dan lulus saat berkasnya diulang, 100 lulus), 7 tes baru di `sampul.spec.ts` (peta menggantikan gambar, gulir halaman tetap jalan, Jelajahi dengan posisi di alamat dan Esc, alamat berposisi, ponsel memuat peta setelah Jelajahi, axe), skor tampilan `docs/tampilan/skor/19-peta-sampul.json` 69 dari 69.
 
 ## 2026-11-09 · Purwarupa sampul beranda dan kepala normal
