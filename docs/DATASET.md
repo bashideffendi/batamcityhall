@@ -13,7 +13,7 @@ Atas permintaan pemilik (9 November 2026): telusuri enam portal data, ambil semu
 | HANG JEBAT Geoportal | Disperkimtan Kota Batam | Perumahan (728 poligon), rusunawa dan tarif, PSU, PJU, proyek APBD (jalan lingkungan, drainase, batu miring, gedung), Kebun Raya | Berkas GeoJSON statis | robots.txt mengizinkan semua | Tidak dinyatakan; Syarat & Ketentuan tidak ada | 18 layer GeoJSON tanpa data pribadi |
 | DataKita (angkabatam.id) | BPS Kota Batam | Dasbor butuh login; datanya milik BPS | WebAPI BPS butuh kunci pemilik | Content-Signal: `ai-train=no`, `search=yes` | Syarat BPS: boleh dipakai ulang dengan atribusi dan tautan | Belum (butuh kunci API) |
 
-## Menu Dataset (tayang setelah push)
+## Menu Dataset (tayang sejak `76b7e86`, 9 Nov 2026)
 
 Keputusan pemilik 9 Nov 2026 (pilihan a): penyedia disebut sebagai teks biasa tanpa tautan. `/dataset` memuat 938 dataset dalam 12 tema dengan pratinjau paling banyak 50 baris. Data yang diterbitkan ada di `data/dataset/` (ikut repo), disusun `node scripts/dataset/terbitkan.mjs` dari arsip lokal. Berkas mentah tidak ditawarkan untuk diunduh sampai penyedia menyatakan izin.
 

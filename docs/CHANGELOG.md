@@ -2,7 +2,7 @@
 
 ## 2026-11-09 · Menu Dataset
 
-Atas keputusan pemilik (pilihan a): menu Dataset menjadi pengecualian PEDOMAN 2.9, nama penyedia ditulis sebagai teks biasa tanpa tautan. Masih di lokal sampai pemilik meminta push.
+Atas keputusan pemilik (pilihan a): menu Dataset menjadi pengecualian PEDOMAN 2.9, nama penyedia ditulis sebagai teks biasa tanpa tautan. Tayang sejak `76b7e86` (9 November 2026) atas persetujuan pemilik. Diperiksa di situs: `/dataset`, halaman tema, dan dua halaman dataset menjawab 200, alamat yang tidak ada menjawab 404, menu tampil dalam urutan baru dengan Dataset setelah Infografik, halaman dataset tidak memuat tautan keluar, dan sitemap memuat 950 alamat Dataset (938 dataset dan 12 tema).
 
 - **Menu Dataset** setelah Infografik. `/dataset` berisi 938 dataset tentang Kota Batam dari 5 portal, dikelompokkan dalam 12 tema; `/dataset/tema/[tema]` mendaftar isi tiap tema; `/dataset/[slug]` memuat penyedia, produsen data, periode, isi, tanggal diambil, lisensi ("Tidak dinyatakan oleh penyedia"), catatan kualitas, dan pratinjau tabel paling banyak 50 baris.
 - Berkas mentah **tidak** ditawarkan untuk diunduh karena penyedia tidak menyatakan lisensi. Halaman menuliskannya terus terang.
@@ -24,7 +24,7 @@ Atas permintaan pemilik. Ringkasan dan keputusan yang menunggu pemilik di `docs/
 
 ## 2026-11-09 · Urutan menu menurut keperluan pembaca
 
-Atas permintaan pemilik ("aku ikut rekom mu"). Masih di lokal sampai pemilik meminta push.
+Atas permintaan pemilik ("aku ikut rekom mu"). Tayang sejak `76b7e86` (9 November 2026) bersama menu Dataset.
 
 - Urutan baru: Cuaca · CCTV · Transportasi · Layanan Warga · Makanan · Things to Do · Berita · Jurnal · Infografik · Sejarah dan Budaya · Komunitas · Tukang Langganan (Info Loker di ujung bila aktif).
 - Dasarnya: kebutuhan saat ini lebih dulu (cuaca, jalan, transportasi), lalu layanan yang dicari warga saat perlu (nomor darurat, direktori), lalu jalan-jalan (makan, kegiatan), bacaan (berita, Jurnal, Infografik, sejarah), dan terakhir bagian warga (komunitas, tukang). Menu yang sejenis kini berdampingan, misalnya Jurnal, Infografik, dan Sejarah dan Budaya.
