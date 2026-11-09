@@ -1614,6 +1614,30 @@ BAGIAN["angka"] = () => {
   };
 };
 
+BAGIAN["dataset"] = () => {
+  // Tiga cakram basis data bertumpuk di depan lembar peta terlipat dengan satu rute dan penanda.
+  const tata = (...s) => putar(7, 330, 236, ...s);
+  const peta = tata(rect(244, 112, 176, 240, 4));
+  const lipat = tata(garis("M302,112 L302,352", 3, 'stroke-dasharray="7 9"') + garis("M362,112 L362,352", 3, 'stroke-dasharray="7 9"'));
+  const rute = tata(garis("M262,322 C292,282 316,304 338,254 S390,206 402,158", 7));
+  const penanda = tata(circ(402, 152, 13));
+  const tutup = ell(184, 150, 96, 24);
+  const cakram = (y) => rect(88, y, 192, 62) + ell(184, y + 62, 96, 24);
+  const d1 = cakram(150);
+  const d2 = kurang(cakram(222), d1, tutup);
+  const d3 = kurang(cakram(294), cakram(150), cakram(222), tutup);
+  const pisah = garis("M88,212 A96,24 0 0 0 280,212", 4) + garis("M88,284 A96,24 0 0 0 280,284", 4);
+  const depan = d1 + d2 + d3 + tutup;
+  return {
+    siluet: [peta, cakram(150), cakram(222), cakram(294), tutup],
+    kuning: kurang(peta, depan) + d2,
+    merah: kurang(rute + penanda, depan) + tutup,
+    biru: kurang(d1, tutup) + d3,
+    hitam: kurang(lipat, depan) + pisah + ell(184, 150, 96, 24, 'fill="none" stroke="#000" stroke-width="3.2"'),
+    dasar: alas(222, 414, 158, 8),
+  };
+};
+
 BAGIAN["loker"] = () => {
   const badan = rect(82, 186, 316, 196, 16);
   const gagang = garis("M186,186 L186,146 C186,128 198,118 214,118 L266,118 C282,118 294,128 294,146 L294,186", 16);

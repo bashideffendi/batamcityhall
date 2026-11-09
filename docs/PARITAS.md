@@ -97,3 +97,4 @@ Bukan syarat pengalihan situs lama, dicatat supaya perbandingan tidak salah baca
 - Infografik di `/infografik` dan kaki situs dengan newsletter — e2e, tayang 7 Nov 2026
 - Perbaikan audit 8 Nov 2026 (keamanan route, service worker, peta beranda dimuat lambat, versi kecil gambar): tidak mengubah fitur yang dibandingkan dengan situs lama — unit dan e2e, tayang 8 Nov 2026
 - Standar Redaksi, Log Koreksi, Aksesibilitas, JSON-LD, dan RSS (8 Nov 2026): tambahan, tidak ada di situs lama — unit dan e2e, tayang 8 Nov 2026
+- Menu Dataset di `/dataset` (9 Nov 2026): 938 dataset dari 5 portal data, tambahan, tidak ada di situs lama — unit dan e2e, belum tayang

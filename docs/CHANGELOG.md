@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-09 · Menu Dataset
+
+Atas keputusan pemilik (pilihan a): menu Dataset menjadi pengecualian PEDOMAN 2.9, nama penyedia ditulis sebagai teks biasa tanpa tautan. Masih di lokal sampai pemilik meminta push.
+
+- **Menu Dataset** setelah Infografik. `/dataset` berisi 938 dataset tentang Kota Batam dari 5 portal, dikelompokkan dalam 12 tema; `/dataset/tema/[tema]` mendaftar isi tiap tema; `/dataset/[slug]` memuat penyedia, produsen data, periode, isi, tanggal diambil, lisensi ("Tidak dinyatakan oleh penyedia"), catatan kualitas, dan pratinjau tabel paling banyak 50 baris.
+- Berkas mentah **tidak** ditawarkan untuk diunduh karena penyedia tidak menyatakan lisensi. Halaman menuliskannya terus terang.
+- **Penerbitan** lewat `scripts/dataset/terbitkan.mjs` dari arsip lokal ke `data/dataset/` (3,4 MB): tabel Kepri tanpa baris Batam tidak diterbitkan; kolom data pribadi, pajak, tautan, foto, dan rujukan sumber dibuang; sel berisi tag HTML atau alamat web dikosongkan; dataset sensitif (penemuan pekerja liar, penertiban, pengamanan unjuk rasa) tidak diterbitkan.
+- **Satu Data Batam** lengkap diunduh setelah portal pulih: 675 dataset (7 sudah tidak ada di portal). Arsip lokal kini 1.020 berkas, sekitar 153 MB.
+- Ilustrasi bagian baru `public/grafis/bagian/dataset.webp` (tumpukan basis data dan lembar peta), dibuat `tools/grafis/hidangan.mjs`.
+- **Perbaikan:** tes unit urutan menu (`tests/unit/site.test.ts`) belum disesuaikan di commit urutan menu `59bd8d7`; kini sudah, bersama urutan dengan Dataset.
+- **Pemeriksaan:** unit 723 lulus, lint dan tipe bersih, cek bahasa lulus, build berhasil, e2e 956 lulus pada build final dengan data lengkap (lalu 167 tes Dataset, menu, dan situs setelah penyesuaian tema terakhir), skor tampilan `docs/tampilan/skor/13-dataset.json` 68 dari 68.
+
 ## 2026-11-09 · Riset enam portal data dan arsip dataset lokal
 
 Atas permintaan pemilik. Ringkasan dan keputusan yang menunggu pemilik di `docs/DATASET.md`, laporan lengkap di `research/17-portal-data/`. Belum ada perubahan tampilan situs.

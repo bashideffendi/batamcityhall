@@ -277,6 +277,7 @@ Versi 1.1 mengganti arah tampilan menjadi editorial dengan grafis Riso (bagian 4
 - Kredit data di halaman Kolofon. Beberapa lisensi data mewajibkannya.
 - Atribusi kecil di pojok peta karena diwajibkan lisensi OpenStreetMap.
 - Tautan judul berita ke artikel aslinya. Itu fungsi halaman berita, bukan rujukan sumber.
+- Menu Dataset (keputusan pemilik 9 Nov 2026): nama penyedia dan produsen data ditulis sebagai teks biasa, tanpa tautan dan tanpa alamat situs. Kolom tautan, foto, dan rujukan sumber di dalam data dibuang saat diterbitkan (`scripts/dataset/terbitkan.mjs`).
 
 **Catatan kerja internal, dilarang tampil:**
 - "Belum dicek ulang sejak riset", "lokasi belum diisi" di setiap kartu

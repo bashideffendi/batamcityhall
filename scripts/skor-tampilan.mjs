@@ -80,6 +80,9 @@ export const HALAMAN = [
   ["/standar-redaksi", "Standar Redaksi"],
   ["/log-koreksi", "Log Koreksi"],
   ["/aksesibilitas", "Aksesibilitas"],
+  ["/dataset", "Dataset"],
+  ["/dataset/tema/transportasi", "Dataset: Transportasi"],
+  ["/dataset/rekapitulasi-kunjungan-kapal-penumpang", "Dataset: Kunjungan Kapal"],
   ["/tidak-ada-halaman-ini", "404"],
 ];
 

@@ -164,6 +164,15 @@ export const BAGIAN: Bagian[] = [
     isi: [],
   },
   {
+    id: "dataset",
+    nama: "Dataset",
+    href: "/dataset",
+    lede: "Data tentang Kota Batam dari lima portal data, dalam satu tempat",
+    aktifDi: ["/dataset"],
+    grafis: "/grafis/bagian/dataset.webp",
+    isi: [],
+  },
+  {
     id: "budaya",
     nama: "Sejarah dan Budaya",
     href: "/cerita",

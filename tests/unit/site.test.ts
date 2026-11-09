@@ -16,20 +16,22 @@ describe("teks wajib", () => {
 
 describe("menu", () => {
   it("urutan bagian sesuai keputusan pemilik", () => {
+    // Urutan menurut keperluan pembaca (9 Nov 2026). Info Loker hanya ada saat formulir aktif, termasuk di tes.
     expect(BAGIAN.map((b) => b.nama)).toEqual([
       "Cuaca",
       "CCTV",
       "Transportasi",
+      "Layanan Warga",
       "Makanan",
+      "Things to Do",
       "Berita",
       "Jurnal",
       "Infografik",
-      "Things to Do",
+      "Dataset",
+      "Sejarah dan Budaya",
       "Komunitas",
       "Tukang Langganan",
       "Info Loker",
-      "Layanan Warga",
-      "Sejarah dan Budaya",
     ]);
   });
 

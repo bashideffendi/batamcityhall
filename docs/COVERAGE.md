@@ -1634,8 +1634,9 @@ Aturan:
 ## 17-portal-data (riset 9 Nov 2026)
 
 - [x] research/17-portal-data/, docs/DATASET.md, scripts/dataset/ · Riset enam portal data Batam dan arsip lokal dataset-arsip/ (345 berkas, tidak ikut repo). Ringkasan, aturan, dan keputusan pemilik di docs/DATASET.md
-- [-] menunggu pemilik: menu Dataset, izin pakai ulang dari penyedia, kunci WebAPI BPS, dan pemberitahuan temuan privasi HANG JEBAT (docs/DATASET.md bagian Keputusan) · Menu Dataset dan fitur dari data portal
-- [-] menunggu portal: isi per dataset Satu Data Batam (503 pemeliharaan sejak 9 Nov); jalankan scripts/dataset/satudata-batam.mjs saat pulih · Arsip Satu Data Batam
+- [x] /dataset, /dataset/tema/[tema], /dataset/[slug], data/dataset/, scripts/dataset/terbitkan.mjs · Menu Dataset: 938 dataset dalam 12 tema, penyedia sebagai teks tanpa tautan, pratinjau 50 baris, tanpa unduhan berkas mentah (9 Nov)
+- [-] menunggu pemilik: izin pakai ulang dari penyedia (untuk membuka unduhan berkas), kunci WebAPI BPS, dan pemberitahuan temuan privasi HANG JEBAT (docs/DATASET.md bagian Keputusan) · Unduhan dataset dan data BPS
+- [x] dataset-arsip/satudata-batam/ · Arsip Satu Data Batam: 675 dataset setelah portal pulih (9 Nov)
 
 ## File data (setiap file wajib dipakai atau dijelaskan)
 

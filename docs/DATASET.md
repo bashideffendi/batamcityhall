@@ -6,16 +6,20 @@ Atas permintaan pemilik (9 November 2026): telusuri enam portal data, ambil semu
 
 | Portal | Pengelola | Isi untuk Batam | Cara ambil | Batasan akses | Lisensi | Diarsipkan |
 |---|---|---|---|---|---|---|
-| Satu Data Kota Batam | Diskominfo Kota Batam | 684 dataset (statistik per kecamatan 2022–2026), 27.539 indikator, 231 titik SD/SMP negeri dan puskesmas, poligon 12 kecamatan | API JSON tanpa login | Tanpa robots.txt. Portal masuk pemeliharaan (503) sejak 9 Nov dini hari | Tidak dinyatakan (UU KIP, "© Hak Cipta") | Katalog, daftar indikator, titik, poligon. Isi per dataset menunggu portal pulih |
+| Satu Data Kota Batam | Diskominfo Kota Batam | 684 dataset (statistik per kecamatan 2022–2026), 27.539 indikator, 231 titik SD/SMP negeri dan puskesmas, poligon 12 kecamatan | API JSON tanpa login | Tanpa robots.txt. Sempat pemeliharaan (503) 9 Nov dini hari | Tidak dinyatakan (UU KIP, "© Hak Cipta") | 675 dataset JSON (7 sudah 404), katalog, daftar indikator, titik, poligon |
 | Satu Data Provinsi Kepri | Diskominfo Kepri | 150 dataset per kabupaten/kota, 107 tabel memuat baris Batam (penduduk, UMKM, wisman, kemiskinan, TPT, faskes, investasi) | `/api/3/action/package_search` dan `/api/datastore/{id}` | robots.txt melarang `/data` (termasuk unduhan XLSX); tidak disentuh | "License not specified" | 181 tabel JSON |
 | Portal Satu Data BP Batam | PDSI BP Batam (CKAN 2.11) | 118 dataset: penumpang feri per terminal, kunjungan kapal, bandara dan rute penerbangan, air baku dan IPA, waduk, kawasan industri, KEK, investasi, rusun, wisata Galang | Tautan Unduh resmi `/datastore/dump/{id}` | robots.txt melarang `/api/`, Crawl-Delay 10 (dipatuhi) | "No License Provided" | 123 berkas CSV/XLSX; 1 disaring (telepon dan email perusahaan) |
 | Geoportal BP Batam | BP Batam (ArcGIS Server) | 21 layer "Data Terbuka" + wilayah kerja, pola ruang Perpres 87/2011, batas kecamatan | `query f=geojson outSR=4326` | Layer Terbatas/Tertutup, POI, penduduk per kelurahan (butuh token), dan kepemilikan tanah tidak disentuh | Tidak dinyatakan ("All Rights Reserved") | 23 layer GeoJSON |
 | HANG JEBAT Geoportal | Disperkimtan Kota Batam | Perumahan (728 poligon), rusunawa dan tarif, PSU, PJU, proyek APBD (jalan lingkungan, drainase, batu miring, gedung), Kebun Raya | Berkas GeoJSON statis | robots.txt mengizinkan semua | Tidak dinyatakan; Syarat & Ketentuan tidak ada | 18 layer GeoJSON tanpa data pribadi |
 | DataKita (angkabatam.id) | BPS Kota Batam | Dasbor butuh login; datanya milik BPS | WebAPI BPS butuh kunci pemilik | Content-Signal: `ai-train=no`, `search=yes` | Syarat BPS: boleh dipakai ulang dengan atribusi dan tautan | Belum (butuh kunci API) |
 
+## Menu Dataset (tayang setelah push)
+
+Keputusan pemilik 9 Nov 2026 (pilihan a): penyedia disebut sebagai teks biasa tanpa tautan. `/dataset` memuat 938 dataset dalam 12 tema dengan pratinjau paling banyak 50 baris. Data yang diterbitkan ada di `data/dataset/` (ikut repo), disusun `node scripts/dataset/terbitkan.mjs` dari arsip lokal. Berkas mentah tidak ditawarkan untuk diunduh sampai penyedia menyatakan izin.
+
 ## Arsip lokal
 
-Folder `dataset-arsip/` di akar proyek, **tidak ikut repo** (`.gitignore`), karena tidak ada satu pun portal yang menyatakan lisensi dan repo ini publik. Isinya 345 berkas, sekitar 153 MB per 9 November 2026.
+Folder `dataset-arsip/` di akar proyek, **tidak ikut repo** (`.gitignore`), karena tidak ada satu pun portal yang menyatakan lisensi dan repo ini publik. Isinya 1.020 berkas, sekitar 153 MB per 9 November 2026 (Satu Data Batam 675 dataset setelah portal pulih).
 
 - `KATALOG.csv` dan `katalog.json`: satu baris per berkas (sumber, judul, produsen, berkas, ukuran, jumlah fitur, halaman asal, tanggal akses, lisensi).
 - Per sumber: `satudata-batam/`, `satudata-kepri/`, `bpbatam-data/`, `bpbatam-geoportal/`, `hangjebat/`. Tiap folder punya `_manifest.json` berisi asal-usul setiap berkas.
@@ -68,8 +72,8 @@ Aturan yang dijaga skrip: data pajak dan retribusi tidak pernah disimpan, kolom 
 
 ## Keputusan yang menunggu pemilik
 
-1. **Penyebutan penyedia.** PEDOMAN melarang menyebut atau menautkan situs pemerintah, dan pemilik meminta pemerintah tidak disebut dulu. Menu Dataset tanpa nama penyedia tidak jujur dan bertentangan dengan syarat BPS (atribusi dengan tautan). Pilihannya: (a) menu Dataset jadi pengecualian, penyedia disebut sebagai teks tanpa tautan; (b) menu ditunda, arsip dipakai untuk fitur di atas dengan kredit di Kolofon.
+1. ~~Penyebutan penyedia.~~ Diputuskan pemilik 9 Nov 2026: pilihan (a), menu Dataset jadi pengecualian dan penyedia disebut sebagai teks tanpa tautan.
 2. **Izin pakai ulang.** Belum ada lisensi. Permintaan tertulis bisa dikirim ke Satu Data Batam, Satu Data Kepri, BP Batam (`maildata@bpbatam.go.id`), dan Disperkimtan. Pengiriman email adalah keputusan dan tindakan pemilik.
 3. **Temuan privasi HANG JEBAT.** Data pribadi warga terbuka untuk publik. Memberi tahu Disperkimtan secara baik-baik adalah keputusan pemilik.
 4. **Kunci WebAPI BPS.** Pendaftaran di webapi.bps.go.id dilakukan pemilik; kunci disimpan di variabel lingkungan, tidak di repo.
-5. **Satu Data Batam.** Jalankan ulang `scripts/dataset/satudata-batam.mjs` saat portal pulih. Setiap unduhan menaikkan penghitung unduhan di portal itu, jadi cukup sekali.
+5. ~~Satu Data Batam.~~ Sudah diunduh 9 Nov 2026 setelah portal pulih (675 dataset). Mengambil ulang menaikkan penghitung unduhan di portal itu, jadi jangan sering.

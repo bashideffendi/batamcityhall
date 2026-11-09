@@ -34,6 +34,7 @@ const BAGIAN_URUT = [
   "Berita",
   "Jurnal",
   "Infografik",
+  "Dataset",
   "Sejarah dan Budaya",
   "Komunitas",
   "Tukang Langganan",
