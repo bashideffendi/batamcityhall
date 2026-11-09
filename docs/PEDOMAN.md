@@ -43,6 +43,13 @@ Versi 1.1 mengganti arah tampilan menjadi editorial dengan grafis Riso (bagian 4
 > 21. **Terjemahan Inggris untuk seluruh situs** menyusul setelah semua bagian selesai (7 Nov 2026). Sampai itu, butir 3 tetap berlaku.
 > 12. **Food Court** adalah halaman baru di Makanan (`/makan/food-court`), per kecamatan. Datanya di `data/makan/foodcourt.json`, wajib bersumber, tanpa rating. Peta muncul otomatis setelah koordinatnya diisi.
 
+> **Purwarupa sampul beranda, 9 Nov 2026 (belum final, menunggu pemilik).** Pemilik meminta posisi gambar dan menu seperti majalah Cultura, memakai peta isometrik buatannya. Yang ditiru hanya posisinya; huruf dan warna tetap bagian 4 supaya selaras ("tiru posisi, kalo font ... ngikut yg sebelumnya").
+>
+> 1. **Beranda dibuka dengan sampul selebar layar** (`components/site/SampulBeranda.tsx`): peta isometrik pemilik, nama situs di kiri atas, tanggal, cari, dan tema di kanan atas, label dan judul tulisan Jurnal terbaru di tengah bawah dengan latar kertas per baris, dan pita menu di dasar layar. Menu yang diklik membuka halaman dengan kepala normal. Gambarnya dibuat `node tools/grafis/sampul.mjs "<berkas peta>"`.
+> 2. **Kepala normal di halaman lain:** nama situs di tengah, menu di bawahnya (posisi kepala beranda yang lama).
+> 3. **Ilustrasi AI diberi keterangan di sampulnya** (Standar Redaksi), bersama atribusi OpenStreetMap yang wajib.
+> 4. Periksa tampilan dengan `node tools/grafis/tangkap-layar.mjs <url> <folder> [alamat ...]`: semua `/api/*` ditiru, jadi tidak memanggil MSS atau BMKG.
+
 ## Cara Memakai Pedoman Ini
 
 **Untuk Claude Code:**

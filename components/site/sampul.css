@@ -1,0 +1,209 @@
+/* Sampul beranda (purwarupa 9 Nov 2026). Posisi mengikuti pola sampul majalah: peta isometrik selebar layar, judul
+   di tengah bawah, menu di pita dasar layar. Huruf dan warna tetap milik situs (PEDOMAN bagian 4). Tingginya selayar
+   dikurangi baris darurat. */
+.bch-sampul {
+  position: relative;
+  height: calc(100svh - 45px);
+  min-height: 560px;
+  max-height: 1100px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #cfdce4;
+}
+.bch-sampul picture,
+.bch-sampul img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.bch-sampul img {
+  object-fit: cover;
+  object-position: 42% 50%;
+  z-index: -2;
+}
+/* Gelap tipis di bawah supaya judul dan pita tetap terbaca di atas peta yang ramai. */
+.bch-sampul::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(10, 14, 12, 0.36), rgba(10, 14, 12, 0) 40%);
+  pointer-events: none;
+}
+
+.bch-sampul-atas {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-inline: var(--bch-gutter);
+}
+.bch-sampul-merek {
+  display: inline-block;
+  padding: 8px 14px 9px;
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  font-family: var(--bch-font-display);
+  font-weight: 600;
+  font-size: clamp(26px, 2.6vw, 38px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.bch-sampul-merek:hover {
+  color: var(--bch-ink);
+}
+.bch-sampul-kanan {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.bch-sampul-tanggal {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+  padding: 6px 10px;
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  font-size: 13px;
+  line-height: 1.35;
+}
+/* Tanggal baru terisi di peramban: sebelum itu kotaknya tidak tampil. */
+.bch-sampul-tanggal:has(> span:first-child:empty) {
+  visibility: hidden;
+}
+.bch-sampul-alat {
+  background: var(--bch-paper);
+}
+
+.bch-sampul-isi {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 96px;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding-inline: var(--bch-gutter);
+  text-align: center;
+}
+.bch-sampul-label {
+  margin: 0;
+  padding: 6px 12px;
+  background: var(--bch-paper);
+  color: var(--bch-link);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.bch-sampul-judul {
+  max-width: 20ch;
+  margin: 0;
+  font-family: var(--bch-font-display);
+  font-weight: 500;
+  font-size: clamp(36px, 4.8vw, 72px);
+  line-height: 1.16;
+  letter-spacing: -0.022em;
+}
+.bch-sampul-judul a {
+  color: var(--bch-ink);
+  text-decoration: none;
+}
+/* Latar per baris supaya judul terbaca di atas peta; latarnya ikut patah baris. */
+.bch-sampul-judul span {
+  padding: 0 0.2em 0.04em;
+  background: var(--bch-paper);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.bch-sampul-judul a:hover span {
+  color: var(--bch-link);
+}
+
+/* Label dan atribusi bukan paragraf isi: tidak ikut rata kanan-kiri (PEDOMAN koreksi rombak butir 15). */
+main .bch-sampul-label,
+main .bch-sampul-atribusi {
+  text-align: start;
+  hyphens: manual;
+}
+.bch-sampul-atribusi {
+  position: absolute;
+  right: var(--bch-gutter);
+  bottom: 62px;
+  max-width: calc(100% - 2 * var(--bch-gutter));
+  margin: 0;
+  padding: 2px 8px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.86);
+  color: #2b2b2b;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+/* Pita menu di dasar sampul: menu selebar wadah halaman, sama dengan kepala normal. */
+.bch-sampul-pita {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bch-paper);
+  border-top: 2px solid var(--bch-rule-strong);
+}
+.bch-sampul-pita-dalam {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  width: 100%;
+  max-width: var(--bch-wrap);
+  margin-inline: auto;
+  padding-inline: var(--bch-gutter);
+  box-sizing: border-box;
+}
+.bch-sampul-menu {
+  flex: 1;
+  border: 0;
+}
+.bch-sampul-tombol-menu {
+  display: none;
+}
+
+@media (max-width: 1240px) {
+  .bch-sampul-tombol-menu {
+    display: inline-flex;
+    width: auto;
+    gap: 8px;
+    padding-inline: 0 8px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+@media (max-width: 700px) {
+  .bch-sampul {
+    min-height: 520px;
+  }
+  .bch-sampul-atas {
+    top: 16px;
+  }
+  .bch-sampul-tanggal {
+    display: none;
+  }
+  /* Atribusi bisa dua baris di ponsel: judul diberi jarak supaya tidak tertutup. */
+  .bch-sampul-isi {
+    bottom: 112px;
+  }
+  .bch-sampul-judul {
+    max-width: 16ch;
+  }
+  .bch-sampul-atribusi {
+    left: var(--bch-gutter);
+    right: auto;
+    font-size: 10px;
+  }
+}

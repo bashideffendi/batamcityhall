@@ -39,6 +39,7 @@ export default function Kolofon() {
 
         <h2>Grafis</h2>
         <p>Ilustrasi bergaya cetak Riso dibuat khusus untuk situs ini.</p>
+        <p>Peta isometrik di sampul beranda dibuat dengan AI dari data OpenStreetMap.</p>
 
         <h2>Data</h2>
         <ul>

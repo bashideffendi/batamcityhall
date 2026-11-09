@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-09 · Purwarupa sampul beranda dan kepala normal
+
+Atas permintaan pemilik: posisi gambar dan menu seperti majalah Cultura, dengan peta isometrik buatannya. Yang ditiru hanya posisinya; huruf dan warna tetap milik situs supaya selaras (koreksi pemilik: "tiru posisi, kalo font ... ngikut yg sebelumnya"). Purwarupa: belum final, masih di lokal sampai pemilik meminta push. Catatan di PEDOMAN (blok "Purwarupa sampul beranda").
+
+- **Sampul beranda** (`components/site/SampulBeranda.tsx`, `sampul.css`): peta isometrik pemilik selebar layar (dummy Harbour Bay; ponsel memakai potongan tegak), nama situs di kiri atas, tanggal, cari, dan tema di kanan atas, label dan judul tulisan Jurnal terbaru di tengah bawah dengan latar kertas per baris supaya terbaca di atas peta, dan pita menu di dasar layar. Keterangan "Ilustrasi dibuat dengan AI dari data peta © kontributor OpenStreetMap" di sampul, sesuai Standar Redaksi dan lisensi ODbL.
+- **Kepala normal** di semua halaman lain: nama situs di tengah dan menu di bawahnya (posisi kepala beranda yang lama), huruf dan garis menu tetap. Beranda tidak memakai kepala ini. Menu dipakai bersama lewat `components/site/MenuBagian.tsx`; tombol Menu di sampul (layar sempit) membuka menu layar penuh yang sama lewat peristiwa `bch:buka-menu`.
+- Gambar sampul dibuat `node tools/grafis/sampul.mjs "<berkas peta>"` (WebP 1280/1920/2560 dan tegak 720/1080). Pemeriksaan tampilan tanpa memanggil sumber data: `node tools/grafis/tangkap-layar.mjs`.
+- Kartu Jurnal di bawah beranda kini memuat tulisan kedua (tulisan terbaru sudah di sampul). Kolofon menyebut ilustrasi AI.
+- **Pemeriksaan:** unit lulus, lint dan tipe bersih, cek bahasa lulus, build berhasil, e2e 1.006 lulus (6 baru di `tests/e2e/sampul.spec.ts`: gambar selebar layar, keterangan AI dan OpenStreetMap, pita menu di dasar sampul, menu membuka halaman berkepala normal, tombol Menu di ponsel, axe dua tema), menu tidak meluap di 1.241, 1.280, dan 1.440 px, skor tampilan `docs/tampilan/skor/18-sampul-beranda.json` 69 dari 69. Catatan skor "judul tidak di layar pertama ponsel" di beranda memang akibat sampul; di `/cuaca/gelombang` catatan yang sama muncul tidak tetap (judulnya terukur terlihat, bawahnya 768 dari 844 px).
+
 ## 2026-11-09 · Direktori diperbesar dari data terbuka Overture
 
 Atas keputusan pemilik ("Ya, pakai Overture"), setelah perbandingan dengan batam.co.id. Bukan menyalin Google Maps: syarat Google melarang data Places dipakai bersama peta non-Google (Service Specific Terms pasal 14) dan melarang penyalinan. Masih di lokal sampai pemilik meminta push.

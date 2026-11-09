@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { preload } from "react-dom";
 import JsonLd from "@/components/site/JsonLd";
+import SampulBeranda from "@/components/site/SampulBeranda";
 import BeritaWidget from "@/features/berita/BeritaWidget";
 import { daftarAcara, daftarKata } from "@/features/budaya/data";
 import { DATASET } from "@/features/dataset/data";
@@ -58,156 +59,180 @@ export default async function Beranda() {
   // Peta Hari Ini adalah gambar terbesar di layar pertama. Hanya satu yang diunduh, sesuai lebar layar.
   preload(GAMBAR_DESKTOP, { as: "image", fetchPriority: "high", media: `not all and ${BATAS_PONSEL}` });
   preload(GAMBAR_PONSEL, { as: "image", fetchPriority: "high", media: BATAS_PONSEL });
-  const [jurnal] = await semuaTulisan();
+  // Tulisan terbaru menjadi judul sampul; kartu Jurnal di bawah memuat tulisan berikutnya supaya tidak tampil dua kali.
+  const [sampul, jurnal] = await semuaTulisan();
   const acara = daftarAcara().map((a) => ({ id: a.id, nama: kaidahJudul(a.nama), bulan: a.bulan, lokasi: a.lokasi }));
   const layanan = DAFTAR_KATEGORI.filter((k) => KATEGORI_LAYANAN.includes(k.kategori));
 
   return (
-    <div className="br-halaman">
-      <JsonLd data={grafLd(organisasi(), situsWeb())} />
-      <HariIniMuat />
+    <>
+      <SampulBeranda
+        tulisan={
+          sampul ? { href: `/jurnal/${sampul.slug}`, label: `Jurnal · ${sampul.rubrik}`, judul: sampul.judul } : null
+        }
+      />
+      <div className="br-halaman">
+        <JsonLd data={grafLd(organisasi(), situsWeb())} />
+        <HariIniMuat />
 
-      <div className="br-dasbor">
-        <BeritaWidget />
+        <div className="br-dasbor">
+          <BeritaWidget />
 
-        <ModulFeri />
+          <ModulFeri />
 
-        <section className="br-modul" aria-labelledby="br-transportasi">
-          <h2 id="br-transportasi">Transportasi</h2>
-          <ul className="br-baris">
-            {TRANSPORTASI.map((t) => (
-              <li key={t.href}>
-                <Link href={t.href} prefetch={false}>
-                  <span>{t.nama}</span>
-                  <span className="ket">{t.ket}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Selengkapnya href="/jalan" />
-        </section>
-      </div>
+          <section className="br-modul" aria-labelledby="br-transportasi">
+            <h2 id="br-transportasi">Transportasi</h2>
+            <ul className="br-baris">
+              {TRANSPORTASI.map((t) => (
+                <li key={t.href}>
+                  <Link href={t.href} prefetch={false}>
+                    <span>{t.nama}</span>
+                    <span className="ket">{t.ket}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Selengkapnya href="/jalan" />
+          </section>
+        </div>
 
-      <section className="br-seksi" aria-labelledby="br-tempat">
-        <h2 id="br-tempat" className="bch-judul-seksi">
-          Cari Tempat di Batam
-        </h2>
-        <PetaMuat jumlahTanpaTitik={{ hotel: JUMLAH_HOTEL }} />
-      </section>
-
-      <div className="br-dasbor">
-        <section className="br-modul" aria-labelledby="br-makanan">
-          <h2 id="br-makanan">Makanan</h2>
-          <ul className="br-hidangan">
-            {HIDANGAN_BERANDA.map((id) => (
-              <li key={id}>
-                <Link href={`/makan/hidangan/${slugHidangan(id)}`} prefetch={false}>
-                  <Image src={grafisHidanganKecil(id)} alt="" width={160} height={160} unoptimized loading="lazy" />
-                  <span>{kaidahJudul(categoryMap[id]?.name_id ?? "")}</span>
-                  <span className="bch-data">{categoryCounts[id] ?? 0}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link href="/makan" className="bch-aksi br-selengkapnya" prefetch={false}>
-            Semua {places.length} Tempat →
-          </Link>
+        <section className="br-seksi" aria-labelledby="br-tempat">
+          <h2 id="br-tempat" className="bch-judul-seksi">
+            Cari Tempat di Batam
+          </h2>
+          <PetaMuat jumlahTanpaTitik={{ hotel: JUMLAH_HOTEL }} />
         </section>
 
-        <section className="br-modul" aria-labelledby="br-cctv">
-          <h2 id="br-cctv">CCTV</h2>
-          <ul className="br-baris">
-            {KAMERA.map((c) => (
-              <li key={c.slug}>
-                <Link href={`/cctv?cam=${c.slug}`} prefetch={false}>
-                  <span>{c.name}</span>
-                  <span className="ket">{c.area}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link href="/cctv" className="bch-aksi br-selengkapnya" prefetch={false}>
-            Semua {MAPPED_CAMS.length} Kamera →
-          </Link>
-        </section>
-
-        <section className="br-modul" aria-labelledby="br-layanan">
-          <h2 id="br-layanan">Layanan Warga</h2>
-          <ul className="br-baris">
-            {layanan.map((k) => (
-              <li key={k.kategori}>
-                <Link href={`/info/direktori/${slugKategori(k.kategori)}`} prefetch={false}>
-                  <span>{kaidahJudul(k.nama)}</span>
-                  <span className="bch-data ket">{tempatDiKategori(k.kategori).length.toLocaleString("id-ID")}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Selengkapnya href="/info" />
-        </section>
-      </div>
-
-      <div className="br-dasbor">
-        <section className="br-modul" aria-labelledby="br-acara">
-          <h2 id="br-acara">Things to Do</h2>
-          <ModulAcara acara={acara} />
-          <Selengkapnya href="/things-to-do" />
-        </section>
-
-        <section className="br-modul" aria-labelledby="br-bilangan">
-          <h2 id="br-bilangan">Batam dalam Angka</h2>
-          <ul className="br-bilangan">
-            {ANGKA.map((a) => (
-              <li key={a.label}>
-                <Link href={a.href} prefetch={false}>
-                  <span className="nilai">{a.nilai}</span>
-                  <span className="label">{a.label}</span>
-                  <span className="ket">{a.ket}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="br-aksi-ganda">
-            <Link href="/cerita/angka" className="bch-aksi br-selengkapnya" prefetch={false}>
-              Selengkapnya →
-            </Link>
-            <Link href="/dataset" className="bch-aksi br-selengkapnya" prefetch={false}>
-              {DATASET.length.toLocaleString("id-ID")} Dataset →
-            </Link>
-          </div>
-        </section>
-
-        <ModulKata daftar={KATA} />
-      </div>
-
-      <div className="br-penutup">
-        {jurnal && (
-          <section className="br-jurnal" aria-labelledby="br-jurnal">
-            <Link href={`/jurnal/${jurnal.slug}`} prefetch={false}>
-              <Image className="bch-grafis" src={jurnal.gambar} alt="" width={720} height={480} unoptimized loading="lazy" />
-              <span className="teks">
-                <span className="bch-kicker">Jurnal · {jurnal.rubrik}</span>
-                <span id="br-jurnal" className="judul">
-                  {jurnal.judul}
-                </span>
-                <span className="ringkas">{jurnal.ringkasan}</span>
-                <span className="bch-data">
-                  {jurnal.penulis} · {tanggalTulisan(jurnal.tanggal)}
-                </span>
-              </span>
+        <div className="br-dasbor">
+          <section className="br-modul" aria-labelledby="br-makanan">
+            <h2 id="br-makanan">Makanan</h2>
+            <ul className="br-hidangan">
+              {HIDANGAN_BERANDA.map((id) => (
+                <li key={id}>
+                  <Link href={`/makan/hidangan/${slugHidangan(id)}`} prefetch={false}>
+                    <Image src={grafisHidanganKecil(id)} alt="" width={160} height={160} unoptimized loading="lazy" />
+                    <span>{kaidahJudul(categoryMap[id]?.name_id ?? "")}</span>
+                    <span className="bch-data">{categoryCounts[id] ?? 0}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link href="/makan" className="bch-aksi br-selengkapnya" prefetch={false}>
+              Semua {places.length} Tempat →
             </Link>
           </section>
-        )}
-        <section className="br-kartu-pos" aria-labelledby="br-kartu-pos">
-          <Link href="/kartu-pos" prefetch={false}>
-            <Image className="bch-grafis" src="/kartu-pos/layar/selat.webp" alt="" width={874} height={620} unoptimized loading="lazy" />
-            <span className="judul" id="br-kartu-pos">
-              Kartu Pos dari Batam
-            </span>
-            <span className="ringkas">Pilih desain, tulis pesan, lalu cetak.</span>
-          </Link>
-        </section>
+
+          <section className="br-modul" aria-labelledby="br-cctv">
+            <h2 id="br-cctv">CCTV</h2>
+            <ul className="br-baris">
+              {KAMERA.map((c) => (
+                <li key={c.slug}>
+                  <Link href={`/cctv?cam=${c.slug}`} prefetch={false}>
+                    <span>{c.name}</span>
+                    <span className="ket">{c.area}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link href="/cctv" className="bch-aksi br-selengkapnya" prefetch={false}>
+              Semua {MAPPED_CAMS.length} Kamera →
+            </Link>
+          </section>
+
+          <section className="br-modul" aria-labelledby="br-layanan">
+            <h2 id="br-layanan">Layanan Warga</h2>
+            <ul className="br-baris">
+              {layanan.map((k) => (
+                <li key={k.kategori}>
+                  <Link href={`/info/direktori/${slugKategori(k.kategori)}`} prefetch={false}>
+                    <span>{kaidahJudul(k.nama)}</span>
+                    <span className="bch-data ket">{tempatDiKategori(k.kategori).length.toLocaleString("id-ID")}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Selengkapnya href="/info" />
+          </section>
+        </div>
+
+        <div className="br-dasbor">
+          <section className="br-modul" aria-labelledby="br-acara">
+            <h2 id="br-acara">Things to Do</h2>
+            <ModulAcara acara={acara} />
+            <Selengkapnya href="/things-to-do" />
+          </section>
+
+          <section className="br-modul" aria-labelledby="br-bilangan">
+            <h2 id="br-bilangan">Batam dalam Angka</h2>
+            <ul className="br-bilangan">
+              {ANGKA.map((a) => (
+                <li key={a.label}>
+                  <Link href={a.href} prefetch={false}>
+                    <span className="nilai">{a.nilai}</span>
+                    <span className="label">{a.label}</span>
+                    <span className="ket">{a.ket}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="br-aksi-ganda">
+              <Link href="/cerita/angka" className="bch-aksi br-selengkapnya" prefetch={false}>
+                Selengkapnya →
+              </Link>
+              <Link href="/dataset" className="bch-aksi br-selengkapnya" prefetch={false}>
+                {DATASET.length.toLocaleString("id-ID")} Dataset →
+              </Link>
+            </div>
+          </section>
+
+          <ModulKata daftar={KATA} />
+        </div>
+
+        <div className="br-penutup">
+          {jurnal && (
+            <section className="br-jurnal" aria-labelledby="br-jurnal">
+              <Link href={`/jurnal/${jurnal.slug}`} prefetch={false}>
+                <Image
+                  className="bch-grafis"
+                  src={jurnal.gambar}
+                  alt=""
+                  width={720}
+                  height={480}
+                  unoptimized
+                  loading="lazy"
+                />
+                <span className="teks">
+                  <span className="bch-kicker">Jurnal · {jurnal.rubrik}</span>
+                  <span id="br-jurnal" className="judul">
+                    {jurnal.judul}
+                  </span>
+                  <span className="ringkas">{jurnal.ringkasan}</span>
+                  <span className="bch-data">
+                    {jurnal.penulis} · {tanggalTulisan(jurnal.tanggal)}
+                  </span>
+                </span>
+              </Link>
+            </section>
+          )}
+          <section className="br-kartu-pos" aria-labelledby="br-kartu-pos">
+            <Link href="/kartu-pos" prefetch={false}>
+              <Image
+                className="bch-grafis"
+                src="/kartu-pos/layar/selat.webp"
+                alt=""
+                width={874}
+                height={620}
+                unoptimized
+                loading="lazy"
+              />
+              <span className="judul" id="br-kartu-pos">
+                Kartu Pos dari Batam
+              </span>
+              <span className="ringkas">Pilih desain, tulis pesan, lalu cetak.</span>
+            </Link>
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
+import MenuBagian from "@/components/site/MenuBagian";
 import { useSiteTheme } from "@/components/site/useSiteTheme";
-import { bacaDiperbarui, subscribeDiperbarui } from "@/lib/diperbarui";
 import { BAGIAN, bagianDiAlamat, SITE_NAME } from "@/lib/site";
 import { followSystemTheme, toggleTheme } from "@/lib/theme";
 
-const Icon = ({ d }: { d: string }) => (
+export const Icon = ({ d }: { d: string }) => (
   <svg
     width="20"
     height="20"
@@ -23,13 +23,15 @@ const Icon = ({ d }: { d: string }) => (
     <path d={d} />
   </svg>
 );
-const MOON = "M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z";
-const SUN =
+export const MOON = "M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z";
+export const SUN =
   "M12 4v2m0 12v2M4 12h2m12 0h2M6.3 6.3l1.4 1.4m8.6 8.6 1.4 1.4m0-11.4-1.4 1.4m-8.6 8.6-1.4 1.4M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z";
-const MENU = "M4 7h16M4 12h16M4 17h16";
+export const MENU = "M4 7h16M4 12h16M4 17h16";
 const CLOSE = "M6 6l12 12M18 6 6 18";
-const CARI = "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm9 16-4-4";
-const RUMAH = "M3 11 12 4l9 7M5.5 9.5V20h5v-6h3v6h5V9.5";
+export const CARI = "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm9 16-4-4";
+
+/** Peristiwa untuk membuka menu layar penuh dari luar kepala halaman, mis. pita bawah sampul beranda. */
+export const BUKA_MENU = "bch:buka-menu";
 
 // Nomor nasional dari data/darurat. Ditulis di sini supaya tetap tampil walau data lain gagal dimuat.
 const DARURAT = [
@@ -66,28 +68,6 @@ function BarisDarurat() {
   );
 }
 
-const tanggalHariIni = () =>
-  new Intl.DateTimeFormat("id-ID", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "Asia/Jakarta",
-  }).format(Date.now());
-const tanpaLangganan = () => () => {};
-
-/** Tanggal di kepala beranda. Hanya dirender di klien: halaman statis tidak boleh membawa tanggal saat build. */
-function Tanggal() {
-  const tanggal = useSyncExternalStore(tanpaLangganan, tanggalHariIni, () => "");
-  const jam = useSyncExternalStore(subscribeDiperbarui, bacaDiperbarui, () => "");
-  return (
-    <div className="bch-kepala-tanggal">
-      <span>{tanggal}</span>
-      {jam && <span className="bch-data">Diperbarui {jam} WIB</span>}
-    </div>
-  );
-}
-
 /** Submenu bagian yang sedang dibuka. Yang dipilih adalah alamat terpanjang yang cocok. */
 function Submenu({ path }: { path: string }) {
   const bagian = bagianDiAlamat(path);
@@ -108,6 +88,11 @@ function Submenu({ path }: { path: string }) {
   );
 }
 
+/**
+ * Kepala situs. Di beranda kepala ini tidak tampil: sampul beranda (components/site/SampulBeranda.tsx) membawa nama
+ * situs dan menu di pita bawahnya, seperti sampul majalah. Halaman lain memakai kepala normal: nama situs di tengah,
+ * pita menu di bawahnya (purwarupa arah "kalcer", 9 Nov 2026).
+ */
 export default function SiteNav() {
   const path = usePathname();
   const theme = useSiteTheme();
@@ -115,9 +100,15 @@ export default function SiteNav() {
   const [openedAt, setOpenedAt] = useState<string | null>(null);
   const open = openedAt === path;
   const beranda = path === "/";
-  const aktif = bagianDiAlamat(path)?.id;
 
   useEffect(() => followSystemTheme(), []);
+
+  // Tombol menu di sampul beranda membuka menu yang sama.
+  useEffect(() => {
+    const buka = () => setOpenedAt(window.location.pathname);
+    window.addEventListener(BUKA_MENU, buka);
+    return () => window.removeEventListener(BUKA_MENU, buka);
+  }, []);
 
   // Next.js hanya menggulir sampai segmen yang berubah, jadi kepala halaman bisa terpotong saat pindah di dalam
   // satu bagian. Tombol kembali dan tautan ke tanda pagar tetap memakai posisi masing-masing.
@@ -159,51 +150,45 @@ export default function SiteNav() {
   return (
     <>
       <BarisDarurat />
-      <header className="bch-kepala" data-beranda={beranda ? "" : undefined}>
-        <div className="bch-kepala-utama">
-          {beranda && <Tanggal />}
-          <Link href="/" className="bch-wordmark">
-            {SITE_NAME}
-          </Link>
-          <div className="bch-nav-tools">
-            <Link href="/cari" prefetch={false} className="bch-icon-btn" aria-label="Cari">
-              <Icon d={CARI} />
-            </Link>
-            <button
-              type="button"
-              className="bch-icon-btn"
-              onClick={toggleTheme}
-              aria-label={theme === "dark" ? "Ganti ke tampilan terang" : "Ganti ke tampilan gelap"}
-            >
-              <Icon d={theme === "dark" ? SUN : MOON} />
-            </button>
-            <button
-              type="button"
-              className="bch-icon-btn bch-menu-btn"
-              onClick={() => setOpenedAt(path)}
-              aria-expanded={open}
-              aria-controls="bch-toc"
-              aria-label="Buka menu"
-            >
-              <Icon d={MENU} />
-            </button>
+      {!beranda && (
+        <>
+          <header className="bch-kepala">
+            <div className="bch-kepala-utama">
+              <span aria-hidden="true" />
+              <Link href="/" className="bch-wordmark">
+                {SITE_NAME}
+              </Link>
+              <div className="bch-nav-tools">
+                <Link href="/cari" prefetch={false} className="bch-icon-btn" aria-label="Cari">
+                  <Icon d={CARI} />
+                </Link>
+                <button
+                  type="button"
+                  className="bch-icon-btn"
+                  onClick={toggleTheme}
+                  aria-label={theme === "dark" ? "Ganti ke tampilan terang" : "Ganti ke tampilan gelap"}
+                >
+                  <Icon d={theme === "dark" ? SUN : MOON} />
+                </button>
+                <button
+                  type="button"
+                  className="bch-icon-btn bch-menu-btn"
+                  onClick={() => setOpenedAt(path)}
+                  aria-expanded={open}
+                  aria-controls="bch-toc"
+                  aria-label="Buka menu"
+                >
+                  <Icon d={MENU} />
+                </button>
+              </div>
+            </div>
+          </header>
+          <div className="bch-pita-menu">
+            <MenuBagian path={path} className="bch-menu" />
           </div>
-        </div>
-        <nav className="bch-menu" aria-label="Bagian situs">
-          {/* Beranda bukan bagian di BAGIAN: alamat "/" adalah awalan semua halaman. Di menu lebar tampil sebagai
-              ikon supaya semua bagian, termasuk Info Loker, muat satu baris. */}
-          <Link href="/" className="bch-menu-beranda" aria-current={beranda ? "page" : undefined} title="Beranda">
-            <Icon d={RUMAH} />
-            <span className="sr-only">Beranda</span>
-          </Link>
-          {BAGIAN.map((b) => (
-            <Link key={b.id} href={b.href} aria-current={b.id === aktif ? "page" : undefined}>
-              {b.nama}
-            </Link>
-          ))}
-        </nav>
-      </header>
-      <Submenu path={path} />
+          <Submenu path={path} />
+        </>
+      )}
       {open && (
         <nav id="bch-toc" className="bch-toc" aria-label="Menu">
           <button type="button" className="bch-icon-btn bch-toc-tutup" onClick={() => setOpenedAt(null)} aria-label="Tutup menu">
