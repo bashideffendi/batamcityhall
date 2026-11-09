@@ -22,6 +22,18 @@ Portal informasi komersial (sponsor, promosi properti, layanan talenta TaPitch).
 | Notifikasi Telegram dan aplikasi Android | — | Kita sudah PWA (`app/manifest.ts`). |
 | Tombol "Apakah halaman ini membantu?" | — | Butuh basis data (Supabase belum tersambung). |
 
+## Sumber data tempat (dicek 9 November 2026)
+
+Pemilik meminta direktori selengkap batam.co.id (hotel, makanan, sekolah, dan lainnya). Pilihan sumbernya:
+
+| Sumber | Isi untuk Batam | Boleh dipakai? | Catatan |
+|---|---|---|---|
+| Overture Maps Places, rilis 2026-10-21.0 | 20.654 tempat; 7.297 berkeyakinan 0,7 ke atas (1.564 di atas 0,9); 72% bertelepon, 30% bersitus web. Keyakinan 0,7 ke atas: restoran 691, hotel 349, sekolah dan tempat belajar sekitar 240, rumah sakit 100, kafe 142, bank 153, tempat ibadah 587 | Ya. CDLA-Permissive-2.0 (sebagian Apache-2.0 dan CC0), boleh di peta kita, kredit di Kolofon | Hampir semuanya dari halaman bisnis Facebook (Meta): ada yang sudah tutup, ganda, atau titiknya kasar; status buka hampir selalu kosong; tanpa jam buka dan rating. Perlu saringan dan label lokasi belum dicek. Diambil gratis tanpa kunci dari penyimpanan terbuka Overture. |
+| OpenStreetMap | Sekitar 2.000 titik usaha dan fasilitas (hitungan awal; server Overpass penuh saat dicek) | Ya, ODbL, sudah dipakai untuk peta | Lebih sedikit, mutu dijaga relawan. |
+| Foursquare Open Source Places | Belum dihitung | Ya, Apache-2.0 | Sekarang hanya di Hugging Face dan butuh akun gratis yang menyetujui syaratnya: tindakan pemilik. |
+| Google Places API (resmi) | Paling lengkap: jam buka, rating, telepon | Bersyarat. Pasal 14 Service Specific Terms: boleh tanpa peta Google, tetapi dilarang dipakai bersama peta non-Google (peta kita OSM), koordinat hanya boleh disimpan 30 hari | Butuh akun Google Cloud dan kartu pemilik; berbayar di atas kuota gratis; wajib atribusi Google. |
+| Menarik langsung dari Google Maps (scrape) | Sama lengkapnya | Melanggar syarat Google (larangan menyalin dan mengekspor konten) | Risiko diblokir atau ditegur, data tidak boleh diterbitkan ulang. Tidak disarankan; bila tetap dipilih, itu keputusan pemilik. |
+
 ## Tidak disarankan
 
 - Promosi properti, sponsor, dan TaPitch: situs kita non-komersial.
