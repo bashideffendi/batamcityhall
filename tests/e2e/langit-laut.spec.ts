@@ -140,6 +140,7 @@ test.describe("Cuaca dan CCTV", () => {
       "Radar Hujan",
       "Tinggi Gelombang",
       "Peringatan Dini",
+      "Kualitas Udara",
       "Gempa Terkini",
     ]);
     await page.goto(HALAMAN_MODE.ombak);

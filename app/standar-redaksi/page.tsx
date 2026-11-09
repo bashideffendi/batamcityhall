@@ -42,7 +42,7 @@ export default function StandarRedaksi() {
           </li>
           <li>Halaman tempat makan mencantumkan kapan datanya terakhir diperiksa.</li>
           <li>
-            Radar hujan, gelombang, gempa, peringatan dini, dan CCTV diambil otomatis dari penyedianya. Bila datanya
+            Radar hujan, gelombang, gempa, peringatan dini, kualitas udara, dan CCTV diambil otomatis dari penyedianya. Bila datanya
             terlambat atau terputus, halaman menuliskannya apa adanya.
           </li>
           <li>Jadwal feri dan bus, harga, serta jam buka dapat berubah sewaktu-waktu.</li>

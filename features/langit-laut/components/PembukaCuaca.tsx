@@ -99,6 +99,7 @@ export function IsiCuaca() {
             kolom={1}
             isi={[
           { href: "/cuaca/peringatan", nama: "Peringatan Dini", ket: "Yang berlaku di Kepulauan Riau, kecamatan di Batam disebut." },
+          { href: "/cuaca/udara", nama: "Kualitas Udara", ket: "Indeks kualitas udara sekarang dan 24 jam ke depan." },
           { href: "/cuaca/gempa", nama: "Gempa Terkini", ket: "Gempa di seluruh Indonesia, dengan jarak dari Batam." },
             ]}
           />

@@ -5,7 +5,8 @@ import "@/features/langit-laut/cuaca.css";
 
 export const metadata: Metadata = {
   title: "Cuaca",
-  description: "Radar hujan, tinggi gelombang, peringatan dini, dan gempa untuk Batam dan perairan sekitarnya.",
+  description:
+    "Radar hujan, tinggi gelombang, peringatan dini, kualitas udara, dan gempa untuk Batam dan perairan sekitarnya.",
 };
 
 export default function Cuaca() {

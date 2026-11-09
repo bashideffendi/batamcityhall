@@ -11,6 +11,7 @@ const DATA = [
   "Kondisi cuaca: National Environment Agency.",
   "Prakiraan gelombang dan cuaca: BMKG.",
   "Peringatan dini cuaca dan gempa: BMKG.",
+  "Kualitas udara: Open-Meteo (CC BY 4.0), dari model Copernicus Atmosphere Monitoring Service.",
   "Batas kecamatan: Badan Informasi Geospasial.",
   "Kamera lalu lintas: Pemerintah Kota Batam.",
   "Food court: BatamGems, Wikivoyage, Eatbook, Trip.com, Wanderlog, KepriOnline, Foursquare, dan TribunBatam.",

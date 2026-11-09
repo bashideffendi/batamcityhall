@@ -21,6 +21,7 @@ import { gempaRelevan, ringkasGempa, sebutTsunami } from "@/features/langit-laut
 import { rainyKec, type RainLevel } from "@/features/langit-laut/lib/kecamatan";
 import { currentSlot, warnAt } from "@/features/langit-laut/lib/perairan";
 import { statusUntukBatam } from "@/features/langit-laut/lib/peringatan-cuaca";
+import { jamDari, kategoriUdara, type UdaraResponse } from "@/features/langit-laut/lib/udara";
 import { arahLengkap, fmtM, joinNames, ktToKmh, radarView, RADAR_OLD_MIN } from "@/features/langit-laut/lib/status";
 import { setDiperbarui } from "@/lib/diperbarui";
 
@@ -29,6 +30,7 @@ const SEGAR_MS = 2 * 60 * 1000;
 const OMBAK_MS = 10 * 60 * 1000;
 const PERINGATAN_MS = 2 * 60 * 1000;
 const GEMPA_MS = 5 * 60 * 1000;
+const UDARA_MS = 15 * 60 * 1000;
 const TICK_MS = 30 * 1000;
 
 const jamWib = (iso: string) =>
@@ -72,6 +74,8 @@ export default function HariIni() {
   const perairan = useResource<PerairanResponse>("/api/perairan", OMBAK_MS, true, false);
   const cuaca = useResource<PeringatanResponse>("/api/peringatan-cuaca", PERINGATAN_MS, true, false);
   const gempa = useResource<GempaResponse>("/api/gempa", GEMPA_MS, true, false);
+  const udara = useResource<UdaraResponse>("/api/kualitas-udara", UDARA_MS, true, false);
+  const udaraKini = udara.data?.status === "ok" ? udara.data.sekarang : null;
   const feri = useEntriFeri();
   const hasilFeri = useMemo(() => (feri.data ? hitungFeri(feri.data, new Date(now)) : null), [feri.data, now]);
   const baris = hasilFeri ? barisFeriSingapura(hasilFeri) : null;
@@ -191,6 +195,21 @@ export default function HariIni() {
             </dt>
             <dd className="nilai">{kecAngin !== null ? `${kecAngin} km/jam` : perairan.error ? "Belum ada" : "Memuat"}</dd>
             <dd className="ket">{arahAngin ? `Dari ${arahAngin}` : "Perairan Batam"}</dd>
+          </div>
+          <div data-baris="udara">
+            <dt>
+              <Link href="/cuaca/udara" prefetch={false}>
+                Kualitas Udara
+              </Link>
+            </dt>
+            <dd className="nilai">{udaraKini ? `AQI ${udaraKini.aqi}` : udara.error ? "Belum ada" : "Memuat"}</dd>
+            <dd className="ket">
+              {udaraKini
+                ? `${kategoriUdara(udaraKini.aqi).label}, pukul ${jamDari(udaraKini.waktu)} WIB`
+                : udara.error
+                  ? "Data belum dapat dimuat"
+                  : "Memuat data"}
+            </dd>
           </div>
           <div data-baris="feri">
             <dt>

@@ -962,6 +962,7 @@ Keterangan kategori hanya menyebut jenis tempat yang benar-benar ada di data. Bi
     - Radar hujan: Meteorological Service Singapore.
     - Kondisi cuaca: National Environment Agency.
     - Prakiraan gelombang dan cuaca: BMKG.
+    - Kualitas udara: Open-Meteo (CC BY 4.0), dari model Copernicus Atmosphere Monitoring Service.
     - Batas kecamatan: Badan Informasi Geospasial.
     - Kamera lalu lintas: Pemerintah Kota Batam.
     - Data OpenStreetMap berlisensi ODbL.

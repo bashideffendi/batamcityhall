@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-09 · Kualitas Udara
+
+Atas permintaan pemilik ("kualitas udara dulu"), fitur pertama dari perbandingan dengan batam.co.id (`research/18-batam-co-id.md`). Masih di lokal sampai pemilik meminta push.
+
+- **Halaman `/cuaca/udara`** (submenu Cuaca, sebelum Gempa Terkini): AQI saat ini dengan kategori dan saran kegiatan, PM2.5, PM10, rentang AQI 24 jam terakhir, perkiraan setiap 3 jam untuk 24 jam ke depan, dan tabel arti angka. Satu catatan di bawahnya: angka perkiraan model untuk wilayah sekitar 45 km, bukan alat ukur di Batam, diperbarui dua kali sehari, skala AQI Amerika Serikat, saran bersifat umum.
+- **Baris Kualitas Udara di kotak Hari Ini** (setelah Angin): "AQI 57", "Sedang, pukul 19.00 WIB".
+- **Data:** Open-Meteo, model Copernicus CAMS global (kisi 0,4°), gratis untuk situs non-komersial dengan lisensi CC BY 4.0. Diambil server lewat `/api/kualitas-udara` dengan cache memori 30 menit dan cadangan data terakhir sampai 6 jam; bila gagal, halaman menulis "belum dapat dimuat" tanpa angka. Pengolah murni di `features/langit-laut/lib/udara.ts`.
+- Kredit di Kolofon dan PEDOMAN, Standar Redaksi menyebut kualitas udara sebagai data otomatis, halaman Cuaca menautkannya.
+- **Pemeriksaan:** unit 743 lulus (8 baru), lint dan tipe bersih, cek bahasa lulus, build berhasil, e2e 986 lulus (14 baru dengan data tiruan: halaman, kategori, 24 jam ke depan, data gagal, baris Hari Ini, Kolofon, axe dua tema), skor tampilan `docs/tampilan/skor/16-kualitas-udara.json` 69 dari 69 (`/cuaca/udara` 0). Diperiksa di peramban dengan data asli: AQI 57 Sedang, PM2.5 11,2 µg/m³, desktop 1.280 px dan ponsel 375 px tanpa geser samping.
+
 ## 2026-11-09 · Beranda: Feri ke Singapura, Batam dalam Angka, Kata Hari Ini
 
 Atas pilihan pemilik ("Ya, bangun 1–3"). Tayang sejak `8143b2c` (9 November 2026) atas persetujuan pemilik. Diperiksa di situs: beranda menjawab 200 dan memuat ikon Beranda (aktif hanya di beranda), ketiga modul, serta angka penduduk, laut, dan wisman; `/jalan/feri/terakhir.json` tayang menghasilkan lima baris pelabuhan dengan fungsi yang sama.

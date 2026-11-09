@@ -51,7 +51,16 @@ export const ofsTilePath = (
 // BMKG prakiraan cuaca per kelurahan (kode wilayah tingkat IV). 21.71.10.1003 = Teluk
 // Tering, Kec. Batam Kota (Batam Center) — dipakai sebagai wakil pusat kota. CORS *, tapi
 // app menariknya lewat server (lihat app/api/prakiraan).
-export const BMKG_FORECAST = "https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=21.71.10.1003";
+/**
+ * Kualitas udara: Open-Meteo, model Copernicus CAMS global (CC BY 4.0, gratis untuk situs non-komersial, kredit di
+ * Kolofon). Titiknya titik kisi model terdekat dengan Pulau Batam seperti yang dijawab Open-Meteo, bukan koordinat
+ * tempat. Satu kisi selebar sekitar 45 km, jadi angkanya berlaku untuk seluruh wilayah, bukan per kecamatan.
+ */
+export const OPEN_METEO_UDARA =
+  "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=1.1&longitude=104.1" +
+  "&current=us_aqi,pm2_5,pm10&hourly=us_aqi,pm2_5,pm10&timezone=Asia%2FJakarta&past_days=1&forecast_days=2";
+
+export const BMKG_FORECAST ="https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=21.71.10.1003";
 export const BMKG_FORECAST_PLACE = "Batam Kota";
 
 // BMKG gempa (dok: data.bmkg.go.id/gempabumi). Batas 60 permintaan per menit per IP, wajib atribusi.

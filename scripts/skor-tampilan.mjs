@@ -23,6 +23,7 @@ export const HALAMAN = [
   ["/cctv", "CCTV"],
   ["/cuaca/peringatan", "Peringatan Dini Cuaca"],
   ["/cuaca/gempa", "Gempa Terkini"],
+  ["/cuaca/udara", "Kualitas Udara"],
   ["/makan", "Makan"],
   ["/makan/peta", "Makan: peta"],
   ["/makan/hidangan", "Makan: hidangan"],
