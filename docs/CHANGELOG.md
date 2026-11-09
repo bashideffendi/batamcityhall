@@ -2,7 +2,7 @@
 
 ## 2026-11-09 · Kualitas Udara
 
-Atas permintaan pemilik ("kualitas udara dulu"), fitur pertama dari perbandingan dengan batam.co.id (`research/18-batam-co-id.md`). Masih di lokal sampai pemilik meminta push.
+Atas permintaan pemilik ("kualitas udara dulu"), fitur pertama dari perbandingan dengan batam.co.id (`research/18-batam-co-id.md`). Tayang sejak `312d271` (9 November 2026) atas persetujuan pemilik. Diperiksa di situs: `/cuaca/udara` menjawab 200, `/api/kualitas-udara` di Railway mengambil data asli (AQI 57 pukul 20.00 WIB, delapan baris ke depan), kredit tampil di Kolofon, dan sitemap memuat `/cuaca/udara`.
 
 - **Halaman `/cuaca/udara`** (submenu Cuaca, sebelum Gempa Terkini): AQI saat ini dengan kategori dan saran kegiatan, PM2.5, PM10, rentang AQI 24 jam terakhir, perkiraan setiap 3 jam untuk 24 jam ke depan, dan tabel arti angka. Satu catatan di bawahnya: angka perkiraan model untuk wilayah sekitar 45 km, bukan alat ukur di Batam, diperbarui dua kali sehari, skala AQI Amerika Serikat, saran bersifat umum.
 - **Baris Kualitas Udara di kotak Hari Ini** (setelah Angin): "AQI 57", "Sedang, pukul 19.00 WIB".
