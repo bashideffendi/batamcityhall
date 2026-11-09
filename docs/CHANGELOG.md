@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-09 · Menu Beranda
+
+Atas permintaan pemilik ("tambahkan menu home"). Masih di lokal sampai pemilik meminta push.
+
+- **Beranda** di depan menu. Di menu lebar tampil sebagai ikon rumah dengan nama "Beranda" untuk pembaca layar dan keterangan saat kursor diarahkan; di menu ponsel tertulis Beranda. Tanda halaman aktif hanya di beranda. Beranda tidak dimasukkan ke `BAGIAN` karena alamat "/" adalah awalan semua halaman.
+- **Perbaikan:** menu lebar meluap sejak Dataset ditambahkan bila Info Loker tampil (butuh 1.198 px, tersedia 1.178 px di layar 1.241 px; di situs tayang belum terlihat karena Info Loker belum aktif). Huruf menu kini 14 px (sebelumnya 14,5) dan jarak minimum 10 px (sebelumnya 12), sehingga Beranda dan 14 bagian muat satu baris. Tes e2e kini gagal bila menu lebar meluap.
+- PEDOMAN koreksi rombak menu butir 1 kini menyebut Beranda dan Dataset (Dataset terlewat saat menu Dataset dibuat).
+- **Pemeriksaan:** unit 723 lulus, lint dan tipe bersih, cek bahasa lulus, build berhasil, e2e 958 lulus (termasuk tes baru: urutan dengan Beranda, Beranda aktif hanya di beranda, menu lebar tidak meluap), skor tampilan `docs/tampilan/skor/14-beranda-menu.json` 68 dari 68. Diperiksa juga di peramban pada lebar 1.241 px dan di ponsel.
+
 ## 2026-11-09 · Menu Dataset
 
 Atas keputusan pemilik (pilihan a): menu Dataset menjadi pengecualian PEDOMAN 2.9, nama penyedia ditulis sebagai teks biasa tanpa tautan. Tayang sejak `76b7e86` (9 November 2026) atas persetujuan pemilik. Diperiksa di situs: `/dataset`, halaman tema, dan dua halaman dataset menjawab 200, alamat yang tidak ada menjawab 404, menu tampil dalam urutan baru dengan Dataset setelah Infografik, halaman dataset tidak memuat tautan keluar, dan sitemap memuat 950 alamat Dataset (938 dataset dan 12 tema).

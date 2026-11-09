@@ -29,6 +29,7 @@ const SUN =
 const MENU = "M4 7h16M4 12h16M4 17h16";
 const CLOSE = "M6 6l12 12M18 6 6 18";
 const CARI = "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm9 16-4-4";
+const RUMAH = "M3 11 12 4l9 7M5.5 9.5V20h5v-6h3v6h5V9.5";
 
 // Nomor nasional dari data/darurat. Ditulis di sini supaya tetap tampil walau data lain gagal dimuat.
 const DARURAT = [
@@ -189,6 +190,12 @@ export default function SiteNav() {
           </div>
         </div>
         <nav className="bch-menu" aria-label="Bagian situs">
+          {/* Beranda bukan bagian di BAGIAN: alamat "/" adalah awalan semua halaman. Di menu lebar tampil sebagai
+              ikon supaya semua bagian, termasuk Info Loker, muat satu baris. */}
+          <Link href="/" className="bch-menu-beranda" aria-current={beranda ? "page" : undefined} title="Beranda">
+            <Icon d={RUMAH} />
+            <span className="sr-only">Beranda</span>
+          </Link>
           {BAGIAN.map((b) => (
             <Link key={b.id} href={b.href} aria-current={b.id === aktif ? "page" : undefined}>
               {b.nama}
@@ -203,6 +210,11 @@ export default function SiteNav() {
             <Icon d={CLOSE} />
           </button>
           <ul>
+            <li>
+              <Link href="/" className="bch-toc-bagian" aria-current={beranda ? "page" : undefined}>
+                Beranda
+              </Link>
+            </li>
             {BAGIAN.map((b) => (
               <li key={b.id}>
                 <Link href={b.href} className="bch-toc-bagian">

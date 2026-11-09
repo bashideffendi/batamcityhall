@@ -49,8 +49,30 @@ test.describe("menu", () => {
     await expect(nav.first()).toBeAttached();
     // Info Loker hanya tampil bila basis data tersambung.
     const label = (await nav.allTextContents()).map((t) => t.trim());
-    expect(label.filter((t) => t !== "Info Loker")).toEqual(BAGIAN_URUT);
-    expect(label.length).toBeLessThanOrEqual(BAGIAN_URUT.length + 1);
+    // Beranda di depan, terpisah dari bagian (permintaan pemilik 9 Nov 2026).
+    expect(label.filter((t) => t !== "Info Loker")).toEqual(["Beranda", ...BAGIAN_URUT]);
+    expect(label.length).toBeLessThanOrEqual(BAGIAN_URUT.length + 2);
+    // Menu lebar tidak boleh meluap keluar wadahnya, termasuk saat Info Loker tampil.
+    if (info.project.name !== "hp") {
+      const luap = await page.locator("nav.bch-menu").evaluate((m) => m.scrollWidth - m.clientWidth);
+      expect(luap).toBeLessThanOrEqual(0);
+    }
+  });
+
+  test("Beranda aktif hanya di beranda", async ({ page }, info) => {
+    const beranda = async () => {
+      if (info.project.name === "hp") {
+        await page.getByRole("button", { name: "Buka menu" }).click();
+        return page.locator("#bch-toc").getByRole("link", { name: "Beranda", exact: true });
+      }
+      return page.locator('nav[aria-label="Bagian situs"]').getByRole("link", { name: "Beranda", exact: true });
+    };
+    await page.goto("/");
+    await expect(await beranda()).toHaveAttribute("aria-current", "page");
+    await page.goto("/cuaca");
+    const tautan = await beranda();
+    await expect(tautan).toHaveAttribute("href", "/");
+    await expect(tautan).not.toHaveAttribute("aria-current", "page");
   });
 
   test("peta transportasi di ujung submenu, bukan di antara Trans Batam dan Feri", async ({ page }) => {

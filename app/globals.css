@@ -423,10 +423,11 @@ h4 {
 .bch-menu-btn {
   display: none;
 }
+/* Beranda (ikon) dan 14 bagian termasuk Info Loker harus muat satu baris mulai 1241 px: 14 px dan jarak 10 px. */
 .bch-menu {
   display: flex;
   justify-content: space-between;
-  gap: var(--bch-space-3);
+  gap: 10px;
   border-top: 2px solid var(--bch-rule-strong);
   border-bottom: 1px solid var(--bch-rule-strong);
 }
@@ -434,7 +435,7 @@ h4 {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--bch-ink);
   text-decoration: none;
