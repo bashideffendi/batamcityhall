@@ -22,6 +22,142 @@
   object-position: 42% 50%;
   z-index: -2;
 }
+.bch-sampul picture {
+  transition: opacity var(--bch-dur-slow, 0.5s) ease;
+}
+/* Setelah peta interaktif siap, gambar sampul tidak perlu tampil lagi. */
+.bch-sampul:has(.bch-peta-sampul[data-keadaan="siap"]) picture {
+  opacity: 0;
+}
+
+/* ---------- Peta interaktif (components/site/PetaSampul.tsx) ---------- */
+.bch-peta-sampul {
+  position: absolute;
+  inset: 0;
+}
+.bch-peta-sampul-osd {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--bch-dur-slow, 0.5s) ease;
+}
+.bch-peta-sampul[data-keadaan="siap"] .bch-peta-sampul-osd,
+.bch-peta-sampul[data-jelajah] .bch-peta-sampul-osd {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* Peta kecil hanya di Jelajahi. */
+.bch-peta-sampul:not([data-jelajah]) .navigator {
+  display: none !important;
+}
+.bch-peta-sampul .navigator {
+  border: 2px solid var(--bch-ink) !important;
+  background: var(--bch-paper) !important;
+}
+.bch-peta-kendali {
+  position: absolute;
+  top: 50%;
+  right: var(--bch-gutter);
+  z-index: 1;
+  display: grid;
+  justify-items: end;
+  gap: 6px;
+  transform: translateY(-50%);
+}
+.bch-peta-tombol {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  font: 500 24px / 1 var(--bch-font-sans);
+  cursor: pointer;
+}
+.bch-peta-jelajahi {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  font: 600 14px / 1 var(--bch-font-sans);
+  cursor: pointer;
+}
+.bch-peta-tombol:hover,
+.bch-peta-jelajahi:hover {
+  color: var(--bch-link);
+}
+
+/* Jelajahi: layar penuh di atas seluruh halaman. */
+.bch-sampul:has(.bch-peta-sampul[data-jelajah]) {
+  z-index: 90;
+}
+.bch-peta-sampul[data-jelajah] {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: #cfdce4;
+}
+.bch-peta-sampul[data-jelajah] .bch-peta-sampul-osd {
+  z-index: 0;
+}
+.bch-peta-sampul[data-jelajah] .bch-peta-kendali {
+  top: auto;
+  bottom: 56px;
+  transform: none;
+}
+.bch-peta-jelajah-atas {
+  position: absolute;
+  top: 16px;
+  left: var(--bch-gutter);
+  right: var(--bch-gutter);
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+main .bch-peta-jelajah-judul,
+main .bch-peta-atribusi,
+main .bch-peta-gagal {
+  text-align: start;
+  hyphens: manual;
+}
+.bch-peta-jelajah-judul {
+  margin: 0;
+  padding: 8px 12px;
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  font-family: var(--bch-font-display);
+  font-size: 20px;
+  line-height: 1.2;
+}
+.bch-peta-atribusi {
+  position: absolute;
+  right: var(--bch-gutter);
+  bottom: 16px;
+  z-index: 1;
+  max-width: calc(100% - 2 * var(--bch-gutter));
+  margin: 0;
+  padding: 2px 8px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.86);
+  color: #2b2b2b;
+  font-size: 11px;
+}
+.bch-peta-gagal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  margin: 0;
+  padding: 10px 14px;
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  transform: translate(-50%, -50%);
+}
 /* Gelap tipis di bawah supaya judul dan pita tetap terbaca di atas peta yang ramai. */
 .bch-sampul::after {
   content: "";

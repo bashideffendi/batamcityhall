@@ -49,6 +49,7 @@ Versi 1.1 mengganti arah tampilan menjadi editorial dengan grafis Riso (bagian 4
 > 2. **Kepala normal di halaman lain:** nama situs di tengah, menu di bawahnya (posisi kepala beranda yang lama).
 > 3. **Ilustrasi AI diberi keterangan di sampulnya** (Standar Redaksi), bersama atribusi OpenStreetMap yang wajib.
 > 4. Periksa tampilan dengan `node tools/grafis/tangkap-layar.mjs <url> <folder> [alamat ...]`: semua `/api/*` ditiru, jadi tidak memanggil MSS atau BMKG.
+> 5. **Peta sampul interaktif** (`components/site/PetaSampul.tsx`, OpenSeadragon; contoh pemilik: yadongxie.com/lab/san-francisco). Di layar bertetikus peta dimuat setelah halaman tenang dan bisa digeser; gulir biasa tetap menggulir halaman, Ctrl/Cmd+gulir memperbesar (mode kooperatif). Di layar sentuh sampul tetap gambar dan peta baru dimuat lewat tombol Jelajahi Peta. Jelajahi: layar penuh, peta kecil di kiri bawah, posisi di alamat `#x,y,zoom` (piksel gambar), Esc menutup. Ubin Deep Zoom di `public/grafis/sampul/harbourbay-zoom/` (dummy 16 MB); peta final Barelang jauh lebih besar dan perlu penyimpanan terpisah seperti R2 (lihat `NEXT_PUBLIC_MURAL_TILE_URL` di mode Mural).
 
 ## Cara Memakai Pedoman Ini
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AlatSampul, MenuSampul } from "@/components/site/MenuSampul";
+import PetaSampul from "@/components/site/PetaSampul";
 import Tanggal from "@/components/site/Tanggal";
 import { SITE_NAME } from "@/lib/site";
 import "./sampul.css";
@@ -32,6 +33,8 @@ export default function SampulBeranda({ tulisan }: { tulisan: SampulTulisan | nu
           decoding="async"
         />
       </picture>
+      {/* Peta interaktif di atas gambar sampul; muncul setelah ubinnya selesai digambar. */}
+      <PetaSampul />
       <div className="bch-sampul-atas">
         <Link href="/" className="bch-sampul-merek">
           {SITE_NAME}

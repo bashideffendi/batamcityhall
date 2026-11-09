@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-11-09 · Peta sampul interaktif
+
+Atas permintaan pemilik ("nanti petanya itu interaktif ya kayak yadongxie.com/lab/san-francisco"). Bagian dari purwarupa sampul; masih di lokal sampai pemilik meminta push.
+
+- **Peta isometrik bisa digeser dan diperbesar** (`components/site/PetaSampul.tsx`, OpenSeadragon 6 yang sudah terpasang untuk mode Mural). Di layar bertetikus peta dimuat setelah halaman tenang, menggantikan gambar sampul setelah ubinnya selesai digambar, dan bisa digeser langsung. Gulir biasa tetap menggulir halaman; Ctrl/Cmd+gulir memperbesar dengan petunjuk berbahasa Indonesia (mode kooperatif). Tombol + dan − di kanan.
+- **Jelajahi Peta**: layar penuh dengan peta kecil di kiri bawah, posisi tersimpan di alamat (`#x,y,zoom`, piksel gambar) sehingga bisa dibagikan, Esc atau Tutup kembali ke sampul dengan fokus di tombol Jelajahi. Alamat berposisi langsung membuka Jelajahi.
+- **Ponsel**: sampul tetap gambar supaya hemat kuota; peta baru dimuat setelah Jelajahi Peta ditekan, dan di sana satu jari menggeser peta.
+- Pixel art tajam saat diperbesar dan halus saat diperkecil. Gerak dimatikan bila pengguna memilih gerak tenang.
+- Ubin Deep Zoom dummy Harbour Bay (12.288 × 6.144 px, 396 ubin, 16 MB) di `public/grafis/sampul/harbourbay-zoom/`. Peta final perlu penyimpanan terpisah.
+- **Pemeriksaan:** lint dan tipe bersih, cek bahasa lulus, build berhasil, e2e 1.013 lulus dan 1 gagal sekali (`rombak.spec.ts` jarak isi di bawah judul seksi beranda, terukur pada kotak peta Cari Tempat saat server sibuk; lulus 3 kali sendirian dan lulus saat berkasnya diulang, 100 lulus), 7 tes baru di `sampul.spec.ts` (peta menggantikan gambar, gulir halaman tetap jalan, Jelajahi dengan posisi di alamat dan Esc, alamat berposisi, ponsel memuat peta setelah Jelajahi, axe), skor tampilan `docs/tampilan/skor/19-peta-sampul.json` 69 dari 69.
+
 ## 2026-11-09 · Purwarupa sampul beranda dan kepala normal
 
 Atas permintaan pemilik: posisi gambar dan menu seperti majalah Cultura, dengan peta isometrik buatannya. Yang ditiru hanya posisinya; huruf dan warna tetap milik situs supaya selaras (koreksi pemilik: "tiru posisi, kalo font ... ngikut yg sebelumnya"). Purwarupa: belum final, masih di lokal sampai pemilik meminta push. Catatan di PEDOMAN (blok "Purwarupa sampul beranda").

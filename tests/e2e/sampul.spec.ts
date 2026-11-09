@@ -44,6 +44,55 @@ test.describe("sampul beranda", () => {
     await expect(page.locator("#bch-toc .bch-toc-bagian").first()).toHaveText("Beranda");
   });
 
+  test("desktop: peta interaktif menggantikan gambar, gulir biasa tetap menggulir halaman", async ({ page }, info) => {
+    test.skip(info.project.name === "hp", "peta langsung dimuat hanya di layar bertetikus");
+    await page.goto("/");
+    const peta = page.locator(".bch-peta-sampul");
+    await expect(peta).toHaveAttribute("data-keadaan", "siap", { timeout: 30_000 });
+    await expect(page.locator(".bch-sampul picture")).toHaveCSS("opacity", "0");
+    await page.mouse.move(600, 400);
+    await page.mouse.wheel(0, 300);
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+  });
+
+  test("Jelajahi: layar penuh, posisi di alamat, Esc menutup dan fokus kembali", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Jelajahi Peta" }).click();
+    const dialog = page.getByRole("dialog", { name: "Jelajahi Peta" });
+    await expect(dialog).toBeVisible();
+    await expect(dialog.getByRole("button", { name: "Tutup" })).toBeFocused();
+    await expect(page.locator(".bch-peta-sampul .openseadragon-canvas").first()).toBeAttached({ timeout: 30_000 });
+    await dialog.getByRole("button", { name: "Perbesar peta isometrik" }).click();
+    await expect.poll(() => page.evaluate(() => location.hash), { timeout: 10_000 }).toMatch(/^#\d+,\d+,\d*\.?\d+$/);
+    await expect(dialog).toContainText("Ilustrasi dibuat dengan AI");
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+    expect(await page.evaluate(() => location.hash)).toBe("");
+    await expect(page.getByRole("button", { name: "Jelajahi Peta" })).toBeFocused();
+  });
+
+  test("alamat berposisi langsung membuka Jelajahi", async ({ page }) => {
+    await page.goto("/#7400,2600,1.5000");
+    await expect(page.getByRole("dialog", { name: "Jelajahi Peta" })).toBeVisible({ timeout: 15_000 });
+  });
+
+  test("ponsel: peta baru dimuat setelah Jelajahi ditekan", async ({ page }, info) => {
+    test.skip(info.project.name !== "hp", "hanya layar sentuh");
+    await page.goto("/");
+    await page.waitForTimeout(1500);
+    await expect(page.locator(".openseadragon-canvas")).toHaveCount(0);
+    await page.getByRole("button", { name: "Jelajahi Peta" }).click();
+    await expect(page.locator(".bch-peta-sampul .openseadragon-canvas").first()).toBeAttached({ timeout: 30_000 });
+  });
+
+  test("Jelajahi lolos axe", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Jelajahi Peta" }).click();
+    await expect(page.locator(".bch-peta-sampul .openseadragon-canvas").first()).toBeAttached({ timeout: 30_000 });
+    const { violations } = await new AxeBuilder({ page }).include(".bch-peta-sampul").analyze();
+    expect(violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`)).toEqual([]);
+  });
+
   test("sampul lolos axe di dua tema", async ({ page }) => {
     for (const tema of ["light", "dark"] as const) {
       await page.addInitScript((t) => localStorage.setItem("bch-theme", t), tema);

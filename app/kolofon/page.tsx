@@ -32,14 +32,17 @@ export default function Kolofon() {
         <p>Peta dasar dari kontributor OpenStreetMap, diolah dengan Protomaps dan MapLibre.</p>
         <p>
           Peta Bus Trans Batam mengikuti tata letak, bentuk pulau, dan sebagian nama halte dari Peta Bus Batam karya
-          Farhan S. Fadhillah dengan kontribusi informasi Hazakura, akurat per 24 Oktober 2024, lisensi CC BY 4.0.
-          Peta itu juga melengkapi urutan halte di halaman koridor. Gaya, warna, dan daftar halte November 2026 diubah
-          untuk situs ini.
+          Farhan S. Fadhillah dengan kontribusi informasi Hazakura, akurat per 24 Oktober 2024, lisensi CC BY 4.0. Peta
+          itu juga melengkapi urutan halte di halaman koridor. Gaya, warna, dan daftar halte November 2026 diubah untuk
+          situs ini.
         </p>
 
         <h2>Grafis</h2>
         <p>Ilustrasi bergaya cetak Riso dibuat khusus untuk situs ini.</p>
-        <p>Peta isometrik di sampul beranda dibuat dengan AI dari data OpenStreetMap.</p>
+        <p>
+          Peta isometrik di sampul beranda dibuat dengan AI dari data OpenStreetMap dan ditampilkan dengan
+          OpenSeadragon.
+        </p>
 
         <h2>Data</h2>
         <ul>
