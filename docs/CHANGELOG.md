@@ -2,7 +2,7 @@
 
 ## 2026-11-09 · Peta sampul interaktif
 
-Atas permintaan pemilik ("nanti petanya itu interaktif ya kayak yadongxie.com/lab/san-francisco"). Bagian dari purwarupa sampul; masih di lokal sampai pemilik meminta push.
+Atas permintaan pemilik ("nanti petanya itu interaktif ya kayak yadongxie.com/lab/san-francisco"). Bagian dari purwarupa sampul. Tayang sejak `cb42695` (10 November 2026) atas persetujuan pemilik. Diperiksa di situs dengan peramban (`/api/*` diblokir): di desktop peta memuat sendiri dan menggantikan gambar, Jelajahi Peta membuka dialog dan menulis posisi di alamat, Esc menutupnya, tanpa galat; di ponsel peta diam sampai Jelajahi ditekan, lalu memuat. Ubin `zoom.dzi` dan gambar sampul menjawab 200.
 
 - **Peta isometrik bisa digeser dan diperbesar** (`components/site/PetaSampul.tsx`, OpenSeadragon 6 yang sudah terpasang untuk mode Mural). Di layar bertetikus peta dimuat setelah halaman tenang, menggantikan gambar sampul setelah ubinnya selesai digambar, dan bisa digeser langsung. Gulir biasa tetap menggulir halaman; Ctrl/Cmd+gulir memperbesar dengan petunjuk berbahasa Indonesia (mode kooperatif). Tombol + dan − di kanan.
 - **Jelajahi Peta**: layar penuh dengan peta kecil di kiri bawah, posisi tersimpan di alamat (`#x,y,zoom`, piksel gambar) sehingga bisa dibagikan, Esc atau Tutup kembali ke sampul dengan fokus di tombol Jelajahi. Alamat berposisi langsung membuka Jelajahi.
@@ -14,7 +14,7 @@ Atas permintaan pemilik ("nanti petanya itu interaktif ya kayak yadongxie.com/la
 
 ## 2026-11-09 · Purwarupa sampul beranda dan kepala normal
 
-Atas permintaan pemilik: posisi gambar dan menu seperti majalah Cultura, dengan peta isometrik buatannya. Yang ditiru hanya posisinya; huruf dan warna tetap milik situs supaya selaras (koreksi pemilik: "tiru posisi, kalo font ... ngikut yg sebelumnya"). Purwarupa: belum final, masih di lokal sampai pemilik meminta push. Catatan di PEDOMAN (blok "Purwarupa sampul beranda").
+Atas permintaan pemilik: posisi gambar dan menu seperti majalah Cultura, dengan peta isometrik buatannya. Yang ditiru hanya posisinya; huruf dan warna tetap milik situs supaya selaras (koreksi pemilik: "tiru posisi, kalo font ... ngikut yg sebelumnya"). Purwarupa: belum final. Tayang sejak `cb42695` (10 November 2026) atas persetujuan pemilik. Catatan di PEDOMAN (blok "Purwarupa sampul beranda").
 
 - **Sampul beranda** (`components/site/SampulBeranda.tsx`, `sampul.css`): peta isometrik pemilik selebar layar (dummy Harbour Bay; ponsel memakai potongan tegak), nama situs di kiri atas, tanggal, cari, dan tema di kanan atas, label dan judul tulisan Jurnal terbaru di tengah bawah dengan latar kertas per baris supaya terbaca di atas peta, dan pita menu di dasar layar. Keterangan "Ilustrasi dibuat dengan AI dari data peta © kontributor OpenStreetMap" di sampul, sesuai Standar Redaksi dan lisensi ODbL.
 - **Kepala normal** di semua halaman lain: nama situs di tengah dan menu di bawahnya (posisi kepala beranda yang lama), huruf dan garis menu tetap. Beranda tidak memakai kepala ini. Menu dipakai bersama lewat `components/site/MenuBagian.tsx`; tombol Menu di sampul (layar sempit) membuka menu layar penuh yang sama lewat peristiwa `bch:buka-menu`.
@@ -24,7 +24,7 @@ Atas permintaan pemilik: posisi gambar dan menu seperti majalah Cultura, dengan 
 
 ## 2026-11-09 · Direktori diperbesar dari data terbuka Overture
 
-Atas keputusan pemilik ("Ya, pakai Overture"), setelah perbandingan dengan batam.co.id. Bukan menyalin Google Maps: syarat Google melarang data Places dipakai bersama peta non-Google (Service Specific Terms pasal 14) dan melarang penyalinan. Masih di lokal sampai pemilik meminta push.
+Atas keputusan pemilik ("Ya, pakai Overture"), setelah perbandingan dengan batam.co.id. Bukan menyalin Google Maps: syarat Google melarang data Places dipakai bersama peta non-Google (Service Specific Terms pasal 14) dan melarang penyalinan. Tayang sejak `cb42695` (10 November 2026) atas persetujuan pemilik. Diperiksa di situs: `/info/direktori/pin.json` berisi 3.604 pin, `/info/direktori/indeks.json` menjawab 200, dan kredit Overture tampil di Kolofon.
 
 - **3.423 tempat baru** dari Overture Maps (rilis 2026-10-21.0, CDLA-Permissive-2.0): kuliner 1.132, ibadah 551, pendidikan 474, belanja 296, hotel dan penginapan 290, jasa 275 (bank, ATM, bengkel, ekspedisi), kesehatan 222 (klinik, klinik gigi, apotek, rumah sakit, laboratorium), wisata 70, olahraga 69, transportasi 27 (SPBU), dan lainnya. Direktori kini 4.315 tempat.
 - **Saringan** di `tools/overture/impor.py`: hanya jenis tempat umum, keyakinan sumber 0,7 ke atas, titik di dalam 12 kecamatan Batam; jenis rawan ditentukan dari nama (gereja yang tercatat sebagai pura, perumahan yang tercatat sebagai penginapan atau taman); tanpa nomor ponsel (sama dengan keputusan 8.3), tanpa media sosial dan situs pihak ketiga, tanpa kantor pemerintah dan darurat, tanpa nama perorangan dan spam; 111 tempat yang sudah ada di data kurasi tidak ditambahkan.
