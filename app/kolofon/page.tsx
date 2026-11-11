@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Kolofon",
-  description: "Huruf, peta, grafis, dan kredit data Batam City Hall.",
+  description: "Huruf, peta, grafis, dan kredit data Barelang.co.",
 };
 
 // Satu-satunya halaman yang memuat kredit data (PEDOMAN 2.9 dan 3.10). Ditulis sebagai teks, tanpa tautan.

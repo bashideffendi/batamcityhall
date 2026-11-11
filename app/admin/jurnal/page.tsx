@@ -17,7 +17,7 @@ export default async function JurnalAdmin() {
     <div className="bch-page bch-tk-halaman" data-admin-masuk>
       <h1 className="m-0">Jurnal</h1>
       <NavAdmin />
-      <AdminJurnal baris={baris} tanggal={hariIni()} penulis="Redaksi Batam City Hall" />
+      <AdminJurnal baris={baris} tanggal={hariIni()} penulis="Redaksi Barelang.co" />
     </div>
   );
 }

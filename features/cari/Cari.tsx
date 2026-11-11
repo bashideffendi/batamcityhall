@@ -52,7 +52,7 @@ export default function Cari() {
           autoFocus
           onChange={(e) => setKata(e.target.value)}
           placeholder="Tempat, jalan, kecamatan, atau halaman"
-          aria-label="Cari di Batam City Hall"
+          aria-label="Cari di Barelang.co"
         />
       </div>
       {gagal && <p className="bch-note">Daftar tempat tidak dapat dimuat. Halaman situs tetap bisa dicari.</p>}

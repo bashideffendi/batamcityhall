@@ -3,7 +3,8 @@
 > Bukan laporan riset. Ini rangkuman keputusan pemilik proyek (user) selama perencanaan, plus hasil riset kecil yang dilakukan di chat (tidak ada di folder riset lain). Kalau ada konflik dengan laporan riset, **keputusan di file ini yang menang**.
 
 ## 1. Identitas proyek
-- **Nama:** Batam City Hall. Dipilih user. Disertai tagline yang menegaskan ini bukan situs resmi, misalnya "Balai warga, bukan balai kota".
+- **Nama (11 Nov 2026):** Barelang.co, keputusan pemilik; domain barelang.co, akun media sosial barelangdotco. Menggantikan nama awal di bawah.
+- **Nama awal:** Batam City Hall. Dipilih user. Disertai tagline yang menegaskan ini bukan situs resmi, misalnya "Balai warga, bukan balai kota".
 - **Footer wajib:** "Proyek independen warga Batam, bukan situs resmi Pemerintah Kota Batam atau BP Batam. Untuk layanan resmi: batam.go.id."
 - **Sifat:** indie, non-komersial. Tanpa iklan, tanpa listing berbayar, tanpa artikel sponsor. Dana dari donasi (Saweria/Trakteer) dan mungkin merch kecil.
 - **Pembuat:** developer solo dari Batam. Sudah punya:

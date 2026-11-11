@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Syarat Penggunaan",
-  description: "Syarat penggunaan Batam City Hall, proyek independen warga Batam.",
+  description: "Syarat penggunaan Barelang.co, proyek independen warga Batam.",
 };
 
 export default function Syarat() {
@@ -11,7 +11,7 @@ export default function Syarat() {
     <div className="bch-page bch-baca">
       <h1>Syarat Penggunaan</h1>
       <div className="bch-prose">
-        <p>Batam City Hall adalah proyek independen warga Batam.</p>
+        <p>Barelang.co adalah proyek independen warga Batam.</p>
         <ul>
           <li>Data disusun sebaik mungkin dan dapat keliru atau usang. Untuk urusan penting, pastikan kembali sebelum bertindak.</li>
           <li>Panduan urusan tanah dan bantuan hukum adalah gambaran praktis, bukan nasihat hukum.</li>

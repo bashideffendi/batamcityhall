@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-11 · Nama situs jadi Barelang.co
+
+Keputusan pemilik 11 November 2026 ("mohon ganti nama di website jadi barelang.co"), menggantikan Batam City Hall.
+
+- `SITE_NAME` di `lib/site.ts` dan semua teks yang tampil memakai Barelang.co: kepala halaman, sampul beranda, kaki halaman, judul tab, manifest, RSS, data terstruktur, kartu bagikan, Tentang, Syarat, Privasi, Kontribusi, Kolofon, Newsletter, kotak Cari, Kartu Pos, poster Infografik, dan nama penulis "Redaksi Barelang.co".
+- Yang sengaja tidak berubah karena tidak tampil: awalan kelas `bch-`, nama paket dan repo, User-Agent ke BMKG dan RSS, alat internal, dan catatan riset.
+- Alamat situs tetap dari `NEXT_PUBLIC_SITE_URL`. Domain barelang.co belum dibeli, jadi belum ada yang diarahkan ke sana.
+- Ikon situs (`app/icon.svg`, `apple-icon.png`, `public/icon-*.png`) masih bertuliskan BCH. Menunggu pemilik.
+- **Pemeriksaan:** lint dan tipe bersih, unit 751 lulus, cek bahasa lulus, build berhasil, e2e `situs`, `rombak`, dan `langit-laut` 251 lulus (1 dilewati), tangkapan beranda, Tentang, Kartu Pos, dan Infografik di desktop dan ponsel.
+
 ## 2026-11-09 · Peta sampul interaktif
 
 Atas permintaan pemilik ("nanti petanya itu interaktif ya kayak yadongxie.com/lab/san-francisco"). Bagian dari purwarupa sampul. Tayang sejak `cb42695` (10 November 2026) atas persetujuan pemilik. Diperiksa di situs dengan peramban (`/api/*` diblokir): di desktop peta memuat sendiri dan menggantikan gambar, Jelajahi Peta membuka dialog dan menulis posisi di alamat, Esc menutupnya, tanpa galat; di ponsel peta diam sampai Jelajahi ditekan, lalu memuat. Ubin `zoom.dzi` dan gambar sampul menjawab 200.

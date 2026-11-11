@@ -33,7 +33,7 @@ function Belakang({ pesan, dari, untuk, alamat }: { pesan: string; dari: string;
           <p key={i}>{barisAlamat[i] ?? ""}</p>
         ))}
       </div>
-      <p className="kp-merek">Batam City Hall</p>
+      <p className="kp-merek">Barelang.co</p>
     </div>
   );
 }

@@ -388,7 +388,7 @@ test.describe("Hari ini di beranda", () => {
 test.describe("PWA", () => {
   test("manifest dan service worker tersedia", async ({ request }) => {
     const m = await (await request.get("/manifest.webmanifest")).json();
-    expect(m.short_name).toBe("Batam City Hall");
+    expect(m.short_name).toBe("Barelang.co");
     expect((await request.get("/sw.js")).status()).toBe(200);
     expect((await request.get("/icon-192.png")).status()).toBe(200);
     expect((await request.get("/icon-512.png")).status()).toBe(200);

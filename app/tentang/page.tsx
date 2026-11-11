@@ -3,17 +3,17 @@ import { KIRIMAN_AKTIF } from "@/lib/site";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Tentang Batam City Hall",
+  title: "Tentang Barelang.co",
   description: "Situs informasi kota yang dibuat secara independen oleh warga Batam.",
 };
 
 export default function Tentang() {
   return (
     <div className="bch-page bch-baca">
-      <h1>Tentang Batam City Hall</h1>
+      <h1>Tentang Barelang.co</h1>
       <div className="bch-prose">
         <p>
-          Batam City Hall adalah situs informasi kota, dibuat secara independen oleh warga Batam untuk kota yang kami
+          Barelang.co adalah situs informasi kota, dibuat secara independen oleh warga Batam untuk kota yang kami
           tinggali. Isinya cuaca dan laut, tempat makan, transportasi, cerita kota, dan direktori layanan.
         </p>
         <p>Kami tidak memasang iklan, tidak memakai pelacak, dan tidak menerima bayaran untuk mencantumkan tempat.</p>

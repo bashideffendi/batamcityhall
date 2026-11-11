@@ -31,7 +31,7 @@ export default function FormNewsletter({ aktif }: { aktif: boolean }) {
       <p id={`${id}-judul`} className="bch-footer-judul">
         Newsletter
       </p>
-      <p>Rangkuman Batam City Hall, sesekali saja.</p>
+      <p>Rangkuman Barelang.co, sesekali saja.</p>
       <div className="bch-footer-isian">
         <label htmlFor={`${id}-email`} className="sr-only">
           Email

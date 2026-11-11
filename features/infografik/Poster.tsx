@@ -19,7 +19,7 @@ function Bingkai({ tema = "kertas", kicker, judul, kaki, children }: { tema?: "k
         <p className="ig-judul">{judul}</p>
         {children}
         <p className="ig-kaki">
-          <span>Batam City Hall</span>
+          <span>Barelang.co</span>
           <span>{kaki}</span>
         </p>
       </div>
@@ -149,7 +149,7 @@ function Makan() {
     .sort((a, b) => b.nilai - a.nilai || a.nama.localeCompare(b.nama, "id"))
     .slice(0, 6);
   return (
-    <Bingkai tema="kuning" kicker="Makanan" judul="Peta Rasa Batam" kaki="Data Makanan Batam City Hall">
+    <Bingkai tema="kuning" kicker="Makanan" judul="Peta Rasa Batam" kaki="Data Makanan Barelang.co">
       <ul className="ig-tiga">
         <li>
           <span className="ig-angka">{places.length}</span>

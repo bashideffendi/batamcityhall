@@ -12,7 +12,7 @@ import {
 } from "@/features/direktori/data";
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
-export const alt = "Kartu tempat Batam City Hall";
+export const alt = "Kartu tempat Barelang.co";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 // Kartu tempat dari data terbuka dibuat saat pertama dibagikan, bukan saat build. Id yang tidak dikenal mendapat

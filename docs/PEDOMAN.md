@@ -51,6 +51,8 @@ Versi 1.1 mengganti arah tampilan menjadi editorial dengan grafis Riso (bagian 4
 > 4. Periksa tampilan dengan `node tools/grafis/tangkap-layar.mjs <url> <folder> [alamat ...]`: semua `/api/*` ditiru, jadi tidak memanggil MSS atau BMKG.
 > 5. **Peta sampul interaktif** (`components/site/PetaSampul.tsx`, OpenSeadragon; contoh pemilik: yadongxie.com/lab/san-francisco). Di layar bertetikus peta dimuat setelah halaman tenang dan bisa digeser; gulir biasa tetap menggulir halaman, Ctrl/Cmd+gulir memperbesar (mode kooperatif). Di layar sentuh sampul tetap gambar dan peta baru dimuat lewat tombol Jelajahi Peta. Jelajahi: layar penuh, peta kecil di kiri bawah, posisi di alamat `#x,y,zoom` (piksel gambar), Esc menutup. Ubin Deep Zoom di `public/grafis/sampul/harbourbay-zoom/` (dummy 16 MB); peta final Barelang jauh lebih besar dan perlu penyimpanan terpisah seperti R2 (lihat `NEXT_PUBLIC_MURAL_TILE_URL` di mode Mural).
 
+> **Nama situs, 11 Nov 2026 (keputusan pemilik). Menang atas semua penyebutan Batam City Hall di pedoman ini.** Nama situs dan *wordmark* ditulis Barelang.co (`SITE_NAME` di `lib/site.ts`). Nama penulis redaksi: Redaksi Barelang.co. Logo tetap tanpa siluet Jembatan Barelang (lambang resmi Kota Batam memuatnya).
+
 ## Cara Memakai Pedoman Ini
 
 **Untuk Claude Code:**
@@ -145,7 +147,7 @@ Versi 1.1 mengganti arah tampilan menjadi editorial dengan grafis Riso (bagian 4
 | Hari, bulan, hari raya | Kapital. | Jumat, November, Imlek, Idulfitri |
 | Arah mata angin | Huruf kecil, kecuali bagian nama diri. | angin dari barat laut · Kampung Tua Tanjung Riau |
 | Nama loket | Kapital di awal setiap kata, kecuali kata tugas yang tidak di awal. | Loket 01 · Cuaca dan Laut |
-| Huruf kapital semua | Hanya untuk singkatan (WIB, KTP, SAR), penanda kecil (LOKET 01, HARI INI DI BATAM, PETA), dan nama kecamatan di peta. Tidak untuk penekanan. *Wordmark* ditulis Batam City Hall. | |
+| Huruf kapital semua | Hanya untuk singkatan (WIB, KTP, SAR), penanda kecil (LOKET 01, HARI INI DI BATAM, PETA), dan nama kecamatan di peta. Tidak untuk penekanan. *Wordmark* ditulis Barelang.co. | |
 
 ### 2.4 Huruf Miring
 

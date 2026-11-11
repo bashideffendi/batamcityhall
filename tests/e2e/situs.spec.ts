@@ -68,7 +68,7 @@ test.describe("halaman", () => {
 
   test("Tentang menyatakan tanpa iklan dan tanpa pelacak", async ({ page }) => {
     await page.goto("/tentang");
-    await expect(page.getByRole("heading", { level: 1, name: "Tentang Batam City Hall" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "Tentang Barelang.co" })).toBeVisible();
     await expect(page.locator("main")).toContainText("tidak memasang iklan, tidak memakai pelacak");
   });
 

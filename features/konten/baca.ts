@@ -79,7 +79,7 @@ export const infografikDariBaris = (b: BarisInfografik): Infografik => ({
   ringkasan: b.ringkasan,
   rubrik: b.rubrik,
   tanggal: b.tanggal,
-  penulis: "Redaksi Batam City Hall",
+  penulis: "Redaksi Barelang.co",
   gambar: { src: b.gambar, w: b.lebar, h: b.tinggi, deskripsi: b.deskripsi },
 });
 

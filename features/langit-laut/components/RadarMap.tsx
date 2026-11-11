@@ -348,7 +348,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
           : activeCam
             ? `CCTV ${activeCam.name}, Batam`
             : "Kamera lalu lintas Batam";
-    share({ title: "Cuaca · Batam City Hall", text, url });
+    share({ title: "Cuaca · Barelang.co", text, url });
   };
 
   const modalOpen = !!activeCam;

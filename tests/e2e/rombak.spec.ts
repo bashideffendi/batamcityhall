@@ -108,14 +108,14 @@ test.describe("menu", () => {
     await page.goto("/tentang");
     await page.getByRole("link", { name: "Cari", exact: true }).click();
     await expect(page).toHaveURL(/\/cari$/);
-    await expect(page.getByRole("searchbox", { name: "Cari di Batam City Hall" })).toBeFocused();
+    await expect(page.getByRole("searchbox", { name: "Cari di Barelang.co" })).toBeFocused();
   });
 });
 
 test.describe("pencarian /cari", () => {
   async function cari(page: Page, kata: string) {
     await page.goto("/cari");
-    const kotak = page.getByRole("searchbox", { name: "Cari di Batam City Hall" });
+    const kotak = page.getByRole("searchbox", { name: "Cari di Barelang.co" });
     // Indeks tempat dimuat setelah halaman terbuka; ketik ulang bila baru siap.
     await expect(page.locator(".bch-cari")).toBeVisible();
     await kotak.fill(kata);
@@ -172,7 +172,7 @@ test.describe("Jurnal", () => {
   test("tulisan punya judul, penulis, tanggal, dan paragraf rata kanan-kiri", async ({ page }) => {
     await page.goto("/jurnal/nongsa-dan-mandat-1829");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Nongsa dan Mandat 18 Desember 1829");
-    await expect(page.locator(".bch-tulisan-byline")).toContainText("Redaksi Batam City Hall");
+    await expect(page.locator(".bch-tulisan-byline")).toContainText("Redaksi Barelang.co");
     await expect(page.locator(".bch-tulisan-byline time")).toHaveAttribute("datetime", "2026-11-05");
     await expect(page.locator(".bch-tulisan-byline time")).toContainText("5 November 2026");
     const p = page.locator(".bch-tulisan-isi p");

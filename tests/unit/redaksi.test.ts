@@ -26,7 +26,7 @@ describe("data terstruktur", () => {
   });
 
   it("penulis Redaksi adalah organisasi, penulis lain orang; gambar boleh kosong", () => {
-    const a = artikel({ judul: "J", ringkasan: "R", tanggal: "2026-11-05", alamat: "/jurnal/j", penulis: "Redaksi Batam City Hall" });
+    const a = artikel({ judul: "J", ringkasan: "R", tanggal: "2026-11-05", alamat: "/jurnal/j", penulis: "Redaksi Barelang.co" });
     expect(a.author).toEqual({ "@id": ID_ORGANISASI });
     expect(a).not.toHaveProperty("image");
     const b = artikel({ judul: "J", ringkasan: "R", tanggal: "2026-11-05", alamat: "/jurnal/j", penulis: "Sari", gambar: "/g.webp" });

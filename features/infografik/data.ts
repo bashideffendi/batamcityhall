@@ -19,7 +19,7 @@ export type Infografik = {
   terkait?: { href: string; teks: string };
 };
 
-const REDAKSI = "Redaksi Batam City Hall";
+const REDAKSI = "Redaksi Barelang.co";
 
 export const INFOGRAFIK_REPO: Infografik[] = [
   {
@@ -65,7 +65,7 @@ export const INFOGRAFIK_REPO: Infografik[] = [
   {
     slug: "peta-rasa-batam",
     judul: "Peta Rasa Batam",
-    ringkasan: "Tempat makan di Batam City Hall menurut kategori, dari data Makanan.",
+    ringkasan: "Tempat makan di Barelang.co menurut kategori, dari data Makanan.",
     rubrik: "Makanan",
     tanggal: "2026-11-07",
     penulis: REDAKSI,

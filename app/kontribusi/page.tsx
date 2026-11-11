@@ -4,14 +4,14 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Cara Berkontribusi",
   description:
-    "Tiga cara membantu Batam City Hall: merekomendasikan tukang, mengirim koreksi data, dan mengirim foto lama Batam.",
+    "Tiga cara membantu Barelang.co: merekomendasikan tukang, mengirim koreksi data, dan mengirim foto lama Batam.",
 };
 
 export default function Kontribusi() {
   return (
     <div className="bch-page bch-baca">
       <h1>Cara Berkontribusi</h1>
-      <p className="bch-lede">Ada tiga cara membantu Batam City Hall.</p>
+      <p className="bch-lede">Ada tiga cara membantu Barelang.co.</p>
       <div className="bch-prose">
         <ul>
           <li>
