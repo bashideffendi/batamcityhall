@@ -40,8 +40,9 @@ export default function Kolofon() {
         <h2>Grafis</h2>
         <p>Ilustrasi bergaya cetak Riso dibuat khusus untuk situs ini.</p>
         <p>
-          Peta isometrik di sampul beranda dibuat dengan AI dari data OpenStreetMap dan ditampilkan dengan
-          OpenSeadragon.
+          Peta isometrik Barelang di sampul beranda dibuat dengan AI dari data OpenStreetMap dan ditampilkan dengan
+          OpenSeadragon. Tempat di Jelajahi Peta dari Google Maps; data kota dari HANG JEBAT (Disperkimtan), BP Batam,
+          dan Satu Data Batam.
         </p>
 
         <h2>Data</h2>

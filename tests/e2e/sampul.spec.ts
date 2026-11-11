@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("sampul beranda", () => {
-  test("gambar selebar layar, judul Jurnal, keterangan AI dan OpenStreetMap, tanpa kepala biasa", async ({ page }) => {
+  test("gambar selebar layar, judul Jurnal, atribusi OpenStreetMap, tanpa kepala biasa", async ({ page }) => {
     await page.goto("/");
     const sampul = page.getByRole("region", { name: "Sampul" });
     await expect(sampul.locator("img")).toHaveAttribute("alt", /Peta isometrik/);
@@ -17,7 +17,7 @@ test.describe("sampul beranda", () => {
     expect(Math.round(kotak?.width ?? 0)).toBe(page.viewportSize()?.width);
     // Judul sampul adalah tulisan Jurnal terbaru (di mode uji bisa tulisan buatan tes admin).
     await expect(sampul.getByRole("heading", { level: 2 }).getByRole("link")).toHaveAttribute("href", /^\/jurnal\/.+/);
-    await expect(sampul).toContainText("Ilustrasi dibuat dengan AI dari data peta © kontributor OpenStreetMap");
+    await expect(sampul.locator(".bch-sampul-atribusi")).toHaveText("© OpenStreetMap");
     // Kepala biasa tidak tampil di beranda; menunya ada di pita bawah sampul.
     await expect(page.locator("header.bch-kepala")).toHaveCount(0);
     await expect(page.locator('nav[aria-label="Bagian situs"]')).toHaveCount(1);
@@ -64,7 +64,7 @@ test.describe("sampul beranda", () => {
     await expect(page.locator(".bch-peta-sampul .openseadragon-canvas").first()).toBeAttached({ timeout: 30_000 });
     await dialog.getByRole("button", { name: "Perbesar peta isometrik" }).click();
     await expect.poll(() => page.evaluate(() => location.hash), { timeout: 10_000 }).toMatch(/^#\d+,\d+,\d*\.?\d+$/);
-    await expect(dialog).toContainText("Ilustrasi dibuat dengan AI");
+    await expect(dialog.locator(".bch-peta-atribusi")).toHaveText("© OpenStreetMap");
     await page.keyboard.press("Escape");
     await expect(dialog).toHaveCount(0);
     expect(await page.evaluate(() => location.hash)).toBe("");

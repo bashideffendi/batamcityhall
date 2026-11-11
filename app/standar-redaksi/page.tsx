@@ -93,9 +93,9 @@ export default function StandarRedaksi() {
           serta menyusun rancangan teks. Hasilnya diperiksa dengan uji otomatis dan ditinjau sebelum tayang. Tidak ada
           perubahan yang tayang tanpa persetujuan pemilik situs.
         </p>
-        <p>Gambar yang dibuat dengan AI generatif diberi keterangan di dekat gambarnya.</p>
+        <p>Gambar yang dibuat dengan AI generatif disebutkan di Kolofon.</p>
 
-        <p className="bch-note">Halaman ini terakhir diperbarui 8 November 2026.</p>
+        <p className="bch-note">Halaman ini terakhir diperbarui 11 November 2026.</p>
       </div>
     </div>
   );

@@ -54,8 +54,8 @@ export default function SampulBeranda({ tulisan }: { tulisan: SampulTulisan | nu
           </h2>
         </div>
       )}
-      {/* Standar Redaksi: gambar AI diberi keterangan di dekat gambarnya. Atribusi OpenStreetMap wajib (ODbL). */}
-      <p className="bch-sampul-atribusi">Ilustrasi dibuat dengan AI dari data peta © kontributor OpenStreetMap</p>
+      {/* Atribusi OpenStreetMap wajib (ODbL). Keterangan AI dan sumber lain di Kolofon (pemilik 11 Nov 2026). */}
+      <p className="bch-sampul-atribusi">© OpenStreetMap</p>
       <MenuSampul />
     </section>
   );

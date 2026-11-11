@@ -366,16 +366,8 @@ export default function PetaSampul() {
       />
       {jelajah && (
         <div className="bch-peta-jelajah-atas">
-          {/* Atribusi ikut alur di bawah judul supaya tidak menabrak peta kecil atau tombol, selebar apa pun layarnya. */}
           <div className="bch-peta-jelajah-kiri">
             <p className="bch-peta-jelajah-judul">{JUDUL}</p>
-            <p className="bch-peta-atribusi">
-              Ilustrasi dibuat dengan AI dari data peta © kontributor OpenStreetMap
-              {dataTempat && Object.values(dataTempat.grup).includes("tempat") && " · Info tempat dari Google Maps"}
-              {dataTempat &&
-                Object.values(dataTempat.grup).includes("kota") &&
-                " · Data kota: HANG JEBAT (Disperkimtan), BP Batam, Satu Data Batam"}
-            </p>
             {dataTempat && (
               <div className="bch-poi-alat">
                 <div className="bch-poi-cari" role="search">
@@ -552,6 +544,9 @@ export default function PetaSampul() {
           </button>
         </div>
       )}
+      {/* Hanya atribusi OpenStreetMap (wajib, ODbL) di pojok kanan bawah seperti peta lain (pemilik 11 Nov 2026:
+          "openstreetmap aja"). Keterangan AI dan sumber lapisan ada di Kolofon. */}
+      {jelajah && <p className="bch-peta-atribusi">© OpenStreetMap</p>}
       {jelajah && keadaan === "gagal" && <p className="bch-peta-gagal">Peta belum dapat dimuat.</p>}
     </div>
   );
