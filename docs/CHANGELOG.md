@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-11 · Domain barelang.co tersambung
+
+- barelang.co (dibeli pemilik 11 Nov 2026, DNS di Hostinger) tersambung ke layanan Railway: ALIAS `@` ke target Railway dan TXT `_railway-verify`, diisi pemilik. Hostinger tercantum di dokumen Railway sebagai penyedia tanpa CNAME flattening, tetapi ALIAS-nya berjalan: barelang.co menunjuk IP Railway, sertifikat Let's Encrypt terbit (berlaku sampai 9 Februari 2027, diperpanjang Railway), dan halaman menjawab 200. Kalau suatu saat sertifikat gagal diperpanjang, jalan cadangannya memindah nameserver ke Cloudflare.
+- **batam.masbash.id dialihkan permanen (308) ke barelang.co** dengan jalur dan kueri yang sama (`next.config.ts`, aturan `has` host). Host lain tidak terpengaruh. Diperiksa di build lokal dengan kepala Host.
+- www.barelang.co belum jalan: paket Railway pemilik sudah mencapai batas domain kustom (batam.masbash.id dan barelang.co).
+- `NEXT_PUBLIC_SITE_URL` di Railway perlu diganti pemilik ke `https://barelang.co` supaya kanonis, sitemap, RSS, dan data terstruktur memakai domain baru. `SITE_PRATINJAU=1` tetap, jadi situs masih tertutup dari mesin pencari.
+- **Pemeriksaan:** build berhasil dengan cek bahasa dan cek keluaran, tipe dan lint bersih, e2e `situs` 75 lulus (1 dilewati).
+
 ## 2026-11-11 · Nama situs jadi Barelang.co
 
 Keputusan pemilik 11 November 2026 ("mohon ganti nama di website jadi barelang.co"), menggantikan Batam City Hall. Tayang sejak `4343525` (11 November 2026): judul, sampul, manifest, dan ikon baru diperiksa di batam.masbash.id.

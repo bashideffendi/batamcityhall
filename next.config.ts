@@ -28,6 +28,8 @@ const nextConfig: NextConfig = {
   // Nama menu Makan berganti atas keputusan pemilik (5 Nov 2026). Alamat lama tetap hidup.
   async redirects() {
     return [
+      // Alamat lama pindah ke domain baru (keputusan pemilik 11 Nov 2026). Jalur dan kueri ikut terbawa.
+      { source: "/:path*", has: [{ type: "host", value: "batam.masbash.id" }], destination: "https://barelang.co/:path*", permanent: true },
       { source: "/makan/daftar", destination: "/makan/peta", permanent: true },
       { source: "/makan/kategori", destination: "/makan/hidangan", permanent: true },
       { source: "/makan/jalur", destination: "/makan/panduan", permanent: true },
