@@ -12,8 +12,8 @@ export const PETA_SAMPUL = {
   /** Data kota: kecamatan, perumahan, rusunawa, taman, Kebun Raya, waduk, puncak bukit, kawasan industri, mode malam. */
   kota: `${ASAL}/${VERSI}/lapisan_kota.json`,
   judul: "Barelang",
-  /** Area gambar sampul (Harbour Bay dan Nagoya) dalam piksel peta penuh: x0,y0,x1,y1. */
-  bingkai: "52224,24576,64512,30720",
+  /** Area sampul saat situs dibuka: satu Pulau Batam penuh (pemilik 11 Nov 2026), dalam piksel peta penuh x0,y0,x1,y1. */
+  bingkai: "2048,0,137216,81920",
   /** Warna laut ubin, untuk latar di luar tepi gambar saat diperkecil penuh. */
   latar: "#668793",
 };

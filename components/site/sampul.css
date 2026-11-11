@@ -237,35 +237,34 @@ main .bch-peta-gagal {
   background: var(--bch-paper);
 }
 
+/* Tulisan Jurnal terbaru sebagai tautan kecil di kiri bawah; peta Pulau Batam jadi pusat sampul (pemilik 11 Nov 2026). */
 .bch-sampul-isi {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 96px;
+  left: var(--bch-gutter);
+  bottom: 84px;
   display: grid;
-  justify-items: center;
-  gap: 12px;
-  padding-inline: var(--bch-gutter);
-  text-align: center;
+  justify-items: start;
+  gap: 6px;
+  max-width: min(420px, calc(100% - 2 * var(--bch-gutter)));
+  text-align: start;
 }
 .bch-sampul-label {
   margin: 0;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background: var(--bch-paper);
   color: var(--bch-link);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .bch-sampul-judul {
-  max-width: 20ch;
   margin: 0;
   font-family: var(--bch-font-display);
   font-weight: 500;
-  font-size: clamp(36px, 4.8vw, 72px);
-  line-height: 1.16;
-  letter-spacing: -0.022em;
+  font-size: clamp(18px, 1.6vw, 24px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 .bch-sampul-judul a {
   color: var(--bch-ink);
@@ -351,10 +350,7 @@ main .bch-peta-atribusi {
   }
   /* Atribusi bisa dua baris di ponsel: judul diberi jarak supaya tidak tertutup. */
   .bch-sampul-isi {
-    bottom: 112px;
-  }
-  .bch-sampul-judul {
-    max-width: 16ch;
+    bottom: 100px;
   }
   .bch-sampul-atribusi {
     left: var(--bch-gutter);

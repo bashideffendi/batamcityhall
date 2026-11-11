@@ -7,8 +7,8 @@ import "./sampul.css";
 
 export type SampulTulisan = { href: string; label: string; judul: string };
 
-// Gambar sampul = area Harbour Bay dan Nagoya dari peta isometrik Barelang (sama dengan bingkai di lib/peta-sampul.ts),
-// dibuat tools/grafis/sampul.mjs. Ponsel memakai potongan tegak supaya bangunannya tetap terbaca.
+// Gambar sampul = satu Pulau Batam dari peta isometrik Barelang (sama dengan bingkai di lib/peta-sampul.ts), dibuat
+// tools/grafis/sampul.mjs dari ubin level 13. Ponsel memakai potongan tegak bagian tengah pulau.
 const LEBAR = [1280, 1920, 2560];
 const srcset = (nama: string, lebar: number[]) => lebar.map((w) => `/grafis/sampul/${nama}-${w}.webp ${w}w`).join(", ");
 
@@ -28,7 +28,7 @@ export default function SampulBeranda({ tulisan }: { tulisan: SampulTulisan | nu
           sizes="100vw"
           width={1920}
           height={960}
-          alt="Peta isometrik Barelang di sekitar Harbour Bay dan Nagoya: laut di kiri, kota padat bangunan, dan bukit hijau di atas"
+          alt="Peta isometrik Pulau Batam dikelilingi laut: kota di utara dan barat daya, hutan dan waduk di tengah pulau"
           fetchPriority="high"
           decoding="async"
         />
