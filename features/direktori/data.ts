@@ -12,7 +12,7 @@ import { adalahTerbuka, TEMPAT_TERBUKA } from "./terbuka";
 
 export type { Place };
 export { adalahTerbuka };
-/** Data kurasi lebih dulu, lalu tempat dari data terbuka Overture (features/direktori/terbuka.ts). */
+/** Data kurasi lebih dulu, lalu tempat dari data Google Maps pemilik (features/direktori/terbuka.ts). */
 export const TEMPAT_KURASI = raw as unknown as Place[];
 export const TEMPAT: Place[] = [...TEMPAT_KURASI, ...TEMPAT_TERBUKA];
 export const tempatPerId = new Map(TEMPAT.map((p) => [p.id, p]));
@@ -182,7 +182,21 @@ const LABEL_SUB: Record<string, string> = {
   // Kuliner: mengikuti tabel kategori Loket Makan (3.4)
   ...Object.fromEntries(kategoriMakan.map((c) => [c.id, c.name_id])),
   kuliner_seafood: "Kuliner Makanan Laut",
-  // Jenis dari data terbuka Overture (features/direktori/terbuka.ts)
+  // Jenis dari data Google Maps pemilik (features/direktori/terbuka.ts)
+  salon_barbershop: "Salon dan Pangkas Rambut",
+  laundry: "Binatu",
+  percetakan: "Fotokopi dan Percetakan",
+  penjahit: "Penjahit",
+  optik: "Optik",
+  dokter_hewan: "Dokter Hewan",
+  daycare: "Penitipan Anak",
+  futsal: "Futsal",
+  basket: "Basket",
+  tenis: "Tenis",
+  voli: "Voli",
+  kantor_pos: "Kantor Pos",
+  polisi: "Polisi",
+  notaris: "Notaris",
   restoran: "Restoran",
   rumah_makan: "Rumah Makan",
   kafe: "Kafe",
@@ -283,7 +297,9 @@ const sumberKategori = (k: string): string[] => DAFTAR_KATEGORI.find((d) => d.ka
 
 export function tempatDiKategori(k: string): Place[] {
   const sumber = sumberKategori(k);
-  return TEMPAT.filter((p) => sumber.includes(p.kategori)).sort((a, b) => a.nama.localeCompare(b.nama, "id"));
+  // Tempat bertanda Rekomendasi lebih dulu, lalu menurut abjad.
+  const rek = (p: Place) => (p.atribut.rekomendasi === true ? 0 : 1);
+  return TEMPAT.filter((p) => sumber.includes(p.kategori)).sort((a, b) => rek(a) - rek(b) || a.nama.localeCompare(b.nama, "id"));
 }
 
 /** Jenis yang sama bagi warga tampil sebagai satu saringan. Tipe rinci tetap ada di data dan di baris tempat. */
@@ -577,7 +593,8 @@ export function labelTempat(p: Pick<Place, "id" | "kategori" | "status_data" | "
   if (!kartuMinimal(p) && p.status_data && Object.hasOwn(LABEL_STATUS, p.status_data)) {
     return [LABEL_STATUS[p.status_data]];
   }
-  return p.atribut.lokasi_luar_batam === true ? [{ teks: "Di luar Batam", nada: "info" }] : [];
+  if (p.atribut.lokasi_luar_batam === true) return [{ teks: "Di luar Batam", nada: "info" }];
+  return p.atribut.rekomendasi === true ? [{ teks: "Rekomendasi", nada: "ok" }] : [];
 }
 
 /** Hanya untuk mode mural, yang membaca "Lokasi perkiraan" untuk menggambar pinnya. Direktori memakai labelTempat. */

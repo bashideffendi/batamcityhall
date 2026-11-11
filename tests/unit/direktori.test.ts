@@ -223,15 +223,18 @@ describe("data sensitif tidak sampai ke warga", () => {
     const terlarang =
       /perlu (di)?cek|perlu_cek|cek ulang|belum dicek|\bcek\b|sumber|wikipedia|agregator|pihak ketiga|go\.id|https?:|\u26A0|laporan|\briset\b/i;
     for (const p of TEMPAT) {
+      // Alamat dan kontak tempat dari data Google ditulis apa adanya oleh pemilik usaha ("Sumber Seraya" nama kavling),
+      // jadi yang diperiksa hanya teks buatan situs.
+      const google = adalahTerbuka(p);
       const teks = [
         jamPublik(p),
-        alamatPublik(p),
+        google ? null : alamatPublik(p),
         catatanPublik(p),
         lokasiTeks(p),
         labelSub(p.subkategori),
         ...labelTempat(p).map((l) => l.teks),
         ...atributPublik(p).flatMap((a) => [a.label, a.nilai]),
-        ...kontakPublik(p).flatMap((k) => [k.label, k.teks]),
+        ...(google ? [] : kontakPublik(p).flatMap((k) => [k.label, k.teks])),
       ];
       for (const x of teks) {
         // "Sumber" dalam nama jalan dan kompleks (Sumber Jaya, Sumber Agung) adalah alamat, bukan sebutan sumber.

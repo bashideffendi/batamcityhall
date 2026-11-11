@@ -51,37 +51,29 @@ export const placeSchema = z
 export type Place = z.infer<typeof placeSchema>;
 
 /**
- * data/tempat-terbuka.json, hasil tools/overture/impor.py dari Overture Maps (keputusan pemilik 9 Nov 2026). Ketat
- * pada aturan yang tidak boleh dilanggar: titik di Batam, keyakinan sumber, tanpa nomor ponsel, tanpa tautan media
- * sosial dan situs pemerintah, tanpa kolom pajak.
+ * data/tempat-google.json, hasil tools/google/impor.py dari data Google Maps yang dihimpun pemilik (keputusan pemilik
+ * 11 Nov 2026). Titik di sekitar Batam, tanpa kolom pajak. Rating dan jumlah ulasan hanya untuk tanda Rekomendasi.
  */
-export const tempatTerbukaSchema = z.object({
-  sumber: z.object({ nama: z.string(), rilis: z.string(), lisensi: z.string(), diambil: z.string() }),
+export const tempatGoogleSchema = z.object({
+  sumber: z.object({ nama: z.literal("Google Maps"), dihimpun: z.string(), diimpor: z.string() }),
   tempat: z.array(
-    z
-      .strictObject({
-        id: z.string().regex(/^ov-[0-9a-f]{12}$/),
-        nama: z.string().min(3),
-        kategori: z.enum(KATEGORI),
-        sub: z.string().min(1),
-        kecamatan: z.enum(KECAMATAN),
-        lat: z.number().min(0.5).max(1.25),
-        lng: z.number().min(103.8).max(104.3),
-        alamat: z.string().nullable(),
-        telepon: z
-          .string()
-          .regex(/^\(0[1-79]\d{1,2}\) \d{5,9}$/, "hanya nomor telepon tetap")
-          .nullable(),
-        situs: z
-          .string()
-          .regex(/^https?:\/\//)
-          .refine((u) => !/\.go\.id(\/|$)|facebook\.|instagram\.|wa\.me|tiktok\./i.test(u), "situs pemerintah atau media sosial")
-          .nullable(),
-        keyakinan: z.number().min(0.7).max(1),
-      })
-      .refine((t) => !["pemerintahan", "layanan_publik", "keamanan_darurat", "kampung_tua"].includes(t.kategori), {
-        message: "kategori ini hanya dari data kurasi",
-      }),
+    z.strictObject({
+      id: z.string().regex(/^gm-[0-9a-f]{10}$/),
+      nama: z.string().min(1),
+      kategori: z.enum(KATEGORI),
+      sub: z.string().min(1),
+      kecamatan: z.enum(KECAMATAN).nullable(),
+      kelurahan: z.string().nullable(),
+      lat: z.number().min(0.5).max(1.3),
+      lng: z.number().min(103.7).max(104.4),
+      alamat: z.string().nullable(),
+      telepon: z.string().nullable(),
+      situs: z.string().nullable(),
+      gmaps: z.string().startsWith("https://www.google.com/maps/").nullable(),
+      rating: z.number().min(0).max(5).nullable(),
+      ulasan: z.number().int().min(0).nullable(),
+      rekomendasi: z.boolean(),
+    }),
   ),
 });
 

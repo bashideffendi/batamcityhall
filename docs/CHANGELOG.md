@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-11 · Direktori memakai data Google Maps pemilik, logo BARELANG
+
+Keputusan pemilik 11 November 2026 ("manfaatkan semua data di direktori itu"; "logo BARELANG tanpa co dan huruf besar, pakai font jakarta").
+
+- **Audit dan perbaikan Excel** atas permintaan pemilik ("audit data excel dulu", lalu "perbaiki excel dan web"). Audit `Direktori_Batam.xlsx` (12.044 tempat) menemukan 816 kategori tidak cocok dengan jenisnya, 789 kecamatan tidak cocok dengan titiknya, 809 jenis terlalu umum, 363 kolom Website berisi media sosial, 262 bukan tempat umum, 153 bersumber data pajak, 78 titik bermasalah, dan 47 nama janggal. Hasil perbaikan disimpan sebagai berkas baru `Direktori_Batam_diperbaiki.xlsx` di Desktop pemilik (berkas asli utuh): 11.629 tempat, 9.497 perubahan di sheet Log Perbaikan, 415 baris dipindah ke sheet Dibuang (data pajak dan bukan tempat umum), kategori disesuaikan dengan jenis Google, kecamatan dihitung dari titik dengan batas kecamatan BIG, jenis umum diperjelas dari nama, dan media sosial dipisah ke kolom Media Sosial. Yang masih perlu dicek manual: 5 tanpa koordinat, titik di luar batas Batam, dan nomor yang dipakai banyak tempat.
+- **Direktori dari Excel hasil perbaikan**: `tools/google/impor.py` menulis `data/tempat-google.json` dengan 11.447 tempat (5 tanpa koordinat dan 177 yang sudah ada di data kurasi tidak masuk). Total Direktori 12.339 tempat. Saat impor, tempat juga dipindah ke kategori yang sesuai jenisnya (toko rokok tidak lagi di Kuliner) dan jenis makanan di luar daftar Makanan digabung ke jenis terdekat, sehingga saringan Kuliner berisi 32 jenis.
+- **Tanda Rekomendasi**: 682 tempat dengan rating minimal 4,5 dari sedikitnya 100 ulasan di Kuliner, Penginapan, Wisata, Belanja, Jasa, Olahraga, dan Khas Batam. Tampil sebagai label dan di urutan teratas daftar kategori. Angka rating dan ulasan disimpan tetapi tidak ditampilkan.
+- Nomor telepon dan ponsel ikut tampil (dipasang pemilik usaha di Google Maps). Tombol arah memakai tautan Google Maps tempat itu. Isi kategori Kampung Tua dari Google masuk Lainnya.
+- Data Overture (`data/tempat-terbuka.json`) dihapus dari situs. Kolofon dan Standar Redaksi kini menyebut Google Maps. Jenis yang dulu kosong kini berisi: Dokter Umum, Dokter Kandungan, Bidan, Dokter Hewan, Penitipan Anak, Futsal, Basket, Tenis, Voli, Binatu, Salon dan Pangkas Rambut, Fotokopi dan Percetakan.
+- **Logo BARELANG**: kepala halaman, sampul beranda, dan kaki halaman memakai `SITE_LOGO` ("Barelang", huruf besar lewat CSS) dengan Plus Jakarta Sans 800. Nama situs di teks tetap Barelang.co.
+- **Pemeriksaan:** unit 750 lulus, tipe dan lint bersih, cek bahasa dan cek keluaran lulus, build berhasil. e2e penuh 1.016 lulus pada impor pertama; setelah perbaikan Excel, e2e direktori, tempat dari data Google, sampul, situs, rombak, dan peta 323 lulus (5 dilewati). Tangkapan Kuliner dan beranda diperiksa.
+
 ## 2026-11-11 · Domain barelang.co tersambung
 
 - barelang.co (dibeli pemilik 11 Nov 2026, DNS di Hostinger) tersambung ke layanan Railway: ALIAS `@` ke target Railway dan TXT `_railway-verify`, diisi pemilik. Hostinger tercantum di dokumen Railway sebagai penyedia tanpa CNAME flattening, tetapi ALIAS-nya berjalan: barelang.co menunjuk IP Railway, sertifikat Let's Encrypt terbit (berlaku sampai 9 Februari 2027, diperpanjang Railway), dan halaman menjawab 200. Kalau suatu saat sertifikat gagal diperpanjang, jalan cadangannya memindah nameserver ke Cloudflare.

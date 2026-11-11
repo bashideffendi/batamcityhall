@@ -10,7 +10,7 @@ const read = (p: string): unknown => JSON.parse(readFileSync(join(ROOT, p), "utf
 
 const CHECKS: [string, ZodType][] = [
   ["data/places.json", s.placeSchema.array()],
-  ["data/tempat-terbuka.json", s.tempatTerbukaSchema],
+  ["data/tempat-google.json", s.tempatGoogleSchema],
   ["data/places_stats.json", s.statsSchema],
   ["data/kampung_tua/kampung_tua.json", s.kampungTuaSchema],
   ["data/sejarah/garis_waktu.json", s.garisWaktuSchema],

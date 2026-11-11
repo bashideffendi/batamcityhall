@@ -2,9 +2,9 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 import tempat from "../../data/places.json" with { type: "json" };
 import stats from "../../data/places_stats.json" with { type: "json" };
-import terbuka from "../../data/tempat-terbuka.json" with { type: "json" };
+import terbuka from "../../data/tempat-google.json" with { type: "json" };
 
-// Statistik hanya menghitung data kurasi; tempat dari data terbuka Overture ditambahkan (9 Nov 2026).
+// Statistik hanya menghitung data kurasi; tempat dari data Google Maps pemilik ditambahkan (11 Nov 2026).
 const TERBUKA = terbuka.tempat as { kategori: string; kecamatan: string }[];
 const TOTAL = stats.total_tempat + TERBUKA.length;
 const PER = (k: string) => (stats.per_kategori as Record<string, number>)[k] + TERBUKA.filter((t) => t.kategori === k).length;
@@ -72,10 +72,10 @@ test.describe("direktori", () => {
     await page.goto("/info/direktori");
     await expect(page.locator(".bch-lede")).toContainText(`Sebanyak ${TOTAL.toLocaleString("id-ID")} tempat di Batam tercatat, tanpa bayaran untuk masuk daftar.`);
     await expect(page.locator("[data-kategori]")).toHaveCount(21);
-    await expect(page.locator('[data-kategori="kesehatan"]').locator("xpath=following-sibling::*[contains(@class,'jumlah')]")).toHaveText(String(PER("kesehatan")));
+    await expect(page.locator('[data-kategori="kesehatan"]').locator("xpath=following-sibling::*[contains(@class,'jumlah')]")).toHaveText(PER("kesehatan").toLocaleString("id-ID"));
     // Dua kategori data digabung menjadi satu kategori tampilan.
     await expect(page.locator('[data-kategori="pemerintahan"]').locator("xpath=following-sibling::*[contains(@class,'jumlah')]")).toHaveText(
-      String(PER("pemerintahan") + PER("layanan_publik")),
+      (PER("pemerintahan") + PER("layanan_publik")).toLocaleString("id-ID"),
     );
     await expect(page.locator('[data-kategori="layanan_publik"]')).toHaveCount(0);
     await expect(page.locator('[data-kategori="pemerintahan"]')).toHaveText("Kantor dan Layanan Publik");
@@ -150,8 +150,8 @@ test.describe("direktori", () => {
 
   test("jenis tanpa data tidak ditautkan, halamannya memakai kalimat kategori kosong", async ({ page }) => {
     await page.goto("/info/direktori/kesehatan");
-    await expect(page.getByRole("link", { name: /Dokter kandungan/ })).toHaveCount(0);
-    await page.goto("/info/direktori/kesehatan/dokter-kandungan");
+    await expect(page.getByRole("link", { name: /Dokter anak/ })).toHaveCount(0);
+    await page.goto("/info/direktori/kesehatan/dokter-anak");
     await expect(page.locator(".bch-lede")).toContainText(
       "Belum ada tempat di kategori ini.",
     );
@@ -166,14 +166,14 @@ test.describe("direktori", () => {
 
   test("subkategori kosong menampilkan daftar OSM terpisah, tanpa tautan sumber", async ({ page }) => {
     await page.goto("/info/direktori/kesehatan");
-    // Apotek kini berisi data terbuka; Dokter Umum masih kosong dan punya daftar OpenStreetMap.
-    await page.getByRole("link", { name: /Dokter Umum/ }).click();
-    await expect(page).toHaveURL(/\/kesehatan\/dokter-umum$/);
+    // Dokter Umum kini berisi data Google; Dokter Gigi masih kosong dan punya daftar OpenStreetMap.
+    await page.getByRole("link", { name: /Dokter Gigi/ }).click();
+    await expect(page).toHaveURL(/\/kesehatan\/dokter-gigi$/);
     await expect(page.locator(".bch-lede")).toContainText("Belum ada tempat di kategori ini");
     const osm = page.locator("[data-daftar-osm]");
     await expect(osm).toContainText("OpenStreetMap");
     await expect(osm).toContainText("di luar hitungan direktori");
-    expect(await osm.locator("li").count()).toBeGreaterThan(5);
+    expect(await osm.locator("li").count()).toBeGreaterThan(3);
     await expect(osm.locator("a")).toHaveCount(0);
   });
 

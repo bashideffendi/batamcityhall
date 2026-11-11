@@ -42,8 +42,8 @@ export default function StandarRedaksi() {
           </li>
           <li>Halaman tempat makan mencantumkan kapan datanya terakhir diperiksa.</li>
           <li>
-            Sebagian tempat di Direktori berasal dari data terbuka Overture Maps dan belum didatangi. Titiknya ditandai
-            sebagai perkiraan, dan nomor ponselnya tidak ditampilkan.
+            Sebagian tempat di Direktori berasal dari Google Maps dan belum didatangi. Titiknya ditandai sebagai
+            perkiraan. Tanda Rekomendasi diberikan pada tempat dengan rating minimal 4,5 dari sedikitnya 100 ulasan.
           </li>
           <li>
             Radar hujan, gelombang, gempa, peringatan dini, kualitas udara, dan CCTV diambil otomatis dari penyedianya. Bila datanya
