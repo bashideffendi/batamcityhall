@@ -1,7 +1,24 @@
 "use client";
 
 import type OpenSeadragon from "openseadragon";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { type CSSProperties, useCallback, useEffect, useRef, useState } from "react";
+import {
+  aturZoomTempat,
+  cariTempat,
+  type DataTempat,
+  formatRating,
+  gabungData,
+  type Kanvas,
+  type Kategori,
+  muatTempat,
+  type Penanda,
+  pasangKanvas,
+  pasangPenanda,
+  type Tempat,
+  tautanGoogle,
+  warnaKategori,
+} from "@/components/site/lapisanTempat";
+import { PETA_SAMPUL } from "@/lib/peta-sampul";
 
 // Peta isometrik interaktif di sampul beranda (purwarupa 9 Nov 2026, contoh dari pemilik: yadongxie.com/lab/san-francisco).
 // - Layar dengan tetikus: peta di sampul langsung bisa digeser; gulir biasa tetap menggulir halaman, Ctrl/Cmd+gulir
@@ -10,13 +27,39 @@ import { useCallback, useEffect, useRef, useState } from "react";
 // - Jelajahi Peta: layar penuh dengan peta kecil di pojok; posisi disimpan di alamat (#x,y,zoom) supaya bisa dibagikan.
 // Gambar sampul (<img> di SampulBeranda) tetap tampil sampai ubin peta selesai digambar.
 
-const DZI = "/grafis/sampul/harbourbay-zoom/zoom.dzi";
+// Peta Barelang dari Cloudflare Pages (lib/peta-sampul.ts). Env NEXT_PUBLIC_SAMPUL_* menimpa tiap nilai untuk uji lokal,
+// mis. ubin versi baru dari server lokal barelang-iso http://127.0.0.1:8765/<versi>/barelang.dzi. Ubin dari asal lain
+// dimuat dengan CORS.
+const DZI = process.env.NEXT_PUBLIC_SAMPUL_DZI || PETA_SAMPUL.dzi;
+const LINTAS_ASAL = /^https?:\/\//.test(DZI);
+const JUDUL = process.env.NEXT_PUBLIC_SAMPUL_JUDUL || PETA_SAMPUL.judul;
+const NAMA_PETA = JUDUL;
+/**
+ * Bingkai sampul di peta besar, dalam piksel gambar "x0,y0,x1,y1" (kosong = seluruh gambar): area gambar sampul
+ * (Harbour Bay dan Nagoya), supaya peta muncul tepat di tempat gambarnya.
+ */
+const BINGKAI = (process.env.NEXT_PUBLIC_SAMPUL_BINGKAI || PETA_SAMPUL.bingkai).split(",").map(Number);
+const ADA_BINGKAI =
+  BINGKAI.length === 4 && BINGKAI.every(Number.isFinite) && BINGKAI[2] > BINGKAI[0] && BINGKAI[3] > BINGKAI[1];
+/** Warna laut peta: latar di luar tepi gambar saat Jelajahi diperkecil penuh, supaya laut tidak berhenti di tepi persegi. */
+const LATAR = process.env.NEXT_PUBLIC_SAMPUL_LATAR || PETA_SAMPUL.latar;
+/** Lapisan tempat di Jelajahi (direktori Google Maps pemilik). */
+const POI = process.env.NEXT_PUBLIC_SAMPUL_POI || PETA_SAMPUL.poi;
+/** Lapisan data kota (kecamatan, perumahan, rusunawa, taman, Kebun Raya, waduk, puncak bukit, kawasan industri, mode malam). */
+const KOTA = process.env.NEXT_PUBLIC_SAMPUL_KOTA || PETA_SAMPUL.kota;
 /** Sama dengan object-position gambar sampul, supaya peta muncul tepat di tempat gambarnya. */
 const POSISI_X = 0.42;
 const POSISI_Y = 0.5;
 const POLA_HASH = /^#(\d+),(\d+),(\d*\.?\d+)$/;
 
 type Keadaan = "diam" | "muat" | "siap" | "gagal";
+
+/** Bintang rekomendasi sebagai SVG, bukan karakter bintang (cek bahasa melarang emoji di teks). */
+const Bintang = () => (
+  <svg className="bch-bintang" viewBox="0 0 16 16" aria-hidden="true">
+    <path d="M8 1.2l2.1 4.3 4.7.7-3.4 3.3.8 4.7L8 12l-4.2 2.2.8-4.7L1.2 6.2l4.7-.7z" />
+  </svg>
+);
 type OSD = typeof OpenSeadragon;
 
 /** minZoomLevel ada di Viewport OpenSeadragon tetapi belum ada di tipenya. */
@@ -38,8 +81,16 @@ export default function PetaSampul() {
   const [jelajah, setJelajah] = useState(false);
   const jelajahRef = useRef(false);
   const tujuanAwal = useRef<{ x: number; y: number; z: number } | null>(null);
+  const [dataTempat, setDataTempat] = useState<DataTempat | null>(null);
+  const [tempatPilih, setTempatPilih] = useState<Tempat | null>(null);
+  const [sembunyi, setSembunyi] = useState<Kategori[]>([]);
+  const [hanyaRek, setHanyaRek] = useState(false);
+  const [cari, setCari] = useState("");
+  const penanda = useRef<Penanda | null>(null);
+  const kanvas = useRef<Kanvas | null>(null);
+  const sembunyiRef = useRef<Kategori[]>([]);
 
-  /** Bingkai seperti object-fit: cover dengan object-position 42% 50%. */
+  /** Bingkai seperti object-fit: cover dengan object-position 42% 50% (atas seluruh gambar, atau BINGKAI bila diisi). */
   const bingkaiSampul = useCallback(() => {
     const v = viewerRef.current;
     const O = osdRef.current;
@@ -47,20 +98,26 @@ export default function PetaSampul() {
     if (!v || !O || !el) return null;
     const ukuran = v.world.getItemAt(0)?.getContentSize();
     if (!ukuran) return null;
-    const a = ukuran.y / ukuran.x;
+    // Koordinat viewport OpenSeadragon: lebar gambar = 1.
+    const [x0, y0, x1, y1] = ADA_BINGKAI ? BINGKAI : [0, 0, ukuran.x, ukuran.y];
+    const bx = x0 / ukuran.x;
+    const by = y0 / ukuran.x;
+    const bw = (x1 - x0) / ukuran.x;
+    const bh = (y1 - y0) / ukuran.x;
     const rasio = el.clientHeight / Math.max(1, el.clientWidth);
-    if (rasio < a) {
-      const tinggi = rasio;
-      return new O.Rect(0, (a - tinggi) * POSISI_Y, 1, tinggi);
+    if (rasio < bh / bw) {
+      const tinggi = rasio * bw;
+      return new O.Rect(bx, by + (bh - tinggi) * POSISI_Y, bw, tinggi);
     }
-    const lebar = a / rasio;
-    return new O.Rect((1 - lebar) * POSISI_X, 0, lebar, a);
+    const lebar = bh / rasio;
+    return new O.Rect(bx + (bw - lebar) * POSISI_X, by, lebar, bh);
   }, []);
 
   const tulisHash = useCallback(() => {
     const v = viewerRef.current;
     const O = osdRef.current;
-    if (!v || !O || !jelajahRef.current) return;
+    // Sebelum gambar terbuka koordinatnya belum ada (dulu menulis "#1,1,516" yang membuka peta kosong bila dimuat ulang).
+    if (!v || !O || !jelajahRef.current || !v.world.getItemCount()) return;
     const pusat = v.viewport.viewportToImageCoordinates(v.viewport.getCenter(true));
     const zoom = v.viewport.viewportToImageZoom(v.viewport.getZoom(true));
     history.replaceState(null, "", `#${Math.round(pusat.x)},${Math.round(pusat.y)},${zoom.toFixed(4)}`);
@@ -78,6 +135,8 @@ export default function PetaSampul() {
       const v = O({
         element: wadah.current,
         tileSources: DZI,
+        // Drawer WebGL menolak gambar lintas asal tanpa CORS.
+        ...(LINTAS_ASAL ? { crossOriginPolicy: "Anonymous" as const } : {}),
         showNavigationControl: false,
         showNavigator: true,
         navigatorPosition: "BOTTOM_LEFT",
@@ -109,14 +168,36 @@ export default function PetaSampul() {
         // Di sampul peta tidak bisa diperkecil melewati bingkainya; di Jelajahi bisa sampai seluruh peta terlihat.
         if (!jelajahRef.current) aturZoomMin(v, v.viewport.getZoom(true));
         v.world.getItemAt(0)?.addOnceHandler("fully-loaded-change", () => setKeadaan("siap"));
+        if (wadah.current) aturZoomTempat(wadah.current, v.viewport.viewportToImageZoom(v.viewport.getZoom(true)));
+        if (jelajahRef.current) tulisHash();
+        const sumber = [POI, KOTA].filter((u): u is string => Boolean(u));
+        if (sumber.length && !penanda.current) {
+          void Promise.all(sumber.map((u) => muatTempat(u).catch(() => null))).then((hasil) => {
+            const d = gabungData(hasil.filter((x): x is DataTempat => x !== null));
+            if (!d || viewerRef.current !== v) return;
+            // Yang mati saat dibuka (bawaan_sembunyi di data): rumah sakit, spa, darurat, dan semua data kota.
+            sembunyiRef.current = d.bawaanSembunyi;
+            penanda.current = pasangPenanda(O, v, d, setTempatPilih);
+            kanvas.current = pasangKanvas(O, v, d, () => sembunyiRef.current, setTempatPilih);
+            setSembunyi(d.bawaanSembunyi);
+            setDataTempat(d);
+          });
+        }
       });
       v.addHandler("open-failed", () => setKeadaan("gagal"));
       // Pixel art: tajam saat diperbesar, halus saat diperkecil supaya tidak bergerigi.
       v.addHandler("zoom", () => {
         const z = v.viewport.viewportToImageZoom(v.viewport.getZoom(true));
         v.drawer.setImageSmoothingEnabled(z < 1);
+        if (wadah.current) aturZoomTempat(wadah.current, z);
+      });
+      // Event "zoom" hanya sekali di awal animasi (mis. tombol +/-): tingkat penanda diperbarui tiap bingkai juga.
+      v.addHandler("update-viewport", () => {
+        if (wadah.current) aturZoomTempat(wadah.current, v.viewport.viewportToImageZoom(v.viewport.getZoom(true)));
       });
       v.addHandler("animation-finish", tulisHash);
+      // label yang bertumpuk disembunyikan setelah peta berhenti bergerak (bukan tiap bingkai)
+      v.addHandler("animation-finish", () => penanda.current?.rapikanLabel());
     } catch {
       setKeadaan("gagal");
     }
@@ -144,6 +225,7 @@ export default function PetaSampul() {
   const tutup = useCallback(() => {
     jelajahRef.current = false;
     setJelajah(false);
+    setTempatPilih(null);
     history.replaceState(null, "", location.pathname + location.search);
     const v = viewerRef.current as (OpenSeadragon.Viewer & { setCooperativeGestures?: (b: boolean) => void }) | null;
     if (!v) return;
@@ -183,6 +265,10 @@ export default function PetaSampul() {
 
   useEffect(
     () => () => {
+      penanda.current?.hapus();
+      penanda.current = null;
+      kanvas.current?.hapus();
+      kanvas.current = null;
       viewerRef.current?.destroy();
       viewerRef.current = null;
     },
@@ -206,6 +292,48 @@ export default function PetaSampul() {
     };
   }, [jelajah, tutup]);
 
+  // Saringan kategori: kelas di penanda yang sudah ada, tanpa membuat ulang overlay.
+  useEffect(() => {
+    sembunyiRef.current = sembunyi;
+    penanda.current?.saring(sembunyi, hanyaRek);
+    kanvas.current?.gambar();
+    requestAnimationFrame(() => penanda.current?.rapikanLabel());
+  }, [sembunyi, hanyaRek, dataTempat]);
+
+  /** Hasil cari dipilih: kategorinya dinyalakan, peta terbang ke tempat itu, kartu info dibuka. */
+  const pilihHasil = (t: Tempat) => {
+    const v = viewerRef.current;
+    const O = osdRef.current;
+    setSembunyi((s) => s.filter((k) => k !== t.kategori));
+    setTempatPilih(t);
+    setCari("");
+    if (!v || !O) return;
+    v.viewport.panTo(v.viewport.imageToViewportCoordinates(new O.Point(t.x, t.y)), tenang());
+    v.viewport.zoomTo(v.viewport.imageToViewportZoom(0.45), undefined, tenang());
+  };
+  const hasilCari = dataTempat ? cariTempat(dataTempat, cari) : [];
+
+  const alihKategori = (k: Kategori) => {
+    setSembunyi((s) => (s.includes(k) ? s.filter((x) => x !== k) : [...s, k]));
+    if (tempatPilih?.kategori === k) setTempatPilih(null);
+  };
+
+  // "Hapus semua" mematikan semua lapisan (tempat dan data kota) supaya pengunjung bisa memilih hanya yang ia mau;
+  // bila semuanya sudah mati, tombol yang sama menjadi "Atur ulang" ke pilihan awal (permintaan pemilik 11 Nov 2026).
+  const adaYangMenyala =
+    !!dataTempat && (Object.keys(dataTempat.kategori) as Kategori[]).some((k) => !sembunyi.includes(k));
+  const hapusSemua = () => {
+    if (!dataTempat) return;
+    setSembunyi(Object.keys(dataTempat.kategori) as Kategori[]);
+    setHanyaRek(false);
+    setTempatPilih(null);
+  };
+  const aturUlang = () => {
+    if (!dataTempat) return;
+    setSembunyi(dataTempat.bawaanSembunyi);
+    setHanyaRek(false);
+  };
+
   const zoom = (faktor: number) => {
     const v = viewerRef.current;
     if (!v) return;
@@ -216,6 +344,7 @@ export default function PetaSampul() {
   return (
     <div
       className="bch-peta-sampul"
+      style={LATAR ? ({ "--bch-peta-laut": LATAR } as CSSProperties) : undefined}
       data-keadaan={keadaan}
       data-jelajah={jelajah ? "" : undefined}
       role={jelajah ? "dialog" : undefined}
@@ -231,7 +360,7 @@ export default function PetaSampul() {
         role={jelajah ? "application" : undefined}
         aria-label={
           jelajah
-            ? "Peta isometrik Harbour Bay, Nagoya, dan Jodoh. Seret untuk menggeser, tombol panah dan plus minus untuk menjelajah."
+            ? `Peta isometrik ${NAMA_PETA}. Seret untuk menggeser, tombol panah dan plus minus untuk menjelajah.`
             : undefined
         }
       />
@@ -239,8 +368,105 @@ export default function PetaSampul() {
         <div className="bch-peta-jelajah-atas">
           {/* Atribusi ikut alur di bawah judul supaya tidak menabrak peta kecil atau tombol, selebar apa pun layarnya. */}
           <div className="bch-peta-jelajah-kiri">
-            <p className="bch-peta-jelajah-judul">Harbour Bay · Nagoya · Jodoh</p>
-            <p className="bch-peta-atribusi">Ilustrasi dibuat dengan AI dari data peta © kontributor OpenStreetMap</p>
+            <p className="bch-peta-jelajah-judul">{JUDUL}</p>
+            <p className="bch-peta-atribusi">
+              Ilustrasi dibuat dengan AI dari data peta © kontributor OpenStreetMap
+              {dataTempat && Object.values(dataTempat.grup).includes("tempat") && " · Info tempat dari Google Maps"}
+              {dataTempat &&
+                Object.values(dataTempat.grup).includes("kota") &&
+                " · Data kota: HANG JEBAT (Disperkimtan), BP Batam, Satu Data Batam"}
+            </p>
+            {dataTempat && (
+              <div className="bch-poi-alat">
+                <div className="bch-poi-cari" role="search">
+                  <input
+                    type="search"
+                    className="bch-poi-cari-isian"
+                    placeholder="Cari hotel, mal, perumahan…"
+                    aria-label="Cari tempat di peta"
+                    value={cari}
+                    onChange={(e) => setCari(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && hasilCari[0]) pilihHasil(hasilCari[0]);
+                      if (e.key === "Escape") setCari("");
+                    }}
+                  />
+                  {hasilCari.length > 0 && (
+                    <ul className="bch-poi-cari-hasil" aria-label="Hasil pencarian">
+                      {hasilCari.map((t) => (
+                        <li key={`${t.kategori}-${t.nama}-${t.x}`}>
+                          <button type="button" onClick={() => pilihHasil(t)}>
+                            <span
+                              className="bch-poi-titik"
+                              aria-hidden="true"
+                              style={{ "--poi-warna": warnaKategori(t.kategori) } as CSSProperties}
+                            />
+                            <span className="bch-poi-cari-nama">{t.nama}</span>
+                            <span className="bch-poi-cari-jenis">{dataTempat.kategori[t.kategori]}</span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  className="bch-poi-hapus"
+                  onClick={adaYangMenyala ? hapusSemua : aturUlang}
+                  title={adaYangMenyala ? "Matikan semua lapisan tempat dan data kota" : "Kembalikan pilihan awal"}
+                >
+                  {adaYangMenyala ? (
+                    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                      <path d="M4 4l8 8M12 4l-8 8" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                      <path d="M3.2 9.2A5 5 0 1 0 4.6 4.4M3.4 1.8v3h3" />
+                    </svg>
+                  )}
+                  {adaYangMenyala ? "Hapus Semua" : "Atur Ulang"}
+                </button>
+              </div>
+            )}
+            {dataTempat &&
+              (["tempat", "kota"] as const).map((grup) => {
+                const ks = (Object.keys(dataTempat.kategori) as Kategori[]).filter((k) => dataTempat.grup[k] === grup);
+                if (!ks.length) return null;
+                const judul = grup === "tempat" ? "Tempat" : "Data Kota";
+                return (
+                  <div key={grup} className="bch-poi-saring" role="group" aria-label={`${judul} di peta`}>
+                    <span className="bch-poi-grup">{judul}</span>
+                    {grup === "tempat" && dataTempat.tempat.some((x) => x.rekomendasi) && (
+                      <button
+                        type="button"
+                        className="bch-poi-chip bch-poi-chip-rek"
+                        aria-pressed={hanyaRek}
+                        onClick={() => setHanyaRek((v) => !v)}
+                        title="Hanya tempat dengan rating dan jumlah ulasan tinggi"
+                      >
+                        <span className="bch-poi-chip-bintang" aria-hidden="true">
+                          <Bintang />
+                        </span>
+                        Rekomendasi Saja
+                      </button>
+                    )}
+                    {ks.map((k) => (
+                      <button
+                        key={k}
+                        type="button"
+                        className="bch-poi-chip"
+                        data-k={k}
+                        aria-pressed={!sembunyi.includes(k)}
+                        onClick={() => alihKategori(k)}
+                        style={{ "--poi-warna": warnaKategori(k) } as CSSProperties}
+                      >
+                        <span className="bch-poi-titik" aria-hidden="true" />
+                        {dataTempat.kategori[k]}
+                      </button>
+                    ))}
+                  </div>
+                );
+              })}
           </div>
           <button ref={tombolTutup} type="button" className="bch-btn" onClick={tutup}>
             Tutup
@@ -274,6 +500,58 @@ export default function PetaSampul() {
           </button>
         )}
       </div>
+      {jelajah && tempatPilih && dataTempat && (
+        <div className="bch-poi-kartu" role="status">
+          <p
+            className="bch-poi-kartu-jenis"
+            style={{ "--poi-warna": warnaKategori(tempatPilih.kategori) } as CSSProperties}
+          >
+            {dataTempat.kategori[tempatPilih.kategori]}
+          </p>
+          <p className="bch-poi-kartu-nama">{tempatPilih.nama}</p>
+          {tempatPilih.rekomendasi && (
+            <p className="bch-poi-kartu-rek">
+              <Bintang />
+              Rekomendasi
+            </p>
+          )}
+          {tempatPilih.info ? (
+            tempatPilih.info.split("\n").map((baris) => (
+              <p key={baris} className="bch-poi-kartu-rating">
+                {baris}
+              </p>
+            ))
+          ) : (
+            <p className="bch-poi-kartu-rating">
+              {tempatPilih.ulasan > 0 ? (
+                <>
+                  <Bintang />
+                  {formatRating(tempatPilih)} di Google
+                </>
+              ) : (
+                "Belum ada ulasan di Google"
+              )}
+            </p>
+          )}
+          {tempatPilih.sumber && <p className="bch-poi-kartu-sumber">Data dari {tempatPilih.sumber}</p>}
+          <a
+            className="bch-poi-kartu-tautan"
+            href={tautanGoogle(tempatPilih)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Buka di Google Maps
+          </a>
+          <button
+            type="button"
+            className="bch-poi-kartu-tutup"
+            aria-label="Tutup info tempat"
+            onClick={() => setTempatPilih(null)}
+          >
+            ×
+          </button>
+        </div>
+      )}
       {jelajah && keadaan === "gagal" && <p className="bch-peta-gagal">Peta belum dapat dimuat.</p>}
     </div>
   );

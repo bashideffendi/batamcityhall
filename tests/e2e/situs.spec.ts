@@ -2,11 +2,13 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
+import { PETA_SAMPUL } from "../../lib/peta-sampul";
 
 // Rombak: slogan dan kalimat "bukan situs resmi" dihapus dari kaki halaman (PEDOMAN 2.9). Tersisa satu baris.
 const KAKI = "Proyek independen warga Batam. Tanpa iklan.";
 const ADA_TILE = existsSync(join(process.cwd(), "public", "tiles", "batam.pmtiles"));
 
+const ASAL_PETA = new URL(PETA_SAMPUL.dzi).origin;
 const petaSiap = (page: Page) => expect(page.locator(".ll-peta .maplibregl-canvas")).toBeVisible({ timeout: 45_000 });
 
 // Kotak Hari Ini memanggil route yang menarik data MSS dan BMKG. Tes tidak boleh membebani server mereka.
@@ -132,7 +134,8 @@ test.describe("peta", () => {
     });
     page.on("request", (r) => {
       const url = new URL(r.url());
-      if (url.protocol.startsWith("http") && url.origin !== baseURL) luar.push(r.url());
+      // Satu-satunya asal luar yang boleh: ubin peta isometrik sampul di Cloudflare Pages (keputusan pemilik 11 Nov 2026).
+      if (url.protocol.startsWith("http") && url.origin !== baseURL && url.origin !== ASAL_PETA) luar.push(r.url());
     });
     await page.goto("/");
     await petaSiap(page);

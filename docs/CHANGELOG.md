@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-11 · Peta isometrik Barelang di sampul dan Jelajahi Peta
+
+Keputusan pemilik 11 November 2026 ("ditayangkan, gausah ngelarang ngelarang"; "sekarang kendali ada padaku"), atas permintaan sesi Isometric Barelang (proyek barelang-iso). Peta ini masih sementara; kawasan dan ikonnya sedang diperbaiki di barelang-iso.
+
+- **Ubin di Cloudflare Pages** proyek `barelang-peta` (https://barelang-peta.pages.dev), paket gratis tanpa kartu (pemilik: "pastikan tidak ada biaya"). Pages Free membatasi 20.000 berkas per situs, jadi `tools/peta/ubin_publik.py` menjahit ubin DZI 512 px barelang-iso (233 ribu berkas) menjadi ubin 2048 px: 14.574 ubin, 1,2 GB, gambar sama (selisih piksel rata-rata di bawah 1,5 dari 255 karena simpan ulang WebP). Berkas `_headers` mengizinkan CORS dan menyimpan ubin lama di peramban. Situs tetap di Railway; Cloudflare hanya menyimpan peta.
+- `lib/peta-sampul.ts` menyimpan alamat dan versi peta (`barelang-v2-20261110`), bingkai sampul, warna laut, serta data lapisan tempat dan data kota di folder versi yang sama. Versi baru: jalankan `ubin_publik.py`, unggah, lalu ganti `VERSI`. Env `NEXT_PUBLIC_SAMPUL_*` tetap bisa menimpa untuk uji lokal (`.env.example`).
+- Penampil dari salinan repo di Desktop (`9c1c960..be32f20`, hanya `PetaSampul.tsx`, `lapisanTempat.ts`, `sampul.css`): lapisan tempat dan data kota, cari tempat, saringan Tempat dan Data Kota, Rekomendasi Saja, Hapus Semua, kartu tempat dengan tautan Google Maps (place ID), mode malam. Label tombol dan nama kategori kini Title Case (PEDOMAN koreksi 4). Bintang rekomendasi digambar sebagai SVG, bukan karakter, dan "Sumber:" di kartu menjadi "Data dari" (cek bahasa).
+- **Gambar sampul** diganti dari dummy Harbour Bay ke potongan peta Barelang di area yang sama (level 17, 6144 × 3072 px, `tools/grafis/sampul.mjs`, berkas `public/grafis/sampul/barelang-*.webp`), jadi ponsel yang belum membuka Jelajahi juga melihat peta Barelang.
+- Atribusi teks biasa di Jelajahi: ilustrasi AI dari data peta © kontributor OpenStreetMap, info tempat dari Google Maps, data kota dari HANG JEBAT (Disperkimtan), BP Batam, dan Satu Data Batam.
+- `tests/e2e/situs.spec.ts`: asal ubin peta di Cloudflare Pages kini boleh dipanggil beranda; asal luar lain tetap dilarang.
+- **Pemeriksaan:** unit 750 lulus, tipe dan lint bersih, cek bahasa dan cek keluaran lulus, build berhasil, e2e sampul, situs, dan rombak 190 lulus (5 dilewati). Di browser: sampul memuat ubin dari Cloudflare, Jelajahi menampilkan 26 saringan, cari "grand bat" membuka kartu Grand Batam Mall, header CORS dan cache ubin benar.
+
 ## 2026-11-11 · Direktori memakai data Google Maps pemilik, logo BARELANG
 
 Keputusan pemilik 11 November 2026 ("manfaatkan semua data di direktori itu"; "logo BARELANG tanpa co dan huruf besar, pakai font jakarta"). Tayang sejak `10058bd` (11 November 2026): logo BARELANG, Kuliner 2.164 tempat dengan 32 jenis dan tanda Rekomendasi, Kolofon yang menyebut Google Maps, serta `pin.json` diperiksa di barelang.co.

@@ -48,6 +48,9 @@
     ],
     "features/makan/components/Ikon.tsx": [
       "satuan-menempel"
+    ],
+    "components/site/lapisanTempat.ts": [
+      "dan-simbol"
     ]
   }
 }

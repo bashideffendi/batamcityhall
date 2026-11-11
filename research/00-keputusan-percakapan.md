@@ -4,6 +4,7 @@
 
 ## 1. Identitas proyek
 - **Nama (11 Nov 2026):** Barelang.co, keputusan pemilik; domain barelang.co, akun media sosial barelangdotco. Menggantikan nama awal di bawah.
+- **Peta isometrik Barelang tayang (11 Nov 2026):** keputusan pemilik ("ditayangkan, gausah ngelarang ngelarang"; "sekarang kendali ada padaku"), menggantikan catatan barelang-iso bahwa peta hanya untuk uji lokal karena lisensi riset model gambarnya. Ubin disimpan di Cloudflare Pages gratis tanpa kartu (pemilik: "pastikan tidak ada biaya"); situs tetap di Railway.
 - **Nama awal:** Batam City Hall. Dipilih user. Disertai tagline yang menegaskan ini bukan situs resmi, misalnya "Balai warga, bukan balai kota".
 - **Footer wajib:** "Proyek independen warga Batam, bukan situs resmi Pemerintah Kota Batam atau BP Batam. Untuk layanan resmi: batam.go.id."
 - **Sifat:** indie, non-komersial. Tanpa iklan, tanpa listing berbayar, tanpa artikel sponsor. Dana dari donasi (Saweria/Trakteer) dan mungkin merch kecil.
