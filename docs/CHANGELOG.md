@@ -5,7 +5,7 @@
 - barelang.co (dibeli pemilik 11 Nov 2026, DNS di Hostinger) tersambung ke layanan Railway: ALIAS `@` ke target Railway dan TXT `_railway-verify`, diisi pemilik. Hostinger tercantum di dokumen Railway sebagai penyedia tanpa CNAME flattening, tetapi ALIAS-nya berjalan: barelang.co menunjuk IP Railway, sertifikat Let's Encrypt terbit (berlaku sampai 9 Februari 2027, diperpanjang Railway), dan halaman menjawab 200. Kalau suatu saat sertifikat gagal diperpanjang, jalan cadangannya memindah nameserver ke Cloudflare.
 - **batam.masbash.id dialihkan permanen (308) ke barelang.co** dengan jalur dan kueri yang sama (`next.config.ts`, aturan `has` host). Host lain tidak terpengaruh. Diperiksa di build lokal dengan kepala Host, lalu tayang sejak `08fd998` (11 Nov 2026) dan diperiksa di situs.
 - www.barelang.co belum jalan: paket Railway pemilik sudah mencapai batas domain kustom (batam.masbash.id dan barelang.co).
-- `NEXT_PUBLIC_SITE_URL` di Railway perlu diganti pemilik ke `https://barelang.co` supaya kanonis, sitemap, RSS, dan data terstruktur memakai domain baru. `SITE_PRATINJAU=1` tetap, jadi situs masih tertutup dari mesin pencari.
+- `NEXT_PUBLIC_SITE_URL` di Railway diganti pemilik ke `https://barelang.co` (11 Nov 2026). Diperiksa di situs: sitemap, RSS, beranda, dan Tentang memakai barelang.co, tanpa sisa batam.masbash.id. `SITE_PRATINJAU=1` tetap, jadi situs masih tertutup dari mesin pencari.
 - **Pemeriksaan:** build berhasil dengan cek bahasa dan cek keluaran, tipe dan lint bersih, e2e `situs` 75 lulus (1 dilewati).
 
 ## 2026-11-11 · Nama situs jadi Barelang.co
