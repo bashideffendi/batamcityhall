@@ -47,8 +47,8 @@ const LATAR = process.env.NEXT_PUBLIC_SAMPUL_LATAR || PETA_SAMPUL.latar;
 const POI = process.env.NEXT_PUBLIC_SAMPUL_POI || PETA_SAMPUL.poi;
 /** Lapisan data kota (kecamatan, perumahan, rusunawa, taman, Kebun Raya, waduk, puncak bukit, kawasan industri, mode malam). */
 const KOTA = process.env.NEXT_PUBLIC_SAMPUL_KOTA || PETA_SAMPUL.kota;
-/** Sama dengan object-position gambar sampul, supaya peta muncul tepat di tempat gambarnya. */
-const POSISI_X = 0.42;
+/** Sama dengan object-position gambar sampul (50% 50%), supaya peta muncul tepat di tempat gambarnya. */
+const POSISI_X = 0.5;
 const POSISI_Y = 0.5;
 const POLA_HASH = /^#(\d+),(\d+),(\d*\.?\d+)$/;
 
@@ -92,7 +92,10 @@ export default function PetaSampul() {
   const kanvas = useRef<Kanvas | null>(null);
   const sembunyiRef = useRef<Kategori[]>([]);
 
-  /** Bingkai seperti object-fit: cover dengan object-position 42% 50% (atas seluruh gambar, atau BINGKAI bila diisi). */
+  /**
+   * Bingkai seperti object-fit: contain di tengah (atas seluruh gambar, atau BINGKAI bila diisi): Batam, Rempang, dan
+   * Galang selalu tampil utuh, di laptop maupun HP tegak; sisanya laut (pemilik 11 Nov 2026).
+   */
   const bingkaiSampul = useCallback(() => {
     const v = viewerRef.current;
     const O = osdRef.current;
@@ -108,11 +111,11 @@ export default function PetaSampul() {
     const bh = (y1 - y0) / ukuran.x;
     const rasio = el.clientHeight / Math.max(1, el.clientWidth);
     if (rasio < bh / bw) {
-      const tinggi = rasio * bw;
-      return new O.Rect(bx, by + (bh - tinggi) * POSISI_Y, bw, tinggi);
+      const lebar = bh / rasio;
+      return new O.Rect(bx + (bw - lebar) * POSISI_X, by, lebar, bh);
     }
-    const lebar = bh / rasio;
-    return new O.Rect(bx + (bw - lebar) * POSISI_X, by, lebar, bh);
+    const tinggi = rasio * bw;
+    return new O.Rect(bx, by + (bh - tinggi) * POSISI_Y, bw, tinggi);
   }, []);
 
   const tulisHash = useCallback(() => {
@@ -134,9 +137,16 @@ export default function PetaSampul() {
       O.setString("GestureHints.Scroll", "Tekan {0} sambil menggulir untuk memperbesar peta");
       O.setString("GestureHints.Touch", "Pakai dua jari untuk menggeser peta");
       const diam = tenang();
+      // HP (layar sentuh): drawer WebGL dengan resolusi layar penuh (DPR 2-3) patah-patah dan mengunduh ubin terlalu
+      // tajam. Diukur di HP tiruan (CPU 4x lebih lambat): WebGL ±5 bingkai/detik dan 12 MB, canvas dengan kepadatan
+      // piksel 1,5 ±60 bingkai/detik dan 8 MB untuk tampilan jalan yang sama (pemilik 11 Nov 2026: "berat kali di hape").
+      const hp = !pakaiTetikus();
+      // pixelDensityRatio dibaca drawer saat mengukur kanvas; di tipe OpenSeadragon tertulis hanya-baca.
+      if (hp) (O as unknown as { pixelDensityRatio: number }).pixelDensityRatio = Math.min(window.devicePixelRatio || 1, 1.5);
       const v = O({
         element: wadah.current,
         tileSources: DZI,
+        ...(hp ? { drawer: "canvas" } : {}),
         // Drawer WebGL menolak gambar lintas asal tanpa CORS.
         ...(LINTAS_ASAL ? { crossOriginPolicy: "Anonymous" as const } : {}),
         showNavigationControl: false,

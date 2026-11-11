@@ -8,7 +8,8 @@
   max-height: 1100px;
   overflow: hidden;
   isolation: isolate;
-  background: #cfdce4;
+  /* Laut di sekitar rangkaian pulau (gambar dan peta ditampilkan utuh, sisanya laut). */
+  background: var(--bch-peta-laut, #cfdce4);
 }
 .bch-sampul picture,
 .bch-sampul img {
@@ -18,8 +19,8 @@
   height: 100%;
 }
 .bch-sampul img {
-  object-fit: cover;
-  object-position: 42% 50%;
+  object-fit: contain;
+  object-position: 50% 50%;
   z-index: -2;
 }
 .bch-sampul picture {

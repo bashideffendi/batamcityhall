@@ -12,8 +12,11 @@ export const PETA_SAMPUL = {
   /** Data kota: kecamatan, perumahan, rusunawa, taman, Kebun Raya, waduk, puncak bukit, kawasan industri, mode malam. */
   kota: `${ASAL}/${VERSI}/lapisan_kota.json`,
   judul: "Barelang",
-  /** Area sampul saat situs dibuka: satu Pulau Batam penuh (pemilik 11 Nov 2026), dalam piksel peta penuh x0,y0,x1,y1. */
-  bingkai: "2048,0,137216,81920",
+  /**
+   * Area sampul dan tampilan awal Jelajahi: Batam, Rempang, dan Galang utuh (pemilik 11 Nov 2026: "jangan cuma batam
+   * tapi juga rempang dan galang"), dalam piksel peta penuh x0,y0,x1,y1. Ditampilkan seperti object-fit: contain.
+   */
+  bingkai: "0,4096,253952,174080",
   /** Warna laut ubin, untuk latar di luar tepi gambar saat diperkecil penuh. */
   latar: "#668793",
 };

@@ -133,9 +133,7 @@ const angka = new Intl.NumberFormat("id-ID");
 const desimal = new Intl.NumberFormat("id-ID", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
 export const formatRating = (t: Tempat) =>
-  t.ulasan > 0 && t.rating > 0
-    ? `${desimal.format(t.rating)} · ${angka.format(t.ulasan)} ulasan`
-    : "belum ada ulasan";
+  t.ulasan > 0 && t.rating > 0 ? `${desimal.format(t.rating)} · ${angka.format(t.ulasan)} ulasan` : "belum ada ulasan";
 
 export type Penanda = {
   hapus: () => void;
@@ -145,7 +143,15 @@ export type Penanda = {
   rapikanLabel: () => void;
 };
 
-/** Penanda sebagai overlay. Mengembalikan pembersih dan penyaring kategori. */
+/**
+ * Penanda sebagai overlay. Mengembalikan pembersih dan penyaring kategori.
+ *
+ * Hanya penanda yang bisa terlihat (kategorinya menyala, tingkatnya cocok dengan zoom, dan berada di sekitar layar)
+ * yang dipasang ke OpenSeadragon; sisanya dilepas. OpenSeadragon menghitung ulang posisi setiap overlay di setiap
+ * bingkai, jadi 2.263 penanda yang terpasang semua membuat peta patah-patah di HP (diukur di HP tiruan dengan CPU 4x
+ * lebih lambat: ±12 bingkai/detik; tanpa penanda ±60). Daftar dipasang ulang saat peta berhenti bergerak dan saat
+ * saringan berubah (pemilik 11 Nov 2026: "berat kali di hape").
+ */
 export function pasangPenanda(
   O: typeof OpenSeadragon,
   v: OpenSeadragon.Viewer,
@@ -155,12 +161,33 @@ export function pasangPenanda(
   const pelacak: OpenSeadragon.MouseTracker[] = [];
   const elemen: HTMLElement[] = [];
   const prioritas = new Map<HTMLElement, number>();
-  // Yang paling ramai digambar terakhir (di atas); data kota di bawah tempat.
-  const urut = [...data.tempat].sort(
-    (a, b) => Number(data.grup[a.kategori] === "tempat") - Number(data.grup[b.kategori] === "tempat") || b.tingkat - a.tingkat,
-  );
-  for (const t of urut) {
-    if (t.kategori === "malam") continue;
+  // Yang paling ramai digambar paling atas (z-index menurut urutan ini); data kota di bawah tempat.
+  const urut = [...data.tempat]
+    .filter((t) => t.kategori !== "malam")
+    .sort(
+      (a, b) =>
+        Number(data.grup[a.kategori] === "tempat") - Number(data.grup[b.kategori] === "tempat") ||
+        b.tingkat - a.tingkat,
+    );
+  type Isi = {
+    t: Tempat;
+    urutan: number;
+    el: HTMLElement | null;
+    lokasi: OpenSeadragon.Point;
+    mati: boolean;
+    pasang: boolean;
+  };
+  const isi: Isi[] = urut.map((t, urutan) => ({
+    t,
+    urutan,
+    el: null,
+    lokasi: v.viewport.imageToViewportCoordinates(new O.Point(t.x, t.y)),
+    mati: false,
+    pasang: false,
+  }));
+  /** Tombol penanda dibuat saat pertama kali perlu tampil, bukan 2.263 sekaligus saat peta dibuka. */
+  const buat = (p: Isi) => {
+    const { t } = p;
     const el = document.createElement("button");
     el.type = "button";
     el.className = "bch-poi";
@@ -169,6 +196,7 @@ export function pasangPenanda(
     if (data.grup[t.kategori] === "kota") el.dataset.grup = "kota";
     if (t.rekomendasi) el.dataset.rek = "1";
     el.style.setProperty("--poi-warna", warnaKategori(t.kategori));
+    el.style.zIndex = String(p.urutan + 1);
     const ulasan = t.ulasan > 0 ? `, rating ${formatRating(t)}` : "";
     const rek = t.rekomendasi ? ", rekomendasi" : "";
     el.setAttribute("aria-label", `${t.nama}, ${data.kategori[t.kategori] ?? t.kategori}${ulasan}${rek}`);
@@ -179,12 +207,6 @@ export function pasangPenanda(
     nama.className = "bch-poi-nama";
     nama.textContent = t.nama;
     el.append(titik, nama);
-    v.addOverlay({
-      element: el,
-      location: v.viewport.imageToViewportCoordinates(new O.Point(t.x, t.y)),
-      placement: O.Placement.CENTER,
-      checkResize: false,
-    });
     // MouseTracker: klik di penanda tidak dianggap seret peta oleh OpenSeadragon.
     pelacak.push(new O.MouseTracker({ element: el, clickHandler: () => pilih(t) }));
     el.addEventListener("keydown", (e) => {
@@ -195,38 +217,72 @@ export function pasangPenanda(
     });
     elemen.push(el);
     prioritas.set(el, t.tingkat * 1e7 - Math.min(t.ulasan, 9e6));
-  }
+    p.el = el;
+    return el;
+  };
+  const rapikanLabel = () => {
+    for (const el of elemen) el.classList.remove("bch-poi-tabrak");
+    const tampil: { el: HTMLElement; r: DOMRect }[] = [];
+    for (const el of elemen) {
+      if (el.offsetParent === null) continue;
+      const nama = el.querySelector<HTMLElement>(".bch-poi-nama");
+      if (!nama || getComputedStyle(nama).display === "none") continue;
+      tampil.push({ el, r: nama.getBoundingClientRect() });
+    }
+    tampil.sort((a, b) => (prioritas.get(a.el) ?? 0) - (prioritas.get(b.el) ?? 0));
+    const dipakai: DOMRect[] = [];
+    for (const { el, r } of tampil) {
+      const tabrak = dipakai.some(
+        (q) => r.left < q.right + 4 && q.left < r.right + 4 && r.top < q.bottom + 2 && q.top < r.bottom + 2,
+      );
+      if (tabrak) el.classList.add("bch-poi-tabrak");
+      else dipakai.push(r);
+    }
+  };
+  /** Pasang penanda yang bisa terlihat, lepas yang tidak. Tingkat mengikuti data-poi-t dari aturZoomTempat. */
+  const sinkron = () => {
+    const tMaks = Number((v.element as HTMLElement).dataset.poiT ?? "3");
+    const b = v.viewport.getBounds(true);
+    // Separuh layar di tiap sisi supaya penanda sudah ada saat peta digeser.
+    const x0 = b.x - b.width / 2;
+    const x1 = b.x + b.width * 1.5;
+    const y0 = b.y - b.height / 2;
+    const y1 = b.y + b.height * 1.5;
+    let berubah = false;
+    for (const p of isi) {
+      const { x, y } = p.lokasi;
+      const tampil = !p.mati && p.t.tingkat <= tMaks && x >= x0 && x <= x1 && y >= y0 && y <= y1;
+      if (tampil === p.pasang) continue;
+      if (tampil) {
+        const el = p.el ?? buat(p);
+        v.addOverlay({ element: el, location: p.lokasi, placement: O.Placement.CENTER, checkResize: false });
+      } else if (p.el) v.removeOverlay(p.el);
+      p.pasang = tampil;
+      berubah = true;
+    }
+    // Penanda baru diberi posisi pada bingkai berikutnya; label dirapikan sesudahnya.
+    if (berubah) requestAnimationFrame(() => requestAnimationFrame(rapikanLabel));
+  };
+  v.addHandler("animation-finish", sinkron);
+  v.addHandler("resize", sinkron);
+  sinkron();
   return {
     hapus: () => {
+      v.removeHandler("animation-finish", sinkron);
+      v.removeHandler("resize", sinkron);
       pelacak.forEach((p) => p.destroy());
-      elemen.forEach((el) => v.removeOverlay(el));
+      for (const p of isi) if (p.pasang && p.el) v.removeOverlay(p.el);
     },
     saring: (sembunyi, hanyaRek = false) => {
       const s = new Set(sembunyi);
-      for (const el of elemen) {
-        const bukanRek = hanyaRek && el.dataset.grup !== "kota" && el.dataset.rek !== "1";
-        el.classList.toggle("bch-poi-mati", s.has(el.dataset.k ?? "") || bukanRek);
+      for (const p of isi) {
+        const bukanRek = hanyaRek && data.grup[p.t.kategori] !== "kota" && !p.t.rekomendasi;
+        p.mati = s.has(p.t.kategori) || bukanRek;
+        p.el?.classList.toggle("bch-poi-mati", p.mati);
       }
+      sinkron();
     },
-    rapikanLabel: () => {
-      for (const el of elemen) el.classList.remove("bch-poi-tabrak");
-      const tampil: { el: HTMLElement; r: DOMRect }[] = [];
-      for (const el of elemen) {
-        if (el.offsetParent === null) continue;
-        const nama = el.querySelector<HTMLElement>(".bch-poi-nama");
-        if (!nama || getComputedStyle(nama).display === "none") continue;
-        tampil.push({ el, r: nama.getBoundingClientRect() });
-      }
-      tampil.sort((a, b) => (prioritas.get(a.el) ?? 0) - (prioritas.get(b.el) ?? 0));
-      const dipakai: DOMRect[] = [];
-      for (const { el, r } of tampil) {
-        const tabrak = dipakai.some(
-          (q) => r.left < q.right + 4 && q.left < r.right + 4 && r.top < q.bottom + 2 && q.top < r.bottom + 2,
-        );
-        if (tabrak) el.classList.add("bch-poi-tabrak");
-        else dipakai.push(r);
-      }
-    },
+    rapikanLabel,
   };
 }
 
@@ -475,5 +531,8 @@ export function cariTempat(data: DataTempat, teks: string, maks = 8): Tempat[] {
     const awalKata = i === 0 || /\s|\(|-/.test(nama[i - 1]);
     skor.push({ t, s: (awalKata ? 0 : 1e9) + t.tingkat * 1e7 - Math.min(t.ulasan, 9e6) });
   }
-  return skor.sort((a, b) => a.s - b.s).slice(0, maks).map((x) => x.t);
+  return skor
+    .sort((a, b) => a.s - b.s)
+    .slice(0, maks)
+    .map((x) => x.t);
 }

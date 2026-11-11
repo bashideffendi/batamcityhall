@@ -1,14 +1,16 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { AlatSampul, MenuSampul } from "@/components/site/MenuSampul";
 import PetaSampul from "@/components/site/PetaSampul";
 import Tanggal from "@/components/site/Tanggal";
+import { PETA_SAMPUL } from "@/lib/peta-sampul";
 import { SITE_LOGO } from "@/lib/site";
 import "./sampul.css";
 
 export type SampulTulisan = { href: string; label: string; judul: string };
 
-// Gambar sampul = satu Pulau Batam dari peta isometrik Barelang (sama dengan bingkai di lib/peta-sampul.ts), dibuat
-// tools/grafis/sampul.mjs dari ubin level 13. Ponsel memakai potongan tegak bagian tengah pulau.
+// Gambar sampul = Batam, Rempang, dan Galang dari peta isometrik Barelang (sama dengan bingkai di lib/peta-sampul.ts),
+// dibuat tools/grafis/sampul.mjs dari ubin level 12. Tampil utuh (object-fit: contain) di laptop dan HP; sisanya laut.
 const LEBAR = [1280, 1920, 2560];
 const srcset = (nama: string, lebar: number[]) => lebar.map((w) => `/grafis/sampul/${nama}-${w}.webp ${w}w`).join(", ");
 
@@ -18,17 +20,20 @@ const srcset = (nama: string, lebar: number[]) => lebar.map((w) => `/grafis/samp
  */
 export default function SampulBeranda({ tulisan }: { tulisan: SampulTulisan | null }) {
   return (
-    <section className="bch-sampul" aria-label="Sampul">
+    <section
+      className="bch-sampul"
+      aria-label="Sampul"
+      style={{ "--bch-peta-laut": PETA_SAMPUL.latar } as CSSProperties}
+    >
       <picture>
-        <source media="(max-aspect-ratio: 4/5)" srcSet={srcset("barelang-tegak", [720, 1080])} sizes="100vw" />
         {/* Gambar sudah diolah tools/grafis/sampul.mjs dan dipilih lewat <picture>, jadi tidak lewat next/image. */}
         <img
           src="/grafis/sampul/barelang-1920.webp"
           srcSet={srcset("barelang", LEBAR)}
           sizes="100vw"
           width={1920}
-          height={960}
-          alt="Peta isometrik Pulau Batam dikelilingi laut: kota di utara dan barat daya, hutan dan waduk di tengah pulau"
+          height={1285}
+          alt="Peta isometrik Batam, Rempang, dan Galang yang berderet dari barat laut ke tenggara, dikelilingi laut"
           fetchPriority="high"
           decoding="async"
         />
