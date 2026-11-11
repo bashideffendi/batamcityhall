@@ -190,11 +190,12 @@ main .bch-peta-gagal {
   padding: 8px 14px 9px;
   background: var(--bch-paper);
   color: var(--bch-ink);
-  font-family: var(--bch-font-display);
-  font-weight: 600;
-  font-size: clamp(26px, 2.6vw, 38px);
+  font-family: var(--bch-font-sans);
+  font-weight: 800;
+  font-size: clamp(22px, 2.2vw, 32px);
   line-height: 1;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
 }

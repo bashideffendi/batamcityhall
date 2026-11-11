@@ -388,11 +388,12 @@ h4 {
   }
 }
 .bch-wordmark {
-  font-family: var(--bch-font-display);
-  font-weight: 600;
-  font-size: 48px;
+  font-family: var(--bch-font-sans);
+  font-weight: 800;
+  font-size: 40px;
   line-height: 1;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--bch-ink);
   text-decoration: none;
   white-space: nowrap;
@@ -498,7 +499,7 @@ h4 {
     padding-block: 10px;
   }
   .bch-wordmark {
-    font-size: 27px;
+    font-size: 24px;
   }
   .bch-kepala-tanggal {
     display: none;
@@ -635,11 +636,12 @@ h4 {
 }
 .bch-footer-merek {
   margin: 0 0 2px;
-  font-family: var(--bch-font-display);
-  font-size: 24px;
+  font-family: var(--bch-font-sans);
+  font-size: 20px;
   line-height: 1.1;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--bch-ink);
 }
 .bch-footer p {

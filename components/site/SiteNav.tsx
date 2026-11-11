@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import MenuBagian from "@/components/site/MenuBagian";
 import { useSiteTheme } from "@/components/site/useSiteTheme";
-import { BAGIAN, bagianDiAlamat, SITE_NAME } from "@/lib/site";
+import { BAGIAN, bagianDiAlamat, SITE_LOGO } from "@/lib/site";
 import { followSystemTheme, toggleTheme } from "@/lib/theme";
 
 export const Icon = ({ d }: { d: string }) => (
@@ -156,7 +156,7 @@ export default function SiteNav() {
             <div className="bch-kepala-utama">
               <span aria-hidden="true" />
               <Link href="/" className="bch-wordmark">
-                {SITE_NAME}
+                {SITE_LOGO}
               </Link>
               <div className="bch-nav-tools">
                 <Link href="/cari" prefetch={false} className="bch-icon-btn" aria-label="Cari">

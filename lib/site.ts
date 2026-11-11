@@ -1,6 +1,8 @@
 // Identitas situs, menu, dan teks wajib. Struktur menu: koreksi pemilik 5 November 2026. Nama Barelang.co: keputusan pemilik 11 November 2026 (sebelumnya Batam City Hall).
 
 export const SITE_NAME = "Barelang.co";
+/** Logo di kepala, sampul, dan kaki: BARELANG huruf besar tanpa .co, Plus Jakarta Sans (pemilik, 11 Nov 2026). */
+export const SITE_LOGO = "Barelang";
 export const SITE_TAGLINE = "Informasi Kota Batam";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 

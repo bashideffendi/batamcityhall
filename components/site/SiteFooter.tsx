@@ -1,7 +1,7 @@
 import Link from "next/link";
 import FormNewsletter from "@/components/site/FormNewsletter";
 import GerakToggle from "@/components/site/GerakToggle";
-import { KAKI_KETERANGAN, KIRIMAN_AKTIF, SITE_NAME } from "@/lib/site";
+import { KAKI_KETERANGAN, KIRIMAN_AKTIF, SITE_LOGO, SITE_NAME } from "@/lib/site";
 
 /** Kaki situs: tentang situs, kebijakan, dan newsletter. Menu tidak diulang di sini (koreksi pemilik 7 Nov 2026). */
 export default function SiteFooter() {
@@ -25,7 +25,7 @@ export default function SiteFooter() {
       <div className="bch-footer-inner">
         <div className="bch-footer-atas">
           <div className="bch-footer-identitas">
-            <p className="bch-footer-merek">{SITE_NAME}</p>
+            <p className="bch-footer-merek">{SITE_LOGO}</p>
             <p>{KAKI_KETERANGAN}</p>
           </div>
           <nav aria-labelledby="kaki-tentang" className="bch-footer-tautan">

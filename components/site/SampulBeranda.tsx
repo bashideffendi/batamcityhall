@@ -2,7 +2,7 @@ import Link from "next/link";
 import { AlatSampul, MenuSampul } from "@/components/site/MenuSampul";
 import PetaSampul from "@/components/site/PetaSampul";
 import Tanggal from "@/components/site/Tanggal";
-import { SITE_NAME } from "@/lib/site";
+import { SITE_LOGO } from "@/lib/site";
 import "./sampul.css";
 
 export type SampulTulisan = { href: string; label: string; judul: string };
@@ -37,7 +37,7 @@ export default function SampulBeranda({ tulisan }: { tulisan: SampulTulisan | nu
       <PetaSampul />
       <div className="bch-sampul-atas">
         <Link href="/" className="bch-sampul-merek">
-          {SITE_NAME}
+          {SITE_LOGO}
         </Link>
         <div className="bch-sampul-kanan">
           <Tanggal className="bch-sampul-tanggal" />
