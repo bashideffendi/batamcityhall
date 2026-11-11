@@ -136,14 +136,19 @@ main .bch-peta-gagal {
   text-align: start;
   hyphens: manual;
 }
+/* Nama peta di Jelajahi memakai gaya logo beranda: BARELANG, Plus Jakarta Sans 800 huruf besar (pemilik 11 Nov 2026). */
 .bch-peta-jelajah-judul {
   margin: 0;
-  padding: 8px 12px;
+  padding: 8px 14px 9px;
   background: var(--bch-paper);
   color: var(--bch-ink);
-  font-family: var(--bch-font-display);
-  font-size: 20px;
-  line-height: 1.2;
+  font-family: var(--bch-font-sans);
+  font-weight: 800;
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 /* Atribusi ringkas seperti peta lain: teks putih berbayang di pojok kanan bawah, tanpa kotak (pemilik 11 Nov 2026). */
 .bch-peta-atribusi,
@@ -245,15 +250,15 @@ main .bch-peta-gagal {
   display: grid;
   justify-items: start;
   gap: 6px;
-  max-width: min(420px, calc(100% - 2 * var(--bch-gutter)));
+  max-width: min(860px, calc(100% - 2 * var(--bch-gutter)));
   text-align: start;
 }
 .bch-sampul-label {
   margin: 0;
-  padding: 4px 10px;
+  padding: 5px 11px;
   background: var(--bch-paper);
   color: var(--bch-link);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -262,9 +267,11 @@ main .bch-peta-gagal {
   margin: 0;
   font-family: var(--bch-font-display);
   font-weight: 500;
-  font-size: clamp(18px, 1.6vw, 24px);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  font-size: clamp(26px, 3vw, 44px);
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  /* Baris dibagi rata supaya tidak ada satu kata tertinggal sendirian di baris terakhir. */
+  text-wrap: balance;
 }
 .bch-sampul-judul a {
   color: var(--bch-ink);
@@ -821,4 +828,79 @@ main .bch-poi-kartu p {
   font-size: 13px;
   font-weight: 600;
   color: #b45309;
+}
+
+/* Tombol Lapisan dan panel saringannya (pemilik 11 Nov 2026: "bisa ngerapiin"): deretan tombol kategori tidak lagi
+   menutupi peta; pengunjung membuka panel bila ingin memilih lapisan. */
+.bch-poi-lapisan[aria-expanded="true"] {
+  border-color: var(--bch-ink);
+}
+.bch-poi-lapisan svg {
+  stroke-width: 1.5;
+}
+.bch-poi-jumlah {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--bch-ink);
+  color: var(--bch-paper);
+  font: 700 11px / 1 var(--bch-font-sans);
+}
+.bch-poi-panel {
+  display: grid;
+  gap: 12px;
+  width: min(640px, calc(100vw - 2 * var(--bch-gutter)));
+  max-height: min(60vh, 520px);
+  overflow-y: auto;
+  padding: 14px;
+  box-sizing: border-box;
+  border: 1px solid color-mix(in srgb, var(--bch-ink) 14%, transparent);
+  border-radius: 14px;
+  background: var(--bch-paper);
+  color: var(--bch-ink);
+  box-shadow:
+    0 2px 6px rgb(0 0 0 / 0.14),
+    0 10px 28px rgb(0 0 0 / 0.16);
+}
+.bch-poi-panel[hidden] {
+  display: none;
+}
+.bch-poi-panel-atas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+main .bch-poi-panel-judul {
+  margin: 0;
+  font: 700 15px / 1.2 var(--bch-font-sans);
+  text-align: start;
+}
+.bch-poi-panel-atas .bch-poi-hapus {
+  padding-block: 7px;
+  box-shadow: none;
+}
+.bch-poi-panel .bch-poi-saring {
+  flex-wrap: wrap;
+  overflow: visible;
+  width: auto;
+  padding-bottom: 0;
+}
+.bch-poi-panel .bch-poi-grup {
+  flex-basis: 100%;
+  padding: 0;
+  background: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.bch-poi-panel .bch-poi-chip {
+  box-shadow: none;
+}
+.bch-poi-panel .bch-poi-chip[aria-pressed="false"] {
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }

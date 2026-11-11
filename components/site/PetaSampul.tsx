@@ -86,6 +86,8 @@ export default function PetaSampul() {
   const [sembunyi, setSembunyi] = useState<Kategori[]>([]);
   const [hanyaRek, setHanyaRek] = useState(false);
   const [cari, setCari] = useState("");
+  /** Panel saringan lapisan; tertutup saat dibuka supaya peta tidak tertutup deretan tombol (pemilik 11 Nov 2026). */
+  const [panel, setPanel] = useState(false);
   const penanda = useRef<Penanda | null>(null);
   const kanvas = useRef<Kanvas | null>(null);
   const sembunyiRef = useRef<Kategori[]>([]);
@@ -322,6 +324,9 @@ export default function PetaSampul() {
   // bila semuanya sudah mati, tombol yang sama menjadi "Atur ulang" ke pilihan awal (permintaan pemilik 11 Nov 2026).
   const adaYangMenyala =
     !!dataTempat && (Object.keys(dataTempat.kategori) as Kategori[]).some((k) => !sembunyi.includes(k));
+  const jumlahMenyala = dataTempat
+    ? (Object.keys(dataTempat.kategori) as Kategori[]).filter((k) => !sembunyi.includes(k)).length
+    : 0;
   const hapusSemua = () => {
     if (!dataTempat) return;
     setSembunyi(Object.keys(dataTempat.kategori) as Kategori[]);
@@ -403,62 +408,85 @@ export default function PetaSampul() {
                 </div>
                 <button
                   type="button"
-                  className="bch-poi-hapus"
-                  onClick={adaYangMenyala ? hapusSemua : aturUlang}
-                  title={adaYangMenyala ? "Matikan semua lapisan tempat dan data kota" : "Kembalikan pilihan awal"}
+                  className="bch-poi-hapus bch-poi-lapisan"
+                  aria-expanded={panel}
+                  aria-controls="bch-poi-panel"
+                  onClick={() => setPanel((v) => !v)}
                 >
-                  {adaYangMenyala ? (
-                    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
-                      <path d="M4 4l8 8M12 4l-8 8" />
-                    </svg>
-                  ) : (
-                    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
-                      <path d="M3.2 9.2A5 5 0 1 0 4.6 4.4M3.4 1.8v3h3" />
-                    </svg>
-                  )}
-                  {adaYangMenyala ? "Hapus Semua" : "Atur Ulang"}
+                  <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">
+                    <path d="M8 2 1.8 5.2 8 8.4l6.2-3.2zM1.8 8 8 11.2 14.2 8M1.8 10.8 8 14l6.2-3.2" />
+                  </svg>
+                  Lapisan
+                  <span className="bch-poi-jumlah">
+                    {jumlahMenyala}
+                  </span>
                 </button>
               </div>
             )}
-            {dataTempat &&
-              (["tempat", "kota"] as const).map((grup) => {
-                const ks = (Object.keys(dataTempat.kategori) as Kategori[]).filter((k) => dataTempat.grup[k] === grup);
-                if (!ks.length) return null;
-                const judul = grup === "tempat" ? "Tempat" : "Data Kota";
-                return (
-                  <div key={grup} className="bch-poi-saring" role="group" aria-label={`${judul} di peta`}>
-                    <span className="bch-poi-grup">{judul}</span>
-                    {grup === "tempat" && dataTempat.tempat.some((x) => x.rekomendasi) && (
-                      <button
-                        type="button"
-                        className="bch-poi-chip bch-poi-chip-rek"
-                        aria-pressed={hanyaRek}
-                        onClick={() => setHanyaRek((v) => !v)}
-                        title="Hanya tempat dengan rating dan jumlah ulasan tinggi"
-                      >
-                        <span className="bch-poi-chip-bintang" aria-hidden="true">
-                          <Bintang />
-                        </span>
-                        Rekomendasi Saja
-                      </button>
+            {dataTempat && (
+              <div id="bch-poi-panel" className="bch-poi-panel" hidden={!panel}>
+                <div className="bch-poi-panel-atas">
+                  <p className="bch-poi-panel-judul">Tampilkan di Peta</p>
+                  <button
+                    type="button"
+                    className="bch-poi-hapus"
+                    onClick={adaYangMenyala ? hapusSemua : aturUlang}
+                    title={adaYangMenyala ? "Matikan semua lapisan tempat dan data kota" : "Kembalikan pilihan awal"}
+                  >
+                    {adaYangMenyala ? (
+                      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                        <path d="M4 4l8 8M12 4l-8 8" />
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                        <path d="M3.2 9.2A5 5 0 1 0 4.6 4.4M3.4 1.8v3h3" />
+                      </svg>
                     )}
-                    {ks.map((k) => (
-                      <button
-                        key={k}
-                        type="button"
-                        className="bch-poi-chip"
-                        data-k={k}
-                        aria-pressed={!sembunyi.includes(k)}
-                        onClick={() => alihKategori(k)}
-                        style={{ "--poi-warna": warnaKategori(k) } as CSSProperties}
-                      >
-                        <span className="bch-poi-titik" aria-hidden="true" />
-                        {dataTempat.kategori[k]}
-                      </button>
-                    ))}
-                  </div>
-                );
-              })}
+                    {adaYangMenyala ? "Hapus Semua" : "Atur Ulang"}
+                  </button>
+                </div>
+                {(["tempat", "kota"] as const).map((grup) => {
+                  const ks = (Object.keys(dataTempat.kategori) as Kategori[]).filter(
+                    (k) => dataTempat.grup[k] === grup,
+                  );
+                  if (!ks.length) return null;
+                  const judul = grup === "tempat" ? "Tempat" : "Data Kota";
+                  return (
+                    <div key={grup} className="bch-poi-saring" role="group" aria-label={`${judul} di peta`}>
+                      <span className="bch-poi-grup">{judul}</span>
+                      {grup === "tempat" && dataTempat.tempat.some((x) => x.rekomendasi) && (
+                        <button
+                          type="button"
+                          className="bch-poi-chip bch-poi-chip-rek"
+                          aria-pressed={hanyaRek}
+                          onClick={() => setHanyaRek((v) => !v)}
+                          title="Hanya tempat dengan rating dan jumlah ulasan tinggi"
+                        >
+                          <span className="bch-poi-chip-bintang" aria-hidden="true">
+                            <Bintang />
+                          </span>
+                          Rekomendasi Saja
+                        </button>
+                      )}
+                      {ks.map((k) => (
+                        <button
+                          key={k}
+                          type="button"
+                          className="bch-poi-chip"
+                          data-k={k}
+                          aria-pressed={!sembunyi.includes(k)}
+                          onClick={() => alihKategori(k)}
+                          style={{ "--poi-warna": warnaKategori(k) } as CSSProperties}
+                        >
+                          <span className="bch-poi-titik" aria-hidden="true" />
+                          {dataTempat.kategori[k]}
+                        </button>
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
           <button ref={tombolTutup} type="button" className="bch-btn" onClick={tutup}>
             Tutup
