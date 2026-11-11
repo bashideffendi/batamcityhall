@@ -697,7 +697,7 @@ Aturan:
   - [x] components/site/SiteFooter.tsx, lib/site.ts · Disclaimer footer wajib + tagline penegas ("Balai warga, bukan balai kota" / "Loket informasi tidak resmi") {F1}
   - [-] menunggu pemilik: koordinat wordmark belum dicek dan EST. 2026 belum dijawab (PLAN butir 21); wordmark teks ada di strip navigasi · Opsi 1 wordmark arsip: "BATAM CITY HALL" Source Serif 4 smcp tracking 0,12em + baris mono "1°08′ U · 104°03′ T · EST. 2026" (koordinat perlu dicek) {F1}
   - [-] dicabut PEDOMAN 4 dan 5 (5 Nov 2026); sebelumnya: components/site/Emblem.tsx · Opsi 2 emblem stempel bulat: lingkaran garis ganda, mawar angin minimal, tulisan melingkar, satu warna {F1}
-  - [x] app/icon.svg · Opsi 3 monogram "BCH" dalam kartusis kecil untuk favicon, terbaca di 16 px {F1}
+  - [x] app/icon.svg (huruf B sejak 11 Nov 2026, nama situs Barelang.co) · Opsi 3 monogram "BCH" dalam kartusis kecil untuk favicon, terbaca di 16 px {F1}
   - [-] konteks, tidak perlu fitur: referensi semangat · Referensi semangat Cooper Hewitt; telusuri Fonts In Use/Brand New ("civic", "archive", "postal") {F1}
 - [-] aturan berlaku terus, dijaga lewat data/design/microcopy.json dan tinjauan teks tiap fase · 05 › 9. Nada tulisan (microcopy)
   - [-] aturan berlaku terus, dijaga lewat data/design/microcopy.json dan tinjauan teks tiap fase · 05 › Prinsip [A]

@@ -7,8 +7,8 @@ Keputusan pemilik 11 November 2026 ("mohon ganti nama di website jadi barelang.c
 - `SITE_NAME` di `lib/site.ts` dan semua teks yang tampil memakai Barelang.co: kepala halaman, sampul beranda, kaki halaman, judul tab, manifest, RSS, data terstruktur, kartu bagikan, Tentang, Syarat, Privasi, Kontribusi, Kolofon, Newsletter, kotak Cari, Kartu Pos, poster Infografik, dan nama penulis "Redaksi Barelang.co".
 - Yang sengaja tidak berubah karena tidak tampil: awalan kelas `bch-`, nama paket dan repo, User-Agent ke BMKG dan RSS, alat internal, dan catatan riset.
 - Alamat situs tetap dari `NEXT_PUBLIC_SITE_URL`. Domain barelang.co belum dibeli, jadi belum ada yang diarahkan ke sana.
-- Ikon situs (`app/icon.svg`, `apple-icon.png`, `public/icon-*.png`) masih bertuliskan BCH. Menunggu pemilik.
-- **Pemeriksaan:** lint dan tipe bersih, unit 751 lulus, cek bahasa lulus, build berhasil, e2e `situs`, `rombak`, dan `langit-laut` 251 lulus (1 dilewati), tangkapan beranda, Tentang, Kartu Pos, dan Infografik di desktop dan ponsel.
+- **Ikon situs jadi huruf B** atas persetujuan pemilik, bingkai garis ganda tetap. `app/icon.svg` digambar ulang per piksel di grid 16 px (B tebal di tengah bingkai). `public/logo/monogram.svg` diganti, lalu `apple-icon.png` dan `public/icon-192.png`, `icon-512.png` dibuat ulang dengan `node scripts/build-aset.mjs`. Tanpa siluet Jembatan Barelang.
+- **Pemeriksaan:** lint dan tipe bersih, unit 751 lulus, cek bahasa lulus, build berhasil, e2e `situs`, `rombak`, dan `langit-laut` 251 lulus (1 dilewati), tangkapan beranda, Tentang, Kartu Pos, dan Infografik di desktop dan ponsel. Setelah ikon: build ulang berhasil, keempat ikon menjawab 200, tes PWA dan axe 34 lulus, pratinjau favicon 16 dan 32 px.
 
 ## 2026-11-09 · Peta sampul interaktif
 
