@@ -2,7 +2,7 @@
 
 ## 2026-11-11 · Nama situs jadi Barelang.co
 
-Keputusan pemilik 11 November 2026 ("mohon ganti nama di website jadi barelang.co"), menggantikan Batam City Hall.
+Keputusan pemilik 11 November 2026 ("mohon ganti nama di website jadi barelang.co"), menggantikan Batam City Hall. Tayang sejak `4343525` (11 November 2026): judul, sampul, manifest, dan ikon baru diperiksa di batam.masbash.id.
 
 - `SITE_NAME` di `lib/site.ts` dan semua teks yang tampil memakai Barelang.co: kepala halaman, sampul beranda, kaki halaman, judul tab, manifest, RSS, data terstruktur, kartu bagikan, Tentang, Syarat, Privasi, Kontribusi, Kolofon, Newsletter, kotak Cari, Kartu Pos, poster Infografik, dan nama penulis "Redaksi Barelang.co".
 - Yang sengaja tidak berubah karena tidak tampil: awalan kelas `bch-`, nama paket dan repo, User-Agent ke BMKG dan RSS, alat internal, dan catatan riset.
