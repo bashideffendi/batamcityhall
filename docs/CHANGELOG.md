@@ -2,6 +2,8 @@
 
 ## 2026-11-12 · Tinggi Gelombang: pilihan BMKG atau Copernicus, daratan tidak terpotong
 
+Tayang sejak `c23131a` (12 November 2026): di barelang.co halaman Tinggi Gelombang beralih ke Copernicus dengan baris masalahnya, dan zoom 4 berhenti di 4,6 dengan tepi 90–112,5 BT.
+
 Laporan pemilik 12 November 2026 (tangkapan layar Tinggi Gelombang tampilan Luas yang diperkecil: tanpa warna gelombang, Kalimantan dan Jawa terpotong lurus) dan keputusannya ("bikin jadi 2 opsi copernicus dan bmkg, aku udah terbiasa dengan bmkg").
 
 - **Penyebab warna hilang:** BMKG menutup peta OFS di situs maritim barunya. `api21/modelrun` dan ubin `api21/mpl_req/...` 404, tautan OFS di beranda maritim.bmkg.go.id juga 404, dan `peta-maritim.bmkg.go.id` hanya mengalihkan ke sana. Berkas perairan dan peringatan (`marine2026-data`) masih jalan, jadi ringkasan teks tetap dari BMKG.
