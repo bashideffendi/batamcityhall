@@ -306,7 +306,7 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
 
   const keSekitar = () => {
     if (!navigator.geolocation) {
-      setPesan({ teks: "Peramban ini tidak dapat memberi lokasi." });
+      setPesan({ teks: "Peramban ini tidak dapat memberi lokasi. Cari tempatnya lewat kotak cari." });
       return;
     }
     setPesan({ teks: "Mencari lokasi" });
@@ -321,7 +321,7 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
         setPesan({ teks: "Titik lokasimu hanya ada di layar ini dan tidak dikirim ke mana pun." });
         map?.easeTo({ center: [coords.longitude, coords.latitude], zoom: Math.max(map.getZoom(), 14), animate: !gerakTenang() });
       },
-      () => setPesan({ teks: "Lokasi tidak tersedia. Izinnya mungkin belum diberikan." }),
+      () => setPesan({ teks: "Lokasi tidak tersedia. Izinkan akses lokasi, lalu coba lagi." }),
       { timeout: 10_000, maximumAge: 0 },
     );
   };

@@ -75,15 +75,35 @@ test.describe("Kata Hari Ini", () => {
     const hariIni = await kata.getAttribute("data-kata");
     await expect(kata.locator(".kata")).not.toBeEmpty();
     await expect(kata.locator(".arti")).not.toBeEmpty();
-    await expect(modul(page, "br-kata").getByRole("link", { name: "Selengkapnya →" })).toHaveAttribute(
-      "href",
-      `/cerita/kamus#${hariIni}`,
-    );
+    const keKamus = modul(page, "br-kata").getByRole("link", { name: /^Selengkapnya tentang .+ di Kamus$/ });
+    await expect(keKamus).toHaveAttribute("href", `/cerita/kamus#${hariIni}`);
+    await expect(keKamus.locator(".sr-only")).toHaveText(` tentang ${await kata.locator(".kata").textContent()} di Kamus`);
 
     await pada(page, "2026-11-10", "08:00");
     await page.reload();
     await expect(kata).toBeVisible();
     expect(await kata.getAttribute("data-kata")).not.toBe(hariIni);
+  });
+});
+
+test.describe("tautan Selengkapnya", () => {
+  test("tampil Selengkapnya, pembaca layar mendengar tujuannya", async ({ page }) => {
+    await page.goto("/");
+    const tujuan = [
+      ["Transportasi", "/jalan"],
+      ["Layanan Warga", "/info"],
+      ["Things to Do", "/things-to-do"],
+      ["Batam dalam Angka", "/cerita/angka"],
+      ["Berita", "/berita"],
+      ["Jadwal Feri", "/jalan/feri"],
+    ];
+    for (const [nama, href] of tujuan) {
+      const a = page.getByRole("link", { name: `Selengkapnya tentang ${nama}`, exact: true });
+      await expect(a).toHaveAttribute("href", href);
+      // Yang terlihat tetap "Selengkapnya →" (keputusan pemilik); tujuannya hanya untuk pembaca layar.
+      await expect(a.locator(".sr-only")).toHaveText(` tentang ${nama}`);
+      await expect(a.locator("[aria-hidden='true']")).toHaveText("→");
+    }
   });
 });
 

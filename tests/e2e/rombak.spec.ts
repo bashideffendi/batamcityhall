@@ -469,6 +469,8 @@ test.describe("masukan 7 November", () => {
   test("newsletter di kaki situs mencatat email", async ({ page }) => {
     await page.goto("/tentang");
     const form = page.getByRole("form", { name: "Newsletter" });
+    await expect(form.getByText("Alamat Email", { exact: true })).toBeVisible();
+    await expect(form.getByLabel("Alamat Email")).toHaveAttribute("placeholder", "nama@contoh.com");
     await form.getByLabel("Email").fill(`warga.${Date.now()}@contoh.id`);
     await form.getByRole("button", { name: "Langganan" }).click();
     await expect(form.getByText("Terima kasih. Alamat email tercatat.")).toBeVisible({ timeout: 20_000 });

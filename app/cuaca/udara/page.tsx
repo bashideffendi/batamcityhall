@@ -48,8 +48,8 @@ export default function KualitasUdaraHalaman() {
         </div>
         <p className="bch-card-meta mt-4 mb-0">
           Angka ini perkiraan model komputer untuk wilayah selebar sekitar 45 km, bukan hasil alat ukur di Batam, dan
-          diperbarui dua kali sehari. Skalanya mengikuti indeks AQI Amerika Serikat. Saran di atas bersifat umum; penderita
-          penyakit pernapasan atau jantung sebaiknya mengikuti anjuran dokter.
+          diperbarui dua kali sehari. Skalanya mengikuti indeks AQI Amerika Serikat. Saran di atas berlaku umum. Orang
+          dengan penyakit pernapasan atau jantung sebaiknya mengikuti anjuran dokter.
         </p>
       </section>
     </div>

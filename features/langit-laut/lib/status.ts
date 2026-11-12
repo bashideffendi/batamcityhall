@@ -439,8 +439,8 @@ export function ofsView(a: {
     ? null
     : tilesDown
       ? copernicus
-        ? "Peta gelombang Copernicus gagal dimuat."
-        : "Peta gelombang gagal dimuat di perangkat ini."
+        ? "Peta gelombang Copernicus gagal dimuat. Coba muat ulang sebentar lagi."
+        : "Peta gelombang gagal dimuat di perangkat ini. Coba muat ulang sebentar lagi."
       : cadangan
         ? "Peta gelombang BMKG sedang tidak tersedia, jadi peta memakai prakiraan Copernicus."
       : ofs?.expired

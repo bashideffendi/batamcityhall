@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import TautanSelengkapnya from "@/components/site/TautanSelengkapnya";
 import { useMemo } from "react";
 import {
   catatanJadwalLama,
@@ -54,9 +55,7 @@ export default function ModulFeri() {
           <p className="br-catatan-modul">Jam WIB. {catatanJadwalLama(tanggalDataTertua(baris))}</p>
         </>
       )}
-      <Link href="/jalan/feri" className="bch-aksi br-selengkapnya" prefetch={false}>
-        Selengkapnya →
-      </Link>
+      <TautanSelengkapnya href="/jalan/feri" tentang="Jadwal Feri" className="bch-aksi br-selengkapnya" />
     </section>
   );
 }

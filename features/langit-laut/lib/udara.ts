@@ -22,7 +22,7 @@ export const KATEGORI_UDARA: KategoriUdara[] = [
     label: "Tidak Sehat bagi Kelompok Sensitif",
     nada: "caution",
     saran:
-      "Anak-anak, lansia, dan penderita asma, penyakit jantung, atau penyakit paru sebaiknya membatasi kegiatan berat yang lama di luar ruangan.",
+      "Anak-anak, lansia, dan orang dengan asma, penyakit jantung, atau penyakit paru sebaiknya membatasi kegiatan berat yang lama di luar ruangan.",
   },
   {
     batas: 200,

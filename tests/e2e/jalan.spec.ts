@@ -54,7 +54,7 @@ test.describe("Trans Batam", () => {
     }
     await expect(svg.locator('.pb-rencana[data-k="K10"]')).toHaveCount(1);
     const legenda = page.locator(".pb-legenda");
-    for (const kata of ["Halte", "Halte Beberapa Koridor", "Halte Transit atau Ujung", "Pelabuhan", "Koridor Rencana"]) {
+    for (const kata of ["Halte", "Halte Dua Koridor atau Lebih", "Halte Transit atau Ujung", "Pelabuhan", "Koridor Rencana"]) {
       await expect(legenda).toContainText(kata);
     }
     await expect(legenda.locator(".pb-chip")).toHaveCount(10);
@@ -272,6 +272,12 @@ test.describe("halaman feri dan pompong", () => {
     ]) {
       await expect(isi).toContainText(kata);
     }
+    // Banyak jam dalam satu kalimat dipecah menjadi daftar (PEDOMAN, bahasa lugas butir 5).
+    await expect(isi.locator("[data-feri-terakhir-sg] li")).toHaveText([
+      "ke Batam Centre: 21.40 (BatamFast) dan 21.50 (Sindo)",
+      "ke Harbour Bay: 21.35",
+      "ke Sekupang: 19.30 (BatamFast) dan 20.40 (Majestic)",
+    ]);
     await expect(isi).not.toContainText(/Overpass|GeoJSON|turf\.along|perlu_cek|perlu cek ulang/);
     await expect(isi.locator('a[href*=".gov"], a[href*=".go.id"]')).toHaveCount(0);
   });

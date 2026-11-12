@@ -3,6 +3,7 @@ import Link from "next/link";
 import { IkonLingkaran, KATEGORI_DIREKTORI } from "@/components/map/icons";
 import KisiPintu from "@/components/site/KisiPintu";
 import PembukaBagian from "@/components/site/PembukaBagian";
+import TautanSelengkapnya from "@/components/site/TautanSelengkapnya";
 import nasional from "@/data/darurat/nomor_darurat_09.json";
 import { DAFTAR_KATEGORI, slugKategori, slugKecamatan, TEMPAT, tempatDiKategori } from "@/features/direktori/data";
 import { KECAMATAN } from "@/lib/data/schema";
@@ -31,9 +32,7 @@ export default function LayananWarga() {
           <h2 id="lw-darurat" className="bch-judul-seksi">
             Nomor Darurat
           </h2>
-          <Link href="/info/darurat" className="bch-aksi" prefetch={false}>
-            Selengkapnya →
-          </Link>
+          <TautanSelengkapnya href="/info/darurat" tentang="Nomor Darurat" />
         </div>
         <ul className="bch-darurat-besar">
           {telepon.map((n) => (

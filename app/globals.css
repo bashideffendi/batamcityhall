@@ -713,6 +713,12 @@ h4 {
   align-content: start;
   gap: var(--bch-space-2);
 }
+.bch-footer-label {
+  margin-top: var(--bch-space-1);
+  color: var(--bch-ink);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
 .bch-footer-isian {
   display: flex;
   gap: var(--bch-space-2);

@@ -51,6 +51,19 @@ Versi 1.1 mengganti arah tampilan menjadi editorial dengan grafis Riso (bagian 4
 > 4. Periksa tampilan dengan `node tools/grafis/tangkap-layar.mjs <url> <folder> [alamat ...]`: semua `/api/*` ditiru, jadi tidak memanggil MSS atau BMKG.
 > 5. **Peta sampul interaktif** (`components/site/PetaSampul.tsx`, OpenSeadragon; contoh pemilik: yadongxie.com/lab/san-francisco). Di layar bertetikus peta dimuat setelah halaman tenang dan bisa digeser; gulir biasa tetap menggulir halaman, Ctrl/Cmd+gulir memperbesar (mode kooperatif). Di layar sentuh sampul tetap gambar dan peta baru dimuat lewat tombol Jelajahi Peta. Jelajahi: layar penuh, peta kecil di kiri bawah, posisi di alamat `#x,y,zoom` (piksel gambar), Esc menutup. Ubin peta isometrik Barelang (sementara) di Cloudflare Pages proyek `barelang-peta`, ubin 2048 px dari `tools/peta/ubin_publik.py`; alamat, versi, bingkai sampul, dan data lapisan di `lib/peta-sampul.ts` (keputusan pemilik 11 Nov 2026). Dummy Harbour Bay di `public/grafis/sampul/harbourbay-zoom/` tidak dipakai lagi.
 
+> **Bahasa lugas dan cek RASA, 12 Nov 2026 (permintaan pemilik). Menang atas isi di bawah bila bertentangan, kecuali keputusan pemilik di butir 1.** Rujukan: panduan *bahasa-indonesia-plain* karya orepras, dengan kerangka RASA (Ritmis, Akurat, Sarat makna, Alami). Pemilik meminta seluruh teks situs diaudit memakai panduan ini.
+>
+> 1. **Keputusan pemilik tetap menang atas panduan itu:** Title Case untuk judul dan label (koreksi rombak butir 4), tautan Selengkapnya di modul beranda (butir 6), rentang dengan tanda pisah (2.6), dan tanpa tanda seru (2.7).
+> 2. **Tautan Selengkapnya menyebut tujuannya untuk pembaca layar** (`components/site/TautanSelengkapnya.tsx`), misalnya "Selengkapnya tentang Transportasi". Yang tampil tetap "Selengkapnya →".
+> 3. **Teks contoh bukan label.** Isian formulir punya label yang tampil di atasnya; teks contoh hanya contoh bentuk isian (nama@contoh.com). Kotak cari tunggal boleh memakai teks contoh karena tujuannya jelas dari ikon, tombol, atau judul halaman, dan tetap berlabel untuk pembaca layar.
+> 4. **Pesan galat** menjelaskan apa yang terjadi, tidak menyalahkan pembaca, dan menyebut langkah berikutnya ("Coba muat ulang sebentar lagi", "Izinkan akses lokasi, lalu coba lagi").
+> 5. **Angka tidak ditumpuk.** Kalimat yang memuat banyak angka setara (jadwal, syarat, rincian) dipecah menjadi daftar, seperti feri terakhir dari Singapura di Panduan Menyeberang dan syarat gempa yang disebut beranda.
+> 6. **Orangnya dulu, kondisinya kemudian:** "orang dengan asma", bukan "penderita asma"; "orang dengan disabilitas", bukan "penyandang cacat". Judul dataset dari penyedia tetap apa adanya.
+> 7. **Singkatan tidak dipakai di teks tampil** (2.5 diperluas): dll., dsb., dst., mis., cth., est., yg, dgn, tsb. Singkatan yang jarang dikenal ditulis lengkap: puskesmas pembantu, bukan pustu.
+> 8. **Kata kabur diganti yang tepat bila datanya ada:** "Halte Dua Koridor atau Lebih", bukan "Halte Beberapa Koridor". Bila datanya tidak ada, kata itu dibiarkan; angka tidak dikarang.
+> 9. **Topik sensitif** (darurat, kesehatan, hukum, tanah, Rempang): nada tenang, tidak menghakimi, tidak mendramatisasi, dan selalu ada langkah yang jelas. Isi faktual tidak berubah.
+> 10. **Cek RASA** menjadi pemeriksaan akhir setiap teks baru (7.3). Aturan yang bisa diperiksa mesin masuk 7.1.
+
 > **Penyelarasan tampilan, 12 Nov 2026 (permintaan pemilik). Menang atas isi di bawah dan atas blok sebelumnya bila bertentangan.** Pemilik: "itu menu di mobile jangan pakai burger bar, tampilin aja menunya, mau dibuat tingkat dua pun boleh ada button more", dan grafis serta desain semua halaman disinkronkan dengan peta interaktif sampul.
 >
 > 1. **Menu tanpa burger di semua ukuran layar** (`components/site/MenuBagian.tsx`, dipakai kepala halaman dan pita sampul). Mulai 1241 px satu baris seperti sebelumnya. 701—1240 px semua bagian dalam dua baris di tengah. Ponsel: Cuaca · CCTV · Transportasi · Layanan Warga di baris pertama, Makanan · Things to Do · Berita · Lainnya di baris kedua, rata kanan-kiri (13 px di layar di bawah 360 px). Lainnya membuka panel berisi bagian sisanya beserta isinya: ke bawah di kepala halaman, ke atas di pita sampul. Ikon Beranda tidak tampil di ponsel; nama situs di kepala menjadi jalan ke beranda. Menu layar penuh lama dihapus. Ini menggantikan "Menu ponsel (layar penuh)" di 3.1 dan kalimat "teks di menu ponsel" di koreksi rombak butir 1.
@@ -1432,6 +1445,7 @@ Buat `scripts/cek-bahasa.mjs` yang memindai teks antarmuka (JSX, file data yang 
   - `non-` diikuti huruf kecil di teks Indonesia;
   - `&` di teks Indonesia;
   - kata `Anda` sebagai kata utuh.
+- **Bahasa lugas (12 Nov 2026):** singkatan `dll.`, `dsb.`, `dst.`, `mis.`, `cth.`, `est.`, `yg`, `dgn`, `tsb`; tautan `klik di sini` dan `baca selengkapnya`; `penderita` dan `penyandang cacat`; `Apakah kamu yakin`. Singkatan juga diperiksa di HTML hasil build oleh `scripts/cek-keluaran.mjs` (kecuali Dataset dan Berita, yang menampilkan teks penyedia apa adanya).
 
 Jalankan skrip ini di `prebuild`. Daftar pengecualian (nama usaha, nama resmi) disimpan di `scripts/cek-bahasa-pengecualian.json`.
 
@@ -1454,6 +1468,12 @@ Beri 1 poin untuk setiap jawaban "ya". Skor 0—2 lolos. Skor 3 atau lebih harus
 
 - Baca ulang setiap halaman dengan suara pelan. Kalimat yang terasa canggung ditulis ulang.
 - Pastikan semua judul mengikuti 2.3 dan semua angka mengikuti 2.6.
+- **Cek RASA** untuk setiap teks baru, berurutan:
+  - **Ritmis:** enak dibaca keras? Panjang kalimat bervariasi, tidak ada bagian yang membuat tersandung.
+  - **Akurat:** setiap kata tepat maknanya. Tidak ada kata pengisi atau kata kabur (*beberapa*, *berbagai*, *cukup*) bila datanya ada.
+  - **Sarat makna:** setiap baris membawa informasi. Baris yang panjang tetapi kosong dihapus.
+  - **Alami:** terdengar seperti orang yang berbicara, bukan templat atau terjemahan.
+- Untuk topik sensitif, tanyakan juga: aman dibaca orang yang sedang kesulitan? Ada langkah berikutnya yang jelas?
 
 ---
 

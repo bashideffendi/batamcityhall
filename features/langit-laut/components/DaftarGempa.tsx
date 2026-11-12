@@ -174,8 +174,13 @@ export default function DaftarGempa() {
             Jarak dari Batam adalah garis lurus dari Batam Kota, dibulatkan ke 10 km.
           </li>
           <li>
-            Beranda hanya menyebut gempa 24 jam terakhir yang dirasakan di Kepulauan Riau, berpusat dalam 300 km dari
-            Batam, bermagnitudo 6 ke atas dalam 1.000 km, atau berpotensi tsunami.
+            Beranda hanya menyebut gempa 24 jam terakhir yang memenuhi salah satu syarat ini:
+            <ul>
+              <li>dirasakan di Kepulauan Riau</li>
+              <li>berpusat dalam 300 km dari Batam</li>
+              <li>bermagnitudo 6 ke atas dalam 1.000 km dari Batam</li>
+              <li>berpotensi tsunami</li>
+            </ul>
           </li>
         </ul>
       </section>

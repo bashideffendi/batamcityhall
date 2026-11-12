@@ -43,7 +43,7 @@ export default function StandarRedaksi() {
           <li>Halaman tempat makan mencantumkan kapan datanya terakhir diperiksa.</li>
           <li>
             Sebagian tempat di Direktori berasal dari Google Maps dan belum didatangi. Titiknya ditandai sebagai
-            perkiraan. Tanda Rekomendasi diberikan pada tempat dengan rating minimal 4,5 dari sedikitnya 100 ulasan.
+            perkiraan. Tanda Rekomendasi diberikan pada tempat dengan penilaian minimal 4,5 dari sedikitnya 100 ulasan.
           </li>
           <li>
             Radar hujan, gelombang, gempa, peringatan dini, kualitas udara, dan CCTV diambil otomatis dari penyedianya. Bila datanya

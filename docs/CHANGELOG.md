@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-11-12 · Audit bahasa lugas dengan cek RASA
+
+Permintaan pemilik 12 November 2026: seluruh teks situs diaudit memakai panduan *bahasa-indonesia-plain* (kerangka RASA: Ritmis, Akurat, Sarat makna, Alami), dengan Title Case, tautan Selengkapnya, rentang bertanda pisah, dan larangan tanda seru tetap mengikuti keputusan pemilik. Rinciannya di PEDOMAN blok "Bahasa lugas dan cek RASA, 12 Nov 2026".
+
+- **Cara audit:** teks tampil dari 3.083 halaman hasil build (38.722 potongan unik) dipindai untuk kata birokratis, kata kabur, label kondisi, tautan umum, singkatan, urgensi palsu, pesan yang menyalahkan, kalimat lebih dari 25 kata, dan kalimat dengan lima angka atau lebih. Pesan galat yang hanya muncul di peramban dibaca dari kode. Teks penyedia di Dataset dan Berita tidak diubah.
+- **Temuan:** sebagian besar teks sudah lolos. Yang diperbaiki: singkatan yang lolos ke halaman ("dll." di nama Kampung Tua Rempang, "est." di Kamp Pengungsi Galang, "mis." di Batam Dulu), "pustu", "salah input", "rating", "penderita", "bersifat umum", label kabur "Halte Beberapa Koridor", halaman tidak ditemukan yang menyebut "salah ketik", dan pesan galat tanpa langkah berikutnya (berita, lokasi di Peta Tempat, peta gelombang).
+- **Tautan Selengkapnya** kini menyebut tujuannya untuk pembaca layar ("Selengkapnya tentang Transportasi"); yang tampil tetap "Selengkapnya →" (`components/site/TautanSelengkapnya.tsx`, 11 tautan).
+- **Newsletter:** label "Alamat Email" tampil di atas isian; teks contoh menjadi "nama@contoh.com".
+- **Angka tidak ditumpuk:** feri terakhir dari Singapura di Panduan Menyeberang dan syarat gempa yang disebut beranda menjadi daftar. Fakta Masjid Sultan Mahmud Riayat Syah ditulis dua kalimat.
+- **Kalimat panjang dipecah tanpa mengubah fakta:** mandat Nong Isa (Kampung Tua Nongsa Pantai), Engku Puteri Embung Fatimah dan Raja Kecik (Nama Jalan), pabrik bata Raja Ali Kelana (Sejarah).
+- **Kalimat aktif:** Tentang ("Kami menghimpun data ..."); saran kualitas udara memakai "orang dengan asma".
+- **Pemeriksaan otomatis:** `cek-bahasa` menolak singkatan (dll., dsb., mis., est., yg, dan sejenisnya), "klik di sini", "baca selengkapnya", "penderita", "penyandang cacat", dan "Apakah kamu yakin". `cek-keluaran` memeriksa singkatan di HTML hasil build, kecuali Dataset dan Berita. PEDOMAN 7.3 menambah cek RASA sebagai pemeriksaan akhir.
+- Tes: `beranda-modul.spec.ts` memeriksa nama tautan Selengkapnya untuk pembaca layar, `jalan.spec.ts` daftar feri terakhir, `rombak.spec.ts` label newsletter yang tampil.
+
 ## 2026-11-12 · Menu ponsel tanpa burger, tampilan peta diselaraskan
 
 Tayang sejak `6916cc9` (12 November 2026): di barelang.co menu HP dua baris dengan Lainnya (juga di pita sampul), baris darurat bernama tanpa luapan di 320—412 px, dan Jelajahi dengan kendali kotak putih serta saringan baru.

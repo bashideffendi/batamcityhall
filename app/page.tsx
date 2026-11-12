@@ -3,6 +3,7 @@ import Link from "next/link";
 import { preload } from "react-dom";
 import JsonLd from "@/components/site/JsonLd";
 import SampulBeranda from "@/components/site/SampulBeranda";
+import TautanSelengkapnya from "@/components/site/TautanSelengkapnya";
 import BeritaWidget from "@/features/berita/BeritaWidget";
 import { daftarAcara, daftarKata } from "@/features/budaya/data";
 import { DATASET } from "@/features/dataset/data";
@@ -45,12 +46,8 @@ const KAMERA = [...new Map(MAPPED_CAMS.map((c) => [c.area, c])).values()].slice(
 const ANGKA = angkaBeranda();
 const KATA = daftarKata().map(ringkasKata);
 
-function Selengkapnya({ href }: { href: string }) {
-  return (
-    <Link href={href} className="bch-aksi br-selengkapnya" prefetch={false}>
-      Selengkapnya →
-    </Link>
-  );
+function Selengkapnya({ href, tentang }: { href: string; tentang: string }) {
+  return <TautanSelengkapnya href={href} tentang={tentang} className="bch-aksi br-selengkapnya" />;
 }
 
 export const revalidate = 300;
@@ -92,7 +89,7 @@ export default async function Beranda() {
                 </li>
               ))}
             </ul>
-            <Selengkapnya href="/jalan" />
+            <Selengkapnya href="/jalan" tentang="Transportasi" />
           </section>
         </div>
 
@@ -151,7 +148,7 @@ export default async function Beranda() {
                 </li>
               ))}
             </ul>
-            <Selengkapnya href="/info" />
+            <Selengkapnya href="/info" tentang="Layanan Warga" />
           </section>
         </div>
 
@@ -159,7 +156,7 @@ export default async function Beranda() {
           <section className="br-modul" aria-labelledby="br-acara">
             <h2 id="br-acara">Things to Do</h2>
             <ModulAcara acara={acara} />
-            <Selengkapnya href="/things-to-do" />
+            <Selengkapnya href="/things-to-do" tentang="Things to Do" />
           </section>
 
           <section className="br-modul" aria-labelledby="br-bilangan">
@@ -176,9 +173,7 @@ export default async function Beranda() {
               ))}
             </ul>
             <div className="br-aksi-ganda">
-              <Link href="/cerita/angka" className="bch-aksi br-selengkapnya" prefetch={false}>
-                Selengkapnya →
-              </Link>
+              <Selengkapnya href="/cerita/angka" tentang="Batam dalam Angka" />
               <Link href="/dataset" className="bch-aksi br-selengkapnya" prefetch={false}>
                 {DATASET.length.toLocaleString("id-ID")} Dataset →
               </Link>

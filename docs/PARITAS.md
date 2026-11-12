@@ -36,6 +36,8 @@ Sejak rombak menu November 2026: CCTV pindah ke `/cctv`, klaster kamera diganti 
 - ✔ Label Langsung/Tertunda/Terputus dihitung di klien dari umur citra — kode
 - ✔ Frame 404 dilewati, tidak pernah tampil sebagai "tidak hujan" — e2e
 - ✔ Run OFS basi/kedaluwarsa ditandai (`source`, `ageH`, `expired`) — kode, ikut `source` dari route
+- ✔ Tautan Selengkapnya bermakna bila dibaca terpisah oleh pembaca layar, tanpa mengubah teks yang tampil — e2e
+- ✔ Teks tampil bebas singkatan dll., dsb., mis., est., yg (kecuali teks penyedia di Dataset dan Berita) — cek-keluaran
 - ✔ Menu bagian di ponsel selalu tampil tanpa tombol burger: tujuh bagian dua baris dan Lainnya untuk sisanya, di kepala halaman dan pita sampul (permintaan pemilik 12 Nov 2026) — e2e
 - ✔ Satu jenis tempat berwarna sama di Jelajahi dan Peta Tempat (warna kelompok PEDOMAN 5.4)
 - ✔ Ubin OFS BMKG gagal dimuat (12 Nov 2026: jalur `api21` BMKG 404 sejak situs maritim baru) → peta beralih ke Copernicus Marine dan panel menulis "Peta gelombang BMKG sedang tidak tersedia, jadi peta memakai prakiraan Copernicus." Pilihan Data Peta (BMKG atau Copernicus) diingat per perangkat — e2e

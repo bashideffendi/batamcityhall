@@ -18,7 +18,7 @@ export default function Tentang() {
         </p>
         <p>Kami tidak memasang iklan, tidak memakai pelacak, dan tidak menerima bayaran untuk mencantumkan tempat.</p>
         <p>
-          Data dihimpun dari sumber terbuka dan pengamatan warga, lalu diperbarui secara berkala. Lokasi yang masih
+          Kami menghimpun data dari sumber terbuka dan pengamatan warga, lalu memperbaruinya secara berkala. Lokasi yang masih
           perkiraan diberi tanda di peta.
         </p>
         <p>

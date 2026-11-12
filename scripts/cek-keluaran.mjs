@@ -3,7 +3,9 @@
 // sitemap, RSS, dan bundel JavaScript. Gagal (exit 1) bila menemukan:
 //   - kunci data pajak hotel (NPWPD, NOP, nilai pajak, SSPD, SPTPD) sebagai kunci JSON;
 //   - JSON-LD yang membawa nomor telepon atau rating pihak lain;
-//   - JSON-LD yang tidak bisa diurai.
+//   - JSON-LD yang tidak bisa diurai;
+//   - singkatan di teks yang tampil (dll., dsb., mis., est., yg, dan sejenisnya; PEDOMAN 2.5). Pemeriksaan bahasa
+//     sebelum build membaca kode dan data mentah; ini menangkap teks data yang lolos sampai ke halaman.
 import { readdirSync, readFileSync, statSync, existsSync } from "node:fs";
 import { join, relative } from "node:path";
 
@@ -14,6 +16,15 @@ const BERKAS = /\.(html|rsc|body|meta|js|json|xml)$/;
 const KUNCI_PAJAK = /\\?"(npwpd|nop|nilai_pajak|sspd|sptpd|no_sspd|no_sptpd|nomor_sspd|nomor_sptpd|pajak)\\?"\s*:/i;
 const LD = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
 const LD_TERLARANG = ["telephone", "aggregateRating", "review"];
+const SINGKATAN = /(?<![\p{L}\d])(dll|dsb|dst|mis|cth|est)\.(?=[\s,;)]|$)|(?<!\p{L})(yg|dgn|tsb)(?!\p{L})/u;
+// Dataset dan Berita menampilkan judul dan isi penyedia apa adanya (PEDOMAN 2.9).
+const TEKS_PENYEDIA = /[\\/](dataset|berita)([\\/]|\.html$)/;
+const teksTampil = (html) =>
+  html
+    .replace(/<(script|style|svg|template)\b[\s\S]*?<\/\1>/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/\s+/g, " ");
 
 if (!AKAR.every(existsSync)) {
   console.error("cek-keluaran: folder .next belum ada. Jalankan npm run build dulu.");
@@ -37,6 +48,11 @@ for (const f of AKAR.flatMap((a) => jalan(a))) {
   const pajak = KUNCI_PAJAK.exec(isi);
   if (pajak) masalah.push(`${nama}: kunci data pajak ${pajak[1]}`);
   if (!f.endsWith(".html")) continue;
+  if (!TEKS_PENYEDIA.test(nama)) {
+    const teks = teksTampil(isi);
+    const m = SINGKATAN.exec(teks);
+    if (m) masalah.push(`${nama}: singkatan "${m[0]}" di teks tampil: ${teks.slice(Math.max(0, m.index - 50), m.index + 30).trim()}`);
+  }
   for (const m of isi.matchAll(LD)) {
     jumlahLd++;
     try {

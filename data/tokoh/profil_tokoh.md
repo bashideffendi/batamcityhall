@@ -79,7 +79,7 @@
 **Tengku Embung Fatimah**
 - Gelar: Sultanah/Ratu Riau-Lingga
 - Masa hidup: abad ke-19 (tahun lahir dan wafat perlu dicek); berkuasa 1883–1885
-- Kisah: Ia putri tunggal Sultan Mahmud IV Muzaffar Syah dan istri YDM Raja Muhammad Yusuf al-Ahmadi (menikah 1847). Pada 17 September 1883 bangsawan Melayu dan Bugis memilihnya sebagai penguasa; ia lalu menyerahkan takhta kepada putranya, Sultan Abdul Rahman Muazzam Syah II, dan tetap menjadi wali bersama hingga 18 Februari 1885. Makamnya di Pulau Penyengat dirawat Dinas Kebudayaan Kepri sebagai cagar budaya.
+- Kisah: Ia putri tunggal Sultan Mahmud IV Muzaffar Syah dan istri YDM Raja Muhammad Yusuf al-Ahmadi (menikah 1847). Pada 17 September 1883 bangsawan Melayu dan Bugis memilihnya sebagai penguasa. Ia lalu menyerahkan takhta kepada putranya, Sultan Abdul Rahman Muazzam Syah II, dan tetap menjadi wali bersama hingga 18 Februari 1885. Makamnya di Pulau Penyengat dirawat Dinas Kebudayaan Kepri sebagai cagar budaya.
 - Kaitan dengan Batam: namanya dipakai untuk rumah sakit daerah Batam. Situs resmi RSUD tidak menjelaskan alasan pemilihan nama itu.
 - Tempat: RSUD Embung Fatimah (Batu Aji)
 - Status: **terverifikasi** sebagai tokoh; kaitan penamaan RSUD masih asumsi dan perlu konfirmasi Pemko
@@ -115,7 +115,7 @@
 **Raja Kecik (Sultan Abdul Jalil Rahmat Syah)**
 - Gelar: Sultan Johor (1718–1722); pendiri dan Sultan Siak Sri Inderapura pertama
 - Masa hidup: ? – 1746
-- Kisah: Menurut Hikayat Siak, ia putra Sultan Mahmud Syah II ("Mangkat Dijulang") dan Encik Pong yang lahir setelah ayahnya wafat, lalu dibesarkan di Pagaruyung; sebagian sejarawan meragukan kisah asal-usul ini. Pada 1718 ia merebut takhta Johor, tetapi pada 1722 dikalahkan koalisi Bugis yang lalu mengangkat Sultan Sulaiman. Ia kemudian mendirikan Siak di Buantan; tahunnya disebut 1722 atau 1723.
+- Kisah: Menurut Hikayat Siak, ia putra Sultan Mahmud Syah II ("Mangkat Dijulang") dan Encik Pong yang lahir setelah ayahnya wafat, lalu dibesarkan di Pagaruyung. Sebagian sejarawan meragukan kisah asal-usul ini. Pada 1718 ia merebut takhta Johor, tetapi pada 1722 dikalahkan koalisi Bugis yang lalu mengangkat Sultan Sulaiman. Ia kemudian mendirikan Siak di Buantan; tahunnya disebut 1722 atau 1723.
 - Kaitan dengan Batam: perangnya dengan Bugis melahirkan jabatan Yang Dipertuan Muda bagi bangsawan Bugis di Riau, jabatan yang kelak dipegang keluarga Raja Haji
 - Tempat: Jembatan Barelang VI
 - Status: **terverifikasi** sebagai tokoh; kisah asal-usulnya versi hikayat

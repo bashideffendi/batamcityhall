@@ -105,6 +105,11 @@ export const ATURAN = [
   { id: "non-hubung", re: /\bnon-[a-z]/, indonesia: true },
   { id: "dan-simbol", re: /&/, indonesia: true },
   { id: "anda", re: /\bAnda\b/ },
+  // Bahasa lugas (PEDOMAN blok "Bahasa lugas dan cek RASA", 12 Nov 2026)
+  { id: "singkatan", re: /(?<![\p{L}\d])(dll|dsb|dst|mis|cth|est)\.(?=[\s,;)]|$)|(?<!\p{L})(yg|dgn|tsb)(?!\p{L})/u, indonesia: true },
+  { id: "tautan-umum", re: /\b(klik di sini|baca selengkapnya|lihat selengkapnya)\b/i },
+  { id: "label-kondisi", re: /\b(penderita|penyandang cacat|orang cacat)\b/i, indonesia: true },
+  { id: "tanya-yakin", re: /\bapakah (kamu|anda) yakin\b/i },
 ];
 
 /** Atribut JSX dan properti objek yang isinya bukan teks untuk pembaca. */

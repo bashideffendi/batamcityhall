@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import TautanSelengkapnya from "@/components/site/TautanSelengkapnya";
 import { useSyncExternalStore } from "react";
 import { indeksKata, tanggalWib, type KataRingkas } from "./kata-hari-ini";
 
@@ -37,9 +37,11 @@ export default function ModulKata({ daftar }: { daftar: KataRingkas[] }) {
           <p className="br-memuat">Memuat kata</p>
         </div>
       )}
-      <Link href={k ? `/cerita/kamus#${k.id}` : "/cerita/kamus"} className="bch-aksi br-selengkapnya" prefetch={false}>
-        Selengkapnya →
-      </Link>
+      <TautanSelengkapnya
+        href={k ? `/cerita/kamus#${k.id}` : "/cerita/kamus"}
+        tentang={k ? `${k.kata} di Kamus` : "Kamus"}
+        className="bch-aksi br-selengkapnya"
+      />
     </section>
   );
 }

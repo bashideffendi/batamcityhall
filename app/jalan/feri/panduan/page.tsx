@@ -39,10 +39,15 @@ export default function Panduan() {
         </ul>
 
         <h2 id="terakhir">Feri Terakhir untuk Pulang Hari</h2>
+        <p>Feri terakhir dari Singapura, dalam waktu Singapura:</p>
+        <ul data-feri-terakhir-sg>
+          <li>ke Batam Centre: 21.40 (BatamFast) dan 21.50 (Sindo)</li>
+          <li>ke Harbour Bay: 21.35</li>
+          <li>ke Sekupang: 19.30 (BatamFast) dan 20.40 (Majestic)</li>
+        </ul>
         <p>
-          Feri terakhir dari Singapura, dalam waktu Singapura: ke Batam Centre pukul 21.40 (BatamFast) dan 21.50
-          (Sindo), ke Harbour Bay pukul 21.35, ke Sekupang pukul 19.30 (BatamFast) dan 20.40 (Majestic). Waktu Singapura
-          satu jam lebih cepat daripada WIB: pukul 21.40 di sana sama dengan pukul 20.40 WIB. Jadwal hari ini ada di{" "}
+          Waktu Singapura satu jam lebih cepat daripada WIB: pukul 21.40 di sana sama dengan pukul 20.40 WIB. Jadwal hari
+          ini ada di{" "}
           <Link href="/jalan/feri#terakhir" prefetch={false}>
             Feri Terakhir Hari Ini
           </Link>

@@ -95,7 +95,7 @@ const UBAHAN: Record<string, Ubahan> = {
   "gw-011": {
     status: "perbedaan_versi",
     teks:
-      'Pabrik bata pertama di Batam oleh Raja Ali Kelana dan pengusaha Singapura Ong Sam Leong; bata bertuliskan "Batam Brick ' +
+      'Pabrik bata pertama di Batam dijalankan Raja Ali Kelana dan pengusaha Singapura Ong Sam Leong. Bata bertuliskan "Batam Brick ' +
       'works" masih ada di Perigi Batu Pulau Buluh (cagar budaya). Disbudpar Kota Batam (2021) menyebut pabriknya di Batu Aji, ' +
       '"sekitar tahun 1896"; sumber lain menyebut 1901.',
   },

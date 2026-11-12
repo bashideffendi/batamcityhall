@@ -277,7 +277,7 @@ const temaDari = (judul, produsen) => {
 const CATATAN = [
   [
     /penumpang trans ?batam per ?semester/i,
-    "Angka semester 1 tahun 2023 (1.103) dan 2024 (128.131) tidak sebanding. Kemungkinan ada salah input atau beda definisi di penyedia.",
+    "Angka semester 1 tahun 2023 (1.103) dan 2024 (128.131) tidak sebanding. Kemungkinan ada salah catat atau beda definisi di penyedia.",
   ],
   [/jumlah hotel menurut kecamatan/i, "Di penyedia, nilai tahun 2024 sama persis dengan 2022."],
   [

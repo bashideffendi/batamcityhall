@@ -274,7 +274,7 @@ export const ANGKA_RESMI: { judul: string; lede?: string; baris: BarisResmi[] }[
         "faskes_total",
         "Fasilitas kesehatan",
         "831 fasilitas",
-        "RS pemerintah 3, RS swasta 18, puskesmas 21, pustu 63, klinik dan polindes 156, posyandu 570.",
+        "RS pemerintah 3, RS swasta 18, puskesmas 21, puskesmas pembantu 63, klinik dan polindes 156, posyandu 570.",
       ),
       pilih(
         "klinik_polindes",

@@ -394,7 +394,7 @@ export default function PetaBusInteraktif({
               <path d="M15 2V14" className="pb-batang-luar" />
               <path d="M15 2V14" className="pb-batang-dalam" />
             </svg>
-            Halte Beberapa Koridor
+            Halte Dua Koridor atau Lebih
           </li>
           <li>
             <svg viewBox="0 0 30 16" aria-hidden="true">

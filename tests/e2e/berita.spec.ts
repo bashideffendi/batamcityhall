@@ -227,7 +227,7 @@ test.describe("widget beranda", () => {
     await expect(widget(page).locator(".bch-berita-meta").first()).toHaveText(
       /^Media A · (pukul 08\.00 WIB|5 November 2026)$/,
     );
-    await widget(page).getByRole("link", { name: "Selengkapnya →" }).click();
+    await widget(page).getByRole("link", { name: "Selengkapnya tentang Berita" }).click();
     await expect(page).toHaveURL(/\/berita$/);
   });
 

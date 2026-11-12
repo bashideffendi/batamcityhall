@@ -32,17 +32,18 @@ export default function FormNewsletter({ aktif }: { aktif: boolean }) {
         Newsletter
       </p>
       <p>Rangkuman Barelang.co, sesekali saja.</p>
+      {/* Label tampil di atas isian: teks contoh hilang begitu orang mulai mengetik, jadi tidak dipakai sebagai label. */}
+      <label htmlFor={`${id}-email`} className="bch-footer-label">
+        Alamat Email
+      </label>
       <div className="bch-footer-isian">
-        <label htmlFor={`${id}-email`} className="sr-only">
-          Email
-        </label>
         <input
           id={`${id}-email`}
           className="bch-input"
           type="email"
           name="email"
           autoComplete="email"
-          placeholder="Alamat email"
+          placeholder="nama@contoh.com"
           required
           disabled={!aktif || sibuk}
           value={email}

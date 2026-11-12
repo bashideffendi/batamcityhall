@@ -24,7 +24,7 @@ export const PROFIL: Profil[] = [
     kampung: ["kt-nongsa-pantai"],
     butir: [
       {
-        teks: "Raja Isa bin Raja Ali (Nong Isa), putra Yang Dipertuan Muda Riau V, mendapat mandat memegang perintah atas Nongsa dan rantau sekitarnya dari Sultan Abdulrahman Syah dan YDM Riau VI Raja Jakfar, bertanggal 22 Jumadil Akhir 1245 H atau 18 Desember 1829.",
+        teks: "Raja Isa bin Raja Ali (Nong Isa) adalah putra Yang Dipertuan Muda Riau V. Sultan Abdulrahman Syah dan YDM Riau VI Raja Jakfar memberinya mandat memegang perintah atas Nongsa dan rantau sekitarnya. Mandat itu bertanggal 22 Jumadil Akhir 1245 H atau 18 Desember 1829.",
         label: "terverifikasi",
         sumber: `${DISBUD}/asal-usul-nama-kampung-tua-nongsa/`,
       },

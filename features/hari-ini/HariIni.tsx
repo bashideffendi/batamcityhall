@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import TautanSelengkapnya from "@/components/site/TautanSelengkapnya";
 import { useEffect, useMemo, useState } from "react";
 import { barisFeriSingapura, hitungFeri, ringkasHariIni } from "@/features/jalan/feri-terakhir";
 import { useEntriFeri } from "@/features/jalan/useFeri";
@@ -248,9 +249,7 @@ export default function HariIni() {
         </dl>
         {barisPeringatan && <p className="br-catatan">{barisPeringatan}</p>}
         <p className="m-0">
-          <Link href="/cuaca" className="bch-aksi">
-            Selengkapnya →
-          </Link>
+          <TautanSelengkapnya href="/cuaca" tentang="Cuaca dan Laut" />
         </p>
       </div>
     </section>

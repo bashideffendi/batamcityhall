@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import KisiPintu from "@/components/site/KisiPintu";
 import PembukaBagian from "@/components/site/PembukaBagian";
+import TautanSelengkapnya from "@/components/site/TautanSelengkapnya";
 import { TULISAN } from "@/features/jurnal/data";
 
 export const metadata: Metadata = {
@@ -36,9 +36,7 @@ export default function SejarahBudaya() {
             <p className="bch-kicker m-0">Dari Jurnal</p>
             <h2 id="sb-pilihan">{pilihan.judul}</h2>
             <p>{pilihan.ringkasan}</p>
-            <Link href={`/jurnal/${pilihan.slug}`} className="bch-aksi" prefetch={false}>
-              Selengkapnya →
-            </Link>
+            <TautanSelengkapnya href={`/jurnal/${pilihan.slug}`} tentang={pilihan.judul} />
           </div>
         </section>
       )}

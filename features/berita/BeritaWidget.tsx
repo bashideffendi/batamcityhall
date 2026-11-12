@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
+import TautanSelengkapnya from "@/components/site/TautanSelengkapnya";
 import "./berita.css";
 import { useBerita, waktuCuplikan } from "./klien";
 
 const JUMLAH = 3;
 
-// Dimuat lewat klien supaya beranda tetap statis. Gagal cukup satu kalimat pendek.
+// Dimuat lewat klien supaya beranda tetap statis. Gagal cukup satu kalimat pendek dan langkah berikutnya.
 export default function BeritaWidget() {
   const keadaan = useBerita();
   const item = keadaan.fase === "siap" ? keadaan.data.item.slice(0, JUMLAH) : [];
@@ -14,7 +14,7 @@ export default function BeritaWidget() {
     <section className="bch-berita-widget br-modul" aria-labelledby="berita-terbaru" data-fase={keadaan.fase}>
       <h2 id="berita-terbaru">Berita</h2>
       {keadaan.fase === "memuat" && <p className="bch-berita-pesan">Memuat data</p>}
-      {keadaan.fase === "gagal" && <p className="bch-berita-pesan">Berita tidak dapat dimuat.</p>}
+      {keadaan.fase === "gagal" && <p className="bch-berita-pesan">Berita tidak dapat dimuat. Coba muat ulang sebentar lagi.</p>}
       {keadaan.fase === "siap" && !item.length && (
         <p className="bch-berita-pesan">Belum ada berita baru hari ini.</p>
       )}
@@ -33,9 +33,7 @@ export default function BeritaWidget() {
           ))}
         </ol>
       )}
-      <Link href="/berita" prefetch={false} className="bch-aksi br-selengkapnya">
-        Selengkapnya →
-      </Link>
+      <TautanSelengkapnya href="/berita" tentang="Berita" className="bch-aksi br-selengkapnya" />
     </section>
   );
 }
