@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import MenuBagian from "@/components/site/MenuBagian";
 import { useSiteTheme } from "@/components/site/useSiteTheme";
-import { BAGIAN, bagianDiAlamat, SITE_LOGO } from "@/lib/site";
+import { bagianDiAlamat, SITE_LOGO } from "@/lib/site";
 import { followSystemTheme, toggleTheme } from "@/lib/theme";
 
 export const Icon = ({ d }: { d: string }) => (
@@ -26,12 +26,7 @@ export const Icon = ({ d }: { d: string }) => (
 export const MOON = "M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z";
 export const SUN =
   "M12 4v2m0 12v2M4 12h2m12 0h2M6.3 6.3l1.4 1.4m8.6 8.6 1.4 1.4m0-11.4-1.4 1.4m-8.6 8.6-1.4 1.4M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z";
-export const MENU = "M4 7h16M4 12h16M4 17h16";
-const CLOSE = "M6 6l12 12M18 6 6 18";
 export const CARI = "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm9 16-4-4";
-
-/** Peristiwa untuk membuka menu layar penuh dari luar kepala halaman, mis. pita bawah sampul beranda. */
-export const BUKA_MENU = "bch:buka-menu";
 
 // Nomor nasional dari data/darurat. Ditulis di sini supaya tetap tampil walau data lain gagal dimuat.
 const DARURAT = [
@@ -70,14 +65,22 @@ function BarisDarurat() {
 
 /** Submenu bagian yang sedang dibuka. Yang dipilih adalah alamat terpanjang yang cocok. */
 function Submenu({ path }: { path: string }) {
+  const dalam = useRef<HTMLDivElement>(null);
   const bagian = bagianDiAlamat(path);
-  if (!bagian?.isi.length) return null;
-  const aktif = bagian.isi
+  const aktif = bagian?.isi
     .filter((s) => path === s.href || path.startsWith(`${s.href}/`))
     .sort((a, b) => b.href.length - a.href.length)[0]?.href;
+  // Di ponsel submenu bisa lebih lebar dari layar: butir yang aktif digeser ke dalam layar.
+  useEffect(() => {
+    const el = dalam.current?.querySelector<HTMLElement>('[aria-current="page"]');
+    const wadah = dalam.current;
+    if (!el || !wadah || wadah.scrollWidth <= wadah.clientWidth) return;
+    wadah.scrollLeft = el.offsetLeft - (wadah.clientWidth - el.offsetWidth) / 2;
+  }, [aktif]);
+  if (!bagian?.isi.length) return null;
   return (
     <nav className="bch-submenu" aria-label={bagian.nama}>
-      <div className="bch-submenu-dalam">
+      <div className="bch-submenu-dalam" ref={dalam}>
         {bagian.isi.map((s) => (
           <Link key={s.href} href={s.href} prefetch={false} aria-current={s.href === aktif ? "page" : undefined}>
             {s.label}
@@ -91,24 +94,15 @@ function Submenu({ path }: { path: string }) {
 /**
  * Kepala situs. Di beranda kepala ini tidak tampil: sampul beranda (components/site/SampulBeranda.tsx) membawa nama
  * situs dan menu di pita bawahnya, seperti sampul majalah. Halaman lain memakai kepala normal: nama situs di tengah,
- * pita menu di bawahnya (purwarupa arah "kalcer", 9 Nov 2026).
+ * pita menu di bawahnya (purwarupa arah "kalcer", 9 Nov 2026). Tanpa tombol burger di ukuran layar mana pun: menu
+ * selalu tampil, di ponsel dua baris dengan tombol Lainnya (pemilik 12 Nov 2026).
  */
 export default function SiteNav() {
   const path = usePathname();
   const theme = useSiteTheme();
-  // Menu terbuka hanya untuk path tempat ia dibuka, jadi pindah halaman otomatis menutupnya.
-  const [openedAt, setOpenedAt] = useState<string | null>(null);
-  const open = openedAt === path;
   const beranda = path === "/";
 
   useEffect(() => followSystemTheme(), []);
-
-  // Tombol menu di sampul beranda membuka menu yang sama.
-  useEffect(() => {
-    const buka = () => setOpenedAt(window.location.pathname);
-    window.addEventListener(BUKA_MENU, buka);
-    return () => window.removeEventListener(BUKA_MENU, buka);
-  }, []);
 
   // Next.js hanya menggulir sampai segmen yang berubah, jadi kepala halaman bisa terpotong saat pindah di dalam
   // satu bagian. Tombol kembali dan tautan ke tanda pagar tetap memakai posisi masing-masing.
@@ -130,22 +124,6 @@ export default function SiteNav() {
       window.scrollTo(0, 0);
     }
   }, [path]);
-
-  // Saat menu ponsel terbuka, halaman di belakangnya tidak ikut tergulir.
-  useEffect(() => {
-    if (!open) return;
-    const akar = document.documentElement;
-    const lama = akar.style.overflow;
-    akar.style.overflow = "hidden";
-    const tekan = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpenedAt(null);
-    };
-    window.addEventListener("keydown", tekan);
-    return () => {
-      akar.style.overflow = lama;
-      window.removeEventListener("keydown", tekan);
-    };
-  }, [open]);
 
   return (
     <>
@@ -170,16 +148,6 @@ export default function SiteNav() {
                 >
                   <Icon d={theme === "dark" ? SUN : MOON} />
                 </button>
-                <button
-                  type="button"
-                  className="bch-icon-btn bch-menu-btn"
-                  onClick={() => setOpenedAt(path)}
-                  aria-expanded={open}
-                  aria-controls="bch-toc"
-                  aria-label="Buka menu"
-                >
-                  <Icon d={MENU} />
-                </button>
               </div>
             </div>
           </header>
@@ -188,36 +156,6 @@ export default function SiteNav() {
           </div>
           <Submenu path={path} />
         </>
-      )}
-      {open && (
-        <nav id="bch-toc" className="bch-toc" aria-label="Menu">
-          <button type="button" className="bch-icon-btn bch-toc-tutup" onClick={() => setOpenedAt(null)} aria-label="Tutup menu">
-            <Icon d={CLOSE} />
-          </button>
-          <ul>
-            <li>
-              <Link href="/" className="bch-toc-bagian" aria-current={beranda ? "page" : undefined}>
-                Beranda
-              </Link>
-            </li>
-            {BAGIAN.map((b) => (
-              <li key={b.id}>
-                <Link href={b.href} className="bch-toc-bagian">
-                  {b.nama}
-                </Link>
-                {b.isi.length > 0 && (
-                  <div className="bch-toc-isi">
-                    {b.isi.map((s) => (
-                      <Link key={s.href} href={s.href} prefetch={false}>
-                        {s.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
       )}
     </>
   );

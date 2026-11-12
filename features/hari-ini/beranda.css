@@ -318,11 +318,12 @@
   display: grid;
   gap: 6px;
 }
+/* Kotak putih bergaris tinta seperti kendali peta lain (PEDOMAN 5.2), persegi seperti kotak di sampul. */
 .br-zoom button {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border: 1.5px solid var(--bch-ink);
-  border-radius: 6px;
+  border-radius: 0;
   background: var(--bch-paper);
   color: var(--bch-ink);
   font-size: 1.25rem;

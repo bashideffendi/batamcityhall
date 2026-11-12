@@ -23,8 +23,7 @@ test.describe("sampul beranda", () => {
     await expect(page.locator('nav[aria-label="Bagian situs"]')).toHaveCount(1);
   });
 
-  test("pita menu di dasar sampul, dan menu membuka halaman berkepala normal", async ({ page }, info) => {
-    test.skip(info.project.name === "hp", "menu lebar hanya di layar lebar");
+  test("pita menu di dasar sampul, dan menu membuka halaman berkepala normal", async ({ page }) => {
     await page.goto("/");
     const sampul = page.getByRole("region", { name: "Sampul" });
     const pita = page.locator(".bch-sampul-pita");
@@ -36,12 +35,18 @@ test.describe("sampul beranda", () => {
     await expect(page.getByRole("region", { name: "Sampul" })).toHaveCount(0);
   });
 
-  test("di ponsel tombol Menu membuka menu layar penuh", async ({ page }, info) => {
-    test.skip(info.project.name !== "hp", "tombol Menu hanya di layar sempit");
+  test("di ponsel menu tampil di pita sampul dan Lainnya membuka ke atas", async ({ page }, info) => {
+    test.skip(info.project.name !== "hp", "tombol Lainnya hanya di layar sempit");
     await page.goto("/");
-    await page.getByRole("button", { name: "Buka menu" }).click();
-    await expect(page.locator("#bch-toc")).toBeVisible();
-    await expect(page.locator("#bch-toc .bch-toc-bagian").first()).toHaveText("Beranda");
+    await expect(page.getByRole("button", { name: "Buka menu" })).toHaveCount(0);
+    const pita = page.locator(".bch-sampul-pita");
+    await expect(pita.getByRole("link", { name: "Cuaca", exact: true })).toBeVisible();
+    await pita.getByRole("button", { name: "Lainnya" }).click();
+    const panel = pita.locator(".bch-menu-panel");
+    await expect(panel.getByRole("link", { name: "Jurnal", exact: true })).toBeVisible();
+    const [p, k] = [await pita.boundingBox(), await panel.boundingBox()];
+    expect((k?.y ?? 0) + (k?.height ?? 0)).toBeLessThanOrEqual((p?.y ?? 0) + 1);
+    expect(k?.y ?? -1).toBeGreaterThanOrEqual(0);
   });
 
   test("desktop: peta interaktif menggantikan gambar, gulir biasa tetap menggulir halaman", async ({ page }, info) => {

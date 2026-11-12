@@ -114,7 +114,7 @@
 .pb-bingkai {
   position: relative;
   border: 1.5px solid var(--bch-ink);
-  border-radius: 10px;
+  border-radius: var(--bch-radius-panel);
   overflow: hidden;
   background: var(--bch-map-sea);
 }
@@ -327,7 +327,7 @@
   height: 44px;
   padding: 0;
   border: 1.5px solid var(--bch-ink);
-  border-radius: 8px;
+  border-radius: 0;
   background: var(--bch-paper);
   color: var(--bch-ink);
   font: 600 1.375rem/1 var(--bch-font-sans);
@@ -352,7 +352,7 @@
   transform: translateX(-50%);
   margin: 0;
   padding: var(--bch-space-1) var(--bch-space-3);
-  border-radius: 8px;
+  border-radius: 0;
   background: color-mix(in srgb, var(--bch-ink) 86%, transparent);
   color: var(--bch-paper);
   font-size: var(--bch-text-small);
@@ -370,7 +370,7 @@
   min-height: 44px;
   padding: var(--bch-space-1) var(--bch-space-3);
   border: 1.5px solid var(--bch-ink);
-  border-radius: 10px;
+  border-radius: var(--bch-radius-panel);
   background: var(--bch-paper);
   box-shadow: var(--bch-shadow-panel);
   color: var(--bch-ink);
@@ -781,7 +781,7 @@
 }
 .peta.jl-peta {
   border: 1px solid var(--bch-rule);
-  border-radius: 10px;
+  border-radius: var(--bch-radius-panel);
 }
 .peta.jl-peta ~ .peta-lapisan {
   padding-inline: 0;

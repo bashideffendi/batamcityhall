@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-11-12 · Menu ponsel tanpa burger, tampilan peta diselaraskan
+
+Permintaan pemilik 12 November 2026 (tangkapan sampul di HP dengan tombol Menu di bawahnya): "lakukan improvement dan audit design baik web atau mobile ... semuanya dibuat sinkronlah grafisnya, designnya, itu menu di mobile jangan pakai burger bar, tampilin aja menunya, mau dibuat tingkat dua pun boleh ada button more". Rinciannya di PEDOMAN blok "Penyelarasan tampilan, 12 Nov 2026".
+
+- **Audit** (tangkapan layar desktop 1440 px, tablet 1024 px, HP 390 dan 320 px): menu bagian di bawah 1241 px tersembunyi di balik tombol burger (kepala halaman) atau tombol Menu (sampul); di beranda ada tiga gaya kendali peta yang berbeda (kotak putih persegi di sampul, pil hitam dan pil berbayang dengan efek kaca di Jelajahi, kotak bergaris membulat di Peta Tempat); bingkai peta dan panel membulat 6—14 px sementara kotak sampul persegi; warna kategori Jelajahi memakai palet sendiri (Hotel biru di Jelajahi, ungu di Peta Tempat); nama kategori memakai "&" dan teks contoh cari memakai elipsis; petunjuk pasang di iPhone tampil sebagai kotak sempit di tengah peta dengan teks patah per dua kata.
+- **Menu tanpa burger** (`MenuBagian.tsx`): satu baris mulai 1241 px, dua baris di tengah pada 701—1240 px, dan di ponsel tujuh bagian dalam dua baris dengan tombol Lainnya (panel bagian sisanya beserta isinya; ke atas di pita sampul). Lebar nama menu diukur: dua baris muat di 360 px, huruf 13 px di bawah 360 px. Tombol burger, menu layar penuh, dan peristiwa `bch:buka-menu` dihapus. Submenu ponsel menggeser butir aktif ke dalam layar.
+- **Kendali peta diselaraskan** dengan sampul: `--bch-radius-panel` 0 dan sudut 6—10 px di bingkai peta, panel, lembar bawah, kartu, dan tombol peta (beranda, cuaca, Makanan, Transportasi) menjadi persegi; tombol + dan − Peta Tempat 40 px persegi. Jelajahi: Tutup menjadi kotak putih bertanda silang setinggi nama peta, cari dan Lapisan kotak putih tanpa bayangan, panel Lapisan, hasil cari, kartu tempat, dan label batas kotak putih persegi, saringan menjadi pil datar seperti saringan situs (menyala berlatar tinta).
+- **Warna kategori Jelajahi** memakai warna kelompok penanda PEDOMAN 5.4, jadi satu jenis tempat berwarna sama di Jelajahi dan Peta Tempat. Kotak tampilan peta kecil biru Riso.
+- "&" di nama kategori Jelajahi ditampilkan "dan"; teks contoh cari menjadi "Cari tempat" (sebelumnya terpotong di HP).
+- Petunjuk pasang di iPhone (peta cuaca) menjadi pita selebar peta, garis tinta, sudut persegi.
+- Tes: `rombak.spec.ts` dan `sampul.spec.ts` kini memeriksa menu ponsel dua baris tanpa burger, panel Lainnya (Esc menutup, tautan membuka halaman, tombol ditandai bila bagiannya dibuka), dan panel di sampul yang membuka ke atas.
+- Tinggi peta cuaca di ponsel dikurangi sebesar tambahan tinggi menu (230 px di ponsel, 239 px di 701—899 px), supaya judul di lembar bawah tetap di layar pertama. Tes direktori Kuliner kini mencari label Rekomendasi di isi halaman, karena panel Lainnya memuat tautan "Kirim Rekomendasi" yang tersembunyi.
+- **Pemeriksaan:** unit 759 lulus, tipe dan lint bersih (satu peringatan lama di `dataset-arsip`), cek bahasa dan cek keluaran lulus, build berhasil, e2e seluruh berkas 1.022 lulus (18 dilewati). Tangkapan diperiksa di 1440, 1024, 390, dan 320 px: menu dua baris, panel Lainnya di kepala dan sampul, Jelajahi dengan panel Lapisan dan hasil cari, Peta Tempat, dan peta Tinggi Gelombang. Belum dicoba di HP asli pemilik.
+
 ## 2026-11-12 · Tinggi Gelombang: pilihan BMKG atau Copernicus, daratan tidak terpotong
 
 Tayang sejak `c23131a` (12 November 2026): di barelang.co halaman Tinggi Gelombang beralih ke Copernicus dengan baris masalahnya, dan zoom 4 berhenti di 4,6 dengan tepi 90–112,5 BT.

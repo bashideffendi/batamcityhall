@@ -53,7 +53,8 @@ test.describe("halaman tempat dari data Google", () => {
 test.describe("direktori dan kredit", () => {
   test("kategori Kuliner membuka daftar dengan tempat Rekomendasi lebih dulu", async ({ page }) => {
     await page.goto("/info/direktori/kuliner");
-    await expect(page.getByText("Rekomendasi").first()).toBeVisible();
+    // Di dalam isi halaman: panel Lainnya di menu juga memuat tautan "Kirim Rekomendasi" yang tersembunyi.
+    await expect(page.locator("main").getByText("Rekomendasi").first()).toBeVisible();
   });
 
   test("kategori Kesehatan memuat jenis dari data Google", async ({ page }) => {

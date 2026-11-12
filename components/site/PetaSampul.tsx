@@ -389,7 +389,7 @@ export default function PetaSampul() {
                   <input
                     type="search"
                     className="bch-poi-cari-isian"
-                    placeholder="Cari hotel, mal, perumahan…"
+                    placeholder="Cari tempat"
                     aria-label="Cari tempat di peta"
                     value={cari}
                     onChange={(e) => setCari(e.target.value)}
@@ -498,7 +498,11 @@ export default function PetaSampul() {
               </div>
             )}
           </div>
-          <button ref={tombolTutup} type="button" className="bch-btn" onClick={tutup}>
+          {/* Kotak putih seperti nama peta dan tombol lain di atas peta isometrik (penyelarasan 12 Nov 2026). */}
+          <button ref={tombolTutup} type="button" className="bch-peta-jelajahi bch-peta-tutup" onClick={tutup}>
+            <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">
+              <path d="M3.5 3.5l9 9M12.5 3.5l-9 9" />
+            </svg>
             Tutup
           </button>
         </div>

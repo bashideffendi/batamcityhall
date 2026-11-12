@@ -54,8 +54,11 @@
   display: none !important;
 }
 .bch-peta-sampul .navigator {
-  border: 2px solid var(--bch-ink) !important;
+  border: 0 !important;
   background: var(--bch-paper) !important;
+}
+.bch-peta-sampul .navigator .displayregion {
+  border: 2px solid var(--bch-riso-blue) !important;
 }
 .bch-peta-kendali {
   position: absolute;
@@ -89,6 +92,22 @@
 .bch-peta-tombol:hover,
 .bch-peta-jelajahi:hover {
   color: var(--bch-link);
+}
+/* Semua kendali di atas peta isometrik (nama peta, cari, Lapisan, +, −, Jelajahi Peta, Tutup) adalah kotak putih
+   persegi tanpa garis dan tanpa bayangan, sama dengan nama situs di sampul (penyelarasan 12 Nov 2026). */
+.bch-peta-tutup {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  /* setinggi kotak nama peta di kirinya (huruf + padding 8 dan 9 px) */
+  height: calc(clamp(22px, 2.2vw, 32px) + 17px);
+  min-height: 0;
+}
+.bch-peta-tutup svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
 }
 
 /* Jelajahi: layar penuh di atas seluruh halaman. */
@@ -329,18 +348,14 @@ main .bch-peta-atribusi {
   flex: 1;
   border: 0;
 }
-.bch-sampul-tombol-menu {
-  display: none;
-}
 
+/* Di bawah 1241 px menu pita menjadi dua baris (kepala halaman sama): judul dan atribusi naik di atasnya. */
 @media (max-width: 1240px) {
-  .bch-sampul-tombol-menu {
-    display: inline-flex;
-    width: auto;
-    gap: 8px;
-    padding-inline: 0 8px;
-    font-size: 15px;
-    font-weight: 600;
+  .bch-sampul-isi {
+    bottom: 124px;
+  }
+  .bch-sampul-atribusi {
+    bottom: 98px;
   }
 }
 @media (max-width: 700px) {
@@ -348,7 +363,7 @@ main .bch-peta-atribusi {
     font-size: 10px;
   }
   .bch-sampul {
-    min-height: 520px;
+    min-height: 560px;
   }
   .bch-sampul-atas {
     top: 16px;
@@ -356,13 +371,14 @@ main .bch-peta-atribusi {
   .bch-sampul-tanggal {
     display: none;
   }
-  /* Atribusi bisa dua baris di ponsel: judul diberi jarak supaya tidak tertutup. */
+  /* Atribusi di kiri, di atas pita menu dua baris; judul di atasnya. */
   .bch-sampul-isi {
-    bottom: 100px;
+    bottom: 120px;
   }
   .bch-sampul-atribusi {
     left: var(--bch-gutter);
     right: auto;
+    bottom: 94px;
     font-size: 10px;
   }
 }
@@ -402,11 +418,9 @@ main .bch-peta-atribusi {
   text-overflow: ellipsis;
   white-space: nowrap;
   padding: 2px 6px;
-  border-radius: 3px;
-  background: rgb(255 255 255 / 0.92);
-  color: #1b1b1b;
+  background: rgb(255 255 255 / 0.94);
+  color: #161616;
   font: 600 12px / 1.2 var(--bch-font-sans);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.35);
   pointer-events: none;
 }
 .bch-poi:hover .bch-poi-nama,
@@ -441,82 +455,54 @@ main .bch-peta-atribusi {
   align-items: center;
   gap: 6px;
 }
-/* Tombol lapisan (11 Nov 2026, "agak premium"): menyala = diwarnai lembut warna kategorinya dengan titik penuh;
-   mati = kaca putih tipis, teks pudar, titik berupa cincin. Tanpa coretan. */
+/* Tombol lapisan: saringan situs (PEDOMAN 4.5), pil datar bergaris; yang menyala berlatar tinta dengan titik warna
+   kategorinya, yang mati bergaris abu dengan cincin warna. Tanpa bayangan dan efek kaca (penyelarasan 12 Nov 2026). */
 .bch-poi-chip {
   --poi-warna: var(--bch-ink);
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 7px 12px 7px 10px;
-  border: 1px solid color-mix(in srgb, var(--poi-warna) 45%, var(--bch-paper));
+  min-height: 36px;
+  padding: 0 12px 0 10px;
+  border: 1.5px solid var(--bch-garis-isian);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--poi-warna) 13%, var(--bch-paper));
-  color: var(--bch-ink);
+  background: var(--bch-paper);
+  color: var(--bch-ink-muted);
   font: 600 13px / 1 var(--bch-font-sans);
-  letter-spacing: 0.005em;
-  box-shadow:
-    0 1px 2px rgb(0 0 0 / 0.16),
-    0 3px 10px rgb(0 0 0 / 0.08);
   cursor: pointer;
   transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    color 0.15s ease,
-    box-shadow 0.15s ease;
+    background-color var(--bch-dur-instant) var(--bch-ease),
+    border-color var(--bch-dur-instant) var(--bch-ease),
+    color var(--bch-dur-instant) var(--bch-ease);
 }
 .bch-poi-chip .bch-poi-titik {
   flex: none;
   width: 9px;
   height: 9px;
   border: 0;
-  background: var(--poi-warna);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--poi-warna) 22%, var(--bch-paper));
-  transition:
-    background-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-.bch-poi-chip[aria-pressed="false"] {
-  border-color: color-mix(in srgb, var(--bch-ink) 14%, transparent);
-  background: color-mix(in srgb, var(--bch-paper) 82%, transparent);
-  color: color-mix(in srgb, var(--bch-ink) 58%, var(--bch-paper));
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-}
-.bch-poi-chip[aria-pressed="false"] .bch-poi-titik {
   background: transparent;
-  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--poi-warna) 70%, var(--bch-paper));
+  box-shadow: inset 0 0 0 1.5px var(--poi-warna);
 }
-[data-theme="dark"] .bch-poi-chip[aria-pressed="false"] .bch-poi-titik {
-  /* warna kategori yang gelap (kecamatan, polisi) tetap terlihat di kaca gelap */
-  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--poi-warna) 60%, var(--bch-ink));
+.bch-poi-chip[aria-pressed="true"] {
+  border-color: var(--bch-ink);
+  background: var(--bch-ink);
+  color: var(--bch-paper);
 }
-@media (hover: hover) {
-  .bch-poi-chip:hover {
-    border-color: color-mix(in srgb, var(--poi-warna) 75%, var(--bch-paper));
-    box-shadow:
-      0 1px 2px rgb(0 0 0 / 0.18),
-      0 4px 14px rgb(0 0 0 / 0.14);
-  }
-  .bch-poi-chip[aria-pressed="false"]:hover {
-    color: var(--bch-ink);
-    background: var(--bch-paper);
-  }
+.bch-poi-chip[aria-pressed="true"] .bch-poi-titik {
+  background: var(--poi-warna);
+  box-shadow: 0 0 0 1.5px var(--bch-paper);
 }
-.bch-poi-chip:active {
-  transform: translateY(1px);
+.bch-poi-chip:hover {
+  border-color: var(--bch-ink);
+  color: var(--bch-ink);
+}
+.bch-poi-chip[aria-pressed="true"]:hover {
+  color: var(--bch-paper);
 }
 .bch-poi-chip:focus-visible,
 .bch-poi-hapus:focus-visible {
-  outline: 2px solid var(--bch-link, #1d4ed8);
+  outline: 2px solid var(--bch-link);
   outline-offset: 2px;
-}
-@media (prefers-reduced-motion: reduce) {
-  .bch-poi-chip,
-  .bch-poi-chip .bch-poi-titik {
-    transition: none;
-  }
 }
 .bch-poi-kartu {
   position: absolute;
@@ -530,10 +516,8 @@ main .bch-peta-atribusi {
   display: grid;
   gap: 4px;
   padding: 12px 42px 12px 14px;
-  border: 2px solid var(--bch-ink);
   background: var(--bch-paper);
   color: var(--bch-ink);
-  box-shadow: 4px 4px 0 rgb(0 0 0 / 0.25);
 }
 main .bch-poi-kartu p {
   margin: 0;
@@ -608,15 +592,10 @@ main .bch-poi-kartu p {
 /* Data kota (uji lokal 10 Nov 2026): judul kelompok tombol, kanvas garis batas/cahaya, label wilayah. */
 .bch-poi-grup {
   align-self: center;
-  padding: 5px 8px;
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--bch-paper) 78%, transparent);
-  color: color-mix(in srgb, var(--bch-ink) 72%, var(--bch-paper));
-  font: 700 10.5px / 1 var(--bch-font-sans);
-  letter-spacing: 0.08em;
+  color: var(--bch-ink-muted);
+  font: 800 11px / 1 var(--bch-font-sans);
+  letter-spacing: var(--bch-tracking-kicker);
   text-transform: uppercase;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
 }
 .bch-peta-kanvas {
   position: absolute;
@@ -654,11 +633,9 @@ main .bch-poi-kartu p {
   z-index: 4;
   max-width: 260px;
   padding: 4px 8px;
-  border-radius: 4px;
-  background: rgb(255 255 255 / 0.95);
-  color: #1b1b1b;
+  background: #fff;
+  color: #161616;
   font: 600 13px / 1.25 var(--bch-font-sans);
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
   pointer-events: none;
 }
 .bch-peta-tip::before {
@@ -684,20 +661,19 @@ main .bch-poi-kartu p {
 }
 .bch-poi-cari-isian {
   width: 100%;
+  height: 100%;
+  min-height: 44px;
   box-sizing: border-box;
-  padding: 9px 14px;
-  border: 1px solid color-mix(in srgb, var(--bch-ink) 18%, transparent);
-  border-radius: 999px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 0;
   background: var(--bch-paper);
   color: var(--bch-ink);
   font: 500 14px / 1.2 var(--bch-font-sans);
-  box-shadow:
-    0 1px 2px rgb(0 0 0 / 0.16),
-    0 3px 10px rgb(0 0 0 / 0.08);
 }
 .bch-poi-cari-isian:focus-visible {
-  outline: 2px solid var(--bch-link, #1d4ed8);
-  outline-offset: 1px;
+  outline: 2px solid var(--bch-link);
+  outline-offset: 0;
 }
 .bch-poi-cari-hasil {
   position: absolute;
@@ -706,30 +682,31 @@ main .bch-poi-kartu p {
   right: 0;
   z-index: 5;
   margin: 0;
-  padding: 4px;
+  padding: 0;
   list-style: none;
-  border: 1.5px solid var(--bch-ink);
-  border-radius: 8px;
   background: var(--bch-paper);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
 }
 .bch-poi-cari-hasil button {
   display: flex;
   align-items: center;
   gap: 8px;
   width: 100%;
-  padding: 7px 8px;
+  min-height: 40px;
+  padding: 0 12px;
   border: 0;
-  border-radius: 6px;
+  border-top: 1px solid var(--bch-rule);
   background: none;
   color: var(--bch-ink);
   font: 500 14px / 1.25 var(--bch-font-sans);
   text-align: start;
   cursor: pointer;
 }
+.bch-poi-cari-hasil li:first-child button {
+  border-top: 0;
+}
 .bch-poi-cari-hasil button:hover,
 .bch-poi-cari-hasil button:focus-visible {
-  background: rgb(0 0 0 / 0.07);
+  color: var(--bch-link);
 }
 .bch-poi-cari-hasil .bch-poi-titik {
   flex: none;
@@ -770,9 +747,6 @@ main .bch-poi-kartu p {
 .bch-poi-chip-bintang .bch-bintang {
   margin-right: 0;
 }
-.bch-poi-chip-rek[aria-pressed="false"] .bch-poi-chip-bintang .bch-bintang {
-  fill: color-mix(in srgb, #d97706 65%, var(--bch-paper));
-}
 /* Bintang rekomendasi: ikon SVG, bukan karakter, supaya tidak tampil sebagai emoji (cek bahasa). */
 .bch-bintang {
   display: inline-block;
@@ -800,16 +774,14 @@ main .bch-poi-kartu p {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  min-height: 36px;
   padding: 0 14px 0 12px;
-  border: 1px solid color-mix(in srgb, var(--bch-ink) 18%, transparent);
+  border: 1.5px solid var(--bch-garis-isian);
   border-radius: 999px;
   background: var(--bch-paper);
   color: var(--bch-ink);
   font: 600 13px / 1 var(--bch-font-sans);
   white-space: nowrap;
-  box-shadow:
-    0 1px 2px rgb(0 0 0 / 0.16),
-    0 3px 10px rgb(0 0 0 / 0.08);
   cursor: pointer;
 }
 .bch-poi-hapus svg {
@@ -819,10 +791,8 @@ main .bch-poi-kartu p {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-@media (hover: hover) {
-  .bch-poi-hapus:hover {
-    border-color: color-mix(in srgb, var(--bch-ink) 40%, transparent);
-  }
+.bch-poi-hapus:hover {
+  border-color: var(--bch-ink);
 }
 .bch-poi-kartu-rek {
   margin: 2px 0 0;
@@ -833,8 +803,16 @@ main .bch-poi-kartu p {
 
 /* Tombol Lapisan dan panel saringannya (pemilik 11 Nov 2026: "bisa ngerapiin"): deretan tombol kategori tidak lagi
    menutupi peta; pengunjung membuka panel bila ingin memilih lapisan. */
+.bch-poi-hapus.bch-poi-lapisan {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  font-size: 14px;
+}
 .bch-poi-lapisan[aria-expanded="true"] {
-  border-color: var(--bch-ink);
+  border-bottom-color: var(--bch-riso-blue);
 }
 .bch-poi-lapisan svg {
   stroke-width: 1.5;
@@ -856,15 +834,10 @@ main .bch-poi-kartu p {
   width: min(640px, calc(100vw - 2 * var(--bch-gutter)));
   max-height: min(60vh, 520px);
   overflow-y: auto;
-  padding: 14px;
+  padding: 14px 16px 16px;
   box-sizing: border-box;
-  border: 1px solid color-mix(in srgb, var(--bch-ink) 14%, transparent);
-  border-radius: 14px;
   background: var(--bch-paper);
   color: var(--bch-ink);
-  box-shadow:
-    0 2px 6px rgb(0 0 0 / 0.14),
-    0 10px 28px rgb(0 0 0 / 0.16);
 }
 .bch-poi-panel[hidden] {
   display: none;
@@ -880,10 +853,6 @@ main .bch-poi-panel-judul {
   font: 700 15px / 1.2 var(--bch-font-sans);
   text-align: start;
 }
-.bch-poi-panel-atas .bch-poi-hapus {
-  padding-block: 7px;
-  box-shadow: none;
-}
 .bch-poi-panel .bch-poi-saring {
   flex-wrap: wrap;
   overflow: visible;
@@ -892,16 +861,5 @@ main .bch-poi-panel-judul {
 }
 .bch-poi-panel .bch-poi-grup {
   flex-basis: 100%;
-  padding: 0;
-  background: none;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-.bch-poi-panel .bch-poi-chip {
-  box-shadow: none;
-}
-.bch-poi-panel .bch-poi-chip[aria-pressed="false"] {
-  background: transparent;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
+  padding-top: 4px;
 }

@@ -41,38 +41,57 @@ const BAGIAN_URUT = [
 ];
 
 test.describe("menu", () => {
-  test("bagian tampil berurutan, tanpa nomor", async ({ page }, info) => {
+  test("bagian tampil berurutan, tanpa nomor", async ({ page }) => {
     await page.goto("/");
-    // Menu lebar disembunyikan di ponsel; di sana daftar yang sama ada di menu geser.
-    if (info.project.name === "hp") await page.getByRole("button", { name: "Buka menu" }).click();
-    const nav = info.project.name === "hp" ? page.locator("#bch-toc .bch-toc-bagian") : page.locator('nav[aria-label="Bagian situs"] a');
+    // Butir langsung menu saja; tautan di panel Lainnya adalah isi bagian.
+    const nav = page.locator('nav[aria-label="Bagian situs"] > a');
     await expect(nav.first()).toBeAttached();
     // Info Loker hanya tampil bila basis data tersambung.
     const label = (await nav.allTextContents()).map((t) => t.trim());
     // Beranda di depan, terpisah dari bagian (permintaan pemilik 9 Nov 2026).
     expect(label.filter((t) => t !== "Info Loker")).toEqual(["Beranda", ...BAGIAN_URUT]);
     expect(label.length).toBeLessThanOrEqual(BAGIAN_URUT.length + 2);
-    // Menu lebar tidak boleh meluap keluar wadahnya, termasuk saat Info Loker tampil.
-    if (info.project.name !== "hp") {
-      const luap = await page.locator("nav.bch-menu").evaluate((m) => m.scrollWidth - m.clientWidth);
-      expect(luap).toBeLessThanOrEqual(0);
-    }
+    // Menu tidak boleh meluap keluar wadahnya, termasuk saat Info Loker tampil, di layar lebar maupun ponsel.
+    const luap = await page.locator("nav.bch-menu").evaluate((m) => m.scrollWidth - m.clientWidth);
+    expect(luap).toBeLessThanOrEqual(0);
   });
 
-  test("Beranda aktif hanya di beranda", async ({ page }, info) => {
-    const beranda = async () => {
-      if (info.project.name === "hp") {
-        await page.getByRole("button", { name: "Buka menu" }).click();
-        return page.locator("#bch-toc").getByRole("link", { name: "Beranda", exact: true });
-      }
-      return page.locator('nav[aria-label="Bagian situs"]').getByRole("link", { name: "Beranda", exact: true });
-    };
+  test("Beranda aktif hanya di beranda", async ({ page }) => {
+    // Di ponsel ikon Beranda tidak tampil (nama situs di kepala ke beranda), tetapi tautannya tetap ada.
+    const beranda = () => page.locator('nav[aria-label="Bagian situs"] > a.bch-menu-beranda');
     await page.goto("/");
-    await expect(await beranda()).toHaveAttribute("aria-current", "page");
+    await expect(beranda()).toHaveAttribute("aria-current", "page");
     await page.goto("/cuaca");
-    const tautan = await beranda();
-    await expect(tautan).toHaveAttribute("href", "/");
-    await expect(tautan).not.toHaveAttribute("aria-current", "page");
+    await expect(beranda()).toHaveAttribute("href", "/");
+    await expect(beranda()).not.toHaveAttribute("aria-current", "page");
+  });
+
+  test("ponsel: menu tampil dua baris tanpa burger, Lainnya membuka sisanya", async ({ page }, info) => {
+    test.skip(info.project.name !== "hp", "tombol Lainnya hanya di layar sempit");
+    await page.goto("/cuaca");
+    // Pemilik 12 Nov 2026: "jangan pakai burger bar, tampilin aja menunya".
+    await expect(page.getByRole("button", { name: "Buka menu" })).toHaveCount(0);
+    const menu = page.locator(".bch-pita-menu nav.bch-menu");
+    const tampil = await menu.locator(":scope > a, :scope > button").evaluateAll((el) =>
+      el.filter((e) => (e as HTMLElement).offsetParent !== null).map((e) => [e.textContent?.trim(), (e as HTMLElement).offsetTop]),
+    );
+    expect(tampil.map(([t]) => t)).toEqual(["Cuaca", "CCTV", "Transportasi", "Layanan Warga", "Makanan", "Things to Do", "Berita", "Lainnya"]);
+    expect(new Set(tampil.map(([, y]) => y)).size).toBe(2);
+    const lainnya = menu.getByRole("button", { name: "Lainnya" });
+    await expect(lainnya).toHaveAttribute("aria-expanded", "false");
+    await lainnya.click();
+    await expect(lainnya).toHaveAttribute("aria-expanded", "true");
+    const panel = menu.locator(".bch-menu-panel");
+    await expect(panel.getByRole("link", { name: "Jurnal", exact: true })).toBeVisible();
+    await expect(panel.getByRole("link", { name: "Cuaca", exact: true })).toHaveCount(0);
+    await page.keyboard.press("Escape");
+    await expect(panel).toBeHidden();
+    await lainnya.click();
+    await panel.getByRole("link", { name: "Kamus", exact: true }).click();
+    await expect(page).toHaveURL(/\/cerita\/kamus$/);
+    await expect(page.locator(".bch-pita-menu .bch-menu-panel")).toBeHidden();
+    // Bagian di dalam Lainnya yang sedang dibuka ditandai pada tombolnya.
+    await expect(page.locator(".bch-pita-menu .bch-menu-lainnya")).toHaveAttribute("data-aktif", "");
   });
 
   test("peta transportasi di ujung submenu, bukan di antara Trans Batam dan Feri", async ({ page }) => {

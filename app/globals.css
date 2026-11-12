@@ -422,18 +422,19 @@ h4 {
 .bch-icon-btn:hover {
   color: var(--bch-link);
 }
-.bch-menu-btn {
-  display: none;
-}
-/* Beranda (ikon) dan 14 bagian termasuk Info Loker harus muat satu baris mulai 1241 px: 14 px dan jarak 10 px. */
+/* Menu bagian. Layar lebar (mulai 1241 px): Beranda (ikon) dan 14 bagian termasuk Info Loker dalam satu baris, 14 px
+   dan jarak 10 px. Layar sedang: semua bagian dua baris di tengah. Ponsel: tujuh bagian dua baris rata kanan-kiri dan
+   tombol Lainnya untuk sisanya. Tidak ada tombol burger (pemilik 12 Nov 2026). */
 .bch-menu {
+  position: relative;
   display: flex;
   justify-content: space-between;
   gap: 10px;
   border-top: 2px solid var(--bch-rule-strong);
   border-bottom: 1px solid var(--bch-rule-strong);
 }
-.bch-menu a {
+.bch-menu > a,
+.bch-menu-lainnya {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -446,11 +447,95 @@ h4 {
   margin-bottom: -1px;
   box-sizing: border-box;
 }
-.bch-menu a:hover {
+.bch-menu > a:hover,
+.bch-menu-lainnya:hover {
   color: var(--bch-link);
 }
-.bch-menu a[aria-current="page"] {
+.bch-menu > a[aria-current="page"],
+.bch-menu-lainnya[data-aktif] {
   border-bottom-color: var(--bch-riso-blue);
+}
+.bch-menu-baris,
+.bch-menu-lainnya,
+.bch-menu-panel {
+  display: none;
+}
+.bch-menu-lainnya {
+  gap: 3px;
+  padding: 0;
+  background: none;
+  border-width: 0 0 3px;
+  font-family: inherit;
+  cursor: pointer;
+}
+.bch-menu-lainnya svg {
+  transition: transform var(--bch-dur-fast) var(--bch-ease);
+}
+.bch-menu-lainnya[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+/* Panel Lainnya: bagian sisanya dan isinya, gaya daftar isi majalah. */
+.bch-menu-panel:not([hidden]) {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: block;
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+  padding: 0 var(--bch-space-4);
+  background: var(--bch-paper);
+  border: 1.5px solid var(--bch-ink);
+  box-shadow: var(--bch-shadow-panel);
+}
+.bch-menu-panel[data-arah="bawah"] {
+  top: calc(100% + 1px);
+}
+.bch-menu-panel[data-arah="atas"] {
+  bottom: calc(100% + 2px);
+}
+.bch-menu-panel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bch-menu-panel li {
+  padding-block: 8px;
+  border-bottom: 1px solid var(--bch-rule);
+}
+.bch-menu-panel li:last-child {
+  border-bottom: 0;
+}
+.bch-menu-panel-bagian {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  color: var(--bch-ink);
+  font: 500 1.3125rem/1.2 var(--bch-font-display);
+  text-decoration: none;
+}
+.bch-menu-panel-bagian[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--bch-riso-blue);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+.bch-menu-panel-isi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 16px;
+}
+.bch-menu-panel-isi a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  color: var(--bch-ink-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.bch-menu-panel a:hover {
+  color: var(--bch-link);
 }
 /* Submenu: satu baris, sama di semua bagian. */
 .bch-submenu {
@@ -466,6 +551,9 @@ h4 {
   box-sizing: border-box;
   overflow-x: auto;
   scrollbar-width: none;
+}
+.bch-submenu-dalam::-webkit-scrollbar {
+  display: none;
 }
 .bch-submenu a {
   display: inline-flex;
@@ -489,17 +577,13 @@ h4 {
 }
 @media (max-width: 1240px) {
   .bch-menu {
-    display: none;
-  }
-  .bch-menu-btn {
-    display: inline-flex;
-  }
-  .bch-kepala-utama {
-    border-bottom: 2px solid var(--bch-rule-strong);
-    padding-block: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 22px;
+    row-gap: 0;
   }
   .bch-wordmark {
-    font-size: 24px;
+    font-size: 32px;
   }
   .bch-kepala-tanggal {
     display: none;
@@ -509,6 +593,43 @@ h4 {
   .bch-kepala-utama > span[aria-hidden="true"] {
     display: none;
   }
+  .bch-kepala-utama {
+    padding-block: 8px;
+  }
+  .bch-wordmark {
+    font-size: 26px;
+  }
+  /* Dua baris rata kanan-kiri; nama situs di kepala menjadi jalan ke beranda. */
+  .bch-menu {
+    justify-content: space-between;
+    column-gap: 8px;
+  }
+  .bch-menu > .bch-menu-beranda,
+  .bch-menu > a[data-lain] {
+    display: none;
+  }
+  .bch-menu-baris {
+    display: block;
+    flex-basis: 100%;
+    height: 0;
+  }
+  .bch-menu-lainnya {
+    display: inline-flex;
+  }
+  .bch-menu > a,
+  .bch-menu-lainnya {
+    min-height: 42px;
+  }
+}
+/* Ponsel 320 px: huruf 13 px supaya tiap baris tetap satu baris. */
+@media (max-width: 359px) {
+  .bch-menu {
+    column-gap: 6px;
+  }
+  .bch-menu > a,
+  .bch-menu-lainnya {
+    font-size: 13px;
+  }
 }
 /* Menu di luar kepala: pembungkus selebar wadah halaman, supaya garis menu tetap sebatas isi seperti sebelumnya. */
 .bch-pita-menu {
@@ -517,52 +638,6 @@ h4 {
   margin-inline: auto;
   padding-inline: var(--bch-gutter);
   box-sizing: border-box;
-}
-
-/* Menu ponsel: layar penuh, semua bagian dan isinya */
-.bch-toc {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  overflow-y: auto;
-  background: var(--bch-paper);
-  padding: 60px var(--bch-gutter) var(--bch-space-7);
-}
-.bch-toc-tutup {
-  position: absolute;
-  top: 8px;
-  right: var(--bch-gutter);
-}
-.bch-toc ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-top: 2px solid var(--bch-rule-strong);
-}
-.bch-toc li {
-  padding-block: 10px;
-  border-bottom: 1px solid var(--bch-rule);
-}
-.bch-toc-bagian {
-  display: block;
-  padding-block: 4px;
-  color: var(--bch-ink);
-  font: 500 1.4375rem/1.25 var(--bch-font-display);
-  text-decoration: none;
-}
-.bch-toc-isi {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 16px;
-}
-.bch-toc-isi a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  color: var(--bch-ink-muted);
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-decoration: none;
 }
 
 /* ---------- Kaki halaman: peta situs ---------- */
@@ -2222,8 +2297,7 @@ main h1 + .bch-note {
     align-items: center;
     min-height: 44px;
   }
-  .bch-submenu a,
-  .bch-toc a {
+  .bch-submenu a {
     display: inline-flex;
     align-items: center;
     min-height: 44px;

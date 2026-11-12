@@ -253,7 +253,7 @@
   color: var(--bch-ink);
   border: 1.5px solid var(--bch-ink);
   border-bottom: 0;
-  border-radius: 10px 10px 0 0;
+  border-radius: var(--bch-radius-panel) var(--bch-radius-panel) 0 0;
 }
 .mk-lembar[open] {
   display: flex;
@@ -264,7 +264,7 @@
   .mk-lembar {
     margin: auto;
     border-bottom: 1.5px solid var(--bch-ink);
-    border-radius: 10px;
+    border-radius: var(--bch-radius-panel);
   }
 }
 .mk-lembar::backdrop {
@@ -785,7 +785,7 @@
   width: 100%;
   height: auto;
   border: 1.5px solid var(--bch-ink);
-  border-radius: 10px;
+  border-radius: var(--bch-radius-panel);
   background: white;
 }
 .mk-peta-cetak-titik circle {
@@ -936,7 +936,7 @@
   max-height: 760px;
   min-height: 420px;
   border: 1.5px solid var(--bch-ink);
-  border-radius: 10px;
+  border-radius: var(--bch-radius-panel);
   overflow: hidden;
 }
 .mk-peta-catatan {
@@ -1075,7 +1075,7 @@
   padding: var(--bch-space-2) var(--bch-space-3);
   background: var(--bch-paper);
   border: 1.5px solid var(--bch-ink);
-  border-radius: 10px;
+  border-radius: var(--bch-radius-panel);
   font-size: 0.875rem;
 }
 .mk-peta .maplibregl-ctrl-attrib {
@@ -1087,7 +1087,7 @@
 .mk-peta-bingkai {
   height: 300px;
   border: 1.5px solid var(--bch-ink);
-  border-radius: 10px;
+  border-radius: var(--bch-radius-panel);
   overflow: hidden;
 }
 .mk-kartu-mini {
@@ -1098,7 +1098,7 @@
   padding: var(--bch-space-3) var(--bch-space-4) var(--bch-space-4);
   background: var(--bch-paper);
   border: 1.5px solid var(--bch-ink);
-  border-radius: 10px;
+  border-radius: var(--bch-radius-panel);
   box-shadow: var(--bch-shadow-panel);
 }
 .mk-kartu-mini-atas {
@@ -1710,7 +1710,7 @@
     min-height: 320px;
     max-height: none;
     margin-bottom: var(--bch-space-4);
-    border-radius: 8px;
+    border-radius: var(--bch-radius-panel);
   }
 }
 @media (max-width: 999px) {

@@ -54,33 +54,38 @@ type Mentah = {
   pju?: [number, number][];
 };
 
-/** Warna per kategori (kategori baru tanpa warna memakai abu). */
+/**
+ * Warna per kategori, disamakan dengan kelompok penanda peta kerja (PEDOMAN 5.4, tools/grafis/ikon.json) supaya satu
+ * jenis tempat berwarna sama di semua peta situs (penyelarasan 12 Nov 2026): makan jingga, menginap ungu, ibadah hijau
+ * tua, kesehatan merah Riso, transportasi biru Riso, belanja kuning Riso, cerita dan sejarah ungu tua, alam hijau.
+ * Kategori di luar delapan kelompok itu memakai warna status atau tinta. Kategori baru tanpa warna memakai abu.
+ */
 const WARNA: Record<string, string> = {
-  hotel: "#2563eb",
-  mal: "#ea580c",
-  wisata: "#16a34a",
-  oleh: "#c026d3",
-  transport: "#0891b2",
-  uang: "#ca8a04",
-  seafood: "#e11d48",
-  ibadah: "#0f766e",
-  golf: "#84cc16",
-  kampung: "#92400e",
-  rs: "#7c3aed",
-  spa: "#f472b6",
-  darurat: "#111827",
-  kuliner: "#b91c1c",
-  belanja: "#7e22ce",
-  olahraga: "#0284c7",
-  kecamatan: "#334155",
-  perumahan: "#b45309",
-  rusun: "#9333ea",
-  taman: "#15803d",
-  kebunraya: "#4d7c0f",
-  waduk: "#0369a1",
-  puncak: "#78350f",
-  industri: "#475569",
-  malam: "#f59e0b",
+  hotel: "#765BA7",
+  mal: "#FFB511",
+  belanja: "#FFB511",
+  uang: "#9A6400",
+  wisata: "#00995A",
+  golf: "#00995A",
+  olahraga: "#00995A",
+  oleh: "#E85A1F",
+  seafood: "#E85A1F",
+  kuliner: "#E85A1F",
+  transport: "#0078BF",
+  ibadah: "#407060",
+  kampung: "#914E72",
+  rs: "#F15060",
+  spa: "#765BA7",
+  darurat: "#B42318",
+  kecamatan: "#161616",
+  perumahan: "#9A6400",
+  rusun: "#765BA7",
+  taman: "#00995A",
+  kebunraya: "#407060",
+  waduk: "#0067A5",
+  puncak: "#914E72",
+  industri: "#5B5B5B",
+  malam: "#FFB511",
 };
 export const warnaKategori = (k: Kategori) => WARNA[k] ?? "#6b7280";
 
@@ -91,8 +96,11 @@ export async function muatTempat(url: string): Promise<DataTempat> {
   const g = d.grup ?? "tempat";
   return {
     sumber: [d.sumber],
-    // Nama kategori tampil sebagai label saringan, jadi Title Case (PEDOMAN koreksi 4): "Mal & pasar" jadi "Mal & Pasar".
-    kategori: Object.fromEntries(Object.entries(d.kategori).map(([k, v]) => [k, kaidahJudul(v)])),
+    // Nama kategori tampil sebagai label saringan, jadi Title Case (PEDOMAN koreksi 4), dan "&" ditulis "dan" (2.7):
+    // "Mal & pasar" jadi "Mal dan Pasar".
+    kategori: Object.fromEntries(
+      Object.entries(d.kategori).map(([k, v]) => [k, kaidahJudul(v.replace(/\s*&\s*/g, " dan "))]),
+    ),
     grup: Object.fromEntries(Object.keys(d.kategori).map((k) => [k, g])),
     bawaanSembunyi: d.bawaan_sembunyi ?? [],
     tempat: d.poi.map((p) => ({

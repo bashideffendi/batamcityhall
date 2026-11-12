@@ -59,7 +59,7 @@
 
   /* bentuk */
   --bch-radius-pill: 999px;
-  --bch-radius-panel: 10px;
+  --bch-radius-panel: 0; /* persegi seperti kotak di sampul beranda (penyelarasan 12 Nov 2026) */
   --bch-shadow-panel: 0 10px 30px rgba(0, 0, 0, .12); /* hanya panel yang melayang di atas peta */
   --bch-wrap: 1248px;
 }

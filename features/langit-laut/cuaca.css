@@ -44,7 +44,7 @@
   overflow: hidden;
   background: var(--bch-map-sea);
   border: 1.5px solid var(--bch-rule-strong);
-  border-radius: 10px;
+  border-radius: var(--bch-radius-panel);
 }
 .app-root .cu-peta .ll-peta {
   position: absolute;
@@ -414,7 +414,9 @@
     max-width: none;
     margin: 0;
     padding: 0;
-    height: calc(100dvh - 151px);
+    /* Tinggi kepala (darurat, nama situs, menu dua baris, submenu) diukur 12 Nov 2026: 239 px di 701-899 px, 230 px
+       di ponsel. Lembar bawah tertutup dan judulnya tetap di layar pertama. */
+    height: calc(100dvh - 239px);
     min-height: 30rem;
     border-bottom: 0;
   }
@@ -526,4 +528,9 @@
 main .cu-panel p {
   text-align: start;
   hyphens: manual;
+}
+@media (max-width: 700px) {
+  .cu-kerja {
+    height: calc(100dvh - 230px);
+  }
 }
