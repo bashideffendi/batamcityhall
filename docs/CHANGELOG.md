@@ -2,6 +2,8 @@
 
 ## 2026-11-12 · Menu ponsel tanpa burger, tampilan peta diselaraskan
 
+Tayang sejak `6916cc9` (12 November 2026): di barelang.co menu HP dua baris dengan Lainnya (juga di pita sampul), baris darurat bernama tanpa luapan di 320—412 px, dan Jelajahi dengan kendali kotak putih serta saringan baru.
+
 Permintaan pemilik 12 November 2026 (tangkapan sampul di HP dengan tombol Menu di bawahnya): "lakukan improvement dan audit design baik web atau mobile ... semuanya dibuat sinkronlah grafisnya, designnya, itu menu di mobile jangan pakai burger bar, tampilin aja menunya, mau dibuat tingkat dua pun boleh ada button more". Rinciannya di PEDOMAN blok "Penyelarasan tampilan, 12 Nov 2026".
 
 - **Audit** (tangkapan layar desktop 1440 px, tablet 1024 px, HP 390 dan 320 px): menu bagian di bawah 1241 px tersembunyi di balik tombol burger (kepala halaman) atau tombol Menu (sampul); di beranda ada tiga gaya kendali peta yang berbeda (kotak putih persegi di sampul, pil hitam dan pil berbayang dengan efek kaca di Jelajahi, kotak bergaris membulat di Peta Tempat); bingkai peta dan panel membulat 6—14 px sementara kotak sampul persegi; warna kategori Jelajahi memakai palet sendiri (Hotel biru di Jelajahi, ungu di Peta Tempat); nama kategori memakai "&" dan teks contoh cari memakai elipsis; petunjuk pasang di iPhone tampil sebagai kotak sempit di tengah peta dengan teks patah per dua kata.
