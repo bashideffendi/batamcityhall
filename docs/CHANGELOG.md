@@ -14,6 +14,8 @@ Permintaan pemilik 12 November 2026: seluruh teks situs diaudit memakai panduan 
 - **Pemeriksaan otomatis:** `cek-bahasa` menolak singkatan (dll., dsb., mis., est., yg, dan sejenisnya), "klik di sini", "baca selengkapnya", "penderita", "penyandang cacat", dan "Apakah kamu yakin". `cek-keluaran` memeriksa singkatan di HTML hasil build, kecuali Dataset dan Berita. PEDOMAN 7.3 menambah cek RASA sebagai pemeriksaan akhir.
 - Tes: `beranda-modul.spec.ts` memeriksa nama tautan Selengkapnya untuk pembaca layar, `jalan.spec.ts` daftar feri terakhir, `rombak.spec.ts` label newsletter yang tampil.
 
+Tayang sejak `a0f3f06` (12 November 2026): di barelang.co tautan Selengkapnya di beranda menyebut tujuannya untuk pembaca layar, label Alamat Email tampil di kaki situs, daftar feri terakhir dan syarat gempa tampil sebagai daftar, dan perbaikan singkatan serta pesan 404 terlihat di halamannya.
+
 ## 2026-11-12 · Menu ponsel tanpa burger, tampilan peta diselaraskan
 
 Tayang sejak `6916cc9` (12 November 2026): di barelang.co menu HP dua baris dengan Lainnya (juga di pita sampul), baris darurat bernama tanpa luapan di 320—412 px, dan Jelajahi dengan kendali kotak putih serta saringan baru.
