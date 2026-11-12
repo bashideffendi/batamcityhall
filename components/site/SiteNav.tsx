@@ -46,7 +46,7 @@ function BarisDarurat() {
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2.5 1.5 21h21L12 2.5Zm-1.2 7h2.4l-.3 6h-1.8l-.3-6Zm1.2 7.6a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8Z" />
           </svg>
-          Darurat
+          <span className="bch-darurat-tanda-teks">Darurat</span>
         </Link>
         <ul>
           {DARURAT.map((d) => (
