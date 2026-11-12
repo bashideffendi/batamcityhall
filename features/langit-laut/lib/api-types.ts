@@ -171,7 +171,8 @@ export type OfsResponse = {
   nowIndex: number;
   /** true kalau baserun BUKAN dari modelrun (probe/blind). */
   fallback: boolean;
-  source: "modelrun" | "probe" | "blind";
+  /** "copernicus": daftar waktu dihitung di peramban (lib/copernicus.ts), bukan dari server. */
+  source: "modelrun" | "probe" | "blind" | "copernicus";
   /** umur run (jam). */
   ageH: number;
   /** frame terakhir sudah lewat → data belum diperbarui BMKG. */

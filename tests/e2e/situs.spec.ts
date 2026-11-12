@@ -118,8 +118,9 @@ test.describe("peta", () => {
     await page.goto("/");
     await petaSiap(page);
     await expect(page.locator("#isi")).toContainText("OpenStreetMap");
-    await expect(page.getByRole("button", { name: "Perbesar peta" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Perkecil peta" })).toBeVisible();
+    // exact: sampul punya tombol sendiri "Perbesar peta isometrik"
+    await expect(page.getByRole("button", { name: "Perbesar peta", exact: true })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Perkecil peta", exact: true })).toBeVisible();
   });
 
   test("tidak ada galat konsol dan tidak ada permintaan ke luar situs", async ({ page, baseURL }) => {

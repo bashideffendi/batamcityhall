@@ -1,8 +1,9 @@
 "use client";
 
-import { Map as MapLibre, type ErrorEvent } from "maplibre-gl";
+import { LngLat, Map as MapLibre, type ErrorEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { batasiKamera } from "@/features/peta/cakupan-ubin";
 import { pasangGlobalPeta, webglAda } from "@/features/peta/global";
 import { baseStyle, SOURCE_ID, type MapTheme } from "@/features/peta/style";
 import { gabungGaya, sisipSebelum } from "@/features/langit-laut/lib/peta-lapisan";
@@ -44,6 +45,11 @@ export type OpsiPeta = {
   selubung?: boolean;
   /** Atribusi sudah ditulis di bawah peta. */
   tanpaAtribusi?: boolean;
+  /**
+   * Tanpa maxBounds: kamera dibatasi cakupan ubin peta dasar (features/peta/cakupan-ubin.ts), supaya daratan
+   * tidak pernah tampak terpotong di tepi berkas peta.
+   */
+  ikutiUbin?: boolean;
 };
 
 export default function PetaLangit({ theme, children, opsi }: { theme: ThemeMode; children: ReactNode; opsi?: OpsiPeta }) {
@@ -63,6 +69,15 @@ export default function PetaLangit({ theme, children, opsi }: { theme: ThemeMode
       style: baseStyle(temaPeta(temaAwal.current), window.location.origin, { chart: !!opsiAwal.current?.selubung }),
       ...(opsiAwal.current?.bounds ? { bounds: opsiAwal.current.bounds, fitBoundsOptions: { padding: 24 } } : { center: [104.0, 0.9] as [number, number], zoom: 8 }),
       ...(opsiAwal.current?.maxBounds ? { maxBounds: opsiAwal.current.maxBounds } : {}),
+      ...(opsiAwal.current?.ikutiUbin
+        ? {
+            transformConstrain: (ll: LngLat, zoom: number) => {
+              if (!el.clientWidth || !el.clientHeight) return { center: ll, zoom };
+              const k = batasiKamera(ll.lng, ll.lat, zoom, el.clientWidth, el.clientHeight);
+              return { center: new LngLat(k.lng, k.lat), zoom: k.zoom };
+            },
+          }
+        : {}),
       cooperativeGestures: opsiAwal.current?.koperatif ?? false,
       minZoom: MIN_ZOOM,
       maxZoom: MAX_ZOOM,

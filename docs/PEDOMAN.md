@@ -505,6 +505,7 @@ Peringatan gelombang: tidak ada untuk perairan Batam.
   - [Putar] / [Jeda]
   - Penggeser: "Pukul {jam} WIB"
   - Cakupan: Batam · Kepulauan Riau · Luas · Natuna
+  - Data Peta: BMKG · Copernicus (bawaan BMKG, pilihan diingat). Bila ubin BMKG gagal dimuat, peta memakai Copernicus dan baris masalah berbunyi "Peta gelombang BMKG sedang tidak tersedia, jadi peta memakai prakiraan Copernicus." Ubin Copernicus diwarnai dengan skala BMKG, jadi legenda dan kategori sama.
 - Bagian: **Prakiraan Perairan Batam**
   - Label: Tinggi gelombang · 12 jam ke depan · Angin · Embusan · Arus · Cuaca · Peringatan · Berlaku · Diterbitkan
 - Bagian: **Kategori Gelombang** (tabel kecil)

@@ -36,6 +36,7 @@ Sejak rombak menu November 2026: CCTV pindah ke `/cctv`, klaster kamera diganti 
 - ✔ Label Langsung/Tertunda/Terputus dihitung di klien dari umur citra — kode
 - ✔ Frame 404 dilewati, tidak pernah tampil sebagai "tidak hujan" — e2e
 - ✔ Run OFS basi/kedaluwarsa ditandai (`source`, `ageH`, `expired`) — kode, ikut `source` dari route
+- ✔ Ubin OFS BMKG gagal dimuat (12 Nov 2026: jalur `api21` BMKG 404 sejak situs maritim baru) → peta beralih ke Copernicus Marine dan panel menulis "Peta gelombang BMKG sedang tidak tersedia, jadi peta memakai prakiraan Copernicus." Pilihan Data Peta (BMKG atau Copernicus) diingat per perangkat — e2e
 - ✔ CCTV: playlist dicek dulu (`#EXT-X-ENDLIST` = mati, `Last-Modified` tua = beku), nol byte video sebelum dipilih — live: 0 permintaan ke server kamera sebelum pin dipilih, e2e juga
 - ✔ Satu stream saja, tanpa grid dan autoplay massal, berhenti saat tab disembunyikan, perkiraan konsumsi data tampil — live: tampil "Sekitar 20 MB per Menit"; berhenti saat tab disembunyikan kode
 - ✔ hls.js build penuh, bukan `light` (ada kamera H.265) — `lib/cctv.ts`

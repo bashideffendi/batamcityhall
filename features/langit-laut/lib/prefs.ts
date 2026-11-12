@@ -8,6 +8,8 @@ export const PREF = {
   recentCams: "bch-ll-cams-recent",
   /** "1" = petunjuk "Ketuk Pin atau Angka…" sudah tidak perlu (kamera pertama sudah dipilih) */
   camHint: "bch-ll-cam-hint",
+  /** "bmkg" atau "copernicus": sumber peta tinggi gelombang yang dipilih pembaca */
+  sumberGelombang: "bch-ll-sumber-gelombang",
 } as const;
 
 export function readPref(key: string): string | null {
@@ -21,6 +23,28 @@ export function readPref(key: string): string | null {
 export function writePref(key: string, value: string): void {
   try {
     localStorage.setItem(key, value);
+  } catch {
+    /* abaikan */
+  }
+}
+
+const BMKG_MATI = "bch-ll-bmkg-mati";
+const BMKG_MATI_MS = 30 * 60 * 1000;
+
+/** Ubin gelombang BMKG gagal dimuat dalam 30 menit terakhir di tab ini: langsung pakai Copernicus. */
+export function bmkgBaruGagal(): boolean {
+  try {
+    const t = Number(sessionStorage.getItem(BMKG_MATI));
+    return t > 0 && Date.now() - t < BMKG_MATI_MS;
+  } catch {
+    return false;
+  }
+}
+
+export function catatBmkgGagal(gagal: boolean): void {
+  try {
+    if (gagal) sessionStorage.setItem(BMKG_MATI, String(Date.now()));
+    else sessionStorage.removeItem(BMKG_MATI);
   } catch {
     /* abaikan */
   }

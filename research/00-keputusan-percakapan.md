@@ -4,6 +4,7 @@
 
 ## 1. Identitas proyek
 - **Nama (11 Nov 2026):** Barelang.co, keputusan pemilik; domain barelang.co, akun media sosial barelangdotco. Menggantikan nama awal di bawah.
+- **Peta gelombang dua sumber (12 Nov 2026):** keputusan pemilik ("bikin jadi 2 opsi copernicus dan bmkg, aku udah terbiasa dengan bmkg"). Pilihan Data Peta BMKG atau Copernicus Marine, bawaan BMKG. Ubin OFS BMKG (`api21`) 404 sejak situs maritim baru BMKG, jadi selama BMKG gagal dimuat peta memakai Copernicus dan panel menyebutnya.
 - **Peta isometrik Barelang tayang (11 Nov 2026):** keputusan pemilik ("ditayangkan, gausah ngelarang ngelarang"; "sekarang kendali ada padaku"), menggantikan catatan barelang-iso bahwa peta hanya untuk uji lokal karena lisensi riset model gambarnya. Ubin disimpan di Cloudflare Pages gratis tanpa kartu (pemilik: "pastikan tidak ada biaya"); situs tetap di Railway.
 - **Nama awal:** Batam City Hall. Dipilih user. Disertai tagline yang menegaskan ini bukan situs resmi, misalnya "Balai warga, bukan balai kota".
 - **Footer wajib:** "Proyek independen warga Batam, bukan situs resmi Pemerintah Kota Batam atau BP Batam. Untuk layanan resmi: batam.go.id."

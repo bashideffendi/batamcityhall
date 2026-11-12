@@ -17,6 +17,8 @@ import RadarLayer from "@/features/langit-laut/components/RadarLayer";
 import { Sakelar } from "@/features/langit-laut/components/panel/Controls";
 import type { FramesResponse } from "@/features/langit-laut/lib/api-types";
 import type { Cam } from "@/features/langit-laut/lib/cctv";
+import type { SumberGelombang } from "@/features/langit-laut/lib/copernicus";
+import { PREF, bmkgBaruGagal, catatBmkgGagal, readPref } from "@/features/langit-laut/lib/prefs";
 import { ageMinutesOf } from "@/features/langit-laut/lib/radar";
 import { RADAR_OLD_MIN } from "@/features/langit-laut/lib/status";
 import { cariPin, type PesanLokasi } from "./CariPeta";
@@ -217,7 +219,23 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
   const now = useNow(30_000);
 
   const frames = useResource<FramesResponse>("/api/frames", SEGAR_MS, lapisan.radar, false);
-  const ofs = useOfs({ enabled: lapisan.gelombang, playing: false, onSweepEnd: tanpaAksi });
+  // Sumber gelombang mengikuti pilihan di halaman Tinggi Gelombang; BMKG gagal dimuat → Copernicus.
+  const [bmkgMati, setBmkgMati] = useState(bmkgBaruGagal);
+  const sumberGelombang: SumberGelombang =
+    bmkgMati || readPref(PREF.sumberGelombang) === "copernicus" ? "copernicus" : "bmkg";
+  const ofs = useOfs({ enabled: lapisan.gelombang, playing: false, onSweepEnd: tanpaAksi, sumber: sumberGelombang });
+  const { setTilesDown: setOfsDown, gantiSumber } = ofs;
+  const ubinGelombangDown = useCallback(
+    (down: boolean) => {
+      setOfsDown(down);
+      if (down && sumberGelombang === "bmkg") {
+        setBmkgMati(true);
+        catatBmkgGagal(true);
+        gantiSumber("copernicus");
+      }
+    },
+    [setOfsDown, gantiSumber, sumberGelombang],
+  );
   const citra = frames.data?.frames?.at(-1);
   const umur = citra ? ageMinutesOf(citra.ts, now) : null;
   const urlRadar = citra && umur !== null && umur <= RADAR_OLD_MIN ? citra.url : null;
@@ -364,8 +382,14 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
           <KendaliPeta onMap={setMap} />
           {semuaPin && <LapisanTempat fitur={fitur} pilihId={pilihId} onPilih={ubahPilih} />}
           {lapisan.radar && <RadarLayer url={urlRadar} opacity={0.85} onBroken={tanpaAksi} />}
-          {lapisan.gelombang && ofs.ofs?.baserun && validOfs && (
-            <OfsField baserun={ofs.ofs.baserun} valid={validOfs} opacity={0.4} onTilesDown={ofs.setTilesDown} />
+          {lapisan.gelombang && ofs.ofs?.baserun && validOfs && (ofs.ofs.source === "copernicus") === (sumberGelombang === "copernicus") && (
+            <OfsField
+              sumber={sumberGelombang}
+              baserun={ofs.ofs.baserun}
+              valid={validOfs}
+              opacity={0.4}
+              onTilesDown={ubinGelombangDown}
+            />
           )}
           {lapisan.gelombang && <LandMask theme={theme === "dark" ? "dark" : "light"} onStatus={ofs.setMaskOk} />}
           {lapisan.kamera && (

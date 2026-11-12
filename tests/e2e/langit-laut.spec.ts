@@ -70,7 +70,7 @@ const ECHO_HUJAN = {
 
 async function tiruSumber(
   page: Page,
-  opsi: { citraGagal?: boolean; echo?: unknown; statusKamera?: Record<string, unknown> } = {},
+  opsi: { citraGagal?: boolean; echo?: unknown; statusKamera?: Record<string, unknown>; bmkgMati?: boolean } = {},
 ) {
   await page.route("**/api/berita", (r) => r.fulfill({ status: 503, json: {} }));
   await page.route("**/api/cctv-status", (r) =>
@@ -116,7 +116,21 @@ async function tiruSumber(
       },
     }),
   );
-  await page.route("**/maritim.bmkg.go.id/**", (r) => r.fulfill({ contentType: "image/png", body: png }));
+  const cors = { "Access-Control-Allow-Origin": "*" };
+  await page.route("**/maritim.bmkg.go.id/**", (r) =>
+    opsi.bmkgMati
+      ? r.fulfill({ status: 404, headers: cors, body: "" })
+      : r.fulfill({ contentType: "image/png", headers: cors, body: png }),
+  );
+  // Copernicus Marine: legenda skala abu-abu (merah = indeks) dan ubin PNG.
+  await page.route("**/wmts.marine.copernicus.eu/**", (r) =>
+    r.request().url().includes("GetLegend")
+      ? r.fulfill({
+          headers: cors,
+          json: { continuous: { cmap: { colorMap: Array.from({ length: 256 }, (_, i) => [i, i, i]) } } },
+        })
+      : r.fulfill({ contentType: "image/png", headers: cors, body: png }),
+  );
 }
 
 const petaSiap = (page: Page) => expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 45_000 });
@@ -182,6 +196,36 @@ test.describe("Cuaca dan CCTV", () => {
     await expect
       .poll(() => diminta.some((u) => u.includes("maritim.bmkg.go.id/api21/mpl_req/w3g_hires/swh")))
       .toBe(true);
+  });
+
+  test("ubin BMKG gagal: peta gelombang beralih ke Copernicus dan berkata jujur", async ({ page }) => {
+    await tiruSumber(page, { bmkgMati: true });
+    const diminta: string[] = [];
+    page.on("request", (r) => diminta.push(r.url()));
+    await page.goto(HALAMAN_MODE.ombak);
+    await petaSiap(page);
+    await bukaPanel(page);
+    await expect(page.locator(".cu-masalah")).toContainText("BMKG sedang tidak tersedia", { timeout: 30_000 });
+    await expect(page.getByRole("button", { name: "Copernicus", pressed: true })).toBeVisible();
+    await expect.poll(() => diminta.some((u) => u.includes("wmts.marine.copernicus.eu") && u.includes("GetTile"))).toBe(true);
+  });
+
+  test("pilihan Data Peta: Copernicus dipilih sendiri dan diingat", async ({ page }) => {
+    await tiruSumber(page);
+    const diminta: string[] = [];
+    page.on("request", (r) => diminta.push(r.url()));
+    await page.goto(HALAMAN_MODE.ombak);
+    await petaSiap(page);
+    await bukaPanel(page);
+    await expect(page.getByRole("button", { name: "BMKG", pressed: true })).toBeVisible();
+    await page.getByRole("button", { name: "Copernicus" }).click();
+    await expect(page.getByRole("button", { name: "Copernicus", pressed: true })).toBeVisible();
+    await expect(page.locator(".cu-masalah")).toHaveCount(0);
+    await expect.poll(() => diminta.some((u) => u.includes("wmts.marine.copernicus.eu") && u.includes("GetTile"))).toBe(true);
+    await page.reload();
+    await petaSiap(page);
+    await bukaPanel(page);
+    await expect(page.getByRole("button", { name: "Copernicus", pressed: true })).toBeVisible();
   });
 
   test("citra 404 tidak pernah tampil sebagai tidak hujan", async ({ page }) => {

@@ -2,15 +2,20 @@
 
 import type { ErrorEvent, MapSourceDataEvent } from "maplibre-gl";
 import { useEffect, useRef } from "react";
+import { urlUbinCopernicus, type SumberGelombang } from "@/features/langit-laut/lib/copernicus";
+import { pasangProtokolCopernicus } from "@/features/langit-laut/lib/copernicus-ubin";
 import { OFS_TILE } from "@/features/langit-laut/lib/radar";
+import { ofsTilePath } from "@/features/langit-laut/lib/sources";
 import { tambahLayer, usePeta } from "./PetaLangit";
 
-// Field gelombang OFS (TMS tile contourf BMKG) dengan DOUBLE-BUFFER: tiap frame jadi sumber baru yang
+// Field gelombang (TMS tile contourf BMKG, atau ubin Copernicus yang diwarnai ulang) dengan DOUBLE-BUFFER: tiap frame jadi sumber baru yang
 // disembunyikan sampai tile-nya siap, baru menggantikan yang lama, jadi laut tidak berkedip kosong.
 //
 // Sekalian mendeteksi tile ditolak: ≥3 galat tanpa satu pun tile berhasil → onTilesDown(true), supaya
-// panel bisa jujur "tile gagal dimuat".
+// panel bisa jujur "tile gagal dimuat". MapLibre diam saja untuk ubin 404 (dianggap ubin kosong), jadi untuk
+// BMKG ada satu ubin uji di perairan Batam per run: bila ubin itu pun tidak ada, layanan BMKG dianggap mati.
 type Props = {
+  sumber: SumberGelombang;
   baserun: string;
   valid: string;
   opacity: number;
@@ -20,7 +25,7 @@ type Props = {
 const SAFETY_MS = 4000;
 let nomor = 0;
 
-export default function OfsField({ baserun, valid, opacity, onTilesDown }: Props) {
+export default function OfsField({ sumber, baserun, valid, opacity, onTilesDown }: Props) {
   const map = usePeta();
   const aktif = useRef<string[]>([]);
   const opacityRef = useRef(opacity);
@@ -31,16 +36,48 @@ export default function OfsField({ baserun, valid, opacity, onTilesDown }: Props
     onDownRef.current = onTilesDown;
   });
 
+  // Ubin uji BMKG: sekali per run, di waktu yang sedang tampil saat run itu dimuat.
+  const validRef = useRef(valid);
+  useEffect(() => {
+    validRef.current = valid;
+  });
+  useEffect(() => {
+    if (sumber !== "bmkg") return;
+    const ctrl = new AbortController();
+    // z7 x100 y64 (skema TMS) = perairan Batam, ubin yang sama dengan probe di app/api/ofs-frame.
+    fetch(ofsTilePath(baserun, validRef.current, 7, 100, 64), { signal: ctrl.signal })
+      .then((r) => {
+        if (!r.ok || !(r.headers.get("content-type") ?? "").includes("image")) onDownRef.current?.(true);
+      })
+      .catch((e: unknown) => {
+        if (!ctrl.signal.aborted) onDownRef.current?.(true);
+        return e;
+      });
+    return () => ctrl.abort();
+  }, [sumber, baserun]);
+
   useEffect(() => {
     const id = `ll-ofs-${++nomor}`;
     const adaYangLama = aktif.current.length > 0;
-    map.addSource(id, {
-      type: "raster",
-      tiles: [OFS_TILE(baserun, valid)],
-      scheme: "tms",
-      tileSize: 256,
-      maxzoom: 8,
-    });
+    if (sumber === "copernicus") {
+      pasangProtokolCopernicus();
+      // Kisi model 1/12 derajat (sekitar 9 km): di atas zoom 8 ubin cukup diperbesar.
+      map.addSource(id, {
+        type: "raster",
+        tiles: [urlUbinCopernicus(valid)],
+        tileSize: 256,
+        maxzoom: 8,
+        attribution: "Copernicus Marine Service",
+      });
+    } else {
+      map.addSource(id, {
+        type: "raster",
+        tiles: [OFS_TILE(baserun, valid)],
+        scheme: "tms",
+        tileSize: 256,
+        maxzoom: 8,
+      });
+    }
     // Frame pertama langsung tampil. Frame berikutnya menunggu tile-nya siap.
     tambahLayer(map, {
       id,
@@ -86,7 +123,7 @@ export default function OfsField({ baserun, valid, opacity, onTilesDown }: Props
       map.off("error", onError);
       map.off("sourcedata", onData);
     };
-  }, [map, baserun, valid]);
+  }, [map, sumber, baserun, valid]);
 
   // Keluar mode OMBAK: lepas semua sumber.
   useEffect(

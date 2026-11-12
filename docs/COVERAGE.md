@@ -13,6 +13,7 @@ Aturan:
 
 - [x] app/langit-laut, features/langit-laut · hujandibatam: semua fitur di daftar paritas berjalan di /cuaca
 - [x] docs/PARITAS.md · hujandibatam: semua aturan kejujuran (proksi MSS, Langsung/Tertunda/Terputus, frame 404, OFS basi, cek playlist CCTV, tanpa autoplay massal) dipertahankan
+- [x] features/langit-laut/lib/copernicus.ts, copernicus-ubin.ts, components/OfsField.tsx, features/peta/cakupan-ubin.ts · Tinggi Gelombang: pilihan Data Peta BMKG atau Copernicus (keputusan pemilik 12 Nov 2026), cadangan otomatis saat ubin BMKG gagal, dan kamera peta cuaca tidak bisa melihat tepi berkas peta dasar
 - [x] docs/PARITAS.md, terhadap kode lama lokal karena situs lama mati · hujandibatam: uji paritas visual radar & ombak (situs lama vs baru) lulus
 - [x] /makan (9 route), docs/PARITAS.md semua butir batam-bites lulus kecuali satu sebagian (situs belum punya tombol bahasa, Makan punya tombol sendiri) · batam-bites: semua fitur di daftar paritas berjalan di /makan
 - [x] scripts/konversi-makan.mjs, data/places/17-batam-bites.json · batam-bites: data dipindah ke data/makan/, konversi ke data/places/17-batam-bites.json, kategori `kuliner` ditambahkan

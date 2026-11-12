@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { OfsResponse, PerairanResponse } from "@/features/langit-laut/lib/api-types";
 import { isAbort } from "@/features/langit-laut/lib/client";
+import { framesCopernicus, type SumberGelombang } from "@/features/langit-laut/lib/copernicus";
 import { useAbortableFetch } from "./useAbortableFetch";
 import { usePolling } from "./usePolling";
 import { useResource } from "./useResource";
@@ -14,17 +15,19 @@ const PERAIRAN_MS = 30 * 60 * 1000;
 const OFS_PLAY_MS = 1100; // animasi timeline gelombang lebih pelan dari radar
 
 /**
- * Pipeline OMBAK: run & frame OFS BMKG, posisi timeline (terpisah dari radar supaya balik
+ * Pipeline OMBAK: run & frame OFS BMKG (atau daftar waktu Copernicus), posisi timeline (terpisah dari radar supaya balik
  * mode posisi masing-masing tetap), status tile/mask, dan prakiraan teks perairan Batam.
  */
 export function useOfs({
   enabled,
   playing,
   onSweepEnd,
+  sumber,
 }: {
   enabled: boolean;
   playing: boolean;
   onSweepEnd: () => void;
+  sumber: SumberGelombang;
 }) {
   const [ofs, setOfs] = useState<OfsResponse | null>(null);
   const [idx, setIdx] = useState(0);
@@ -36,16 +39,19 @@ export function useOfs({
   const idxRef = useRef(0);
   const manualRef = useRef(false); // pengguna memilih posisi sendiri → refetch jangan menarik balik
   const endRef = useRef(onSweepEnd);
+  const sumberRef = useRef(sumber);
   useEffect(() => {
     idxRef.current = idx;
     endRef.current = onSweepEnd;
+    sumberRef.current = sumber;
   });
 
   const fetchJson = useAbortableFetch();
   const load = useCallback(
-    async (resetIdx: boolean) => {
+    async (resetIdx: boolean, s: SumberGelombang = sumberRef.current) => {
       try {
-        const d = await fetchJson<OfsResponse>("/api/ofs-frame");
+        // Copernicus: daftar waktu dihitung dari jam sekarang, tanpa server.
+        const d = s === "copernicus" ? framesCopernicus() : await fetchJson<OfsResponse>("/api/ofs-frame");
         ofsRef.current = d;
         setOfs(d);
         setFailed(false);
@@ -100,6 +106,20 @@ export function useOfs({
     load(true);
   }, [load]);
 
+  /**
+   * Dipanggil pemakai hook saat sumber berganti (dari klik pembaca atau ubin BMKG yang gagal): status ubin
+   * sumber lama tidak berlaku dan timeline mulai lagi dari "sekarang".
+   */
+  const gantiSumber = useCallback(
+    (s: SumberGelombang) => {
+      sumberRef.current = s;
+      setTilesDown(false);
+      manualRef.current = false;
+      load(true, s);
+    },
+    [load],
+  );
+
   /** Tombol "Ke Sekarang": balik ke frame sekarang dan ikuti lagi saat data diperbarui. */
   const toNow = useCallback(() => {
     manualRef.current = false;
@@ -129,5 +149,6 @@ export function useOfs({
     rewindIfAtEnd,
     setTilesDown,
     setMaskOk,
+    gantiSumber,
   };
 }

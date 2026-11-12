@@ -24,6 +24,8 @@ export const NEA = {
 // BMKG OFS (Ocean Forecast System). Host LAMA peta-maritim.bmkg.go.id sekarang
 // 301 → maritim.bmkg.go.id (dicek 2026-09-26) — pakai host baru langsung supaya
 // tiap tile nggak bayar satu round-trip redirect.
+// 12 Nov 2026: situs maritim baru BMKG menjawab 404 untuk api21 (modelrun dan ubin), dan peta-maritim kini
+// mengalihkan ke maritim. Selama itu peta gelombang memakai Copernicus (lib/copernicus.ts).
 export const OFS_HOST = "https://maritim.bmkg.go.id";
 export const OFS_MODELRUN = `${OFS_HOST}/api21/modelrun`;
 /**
@@ -47,6 +49,32 @@ export const ofsTilePath = (
   y: number | string,
 ) =>
   `${OFS_HOST}/api21/mpl_req/w3g_hires/swh/0/${baserun}/${valid}/${z}/${x}/${y}.png?ci=1&overlays=,contourf&conc=snow`;
+
+/**
+ * Copernicus Marine (Uni Eropa): prakiraan tinggi gelombang signifikan (VHM0) global 1/12 derajat, per 3 jam,
+ * lewat WMTS publik tanpa akun (CORS *). Pilihan kedua di peta gelombang, dan cadangan otomatis saat ubin OFS
+ * BMKG tidak bisa dimuat (12 Nov 2026: jalur api21 BMKG 404 sejak situs maritim baru). Ubin diminta dalam skala
+ * abu-abu 0 sampai 7 m lalu diwarnai ulang di peramban dengan skala warna BMKG (lib/copernicus.ts).
+ */
+export const CMEMS_WMTS = "https://wmts.marine.copernicus.eu/teroWmts";
+export const CMEMS_LAYER = "GLOBAL_ANALYSISFORECAST_WAV_001_027/cmems_mod_glo_wav_anfc_0.083deg_PT3H-i_202411/VHM0";
+/** Skala abu-abu cmocean, rentang 0 sampai 7 m (sama dengan OFS_MAX_M). Tabel warnanya dibaca dari GetLegend. */
+export const CMEMS_GAYA = "cmap:gray,range:0/7";
+const cmemsParam = (p: Record<string, string>) =>
+  new URLSearchParams({ SERVICE: "WMTS", VERSION: "1.0.0", LAYER: CMEMS_LAYER, STYLE: CMEMS_GAYA, ...p }).toString();
+/** Satu ubin 256 px skema XYZ (EPSG:3857). `waktu` ISO UTC, mis. "2026-11-12T03:00:00Z". */
+export const cmemsUbin = (waktu: string, z: number | string, x: number | string, y: number | string) =>
+  `${CMEMS_WMTS}?${cmemsParam({
+    REQUEST: "GetTile",
+    TILEMATRIXSET: "EPSG:3857",
+    TILEMATRIX: String(z),
+    TILEROW: String(y),
+    TILECOL: String(x),
+    FORMAT: "image/png",
+    TIME: waktu,
+  })}`;
+/** Tabel 256 warna skala abu-abu di atas, untuk membalik warna piksel menjadi meter. */
+export const CMEMS_LEGENDA = `${CMEMS_WMTS}?${cmemsParam({ REQUEST: "GetLegend", FORMAT: "application/json" })}`;
 
 // BMKG prakiraan cuaca per kelurahan (kode wilayah tingkat IV). 21.71.10.1003 = Teluk
 // Tering, Kec. Batam Kota (Batam Center) — dipakai sebagai wakil pusat kota. CORS *, tapi

@@ -6,7 +6,7 @@
 //
 // Pakai:  node scripts/extract-basemap.mjs [YYYYMMDD] [maxzoom] [berkas-keluaran]
 // Keluaran: public/tiles/batam.pmtiles (di-gitignore; produksi diunggah ke R2).
-import { createWriteStream, mkdirSync, renameSync, writeFileSync } from "node:fs";
+import { createWriteStream, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { finished } from "node:stream/promises";
 import { gzipSync } from "node:zlib";
@@ -16,11 +16,8 @@ const ROOT = join(import.meta.dirname, "..");
 const OUT = process.argv[4] ? resolve(process.argv[4]) : join(ROOT, "public", "tiles", "batam.pmtiles");
 // Tiga wilayah bertingkat. Fokus: kunci peta beranda (research/00 bagian 9.2). Kepri dan Luas: tampilan
 // "Kepri", "Luas", dan "Natuna" di Langit & Laut (lib/radar.ts VIEWS), plus sekeliling citra radar MSS.
-const WILAYAH = [
-  { nama: "fokus", w: 103.55, s: 0.45, e: 104.75, n: 1.5, maxzoom: 15 },
-  { nama: "kepri", w: 103.1, s: -0.7, e: 104.95, n: 1.6, maxzoom: 12 },
-  { nama: "luas", w: 101.5, s: -1.6, e: 108.4, n: 5.0, maxzoom: 10 },
-];
+// Daftarnya di features/peta/wilayah-ubin.json, supaya peta cuaca tahu sampai mana ubin tersedia.
+const WILAYAH = JSON.parse(readFileSync(join(ROOT, "features", "peta", "wilayah-ubin.json"), "utf8")).wilayah;
 const BBOX = WILAYAH[2];
 const CONCURRENCY = 12;
 

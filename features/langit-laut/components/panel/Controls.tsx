@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import type { SumberGelombang } from "@/features/langit-laut/lib/copernicus";
 import { VIEWS, type ViewKey } from "@/features/langit-laut/lib/radar";
 import type { Caption } from "@/features/langit-laut/lib/status";
 import { IconPause, IconPlay } from "../icons";
@@ -24,6 +25,32 @@ export function Cakupan({ keys, view, onChange }: { keys: ViewKey[]; view: ViewK
         {keys.map((k) => (
           <button key={k} type="button" onClick={() => onChange(k)} aria-pressed={view === k}>
             {VIEWS[k].label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Pilihan sumber peta gelombang: BMKG (bawaan) atau Copernicus. */
+export function PilihanSumber({
+  pilihan,
+  aktif,
+  onChange,
+}: {
+  pilihan: { kunci: SumberGelombang; label: string }[];
+  aktif: SumberGelombang;
+  onChange: (v: SumberGelombang) => void;
+}) {
+  return (
+    <div className="cu-cakupan-isi cu-sumber">
+      <span id="cu-sumber-label" className="cu-label">
+        Data Peta
+      </span>
+      <div className="bch-segmen" role="group" aria-labelledby="cu-sumber-label">
+        {pilihan.map((p) => (
+          <button key={p.kunci} type="button" onClick={() => onChange(p.kunci)} aria-pressed={aktif === p.kunci}>
+            {p.label}
           </button>
         ))}
       </div>

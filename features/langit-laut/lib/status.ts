@@ -420,8 +420,10 @@ export function ofsView(a: {
   tilesDown: boolean;
   maskOk: boolean | null;
   offline: boolean;
+  /** Pembaca memilih BMKG, tetapi ubin BMKG gagal dimuat sehingga peta beralih ke Copernicus. */
+  cadangan?: boolean;
 }): OfsView {
-  const { ofs, idx, failed, tilesDown, maskOk, offline } = a;
+  const { ofs, idx, failed, tilesDown, maskOk, offline, cadangan = false } = a;
   const count = ofs?.frames.length ?? 0;
   const ready = count > 0;
   const valid = ofs?.frames[idx];
@@ -432,10 +434,15 @@ export function ofsView(a: {
 
   // Kesegaran dari UMUR run (bukan flag fallback): probe yang nemu run 4 jam lalu itu segar;
   // run dari modelrun yang mandek 30 jam itu basi. Slot buta = tebakan → selalu ditandai.
+  const copernicus = ofs?.source === "copernicus";
   const problem = !ready
     ? null
     : tilesDown
-      ? "Peta gelombang gagal dimuat di perangkat ini."
+      ? copernicus
+        ? "Peta gelombang Copernicus gagal dimuat."
+        : "Peta gelombang gagal dimuat di perangkat ini."
+      : cadangan
+        ? "Peta gelombang BMKG sedang tidak tersedia, jadi peta memakai prakiraan Copernicus."
       : ofs?.expired
         ? "Peta gelombang belum diperbarui."
         : ofs?.source === "blind"

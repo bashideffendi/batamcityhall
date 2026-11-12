@@ -10,6 +10,7 @@ const DATA = [
   "Radar hujan: Meteorological Service Singapore.",
   "Kondisi cuaca: National Environment Agency.",
   "Prakiraan gelombang dan cuaca: BMKG.",
+  "Peta tinggi gelombang pilihan kedua: Copernicus Marine Service (Uni Eropa), model gelombang global 1/12 derajat.",
   "Peringatan dini cuaca dan gempa: BMKG.",
   "Kualitas udara: Open-Meteo (CC BY 4.0), dari model Copernicus Atmosphere Monitoring Service.",
   "Batas kecamatan: Badan Informasi Geospasial.",

@@ -13,9 +13,10 @@ import {
   type StatusKamera,
 } from "@/features/langit-laut/lib/cctv";
 import { reduceMotion, saveData } from "@/features/langit-laut/lib/client";
+import { SUMBER_GELOMBANG, type SumberGelombang } from "@/features/langit-laut/lib/copernicus";
 import { readInitialState } from "@/features/langit-laut/lib/initial-state";
 import { aktifPada, kalimatPeringatan } from "@/features/langit-laut/lib/peringatan-cuaca";
-import { PREF, writePref } from "@/features/langit-laut/lib/prefs";
+import { PREF, bmkgBaruGagal, catatBmkgGagal, readPref, writePref } from "@/features/langit-laut/lib/prefs";
 import { VIEW_KEYS, defaultViewFor, type Mode, type ViewKey } from "@/features/langit-laut/lib/radar";
 import {
   RADAR_OLD_MIN,
@@ -51,7 +52,7 @@ import RadarLayer from "./RadarLayer";
 import CamDirectory from "./panel/CamDirectory";
 import CctvBlock from "./panel/CctvBlock";
 import KondisiSaatIni from "./panel/Conditions";
-import { Cakupan, Sakelar, Transport } from "./panel/Controls";
+import { Cakupan, PilihanSumber, Sakelar, Transport } from "./panel/Controls";
 import { HujanPerKecamatan, PerairanInfo, PrakiraanCuaca } from "./panel/DetailSections";
 import { KategoriGelombang, LegendaGelombang, LegendaHujan } from "./panel/Legends";
 import { Ringkasan } from "./panel/Status";
@@ -125,6 +126,13 @@ export default function RadarMap({ mode }: { mode: Mode }) {
   const [playing, setPlaying] = useState(false);
   const [collapsed, setCollapsed] = useState(init.collapsed);
   const [lapisan, setLapisan] = useState<Lapisan>(() => LAPISAN_AWAL[mode]);
+  // Sumber peta gelombang pilihan pembaca (bawaan BMKG). Bila ubin BMKG gagal dimuat, peta memakai
+  // Copernicus sampai pembaca memilih BMKG lagi.
+  const [sumber, setSumber] = useState<SumberGelombang>(() =>
+    readPref(PREF.sumberGelombang) === "copernicus" ? "copernicus" : "bmkg",
+  );
+  const [bmkgMati, setBmkgMati] = useState(bmkgBaruGagal);
+  const sumberAktif: SumberGelombang = sumber === "bmkg" && bmkgMati ? "copernicus" : sumber;
   const wide = useMedia("(min-width: 900px)");
 
   // Kamera yang diputar (null = tidak ada stream), kamera yang gagal diputar di sesi ini, 3 kamera
@@ -148,7 +156,12 @@ export default function RadarMap({ mode }: { mode: Mode }) {
   const tick = useNow(TICK_MS);
   const stopPlaying = useCallback(() => setPlaying(false), []);
   const radar = useRadar({ enabled: tampilRadar, playing: mode === "hujan" && playing });
-  const ofs = useOfs({ enabled: tampilGelombang, playing: mode === "ombak" && playing, onSweepEnd: stopPlaying });
+  const ofs = useOfs({
+    enabled: tampilGelombang,
+    playing: mode === "ombak" && playing,
+    onSweepEnd: stopPlaying,
+    sumber: sumberAktif,
+  });
   const conditions = useResource<ConditionsResponse>("/api/conditions", CONDITIONS_MS, mode === "hujan", false);
   const forecast = useResource<ForecastResponse>("/api/prakiraan", FORECAST_MS, mode === "hujan", true);
   const cuaca = useResource<PeringatanResponse>("/api/peringatan-cuaca?poligon=1", PERINGATAN_MS, mode === "hujan", false);
@@ -251,6 +264,29 @@ export default function RadarMap({ mode }: { mode: Mode }) {
     if (mode === "ombak") ofs.toNow();
     else radar.scrub(Math.max(0, radar.frames.length - 1));
   };
+  const { setTilesDown: setOfsDown, gantiSumber } = ofs;
+  const pilihSumber = (v: SumberGelombang) => {
+    setPlaying(false);
+    setSumber(v);
+    writePref(PREF.sumberGelombang, v);
+    if (v === "bmkg") {
+      // memilih BMKG lagi = coba BMKG lagi
+      setBmkgMati(false);
+      catatBmkgGagal(false);
+    }
+    if (v !== sumberAktif) gantiSumber(v);
+  };
+  const ubinDown = useCallback(
+    (down: boolean) => {
+      setOfsDown(down);
+      if (down && sumberAktif === "bmkg") {
+        setBmkgMati(true);
+        catatBmkgGagal(true);
+        gantiSumber("copernicus");
+      }
+    },
+    [setOfsDown, gantiSumber, sumberAktif],
+  );
   const closeCam = useCallback(() => {
     setActiveCam(null);
     setCamAutoStart(true);
@@ -320,6 +356,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
     tilesDown: ofs.tilesDown,
     maskOk: ofs.maskOk,
     offline,
+    cadangan: sumber === "bmkg" && sumberAktif === "copernicus",
   });
   const ombak = ofsAnswer(ofs.perairan, ofs.perairanError, ov, offline, now);
   const ombakCap = ofsCaption(ov);
@@ -451,6 +488,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
 
             {mode === "hujan" && <LegendaHujan />}
             {mode === "ombak" && <LegendaGelombang />}
+            {mode === "ombak" && <PilihanSumber pilihan={SUMBER_GELOMBANG} aktif={sumberAktif} onChange={pilihSumber} />}
 
             <section className="cu-sakelar-grup" aria-labelledby="cu-sakelar-judul">
               <h2 id="cu-sakelar-judul" className="cu-sub">
@@ -493,7 +531,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
         </section>
 
         <div className="cu-peta">
-          <PetaLangit theme={theme} opsi={{ koperatif: typeof window !== "undefined" && window.matchMedia("(min-width: 900px)").matches }}>
+          <PetaLangit theme={theme} opsi={{ koperatif: typeof window !== "undefined" && window.matchMedia("(min-width: 900px)").matches, ikutiUbin: true }}>
             {tampilRadar && (
               <RadarLayer
                 url={rv.current && !rv.currentBroken && !radarTerputus ? rv.current.url : null}
@@ -504,12 +542,14 @@ export default function RadarMap({ mode }: { mode: Mode }) {
             {lapisan.batas && <KecamatanLayer rainy={rainyKecs} showRain={showKec && tampilRadar} theme={theme} />}
             {mode === "hujan" && <PeringatanLayer peringatan={cuacaAktif} theme={theme} />}
             {mode === "hujan" && <TempatLayer />}
-            {tampilGelombang && ofs.ofs?.baserun && ov.valid && (
+            {/* Daftar waktu harus milik sumber yang aktif: waktu Copernicus bukan run BMKG. */}
+            {tampilGelombang && ofs.ofs?.baserun && ov.valid && (ofs.ofs.source === "copernicus") === (sumberAktif === "copernicus") && (
               <OfsField
+                sumber={sumberAktif}
                 baserun={ofs.ofs.baserun}
                 valid={ov.valid}
                 opacity={Math.min(ov.opacity, REDAM_GELOMBANG)}
-                onTilesDown={ofs.setTilesDown}
+                onTilesDown={ubinDown}
               />
             )}
             {/* Mask daratan di atas field: warna gelombang hanya di laut. */}
