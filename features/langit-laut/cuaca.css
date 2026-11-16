@@ -525,7 +525,7 @@ main .cu-panel p {
 .cu-rain-classes span { padding-top: 5px; }
 .cu-rain-classes span + span { border-left: 1px solid var(--bch-ink); padding-left: 5px; }
 .cu-warning-key { display: flex; gap: 8px; align-items: center; margin: 8px 0 0; font-size: 0.75rem; }
-.cu-warning-key i { width: 28px; border-top: 2.5px dashed currentColor; }
+.cu-warning-key i { width: 28px; border-top: 3px solid var(--bch-status-danger); }
 .cu-opacity-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; font-size: 0.8125rem; }
 .cu-halaman .cu-rng { min-height: 44px; margin: 0; }
 .cu-halaman button:focus-visible, .cu-halaman input:focus-visible { outline: 3px solid #0078BF; outline-offset: 3px; }
@@ -575,4 +575,51 @@ main .cu-panel p {
     font-size: 0.8125rem;
     margin-bottom: 0;
   }
+}
+
+/* Kotak keterangan peringatan dini di atas peta: menjelaskan arti garis merah di tempat orang melihatnya. Di bawah
+   tombol Layar Penuh, kotak putih seperti kendali peta lain, bergaris merah peringatan. */
+.cu-cap-kunci {
+  position: absolute;
+  top: calc(max(12px, env(safe-area-inset-top)) + 54px);
+  left: max(12px, env(safe-area-inset-left));
+  z-index: 6;
+  display: grid;
+  gap: 3px;
+  max-width: min(calc(100% - 24px), 300px);
+  padding: 7px 10px 8px;
+  color: #161616;
+  background: #ffffff;
+  border: 1.5px solid #b42318;
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  text-decoration: none;
+}
+.cu-cap-kunci b {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-weight: 700;
+}
+.cu-cap-ikon {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  margin-top: 1px;
+  color: #b42318;
+}
+.cu-cap-kunci span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #3d3d3d;
+  font-size: 0.75rem;
+}
+.cu-cap-kunci span i {
+  flex: none;
+  width: 22px;
+  border-top: 3px solid #b42318;
+}
+.cu-cap-kunci:hover b {
+  text-decoration: underline;
 }

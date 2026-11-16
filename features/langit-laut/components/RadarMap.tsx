@@ -42,6 +42,7 @@ import { useThemeMode } from "@/features/langit-laut/hooks/useThemeMode";
 import Berteduh from "@/features/direktori/Berteduh";
 import CctvLayer from "./CctvLayer";
 import CctvPlayer from "./CctvPlayer";
+import { IconWarn } from "./icons";
 import IosInstallHint from "./IosInstallHint";
 import KecamatanLayer, { TempatLayer } from "./KecamatanLayer";
 import LandMask from "./LandMask";
@@ -379,6 +380,8 @@ export default function RadarMap({ mode }: { mode: Mode }) {
   const cuacaAktif = useMemo(() => aktifPada(cuaca.data?.peringatan, now), [cuaca.data, now]);
   const cuacaSorot = scope === "batam" ? cuacaAktif.find((p) => p.batam.length > 0) : cuacaAktif[0];
   const cuacaKalimat = cuacaSorot ? `Peringatan dini: ${kalimatPeringatan(cuacaSorot, now)}` : "";
+  // Peringatan yang wilayahnya tergambar di peta (punya poligon): yang disorot lebih dulu.
+  const cuacaBergaris = cuacaSorot?.poligon?.length ? cuacaSorot : cuacaAktif.find((p) => p.poligon?.length);
   const statRadar = statusRadar(rv.latestAge);
   const nadaRadar = statRadar === "Langsung" ? "ok" : statRadar === "Tertunda" ? "caution" : "danger";
   const jamRadar = rv.current?.time ?? "";
@@ -577,6 +580,19 @@ export default function RadarMap({ mode }: { mode: Mode }) {
             )}
             <MapController view={view} mode={mode} getPadding={getPadding} collapsed={collapsed} />
           </PetaKerja>
+          {/* Arti garis merah ditulis di petanya sendiri, supaya tidak perlu ditebak. */}
+          {mode === "hujan" && tampilRadar && cuacaBergaris && (
+            <Link href="/cuaca/peringatan" prefetch={false} className="cu-cap-kunci" data-kunci-peringatan>
+              <b>
+                <IconWarn className="cu-cap-ikon" />
+                Peringatan Dini{cuacaBergaris.kejadian ? `: ${cuacaBergaris.kejadian}` : ""}
+              </b>
+              <span>
+                <i aria-hidden />
+                Berlaku di dalam garis merah
+              </span>
+            </Link>
+          )}
           {mode !== "cctv" && <button ref={button} type="button" className="cu-fullscreen"
             aria-expanded={full} onClick={() => setFull(!full)}>{full ? "Tutup" : "Layar Penuh"}</button>}
           {full && <div className="cu-full-controls">

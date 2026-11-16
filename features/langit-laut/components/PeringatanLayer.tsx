@@ -7,11 +7,17 @@ import { keGeoJson } from "@/features/langit-laut/lib/peringatan-cuaca";
 import type { ThemeMode } from "@/features/langit-laut/lib/radar";
 import { tambahLayer, usePeta } from "@/features/peta/PetaKerja";
 
-// Peringatan memakai garis netral putus-putus tebal, tanpa isian yang mengubah warna radar.
+// Wilayah peringatan dini BMKG: garis merah UTUH dengan alas terang, tanpa isian yang mengubah warna radar. Sempat
+// digambar garis putus-putus tebal berwarna netral; pemilik (16 Nov 2026): "garis putus-putus sebagai peringatan,
+// yakin orang paham?" Batas kecamatan juga putus-putus, jadi keduanya tertukar. Arti garis ini ditulis di kotak
+// keterangan di atas peta (RadarMap, .cu-cap-kunci) dan di legenda.
 const SUMBER = "ll-cap";
 const FILL_ID = "ll-cap-fill";
+const ALAS_ID = "ll-cap-line-alas";
 const LINE_ID = "ll-cap-line";
-const WARNA: Record<ThemeMode, string> = { light: "#20262C", dark: "#F1F3F5" };
+/** Merah peringatan (sama dengan --bch-status-danger). Dipakai juga oleh kotak keterangan dan legenda. */
+export const WARNA_PERINGATAN: Record<ThemeMode, string> = { light: "#B42318", dark: "#F28B82" };
+const WARNA_ALAS: Record<ThemeMode, string> = { light: "#FFFFFF", dark: "#0E1418" };
 
 export default function PeringatanLayer({ peringatan, theme }: { peringatan: PeringatanCuaca[]; theme: ThemeMode }) {
   const map = usePeta();
@@ -26,15 +32,23 @@ export default function PeringatanLayer({ peringatan, theme }: { peringatan: Per
     }
     tambahLayer(map, { id: FILL_ID, type: "fill", source: SUMBER });
     tambahLayer(map, {
+      id: ALAS_ID,
+      type: "line",
+      source: SUMBER,
+      layout: { "line-join": "round" },
+      paint: { "line-width": 6, "line-opacity": 0.85 },
+    });
+    tambahLayer(map, {
       id: LINE_ID,
       type: "line",
       source: SUMBER,
       layout: { "line-join": "round" },
-      paint: { "line-width": 2.5, "line-dasharray": [4, 2] },
+      paint: { "line-width": 3 },
     });
     return () => {
       if (map.getLayer(FILL_ID)) map.removeLayer(FILL_ID);
       if (map.getLayer(LINE_ID)) map.removeLayer(LINE_ID);
+      if (map.getLayer(ALAS_ID)) map.removeLayer(ALAS_ID);
       if (map.getSource(SUMBER)) map.removeSource(SUMBER);
     };
   }, [map]);
@@ -45,9 +59,11 @@ export default function PeringatanLayer({ peringatan, theme }: { peringatan: Per
 
   useEffect(() => {
     if (!map.getLayer(FILL_ID) || !map.getLayer(LINE_ID)) return;
-    map.setPaintProperty(FILL_ID, "fill-color", WARNA[theme]);
+    const tema = theme === "dark" ? "dark" : "light";
+    map.setPaintProperty(FILL_ID, "fill-color", WARNA_PERINGATAN[tema]);
     map.setPaintProperty(FILL_ID, "fill-opacity", 0);
-    map.setPaintProperty(LINE_ID, "line-color", WARNA[theme]);
+    map.setPaintProperty(LINE_ID, "line-color", WARNA_PERINGATAN[tema]);
+    if (map.getLayer(ALAS_ID)) map.setPaintProperty(ALAS_ID, "line-color", WARNA_ALAS[tema]);
   }, [map, theme]);
 
   return null;

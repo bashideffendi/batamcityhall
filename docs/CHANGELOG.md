@@ -16,6 +16,10 @@ Tayang sejak `a8632e7` (16 November 2026, sekitar 5,5 menit sesudah push), bersa
 
 **Temuan sesudah tayang dan perbaikannya.** Kunjungan pertama ke peta hujan sesudah server menyala meminta 30 citra sekaligus; penghalusannya berbarengan menahan server sehingga unduhan citra lain dari MSS kehabisan waktu dan tujuh citra dijawab 502. Diminta ulang satu per satu, semuanya 200. Perbaikan: penghalusan dikerjakan bergiliran dengan jeda untuk permintaan lain, dan kabur dihitung pada ukuran asli sebelum diperbesar (±60 ms per citra, semula ±160 ms; hasil gambarnya sama). Diuji di server lokal yang baru menyala: 30 citra sekaligus semuanya 200 dalam 5,7 detik. Tes unit baru menjaga skenario itu.
 
+Perbaikan antrean tayang sejak `cf60579` (16 November 2026 pukul 20.30 WIB). Diuji di barelang.co: 14 citra radar yang belum tersimpan diminta sekaligus, semuanya dijawab 200 dalam 3 detik.
+
+**Garis wilayah peringatan dini.** Pemilik sesudah melihat peta tayang: "itu garis-garis putus-putus di peta apa sih", "garis putus-putus sebagai peringatan, yakin orang paham?" Garis putus-putus tebal itu batas wilayah peringatan dini BMKG (hasil rancangan Codex yang lolos tinjauan); batas kecamatan juga putus-putus, jadi keduanya tertukar dan artinya hanya ada di legenda panel. Sekarang wilayah peringatan digambar garis merah utuh dengan alas terang, dan di atas peta ada kotak keterangan "Peringatan Dini: <kejadian>, berlaku di dalam garis merah" yang menaut ke halaman Peringatan Dini. Legenda ikut diganti. Dua tes e2e baru.
+
 ## 2026-11-16 · Peta hujan dengan warna asli dan layar penuh, menu ponsel satu baris, perbaikan dari audit
 
 Permintaan pemilik 16 November 2026 dari iPhone (tiga tangkapan layar): audit bug, desain, dan arsitektur; warna radar dikembalikan ke warna awal dan bisa dipudarkan; peta hujan "lebih serius", "cantik tapi berguna informatif"; layar penuh untuk radar hujan dan tinggi gelombang; menu "bertumpuk tiga membingungkan"; gambar kartu dan ikon dirancang ulang dengan Codex. Rinciannya di PEDOMAN blok "Peta cuaca, menu ponsel, dan gambar kartu, 16 Nov 2026".
