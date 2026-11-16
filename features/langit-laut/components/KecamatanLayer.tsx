@@ -2,7 +2,7 @@
 
 import type { GeoJSONSource } from "maplibre-gl";
 import { useEffect, useMemo, useState } from "react";
-import { KOTA_UTAMA, levelRank } from "@/features/langit-laut/lib/kecamatan";
+import { arsiranHujan, KOTA_UTAMA, levelRank, MERAH_HUJAN } from "@/features/langit-laut/lib/kecamatan";
 import { pikselDunia } from "@/features/peta/urutan-lapisan";
 import { PLACES, type ThemeMode } from "@/features/langit-laut/lib/radar";
 import type { EchoLevel } from "@/features/langit-laut/lib/status";
@@ -10,7 +10,8 @@ import { tambahLayer, usePeta } from "@/features/peta/PetaKerja";
 import PetaMarker from "@/features/peta/PetaMarker";
 
 // Batas 52 kecamatan (PEDOMAN 5.2): garis putus-putus tipis, nama kapital. Kecamatan yang hujan ditandai dengan
-// label bertulisan kelasnya, supaya makna tidak hanya lewat warna. Geometri (±390 KB) dimuat terpisah.
+// wilayah yang menjadi merah dan label bertulisan kelasnya, supaya makna tidak hanya lewat warna. Geometri (±390 KB)
+// dimuat terpisah.
 
 type KecFeature = {
   type: "Feature";
@@ -56,6 +57,7 @@ function labelSize(name: string, level: EchoLevel | undefined, full: boolean, fa
 }
 const LABEL_GAP = 4;
 
+const FILL_ID = "ll-kec-fill";
 const LINE_ID = "ll-kec-line";
 
 type Props = {
@@ -109,6 +111,14 @@ export default function KecamatanLayer({ rainy, showRain, theme }: Props) {
       (map.getSource(SUMBER) as GeoJSONSource).setData(geo as unknown as GeoJSON.FeatureCollection);
     }
     tambahLayer(map, {
+      id: FILL_ID,
+      type: "fill",
+      source: SUMBER,
+      minzoom: RAIN_MIN_ZOOM,
+      filter: ["==", ["get", "code"], ""],
+      paint: { "fill-color": MERAH_HUJAN, "fill-opacity": 0 },
+    });
+    tambahLayer(map, {
       id: LINE_ID,
       type: "line",
       source: SUMBER,
@@ -117,6 +127,7 @@ export default function KecamatanLayer({ rainy, showRain, theme }: Props) {
       paint: { "line-dasharray": [2, 3] },
     });
     return () => {
+      if (map.getLayer(FILL_ID)) map.removeLayer(FILL_ID);
       if (map.getLayer(LINE_ID)) map.removeLayer(LINE_ID);
       if (map.getSource(SUMBER)) map.removeSource(SUMBER);
     };
@@ -127,6 +138,13 @@ export default function KecamatanLayer({ rainy, showRain, theme }: Props) {
     map.setPaintProperty(LINE_ID, "line-color", LINE[theme]);
     map.setPaintProperty(LINE_ID, "line-width", 0.9);
   }, [map, theme, geo]);
+
+  useEffect(() => {
+    if (!map.getLayer(FILL_ID)) return;
+    const a = arsiranHujan(rainLevels, theme);
+    map.setFilter(FILL_ID, a.saring as never);
+    map.setPaintProperty(FILL_ID, "fill-opacity", a.kepekatan as never);
+  }, [map, rainLevels, theme, geo]);
 
   const full = zoom >= FULL_PILL_ZOOM;
   // Tata letak label: yang terderas (lalu Kota Batam, lalu yang terluas hujannya) dapat tempat

@@ -7,10 +7,11 @@ import type { LayerSpecification, StyleSpecification } from "maplibre-gl";
 
 export const AWALAN = "ll-";
 
-// Urutan gambar dari bawah ke atas, semuanya di bawah label peta. Arsiran kecamatan di bawah radar
-// supaya warna radar tetap asli; mask daratan di atas field ombak supaya darat tidak ikut berwarna.
-// Garis pantai (GarisAtas) di atas radar, supaya bentuk pulau tetap terbaca di bawah warna hujan.
-const URUTAN = ["ll-ofs", "ll-land", "ll-kec-fill", "ll-cap-fill", "ll-radar", "ll-pantai", "ll-kec-line", "ll-cap-line"];
+// Urutan gambar dari bawah ke atas, semuanya di bawah label peta. Mask daratan di atas field ombak supaya darat
+// tidak ikut berwarna. Arsiran merah kecamatan yang hujan di BAWAH radar, seperti di hujandibatam: di atas radar ia
+// mengubah hijau dan kuning citra hujan menjadi cokelat keruh (dicoba 16 Nov 2026). Garis pantai (GarisAtas) dan
+// batas kecamatan paling atas, supaya bentuk pulau tetap terbaca.
+const URUTAN = ["ll-ofs", "ll-land", "ll-kec-fill", "ll-radar", "ll-pantai", "ll-kec-line"];
 
 export function peringkat(id: string): number {
   const i = URUTAN.findIndex((u) => id === u || id.startsWith(`${u}-`));

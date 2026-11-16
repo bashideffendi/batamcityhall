@@ -67,3 +67,19 @@ export const kabRank = (kab: string) => {
   const i = (KAB_ORDER as readonly string[]).indexOf(kab);
   return i < 0 ? 99 : i;
 };
+
+// Kecamatan yang sedang hujan: seluruh wilayahnya menjadi merah, seperti di hujandibatam (pemilik 16 Nov 2026:
+// "ikutin aja hujandibatam, kecamatan yang hujan areanya jadi merah"). Seperti di situs lama, arsirannya digambar
+// di BAWAH citra radar, jadi warna radar tidak berubah; merahnya tampak di bagian kecamatan yang tidak tertutup hujan.
+// Satu merah untuk semua kelas hujan: kelasnya sudah dibawa warna radar dan label kecamatan.
+export const MERAH_HUJAN = "#E5202B";
+const PEKAT_HUJAN: Record<"light" | "dark", number> = { light: 0.36, dark: 0.42 };
+
+/** Saringan dan kepekatan arsiran untuk kecamatan yang hujan. Fungsi murni supaya bisa dites tanpa peta. */
+export function arsiranHujan(tingkat: ReadonlyMap<string, RainLevel>, tema: "light" | "dark") {
+  const kode = [...tingkat.keys()];
+  return {
+    saring: ["in", ["get", "code"], ["literal", kode]],
+    kepekatan: kode.length ? PEKAT_HUJAN[tema === "dark" ? "dark" : "light"] : 0,
+  };
+}

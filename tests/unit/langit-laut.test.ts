@@ -3,6 +3,7 @@ import { join } from "node:path";
 import type { LayerSpecification, StyleSpecification } from "maplibre-gl";
 import { describe, expect, it } from "vitest";
 import { baseStyle } from "@/features/peta/style";
+import { arsiranHujan, MERAH_HUJAN } from "@/features/langit-laut/lib/kecamatan";
 import {
   gabungGaya,
   geserKeDalam,
@@ -147,16 +148,30 @@ describe("urutan lapisan", () => {
     { id: "places_locality", type: "symbol" },
   ];
 
-  it("arsiran di bawah radar, garis di atas radar, mask di atas ombak", () => {
+  it("arsiran merah di bawah radar, garis di atas radar, mask di atas ombak", () => {
+    // Seperti di hujandibatam: di atas radar arsiran merah mengeruhkan warna citra hujan.
     expect(peringkat("ll-kec-fill")).toBeLessThan(peringkat("ll-radar"));
+    expect(peringkat("ll-land")).toBeLessThan(peringkat("ll-kec-fill"));
     expect(peringkat("ll-radar")).toBeLessThan(peringkat("ll-kec-line"));
     // Garis pantai di atas radar, supaya bentuk pulau terbaca di bawah warna hujan.
     expect(peringkat("ll-radar")).toBeLessThan(peringkat("ll-pantai-alas"));
     expect(peringkat("ll-pantai")).toBeLessThan(peringkat("ll-kec-line"));
     expect(peringkat("ll-ofs-12")).toBeLessThan(peringkat("ll-land"));
     expect(peringkat("ll-land")).toBeLessThan(peringkat("ll-radar"));
-    expect(peringkat("ll-cap-fill")).toBeLessThan(peringkat("ll-radar"));
-    expect(peringkat("ll-radar")).toBeLessThan(peringkat("ll-cap-line"));
+  });
+
+  it("kecamatan yang hujan diarsir merah, satu merah untuk semua kelas", () => {
+    // Pemilik 16 Nov 2026: "ikutin aja hujandibatam, kecamatan yang hujan areanya jadi merah".
+    expect(MERAH_HUJAN).toBe("#E5202B");
+    const a = arsiranHujan(new Map([["21.71.04", "lebat"], ["21.71.03", "ringan"]]), "light");
+    expect(a.saring).toEqual(["in", ["get", "code"], ["literal", ["21.71.04", "21.71.03"]]]);
+    expect(a.kepekatan).toBeGreaterThan(0.3);
+    expect(a.kepekatan).toBeLessThan(0.5);
+    expect(arsiranHujan(new Map([["21.71.04", "ringan"]]), "dark").kepekatan).toBeGreaterThanOrEqual(a.kepekatan);
+    // Tidak ada yang hujan: tidak ada yang diarsir.
+    const kosong = arsiranHujan(new Map(), "dark");
+    expect(kosong.saring).toEqual(["in", ["get", "code"], ["literal", []]]);
+    expect(kosong.kepekatan).toBe(0);
   });
 
   it("lapisan baru selalu di bawah label peta", () => {

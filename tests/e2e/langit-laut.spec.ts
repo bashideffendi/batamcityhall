@@ -690,28 +690,17 @@ test.describe("peringatan cuaca di radar", () => {
     await expect(chip.getByRole("link")).toHaveAttribute("href", "/cuaca/peringatan");
   });
 
-  test("arti garis merah wilayah peringatan ditulis di atas peta", async ({ page }) => {
-    // Pemilik 16 Nov 2026: garis putus-putus sebagai peringatan tidak dipahami orang. Garisnya kini merah utuh dan
-    // artinya ditulis di petanya sendiri.
-    await tiruSumber(page);
+  test("wilayah peringatan tidak digambar di peta; legenda menjelaskan wilayah merah", async ({ page }) => {
+    // Pemilik 16 Nov 2026: garis wilayah peringatan membingungkan, "ikutin aja hujandibatam, kecamatan yang hujan
+    // areanya jadi merah". Peringatan tetap ditulis di panel; di peta hanya kecamatan hujan yang menjadi merah.
+    await tiruSumber(page, { echo: ECHO_HUJAN });
     await tiruPeringatan(page, [PERINGATAN_BATAM]);
     await page.goto("/cuaca/hujan");
     await petaSiap(page);
-    const kunci = page.locator("[data-kunci-peringatan]");
-    await expect(kunci).toBeVisible();
-    await expect(kunci).toContainText("Peringatan Dini: Hujan Lebat dan Petir");
-    await expect(kunci).toContainText("Berlaku di dalam garis merah");
-    await expect(kunci).toHaveAttribute("href", "/cuaca/peringatan");
-    // Tidak menutupi tombol Layar Penuh.
-    const [k, t] = [await kunci.boundingBox(), await page.getByRole("button", { name: "Layar Penuh" }).boundingBox()];
-    expect(k?.y ?? 0).toBeGreaterThanOrEqual((t?.y ?? 0) + (t?.height ?? 0));
-  });
-
-  test("tanpa peringatan berpoligon tidak ada kotak keterangan garis merah", async ({ page }) => {
-    await tiruSumber(page);
-    await page.goto("/cuaca/hujan");
-    await petaSiap(page);
     await expect(page.locator("[data-kunci-peringatan]")).toHaveCount(0);
+    await bukaPanel(page);
+    await expect(page.locator(".cu-warning-key")).toHaveText("Wilayah merah: kecamatan yang sedang hujan");
+    await expect(page.locator("[data-peringatan-cuaca]")).toContainText("Hujan Lebat dan Petir");
   });
 
   test("peringatan di luar Batam tidak memberi label pada wilayah Batam", async ({ page }) => {
