@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-16 · Perapian arsitektur dari temuan audit
+
+Empat temuan audit kode 16 November 2026 yang berupa perombakan struktur, dikerjakan atas perintah pemilik sesudah perbaikan peta hujan. Tampilan dan teks situs tidak berubah: teks tampil 3.083 halaman hasil build dibandingkan sebelum dan sesudah, hasilnya sama persis.
+
+- **Satu tabel bulan dan hari** (`lib/rapi-teks.ts`). Nama bulan ditulis ulang di sepuluh berkas dan aturannya mulai berbeda: Direktori mengenal "Agt" dan hanya melengkapi bulan sebelum tahun, Sejarah tidak mengenal "Agt". Sekarang Direktori, Sejarah, jadwal feri, Budaya, Dataset, Tukang Langganan, radar, status cuaca, dan modul acara beranda memakai tabel dan kepingan yang sama (`bulanLengkap`, `hariLengkap`, `jamBertitik`, `bulanDekatAngka`, `tulisTanggal`, `tanggalIndonesia`). Aturan khas tiap bagian tetap di bagiannya.
+- **Dugaan audit soal nomor telepon:** pola rentang angka di Direktori memang bisa mengubah "0778-322611" menjadi bertanda pisah, tetapi tidak ada satu pun teks tampil yang terkena. Polanya kini melindungi nomor telepon, dengan tes.
+- **Cangkang peta kerja pindah ke `features/peta`:** `PetaLangit.tsx` menjadi `features/peta/PetaKerja.tsx`, `PetaMarker.tsx` ikut pindah, `lib/peta-lapisan.ts` menjadi `features/peta/urutan-lapisan.ts`, dan batas zoom ditulis di `features/peta/zoom.ts`. `PetaKerja` tidak lagi mengimpor apa pun dari `features/langit-laut`. `RadarLayer` tetap di sana karena ia lapisan cuaca.
+- **Gaya mati di `langit-laut.css`:** diperiksa per kelas; semua 69 kelasnya masih dipakai kode, jadi tidak ada yang dihapus. Deklarasi yang ditimpa `cuaca.css` tidak digabung karena berisiko mengubah tampilan tanpa manfaat bagi pembaca.
+- **Bundel Makanan:** `lib/data.ts` dipecah menjadi data acuan kecil (`lib/acuan.ts`: kategori, kawasan, terminal feri) dan daftar tempat. Cara Kami Memilih dan indeks Hidangan pindah ke berkas sendiri yang tidak mengimpor daftar tempat; angka indeks Hidangan dihitung di server dan dikirim sebagai props. JavaScript yang dirujuk halaman (belum dikompresi): Cara Kami Memilih 790 KB menjadi 604 KB, indeks Hidangan menjadi 622 KB, keduanya tanpa chunk data tempat. Halaman daftar, peta, kawasan, panduan, dan detail tempat tetap 789 KB karena memang menyaring seluruh daftar di peramban.
+- **Batas laju dan `x-real-ip`:** Railway mendokumentasikan X-Real-IP sebagai alamat pembaca yang dipasang edge-nya, X-Forwarded-For tidak termasuk header yang didokumentasikan, dan situs dilayani langsung oleh edge Railway. Urutan header tidak diubah; nilai yang bukan satu alamat IP kini diabaikan. Yang belum bisa dipastikan dari dokumentasi: apakah edge menimpa X-Real-IP kiriman klien.
+- Tes: 785 tes unit (8 baru untuk `lib/rapi-teks.ts`, 4 pernyataan baru untuk alamat IP).
+
 ## 2026-11-16 · Peta hujan dengan warna asli dan layar penuh, menu ponsel satu baris, perbaikan dari audit
 
 Permintaan pemilik 16 November 2026 dari iPhone (tiga tangkapan layar): audit bug, desain, dan arsitektur; warna radar dikembalikan ke warna awal dan bisa dipudarkan; peta hujan "lebih serius", "cantik tapi berguna informatif"; layar penuh untuk radar hujan dan tinggi gelombang; menu "bertumpuk tiga membingungkan"; gambar kartu dan ikon dirancang ulang dengan Codex. Rinciannya di PEDOMAN blok "Peta cuaca, menu ponsel, dan gambar kartu, 16 Nov 2026".
@@ -15,7 +27,7 @@ Permintaan pemilik 16 November 2026 dari iPhone (tiga tangkapan layar): audit bu
   - tinggi peta ponsel mengikuti kepala yang baru (196 px) dan memakai `svh`, jadi kanvas peta tidak digambar ulang saat bilah Safari menciut;
   - label kecamatan yang hujan benar-benar dua baris, sama dengan ukuran yang dipakai pemeriksa tabrakan label; nama kecamatan tampil mulai zoom 9;
   - daftar citra radar dan status kamera punya tenggat keseluruhan, jadi server penyedia yang lambat tidak menahan jawaban melewati batas tunggu peramban; kegagalan deteksi hujan dicatat di log.
-- **Belum dikerjakan dari audit** (dicatat untuk fase berikut): empat pembersih teks yang sudah menyimpang digabung menjadi satu; `PetaLangit`, `PetaMarker`, dan `RadarLayer` dipindah ke `features/peta`; `data/makan/places.json` (142 KB) ikut ke bundel semua halaman Makanan; batas laju memercayai header `x-real-ip` (perlu dicek di Railway).
+- **Empat temuan struktur** (pembersih teks ganda, cangkang peta di bagian yang salah, data Makanan di bundel, header `x-real-ip`) dikerjakan terpisah; lihat entri "Perapian arsitektur dari temuan audit".
 - **Gambar kartu dan ikon:** gaya disepakati lewat contoh (sketsa tinta dengan cat air). Kuota Codex pemilik habis saat pembuatan massal: 2 dari 61 gambar selesai, sisanya menunggu kuota. Grafis Riso belum diganti supaya gaya tidak tercampur.
 - Tes: layar penuh di dua lebar dan dua tema untuk kedua peta, penggeser ketebalan, menu ponsel satu baris, 770 tes unit.
 
