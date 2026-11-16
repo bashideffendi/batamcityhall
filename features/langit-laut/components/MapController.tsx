@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef } from "react";
 import { reduceMotion } from "@/features/langit-laut/lib/client";
-import { keLngLatBounds, kePaddingMapLibre, type Padding } from "@/features/langit-laut/lib/peta-lapisan";
+import { keLngLatBounds, kePaddingMapLibre, type Padding } from "@/features/peta/urutan-lapisan";
 import {
   CCTV_MAX_ZOOM,
   MAX_ZOOM,
@@ -12,7 +12,7 @@ import {
   type Mode,
   type ViewKey,
 } from "@/features/langit-laut/lib/radar";
-import { usePeta } from "./PetaLangit";
+import { usePeta } from "@/features/peta/PetaKerja";
 
 export type { Padding };
 

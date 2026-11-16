@@ -11,8 +11,8 @@ import CctvLayer from "@/features/langit-laut/components/CctvLayer";
 import CctvPlayer from "@/features/langit-laut/components/CctvPlayer";
 import LandMask from "@/features/langit-laut/components/LandMask";
 import OfsField from "@/features/langit-laut/components/OfsField";
-import PetaLangit, { usePeta } from "@/features/langit-laut/components/PetaLangit";
-import PetaMarker from "@/features/langit-laut/components/PetaMarker";
+import PetaKerja, { usePeta } from "@/features/peta/PetaKerja";
+import PetaMarker from "@/features/peta/PetaMarker";
 import RadarLayer from "@/features/langit-laut/components/RadarLayer";
 import { Sakelar } from "@/features/langit-laut/components/panel/Controls";
 import type { FramesResponse } from "@/features/langit-laut/lib/api-types";
@@ -378,7 +378,7 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
       )}
 
       <div className="app-root br-peta">
-        <PetaLangit theme={theme === "dark" ? "dark" : "light"} opsi={{ bounds: TAMPILAN_TEMPAT, maxBounds: MAP_BOUNDS, koperatif: true, selubung: true, tanpaAtribusi: true }}>
+        <PetaKerja theme={theme === "dark" ? "dark" : "light"} opsi={{ bounds: TAMPILAN_TEMPAT, maxBounds: MAP_BOUNDS, koperatif: true, selubung: true, tanpaAtribusi: true }}>
           <KendaliPeta onMap={setMap} />
           {semuaPin && <LapisanTempat fitur={fitur} pilihId={pilihId} onPilih={ubahPilih} />}
           {lapisan.radar && <RadarLayer url={urlRadar} opacity={0.85} onBroken={tanpaAksi} />}
@@ -400,7 +400,7 @@ export default function PetaTempat({ jumlahTanpaTitik }: { jumlahTanpaTitik: Rec
               <i className="br-saya" aria-label="Lokasimu" />
             </PetaMarker>
           )}
-        </PetaLangit>
+        </PetaKerja>
         {buka && semuaPin && pilihan && (
           <PanelTempat pins={semuaPin} jumlahTanpaTitik={jumlahTanpaTitik} pilihan={pilihan} ubah={ubah} onTutup={() => setPanelBuka(false)} />
         )}

@@ -6,19 +6,19 @@ import { createContext, useContext, useEffect, useRef, useState, type ReactNode 
 import { batasiKamera } from "@/features/peta/cakupan-ubin";
 import { pasangGlobalPeta, webglAda } from "@/features/peta/global";
 import { baseStyle, SOURCE_ID, type MapTheme } from "@/features/peta/style";
-import { gabungGaya, sisipSebelum } from "@/features/langit-laut/lib/peta-lapisan";
-import { MAX_ZOOM, MIN_ZOOM, type ThemeMode } from "@/features/langit-laut/lib/radar";
+import { gabungGaya, sisipSebelum } from "@/features/peta/urutan-lapisan";
+import { MAX_ZOOM, MIN_ZOOM } from "@/features/peta/zoom";
 import type { LayerSpecification } from "maplibre-gl";
 
 const KonteksPeta = createContext<MapLibre | null>(null);
 
 export function usePeta(): MapLibre {
   const m = useContext(KonteksPeta);
-  if (!m) throw new Error("usePeta dipakai di luar PetaLangit");
+  if (!m) throw new Error("usePeta dipakai di luar PetaKerja");
   return m;
 }
 
-/** Tambah layer di posisinya menurut urutan Langit & Laut (lib/peta-lapisan.ts). */
+/** Tambah layer di posisinya menurut urutan lapisan peta kerja (features/peta/urutan-lapisan.ts). */
 export function tambahLayer(map: MapLibre, layer: LayerSpecification) {
   const urutan = map.getLayersOrder().map((id) => ({ id, type: map.getLayer(id)?.type ?? "" }));
   map.addLayer(layer, sisipSebelum(urutan, layer.id));
@@ -32,10 +32,12 @@ const TEKS_PETA = {
   "CooperativeGesturesHandler.MobileHelpText": "Geser dengan dua jari untuk menggerakkan peta",
 };
 
-const temaPeta = (t: ThemeMode): MapTheme => (t === "dark" ? "dark" : "light");
+const temaPeta = (t: MapTheme): MapTheme => (t === "dark" ? "dark" : "light");
 
-// Pemilik satu peta MapLibre untuk tiga mode. Lapisan mode (radar, ombak, kecamatan, kamera) adalah
-// komponen anak yang baru dirender setelah gaya peta dasar selesai dimuat.
+// Peta kerja (PEDOMAN 5.2): pemilik satu peta MapLibre yang dipakai peta cuaca, Peta Tempat, dan peta kategori
+// Direktori. Lapisan tiap pemakai (radar, ombak, kecamatan, kamera, tempat) adalah komponen anak yang baru dirender
+// setelah gaya peta dasar selesai dimuat. Sampai 16 Nov 2026 berkas ini bernama PetaLangit dan tinggal di
+// features/langit-laut, padahal features/peta dan features/direktori ikut memakainya.
 export type OpsiPeta = {
   bounds?: [[number, number], [number, number]];
   maxBounds?: [[number, number], [number, number]];
@@ -54,7 +56,7 @@ export type OpsiPeta = {
   ikutiUbin?: boolean;
 };
 
-export default function PetaLangit({ theme, children, opsi }: { theme: ThemeMode; children: ReactNode; opsi?: OpsiPeta }) {
+export default function PetaKerja({ theme, children, opsi }: { theme: MapTheme; children: ReactNode; opsi?: OpsiPeta }) {
   const wadah = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<MapLibre | null>(null);
   const [gagal, setGagal] = useState(() => !webglAda());

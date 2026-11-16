@@ -1,4 +1,5 @@
-// Aturan lapisan Langit & Laut di atas peta dasar bersama. Fungsi murni supaya bisa dites tanpa WebGL.
+// Aturan lapisan di atas peta dasar bersama (PetaKerja) dan hitungan geometri peta. Fungsi murni supaya bisa dites
+// tanpa WebGL. Sampai 16 Nov 2026 berkas ini features/langit-laut/lib/peta-lapisan.ts.
 //
 // Semua sumber dan layer milik fitur ini berawalan "ll-". Saat tema berganti, peta dasar diganti
 // lewat setStyle dengan diff, dan gabungGaya menjaga lapisan "ll-" supaya radar tidak hilang.

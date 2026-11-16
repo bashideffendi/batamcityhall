@@ -12,7 +12,7 @@ import {
   pikselDunia,
   sisipSebelum,
   sudutCitra,
-} from "@/features/langit-laut/lib/peta-lapisan";
+} from "@/features/peta/urutan-lapisan";
 import { parseBulletin, warnAt } from "@/features/langit-laut/lib/perairan";
 import { MAX_ZOOM, RADAR_BOUNDS, radarCitra, radarUrl, tsRadarWajar } from "@/features/langit-laut/lib/radar";
 import { BMKG_HEADERS } from "@/features/langit-laut/lib/sources";

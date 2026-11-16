@@ -6,7 +6,7 @@ import { urlUbinCopernicus, type SumberGelombang } from "@/features/langit-laut/
 import { pasangProtokolCopernicus } from "@/features/langit-laut/lib/copernicus-ubin";
 import { OFS_TILE } from "@/features/langit-laut/lib/radar";
 import { ofsTilePath } from "@/features/langit-laut/lib/sources";
-import { tambahLayer, usePeta } from "./PetaLangit";
+import { tambahLayer, usePeta } from "@/features/peta/PetaKerja";
 
 // Field gelombang (TMS tile contourf BMKG, atau ubin Copernicus yang diwarnai ulang) dengan DOUBLE-BUFFER: tiap frame jadi sumber baru yang
 // disembunyikan sampai tile-nya siap, baru menggantikan yang lama, jadi laut tidak berkedip kosong.

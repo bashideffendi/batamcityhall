@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { SOURCE_ID } from "@/features/peta/style";
 import type { ThemeMode } from "@/features/langit-laut/lib/radar";
-import { tambahLayer, usePeta } from "./PetaLangit";
+import { tambahLayer, usePeta } from "@/features/peta/PetaKerja";
 
 // Garis pantai digambar DI ATAS warna radar dan gelombang (pemilik 16 Nov 2026: "gimana agar radar ini jelas berada
 // di atas area mana"). Warna radar menutup peta dasar, jadi tanpa garis ini bentuk pulau hilang tepat di tempat

@@ -4,7 +4,7 @@ import type { ErrorEvent } from "maplibre-gl";
 import { useEffect } from "react";
 import { PALET_CUACA, SOURCE_ID } from "@/features/peta/style";
 import type { ThemeMode } from "@/features/langit-laut/lib/radar";
-import { tambahLayer, usePeta } from "./PetaLangit";
+import { tambahLayer, usePeta } from "@/features/peta/PetaKerja";
 
 // Field OFS opaque di mana-mana, jadi warnanya meluber ke daratan. Solusi sama dengan app OFS BMKG:
 // poligon DARATAN digambar di atas field dengan warna darat peta dasar.

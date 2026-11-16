@@ -3,7 +3,7 @@
 import { Marker } from "maplibre-gl";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { usePeta } from "./PetaLangit";
+import { usePeta } from "./PetaKerja";
 
 type Props = {
   /** [lintang, bujur], sama dengan urutan data kode lama */

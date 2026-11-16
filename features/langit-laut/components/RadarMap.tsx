@@ -48,7 +48,7 @@ import LandMask from "./LandMask";
 import MapController, { type Padding } from "./MapController";
 import OfsField from "./OfsField";
 import PeringatanLayer from "./PeringatanLayer";
-import PetaLangit from "./PetaLangit";
+import PetaKerja from "@/features/peta/PetaKerja";
 import GarisAtas from "./GarisAtas";
 import RadarLayer from "./RadarLayer";
 import CamDirectory from "./panel/CamDirectory";
@@ -548,7 +548,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
         <div ref={container} className="cu-peta" data-fullscreen={full || undefined}
           role={full ? "dialog" : undefined} aria-modal={full || undefined}
           aria-label={full ? NASKAH[mode].judul : undefined}>
-          <PetaLangit theme={theme} opsi={{ koperatif: wide && !full, ikutiUbin: true, netral: mode !== "cctv" }}>
+          <PetaKerja theme={theme} opsi={{ koperatif: wide && !full, ikutiUbin: true, netral: mode !== "cctv" }}>
             {tampilRadar && (
               <RadarLayer
                 url={rv.current && !rv.currentBroken && !radarTerputus ? rv.current.url : null}
@@ -576,7 +576,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
               <CctvLayer onPick={pickCam} dead={kameraMati} />
             )}
             <MapController view={view} mode={mode} getPadding={getPadding} collapsed={collapsed} />
-          </PetaLangit>
+          </PetaKerja>
           {mode !== "cctv" && <button ref={button} type="button" className="cu-fullscreen"
             aria-expanded={full} onClick={() => setFull(!full)}>{full ? "Tutup" : "Layar Penuh"}</button>}
           {full && <div className="cu-full-controls">

@@ -2,7 +2,7 @@
 
 import type { GeoJSONSource, MapLayerMouseEvent } from "maplibre-gl";
 import { useEffect, useMemo, useRef } from "react";
-import { tambahLayer, usePeta } from "@/features/langit-laut/components/PetaLangit";
+import { tambahLayer, usePeta } from "@/features/peta/PetaKerja";
 import { muatGambar, namaGambar } from "./gambar-penanda";
 import { FONT } from "./style";
 

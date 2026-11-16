@@ -1,6 +1,6 @@
 "use client";
 
-import PetaLangit from "@/features/langit-laut/components/PetaLangit";
+import PetaKerja from "@/features/peta/PetaKerja";
 import LapisanTempat, { type FiturPin } from "@/features/peta/LapisanTempat";
 import { MAP_BOUNDS } from "@/features/peta/style";
 import "@/features/peta/peta.css";
@@ -30,9 +30,9 @@ export default function PetaKategoriIsi({
     : TAMPILAN;
   return (
     <div className="bch-kategori-peta">
-      <PetaLangit theme={theme} opsi={{ bounds, maxBounds: MAP_BOUNDS, koperatif: true, selubung: true }}>
+      <PetaKerja theme={theme} opsi={{ bounds, maxBounds: MAP_BOUNDS, koperatif: true, selubung: true }}>
         <LapisanTempat fitur={fitur} onPilih={onPilih} />
-      </PetaLangit>
+      </PetaKerja>
     </div>
   );
 }

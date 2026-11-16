@@ -67,7 +67,7 @@ Jalankan e2e dengan `npx playwright test --workers=4 --timeout=60000`. Satu peke
 - Kode lama bisa di-clone ulang untuk referensi dan uji paritas: `github.com/bashideffendi/hujandibatam` dan `github.com/bashideffendi/batam-bites`.
 - Next.js 16 berbeda dari ingatan lama (mis. `proxy.md` di samping `middleware.md`). Baca `node_modules/next/dist/docs/` sebelum menulis fitur baru.
 - CSS MapLibre dimuat belakangan dan bisa menimpa gaya wadah peta; naikkan spesifisitas bila perlu.
-- Lapisan fitur di peta berawalan `ll-` supaya bertahan saat tema berganti (`features/langit-laut/lib/peta-lapisan.ts`). Penanda gaya A ada di `features/peta/LapisanTempat.tsx` dan `gambar-penanda.ts`, gambarnya dimuat lewat `styleimagemissing`.
+- Lapisan fitur di peta berawalan `ll-` supaya bertahan saat tema berganti (`features/peta/urutan-lapisan.ts`). Penanda gaya A ada di `features/peta/LapisanTempat.tsx` dan `gambar-penanda.ts`, gambarnya dimuat lewat `styleimagemissing`.
 - **`places.json` tidak aman ditampilkan mentah:** `catatan` dan `atribut` memuat catatan kerja dan rating. Lewat `catatanPublik` dan `atributPublik`.
 - Tiruan `/api/prakiraan` di e2e harus 503, bukan `{}`: Langit & Laut menganggap respons 200 berbentuk lengkap.
 - Balapan tema (`situs.spec.ts`, mengikuti prefers-color-scheme) sudah dibetulkan: `followSystemTheme` menyamakan tema sekali saat dipasang.

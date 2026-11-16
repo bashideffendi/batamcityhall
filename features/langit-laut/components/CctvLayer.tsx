@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import { MAPPED_CAMS, type Cam } from "@/features/langit-laut/lib/cctv";
 import { CAM_PATH_A, CAM_PATH_B } from "./icons";
-import { usePeta } from "./PetaLangit";
-import PetaMarker from "./PetaMarker";
+import { usePeta } from "@/features/peta/PetaKerja";
+import PetaMarker from "@/features/peta/PetaMarker";
 
 // Pin kamera di peta. Stream baru jalan pas kamera dipilih (lihat CctvPlayer).
 //

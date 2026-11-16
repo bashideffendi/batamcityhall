@@ -5,7 +5,7 @@ import { useEffect, useMemo } from "react";
 import type { PeringatanCuaca } from "@/features/langit-laut/lib/api-types";
 import { keGeoJson } from "@/features/langit-laut/lib/peringatan-cuaca";
 import type { ThemeMode } from "@/features/langit-laut/lib/radar";
-import { tambahLayer, usePeta } from "./PetaLangit";
+import { tambahLayer, usePeta } from "@/features/peta/PetaKerja";
 
 // Peringatan memakai garis netral putus-putus tebal, tanpa isian yang mengubah warna radar.
 const SUMBER = "ll-cap";

@@ -3,11 +3,11 @@
 import type { GeoJSONSource } from "maplibre-gl";
 import { useEffect, useMemo, useState } from "react";
 import { KOTA_UTAMA, levelRank } from "@/features/langit-laut/lib/kecamatan";
-import { pikselDunia } from "@/features/langit-laut/lib/peta-lapisan";
+import { pikselDunia } from "@/features/peta/urutan-lapisan";
 import { PLACES, type ThemeMode } from "@/features/langit-laut/lib/radar";
 import type { EchoLevel } from "@/features/langit-laut/lib/status";
-import { tambahLayer, usePeta } from "./PetaLangit";
-import PetaMarker from "./PetaMarker";
+import { tambahLayer, usePeta } from "@/features/peta/PetaKerja";
+import PetaMarker from "@/features/peta/PetaMarker";
 
 // Batas 52 kecamatan (PEDOMAN 5.2): garis putus-putus tipis, nama kapital. Kecamatan yang hujan ditandai dengan
 // label bertulisan kelasnya, supaya makna tidak hanya lewat warna. Geometri (±390 KB) dimuat terpisah.

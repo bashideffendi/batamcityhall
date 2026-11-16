@@ -19,7 +19,7 @@ export type ViewKey = "batam" | "regional" | "kepri" | "natuna" | "kamera";
 // Mode tampilan: HUJAN (radar) · OMBAK (field gelombang OFS BMKG) · CCTV (kamera Batam).
 export type Mode = "hujan" | "ombak" | "cctv";
 
-// Bounds ditulis [[south, west], [north, east]]; lib/peta-lapisan.ts mengubahnya untuk MapLibre.
+// Bounds ditulis [[south, west], [north, east]]; features/peta/urutan-lapisan.ts mengubahnya untuk MapLibre.
 //
 // KALIBRASI (diperbarui 2026-09-26, audit ronde 2):
 // MSS nggak publish bbox. Citra 240 km = 480×480 px dan produknya memang 480 km
@@ -36,10 +36,8 @@ export const RADAR_BOUNDS: [[number, number], [number, number]] = [
 /** Resolusi nominal citra radar — dipakai di keterangan legend. */
 export const RADAR_KM_PER_PX = 1;
 
-// Angka zoom MapLibre (tile 512 px) = zoom Leaflet situs lama (tile 256 px) dikurangi 1, jadi skala
-// di layar sama persis dengan hujandibatam.
-export const MIN_ZOOM = 6;
-export const MAX_ZOOM = 11; // dikunci: lebih dari ini radar (1 km/px) mulai pecah
+// Batas zoom peta kerja ditulis di features/peta/zoom.ts; diteruskan dari sini supaya pemakai lama tetap jalan.
+export { MAX_ZOOM, MIN_ZOOM } from "@/features/peta/zoom";
 // Mode CCTV nggak punya overlay radar, jadi batas 12 di atas nggak relevan di sana.
 // Di zoom 16 semua pin sudah terpisah (kipas layar 24 px, jarak minimum ±45 px) —
 // lebih dalam dari itu tidak ada gunanya.
