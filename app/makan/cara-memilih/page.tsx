@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CaraMemilih } from "@/features/makan/components/HalamanMakan";
+import CaraMemilih from "@/features/makan/components/CaraMemilih";
 
 export const metadata: Metadata = {
   title: "Cara Kami Memilih",

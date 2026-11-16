@@ -1,30 +1,12 @@
+// Daftar tempat makan (data/makan/places.json, ±140 KB) dan turunannya. Komponen klien yang hanya butuh kategori,
+// kawasan, atau terminal feri mengimpor ./acuan supaya daftar ini tidak ikut terunduh (16 Nov 2026).
 import placesRaw from "@/data/makan/places.json";
-import categoriesRaw from "@/data/makan/categories.json";
-import areasRaw from "@/data/makan/areas.json";
-import ferriesRaw from "@/data/makan/ferries.json";
 import koordinatUser from "@/data/koordinat_user.json";
+import { areas, ferries, haversineKm } from "./acuan";
 import { adalahPonsel } from "./format";
-import type { Place, Category, Area, Ferry, PlaceWithGeo, RecLabel } from "./types";
+import type { Place, PlaceWithGeo, RecLabel } from "./types";
 
-export const categories = categoriesRaw as Category[];
-// Nama area tampil tanpa garis miring (pedoman 2.7). Berkasnya tetap, karena konversi membaca kecamatan dari sana.
-export const areas = (areasRaw as Area[]).map((a) => ({ ...a, name: a.name.replace(/\s*\/\s*/g, ", ") }));
-export const ferries = ferriesRaw as Ferry[];
-
-export const categoryMap: Record<string, Category> = Object.fromEntries(categories.map((c) => [c.id, c]));
-export const areaMap: Record<string, Area> = Object.fromEntries(areas.map((a) => [a.id, a]));
-export const ferryMap: Record<string, Ferry> = Object.fromEntries(ferries.map((f) => [f.id, f]));
-
-/** Jarak lingkaran besar dalam km. */
-export function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
-  const R = 6371;
-  const dLat = ((lat2 - lat1) * Math.PI) / 180;
-  const dLng = ((lng2 - lng1) * Math.PI) / 180;
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLng / 2) ** 2;
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-}
+export { areaMap, areas, categories, categoryMap, ferries, ferryMap, haversineKm } from "./acuan";
 
 function nearestFerry(lat: number, lng: number): { id: string; km: number } {
   let best = { id: ferries[0].id, km: Infinity };

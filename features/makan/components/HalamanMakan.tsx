@@ -9,13 +9,14 @@ import { useCallback, useMemo, useState, type ReactNode } from "react";
 import FeriTerakhirMuat from "@/features/jalan/FeriTerakhirMuat";
 import { areaCounts, areaMap, categories, categoryCounts, categoryMap, dalamKategori, ferries, kawasanBerisi, places } from "../lib/data";
 import { FilterProvider, useAlamat, useFilters } from "../lib/filters";
-import { CURRENCY_RATES, TANGGAL_KURS } from "../lib/format";
-import { DEK_HIDANGAN, grafisHidangan, kategoriDariSlug, RUMPUN, slugHidangan } from "../lib/hidangan";
-import { catName, HALAL_LABEL, LABEL_LABEL, miring, useI18n, type KunciTeks } from "../lib/i18n";
+import { DEK_HIDANGAN, grafisHidangan, kategoriDariSlug } from "../lib/hidangan";
+import { catName, HALAL_LABEL, miring, useI18n, type KunciTeks } from "../lib/i18n";
 import { getPanduan, ID_SAMPUL, panduan, type Panduan } from "../lib/panduan";
 import { RADIUS_FERI_KM, tautanPeta } from "../lib/saring";
 import type { Lang, PlaceWithGeo, RecLabel } from "../lib/types";
 import BarisTempat from "./BarisTempat";
+import IndeksHidangan from "./IndeksHidangan";
+import Remah from "./Remah";
 import HalamanDaftar from "./HalamanDaftar";
 import PetaCetak from "./PetaCetak";
 import SearchBar, { PesanKosong } from "./SearchBar";
@@ -36,71 +37,12 @@ function TautanAksi({ href, children }: { href: string; children: ReactNode }) {
   );
 }
 
-function Remah({ isi }: { isi: { teks: string; href?: string }[] }) {
-  const { t } = useI18n();
-  return (
-    <nav className="bch-remah" aria-label={t("breadcrumb")}>
-      {isi.map((x, i) => (
-        <span key={x.teks}>
-          {i > 0 && " / "}
-          {x.href ? <Link href={x.href}>{x.teks}</Link> : <span aria-current="page">{x.teks}</span>}
-        </span>
-      ))}
-    </nav>
-  );
-}
-
 function KepalaBagian({ judul, dek, tautan }: { judul: string; dek?: string; tautan?: ReactNode }) {
   return (
     <div className="mk-kepala">
       <h2>{judul}</h2>
       {dek && <p>{dek}</p>}
       {tautan && <div className="mk-kepala-tautan">{tautan}</div>}
-    </div>
-  );
-}
-
-// ---- Indeks hidangan: tiga baris enam ubin, dikelompokkan per rumpun ----
-export function IndeksHidangan({ tanpaSemua = false }: { tanpaSemua?: boolean }) {
-  const { lang, t } = useI18n();
-  return (
-    <div className="mk-indeks">
-      {RUMPUN.map((r) => (
-        <div key={r.id} className="mk-rumpun" data-n={r.kategori.length} data-rumpun={r.id}>
-          <p className="mk-rumpun-nama">{r.nama[lang]}</p>
-          <ul>
-            {r.kategori.map((id) => (
-              <li key={id}>
-                {categoryCounts[id] ? (
-                  <Link href={`/makan/hidangan/${slugHidangan(id)}`} className="mk-ubin">
-                    <Image src={grafisHidangan(id)} alt="" width={480} height={480} loading="lazy" unoptimized />
-                    <span className="mk-ubin-nama">{catName(lang, categoryMap[id])}</span>
-                    <span className="mk-ubin-n">{categoryCounts[id]}</span>
-                  </Link>
-                ) : (
-                  <span className="mk-ubin" data-kosong>
-                    <Image src={grafisHidangan(id)} alt="" width={480} height={480} loading="lazy" unoptimized />
-                    <span className="mk-ubin-nama">{catName(lang, categoryMap[id])}</span>
-                    <span className="mk-ubin-n">Belum Ada</span>
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-      {!tanpaSemua && (
-        <div className="mk-rumpun mk-rumpun-semua" data-n={1}>
-          <p className="mk-rumpun-nama" aria-hidden="true">
-            {" "}
-          </p>
-          <Link href="/makan/peta" className="mk-ubin-semua">
-            <span className="mk-ubin-nama">{t("idx_all")}</span>
-            <span className="mk-ubin-n">{places.length}</span>
-            <Panah />
-          </Link>
-        </div>
-      )}
     </div>
   );
 }
@@ -268,7 +210,7 @@ function BerandaIsi() {
         <>
           <section className="bch-seksi">
             <KepalaBagian judul={t("idx_title")} />
-            <IndeksHidangan />
+            <IndeksHidangan jumlah={categoryCounts} total={places.length} />
           </section>
 
           <ModulFeri />
@@ -348,17 +290,6 @@ export function PetaSemua() {
 }
 
 // ---- Hidangan ----
-export function HidanganIndeks() {
-  const { t } = useI18n();
-  return (
-    <div className="bch-page">
-      <Remah isi={[{ teks: t("nav_home"), href: "/makan" }, { teks: t("nav_dish") }]} />
-      <h1 className="mk-judul">{t("nav_dish")}</h1>
-      <IndeksHidangan />
-    </div>
-  );
-}
-
 function KepalaHidangan({ kategori }: { kategori: string }) {
   const { t, lang } = useI18n();
   const nama = catName(lang, categoryMap[kategori]);
@@ -547,80 +478,6 @@ export function PanduanHalaman({ id }: { id: string }) {
           <TrailMap stops={g.tempat} />
           <p className="mk-peta-catatan">{t("guide_line_note")}</p>
         </div>
-      </div>
-    </div>
-  );
-}
-
-// ---- Cara memilih ----
-const LABEL_ARTI: [RecLabel, KunciTeks][] = [
-  ["legendaris", "about_l_legend"],
-  ["wajib-coba", "about_l_kurator"],
-  ["hits", "about_l_populer"],
-  ["hidden-gem", "about_l_jarang"],
-];
-
-function Blok({ id, judul, children }: { id?: string; judul: string; children: ReactNode }) {
-  return (
-    <section id={id}>
-      <h2>{judul}</h2>
-      {children}
-    </section>
-  );
-}
-
-export function CaraMemilih() {
-  const { t, lang } = useI18n();
-  const tanggal = new Intl.DateTimeFormat(lang === "id" ? "id-ID" : lang === "zh" ? "zh-CN" : "en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(`${TANGGAL_KURS}T00:00:00Z`));
-  const sgd = `Rp${CURRENCY_RATES.SGD.toLocaleString("id-ID")}`;
-
-  return (
-    <div className="bch-page mk-cara">
-      <Remah isi={[{ teks: t("nav_home"), href: "/makan" }, { teks: t("how") }]} />
-      <h1 className="mk-judul">{t("about_title")}</h1>
-      <div className="mk-cara-isi">
-        <Blok judul={t("about_pay_t")}>
-          <p>{t("about_pay")}</p>
-        </Blok>
-        <Blok judul={t("about_labels_t")}>
-          <dl className="mk-arti">
-            {LABEL_ARTI.map(([l, teks]) => (
-              <div key={l}>
-                <dt>
-                  <em className="mk-label">{LABEL_LABEL[l][lang]}</em>
-                </dt>
-                <dd>{t(teks)}</dd>
-              </div>
-            ))}
-          </dl>
-        </Blok>
-        <Blok id="status-halal" judul={t("about_halal_t")}>
-          <p>{t("about_halal")}</p>
-        </Blok>
-        <Blok judul={t("about_coord_t")}>
-          <p>{t("about_coord")}</p>
-        </Blok>
-        <Blok judul={t("about_rating_t")}>
-          <p>{t("about_rating")}</p>
-        </Blok>
-        <Blok judul={t("about_rate_t")}>
-          <p>{t("about_rate", { tanggal, sgd })}</p>
-        </Blok>
-        <Blok judul={t("about_qris_t")}>
-          <p>{t("about_qris")}</p>
-        </Blok>
-        <Blok judul={t("about_tips_t")}>
-          <ul>
-            <li>{t("about_tip1")}</li>
-            <li>{t("about_tip2")}</li>
-            <li>{t("about_tip3")}</li>
-          </ul>
-        </Blok>
       </div>
     </div>
   );

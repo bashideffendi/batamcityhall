@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { HidanganIndeks } from "@/features/makan/components/HalamanMakan";
+import HidanganIndeks from "@/features/makan/components/HidanganIndeks";
+import { categoryCounts, places } from "@/features/makan/lib/data";
 
 export const metadata: Metadata = {
   title: "Hidangan",
@@ -7,5 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default function Halaman() {
-  return <HidanganIndeks />;
+  // Dihitung di server: halaman ini hanya butuh angkanya, bukan seluruh daftar tempat.
+  return <HidanganIndeks jumlah={categoryCounts} total={places.length} />;
 }
