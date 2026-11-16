@@ -449,8 +449,9 @@ h4 {
   color: var(--bch-link);
 }
 /* Menu bagian. Layar lebar (mulai 1241 px): Beranda (ikon) dan 14 bagian termasuk Info Loker dalam satu baris, 14 px
-   dan jarak 10 px. Layar sedang: semua bagian dua baris di tengah. Ponsel: tujuh bagian dua baris rata kanan-kiri dan
-   tombol Lainnya untuk sisanya. Tidak ada tombol burger (pemilik 12 Nov 2026). */
+   dan jarak 10 px. Layar sedang: semua bagian dua baris di tengah. Ponsel: tujuh bagian dalam satu baris yang bisa
+   digeser dan tombol Lainnya untuk sisanya (pemilik 16 Nov 2026: dua baris menu ditambah submenu "bertumpuk tiga,
+   membingungkan"). Tidak ada tombol burger (pemilik 12 Nov 2026). */
 .bch-menu {
   position: relative;
   display: flex;
@@ -459,7 +460,11 @@ h4 {
   border-top: 2px solid var(--bch-rule-strong);
   border-bottom: 1px solid var(--bch-rule-strong);
 }
-.bch-menu > a,
+/* Pembungkus tautan: tidak membentuk kotak di layar lebar, jadi tautan tetap anak fleks menu. */
+.bch-menu-gulir {
+  display: contents;
+}
+.bch-menu-gulir > a,
 .bch-menu-lainnya {
   display: inline-flex;
   align-items: center;
@@ -473,15 +478,14 @@ h4 {
   margin-bottom: -1px;
   box-sizing: border-box;
 }
-.bch-menu > a:hover,
+.bch-menu-gulir > a:hover,
 .bch-menu-lainnya:hover {
   color: var(--bch-link);
 }
-.bch-menu > a[aria-current="page"],
+.bch-menu-gulir > a[aria-current="page"],
 .bch-menu-lainnya[data-aktif] {
   border-bottom-color: var(--bch-riso-blue);
 }
-.bch-menu-baris,
 .bch-menu-lainnya,
 .bch-menu-panel {
   display: none;
@@ -625,36 +629,60 @@ h4 {
   .bch-wordmark {
     font-size: 26px;
   }
-  /* Dua baris rata kanan-kiri; nama situs di kepala menjadi jalan ke beranda. */
+  /* Satu baris yang bisa digeser; Lainnya tetap di ujung kanan. Nama situs di kepala menjadi jalan ke beranda. */
   .bch-menu {
-    justify-content: space-between;
-    column-gap: 8px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    column-gap: 0;
   }
-  .bch-menu > .bch-menu-beranda,
-  .bch-menu > a[data-lain] {
+  .bch-menu-gulir {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    gap: 22px;
+    padding-right: 26px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    /* Tepi kanan memudar: tanda masih ada bagian lain bila digeser. */
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 30px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 30px), transparent);
+  }
+  .bch-menu-gulir::-webkit-scrollbar {
     display: none;
   }
-  .bch-menu-baris {
-    display: block;
-    flex-basis: 100%;
-    height: 0;
+  .bch-menu-gulir > a {
+    flex: none;
+    font-size: 15px;
+    margin-bottom: 0;
+  }
+  .bch-menu-gulir > .bch-menu-beranda,
+  .bch-menu-gulir > a[data-lain] {
+    display: none;
   }
   .bch-menu-lainnya {
     display: inline-flex;
+    flex: none;
+    padding-left: 12px;
+    font-size: 15px;
+    margin-bottom: 0;
   }
-  .bch-menu > a,
-  .bch-menu-lainnya {
-    min-height: 42px;
+  /* Submenu di pita berwarna dengan huruf lebih kecil, supaya terbaca sebagai isi bagian, bukan menu kedua. */
+  .bch-submenu {
+    background: color-mix(in srgb, var(--bch-ink) 6%, var(--bch-paper));
+    border-bottom: 0;
   }
-}
-/* Ponsel 320 px: huruf 13 px supaya tiap baris tetap satu baris. */
-@media (max-width: 359px) {
-  .bch-menu {
-    column-gap: 6px;
+  .bch-submenu-dalam {
+    gap: 22px;
   }
-  .bch-menu > a,
-  .bch-menu-lainnya {
-    font-size: 13px;
+  .bch-submenu a {
+    min-height: 40px;
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+  .bch-submenu a[aria-current="page"] {
+    font-weight: 700;
+    border-bottom-color: var(--bch-ink);
   }
 }
 /* Menu di luar kepala: pembungkus selebar wadah halaman, supaya garis menu tetap sebatas isi seperti sebelumnya. */

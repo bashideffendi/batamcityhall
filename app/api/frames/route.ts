@@ -73,7 +73,8 @@ function toFrame(ts: string): Frame {
 async function exists(ts: string): Promise<boolean> {
   try {
     const r = await fetch(urlFor(ts), {
-      next: { revalidate: 60 },
+      // Tanpa Data Cache Next: hasil probe basi membuat citra terbaru terlambat terlihat setelah situs sepi.
+      cache: "no-store",
       signal: AbortSignal.timeout(PROBE_TIMEOUT_MS),
     });
     return r.ok;
@@ -126,7 +127,8 @@ async function echoFor(ts: string): Promise<EchoStats | null | undefined> {
   if (echoCache.has(ts)) return echoCache.get(ts);
   try {
     const r = await fetch(urlFor(ts), {
-      next: { revalidate: 3600 },
+      // Hasil per timestamp sudah disimpan di echoCache; Data Cache Next hanya menumpuk berkas PNG di disk.
+      cache: "no-store",
       signal: AbortSignal.timeout(PROBE_TIMEOUT_MS),
     });
     if (r.status === 404) {
@@ -141,7 +143,9 @@ async function echoFor(ts: string): Promise<EchoStats | null | undefined> {
     }
     echoCache.set(ts, stats);
     return stats;
-  } catch {
+  } catch (e) {
+    // Dicatat supaya "deteksi hujan gangguan" punya jejak (ukuran PNG atau batas citra berubah, MSS lambat).
+    console.warn("[frames] deteksi hujan gagal:", ts, (e as Error)?.message);
     return undefined;
   }
 }
@@ -194,8 +198,23 @@ async function echoSummary(frames: Frame[]): Promise<EchoSummary | null> {
   };
 }
 
+// Klien berhenti menunggu setelah 15 detik. Bila MSS lambat, probe dan deteksi hujan bisa memakan hampir 30 detik,
+// jadi masing-masing diberi tenggat: probe jatuh ke hasil terakhir yang berhasil, deteksi hujan dikosongkan.
+const TENGGAT_PROBE_MS = 9000;
+const TENGGAT_ECHO_MS = 4500;
+const tunggu = <T,>(ms: number, nilai: T) => new Promise<T>((selesai) => setTimeout(() => selesai(nilai), ms));
+
+async function tsTerbaru(): Promise<{ ts: string | null; source: FramesResponse["source"] }> {
+  const hasil = await Promise.race([newestTs(), tunggu(TENGGAT_PROBE_MS, null)]);
+  if (hasil) return hasil;
+  console.warn("[frames] probe MSS melewati tenggat");
+  return lastGood && Date.now() - lastGood.at < LAST_GOOD_MAX_AGE_MS
+    ? { ts: lastGood.ts, source: "lastGood" }
+    : { ts: null, source: "none" };
+}
+
 async function muatRespons(): Promise<Response> {
-  const { ts: endTs, source } = await newestTs();
+  const { ts: endTs, source } = await tsTerbaru();
   const headers = { "Cache-Control": "public, s-maxage=30, stale-while-revalidate=30" };
   if (!endTs) {
     // Nihil total: JANGAN kirim URL yang terbukti 404 seolah citra sah — klien
@@ -208,7 +227,7 @@ async function muatRespons(): Promise<Response> {
   const ageMinutes = Math.round((Date.now() - endInstant) / 60000);
   // stale: pakai hasil lama, atau frame terbaru > 18 mnt (MSS macet/terlambat)
   const stale = source !== "mss" || ageMinutes > 18;
-  const echo = await echoSummary(frames);
+  const echo = await Promise.race([echoSummary(frames), tunggu(TENGGAT_ECHO_MS, null)]);
   const body: FramesResponse = { frames, count: frames.length, stale, ageMinutes, source, echo };
   return Response.json(body, { headers });
 }

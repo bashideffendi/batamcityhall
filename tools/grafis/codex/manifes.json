@@ -1,0 +1,307 @@
+[
+ {
+  "nama": "sub-radar",
+  "rasio": "3:2",
+  "isi": "A rain radar map, drawn as the screen of a weather radar app seen straight from above: a rounded-rectangle map card showing a tropical island city with a few smaller islands around it (generic coastline, some thin road lines, pale blue sea wash). Over the map, rain radar echoes are painted as soft overlapping blobs in the classic radar colours: green at the edges, then yellow, then orange and red at the heaviest cores, covering part of the main island and the sea. A small round location dot sits on the island. Along the bottom edge of the card there is a simple timeline slider with a round play button and a short colour-scale strip going green, yellow, orange, red. No writing anywhere. The radar colours must be the clearest thing in the picture."
+ },
+ {
+  "nama": "sub-gelombang",
+  "rasio": "3:2",
+  "isi": "A sea wave-height map, drawn as the screen of a marine weather app seen straight from above: a rounded-rectangle map card showing a group of tropical islands (generic coastline, land in pale sand colour). The sea around them is painted in smooth bands of colour that show wave height: pale blue near the islands, then deeper blue, turquoise, and a patch of green and yellow further out. Small curved wave marks and a few little wind arrows are drawn on the sea, and one small boat symbol. Along the bottom edge of the card there is a simple timeline slider with a round play button and a short colour-scale strip going from pale blue through turquoise and green to yellow. No writing anywhere."
+ },
+ {
+  "nama": "loket-cuaca",
+  "rasio": "1:1",
+  "isi": "A weather symbol as a detailed object: a big puffy grey-and-white rain cloud partly covering a bright golden sun with short rays, and a row of blue raindrops falling below the cloud."
+ },
+ {
+  "nama": "loket-makan",
+  "rasio": "1:1",
+  "isi": "A Batam seafood meal arranged together: a whole chilli crab in thick red-orange sauce on an oval plate, a small plate of steamed gonggong (dog conch sea snails with spiral shells) with a little dish of chilli dip, a bowl of clear fish soup with green leaves and tomato, and a tall glass of iced tea. Blue-rimmed white porcelain with small painted flowers."
+ },
+ {
+  "nama": "loket-tukang",
+  "rasio": "1:1",
+  "isi": "A handyman's kit: an open red metal toolbox with a hammer, an adjustable wrench, screwdrivers and pliers inside, and next to it a cordless drill, a paint roller, a spirit level and a coil of electrical cable."
+ },
+ {
+  "nama": "loket-transportasi",
+  "rasio": "1:1",
+  "isi": "City transport as a small diorama: a white-and-blue fast passenger ferry moored at a short concrete pier on turquoise sea, and beside it on a strip of asphalt road a blue city bus waiting at a simple roofed bus shelter. No writing or logos on the vehicles."
+ },
+ {
+  "nama": "loket-cerita",
+  "rasio": "1:1",
+  "isi": "A traditional Malay wooden stilt house with a steep roof, carved wooden eaves and a small front stair, standing on posts over shallow clear sea water beside a little patch of sandy beach with two coconut palms. A small wooden sampan is tied to the stair post."
+ },
+ {
+  "nama": "loket-informasi",
+  "rasio": "1:1",
+  "isi": "City services directory: a half-unfolded paper city map showing roads, coast and islands (no writing), with four location pins in different colours stuck into it, a magnifying glass resting on the map, and a small wooden signpost with three blank arrow boards standing beside it."
+ },
+ {
+  "nama": "bagian-agenda",
+  "rasio": "1:1",
+  "isi": "Things to do on a day out: a striped beach umbrella with a wooden lounge chair, a snorkel mask with fins, two blank paper admission tickets, a red paper lantern and a small Malay kompang frame drum, arranged together as one tidy group."
+ },
+ {
+  "nama": "bagian-angka",
+  "rasio": "1:1",
+  "isi": "City statistics: a bar chart built from painted wooden blocks in blue, yellow and red rising from left to right, a small wooden arrow line climbing above them, a tiny relief model of a green island beside the blocks, and a magnifying glass. No numbers or letters anywhere."
+ },
+ {
+  "nama": "bagian-berita",
+  "rasio": "1:1",
+  "isi": "The daily news: a folded newspaper whose text is drawn only as fine grey lines (no readable letters) with one photo box showing sea and boats, a pair of reading glasses lying on it, and a cup of black coffee on a saucer."
+ },
+ {
+  "nama": "bagian-budaya",
+  "rasio": "1:1",
+  "isi": "Malay culture: a kompang frame drum, a gambus (pear-shaped Malay lute), a neatly folded songket cloth in deep red with gold thread patterns, and a tanjak (folded Malay men's headcloth), arranged together."
+ },
+ {
+  "nama": "bagian-cctv",
+  "rasio": "1:1",
+  "isi": "Traffic cameras: a white traffic CCTV camera on a grey steel pole with a horizontal arm, looking down on a small diorama of a road junction with a traffic light, three cars and two motorbikes (no riders, no number plates, no writing)."
+ },
+ {
+  "nama": "bagian-dataset",
+  "rasio": "1:1",
+  "isi": "Open data: a stack of three blue database cylinders, a clipboard holding a sheet with a simple bar chart and a pie chart (no writing), and a sheet of spreadsheet grid paper with a pencil."
+ },
+ {
+  "nama": "bagian-infografik",
+  "rasio": "1:1",
+  "isi": "Infographics: a poster sheet pinned to a cork board showing a pie chart, a bar chart and a simple island map shape in bright colours (no letters or numbers), with coloured pencils, a ruler and a pair of scissors lying below it."
+ },
+ {
+  "nama": "bagian-jurnal",
+  "rasio": "1:1",
+  "isi": "A writer's journal: an open hardcover notebook with handwriting drawn only as wavy ink lines (no readable letters), a fountain pen, an old sepia photograph of a stilt village by the sea, and a cup of black coffee."
+ },
+ {
+  "nama": "bagian-kampung-tua",
+  "rasio": "1:1",
+  "isi": "An old Malay fishing village: three weathered wooden stilt houses with rusty tin roofs joined by a plank jetty over calm tidal water, fishing nets hung to dry on a rail, crab traps, and one small wooden boat tied below."
+ },
+ {
+  "nama": "bagian-kamus",
+  "rasio": "1:1",
+  "isi": "A local dictionary: a thick open dictionary with a red ribbon bookmark, its text drawn only as fine grey lines (no readable letters), with three blank speech-bubble shaped paper notes in yellow, blue and pink and a sharpened pencil."
+ },
+ {
+  "nama": "bagian-komunitas",
+  "rasio": "1:1",
+  "isi": "A community meeting place with no people: a circle of six colourful plastic chairs around a low table with a thermos and cups, strings of plain triangular bunting overhead, an acoustic guitar on one chair and a bicycle leaning nearby."
+ },
+ {
+  "nama": "bagian-loker",
+  "rasio": "1:1",
+  "isi": "Job vacancies: a brown leather briefcase, a clipboard with a blank application form drawn as empty lines and boxes (no writing), a yellow safety hard hat, and a lanyard with a completely blank white card."
+ },
+ {
+  "nama": "bagian-nama-jalan",
+  "rasio": "1:1",
+  "isi": "Street names: a street corner signpost with two blank green street-name boards on a steel pole, standing on a small diorama of a street corner with a lamp post, a flowering tree and a zebra crossing. No writing on the boards."
+ },
+ {
+  "nama": "bagian-sejarah",
+  "rasio": "1:1",
+  "isi": "Island history: an antique parchment sea chart of small islands, partly unrolled (no writing), with a brass compass, an old brass telescope, a kerosene lantern and two old red clay bricks."
+ },
+ {
+  "nama": "cerita-nongsa",
+  "rasio": "3:2",
+  "isi": "A nineteenth-century Malay coastal village scene as a vignette: a sandy bay with three wooden stilt houses under coconut palms, fishing nets drying, and a traditional two-masted wooden sailing boat anchored just offshore in calm water at golden late-afternoon light. No people."
+ },
+ {
+  "nama": "panduan-halal-nagoya",
+  "rasio": "3:2",
+  "isi": "A halal food walk laid out on a table: a kopitiam breakfast of kaya toast, two soft-boiled eggs in a small bowl and a thick porcelain cup of black coffee; a plate of mie tarempa (wide flat noodles stir-fried in dark red chilli sauce with flaked fish and bean sprouts); and a savoury martabak cut into squares with a small bowl of curry sauce."
+ },
+ {
+  "nama": "panduan-seafood-classics",
+  "rasio": "3:2",
+  "isi": "A seafood feast: a plate of steamed gonggong (dog conch sea snails with spiral shells) with chilli dip, a whole chilli crab in red-orange sauce, a whole grilled fish with sambal on a banana leaf, and a bowl of clear fish soup, on blue-rimmed porcelain."
+ },
+ {
+  "nama": "panduan-barelang-sunset",
+  "rasio": "3:2",
+  "isi": "A kelong seafood restaurant: a wooden platform on stilts over the sea with a thatched roof and hanging lanterns, a dining table set with a seafood platter, fishing nets and a small boat tied to the posts, under a warm orange sunset sky reflected in the water. No people, no bridge."
+ },
+ {
+  "nama": "panduan-chinese-eats",
+  "rasio": "3:2",
+  "isi": "Chinese food in Batam: a clay pot of bak kut teh (pork rib herbal soup) with fried dough sticks beside it, a plate of cha kue (stir-fried rice cake cubes with egg and bean sprouts), a bowl of rice, and a small Chinese teapot with two tiny cups."
+ },
+ {
+  "nama": "panduan-oleh-oleh-run",
+  "rasio": "3:2",
+  "isi": "Food souvenirs to take home: slices of layered spice cake (kue lapis legit) in an open plain box, a banana cake loaf, a few round fried buns filled with fish floss, a clear bag of fish crackers, all arranged around a plain paper shopping bag with no writing."
+ },
+ {
+  "nama": "panduan-dekat-feri",
+  "rasio": "3:2",
+  "isi": "Eating near the ferry terminal, as a small diorama: a white fast passenger ferry moored at a pier on turquoise water, and in front on the quay a small food stall table with a bowl of noodle soup, a plate of rice with side dishes and a glass of iced tea. No people, no writing."
+ },
+ {
+  "nama": "hidangan-seafood",
+  "rasio": "1:1",
+  "isi": "A seafood platter: a whole chilli crab in thick red-orange sauce, a small plate of steamed gonggong (dog conch sea snails with spiral shells) with a dish of chilli dip, and four grilled prawns, on blue-rimmed white porcelain with painted flowers."
+ },
+ {
+  "nama": "hidangan-sop-ikan",
+  "rasio": "1:1",
+  "isi": "A bowl of Batam-style clear fish soup (sop ikan Batam): white porcelain bowl with a blue rim and painted red-and-blue flowers, clear light broth with thick slices of white fish, green mustard leaves, tomato wedges, spring onion and fried shallots. Beside it a tiny saucer of sliced red chillies in soy sauce and half a small green calamansi lime."
+ },
+ {
+  "nama": "hidangan-mie-tarempa",
+  "rasio": "1:1",
+  "isi": "A plate of mie tarempa: wide flat yellow noodles stir-fried in a dark red chilli sauce with flaked tuna, bean sprouts and slices of fish cake, garnished with half a calamansi lime and sliced green chilli, on a blue-rimmed plate."
+ },
+ {
+  "nama": "hidangan-makanan-padang",
+  "rasio": "1:1",
+  "isi": "A Padang meal: a plate of steamed rice with dark beef rendang, green chilli sambal, boiled cassava leaves and yellow curry sauce, surrounded by three small plates of side dishes: pale ayam pop chicken, crispy dendeng with red chilli, and a potato fritter."
+ },
+ {
+  "nama": "hidangan-makanan-jawa",
+  "rasio": "1:1",
+  "isi": "A Javanese rice plate on a woven rattan plate lined with banana leaf: steamed rice with brown jackfruit stew (gudeg), a brown braised egg, fried tempeh, a piece of braised chicken and spicy beef-skin stew, with a glass of sweet iced tea."
+ },
+ {
+  "nama": "hidangan-makanan-sunda",
+  "rasio": "1:1",
+  "isi": "A Sundanese meal on a round woven bamboo tray lined with banana leaf: rice wrapped in banana leaf, a piece of golden fried chicken, fried tofu and tempeh, raw vegetables (cucumber, cabbage, basil), a small stone mortar of red sambal, and a little bowl of tamarind vegetable soup."
+ },
+ {
+  "nama": "hidangan-makanan-sulawesi",
+  "rasio": "1:1",
+  "isi": "Food from Sulawesi: a bowl of coto Makassar (dark, rich beef soup sprinkled with spring onion and fried shallots) with two diamond-shaped ketupat rice cakes beside it, and a plate with a whole grilled fish topped with fresh chopped tomato-chilli-shallot salsa."
+ },
+ {
+  "nama": "hidangan-lapo-batak",
+  "rasio": "1:1",
+  "isi": "A Batak eatery meal: a whole carp cooked in yellow spiced sauce with long beans (ikan mas arsik) on an oval plate, a plate of sliced grilled pork with crisp edges, a small bowl of green chilli sambal, and a mound of steamed rice."
+ },
+ {
+  "nama": "hidangan-pempek",
+  "rasio": "1:1",
+  "isi": "A plate of pempek from Palembang: one large fried fish cake cut open to show the egg inside, several small cylindrical and round fish cakes, a little pile of yellow noodles and diced cucumber, with a bowl of dark sweet-sour vinegar sauce."
+ },
+ {
+  "nama": "hidangan-penyetan",
+  "rasio": "1:1",
+  "isi": "Ayam penyet: a piece of smashed golden fried chicken on a round stone plate with bright red sambal, fried tofu and tempeh, fresh cabbage, cucumber slices and basil leaves, and a mound of steamed rice."
+ },
+ {
+  "nama": "hidangan-soto",
+  "rasio": "1:1",
+  "isi": "A bowl of soto ayam: yellow turmeric broth with shredded chicken, glass noodles, bean sprouts, half a boiled egg, a tomato wedge, celery leaves and fried shallots, in a blue-rimmed porcelain bowl with painted flowers. Beside it a small dish of red sambal, a lime wedge and a few crackers."
+ },
+ {
+  "nama": "hidangan-sate",
+  "rasio": "1:1",
+  "isi": "A plate of ten chicken satay skewers, charred at the edges, covered with thick peanut sauce and sweet soy sauce, with sliced shallots, small red chillies and cubes of rice cake on a banana leaf."
+ },
+ {
+  "nama": "hidangan-bakso-mie-ayam",
+  "rasio": "1:1",
+  "isi": "Two bowls side by side: bakso (beef meatball soup with thin noodles, greens and fried shallots) and mie ayam (springy noodles topped with diced braised chicken, bok choy and a fried wonton), with small bottles of chilli sauce and sweet soy with no labels."
+ },
+ {
+  "nama": "hidangan-nasi-mie-goreng",
+  "rasio": "1:1",
+  "isi": "A plate of Indonesian fried rice topped with a fried egg, with prawn crackers, cucumber and tomato slices, beside a plate of fried noodles with vegetables and chicken. A small dish of pickled chillies."
+ },
+ {
+  "nama": "hidangan-gado-pecel",
+  "rasio": "1:1",
+  "isi": "A plate of gado-gado: boiled long beans, cabbage, bean sprouts and potato with tofu, tempeh, boiled egg halves and rice cake slices, generously covered in peanut sauce and topped with melinjo crackers and fried shallots."
+ },
+ {
+  "nama": "hidangan-chinese-food",
+  "rasio": "1:1",
+  "isi": "Chinese-Indonesian home-style dishes together: a whole fried fish in sweet-and-sour sauce, a plate of stir-fried water spinach, an egg foo yong omelette with red sauce and peas, a bowl of steamed rice and a small teapot."
+ },
+ {
+  "nama": "hidangan-dimsum",
+  "rasio": "1:1",
+  "isi": "Dim sum: three round bamboo steamer baskets, opened, showing siu mai, translucent prawn dumplings, and fluffy steamed buns, with a small dish of chilli sauce, chopsticks on a rest and a small Chinese teapot."
+ },
+ {
+  "nama": "hidangan-nasi-ayam-hainan",
+  "rasio": "1:1",
+  "isi": "Hainanese chicken rice: a plate of sliced poached chicken over fragrant rice with cucumber slices and coriander, a small bowl of clear soup, and three tiny dishes of chilli sauce, ginger paste and dark soy sauce."
+ },
+ {
+  "nama": "hidangan-bubur",
+  "rasio": "1:1",
+  "isi": "A bowl of bubur ayam: smooth rice porridge topped with shredded chicken, fried shallots, chopped celery, peanuts, slices of fried dough and a drizzle of soy sauce, with crackers on top. Beside it two skewers of quail eggs and chicken liver."
+ },
+ {
+  "nama": "hidangan-kopitiam",
+  "rasio": "1:1",
+  "isi": "A kopitiam breakfast set on a round marble table top: a thick white porcelain cup of black coffee on a saucer, two slices of kaya butter toast, and two soft-boiled eggs in a small bowl with a dash of soy sauce and white pepper."
+ },
+ {
+  "nama": "hidangan-makanan-jepang",
+  "rasio": "1:1",
+  "isi": "A Japanese meal: a bowl of ramen with sliced pork, a halved soft egg, spring onion and a sheet of seaweed, and a small wooden board with salmon nigiri and maki rolls, with chopsticks on a rest."
+ },
+ {
+  "nama": "hidangan-makanan-korea",
+  "rasio": "1:1",
+  "isi": "A Korean meal: a hot stone bowl of bibimbap with colourful vegetables and a fried egg on top, a plate of red tteokbokki rice cakes, two small side dishes of kimchi, and metal chopsticks with a long spoon."
+ },
+ {
+  "nama": "hidangan-makanan-india",
+  "rasio": "1:1",
+  "isi": "An Indian meal on a banana leaf: a mound of golden biryani rice with a piece of spiced chicken, a small metal bowl of yellow dhal, a folded naan bread, a crisp papadum and a spoonful of pickles."
+ },
+ {
+  "nama": "hidangan-martabak-prata",
+  "rasio": "1:1",
+  "isi": "A savoury egg martabak cut into squares showing the minced filling, a flaky round roti prata, a bowl of curry dipping sauce and a little dish of pickled cucumber and shallots; behind them a thick slice of sweet martabak with chocolate and grated cheese."
+ },
+ {
+  "nama": "hidangan-western-steak",
+  "rasio": "1:1",
+  "isi": "A grilled steak with sear marks on a hot cast-iron plate with a wooden base, with french fries, steamed carrots, green beans and corn, and a small jug of black pepper sauce."
+ },
+ {
+  "nama": "hidangan-coffee-shop",
+  "rasio": "1:1",
+  "isi": "A modern coffee shop order: a latte with leaf-shaped latte art in a ceramic cup on a saucer, a tall glass of iced coffee with milk, a golden croissant on a small plate and a glass pour-over dripper on a wooden tray."
+ },
+ {
+  "nama": "hidangan-bakery",
+  "rasio": "1:1",
+  "isi": "A bakery assortment: a crusty loaf of bread, two croissants, a slice of green pandan chiffon cake, sweet buns with cheese and chocolate toppings and a cinnamon roll, arranged in and around a wicker basket lined with a cloth."
+ },
+ {
+  "nama": "hidangan-kue-jajanan",
+  "rasio": "1:1",
+  "isi": "Indonesian market snacks on a round tray lined with banana leaf: green klepon balls rolled in coconut, pink-white-green layered kue lapis, sesame-coated onde-onde, green rolled coconut pancakes, banana-leaf wrapped sticky rice, plus banana fritters and vegetable fritters."
+ },
+ {
+  "nama": "hidangan-ice-cream",
+  "rasio": "1:1",
+  "isi": "Cold desserts: a waffle cone with two scoops of ice cream (strawberry and chocolate), and a glass bowl of Indonesian shaved ice dessert with colourful jellies, avocado, red beans, coconut and a swirl of condensed milk and pink syrup."
+ },
+ {
+  "nama": "hidangan-sarapan-pagi",
+  "rasio": "1:1",
+  "isi": "A morning breakfast: a bowl of lontong sayur (rice cake slices in light coconut vegetable curry with a boiled egg, crackers and red sambal) and a glass mug of milky pulled tea with a little foam on top."
+ },
+ {
+  "nama": "hidangan-ayce",
+  "rasio": "1:1",
+  "isi": "An all-you-can-eat grill and hotpot table: a round tabletop grill with slices of meat sizzling, a divided hotpot with red spicy broth and clear broth, and around them small plates of thinly sliced raw beef, leafy vegetables, mushrooms, fish balls and tofu, with tongs."
+ },
+ {
+  "nama": "hidangan-vegetarian",
+  "rasio": "1:1",
+  "isi": "A vegetarian meal: a plate of stir-fried mixed vegetables with tofu and mushrooms, a bowl of brown rice, three skewers of grilled vegetable-and-tofu satay, a small bowl of clear vegetable soup and fresh green leaves."
+ }
+]

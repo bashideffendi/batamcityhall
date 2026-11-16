@@ -36,6 +36,9 @@ Sejak rombak menu November 2026: CCTV pindah ke `/cctv`, klaster kamera diganti 
 - ✔ Label Langsung/Tertunda/Terputus dihitung di klien dari umur citra — kode
 - ✔ Frame 404 dilewati, tidak pernah tampil sebagai "tidak hujan" — e2e
 - ✔ Run OFS basi/kedaluwarsa ditandai (`source`, `ageH`, `expired`) — kode, ikut `source` dari route
+- ✔ Radar hujan memakai warna asli citranya dan ketebalannya bisa diatur pembaca (seperti hujandibatam; permintaan pemilik 16 Nov 2026) — e2e
+- ✔ Peta Radar Hujan dan Tinggi Gelombang bisa dibuka layar penuh, termasuk di iPhone — e2e
+- ✔ Menu ponsel dua baris saja (menu dan submenu), tidak lagi tiga — e2e
 - ✔ Tautan Selengkapnya bermakna bila dibaca terpisah oleh pembaca layar, tanpa mengubah teks yang tampil — e2e
 - ✔ Teks tampil bebas singkatan dll., dsb., mis., est., yg (kecuali teks penyedia di Dataset dan Berita) — cek-keluaran
 - ✔ Menu bagian di ponsel selalu tampil tanpa tombol burger: tujuh bagian dua baris dan Lainnya untuk sisanya, di kepala halaman dan pita sampul (permintaan pemilik 12 Nov 2026) — e2e

@@ -1,6 +1,7 @@
 // Preferensi pengguna di localStorage. Semua akses dibungkus try/catch: mode privat,
 // kuota penuh, atau storage yang diblokir tidak boleh menjatuhkan app.
 export const PREF = {
+  rainOpacity: "bch-ll-opacity",
   mode: "bch-ll-mode",
   view: "bch-ll-view",
   collapsed: "bch-ll-collapsed",
@@ -48,4 +49,12 @@ export function catatBmkgGagal(gagal: boolean): void {
   } catch {
     /* abaikan */
   }
+}
+
+/** Nilai rusak di penyimpanan tidak boleh membuat radar lenyap. */
+export function readRainOpacity(): number {
+  const raw = readPref(PREF.rainOpacity);
+  const value = raw === null || raw.trim() === "" ? NaN : Number(raw);
+  return Number.isFinite(value) && value >= 0.3 && value <= 1
+    ? Math.round(value * 20) / 20 : 0.8;
 }

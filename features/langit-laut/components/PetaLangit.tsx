@@ -43,6 +43,8 @@ export type OpsiPeta = {
   koperatif?: boolean;
   /** Pulau di luar Batam memakai warna lain (PEDOMAN 5.2). */
   selubung?: boolean;
+  /** Peta dasar abu-abu netral tanpa label, supaya warna radar dan gelombang terbaca (pemilik 16 Nov 2026). */
+  netral?: boolean;
   /** Atribusi sudah ditulis di bawah peta. */
   tanpaAtribusi?: boolean;
   /**
@@ -59,6 +61,7 @@ export default function PetaLangit({ theme, children, opsi }: { theme: ThemeMode
   const temaAwal = useRef(theme);
   const opsiAwal = useRef(opsi);
   const selubung = !!opsi?.selubung;
+  const netral = !!opsi?.netral;
 
   useEffect(() => {
     const el = wadah.current;
@@ -66,7 +69,7 @@ export default function PetaLangit({ theme, children, opsi }: { theme: ThemeMode
     pasangGlobalPeta();
     const m = new MapLibre({
       container: el,
-      style: baseStyle(temaPeta(temaAwal.current), window.location.origin, { chart: !!opsiAwal.current?.selubung }),
+      style: baseStyle(temaPeta(temaAwal.current), window.location.origin, { cuaca: !!opsiAwal.current?.netral, chart: !!opsiAwal.current?.selubung }),
       ...(opsiAwal.current?.bounds ? { bounds: opsiAwal.current.bounds, fitBoundsOptions: { padding: 24 } } : { center: [104.0, 0.9] as [number, number], zoom: 8 }),
       ...(opsiAwal.current?.maxBounds ? { maxBounds: opsiAwal.current.maxBounds } : {}),
       ...(opsiAwal.current?.ikutiUbin
@@ -106,8 +109,18 @@ export default function PetaLangit({ theme, children, opsi }: { theme: ThemeMode
   }, []);
 
   useEffect(() => {
-    map?.setStyle(baseStyle(temaPeta(theme), window.location.origin, { chart: selubung }), { transformStyle: gabungGaya });
-  }, [map, theme, selubung]);
+    map?.setStyle(baseStyle(temaPeta(theme), window.location.origin, { cuaca: netral, chart: selubung }), { transformStyle: gabungGaya });
+  }, [map, theme, selubung, netral]);
+
+  useEffect(() => {
+    if (!map) return;
+    if (opsi?.koperatif) map.cooperativeGestures.enable();
+    else map.cooperativeGestures.disable();
+    const frame = requestAnimationFrame(() => map.resize());
+    const observer = new ResizeObserver(() => map.resize());
+    observer.observe(map.getContainer());
+    return () => { cancelAnimationFrame(frame); observer.disconnect(); };
+  }, [map, opsi?.koperatif]);
 
   return (
     <>

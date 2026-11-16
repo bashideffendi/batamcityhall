@@ -19,6 +19,8 @@ export const dynamic = "force-dynamic";
 
 const BATAS_MS = 6000;
 const SERENTAK = 4;
+// Tenggat seluruh sapuan. Bila server kamera menggantung, 28 kamera x 6 detik bisa menahan jawaban hampir semenit.
+const TENGGAT_SAPUAN_MS = 12_000;
 
 async function periksa(slug: string): Promise<StatusKamera> {
   try {
@@ -42,22 +44,27 @@ async function periksa(slug: string): Promise<StatusKamera> {
   }
 }
 
-async function periksaSemua(): Promise<Record<string, StatusKamera>> {
+/** Kamera yang belum sempat diperiksa saat tenggat habis tidak ditulis: statusnya tidak diketahui, bukan mati. */
+async function periksaSemua(): Promise<{ kamera: Record<string, StatusKamera>; lengkap: boolean }> {
   const hasil: Record<string, StatusKamera> = {};
+  const tenggat = Date.now() + TENGGAT_SAPUAN_MS;
   let berikut = 0;
   const pekerja = async () => {
-    while (berikut < CAMS.length) {
+    while (berikut < CAMS.length && Date.now() < tenggat) {
       const slug = CAMS[berikut++].slug;
       hasil[slug] = await periksa(slug);
     }
   };
   await Promise.all(Array.from({ length: SERENTAK }, pekerja));
-  return hasil;
+  return { kamera: hasil, lengkap: Object.keys(hasil).length === CAMS.length };
 }
 
 export async function GET() {
   return cacheRespons("cctv-status", async () => {
-    const isi: JawabanStatusKamera = { diperiksa: new Date().toISOString(), kamera: await periksaSemua() };
-    return Response.json(isi, { headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600" } });
+    const { kamera, lengkap } = await periksaSemua();
+    const isi: JawabanStatusKamera = { diperiksa: new Date().toISOString(), kamera };
+    // Sapuan yang terpotong tenggat hanya disimpan semenit, supaya segera diulang.
+    const simpan = lengkap ? "public, s-maxage=300, stale-while-revalidate=600" : "public, s-maxage=60";
+    return Response.json(isi, { headers: { "Cache-Control": simpan } });
   });
 }

@@ -97,7 +97,8 @@ export const LEGEND_LABELS = ["Ringan", "Sedang", "Lebat"] as const;
 
 /** URL asli citra MSS. Browser memakainya lewat app/api/radar-citra (lihat komentar di sana). */
 export const radarUrl = (ts: string) => `${MSS_FILE_BASE}/dpsri_240km_${ts}0000dBR.dpsri.png`;
-export const radarCitra = (ts: string) => `/api/radar-citra/${ts}`;
+// Versi URL memisahkan cache peramban dari citra lama (biru); kebijakan cache proxy tetap sama.
+export const radarCitra = (ts: string) => `/api/radar-citra/${ts}?v=halus`;
 
 // Tema default berdasar jam WIB (06.00–18.00 = terang). Dipakai client-side saja.
 export function timeBasedTheme(): ThemeMode {

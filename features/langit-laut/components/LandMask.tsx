@@ -2,7 +2,7 @@
 
 import type { ErrorEvent } from "maplibre-gl";
 import { useEffect } from "react";
-import { PALET, SOURCE_ID } from "@/features/peta/style";
+import { PALET_CUACA, SOURCE_ID } from "@/features/peta/style";
 import type { ThemeMode } from "@/features/langit-laut/lib/radar";
 import { tambahLayer, usePeta } from "./PetaLangit";
 
@@ -14,13 +14,15 @@ import { tambahLayer, usePeta } from "./PetaLangit";
 // dengan mode lain dan tidak butuh server luar. Kalau peta dasar gagal → onStatus(false), supaya panel
 // bisa jujur "warna di atas pulau bukan data".
 const ID = "ll-land";
-const warnaDarat = (t: ThemeMode) => PALET[t === "dark" ? "dark" : "light"].land;
+const warnaDarat = (t: ThemeMode) => PALET_CUACA[t === "dark" ? "dark" : "light"].land;
 
 export default function LandMask({ theme, onStatus }: { theme: ThemeMode; onStatus?: (ok: boolean) => void }) {
   const map = usePeta();
 
   useEffect(() => {
     tambahLayer(map, { id: ID, type: "fill", source: SOURCE_ID, "source-layer": "earth" });
+    tambahLayer(map, { id: "ll-land-coast", type: "line", source: SOURCE_ID, "source-layer": "earth",
+      paint: { "line-width": 0.9 } });
     onStatus?.(true);
     const onError = (e: ErrorEvent & { sourceId?: string }) => {
       if (e.sourceId === SOURCE_ID) onStatus?.(false);
@@ -28,12 +30,14 @@ export default function LandMask({ theme, onStatus }: { theme: ThemeMode; onStat
     map.on("error", onError);
     return () => {
       map.off("error", onError);
+      if (map.getLayer("ll-land-coast")) map.removeLayer("ll-land-coast");
       if (map.getLayer(ID)) map.removeLayer(ID);
     };
   }, [map, onStatus]);
 
   useEffect(() => {
     if (map.getLayer(ID)) map.setPaintProperty(ID, "fill-color", warnaDarat(theme));
+    if (map.getLayer("ll-land-coast")) map.setPaintProperty("ll-land-coast", "line-color", PALET_CUACA[theme].waterline);
   }, [map, theme, onStatus]);
 
   return null;

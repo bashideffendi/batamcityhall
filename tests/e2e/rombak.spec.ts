@@ -44,7 +44,7 @@ test.describe("menu", () => {
   test("bagian tampil berurutan, tanpa nomor", async ({ page }) => {
     await page.goto("/");
     // Butir langsung menu saja; tautan di panel Lainnya adalah isi bagian.
-    const nav = page.locator('nav[aria-label="Bagian situs"] > a');
+    const nav = page.locator('nav[aria-label="Bagian situs"] .bch-menu-gulir > a');
     await expect(nav.first()).toBeAttached();
     // Info Loker hanya tampil bila basis data tersambung.
     const label = (await nav.allTextContents()).map((t) => t.trim());
@@ -58,7 +58,7 @@ test.describe("menu", () => {
 
   test("Beranda aktif hanya di beranda", async ({ page }) => {
     // Di ponsel ikon Beranda tidak tampil (nama situs di kepala ke beranda), tetapi tautannya tetap ada.
-    const beranda = () => page.locator('nav[aria-label="Bagian situs"] > a.bch-menu-beranda');
+    const beranda = () => page.locator('nav[aria-label="Bagian situs"] a.bch-menu-beranda');
     await page.goto("/");
     await expect(beranda()).toHaveAttribute("aria-current", "page");
     await page.goto("/cuaca");
@@ -66,24 +66,40 @@ test.describe("menu", () => {
     await expect(beranda()).not.toHaveAttribute("aria-current", "page");
   });
 
-  test("ponsel: menu tampil dua baris tanpa burger, Lainnya membuka sisanya", async ({ page }, info) => {
+  test("ponsel: menu satu baris yang bisa digeser tanpa burger, Lainnya membuka sisanya", async ({ page }, info) => {
     test.skip(info.project.name !== "hp", "tombol Lainnya hanya di layar sempit");
-    await page.goto("/cuaca");
+    await page.goto("/makan");
     // Pemilik 12 Nov 2026: "jangan pakai burger bar, tampilin aja menunya".
     await expect(page.getByRole("button", { name: "Buka menu" })).toHaveCount(0);
     const menu = page.locator(".bch-pita-menu nav.bch-menu");
-    const tampil = await menu.locator(":scope > a, :scope > button").evaluateAll((el) =>
-      el.filter((e) => (e as HTMLElement).offsetParent !== null).map((e) => [e.textContent?.trim(), (e as HTMLElement).offsetTop]),
+    const tampil = await menu.locator(".bch-menu-gulir > a, :scope > button").evaluateAll((el) =>
+      el
+        .filter((e) => (e as HTMLElement).offsetParent !== null)
+        .map((e) => {
+          const k = e.getBoundingClientRect();
+          return [e.textContent?.trim(), Math.round(k.top + k.height / 2)] as const;
+        }),
     );
     expect(tampil.map(([t]) => t)).toEqual(["Cuaca", "CCTV", "Transportasi", "Layanan Warga", "Makanan", "Things to Do", "Berita", "Lainnya"]);
-    expect(new Set(tampil.map(([, y]) => y)).size).toBe(2);
+    // Pemilik 16 Nov 2026: dua baris menu ditambah submenu "bertumpuk tiga, membingungkan". Sekarang satu baris.
+    const tengah = tampil.map(([, y]) => y);
+    expect(Math.max(...tengah) - Math.min(...tengah)).toBeLessThanOrEqual(2);
+    // Bagian yang sedang dibuka digeser ke dalam layar, dan Lainnya tetap terlihat di ujung kanan.
+    const lebar = page.viewportSize()?.width ?? 0;
+    const aktif = await menu.locator('.bch-menu-gulir > a[aria-current="page"]').boundingBox();
+    expect(aktif?.x ?? -1).toBeGreaterThanOrEqual(0);
+    expect((aktif?.x ?? 0) + (aktif?.width ?? 0)).toBeLessThanOrEqual(lebar);
     const lainnya = menu.getByRole("button", { name: "Lainnya" });
+    const kotakLainnya = await lainnya.boundingBox();
+    expect((kotakLainnya?.x ?? 0) + (kotakLainnya?.width ?? 0)).toBeLessThanOrEqual(lebar);
+    // Halaman tidak ikut bergeser ke samping.
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
     await expect(lainnya).toHaveAttribute("aria-expanded", "false");
     await lainnya.click();
     await expect(lainnya).toHaveAttribute("aria-expanded", "true");
     const panel = menu.locator(".bch-menu-panel");
     await expect(panel.getByRole("link", { name: "Jurnal", exact: true })).toBeVisible();
-    await expect(panel.getByRole("link", { name: "Cuaca", exact: true })).toHaveCount(0);
+    await expect(panel.getByRole("link", { name: "Makanan", exact: true })).toHaveCount(0);
     await page.keyboard.press("Escape");
     await expect(panel).toBeHidden();
     await lainnya.click();

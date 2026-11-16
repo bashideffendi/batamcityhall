@@ -33,11 +33,12 @@ const loadGeo = () =>
 const RAIN_MIN_ZOOM = 6;
 /** garis batas semua kecamatan: di zoom 6 ("Luas") cuma jadi coretan */
 const LINES_MIN_ZOOM = 7;
-const LABELS_ALL_ZOOM = 10;
+/** Peta dasar cuaca tanpa label sendiri, jadi nama kecamatan sudah tampil di tampilan awal ponsel (zoom ±9,5). */
+const LABELS_ALL_ZOOM = 9;
 /** di zoom kecil label hujan cukup nama (kelasnya ada di panel) supaya tak saling tumpuk */
 const FULL_PILL_ZOOM = 10;
 
-const LINE: Record<ThemeMode, string> = { light: "#D8C9AC", dark: "#4A4335" };
+const LINE: Record<ThemeMode, string> = { light: "#626C75", dark: "#A6AFB7" };
 const LEVEL_WORD: Record<EchoLevel, string> = { ringan: "hujan ringan", sedang: "hujan sedang", lebat: "hujan lebat" };
 
 // Ukuran label di layar untuk cek tabrakan (padanan CSS .kec-pill / .kec-label).
@@ -49,11 +50,9 @@ function textWidth(s: string, font: string): number {
   return measureCtx.measureText(s).width;
 }
 function labelSize(name: string, level: EchoLevel | undefined, full: boolean, family: string): [number, number] {
-  if (!level) return [textWidth(name, `600 10.5px ${family}`) + name.length * 0.21, 14];
-  // padding 8+10, titik 7, jarak 6, bingkai 2
-  const w =
-    33 + textWidth(name, `700 12px ${family}`) + (full ? 6 + textWidth(LEVEL_WORD[level], `500 12px ${family}`) : 0);
-  return [w, 28];
+  const width = textWidth(name.toUpperCase(), (level ? "800" : "700") + " 11px " + family) + name.length * 1.54;
+  const detail = level && full ? textWidth(LEVEL_WORD[level], "600 10px " + family) : 0;
+  return [Math.max(width, detail) + 4, level && full ? 30 : 17];
 }
 const LABEL_GAP = 4;
 
@@ -154,7 +153,8 @@ export default function KecamatanLayer({ rainy, showRain, theme }: Props) {
     // lebih dulu → ruangnya dipesan
     const boxes: [number, number, number, number][] = PLACES.map((pl) => {
       const p = pikselDunia(pl.lat, pl.lng, zoom);
-      const w = textWidth(pl.name, `600 10.5px ${family}`) + pl.name.length * 0.42;
+      // Sama dengan .place-label di cuaca.css: 12,5 px, tebal 700.
+      const w = textWidth(pl.name, `700 12.5px ${family}`);
       return [p.x - 4, p.y - 9, p.x + 14 + w, p.y + 9];
     });
     for (const { f, level } of cands) {

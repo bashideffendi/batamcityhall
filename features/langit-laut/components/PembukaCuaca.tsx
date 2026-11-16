@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import KisiPintu from "@/components/site/KisiPintu";
-import type { FramesResponse, OfsResponse, PerairanResponse } from "@/features/langit-laut/lib/api-types";
+import type { FramesResponse, PerairanResponse } from "@/features/langit-laut/lib/api-types";
 import { currentSlot } from "@/features/langit-laut/lib/perairan";
 import { kalimatGelombang, kalimatHujan, radarView, statusRadar } from "@/features/langit-laut/lib/status";
 import { useNow } from "@/features/langit-laut/hooks/useBrowser";
@@ -17,7 +17,6 @@ function useCuacaSekarang() {
   const now = useNow(30_000);
   const frames = useResource<FramesResponse>("/api/frames", 120_000, true, false);
   const perairan = useResource<PerairanResponse>("/api/perairan", 600_000, true, false);
-  useResource<OfsResponse>("/api/ofs-frame", 600_000, false, false);
   const daftar = frames.data?.frames ?? [];
   const rv = radarView({
     frames: daftar,
@@ -28,19 +27,24 @@ function useCuacaSekarang() {
     broken: NOL,
   });
   const slot = currentSlot(perairan.data, now).entry;
-  return { rv, echo: frames.data?.echo ?? null, slot, ada: !!frames.data || !!perairan.data };
+  const ada = !!frames.data || !!perairan.data;
+  // Kedua sumber gagal dan belum ada data sama sekali: katakan gagal, jangan "Memuat data" selamanya.
+  const gagal = !ada && frames.error && perairan.error;
+  return { rv, echo: frames.data?.echo ?? null, slot, ada, gagal };
 }
 
-/** Keadaan sekarang di kepala halaman Cuaca. */
-export function SaatIni() {
-  const { rv, echo, slot, ada } = useCuacaSekarang();
+type CuacaSekarang = ReturnType<typeof useCuacaSekarang>;
+
+/** Keadaan sekarang, selebar halaman di bawah judul Cuaca. */
+function SaatIni({ rv, echo, slot, ada, gagal }: CuacaSekarang) {
   const hujan = kalimatHujan(echo);
   const gelombang = slot ? kalimatGelombang(slot) : null;
+  const BELUM = "Data cuaca belum dapat dimuat. Coba muat ulang sebentar lagi.";
   return (
     <div className="cu-saat-ini" data-saat-ini>
       <p className="bch-kicker m-0">Saat ini</p>
       <div>
-        <p className="cu-saat-ini-teks">{ada ? [hujan, gelombang].filter(Boolean).join(" ") || "Data cuaca belum dapat dimuat." : "Memuat data"}</p>
+        <p className="cu-saat-ini-teks">{ada ? [hujan, gelombang].filter(Boolean).join(" ") || BELUM : gagal ? BELUM : "Memuat data"}</p>
         {(rv.latest || slot) && (
           <p className="bch-data cu-saat-ini-baris">
             {rv.latest && `Radar pukul ${rv.latest.time} WIB`}
@@ -68,9 +72,13 @@ const ENTRI = [
   },
 ];
 
-/** Isi halaman Cuaca: dua peta dengan status langsung, lalu peringatan dan gempa. */
+/**
+ * Isi halaman Cuaca: keadaan sekarang, dua peta dengan status langsung, lalu peringatan dan gempa. Datanya diambil
+ * sekali untuk seluruh halaman.
+ */
 export function IsiCuaca() {
-  const { rv, slot } = useCuacaSekarang();
+  const cuaca = useCuacaSekarang();
+  const { rv, slot } = cuaca;
   const stat = statusRadar(rv.latestAge);
   const nada = stat === "Langsung" ? "ok" : stat === "Tertunda" ? "caution" : "danger";
   const baris: Record<string, React.ReactNode> = {
@@ -83,6 +91,7 @@ export function IsiCuaca() {
   };
   return (
     <>
+      <SaatIni {...cuaca} />
       <ul className="bch-daftar-polos cu-entri">
         {ENTRI.map((e) => (
           <li key={e.href}>
@@ -91,7 +100,7 @@ export function IsiCuaca() {
               <span className="judul">{e.judul}</span>
               <span className="ket">{e.ket}</span>
             </Link>
-            <p className="cu-entri-status">{baris[e.href]}</p>
+            {baris[e.href] && <p className="cu-entri-status">{baris[e.href]}</p>}
           </li>
         ))}
         <li className="cu-entri-pintu">

@@ -16,7 +16,7 @@ import { reduceMotion, saveData } from "@/features/langit-laut/lib/client";
 import { SUMBER_GELOMBANG, type SumberGelombang } from "@/features/langit-laut/lib/copernicus";
 import { readInitialState } from "@/features/langit-laut/lib/initial-state";
 import { aktifPada, kalimatPeringatan } from "@/features/langit-laut/lib/peringatan-cuaca";
-import { PREF, bmkgBaruGagal, catatBmkgGagal, readPref, writePref } from "@/features/langit-laut/lib/prefs";
+import { PREF, bmkgBaruGagal, catatBmkgGagal, readPref, readRainOpacity, writePref } from "@/features/langit-laut/lib/prefs";
 import { VIEW_KEYS, defaultViewFor, type Mode, type ViewKey } from "@/features/langit-laut/lib/radar";
 import {
   RADAR_OLD_MIN,
@@ -33,6 +33,7 @@ import {
   statusRadar,
 } from "@/features/langit-laut/lib/status";
 import { useInstallPrompt, useMedia, useNow, useOffline, useShare } from "@/features/langit-laut/hooks/useBrowser";
+import { useMapFullscreen } from "@/features/langit-laut/hooks/useMapFullscreen";
 import { useOfs } from "@/features/langit-laut/hooks/useOfs";
 import { useRevisit } from "@/features/langit-laut/hooks/usePolling";
 import { useRadar } from "@/features/langit-laut/hooks/useRadar";
@@ -48,13 +49,14 @@ import MapController, { type Padding } from "./MapController";
 import OfsField from "./OfsField";
 import PeringatanLayer from "./PeringatanLayer";
 import PetaLangit from "./PetaLangit";
+import GarisAtas from "./GarisAtas";
 import RadarLayer from "./RadarLayer";
 import CamDirectory from "./panel/CamDirectory";
 import CctvBlock from "./panel/CctvBlock";
 import KondisiSaatIni from "./panel/Conditions";
 import { Cakupan, PilihanSumber, Sakelar, Transport } from "./panel/Controls";
 import { HujanPerKecamatan, PerairanInfo, PrakiraanCuaca } from "./panel/DetailSections";
-import { KategoriGelombang, LegendaGelombang, LegendaHujan } from "./panel/Legends";
+import { KategoriGelombang, LegendaGelombang, LegendaHujan, RainOpacity } from "./panel/Legends";
 import { Ringkasan } from "./panel/Status";
 
 // ---------------------------------------------------------------------------
@@ -121,6 +123,12 @@ function applyStateParams(p: URLSearchParams, mode: Mode, view: ViewKey, cam: Ca
 
 export default function RadarMap({ mode }: { mode: Mode }) {
   // Komponen ini client-only (dynamic ssr:false) jadi aman baca window/localStorage di initializer.
+  const { full, setFull, container, button } = useMapFullscreen();
+  const [opacity, setOpacity] = useState(readRainOpacity);
+  const onOpacity = (value: number) => {
+    setOpacity(value);
+    writePref(PREF.rainOpacity, String(value));
+  };
   const [init] = useState(() => readInitialState(mode));
   const [view, setView] = useState<ViewKey>(init.view);
   const [playing, setPlaying] = useState(false);
@@ -186,12 +194,16 @@ export default function RadarMap({ mode }: { mode: Mode }) {
 
   // Padding fit: lembar bawah menutup peta di ponsel; di desktop hanya kendali waktu yang menutup.
   const getPadding = useCallback((): Padding => {
+    if (full) {
+      const controls = container.current?.querySelector<HTMLElement>(".cu-full-controls")?.offsetHeight ?? 240;
+      return { paddingTopLeft: [16, 64], paddingBottomRight: [16, Math.min(controls + 40, window.innerHeight * 0.55)] };
+    }
     if (window.matchMedia("(min-width: 900px)").matches) {
       return { paddingTopLeft: [24, 24], paddingBottomRight: [24, mode === "cctv" ? 24 : 110] };
     }
     const tinggi = panelRef.current?.offsetHeight ?? 160;
     return { paddingTopLeft: [14, 14], paddingBottomRight: [14, Math.min(tinggi, window.innerHeight * 0.5) + 14] };
-  }, [mode]);
+  }, [mode, full, container]);
 
   useEffect(() => {
     writePref(PREF.view, view);
@@ -252,6 +264,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
   // ---- aksi ----
   const togglePlay = () => {
     if (!playing && mode === "ombak") ofs.rewindIfAtEnd();
+    if (playing && mode === "hujan") radar.tahanPosisi();
     setPlaying((p) => !p);
   };
   const scrub = (v: number) => {
@@ -292,6 +305,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
     setCamAutoStart(true);
   }, []);
   const pickCam = useCallback((cam: Cam) => {
+    setFull(false);
     setCamAutoStart(true);
     setActiveCam(cam);
     writePref(PREF.camHint, "1");
@@ -300,7 +314,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
       writePref(PREF.recentCams, JSON.stringify(next.map((c) => c.slug)));
       return next;
     });
-  }, []);
+  }, [setFull]);
   const onDead = useCallback((slug: string, lastSeen: number | null) => {
     setDeadCams((m) => {
       const n = new Map(m);
@@ -483,9 +497,10 @@ export default function RadarMap({ mode }: { mode: Mode }) {
             {mode === "ombak" && ov.problem && <p className="cu-masalah">{ov.problem}</p>}
             {mode === "cctv" && kameraMati.size > 0 && <p className="cu-masalah">{cctv.context}</p>}
 
-            {!wide && cakupan && <div className="cu-kendali-ponsel">{cakupan}</div>}
-            {!wide && waktu && <div className="cu-kendali-ponsel">{waktu}</div>}
+            {!wide && !full && cakupan && <div className="cu-kendali-ponsel">{cakupan}</div>}
+            {!wide && !full && waktu && <div className="cu-kendali-ponsel">{waktu}</div>}
 
+            {tampilRadar && <RainOpacity opacity={opacity} onOpacity={onOpacity} />}
             {mode === "hujan" && <LegendaHujan />}
             {mode === "ombak" && <LegendaGelombang />}
             {mode === "ombak" && <PilihanSumber pilihan={SUMBER_GELOMBANG} aktif={sumberAktif} onChange={pilihSumber} />}
@@ -520,7 +535,7 @@ export default function RadarMap({ mode }: { mode: Mode }) {
               </button>
               {canInstall && (
                 <button type="button" className="bch-btn" data-variant="ghost" onClick={install}>
-                  Pasang aplikasi
+                  Pasang Aplikasi
                 </button>
               )}
             </p>
@@ -530,15 +545,18 @@ export default function RadarMap({ mode }: { mode: Mode }) {
           </div>
         </section>
 
-        <div className="cu-peta">
-          <PetaLangit theme={theme} opsi={{ koperatif: typeof window !== "undefined" && window.matchMedia("(min-width: 900px)").matches, ikutiUbin: true }}>
+        <div ref={container} className="cu-peta" data-fullscreen={full || undefined}
+          role={full ? "dialog" : undefined} aria-modal={full || undefined}
+          aria-label={full ? NASKAH[mode].judul : undefined}>
+          <PetaLangit theme={theme} opsi={{ koperatif: wide && !full, ikutiUbin: true, netral: mode !== "cctv" }}>
             {tampilRadar && (
               <RadarLayer
                 url={rv.current && !rv.currentBroken && !radarTerputus ? rv.current.url : null}
-                opacity={0.85}
+                opacity={opacity}
                 onBroken={radar.markBroken}
               />
             )}
+            {mode !== "cctv" && <GarisAtas theme={theme} />}
             {lapisan.batas && <KecamatanLayer rainy={rainyKecs} showRain={showKec && tampilRadar} theme={theme} />}
             {mode === "hujan" && <PeringatanLayer peringatan={cuacaAktif} theme={theme} />}
             {mode === "hujan" && <TempatLayer />}
@@ -559,8 +577,15 @@ export default function RadarMap({ mode }: { mode: Mode }) {
             )}
             <MapController view={view} mode={mode} getPadding={getPadding} collapsed={collapsed} />
           </PetaLangit>
-          {wide && cakupan && <div className="cu-cakupan">{cakupan}</div>}
-          {wide && waktu && <div className="cu-waktu">{waktu}</div>}
+          {mode !== "cctv" && <button ref={button} type="button" className="cu-fullscreen"
+            aria-expanded={full} onClick={() => setFull(!full)}>{full ? "Tutup" : "Layar Penuh"}</button>}
+          {full && <div className="cu-full-controls">
+            {waktu}
+            {mode === "hujan" ? <LegendaHujan compact /> : <LegendaGelombang />}
+            {tampilRadar && <RainOpacity opacity={opacity} onOpacity={onOpacity} />}
+          </div>}
+          {wide && !full && cakupan && <div className="cu-cakupan">{cakupan}</div>}
+          {wide && !full && waktu && <div className="cu-waktu">{waktu}</div>}
         </div>
       </div>
 

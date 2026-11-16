@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026-11-16 · Peta hujan dengan warna asli dan layar penuh, menu ponsel satu baris, perbaikan dari audit
+
+Permintaan pemilik 16 November 2026 dari iPhone (tiga tangkapan layar): audit bug, desain, dan arsitektur; warna radar dikembalikan ke warna awal dan bisa dipudarkan; peta hujan "lebih serius", "cantik tapi berguna informatif"; layar penuh untuk radar hujan dan tinggi gelombang; menu "bertumpuk tiga membingungkan"; gambar kartu dan ikon dirancang ulang dengan Codex. Rinciannya di PEDOMAN blok "Peta cuaca, menu ponsel, dan gambar kartu, 16 Nov 2026".
+
+- **Peta hujan dan gelombang dirancang ulang dengan Codex** (atas permintaan pemilik), lalu diperiksa dan dikoreksi: radar memakai warna asli citranya, penggeser Ketebalan Warna Radar tersimpan di perangkat, legenda batang warna tiga kelas, peta dasar khusus cuaca tanpa label, tombol Layar Penuh di kedua peta. Koreksi atas hasil Codex: peta dasar cuaca hanya untuk Radar Hujan dan Tinggi Gelombang (semula ikut mengubah peta CCTV, Peta Tempat, dan peta kategori), dan geser satu jari di ponsel dipertahankan.
+- **Sesudah masukan pemilik atas potret pertama** ("malah sama aja" dengan hujandibatam, tepi hujan bergerigi, "gimana agar radar ini jelas berada di atas area mana", garis jalan tidak berguna): citra radar dihaluskan di server dan dikirim sebagai WebP (±70 KB per citra saat hujan luas; citra asli ±35 KB), garis pantai digambar di atas warna radar dengan alas terang, darat dibuat terang dan laut biru lembut, jalan dan bangunan dihapus dari peta cuaca. Penghalusan diuji pada tiga citra radar sungguhan 16 November 2026 pukul 18.00, 19.15, dan 19.25 WIB.
+- **Menu ponsel** menjadi satu baris yang bisa digeser dengan Lainnya di ujung kanan; submenu di pita abu-abu. Pita menu di sampul beranda ikut satu baris.
+- **Halaman Cuaca:** Saat Ini selebar halaman (garisnya tidak lagi berhenti sebelum ilustrasi), data diambil sekali untuk seluruh halaman (semula dua kali), kegagalan memuat ditulis apa adanya (semula "Memuat data" selamanya), baris status kosong tidak digambar.
+- **Perbaikan dari audit kode** (agen audit, 14 temuan, tiap perbaikan dibaca ulang di kodenya):
+  - citra radar yang gagal dimuat sekali kini dicoba lagi dan dipakai kembali begitu berhasil; galat sementara dari penyedia tidak lagi ditahan semenit sebagai "belum terbit";
+  - Kondisi Saat Ini, prakiraan, dan daftar citra radar tidak lagi lewat Data Cache Next, yang menyajikan data basi lebih dulu kepada pembaca pertama setelah situs sepi;
+  - menjeda animasi radar tidak lagi membuat peta melompat ke citra terbaru saat data diperbarui;
+  - tinggi peta ponsel mengikuti kepala yang baru (196 px) dan memakai `svh`, jadi kanvas peta tidak digambar ulang saat bilah Safari menciut;
+  - label kecamatan yang hujan benar-benar dua baris, sama dengan ukuran yang dipakai pemeriksa tabrakan label; nama kecamatan tampil mulai zoom 9;
+  - daftar citra radar dan status kamera punya tenggat keseluruhan, jadi server penyedia yang lambat tidak menahan jawaban melewati batas tunggu peramban; kegagalan deteksi hujan dicatat di log.
+- **Belum dikerjakan dari audit** (dicatat untuk fase berikut): empat pembersih teks yang sudah menyimpang digabung menjadi satu; `PetaLangit`, `PetaMarker`, dan `RadarLayer` dipindah ke `features/peta`; `data/makan/places.json` (142 KB) ikut ke bundel semua halaman Makanan; batas laju memercayai header `x-real-ip` (perlu dicek di Railway).
+- **Gambar kartu dan ikon:** gaya disepakati lewat contoh (sketsa tinta dengan cat air). Kuota Codex pemilik habis saat pembuatan massal: 2 dari 61 gambar selesai, sisanya menunggu kuota. Grafis Riso belum diganti supaya gaya tidak tercampur.
+- Tes: layar penuh di dua lebar dan dua tema untuk kedua peta, penggeser ketebalan, menu ponsel satu baris, 770 tes unit.
+
 ## 2026-11-12 · Audit bahasa lugas dengan cek RASA
 
 Permintaan pemilik 12 November 2026: seluruh teks situs diaudit memakai panduan *bahasa-indonesia-plain* (kerangka RASA: Ritmis, Akurat, Sarat makna, Alami), dengan Title Case, tautan Selengkapnya, rentang bertanda pisah, dan larangan tanda seru tetap mengikuti keputusan pemilik. Rinciannya di PEDOMAN blok "Bahasa lugas dan cek RASA, 12 Nov 2026".

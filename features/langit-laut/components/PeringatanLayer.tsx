@@ -7,12 +7,11 @@ import { keGeoJson } from "@/features/langit-laut/lib/peringatan-cuaca";
 import type { ThemeMode } from "@/features/langit-laut/lib/radar";
 import { tambahLayer, usePeta } from "./PetaLangit";
 
-// Wilayah peringatan dini BMKG di atas radar: arsiran tipis di bawah radar (warna radar tetap asli) dan
-// garis putus-putus di atasnya, jadi tetap terbaca tanpa warna. Warna dari token --bch-status-danger.
+// Peringatan memakai garis netral putus-putus tebal, tanpa isian yang mengubah warna radar.
 const SUMBER = "ll-cap";
 const FILL_ID = "ll-cap-fill";
 const LINE_ID = "ll-cap-line";
-const WARNA: Record<ThemeMode, string> = { light: "#9E2B25", dark: "#F08C80" };
+const WARNA: Record<ThemeMode, string> = { light: "#20262C", dark: "#F1F3F5" };
 
 export default function PeringatanLayer({ peringatan, theme }: { peringatan: PeringatanCuaca[]; theme: ThemeMode }) {
   const map = usePeta();
@@ -31,7 +30,7 @@ export default function PeringatanLayer({ peringatan, theme }: { peringatan: Per
       type: "line",
       source: SUMBER,
       layout: { "line-join": "round" },
-      paint: { "line-width": 1.5, "line-dasharray": [2, 1.5] },
+      paint: { "line-width": 2.5, "line-dasharray": [4, 2] },
     });
     return () => {
       if (map.getLayer(FILL_ID)) map.removeLayer(FILL_ID);
@@ -47,7 +46,7 @@ export default function PeringatanLayer({ peringatan, theme }: { peringatan: Per
   useEffect(() => {
     if (!map.getLayer(FILL_ID) || !map.getLayer(LINE_ID)) return;
     map.setPaintProperty(FILL_ID, "fill-color", WARNA[theme]);
-    map.setPaintProperty(FILL_ID, "fill-opacity", 0.1);
+    map.setPaintProperty(FILL_ID, "fill-opacity", 0);
     map.setPaintProperty(LINE_ID, "line-color", WARNA[theme]);
   }, [map, theme]);
 

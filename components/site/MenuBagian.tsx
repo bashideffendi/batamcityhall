@@ -1,19 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment, useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { BAGIAN, bagianDiAlamat } from "@/lib/site";
 
 const RUMAH = "M3 11 12 4l9 7M5.5 9.5V20h5v-6h3v6h5V9.5";
 const PANAH = "m6 9 6 6 6-6";
 
 /**
- * Bagian yang tampil langsung di ponsel, dua baris (pemilik 12 Nov 2026: "jangan pakai burger bar, tampilin aja
- * menunya", dua tingkat boleh dengan tombol Lainnya). Urutan tetap urutan BAGIAN. Baris pertama selesai sesudah
- * BARIS_PONSEL. Lebar diukur 12 Nov 2026 (14 px, 600): kedua baris muat di layar 360 px. Bagian lain ada di Lainnya.
+ * Bagian yang tampil langsung di ponsel (pemilik 12 Nov 2026: "jangan pakai burger bar, tampilin aja menunya", dengan
+ * tombol Lainnya). Sejak 16 Nov 2026 tujuh bagian ini satu baris yang bisa digeser, bukan dua baris: bersama submenu,
+ * dua baris menu ditambah satu baris submenu terbaca sebagai tiga menu bertumpuk (pemilik: "membingungkan"). Urutan
+ * tetap urutan BAGIAN. Bagian lain ada di Lainnya, yang selalu terlihat di ujung kanan.
  */
 const PONSEL = new Set(["cuaca", "cctv", "transportasi", "layanan", "makanan", "kegiatan", "berita"]);
-const BARIS_PONSEL = "layanan";
 
 const Ikon = ({ d, ukuran = 20 }: { d: string; ukuran?: number }) => (
   <svg
@@ -36,9 +36,9 @@ const Ikon = ({ d, ukuran = 20 }: { d: string; ukuran?: number }) => (
  * Beranda bukan anggota BAGIAN: alamat "/" adalah awalan semua halaman. Di menu lebar tampil sebagai ikon; di ponsel
  * nama situs di kepala menjadi jalan ke beranda.
  *
- * Layar lebar: satu baris. Layar sedang: semua bagian dalam dua baris. Ponsel: tujuh bagian dalam dua baris dan tombol
- * Lainnya yang membuka sisanya beserta isinya. `arah` menentukan arah panel Lainnya: ke bawah di kepala halaman, ke
- * atas di pita sampul yang menempel di dasar layar.
+ * Layar lebar: satu baris. Layar sedang: semua bagian dalam dua baris. Ponsel: tujuh bagian dalam satu baris yang bisa
+ * digeser dan tombol Lainnya yang membuka sisanya beserta isinya. `arah` menentukan arah panel Lainnya: ke bawah di
+ * kepala halaman, ke atas di pita sampul yang menempel di dasar layar.
  */
 export default function MenuBagian({
   path,
@@ -53,6 +53,7 @@ export default function MenuBagian({
   const aktif = bagianDiAlamat(path)?.id;
   const idPanel = useId();
   const nav = useRef<HTMLElement>(null);
+  const gulir = useRef<HTMLDivElement>(null);
   // Panel terbuka hanya untuk alamat tempat ia dibuka, jadi pindah halaman otomatis menutupnya.
   const [bukaDi, setBukaDi] = useState<string | null>(null);
   const buka = bukaDi === path;
@@ -72,24 +73,33 @@ export default function MenuBagian({
     };
   }, [buka]);
 
+  // Di ponsel barisnya bisa lebih lebar dari layar: bagian yang sedang dibuka digeser ke dalam layar.
+  useEffect(() => {
+    const wadah = gulir.current;
+    const el = wadah?.querySelector<HTMLElement>('[aria-current="page"]');
+    if (!wadah || !el || wadah.scrollWidth <= wadah.clientWidth) return;
+    wadah.scrollLeft = el.offsetLeft - wadah.offsetLeft - (wadah.clientWidth - el.offsetWidth) / 2;
+  }, [aktif]);
+
   return (
     <nav ref={nav} className={className} aria-label="Bagian situs">
-      <Link href="/" className="bch-menu-beranda" aria-current={beranda ? "page" : undefined} title="Beranda">
-        <Ikon d={RUMAH} />
-        <span className="sr-only">Beranda</span>
-      </Link>
-      {BAGIAN.map((b) => (
-        <Fragment key={b.id}>
+      {/* Di layar lebar pembungkus ini tidak membentuk kotak (display: contents); di ponsel ia baris yang digeser. */}
+      <div ref={gulir} className="bch-menu-gulir">
+        <Link href="/" className="bch-menu-beranda" aria-current={beranda ? "page" : undefined} title="Beranda">
+          <Ikon d={RUMAH} />
+          <span className="sr-only">Beranda</span>
+        </Link>
+        {BAGIAN.map((b) => (
           <Link
+            key={b.id}
             href={b.href}
             aria-current={b.id === aktif ? "page" : undefined}
             data-lain={PONSEL.has(b.id) ? undefined : ""}
           >
             {b.nama}
           </Link>
-          {b.id === BARIS_PONSEL && <span className="bch-menu-baris" aria-hidden="true" />}
-        </Fragment>
-      ))}
+        ))}
+      </div>
       <button
         type="button"
         className="bch-menu-lainnya"

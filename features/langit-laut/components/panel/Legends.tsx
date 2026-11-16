@@ -1,4 +1,5 @@
-import { OFS_MAX_M, OFS_SWH_COLORS } from "@/features/langit-laut/lib/radar";
+import { useId } from "react";
+import { LEGEND, OFS_MAX_M, OFS_SWH_COLORS } from "@/features/langit-laut/lib/radar";
 
 // Warna band mengikuti tile gelombang yang diredam di peta (PEDOMAN 5.2), jadi batangnya ikut diredam.
 const OFS_GRADIENT = `linear-gradient(to right, ${OFS_SWH_COLORS.map((s, i) => {
@@ -13,45 +14,52 @@ const TITIK_SKALA: { m: number; label: string }[] = [
   { m: 2.5, label: "2,5" },
   { m: 4, label: "4" },
   { m: 6, label: "6" },
+  { m: 7, label: "7" },
 ];
 
-/** Legenda radar: tiga kelas sesuai warna di peta (PEDOMAN 3.3, 5.2). */
-export function LegendaHujan() {
+/** Ketebalan warna tanpa mengubah kelas intensitas. */
+export function RainOpacity({ opacity, onOpacity }: { opacity: number; onOpacity: (value: number) => void }) {
+  return <section className="cu-opacity">
+    <h2 className="cu-sub">Ketebalan Warna Radar</h2>
+    <label className="cu-opacity-row">
+      <span>Tipis</span>
+      <input className="cu-rng" type="range" min={0.3} max={1} step={0.05}
+        value={opacity} onChange={(e) => onOpacity(Number(e.target.value))}
+        aria-label="Ketebalan Warna Radar" aria-valuetext={Math.round(opacity * 100) + "%"} />
+      <span>Tebal</span>
+    </label>
+  </section>;
+}
+
+// Batas kelas sama dengan echo.ts: r=0, lalu g>=128, lalu g<128.
+const RAIN_GRADIENT = "linear-gradient(to right, " + LEGEND.map((c, i) =>
+  c + " " + i / LEGEND.length * 100 + "% " + (i + 1) / LEGEND.length * 100 + "%").join(", ") + ")";
+
+export function LegendaHujan({ compact = false }: { compact?: boolean }) {
+  const id = useId();
   return (
-    <section className="cu-legenda" aria-labelledby="cu-legenda-hujan">
-      <h2 id="cu-legenda-hujan" className="cu-sub">
-        Intensitas Hujan
-      </h2>
-      <ul className="cu-legenda-hujan">
-        <li>
-          <i data-kelas="ringan" aria-hidden />
-          Ringan
-        </li>
-        <li>
-          <i data-kelas="sedang" aria-hidden />
-          Sedang
-        </li>
-        <li>
-          <i data-kelas="lebat" aria-hidden />
-          Lebat
-        </li>
-      </ul>
-      <p className="cu-catatan">
+    <section className="cu-legenda" aria-labelledby={id}>
+      <h2 id={id} className="cu-sub">Intensitas Hujan</h2>
+      <div className="cu-rain-bar" style={{ background: RAIN_GRADIENT }} aria-hidden />
+      <div className="cu-rain-classes"><span>Ringan</span><span>Sedang</span><span>Lebat</span></div>
+      <p className="cu-warning-key"><i aria-hidden /> Batas Peringatan Dini</p>
+      {!compact && <p className="cu-catatan">
         Radar berpusat di Singapura sehingga pulau di selatan Batam terpantau kurang akurat. Bercak yang diam kadang bukan
         hujan.
-      </p>
+      </p>}
     </section>
   );
 }
 
 /** Legenda tinggi gelombang (m). */
 export function LegendaGelombang() {
+  const id = useId();
   return (
-    <section className="cu-legenda" aria-labelledby="cu-legenda-gelombang">
-      <h2 id="cu-legenda-gelombang" className="cu-sub">
+    <section className="cu-legenda" aria-labelledby={id}>
+      <h2 id={id} className="cu-sub">
         Tinggi Gelombang (m)
       </h2>
-      <div className="cu-skala" role="img" aria-label="Skala tinggi gelombang, 0 sampai 6 meter">
+      <div className="cu-skala" role="img" aria-label="Skala tinggi gelombang, 0 sampai 7 meter">
         <div className="cu-skala-batang" style={{ background: OFS_GRADIENT }} />
         <div className="cu-skala-titik" aria-hidden>
           {TITIK_SKALA.map((t) => (
@@ -70,7 +78,7 @@ const KATEGORI = [
   ["Rendah", "0,5—1,25 m"],
   ["Sedang", "1,25—2,5 m"],
   ["Tinggi", "2,5—4 m"],
-  ["Sangat tinggi", "4—6 m"],
+  ["Sangat Tinggi", "4—6 m"],
   ["Ekstrem", "lebih dari 6 m"],
 ];
 

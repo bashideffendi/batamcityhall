@@ -346,7 +346,12 @@ main .bch-peta-atribusi {
 }
 .bch-sampul-menu {
   flex: 1;
+  min-width: 0;
   border: 0;
+}
+/* Menu satu baris lebih pendek daripada pita, jadi panel Lainnya diangkat sampai di atas garis pita. */
+.bch-sampul-menu .bch-menu-panel[data-arah="atas"] {
+  bottom: calc(100% + 8px);
 }
 
 /* Di bawah 1241 px menu pita menjadi dua baris (kepala halaman sama): judul dan atribusi naik di atasnya. */
@@ -371,14 +376,14 @@ main .bch-peta-atribusi {
   .bch-sampul-tanggal {
     display: none;
   }
-  /* Atribusi di kiri, di atas pita menu dua baris; judul di atasnya. */
+  /* Atribusi di kiri, di atas pita menu satu baris; judul di atasnya. */
   .bch-sampul-isi {
-    bottom: 120px;
+    bottom: 84px;
   }
   .bch-sampul-atribusi {
     left: var(--bch-gutter);
     right: auto;
-    bottom: 94px;
+    bottom: 58px;
     font-size: 10px;
   }
 }

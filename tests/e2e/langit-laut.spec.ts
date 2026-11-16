@@ -698,3 +698,41 @@ test.describe("peringatan cuaca di radar", () => {
     await expect(page.locator("[data-peringatan-cuaca]")).toHaveCount(0);
   });
 });
+
+// Regresi overlay iPhone: tidak bergantung pada Element.requestFullscreen.
+for (const width of [390, 1280]) {
+  for (const theme of ["light", "dark"]) {
+    for (const route of ["hujan", "gelombang"]) {
+      test("layar penuh " + route + " " + width + " " + theme, async ({ page }) => {
+        await page.setViewportSize({ width, height: 844 });
+        await tiruSumber(page);
+        await page.goto("/cuaca/" + route);
+        await page.evaluate((value) => document.documentElement.setAttribute("data-theme", value), theme);
+        const open = page.getByRole("button", { name: "Layar Penuh", exact: true });
+        await open.click();
+        const dialog = page.getByRole("dialog");
+        await expect(dialog).toBeVisible();
+        await expect(dialog).toHaveCSS("position", "fixed");
+        await expect(dialog).toHaveCSS("height", "844px");
+        await expect(page.locator("body")).toHaveCSS("position", "fixed");
+        await expect(dialog.getByRole("slider").first()).toBeVisible();
+        if (route === "hujan") {
+          const opacity = dialog.getByRole("slider", { name: "Ketebalan Warna Radar" });
+          await opacity.focus();
+          await page.keyboard.press("Home");
+          for (let i = 0; i < 3; i++) await page.keyboard.press("ArrowRight");
+          await expect(opacity).toHaveAttribute("aria-valuetext", "45%");
+          expect(await page.evaluate(() => localStorage.getItem("bch-ll-opacity"))).toBe("0.45");
+        }
+        const { violations } = await new AxeBuilder({ page }).exclude(".maplibregl-canvas").analyze();
+        expect(violations).toEqual([]);
+        await page.keyboard.press("Escape");
+        await expect(dialog).toHaveCount(0);
+        await expect(open).toBeFocused();
+        await open.click();
+        await page.getByRole("button", { name: "Tutup", exact: true }).click();
+        await expect(open).toBeFocused();
+      });
+    }
+  }
+}

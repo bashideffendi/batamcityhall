@@ -93,9 +93,18 @@ export function useRadar({ enabled, playing }: { enabled: boolean; playing: bool
       (img as HTMLImageElement & { fetchPriority?: string }).fetchPriority = "low";
       img.decoding = "async";
       img.onerror = () => {
+        // Dihapus dari daftar pramuat supaya polling berikutnya mencoba lagi.
         preloaded.current.delete(f.url);
         markBroken(f.url);
       };
+      // Berhasil (termasuk percobaan ulang): tidak lagi dianggap rusak, jadi peta dan animasi memakainya kembali.
+      img.onload = () =>
+        setBroken((prev) => {
+          if (!prev.has(f.url)) return prev;
+          const n = new Set(prev);
+          n.delete(f.url);
+          return n;
+        });
       img.src = f.url;
     };
     list.slice(0, PRELOAD_NOW).forEach(warm);
@@ -134,5 +143,10 @@ export function useRadar({ enabled, playing }: { enabled: boolean; playing: bool
     followRef.current = v >= framesRef.current.length - 1;
   }, []);
 
-  return { frames, idx, status, stale, echo, broken, loadedAt, load, markBroken, scrub };
+  /** Jeda dihitung sebagai memilih posisi: polling berikutnya tidak melompat ke citra terbaru. */
+  const tahanPosisi = useCallback(() => {
+    followRef.current = idxRef.current >= framesRef.current.length - 1;
+  }, []);
+
+  return { frames, idx, status, stale, echo, broken, loadedAt, load, markBroken, scrub, tahanPosisi };
 }

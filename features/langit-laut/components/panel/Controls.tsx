@@ -122,7 +122,7 @@ export function Transport({
                 rangeRef.current?.focus();
               }}
             >
-              Ke terbaru
+              Ke Terbaru
             </button>
           ) : (
             caption.right && <span>{caption.right}</span>
@@ -131,7 +131,7 @@ export function Transport({
       </div>
       {jam && (
         <div className="cu-jam">
-          <b className="bch-data">{jam}</b>
+          <b className="bch-data">{jam} WIB</b>
           <span>{ketJam}</span>
         </div>
       )}

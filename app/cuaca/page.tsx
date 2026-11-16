@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PembukaBagian from "@/components/site/PembukaBagian";
-import { IsiCuaca, SaatIni } from "@/features/langit-laut/components/PembukaCuaca";
+import { IsiCuaca } from "@/features/langit-laut/components/PembukaCuaca";
 import "@/features/langit-laut/cuaca.css";
 
 export const metadata: Metadata = {
@@ -12,9 +12,8 @@ export const metadata: Metadata = {
 export default function Cuaca() {
   return (
     <div className="bch-page">
-      <PembukaBagian id="cuaca">
-        <SaatIni />
-      </PembukaBagian>
+      {/* Keadaan sekarang ada di IsiCuaca, di luar kepala, supaya garisnya selebar halaman dan datanya diambil sekali. */}
+      <PembukaBagian id="cuaca" />
       <IsiCuaca />
     </div>
   );

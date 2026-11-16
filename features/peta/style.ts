@@ -79,10 +79,25 @@ export const PALET = {
   },
 } as const;
 
+/**
+ * Khusus peta cuaca: darat terang dan laut biru lembut supaya warna radar terbaca dan pulau tetap dikenali. Jalan dan
+ * bangunan diberi warna darat, jadi tidak tampak (pemilik 16 Nov 2026: garis jalan tidak ada fungsinya di peta hujan).
+ */
+export const PALET_CUACA = {
+  light: { ...PALET.light, land: "#F1EFE9", landOther: "#F1EFE9", water: "#B5C9DB",
+    waterline: "#5C6A75", roadMajor: "#F1EFE9", roadMinor: "#F1EFE9", roadCasing: "#F1EFE9",
+    building: "#F1EFE9", buildingLine: "#F1EFE9", graticule: "#747D85",
+    labelLand: "#242B31", labelWater: "#343D45", muted: "#424B53", haloLand: "#F1EFE9", haloWater: "#B5C9DB" },
+  dark: { ...PALET.dark, land: "#3B4046", landOther: "#3B4046", water: "#17222D",
+    waterline: "#929BA3", roadMajor: "#3B4046", roadMinor: "#3B4046", roadCasing: "#3B4046",
+    building: "#3B4046", buildingLine: "#3B4046", graticule: "#8A949D",
+    labelLand: "#F1F3F5", labelWater: "#D7DCE0", muted: "#CDD3D8", haloLand: "#3B4046", haloWater: "#17222D" },
+} as const;
+
 // Semua warna ditulis sendiri, tidak menyalin flavor bawaan, supaya tidak ada warna nyasar.
 // Tanpa `pois` dan `landcover`, Protomaps tidak membuat layer yang butuh sprite dan tutupan lahan.
-function flavorFor(theme: MapTheme): Flavor {
-  const c = PALET[theme];
+function flavorFor(theme: MapTheme, cuaca = false): Flavor {
+  const c = (cuaca ? PALET_CUACA : PALET)[theme];
   const major = c.roadMajor;
   const minor = c.roadMinor;
   return {
@@ -166,13 +181,13 @@ function flavorFor(theme: MapTheme): Flavor {
 }
 
 /** Garis pantai tipis (PEDOMAN 5.2). */
-function garisPantai(theme: MapTheme): LayerSpecification {
+function garisPantai(theme: MapTheme, cuaca = false): LayerSpecification {
   return {
     id: "garis-pantai",
     type: "line",
     source: SOURCE_ID,
     "source-layer": "earth",
-    paint: { "line-color": PALET[theme].waterline, "line-width": 0.9 },
+    paint: { "line-color": (cuaca ? PALET_CUACA : PALET)[theme].waterline, "line-width": 0.9 },
   };
 }
 
@@ -243,16 +258,18 @@ const LAYER_DIBUANG = new Set([
 export type OpsiGaya = {
   /** Selubung pulau di luar Batam. Halaman cuaca mematikannya. */
   chart?: boolean;
+  /** Dasar netral tanpa simbol yang bertabrakan dengan label HTML cuaca. */
+  cuaca?: boolean;
 };
 
-export function baseStyle(theme: MapTheme, origin: string, { chart = true }: OpsiGaya = {}): StyleSpecification {
-  const flavor = flavorFor(theme);
-  const c = PALET[theme];
+export function baseStyle(theme: MapTheme, origin: string, { chart = true, cuaca = false }: OpsiGaya = {}): StyleSpecification {
+  const flavor = flavorFor(theme, cuaca);
+  const c = (cuaca ? PALET_CUACA : PALET)[theme];
   const base = layers(SOURCE_ID, flavor, { lang: "id" }) as LayerSpecification[];
 
   // Bangunan bergaris halus, label laut italic berjarak, pulau kapital.
   const tuned = base
-    .filter((l) => !LAYER_DIBUANG.has(l.id))
+    .filter((l) => !LAYER_DIBUANG.has(l.id) && (!cuaca || l.type !== "symbol"))
     .map((l): LayerSpecification => {
       if (chart && (l.id === "places_locality" || l.id === "places_subplace") && l.type === "symbol") {
         l = { ...l, paint: { ...l.paint, "text-opacity": ["case", DI_LUAR_FOKUS, OPACITY_LABEL_LUAR, 1] } };
@@ -304,7 +321,7 @@ export function baseStyle(theme: MapTheme, origin: string, { chart = true }: Ops
       ? [{ id: "selubung-luar-fokus", type: "fill", source: "luar-fokus", paint: { "fill-color": c.landOther } } as const]
       : []),
     ...garis.filter((l) => l.id.startsWith("water")),
-    garisPantai(theme),
+    garisPantai(theme, cuaca),
     ...garis.filter((l) => DI_ATAS_SELUBUNG(l.id) && !l.id.startsWith("water")),
     ...tuned.filter((l) => l.type === "symbol"),
   ];

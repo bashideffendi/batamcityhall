@@ -73,7 +73,8 @@ function shape(j: Raw): ForecastResponse {
 async function muatRespons(): Promise<Response> {
   try {
     const res = await fetch(BMKG_FORECAST, {
-      next: { revalidate: 1800 },
+      // Tanpa Data Cache Next (menyajikan run basi lebih dulu); cacheRespons yang menyimpan jawaban.
+      cache: "no-store",
       signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
       headers: { Accept: "application/json" },
     });

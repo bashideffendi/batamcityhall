@@ -55,3 +55,17 @@ node tools/grafis/hidangan.mjs --kontak <folder>
 ## Ikon
 
 `ikon.json` memuat glyph ikon garis (24 × 24), kelompok dan warna penanda peta, emoji untuk gaya B, dan kategori direktori. Ubah menjadi komponen di `components/map/icons.tsx`.
+
+## Gambar Kartu dan Ikon Buatan Codex (16 Nov 2026)
+
+Pemilik meminta gambar kartu dan ikon dirancang ulang dengan Codex, bergaya sketsa tinta dengan cat air, dan padu bila dilihat bersamaan (PEDOMAN blok "Peta cuaca, menu ponsel, dan gambar kartu, 16 Nov 2026" butir 8).
+
+- `codex/manifes.json`: 61 gambar (nama, rasio, isi gambar). Nama berawalan folder tujuannya: `loket-*`, `sub-*`, `bagian-*`, `hidangan-*`, `panduan-*`, `cerita-nongsa`.
+- `codex/gaya-sketsa.txt`: satu uraian gaya untuk semua gambar, supaya hasilnya satu keluarga.
+- `codex/gambar-codex.mjs`: menjalankan Codex CLI per gambar. Gambar yang sudah ada dilewati, jadi aman diulang.
+
+```bash
+GAYA_FILE=tools/grafis/codex/gaya-sketsa.txt node tools/grafis/codex/gambar-codex.mjs tools/grafis/codex/manifes.json tools/grafis/codex/hasil 4
+```
+
+Hasil mentah (PNG, ±2,5 MB per gambar) ada di `codex/hasil/` dan tidak ikut repo. Status 16 November 2026: 2 dari 61 selesai (`loket-cuaca`, `sub-gelombang`); sisanya berhenti karena kuota Codex akun pemilik habis. Sesudah lengkap: periksa semua gambar berdampingan, buat ulang yang tidak selaras, ubah ke WebP berukuran sama dengan berkas lama di `public/grafis/`, ganti seluruhnya sekaligus (jangan dicampur dengan grafis Riso), lalu sebut gambar buatan AI di Kolofon.

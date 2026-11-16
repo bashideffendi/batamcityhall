@@ -86,7 +86,9 @@ type Json = Record<string, unknown>;
 // fetch JSON dengan timeout; bedakan http/schema/empty di log Vercel (bukan null diam-diam).
 async function getJson(name: string, url: string): Promise<Json | null> {
   try {
-    const res = await fetch(url, { next: { revalidate: 120 }, signal: AbortSignal.timeout(FETCH_MS) });
+    // Tanpa Data Cache Next: cache itu menyajikan entri basi lebih dulu, jadi pembaca pertama setelah situs sepi
+    // mendapat data lama. Lama simpan dan penggabungan permintaan sudah ditangani cacheRespons.
+    const res = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(FETCH_MS) });
     if (!res.ok) {
       console.warn(`[conditions] ${name} http ${res.status}`);
       return null;

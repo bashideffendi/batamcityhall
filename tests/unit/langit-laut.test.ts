@@ -80,7 +80,7 @@ describe("citra radar", () => {
   });
 
   it("browser memakai route sendiri, server memakai URL asli MSS", () => {
-    expect(radarCitra("202611050015")).toBe("/api/radar-citra/202611050015");
+    expect(radarCitra("202611050015")).toBe("/api/radar-citra/202611050015?v=halus");
     expect(radarUrl("202611050015")).toMatch(/^https:\/\/www\.weather\.gov\.sg\/.*202611050015.*\.png$/);
   });
 
@@ -150,7 +150,11 @@ describe("urutan lapisan", () => {
   it("arsiran di bawah radar, garis di atas radar, mask di atas ombak", () => {
     expect(peringkat("ll-kec-fill")).toBeLessThan(peringkat("ll-radar"));
     expect(peringkat("ll-radar")).toBeLessThan(peringkat("ll-kec-line"));
+    // Garis pantai di atas radar, supaya bentuk pulau terbaca di bawah warna hujan.
+    expect(peringkat("ll-radar")).toBeLessThan(peringkat("ll-pantai-alas"));
+    expect(peringkat("ll-pantai")).toBeLessThan(peringkat("ll-kec-line"));
     expect(peringkat("ll-ofs-12")).toBeLessThan(peringkat("ll-land"));
+    expect(peringkat("ll-land")).toBeLessThan(peringkat("ll-radar"));
     expect(peringkat("ll-cap-fill")).toBeLessThan(peringkat("ll-radar"));
     expect(peringkat("ll-radar")).toBeLessThan(peringkat("ll-cap-line"));
   });
@@ -162,7 +166,7 @@ describe("urutan lapisan", () => {
   it("lapisan disisipkan di bawah yang peringkatnya lebih tinggi", () => {
     const ada = [dasar[0], dasar[1], { id: "ll-kec-line", type: "line" }, dasar[2]];
     expect(sisipSebelum(ada, "ll-radar")).toBe("ll-kec-line");
-    expect(sisipSebelum(ada, "ll-ofs-1")).toBe("places_locality");
+    expect(sisipSebelum(ada, "ll-ofs-1")).toBe("ll-kec-line");
   });
 
   it("ganti tema mempertahankan lapisan fitur", () => {

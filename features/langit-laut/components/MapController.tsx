@@ -40,6 +40,7 @@ export default function MapController({
 
   const fit = useCallback(
     (v: ViewKey, animate: boolean, duration = 800) => {
+      map.resize();
       const b = keLngLatBounds(VIEWS[v].bounds);
       const padding = kePaddingMapLibre(getPadding());
       if (!animate || reduceMotion()) map.fitBounds(b, { padding, animate: false });
