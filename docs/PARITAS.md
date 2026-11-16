@@ -37,7 +37,7 @@ Sejak rombak menu November 2026: CCTV pindah ke `/cctv`, klaster kamera diganti 
 - ✔ Frame 404 dilewati, tidak pernah tampil sebagai "tidak hujan" — e2e
 - ✔ Run OFS basi/kedaluwarsa ditandai (`source`, `ageH`, `expired`) — kode, ikut `source` dari route
 - ✔ Perapian arsitektur 16 Nov 2026 tidak mengubah satu pun teks tampil (3.083 halaman dibandingkan sebelum dan sesudah)
-- ✔ Kecamatan yang sedang hujan ditandai dengan warna bidangnya. Beda dari kode lama atas permintaan pemilik 16 Nov 2026: bidangnya merah pekat di atas citra radar (kode lama: di bawah radar, warna menurut kelas), supaya seluruh bidang terbaca merah — unit dan e2e
+- ✔ Kecamatan yang sedang hujan diberi warna bidang tipis di bawah citra radar, letak dan kepekatannya seperti kode lama; bedanya satu warna merah muda untuk semua kelas (kode lama: toska, jingga, merah menurut kelas), atas permintaan pemilik 16 Nov 2026 — unit dan e2e
 - ✔ Radar hujan memakai warna asli citranya dan ketebalannya bisa diatur pembaca (seperti hujandibatam; permintaan pemilik 16 Nov 2026) — e2e
 - ✔ Peta Radar Hujan dan Tinggi Gelombang bisa dibuka layar penuh, termasuk di iPhone — e2e
 - ✔ Menu ponsel dua baris saja (menu dan submenu), tidak lagi tiga — e2e

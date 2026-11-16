@@ -69,19 +69,20 @@ export const kabRank = (kab: string) => {
 };
 
 // Kecamatan yang sedang hujan: seluruh wilayahnya menjadi merah, seperti di hujandibatam (pemilik 16 Nov 2026:
-// "ikutin aja hujandibatam, kecamatan yang hujan areanya jadi merah", lalu "bukan garis, warna area, warna bidang").
-// Bidangnya digambar di ATAS citra radar dan pekat. Dua letak lain sudah dicoba dan gagal: di bawah radar merahnya
-// tertutup hujan tepat di kecamatan yang hujan (pemilik: "ga guna"), dan di atas radar dengan kepekatan di bawah
-// ±0,6 merahnya bercampur hijau radar menjadi cokelat keruh. Pada 0,78 seluruh bidang terbaca merah di kedua tema.
-// Satu merah untuk semua kelas hujan; kelasnya ada di label kecamatan dan di panel.
+// "ikutin aja hujandibatam, kecamatan yang hujan areanya jadi merah"). Keputusan akhirnya, kata pemilik sendiri:
+// "kecamatan yang hujan areanya jadi merah muda", "merah pastel", "merahnya tipis aja, radar yang harus berada di
+// atas, kalau areanya ketutup ya sudah biarkan ketutup warna radarnya". Jadi bidangnya tipis dan di BAWAH citra
+// radar, sama dengan kode hujandibatam (0,2 terang dan 0,26 gelap). Yang ditolak: bidang merah pekat di atas radar
+// ("makin parah"), dan merah 0,36 di bawah radar (terlalu tua untuk disebut merah muda).
+// Satu warna untuk semua kelas hujan; kelasnya ada di label kecamatan dan di panel.
 export const MERAH_HUJAN = "#E5202B";
-export const PEKAT_HUJAN = 0.78;
+export const PEKAT_HUJAN: Record<"light" | "dark", number> = { light: 0.22, dark: 0.28 };
 
-/** Saringan dan kepekatan bidang merah untuk kecamatan yang hujan. Fungsi murni supaya bisa dites tanpa peta. */
-export function arsiranHujan(tingkat: ReadonlyMap<string, RainLevel>) {
+/** Saringan dan kepekatan bidang merah muda untuk kecamatan yang hujan. Fungsi murni supaya bisa dites tanpa peta. */
+export function arsiranHujan(tingkat: ReadonlyMap<string, RainLevel>, tema: "light" | "dark") {
   const kode = [...tingkat.keys()];
   return {
     saring: ["in", ["get", "code"], ["literal", kode]],
-    kepekatan: kode.length ? PEKAT_HUJAN : 0,
+    kepekatan: kode.length ? PEKAT_HUJAN[tema === "dark" ? "dark" : "light"] : 0,
   };
 }

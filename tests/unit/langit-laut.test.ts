@@ -148,11 +148,11 @@ describe("urutan lapisan", () => {
     { id: "places_locality", type: "symbol" },
   ];
 
-  it("bidang merah di atas radar, garis di atasnya lagi, mask di atas ombak", () => {
-    // Di bawah radar bidang merah tertutup citra hujan tepat di kecamatan yang hujan (ditolak pemilik).
-    expect(peringkat("ll-radar")).toBeLessThan(peringkat("ll-kec-fill"));
-    expect(peringkat("ll-kec-fill")).toBeLessThan(peringkat("ll-pantai-alas"));
-    expect(peringkat("ll-kec-fill")).toBeLessThan(peringkat("ll-kec-line"));
+  it("bidang merah muda di bawah radar, garis di atas radar, mask di atas ombak", () => {
+    // Pemilik: "radar yang harus berada di atas, kalau areanya ketutup ya sudah biarkan ketutup warna radarnya".
+    expect(peringkat("ll-kec-fill")).toBeLessThan(peringkat("ll-radar"));
+    expect(peringkat("ll-land")).toBeLessThan(peringkat("ll-kec-fill"));
+    expect(peringkat("ll-radar")).toBeLessThan(peringkat("ll-kec-line"));
     // Garis pantai di atas radar, supaya bentuk pulau terbaca di bawah warna hujan.
     expect(peringkat("ll-radar")).toBeLessThan(peringkat("ll-pantai-alas"));
     expect(peringkat("ll-pantai")).toBeLessThan(peringkat("ll-kec-line"));
@@ -160,16 +160,19 @@ describe("urutan lapisan", () => {
     expect(peringkat("ll-land")).toBeLessThan(peringkat("ll-radar"));
   });
 
-  it("bidang kecamatan yang hujan merah pekat, satu merah untuk semua kelas", () => {
-    // Pemilik 16 Nov 2026: "kecamatan yang hujan areanya jadi merah", "bukan garis, warna area, warna bidang".
+  it("bidang kecamatan yang hujan merah muda tipis, satu warna untuk semua kelas", () => {
+    // Pemilik 16 Nov 2026: "areanya jadi merah muda", "merah pastel", "merahnya tipis aja".
     expect(MERAH_HUJAN).toBe("#E5202B");
-    const a = arsiranHujan(new Map([["21.71.04", "lebat"], ["21.71.03", "ringan"]]));
+    const a = arsiranHujan(new Map([["21.71.04", "lebat"], ["21.71.03", "ringan"]]), "light");
     expect(a.saring).toEqual(["in", ["get", "code"], ["literal", ["21.71.04", "21.71.03"]]]);
-    // Di bawah ±0,6 merah di atas hijau radar menjadi cokelat keruh; di atas 0,9 batas kecamatan dan pantai tenggelam.
-    expect(a.kepekatan).toBeGreaterThanOrEqual(0.7);
-    expect(a.kepekatan).toBeLessThanOrEqual(0.9);
+    // Tipis: di atas ±0,3 merahnya bukan lagi merah muda (0,36 dan 0,78 sudah ditolak pemilik).
+    expect(a.kepekatan).toBeGreaterThanOrEqual(0.15);
+    expect(a.kepekatan).toBeLessThanOrEqual(0.3);
+    const gelap = arsiranHujan(new Map([["21.71.04", "ringan"]]), "dark").kepekatan;
+    expect(gelap).toBeGreaterThanOrEqual(a.kepekatan);
+    expect(gelap).toBeLessThanOrEqual(0.3);
     // Tidak ada yang hujan: tidak ada yang diarsir.
-    const kosong = arsiranHujan(new Map());
+    const kosong = arsiranHujan(new Map(), "dark");
     expect(kosong.saring).toEqual(["in", ["get", "code"], ["literal", []]]);
     expect(kosong.kepekatan).toBe(0);
   });

@@ -690,7 +690,7 @@ test.describe("peringatan cuaca di radar", () => {
     await expect(chip.getByRole("link")).toHaveAttribute("href", "/cuaca/peringatan");
   });
 
-  test("wilayah peringatan tidak digambar di peta; legenda menjelaskan wilayah merah", async ({ page }) => {
+  test("wilayah peringatan tidak digambar di peta; legenda menjelaskan wilayah merah muda", async ({ page }) => {
     // Pemilik 16 Nov 2026: garis wilayah peringatan membingungkan, "ikutin aja hujandibatam, kecamatan yang hujan
     // areanya jadi merah". Peringatan tetap ditulis di panel; di peta hanya kecamatan hujan yang menjadi merah.
     await tiruSumber(page, { echo: ECHO_HUJAN });
@@ -699,7 +699,7 @@ test.describe("peringatan cuaca di radar", () => {
     await petaSiap(page);
     await expect(page.locator("[data-kunci-peringatan]")).toHaveCount(0);
     await bukaPanel(page);
-    await expect(page.locator(".cu-warning-key")).toHaveText("Wilayah merah: kecamatan yang sedang hujan");
+    await expect(page.locator(".cu-warning-key")).toHaveText("Wilayah merah muda: kecamatan yang sedang hujan");
     await expect(page.locator("[data-peringatan-cuaca]")).toContainText("Hujan Lebat dan Petir");
   });
 
