@@ -756,6 +756,11 @@ describe("batas laju", () => {
     expect(ipDari(req({ "x-real-ip": "198.51.100.1" }))).toBe("198.51.100.1");
     expect(ipDari(req({ "x-forwarded-for": "6.6.6.6, 198.51.100.2" }))).toBe("198.51.100.2");
     expect(ipDari(req({}))).toBe("tanpa-ip");
+    // Nilai yang bukan satu alamat IP diabaikan: tidak menjadi kunci batas laju.
+    expect(ipDari(req({ "x-real-ip": "unknown", "x-forwarded-for": "6.6.6.6, 198.51.100.3" }))).toBe("198.51.100.3");
+    expect(ipDari(req({ "x-real-ip": "1.1.1.1, 2.2.2.2" }))).toBe("tanpa-ip");
+    expect(ipDari(req({ "x-real-ip": "<script>" }))).toBe("tanpa-ip");
+    expect(ipDari(req({ "x-real-ip": "[2001:db8:aa:1::5]" }))).toBe("2001:db8:aa:1::/64");
   });
 
   it("alamat IPv6 di blok /64 yang sama dihitung satu", () => {

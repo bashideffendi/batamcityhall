@@ -45,9 +45,19 @@ export function kunciIp(ip: string): string {
     .join(":")}::/64`;
 }
 
-/** x-real-ip dan elemen terakhir x-forwarded-for dipasang proxy hosting; elemen awal bisa dipalsukan pengirim. */
+// Satu alamat IPv4 atau IPv6 (boleh berkurung siku atau berzona). Nilai lain, misalnya daftar atau "unknown", ditolak.
+const SATU_ALAMAT = /^(\d{1,3}(\.\d{1,3}){3}|\[?[0-9a-fA-F:.]*:[0-9a-fA-F:.]*\]?(%[\w.-]+)?)$/;
+
+/**
+ * Alamat pengirim untuk batas laju. Railway mendokumentasikan X-Real-IP sebagai header alamat pembaca yang dipasang
+ * edge-nya ("for identifying client's remote IP", Specs & Limits, dibaca 16 Nov 2026), dan situs ini dilayani
+ * langsung oleh edge Railway tanpa CDN lain di depannya, jadi X-Real-IP adalah alamat pembaca. X-Forwarded-For tidak
+ * termasuk header yang didokumentasikan Railway; elemen terakhirnya hanya cadangan untuk hosting lain (elemen awalnya
+ * bisa dipalsukan pengirim). Yang belum bisa dipastikan dari dokumentasi: apakah edge menimpa X-Real-IP kiriman
+ * klien. Batas laju ini memang hanya rem kasar (lihat kepala berkas).
+ */
 export function ipDari(req: Request): string {
-  const nyata = req.headers.get("x-real-ip")?.trim();
-  const ip = nyata || req.headers.get("x-forwarded-for")?.split(",").pop()?.trim();
+  const calon = [req.headers.get("x-real-ip"), req.headers.get("x-forwarded-for")?.split(",").pop()];
+  const ip = calon.map((v) => v?.trim()).find((v) => v && SATU_ALAMAT.test(v));
   return ip ? kunciIp(ip) : "tanpa-ip";
 }
