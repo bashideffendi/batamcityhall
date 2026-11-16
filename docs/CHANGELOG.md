@@ -18,13 +18,15 @@ Tayang sejak `a8632e7` (16 November 2026, sekitar 5,5 menit sesudah push), bersa
 
 Perbaikan antrean tayang sejak `cf60579` (16 November 2026 pukul 20.30 WIB). Diuji di barelang.co: 14 citra radar yang belum tersimpan diminta sekaligus, semuanya dijawab 200 dalam 3 detik.
 
-**Kecamatan yang hujan menjadi merah; wilayah peringatan dini tidak lagi digambar di peta hujan.** Pemilik sesudah melihat peta tayang: "itu garis-garis putus-putus di peta apa sih", "garis putus-putus sebagai peringatan, yakin orang paham?" Garis putus-putus tebal itu batas wilayah peringatan dini BMKG (rancangan Codex yang lolos tinjauan); batas kecamatan juga putus-putus, jadi keduanya tertukar. Percobaan pertama (`5c3e1f4`, tidak pernah tayang) menggantinya dengan garis merah utuh dan kotak keterangan di atas peta; pemilik menolaknya juga: "ngapain sih, aku bilang ikutin aja hujan di batam, kecamatan yang hujan areanya jadi merah". Yang sekarang:
+**Bidang kecamatan yang hujan menjadi merah; wilayah peringatan dini tidak lagi digambar di peta hujan.** Pemilik sesudah melihat peta tayang: "itu garis-garis putus-putus di peta apa sih", "garis putus-putus sebagai peringatan, yakin orang paham?" Garis putus-putus tebal itu batas wilayah peringatan dini BMKG (rancangan Codex yang lolos tinjauan); batas kecamatan juga putus-putus, jadi keduanya tertukar. Tiga percobaan sesudahnya:
 
-- Wilayah peringatan dini tidak digambar di peta hujan (`PeringatanLayer.tsx` dihapus). Peringatannya tetap ditulis sebagai kalimat di panel dan di halaman Peringatan Dini. Pilihan `?poligon=1` di `/api/peringatan-cuaca` masih ada, tetapi tidak ada halaman yang memakainya.
-- Kecamatan yang sedang hujan diarsir merah (`ll-kec-fill` di `KecamatanLayer`, aturannya `arsiranHujan` di `features/langit-laut/lib/kecamatan.ts`). Letaknya di bawah citra radar, sama dengan kode hujandibatam yang dibaca ulang dari repo lamanya: di atas radar arsiran itu mengubah hijau dan kuning citra hujan menjadi cokelat keruh (dicoba, lalu dibatalkan). Jadi merahnya tampak di bagian kecamatan yang tidak tertutup hujan, dan warna radar tidak berubah.
-- Beda dengan kode lama: di sana warna arsiran mengikuti kelas hujan (toska, jingga, merah) dengan kepekatan 20 sampai 26 persen. Di sini satu merah untuk semua kelas, mengikuti kata pemilik, dengan kepekatan 36 persen di tema terang dan 42 persen di tema gelap.
-- Legenda: "Wilayah merah: kecamatan yang sedang hujan".
-- Tes: urutan lapisan dan `arsiranHujan` (unit), peta tanpa kotak peringatan dan bunyi legenda (e2e).
+1. Garis merah utuh dengan kotak keterangan di atas peta (`5c3e1f4`, tidak pernah tayang). Ditolak: "ngapain sih, aku bilang ikutin aja hujan di batam, kecamatan yang hujan areanya jadi merah".
+2. Bidang merah di bawah citra radar, sama dengan kode hujandibatam yang dibaca ulang dari repo lamanya (`0f91639`, tidak pernah tayang). Merahnya hanya tampak di bagian kecamatan yang tidak tertutup hujan, jadi kecamatan yang paling deras hujannya justru tidak merah. Ditolak: "ga guna", "bukan garis, warna area, warna bidang".
+3. Yang dipakai: bidang merah di atas citra radar dengan kepekatan 0,78 di kedua tema (`ll-kec-fill` di `KecamatanLayer`, aturannya `arsiranHujan` dan `PEKAT_HUJAN` di `features/langit-laut/lib/kecamatan.ts`). Kepekatan itu dipilih dari potret percobaan: pada 0,45 merah bercampur hijau radar menjadi cokelat keruh, pada 0,7 ke atas seluruh bidang terbaca merah.
+
+Akibat yang perlu diketahui: di dalam kecamatan yang hujan, warna radar hampir tertutup merah. Bidang merah hanya digambar saat peta menampilkan citra terbaru; begitu pembaca memutar atau menggeser waktu, bidangnya hilang dan radar tampil utuh. Satu merah untuk semua kelas hujan (kode lama: toska, jingga, merah menurut kelas); kelasnya ada di label kecamatan dan di panel.
+
+Lainnya: wilayah peringatan dini tidak digambar di peta hujan (`PeringatanLayer.tsx` dihapus), peringatannya tetap berupa kalimat di panel dan di halaman Peringatan Dini; pilihan `?poligon=1` di `/api/peringatan-cuaca` masih ada tetapi tidak dipakai halaman mana pun. Legenda: "Wilayah merah: kecamatan yang sedang hujan". Tes: urutan lapisan dan `arsiranHujan` (unit), peta tanpa kotak peringatan dan bunyi legenda (e2e).
 
 ## 2026-11-16 · Peta hujan dengan warna asli dan layar penuh, menu ponsel satu baris, perbaikan dari audit
 

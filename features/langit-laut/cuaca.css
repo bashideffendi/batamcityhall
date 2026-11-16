@@ -525,7 +525,7 @@ main .cu-panel p {
 .cu-rain-classes span { padding-top: 5px; }
 .cu-rain-classes span + span { border-left: 1px solid var(--bch-ink); padding-left: 5px; }
 .cu-warning-key { display: flex; gap: 8px; align-items: center; margin: 8px 0 0; font-size: 0.75rem; }
-.cu-warning-key i { width: 22px; height: 14px; background: rgba(229, 32, 43, 0.4); border: 1px solid rgba(229, 32, 43, 0.7); }
+.cu-warning-key i { width: 22px; height: 14px; background: rgba(229, 32, 43, 0.78); border: 1px solid #E5202B; }
 .cu-opacity-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; font-size: 0.8125rem; }
 .cu-halaman .cu-rng { min-height: 44px; margin: 0; }
 .cu-halaman button:focus-visible, .cu-halaman input:focus-visible { outline: 3px solid #0078BF; outline-offset: 3px; }
