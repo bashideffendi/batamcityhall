@@ -188,10 +188,12 @@ export function pikselHalus(png: Buffer, skala = SKALA_HALUS, tingkat = TINGKAT_
   const keluar = { width: W, height: H, data: Buffer.alloc(W * H * 4) };
   if (!adaPantulan) return keluar;
 
-  // Jalur utama: perbesar, lalu kaburkan sampai simpangan total SIGMA piksel asli.
-  const sigmaTambah = Math.sqrt(Math.max(0, SIGMA * SIGMA - SIGMA_SPLINE * SIGMA_SPLINE)) * skala;
-  const A = kabur(perbesar(ada, w, h, skala), W, H, sigmaTambah);
-  const T = kabur(perbesar(nilai, w, h, skala), W, H, sigmaTambah);
+  // Jalur utama: kaburkan pada ukuran asli, lalu perbesar; simpangan totalnya SIGMA piksel asli. Mengaburkan sebelum
+  // memperbesar memberi hasil yang sama dengan seperempat hitungan, dan itu penting: pekerjaan ini menahan server
+  // selama berjalan (lihat antrean di app/api/radar-citra).
+  const sigmaTambah = Math.sqrt(Math.max(0, SIGMA * SIGMA - SIGMA_SPLINE * SIGMA_SPLINE));
+  const A = perbesar(kabur(ada, w, h, sigmaTambah), w, h, skala);
+  const T = perbesar(kabur(nilai, w, h, sigmaTambah), w, h, skala);
 
   // Jalur pantulan kecil: piksel yang tidak selamat dari kabur dan nyaris tanpa tetangga (titik, garis tipis).
   const kecil = new Float32Array(w * h);

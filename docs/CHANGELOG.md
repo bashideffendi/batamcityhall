@@ -12,6 +12,10 @@ Empat temuan audit kode 16 November 2026 yang berupa perombakan struktur, dikerj
 - **Batas laju dan `x-real-ip`:** Railway mendokumentasikan X-Real-IP sebagai alamat pembaca yang dipasang edge-nya, X-Forwarded-For tidak termasuk header yang didokumentasikan, dan situs dilayani langsung oleh edge Railway. Urutan header tidak diubah; nilai yang bukan satu alamat IP kini diabaikan. Yang belum bisa dipastikan dari dokumentasi: apakah edge menimpa X-Real-IP kiriman klien.
 - Tes: 785 tes unit (8 baru untuk `lib/rapi-teks.ts`, 4 pernyataan baru untuk alamat IP).
 
+Tayang sejak `a8632e7` (16 November 2026, sekitar 5,5 menit sesudah push), bersama peta hujan baru. Diperiksa di barelang.co: citra radar dijawab sebagai WebP yang dihaluskan (57 KB), menu ponsel satu baris, tombol Layar Penuh dan penggeser ketebalan ada, halaman Makanan dan Cuaca terbuka.
+
+**Temuan sesudah tayang dan perbaikannya.** Kunjungan pertama ke peta hujan sesudah server menyala meminta 30 citra sekaligus; penghalusannya berbarengan menahan server sehingga unduhan citra lain dari MSS kehabisan waktu dan tujuh citra dijawab 502. Diminta ulang satu per satu, semuanya 200. Perbaikan: penghalusan dikerjakan bergiliran dengan jeda untuk permintaan lain, dan kabur dihitung pada ukuran asli sebelum diperbesar (±60 ms per citra, semula ±160 ms; hasil gambarnya sama). Diuji di server lokal yang baru menyala: 30 citra sekaligus semuanya 200 dalam 5,7 detik. Tes unit baru menjaga skenario itu.
+
 ## 2026-11-16 · Peta hujan dengan warna asli dan layar penuh, menu ponsel satu baris, perbaikan dari audit
 
 Permintaan pemilik 16 November 2026 dari iPhone (tiga tangkapan layar): audit bug, desain, dan arsitektur; warna radar dikembalikan ke warna awal dan bisa dipudarkan; peta hujan "lebih serius", "cantik tapi berguna informatif"; layar penuh untuk radar hujan dan tinggi gelombang; menu "bertumpuk tiga membingungkan"; gambar kartu dan ikon dirancang ulang dengan Codex. Rinciannya di PEDOMAN blok "Peta cuaca, menu ponsel, dan gambar kartu, 16 Nov 2026".

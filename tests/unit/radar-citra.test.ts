@@ -8,7 +8,12 @@ const timestamp = (offset = 0) => {
 };
 const req = (ts: string) => new Request("http://localhost/api/radar-citra/" + ts);
 
-beforeEach(() => { vi.resetModules(); vi.useFakeTimers(); vi.setSystemTime(new Date("2026-11-16T04:00:00Z")); });
+// setImmediate tidak dipalsukan: route memakainya untuk memberi napas di antara penghalusan citra.
+beforeEach(() => {
+  vi.resetModules();
+  vi.useFakeTimers({ toFake: ["Date", "setTimeout", "clearTimeout", "setInterval", "clearInterval"] });
+  vi.setSystemTime(new Date("2026-11-16T04:00:00Z"));
+});
 afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); vi.restoreAllMocks(); });
 
 describe("proxy citra radar", () => {
@@ -58,6 +63,21 @@ describe("proxy citra radar", () => {
     // Tidak ditahan semenit seperti 404: permintaan berikutnya langsung ke penyedia lagi.
     expect((await GET(req(ts), ctx)).status).toBe(502);
     expect(fetcher).toHaveBeenCalledTimes(2);
+  });
+  it("tiga puluh citra sekaligus semuanya terjawab 200 (dihaluskan bergiliran)", async () => {
+    const png = new PNG({ width: 8, height: 8 });
+    png.data.set([0, 255, 0, 255], (3 * 8 + 3) * 4);
+    const bytes = PNG.sync.write(png);
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(new Response(new Uint8Array(bytes)))));
+    const { GET } = await import("@/app/api/radar-citra/[ts]/route");
+    const jawaban = await Promise.all(
+      Array.from({ length: 30 }, (_, i) => {
+        const ts = timestamp(i);
+        return GET(req(ts), { params: Promise.resolve({ ts }) });
+      }),
+    );
+    expect(jawaban.map((r) => r.status)).toEqual(Array(30).fill(200));
+    expect(new Set(jawaban.map((r) => r.headers.get("Content-Type")))).toEqual(new Set(["image/webp"]));
   });
   it("menggabungkan permintaan yang berjalan", async () => {
     let finish!: (r: Response) => void;

@@ -31,6 +31,17 @@ const muatSharp = () =>
   ));
 const TINGKAT_HALUS = 256;
 
+// Penghalusan menahan server ±0,1 detik per citra (lebih lama di Railway). Pembaca pertama sesudah server menyala
+// meminta 30 citra sekaligus; bila semuanya dihaluskan berbarengan, unduhan citra lain dari MSS kehabisan waktu dan
+// dijawab 502 (terjadi di produksi 16 Nov 2026). Karena itu citra dihaluskan satu per satu, dan server diberi napas
+// di antaranya supaya permintaan lain tetap terlayani. Urutannya urutan permintaan: citra terbaru diminta lebih dulu.
+let antre: Promise<unknown> = Promise.resolve();
+function bergiliran<T>(kerja: () => Promise<T>): Promise<T> {
+  const hasil = antre.then(() => new Promise<void>((lanjut) => setImmediate(lanjut))).then(kerja);
+  antre = hasil.catch(() => undefined);
+  return hasil;
+}
+
 async function sandikan(asli: Buffer): Promise<Citra> {
   const sharp = await muatSharp();
   if (!sharp) return { isi: haluskanRadar(asli), tipe: "image/png" };
@@ -51,7 +62,7 @@ async function muat(ts: string): Promise<Citra | null> {
   if (!r.ok) throw new Error(`MSS ${r.status}`);
   const asli = Buffer.from(await r.arrayBuffer());
   try {
-    return await sandikan(asli);
+    return await bergiliran(() => sandikan(asli));
   } catch (e) {
     // PNG tidak terbaca: kirim citra aslinya apa adanya, jangan gambar kosong (terbaca "tidak hujan").
     console.warn("[radar-citra] penghalusan gagal:", ts, (e as Error)?.message);
