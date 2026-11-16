@@ -1,20 +1,7 @@
 // Label dan tipe yang dipakai bersama server dan browser. Berkas ini tidak mengimpor data apa pun,
 // jadi aman diimpor komponen klien tanpa membawa file JSON mentah ke browser.
 
-export const BULAN = [
-  "Januari",
-  "Februari",
-  "Maret",
-  "April",
-  "Mei",
-  "Juni",
-  "Juli",
-  "Agustus",
-  "September",
-  "Oktober",
-  "November",
-  "Desember",
-] as const;
+export { BULAN } from "@/lib/rapi-teks";
 
 /** Judul kelompok untuk acara yang kolom `bulan`-nya kosong di data. */
 export const BULAN_TIDAK_TETAP = "Bulan Tidak Tetap";

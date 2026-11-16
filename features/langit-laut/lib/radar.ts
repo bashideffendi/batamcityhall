@@ -5,6 +5,7 @@
 // Pola URL: <MSS_FILE_BASE>/dpsri_240km_<YYYYMMDDHHMM>0000dBR.dpsri.png
 // Timestamp di nama file pakai jam Singapura (SGT = WIB + 1 jam).
 // ---------------------------------------------------------------------------
+import { BULAN_SINGKAT, HARI_SINGKAT } from "@/lib/rapi-teks";
 import { MSS_FILE_BASE, ofsTilePath } from "./sources";
 
 export type Frame = {
@@ -158,8 +159,9 @@ export const OFS_CATEGORIES: { label: string; from: number; to: number }[] = [
   { label: "Ekstrem", from: 6, to: 7 },
 ];
 
-const HARI = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
-const BULAN = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+// Nama singkat hari dan bulan dari lib/rapi-teks.ts.
+const HARI = HARI_SINGKAT;
+const BULAN = BULAN_SINGKAT;
 // "202606241500" (UTC) → { time:"22.00", day:"Rab", date:"Rab, 24 Jun" } WIB (+7 jam).
 export function ofsValidWib(valid: string): { time: string; day: string; date: string } {
   const m = /^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})$/.exec(valid);

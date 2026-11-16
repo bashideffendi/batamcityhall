@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
+import { BULAN_SINGKAT } from "@/lib/rapi-teks";
 
 type Acara = { id: string; nama: string; bulan: number | null; lokasi: string | null };
-
-const BULAN_PENDEK = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
 
 const tanpaLangganan = () => () => {};
 const bulanWib = () => new Date(Date.now() + 7 * 3_600_000).getUTCMonth() + 1;
@@ -30,7 +29,7 @@ export default function ModulAcara({ acara }: { acara: Acara[] }) {
         <li key={a.id}>
           <Link href={`/things-to-do#${a.id}`} prefetch={false}>
             <span>{a.nama}</span>
-            <span className="bch-data ket">{BULAN_PENDEK[(a.bulan as number) - 1]}</span>
+            <span className="bch-data ket">{BULAN_SINGKAT[(a.bulan as number) - 1]}</span>
           </Link>
         </li>
       ))}

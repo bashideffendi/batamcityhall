@@ -9,6 +9,7 @@ import { kaidahJudul } from "@/lib/judul";
 import raw from "@/data/places.json";
 import { KECAMATAN, type Place } from "@/lib/data/schema";
 import { adalahTerbuka, TEMPAT_TERBUKA } from "./terbuka";
+import { bulanDekatAngka, hariLengkap, jamBertitik, POLA_HARI, POLA_HARI_SINGKAT, tanggalIndonesia } from "@/lib/rapi-teks";
 
 export type { Place };
 export { adalahTerbuka };
@@ -346,68 +347,32 @@ const bersihkanCatatan = (s: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
-const HARI_PENDEK: Record<string, string> = {
-  Sen: "Senin",
-  Sel: "Selasa",
-  Rab: "Rabu",
-  Kam: "Kamis",
-  Jum: "Jumat",
-  Sab: "Sabtu",
-  Min: "Minggu",
-};
-const BULAN = [
-  "Januari",
-  "Februari",
-  "Maret",
-  "April",
-  "Mei",
-  "Juni",
-  "Juli",
-  "Agustus",
-  "September",
-  "Oktober",
-  "November",
-  "Desember",
-];
-const BULAN_PENDEK: Record<string, string> = {
-  Jan: "Januari",
-  Feb: "Februari",
-  Mar: "Maret",
-  Apr: "April",
-  Jun: "Juni",
-  Jul: "Juli",
-  Agu: "Agustus",
-  Agt: "Agustus",
-  Sep: "September",
-  Okt: "Oktober",
-  Nov: "November",
-  Des: "Desember",
-};
-const NAMA_HARI = "Senin|Selasa|Rabu|Kamis|Jumat|Sabtu|Minggu";
-const RENTANG_HARI = new RegExp(`\\b(${NAMA_HARI})\\s*[-–]\\s*(${NAMA_HARI})\\b`, "g");
+const HARI_SINGKAT_UTUH = new RegExp(`\\b(${POLA_HARI_SINGKAT})\\b`, "g");
+const RENTANG_HARI = new RegExp(`\\b(${POLA_HARI})\\s*[-–]\\s*(${POLA_HARI})\\b`, "g");
 const JAM_TANPA_ZONA =
   /(?<![\d.,]|Rp)((?:[01]?\d|2[0-4])\.[0-5]\d(?:—(?:[01]?\d|2[0-4])\.[0-5]\d)?)(?!\d)(?![.,]\d)(?!—\d)(?! ?WIB)/g;
 
-/** "2026-11-04" menjadi "4 November 2026". Selain bentuk itu dikembalikan apa adanya. */
-export function tanggalIndonesia(iso: string): string {
-  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
-  return m ? `${+m[3]} ${BULAN[+m[2] - 1]} ${m[1]}` : iso;
-}
+export { tanggalIndonesia };
+
+// Nomor telepon di teks bebas ("0778-322611", "0812-3456-789") bukan rentang angka: tanda hubungnya dilindungi
+// supaya tidak ikut menjadi tanda pisah.
+const NOMOR_TELEPON = /(?:\+62[\s-]?|\b0)\d{2,3}-\d{5,}|\b08\d{2}-\d{3,4}-\d{3,4}/g;
+const PELINDUNG = "\u0001";
 
 /** Jam, rentang, hari, dan bulan menurut pedoman 2.6: 08.00—14.00 WIB, Senin—Jumat, 30 April 2017. */
 function rapikanRentang(s: string): string {
-  return tanggalIndonesia(s)
-    .replace(/\b(\d{1,2}):(\d{2})\b/g, "$1.$2")
+  const awal = jamBertitik(tanggalIndonesia(s).replace(NOMOR_TELEPON, (m) => m.replace(/-/g, PELINDUNG)))
     .replace(/\bSab\/libur\b/g, "Sabtu dan hari libur")
-    .replace(/\b(Sen|Sel|Rab|Kam|Jum|Sab|Min)\b/g, (m) => HARI_PENDEK[m])
-    .replace(/\b(Jan|Feb|Mar|Apr|Jun|Jul|Agu|Agt|Sep|Okt|Nov|Des)\b(?=\s+\d{4})/g, (m) => BULAN_PENDEK[m])
+    .replace(HARI_SINGKAT_UTUH, hariLengkap);
+  return bulanDekatAngka(awal)
     .replace(/Rp([\d.]+)\s*[-–]\s*(?:Rp)?([\d.]+)/g, "Rp$1—Rp$2")
     .replace(RENTANG_HARI, "$1—$2")
     .replace(/\b([Pp]agi|[Ss]ore)\s*-\s*(sore|malam)\b/g, "$1—$2")
     .replace(/(\d)\s*-\s*(\d)/g, "$1—$2")
     .replace(/\s*–\s*/g, "—")
     .replace(/\s+-\s+/g, "—")
-    .replace(JAM_TANPA_ZONA, "$1 WIB");
+    .replace(JAM_TANPA_ZONA, "$1 WIB")
+    .replaceAll(PELINDUNG, "-");
 }
 
 /** Kata tidak baku, tanda &, dan garis miring penggabung (pedoman 2.7, 2.8). Bukan untuk nama usaha. */

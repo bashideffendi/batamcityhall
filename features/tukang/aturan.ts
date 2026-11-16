@@ -1,4 +1,5 @@
 // Aturan Tukang Langganan sebagai fungsi murni (research/00 bagian 4). Tanpa node:crypto dan tanpa env.
+import { tulisTanggal } from "@/lib/rapi-teks";
 
 export const MIN_PEREKOMENDASI = 2;
 export const LABEL_CONTOH = "Contoh fiktif";
@@ -169,31 +170,16 @@ export function samarkanKontak(kontak: string | null | undefined): string | null
   return `${angka.slice(0, 2)}***${angka.slice(-2)}`;
 }
 
-const BULAN = [
-  "Januari",
-  "Februari",
-  "Maret",
-  "April",
-  "Mei",
-  "Juni",
-  "Juli",
-  "Agustus",
-  "September",
-  "Oktober",
-  "November",
-  "Desember",
-];
-
 export function teksBulan(yyyyMm: string): string {
   const m = /^(\d{4})-(\d{2})/.exec(yyyyMm);
   if (!m) return yyyyMm;
-  return `${BULAN[Number(m[2]) - 1] ?? ""} ${m[1]}`.trim();
+  return tulisTanggal(m[1], Number(m[2]));
 }
 
 export function teksTanggal(iso: string): string {
   const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
   if (!m) return iso;
-  return `${Number(m[3])} ${BULAN[Number(m[2]) - 1] ?? ""} ${m[1]}`;
+  return tulisTanggal(m[1], Number(m[2]), Number(m[3]));
 }
 
 /** Untuk layar moderator. */

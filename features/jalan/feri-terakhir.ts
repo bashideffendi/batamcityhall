@@ -3,6 +3,8 @@
 // Aturan dasar: jam keberangkatan adalah waktu lokal pelabuhan asal. Jam dan zona tidak pernah disatukan.
 // `now` dibandingkan di zona entri, jadi pukul 23:30 WIB sudah hari berikutnya untuk jadwal dari Singapura.
 
+import { bulanLengkap, hariLengkap, POLA_BULAN_SINGKAT, tulisTanggal } from "@/lib/rapi-teks";
+
 export type Zona = "Asia/Jakarta" | "Asia/Singapore" | "Asia/Kuala_Lumpur";
 
 export const AMBANG_DATA_LAMA_HARI = 60;
@@ -181,32 +183,8 @@ function jendelaOperasi(j: JadwalMentah): EntriFeri["operasi"] {
   return { buka: m[1], tutup: m[2], interval: j.interval ?? j.hari?.match(/tiap\s+±?\d+\s*menit/i)?.[0] ?? null };
 }
 
-const NAMA_HARI: Record<string, string> = {
-  min: "Minggu",
-  sen: "Senin",
-  sel: "Selasa",
-  rab: "Rabu",
-  kam: "Kamis",
-  jum: "Jumat",
-  sab: "Sabtu",
-};
-const NAMA_BULAN: Record<string, string> = {
-  Jan: "Januari",
-  Feb: "Februari",
-  Mar: "Maret",
-  Apr: "April",
-  Mei: "Mei",
-  Jun: "Juni",
-  Jul: "Juli",
-  Agu: "Agustus",
-  Sep: "September",
-  Okt: "Oktober",
-  Nov: "November",
-  Des: "Desember",
-};
-const RENTANG_BULAN =
-  /\b(Jan|Feb|Mar|Apr|Mei|Jun|Jul|Agu|Sep|Okt|Nov|Des)\s*[–—-]\s*(Jan|Feb|Mar|Apr|Mei|Jun|Jul|Agu|Sep|Okt|Nov|Des)\b/g;
-const TANGGAL_PENDEK = /\b(\d{1,2}) (Jan|Feb|Mar|Apr|Mei|Jun|Jul|Agu|Sep|Okt|Nov|Des) (\d{4})\b/g;
+const RENTANG_BULAN = new RegExp(`\\b(${POLA_BULAN_SINGKAT})\\s*[–—-]\\s*(${POLA_BULAN_SINGKAT})\\b`, "g");
+const TANGGAL_PENDEK = new RegExp(`\\b(\\d{1,2}) (${POLA_BULAN_SINGKAT}) (\\d{4})\\b`, "g");
 const RENTANG_HARI = new RegExp(POLA_RENTANG.source, "gi");
 
 /**
@@ -225,10 +203,10 @@ export function hariPublik(hari: string | null | undefined, zona: Zona | null = 
       /operasi\s+(\d{2}:\d{2})\s*[–—-]\s*(\d{2}:\d{2})\s+tiap\s+±?(\d+)\s*menit/i,
       (_, a: string, b: string, n: string) => `operasi ${a}—${b}${z}, sekitar ${n} menit sekali`,
     )
-    .replace(RENTANG_BULAN, (_, a: string, b: string) => `${NAMA_BULAN[a]}—${NAMA_BULAN[b]}`)
-    .replace(TANGGAL_PENDEK, (_, h: string, b: string, y: string) => `${h} ${NAMA_BULAN[b]} ${y}`)
+    .replace(RENTANG_BULAN, (_, a: string, b: string) => `${bulanLengkap(a)}—${bulanLengkap(b)}`)
+    .replace(TANGGAL_PENDEK, (_, h: string, b: string, y: string) => `${h} ${bulanLengkap(b)} ${y}`)
     .replace(/\b(Senin|Selasa|Rabu|Kamis|Jumat|Sabtu|Minggu) (\d{1,2} )/g, "$1, $2")
-    .replace(RENTANG_HARI, (_, a: string, b: string) => `${NAMA_HARI[a.toLowerCase()]}—${NAMA_HARI[b.toLowerCase()]}`)
+    .replace(RENTANG_HARI, (_, a: string, b: string) => `${hariLengkap(a)}—${hariLengkap(b)}`)
     .replace(/\bakhir pekan\/libur\b/, "akhir pekan atau hari libur")
     .replace(/\b2x seminggu\b/, "dua kali seminggu")
     .replace(/\btrip\b/g, "keberangkatan")
@@ -397,25 +375,10 @@ export const dataSudahLama = (tanggal: string | null, now: Date) => {
   return u === null || u > AMBANG_DATA_LAMA_HARI;
 };
 
-const BULAN = [
-  "Januari",
-  "Februari",
-  "Maret",
-  "April",
-  "Mei",
-  "Juni",
-  "Juli",
-  "Agustus",
-  "September",
-  "Oktober",
-  "November",
-  "Desember",
-];
 export function teksTanggal(t: string | null): string {
   const m = t?.match(/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/);
   if (!m) return "tanggal tidak tercatat";
-  if (m[3]) return `${Number(m[3])} ${BULAN[Number(m[2]) - 1]} ${m[1]}`;
-  if (m[2]) return `${BULAN[Number(m[2]) - 1]} ${m[1]}`;
+  if (m[2]) return tulisTanggal(m[1], Number(m[2]), m[3] ? Number(m[3]) : undefined);
   return m[1];
 }
 

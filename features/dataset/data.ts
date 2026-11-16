@@ -4,6 +4,7 @@
 import "server-only";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { tulisTanggal } from "@/lib/rapi-teks";
 import katalog from "@/data/dataset/katalog.json";
 
 export type Dataset = {
@@ -80,22 +81,8 @@ export function ringkasJenis(d: Dataset): string {
   return `Peta${g.length ? ` ${g.join(" dan ")}` : ""}, ${angka} fitur`;
 }
 
-const BULAN = [
-  "Januari",
-  "Februari",
-  "Maret",
-  "April",
-  "Mei",
-  "Juni",
-  "Juli",
-  "Agustus",
-  "September",
-  "Oktober",
-  "November",
-  "Desember",
-];
 export const tanggalPanjang = (iso: string | null) => {
   if (!iso) return null;
   const [th, bl, tg] = iso.split("-").map(Number);
-  return `${tg} ${BULAN[bl - 1]} ${th}`;
+  return tulisTanggal(th, bl, tg);
 };

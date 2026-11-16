@@ -3,6 +3,7 @@ import kamus from "@/data/budaya/kamus.json";
 import komunitas from "@/data/budaya/komunitas.json";
 import tradisi from "@/data/budaya/tradisi_melayu.json";
 import { rapiAtauKosong, rapiTeks } from "@/features/sejarah/rapi";
+import { BULAN_SINGKAT } from "@/lib/rapi-teks";
 import type { AcaraPublik, KataPublik, KelompokAcara, KelompokKata, RagamKata, StatusAcara } from "./label";
 
 // Pintu keluar data budaya. File JSON mentah memuat catatan penyusun (`catatan_laporan`, kolom `tabel`), jadi halaman
@@ -61,7 +62,7 @@ export function statusAcara(a: Pick<AcaraMentah, "status" | "tabel">): StatusAca
   return /pernah/i.test(teks) ? "pernah" : "belum pasti";
 }
 
-const BULAN_PENDEK = /\b\d{1,2}\s+(Jan|Feb|Mar|Apr|Mei|Jun|Jul|Agu|Sep|Okt|Nov|Des)/;
+const BULAN_PENDEK = new RegExp(`\\b\\d{1,2}\\s+(${BULAN_SINGKAT.join("|")})`);
 
 /** Tidak pasti bila data tidak menyebut hari dan bulan Masehi, atau menulisnya sebagai perkiraan. */
 export function tanggalTidakPasti(a: Pick<AcaraMentah, "tabel">): boolean {
@@ -185,8 +186,6 @@ function bentukPublik(a: AcaraMentah): AcaraPublik {
     tempat: TEMPAT_ACARA[a.id] ?? [],
   };
 }
-
-const BULAN_SINGKAT = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
 
 /** Hari awal edisi yang jatuh di bulan kartu ini, dibaca dari data mentah. Hanya untuk urutan dalam satu bulan. */
 const hariAwal = (a: AcaraMentah) => {

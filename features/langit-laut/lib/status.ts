@@ -4,6 +4,7 @@
 // didefinisikan. Salinan mengikuti PEDOMAN 3.3 dan 3.11: label berkapital di awal saja,
 // kalimat data persis templatnya, tanpa lelucon saat ada peringatan.
 // ---------------------------------------------------------------------------
+import { BULAN_SINGKAT, HARI_SINGKAT } from "@/lib/rapi-teks";
 import type {
   EchoSummary,
   ForecastResponse,
@@ -484,8 +485,9 @@ export function ofsCaption(ov: OfsView): Caption {
   return { left: `${time}, sudah lewat`, right: null, warn: false, toNow: true };
 }
 
-const HARI = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
-const BULAN = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+// Nama singkat hari dan bulan dari lib/rapi-teks.ts.
+const HARI = HARI_SINGKAT;
+const BULAN = BULAN_SINGKAT;
 /** ISO atau "2026-09-26 23:39 UTC" (format BMKG) → waktu WIB siap tampil. */
 function wibParts(s: string): { day: string; date: string; time: string; key: string } | null {
   const m = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::\d{2}(?:\.\d+)?)?\s*(?:Z|UTC)?$/.exec(s.trim());
