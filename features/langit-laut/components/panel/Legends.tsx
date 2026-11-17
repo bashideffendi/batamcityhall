@@ -42,7 +42,14 @@ export function LegendaHujan({ compact = false }: { compact?: boolean }) {
       <h2 id={id} className="cu-sub">Intensitas Hujan</h2>
       <div className="cu-rain-bar" style={{ background: RAIN_GRADIENT }} aria-hidden />
       <div className="cu-rain-classes"><span>Ringan</span><span>Sedang</span><span>Lebat</span></div>
-      <p className="cu-warning-key"><i aria-hidden /> Wilayah merah muda: kecamatan yang sedang hujan</p>
+      {/* Tema gelap memakai merah tua, jadi nama warnanya ikut tema; yang tidak berlaku disembunyikan lewat CSS. */}
+      <p className="cu-warning-key">
+        <i aria-hidden />
+        <span>
+          <span className="cu-kunci-terang">Wilayah merah muda</span>
+          <span className="cu-kunci-gelap">Wilayah merah tua</span>: kecamatan yang sedang hujan
+        </span>
+      </p>
       {!compact && <p className="cu-catatan">
         Radar berpusat di Singapura sehingga pulau di selatan Batam terpantau kurang akurat. Bercak yang diam kadang bukan
         hujan.

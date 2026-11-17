@@ -695,12 +695,30 @@ test.describe("peringatan cuaca di radar", () => {
     // areanya jadi merah". Peringatan tetap ditulis di panel; di peta hanya kecamatan hujan yang menjadi merah.
     await tiruSumber(page, { echo: ECHO_HUJAN });
     await tiruPeringatan(page, [PERINGATAN_BATAM]);
+    // Tema bawaan halaman ini mengikuti jam, jadi dikunci supaya tes tidak bergantung pada waktu jalannya.
+    await page.addInitScript(() => localStorage.setItem("bch-theme", "light"));
     await page.goto("/cuaca/hujan");
     await petaSiap(page);
     await expect(page.locator("[data-kunci-peringatan]")).toHaveCount(0);
     await bukaPanel(page);
-    await expect(page.locator(".cu-warning-key")).toHaveText("Wilayah merah muda: kecamatan yang sedang hujan");
+    await expect(page.locator(".cu-warning-key")).toHaveText("Wilayah merah muda: kecamatan yang sedang hujan", {
+      useInnerText: true,
+    });
     await expect(page.locator("[data-peringatan-cuaca]")).toContainText("Hujan Lebat dan Petir");
+  });
+
+  test("tema gelap: legenda menyebut merah tua, bukan merah muda", async ({ page }) => {
+    // Pemilik 17 Nov 2026: "kalau di mode gelap masa pakai pink". Bidangnya merah tua, legendanya ikut.
+    await tiruSumber(page, { echo: ECHO_HUJAN });
+    await page.addInitScript(() => localStorage.setItem("bch-theme", "dark"));
+    await page.goto("/cuaca/hujan");
+    await petaSiap(page);
+    await bukaPanel(page);
+    const kunci = page.locator(".cu-warning-key");
+    await expect(kunci).toHaveText("Wilayah merah tua: kecamatan yang sedang hujan", { useInnerText: true });
+    await expect(kunci.locator(".cu-kunci-terang")).toBeHidden();
+    // Kotak contohnya memakai merah tua yang sama dengan bidang di peta (WARNA_HUJAN.dark).
+    await expect(kunci.locator("i")).toHaveCSS("background-color", "rgba(168, 28, 38, 0.5)");
   });
 
   test("peringatan di luar Batam tidak memberi label pada wilayah Batam", async ({ page }) => {

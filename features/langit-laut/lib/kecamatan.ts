@@ -77,14 +77,20 @@ export const kabRank = (kab: string) => {
 // hujandibatam 0,2 dan 0,26), pemilik 17 Nov 2026: "pinknya lebih soft lagi", jadi sekarang lebih tipis daripada
 // kode lama. Jangan dinaikkan lagi.
 // Satu warna untuk semua kelas hujan; kelasnya ada di label kecamatan dan di panel.
+//
+// Tema gelap memakai merah tua, bukan merah muda (pemilik 17 Nov 2026, sesudah melihat potret tema gelap: "kalau di
+// mode gelap masa pakai pink"). Merah yang sama dengan kepekatan tipis di atas darat gelap menjadi ungu kusam, jadi
+// warnanya sendiri yang diganti dan kepekatannya lebih tinggi supaya terbaca merah.
 export const MERAH_HUJAN = "#E5202B";
-export const PEKAT_HUJAN: Record<"light" | "dark", number> = { light: 0.13, dark: 0.17 };
+export const WARNA_HUJAN: Record<"light" | "dark", string> = { light: MERAH_HUJAN, dark: "#A81C26" };
+export const PEKAT_HUJAN: Record<"light" | "dark", number> = { light: 0.13, dark: 0.5 };
 
 /** Saringan dan kepekatan bidang merah muda untuk kecamatan yang hujan. Fungsi murni supaya bisa dites tanpa peta. */
 export function arsiranHujan(tingkat: ReadonlyMap<string, RainLevel>, tema: "light" | "dark") {
   const kode = [...tingkat.keys()];
   return {
     saring: ["in", ["get", "code"], ["literal", kode]],
+    warna: WARNA_HUJAN[tema === "dark" ? "dark" : "light"],
     kepekatan: kode.length ? PEKAT_HUJAN[tema === "dark" ? "dark" : "light"] : 0,
   };
 }

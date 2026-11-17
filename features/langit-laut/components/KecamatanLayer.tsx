@@ -143,6 +143,7 @@ export default function KecamatanLayer({ rainy, showRain, theme }: Props) {
     if (!map.getLayer(FILL_ID)) return;
     const a = arsiranHujan(rainLevels, theme);
     map.setFilter(FILL_ID, a.saring as never);
+    map.setPaintProperty(FILL_ID, "fill-color", a.warna);
     map.setPaintProperty(FILL_ID, "fill-opacity", a.kepekatan as never);
   }, [map, rainLevels, theme, geo]);
 

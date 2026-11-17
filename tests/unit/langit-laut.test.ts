@@ -3,7 +3,7 @@ import { join } from "node:path";
 import type { LayerSpecification, StyleSpecification } from "maplibre-gl";
 import { describe, expect, it } from "vitest";
 import { baseStyle } from "@/features/peta/style";
-import { arsiranHujan, MERAH_HUJAN } from "@/features/langit-laut/lib/kecamatan";
+import { arsiranHujan, MERAH_HUJAN, WARNA_HUJAN } from "@/features/langit-laut/lib/kecamatan";
 import {
   gabungGaya,
   geserKeDalam,
@@ -167,11 +167,16 @@ describe("urutan lapisan", () => {
     expect(a.saring).toEqual(["in", ["get", "code"], ["literal", ["21.71.04", "21.71.03"]]]);
     // Tipis: 0,36 dan 0,78 ditolak pemilik, dan 0,22 yang sempat tayang masih terlalu tua (17 Nov 2026: "pinknya
     // lebih soft lagi"). Batas bawahnya supaya bidangnya tetap terbedakan dari darat yang tidak hujan.
+    expect(a.warna).toBe(MERAH_HUJAN);
     expect(a.kepekatan).toBeGreaterThanOrEqual(0.08);
     expect(a.kepekatan).toBeLessThanOrEqual(0.18);
-    const gelap = arsiranHujan(new Map([["21.71.04", "ringan"]]), "dark").kepekatan;
-    expect(gelap).toBeGreaterThanOrEqual(a.kepekatan);
-    expect(gelap).toBeLessThanOrEqual(0.22);
+    // Tema gelap: merah tua, bukan merah muda (pemilik 17 Nov 2026: "kalau di mode gelap masa pakai pink"). Merah
+    // tema terang yang ditipiskan di atas darat gelap menjadi ungu kusam, jadi warnanya lain dan lebih pekat.
+    const gelap = arsiranHujan(new Map([["21.71.04", "ringan"]]), "dark");
+    expect(gelap.warna).toBe(WARNA_HUJAN.dark);
+    expect(gelap.warna).not.toBe(MERAH_HUJAN);
+    expect(gelap.kepekatan).toBeGreaterThanOrEqual(0.4);
+    expect(gelap.kepekatan).toBeLessThanOrEqual(0.6);
     // Tidak ada yang hujan: tidak ada yang diarsir.
     const kosong = arsiranHujan(new Map(), "dark");
     expect(kosong.saring).toEqual(["in", ["get", "code"], ["literal", []]]);
