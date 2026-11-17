@@ -72,11 +72,13 @@ export const kabRank = (kab: string) => {
 // "ikutin aja hujandibatam, kecamatan yang hujan areanya jadi merah"). Keputusan akhirnya, kata pemilik sendiri:
 // "kecamatan yang hujan areanya jadi merah muda", "merah pastel", "merahnya tipis aja, radar yang harus berada di
 // atas, kalau areanya ketutup ya sudah biarkan ketutup warna radarnya". Jadi bidangnya tipis dan di BAWAH citra
-// radar, sama dengan kode hujandibatam (0,2 terang dan 0,26 gelap). Yang ditolak: bidang merah pekat di atas radar
-// ("makin parah"), dan merah 0,36 di bawah radar (terlalu tua untuk disebut merah muda).
+// radar, seperti kode hujandibatam. Yang ditolak: bidang merah pekat di atas radar ("makin parah"), dan merah 0,36
+// di bawah radar (terlalu tua untuk disebut merah muda). Sesudah tayang dengan 0,22 terang dan 0,28 gelap (angka
+// hujandibatam 0,2 dan 0,26), pemilik 17 Nov 2026: "pinknya lebih soft lagi", jadi sekarang lebih tipis daripada
+// kode lama. Jangan dinaikkan lagi.
 // Satu warna untuk semua kelas hujan; kelasnya ada di label kecamatan dan di panel.
 export const MERAH_HUJAN = "#E5202B";
-export const PEKAT_HUJAN: Record<"light" | "dark", number> = { light: 0.22, dark: 0.28 };
+export const PEKAT_HUJAN: Record<"light" | "dark", number> = { light: 0.13, dark: 0.17 };
 
 /** Saringan dan kepekatan bidang merah muda untuk kecamatan yang hujan. Fungsi murni supaya bisa dites tanpa peta. */
 export function arsiranHujan(tingkat: ReadonlyMap<string, RainLevel>, tema: "light" | "dark") {

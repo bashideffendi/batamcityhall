@@ -165,12 +165,13 @@ describe("urutan lapisan", () => {
     expect(MERAH_HUJAN).toBe("#E5202B");
     const a = arsiranHujan(new Map([["21.71.04", "lebat"], ["21.71.03", "ringan"]]), "light");
     expect(a.saring).toEqual(["in", ["get", "code"], ["literal", ["21.71.04", "21.71.03"]]]);
-    // Tipis: di atas ±0,3 merahnya bukan lagi merah muda (0,36 dan 0,78 sudah ditolak pemilik).
-    expect(a.kepekatan).toBeGreaterThanOrEqual(0.15);
-    expect(a.kepekatan).toBeLessThanOrEqual(0.3);
+    // Tipis: 0,36 dan 0,78 ditolak pemilik, dan 0,22 yang sempat tayang masih terlalu tua (17 Nov 2026: "pinknya
+    // lebih soft lagi"). Batas bawahnya supaya bidangnya tetap terbedakan dari darat yang tidak hujan.
+    expect(a.kepekatan).toBeGreaterThanOrEqual(0.08);
+    expect(a.kepekatan).toBeLessThanOrEqual(0.18);
     const gelap = arsiranHujan(new Map([["21.71.04", "ringan"]]), "dark").kepekatan;
     expect(gelap).toBeGreaterThanOrEqual(a.kepekatan);
-    expect(gelap).toBeLessThanOrEqual(0.3);
+    expect(gelap).toBeLessThanOrEqual(0.22);
     // Tidak ada yang hujan: tidak ada yang diarsir.
     const kosong = arsiranHujan(new Map(), "dark");
     expect(kosong.saring).toEqual(["in", ["get", "code"], ["literal", []]]);
